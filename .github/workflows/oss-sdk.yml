@@ -39,6 +39,7 @@ jobs:
           repository: pulumi/pulumi-azure-nextgen-provider
           path: provider
           ref: master
+          token: ${{ secrets.PULUMI_BOT_TOKEN }}
       - name: prepare sdk files
         run: |
           cp -R sdk/ ${{ github.workspace }}/sdk-repo
