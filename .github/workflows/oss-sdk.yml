@@ -54,4 +54,4 @@ jobs:
           ref: "publish/${{ github.run_id }}-${{ github.run_number }}"
           author_name: pulumi-bot
           author_email: "bot@pulumi.com"
-          cwd: sdk-repo
+          cwd: ${{ github.workspace }}/sdk-repo
