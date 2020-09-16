@@ -1,0 +1,55 @@
+env:
+  GITHUB_TOKEN: ${{ secrets.PULUMI_BOT_TOKEN }}
+
+name: OSS SDK Files
+on:
+  repository_dispatch:
+    types:
+      - oss-sdk
+  workflow_dispatch:
+
+jobs:
+  pull-request:
+    runs-on: ubuntu-latest
+    needs: prepare-sdk
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v2
+      - name: pull-request
+        uses: repo-sync/pull-request@v2
+        with:
+          source_branch: "publish/${{ github.run_id }}-${{ github.run_number }}"
+          destination_branch: "master"
+#          pr_title: "Publish SDK @ ${{ github.event.client_payload.ref }}"
+          pr_title: "Testing Publishing SDK"
+          pr_body: ":crown: *Automated PR*"
+          pr_label: "automation/merge"
+          pr_allow_empty: true
+          github_token: ${{ secrets.PULUMI_BOT_TOKEN }}
+  prepare-sdk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v2
+        with:
+          path: sdk-repo
+      - name: checkout next provider repo
+        uses: actions/checkout@v2
+        with:
+          repository: pulumi/pulumi-azure-nextgen-provider
+          path: provider
+      - name: prepare sdk files
+        run: |
+          cp -R sdk/ ${{ github.workspace }}/sdk-repo
+          rm -f ${{ github.workspace }}/sdk-repo/sdk/SDK_LICENSE
+        working-directory: provider
+      - name: git status
+        run: git status && git diff
+        working-directory: sdk-repo
+      - name: commit changes
+        uses: EndBug/add-and-commit@v4
+        with:
+          ref: "publish/${{ github.run_id }}-${{ github.run_number }}"
+          author_name: pulumi-bot
+          author_email: "bot@pulumi.com"
+          cwd: sdk-repo
