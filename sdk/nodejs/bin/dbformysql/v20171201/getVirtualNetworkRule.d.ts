@@ -1,0 +1,41 @@
+import * as pulumi from "@pulumi/pulumi";
+export declare function getVirtualNetworkRule(args: GetVirtualNetworkRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualNetworkRuleResult>;
+export interface GetVirtualNetworkRuleArgs {
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    readonly resourceGroupName: string;
+    /**
+     * The name of the server.
+     */
+    readonly serverName: string;
+    /**
+     * The name of the virtual network rule.
+     */
+    readonly virtualNetworkRuleName: string;
+}
+/**
+ * A virtual network rule.
+ */
+export interface GetVirtualNetworkRuleResult {
+    /**
+     * Create firewall rule before the virtual network has vnet service endpoint enabled.
+     */
+    readonly ignoreMissingVnetServiceEndpoint?: boolean;
+    /**
+     * The name of the resource
+     */
+    readonly name: string;
+    /**
+     * Virtual Network Rule State
+     */
+    readonly state: string;
+    /**
+     * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+     */
+    readonly type: string;
+    /**
+     * The ARM resource id of the virtual network subnet.
+     */
+    readonly virtualNetworkSubnetId: string;
+}

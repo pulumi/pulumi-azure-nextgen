@@ -1,0 +1,114 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as outputs from "../../types/output";
+export declare function getRoleAssignment(args: GetRoleAssignmentArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleAssignmentResult>;
+export interface GetRoleAssignmentArgs {
+    /**
+     * The name of the role assignment.
+     */
+    readonly assignmentName: string;
+    /**
+     * The name of the hub.
+     */
+    readonly hubName: string;
+    /**
+     * The name of the resource group.
+     */
+    readonly resourceGroupName: string;
+}
+/**
+ * The Role Assignment resource format.
+ */
+export interface GetRoleAssignmentResult {
+    /**
+     * The name of the metadata object.
+     */
+    readonly assignmentName: string;
+    /**
+     * Widget types set for the assignment.
+     */
+    readonly conflationPolicies?: outputs.customerinsights.v20170426.ResourceSetDescriptionResponse;
+    /**
+     * Connectors set for the assignment.
+     */
+    readonly connectors?: outputs.customerinsights.v20170426.ResourceSetDescriptionResponse;
+    /**
+     * Localized description for the metadata.
+     */
+    readonly description?: {
+        [key: string]: string;
+    };
+    /**
+     * Localized display names for the metadata.
+     */
+    readonly displayName?: {
+        [key: string]: string;
+    };
+    /**
+     * Interactions set for the assignment.
+     */
+    readonly interactions?: outputs.customerinsights.v20170426.ResourceSetDescriptionResponse;
+    /**
+     * Kpis set for the assignment.
+     */
+    readonly kpis?: outputs.customerinsights.v20170426.ResourceSetDescriptionResponse;
+    /**
+     * Links set for the assignment.
+     */
+    readonly links?: outputs.customerinsights.v20170426.ResourceSetDescriptionResponse;
+    /**
+     * Resource name.
+     */
+    readonly name: string;
+    /**
+     * The principals being assigned to.
+     */
+    readonly principals: outputs.customerinsights.v20170426.AssignmentPrincipalResponse[];
+    /**
+     * Profiles set for the assignment.
+     */
+    readonly profiles?: outputs.customerinsights.v20170426.ResourceSetDescriptionResponse;
+    /**
+     * Provisioning state.
+     */
+    readonly provisioningState: string;
+    /**
+     * The Role assignments set for the relationship links.
+     */
+    readonly relationshipLinks?: outputs.customerinsights.v20170426.ResourceSetDescriptionResponse;
+    /**
+     * The Role assignments set for the relationships.
+     */
+    readonly relationships?: outputs.customerinsights.v20170426.ResourceSetDescriptionResponse;
+    /**
+     * Type of roles.
+     */
+    readonly role: string;
+    /**
+     * The Role assignments set for the assignment.
+     */
+    readonly roleAssignments?: outputs.customerinsights.v20170426.ResourceSetDescriptionResponse;
+    /**
+     * Sas Policies set for the assignment.
+     */
+    readonly sasPolicies?: outputs.customerinsights.v20170426.ResourceSetDescriptionResponse;
+    /**
+     * The Role assignments set for the assignment.
+     */
+    readonly segments?: outputs.customerinsights.v20170426.ResourceSetDescriptionResponse;
+    /**
+     * The hub name.
+     */
+    readonly tenantId: string;
+    /**
+     * Resource type.
+     */
+    readonly type: string;
+    /**
+     * Views set for the assignment.
+     */
+    readonly views?: outputs.customerinsights.v20170426.ResourceSetDescriptionResponse;
+    /**
+     * Widget types set for the assignment.
+     */
+    readonly widgetTypes?: outputs.customerinsights.v20170426.ResourceSetDescriptionResponse;
+}

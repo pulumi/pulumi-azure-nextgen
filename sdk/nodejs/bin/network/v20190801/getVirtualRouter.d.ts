@@ -1,0 +1,68 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as outputs from "../../types/output";
+export declare function getVirtualRouter(args: GetVirtualRouterArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualRouterResult>;
+export interface GetVirtualRouterArgs {
+    /**
+     * Expands referenced resources.
+     */
+    readonly expand?: string;
+    /**
+     * The name of the resource group.
+     */
+    readonly resourceGroupName: string;
+    /**
+     * The name of the Virtual Router.
+     */
+    readonly virtualRouterName: string;
+}
+/**
+ * VirtualRouter Resource.
+ */
+export interface GetVirtualRouterResult {
+    /**
+     * Gets a unique read-only string that changes whenever the resource is updated.
+     */
+    readonly etag: string;
+    /**
+     * The Gateway on which VirtualRouter is hosted.
+     */
+    readonly hostedGateway?: outputs.network.v20190801.SubResourceResponse;
+    /**
+     * The Subnet on which VirtualRouter is hosted.
+     */
+    readonly hostedSubnet?: outputs.network.v20190801.SubResourceResponse;
+    /**
+     * Resource location.
+     */
+    readonly location?: string;
+    /**
+     * Resource name.
+     */
+    readonly name: string;
+    /**
+     * List of references to VirtualRouterPeerings
+     */
+    readonly peerings: outputs.network.v20190801.SubResourceResponse[];
+    /**
+     * The provisioning state of the resource.
+     */
+    readonly provisioningState: string;
+    /**
+     * Resource tags.
+     */
+    readonly tags?: {
+        [key: string]: string;
+    };
+    /**
+     * Resource type.
+     */
+    readonly type: string;
+    /**
+     * VirtualRouter ASN.
+     */
+    readonly virtualRouterAsn?: number;
+    /**
+     * VirtualRouter IPs
+     */
+    readonly virtualRouterIps?: string[];
+}

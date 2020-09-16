@@ -1,0 +1,104 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as outputs from "../../types/output";
+export declare function getStreamingEndpoint(args: GetStreamingEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetStreamingEndpointResult>;
+export interface GetStreamingEndpointArgs {
+    /**
+     * The Media Services account name.
+     */
+    readonly accountName: string;
+    /**
+     * The name of the resource group within the Azure subscription.
+     */
+    readonly resourceGroupName: string;
+    /**
+     * The name of the StreamingEndpoint.
+     */
+    readonly streamingEndpointName: string;
+}
+/**
+ * The StreamingEndpoint.
+ */
+export interface GetStreamingEndpointResult {
+    /**
+     * The access control definition of the StreamingEndpoint.
+     */
+    readonly accessControl?: outputs.media.v20200501.StreamingEndpointAccessControlResponse;
+    /**
+     * The name of the AvailabilitySet used with this StreamingEndpoint for high availability streaming.  This value can only be set at creation time.
+     */
+    readonly availabilitySetName?: string;
+    /**
+     * The CDN enabled flag.
+     */
+    readonly cdnEnabled?: boolean;
+    /**
+     * The CDN profile name.
+     */
+    readonly cdnProfile?: string;
+    /**
+     * The CDN provider name.
+     */
+    readonly cdnProvider?: string;
+    /**
+     * The exact time the StreamingEndpoint was created.
+     */
+    readonly created: string;
+    /**
+     * The StreamingEndpoint access policies.
+     */
+    readonly crossSiteAccessPolicies?: outputs.media.v20200501.CrossSiteAccessPoliciesResponse;
+    /**
+     * The custom host names of the StreamingEndpoint
+     */
+    readonly customHostNames?: string[];
+    /**
+     * The StreamingEndpoint description.
+     */
+    readonly description?: string;
+    /**
+     * The free trial expiration time.
+     */
+    readonly freeTrialEndTime: string;
+    /**
+     * The StreamingEndpoint host name.
+     */
+    readonly hostName: string;
+    /**
+     * The exact time the StreamingEndpoint was last modified.
+     */
+    readonly lastModified: string;
+    /**
+     * The geo-location where the resource lives
+     */
+    readonly location: string;
+    /**
+     * Max cache age
+     */
+    readonly maxCacheAge?: number;
+    /**
+     * The name of the resource
+     */
+    readonly name: string;
+    /**
+     * The provisioning state of the StreamingEndpoint.
+     */
+    readonly provisioningState: string;
+    /**
+     * The resource state of the StreamingEndpoint.
+     */
+    readonly resourceState: string;
+    /**
+     * The number of scale units.  Use the Scale operation to adjust this value.
+     */
+    readonly scaleUnits: number;
+    /**
+     * Resource tags.
+     */
+    readonly tags?: {
+        [key: string]: string;
+    };
+    /**
+     * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+     */
+    readonly type: string;
+}
