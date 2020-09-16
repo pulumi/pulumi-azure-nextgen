@@ -33,11 +33,12 @@ jobs:
         uses: actions/checkout@v2
         with:
           path: sdk-repo
-      - name: checkout next provider repo
+      - name: checkout nextgen provider repo
         uses: actions/checkout@v2
         with:
           repository: pulumi/pulumi-azure-nextgen-provider
           path: provider
+          ref: master
       - name: prepare sdk files
         run: |
           cp -R sdk/ ${{ github.workspace }}/sdk-repo
