@@ -10208,6 +10208,56 @@ export namespace azuredata {
             lastModifiedByType?: string;
         }
     }
+
+    export namespace v20200908preview {
+        /**
+         * Properties from the on premise data controller
+         */
+        export interface OnPremisePropertyResponse {
+            /**
+             * A globally unique ID identifying the associated on premise cluster
+             */
+            id: string;
+            /**
+             * Certificate that contains the on premise cluster public key used to verify signing
+             */
+            publicSigningKey: string;
+            /**
+             * Unique thumbprint returned to customer to verify the certificate being uploaded
+             */
+            signingCertificateThumbprint?: string;
+        }
+
+        /**
+         * Read only system data
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC)
+             */
+            createdAt?: string;
+            /**
+             * An identifier for the identity that created the resource
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource
+             */
+            createdByType?: string;
+            /**
+             * The timestamp of resource last modification (UTC)
+             */
+            lastModifiedAt?: string;
+            /**
+             * An identifier for the identity that last modified the resource
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource
+             */
+            lastModifiedByType?: string;
+        }
+    }
 }
 
 export namespace azurestack {
@@ -10539,7 +10589,7 @@ export namespace batch {
             caching?: string;
             diskSizeGB: number;
             /**
-             * The lun is used to uniquely identify each data disk. If attaching multiple disks, each should have a distinct lun.
+             * The lun is used to uniquely identify each data disk. If attaching multiple disks, each should have a distinct lun. The value must be between 0 and 63, inclusive.
              */
             lun: number;
             /**
@@ -10797,7 +10847,7 @@ export namespace batch {
 
         export interface PoolEndpointConfigurationResponse {
             /**
-             * The maximum number of inbound NAT pools per Batch pool is 5. If the maximum number of inbound NAT pools is exceeded the request fails with HTTP status code 400.
+             * The maximum number of inbound NAT pools per Batch pool is 5. If the maximum number of inbound NAT pools is exceeded the request fails with HTTP status code 400. This cannot be specified if the IPAddressProvisioningType is NoPublicIPAddresses.
              */
             inboundNatPools: outputs.batch.latest.InboundNatPoolResponse[];
         }
@@ -10854,7 +10904,7 @@ export namespace batch {
          */
         export interface PublicIPAddressConfigurationResponse {
             /**
-             * The number of IPs specified here limits the maximum size of the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for each public IP. For example, a pool needing 150 dedicated VMs would need at least 3 public IPs specified. Each element of this collection is of the form: /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
+             * The number of IPs specified here limits the maximum size of the Pool - 100 dedicated nodes or 100 low-priority nodes can be allocated for each public IP. For example, a pool needing 250 dedicated VMs would need at least 3 public IPs specified. Each element of this collection is of the form: /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
              */
             ipAddressIds?: string[];
             /**
@@ -14772,6 +14822,737 @@ export namespace batch {
              * This property must not be specified if the imageReference specifies a Linux OS image.
              */
             windowsConfiguration?: outputs.batch.v20200501.WindowsConfigurationResponse;
+        }
+
+        /**
+         * A VM Family and its associated core quota for the Batch account.
+         */
+        export interface VirtualMachineFamilyCoreQuotaResponse {
+            /**
+             * The core quota for the VM family for the Batch account.
+             */
+            coreQuota: number;
+            /**
+             * The Virtual Machine family name.
+             */
+            name: string;
+        }
+
+        export interface WindowsConfigurationResponse {
+            /**
+             * If omitted, the default value is true.
+             */
+            enableAutomaticUpdates?: boolean;
+        }
+
+        export interface WindowsUserConfigurationResponse {
+            /**
+             * Specifies login mode for the user. The default value for VirtualMachineConfiguration pools is interactive mode and for CloudServiceConfiguration pools is batch mode.
+             */
+            loginMode?: string;
+        }
+    }
+
+    export namespace v20200901 {
+        export interface ApplicationPackageReferenceResponse {
+            id: string;
+            /**
+             * If this is omitted, and no default version is specified for this application, the request fails with the error code InvalidApplicationPackageReferences. If you are calling the REST API directly, the HTTP status code is 409.
+             */
+            version?: string;
+        }
+
+        export interface AutoScaleRunErrorResponse {
+            /**
+             * An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
+             */
+            code: string;
+            details?: outputs.batch.v20200901.AutoScaleRunErrorResponse[];
+            /**
+             * A message describing the error, intended to be suitable for display in a user interface.
+             */
+            message: string;
+        }
+
+        export interface AutoScaleRunResponse {
+            error?: outputs.batch.v20200901.AutoScaleRunErrorResponse;
+            evaluationTime: string;
+            /**
+             * Each variable value is returned in the form $variable=value, and variables are separated by semicolons.
+             */
+            results?: string;
+        }
+
+        export interface AutoScaleSettingsResponse {
+            /**
+             * If omitted, the default value is 15 minutes (PT15M).
+             */
+            evaluationInterval?: string;
+            formula: string;
+        }
+
+        /**
+         * Contains information about the auto-storage account associated with a Batch account.
+         */
+        export interface AutoStoragePropertiesResponse {
+            /**
+             * The UTC time at which storage keys were last synchronized with the Batch account.
+             */
+            lastKeySync: string;
+            /**
+             * The resource ID of the storage account to be used for auto-storage account.
+             */
+            storageAccountId: string;
+        }
+
+        export interface AutoUserSpecificationResponse {
+            /**
+             * The default value is nonAdmin.
+             */
+            elevationLevel?: string;
+            /**
+             * The default value is Pool. If the pool is running Windows a value of Task should be specified if stricter isolation between tasks is required. For example, if the task mutates the registry in a way which could impact other tasks, or if certificates have been specified on the pool which should not be accessible by normal tasks but should be accessible by start tasks.
+             */
+            scope?: string;
+        }
+
+        export interface AzureBlobFileSystemConfigurationResponse {
+            /**
+             * This property is mutually exclusive with sasKey and one must be specified.
+             */
+            accountKey?: string;
+            accountName: string;
+            /**
+             * These are 'net use' options in Windows and 'mount' options in Linux.
+             */
+            blobfuseOptions?: string;
+            containerName: string;
+            /**
+             * All file systems are mounted relative to the Batch mounts directory, accessible via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.
+             */
+            relativeMountPath: string;
+            /**
+             * This property is mutually exclusive with accountKey and one must be specified.
+             */
+            sasKey?: string;
+        }
+
+        export interface AzureFileShareConfigurationResponse {
+            accountKey: string;
+            accountName: string;
+            /**
+             * This is of the form 'https://{account}.file.core.windows.net/'.
+             */
+            azureFileUrl: string;
+            /**
+             * These are 'net use' options in Windows and 'mount' options in Linux.
+             */
+            mountOptions?: string;
+            /**
+             * All file systems are mounted relative to the Batch mounts directory, accessible via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.
+             */
+            relativeMountPath: string;
+        }
+
+        /**
+         * The identity of the Batch account, if configured. This is only used when the user specifies 'Microsoft.KeyVault' as their Batch account encryption configuration.
+         */
+        export interface BatchAccountIdentityResponse {
+            /**
+             * The principal id of the Batch account. This property will only be provided for a system assigned identity.
+             */
+            principalId: string;
+            /**
+             * The tenant id associated with the Batch account. This property will only be provided for a system assigned identity.
+             */
+            tenantId: string;
+            /**
+             * The type of identity used for the Batch account.
+             */
+            type: string;
+        }
+
+        export interface CIFSMountConfigurationResponse {
+            /**
+             * These are 'net use' options in Windows and 'mount' options in Linux.
+             */
+            mountOptions?: string;
+            password: string;
+            /**
+             * All file systems are mounted relative to the Batch mounts directory, accessible via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.
+             */
+            relativeMountPath: string;
+            source: string;
+            username: string;
+        }
+
+        export interface CertificateReferenceResponse {
+            id: string;
+            /**
+             * The default value is currentUser. This property is applicable only for pools configured with Windows nodes (that is, created with cloudServiceConfiguration, or with virtualMachineConfiguration using a Windows image reference). For Linux compute nodes, the certificates are stored in a directory inside the task working directory and an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this location. For certificates with visibility of 'remoteUser', a 'certs' directory is created in the user's home directory (e.g., /home/{user-name}/certs) and certificates are placed in that directory.
+             */
+            storeLocation?: string;
+            /**
+             * This property is applicable only for pools configured with Windows nodes (that is, created with cloudServiceConfiguration, or with virtualMachineConfiguration using a Windows image reference). Common store names include: My, Root, CA, Trust, Disallowed, TrustedPeople, TrustedPublisher, AuthRoot, AddressBook, but any custom store name can also be used. The default value is My.
+             */
+            storeName?: string;
+            visibility?: string[];
+        }
+
+        export interface CloudServiceConfigurationResponse {
+            /**
+             * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4, equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows Server 2016. 6 - OS Family 6, equivalent to Windows Server 2019. For more information, see Azure Guest OS Releases (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
+             */
+            osFamily: string;
+            /**
+             * The default value is * which specifies the latest operating system version for the specified OS family.
+             */
+            osVersion?: string;
+        }
+
+        export interface ContainerConfigurationResponse {
+            /**
+             * This is the full image reference, as would be specified to "docker pull". An image will be sourced from the default Docker registry unless the image is fully qualified with an alternative registry.
+             */
+            containerImageNames?: string[];
+            /**
+             * If any images must be downloaded from a private registry which requires credentials, then those credentials must be provided here.
+             */
+            containerRegistries?: outputs.batch.v20200901.ContainerRegistryResponse[];
+            type: string;
+        }
+
+        export interface ContainerRegistryResponse {
+            password: string;
+            /**
+             * If omitted, the default is "docker.io".
+             */
+            registryServer?: string;
+            userName: string;
+        }
+
+        /**
+         * Settings which will be used by the data disks associated to Compute Nodes in the Pool. When using attached data disks, you need to mount and format the disks from within a VM to use them.
+         */
+        export interface DataDiskResponse {
+            /**
+             * Values are:
+             *
+             *  none - The caching mode for the disk is not enabled.
+             *  readOnly - The caching mode for the disk is read only.
+             *  readWrite - The caching mode for the disk is read and write.
+             *
+             *  The default value for caching is none. For information about the caching options see: https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
+             */
+            caching?: string;
+            diskSizeGB: number;
+            /**
+             * The lun is used to uniquely identify each data disk. If attaching multiple disks, each should have a distinct lun. The value must be between 0 and 63, inclusive.
+             */
+            lun: number;
+            /**
+             * If omitted, the default is "Standard_LRS". Values are:
+             *
+             *  Standard_LRS - The data disk should use standard locally redundant storage.
+             *  Premium_LRS - The data disk should use premium locally redundant storage.
+             */
+            storageAccountType?: string;
+        }
+
+        /**
+         * An error response from the Batch service.
+         */
+        export interface DeleteCertificateErrorResponse {
+            /**
+             * An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
+             */
+            code: string;
+            /**
+             * A list of additional details about the error.
+             */
+            details?: outputs.batch.v20200901.DeleteCertificateErrorResponse[];
+            /**
+             * A message describing the error, intended to be suitable for display in a user interface.
+             */
+            message: string;
+            /**
+             * The target of the particular error. For example, the name of the property in error.
+             */
+            target?: string;
+        }
+
+        export interface DeploymentConfigurationResponse {
+            /**
+             * This property and virtualMachineConfiguration are mutually exclusive and one of the properties must be specified. This property cannot be specified if the Batch account was created with its poolAllocationMode property set to 'UserSubscription'.
+             */
+            cloudServiceConfiguration?: outputs.batch.v20200901.CloudServiceConfigurationResponse;
+            /**
+             * This property and cloudServiceConfiguration are mutually exclusive and one of the properties must be specified.
+             */
+            virtualMachineConfiguration?: outputs.batch.v20200901.VirtualMachineConfigurationResponse;
+        }
+
+        /**
+         * The disk encryption configuration applied on compute nodes in the pool. Disk encryption configuration is not supported on Linux pool created with Virtual Machine Image or Shared Image Gallery Image.
+         */
+        export interface DiskEncryptionConfigurationResponse {
+            /**
+             * On Linux pool, only "TemporaryDisk" is supported; on Windows pool, "OsDisk" and "TemporaryDisk" must be specified.
+             */
+            targets?: string[];
+        }
+
+        /**
+         * Configures how customer data is encrypted inside the Batch account. By default, accounts are encrypted using a Microsoft managed key. For additional control, a customer-managed key can be used instead.
+         */
+        export interface EncryptionPropertiesResponse {
+            /**
+             * Type of the key source.
+             */
+            keySource?: string;
+            /**
+             * Additional details when using Microsoft.KeyVault
+             */
+            keyVaultProperties?: outputs.batch.v20200901.KeyVaultPropertiesResponse;
+        }
+
+        export interface EnvironmentSettingResponse {
+            name: string;
+            value?: string;
+        }
+
+        export interface FixedScaleSettingsResponse {
+            /**
+             * If omitted, the default value is Requeue.
+             */
+            nodeDeallocationOption?: string;
+            /**
+             * The default value is 15 minutes. Timeout values use ISO 8601 format. For example, use PT10M for 10 minutes. The minimum value is 5 minutes. If you specify a value less than 5 minutes, the Batch service rejects the request with an error; if you are calling the REST API directly, the HTTP status code is 400 (Bad Request).
+             */
+            resizeTimeout?: string;
+            /**
+             * At least one of targetDedicatedNodes, targetLowPriorityNodes must be set.
+             */
+            targetDedicatedNodes?: number;
+            /**
+             * At least one of targetDedicatedNodes, targetLowPriorityNodes must be set.
+             */
+            targetLowPriorityNodes?: number;
+        }
+
+        export interface ImageReferenceResponse {
+            /**
+             * This property is mutually exclusive with other properties. The Shared Image Gallery image must have replicas in the same region as the Azure Batch account. For information about the firewall settings for the Batch node agent to communicate with the Batch service see https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+             */
+            id?: string;
+            /**
+             * For example, UbuntuServer or WindowsServer.
+             */
+            offer?: string;
+            /**
+             * For example, Canonical or MicrosoftWindowsServer.
+             */
+            publisher?: string;
+            /**
+             * For example, 18.04-LTS or 2019-Datacenter.
+             */
+            sku?: string;
+            /**
+             * A value of 'latest' can be specified to select the latest version of an image. If omitted, the default is 'latest'.
+             */
+            version?: string;
+        }
+
+        export interface InboundNatPoolResponse {
+            /**
+             * This must be unique within a Batch pool. Acceptable values are between 1 and 65535 except for 22, 3389, 29876 and 29877 as these are reserved. If any reserved values are provided the request fails with HTTP status code 400.
+             */
+            backendPort: number;
+            /**
+             * Acceptable values range between 1 and 65534 except ports from 50000 to 55000 which are reserved by the Batch service. All ranges within a pool must be distinct and cannot overlap. If any reserved or overlapping values are provided the request fails with HTTP status code 400.
+             */
+            frontendPortRangeEnd: number;
+            /**
+             * Acceptable values range between 1 and 65534 except ports from 50000 to 55000 which are reserved. All ranges within a pool must be distinct and cannot overlap. If any reserved or overlapping values are provided the request fails with HTTP status code 400.
+             */
+            frontendPortRangeStart: number;
+            /**
+             * The name must be unique within a Batch pool, can contain letters, numbers, underscores, periods, and hyphens. Names must start with a letter or number, must end with a letter, number, or underscore, and cannot exceed 77 characters.  If any invalid values are provided the request fails with HTTP status code 400.
+             */
+            name: string;
+            /**
+             * The maximum number of rules that can be specified across all the endpoints on a Batch pool is 25. If no network security group rules are specified, a default rule will be created to allow inbound access to the specified backendPort. If the maximum number of network security group rules is exceeded the request fails with HTTP status code 400.
+             */
+            networkSecurityGroupRules?: outputs.batch.v20200901.NetworkSecurityGroupRuleResponse[];
+            protocol: string;
+        }
+
+        /**
+         * KeyVault configuration when using an encryption KeySource of Microsoft.KeyVault.
+         */
+        export interface KeyVaultPropertiesResponse {
+            /**
+             * Full path to the versioned secret. Example https://mykeyvault.vault.azure.net/keys/testkey/6e34a81fef704045975661e297a4c053. To be usable the following prerequisites must be met:
+             *
+             *  The Batch Account has a System Assigned identity
+             *  The account identity has been granted Key/Get, Key/Unwrap and Key/Wrap permissions
+             *  The KeyVault has soft-delete and purge protection enabled
+             */
+            keyIdentifier?: string;
+        }
+
+        /**
+         * Identifies the Azure key vault associated with a Batch account.
+         */
+        export interface KeyVaultReferenceResponse {
+            /**
+             * The resource ID of the Azure key vault associated with the Batch account.
+             */
+            id: string;
+            /**
+             * The URL of the Azure key vault associated with the Batch account.
+             */
+            url: string;
+        }
+
+        export interface LinuxUserConfigurationResponse {
+            /**
+             * The uid and gid properties must be specified together or not at all. If not specified the underlying operating system picks the gid.
+             */
+            gid?: number;
+            /**
+             * The private key must not be password protected. The private key is used to automatically configure asymmetric-key based authentication for SSH between nodes in a Linux pool when the pool's enableInterNodeCommunication property is true (it is ignored if enableInterNodeCommunication is false). It does this by placing the key pair into the user's .ssh directory. If not specified, password-less SSH is not configured between nodes (no modification of the user's .ssh directory is done).
+             */
+            sshPrivateKey?: string;
+            /**
+             * The uid and gid properties must be specified together or not at all. If not specified the underlying operating system picks the uid.
+             */
+            uid?: number;
+        }
+
+        /**
+         * The Batch service does not assign any meaning to this metadata; it is solely for the use of user code.
+         */
+        export interface MetadataItemResponse {
+            name: string;
+            value: string;
+        }
+
+        export interface MountConfigurationResponse {
+            /**
+             * This property is mutually exclusive with all other properties.
+             */
+            azureBlobFileSystemConfiguration?: outputs.batch.v20200901.AzureBlobFileSystemConfigurationResponse;
+            /**
+             * This property is mutually exclusive with all other properties.
+             */
+            azureFileShareConfiguration?: outputs.batch.v20200901.AzureFileShareConfigurationResponse;
+            /**
+             * This property is mutually exclusive with all other properties.
+             */
+            cifsMountConfiguration?: outputs.batch.v20200901.CIFSMountConfigurationResponse;
+            /**
+             * This property is mutually exclusive with all other properties.
+             */
+            nfsMountConfiguration?: outputs.batch.v20200901.NFSMountConfigurationResponse;
+        }
+
+        export interface NFSMountConfigurationResponse {
+            /**
+             * These are 'net use' options in Windows and 'mount' options in Linux.
+             */
+            mountOptions?: string;
+            /**
+             * All file systems are mounted relative to the Batch mounts directory, accessible via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.
+             */
+            relativeMountPath: string;
+            source: string;
+        }
+
+        /**
+         * The network configuration for a pool.
+         */
+        export interface NetworkConfigurationResponse {
+            /**
+             * Pool endpoint configuration is only supported on pools with the virtualMachineConfiguration property.
+             */
+            endpointConfiguration?: outputs.batch.v20200901.PoolEndpointConfigurationResponse;
+            /**
+             * This property is only supported on Pools with the virtualMachineConfiguration property.
+             */
+            publicIPAddressConfiguration?: outputs.batch.v20200901.PublicIPAddressConfigurationResponse;
+            /**
+             * The virtual network must be in the same region and subscription as the Azure Batch account. The specified subnet should have enough free IP addresses to accommodate the number of nodes in the pool. If the subnet doesn't have enough free IP addresses, the pool will partially allocate compute nodes and a resize error will occur. The 'MicrosoftAzureBatch' service principal must have the 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role for the specified VNet. The specified subnet must allow communication from the Azure Batch service to be able to schedule tasks on the compute nodes. This can be verified by checking if the specified VNet has any associated Network Security Groups (NSG). If communication to the compute nodes in the specified subnet is denied by an NSG, then the Batch service will set the state of the compute nodes to unusable. If the specified VNet has any associated Network Security Groups (NSG), then a few reserved system ports must be enabled for inbound communication. For pools created with a virtual machine configuration, enable ports 29876 and 29877, as well as port 22 for Linux and port 3389 for Windows. For pools created with a cloud service configuration, enable ports 10100, 20100, and 30100. Also enable outbound connections to Azure Storage on port 443. For cloudServiceConfiguration pools, only 'classic' VNETs are supported. For more details see: https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+             */
+            subnetId?: string;
+        }
+
+        export interface NetworkSecurityGroupRuleResponse {
+            access: string;
+            /**
+             * Priorities within a pool must be unique and are evaluated in order of priority. The lower the number the higher the priority. For example, rules could be specified with order numbers of 150, 250, and 350. The rule with the order number of 150 takes precedence over the rule that has an order of 250. Allowed priorities are 150 to 4096. If any reserved or duplicate values are provided the request fails with HTTP status code 400.
+             */
+            priority: number;
+            /**
+             * Valid values are a single IP address (i.e. 10.10.10.10), IP subnet (i.e. 192.168.1.0/24), default tag, or * (for all addresses).  If any other values are provided the request fails with HTTP status code 400.
+             */
+            sourceAddressPrefix: string;
+            /**
+             * Valid values are '*' (for all ports 0 - 65535) or arrays of ports or port ranges (i.e. 100-200). The ports should in the range of 0 to 65535 and the port ranges or ports can't overlap. If any other values are provided the request fails with HTTP status code 400. Default value will be *.
+             */
+            sourcePortRanges?: string[];
+        }
+
+        export interface PoolEndpointConfigurationResponse {
+            /**
+             * The maximum number of inbound NAT pools per Batch pool is 5. If the maximum number of inbound NAT pools is exceeded the request fails with HTTP status code 400. This cannot be specified if the IPAddressProvisioningType is NoPublicIPAddresses.
+             */
+            inboundNatPools: outputs.batch.v20200901.InboundNatPoolResponse[];
+        }
+
+        /**
+         * Contains information about a private link resource.
+         */
+        export interface PrivateEndpointConnectionResponse {
+            /**
+             * The ETag of the resource, used for concurrency statements.
+             */
+            etag: string;
+            /**
+             * The ID of the resource.
+             */
+            id: string;
+            /**
+             * The name of the resource.
+             */
+            name: string;
+            /**
+             * The private endpoint of the private endpoint connection.
+             */
+            privateEndpoint?: outputs.batch.v20200901.PrivateEndpointResponse;
+            /**
+             * The private link service connection state of the private endpoint connection
+             */
+            privateLinkServiceConnectionState?: outputs.batch.v20200901.PrivateLinkServiceConnectionStateResponse;
+            provisioningState: string;
+            /**
+             * The type of the resource.
+             */
+            type: string;
+        }
+
+        /**
+         * The private endpoint of the private endpoint connection.
+         */
+        export interface PrivateEndpointResponse {
+            id: string;
+        }
+
+        /**
+         * The private link service connection state of the private endpoint connection
+         */
+        export interface PrivateLinkServiceConnectionStateResponse {
+            actionRequired: string;
+            description?: string;
+            status: string;
+        }
+
+        /**
+         * The public IP Address configuration of the networking configuration of a Pool.
+         */
+        export interface PublicIPAddressConfigurationResponse {
+            /**
+             * The number of IPs specified here limits the maximum size of the Pool - 100 dedicated nodes or 100 low-priority nodes can be allocated for each public IP. For example, a pool needing 250 dedicated VMs would need at least 3 public IPs specified. Each element of this collection is of the form: /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
+             */
+            ipAddressIds?: string[];
+            /**
+             * The default value is BatchManaged
+             */
+            provision?: string;
+        }
+
+        export interface ResizeErrorResponse {
+            /**
+             * An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
+             */
+            code: string;
+            details?: outputs.batch.v20200901.ResizeErrorResponse[];
+            /**
+             * A message describing the error, intended to be suitable for display in a user interface.
+             */
+            message: string;
+        }
+
+        /**
+         * Describes either the current operation (if the pool AllocationState is Resizing) or the previously completed operation (if the AllocationState is Steady).
+         */
+        export interface ResizeOperationStatusResponse {
+            /**
+             * This property is set only if an error occurred during the last pool resize, and only when the pool allocationState is Steady.
+             */
+            errors?: outputs.batch.v20200901.ResizeErrorResponse[];
+            /**
+             * The default value is requeue.
+             */
+            nodeDeallocationOption?: string;
+            /**
+             * The default value is 15 minutes. The minimum value is 5 minutes. If you specify a value less than 5 minutes, the Batch service returns an error; if you are calling the REST API directly, the HTTP status code is 400 (Bad Request).
+             */
+            resizeTimeout?: string;
+            startTime?: string;
+            targetDedicatedNodes?: number;
+            targetLowPriorityNodes?: number;
+        }
+
+        export interface ResourceFileResponse {
+            /**
+             * The autoStorageContainerName, storageContainerUrl and httpUrl properties are mutually exclusive and one of them must be specified.
+             */
+            autoStorageContainerName?: string;
+            /**
+             * The property is valid only when autoStorageContainerName or storageContainerUrl is used. This prefix can be a partial filename or a subdirectory. If a prefix is not specified, all the files in the container will be downloaded.
+             */
+            blobPrefix?: string;
+            /**
+             * This property applies only to files being downloaded to Linux compute nodes. It will be ignored if it is specified for a resourceFile which will be downloaded to a Windows node. If this property is not specified for a Linux node, then a default value of 0770 is applied to the file.
+             */
+            fileMode?: string;
+            /**
+             * If the httpUrl property is specified, the filePath is required and describes the path which the file will be downloaded to, including the filename. Otherwise, if the autoStorageContainerName or storageContainerUrl property is specified, filePath is optional and is the directory to download the files to. In the case where filePath is used as a directory, any directory structure already associated with the input data will be retained in full and appended to the specified filePath directory. The specified relative path cannot break out of the task's working directory (for example by using '..').
+             */
+            filePath?: string;
+            /**
+             * The autoStorageContainerName, storageContainerUrl and httpUrl properties are mutually exclusive and one of them must be specified. If the URL is Azure Blob Storage, it must be readable using anonymous access; that is, the Batch service does not present any credentials when downloading the blob. There are two ways to get such a URL for a blob in Azure storage: include a Shared Access Signature (SAS) granting read permissions on the blob, or set the ACL for the blob or its container to allow public access.
+             */
+            httpUrl?: string;
+            /**
+             * The autoStorageContainerName, storageContainerUrl and httpUrl properties are mutually exclusive and one of them must be specified. This URL must be readable and listable using anonymous access; that is, the Batch service does not present any credentials when downloading the blob. There are two ways to get such a URL for a blob in Azure storage: include a Shared Access Signature (SAS) granting read and list permissions on the blob, or set the ACL for the blob or its container to allow public access.
+             */
+            storageContainerUrl?: string;
+        }
+
+        /**
+         * Defines the desired size of the pool. This can either be 'fixedScale' where the requested targetDedicatedNodes is specified, or 'autoScale' which defines a formula which is periodically reevaluated. If this property is not specified, the pool will have a fixed scale with 0 targetDedicatedNodes.
+         */
+        export interface ScaleSettingsResponse {
+            /**
+             * This property and fixedScale are mutually exclusive and one of the properties must be specified.
+             */
+            autoScale?: outputs.batch.v20200901.AutoScaleSettingsResponse;
+            /**
+             * This property and autoScale are mutually exclusive and one of the properties must be specified.
+             */
+            fixedScale?: outputs.batch.v20200901.FixedScaleSettingsResponse;
+        }
+
+        /**
+         * In some cases the start task may be re-run even though the node was not rebooted. Due to this, start tasks should be idempotent and exit gracefully if the setup they're performing has already been done. Special care should be taken to avoid start tasks which create breakaway process or install/launch services from the start task working directory, as this will block Batch from being able to re-run the start task.
+         */
+        export interface StartTaskResponse {
+            /**
+             * The command line does not run under a shell, and therefore cannot take advantage of shell features such as environment variable expansion. If you want to take advantage of such features, you should invoke the shell in the command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Required if any other properties of the startTask are specified.
+             */
+            commandLine?: string;
+            /**
+             * When this is specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch directories on the node) are mapped into the container, all task environment variables are mapped into the container, and the task command line is executed in the container.
+             */
+            containerSettings?: outputs.batch.v20200901.TaskContainerSettingsResponse;
+            environmentSettings?: outputs.batch.v20200901.EnvironmentSettingResponse[];
+            /**
+             * The Batch service retries a task if its exit code is nonzero. Note that this value specifically controls the number of retries. The Batch service will try the task once, and may then retry up to this limit. For example, if the maximum retry count is 3, Batch tries the task up to 4 times (one initial try and 3 retries). If the maximum retry count is 0, the Batch service does not retry the task. If the maximum retry count is -1, the Batch service retries the task without limit.
+             */
+            maxTaskRetryCount?: number;
+            resourceFiles?: outputs.batch.v20200901.ResourceFileResponse[];
+            /**
+             * If omitted, the task runs as a non-administrative user unique to the task.
+             */
+            userIdentity?: outputs.batch.v20200901.UserIdentityResponse;
+            /**
+             * If true and the start task fails on a compute node, the Batch service retries the start task up to its maximum retry count (maxTaskRetryCount). If the task has still not completed successfully after all retries, then the Batch service marks the compute node unusable, and will not schedule tasks to it. This condition can be detected via the node state and scheduling error detail. If false, the Batch service will not wait for the start task to complete. In this case, other tasks can start executing on the compute node while the start task is still running; and even if the start task fails, new tasks will continue to be scheduled on the node. The default is true.
+             */
+            waitForSuccess?: boolean;
+        }
+
+        export interface TaskContainerSettingsResponse {
+            /**
+             * These additional options are supplied as arguments to the "docker create" command, in addition to those controlled by the Batch Service.
+             */
+            containerRunOptions?: string;
+            /**
+             * This is the full image reference, as would be specified to "docker pull". If no tag is provided as part of the image name, the tag ":latest" is used as a default.
+             */
+            imageName: string;
+            /**
+             * This setting can be omitted if was already provided at pool creation.
+             */
+            registry?: outputs.batch.v20200901.ContainerRegistryResponse;
+            workingDirectory?: string;
+        }
+
+        export interface TaskSchedulingPolicyResponse {
+            nodeFillType: string;
+        }
+
+        export interface UserAccountResponse {
+            /**
+             * nonAdmin - The auto user is a standard user without elevated access. admin - The auto user is a user with elevated access and operates with full Administrator permissions. The default value is nonAdmin.
+             */
+            elevationLevel?: string;
+            /**
+             * This property is ignored if specified on a Windows pool. If not specified, the user is created with the default options.
+             */
+            linuxUserConfiguration?: outputs.batch.v20200901.LinuxUserConfigurationResponse;
+            name: string;
+            password: string;
+            /**
+             * This property can only be specified if the user is on a Windows pool. If not specified and on a Windows pool, the user is created with the default options.
+             */
+            windowsUserConfiguration?: outputs.batch.v20200901.WindowsUserConfigurationResponse;
+        }
+
+        /**
+         * Specify either the userName or autoUser property, but not both.
+         */
+        export interface UserIdentityResponse {
+            /**
+             * The userName and autoUser properties are mutually exclusive; you must specify one but not both.
+             */
+            autoUser?: outputs.batch.v20200901.AutoUserSpecificationResponse;
+            /**
+             * The userName and autoUser properties are mutually exclusive; you must specify one but not both.
+             */
+            userName?: string;
+        }
+
+        export interface VirtualMachineConfigurationResponse {
+            /**
+             * If specified, setup is performed on each node in the pool to allow tasks to run in containers. All regular tasks and job manager tasks run on this pool must specify the containerSettings property, and all other tasks may specify it.
+             */
+            containerConfiguration?: outputs.batch.v20200901.ContainerConfigurationResponse;
+            /**
+             * This property must be specified if the compute nodes in the pool need to have empty data disks attached to them.
+             */
+            dataDisks?: outputs.batch.v20200901.DataDiskResponse[];
+            /**
+             * If specified, encryption is performed on each node in the pool during node provisioning.
+             */
+            diskEncryptionConfiguration?: outputs.batch.v20200901.DiskEncryptionConfigurationResponse;
+            imageReference: outputs.batch.v20200901.ImageReferenceResponse;
+            /**
+             * This only applies to images that contain the Windows operating system, and should only be used when you hold valid on-premises licenses for the nodes which will be deployed. If omitted, no on-premises licensing discount is applied. Values are:
+             *
+             *  Windows_Server - The on-premises license is for Windows Server.
+             *  Windows_Client - The on-premises license is for Windows Client.
+             */
+            licenseType?: string;
+            /**
+             * The Batch node agent is a program that runs on each node in the pool, and provides the command-and-control interface between the node and the Batch service. There are different implementations of the node agent, known as SKUs, for different operating systems. You must specify a node agent SKU which matches the selected image reference. To get the list of supported node agent SKUs along with their list of verified image references, see the 'List supported node agent SKUs' operation.
+             */
+            nodeAgentSkuId: string;
+            /**
+             * This property must not be specified if the imageReference specifies a Linux OS image.
+             */
+            windowsConfiguration?: outputs.batch.v20200901.WindowsConfigurationResponse;
         }
 
         /**
@@ -30412,6 +31193,14 @@ export namespace cognitiveservices {
          */
         export interface CognitiveServicesAccountApiPropertiesResponse {
             /**
+             * (Metrics Advisor Only) The Azure AD Client Id (Application Id).
+             */
+            aadClientId?: string;
+            /**
+             * (Metrics Advisor Only) The Azure AD Tenant Id.
+             */
+            aadTenantId?: string;
+            /**
              * (Personalization Only) The flag to enable statistics of Bing Search.
              */
             eventHubConnectionString?: string;
@@ -30427,6 +31216,14 @@ export namespace cognitiveservices {
              * (Personalization Only) The storage account connection string.
              */
             storageAccountConnectionString?: string;
+            /**
+             * (Metrics Advisor Only) The super user of Metrics Advisor.
+             */
+            superUser?: string;
+            /**
+             * (Metrics Advisor Only) The website name of Metrics Advisor.
+             */
+            websiteName?: string;
         }
 
         /**
@@ -30722,6 +31519,14 @@ export namespace cognitiveservices {
          */
         export interface CognitiveServicesAccountApiPropertiesResponse {
             /**
+             * (Metrics Advisor Only) The Azure AD Client Id (Application Id).
+             */
+            aadClientId?: string;
+            /**
+             * (Metrics Advisor Only) The Azure AD Tenant Id.
+             */
+            aadTenantId?: string;
+            /**
              * (Personalization Only) The flag to enable statistics of Bing Search.
              */
             eventHubConnectionString?: string;
@@ -30737,6 +31542,14 @@ export namespace cognitiveservices {
              * (Personalization Only) The storage account connection string.
              */
             storageAccountConnectionString?: string;
+            /**
+             * (Metrics Advisor Only) The super user of Metrics Advisor.
+             */
+            superUser?: string;
+            /**
+             * (Metrics Advisor Only) The website name of Metrics Advisor.
+             */
+            websiteName?: string;
         }
 
         /**
@@ -53762,7 +54575,7 @@ export namespace compute {
             /**
              * The state of onboarding, which only appears in the response.
              */
-            provisioningStatus: string;
+            provisioningState: string;
             /**
              * The target VM resource URI
              */
@@ -126847,11 +127660,6 @@ export namespace dbforpostgresql {
     }
 }
 
-export namespace delegatednetwork {
-    export namespace v20200808preview {
-    }
-}
-
 export namespace deploymentmanager {
     export namespace v20180901preview {
         /**
@@ -153671,6 +154479,10 @@ export namespace healthcareapis {
          */
         export interface ServiceCosmosDbConfigurationInfoResponse {
             /**
+             * The URI of the customer-managed key for the backing database.
+             */
+            keyVaultKeyUri?: string;
+            /**
              * The provisioned throughput for the backing database.
              */
             offerThroughput?: number;
@@ -153926,6 +154738,134 @@ export namespace healthcareapis {
              * The settings for the export operation of the service instance.
              */
             exportConfiguration?: outputs.healthcareapis.v20190916.ServiceExportConfigurationInfoResponse;
+            /**
+             * The provisioning state.
+             */
+            provisioningState: string;
+        }
+    }
+
+    export namespace v20200315 {
+        /**
+         * Setting indicating whether the service has a managed identity associated with it.
+         */
+        export interface ResourceResponseIdentity {
+            /**
+             * The principal ID of the resource identity.
+             */
+            principalId: string;
+            /**
+             * The tenant ID of the resource.
+             */
+            tenantId: string;
+            /**
+             * Type of identity being specified, currently SystemAssigned and None are allowed.
+             */
+            type?: string;
+        }
+
+        /**
+         * An access policy entry.
+         */
+        export interface ServiceAccessPolicyEntryResponse {
+            /**
+             * An Azure AD object ID (User or Apps) that is allowed access to the FHIR service.
+             */
+            objectId: string;
+        }
+
+        /**
+         * Authentication configuration information
+         */
+        export interface ServiceAuthenticationConfigurationInfoResponse {
+            /**
+             * The audience url for the service
+             */
+            audience?: string;
+            /**
+             * The authority url for the service
+             */
+            authority?: string;
+            /**
+             * If the SMART on FHIR proxy is enabled
+             */
+            smartProxyEnabled?: boolean;
+        }
+
+        /**
+         * The settings for the CORS configuration of the service instance.
+         */
+        export interface ServiceCorsConfigurationInfoResponse {
+            /**
+             * If credentials are allowed via CORS.
+             */
+            allowCredentials?: boolean;
+            /**
+             * The headers to be allowed via CORS.
+             */
+            headers?: string[];
+            /**
+             * The max age to be allowed via CORS.
+             */
+            maxAge?: number;
+            /**
+             * The methods to be allowed via CORS.
+             */
+            methods?: string[];
+            /**
+             * The origins to be allowed via CORS.
+             */
+            origins?: string[];
+        }
+
+        /**
+         * The settings for the Cosmos DB database backing the service.
+         */
+        export interface ServiceCosmosDbConfigurationInfoResponse {
+            /**
+             * The URI of the customer-managed key for the backing database.
+             */
+            keyVaultKeyUri?: string;
+            /**
+             * The provisioned throughput for the backing database.
+             */
+            offerThroughput?: number;
+        }
+
+        /**
+         * Export operation configuration information
+         */
+        export interface ServiceExportConfigurationInfoResponse {
+            /**
+             * The name of the default export storage account.
+             */
+            storageAccountName?: string;
+        }
+
+        /**
+         * The properties of a service instance.
+         */
+        export interface ServicesPropertiesResponse {
+            /**
+             * The access policies of the service instance.
+             */
+            accessPolicies?: outputs.healthcareapis.v20200315.ServiceAccessPolicyEntryResponse[];
+            /**
+             * The authentication configuration for the service instance.
+             */
+            authenticationConfiguration?: outputs.healthcareapis.v20200315.ServiceAuthenticationConfigurationInfoResponse;
+            /**
+             * The settings for the CORS configuration of the service instance.
+             */
+            corsConfiguration?: outputs.healthcareapis.v20200315.ServiceCorsConfigurationInfoResponse;
+            /**
+             * The settings for the Cosmos DB database backing the service.
+             */
+            cosmosDbConfiguration?: outputs.healthcareapis.v20200315.ServiceCosmosDbConfigurationInfoResponse;
+            /**
+             * The settings for the export operation of the service instance.
+             */
+            exportConfiguration?: outputs.healthcareapis.v20200315.ServiceExportConfigurationInfoResponse;
             /**
              * The provisioning state.
              */
@@ -342318,6 +343258,58 @@ export namespace recoveryservices {
         }
 
         /**
+         * Agent details.
+         */
+        export interface AgentDetailsResponse {
+            /**
+             * The Id of the agent running on the server.
+             */
+            agentId: string;
+            /**
+             * The machine BIOS Id.
+             */
+            biosId: string;
+            /**
+             * The details of agent disks.
+             */
+            disks: outputs.recoveryservices.latest.AgentDiskDetailsResponse[];
+            /**
+             * The machine FQDN.
+             */
+            fqdn: string;
+            /**
+             * The Id of the machine to which the agent is registered.
+             */
+            machineId: string;
+        }
+
+        /**
+         * Agent disk details.
+         */
+        export interface AgentDiskDetailsResponse {
+            /**
+             * The disk capacity in bytes.
+             */
+            capacityInBytes: number;
+            /**
+             * The disk Id.
+             */
+            diskId: string;
+            /**
+             * The disk name.
+             */
+            diskName: string;
+            /**
+             * A value indicating whether the disk is the OS disk.
+             */
+            isOSDisk: string;
+            /**
+             * The lun of disk.
+             */
+            lunId: number;
+        }
+
+        /**
          * Azure Fabric Specific Details.
          */
         export interface AzureFabricSpecificDetailsResponse {
@@ -343524,6 +344516,36 @@ export namespace recoveryservices {
         }
 
         /**
+         * DRA details.
+         */
+        export interface DraDetailsResponse {
+            /**
+             * The health of the DRA.
+             */
+            health: string;
+            /**
+             * The health errors.
+             */
+            healthErrors: outputs.recoveryservices.latest.HealthErrorResponse[];
+            /**
+             * The DRA Id.
+             */
+            id: string;
+            /**
+             * The last heartbeat received from the DRA.
+             */
+            lastHeartbeatUtc: string;
+            /**
+             * The DRA name.
+             */
+            name: string;
+            /**
+             * The DRA version.
+             */
+            version: string;
+        }
+
+        /**
          * Encryption details for the fabric.
          */
         export interface EncryptionDetailsResponse {
@@ -343580,7 +344602,7 @@ export namespace recoveryservices {
             /**
              * Fabric specific settings.
              */
-            customDetails?: outputs.recoveryservices.latest.AzureFabricSpecificDetailsResponse | outputs.recoveryservices.latest.HyperVSiteDetailsResponse | outputs.recoveryservices.latest.VMwareDetailsResponse | outputs.recoveryservices.latest.VMwareV2FabricSpecificDetailsResponse | outputs.recoveryservices.latest.VmmDetailsResponse;
+            customDetails?: outputs.recoveryservices.latest.AzureFabricSpecificDetailsResponse | outputs.recoveryservices.latest.HyperVSiteDetailsResponse | outputs.recoveryservices.latest.InMageRcmFabricSpecificDetailsResponse | outputs.recoveryservices.latest.VMwareDetailsResponse | outputs.recoveryservices.latest.VMwareV2FabricSpecificDetailsResponse | outputs.recoveryservices.latest.VmmDetailsResponse;
             /**
              * Encryption details for the fabric.
              */
@@ -344824,6 +345846,486 @@ export namespace recoveryservices {
         }
 
         /**
+         * InMageRcm source agent upgrade blocking error details.
+         */
+        export interface InMageRcmAgentUpgradeBlockingErrorDetailsResponse {
+            /**
+             * The error code.
+             */
+            errorCode: string;
+            /**
+             * The error message.
+             */
+            errorMessage: string;
+            /**
+             * The error message parameters.
+             */
+            errorMessageParameters: {[key: string]: string};
+            /**
+             * The error tags.
+             */
+            errorTags: {[key: string]: string};
+            /**
+             * The possible causes.
+             */
+            possibleCauses: string;
+            /**
+             * The recommended action.
+             */
+            recommendedAction: string;
+        }
+
+        /**
+         * InMageRcm fabric specific details.
+         */
+        export interface InMageRcmFabricSpecificDetailsResponse {
+            /**
+             * The list of agent details.
+             */
+            agentDetails: outputs.recoveryservices.latest.AgentDetailsResponse[];
+            /**
+             * The control plane Uri.
+             */
+            controlPlaneUri: string;
+            /**
+             * The data plane Uri.
+             */
+            dataPlaneUri: string;
+            /**
+             * The list of DRAs.
+             */
+            dras: outputs.recoveryservices.latest.DraDetailsResponse[];
+            /**
+             * Gets the class type. Overridden in derived classes.
+             */
+            instanceType: "InMageRcm";
+            /**
+             * The ARM Id of the physical site.
+             */
+            physicalSiteId: string;
+            /**
+             * The list of process servers.
+             */
+            processServers: outputs.recoveryservices.latest.ProcessServerDetailsResponse[];
+            /**
+             * The list of push installers.
+             */
+            pushInstallers: outputs.recoveryservices.latest.PushInstallerDetailsResponse[];
+            /**
+             * The list of RCM proxies.
+             */
+            rcmProxies: outputs.recoveryservices.latest.RcmProxyDetailsResponse[];
+            /**
+             * The list of replication agents.
+             */
+            replicationAgents: outputs.recoveryservices.latest.ReplicationAgentDetailsResponse[];
+            /**
+             * The list of reprotect agents.
+             */
+            reprotectAgents: outputs.recoveryservices.latest.ReprotectAgentDetailsResponse[];
+            /**
+             * The service container Id.
+             */
+            serviceContainerId: string;
+            /**
+             * The service endpoint.
+             */
+            serviceEndpoint: string;
+            /**
+             * The service resource Id.
+             */
+            serviceResourceId: string;
+            /**
+             * The ARM Id of the VMware site.
+             */
+            vmwareSiteId: string;
+        }
+
+        /**
+         * InMageRcm last source agent upgrade error details.
+         */
+        export interface InMageRcmLastAgentUpgradeErrorDetailsResponse {
+            /**
+             * The error code.
+             */
+            errorCode: string;
+            /**
+             * The error message.
+             */
+            errorMessage: string;
+            /**
+             * The error message parameters.
+             */
+            errorMessageParameters: {[key: string]: string};
+            /**
+             * The error tags.
+             */
+            errorTags: {[key: string]: string};
+            /**
+             * The possible causes.
+             */
+            possibleCauses: string;
+            /**
+             * The recommended action.
+             */
+            recommendedAction: string;
+        }
+
+        /**
+         * InMageRcm mobility agent details.
+         */
+        export interface InMageRcmMobilityAgentDetailsResponse {
+            /**
+             * The agent version expiry date.
+             */
+            agentVersionExpiryDate: string;
+            /**
+             * The driver version.
+             */
+            driverVersion: string;
+            /**
+             * The driver version expiry date.
+             */
+            driverVersionExpiryDate: string;
+            /**
+             * A value indicating whether agent is upgradeable or not.
+             */
+            isUpgradeable: string;
+            /**
+             * The time of the last heartbeat received from the agent.
+             */
+            lastHeartbeatUtc: string;
+            /**
+             * The latest upgradeable version available without reboot.
+             */
+            latestUpgradableVersionWithoutReboot: string;
+            /**
+             * The latest agent version available.
+             */
+            latestVersion: string;
+            /**
+             * The whether update is possible or not.
+             */
+            reasonsBlockingUpgrade: string[];
+            /**
+             * The agent version.
+             */
+            version: string;
+        }
+
+        /**
+         * InMageRcm NIC details.
+         */
+        export interface InMageRcmNicDetailsResponse {
+            /**
+             * A value indicating whether this is the primary NIC.
+             */
+            isPrimaryNic: string;
+            /**
+             * A value indicating whether this NIC is selected for failover.
+             */
+            isSelectedForFailover: string;
+            /**
+             * The NIC Id.
+             */
+            nicId: string;
+            /**
+             * The source IP address.
+             */
+            sourceIPAddress: string;
+            /**
+             * The source IP address type.
+             */
+            sourceIPAddressType: string;
+            /**
+             * Source network Id.
+             */
+            sourceNetworkId: string;
+            /**
+             * Source subnet name.
+             */
+            sourceSubnetName: string;
+            /**
+             * The target IP address.
+             */
+            targetIPAddress: string;
+            /**
+             * The target IP address type.
+             */
+            targetIPAddressType: string;
+            /**
+             * Target subnet name.
+             */
+            targetSubnetName: string;
+            /**
+             * The test IP address.
+             */
+            testIPAddress: string;
+            /**
+             * The test IP address type.
+             */
+            testIPAddressType: string;
+            /**
+             * Test subnet name.
+             */
+            testSubnetName: string;
+        }
+
+        /**
+         * InMageRcm specific policy details.
+         */
+        export interface InMageRcmPolicyDetailsResponse {
+            /**
+             * The app consistent snapshot frequency in minutes.
+             */
+            appConsistentFrequencyInMinutes: number;
+            /**
+             * The crash consistent snapshot frequency in minutes.
+             */
+            crashConsistentFrequencyInMinutes: number;
+            /**
+             * A value indicating whether multi-VM sync has to be enabled.
+             */
+            enableMultiVmSync: string;
+            /**
+             * Gets the class type. Overridden in derived classes.
+             */
+            instanceType: "InMageRcm";
+            /**
+             * The duration in minutes until which the recovery points need to be stored.
+             */
+            recoveryPointHistoryInMinutes: number;
+        }
+
+        /**
+         * InMageRcm protected disk details.
+         */
+        export interface InMageRcmProtectedDiskDetailsResponse {
+            /**
+             * The disk capacity in bytes.
+             */
+            capacityInBytes: number;
+            /**
+             * The disk encryption set ARM Id.
+             */
+            diskEncryptionSetId: string;
+            /**
+             * The disk Id.
+             */
+            diskId: string;
+            /**
+             * The disk name.
+             */
+            diskName: string;
+            /**
+             * The disk type.
+             */
+            diskType: string;
+            /**
+             * A value indicating whether the disk is the OS disk.
+             */
+            isOSDisk: string;
+            /**
+             * The log storage account ARM Id.
+             */
+            logStorageAccountId: string;
+            /**
+             * The ARM Id of the seed managed disk.
+             */
+            seedManagedDiskId: string;
+            /**
+             * The ARM Id of the target managed disk.
+             */
+            targetManagedDiskId: string;
+        }
+
+        /**
+         * InMageRcm provider specific details.
+         */
+        export interface InMageRcmReplicationDetailsResponse {
+            /**
+             * The agent upgrade blocking error information.
+             */
+            agentUpgradeBlockingErrorDetails: outputs.recoveryservices.latest.InMageRcmAgentUpgradeBlockingErrorDetailsResponse[];
+            /**
+             * The agent auto upgrade state.
+             */
+            agentUpgradeState: string;
+            /**
+             * The allocated memory in MB.
+             */
+            allocatedMemoryInMB: number;
+            /**
+             * The type of the discovered VM.
+             */
+            discoveryType: string;
+            /**
+             * The ARM Id of the discovered VM.
+             */
+            fabricDiscoveryMachineId: string;
+            /**
+             * The recovery point Id to which the VM was failed over.
+             */
+            failoverRecoveryPointId: string;
+            /**
+             * The firmware type.
+             */
+            firmwareType: string;
+            /**
+             * The initial replication processed bytes. This includes sum of total bytes transferred and matched bytes on all selected disks in source VM.
+             */
+            initialReplicationProcessedBytes: number;
+            /**
+             * The initial replication progress percentage. This is calculated based on total bytes processed for all disks in the source VM.
+             */
+            initialReplicationProgressPercentage: number;
+            /**
+             * The initial replication transferred bytes from source VM to azure for all selected disks on source VM.
+             */
+            initialReplicationTransferredBytes: number;
+            /**
+             * Gets the Instance type.
+             */
+            instanceType: "InMageRcm";
+            /**
+             * The virtual machine internal identifier.
+             */
+            internalIdentifier: string;
+            /**
+             * A value indicating whether last agent upgrade was successful or not.
+             */
+            isLastUpgradeSuccessful: string;
+            /**
+             * The last agent upgrade error information.
+             */
+            lastAgentUpgradeErrorDetails: outputs.recoveryservices.latest.InMageRcmLastAgentUpgradeErrorDetailsResponse[];
+            /**
+             * The last agent upgrade failed or cancelled job Id.
+             */
+            lastAgentUpgradeFailedJobId: string;
+            /**
+             * The last agent upgrade type.
+             */
+            lastAgentUpgradeType: string;
+            /**
+             * The last recovery point Id.
+             */
+            lastRecoveryPointId: string;
+            /**
+             * The last recovery point received time.
+             */
+            lastRecoveryPointReceived: string;
+            /**
+             * The last recovery point objective calculated time.
+             */
+            lastRpoCalculatedTime: string;
+            /**
+             * The last recovery point objective value.
+             */
+            lastRpoInSeconds: number;
+            /**
+             * License Type of the VM to be used.
+             */
+            licenseType: string;
+            /**
+             * The mobility agent information.
+             */
+            mobilityAgentDetails: outputs.recoveryservices.latest.InMageRcmMobilityAgentDetailsResponse;
+            /**
+             * The multi VM group name.
+             */
+            multiVmGroupName: string;
+            /**
+             * The type of the OS on the VM.
+             */
+            osType: string;
+            /**
+             * The process server Id.
+             */
+            processServerId: string;
+            /**
+             * The process server name.
+             */
+            processServerName: string;
+            /**
+             * The processor core count.
+             */
+            processorCoreCount: number;
+            /**
+             * The list of protected disks.
+             */
+            protectedDisks: outputs.recoveryservices.latest.InMageRcmProtectedDiskDetailsResponse[];
+            /**
+             * The resync processed bytes. This includes sum of total bytes transferred and matched bytes on all selected disks in source VM.
+             */
+            resyncProcessedBytes: number;
+            /**
+             * The resync progress percentage. This is calculated based on total bytes processed for all disks in the source VM.
+             */
+            resyncProgressPercentage: number;
+            /**
+             * A value indicating whether resync is required.
+             */
+            resyncRequired: string;
+            /**
+             * The resync state.
+             */
+            resyncState: string;
+            /**
+             * The resync transferred bytes from source VM to azure for all selected disks on source VM.
+             */
+            resyncTransferredBytes: number;
+            /**
+             * The run-as account Id.
+             */
+            runAsAccountId: string;
+            /**
+             * The target availability set Id.
+             */
+            targetAvailabilitySetId: string;
+            /**
+             * The target availability zone.
+             */
+            targetAvailabilityZone: string;
+            /**
+             * The target boot diagnostics storage account ARM Id.
+             */
+            targetBootDiagnosticsStorageAccountId: string;
+            /**
+             * The target generation.
+             */
+            targetGeneration: string;
+            /**
+             * The target network Id.
+             */
+            targetNetworkId: string;
+            /**
+             * The target proximity placement group Id.
+             */
+            targetProximityPlacementGroupId: string;
+            /**
+             * The target resource group Id.
+             */
+            targetResourceGroupId: string;
+            /**
+             * Target VM name.
+             */
+            targetVmName: string;
+            /**
+             * The target VM size.
+             */
+            targetVmSize: string;
+            /**
+             * The test network Id.
+             */
+            testNetworkId: string;
+            /**
+             * The network details.
+             */
+            vmNics: outputs.recoveryservices.latest.InMageRcmNicDetailsResponse[];
+        }
+
+        /**
          * InMage provider specific settings
          */
         export interface InMageReplicationDetailsResponse {
@@ -345675,7 +347177,7 @@ export namespace recoveryservices {
             /**
              * The ReplicationChannelSetting.
              */
-            providerSpecificDetails?: outputs.recoveryservices.latest.A2APolicyDetailsResponse | outputs.recoveryservices.latest.HyperVReplicaAzurePolicyDetailsResponse | outputs.recoveryservices.latest.HyperVReplicaBasePolicyDetailsResponse | outputs.recoveryservices.latest.HyperVReplicaBluePolicyDetailsResponse | outputs.recoveryservices.latest.HyperVReplicaPolicyDetailsResponse | outputs.recoveryservices.latest.InMageAzureV2PolicyDetailsResponse | outputs.recoveryservices.latest.InMageBasePolicyDetailsResponse | outputs.recoveryservices.latest.InMagePolicyDetailsResponse | outputs.recoveryservices.latest.RcmAzureMigrationPolicyDetailsResponse | outputs.recoveryservices.latest.VmwareCbtPolicyDetailsResponse;
+            providerSpecificDetails?: outputs.recoveryservices.latest.A2APolicyDetailsResponse | outputs.recoveryservices.latest.HyperVReplicaAzurePolicyDetailsResponse | outputs.recoveryservices.latest.HyperVReplicaBasePolicyDetailsResponse | outputs.recoveryservices.latest.HyperVReplicaBluePolicyDetailsResponse | outputs.recoveryservices.latest.HyperVReplicaPolicyDetailsResponse | outputs.recoveryservices.latest.InMageAzureV2PolicyDetailsResponse | outputs.recoveryservices.latest.InMageBasePolicyDetailsResponse | outputs.recoveryservices.latest.InMagePolicyDetailsResponse | outputs.recoveryservices.latest.InMageRcmPolicyDetailsResponse | outputs.recoveryservices.latest.RcmAzureMigrationPolicyDetailsResponse | outputs.recoveryservices.latest.VmwareCbtPolicyDetailsResponse;
         }
 
         /**
@@ -345736,6 +347238,84 @@ export namespace recoveryservices {
              * Gets or sets the status.
              */
             status: string;
+        }
+
+        /**
+         * Process server details.
+         */
+        export interface ProcessServerDetailsResponse {
+            /**
+             * The available memory.
+             */
+            availableMemoryInBytes: number;
+            /**
+             * The available disk space.
+             */
+            availableSpaceInBytes: number;
+            /**
+             * The free disk space percentage.
+             */
+            freeSpacePercentage: number;
+            /**
+             * The health of the process server.
+             */
+            health: string;
+            /**
+             * The health errors.
+             */
+            healthErrors: outputs.recoveryservices.latest.HealthErrorResponse[];
+            /**
+             * The historic health of the process server based on the health in last 24 hours.
+             */
+            historicHealth: string;
+            /**
+             * The process server Id.
+             */
+            id: string;
+            /**
+             * The last heartbeat received from the process server.
+             */
+            lastHeartbeatUtc: string;
+            /**
+             * The memory usage percentage.
+             */
+            memoryUsagePercentage: number;
+            /**
+             * The process server name.
+             */
+            name: string;
+            /**
+             * The processor usage percentage.
+             */
+            processorUsagePercentage: number;
+            /**
+             * The throughput in bytes.
+             */
+            throughputInBytes: number;
+            /**
+             * The uploading pending data in bytes.
+             */
+            throughputUploadPendingDataInBytes: number;
+            /**
+             * The total memory.
+             */
+            totalMemoryInBytes: number;
+            /**
+             * The total disk space.
+             */
+            totalSpaceInBytes: number;
+            /**
+             * The used memory.
+             */
+            usedMemoryInBytes: number;
+            /**
+             * The used disk space.
+             */
+            usedSpaceInBytes: number;
+            /**
+             * The process server version.
+             */
+            version: string;
         }
 
         /**
@@ -345939,6 +347519,36 @@ export namespace recoveryservices {
         }
 
         /**
+         * Push installer details.
+         */
+        export interface PushInstallerDetailsResponse {
+            /**
+             * The health of the push installer.
+             */
+            health: string;
+            /**
+             * The health errors.
+             */
+            healthErrors: outputs.recoveryservices.latest.HealthErrorResponse[];
+            /**
+             * The push installer Id.
+             */
+            id: string;
+            /**
+             * The last heartbeat received from the push installer.
+             */
+            lastHeartbeatUtc: string;
+            /**
+             * The push installer name.
+             */
+            name: string;
+            /**
+             * The push installer version.
+             */
+            version: string;
+        }
+
+        /**
          * RCM based Azure migration specific policy details.
          */
         export interface RcmAzureMigrationPolicyDetailsResponse {
@@ -345966,6 +347576,36 @@ export namespace recoveryservices {
              * The recovery point threshold in minutes.
              */
             recoveryPointThresholdInMinutes?: number;
+        }
+
+        /**
+         * RCM proxy details.
+         */
+        export interface RcmProxyDetailsResponse {
+            /**
+             * The health of the RCM proxy.
+             */
+            health: string;
+            /**
+             * The health errors.
+             */
+            healthErrors: outputs.recoveryservices.latest.HealthErrorResponse[];
+            /**
+             * The RCM proxy Id.
+             */
+            id: string;
+            /**
+             * The last heartbeat received from the RCM proxy.
+             */
+            lastHeartbeatUtc: string;
+            /**
+             * The RCM proxy name.
+             */
+            name: string;
+            /**
+             * The RCM proxy version.
+             */
+            version: string;
         }
 
         /**
@@ -346243,6 +347883,36 @@ export namespace recoveryservices {
         }
 
         /**
+         * Replication agent details.
+         */
+        export interface ReplicationAgentDetailsResponse {
+            /**
+             * The health of the replication agent.
+             */
+            health: string;
+            /**
+             * The health errors.
+             */
+            healthErrors: outputs.recoveryservices.latest.HealthErrorResponse[];
+            /**
+             * The replication agent Id.
+             */
+            id: string;
+            /**
+             * The last heartbeat received from the replication agent.
+             */
+            lastHeartbeatUtc: string;
+            /**
+             * The replication agent name.
+             */
+            name: string;
+            /**
+             * The replication agent version.
+             */
+            version: string;
+        }
+
+        /**
          * Replication protected item custom data details.
          */
         export interface ReplicationProtectedItemPropertiesResponse {
@@ -346321,7 +347991,7 @@ export namespace recoveryservices {
             /**
              * The Replication provider custom settings.
              */
-            providerSpecificDetails?: outputs.recoveryservices.latest.A2AReplicationDetailsResponse | outputs.recoveryservices.latest.HyperVReplicaAzureReplicationDetailsResponse | outputs.recoveryservices.latest.HyperVReplicaBaseReplicationDetailsResponse | outputs.recoveryservices.latest.HyperVReplicaBlueReplicationDetailsResponse | outputs.recoveryservices.latest.HyperVReplicaReplicationDetailsResponse | outputs.recoveryservices.latest.InMageAzureV2ReplicationDetailsResponse | outputs.recoveryservices.latest.InMageReplicationDetailsResponse;
+            providerSpecificDetails?: outputs.recoveryservices.latest.A2AReplicationDetailsResponse | outputs.recoveryservices.latest.HyperVReplicaAzureReplicationDetailsResponse | outputs.recoveryservices.latest.HyperVReplicaBaseReplicationDetailsResponse | outputs.recoveryservices.latest.HyperVReplicaBlueReplicationDetailsResponse | outputs.recoveryservices.latest.HyperVReplicaReplicationDetailsResponse | outputs.recoveryservices.latest.InMageAzureV2ReplicationDetailsResponse | outputs.recoveryservices.latest.InMageRcmReplicationDetailsResponse | outputs.recoveryservices.latest.InMageReplicationDetailsResponse;
             /**
              * The recovery container Id.
              */
@@ -346354,6 +348024,36 @@ export namespace recoveryservices {
              * The Test failover state description.
              */
             testFailoverStateDescription?: string;
+        }
+
+        /**
+         * Reprotect agent details.
+         */
+        export interface ReprotectAgentDetailsResponse {
+            /**
+             * The health of the reprotect agent.
+             */
+            health: string;
+            /**
+             * The health errors.
+             */
+            healthErrors: outputs.recoveryservices.latest.HealthErrorResponse[];
+            /**
+             * The reprotect agent Id.
+             */
+            id: string;
+            /**
+             * The last heartbeat received from the reprotect agent.
+             */
+            lastHeartbeatUtc: string;
+            /**
+             * The reprotect agent name.
+             */
+            name: string;
+            /**
+             * The version.
+             */
+            version: string;
         }
 
         /**
@@ -354577,6 +356277,58 @@ export namespace recoveryservices {
         }
 
         /**
+         * Agent details.
+         */
+        export interface AgentDetailsResponse {
+            /**
+             * The Id of the agent running on the server.
+             */
+            agentId: string;
+            /**
+             * The machine BIOS Id.
+             */
+            biosId: string;
+            /**
+             * The details of agent disks.
+             */
+            disks: outputs.recoveryservices.v20180710.AgentDiskDetailsResponse[];
+            /**
+             * The machine FQDN.
+             */
+            fqdn: string;
+            /**
+             * The Id of the machine to which the agent is registered.
+             */
+            machineId: string;
+        }
+
+        /**
+         * Agent disk details.
+         */
+        export interface AgentDiskDetailsResponse {
+            /**
+             * The disk capacity in bytes.
+             */
+            capacityInBytes: number;
+            /**
+             * The disk Id.
+             */
+            diskId: string;
+            /**
+             * The disk name.
+             */
+            diskName: string;
+            /**
+             * A value indicating whether the disk is the OS disk.
+             */
+            isOSDisk: string;
+            /**
+             * The lun of disk.
+             */
+            lunId: number;
+        }
+
+        /**
          * Azure Fabric Specific Details.
          */
         export interface AzureFabricSpecificDetailsResponse {
@@ -354753,6 +356505,36 @@ export namespace recoveryservices {
         }
 
         /**
+         * DRA details.
+         */
+        export interface DraDetailsResponse {
+            /**
+             * The health of the DRA.
+             */
+            health: string;
+            /**
+             * The health errors.
+             */
+            healthErrors: outputs.recoveryservices.v20180710.HealthErrorResponse[];
+            /**
+             * The DRA Id.
+             */
+            id: string;
+            /**
+             * The last heartbeat received from the DRA.
+             */
+            lastHeartbeatUtc: string;
+            /**
+             * The DRA name.
+             */
+            name: string;
+            /**
+             * The DRA version.
+             */
+            version: string;
+        }
+
+        /**
          * Encryption details for the fabric.
          */
         export interface EncryptionDetailsResponse {
@@ -354781,7 +356563,7 @@ export namespace recoveryservices {
             /**
              * Fabric specific settings.
              */
-            customDetails?: outputs.recoveryservices.v20180710.AzureFabricSpecificDetailsResponse | outputs.recoveryservices.v20180710.HyperVSiteDetailsResponse | outputs.recoveryservices.v20180710.VMwareDetailsResponse | outputs.recoveryservices.v20180710.VMwareV2FabricSpecificDetailsResponse | outputs.recoveryservices.v20180710.VmmDetailsResponse;
+            customDetails?: outputs.recoveryservices.v20180710.AzureFabricSpecificDetailsResponse | outputs.recoveryservices.v20180710.HyperVSiteDetailsResponse | outputs.recoveryservices.v20180710.InMageRcmFabricSpecificDetailsResponse | outputs.recoveryservices.v20180710.VMwareDetailsResponse | outputs.recoveryservices.v20180710.VMwareV2FabricSpecificDetailsResponse | outputs.recoveryservices.v20180710.VmmDetailsResponse;
             /**
              * Encryption details for the fabric.
              */
@@ -355825,6 +357607,486 @@ export namespace recoveryservices {
         }
 
         /**
+         * InMageRcm source agent upgrade blocking error details.
+         */
+        export interface InMageRcmAgentUpgradeBlockingErrorDetailsResponse {
+            /**
+             * The error code.
+             */
+            errorCode: string;
+            /**
+             * The error message.
+             */
+            errorMessage: string;
+            /**
+             * The error message parameters.
+             */
+            errorMessageParameters: {[key: string]: string};
+            /**
+             * The error tags.
+             */
+            errorTags: {[key: string]: string};
+            /**
+             * The possible causes.
+             */
+            possibleCauses: string;
+            /**
+             * The recommended action.
+             */
+            recommendedAction: string;
+        }
+
+        /**
+         * InMageRcm fabric specific details.
+         */
+        export interface InMageRcmFabricSpecificDetailsResponse {
+            /**
+             * The list of agent details.
+             */
+            agentDetails: outputs.recoveryservices.v20180710.AgentDetailsResponse[];
+            /**
+             * The control plane Uri.
+             */
+            controlPlaneUri: string;
+            /**
+             * The data plane Uri.
+             */
+            dataPlaneUri: string;
+            /**
+             * The list of DRAs.
+             */
+            dras: outputs.recoveryservices.v20180710.DraDetailsResponse[];
+            /**
+             * Gets the class type. Overridden in derived classes.
+             */
+            instanceType: "InMageRcm";
+            /**
+             * The ARM Id of the physical site.
+             */
+            physicalSiteId: string;
+            /**
+             * The list of process servers.
+             */
+            processServers: outputs.recoveryservices.v20180710.ProcessServerDetailsResponse[];
+            /**
+             * The list of push installers.
+             */
+            pushInstallers: outputs.recoveryservices.v20180710.PushInstallerDetailsResponse[];
+            /**
+             * The list of RCM proxies.
+             */
+            rcmProxies: outputs.recoveryservices.v20180710.RcmProxyDetailsResponse[];
+            /**
+             * The list of replication agents.
+             */
+            replicationAgents: outputs.recoveryservices.v20180710.ReplicationAgentDetailsResponse[];
+            /**
+             * The list of reprotect agents.
+             */
+            reprotectAgents: outputs.recoveryservices.v20180710.ReprotectAgentDetailsResponse[];
+            /**
+             * The service container Id.
+             */
+            serviceContainerId: string;
+            /**
+             * The service endpoint.
+             */
+            serviceEndpoint: string;
+            /**
+             * The service resource Id.
+             */
+            serviceResourceId: string;
+            /**
+             * The ARM Id of the VMware site.
+             */
+            vmwareSiteId: string;
+        }
+
+        /**
+         * InMageRcm last source agent upgrade error details.
+         */
+        export interface InMageRcmLastAgentUpgradeErrorDetailsResponse {
+            /**
+             * The error code.
+             */
+            errorCode: string;
+            /**
+             * The error message.
+             */
+            errorMessage: string;
+            /**
+             * The error message parameters.
+             */
+            errorMessageParameters: {[key: string]: string};
+            /**
+             * The error tags.
+             */
+            errorTags: {[key: string]: string};
+            /**
+             * The possible causes.
+             */
+            possibleCauses: string;
+            /**
+             * The recommended action.
+             */
+            recommendedAction: string;
+        }
+
+        /**
+         * InMageRcm mobility agent details.
+         */
+        export interface InMageRcmMobilityAgentDetailsResponse {
+            /**
+             * The agent version expiry date.
+             */
+            agentVersionExpiryDate: string;
+            /**
+             * The driver version.
+             */
+            driverVersion: string;
+            /**
+             * The driver version expiry date.
+             */
+            driverVersionExpiryDate: string;
+            /**
+             * A value indicating whether agent is upgradeable or not.
+             */
+            isUpgradeable: string;
+            /**
+             * The time of the last heartbeat received from the agent.
+             */
+            lastHeartbeatUtc: string;
+            /**
+             * The latest upgradeable version available without reboot.
+             */
+            latestUpgradableVersionWithoutReboot: string;
+            /**
+             * The latest agent version available.
+             */
+            latestVersion: string;
+            /**
+             * The whether update is possible or not.
+             */
+            reasonsBlockingUpgrade: string[];
+            /**
+             * The agent version.
+             */
+            version: string;
+        }
+
+        /**
+         * InMageRcm NIC details.
+         */
+        export interface InMageRcmNicDetailsResponse {
+            /**
+             * A value indicating whether this is the primary NIC.
+             */
+            isPrimaryNic: string;
+            /**
+             * A value indicating whether this NIC is selected for failover.
+             */
+            isSelectedForFailover: string;
+            /**
+             * The NIC Id.
+             */
+            nicId: string;
+            /**
+             * The source IP address.
+             */
+            sourceIPAddress: string;
+            /**
+             * The source IP address type.
+             */
+            sourceIPAddressType: string;
+            /**
+             * Source network Id.
+             */
+            sourceNetworkId: string;
+            /**
+             * Source subnet name.
+             */
+            sourceSubnetName: string;
+            /**
+             * The target IP address.
+             */
+            targetIPAddress: string;
+            /**
+             * The target IP address type.
+             */
+            targetIPAddressType: string;
+            /**
+             * Target subnet name.
+             */
+            targetSubnetName: string;
+            /**
+             * The test IP address.
+             */
+            testIPAddress: string;
+            /**
+             * The test IP address type.
+             */
+            testIPAddressType: string;
+            /**
+             * Test subnet name.
+             */
+            testSubnetName: string;
+        }
+
+        /**
+         * InMageRcm specific policy details.
+         */
+        export interface InMageRcmPolicyDetailsResponse {
+            /**
+             * The app consistent snapshot frequency in minutes.
+             */
+            appConsistentFrequencyInMinutes: number;
+            /**
+             * The crash consistent snapshot frequency in minutes.
+             */
+            crashConsistentFrequencyInMinutes: number;
+            /**
+             * A value indicating whether multi-VM sync has to be enabled.
+             */
+            enableMultiVmSync: string;
+            /**
+             * Gets the class type. Overridden in derived classes.
+             */
+            instanceType: "InMageRcm";
+            /**
+             * The duration in minutes until which the recovery points need to be stored.
+             */
+            recoveryPointHistoryInMinutes: number;
+        }
+
+        /**
+         * InMageRcm protected disk details.
+         */
+        export interface InMageRcmProtectedDiskDetailsResponse {
+            /**
+             * The disk capacity in bytes.
+             */
+            capacityInBytes: number;
+            /**
+             * The disk encryption set ARM Id.
+             */
+            diskEncryptionSetId: string;
+            /**
+             * The disk Id.
+             */
+            diskId: string;
+            /**
+             * The disk name.
+             */
+            diskName: string;
+            /**
+             * The disk type.
+             */
+            diskType: string;
+            /**
+             * A value indicating whether the disk is the OS disk.
+             */
+            isOSDisk: string;
+            /**
+             * The log storage account ARM Id.
+             */
+            logStorageAccountId: string;
+            /**
+             * The ARM Id of the seed managed disk.
+             */
+            seedManagedDiskId: string;
+            /**
+             * The ARM Id of the target managed disk.
+             */
+            targetManagedDiskId: string;
+        }
+
+        /**
+         * InMageRcm provider specific details.
+         */
+        export interface InMageRcmReplicationDetailsResponse {
+            /**
+             * The agent upgrade blocking error information.
+             */
+            agentUpgradeBlockingErrorDetails: outputs.recoveryservices.v20180710.InMageRcmAgentUpgradeBlockingErrorDetailsResponse[];
+            /**
+             * The agent auto upgrade state.
+             */
+            agentUpgradeState: string;
+            /**
+             * The allocated memory in MB.
+             */
+            allocatedMemoryInMB: number;
+            /**
+             * The type of the discovered VM.
+             */
+            discoveryType: string;
+            /**
+             * The ARM Id of the discovered VM.
+             */
+            fabricDiscoveryMachineId: string;
+            /**
+             * The recovery point Id to which the VM was failed over.
+             */
+            failoverRecoveryPointId: string;
+            /**
+             * The firmware type.
+             */
+            firmwareType: string;
+            /**
+             * The initial replication processed bytes. This includes sum of total bytes transferred and matched bytes on all selected disks in source VM.
+             */
+            initialReplicationProcessedBytes: number;
+            /**
+             * The initial replication progress percentage. This is calculated based on total bytes processed for all disks in the source VM.
+             */
+            initialReplicationProgressPercentage: number;
+            /**
+             * The initial replication transferred bytes from source VM to azure for all selected disks on source VM.
+             */
+            initialReplicationTransferredBytes: number;
+            /**
+             * Gets the Instance type.
+             */
+            instanceType: "InMageRcm";
+            /**
+             * The virtual machine internal identifier.
+             */
+            internalIdentifier: string;
+            /**
+             * A value indicating whether last agent upgrade was successful or not.
+             */
+            isLastUpgradeSuccessful: string;
+            /**
+             * The last agent upgrade error information.
+             */
+            lastAgentUpgradeErrorDetails: outputs.recoveryservices.v20180710.InMageRcmLastAgentUpgradeErrorDetailsResponse[];
+            /**
+             * The last agent upgrade failed or cancelled job Id.
+             */
+            lastAgentUpgradeFailedJobId: string;
+            /**
+             * The last agent upgrade type.
+             */
+            lastAgentUpgradeType: string;
+            /**
+             * The last recovery point Id.
+             */
+            lastRecoveryPointId: string;
+            /**
+             * The last recovery point received time.
+             */
+            lastRecoveryPointReceived: string;
+            /**
+             * The last recovery point objective calculated time.
+             */
+            lastRpoCalculatedTime: string;
+            /**
+             * The last recovery point objective value.
+             */
+            lastRpoInSeconds: number;
+            /**
+             * License Type of the VM to be used.
+             */
+            licenseType: string;
+            /**
+             * The mobility agent information.
+             */
+            mobilityAgentDetails: outputs.recoveryservices.v20180710.InMageRcmMobilityAgentDetailsResponse;
+            /**
+             * The multi VM group name.
+             */
+            multiVmGroupName: string;
+            /**
+             * The type of the OS on the VM.
+             */
+            osType: string;
+            /**
+             * The process server Id.
+             */
+            processServerId: string;
+            /**
+             * The process server name.
+             */
+            processServerName: string;
+            /**
+             * The processor core count.
+             */
+            processorCoreCount: number;
+            /**
+             * The list of protected disks.
+             */
+            protectedDisks: outputs.recoveryservices.v20180710.InMageRcmProtectedDiskDetailsResponse[];
+            /**
+             * The resync processed bytes. This includes sum of total bytes transferred and matched bytes on all selected disks in source VM.
+             */
+            resyncProcessedBytes: number;
+            /**
+             * The resync progress percentage. This is calculated based on total bytes processed for all disks in the source VM.
+             */
+            resyncProgressPercentage: number;
+            /**
+             * A value indicating whether resync is required.
+             */
+            resyncRequired: string;
+            /**
+             * The resync state.
+             */
+            resyncState: string;
+            /**
+             * The resync transferred bytes from source VM to azure for all selected disks on source VM.
+             */
+            resyncTransferredBytes: number;
+            /**
+             * The run-as account Id.
+             */
+            runAsAccountId: string;
+            /**
+             * The target availability set Id.
+             */
+            targetAvailabilitySetId: string;
+            /**
+             * The target availability zone.
+             */
+            targetAvailabilityZone: string;
+            /**
+             * The target boot diagnostics storage account ARM Id.
+             */
+            targetBootDiagnosticsStorageAccountId: string;
+            /**
+             * The target generation.
+             */
+            targetGeneration: string;
+            /**
+             * The target network Id.
+             */
+            targetNetworkId: string;
+            /**
+             * The target proximity placement group Id.
+             */
+            targetProximityPlacementGroupId: string;
+            /**
+             * The target resource group Id.
+             */
+            targetResourceGroupId: string;
+            /**
+             * Target VM name.
+             */
+            targetVmName: string;
+            /**
+             * The target VM size.
+             */
+            targetVmSize: string;
+            /**
+             * The test network Id.
+             */
+            testNetworkId: string;
+            /**
+             * The network details.
+             */
+            vmNics: outputs.recoveryservices.v20180710.InMageRcmNicDetailsResponse[];
+        }
+
+        /**
          * InMage provider specific settings
          */
         export interface InMageReplicationDetailsResponse {
@@ -356327,7 +358589,85 @@ export namespace recoveryservices {
             /**
              * The ReplicationChannelSetting.
              */
-            providerSpecificDetails?: outputs.recoveryservices.v20180710.A2APolicyDetailsResponse | outputs.recoveryservices.v20180710.HyperVReplicaAzurePolicyDetailsResponse | outputs.recoveryservices.v20180710.HyperVReplicaBasePolicyDetailsResponse | outputs.recoveryservices.v20180710.HyperVReplicaBluePolicyDetailsResponse | outputs.recoveryservices.v20180710.HyperVReplicaPolicyDetailsResponse | outputs.recoveryservices.v20180710.InMageAzureV2PolicyDetailsResponse | outputs.recoveryservices.v20180710.InMageBasePolicyDetailsResponse | outputs.recoveryservices.v20180710.InMagePolicyDetailsResponse | outputs.recoveryservices.v20180710.RcmAzureMigrationPolicyDetailsResponse | outputs.recoveryservices.v20180710.VmwareCbtPolicyDetailsResponse;
+            providerSpecificDetails?: outputs.recoveryservices.v20180710.A2APolicyDetailsResponse | outputs.recoveryservices.v20180710.HyperVReplicaAzurePolicyDetailsResponse | outputs.recoveryservices.v20180710.HyperVReplicaBasePolicyDetailsResponse | outputs.recoveryservices.v20180710.HyperVReplicaBluePolicyDetailsResponse | outputs.recoveryservices.v20180710.HyperVReplicaPolicyDetailsResponse | outputs.recoveryservices.v20180710.InMageAzureV2PolicyDetailsResponse | outputs.recoveryservices.v20180710.InMageBasePolicyDetailsResponse | outputs.recoveryservices.v20180710.InMagePolicyDetailsResponse | outputs.recoveryservices.v20180710.InMageRcmPolicyDetailsResponse | outputs.recoveryservices.v20180710.RcmAzureMigrationPolicyDetailsResponse | outputs.recoveryservices.v20180710.VmwareCbtPolicyDetailsResponse;
+        }
+
+        /**
+         * Process server details.
+         */
+        export interface ProcessServerDetailsResponse {
+            /**
+             * The available memory.
+             */
+            availableMemoryInBytes: number;
+            /**
+             * The available disk space.
+             */
+            availableSpaceInBytes: number;
+            /**
+             * The free disk space percentage.
+             */
+            freeSpacePercentage: number;
+            /**
+             * The health of the process server.
+             */
+            health: string;
+            /**
+             * The health errors.
+             */
+            healthErrors: outputs.recoveryservices.v20180710.HealthErrorResponse[];
+            /**
+             * The historic health of the process server based on the health in last 24 hours.
+             */
+            historicHealth: string;
+            /**
+             * The process server Id.
+             */
+            id: string;
+            /**
+             * The last heartbeat received from the process server.
+             */
+            lastHeartbeatUtc: string;
+            /**
+             * The memory usage percentage.
+             */
+            memoryUsagePercentage: number;
+            /**
+             * The process server name.
+             */
+            name: string;
+            /**
+             * The processor usage percentage.
+             */
+            processorUsagePercentage: number;
+            /**
+             * The throughput in bytes.
+             */
+            throughputInBytes: number;
+            /**
+             * The uploading pending data in bytes.
+             */
+            throughputUploadPendingDataInBytes: number;
+            /**
+             * The total memory.
+             */
+            totalMemoryInBytes: number;
+            /**
+             * The total disk space.
+             */
+            totalSpaceInBytes: number;
+            /**
+             * The used memory.
+             */
+            usedMemoryInBytes: number;
+            /**
+             * The used disk space.
+             */
+            usedSpaceInBytes: number;
+            /**
+             * The process server version.
+             */
+            version: string;
         }
 
         /**
@@ -356531,6 +358871,36 @@ export namespace recoveryservices {
         }
 
         /**
+         * Push installer details.
+         */
+        export interface PushInstallerDetailsResponse {
+            /**
+             * The health of the push installer.
+             */
+            health: string;
+            /**
+             * The health errors.
+             */
+            healthErrors: outputs.recoveryservices.v20180710.HealthErrorResponse[];
+            /**
+             * The push installer Id.
+             */
+            id: string;
+            /**
+             * The last heartbeat received from the push installer.
+             */
+            lastHeartbeatUtc: string;
+            /**
+             * The push installer name.
+             */
+            name: string;
+            /**
+             * The push installer version.
+             */
+            version: string;
+        }
+
+        /**
          * RCM based Azure migration specific policy details.
          */
         export interface RcmAzureMigrationPolicyDetailsResponse {
@@ -356558,6 +358928,36 @@ export namespace recoveryservices {
              * The recovery point threshold in minutes.
              */
             recoveryPointThresholdInMinutes?: number;
+        }
+
+        /**
+         * RCM proxy details.
+         */
+        export interface RcmProxyDetailsResponse {
+            /**
+             * The health of the RCM proxy.
+             */
+            health: string;
+            /**
+             * The health errors.
+             */
+            healthErrors: outputs.recoveryservices.v20180710.HealthErrorResponse[];
+            /**
+             * The RCM proxy Id.
+             */
+            id: string;
+            /**
+             * The last heartbeat received from the RCM proxy.
+             */
+            lastHeartbeatUtc: string;
+            /**
+             * The RCM proxy name.
+             */
+            name: string;
+            /**
+             * The RCM proxy version.
+             */
+            version: string;
         }
 
         /**
@@ -356835,6 +359235,36 @@ export namespace recoveryservices {
         }
 
         /**
+         * Replication agent details.
+         */
+        export interface ReplicationAgentDetailsResponse {
+            /**
+             * The health of the replication agent.
+             */
+            health: string;
+            /**
+             * The health errors.
+             */
+            healthErrors: outputs.recoveryservices.v20180710.HealthErrorResponse[];
+            /**
+             * The replication agent Id.
+             */
+            id: string;
+            /**
+             * The last heartbeat received from the replication agent.
+             */
+            lastHeartbeatUtc: string;
+            /**
+             * The replication agent name.
+             */
+            name: string;
+            /**
+             * The replication agent version.
+             */
+            version: string;
+        }
+
+        /**
          * Replication protected item custom data details.
          */
         export interface ReplicationProtectedItemPropertiesResponse {
@@ -356913,7 +359343,7 @@ export namespace recoveryservices {
             /**
              * The Replication provider custom settings.
              */
-            providerSpecificDetails?: outputs.recoveryservices.v20180710.A2AReplicationDetailsResponse | outputs.recoveryservices.v20180710.HyperVReplicaAzureReplicationDetailsResponse | outputs.recoveryservices.v20180710.HyperVReplicaBaseReplicationDetailsResponse | outputs.recoveryservices.v20180710.HyperVReplicaBlueReplicationDetailsResponse | outputs.recoveryservices.v20180710.HyperVReplicaReplicationDetailsResponse | outputs.recoveryservices.v20180710.InMageAzureV2ReplicationDetailsResponse | outputs.recoveryservices.v20180710.InMageReplicationDetailsResponse;
+            providerSpecificDetails?: outputs.recoveryservices.v20180710.A2AReplicationDetailsResponse | outputs.recoveryservices.v20180710.HyperVReplicaAzureReplicationDetailsResponse | outputs.recoveryservices.v20180710.HyperVReplicaBaseReplicationDetailsResponse | outputs.recoveryservices.v20180710.HyperVReplicaBlueReplicationDetailsResponse | outputs.recoveryservices.v20180710.HyperVReplicaReplicationDetailsResponse | outputs.recoveryservices.v20180710.InMageAzureV2ReplicationDetailsResponse | outputs.recoveryservices.v20180710.InMageRcmReplicationDetailsResponse | outputs.recoveryservices.v20180710.InMageReplicationDetailsResponse;
             /**
              * The recovery container Id.
              */
@@ -356946,6 +359376,36 @@ export namespace recoveryservices {
              * The Test failover state description.
              */
             testFailoverStateDescription?: string;
+        }
+
+        /**
+         * Reprotect agent details.
+         */
+        export interface ReprotectAgentDetailsResponse {
+            /**
+             * The health of the reprotect agent.
+             */
+            health: string;
+            /**
+             * The health errors.
+             */
+            healthErrors: outputs.recoveryservices.v20180710.HealthErrorResponse[];
+            /**
+             * The reprotect agent Id.
+             */
+            id: string;
+            /**
+             * The last heartbeat received from the reprotect agent.
+             */
+            lastHeartbeatUtc: string;
+            /**
+             * The reprotect agent name.
+             */
+            name: string;
+            /**
+             * The version.
+             */
+            version: string;
         }
 
         /**
@@ -360094,6 +362554,20 @@ export namespace resources {
         }
 
         /**
+         * Managed identity generic object.
+         */
+        export interface ManagedServiceIdentityResponse {
+            /**
+             * Type of the managed identity.
+             */
+            type?: string;
+            /**
+             * The list of user-assigned managed identities associated with the resource. Key is the Azure resource Id of the managed identity.
+             */
+            userAssignedIdentities?: {[key: string]: outputs.resources.latest.UserAssignedIdentityResponse};
+        }
+
+        /**
          * Deployment on error behavior with additional details.
          */
         export interface OnErrorDeploymentExtendedResponse {
@@ -360266,6 +362740,36 @@ export namespace resources {
         }
 
         /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
+        }
+
+        /**
          * A dictionary of name and value pairs.
          */
         export interface TagsResponse {
@@ -360292,6 +362796,20 @@ export namespace resources {
              * The URI of the template to deploy. Use either the uri or id property, but not both.
              */
             uri?: string;
+        }
+
+        /**
+         * User-assigned managed identity.
+         */
+        export interface UserAssignedIdentityResponse {
+            /**
+             * Client App Id associated with this identity.
+             */
+            clientId?: string;
+            /**
+             * Azure Active Directory principal ID associated with this identity.
+             */
+            principalId?: string;
         }
     }
 
@@ -365009,6 +367527,66 @@ export namespace resources {
              * The URI of the template to deploy. Use either the uri or id property, but not both.
              */
             uri?: string;
+        }
+    }
+
+    export namespace v20201001 {
+        /**
+         * Managed identity generic object.
+         */
+        export interface ManagedServiceIdentityResponse {
+            /**
+             * Type of the managed identity.
+             */
+            type?: string;
+            /**
+             * The list of user-assigned managed identities associated with the resource. Key is the Azure resource Id of the managed identity.
+             */
+            userAssignedIdentities?: {[key: string]: outputs.resources.v20201001.UserAssignedIdentityResponse};
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
+        }
+
+        /**
+         * User-assigned managed identity.
+         */
+        export interface UserAssignedIdentityResponse {
+            /**
+             * Client App Id associated with this identity.
+             */
+            clientId?: string;
+            /**
+             * Azure Active Directory principal ID associated with this identity.
+             */
+            principalId?: string;
         }
     }
 }

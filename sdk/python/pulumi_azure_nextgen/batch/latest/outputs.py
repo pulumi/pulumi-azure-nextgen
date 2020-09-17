@@ -667,7 +667,7 @@ class DataDiskResponse(dict):
                  storage_account_type: Optional[str] = None):
         """
         Settings which will be used by the data disks associated to Compute Nodes in the Pool. When using attached data disks, you need to mount and format the disks from within a VM to use them.
-        :param int lun: The lun is used to uniquely identify each data disk. If attaching multiple disks, each should have a distinct lun.
+        :param int lun: The lun is used to uniquely identify each data disk. If attaching multiple disks, each should have a distinct lun. The value must be between 0 and 63, inclusive.
         :param str caching: Values are:
                
                 none - The caching mode for the disk is not enabled.
@@ -696,7 +696,7 @@ class DataDiskResponse(dict):
     @pulumi.getter
     def lun(self) -> int:
         """
-        The lun is used to uniquely identify each data disk. If attaching multiple disks, each should have a distinct lun.
+        The lun is used to uniquely identify each data disk. If attaching multiple disks, each should have a distinct lun. The value must be between 0 and 63, inclusive.
         """
         return pulumi.get(self, "lun")
 
@@ -1459,7 +1459,7 @@ class PoolEndpointConfigurationResponse(dict):
     def __init__(__self__, *,
                  inbound_nat_pools: Sequence['outputs.InboundNatPoolResponse']):
         """
-        :param Sequence['InboundNatPoolResponseArgs'] inbound_nat_pools: The maximum number of inbound NAT pools per Batch pool is 5. If the maximum number of inbound NAT pools is exceeded the request fails with HTTP status code 400.
+        :param Sequence['InboundNatPoolResponseArgs'] inbound_nat_pools: The maximum number of inbound NAT pools per Batch pool is 5. If the maximum number of inbound NAT pools is exceeded the request fails with HTTP status code 400. This cannot be specified if the IPAddressProvisioningType is NoPublicIPAddresses.
         """
         pulumi.set(__self__, "inbound_nat_pools", inbound_nat_pools)
 
@@ -1467,7 +1467,7 @@ class PoolEndpointConfigurationResponse(dict):
     @pulumi.getter(name="inboundNatPools")
     def inbound_nat_pools(self) -> Sequence['outputs.InboundNatPoolResponse']:
         """
-        The maximum number of inbound NAT pools per Batch pool is 5. If the maximum number of inbound NAT pools is exceeded the request fails with HTTP status code 400.
+        The maximum number of inbound NAT pools per Batch pool is 5. If the maximum number of inbound NAT pools is exceeded the request fails with HTTP status code 400. This cannot be specified if the IPAddressProvisioningType is NoPublicIPAddresses.
         """
         return pulumi.get(self, "inbound_nat_pools")
 
@@ -1631,7 +1631,7 @@ class PublicIPAddressConfigurationResponse(dict):
                  provision: Optional[str] = None):
         """
         The public IP Address configuration of the networking configuration of a Pool.
-        :param Sequence[str] ip_address_ids: The number of IPs specified here limits the maximum size of the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for each public IP. For example, a pool needing 150 dedicated VMs would need at least 3 public IPs specified. Each element of this collection is of the form: /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
+        :param Sequence[str] ip_address_ids: The number of IPs specified here limits the maximum size of the Pool - 100 dedicated nodes or 100 low-priority nodes can be allocated for each public IP. For example, a pool needing 250 dedicated VMs would need at least 3 public IPs specified. Each element of this collection is of the form: /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
         :param str provision: The default value is BatchManaged
         """
         if ip_address_ids is not None:
@@ -1643,7 +1643,7 @@ class PublicIPAddressConfigurationResponse(dict):
     @pulumi.getter(name="ipAddressIds")
     def ip_address_ids(self) -> Optional[Sequence[str]]:
         """
-        The number of IPs specified here limits the maximum size of the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for each public IP. For example, a pool needing 150 dedicated VMs would need at least 3 public IPs specified. Each element of this collection is of the form: /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
+        The number of IPs specified here limits the maximum size of the Pool - 100 dedicated nodes or 100 low-priority nodes can be allocated for each public IP. For example, a pool needing 250 dedicated VMs would need at least 3 public IPs specified. Each element of this collection is of the form: /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
         """
         return pulumi.get(self, "ip_address_ids")
 
