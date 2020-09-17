@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.AzureNextGen.DBForPostgreSql.V20200214PrivatePreview
+namespace Pulumi.AzureNextGen.DBforPostgreSQL.V20200214PrivatePreview
 {
     /// <summary>
     /// Represents a server firewall rule.

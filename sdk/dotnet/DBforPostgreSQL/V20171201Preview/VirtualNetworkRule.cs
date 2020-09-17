@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.AzureNextGen.DBForPostgreSQL.V20171201Preview
+namespace Pulumi.AzureNextGen.DBforPostgreSQL.V20171201Preview
 {
     /// <summary>
     /// A virtual network rule.

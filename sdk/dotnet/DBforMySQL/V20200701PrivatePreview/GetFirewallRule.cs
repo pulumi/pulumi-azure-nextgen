@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.AzureNextGen.DBForMySql.V20200701PrivatePreview
+namespace Pulumi.AzureNextGen.DBforMySQL.V20200701PrivatePreview
 {
     public static class GetFirewallRule
     {
