@@ -1,0 +1,9 @@
+.idea/
+*.iml
+**/.vscode/
+
+**/bin/
+**/obj/
+**/node_modules/
+
+ci-scripts/
