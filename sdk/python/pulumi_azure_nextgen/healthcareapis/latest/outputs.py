@@ -222,13 +222,25 @@ class ServiceCosmosDbConfigurationInfoResponse(dict):
     The settings for the Cosmos DB database backing the service.
     """
     def __init__(__self__, *,
+                 key_vault_key_uri: Optional[str] = None,
                  offer_throughput: Optional[int] = None):
         """
         The settings for the Cosmos DB database backing the service.
+        :param str key_vault_key_uri: The URI of the customer-managed key for the backing database.
         :param int offer_throughput: The provisioned throughput for the backing database.
         """
+        if key_vault_key_uri is not None:
+            pulumi.set(__self__, "key_vault_key_uri", key_vault_key_uri)
         if offer_throughput is not None:
             pulumi.set(__self__, "offer_throughput", offer_throughput)
+
+    @property
+    @pulumi.getter(name="keyVaultKeyUri")
+    def key_vault_key_uri(self) -> Optional[str]:
+        """
+        The URI of the customer-managed key for the backing database.
+        """
+        return pulumi.get(self, "key_vault_key_uri")
 
     @property
     @pulumi.getter(name="offerThroughput")

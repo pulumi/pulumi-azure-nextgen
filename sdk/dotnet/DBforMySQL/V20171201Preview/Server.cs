@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.AzureNextGen.DBForMySQL.V20171201Preview
+namespace Pulumi.AzureNextGen.DBforMySQL.V20171201Preview
 {
     /// <summary>
     /// Represents a server.
