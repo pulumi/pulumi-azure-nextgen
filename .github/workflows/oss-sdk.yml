@@ -20,9 +20,8 @@ jobs:
         with:
           source_branch: "publish/${{ github.run_id }}-${{ github.run_number }}"
           destination_branch: "master"
-#          pr_title: "Publish SDK @ ${{ github.event.client_payload.ref }}"
-          pr_title: "Testing Publishing SDK"
-          pr_body: ":crown: *Automated PR*"
+          pr_title: "Publish SDK @ ${{ github.event.client_payload.ref }}"
+          pr_body: "*Automated PR*"
           pr_label: "automation/merge"
           pr_allow_empty: true
           github_token: ${{ secrets.PULUMI_BOT_TOKEN }}
