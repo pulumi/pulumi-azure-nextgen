@@ -42,8 +42,12 @@ jobs:
           token: ${{ secrets.PULUMI_BOT_TOKEN }}
       - name: prepare sdk files
         run: |
+          rm -rf ${{ github.workspace }}/sdk-repo/sdk
           cp -R sdk/ ${{ github.workspace }}/sdk-repo
           rm -f ${{ github.workspace }}/sdk-repo/sdk/SDK_LICENSE
+          touch ${{ github.workspace }}/sdk-repo/sdk/nodejs/go.mod
+          touch ${{ github.workspace }}/sdk-repo/sdk/python/go.mod
+          touch ${{ github.workspace }}/sdk-repo/sdk/dotnet/go.mod
         working-directory: provider
       - name: git status
         run: git status && git diff
