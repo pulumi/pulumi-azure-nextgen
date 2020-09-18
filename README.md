@@ -3,7 +3,7 @@
 [![Python version](https://badge.fury.io/py/pulumi-azure-nextgen.svg)](https://pypi.org/project/pulumi-azure-nextgen)
 [![NuGet version](https://badge.fury.io/nu/pulumi.azurenextgen.svg)](https://badge.fury.io/nu/pulumi.azurenextgen)
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/pulumi/pulumi-azure-nextgen/sdk/go)](https://pkg.go.dev/github.com/pulumi/pulumi-azure-nextgen/sdk/go)
-[![License](https://img.shields.io/npm/l/%40pulumi%2Fpulumi%2Fnextgen.svg)](https://github.com/pulumi/pulumi-azure-nextgen/blob/master/LICENSE)
+[![License](https://img.shields.io/npm/l/%40pulumi%2Fazure%2Fnextgen.svg)](https://github.com/pulumi/pulumi-azure-nextgen/blob/master/LICENSE)
 
 # Next Generation Microsoft Azure Resource Provider
 
@@ -47,7 +47,7 @@ To use from .NET, install using `dotnet add package`:
 
 The `@pulumi/azure-nextgen` package provides a strongly-typed means to build cloud applications that create
 and interact closely with Azure resources.  Resources are exposed for the entire Azure surface area,
-including (but not limited to), 'compute', 'keyvault', 'network', 'storage', and more.
+including (but not limited to) 'compute', 'keyvault', 'network', 'storage', and more.
 
 The Azure NextGen provider works directly with the Azure Resource Manager (ARM) platform instead of depending on a handwritten layer as with the [previous provider](https://github.com/pulumi/pulumi-azure). This approach ensures higher quality and higher fidelity with the Azure platform.
 
