@@ -35,13 +35,13 @@ To use from Python, install using `pip`:
 
 To use from Go, use `go get` to grab the latest version of the library
 
-    $ go get github.com/pulumi/pulumi-azure-nextgen/sdk/go/...
+    $ go get github.com/pulumi/pulumi-azure-nextgen/sdk/go
 
 ### .NET 
 
 To use from .NET, install using `dotnet add package`:
 
-   $ dotnet add package Pulumi.Azure.NextGen
+    $ dotnet add package Pulumi.Azure.NextGen
 
 ## Concepts
 
@@ -61,5 +61,5 @@ https://www.pulumi.com/docs/intro/cloud-providers/azure/setup/).
 
 ## Reference
 
-For further information, please visit [the Next Generation Azure provider announcement](https://www.pulumi.com/blog/announcing-nextgen-azure-provider/) or for detailed reference documentation, please visit [the API docs](
+For further information, please visit the [Next Generation Azure provider announcement](https://www.pulumi.com/blog/announcing-nextgen-azure-provider/) or for detailed reference documentation, please visit [the API docs](
 https://www.pulumi.com/docs/reference/pkg/azure-nextgen).
