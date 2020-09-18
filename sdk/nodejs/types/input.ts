@@ -146076,6 +146076,87 @@ export namespace machinelearningservices {
             databricksAccessToken?: pulumi.Input<string>;
         }
 
+        export interface DatasetCreateRequestDataPath {
+            /**
+             * The datastore name.
+             */
+            datastoreName?: pulumi.Input<string>;
+            /**
+             * Path within the datastore.
+             */
+            relativePath?: pulumi.Input<string>;
+        }
+
+        export interface DatasetCreateRequestParameters {
+            /**
+             * Header type.
+             */
+            header?: pulumi.Input<string>;
+            /**
+             * Boolean to keep path information as column in the dataset. Defaults to False. This is useful when reading multiple files, and want to know which file a particular record originated from, or to keep useful information in file path.
+             */
+            includePath?: pulumi.Input<boolean>;
+            /**
+             * The partition information of each path will be extracted into columns based on the specified format. Format part '{column_name}' creates string column, and '{column_name:yyyy/MM/dd/HH/mm/ss}' creates datetime column, where 'yyyy', 'MM', 'dd', 'HH', 'mm' and 'ss' are used to extract year, month, day, hour, minute and second for the datetime type. The format should start from the position of first partition key until the end of file path. For example, given the path '../USA/2019/01/01/data.parquet' where the partition is by country/region and time, partition_format='/{CountryOrRegion}/{PartitionDate:yyyy/MM/dd}/data.csv' creates a string column 'CountryOrRegion' with the value 'USA' and a datetime column 'PartitionDate' with the value '2019-01-01
+             */
+            partitionFormat?: pulumi.Input<string>;
+            path?: pulumi.Input<inputs.machinelearningservices.v20200501preview.DatasetCreateRequestPath>;
+            query?: pulumi.Input<inputs.machinelearningservices.v20200501preview.DatasetCreateRequestQuery>;
+            /**
+             * The separator used to split columns for 'delimited_files' sourceType.
+             */
+            separator?: pulumi.Input<string>;
+            /**
+             * Data source type.
+             */
+            sourceType?: pulumi.Input<string>;
+        }
+
+        export interface DatasetCreateRequestPath {
+            dataPath?: pulumi.Input<inputs.machinelearningservices.v20200501preview.DatasetCreateRequestDataPath>;
+            /**
+             * The Http URL.
+             */
+            httpUrl?: pulumi.Input<string>;
+        }
+
+        export interface DatasetCreateRequestQuery {
+            /**
+             * The SQL/PostgreSQL/MySQL datastore name.
+             */
+            datastoreName?: pulumi.Input<string>;
+            /**
+             * SQL Quey.
+             */
+            query?: pulumi.Input<string>;
+        }
+
+        export interface DatasetCreateRequestRegistration {
+            /**
+             * The description for the dataset.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * The name of the dataset.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Tags associated with the dataset.
+             */
+            tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        }
+
+        export interface DatasetCreateRequestTimeSeries {
+            /**
+             * Column name to be used as CoarseGrainTimestamp. Can only be used if 'fineGrainTimestamp' is specified and cannot be same as 'fineGrainTimestamp'.
+             */
+            coarseGrainTimestamp?: pulumi.Input<string>;
+            /**
+             *  Column name to be used as FineGrainTimestamp
+             */
+            fineGrainTimestamp?: pulumi.Input<string>;
+        }
+
         /**
          * The dataset reference object.
          */
@@ -269267,6 +269348,133 @@ export namespace powerbidedicated {
              * The name of the Azure pricing tier to which the SKU applies.
              */
             tier?: pulumi.Input<string>;
+        }
+
+    }
+}
+
+export namespace powerplatform {
+    export namespace v20201030preview {
+        /**
+         * Identity for the EnterprisePolicy.
+         */
+        export interface EnterprisePolicyIdentity {
+            /**
+             * The encryption settings for a configuration store.
+             */
+            encryption?: pulumi.Input<inputs.powerplatform.v20201030preview.EnterprisePolicyIdentityEncryption>;
+            /**
+             * Settings concerning lockbox.
+             */
+            lockbox?: pulumi.Input<inputs.powerplatform.v20201030preview.EnterprisePolicyIdentityLockbox>;
+            /**
+             * Metadata for the enterprisePolicy.
+             */
+            systemData?: pulumi.Input<inputs.powerplatform.v20201030preview.SystemData>;
+            /**
+             * The type of identity used for the EnterprisePolicy. Currently, the only supported type is 'SystemAssigned', which implicitly creates an identity.
+             */
+            type?: pulumi.Input<string>;
+        }
+
+        /**
+         * The encryption settings for a configuration store.
+         */
+        export interface EnterprisePolicyIdentityEncryption {
+            /**
+             * Key vault properties.
+             */
+            keyVaultProperties?: pulumi.Input<inputs.powerplatform.v20201030preview.KeyVaultProperties>;
+        }
+
+        /**
+         * Settings concerning lockbox.
+         */
+        export interface EnterprisePolicyIdentityLockbox {
+            /**
+             * lockbox configuration
+             */
+            status?: pulumi.Input<string>;
+        }
+
+        /**
+         * Url and version of the KeyVault Secret
+         */
+        export interface KeyProperties {
+            /**
+             * The identifier of the key vault key used to encrypt data.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * The version of the identity which will be used to access key vault.
+             */
+            version?: pulumi.Input<string>;
+        }
+
+        /**
+         * Settings concerning key vault encryption for a configuration store.
+         */
+        export interface KeyVaultProperties {
+            /**
+             * Uri of KeyVault
+             */
+            id?: pulumi.Input<string>;
+            /**
+             * Identity of the secret that includes name and version.
+             */
+            key?: pulumi.Input<inputs.powerplatform.v20201030preview.KeyProperties>;
+            /**
+             * The state of onboarding, which only appears in the response.
+             */
+            status?: pulumi.Input<string>;
+        }
+
+        /**
+         * A collection of information about the state of the connection between service consumer and provider.
+         */
+        export interface PrivateLinkServiceConnectionState {
+            /**
+             * A message indicating if changes on the service provider require any updates on the consumer.
+             */
+            actionsRequired?: pulumi.Input<string>;
+            /**
+             * The reason for approval/rejection of the connection.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+             */
+            status?: pulumi.Input<string>;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemData {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: pulumi.Input<string>;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: pulumi.Input<string>;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: pulumi.Input<string>;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedAt?: pulumi.Input<string>;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: pulumi.Input<string>;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: pulumi.Input<string>;
         }
 
     }
