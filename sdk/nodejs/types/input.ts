@@ -65041,6 +65041,94 @@ export namespace datafactory {
         }
 
         /**
+         * Azure Databricks Delta Lake dataset.
+         */
+        export interface AzureDatabricksDeltaLakeDataset {
+            /**
+             * List of tags that can be used for describing the Dataset.
+             */
+            annotations?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+            /**
+             * The database name of delta table. Type: string (or Expression with resultType string).
+             */
+            database?: pulumi.Input<{[key: string]: any}>;
+            /**
+             * Dataset description.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+             */
+            folder?: pulumi.Input<inputs.datafactory.latest.DatasetFolder>;
+            /**
+             * Linked service reference.
+             */
+            linkedServiceName: pulumi.Input<inputs.datafactory.latest.LinkedServiceReference>;
+            /**
+             * Parameters for dataset.
+             */
+            parameters?: pulumi.Input<{[key: string]: pulumi.Input<inputs.datafactory.latest.ParameterSpecification>}>;
+            /**
+             * Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+             */
+            schema?: pulumi.Input<{[key: string]: any}>;
+            /**
+             * Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+             */
+            structure?: pulumi.Input<{[key: string]: any}>;
+            /**
+             * The name of delta table. Type: string (or Expression with resultType string).
+             */
+            table?: pulumi.Input<{[key: string]: any}>;
+            /**
+             * Type of dataset.
+             */
+            type: pulumi.Input<"AzureDatabricksDeltaLakeDataset">;
+        }
+
+        /**
+         * Azure Databricks Delta Lake linked service.
+         */
+        export interface AzureDatabricksDeltaLakeLinkedService {
+            /**
+             * Access token for databricks REST API. Refer to https://docs.azuredatabricks.net/api/latest/authentication.html. Type: string, SecureString or AzureKeyVaultSecretReference.
+             */
+            accessToken?: pulumi.Input<inputs.datafactory.latest.AzureKeyVaultSecretReference | inputs.datafactory.latest.SecureString>;
+            /**
+             * List of tags that can be used for describing the linked service.
+             */
+            annotations?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+            /**
+             * The id of an existing interactive cluster that will be used for all runs of this job. Type: string (or Expression with resultType string).
+             */
+            clusterId?: pulumi.Input<{[key: string]: any}>;
+            /**
+             * The integration runtime reference.
+             */
+            connectVia?: pulumi.Input<inputs.datafactory.latest.IntegrationRuntimeReference>;
+            /**
+             * Linked service description.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * <REGION>.azuredatabricks.net, domain name of your Databricks deployment. Type: string (or Expression with resultType string).
+             */
+            domain: pulumi.Input<{[key: string]: any}>;
+            /**
+             * The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
+             */
+            encryptedCredential?: pulumi.Input<{[key: string]: any}>;
+            /**
+             * Parameters for linked service.
+             */
+            parameters?: pulumi.Input<{[key: string]: pulumi.Input<inputs.datafactory.latest.ParameterSpecification>}>;
+            /**
+             * Type of linked service.
+             */
+            type: pulumi.Input<"AzureDatabricksDeltaLake">;
+        }
+
+        /**
          * Azure Databricks linked service.
          */
         export interface AzureDatabricksLinkedService {
@@ -82187,6 +82275,94 @@ export namespace datafactory {
              * Type of dataset storage location.
              */
             type: pulumi.Input<"AzureDataLakeStoreLocation">;
+        }
+
+        /**
+         * Azure Databricks Delta Lake dataset.
+         */
+        export interface AzureDatabricksDeltaLakeDataset {
+            /**
+             * List of tags that can be used for describing the Dataset.
+             */
+            annotations?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+            /**
+             * The database name of delta table. Type: string (or Expression with resultType string).
+             */
+            database?: pulumi.Input<{[key: string]: any}>;
+            /**
+             * Dataset description.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+             */
+            folder?: pulumi.Input<inputs.datafactory.v20180601.DatasetFolder>;
+            /**
+             * Linked service reference.
+             */
+            linkedServiceName: pulumi.Input<inputs.datafactory.v20180601.LinkedServiceReference>;
+            /**
+             * Parameters for dataset.
+             */
+            parameters?: pulumi.Input<{[key: string]: pulumi.Input<inputs.datafactory.v20180601.ParameterSpecification>}>;
+            /**
+             * Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+             */
+            schema?: pulumi.Input<{[key: string]: any}>;
+            /**
+             * Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+             */
+            structure?: pulumi.Input<{[key: string]: any}>;
+            /**
+             * The name of delta table. Type: string (or Expression with resultType string).
+             */
+            table?: pulumi.Input<{[key: string]: any}>;
+            /**
+             * Type of dataset.
+             */
+            type: pulumi.Input<"AzureDatabricksDeltaLakeDataset">;
+        }
+
+        /**
+         * Azure Databricks Delta Lake linked service.
+         */
+        export interface AzureDatabricksDeltaLakeLinkedService {
+            /**
+             * Access token for databricks REST API. Refer to https://docs.azuredatabricks.net/api/latest/authentication.html. Type: string, SecureString or AzureKeyVaultSecretReference.
+             */
+            accessToken?: pulumi.Input<inputs.datafactory.v20180601.AzureKeyVaultSecretReference | inputs.datafactory.v20180601.SecureString>;
+            /**
+             * List of tags that can be used for describing the linked service.
+             */
+            annotations?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+            /**
+             * The id of an existing interactive cluster that will be used for all runs of this job. Type: string (or Expression with resultType string).
+             */
+            clusterId?: pulumi.Input<{[key: string]: any}>;
+            /**
+             * The integration runtime reference.
+             */
+            connectVia?: pulumi.Input<inputs.datafactory.v20180601.IntegrationRuntimeReference>;
+            /**
+             * Linked service description.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * <REGION>.azuredatabricks.net, domain name of your Databricks deployment. Type: string (or Expression with resultType string).
+             */
+            domain: pulumi.Input<{[key: string]: any}>;
+            /**
+             * The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
+             */
+            encryptedCredential?: pulumi.Input<{[key: string]: any}>;
+            /**
+             * Parameters for linked service.
+             */
+            parameters?: pulumi.Input<{[key: string]: pulumi.Input<inputs.datafactory.v20180601.ParameterSpecification>}>;
+            /**
+             * Type of linked service.
+             */
+            type: pulumi.Input<"AzureDatabricksDeltaLake">;
         }
 
         /**
@@ -129208,7 +129384,7 @@ export namespace keyvault {
             /**
              * The URI of the managed hsm pool for performing operations on keys.
              */
-            hsmPoolUri?: pulumi.Input<string>;
+            hsmUri?: pulumi.Input<string>;
             /**
              * Array of initial administrators object ids for this managed hsm pool.
              */
@@ -129386,19 +129562,7 @@ export namespace keyvault {
 
 export namespace kubernetes {
     export namespace v20200101preview {
-        export interface AuthenticationCertificateDetails {
-            /**
-             * Base64 encoded client certificate data.
-             */
-            certificateData: string;
-            /**
-             * Base64 encoded key data.
-             */
-            keyData: string;
-        }
-
         export interface AuthenticationDetailsValue {
-            clientCertificate?: inputs.kubernetes.v20200101preview.AuthenticationCertificateDetails;
             /**
              * Authentication token.
              */
@@ -269356,45 +269520,13 @@ export namespace powerbidedicated {
 export namespace powerplatform {
     export namespace v20201030preview {
         /**
-         * Identity for the EnterprisePolicy.
+         * The identity of the EnterprisePolicy.
          */
         export interface EnterprisePolicyIdentity {
-            /**
-             * The encryption settings for a configuration store.
-             */
-            encryption?: pulumi.Input<inputs.powerplatform.v20201030preview.EnterprisePolicyIdentityEncryption>;
-            /**
-             * Settings concerning lockbox.
-             */
-            lockbox?: pulumi.Input<inputs.powerplatform.v20201030preview.EnterprisePolicyIdentityLockbox>;
-            /**
-             * Metadata for the enterprisePolicy.
-             */
-            systemData?: pulumi.Input<inputs.powerplatform.v20201030preview.SystemData>;
             /**
              * The type of identity used for the EnterprisePolicy. Currently, the only supported type is 'SystemAssigned', which implicitly creates an identity.
              */
             type?: pulumi.Input<string>;
-        }
-
-        /**
-         * The encryption settings for a configuration store.
-         */
-        export interface EnterprisePolicyIdentityEncryption {
-            /**
-             * Key vault properties.
-             */
-            keyVaultProperties?: pulumi.Input<inputs.powerplatform.v20201030preview.KeyVaultProperties>;
-        }
-
-        /**
-         * Settings concerning lockbox.
-         */
-        export interface EnterprisePolicyIdentityLockbox {
-            /**
-             * lockbox configuration
-             */
-            status?: pulumi.Input<string>;
         }
 
         /**
@@ -269443,6 +269575,26 @@ export namespace powerplatform {
             description?: pulumi.Input<string>;
             /**
              * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+             */
+            status?: pulumi.Input<string>;
+        }
+
+        /**
+         * The encryption settings for a configuration store.
+         */
+        export interface PropertiesEncryption {
+            /**
+             * Key vault properties.
+             */
+            keyVaultProperties?: pulumi.Input<inputs.powerplatform.v20201030preview.KeyVaultProperties>;
+        }
+
+        /**
+         * Settings concerning lockbox.
+         */
+        export interface PropertiesLockbox {
+            /**
+             * lockbox configuration
              */
             status?: pulumi.Input<string>;
         }
@@ -283713,7 +283865,7 @@ export namespace security {
 
     export namespace v20170801preview {
         /**
-         * A custom alert rule that checks if a value (depends on the custom alert type) is allowed
+         * A custom alert rule that checks if a value (depends on the custom alert type) is allowed.
          */
         export interface AllowlistCustomAlertRule {
             /**
@@ -283721,17 +283873,17 @@ export namespace security {
              */
             allowlistValues: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Whether the custom alert is enabled.
+             * Status of the custom alert.
              */
             isEnabled: pulumi.Input<boolean>;
             /**
              * The type of the custom alert rule.
              */
-            ruleType: pulumi.Input<string>;
+            ruleType: pulumi.Input<"ListCustomAlertRule">;
         }
 
         /**
-         * A custom alert rule that checks if a value (depends on the custom alert type) is denied
+         * A custom alert rule that checks if a value (depends on the custom alert type) is denied.
          */
         export interface DenylistCustomAlertRule {
             /**
@@ -283739,13 +283891,13 @@ export namespace security {
              */
             denylistValues: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Whether the custom alert is enabled.
+             * Status of the custom alert.
              */
             isEnabled: pulumi.Input<boolean>;
             /**
              * The type of the custom alert rule.
              */
-            ruleType: pulumi.Input<string>;
+            ruleType: pulumi.Input<"ListCustomAlertRule">;
         }
 
         /**
@@ -283767,7 +283919,7 @@ export namespace security {
          */
         export interface ThresholdCustomAlertRule {
             /**
-             * Whether the custom alert is enabled.
+             * Status of the custom alert.
              */
             isEnabled: pulumi.Input<boolean>;
             /**
@@ -283781,7 +283933,7 @@ export namespace security {
             /**
              * The type of the custom alert rule.
              */
-            ruleType: pulumi.Input<string>;
+            ruleType: pulumi.Input<"ThresholdCustomAlertRule">;
         }
 
         /**
@@ -283789,7 +283941,7 @@ export namespace security {
          */
         export interface TimeWindowCustomAlertRule {
             /**
-             * Whether the custom alert is enabled.
+             * Status of the custom alert.
              */
             isEnabled: pulumi.Input<boolean>;
             /**
@@ -283803,7 +283955,7 @@ export namespace security {
             /**
              * The type of the custom alert rule.
              */
-            ruleType: pulumi.Input<string>;
+            ruleType: pulumi.Input<"ThresholdCustomAlertRule">;
             /**
              * The time window size in iso8601 format.
              */
@@ -293794,6 +293946,49 @@ export namespace sql {
              * Server Id.
              */
             serverId: pulumi.Input<string>;
+        }
+
+        /**
+         * An ARM Resource SKU.
+         */
+        export interface Sku {
+            /**
+             * Capacity of the particular SKU.
+             */
+            capacity?: pulumi.Input<number>;
+            /**
+             * If the service has different generations of hardware, for the same SKU, then that can be captured here.
+             */
+            family?: pulumi.Input<string>;
+            /**
+             * The name of the SKU, typically, a letter + Number code, e.g. P3.
+             */
+            name: pulumi.Input<string>;
+            /**
+             * Size of the particular SKU
+             */
+            size?: pulumi.Input<string>;
+            /**
+             * The tier or edition of the particular SKU, e.g. Basic, Premium.
+             */
+            tier?: pulumi.Input<string>;
+        }
+
+    }
+
+    export namespace v20200801preview {
+        /**
+         * Per database settings of an elastic pool.
+         */
+        export interface ElasticPoolPerDatabaseSettings {
+            /**
+             * The maximum capacity any one database can consume.
+             */
+            maxCapacity?: pulumi.Input<number>;
+            /**
+             * The minimum capacity all databases are guaranteed.
+             */
+            minCapacity?: pulumi.Input<number>;
         }
 
         /**

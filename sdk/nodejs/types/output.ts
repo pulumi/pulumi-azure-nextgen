@@ -82982,6 +82982,94 @@ export namespace datafactory {
         }
 
         /**
+         * Azure Databricks Delta Lake dataset.
+         */
+        export interface AzureDatabricksDeltaLakeDatasetResponse {
+            /**
+             * List of tags that can be used for describing the Dataset.
+             */
+            annotations?: {[key: string]: any}[];
+            /**
+             * The database name of delta table. Type: string (or Expression with resultType string).
+             */
+            database?: {[key: string]: any};
+            /**
+             * Dataset description.
+             */
+            description?: string;
+            /**
+             * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+             */
+            folder?: outputs.datafactory.latest.DatasetResponseFolder;
+            /**
+             * Linked service reference.
+             */
+            linkedServiceName: outputs.datafactory.latest.LinkedServiceReferenceResponse;
+            /**
+             * Parameters for dataset.
+             */
+            parameters?: {[key: string]: outputs.datafactory.latest.ParameterSpecificationResponse};
+            /**
+             * Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+             */
+            schema?: {[key: string]: any};
+            /**
+             * Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+             */
+            structure?: {[key: string]: any};
+            /**
+             * The name of delta table. Type: string (or Expression with resultType string).
+             */
+            table?: {[key: string]: any};
+            /**
+             * Type of dataset.
+             */
+            type: "AzureDatabricksDeltaLakeDataset";
+        }
+
+        /**
+         * Azure Databricks Delta Lake linked service.
+         */
+        export interface AzureDatabricksDeltaLakeLinkedServiceResponse {
+            /**
+             * Access token for databricks REST API. Refer to https://docs.azuredatabricks.net/api/latest/authentication.html. Type: string, SecureString or AzureKeyVaultSecretReference.
+             */
+            accessToken?: outputs.datafactory.latest.AzureKeyVaultSecretReferenceResponse | outputs.datafactory.latest.SecureStringResponse;
+            /**
+             * List of tags that can be used for describing the linked service.
+             */
+            annotations?: {[key: string]: any}[];
+            /**
+             * The id of an existing interactive cluster that will be used for all runs of this job. Type: string (or Expression with resultType string).
+             */
+            clusterId?: {[key: string]: any};
+            /**
+             * The integration runtime reference.
+             */
+            connectVia?: outputs.datafactory.latest.IntegrationRuntimeReferenceResponse;
+            /**
+             * Linked service description.
+             */
+            description?: string;
+            /**
+             * <REGION>.azuredatabricks.net, domain name of your Databricks deployment. Type: string (or Expression with resultType string).
+             */
+            domain: {[key: string]: any};
+            /**
+             * The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
+             */
+            encryptedCredential?: {[key: string]: any};
+            /**
+             * Parameters for linked service.
+             */
+            parameters?: {[key: string]: outputs.datafactory.latest.ParameterSpecificationResponse};
+            /**
+             * Type of linked service.
+             */
+            type: "AzureDatabricksDeltaLake";
+        }
+
+        /**
          * Azure Databricks linked service.
          */
         export interface AzureDatabricksLinkedServiceResponse {
@@ -100204,6 +100292,94 @@ export namespace datafactory {
              * Type of dataset storage location.
              */
             type: "AzureDataLakeStoreLocation";
+        }
+
+        /**
+         * Azure Databricks Delta Lake dataset.
+         */
+        export interface AzureDatabricksDeltaLakeDatasetResponse {
+            /**
+             * List of tags that can be used for describing the Dataset.
+             */
+            annotations?: {[key: string]: any}[];
+            /**
+             * The database name of delta table. Type: string (or Expression with resultType string).
+             */
+            database?: {[key: string]: any};
+            /**
+             * Dataset description.
+             */
+            description?: string;
+            /**
+             * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+             */
+            folder?: outputs.datafactory.v20180601.DatasetResponseFolder;
+            /**
+             * Linked service reference.
+             */
+            linkedServiceName: outputs.datafactory.v20180601.LinkedServiceReferenceResponse;
+            /**
+             * Parameters for dataset.
+             */
+            parameters?: {[key: string]: outputs.datafactory.v20180601.ParameterSpecificationResponse};
+            /**
+             * Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+             */
+            schema?: {[key: string]: any};
+            /**
+             * Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+             */
+            structure?: {[key: string]: any};
+            /**
+             * The name of delta table. Type: string (or Expression with resultType string).
+             */
+            table?: {[key: string]: any};
+            /**
+             * Type of dataset.
+             */
+            type: "AzureDatabricksDeltaLakeDataset";
+        }
+
+        /**
+         * Azure Databricks Delta Lake linked service.
+         */
+        export interface AzureDatabricksDeltaLakeLinkedServiceResponse {
+            /**
+             * Access token for databricks REST API. Refer to https://docs.azuredatabricks.net/api/latest/authentication.html. Type: string, SecureString or AzureKeyVaultSecretReference.
+             */
+            accessToken?: outputs.datafactory.v20180601.AzureKeyVaultSecretReferenceResponse | outputs.datafactory.v20180601.SecureStringResponse;
+            /**
+             * List of tags that can be used for describing the linked service.
+             */
+            annotations?: {[key: string]: any}[];
+            /**
+             * The id of an existing interactive cluster that will be used for all runs of this job. Type: string (or Expression with resultType string).
+             */
+            clusterId?: {[key: string]: any};
+            /**
+             * The integration runtime reference.
+             */
+            connectVia?: outputs.datafactory.v20180601.IntegrationRuntimeReferenceResponse;
+            /**
+             * Linked service description.
+             */
+            description?: string;
+            /**
+             * <REGION>.azuredatabricks.net, domain name of your Databricks deployment. Type: string (or Expression with resultType string).
+             */
+            domain: {[key: string]: any};
+            /**
+             * The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string).
+             */
+            encryptedCredential?: {[key: string]: any};
+            /**
+             * Parameters for linked service.
+             */
+            parameters?: {[key: string]: outputs.datafactory.v20180601.ParameterSpecificationResponse};
+            /**
+             * Type of linked service.
+             */
+            type: "AzureDatabricksDeltaLake";
         }
 
         /**
@@ -162363,7 +162539,7 @@ export namespace keyvault {
             /**
              * The URI of the managed hsm pool for performing operations on keys.
              */
-            hsmPoolUri?: string;
+            hsmUri?: string;
             /**
              * Array of initial administrators object ids for this managed hsm pool.
              */
@@ -343558,25 +343734,13 @@ export namespace powerbidedicated {
 export namespace powerplatform {
     export namespace v20201030preview {
         /**
-         * Identity for the EnterprisePolicy.
+         * The identity of the EnterprisePolicy.
          */
         export interface EnterprisePolicyIdentityResponse {
-            /**
-             * The encryption settings for a configuration store.
-             */
-            encryption?: outputs.powerplatform.v20201030preview.EnterprisePolicyIdentityResponseEncryption;
-            /**
-             * Settings concerning lockbox.
-             */
-            lockbox?: outputs.powerplatform.v20201030preview.EnterprisePolicyIdentityResponseLockbox;
             /**
              * The principal id of EnterprisePolicy identity.
              */
             systemAssignedIdentityPrincipalId: string;
-            /**
-             * Metadata for the enterprisePolicy.
-             */
-            systemData?: outputs.powerplatform.v20201030preview.SystemDataResponse;
             /**
              * The tenant id associated with the EnterprisePolicy.
              */
@@ -343585,26 +343749,6 @@ export namespace powerplatform {
              * The type of identity used for the EnterprisePolicy. Currently, the only supported type is 'SystemAssigned', which implicitly creates an identity.
              */
             type?: string;
-        }
-
-        /**
-         * The encryption settings for a configuration store.
-         */
-        export interface EnterprisePolicyIdentityResponseEncryption {
-            /**
-             * Key vault properties.
-             */
-            keyVaultProperties?: outputs.powerplatform.v20201030preview.KeyVaultPropertiesResponse;
-        }
-
-        /**
-         * Settings concerning lockbox.
-         */
-        export interface EnterprisePolicyIdentityResponseLockbox {
-            /**
-             * lockbox configuration
-             */
-            status?: string;
         }
 
         /**
@@ -343663,6 +343807,26 @@ export namespace powerplatform {
             description?: string;
             /**
              * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+             */
+            status?: string;
+        }
+
+        /**
+         * The encryption settings for a configuration store.
+         */
+        export interface PropertiesResponseEncryption {
+            /**
+             * Key vault properties.
+             */
+            keyVaultProperties?: outputs.powerplatform.v20201030preview.KeyVaultPropertiesResponse;
+        }
+
+        /**
+         * Settings concerning lockbox.
+         */
+        export interface PropertiesResponseLockbox {
+            /**
+             * lockbox configuration
              */
             status?: string;
         }
@@ -371797,7 +371961,7 @@ export namespace security {
 
     export namespace v20170801preview {
         /**
-         * A custom alert rule that checks if a value (depends on the custom alert type) is allowed
+         * A custom alert rule that checks if a value (depends on the custom alert type) is allowed.
          */
         export interface AllowlistCustomAlertRuleResponse {
             /**
@@ -371813,21 +371977,21 @@ export namespace security {
              */
             displayName: string;
             /**
-             * Whether the custom alert is enabled.
+             * Status of the custom alert.
              */
             isEnabled: boolean;
             /**
              * The type of the custom alert rule.
              */
-            ruleType: string;
+            ruleType: "ListCustomAlertRule";
             /**
-             * The value type of the items in the list
+             * The value type of the items in the list.
              */
             valueType: string;
         }
 
         /**
-         * A custom alert rule that checks if a value (depends on the custom alert type) is denied
+         * A custom alert rule that checks if a value (depends on the custom alert type) is denied.
          */
         export interface DenylistCustomAlertRuleResponse {
             /**
@@ -371843,15 +372007,15 @@ export namespace security {
              */
             displayName: string;
             /**
-             * Whether the custom alert is enabled.
+             * Status of the custom alert.
              */
             isEnabled: boolean;
             /**
              * The type of the custom alert rule.
              */
-            ruleType: string;
+            ruleType: "ListCustomAlertRule";
             /**
-             * The value type of the items in the list
+             * The value type of the items in the list.
              */
             valueType: string;
         }
@@ -371884,7 +372048,7 @@ export namespace security {
              */
             displayName: string;
             /**
-             * Whether the custom alert is enabled.
+             * Status of the custom alert.
              */
             isEnabled: boolean;
             /**
@@ -371898,7 +372062,7 @@ export namespace security {
             /**
              * The type of the custom alert rule.
              */
-            ruleType: string;
+            ruleType: "ThresholdCustomAlertRule";
         }
 
         /**
@@ -371914,7 +372078,7 @@ export namespace security {
              */
             displayName: string;
             /**
-             * Whether the custom alert is enabled.
+             * Status of the custom alert.
              */
             isEnabled: boolean;
             /**
@@ -371928,7 +372092,7 @@ export namespace security {
             /**
              * The type of the custom alert rule.
              */
-            ruleType: string;
+            ruleType: "ThresholdCustomAlertRule";
             /**
              * The time window size in iso8601 format.
              */
@@ -383585,6 +383749,48 @@ export namespace sql {
              * Server Id.
              */
             serverId: string;
+        }
+
+        /**
+         * An ARM Resource SKU.
+         */
+        export interface SkuResponse {
+            /**
+             * Capacity of the particular SKU.
+             */
+            capacity?: number;
+            /**
+             * If the service has different generations of hardware, for the same SKU, then that can be captured here.
+             */
+            family?: string;
+            /**
+             * The name of the SKU, typically, a letter + Number code, e.g. P3.
+             */
+            name: string;
+            /**
+             * Size of the particular SKU
+             */
+            size?: string;
+            /**
+             * The tier or edition of the particular SKU, e.g. Basic, Premium.
+             */
+            tier?: string;
+        }
+    }
+
+    export namespace v20200801preview {
+        /**
+         * Per database settings of an elastic pool.
+         */
+        export interface ElasticPoolPerDatabaseSettingsResponse {
+            /**
+             * The maximum capacity any one database can consume.
+             */
+            maxCapacity?: number;
+            /**
+             * The minimum capacity all databases are guaranteed.
+             */
+            minCapacity?: number;
         }
 
         /**
