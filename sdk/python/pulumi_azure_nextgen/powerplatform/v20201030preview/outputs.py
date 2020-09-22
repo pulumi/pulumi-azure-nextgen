@@ -11,11 +11,11 @@ from . import outputs
 
 __all__ = [
     'EnterprisePolicyIdentityResponse',
-    'EnterprisePolicyIdentityResponseEncryption',
-    'EnterprisePolicyIdentityResponseLockbox',
     'KeyVaultPropertiesResponse',
     'PrivateEndpointResponse',
     'PrivateLinkServiceConnectionStateResponse',
+    'PropertiesResponseEncryption',
+    'PropertiesResponseLockbox',
     'KeyPropertiesResponse',
     'SystemDataResponse',
 ]
@@ -23,32 +23,20 @@ __all__ = [
 @pulumi.output_type
 class EnterprisePolicyIdentityResponse(dict):
     """
-    Identity for the EnterprisePolicy.
+    The identity of the EnterprisePolicy.
     """
     def __init__(__self__, *,
                  system_assigned_identity_principal_id: str,
                  tenant_id: str,
-                 encryption: Optional['outputs.EnterprisePolicyIdentityResponseEncryption'] = None,
-                 lockbox: Optional['outputs.EnterprisePolicyIdentityResponseLockbox'] = None,
-                 system_data: Optional['outputs.SystemDataResponse'] = None,
                  type: Optional[str] = None):
         """
-        Identity for the EnterprisePolicy.
+        The identity of the EnterprisePolicy.
         :param str system_assigned_identity_principal_id: The principal id of EnterprisePolicy identity.
         :param str tenant_id: The tenant id associated with the EnterprisePolicy.
-        :param 'EnterprisePolicyIdentityResponseEncryptionArgs' encryption: The encryption settings for a configuration store.
-        :param 'EnterprisePolicyIdentityResponseLockboxArgs' lockbox: Settings concerning lockbox.
-        :param 'SystemDataResponseArgs' system_data: Metadata for the enterprisePolicy.
         :param str type: The type of identity used for the EnterprisePolicy. Currently, the only supported type is 'SystemAssigned', which implicitly creates an identity.
         """
         pulumi.set(__self__, "system_assigned_identity_principal_id", system_assigned_identity_principal_id)
         pulumi.set(__self__, "tenant_id", tenant_id)
-        if encryption is not None:
-            pulumi.set(__self__, "encryption", encryption)
-        if lockbox is not None:
-            pulumi.set(__self__, "lockbox", lockbox)
-        if system_data is not None:
-            pulumi.set(__self__, "system_data", system_data)
         if type is not None:
             pulumi.set(__self__, "type", type)
 
@@ -70,87 +58,11 @@ class EnterprisePolicyIdentityResponse(dict):
 
     @property
     @pulumi.getter
-    def encryption(self) -> Optional['outputs.EnterprisePolicyIdentityResponseEncryption']:
-        """
-        The encryption settings for a configuration store.
-        """
-        return pulumi.get(self, "encryption")
-
-    @property
-    @pulumi.getter
-    def lockbox(self) -> Optional['outputs.EnterprisePolicyIdentityResponseLockbox']:
-        """
-        Settings concerning lockbox.
-        """
-        return pulumi.get(self, "lockbox")
-
-    @property
-    @pulumi.getter(name="systemData")
-    def system_data(self) -> Optional['outputs.SystemDataResponse']:
-        """
-        Metadata for the enterprisePolicy.
-        """
-        return pulumi.get(self, "system_data")
-
-    @property
-    @pulumi.getter
     def type(self) -> Optional[str]:
         """
         The type of identity used for the EnterprisePolicy. Currently, the only supported type is 'SystemAssigned', which implicitly creates an identity.
         """
         return pulumi.get(self, "type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-
-@pulumi.output_type
-class EnterprisePolicyIdentityResponseEncryption(dict):
-    """
-    The encryption settings for a configuration store.
-    """
-    def __init__(__self__, *,
-                 key_vault_properties: Optional['outputs.KeyVaultPropertiesResponse'] = None):
-        """
-        The encryption settings for a configuration store.
-        :param 'KeyVaultPropertiesResponseArgs' key_vault_properties: Key vault properties.
-        """
-        if key_vault_properties is not None:
-            pulumi.set(__self__, "key_vault_properties", key_vault_properties)
-
-    @property
-    @pulumi.getter(name="keyVaultProperties")
-    def key_vault_properties(self) -> Optional['outputs.KeyVaultPropertiesResponse']:
-        """
-        Key vault properties.
-        """
-        return pulumi.get(self, "key_vault_properties")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-
-@pulumi.output_type
-class EnterprisePolicyIdentityResponseLockbox(dict):
-    """
-    Settings concerning lockbox.
-    """
-    def __init__(__self__, *,
-                 status: Optional[str] = None):
-        """
-        Settings concerning lockbox.
-        :param str status: lockbox configuration
-        """
-        if status is not None:
-            pulumi.set(__self__, "status", status)
-
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[str]:
-        """
-        lockbox configuration
-        """
-        return pulumi.get(self, "status")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -274,6 +186,58 @@ class PrivateLinkServiceConnectionStateResponse(dict):
     def status(self) -> Optional[str]:
         """
         Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+        """
+        return pulumi.get(self, "status")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class PropertiesResponseEncryption(dict):
+    """
+    The encryption settings for a configuration store.
+    """
+    def __init__(__self__, *,
+                 key_vault_properties: Optional['outputs.KeyVaultPropertiesResponse'] = None):
+        """
+        The encryption settings for a configuration store.
+        :param 'KeyVaultPropertiesResponseArgs' key_vault_properties: Key vault properties.
+        """
+        if key_vault_properties is not None:
+            pulumi.set(__self__, "key_vault_properties", key_vault_properties)
+
+    @property
+    @pulumi.getter(name="keyVaultProperties")
+    def key_vault_properties(self) -> Optional['outputs.KeyVaultPropertiesResponse']:
+        """
+        Key vault properties.
+        """
+        return pulumi.get(self, "key_vault_properties")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class PropertiesResponseLockbox(dict):
+    """
+    Settings concerning lockbox.
+    """
+    def __init__(__self__, *,
+                 status: Optional[str] = None):
+        """
+        Settings concerning lockbox.
+        :param str status: lockbox configuration
+        """
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        lockbox configuration
         """
         return pulumi.get(self, "status")
 
