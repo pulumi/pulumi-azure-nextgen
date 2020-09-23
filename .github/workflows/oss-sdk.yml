@@ -15,12 +15,26 @@ jobs:
     steps:
       - name: checkout repo
         uses: actions/checkout@v2
+      - name: checkout nextgen provider repo
+        uses: actions/checkout@v2
+        with:
+          repository: pulumi/pulumi-azure-nextgen-provider
+          path: provider
+          ref: master
+          token: ${{ secrets.PULUMI_BOT_TOKEN }}
+      - name: Initialize Submodules
+        run: git submodule update --init
+        working-directory: provider/azure-rest-api-specs
+      - name: Git submodule commit hash
+        id: vars
+        run: echo ::set-output name=commit-hash::$(git rev-parse HEAD)
+        working-directory: provider/azure-rest-api-specs
       - name: pull-request
         uses: repo-sync/pull-request@v2
         with:
           source_branch: "publish/${{ github.run_id }}-${{ github.run_number }}"
           destination_branch: "master"
-          pr_title: "Publish SDK @ ${{ github.event.client_payload.ref }}"
+          pr_title: "Publish SDK @ azure-rest-api-specs ${{ steps.vars.outputs.commit-hash }}"
           pr_body: "*Automated PR*"
           pr_label: "automation/merge"
           pr_allow_empty: true
@@ -49,7 +63,7 @@ jobs:
           touch ${{ github.workspace }}/sdk-repo/sdk/dotnet/go.mod
         working-directory: provider
       - name: git status
-        run: git status && git diff
+        run: git status
         working-directory: sdk-repo
       - name: commit changes
         uses: EndBug/add-and-commit@v4
