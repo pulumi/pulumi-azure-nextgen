@@ -56,6 +56,7 @@ __all__ = [
     'AzureFirewallSkuArgs',
     'BackendAddressPoolArgs',
     'BastionHostIPConfigurationArgs',
+    'BastionShareableLinkArgs',
     'BgpSettingsArgs',
     'ConnectionMonitorDestinationArgs',
     'ConnectionMonitorEndpointArgs',
@@ -148,6 +149,7 @@ __all__ = [
     'TrafficAnalyticsConfigurationPropertiesArgs',
     'TrafficAnalyticsPropertiesArgs',
     'TrafficSelectorPolicyArgs',
+    'VMArgs',
     'VirtualHubIdArgs',
     'VirtualHubRouteArgs',
     'VirtualHubRouteTableArgs',
@@ -4137,6 +4139,29 @@ class BastionHostIPConfigurationArgs:
 
 
 @pulumi.input_type
+class BastionShareableLinkArgs:
+    def __init__(__self__, *,
+                 vm: 'VMArgs'):
+        """
+        Bastion Shareable Link.
+        :param 'VMArgs' vm: Reference of the virtual machine resource.
+        """
+        pulumi.set(__self__, "vm", vm)
+
+    @property
+    @pulumi.getter
+    def vm(self) -> 'VMArgs':
+        """
+        Reference of the virtual machine resource.
+        """
+        return pulumi.get(self, "vm")
+
+    @vm.setter
+    def vm(self, value: 'VMArgs'):
+        pulumi.set(self, "vm", value)
+
+
+@pulumi.input_type
 class BgpSettingsArgs:
     def __init__(__self__, *,
                  asn: Optional[pulumi.Input[int]] = None,
@@ -5309,7 +5334,6 @@ class ExpressRouteCircuitConnectionArgs:
     def __init__(__self__, *,
                  address_prefix: Optional[pulumi.Input[str]] = None,
                  authorization_key: Optional[pulumi.Input[str]] = None,
-                 circuit_connection_status: Optional[pulumi.Input[str]] = None,
                  express_route_circuit_peering: Optional[pulumi.Input['SubResourceArgs']] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -5318,7 +5342,6 @@ class ExpressRouteCircuitConnectionArgs:
         Express Route Circuit Connection in an ExpressRouteCircuitPeering resource.
         :param pulumi.Input[str] address_prefix: /29 IP address space to carve out Customer addresses for tunnels.
         :param pulumi.Input[str] authorization_key: The authorization key.
-        :param pulumi.Input[str] circuit_connection_status: Express Route Circuit connection state.
         :param pulumi.Input['SubResourceArgs'] express_route_circuit_peering: Reference to Express Route Circuit Private Peering Resource of the circuit initiating connection.
         :param pulumi.Input[str] id: Resource ID.
         :param pulumi.Input[str] name: The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -5328,8 +5351,6 @@ class ExpressRouteCircuitConnectionArgs:
             pulumi.set(__self__, "address_prefix", address_prefix)
         if authorization_key is not None:
             pulumi.set(__self__, "authorization_key", authorization_key)
-        if circuit_connection_status is not None:
-            pulumi.set(__self__, "circuit_connection_status", circuit_connection_status)
         if express_route_circuit_peering is not None:
             pulumi.set(__self__, "express_route_circuit_peering", express_route_circuit_peering)
         if id is not None:
@@ -5362,18 +5383,6 @@ class ExpressRouteCircuitConnectionArgs:
     @authorization_key.setter
     def authorization_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "authorization_key", value)
-
-    @property
-    @pulumi.getter(name="circuitConnectionStatus")
-    def circuit_connection_status(self) -> Optional[pulumi.Input[str]]:
-        """
-        Express Route Circuit connection state.
-        """
-        return pulumi.get(self, "circuit_connection_status")
-
-    @circuit_connection_status.setter
-    def circuit_connection_status(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "circuit_connection_status", value)
 
     @property
     @pulumi.getter(name="expressRouteCircuitPeering")
@@ -11078,6 +11087,62 @@ class TrafficSelectorPolicyArgs:
 
 
 @pulumi.input_type
+class VMArgs:
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 location: Optional[str] = None,
+                 tags: Optional[Mapping[str, str]] = None):
+        """
+        Describes a Virtual Machine.
+        :param str id: Resource ID.
+        :param str location: Resource location.
+        :param Mapping[str, str] tags: Resource tags.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        Resource ID.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[str]:
+        """
+        Resource location.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Resource tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[Mapping[str, str]]):
+        pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
 class VirtualHubIdArgs:
     def __init__(__self__, *,
                  id: Optional[pulumi.Input[str]] = None):
@@ -12247,7 +12312,6 @@ class VpnClientRootCertificateArgs:
 class VpnConnectionArgs:
     def __init__(__self__, *,
                  connection_bandwidth: Optional[pulumi.Input[int]] = None,
-                 connection_status: Optional[pulumi.Input[str]] = None,
                  enable_bgp: Optional[pulumi.Input[bool]] = None,
                  enable_internet_security: Optional[pulumi.Input[bool]] = None,
                  enable_rate_limiting: Optional[pulumi.Input[bool]] = None,
@@ -12264,7 +12328,6 @@ class VpnConnectionArgs:
         """
         VpnConnection Resource.
         :param pulumi.Input[int] connection_bandwidth: Expected bandwidth in MBPS.
-        :param pulumi.Input[str] connection_status: The connection status.
         :param pulumi.Input[bool] enable_bgp: EnableBgp flag.
         :param pulumi.Input[bool] enable_internet_security: Enable internet security.
         :param pulumi.Input[bool] enable_rate_limiting: EnableBgp flag.
@@ -12281,8 +12344,6 @@ class VpnConnectionArgs:
         """
         if connection_bandwidth is not None:
             pulumi.set(__self__, "connection_bandwidth", connection_bandwidth)
-        if connection_status is not None:
-            pulumi.set(__self__, "connection_status", connection_status)
         if enable_bgp is not None:
             pulumi.set(__self__, "enable_bgp", enable_bgp)
         if enable_internet_security is not None:
@@ -12321,18 +12382,6 @@ class VpnConnectionArgs:
     @connection_bandwidth.setter
     def connection_bandwidth(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "connection_bandwidth", value)
-
-    @property
-    @pulumi.getter(name="connectionStatus")
-    def connection_status(self) -> Optional[pulumi.Input[str]]:
-        """
-        The connection status.
-        """
-        return pulumi.get(self, "connection_status")
-
-    @connection_status.setter
-    def connection_status(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "connection_status", value)
 
     @property
     @pulumi.getter(name="enableBgp")
@@ -12823,7 +12872,6 @@ class VpnSiteLinkArgs:
 class VpnSiteLinkConnectionArgs:
     def __init__(__self__, *,
                  connection_bandwidth: Optional[pulumi.Input[int]] = None,
-                 connection_status: Optional[pulumi.Input[str]] = None,
                  enable_bgp: Optional[pulumi.Input[bool]] = None,
                  enable_rate_limiting: Optional[pulumi.Input[bool]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -12838,7 +12886,6 @@ class VpnSiteLinkConnectionArgs:
         """
         VpnSiteLinkConnection Resource.
         :param pulumi.Input[int] connection_bandwidth: Expected bandwidth in MBPS.
-        :param pulumi.Input[str] connection_status: The connection status.
         :param pulumi.Input[bool] enable_bgp: EnableBgp flag.
         :param pulumi.Input[bool] enable_rate_limiting: EnableBgp flag.
         :param pulumi.Input[str] id: Resource ID.
@@ -12853,8 +12900,6 @@ class VpnSiteLinkConnectionArgs:
         """
         if connection_bandwidth is not None:
             pulumi.set(__self__, "connection_bandwidth", connection_bandwidth)
-        if connection_status is not None:
-            pulumi.set(__self__, "connection_status", connection_status)
         if enable_bgp is not None:
             pulumi.set(__self__, "enable_bgp", enable_bgp)
         if enable_rate_limiting is not None:
@@ -12889,18 +12934,6 @@ class VpnSiteLinkConnectionArgs:
     @connection_bandwidth.setter
     def connection_bandwidth(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "connection_bandwidth", value)
-
-    @property
-    @pulumi.getter(name="connectionStatus")
-    def connection_status(self) -> Optional[pulumi.Input[str]]:
-        """
-        The connection status.
-        """
-        return pulumi.get(self, "connection_status")
-
-    @connection_status.setter
-    def connection_status(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "connection_status", value)
 
     @property
     @pulumi.getter(name="enableBgp")
