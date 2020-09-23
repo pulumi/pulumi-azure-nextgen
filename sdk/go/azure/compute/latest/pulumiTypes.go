@@ -18544,6 +18544,61 @@ func (o LinuxConfigurationResponsePtrOutput) Ssh() SshConfigurationResponsePtrOu
 	}).(SshConfigurationResponsePtrOutput)
 }
 
+// LogAnalytics output properties
+type LogAnalyticsOutputResponse struct {
+	// Output file Uri path to blob container.
+	Output string `pulumi:"output"`
+}
+
+// LogAnalyticsOutputResponseInput is an input type that accepts LogAnalyticsOutputResponseArgs and LogAnalyticsOutputResponseOutput values.
+// You can construct a concrete instance of `LogAnalyticsOutputResponseInput` via:
+//
+//          LogAnalyticsOutputResponseArgs{...}
+type LogAnalyticsOutputResponseInput interface {
+	pulumi.Input
+
+	ToLogAnalyticsOutputResponseOutput() LogAnalyticsOutputResponseOutput
+	ToLogAnalyticsOutputResponseOutputWithContext(context.Context) LogAnalyticsOutputResponseOutput
+}
+
+// LogAnalytics output properties
+type LogAnalyticsOutputResponseArgs struct {
+	// Output file Uri path to blob container.
+	Output pulumi.StringInput `pulumi:"output"`
+}
+
+func (LogAnalyticsOutputResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogAnalyticsOutputResponse)(nil)).Elem()
+}
+
+func (i LogAnalyticsOutputResponseArgs) ToLogAnalyticsOutputResponseOutput() LogAnalyticsOutputResponseOutput {
+	return i.ToLogAnalyticsOutputResponseOutputWithContext(context.Background())
+}
+
+func (i LogAnalyticsOutputResponseArgs) ToLogAnalyticsOutputResponseOutputWithContext(ctx context.Context) LogAnalyticsOutputResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogAnalyticsOutputResponseOutput)
+}
+
+// LogAnalytics output properties
+type LogAnalyticsOutputResponseOutput struct{ *pulumi.OutputState }
+
+func (LogAnalyticsOutputResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogAnalyticsOutputResponse)(nil)).Elem()
+}
+
+func (o LogAnalyticsOutputResponseOutput) ToLogAnalyticsOutputResponseOutput() LogAnalyticsOutputResponseOutput {
+	return o
+}
+
+func (o LogAnalyticsOutputResponseOutput) ToLogAnalyticsOutputResponseOutputWithContext(ctx context.Context) LogAnalyticsOutputResponseOutput {
+	return o
+}
+
+// Output file Uri path to blob container.
+func (o LogAnalyticsOutputResponseOutput) Output() pulumi.StringOutput {
+	return o.ApplyT(func(v LogAnalyticsOutputResponse) string { return v.Output }).(pulumi.StringOutput)
+}
+
 // Maintenance Operation Status.
 type MaintenanceRedeployStatusResponse struct {
 	// True, if customer is allowed to perform Maintenance.
@@ -21765,7 +21820,7 @@ type PrivateEndpointConnectionResponse struct {
 	// A collection of information about the state of the connection between DiskAccess and Virtual Network.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
 	// The provisioning state of the private endpoint connection resource.
-	ProvisioningState *string `pulumi:"provisioningState"`
+	ProvisioningState string `pulumi:"provisioningState"`
 	// private endpoint connection type
 	Type string `pulumi:"type"`
 }
@@ -21792,7 +21847,7 @@ type PrivateEndpointConnectionResponseArgs struct {
 	// A collection of information about the state of the connection between DiskAccess and Virtual Network.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponseInput `pulumi:"privateLinkServiceConnectionState"`
 	// The provisioning state of the private endpoint connection resource.
-	ProvisioningState pulumi.StringPtrInput `pulumi:"provisioningState"`
+	ProvisioningState pulumi.StringInput `pulumi:"provisioningState"`
 	// private endpoint connection type
 	Type pulumi.StringInput `pulumi:"type"`
 }
@@ -21872,8 +21927,8 @@ func (o PrivateEndpointConnectionResponseOutput) PrivateLinkServiceConnectionSta
 }
 
 // The provisioning state of the private endpoint connection resource.
-func (o PrivateEndpointConnectionResponseOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+func (o PrivateEndpointConnectionResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // private endpoint connection type
@@ -39434,6 +39489,7 @@ func init() {
 	pulumi.RegisterOutputType(LinuxConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(LinuxConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(LinuxConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(LogAnalyticsOutputResponseOutput{})
 	pulumi.RegisterOutputType(MaintenanceRedeployStatusResponseOutput{})
 	pulumi.RegisterOutputType(MaintenanceRedeployStatusResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManagedDiskParametersOutput{})

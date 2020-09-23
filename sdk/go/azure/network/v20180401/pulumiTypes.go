@@ -8251,8 +8251,6 @@ type AzureFirewallApplicationRuleCollection struct {
 	Name *string `pulumi:"name"`
 	// Priority of the application rule collection resource.
 	Priority *int `pulumi:"priority"`
-	// The provisioning state of the resource.
-	ProvisioningState *string `pulumi:"provisioningState"`
 	// Collection of rules used by a application rule collection.
 	Rules []AzureFirewallApplicationRule `pulumi:"rules"`
 }
@@ -8278,8 +8276,6 @@ type AzureFirewallApplicationRuleCollectionArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Priority of the application rule collection resource.
 	Priority pulumi.IntPtrInput `pulumi:"priority"`
-	// The provisioning state of the resource.
-	ProvisioningState pulumi.StringPtrInput `pulumi:"provisioningState"`
 	// Collection of rules used by a application rule collection.
 	Rules AzureFirewallApplicationRuleArrayInput `pulumi:"rules"`
 }
@@ -8356,11 +8352,6 @@ func (o AzureFirewallApplicationRuleCollectionOutput) Priority() pulumi.IntPtrOu
 	return o.ApplyT(func(v AzureFirewallApplicationRuleCollection) *int { return v.Priority }).(pulumi.IntPtrOutput)
 }
 
-// The provisioning state of the resource.
-func (o AzureFirewallApplicationRuleCollectionOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AzureFirewallApplicationRuleCollection) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
-}
-
 // Collection of rules used by a application rule collection.
 func (o AzureFirewallApplicationRuleCollectionOutput) Rules() AzureFirewallApplicationRuleArrayOutput {
 	return o.ApplyT(func(v AzureFirewallApplicationRuleCollection) []AzureFirewallApplicationRule { return v.Rules }).(AzureFirewallApplicationRuleArrayOutput)
@@ -8399,7 +8390,7 @@ type AzureFirewallApplicationRuleCollectionResponse struct {
 	// Priority of the application rule collection resource.
 	Priority *int `pulumi:"priority"`
 	// The provisioning state of the resource.
-	ProvisioningState *string `pulumi:"provisioningState"`
+	ProvisioningState string `pulumi:"provisioningState"`
 	// Collection of rules used by a application rule collection.
 	Rules []AzureFirewallApplicationRuleResponse `pulumi:"rules"`
 }
@@ -8428,7 +8419,7 @@ type AzureFirewallApplicationRuleCollectionResponseArgs struct {
 	// Priority of the application rule collection resource.
 	Priority pulumi.IntPtrInput `pulumi:"priority"`
 	// The provisioning state of the resource.
-	ProvisioningState pulumi.StringPtrInput `pulumi:"provisioningState"`
+	ProvisioningState pulumi.StringInput `pulumi:"provisioningState"`
 	// Collection of rules used by a application rule collection.
 	Rules AzureFirewallApplicationRuleResponseArrayInput `pulumi:"rules"`
 }
@@ -8511,8 +8502,8 @@ func (o AzureFirewallApplicationRuleCollectionResponseOutput) Priority() pulumi.
 }
 
 // The provisioning state of the resource.
-func (o AzureFirewallApplicationRuleCollectionResponseOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AzureFirewallApplicationRuleCollectionResponse) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+func (o AzureFirewallApplicationRuleCollectionResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureFirewallApplicationRuleCollectionResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Collection of rules used by a application rule collection.
@@ -8910,8 +8901,6 @@ type AzureFirewallIPConfiguration struct {
 	Name *string `pulumi:"name"`
 	// The Firewall Internal Load Balancer IP to be used as the next hop in User Defined Routes.
 	PrivateIPAddress *string `pulumi:"privateIPAddress"`
-	// The provisioning state of the resource.
-	ProvisioningState *string `pulumi:"provisioningState"`
 	// Reference of the PublicIP resource. This field is populated in the output.
 	PublicIPAddress *SubResource `pulumi:"publicIPAddress"`
 	// Reference of the subnet resource. This resource must be named 'AzureFirewallSubnet'.
@@ -8941,8 +8930,6 @@ type AzureFirewallIPConfigurationArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The Firewall Internal Load Balancer IP to be used as the next hop in User Defined Routes.
 	PrivateIPAddress pulumi.StringPtrInput `pulumi:"privateIPAddress"`
-	// The provisioning state of the resource.
-	ProvisioningState pulumi.StringPtrInput `pulumi:"provisioningState"`
 	// Reference of the PublicIP resource. This field is populated in the output.
 	PublicIPAddress SubResourcePtrInput `pulumi:"publicIPAddress"`
 	// Reference of the subnet resource. This resource must be named 'AzureFirewallSubnet'.
@@ -9026,11 +9013,6 @@ func (o AzureFirewallIPConfigurationOutput) PrivateIPAddress() pulumi.StringPtrO
 	return o.ApplyT(func(v AzureFirewallIPConfiguration) *string { return v.PrivateIPAddress }).(pulumi.StringPtrOutput)
 }
 
-// The provisioning state of the resource.
-func (o AzureFirewallIPConfigurationOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AzureFirewallIPConfiguration) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
-}
-
 // Reference of the PublicIP resource. This field is populated in the output.
 func (o AzureFirewallIPConfigurationOutput) PublicIPAddress() SubResourcePtrOutput {
 	return o.ApplyT(func(v AzureFirewallIPConfiguration) *SubResource { return v.PublicIPAddress }).(SubResourcePtrOutput)
@@ -9074,7 +9056,7 @@ type AzureFirewallIPConfigurationResponse struct {
 	// The Firewall Internal Load Balancer IP to be used as the next hop in User Defined Routes.
 	PrivateIPAddress *string `pulumi:"privateIPAddress"`
 	// The provisioning state of the resource.
-	ProvisioningState *string `pulumi:"provisioningState"`
+	ProvisioningState string `pulumi:"provisioningState"`
 	// Reference of the PublicIP resource. This field is populated in the output.
 	PublicIPAddress *SubResourceResponse `pulumi:"publicIPAddress"`
 	// Reference of the subnet resource. This resource must be named 'AzureFirewallSubnet'.
@@ -9105,7 +9087,7 @@ type AzureFirewallIPConfigurationResponseArgs struct {
 	// The Firewall Internal Load Balancer IP to be used as the next hop in User Defined Routes.
 	PrivateIPAddress pulumi.StringPtrInput `pulumi:"privateIPAddress"`
 	// The provisioning state of the resource.
-	ProvisioningState pulumi.StringPtrInput `pulumi:"provisioningState"`
+	ProvisioningState pulumi.StringInput `pulumi:"provisioningState"`
 	// Reference of the PublicIP resource. This field is populated in the output.
 	PublicIPAddress SubResourceResponsePtrInput `pulumi:"publicIPAddress"`
 	// Reference of the subnet resource. This resource must be named 'AzureFirewallSubnet'.
@@ -9190,8 +9172,8 @@ func (o AzureFirewallIPConfigurationResponseOutput) PrivateIPAddress() pulumi.St
 }
 
 // The provisioning state of the resource.
-func (o AzureFirewallIPConfigurationResponseOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AzureFirewallIPConfigurationResponse) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+func (o AzureFirewallIPConfigurationResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureFirewallIPConfigurationResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Reference of the PublicIP resource. This field is populated in the output.
@@ -9379,8 +9361,6 @@ type AzureFirewallNetworkRuleCollection struct {
 	Name *string `pulumi:"name"`
 	// Priority of the network rule collection resource.
 	Priority *int `pulumi:"priority"`
-	// The provisioning state of the resource.
-	ProvisioningState *string `pulumi:"provisioningState"`
 	// Collection of rules used by a network rule collection.
 	Rules []AzureFirewallNetworkRule `pulumi:"rules"`
 }
@@ -9406,8 +9386,6 @@ type AzureFirewallNetworkRuleCollectionArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Priority of the network rule collection resource.
 	Priority pulumi.IntPtrInput `pulumi:"priority"`
-	// The provisioning state of the resource.
-	ProvisioningState pulumi.StringPtrInput `pulumi:"provisioningState"`
 	// Collection of rules used by a network rule collection.
 	Rules AzureFirewallNetworkRuleArrayInput `pulumi:"rules"`
 }
@@ -9484,11 +9462,6 @@ func (o AzureFirewallNetworkRuleCollectionOutput) Priority() pulumi.IntPtrOutput
 	return o.ApplyT(func(v AzureFirewallNetworkRuleCollection) *int { return v.Priority }).(pulumi.IntPtrOutput)
 }
 
-// The provisioning state of the resource.
-func (o AzureFirewallNetworkRuleCollectionOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AzureFirewallNetworkRuleCollection) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
-}
-
 // Collection of rules used by a network rule collection.
 func (o AzureFirewallNetworkRuleCollectionOutput) Rules() AzureFirewallNetworkRuleArrayOutput {
 	return o.ApplyT(func(v AzureFirewallNetworkRuleCollection) []AzureFirewallNetworkRule { return v.Rules }).(AzureFirewallNetworkRuleArrayOutput)
@@ -9527,7 +9500,7 @@ type AzureFirewallNetworkRuleCollectionResponse struct {
 	// Priority of the network rule collection resource.
 	Priority *int `pulumi:"priority"`
 	// The provisioning state of the resource.
-	ProvisioningState *string `pulumi:"provisioningState"`
+	ProvisioningState string `pulumi:"provisioningState"`
 	// Collection of rules used by a network rule collection.
 	Rules []AzureFirewallNetworkRuleResponse `pulumi:"rules"`
 }
@@ -9556,7 +9529,7 @@ type AzureFirewallNetworkRuleCollectionResponseArgs struct {
 	// Priority of the network rule collection resource.
 	Priority pulumi.IntPtrInput `pulumi:"priority"`
 	// The provisioning state of the resource.
-	ProvisioningState pulumi.StringPtrInput `pulumi:"provisioningState"`
+	ProvisioningState pulumi.StringInput `pulumi:"provisioningState"`
 	// Collection of rules used by a network rule collection.
 	Rules AzureFirewallNetworkRuleResponseArrayInput `pulumi:"rules"`
 }
@@ -9639,8 +9612,8 @@ func (o AzureFirewallNetworkRuleCollectionResponseOutput) Priority() pulumi.IntP
 }
 
 // The provisioning state of the resource.
-func (o AzureFirewallNetworkRuleCollectionResponseOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AzureFirewallNetworkRuleCollectionResponse) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+func (o AzureFirewallNetworkRuleCollectionResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureFirewallNetworkRuleCollectionResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Collection of rules used by a network rule collection.
@@ -10362,6 +10335,169 @@ func (o BackendAddressPoolResponseArrayOutput) Index(i pulumi.IntInput) BackendA
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BackendAddressPoolResponse {
 		return vs[0].([]BackendAddressPoolResponse)[vs[1].(int)]
 	}).(BackendAddressPoolResponseOutput)
+}
+
+// BGP peer status details
+type BgpPeerStatusResponse struct {
+	// The autonomous system number of the remote BGP peer
+	Asn int `pulumi:"asn"`
+	// For how long the peering has been up
+	ConnectedDuration string `pulumi:"connectedDuration"`
+	// The virtual network gateway's local address
+	LocalAddress string `pulumi:"localAddress"`
+	// The number of BGP messages received
+	MessagesReceived int `pulumi:"messagesReceived"`
+	// The number of BGP messages sent
+	MessagesSent int `pulumi:"messagesSent"`
+	// The remote BGP peer
+	Neighbor string `pulumi:"neighbor"`
+	// The number of routes learned from this peer
+	RoutesReceived int `pulumi:"routesReceived"`
+	// The BGP peer state
+	State string `pulumi:"state"`
+}
+
+// BgpPeerStatusResponseInput is an input type that accepts BgpPeerStatusResponseArgs and BgpPeerStatusResponseOutput values.
+// You can construct a concrete instance of `BgpPeerStatusResponseInput` via:
+//
+//          BgpPeerStatusResponseArgs{...}
+type BgpPeerStatusResponseInput interface {
+	pulumi.Input
+
+	ToBgpPeerStatusResponseOutput() BgpPeerStatusResponseOutput
+	ToBgpPeerStatusResponseOutputWithContext(context.Context) BgpPeerStatusResponseOutput
+}
+
+// BGP peer status details
+type BgpPeerStatusResponseArgs struct {
+	// The autonomous system number of the remote BGP peer
+	Asn pulumi.IntInput `pulumi:"asn"`
+	// For how long the peering has been up
+	ConnectedDuration pulumi.StringInput `pulumi:"connectedDuration"`
+	// The virtual network gateway's local address
+	LocalAddress pulumi.StringInput `pulumi:"localAddress"`
+	// The number of BGP messages received
+	MessagesReceived pulumi.IntInput `pulumi:"messagesReceived"`
+	// The number of BGP messages sent
+	MessagesSent pulumi.IntInput `pulumi:"messagesSent"`
+	// The remote BGP peer
+	Neighbor pulumi.StringInput `pulumi:"neighbor"`
+	// The number of routes learned from this peer
+	RoutesReceived pulumi.IntInput `pulumi:"routesReceived"`
+	// The BGP peer state
+	State pulumi.StringInput `pulumi:"state"`
+}
+
+func (BgpPeerStatusResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BgpPeerStatusResponse)(nil)).Elem()
+}
+
+func (i BgpPeerStatusResponseArgs) ToBgpPeerStatusResponseOutput() BgpPeerStatusResponseOutput {
+	return i.ToBgpPeerStatusResponseOutputWithContext(context.Background())
+}
+
+func (i BgpPeerStatusResponseArgs) ToBgpPeerStatusResponseOutputWithContext(ctx context.Context) BgpPeerStatusResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BgpPeerStatusResponseOutput)
+}
+
+// BgpPeerStatusResponseArrayInput is an input type that accepts BgpPeerStatusResponseArray and BgpPeerStatusResponseArrayOutput values.
+// You can construct a concrete instance of `BgpPeerStatusResponseArrayInput` via:
+//
+//          BgpPeerStatusResponseArray{ BgpPeerStatusResponseArgs{...} }
+type BgpPeerStatusResponseArrayInput interface {
+	pulumi.Input
+
+	ToBgpPeerStatusResponseArrayOutput() BgpPeerStatusResponseArrayOutput
+	ToBgpPeerStatusResponseArrayOutputWithContext(context.Context) BgpPeerStatusResponseArrayOutput
+}
+
+type BgpPeerStatusResponseArray []BgpPeerStatusResponseInput
+
+func (BgpPeerStatusResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BgpPeerStatusResponse)(nil)).Elem()
+}
+
+func (i BgpPeerStatusResponseArray) ToBgpPeerStatusResponseArrayOutput() BgpPeerStatusResponseArrayOutput {
+	return i.ToBgpPeerStatusResponseArrayOutputWithContext(context.Background())
+}
+
+func (i BgpPeerStatusResponseArray) ToBgpPeerStatusResponseArrayOutputWithContext(ctx context.Context) BgpPeerStatusResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BgpPeerStatusResponseArrayOutput)
+}
+
+// BGP peer status details
+type BgpPeerStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (BgpPeerStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BgpPeerStatusResponse)(nil)).Elem()
+}
+
+func (o BgpPeerStatusResponseOutput) ToBgpPeerStatusResponseOutput() BgpPeerStatusResponseOutput {
+	return o
+}
+
+func (o BgpPeerStatusResponseOutput) ToBgpPeerStatusResponseOutputWithContext(ctx context.Context) BgpPeerStatusResponseOutput {
+	return o
+}
+
+// The autonomous system number of the remote BGP peer
+func (o BgpPeerStatusResponseOutput) Asn() pulumi.IntOutput {
+	return o.ApplyT(func(v BgpPeerStatusResponse) int { return v.Asn }).(pulumi.IntOutput)
+}
+
+// For how long the peering has been up
+func (o BgpPeerStatusResponseOutput) ConnectedDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v BgpPeerStatusResponse) string { return v.ConnectedDuration }).(pulumi.StringOutput)
+}
+
+// The virtual network gateway's local address
+func (o BgpPeerStatusResponseOutput) LocalAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v BgpPeerStatusResponse) string { return v.LocalAddress }).(pulumi.StringOutput)
+}
+
+// The number of BGP messages received
+func (o BgpPeerStatusResponseOutput) MessagesReceived() pulumi.IntOutput {
+	return o.ApplyT(func(v BgpPeerStatusResponse) int { return v.MessagesReceived }).(pulumi.IntOutput)
+}
+
+// The number of BGP messages sent
+func (o BgpPeerStatusResponseOutput) MessagesSent() pulumi.IntOutput {
+	return o.ApplyT(func(v BgpPeerStatusResponse) int { return v.MessagesSent }).(pulumi.IntOutput)
+}
+
+// The remote BGP peer
+func (o BgpPeerStatusResponseOutput) Neighbor() pulumi.StringOutput {
+	return o.ApplyT(func(v BgpPeerStatusResponse) string { return v.Neighbor }).(pulumi.StringOutput)
+}
+
+// The number of routes learned from this peer
+func (o BgpPeerStatusResponseOutput) RoutesReceived() pulumi.IntOutput {
+	return o.ApplyT(func(v BgpPeerStatusResponse) int { return v.RoutesReceived }).(pulumi.IntOutput)
+}
+
+// The BGP peer state
+func (o BgpPeerStatusResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v BgpPeerStatusResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+type BgpPeerStatusResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (BgpPeerStatusResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BgpPeerStatusResponse)(nil)).Elem()
+}
+
+func (o BgpPeerStatusResponseArrayOutput) ToBgpPeerStatusResponseArrayOutput() BgpPeerStatusResponseArrayOutput {
+	return o
+}
+
+func (o BgpPeerStatusResponseArrayOutput) ToBgpPeerStatusResponseArrayOutputWithContext(ctx context.Context) BgpPeerStatusResponseArrayOutput {
+	return o
+}
+
+func (o BgpPeerStatusResponseArrayOutput) Index(i pulumi.IntInput) BgpPeerStatusResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BgpPeerStatusResponse {
+		return vs[0].([]BgpPeerStatusResponse)[vs[1].(int)]
+	}).(BgpPeerStatusResponseOutput)
 }
 
 // BGP settings details
@@ -16258,6 +16394,160 @@ func (o FrontendIPConfigurationResponseArrayOutput) Index(i pulumi.IntInput) Fro
 	}).(FrontendIPConfigurationResponseOutput)
 }
 
+// Gateway routing details
+type GatewayRouteResponse struct {
+	// The route's AS path sequence
+	AsPath string `pulumi:"asPath"`
+	// The gateway's local address
+	LocalAddress string `pulumi:"localAddress"`
+	// The route's network prefix
+	Network string `pulumi:"network"`
+	// The route's next hop
+	NextHop string `pulumi:"nextHop"`
+	// The source this route was learned from
+	Origin string `pulumi:"origin"`
+	// The peer this route was learned from
+	SourcePeer string `pulumi:"sourcePeer"`
+	// The route's weight
+	Weight int `pulumi:"weight"`
+}
+
+// GatewayRouteResponseInput is an input type that accepts GatewayRouteResponseArgs and GatewayRouteResponseOutput values.
+// You can construct a concrete instance of `GatewayRouteResponseInput` via:
+//
+//          GatewayRouteResponseArgs{...}
+type GatewayRouteResponseInput interface {
+	pulumi.Input
+
+	ToGatewayRouteResponseOutput() GatewayRouteResponseOutput
+	ToGatewayRouteResponseOutputWithContext(context.Context) GatewayRouteResponseOutput
+}
+
+// Gateway routing details
+type GatewayRouteResponseArgs struct {
+	// The route's AS path sequence
+	AsPath pulumi.StringInput `pulumi:"asPath"`
+	// The gateway's local address
+	LocalAddress pulumi.StringInput `pulumi:"localAddress"`
+	// The route's network prefix
+	Network pulumi.StringInput `pulumi:"network"`
+	// The route's next hop
+	NextHop pulumi.StringInput `pulumi:"nextHop"`
+	// The source this route was learned from
+	Origin pulumi.StringInput `pulumi:"origin"`
+	// The peer this route was learned from
+	SourcePeer pulumi.StringInput `pulumi:"sourcePeer"`
+	// The route's weight
+	Weight pulumi.IntInput `pulumi:"weight"`
+}
+
+func (GatewayRouteResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayRouteResponse)(nil)).Elem()
+}
+
+func (i GatewayRouteResponseArgs) ToGatewayRouteResponseOutput() GatewayRouteResponseOutput {
+	return i.ToGatewayRouteResponseOutputWithContext(context.Background())
+}
+
+func (i GatewayRouteResponseArgs) ToGatewayRouteResponseOutputWithContext(ctx context.Context) GatewayRouteResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteResponseOutput)
+}
+
+// GatewayRouteResponseArrayInput is an input type that accepts GatewayRouteResponseArray and GatewayRouteResponseArrayOutput values.
+// You can construct a concrete instance of `GatewayRouteResponseArrayInput` via:
+//
+//          GatewayRouteResponseArray{ GatewayRouteResponseArgs{...} }
+type GatewayRouteResponseArrayInput interface {
+	pulumi.Input
+
+	ToGatewayRouteResponseArrayOutput() GatewayRouteResponseArrayOutput
+	ToGatewayRouteResponseArrayOutputWithContext(context.Context) GatewayRouteResponseArrayOutput
+}
+
+type GatewayRouteResponseArray []GatewayRouteResponseInput
+
+func (GatewayRouteResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GatewayRouteResponse)(nil)).Elem()
+}
+
+func (i GatewayRouteResponseArray) ToGatewayRouteResponseArrayOutput() GatewayRouteResponseArrayOutput {
+	return i.ToGatewayRouteResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GatewayRouteResponseArray) ToGatewayRouteResponseArrayOutputWithContext(ctx context.Context) GatewayRouteResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteResponseArrayOutput)
+}
+
+// Gateway routing details
+type GatewayRouteResponseOutput struct{ *pulumi.OutputState }
+
+func (GatewayRouteResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayRouteResponse)(nil)).Elem()
+}
+
+func (o GatewayRouteResponseOutput) ToGatewayRouteResponseOutput() GatewayRouteResponseOutput {
+	return o
+}
+
+func (o GatewayRouteResponseOutput) ToGatewayRouteResponseOutputWithContext(ctx context.Context) GatewayRouteResponseOutput {
+	return o
+}
+
+// The route's AS path sequence
+func (o GatewayRouteResponseOutput) AsPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayRouteResponse) string { return v.AsPath }).(pulumi.StringOutput)
+}
+
+// The gateway's local address
+func (o GatewayRouteResponseOutput) LocalAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayRouteResponse) string { return v.LocalAddress }).(pulumi.StringOutput)
+}
+
+// The route's network prefix
+func (o GatewayRouteResponseOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayRouteResponse) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// The route's next hop
+func (o GatewayRouteResponseOutput) NextHop() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayRouteResponse) string { return v.NextHop }).(pulumi.StringOutput)
+}
+
+// The source this route was learned from
+func (o GatewayRouteResponseOutput) Origin() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayRouteResponse) string { return v.Origin }).(pulumi.StringOutput)
+}
+
+// The peer this route was learned from
+func (o GatewayRouteResponseOutput) SourcePeer() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayRouteResponse) string { return v.SourcePeer }).(pulumi.StringOutput)
+}
+
+// The route's weight
+func (o GatewayRouteResponseOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v GatewayRouteResponse) int { return v.Weight }).(pulumi.IntOutput)
+}
+
+type GatewayRouteResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GatewayRouteResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GatewayRouteResponse)(nil)).Elem()
+}
+
+func (o GatewayRouteResponseArrayOutput) ToGatewayRouteResponseArrayOutput() GatewayRouteResponseArrayOutput {
+	return o
+}
+
+func (o GatewayRouteResponseArrayOutput) ToGatewayRouteResponseArrayOutputWithContext(ctx context.Context) GatewayRouteResponseArrayOutput {
+	return o
+}
+
+func (o GatewayRouteResponseArrayOutput) Index(i pulumi.IntInput) GatewayRouteResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GatewayRouteResponse {
+		return vs[0].([]GatewayRouteResponse)[vs[1].(int)]
+	}).(GatewayRouteResponseOutput)
+}
+
 // HubVirtualNetworkConnection Resource.
 type HubVirtualNetworkConnection struct {
 	// VirtualHub to RemoteVnet transit to enabled or not.
@@ -16268,8 +16558,6 @@ type HubVirtualNetworkConnection struct {
 	Id *string `pulumi:"id"`
 	// Resource location.
 	Location *string `pulumi:"location"`
-	// The provisioning state of the resource.
-	ProvisioningState *string `pulumi:"provisioningState"`
 	// Reference to the remote virtual network.
 	RemoteVirtualNetwork *SubResource `pulumi:"remoteVirtualNetwork"`
 	// Resource tags.
@@ -16297,8 +16585,6 @@ type HubVirtualNetworkConnectionArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Resource location.
 	Location pulumi.StringPtrInput `pulumi:"location"`
-	// The provisioning state of the resource.
-	ProvisioningState pulumi.StringPtrInput `pulumi:"provisioningState"`
 	// Reference to the remote virtual network.
 	RemoteVirtualNetwork SubResourcePtrInput `pulumi:"remoteVirtualNetwork"`
 	// Resource tags.
@@ -16377,11 +16663,6 @@ func (o HubVirtualNetworkConnectionOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HubVirtualNetworkConnection) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The provisioning state of the resource.
-func (o HubVirtualNetworkConnectionOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HubVirtualNetworkConnection) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
-}
-
 // Reference to the remote virtual network.
 func (o HubVirtualNetworkConnectionOutput) RemoteVirtualNetwork() SubResourcePtrOutput {
 	return o.ApplyT(func(v HubVirtualNetworkConnection) *SubResource { return v.RemoteVirtualNetwork }).(SubResourcePtrOutput)
@@ -16427,7 +16708,7 @@ type HubVirtualNetworkConnectionResponse struct {
 	// Resource name.
 	Name string `pulumi:"name"`
 	// The provisioning state of the resource.
-	ProvisioningState *string `pulumi:"provisioningState"`
+	ProvisioningState string `pulumi:"provisioningState"`
 	// Reference to the remote virtual network.
 	RemoteVirtualNetwork *SubResourceResponse `pulumi:"remoteVirtualNetwork"`
 	// Resource tags.
@@ -16462,7 +16743,7 @@ type HubVirtualNetworkConnectionResponseArgs struct {
 	// Resource name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The provisioning state of the resource.
-	ProvisioningState pulumi.StringPtrInput `pulumi:"provisioningState"`
+	ProvisioningState pulumi.StringInput `pulumi:"provisioningState"`
 	// Reference to the remote virtual network.
 	RemoteVirtualNetwork SubResourceResponsePtrInput `pulumi:"remoteVirtualNetwork"`
 	// Resource tags.
@@ -16554,8 +16835,8 @@ func (o HubVirtualNetworkConnectionResponseOutput) Name() pulumi.StringOutput {
 }
 
 // The provisioning state of the resource.
-func (o HubVirtualNetworkConnectionResponseOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HubVirtualNetworkConnectionResponse) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+func (o HubVirtualNetworkConnectionResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v HubVirtualNetworkConnectionResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Reference to the remote virtual network.
@@ -32613,8 +32894,6 @@ func (o VpnClientRootCertificateResponseArrayOutput) Index(i pulumi.IntInput) Vp
 
 // VpnConnection Resource.
 type VpnConnectionType struct {
-	// The connection status.
-	ConnectionStatus *string `pulumi:"connectionStatus"`
 	// EnableBgp flag
 	EnableBgp *bool `pulumi:"enableBgp"`
 	// Resource ID.
@@ -32623,8 +32902,6 @@ type VpnConnectionType struct {
 	IpsecPolicies []IpsecPolicy `pulumi:"ipsecPolicies"`
 	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 	Name *string `pulumi:"name"`
-	// The provisioning state of the resource.
-	ProvisioningState *string `pulumi:"provisioningState"`
 	// Id of the connected vpn site.
 	RemoteVpnSite *SubResource `pulumi:"remoteVpnSite"`
 	// routing weight for vpn connection.
@@ -32646,8 +32923,6 @@ type VpnConnectionTypeInput interface {
 
 // VpnConnection Resource.
 type VpnConnectionTypeArgs struct {
-	// The connection status.
-	ConnectionStatus pulumi.StringPtrInput `pulumi:"connectionStatus"`
 	// EnableBgp flag
 	EnableBgp pulumi.BoolPtrInput `pulumi:"enableBgp"`
 	// Resource ID.
@@ -32656,8 +32931,6 @@ type VpnConnectionTypeArgs struct {
 	IpsecPolicies IpsecPolicyArrayInput `pulumi:"ipsecPolicies"`
 	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The provisioning state of the resource.
-	ProvisioningState pulumi.StringPtrInput `pulumi:"provisioningState"`
 	// Id of the connected vpn site.
 	RemoteVpnSite SubResourcePtrInput `pulumi:"remoteVpnSite"`
 	// routing weight for vpn connection.
@@ -32718,11 +32991,6 @@ func (o VpnConnectionTypeOutput) ToVpnConnectionTypeOutputWithContext(ctx contex
 	return o
 }
 
-// The connection status.
-func (o VpnConnectionTypeOutput) ConnectionStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VpnConnectionType) *string { return v.ConnectionStatus }).(pulumi.StringPtrOutput)
-}
-
 // EnableBgp flag
 func (o VpnConnectionTypeOutput) EnableBgp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VpnConnectionType) *bool { return v.EnableBgp }).(pulumi.BoolPtrOutput)
@@ -32741,11 +33009,6 @@ func (o VpnConnectionTypeOutput) IpsecPolicies() IpsecPolicyArrayOutput {
 // The name of the resource that is unique within a resource group. This name can be used to access the resource.
 func (o VpnConnectionTypeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnConnectionType) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The provisioning state of the resource.
-func (o VpnConnectionTypeOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VpnConnectionType) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
 // Id of the connected vpn site.
@@ -32788,7 +33051,7 @@ type VpnConnectionResponse struct {
 	// Expected bandwidth in MBPS.
 	ConnectionBandwidth int `pulumi:"connectionBandwidth"`
 	// The connection status.
-	ConnectionStatus *string `pulumi:"connectionStatus"`
+	ConnectionStatus string `pulumi:"connectionStatus"`
 	// Egress bytes transferred.
 	EgressBytesTransferred int `pulumi:"egressBytesTransferred"`
 	// EnableBgp flag
@@ -32804,7 +33067,7 @@ type VpnConnectionResponse struct {
 	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 	Name *string `pulumi:"name"`
 	// The provisioning state of the resource.
-	ProvisioningState *string `pulumi:"provisioningState"`
+	ProvisioningState string `pulumi:"provisioningState"`
 	// Id of the connected vpn site.
 	RemoteVpnSite *SubResourceResponse `pulumi:"remoteVpnSite"`
 	// routing weight for vpn connection.
@@ -32829,7 +33092,7 @@ type VpnConnectionResponseArgs struct {
 	// Expected bandwidth in MBPS.
 	ConnectionBandwidth pulumi.IntInput `pulumi:"connectionBandwidth"`
 	// The connection status.
-	ConnectionStatus pulumi.StringPtrInput `pulumi:"connectionStatus"`
+	ConnectionStatus pulumi.StringInput `pulumi:"connectionStatus"`
 	// Egress bytes transferred.
 	EgressBytesTransferred pulumi.IntInput `pulumi:"egressBytesTransferred"`
 	// EnableBgp flag
@@ -32845,7 +33108,7 @@ type VpnConnectionResponseArgs struct {
 	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The provisioning state of the resource.
-	ProvisioningState pulumi.StringPtrInput `pulumi:"provisioningState"`
+	ProvisioningState pulumi.StringInput `pulumi:"provisioningState"`
 	// Id of the connected vpn site.
 	RemoteVpnSite SubResourceResponsePtrInput `pulumi:"remoteVpnSite"`
 	// routing weight for vpn connection.
@@ -32912,8 +33175,8 @@ func (o VpnConnectionResponseOutput) ConnectionBandwidth() pulumi.IntOutput {
 }
 
 // The connection status.
-func (o VpnConnectionResponseOutput) ConnectionStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VpnConnectionResponse) *string { return v.ConnectionStatus }).(pulumi.StringPtrOutput)
+func (o VpnConnectionResponseOutput) ConnectionStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v VpnConnectionResponse) string { return v.ConnectionStatus }).(pulumi.StringOutput)
 }
 
 // Egress bytes transferred.
@@ -32952,8 +33215,8 @@ func (o VpnConnectionResponseOutput) Name() pulumi.StringPtrOutput {
 }
 
 // The provisioning state of the resource.
-func (o VpnConnectionResponseOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VpnConnectionResponse) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+func (o VpnConnectionResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v VpnConnectionResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Id of the connected vpn site.
@@ -33120,6 +33383,8 @@ func init() {
 	pulumi.RegisterOutputType(BackendAddressPoolArrayOutput{})
 	pulumi.RegisterOutputType(BackendAddressPoolResponseOutput{})
 	pulumi.RegisterOutputType(BackendAddressPoolResponseArrayOutput{})
+	pulumi.RegisterOutputType(BgpPeerStatusResponseOutput{})
+	pulumi.RegisterOutputType(BgpPeerStatusResponseArrayOutput{})
 	pulumi.RegisterOutputType(BgpSettingsOutput{})
 	pulumi.RegisterOutputType(BgpSettingsPtrOutput{})
 	pulumi.RegisterOutputType(BgpSettingsResponseOutput{})
@@ -33188,6 +33453,8 @@ func init() {
 	pulumi.RegisterOutputType(FrontendIPConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(FrontendIPConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(FrontendIPConfigurationResponseArrayOutput{})
+	pulumi.RegisterOutputType(GatewayRouteResponseOutput{})
+	pulumi.RegisterOutputType(GatewayRouteResponseArrayOutput{})
 	pulumi.RegisterOutputType(HubVirtualNetworkConnectionOutput{})
 	pulumi.RegisterOutputType(HubVirtualNetworkConnectionArrayOutput{})
 	pulumi.RegisterOutputType(HubVirtualNetworkConnectionResponseOutput{})

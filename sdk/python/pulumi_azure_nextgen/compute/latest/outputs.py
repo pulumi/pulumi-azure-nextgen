@@ -74,6 +74,7 @@ __all__ = [
     'KeyVaultSecretReferenceResponse',
     'LastPatchInstallationSummaryResponse',
     'LinuxConfigurationResponse',
+    'LogAnalyticsOutputResponseResult',
     'MaintenanceRedeployStatusResponse',
     'ManagedDiskParametersResponse',
     'NetworkInterfaceReferenceResponse',
@@ -3714,6 +3715,28 @@ class LinuxConfigurationResponse(dict):
 
 
 @pulumi.output_type
+class LogAnalyticsOutputResponseResult(dict):
+    """
+    LogAnalytics output properties
+    """
+    def __init__(__self__, *,
+                 output: str):
+        """
+        LogAnalytics output properties
+        :param str output: Output file Uri path to blob container.
+        """
+        pulumi.set(__self__, "output", output)
+
+    @property
+    @pulumi.getter
+    def output(self) -> str:
+        """
+        Output file Uri path to blob container.
+        """
+        return pulumi.get(self, "output")
+
+
+@pulumi.output_type
 class MaintenanceRedeployStatusResponse(dict):
     """
     Maintenance Operation Status.
@@ -4311,26 +4334,25 @@ class PrivateEndpointConnectionResponse(dict):
                  id: str,
                  name: str,
                  private_link_service_connection_state: 'outputs.PrivateLinkServiceConnectionStateResponse',
+                 provisioning_state: str,
                  type: str,
-                 private_endpoint: Optional['outputs.PrivateEndpointResponse'] = None,
-                 provisioning_state: Optional[str] = None):
+                 private_endpoint: Optional['outputs.PrivateEndpointResponse'] = None):
         """
         The Private Endpoint Connection resource.
         :param str id: private endpoint connection Id
         :param str name: private endpoint connection name
         :param 'PrivateLinkServiceConnectionStateResponseArgs' private_link_service_connection_state: A collection of information about the state of the connection between DiskAccess and Virtual Network.
+        :param str provisioning_state: The provisioning state of the private endpoint connection resource.
         :param str type: private endpoint connection type
         :param 'PrivateEndpointResponseArgs' private_endpoint: The resource of private end point.
-        :param str provisioning_state: The provisioning state of the private endpoint connection resource.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "private_link_service_connection_state", private_link_service_connection_state)
+        pulumi.set(__self__, "provisioning_state", provisioning_state)
         pulumi.set(__self__, "type", type)
         if private_endpoint is not None:
             pulumi.set(__self__, "private_endpoint", private_endpoint)
-        if provisioning_state is not None:
-            pulumi.set(__self__, "provisioning_state", provisioning_state)
 
     @property
     @pulumi.getter
@@ -4357,6 +4379,14 @@ class PrivateEndpointConnectionResponse(dict):
         return pulumi.get(self, "private_link_service_connection_state")
 
     @property
+    @pulumi.getter(name="provisioningState")
+    def provisioning_state(self) -> str:
+        """
+        The provisioning state of the private endpoint connection resource.
+        """
+        return pulumi.get(self, "provisioning_state")
+
+    @property
     @pulumi.getter
     def type(self) -> str:
         """
@@ -4371,14 +4401,6 @@ class PrivateEndpointConnectionResponse(dict):
         The resource of private end point.
         """
         return pulumi.get(self, "private_endpoint")
-
-    @property
-    @pulumi.getter(name="provisioningState")
-    def provisioning_state(self) -> Optional[str]:
-        """
-        The provisioning state of the private endpoint connection resource.
-        """
-        return pulumi.get(self, "provisioning_state")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

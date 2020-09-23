@@ -33125,6 +33125,16 @@ export namespace compute {
         }
 
         /**
+         * LogAnalytics output properties
+         */
+        export interface LogAnalyticsOutputResponse {
+            /**
+             * Output file Uri path to blob container.
+             */
+            output: string;
+        }
+
+        /**
          * Maintenance Operation Status.
          */
         export interface MaintenanceRedeployStatusResponse {
@@ -33354,7 +33364,7 @@ export namespace compute {
             /**
              * The provisioning state of the private endpoint connection resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * private endpoint connection type
              */
@@ -38992,6 +39002,50 @@ export namespace compute {
         }
 
         /**
+         * Api error base.
+         */
+        export interface ApiErrorBaseResponse {
+            /**
+             * The error code.
+             */
+            code?: string;
+            /**
+             * The error message.
+             */
+            message?: string;
+            /**
+             * The target of the particular error.
+             */
+            target?: string;
+        }
+
+        /**
+         * Api error.
+         */
+        export interface ApiErrorResponse {
+            /**
+             * The error code.
+             */
+            code?: string;
+            /**
+             * The Api error details
+             */
+            details?: outputs.compute.v20171201.ApiErrorBaseResponse[];
+            /**
+             * The Api inner error
+             */
+            innererror?: outputs.compute.v20171201.InnerErrorResponse;
+            /**
+             * The error message.
+             */
+            message?: string;
+            /**
+             * The target of the particular error.
+             */
+            target?: string;
+        }
+
+        /**
          * The configuration parameters used for performing automatic OS upgrade.
          */
         export interface AutoOSUpgradePolicyResponse {
@@ -39244,6 +39298,20 @@ export namespace compute {
         }
 
         /**
+         * Inner error details.
+         */
+        export interface InnerErrorResponse {
+            /**
+             * The internal error message or exception dump.
+             */
+            errordetail?: string;
+            /**
+             * The exception type.
+             */
+            exceptiontype?: string;
+        }
+
+        /**
          * Instance view status.
          */
         export interface InstanceViewStatusResponse {
@@ -39309,6 +39377,16 @@ export namespace compute {
              * Specifies the ssh key configuration for a Linux OS.
              */
             ssh?: outputs.compute.v20171201.SshConfigurationResponse;
+        }
+
+        /**
+         * LogAnalytics output properties
+         */
+        export interface LogAnalyticsOutputResponse {
+            /**
+             * Output file Uri path to blob container.
+             */
+            output: string;
         }
 
         /**
@@ -40778,6 +40856,16 @@ export namespace compute {
              * Specifies the ssh key configuration for a Linux OS.
              */
             ssh?: outputs.compute.v20180401.SshConfigurationResponse;
+        }
+
+        /**
+         * LogAnalytics output properties
+         */
+        export interface LogAnalyticsOutputResponse {
+            /**
+             * Output file Uri path to blob container.
+             */
+            output: string;
         }
 
         /**
@@ -42459,6 +42547,16 @@ export namespace compute {
              * Specifies the ssh key configuration for a Linux OS.
              */
             ssh?: outputs.compute.v20180601.SshConfigurationResponse;
+        }
+
+        /**
+         * LogAnalytics output properties
+         */
+        export interface LogAnalyticsOutputResponse {
+            /**
+             * Output file Uri path to blob container.
+             */
+            output: string;
         }
 
         /**
@@ -44304,6 +44402,16 @@ export namespace compute {
              * Specifies the ssh key configuration for a Linux OS.
              */
             ssh?: outputs.compute.v20181001.SshConfigurationResponse;
+        }
+
+        /**
+         * LogAnalytics output properties
+         */
+        export interface LogAnalyticsOutputResponse {
+            /**
+             * Output file Uri path to blob container.
+             */
+            output: string;
         }
 
         /**
@@ -46263,6 +46371,16 @@ export namespace compute {
              * Specifies the ssh key configuration for a Linux OS.
              */
             ssh?: outputs.compute.v20190301.SshConfigurationResponse;
+        }
+
+        /**
+         * LogAnalytics output properties
+         */
+        export interface LogAnalyticsOutputResponse {
+            /**
+             * Output file Uri path to blob container.
+             */
+            output: string;
         }
 
         /**
@@ -48379,6 +48497,16 @@ export namespace compute {
              * Specifies the ssh key configuration for a Linux OS.
              */
             ssh?: outputs.compute.v20190701.SshConfigurationResponse;
+        }
+
+        /**
+         * LogAnalytics output properties
+         */
+        export interface LogAnalyticsOutputResponse {
+            /**
+             * Output file Uri path to blob container.
+             */
+            output: string;
         }
 
         /**
@@ -50588,6 +50716,16 @@ export namespace compute {
         }
 
         /**
+         * LogAnalytics output properties
+         */
+        export interface LogAnalyticsOutputResponse {
+            /**
+             * Output file Uri path to blob container.
+             */
+            output: string;
+        }
+
+        /**
          * Maintenance Operation Status.
          */
         export interface MaintenanceRedeployStatusResponse {
@@ -52061,7 +52199,7 @@ export namespace compute {
             /**
              * The provisioning state of the private endpoint connection resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * private endpoint connection type
              */
@@ -52798,6 +52936,16 @@ export namespace compute {
              * Specifies the ssh key configuration for a Linux OS.
              */
             ssh?: outputs.compute.v20200601.SshConfigurationResponse;
+        }
+
+        /**
+         * LogAnalytics output properties
+         */
+        export interface LogAnalyticsOutputResponse {
+            /**
+             * Output file Uri path to blob container.
+             */
+            output: string;
         }
 
         /**
@@ -54474,7 +54622,7 @@ export namespace compute {
             /**
              * The provisioning state of the private endpoint connection resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * private endpoint connection type
              */
@@ -75010,6 +75158,46 @@ export namespace customerinsights {
         }
 
         /**
+         * Definition of canonical profile.
+         */
+        export interface CanonicalProfileDefinitionResponse {
+            /**
+             * Canonical profile ID.
+             */
+            canonicalProfileId?: number;
+            /**
+             * Properties of the canonical profile.
+             */
+            properties?: outputs.customerinsights.latest.CanonicalProfileDefinitionResponseProperties[];
+        }
+
+        /**
+         * The definition of a canonical profile property.
+         */
+        export interface CanonicalProfileDefinitionResponseProperties {
+            /**
+             * Profile name.
+             */
+            profileName?: string;
+            /**
+             * Property name of profile.
+             */
+            profilePropertyName?: string;
+            /**
+             * The rank.
+             */
+            rank?: number;
+            /**
+             * Type of canonical property value.
+             */
+            type?: string;
+            /**
+             * Value of the canonical property.
+             */
+            value?: string;
+        }
+
+        /**
          * Connector mapping property availability.
          */
         export interface ConnectorMappingAvailabilityResponse {
@@ -75289,6 +75477,50 @@ export namespace customerinsights {
              * The target property that maps to the source property.
              */
             targetPropertyName: string;
+        }
+
+        /**
+         * The definition of the prediction distribution.
+         */
+        export interface PredictionDistributionDefinitionResponse {
+            /**
+             * Distributions of the prediction.
+             */
+            distributions?: outputs.customerinsights.latest.PredictionDistributionDefinitionResponseDistributions[];
+            /**
+             * Total negatives in the distribution.
+             */
+            totalNegatives?: number;
+            /**
+             * Total positive in the distribution.
+             */
+            totalPositives?: number;
+        }
+
+        /**
+         * The definition of a prediction distribution.
+         */
+        export interface PredictionDistributionDefinitionResponseDistributions {
+            /**
+             * Number of negatives.
+             */
+            negatives?: number;
+            /**
+             * Number of negatives above threshold.
+             */
+            negativesAboveThreshold?: number;
+            /**
+             * Number of positives.
+             */
+            positives?: number;
+            /**
+             * Number of positives above threshold.
+             */
+            positivesAboveThreshold?: number;
+            /**
+             * Score threshold.
+             */
+            scoreThreshold?: number;
         }
 
         /**
@@ -76018,6 +76250,46 @@ export namespace customerinsights {
         }
 
         /**
+         * Definition of canonical profile.
+         */
+        export interface CanonicalProfileDefinitionResponse {
+            /**
+             * Canonical profile ID.
+             */
+            canonicalProfileId?: number;
+            /**
+             * Properties of the canonical profile.
+             */
+            properties?: outputs.customerinsights.v20170426.CanonicalProfileDefinitionResponseProperties[];
+        }
+
+        /**
+         * The definition of a canonical profile property.
+         */
+        export interface CanonicalProfileDefinitionResponseProperties {
+            /**
+             * Profile name.
+             */
+            profileName?: string;
+            /**
+             * Property name of profile.
+             */
+            profilePropertyName?: string;
+            /**
+             * The rank.
+             */
+            rank?: number;
+            /**
+             * Type of canonical property value.
+             */
+            type?: string;
+            /**
+             * Value of the canonical property.
+             */
+            value?: string;
+        }
+
+        /**
          * Connector mapping property availability.
          */
         export interface ConnectorMappingAvailabilityResponse {
@@ -76297,6 +76569,50 @@ export namespace customerinsights {
              * The target property that maps to the source property.
              */
             targetPropertyName: string;
+        }
+
+        /**
+         * The definition of the prediction distribution.
+         */
+        export interface PredictionDistributionDefinitionResponse {
+            /**
+             * Distributions of the prediction.
+             */
+            distributions?: outputs.customerinsights.v20170426.PredictionDistributionDefinitionResponseDistributions[];
+            /**
+             * Total negatives in the distribution.
+             */
+            totalNegatives?: number;
+            /**
+             * Total positive in the distribution.
+             */
+            totalPositives?: number;
+        }
+
+        /**
+         * The definition of a prediction distribution.
+         */
+        export interface PredictionDistributionDefinitionResponseDistributions {
+            /**
+             * Number of negatives.
+             */
+            negatives?: number;
+            /**
+             * Number of negatives above threshold.
+             */
+            negativesAboveThreshold?: number;
+            /**
+             * Number of positives.
+             */
+            positives?: number;
+            /**
+             * Number of positives above threshold.
+             */
+            positivesAboveThreshold?: number;
+            /**
+             * Score threshold.
+             */
+            scoreThreshold?: number;
         }
 
         /**
@@ -81586,7 +81902,7 @@ export namespace databricks {
             /**
              * The type of variable that this is
              */
-            type?: string;
+            type: string;
             /**
              * The value which should be used for this field.
              */
@@ -81638,7 +81954,7 @@ export namespace databricks {
             /**
              * The type of variable that this is
              */
-            type?: string;
+            type: string;
             /**
              * The value which should be used for this field.
              */
@@ -81652,7 +81968,7 @@ export namespace databricks {
             /**
              * The type of variable that this is
              */
-            type?: string;
+            type: string;
             /**
              * The value which should be used for this field.
              */
@@ -81784,7 +82100,7 @@ export namespace databricks {
             /**
              * The type of variable that this is
              */
-            type?: string;
+            type: string;
             /**
              * The value which should be used for this field.
              */
@@ -81836,7 +82152,7 @@ export namespace databricks {
             /**
              * The type of variable that this is
              */
-            type?: string;
+            type: string;
             /**
              * The value which should be used for this field.
              */
@@ -81850,7 +82166,7 @@ export namespace databricks {
             /**
              * The type of variable that this is
              */
-            type?: string;
+            type: string;
             /**
              * The value which should be used for this field.
              */
@@ -88069,6 +88385,32 @@ export namespace datafactory {
         }
 
         /**
+         * The linked integration runtime information.
+         */
+        export interface LinkedIntegrationRuntimeResponse {
+            /**
+             * The creating time of the linked integration runtime.
+             */
+            createTime: string;
+            /**
+             * The location of the data factory for which the linked integration runtime belong to.
+             */
+            dataFactoryLocation: string;
+            /**
+             * The name of the data factory for which the linked integration runtime belong to.
+             */
+            dataFactoryName: string;
+            /**
+             * The name of the linked integration runtime.
+             */
+            name: string;
+            /**
+             * The subscription ID for which the linked integration runtime belong to.
+             */
+            subscriptionId: string;
+        }
+
+        /**
          * Linked service reference type.
          */
         export interface LinkedServiceReferenceResponse {
@@ -88179,6 +88521,76 @@ export namespace datafactory {
         }
 
         /**
+         * Error definition for managed integration runtime.
+         */
+        export interface ManagedIntegrationRuntimeErrorResponse {
+            /**
+             * Error code.
+             */
+            code: string;
+            /**
+             * Error message.
+             */
+            message: string;
+            /**
+             * Managed integration runtime error parameters.
+             */
+            parameters: string[];
+            /**
+             * The time when the error occurred.
+             */
+            time: string;
+        }
+
+        /**
+         * Properties of integration runtime node.
+         */
+        export interface ManagedIntegrationRuntimeNodeResponse {
+            /**
+             * The errors that occurred on this integration runtime node.
+             */
+            errors?: outputs.datafactory.latest.ManagedIntegrationRuntimeErrorResponse[];
+            /**
+             * The managed integration runtime node id.
+             */
+            nodeId: string;
+            /**
+             * The managed integration runtime node status.
+             */
+            status: string;
+        }
+
+        /**
+         * Properties of managed integration runtime operation result.
+         */
+        export interface ManagedIntegrationRuntimeOperationResultResponse {
+            /**
+             * The activity id for the operation request.
+             */
+            activityId: string;
+            /**
+             * The error code.
+             */
+            errorCode: string;
+            /**
+             * Managed integration runtime error parameters.
+             */
+            parameters: string[];
+            /**
+             * The operation result.
+             */
+            result: string;
+            /**
+             * The start time of the operation.
+             */
+            startTime: string;
+            /**
+             * The operation type. Could be start or stop.
+             */
+            type: string;
+        }
+
+        /**
          * Managed integration runtime, including managed elastic and managed dedicated integration runtimes.
          */
         export interface ManagedIntegrationRuntimeResponse {
@@ -88196,6 +88608,40 @@ export namespace datafactory {
             ssisProperties?: outputs.datafactory.latest.IntegrationRuntimeSsisPropertiesResponse;
             /**
              * Integration runtime state, only valid for managed dedicated integration runtime.
+             */
+            state: string;
+            /**
+             * Type of integration runtime.
+             */
+            type: "Managed";
+        }
+
+        /**
+         * Managed integration runtime status.
+         */
+        export interface ManagedIntegrationRuntimeStatusResponse {
+            /**
+             * The time at which the integration runtime was created, in ISO8601 format.
+             */
+            createTime: string;
+            /**
+             * The data factory name which the integration runtime belong to.
+             */
+            dataFactoryName: string;
+            /**
+             * The last operation result that occurred on this integration runtime.
+             */
+            lastOperation: outputs.datafactory.latest.ManagedIntegrationRuntimeOperationResultResponse;
+            /**
+             * The list of nodes for managed integration runtime.
+             */
+            nodes: outputs.datafactory.latest.ManagedIntegrationRuntimeNodeResponse[];
+            /**
+             * The errors that occurred on this integration runtime.
+             */
+            otherErrors: outputs.datafactory.latest.ManagedIntegrationRuntimeErrorResponse[];
+            /**
+             * The state of integration runtime.
              */
             state: string;
             /**
@@ -91365,6 +91811,84 @@ export namespace datafactory {
         }
 
         /**
+         * Properties of Self-hosted integration runtime node.
+         */
+        export interface SelfHostedIntegrationRuntimeNodeResponse {
+            /**
+             * The integration runtime capabilities dictionary
+             */
+            capabilities: {[key: string]: string};
+            /**
+             * Maximum concurrent jobs on the integration runtime node.
+             */
+            concurrentJobsLimit: number;
+            /**
+             * The time at which the integration runtime will expire in ISO8601 format.
+             */
+            expiryTime: string;
+            /**
+             * URI for the host machine of the integration runtime.
+             */
+            hostServiceUri: string;
+            /**
+             * Indicates whether this node is the active dispatcher for integration runtime requests.
+             */
+            isActiveDispatcher: boolean;
+            /**
+             * The most recent time at which the integration runtime was connected in ISO8601 format.
+             */
+            lastConnectTime: string;
+            /**
+             * The last time for the integration runtime node update end.
+             */
+            lastEndUpdateTime: string;
+            /**
+             * The time the node last started up.
+             */
+            lastStartTime: string;
+            /**
+             * The last time for the integration runtime node update start.
+             */
+            lastStartUpdateTime: string;
+            /**
+             * The integration runtime node last stop time.
+             */
+            lastStopTime: string;
+            /**
+             * The result of the last integration runtime node update.
+             */
+            lastUpdateResult: string;
+            /**
+             * Machine name of the integration runtime node.
+             */
+            machineName: string;
+            /**
+             * The maximum concurrent jobs in this integration runtime.
+             */
+            maxConcurrentJobs: number;
+            /**
+             * Name of the integration runtime node.
+             */
+            nodeName: string;
+            /**
+             * The time at which the integration runtime node was registered in ISO8601 format.
+             */
+            registerTime: string;
+            /**
+             * Status of the integration runtime node.
+             */
+            status: string;
+            /**
+             * Version of the integration runtime node.
+             */
+            version: string;
+            /**
+             * Status of the integration runtime node version.
+             */
+            versionStatus: string;
+        }
+
+        /**
          * Self-hosted integration runtime.
          */
         export interface SelfHostedIntegrationRuntimeResponse {
@@ -91380,6 +91904,88 @@ export namespace datafactory {
              * Type of integration runtime.
              */
             type: "SelfHosted";
+        }
+
+        /**
+         * Self-hosted integration runtime status.
+         */
+        export interface SelfHostedIntegrationRuntimeStatusResponse {
+            /**
+             * Whether Self-hosted integration runtime auto update has been turned on.
+             */
+            autoUpdate: string;
+            /**
+             * The estimated time when the self-hosted integration runtime will be updated.
+             */
+            autoUpdateETA: string;
+            /**
+             * Object with additional information about integration runtime capabilities.
+             */
+            capabilities: {[key: string]: string};
+            /**
+             * The time at which the integration runtime was created, in ISO8601 format.
+             */
+            createTime: string;
+            /**
+             * The data factory name which the integration runtime belong to.
+             */
+            dataFactoryName: string;
+            /**
+             * It is used to set the encryption mode for node-node communication channel (when more than 2 self-hosted integration runtime nodes exist).
+             */
+            internalChannelEncryption: string;
+            /**
+             * The latest version on download center.
+             */
+            latestVersion: string;
+            /**
+             * The list of linked integration runtimes that are created to share with this integration runtime.
+             */
+            links?: outputs.datafactory.latest.LinkedIntegrationRuntimeResponse[];
+            /**
+             * The local time zone offset in hours.
+             */
+            localTimeZoneOffset: string;
+            /**
+             * The list of nodes for this integration runtime.
+             */
+            nodes?: outputs.datafactory.latest.SelfHostedIntegrationRuntimeNodeResponse[];
+            /**
+             * The version that the integration runtime is going to update to.
+             */
+            pushedVersion: string;
+            /**
+             * The date at which the integration runtime will be scheduled to update, in ISO8601 format.
+             */
+            scheduledUpdateDate: string;
+            /**
+             * The URLs for the services used in integration runtime backend service.
+             */
+            serviceUrls: string[];
+            /**
+             * The state of integration runtime.
+             */
+            state: string;
+            /**
+             * The task queue id of the integration runtime.
+             */
+            taskQueueId: string;
+            /**
+             * Type of integration runtime.
+             */
+            type: "SelfHosted";
+            /**
+             * The time in the date scheduled by service to update the integration runtime, e.g., PT03H is 3 hours
+             */
+            updateDelayOffset: string;
+            /**
+             * Version of the integration runtime.
+             */
+            version: string;
+            /**
+             * Status of the integration runtime version.
+             */
+            versionStatus: string;
         }
 
         /**
@@ -92159,6 +92765,244 @@ export namespace datafactory {
         }
 
         /**
+         * Ssis environment reference.
+         */
+        export interface SsisEnvironmentReferenceResponse {
+            /**
+             * Environment folder name.
+             */
+            environmentFolderName?: string;
+            /**
+             * Environment name.
+             */
+            environmentName?: string;
+            /**
+             * Environment reference id.
+             */
+            id?: number;
+            /**
+             * Reference type
+             */
+            referenceType?: string;
+        }
+
+        /**
+         * Ssis environment.
+         */
+        export interface SsisEnvironmentResponse {
+            /**
+             * Metadata description.
+             */
+            description?: string;
+            /**
+             * Folder id which contains environment.
+             */
+            folderId?: number;
+            /**
+             * Metadata id.
+             */
+            id?: number;
+            /**
+             * Metadata name.
+             */
+            name?: string;
+            /**
+             * Type of metadata.
+             */
+            type: "Environment";
+            /**
+             * Variable in environment
+             */
+            variables?: outputs.datafactory.latest.SsisVariableResponse[];
+        }
+
+        /**
+         * Ssis folder.
+         */
+        export interface SsisFolderResponse {
+            /**
+             * Metadata description.
+             */
+            description?: string;
+            /**
+             * Metadata id.
+             */
+            id?: number;
+            /**
+             * Metadata name.
+             */
+            name?: string;
+            /**
+             * Type of metadata.
+             */
+            type: "Folder";
+        }
+
+        /**
+         * Ssis Package.
+         */
+        export interface SsisPackageResponse {
+            /**
+             * Metadata description.
+             */
+            description?: string;
+            /**
+             * Folder id which contains package.
+             */
+            folderId?: number;
+            /**
+             * Metadata id.
+             */
+            id?: number;
+            /**
+             * Metadata name.
+             */
+            name?: string;
+            /**
+             * Parameters in package
+             */
+            parameters?: outputs.datafactory.latest.SsisParameterResponse[];
+            /**
+             * Project id which contains package.
+             */
+            projectId?: number;
+            /**
+             * Project version which contains package.
+             */
+            projectVersion?: number;
+            /**
+             * Type of metadata.
+             */
+            type: "Package";
+        }
+
+        /**
+         * Ssis parameter.
+         */
+        export interface SsisParameterResponse {
+            /**
+             * Parameter type.
+             */
+            dataType?: string;
+            /**
+             * Default value of parameter.
+             */
+            defaultValue?: string;
+            /**
+             * Parameter description.
+             */
+            description?: string;
+            /**
+             * Design default value of parameter.
+             */
+            designDefaultValue?: string;
+            /**
+             * Parameter id.
+             */
+            id?: number;
+            /**
+             * Parameter name.
+             */
+            name?: string;
+            /**
+             * Whether parameter is required.
+             */
+            required?: boolean;
+            /**
+             * Whether parameter is sensitive.
+             */
+            sensitive?: boolean;
+            /**
+             * Default sensitive value of parameter.
+             */
+            sensitiveDefaultValue?: string;
+            /**
+             * Parameter value set.
+             */
+            valueSet?: boolean;
+            /**
+             * Parameter value type.
+             */
+            valueType?: string;
+            /**
+             * Parameter reference variable.
+             */
+            variable?: string;
+        }
+
+        /**
+         * Ssis project.
+         */
+        export interface SsisProjectResponse {
+            /**
+             * Metadata description.
+             */
+            description?: string;
+            /**
+             * Environment reference in project
+             */
+            environmentRefs?: outputs.datafactory.latest.SsisEnvironmentReferenceResponse[];
+            /**
+             * Folder id which contains project.
+             */
+            folderId?: number;
+            /**
+             * Metadata id.
+             */
+            id?: number;
+            /**
+             * Metadata name.
+             */
+            name?: string;
+            /**
+             * Parameters in project
+             */
+            parameters?: outputs.datafactory.latest.SsisParameterResponse[];
+            /**
+             * Type of metadata.
+             */
+            type: "Project";
+            /**
+             * Project version.
+             */
+            version?: number;
+        }
+
+        /**
+         * Ssis variable.
+         */
+        export interface SsisVariableResponse {
+            /**
+             * Variable type.
+             */
+            dataType?: string;
+            /**
+             * Variable description.
+             */
+            description?: string;
+            /**
+             * Variable id.
+             */
+            id?: number;
+            /**
+             * Variable name.
+             */
+            name?: string;
+            /**
+             * Whether variable is sensitive.
+             */
+            sensitive?: boolean;
+            /**
+             * Variable sensitive value.
+             */
+            sensitiveValue?: string;
+            /**
+             * Variable value.
+             */
+            value?: string;
+        }
+
+        /**
          * Linked service for Sybase data source.
          */
         export interface SybaseLinkedServiceResponse {
@@ -92516,6 +93360,32 @@ export namespace datafactory {
              * Trigger type.
              */
             type: "TumblingWindowTrigger";
+        }
+
+        /**
+         * Get Data Plane read only token request definition.
+         */
+        export interface UserAccessPolicyResponse {
+            /**
+             * The resource path to get access relative to factory. Currently only empty string is supported which corresponds to the factory resource.
+             */
+            accessResourcePath?: string;
+            /**
+             * Expiration time for the token. Maximum duration for the token is eight hours and by default the token will expire in eight hours.
+             */
+            expireTime?: string;
+            /**
+             * The string with permissions for Data Plane access. Currently only 'r' is supported which grants read only access.
+             */
+            permissions?: string;
+            /**
+             * The name of the profile. Currently only the default is supported. The default value is DefaultProfile.
+             */
+            profileName?: string;
+            /**
+             * Start time for the token. If not specified the current time will be used.
+             */
+            startTime?: string;
         }
 
         /**
@@ -96374,6 +97244,32 @@ export namespace datafactory {
         }
 
         /**
+         * The linked integration runtime information.
+         */
+        export interface LinkedIntegrationRuntimeResponse {
+            /**
+             * The creating time of the linked integration runtime.
+             */
+            createTime: string;
+            /**
+             * The location of the data factory for which the linked integration runtime belong to.
+             */
+            dataFactoryLocation: string;
+            /**
+             * The name of the data factory for which the linked integration runtime belong to.
+             */
+            dataFactoryName: string;
+            /**
+             * The name of the linked integration runtime.
+             */
+            name: string;
+            /**
+             * The subscription ID for which the linked integration runtime belong to.
+             */
+            subscriptionId: string;
+        }
+
+        /**
          * Linked service reference type.
          */
         export interface LinkedServiceReferenceResponse {
@@ -96472,6 +97368,76 @@ export namespace datafactory {
         }
 
         /**
+         * Error definition for managed integration runtime.
+         */
+        export interface ManagedIntegrationRuntimeErrorResponse {
+            /**
+             * Error code.
+             */
+            code: string;
+            /**
+             * Error message.
+             */
+            message: string;
+            /**
+             * Managed integration runtime error parameters.
+             */
+            parameters: string[];
+            /**
+             * The time when the error occurred.
+             */
+            time: string;
+        }
+
+        /**
+         * Properties of integration runtime node.
+         */
+        export interface ManagedIntegrationRuntimeNodeResponse {
+            /**
+             * The errors that occurred on this integration runtime node.
+             */
+            errors?: outputs.datafactory.v20170901preview.ManagedIntegrationRuntimeErrorResponse[];
+            /**
+             * The managed integration runtime node id.
+             */
+            nodeId: string;
+            /**
+             * The managed integration runtime node status.
+             */
+            status: string;
+        }
+
+        /**
+         * Properties of managed integration runtime operation result.
+         */
+        export interface ManagedIntegrationRuntimeOperationResultResponse {
+            /**
+             * The activity id for the operation request.
+             */
+            activityId: string;
+            /**
+             * The error code.
+             */
+            errorCode: string;
+            /**
+             * Managed integration runtime error parameters.
+             */
+            parameters: string[];
+            /**
+             * The operation result.
+             */
+            result: string;
+            /**
+             * The start time of the operation.
+             */
+            startTime: string;
+            /**
+             * The operation type. Could be start or stop.
+             */
+            type: string;
+        }
+
+        /**
          * Managed integration runtime, including managed elastic and managed dedicated integration runtimes.
          */
         export interface ManagedIntegrationRuntimeResponse {
@@ -96495,6 +97461,40 @@ export namespace datafactory {
              * Type of integration runtime.
              */
             type: "Managed";
+        }
+
+        /**
+         * Managed integration runtime status.
+         */
+        export interface ManagedIntegrationRuntimeStatusResponse {
+            /**
+             * The time at which the integration runtime was created, in ISO8601 format.
+             */
+            createTime: string;
+            /**
+             * The data factory name which the integration runtime belong to.
+             */
+            dataFactoryName: string;
+            /**
+             * The last operation result that occurred on this integration runtime.
+             */
+            lastOperation: outputs.datafactory.v20170901preview.ManagedIntegrationRuntimeOperationResultResponse;
+            /**
+             * The list of nodes for managed integration runtime.
+             */
+            nodes: outputs.datafactory.v20170901preview.ManagedIntegrationRuntimeNodeResponse[];
+            /**
+             * The errors that occurred on this integration runtime.
+             */
+            otherErrors: outputs.datafactory.v20170901preview.ManagedIntegrationRuntimeErrorResponse[];
+            /**
+             * The state of integration runtime.
+             */
+            state: string;
+            /**
+             * Type of integration runtime.
+             */
+            type?: "Managed";
         }
 
         /**
@@ -98108,6 +99108,84 @@ export namespace datafactory {
         }
 
         /**
+         * Properties of Self-hosted integration runtime node.
+         */
+        export interface SelfHostedIntegrationRuntimeNodeResponse {
+            /**
+             * The integration runtime capabilities dictionary
+             */
+            capabilities: {[key: string]: string};
+            /**
+             * Maximum concurrent jobs on the integration runtime node.
+             */
+            concurrentJobsLimit: number;
+            /**
+             * The time at which the integration runtime will expire in ISO8601 format.
+             */
+            expiryTime: string;
+            /**
+             * URI for the host machine of the integration runtime.
+             */
+            hostServiceUri: string;
+            /**
+             * Indicates whether this node is the active dispatcher for integration runtime requests.
+             */
+            isActiveDispatcher: boolean;
+            /**
+             * The most recent time at which the integration runtime was connected in ISO8601 format.
+             */
+            lastConnectTime: string;
+            /**
+             * The last time for the integration runtime node update end.
+             */
+            lastEndUpdateTime: string;
+            /**
+             * The time the node last started up.
+             */
+            lastStartTime: string;
+            /**
+             * The last time for the integration runtime node update start.
+             */
+            lastStartUpdateTime: string;
+            /**
+             * The integration runtime node last stop time.
+             */
+            lastStopTime: string;
+            /**
+             * The result of the last integration runtime node update.
+             */
+            lastUpdateResult: string;
+            /**
+             * Machine name of the integration runtime node.
+             */
+            machineName: string;
+            /**
+             * The maximum concurrent jobs in this integration runtime.
+             */
+            maxConcurrentJobs: number;
+            /**
+             * Name of the integration runtime node.
+             */
+            nodeName: string;
+            /**
+             * The time at which the integration runtime node was registered in ISO8601 format.
+             */
+            registerTime: string;
+            /**
+             * Status of the integration runtime node.
+             */
+            status: string;
+            /**
+             * Version of the integration runtime node.
+             */
+            version: string;
+            /**
+             * Status of the integration runtime node version.
+             */
+            versionStatus: string;
+        }
+
+        /**
          * Self-hosted integration runtime.
          */
         export interface SelfHostedIntegrationRuntimeResponse {
@@ -98123,6 +99201,76 @@ export namespace datafactory {
              * Type of integration runtime.
              */
             type: "SelfHosted";
+        }
+
+        /**
+         * Self-hosted integration runtime status.
+         */
+        export interface SelfHostedIntegrationRuntimeStatusResponse {
+            /**
+             * Whether Self-hosted integration runtime auto update has been turned on.
+             */
+            autoUpdate: string;
+            /**
+             * Object with additional information about integration runtime capabilities.
+             */
+            capabilities: {[key: string]: string};
+            /**
+             * The time at which the integration runtime was created, in ISO8601 format.
+             */
+            createTime: string;
+            /**
+             * The data factory name which the integration runtime belong to.
+             */
+            dataFactoryName: string;
+            /**
+             * It is used to set the encryption mode for node-node communication channel (when more than 2 self-hosted integration runtime nodes exist).
+             */
+            internalChannelEncryption: string;
+            /**
+             * The list of linked integration runtimes that are created to share with this integration runtime.
+             */
+            links?: outputs.datafactory.v20170901preview.LinkedIntegrationRuntimeResponse[];
+            /**
+             * The local time zone offset in hours.
+             */
+            localTimeZoneOffset: string;
+            /**
+             * The list of nodes for this integration runtime.
+             */
+            nodes?: outputs.datafactory.v20170901preview.SelfHostedIntegrationRuntimeNodeResponse[];
+            /**
+             * The date at which the integration runtime will be scheduled to update, in ISO8601 format.
+             */
+            scheduledUpdateDate: string;
+            /**
+             * The URLs for the services used in integration runtime backend service.
+             */
+            serviceUrls: string[];
+            /**
+             * The state of integration runtime.
+             */
+            state: string;
+            /**
+             * The task queue id of the integration runtime.
+             */
+            taskQueueId: string;
+            /**
+             * Type of integration runtime.
+             */
+            type?: "SelfHosted";
+            /**
+             * The time in the date scheduled by service to update the integration runtime, e.g., PT03H is 3 hours
+             */
+            updateDelayOffset: string;
+            /**
+             * Version of the integration runtime.
+             */
+            version: string;
+            /**
+             * Status of the integration runtime version.
+             */
+            versionStatus: string;
         }
 
         /**
@@ -105382,6 +106530,32 @@ export namespace datafactory {
         }
 
         /**
+         * The linked integration runtime information.
+         */
+        export interface LinkedIntegrationRuntimeResponse {
+            /**
+             * The creating time of the linked integration runtime.
+             */
+            createTime: string;
+            /**
+             * The location of the data factory for which the linked integration runtime belong to.
+             */
+            dataFactoryLocation: string;
+            /**
+             * The name of the data factory for which the linked integration runtime belong to.
+             */
+            dataFactoryName: string;
+            /**
+             * The name of the linked integration runtime.
+             */
+            name: string;
+            /**
+             * The subscription ID for which the linked integration runtime belong to.
+             */
+            subscriptionId: string;
+        }
+
+        /**
          * Linked service reference type.
          */
         export interface LinkedServiceReferenceResponse {
@@ -105492,6 +106666,76 @@ export namespace datafactory {
         }
 
         /**
+         * Error definition for managed integration runtime.
+         */
+        export interface ManagedIntegrationRuntimeErrorResponse {
+            /**
+             * Error code.
+             */
+            code: string;
+            /**
+             * Error message.
+             */
+            message: string;
+            /**
+             * Managed integration runtime error parameters.
+             */
+            parameters: string[];
+            /**
+             * The time when the error occurred.
+             */
+            time: string;
+        }
+
+        /**
+         * Properties of integration runtime node.
+         */
+        export interface ManagedIntegrationRuntimeNodeResponse {
+            /**
+             * The errors that occurred on this integration runtime node.
+             */
+            errors?: outputs.datafactory.v20180601.ManagedIntegrationRuntimeErrorResponse[];
+            /**
+             * The managed integration runtime node id.
+             */
+            nodeId: string;
+            /**
+             * The managed integration runtime node status.
+             */
+            status: string;
+        }
+
+        /**
+         * Properties of managed integration runtime operation result.
+         */
+        export interface ManagedIntegrationRuntimeOperationResultResponse {
+            /**
+             * The activity id for the operation request.
+             */
+            activityId: string;
+            /**
+             * The error code.
+             */
+            errorCode: string;
+            /**
+             * Managed integration runtime error parameters.
+             */
+            parameters: string[];
+            /**
+             * The operation result.
+             */
+            result: string;
+            /**
+             * The start time of the operation.
+             */
+            startTime: string;
+            /**
+             * The operation type. Could be start or stop.
+             */
+            type: string;
+        }
+
+        /**
          * Managed integration runtime, including managed elastic and managed dedicated integration runtimes.
          */
         export interface ManagedIntegrationRuntimeResponse {
@@ -105509,6 +106753,40 @@ export namespace datafactory {
             ssisProperties?: outputs.datafactory.v20180601.IntegrationRuntimeSsisPropertiesResponse;
             /**
              * Integration runtime state, only valid for managed dedicated integration runtime.
+             */
+            state: string;
+            /**
+             * Type of integration runtime.
+             */
+            type: "Managed";
+        }
+
+        /**
+         * Managed integration runtime status.
+         */
+        export interface ManagedIntegrationRuntimeStatusResponse {
+            /**
+             * The time at which the integration runtime was created, in ISO8601 format.
+             */
+            createTime: string;
+            /**
+             * The data factory name which the integration runtime belong to.
+             */
+            dataFactoryName: string;
+            /**
+             * The last operation result that occurred on this integration runtime.
+             */
+            lastOperation: outputs.datafactory.v20180601.ManagedIntegrationRuntimeOperationResultResponse;
+            /**
+             * The list of nodes for managed integration runtime.
+             */
+            nodes: outputs.datafactory.v20180601.ManagedIntegrationRuntimeNodeResponse[];
+            /**
+             * The errors that occurred on this integration runtime.
+             */
+            otherErrors: outputs.datafactory.v20180601.ManagedIntegrationRuntimeErrorResponse[];
+            /**
+             * The state of integration runtime.
              */
             state: string;
             /**
@@ -108678,6 +109956,84 @@ export namespace datafactory {
         }
 
         /**
+         * Properties of Self-hosted integration runtime node.
+         */
+        export interface SelfHostedIntegrationRuntimeNodeResponse {
+            /**
+             * The integration runtime capabilities dictionary
+             */
+            capabilities: {[key: string]: string};
+            /**
+             * Maximum concurrent jobs on the integration runtime node.
+             */
+            concurrentJobsLimit: number;
+            /**
+             * The time at which the integration runtime will expire in ISO8601 format.
+             */
+            expiryTime: string;
+            /**
+             * URI for the host machine of the integration runtime.
+             */
+            hostServiceUri: string;
+            /**
+             * Indicates whether this node is the active dispatcher for integration runtime requests.
+             */
+            isActiveDispatcher: boolean;
+            /**
+             * The most recent time at which the integration runtime was connected in ISO8601 format.
+             */
+            lastConnectTime: string;
+            /**
+             * The last time for the integration runtime node update end.
+             */
+            lastEndUpdateTime: string;
+            /**
+             * The time the node last started up.
+             */
+            lastStartTime: string;
+            /**
+             * The last time for the integration runtime node update start.
+             */
+            lastStartUpdateTime: string;
+            /**
+             * The integration runtime node last stop time.
+             */
+            lastStopTime: string;
+            /**
+             * The result of the last integration runtime node update.
+             */
+            lastUpdateResult: string;
+            /**
+             * Machine name of the integration runtime node.
+             */
+            machineName: string;
+            /**
+             * The maximum concurrent jobs in this integration runtime.
+             */
+            maxConcurrentJobs: number;
+            /**
+             * Name of the integration runtime node.
+             */
+            nodeName: string;
+            /**
+             * The time at which the integration runtime node was registered in ISO8601 format.
+             */
+            registerTime: string;
+            /**
+             * Status of the integration runtime node.
+             */
+            status: string;
+            /**
+             * Version of the integration runtime node.
+             */
+            version: string;
+            /**
+             * Status of the integration runtime node version.
+             */
+            versionStatus: string;
+        }
+
+        /**
          * Self-hosted integration runtime.
          */
         export interface SelfHostedIntegrationRuntimeResponse {
@@ -108693,6 +110049,88 @@ export namespace datafactory {
              * Type of integration runtime.
              */
             type: "SelfHosted";
+        }
+
+        /**
+         * Self-hosted integration runtime status.
+         */
+        export interface SelfHostedIntegrationRuntimeStatusResponse {
+            /**
+             * Whether Self-hosted integration runtime auto update has been turned on.
+             */
+            autoUpdate: string;
+            /**
+             * The estimated time when the self-hosted integration runtime will be updated.
+             */
+            autoUpdateETA: string;
+            /**
+             * Object with additional information about integration runtime capabilities.
+             */
+            capabilities: {[key: string]: string};
+            /**
+             * The time at which the integration runtime was created, in ISO8601 format.
+             */
+            createTime: string;
+            /**
+             * The data factory name which the integration runtime belong to.
+             */
+            dataFactoryName: string;
+            /**
+             * It is used to set the encryption mode for node-node communication channel (when more than 2 self-hosted integration runtime nodes exist).
+             */
+            internalChannelEncryption: string;
+            /**
+             * The latest version on download center.
+             */
+            latestVersion: string;
+            /**
+             * The list of linked integration runtimes that are created to share with this integration runtime.
+             */
+            links?: outputs.datafactory.v20180601.LinkedIntegrationRuntimeResponse[];
+            /**
+             * The local time zone offset in hours.
+             */
+            localTimeZoneOffset: string;
+            /**
+             * The list of nodes for this integration runtime.
+             */
+            nodes?: outputs.datafactory.v20180601.SelfHostedIntegrationRuntimeNodeResponse[];
+            /**
+             * The version that the integration runtime is going to update to.
+             */
+            pushedVersion: string;
+            /**
+             * The date at which the integration runtime will be scheduled to update, in ISO8601 format.
+             */
+            scheduledUpdateDate: string;
+            /**
+             * The URLs for the services used in integration runtime backend service.
+             */
+            serviceUrls: string[];
+            /**
+             * The state of integration runtime.
+             */
+            state: string;
+            /**
+             * The task queue id of the integration runtime.
+             */
+            taskQueueId: string;
+            /**
+             * Type of integration runtime.
+             */
+            type: "SelfHosted";
+            /**
+             * The time in the date scheduled by service to update the integration runtime, e.g., PT03H is 3 hours
+             */
+            updateDelayOffset: string;
+            /**
+             * Version of the integration runtime.
+             */
+            version: string;
+            /**
+             * Status of the integration runtime version.
+             */
+            versionStatus: string;
         }
 
         /**
@@ -109472,6 +110910,244 @@ export namespace datafactory {
         }
 
         /**
+         * Ssis environment reference.
+         */
+        export interface SsisEnvironmentReferenceResponse {
+            /**
+             * Environment folder name.
+             */
+            environmentFolderName?: string;
+            /**
+             * Environment name.
+             */
+            environmentName?: string;
+            /**
+             * Environment reference id.
+             */
+            id?: number;
+            /**
+             * Reference type
+             */
+            referenceType?: string;
+        }
+
+        /**
+         * Ssis environment.
+         */
+        export interface SsisEnvironmentResponse {
+            /**
+             * Metadata description.
+             */
+            description?: string;
+            /**
+             * Folder id which contains environment.
+             */
+            folderId?: number;
+            /**
+             * Metadata id.
+             */
+            id?: number;
+            /**
+             * Metadata name.
+             */
+            name?: string;
+            /**
+             * Type of metadata.
+             */
+            type: "Environment";
+            /**
+             * Variable in environment
+             */
+            variables?: outputs.datafactory.v20180601.SsisVariableResponse[];
+        }
+
+        /**
+         * Ssis folder.
+         */
+        export interface SsisFolderResponse {
+            /**
+             * Metadata description.
+             */
+            description?: string;
+            /**
+             * Metadata id.
+             */
+            id?: number;
+            /**
+             * Metadata name.
+             */
+            name?: string;
+            /**
+             * Type of metadata.
+             */
+            type: "Folder";
+        }
+
+        /**
+         * Ssis Package.
+         */
+        export interface SsisPackageResponse {
+            /**
+             * Metadata description.
+             */
+            description?: string;
+            /**
+             * Folder id which contains package.
+             */
+            folderId?: number;
+            /**
+             * Metadata id.
+             */
+            id?: number;
+            /**
+             * Metadata name.
+             */
+            name?: string;
+            /**
+             * Parameters in package
+             */
+            parameters?: outputs.datafactory.v20180601.SsisParameterResponse[];
+            /**
+             * Project id which contains package.
+             */
+            projectId?: number;
+            /**
+             * Project version which contains package.
+             */
+            projectVersion?: number;
+            /**
+             * Type of metadata.
+             */
+            type: "Package";
+        }
+
+        /**
+         * Ssis parameter.
+         */
+        export interface SsisParameterResponse {
+            /**
+             * Parameter type.
+             */
+            dataType?: string;
+            /**
+             * Default value of parameter.
+             */
+            defaultValue?: string;
+            /**
+             * Parameter description.
+             */
+            description?: string;
+            /**
+             * Design default value of parameter.
+             */
+            designDefaultValue?: string;
+            /**
+             * Parameter id.
+             */
+            id?: number;
+            /**
+             * Parameter name.
+             */
+            name?: string;
+            /**
+             * Whether parameter is required.
+             */
+            required?: boolean;
+            /**
+             * Whether parameter is sensitive.
+             */
+            sensitive?: boolean;
+            /**
+             * Default sensitive value of parameter.
+             */
+            sensitiveDefaultValue?: string;
+            /**
+             * Parameter value set.
+             */
+            valueSet?: boolean;
+            /**
+             * Parameter value type.
+             */
+            valueType?: string;
+            /**
+             * Parameter reference variable.
+             */
+            variable?: string;
+        }
+
+        /**
+         * Ssis project.
+         */
+        export interface SsisProjectResponse {
+            /**
+             * Metadata description.
+             */
+            description?: string;
+            /**
+             * Environment reference in project
+             */
+            environmentRefs?: outputs.datafactory.v20180601.SsisEnvironmentReferenceResponse[];
+            /**
+             * Folder id which contains project.
+             */
+            folderId?: number;
+            /**
+             * Metadata id.
+             */
+            id?: number;
+            /**
+             * Metadata name.
+             */
+            name?: string;
+            /**
+             * Parameters in project
+             */
+            parameters?: outputs.datafactory.v20180601.SsisParameterResponse[];
+            /**
+             * Type of metadata.
+             */
+            type: "Project";
+            /**
+             * Project version.
+             */
+            version?: number;
+        }
+
+        /**
+         * Ssis variable.
+         */
+        export interface SsisVariableResponse {
+            /**
+             * Variable type.
+             */
+            dataType?: string;
+            /**
+             * Variable description.
+             */
+            description?: string;
+            /**
+             * Variable id.
+             */
+            id?: number;
+            /**
+             * Variable name.
+             */
+            name?: string;
+            /**
+             * Whether variable is sensitive.
+             */
+            sensitive?: boolean;
+            /**
+             * Variable sensitive value.
+             */
+            sensitiveValue?: string;
+            /**
+             * Variable value.
+             */
+            value?: string;
+        }
+
+        /**
          * Linked service for Sybase data source.
          */
         export interface SybaseLinkedServiceResponse {
@@ -109829,6 +111505,32 @@ export namespace datafactory {
              * Trigger type.
              */
             type: "TumblingWindowTrigger";
+        }
+
+        /**
+         * Get Data Plane read only token request definition.
+         */
+        export interface UserAccessPolicyResponse {
+            /**
+             * The resource path to get access relative to factory. Currently only empty string is supported which corresponds to the factory resource.
+             */
+            accessResourcePath?: string;
+            /**
+             * Expiration time for the token. Maximum duration for the token is eight hours and by default the token will expire in eight hours.
+             */
+            expireTime?: string;
+            /**
+             * The string with permissions for Data Plane access. Currently only 'r' is supported which grants read only access.
+             */
+            permissions?: string;
+            /**
+             * The name of the profile. Currently only the default is supported. The default value is DefaultProfile.
+             */
+            profileName?: string;
+            /**
+             * Start time for the token. If not specified the current time will be used.
+             */
+            startTime?: string;
         }
 
         /**
@@ -141928,7 +143630,7 @@ export namespace documentdb {
             /**
              * The status of the Cosmos DB account at the time the operation was called. The status can be one of following. 'Creating' – the Cosmos DB account is being created. When an account is in Creating state, only properties that are specified as input for the Create Cosmos DB account operation are returned. 'Succeeded' – the Cosmos DB account is active for use. 'Updating' – the Cosmos DB account is being updated. 'Deleting' – the Cosmos DB account is being deleted. 'Failed' – the Cosmos DB account failed creation. 'DeletionFailed' – the Cosmos DB account deletion failed.
              */
-            provisioningState?: string;
+            provisioningState: string;
         }
 
         export interface MongoDBCollectionGetPropertiesResponseOptions {
@@ -142573,7 +144275,7 @@ export namespace documentdb {
             /**
              * The status of the Cosmos DB account at the time the operation was called. The status can be one of following. 'Creating' – the Cosmos DB account is being created. When an account is in Creating state, only properties that are specified as input for the Create Cosmos DB account operation are returned. 'Succeeded' – the Cosmos DB account is active for use. 'Updating' – the Cosmos DB account is being updated. 'Deleting' – the Cosmos DB account is being deleted. 'Failed' – the Cosmos DB account failed creation. 'Offline' - the Cosmos DB account is not active. 'DeletionFailed' – the Cosmos DB account deletion failed.
              */
-            provisioningState?: string;
+            provisioningState: string;
         }
 
         /**
@@ -142886,7 +144588,7 @@ export namespace documentdb {
             /**
              * The status of the Cosmos DB account at the time the operation was called. The status can be one of following. 'Creating' – the Cosmos DB account is being created. When an account is in Creating state, only properties that are specified as input for the Create Cosmos DB account operation are returned. 'Succeeded' – the Cosmos DB account is active for use. 'Updating' – the Cosmos DB account is being updated. 'Deleting' – the Cosmos DB account is being deleted. 'Failed' – the Cosmos DB account failed creation. 'Offline' - the Cosmos DB account is not active. 'DeletionFailed' – the Cosmos DB account deletion failed.
              */
-            provisioningState?: string;
+            provisioningState: string;
         }
 
         /**
@@ -143199,7 +144901,7 @@ export namespace documentdb {
             /**
              * The status of the Cosmos DB account at the time the operation was called. The status can be one of following. 'Creating' – the Cosmos DB account is being created. When an account is in Creating state, only properties that are specified as input for the Create Cosmos DB account operation are returned. 'Succeeded' – the Cosmos DB account is active for use. 'Updating' – the Cosmos DB account is being updated. 'Deleting' – the Cosmos DB account is being deleted. 'Failed' – the Cosmos DB account failed creation. 'Offline' - the Cosmos DB account is not active. 'DeletionFailed' – the Cosmos DB account deletion failed.
              */
-            provisioningState?: string;
+            provisioningState: string;
         }
 
         /**
@@ -143512,7 +145214,7 @@ export namespace documentdb {
             /**
              * The status of the Cosmos DB account at the time the operation was called. The status can be one of following. 'Creating' – the Cosmos DB account is being created. When an account is in Creating state, only properties that are specified as input for the Create Cosmos DB account operation are returned. 'Succeeded' – the Cosmos DB account is active for use. 'Updating' – the Cosmos DB account is being updated. 'Deleting' – the Cosmos DB account is being deleted. 'Failed' – the Cosmos DB account failed creation. 'Offline' - the Cosmos DB account is not active. 'DeletionFailed' – the Cosmos DB account deletion failed.
              */
-            provisioningState?: string;
+            provisioningState: string;
         }
 
         /**
@@ -143825,7 +145527,7 @@ export namespace documentdb {
             /**
              * The status of the Cosmos DB account at the time the operation was called. The status can be one of following. 'Creating' – the Cosmos DB account is being created. When an account is in Creating state, only properties that are specified as input for the Create Cosmos DB account operation are returned. 'Succeeded' – the Cosmos DB account is active for use. 'Updating' – the Cosmos DB account is being updated. 'Deleting' – the Cosmos DB account is being deleted. 'Failed' – the Cosmos DB account failed creation. 'Offline' - the Cosmos DB account is not active. 'DeletionFailed' – the Cosmos DB account deletion failed.
              */
-            provisioningState?: string;
+            provisioningState: string;
         }
 
         /**
@@ -144265,7 +145967,7 @@ export namespace documentdb {
             /**
              * The status of the Cosmos DB account at the time the operation was called. The status can be one of following. 'Creating' – the Cosmos DB account is being created. When an account is in Creating state, only properties that are specified as input for the Create Cosmos DB account operation are returned. 'Succeeded' – the Cosmos DB account is active for use. 'Updating' – the Cosmos DB account is being updated. 'Deleting' – the Cosmos DB account is being deleted. 'Failed' – the Cosmos DB account failed creation. 'Offline' - the Cosmos DB account is not active. 'DeletionFailed' – the Cosmos DB account deletion failed.
              */
-            provisioningState?: string;
+            provisioningState: string;
         }
 
         export interface MongoDBCollectionGetPropertiesResponseResource {
@@ -144954,7 +146656,7 @@ export namespace documentdb {
             /**
              * The status of the Cosmos DB account at the time the operation was called. The status can be one of following. 'Creating' – the Cosmos DB account is being created. When an account is in Creating state, only properties that are specified as input for the Create Cosmos DB account operation are returned. 'Succeeded' – the Cosmos DB account is active for use. 'Updating' – the Cosmos DB account is being updated. 'Deleting' – the Cosmos DB account is being deleted. 'Failed' – the Cosmos DB account failed creation. 'Offline' - the Cosmos DB account is not active. 'DeletionFailed' – the Cosmos DB account deletion failed.
              */
-            provisioningState?: string;
+            provisioningState: string;
         }
 
         export interface MongoDBCollectionGetPropertiesResponseResource {
@@ -145641,7 +147343,7 @@ export namespace documentdb {
             /**
              * The status of the Cosmos DB account at the time the operation was called. The status can be one of following. 'Creating' – the Cosmos DB account is being created. When an account is in Creating state, only properties that are specified as input for the Create Cosmos DB account operation are returned. 'Succeeded' – the Cosmos DB account is active for use. 'Updating' – the Cosmos DB account is being updated. 'Deleting' – the Cosmos DB account is being deleted. 'Failed' – the Cosmos DB account failed creation. 'DeletionFailed' – the Cosmos DB account deletion failed.
              */
-            provisioningState?: string;
+            provisioningState: string;
         }
 
         export interface MongoDBCollectionGetPropertiesResponseOptions {
@@ -146483,7 +148185,7 @@ export namespace documentdb {
             /**
              * The status of the Cosmos DB account at the time the operation was called. The status can be one of following. 'Creating' – the Cosmos DB account is being created. When an account is in Creating state, only properties that are specified as input for the Create Cosmos DB account operation are returned. 'Succeeded' – the Cosmos DB account is active for use. 'Updating' – the Cosmos DB account is being updated. 'Deleting' – the Cosmos DB account is being deleted. 'Failed' – the Cosmos DB account failed creation. 'DeletionFailed' – the Cosmos DB account deletion failed.
              */
-            provisioningState?: string;
+            provisioningState: string;
         }
 
         export interface MongoDBCollectionGetPropertiesResponseOptions {
@@ -147377,7 +149079,7 @@ export namespace documentdb {
             /**
              * The status of the Cosmos DB account at the time the operation was called. The status can be one of following. 'Creating' – the Cosmos DB account is being created. When an account is in Creating state, only properties that are specified as input for the Create Cosmos DB account operation are returned. 'Succeeded' – the Cosmos DB account is active for use. 'Updating' – the Cosmos DB account is being updated. 'Deleting' – the Cosmos DB account is being deleted. 'Failed' – the Cosmos DB account failed creation. 'DeletionFailed' – the Cosmos DB account deletion failed.
              */
-            provisioningState?: string;
+            provisioningState: string;
         }
 
         /**
@@ -153040,38 +154742,6 @@ export namespace eventhub {
              * Status of the connection.
              */
             status?: string;
-        }
-
-        /**
-         * Properties to configure Encryption
-         */
-        export interface EncryptionResponse {
-            /**
-             * Enumerates the possible value of keySource for Encryption
-             */
-            keySource?: string;
-            /**
-             * Properties of KeyVault
-             */
-            keyVaultProperties?: outputs.eventhub.v20180101preview.KeyVaultPropertiesResponse[];
-        }
-
-        /**
-         * Properties to configure Identity for Bring your Own Keys
-         */
-        export interface IdentityResponse {
-            /**
-             * ObjectId from the KeyVault
-             */
-            principalId?: string;
-            /**
-             * TenantId from the KeyVault
-             */
-            tenantId?: string;
-            /**
-             * Enumerates the possible value Identity type, which currently supports only 'SystemAssigned'
-             */
-            type?: string;
         }
 
         /**
@@ -161605,7 +163275,7 @@ export namespace keyvault {
             /**
              * Provisioning state of the private endpoint connection.
              */
-            provisioningState?: string;
+            provisioningState: string;
         }
 
         /**
@@ -162015,7 +163685,7 @@ export namespace keyvault {
             /**
              * Provisioning state of the private endpoint connection.
              */
-            provisioningState?: string;
+            provisioningState: string;
         }
 
         /**
@@ -162369,7 +164039,7 @@ export namespace keyvault {
             /**
              * Provisioning state of the private endpoint connection.
              */
-            provisioningState?: string;
+            provisioningState: string;
         }
 
         /**
@@ -162635,7 +164305,7 @@ export namespace keyvault {
             /**
              * Provisioning state of the private endpoint connection.
              */
-            provisioningState?: string;
+            provisioningState: string;
         }
 
         /**
@@ -164243,6 +165913,20 @@ export namespace labservices {
         }
 
         /**
+         * Represents the status of an operation that used the batch API.
+         */
+        export interface OperationBatchStatusResponseItemResponse {
+            /**
+             * status of the long running operation for an environment
+             */
+            operationUrl: string;
+            /**
+             * status of the long running operation for an environment
+             */
+            status: string;
+        }
+
+        /**
          * Details of a Reference Vm
          */
         export interface ReferenceVmResponse {
@@ -164262,6 +165946,20 @@ export namespace labservices {
              * The state details for the reference virtual machine.
              */
             vmStateDetails: outputs.labservices.latest.VmStateDetailsResponse;
+        }
+
+        /**
+         * The availability information of sizes across regions
+         */
+        export interface RegionalAvailabilityResponse {
+            /**
+             * Corresponding region
+             */
+            region?: string;
+            /**
+             * List of all the size information for the region
+             */
+            sizeAvailabilities?: outputs.labservices.latest.SizeAvailabilityResponse[];
         }
 
         /**
@@ -164306,6 +166004,20 @@ export namespace labservices {
              * The size of the virtual machine
              */
             size?: string;
+        }
+
+        /**
+         * Represents the size information
+         */
+        export interface SizeAvailabilityResponse {
+            /**
+             * Whether or not this size category is available
+             */
+            isAvailable?: boolean;
+            /**
+             * The category of the size (Basic, Standard, Performance).
+             */
+            sizeCategory?: string;
         }
 
         /**
@@ -164563,6 +166275,20 @@ export namespace labservices {
         }
 
         /**
+         * Represents the status of an operation that used the batch API.
+         */
+        export interface OperationBatchStatusResponseItemResponse {
+            /**
+             * status of the long running operation for an environment
+             */
+            operationUrl: string;
+            /**
+             * status of the long running operation for an environment
+             */
+            status: string;
+        }
+
+        /**
          * Details of a Reference Vm
          */
         export interface ReferenceVmResponse {
@@ -164582,6 +166308,20 @@ export namespace labservices {
              * The state details for the reference virtual machine.
              */
             vmStateDetails: outputs.labservices.v20181015.VmStateDetailsResponse;
+        }
+
+        /**
+         * The availability information of sizes across regions
+         */
+        export interface RegionalAvailabilityResponse {
+            /**
+             * Corresponding region
+             */
+            region?: string;
+            /**
+             * List of all the size information for the region
+             */
+            sizeAvailabilities?: outputs.labservices.v20181015.SizeAvailabilityResponse[];
         }
 
         /**
@@ -164626,6 +166366,20 @@ export namespace labservices {
              * The size of the virtual machine
              */
             size?: string;
+        }
+
+        /**
+         * Represents the size information
+         */
+        export interface SizeAvailabilityResponse {
+            /**
+             * Whether or not this size category is available
+             */
+            isAvailable?: boolean;
+            /**
+             * The category of the size (Basic, Standard, Performance).
+             */
+            sizeCategory?: string;
         }
 
         /**
@@ -177957,7 +179711,7 @@ export namespace machinelearningservices {
             /**
              * The provisioning state of the private endpoint connection resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Resource type of private endpoint connection.
              */
@@ -183774,7 +185528,7 @@ export namespace machinelearningservices {
             /**
              * The provisioning state of the private endpoint connection resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The sku of the workspace.
              */
@@ -184650,7 +186404,7 @@ export namespace machinelearningservices {
             /**
              * The provisioning state of the private endpoint connection resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The sku of the workspace.
              */
@@ -186749,7 +188503,7 @@ export namespace machinelearningservices {
             /**
              * The provisioning state of the private endpoint connection resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The sku of the workspace.
              */
@@ -188244,7 +189998,7 @@ export namespace machinelearningservices {
             /**
              * The provisioning state of the private endpoint connection resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The sku of the workspace.
              */
@@ -189337,7 +191091,7 @@ export namespace machinelearningservices {
             /**
              * The provisioning state of the private endpoint connection resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Resource type of private endpoint connection.
              */
@@ -190948,7 +192702,7 @@ export namespace machinelearningservices {
             /**
              * The provisioning state of the private endpoint connection resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The sku of the workspace.
              */
@@ -192615,6 +194369,71 @@ export namespace management {
         }
 
         /**
+         * The entity.
+         */
+        export interface EntityInfoResponse {
+            /**
+             * The friendly name of the management group.
+             */
+            displayName?: string;
+            /**
+             * The fully qualified ID for the entity.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+             */
+            id: string;
+            /**
+             * The users specific permissions to this item.
+             */
+            inheritedPermissions?: string;
+            /**
+             * The name of the entity. For example, 00000000-0000-0000-0000-000000000000
+             */
+            name: string;
+            /**
+             * Number of children is the number of Groups that are exactly one level underneath the current Group.
+             */
+            numberOfChildGroups?: number;
+            /**
+             * Number of children is the number of Groups and Subscriptions that are exactly one level underneath the current Group.
+             */
+            numberOfChildren?: number;
+            numberOfDescendants?: number;
+            /**
+             * (Optional) The ID of the parent management group.
+             */
+            parent?: outputs.management.latest.EntityParentGroupInfoResponse;
+            /**
+             * The parent display name chain from the root group to the immediate parent
+             */
+            parentDisplayNameChain?: string[];
+            /**
+             * The parent name chain from the root group to the immediate parent
+             */
+            parentNameChain?: string[];
+            /**
+             * The users specific permissions to this item.
+             */
+            permissions?: string;
+            /**
+             * The AAD Tenant ID associated with the entity. For example, 00000000-0000-0000-0000-000000000000
+             */
+            tenantId?: string;
+            /**
+             * The type of the resource. For example, Microsoft.Management/managementGroups
+             */
+            type: string;
+        }
+
+        /**
+         * (Optional) The ID of the parent management group.
+         */
+        export interface EntityParentGroupInfoResponse {
+            /**
+             * The fully qualified ID for the parent management group.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+             */
+            id?: string;
+        }
+
+        /**
          * The resource management error additional info.
          */
         export interface ErrorAdditionalInfoResponse {
@@ -193111,6 +194930,50 @@ export namespace management {
 
     export namespace v20180101preview {
         /**
+         * The entity.
+         */
+        export interface EntityInfoResponse {
+            /**
+             * The friendly name of the management group.
+             */
+            displayName?: string;
+            /**
+             * The fully qualified ID for the entity.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+             */
+            id: string;
+            /**
+             * The name of the entity. For example, 00000000-0000-0000-0000-000000000000
+             */
+            name: string;
+            /**
+             * (Optional) The ID of the parent management group.
+             */
+            parent?: outputs.management.v20180101preview.EntityParentGroupInfoResponse;
+            /**
+             * The users specific permissions to this item.
+             */
+            permissions?: string;
+            /**
+             * The AAD Tenant ID associated with the entity. For example, 00000000-0000-0000-0000-000000000000
+             */
+            tenantId?: string;
+            /**
+             * The type of the resource. For example, /providers/Microsoft.Management/managementGroups
+             */
+            type: string;
+        }
+
+        /**
+         * (Optional) The ID of the parent management group.
+         */
+        export interface EntityParentGroupInfoResponse {
+            /**
+             * The fully qualified ID for the parent management group.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+             */
+            id?: string;
+        }
+
+        /**
          * The child information of a management group.
          */
         export interface ManagementGroupChildInfoResponse {
@@ -193198,6 +195061,71 @@ export namespace management {
     }
 
     export namespace v20180301preview {
+        /**
+         * The entity.
+         */
+        export interface EntityInfoResponse {
+            /**
+             * The friendly name of the management group.
+             */
+            displayName?: string;
+            /**
+             * The fully qualified ID for the entity.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+             */
+            id: string;
+            /**
+             * The users specific permissions to this item.
+             */
+            inheritedPermissions?: string;
+            /**
+             * The name of the entity. For example, 00000000-0000-0000-0000-000000000000
+             */
+            name: string;
+            /**
+             * Number of child groups is the number of Groups that are exactly one level underneath the current Group.
+             */
+            numberOfChildGroups?: number;
+            /**
+             * Number of children is the number of Groups and Subscriptions that are exactly one level underneath the current Group.
+             */
+            numberOfChildren?: number;
+            numberOfDescendants?: number;
+            /**
+             * (Optional) The ID of the parent management group.
+             */
+            parent?: outputs.management.v20180301preview.EntityParentGroupInfoResponse;
+            /**
+             * The parent display name chain from the root group to the immediate parent
+             */
+            parentDisplayNameChain?: string[];
+            /**
+             * The parent name chain from the root group to the immediate parent
+             */
+            parentNameChain?: string[];
+            /**
+             * The users specific permissions to this item.
+             */
+            permissions?: string;
+            /**
+             * The AAD Tenant ID associated with the entity. For example, 00000000-0000-0000-0000-000000000000
+             */
+            tenantId?: string;
+            /**
+             * The type of the resource. For example, /providers/Microsoft.Management/managementGroups
+             */
+            type: string;
+        }
+
+        /**
+         * (Optional) The ID of the parent management group.
+         */
+        export interface EntityParentGroupInfoResponse {
+            /**
+             * The fully qualified ID for the parent management group.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+             */
+            id?: string;
+        }
+
         /**
          * The child information of a management group.
          */
@@ -194731,6 +196659,71 @@ export namespace management {
 
     export namespace v20191101 {
         /**
+         * The entity.
+         */
+        export interface EntityInfoResponse {
+            /**
+             * The friendly name of the management group.
+             */
+            displayName?: string;
+            /**
+             * The fully qualified ID for the entity.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+             */
+            id: string;
+            /**
+             * The users specific permissions to this item.
+             */
+            inheritedPermissions?: string;
+            /**
+             * The name of the entity. For example, 00000000-0000-0000-0000-000000000000
+             */
+            name: string;
+            /**
+             * Number of children is the number of Groups that are exactly one level underneath the current Group.
+             */
+            numberOfChildGroups?: number;
+            /**
+             * Number of children is the number of Groups and Subscriptions that are exactly one level underneath the current Group.
+             */
+            numberOfChildren?: number;
+            numberOfDescendants?: number;
+            /**
+             * (Optional) The ID of the parent management group.
+             */
+            parent?: outputs.management.v20191101.EntityParentGroupInfoResponse;
+            /**
+             * The parent display name chain from the root group to the immediate parent
+             */
+            parentDisplayNameChain?: string[];
+            /**
+             * The parent name chain from the root group to the immediate parent
+             */
+            parentNameChain?: string[];
+            /**
+             * The users specific permissions to this item.
+             */
+            permissions?: string;
+            /**
+             * The AAD Tenant ID associated with the entity. For example, 00000000-0000-0000-0000-000000000000
+             */
+            tenantId?: string;
+            /**
+             * The type of the resource. For example, Microsoft.Management/managementGroups
+             */
+            type: string;
+        }
+
+        /**
+         * (Optional) The ID of the parent management group.
+         */
+        export interface EntityParentGroupInfoResponse {
+            /**
+             * The fully qualified ID for the parent management group.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+             */
+            id?: string;
+        }
+
+        /**
          * The child information of a management group.
          */
         export interface ManagementGroupChildInfoResponse {
@@ -194832,6 +196825,71 @@ export namespace management {
     }
 
     export namespace v20200201 {
+        /**
+         * The entity.
+         */
+        export interface EntityInfoResponse {
+            /**
+             * The friendly name of the management group.
+             */
+            displayName?: string;
+            /**
+             * The fully qualified ID for the entity.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+             */
+            id: string;
+            /**
+             * The users specific permissions to this item.
+             */
+            inheritedPermissions?: string;
+            /**
+             * The name of the entity. For example, 00000000-0000-0000-0000-000000000000
+             */
+            name: string;
+            /**
+             * Number of children is the number of Groups that are exactly one level underneath the current Group.
+             */
+            numberOfChildGroups?: number;
+            /**
+             * Number of children is the number of Groups and Subscriptions that are exactly one level underneath the current Group.
+             */
+            numberOfChildren?: number;
+            numberOfDescendants?: number;
+            /**
+             * (Optional) The ID of the parent management group.
+             */
+            parent?: outputs.management.v20200201.EntityParentGroupInfoResponse;
+            /**
+             * The parent display name chain from the root group to the immediate parent
+             */
+            parentDisplayNameChain?: string[];
+            /**
+             * The parent name chain from the root group to the immediate parent
+             */
+            parentNameChain?: string[];
+            /**
+             * The users specific permissions to this item.
+             */
+            permissions?: string;
+            /**
+             * The AAD Tenant ID associated with the entity. For example, 00000000-0000-0000-0000-000000000000
+             */
+            tenantId?: string;
+            /**
+             * The type of the resource. For example, Microsoft.Management/managementGroups
+             */
+            type: string;
+        }
+
+        /**
+         * (Optional) The ID of the parent management group.
+         */
+        export interface EntityParentGroupInfoResponse {
+            /**
+             * The fully qualified ID for the parent management group.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+             */
+            id?: string;
+        }
+
         /**
          * The child information of a management group.
          */
@@ -195018,6 +197076,71 @@ export namespace management {
          * The ID of the parent management group.
          */
         export interface DescendantParentGroupInfoResponse {
+            /**
+             * The fully qualified ID for the parent management group.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+             */
+            id?: string;
+        }
+
+        /**
+         * The entity.
+         */
+        export interface EntityInfoResponse {
+            /**
+             * The friendly name of the management group.
+             */
+            displayName?: string;
+            /**
+             * The fully qualified ID for the entity.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+             */
+            id: string;
+            /**
+             * The users specific permissions to this item.
+             */
+            inheritedPermissions?: string;
+            /**
+             * The name of the entity. For example, 00000000-0000-0000-0000-000000000000
+             */
+            name: string;
+            /**
+             * Number of children is the number of Groups that are exactly one level underneath the current Group.
+             */
+            numberOfChildGroups?: number;
+            /**
+             * Number of children is the number of Groups and Subscriptions that are exactly one level underneath the current Group.
+             */
+            numberOfChildren?: number;
+            numberOfDescendants?: number;
+            /**
+             * (Optional) The ID of the parent management group.
+             */
+            parent?: outputs.management.v20200501.EntityParentGroupInfoResponse;
+            /**
+             * The parent display name chain from the root group to the immediate parent
+             */
+            parentDisplayNameChain?: string[];
+            /**
+             * The parent name chain from the root group to the immediate parent
+             */
+            parentNameChain?: string[];
+            /**
+             * The users specific permissions to this item.
+             */
+            permissions?: string;
+            /**
+             * The AAD Tenant ID associated with the entity. For example, 00000000-0000-0000-0000-000000000000
+             */
+            tenantId?: string;
+            /**
+             * The type of the resource. For example, Microsoft.Management/managementGroups
+             */
+            type: string;
+        }
+
+        /**
+         * (Optional) The ID of the parent management group.
+         */
+        export interface EntityParentGroupInfoResponse {
             /**
              * The fully qualified ID for the parent management group.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
              */
@@ -195701,6 +197824,24 @@ export namespace media {
              * identifier of the key
              */
             identifier?: string;
+        }
+
+        /**
+         * The Asset File Storage encryption metadata.
+         */
+        export interface AssetFileEncryptionMetadataResponse {
+            /**
+             * The Asset File Id.
+             */
+            assetFileId: string;
+            /**
+             * The Asset File name.
+             */
+            assetFileName?: string;
+            /**
+             * The Asset File initialization vector.
+             */
+            initializationVector?: string;
         }
 
         /**
@@ -199855,6 +201996,24 @@ export namespace media {
         }
 
         /**
+         * The Asset File Storage encryption metadata.
+         */
+        export interface AssetFileEncryptionMetadataResponse {
+            /**
+             * The Asset File Id.
+             */
+            assetFileId: string;
+            /**
+             * The Asset File name.
+             */
+            assetFileName?: string;
+            /**
+             * The Asset File initialization vector.
+             */
+            initializationVector?: string;
+        }
+
+        /**
          * Properties of the Streaming Locator.
          */
         export interface AssetStreamingLocatorResponse {
@@ -201798,6 +203957,24 @@ export namespace media {
              * identifier of the key
              */
             identifier?: string;
+        }
+
+        /**
+         * The Asset File Storage encryption metadata.
+         */
+        export interface AssetFileEncryptionMetadataResponse {
+            /**
+             * The Asset File Id.
+             */
+            assetFileId: string;
+            /**
+             * The Asset File name.
+             */
+            assetFileName?: string;
+            /**
+             * The Asset File initialization vector.
+             */
+            initializationVector?: string;
         }
 
         /**
@@ -204114,7 +206291,7 @@ export namespace migrate {
             /**
              * Defines the job name.
              */
-            jobName?: string;
+            jobName: string;
             /**
              * Gets or sets the monitoring job percentage.
              */
@@ -204220,7 +206397,7 @@ export namespace migrate {
             /**
              * Defines the provisioning states.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Gets or sets the source region.
              */
@@ -204339,7 +206516,7 @@ export namespace migrate {
             /**
              * Defines the provisioning states.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Gets or sets the resource settings.
              */
@@ -204383,7 +206560,7 @@ export namespace migrate {
             /**
              * Defines the MoveResource states.
              */
-            moveState?: string;
+            moveState: string;
             /**
              * Gets the Target ARM Id of the resource.
              */
@@ -206718,6 +208895,42 @@ export namespace network {
         }
 
         /**
+         * Application gateway BackendHealthHttp settings.
+         */
+        export interface ApplicationGatewayBackendHealthHttpSettingsResponse {
+            /**
+             * Reference to an ApplicationGatewayBackendHttpSettings resource.
+             */
+            backendHttpSettings?: outputs.network.latest.ApplicationGatewayBackendHttpSettingsResponse;
+            /**
+             * List of ApplicationGatewayBackendHealthServer resources.
+             */
+            servers?: outputs.network.latest.ApplicationGatewayBackendHealthServerResponse[];
+        }
+
+        /**
+         * Application gateway backendhealth http settings.
+         */
+        export interface ApplicationGatewayBackendHealthServerResponse {
+            /**
+             * IP address or FQDN of backend server.
+             */
+            address?: string;
+            /**
+             * Health of backend server.
+             */
+            health?: string;
+            /**
+             * Health Probe Log.
+             */
+            healthProbeLog?: string;
+            /**
+             * Reference to IP configuration of backend server.
+             */
+            ipConfiguration?: outputs.network.latest.NetworkInterfaceIPConfigurationResponse;
+        }
+
+        /**
          * Backend address pool settings of an application gateway.
          */
         export interface ApplicationGatewayBackendHttpSettingsResponse {
@@ -208476,7 +210689,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * Resource type.
              */
@@ -208552,6 +210765,56 @@ export namespace network {
         }
 
         /**
+         * The session detail for a target.
+         */
+        export interface BastionActiveSessionResponse {
+            /**
+             * The protocol used to connect to the target.
+             */
+            protocol: string;
+            /**
+             * The type of the resource.
+             */
+            resourceType: string;
+            /**
+             * Duration in mins the session has been active.
+             */
+            sessionDurationInMins: number;
+            /**
+             * A unique id for the session.
+             */
+            sessionId: string;
+            /**
+             * The time when the session started.
+             */
+            startTime: {[key: string]: any};
+            /**
+             * The host name of the target.
+             */
+            targetHostName: string;
+            /**
+             * The IP Address of the target.
+             */
+            targetIpAddress: string;
+            /**
+             * The resource group of the target.
+             */
+            targetResourceGroup: string;
+            /**
+             * The resource id of the target.
+             */
+            targetResourceId: string;
+            /**
+             * The subscription id for the target virtual machine.
+             */
+            targetSubscriptionId: string;
+            /**
+             * The user name who is active on this session.
+             */
+            userName: string;
+        }
+
+        /**
          * IP configuration of an Bastion Host.
          */
         export interface BastionHostIPConfigurationResponse {
@@ -208587,6 +210850,66 @@ export namespace network {
              * Ip configuration type.
              */
             type: string;
+        }
+
+        /**
+         * Bastion Shareable Link.
+         */
+        export interface BastionShareableLinkResponse {
+            /**
+             * The unique Bastion Shareable Link to the virtual machine.
+             */
+            bsl: string;
+            /**
+             * The time when the link was created.
+             */
+            createdAt: string;
+            /**
+             * Optional field indicating the warning or error message related to the vm in case of partial failure.
+             */
+            message: string;
+            /**
+             * Reference of the virtual machine resource.
+             */
+            vm: outputs.network.latest.VMResponse;
+        }
+
+        /**
+         * BGP peer status details.
+         */
+        export interface BgpPeerStatusResponse {
+            /**
+             * The autonomous system number of the remote BGP peer.
+             */
+            asn: number;
+            /**
+             * For how long the peering has been up.
+             */
+            connectedDuration: string;
+            /**
+             * The virtual network gateway's local address.
+             */
+            localAddress: string;
+            /**
+             * The number of BGP messages received.
+             */
+            messagesReceived: number;
+            /**
+             * The number of BGP messages sent.
+             */
+            messagesSent: number;
+            /**
+             * The remote BGP peer.
+             */
+            neighbor: string;
+            /**
+             * The number of routes learned from this peer.
+             */
+            routesReceived: number;
+            /**
+             * The BGP peer state.
+             */
+            state: string;
         }
 
         /**
@@ -209234,6 +211557,20 @@ export namespace network {
         }
 
         /**
+         * Represents a single Azure resource and its referencing DNS records.
+         */
+        export interface DnsResourceReferenceResponse {
+            /**
+             * A list of dns Records 
+             */
+            dnsResources?: outputs.network.latest.SubResourceResponse[];
+            /**
+             * A reference to an azure resource from where the dns resource value is taken.
+             */
+            targetResource?: outputs.network.latest.SubResourceResponse;
+        }
+
+        /**
          * DNS Proxy Settings in Firewall Policy.
          */
         export interface DnsSettingsResponse {
@@ -209404,7 +211741,7 @@ export namespace network {
             /**
              * Express Route Circuit connection state.
              */
-            circuitConnectionStatus?: string;
+            circuitConnectionStatus: string;
             /**
              * A unique read-only string that changes whenever the resource is updated.
              */
@@ -210117,7 +212454,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
              */
@@ -210217,6 +212554,40 @@ export namespace network {
         }
 
         /**
+         * Gateway routing details.
+         */
+        export interface GatewayRouteResponse {
+            /**
+             * The route's AS path sequence.
+             */
+            asPath: string;
+            /**
+             * The gateway's local address.
+             */
+            localAddress: string;
+            /**
+             * The route's network prefix.
+             */
+            network: string;
+            /**
+             * The route's next hop.
+             */
+            nextHop: string;
+            /**
+             * The source this route was learned from.
+             */
+            origin: string;
+            /**
+             * The peer this route was learned from.
+             */
+            sourcePeer: string;
+            /**
+             * The route's weight.
+             */
+            weight: number;
+        }
+
+        /**
          * The HTTP header.
          */
         export interface HTTPHeaderResponse {
@@ -210283,7 +212654,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * Resource type.
              */
@@ -210773,7 +213144,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * The number of samples to consider for load balancing decisions
              */
@@ -211900,7 +214271,7 @@ export namespace network {
             /**
              * Express Route Circuit connection state.
              */
-            circuitConnectionStatus?: string;
+            circuitConnectionStatus: string;
             /**
              * The name of the express route circuit connection resource.
              */
@@ -212755,7 +215126,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * A reference to the routing configuration.
              */
@@ -212847,7 +215218,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * A list of rules that define a particular Rules Engine Configuration.
              */
@@ -213181,11 +215552,11 @@ export namespace network {
         }
 
         /**
-         * A reference to a another resource
+         * Reference to another subresource.
          */
         export interface SubResourceResponse {
             /**
-             * Resource Id.
+             * Resource ID.
              */
             id?: string;
         }
@@ -213364,6 +215735,32 @@ export namespace network {
              * The text value of this TXT record.
              */
             value?: string[];
+        }
+
+        /**
+         * Describes a Virtual Machine.
+         */
+        export interface VMResponse {
+            /**
+             * Resource ID.
+             */
+            id?: string;
+            /**
+             * Resource location.
+             */
+            location?: string;
+            /**
+             * Resource name.
+             */
+            name: string;
+            /**
+             * Resource tags.
+             */
+            tags?: {[key: string]: string};
+            /**
+             * Resource type.
+             */
+            type: string;
         }
 
         /**
@@ -213821,6 +216218,60 @@ export namespace network {
         }
 
         /**
+         * VPN client connection health detail.
+         */
+        export interface VpnClientConnectionHealthDetailResponse {
+            /**
+             * The egress bytes per second.
+             */
+            egressBytesTransferred: number;
+            /**
+             * The egress packets per second.
+             */
+            egressPacketsTransferred: number;
+            /**
+             * The ingress bytes per second.
+             */
+            ingressBytesTransferred: number;
+            /**
+             * The ingress packets per second.
+             */
+            ingressPacketsTransferred: number;
+            /**
+             * The max band width.
+             */
+            maxBandwidth: number;
+            /**
+             * The max packets transferred per second.
+             */
+            maxPacketsPerSecond: number;
+            /**
+             * The assigned private Ip of a connected vpn client.
+             */
+            privateIpAddress: string;
+            /**
+             * The public Ip of a connected vpn client.
+             */
+            publicIpAddress: string;
+            /**
+             * The duration time of a connected vpn client.
+             */
+            vpnConnectionDuration: number;
+            /**
+             * The vpn client Id.
+             */
+            vpnConnectionId: string;
+            /**
+             * The start time of a connected vpn client.
+             */
+            vpnConnectionTime: string;
+            /**
+             * The user name of a connected vpn client.
+             */
+            vpnUserName: string;
+        }
+
+        /**
          * VpnClientConnectionHealth properties.
          */
         export interface VpnClientConnectionHealthResponse {
@@ -213905,7 +216356,7 @@ export namespace network {
             /**
              * The connection status.
              */
-            connectionStatus?: string;
+            connectionStatus: string;
             /**
              * DPD timeout in seconds for vpn connection.
              */
@@ -214097,7 +216548,7 @@ export namespace network {
             /**
              * The connection status.
              */
-            connectionStatus?: string;
+            connectionStatus: string;
             /**
              * Egress bytes transferred.
              */
@@ -221429,6 +223880,41 @@ export namespace network {
             provisioningState?: string;
         }
 
+        export interface BgpPeerStatusResponse {
+            /**
+             * The autonomous system number of the remote BGP peer
+             */
+            asn: number;
+            /**
+             * For how long the peering has been up
+             */
+            connectedDuration: string;
+            /**
+             * The virtual network gateway's local address
+             */
+            localAddress: string;
+            /**
+             * The number of BGP messages received
+             */
+            messagesReceived: number;
+            /**
+             * The number of BGP messages sent
+             */
+            messagesSent: number;
+            /**
+             * The remote BGP peer
+             */
+            neighbor: string;
+            /**
+             * The number of routes learned from this peer
+             */
+            routesReceived: number;
+            /**
+             * The BGP peer state
+             */
+            state: string;
+        }
+
         export interface BgpSettingsResponse {
             /**
              * The BGP speaker's ASN.
@@ -221694,6 +224180,37 @@ export namespace network {
              * The reference of the subnet resource.
              */
             subnet?: outputs.network.v20160901.SubnetResponse;
+        }
+
+        export interface GatewayRouteResponse {
+            /**
+             * The route's AS path sequence
+             */
+            asPath: string;
+            /**
+             * The gateway's local address
+             */
+            localAddress: string;
+            /**
+             * The route's network prefix
+             */
+            network: string;
+            /**
+             * The route's next hop
+             */
+            nextHop: string;
+            /**
+             * The source this route was learned from
+             */
+            origin: string;
+            /**
+             * The peer this route was learned from
+             */
+            sourcePeer: string;
+            /**
+             * The route's weight
+             */
+            weight: number;
         }
 
         /**
@@ -223366,6 +225883,41 @@ export namespace network {
             provisioningState?: string;
         }
 
+        export interface BgpPeerStatusResponse {
+            /**
+             * The autonomous system number of the remote BGP peer
+             */
+            asn: number;
+            /**
+             * For how long the peering has been up
+             */
+            connectedDuration: string;
+            /**
+             * The virtual network gateway's local address
+             */
+            localAddress: string;
+            /**
+             * The number of BGP messages received
+             */
+            messagesReceived: number;
+            /**
+             * The number of BGP messages sent
+             */
+            messagesSent: number;
+            /**
+             * The remote BGP peer
+             */
+            neighbor: string;
+            /**
+             * The number of routes learned from this peer
+             */
+            routesReceived: number;
+            /**
+             * The BGP peer state
+             */
+            state: string;
+        }
+
         export interface BgpSettingsResponse {
             /**
              * The BGP speaker's ASN.
@@ -223635,6 +226187,37 @@ export namespace network {
              * The reference of the subnet resource.
              */
             subnet?: outputs.network.v20161201.SubnetResponse;
+        }
+
+        export interface GatewayRouteResponse {
+            /**
+             * The route's AS path sequence
+             */
+            asPath: string;
+            /**
+             * The gateway's local address
+             */
+            localAddress: string;
+            /**
+             * The route's network prefix
+             */
+            network: string;
+            /**
+             * The route's next hop
+             */
+            nextHop: string;
+            /**
+             * The source this route was learned from
+             */
+            origin: string;
+            /**
+             * The peer this route was learned from
+             */
+            sourcePeer: string;
+            /**
+             * The route's weight
+             */
+            weight: number;
         }
 
         /**
@@ -225418,6 +228001,44 @@ export namespace network {
         }
 
         /**
+         * BGP peer status details
+         */
+        export interface BgpPeerStatusResponse {
+            /**
+             * The autonomous system number of the remote BGP peer
+             */
+            asn: number;
+            /**
+             * For how long the peering has been up
+             */
+            connectedDuration: string;
+            /**
+             * The virtual network gateway's local address
+             */
+            localAddress: string;
+            /**
+             * The number of BGP messages received
+             */
+            messagesReceived: number;
+            /**
+             * The number of BGP messages sent
+             */
+            messagesSent: number;
+            /**
+             * The remote BGP peer
+             */
+            neighbor: string;
+            /**
+             * The number of routes learned from this peer
+             */
+            routesReceived: number;
+            /**
+             * The BGP peer state
+             */
+            state: string;
+        }
+
+        /**
          * BGP settings details
          */
         export interface BgpSettingsResponse {
@@ -225765,6 +228386,40 @@ export namespace network {
              * The reference of the subnet resource.
              */
             subnet?: outputs.network.v20170301.SubnetResponse;
+        }
+
+        /**
+         * Gateway routing details
+         */
+        export interface GatewayRouteResponse {
+            /**
+             * The route's AS path sequence
+             */
+            asPath: string;
+            /**
+             * The gateway's local address
+             */
+            localAddress: string;
+            /**
+             * The route's network prefix
+             */
+            network: string;
+            /**
+             * The route's next hop
+             */
+            nextHop: string;
+            /**
+             * The source this route was learned from
+             */
+            origin: string;
+            /**
+             * The peer this route was learned from
+             */
+            sourcePeer: string;
+            /**
+             * The route's weight
+             */
+            weight: number;
         }
 
         /**
@@ -227918,6 +230573,44 @@ export namespace network {
         }
 
         /**
+         * BGP peer status details
+         */
+        export interface BgpPeerStatusResponse {
+            /**
+             * The autonomous system number of the remote BGP peer
+             */
+            asn: number;
+            /**
+             * For how long the peering has been up
+             */
+            connectedDuration: string;
+            /**
+             * The virtual network gateway's local address
+             */
+            localAddress: string;
+            /**
+             * The number of BGP messages received
+             */
+            messagesReceived: number;
+            /**
+             * The number of BGP messages sent
+             */
+            messagesSent: number;
+            /**
+             * The remote BGP peer
+             */
+            neighbor: string;
+            /**
+             * The number of routes learned from this peer
+             */
+            routesReceived: number;
+            /**
+             * The BGP peer state
+             */
+            state: string;
+        }
+
+        /**
          * BGP settings details
          */
         export interface BgpSettingsResponse {
@@ -228205,6 +230898,40 @@ export namespace network {
              * A list of availability zones denoting the IP allocated for the resource needs to come from.
              */
             zones?: string[];
+        }
+
+        /**
+         * Gateway routing details
+         */
+        export interface GatewayRouteResponse {
+            /**
+             * The route's AS path sequence
+             */
+            asPath: string;
+            /**
+             * The gateway's local address
+             */
+            localAddress: string;
+            /**
+             * The route's network prefix
+             */
+            network: string;
+            /**
+             * The route's next hop
+             */
+            nextHop: string;
+            /**
+             * The source this route was learned from
+             */
+            origin: string;
+            /**
+             * The peer this route was learned from
+             */
+            sourcePeer: string;
+            /**
+             * The route's weight
+             */
+            weight: number;
         }
 
         /**
@@ -230294,6 +233021,44 @@ export namespace network {
         }
 
         /**
+         * BGP peer status details
+         */
+        export interface BgpPeerStatusResponse {
+            /**
+             * The autonomous system number of the remote BGP peer
+             */
+            asn: number;
+            /**
+             * For how long the peering has been up
+             */
+            connectedDuration: string;
+            /**
+             * The virtual network gateway's local address
+             */
+            localAddress: string;
+            /**
+             * The number of BGP messages received
+             */
+            messagesReceived: number;
+            /**
+             * The number of BGP messages sent
+             */
+            messagesSent: number;
+            /**
+             * The remote BGP peer
+             */
+            neighbor: string;
+            /**
+             * The number of routes learned from this peer
+             */
+            routesReceived: number;
+            /**
+             * The BGP peer state
+             */
+            state: string;
+        }
+
+        /**
          * BGP settings details
          */
         export interface BgpSettingsResponse {
@@ -230581,6 +233346,40 @@ export namespace network {
              * A list of availability zones denoting the IP allocated for the resource needs to come from.
              */
             zones?: string[];
+        }
+
+        /**
+         * Gateway routing details
+         */
+        export interface GatewayRouteResponse {
+            /**
+             * The route's AS path sequence
+             */
+            asPath: string;
+            /**
+             * The gateway's local address
+             */
+            localAddress: string;
+            /**
+             * The route's network prefix
+             */
+            network: string;
+            /**
+             * The route's next hop
+             */
+            nextHop: string;
+            /**
+             * The source this route was learned from
+             */
+            origin: string;
+            /**
+             * The peer this route was learned from
+             */
+            sourcePeer: string;
+            /**
+             * The route's weight
+             */
+            weight: number;
         }
 
         /**
@@ -232756,6 +235555,44 @@ export namespace network {
         }
 
         /**
+         * BGP peer status details
+         */
+        export interface BgpPeerStatusResponse {
+            /**
+             * The autonomous system number of the remote BGP peer
+             */
+            asn: number;
+            /**
+             * For how long the peering has been up
+             */
+            connectedDuration: string;
+            /**
+             * The virtual network gateway's local address
+             */
+            localAddress: string;
+            /**
+             * The number of BGP messages received
+             */
+            messagesReceived: number;
+            /**
+             * The number of BGP messages sent
+             */
+            messagesSent: number;
+            /**
+             * The remote BGP peer
+             */
+            neighbor: string;
+            /**
+             * The number of routes learned from this peer
+             */
+            routesReceived: number;
+            /**
+             * The BGP peer state
+             */
+            state: string;
+        }
+
+        /**
          * BGP settings details
          */
         export interface BgpSettingsResponse {
@@ -233071,6 +235908,40 @@ export namespace network {
              * A list of availability zones denoting the IP allocated for the resource needs to come from.
              */
             zones?: string[];
+        }
+
+        /**
+         * Gateway routing details
+         */
+        export interface GatewayRouteResponse {
+            /**
+             * The route's AS path sequence
+             */
+            asPath: string;
+            /**
+             * The gateway's local address
+             */
+            localAddress: string;
+            /**
+             * The route's network prefix
+             */
+            network: string;
+            /**
+             * The route's next hop
+             */
+            nextHop: string;
+            /**
+             * The source this route was learned from
+             */
+            origin: string;
+            /**
+             * The peer this route was learned from
+             */
+            sourcePeer: string;
+            /**
+             * The route's weight
+             */
+            weight: number;
         }
 
         /**
@@ -235362,6 +238233,44 @@ export namespace network {
         }
 
         /**
+         * BGP peer status details
+         */
+        export interface BgpPeerStatusResponse {
+            /**
+             * The autonomous system number of the remote BGP peer
+             */
+            asn: number;
+            /**
+             * For how long the peering has been up
+             */
+            connectedDuration: string;
+            /**
+             * The virtual network gateway's local address
+             */
+            localAddress: string;
+            /**
+             * The number of BGP messages received
+             */
+            messagesReceived: number;
+            /**
+             * The number of BGP messages sent
+             */
+            messagesSent: number;
+            /**
+             * The remote BGP peer
+             */
+            neighbor: string;
+            /**
+             * The number of routes learned from this peer
+             */
+            routesReceived: number;
+            /**
+             * The BGP peer state
+             */
+            state: string;
+        }
+
+        /**
          * BGP settings details
          */
         export interface BgpSettingsResponse {
@@ -235709,6 +238618,40 @@ export namespace network {
              * A list of availability zones denoting the IP allocated for the resource needs to come from.
              */
             zones?: string[];
+        }
+
+        /**
+         * Gateway routing details
+         */
+        export interface GatewayRouteResponse {
+            /**
+             * The route's AS path sequence
+             */
+            asPath: string;
+            /**
+             * The gateway's local address
+             */
+            localAddress: string;
+            /**
+             * The route's network prefix
+             */
+            network: string;
+            /**
+             * The route's next hop
+             */
+            nextHop: string;
+            /**
+             * The source this route was learned from
+             */
+            origin: string;
+            /**
+             * The peer this route was learned from
+             */
+            sourcePeer: string;
+            /**
+             * The route's weight
+             */
+            weight: number;
         }
 
         /**
@@ -237984,6 +240927,44 @@ export namespace network {
         }
 
         /**
+         * BGP peer status details
+         */
+        export interface BgpPeerStatusResponse {
+            /**
+             * The autonomous system number of the remote BGP peer
+             */
+            asn: number;
+            /**
+             * For how long the peering has been up
+             */
+            connectedDuration: string;
+            /**
+             * The virtual network gateway's local address
+             */
+            localAddress: string;
+            /**
+             * The number of BGP messages received
+             */
+            messagesReceived: number;
+            /**
+             * The number of BGP messages sent
+             */
+            messagesSent: number;
+            /**
+             * The remote BGP peer
+             */
+            neighbor: string;
+            /**
+             * The number of routes learned from this peer
+             */
+            routesReceived: number;
+            /**
+             * The BGP peer state
+             */
+            state: string;
+        }
+
+        /**
          * BGP settings details
          */
         export interface BgpSettingsResponse {
@@ -238303,6 +241284,40 @@ export namespace network {
              * A list of availability zones denoting the IP allocated for the resource needs to come from.
              */
             zones?: string[];
+        }
+
+        /**
+         * Gateway routing details
+         */
+        export interface GatewayRouteResponse {
+            /**
+             * The route's AS path sequence
+             */
+            asPath: string;
+            /**
+             * The gateway's local address
+             */
+            localAddress: string;
+            /**
+             * The route's network prefix
+             */
+            network: string;
+            /**
+             * The route's next hop
+             */
+            nextHop: string;
+            /**
+             * The source this route was learned from
+             */
+            origin: string;
+            /**
+             * The peer this route was learned from
+             */
+            sourcePeer: string;
+            /**
+             * The route's weight
+             */
+            weight: number;
         }
 
         /**
@@ -240508,6 +243523,44 @@ export namespace network {
         }
 
         /**
+         * BGP peer status details
+         */
+        export interface BgpPeerStatusResponse {
+            /**
+             * The autonomous system number of the remote BGP peer
+             */
+            asn: number;
+            /**
+             * For how long the peering has been up
+             */
+            connectedDuration: string;
+            /**
+             * The virtual network gateway's local address
+             */
+            localAddress: string;
+            /**
+             * The number of BGP messages received
+             */
+            messagesReceived: number;
+            /**
+             * The number of BGP messages sent
+             */
+            messagesSent: number;
+            /**
+             * The remote BGP peer
+             */
+            neighbor: string;
+            /**
+             * The number of routes learned from this peer
+             */
+            routesReceived: number;
+            /**
+             * The BGP peer state
+             */
+            state: string;
+        }
+
+        /**
          * BGP settings details
          */
         export interface BgpSettingsResponse {
@@ -240827,6 +243880,40 @@ export namespace network {
              * A list of availability zones denoting the IP allocated for the resource needs to come from.
              */
             zones?: string[];
+        }
+
+        /**
+         * Gateway routing details
+         */
+        export interface GatewayRouteResponse {
+            /**
+             * The route's AS path sequence
+             */
+            asPath: string;
+            /**
+             * The gateway's local address
+             */
+            localAddress: string;
+            /**
+             * The route's network prefix
+             */
+            network: string;
+            /**
+             * The route's next hop
+             */
+            nextHop: string;
+            /**
+             * The source this route was learned from
+             */
+            origin: string;
+            /**
+             * The peer this route was learned from
+             */
+            sourcePeer: string;
+            /**
+             * The route's weight
+             */
+            weight: number;
         }
 
         /**
@@ -243032,6 +246119,44 @@ export namespace network {
         }
 
         /**
+         * BGP peer status details
+         */
+        export interface BgpPeerStatusResponse {
+            /**
+             * The autonomous system number of the remote BGP peer
+             */
+            asn: number;
+            /**
+             * For how long the peering has been up
+             */
+            connectedDuration: string;
+            /**
+             * The virtual network gateway's local address
+             */
+            localAddress: string;
+            /**
+             * The number of BGP messages received
+             */
+            messagesReceived: number;
+            /**
+             * The number of BGP messages sent
+             */
+            messagesSent: number;
+            /**
+             * The remote BGP peer
+             */
+            neighbor: string;
+            /**
+             * The number of routes learned from this peer
+             */
+            routesReceived: number;
+            /**
+             * The BGP peer state
+             */
+            state: string;
+        }
+
+        /**
          * BGP settings details
          */
         export interface BgpSettingsResponse {
@@ -243469,6 +246594,40 @@ export namespace network {
              * A list of availability zones denoting the IP allocated for the resource needs to come from.
              */
             zones?: string[];
+        }
+
+        /**
+         * Gateway routing details
+         */
+        export interface GatewayRouteResponse {
+            /**
+             * The route's AS path sequence
+             */
+            asPath: string;
+            /**
+             * The gateway's local address
+             */
+            localAddress: string;
+            /**
+             * The route's network prefix
+             */
+            network: string;
+            /**
+             * The route's next hop
+             */
+            nextHop: string;
+            /**
+             * The source this route was learned from
+             */
+            origin: string;
+            /**
+             * The peer this route was learned from
+             */
+            sourcePeer: string;
+            /**
+             * The route's weight
+             */
+            weight: number;
         }
 
         /**
@@ -246050,7 +249209,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Collection of rules used by a application rule collection.
              */
@@ -246124,7 +249283,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Reference of the PublicIP resource. This field is populated in the output.
              */
@@ -246162,7 +249321,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Collection of rules used by a network rule collection.
              */
@@ -246241,6 +249400,44 @@ export namespace network {
              * Get provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
              */
             provisioningState?: string;
+        }
+
+        /**
+         * BGP peer status details
+         */
+        export interface BgpPeerStatusResponse {
+            /**
+             * The autonomous system number of the remote BGP peer
+             */
+            asn: number;
+            /**
+             * For how long the peering has been up
+             */
+            connectedDuration: string;
+            /**
+             * The virtual network gateway's local address
+             */
+            localAddress: string;
+            /**
+             * The number of BGP messages received
+             */
+            messagesReceived: number;
+            /**
+             * The number of BGP messages sent
+             */
+            messagesSent: number;
+            /**
+             * The remote BGP peer
+             */
+            neighbor: string;
+            /**
+             * The number of routes learned from this peer
+             */
+            routesReceived: number;
+            /**
+             * The BGP peer state
+             */
+            state: string;
         }
 
         /**
@@ -246742,6 +249939,40 @@ export namespace network {
         }
 
         /**
+         * Gateway routing details
+         */
+        export interface GatewayRouteResponse {
+            /**
+             * The route's AS path sequence
+             */
+            asPath: string;
+            /**
+             * The gateway's local address
+             */
+            localAddress: string;
+            /**
+             * The route's network prefix
+             */
+            network: string;
+            /**
+             * The route's next hop
+             */
+            nextHop: string;
+            /**
+             * The source this route was learned from
+             */
+            origin: string;
+            /**
+             * The peer this route was learned from
+             */
+            sourcePeer: string;
+            /**
+             * The route's weight
+             */
+            weight: number;
+        }
+
+        /**
          * HubVirtualNetworkConnection Resource.
          */
         export interface HubVirtualNetworkConnectionResponse {
@@ -246772,7 +250003,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Reference to the remote virtual network.
              */
@@ -248292,7 +251523,7 @@ export namespace network {
             /**
              * The connection status.
              */
-            connectionStatus?: string;
+            connectionStatus: string;
             /**
              * Egress bytes transferred.
              */
@@ -248324,7 +251555,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Id of the connected vpn site.
              */
@@ -248387,6 +251618,20 @@ export namespace network {
              * The canonical name for this CNAME record.
              */
             cname?: string;
+        }
+
+        /**
+         * Represents a single Azure resource and its referencing DNS records.
+         */
+        export interface DnsResourceReferenceResponse {
+            /**
+             * A list of dns Records 
+             */
+            dnsResources?: outputs.network.v20180501.SubResourceResponse[];
+            /**
+             * A reference to an azure resource from where the dns resource value is taken.
+             */
+            targetResource?: outputs.network.v20180501.SubResourceResponse;
         }
 
         /**
@@ -249312,7 +252557,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Collection of rules used by a application rule collection.
              */
@@ -249386,7 +252631,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Reference of the PublicIP resource. This field is populated in the output.
              */
@@ -249424,7 +252669,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Collection of rules used by a network rule collection.
              */
@@ -249503,6 +252748,44 @@ export namespace network {
              * Get provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
              */
             provisioningState?: string;
+        }
+
+        /**
+         * BGP peer status details
+         */
+        export interface BgpPeerStatusResponse {
+            /**
+             * The autonomous system number of the remote BGP peer
+             */
+            asn: number;
+            /**
+             * For how long the peering has been up
+             */
+            connectedDuration: string;
+            /**
+             * The virtual network gateway's local address
+             */
+            localAddress: string;
+            /**
+             * The number of BGP messages received
+             */
+            messagesReceived: number;
+            /**
+             * The number of BGP messages sent
+             */
+            messagesSent: number;
+            /**
+             * The remote BGP peer
+             */
+            neighbor: string;
+            /**
+             * The number of routes learned from this peer
+             */
+            routesReceived: number;
+            /**
+             * The BGP peer state
+             */
+            state: string;
         }
 
         /**
@@ -249892,6 +253175,40 @@ export namespace network {
         }
 
         /**
+         * Gateway routing details
+         */
+        export interface GatewayRouteResponse {
+            /**
+             * The route's AS path sequence
+             */
+            asPath: string;
+            /**
+             * The gateway's local address
+             */
+            localAddress: string;
+            /**
+             * The route's network prefix
+             */
+            network: string;
+            /**
+             * The route's next hop
+             */
+            nextHop: string;
+            /**
+             * The source this route was learned from
+             */
+            origin: string;
+            /**
+             * The peer this route was learned from
+             */
+            sourcePeer: string;
+            /**
+             * The route's weight
+             */
+            weight: number;
+        }
+
+        /**
          * HubVirtualNetworkConnection Resource.
          */
         export interface HubVirtualNetworkConnectionResponse {
@@ -249922,7 +253239,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Reference to the remote virtual network.
              */
@@ -251372,7 +254689,7 @@ export namespace network {
             /**
              * The connection status.
              */
-            connectionStatus?: string;
+            connectionStatus: string;
             /**
              * Egress bytes transferred.
              */
@@ -251404,7 +254721,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Id of the connected vpn site.
              */
@@ -252232,7 +255549,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Collection of rules used by a application rule collection.
              */
@@ -252306,7 +255623,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Reference of the PublicIP resource. This field is populated in the output.
              */
@@ -252344,7 +255661,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Collection of rules used by a network rule collection.
              */
@@ -252427,6 +255744,44 @@ export namespace network {
              * Get provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
              */
             provisioningState?: string;
+        }
+
+        /**
+         * BGP peer status details
+         */
+        export interface BgpPeerStatusResponse {
+            /**
+             * The autonomous system number of the remote BGP peer
+             */
+            asn: number;
+            /**
+             * For how long the peering has been up
+             */
+            connectedDuration: string;
+            /**
+             * The virtual network gateway's local address
+             */
+            localAddress: string;
+            /**
+             * The number of BGP messages received
+             */
+            messagesReceived: number;
+            /**
+             * The number of BGP messages sent
+             */
+            messagesSent: number;
+            /**
+             * The remote BGP peer
+             */
+            neighbor: string;
+            /**
+             * The number of routes learned from this peer
+             */
+            routesReceived: number;
+            /**
+             * The BGP peer state
+             */
+            state: string;
         }
 
         /**
@@ -252820,6 +256175,40 @@ export namespace network {
         }
 
         /**
+         * Gateway routing details
+         */
+        export interface GatewayRouteResponse {
+            /**
+             * The route's AS path sequence
+             */
+            asPath: string;
+            /**
+             * The gateway's local address
+             */
+            localAddress: string;
+            /**
+             * The route's network prefix
+             */
+            network: string;
+            /**
+             * The route's next hop
+             */
+            nextHop: string;
+            /**
+             * The source this route was learned from
+             */
+            origin: string;
+            /**
+             * The peer this route was learned from
+             */
+            sourcePeer: string;
+            /**
+             * The route's weight
+             */
+            weight: number;
+        }
+
+        /**
          * HubVirtualNetworkConnection Resource.
          */
         export interface HubVirtualNetworkConnectionResponse {
@@ -252850,7 +256239,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Reference to the remote virtual network.
              */
@@ -254425,7 +257814,7 @@ export namespace network {
             /**
              * The connection status.
              */
-            connectionStatus?: string;
+            connectionStatus: string;
             /**
              * Egress bytes transferred.
              */
@@ -254457,7 +257846,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Id of the connected vpn site.
              */
@@ -255357,7 +258746,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Collection of rules used by a application rule collection.
              */
@@ -255431,7 +258820,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Reference of the PublicIP resource. This field is a mandatory input if subnet is not null.
              */
@@ -255479,7 +258868,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Collection of rules used by a NAT rule collection.
              */
@@ -255551,7 +258940,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Collection of rules used by a network rule collection.
              */
@@ -255699,7 +259088,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * Resource type.
              */
@@ -255738,6 +259127,44 @@ export namespace network {
              * Weight of this endpoint for load balancing purposes.
              */
             weight?: number;
+        }
+
+        /**
+         * BGP peer status details
+         */
+        export interface BgpPeerStatusResponse {
+            /**
+             * The autonomous system number of the remote BGP peer
+             */
+            asn: number;
+            /**
+             * For how long the peering has been up
+             */
+            connectedDuration: string;
+            /**
+             * The virtual network gateway's local address
+             */
+            localAddress: string;
+            /**
+             * The number of BGP messages received
+             */
+            messagesReceived: number;
+            /**
+             * The number of BGP messages sent
+             */
+            messagesSent: number;
+            /**
+             * The remote BGP peer
+             */
+            neighbor: string;
+            /**
+             * The number of routes learned from this peer
+             */
+            routesReceived: number;
+            /**
+             * The BGP peer state
+             */
+            state: string;
         }
 
         /**
@@ -256463,7 +259890,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
              */
@@ -256555,6 +259982,40 @@ export namespace network {
         }
 
         /**
+         * Gateway routing details
+         */
+        export interface GatewayRouteResponse {
+            /**
+             * The route's AS path sequence
+             */
+            asPath: string;
+            /**
+             * The gateway's local address
+             */
+            localAddress: string;
+            /**
+             * The route's network prefix
+             */
+            network: string;
+            /**
+             * The route's next hop
+             */
+            nextHop: string;
+            /**
+             * The source this route was learned from
+             */
+            origin: string;
+            /**
+             * The peer this route was learned from
+             */
+            sourcePeer: string;
+            /**
+             * The route's weight
+             */
+            weight: number;
+        }
+
+        /**
          * Load balancing settings for a backend pool
          */
         export interface HealthProbeSettingsModelResponse {
@@ -256581,7 +260042,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * Resource type.
              */
@@ -256619,7 +260080,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Reference to the remote virtual network.
              */
@@ -257039,7 +260500,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * The number of samples to consider for load balancing decisions
              */
@@ -258067,7 +261528,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * Resource type.
              */
@@ -258777,7 +262238,7 @@ export namespace network {
             /**
              * The connection status.
              */
-            connectionStatus?: string;
+            connectionStatus: string;
             /**
              * Egress bytes transferred.
              */
@@ -258817,7 +262278,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Id of the connected vpn site.
              */
@@ -259937,7 +263398,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Collection of rules used by a application rule collection.
              */
@@ -260011,7 +263472,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Reference of the PublicIP resource. This field is a mandatory input if subnet is not null.
              */
@@ -260059,7 +263520,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Collection of rules used by a NAT rule collection.
              */
@@ -260131,7 +263592,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Collection of rules used by a network rule collection.
              */
@@ -260214,6 +263675,44 @@ export namespace network {
              * Get provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
              */
             provisioningState?: string;
+        }
+
+        /**
+         * BGP peer status details
+         */
+        export interface BgpPeerStatusResponse {
+            /**
+             * The autonomous system number of the remote BGP peer
+             */
+            asn: number;
+            /**
+             * For how long the peering has been up
+             */
+            connectedDuration: string;
+            /**
+             * The virtual network gateway's local address
+             */
+            localAddress: string;
+            /**
+             * The number of BGP messages received
+             */
+            messagesReceived: number;
+            /**
+             * The number of BGP messages sent
+             */
+            messagesSent: number;
+            /**
+             * The remote BGP peer
+             */
+            neighbor: string;
+            /**
+             * The number of routes learned from this peer
+             */
+            routesReceived: number;
+            /**
+             * The BGP peer state
+             */
+            state: string;
         }
 
         /**
@@ -260875,6 +264374,40 @@ export namespace network {
         }
 
         /**
+         * Gateway routing details
+         */
+        export interface GatewayRouteResponse {
+            /**
+             * The route's AS path sequence
+             */
+            asPath: string;
+            /**
+             * The gateway's local address
+             */
+            localAddress: string;
+            /**
+             * The route's network prefix
+             */
+            network: string;
+            /**
+             * The route's next hop
+             */
+            nextHop: string;
+            /**
+             * The source this route was learned from
+             */
+            origin: string;
+            /**
+             * The peer this route was learned from
+             */
+            sourcePeer: string;
+            /**
+             * The route's weight
+             */
+            weight: number;
+        }
+
+        /**
          * HubVirtualNetworkConnection Resource.
          */
         export interface HubVirtualNetworkConnectionResponse {
@@ -260905,7 +264438,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Reference to the remote virtual network.
              */
@@ -262948,7 +266481,7 @@ export namespace network {
             /**
              * The connection status.
              */
-            connectionStatus?: string;
+            connectionStatus: string;
             /**
              * Egress bytes transferred.
              */
@@ -262988,7 +266521,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Id of the connected vpn site.
              */
@@ -263980,7 +267513,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Collection of rules used by a application rule collection.
              */
@@ -264054,7 +267587,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Reference of the PublicIP resource. This field is a mandatory input if subnet is not null.
              */
@@ -264102,7 +267635,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Collection of rules used by a NAT rule collection.
              */
@@ -264174,7 +267707,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Collection of rules used by a network rule collection.
              */
@@ -264257,6 +267790,44 @@ export namespace network {
              * Get provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
              */
             provisioningState?: string;
+        }
+
+        /**
+         * BGP peer status details
+         */
+        export interface BgpPeerStatusResponse {
+            /**
+             * The autonomous system number of the remote BGP peer
+             */
+            asn: number;
+            /**
+             * For how long the peering has been up
+             */
+            connectedDuration: string;
+            /**
+             * The virtual network gateway's local address
+             */
+            localAddress: string;
+            /**
+             * The number of BGP messages received
+             */
+            messagesReceived: number;
+            /**
+             * The number of BGP messages sent
+             */
+            messagesSent: number;
+            /**
+             * The remote BGP peer
+             */
+            neighbor: string;
+            /**
+             * The number of routes learned from this peer
+             */
+            routesReceived: number;
+            /**
+             * The BGP peer state
+             */
+            state: string;
         }
 
         /**
@@ -264932,6 +268503,40 @@ export namespace network {
         }
 
         /**
+         * Gateway routing details
+         */
+        export interface GatewayRouteResponse {
+            /**
+             * The route's AS path sequence
+             */
+            asPath: string;
+            /**
+             * The gateway's local address
+             */
+            localAddress: string;
+            /**
+             * The route's network prefix
+             */
+            network: string;
+            /**
+             * The route's next hop
+             */
+            nextHop: string;
+            /**
+             * The source this route was learned from
+             */
+            origin: string;
+            /**
+             * The peer this route was learned from
+             */
+            sourcePeer: string;
+            /**
+             * The route's weight
+             */
+            weight: number;
+        }
+
+        /**
          * HubVirtualNetworkConnection Resource.
          */
         export interface HubVirtualNetworkConnectionResponse {
@@ -264962,7 +268567,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Reference to the remote virtual network.
              */
@@ -267031,7 +270636,7 @@ export namespace network {
             /**
              * The connection status.
              */
-            connectionStatus?: string;
+            connectionStatus: string;
             /**
              * Egress bytes transferred.
              */
@@ -267071,7 +270676,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Id of the connected vpn site.
              */
@@ -268231,7 +271836,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Collection of rules used by a application rule collection.
              */
@@ -268305,7 +271910,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Reference of the PublicIP resource. This field is a mandatory input if subnet is not null.
              */
@@ -268353,7 +271958,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Collection of rules used by a NAT rule collection.
              */
@@ -268425,7 +272030,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Collection of rules used by a network rule collection.
              */
@@ -268508,6 +272113,44 @@ export namespace network {
              * Get provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
              */
             provisioningState?: string;
+        }
+
+        /**
+         * BGP peer status details
+         */
+        export interface BgpPeerStatusResponse {
+            /**
+             * The autonomous system number of the remote BGP peer
+             */
+            asn: number;
+            /**
+             * For how long the peering has been up
+             */
+            connectedDuration: string;
+            /**
+             * The virtual network gateway's local address
+             */
+            localAddress: string;
+            /**
+             * The number of BGP messages received
+             */
+            messagesReceived: number;
+            /**
+             * The number of BGP messages sent
+             */
+            messagesSent: number;
+            /**
+             * The remote BGP peer
+             */
+            neighbor: string;
+            /**
+             * The number of routes learned from this peer
+             */
+            routesReceived: number;
+            /**
+             * The BGP peer state
+             */
+            state: string;
         }
 
         /**
@@ -269187,6 +272830,40 @@ export namespace network {
         }
 
         /**
+         * Gateway routing details
+         */
+        export interface GatewayRouteResponse {
+            /**
+             * The route's AS path sequence
+             */
+            asPath: string;
+            /**
+             * The gateway's local address
+             */
+            localAddress: string;
+            /**
+             * The route's network prefix
+             */
+            network: string;
+            /**
+             * The route's next hop
+             */
+            nextHop: string;
+            /**
+             * The source this route was learned from
+             */
+            origin: string;
+            /**
+             * The peer this route was learned from
+             */
+            sourcePeer: string;
+            /**
+             * The route's weight
+             */
+            weight: number;
+        }
+
+        /**
          * HubVirtualNetworkConnection Resource.
          */
         export interface HubVirtualNetworkConnectionResponse {
@@ -269217,7 +272894,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Reference to the remote virtual network.
              */
@@ -271386,7 +275063,7 @@ export namespace network {
             /**
              * The connection status.
              */
-            connectionStatus?: string;
+            connectionStatus: string;
             /**
              * Egress bytes transferred.
              */
@@ -271426,7 +275103,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Id of the connected vpn site.
              */
@@ -271577,6 +275254,42 @@ export namespace network {
              * IP address
              */
             ipAddress?: string;
+        }
+
+        /**
+         * Application gateway BackendHealthHttp settings.
+         */
+        export interface ApplicationGatewayBackendHealthHttpSettingsResponse {
+            /**
+             * Reference of an ApplicationGatewayBackendHttpSettings resource.
+             */
+            backendHttpSettings?: outputs.network.v20190201.ApplicationGatewayBackendHttpSettingsResponse;
+            /**
+             * List of ApplicationGatewayBackendHealthServer resources.
+             */
+            servers?: outputs.network.v20190201.ApplicationGatewayBackendHealthServerResponse[];
+        }
+
+        /**
+         * Application gateway backendhealth http settings.
+         */
+        export interface ApplicationGatewayBackendHealthServerResponse {
+            /**
+             * IP address or FQDN of backend server.
+             */
+            address?: string;
+            /**
+             * Health of backend server.
+             */
+            health?: string;
+            /**
+             * Health Probe Log.
+             */
+            healthProbeLog?: string;
+            /**
+             * Reference of IP configuration of backend server.
+             */
+            ipConfiguration?: outputs.network.v20190201.NetworkInterfaceIPConfigurationResponse;
         }
 
         /**
@@ -272616,7 +276329,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Collection of rules used by a application rule collection.
              */
@@ -272690,7 +276403,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Reference of the PublicIP resource. This field is a mandatory input if subnet is not null.
              */
@@ -272738,7 +276451,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Collection of rules used by a NAT rule collection.
              */
@@ -272810,7 +276523,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Collection of rules used by a network rule collection.
              */
@@ -272893,6 +276606,44 @@ export namespace network {
              * Get provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
              */
             provisioningState?: string;
+        }
+
+        /**
+         * BGP peer status details
+         */
+        export interface BgpPeerStatusResponse {
+            /**
+             * The autonomous system number of the remote BGP peer
+             */
+            asn: number;
+            /**
+             * For how long the peering has been up
+             */
+            connectedDuration: string;
+            /**
+             * The virtual network gateway's local address
+             */
+            localAddress: string;
+            /**
+             * The number of BGP messages received
+             */
+            messagesReceived: number;
+            /**
+             * The number of BGP messages sent
+             */
+            messagesSent: number;
+            /**
+             * The remote BGP peer
+             */
+            neighbor: string;
+            /**
+             * The number of routes learned from this peer
+             */
+            routesReceived: number;
+            /**
+             * The BGP peer state
+             */
+            state: string;
         }
 
         /**
@@ -273176,7 +276927,7 @@ export namespace network {
             /**
              * Express Route Circuit connection state.
              */
-            circuitConnectionStatus?: string;
+            circuitConnectionStatus: string;
             /**
              * A unique read-only string that changes whenever the resource is updated.
              */
@@ -273432,7 +277183,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The routing weight associated to the connection.
              */
@@ -273572,6 +277323,40 @@ export namespace network {
         }
 
         /**
+         * Gateway routing details
+         */
+        export interface GatewayRouteResponse {
+            /**
+             * The route's AS path sequence
+             */
+            asPath: string;
+            /**
+             * The gateway's local address
+             */
+            localAddress: string;
+            /**
+             * The route's network prefix
+             */
+            network: string;
+            /**
+             * The route's next hop
+             */
+            nextHop: string;
+            /**
+             * The source this route was learned from
+             */
+            origin: string;
+            /**
+             * The peer this route was learned from
+             */
+            sourcePeer: string;
+            /**
+             * The route's weight
+             */
+            weight: number;
+        }
+
+        /**
          * HubVirtualNetworkConnection Resource.
          */
         export interface HubVirtualNetworkConnectionResponse {
@@ -273602,7 +277387,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Reference to the remote virtual network.
              */
@@ -274651,7 +278436,7 @@ export namespace network {
             /**
              * Express Route Circuit connection state.
              */
-            circuitConnectionStatus?: string;
+            circuitConnectionStatus: string;
             /**
              * The name of the express route circuit connection resource.
              */
@@ -275795,7 +279580,7 @@ export namespace network {
             /**
              * The connection status.
              */
-            connectionStatus?: string;
+            connectionStatus: string;
             /**
              * Egress bytes transferred.
              */
@@ -275835,7 +279620,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Id of the connected vpn site.
              */
@@ -276166,6 +279951,42 @@ export namespace network {
              * IP address.
              */
             ipAddress?: string;
+        }
+
+        /**
+         * Application gateway BackendHealthHttp settings.
+         */
+        export interface ApplicationGatewayBackendHealthHttpSettingsResponse {
+            /**
+             * Reference of an ApplicationGatewayBackendHttpSettings resource.
+             */
+            backendHttpSettings?: outputs.network.v20190401.ApplicationGatewayBackendHttpSettingsResponse;
+            /**
+             * List of ApplicationGatewayBackendHealthServer resources.
+             */
+            servers?: outputs.network.v20190401.ApplicationGatewayBackendHealthServerResponse[];
+        }
+
+        /**
+         * Application gateway backendhealth http settings.
+         */
+        export interface ApplicationGatewayBackendHealthServerResponse {
+            /**
+             * IP address or FQDN of backend server.
+             */
+            address?: string;
+            /**
+             * Health of backend server.
+             */
+            health?: string;
+            /**
+             * Health Probe Log.
+             */
+            healthProbeLog?: string;
+            /**
+             * Reference of IP configuration of backend server.
+             */
+            ipConfiguration?: outputs.network.v20190401.NetworkInterfaceIPConfigurationResponse;
         }
 
         /**
@@ -277209,7 +281030,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Collection of rules used by a application rule collection.
              */
@@ -277283,7 +281104,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Reference of the PublicIP resource. This field is a mandatory input if subnet is not null.
              */
@@ -277331,7 +281152,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Collection of rules used by a NAT rule collection.
              */
@@ -277403,7 +281224,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Collection of rules used by a network rule collection.
              */
@@ -277515,7 +281336,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * Resource type.
              */
@@ -277589,7 +281410,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Reference of the PublicIP resource.
              */
@@ -277602,6 +281423,44 @@ export namespace network {
              * Ip configuration type.
              */
             type: string;
+        }
+
+        /**
+         * BGP peer status details.
+         */
+        export interface BgpPeerStatusResponse {
+            /**
+             * The autonomous system number of the remote BGP peer.
+             */
+            asn: number;
+            /**
+             * For how long the peering has been up.
+             */
+            connectedDuration: string;
+            /**
+             * The virtual network gateway's local address.
+             */
+            localAddress: string;
+            /**
+             * The number of BGP messages received.
+             */
+            messagesReceived: number;
+            /**
+             * The number of BGP messages sent.
+             */
+            messagesSent: number;
+            /**
+             * The remote BGP peer.
+             */
+            neighbor: string;
+            /**
+             * The number of routes learned from this peer.
+             */
+            routesReceived: number;
+            /**
+             * The BGP peer state.
+             */
+            state: string;
         }
 
         /**
@@ -277923,7 +281782,7 @@ export namespace network {
             /**
              * Express Route Circuit connection state.
              */
-            circuitConnectionStatus?: string;
+            circuitConnectionStatus: string;
             /**
              * A unique read-only string that changes whenever the resource is updated.
              */
@@ -278187,7 +282046,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The routing weight associated to the connection.
              */
@@ -278318,7 +282177,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
              */
@@ -278414,6 +282273,40 @@ export namespace network {
         }
 
         /**
+         * Gateway routing details.
+         */
+        export interface GatewayRouteResponse {
+            /**
+             * The route's AS path sequence.
+             */
+            asPath: string;
+            /**
+             * The gateway's local address.
+             */
+            localAddress: string;
+            /**
+             * The route's network prefix.
+             */
+            network: string;
+            /**
+             * The route's next hop.
+             */
+            nextHop: string;
+            /**
+             * The source this route was learned from.
+             */
+            origin: string;
+            /**
+             * The peer this route was learned from.
+             */
+            sourcePeer: string;
+            /**
+             * The route's weight.
+             */
+            weight: number;
+        }
+
+        /**
          * Load balancing settings for a backend pool
          */
         export interface HealthProbeSettingsModelResponse {
@@ -278440,7 +282333,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * Resource type.
              */
@@ -278478,7 +282371,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Reference to the remote virtual network.
              */
@@ -278844,7 +282737,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * The number of samples to consider for load balancing decisions
              */
@@ -279517,7 +283410,7 @@ export namespace network {
             /**
              * Express Route Circuit connection state.
              */
-            circuitConnectionStatus?: string;
+            circuitConnectionStatus: string;
             /**
              * The name of the express route circuit connection resource.
              */
@@ -280188,7 +284081,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * A reference to the routing configuration.
              */
@@ -280858,6 +284751,60 @@ export namespace network {
         }
 
         /**
+         * VPN client connection health detail.
+         */
+        export interface VpnClientConnectionHealthDetailResponse {
+            /**
+             * The egress bytes per second.
+             */
+            egressBytesTransferred: number;
+            /**
+             * The egress packets per second.
+             */
+            egressPacketsTransferred: number;
+            /**
+             * The ingress bytes per second.
+             */
+            ingressBytesTransferred: number;
+            /**
+             * The ingress packets per second.
+             */
+            ingressPacketsTransferred: number;
+            /**
+             * The max band width.
+             */
+            maxBandwidth: number;
+            /**
+             * The max packets transferred per second.
+             */
+            maxPacketsPerSecond: number;
+            /**
+             * The assigned private Ip of a connected vpn client.
+             */
+            privateIpAddress: string;
+            /**
+             * The public Ip of a connected vpn client.
+             */
+            publicIpAddress: string;
+            /**
+             * The duration time of a connected vpn client.
+             */
+            vpnConnectionDuration: number;
+            /**
+             * The vpn client Id.
+             */
+            vpnConnectionId: string;
+            /**
+             * The start time of a connected vpn client.
+             */
+            vpnConnectionTime: string;
+            /**
+             * The user name of a connected vpn client.
+             */
+            vpnUserName: string;
+        }
+
+        /**
          * VpnClientConnectionHealth properties.
          */
         export interface VpnClientConnectionHealthResponse {
@@ -280942,7 +284889,7 @@ export namespace network {
             /**
              * The connection status.
              */
-            connectionStatus?: string;
+            connectionStatus: string;
             /**
              * Egress bytes transferred.
              */
@@ -280982,7 +284929,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Id of the connected vpn site.
              */
@@ -281068,7 +285015,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * Resource type.
              */
@@ -281225,7 +285172,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
              */
@@ -281289,7 +285236,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * Resource type.
              */
@@ -281325,7 +285272,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * The number of samples to consider for load balancing decisions
              */
@@ -281402,7 +285349,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * A reference to the routing configuration.
              */
@@ -281525,6 +285472,42 @@ export namespace network {
              * IP address.
              */
             ipAddress?: string;
+        }
+
+        /**
+         * Application gateway BackendHealthHttp settings.
+         */
+        export interface ApplicationGatewayBackendHealthHttpSettingsResponse {
+            /**
+             * Reference of an ApplicationGatewayBackendHttpSettings resource.
+             */
+            backendHttpSettings?: outputs.network.v20190601.ApplicationGatewayBackendHttpSettingsResponse;
+            /**
+             * List of ApplicationGatewayBackendHealthServer resources.
+             */
+            servers?: outputs.network.v20190601.ApplicationGatewayBackendHealthServerResponse[];
+        }
+
+        /**
+         * Application gateway backendhealth http settings.
+         */
+        export interface ApplicationGatewayBackendHealthServerResponse {
+            /**
+             * IP address or FQDN of backend server.
+             */
+            address?: string;
+            /**
+             * Health of backend server.
+             */
+            health?: string;
+            /**
+             * Health Probe Log.
+             */
+            healthProbeLog?: string;
+            /**
+             * Reference of IP configuration of backend server.
+             */
+            ipConfiguration?: outputs.network.v20190601.NetworkInterfaceIPConfigurationResponse;
         }
 
         /**
@@ -282606,7 +286589,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Collection of rules used by a application rule collection.
              */
@@ -282680,7 +286663,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Reference of the PublicIP resource. This field is a mandatory input if subnet is not null.
              */
@@ -282728,7 +286711,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Collection of rules used by a NAT rule collection.
              */
@@ -282800,7 +286783,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Collection of rules used by a network rule collection.
              */
@@ -282922,7 +286905,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Reference of the PublicIP resource.
              */
@@ -282935,6 +286918,44 @@ export namespace network {
              * Ip configuration type.
              */
             type: string;
+        }
+
+        /**
+         * BGP peer status details.
+         */
+        export interface BgpPeerStatusResponse {
+            /**
+             * The autonomous system number of the remote BGP peer.
+             */
+            asn: number;
+            /**
+             * For how long the peering has been up.
+             */
+            connectedDuration: string;
+            /**
+             * The virtual network gateway's local address.
+             */
+            localAddress: string;
+            /**
+             * The number of BGP messages received.
+             */
+            messagesReceived: number;
+            /**
+             * The number of BGP messages sent.
+             */
+            messagesSent: number;
+            /**
+             * The remote BGP peer.
+             */
+            neighbor: string;
+            /**
+             * The number of routes learned from this peer.
+             */
+            routesReceived: number;
+            /**
+             * The BGP peer state.
+             */
+            state: string;
         }
 
         /**
@@ -283212,7 +287233,7 @@ export namespace network {
             /**
              * Express Route Circuit connection state.
              */
-            circuitConnectionStatus?: string;
+            circuitConnectionStatus: string;
             /**
              * A unique read-only string that changes whenever the resource is updated.
              */
@@ -283476,7 +287497,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The routing weight associated to the connection.
              */
@@ -283718,6 +287739,40 @@ export namespace network {
         }
 
         /**
+         * Gateway routing details.
+         */
+        export interface GatewayRouteResponse {
+            /**
+             * The route's AS path sequence.
+             */
+            asPath: string;
+            /**
+             * The gateway's local address.
+             */
+            localAddress: string;
+            /**
+             * The route's network prefix.
+             */
+            network: string;
+            /**
+             * The route's next hop.
+             */
+            nextHop: string;
+            /**
+             * The source this route was learned from.
+             */
+            origin: string;
+            /**
+             * The peer this route was learned from.
+             */
+            sourcePeer: string;
+            /**
+             * The route's weight.
+             */
+            weight: number;
+        }
+
+        /**
          * IP addresses associated with azure firewall.
          */
         export interface HubIPAddressesResponse {
@@ -283762,7 +287817,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Reference to the remote virtual network.
              */
@@ -284807,7 +288862,7 @@ export namespace network {
             /**
              * Express Route Circuit connection state.
              */
-            circuitConnectionStatus?: string;
+            circuitConnectionStatus: string;
             /**
              * The name of the express route circuit connection resource.
              */
@@ -284883,7 +288938,7 @@ export namespace network {
             /**
              * The provisioning state of the private endpoint connection.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The resource type.
              */
@@ -284925,7 +288980,7 @@ export namespace network {
             /**
              * The provisioning state of the private endpoint.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The ID of the subnet from which the private IP will be allocated.
              */
@@ -284971,7 +289026,7 @@ export namespace network {
             /**
              * The provisioning state of the private link service connection.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * A message passed to the owner of the remote resource with this connection request. Restricted to 140 chars.
              */
@@ -285035,7 +289090,7 @@ export namespace network {
             /**
              * The provisioning state of the private link service ip configuration.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The reference of the subnet resource.
              */
@@ -286079,6 +290134,60 @@ export namespace network {
         }
 
         /**
+         * VPN client connection health detail.
+         */
+        export interface VpnClientConnectionHealthDetailResponse {
+            /**
+             * The egress bytes per second.
+             */
+            egressBytesTransferred: number;
+            /**
+             * The egress packets per second.
+             */
+            egressPacketsTransferred: number;
+            /**
+             * The ingress bytes per second.
+             */
+            ingressBytesTransferred: number;
+            /**
+             * The ingress packets per second.
+             */
+            ingressPacketsTransferred: number;
+            /**
+             * The max band width.
+             */
+            maxBandwidth: number;
+            /**
+             * The max packets transferred per second.
+             */
+            maxPacketsPerSecond: number;
+            /**
+             * The assigned private Ip of a connected vpn client.
+             */
+            privateIpAddress: string;
+            /**
+             * The public Ip of a connected vpn client.
+             */
+            publicIpAddress: string;
+            /**
+             * The duration time of a connected vpn client.
+             */
+            vpnConnectionDuration: number;
+            /**
+             * The vpn client Id.
+             */
+            vpnConnectionId: string;
+            /**
+             * The start time of a connected vpn client.
+             */
+            vpnConnectionTime: string;
+            /**
+             * The user name of a connected vpn client.
+             */
+            vpnUserName: string;
+        }
+
+        /**
          * VpnClientConnectionHealth properties.
          */
         export interface VpnClientConnectionHealthResponse {
@@ -286163,7 +290272,7 @@ export namespace network {
             /**
              * The connection status.
              */
-            connectionStatus?: string;
+            connectionStatus: string;
             /**
              * Egress bytes transferred.
              */
@@ -286203,7 +290312,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Id of the connected vpn site.
              */
@@ -286273,7 +290382,7 @@ export namespace network {
             /**
              * The connection status.
              */
-            connectionStatus?: string;
+            connectionStatus: string;
             /**
              * Egress bytes transferred.
              */
@@ -286309,7 +290418,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Routing weight for vpn connection.
              */
@@ -286371,7 +290480,7 @@ export namespace network {
             /**
              * The provisioning state of the resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Resource type.
              */
@@ -286443,7 +290552,7 @@ export namespace network {
             /**
              * The provisioning state of the authentication certificate resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Type of the resource.
              */
@@ -286491,7 +290600,7 @@ export namespace network {
             /**
              * The provisioning state of the backend address pool resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Type of the resource.
              */
@@ -286510,6 +290619,42 @@ export namespace network {
              * IP address.
              */
             ipAddress?: string;
+        }
+
+        /**
+         * Application gateway BackendHealthHttp settings.
+         */
+        export interface ApplicationGatewayBackendHealthHttpSettingsResponse {
+            /**
+             * Reference of an ApplicationGatewayBackendHttpSettings resource.
+             */
+            backendHttpSettings?: outputs.network.v20190701.ApplicationGatewayBackendHttpSettingsResponse;
+            /**
+             * List of ApplicationGatewayBackendHealthServer resources.
+             */
+            servers?: outputs.network.v20190701.ApplicationGatewayBackendHealthServerResponse[];
+        }
+
+        /**
+         * Application gateway backendhealth http settings.
+         */
+        export interface ApplicationGatewayBackendHealthServerResponse {
+            /**
+             * IP address or FQDN of backend server.
+             */
+            address?: string;
+            /**
+             * Health of backend server.
+             */
+            health?: string;
+            /**
+             * Health Probe Log.
+             */
+            healthProbeLog?: string;
+            /**
+             * Reference of IP configuration of backend server.
+             */
+            ipConfiguration?: outputs.network.v20190701.NetworkInterfaceIPConfigurationResponse;
         }
 
         /**
@@ -286575,7 +290720,7 @@ export namespace network {
             /**
              * The provisioning state of the backend HTTP settings resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Request timeout in seconds. Application Gateway will fail the request if response is not received within RequestTimeout. Acceptable values are from 1 second to 86400 seconds.
              */
@@ -286677,7 +290822,7 @@ export namespace network {
             /**
              * The provisioning state of the frontend IP configuration resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Reference of the PublicIP resource.
              */
@@ -286715,7 +290860,7 @@ export namespace network {
             /**
              * The provisioning state of the frontend port resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Type of the resource.
              */
@@ -286775,7 +290920,7 @@ export namespace network {
             /**
              * The provisioning state of the HTTP listener resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Applicable only if protocol is https. Enables SNI for multi-hosting.
              */
@@ -286809,7 +290954,7 @@ export namespace network {
             /**
              * The provisioning state of the application gateway IP configuration resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Reference of the subnet resource. A subnet from where application gateway gets its private address.
              */
@@ -286851,7 +290996,7 @@ export namespace network {
             /**
              * The provisioning state of the path rule resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Redirect configuration resource of URL path map path rule.
              */
@@ -286931,7 +291076,7 @@ export namespace network {
             /**
              * The provisioning state of the probe resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The probe timeout in seconds. Probe marked as failed if valid response is not received with this timeout period. Acceptable values are from 1 second to 86400 seconds.
              */
@@ -287035,7 +291180,7 @@ export namespace network {
             /**
              * The provisioning state of the request routing rule resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Redirect configuration resource of the application gateway.
              */
@@ -287141,7 +291286,7 @@ export namespace network {
             /**
              * The provisioning state of the application gateway resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Redirect configurations of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
              */
@@ -287329,7 +291474,7 @@ export namespace network {
             /**
              * The provisioning state of the SSL certificate resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Base-64 encoded Public cert data corresponding to pfx specified in data. Only applicable in GET request.
              */
@@ -287393,7 +291538,7 @@ export namespace network {
             /**
              * The provisioning state of the trusted root certificate resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Type of the resource.
              */
@@ -287439,7 +291584,7 @@ export namespace network {
             /**
              * The provisioning state of the URL path map resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Type of the resource.
              */
@@ -287595,7 +291740,7 @@ export namespace network {
             /**
              * The provisioning state of the application rule collection resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Collection of rules used by a application rule collection.
              */
@@ -287669,7 +291814,7 @@ export namespace network {
             /**
              * The provisioning state of the Azure firewall IP configuration resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Reference of the PublicIP resource. This field is a mandatory input if subnet is not null.
              */
@@ -287717,7 +291862,7 @@ export namespace network {
             /**
              * The provisioning state of the NAT rule collection resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Collection of rules used by a NAT rule collection.
              */
@@ -287789,7 +291934,7 @@ export namespace network {
             /**
              * The provisioning state of the network rule collection resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Collection of rules used by a network rule collection.
              */
@@ -287881,7 +292026,7 @@ export namespace network {
             /**
              * The provisioning state of the backend address pool resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Type of the resource.
              */
@@ -287911,7 +292056,7 @@ export namespace network {
             /**
              * The provisioning state of the bastion host IP configuration resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Reference of the PublicIP resource.
              */
@@ -287924,6 +292069,44 @@ export namespace network {
              * Ip configuration type.
              */
             type: string;
+        }
+
+        /**
+         * BGP peer status details.
+         */
+        export interface BgpPeerStatusResponse {
+            /**
+             * The autonomous system number of the remote BGP peer.
+             */
+            asn: number;
+            /**
+             * For how long the peering has been up.
+             */
+            connectedDuration: string;
+            /**
+             * The virtual network gateway's local address.
+             */
+            localAddress: string;
+            /**
+             * The number of BGP messages received.
+             */
+            messagesReceived: number;
+            /**
+             * The number of BGP messages sent.
+             */
+            messagesSent: number;
+            /**
+             * The remote BGP peer.
+             */
+            neighbor: string;
+            /**
+             * The number of routes learned from this peer.
+             */
+            routesReceived: number;
+            /**
+             * The BGP peer state.
+             */
+            state: string;
         }
 
         /**
@@ -288179,7 +292362,7 @@ export namespace network {
             /**
              * The provisioning state of the authorization resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Type of the resource.
              */
@@ -288201,7 +292384,7 @@ export namespace network {
             /**
              * Express Route Circuit connection state.
              */
-            circuitConnectionStatus?: string;
+            circuitConnectionStatus: string;
             /**
              * A unique read-only string that changes whenever the resource is updated.
              */
@@ -288339,7 +292522,7 @@ export namespace network {
             /**
              * The provisioning state of the express route circuit peering resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The reference of the RouteFilter resource.
              */
@@ -288465,7 +292648,7 @@ export namespace network {
             /**
              * The provisioning state of the express route connection resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The routing weight associated to the connection.
              */
@@ -288705,7 +292888,7 @@ export namespace network {
             /**
              * The provisioning state of the frontend IP configuration resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The reference of the Public IP resource.
              */
@@ -288726,6 +292909,40 @@ export namespace network {
              * A list of availability zones denoting the IP allocated for the resource needs to come from.
              */
             zones?: string[];
+        }
+
+        /**
+         * Gateway routing details.
+         */
+        export interface GatewayRouteResponse {
+            /**
+             * The route's AS path sequence.
+             */
+            asPath: string;
+            /**
+             * The gateway's local address.
+             */
+            localAddress: string;
+            /**
+             * The route's network prefix.
+             */
+            network: string;
+            /**
+             * The route's next hop.
+             */
+            nextHop: string;
+            /**
+             * The source this route was learned from.
+             */
+            origin: string;
+            /**
+             * The peer this route was learned from.
+             */
+            sourcePeer: string;
+            /**
+             * The route's weight.
+             */
+            weight: number;
         }
 
         /**
@@ -288773,7 +292990,7 @@ export namespace network {
             /**
              * The provisioning state of the hub virtual network connection resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Reference to the remote virtual network.
              */
@@ -288837,7 +293054,7 @@ export namespace network {
             /**
              * The provisioning state of the IP configuration resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The reference of the public IP resource.
              */
@@ -288899,7 +293116,7 @@ export namespace network {
             /**
              * The provisioning state of the inbound NAT pool resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Type of the resource.
              */
@@ -288957,7 +293174,7 @@ export namespace network {
             /**
              * The provisioning state of the inbound NAT rule resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Type of the resource.
              */
@@ -289115,7 +293332,7 @@ export namespace network {
             /**
              * The provisioning state of the load balancing rule resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Type of the resource.
              */
@@ -289354,7 +293571,7 @@ export namespace network {
             /**
              * The provisioning state of the network interface IP configuration.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Public IP address bound to the IP configuration.
              */
@@ -289428,7 +293645,7 @@ export namespace network {
             /**
              * The provisioning state of the network interface resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The resource GUID property of the network interface resource.
              */
@@ -289546,7 +293763,7 @@ export namespace network {
             /**
              * The provisioning state of the network security group resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The resource GUID property of the network security group resource.
              */
@@ -289612,7 +293829,7 @@ export namespace network {
             /**
              * The provisioning state of the outbound rule resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Type of the resource.
              */
@@ -289840,7 +294057,7 @@ export namespace network {
             /**
              * Express Route Circuit connection state.
              */
-            circuitConnectionStatus?: string;
+            circuitConnectionStatus: string;
             /**
              * The name of the express route circuit connection resource.
              */
@@ -289916,7 +294133,7 @@ export namespace network {
             /**
              * The provisioning state of the private endpoint connection resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The resource type.
              */
@@ -289958,7 +294175,7 @@ export namespace network {
             /**
              * The provisioning state of the private endpoint resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The ID of the subnet from which the private IP will be allocated.
              */
@@ -290004,7 +294221,7 @@ export namespace network {
             /**
              * The provisioning state of the private link service connection resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * A message passed to the owner of the remote resource with this connection request. Restricted to 140 chars.
              */
@@ -290068,7 +294285,7 @@ export namespace network {
             /**
              * The provisioning state of the private link service IP configuration resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The reference to the subnet resource.
              */
@@ -290138,7 +294355,7 @@ export namespace network {
             /**
              * The provisioning state of the probe resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The URI used for requesting health status from the VM. Path is required if a protocol is set to http. Otherwise, it is not allowed. There is no default value.
              */
@@ -290236,7 +294453,7 @@ export namespace network {
             /**
              * The provisioning state of the public IP address resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The public IP address version.
              */
@@ -290404,7 +294621,7 @@ export namespace network {
             /**
              * The provisioning state of the route resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
         }
 
         /**
@@ -290434,7 +294651,7 @@ export namespace network {
             /**
              * The provisioning state of the route table resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Collection of routes contained within a route table.
              */
@@ -290512,7 +294729,7 @@ export namespace network {
             /**
              * The provisioning state of the security rule resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from.
              */
@@ -290668,7 +294885,7 @@ export namespace network {
             /**
              * The provisioning state of the service endpoint resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The type of the endpoint service.
              */
@@ -290744,7 +294961,7 @@ export namespace network {
             /**
              * The provisioning state of the subnet resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * A read-only string identifying the intention of use for this subnet based on delegations and other user-defined properties.
              */
@@ -291014,7 +295231,7 @@ export namespace network {
             /**
              * The provisioning state of the virtual network peering resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The reference of the remote virtual network address space.
              */
@@ -291130,6 +295347,60 @@ export namespace network {
         }
 
         /**
+         * VPN client connection health detail.
+         */
+        export interface VpnClientConnectionHealthDetailResponse {
+            /**
+             * The egress bytes per second.
+             */
+            egressBytesTransferred: number;
+            /**
+             * The egress packets per second.
+             */
+            egressPacketsTransferred: number;
+            /**
+             * The ingress bytes per second.
+             */
+            ingressBytesTransferred: number;
+            /**
+             * The ingress packets per second.
+             */
+            ingressPacketsTransferred: number;
+            /**
+             * The max band width.
+             */
+            maxBandwidth: number;
+            /**
+             * The max packets transferred per second.
+             */
+            maxPacketsPerSecond: number;
+            /**
+             * The assigned private Ip of a connected vpn client.
+             */
+            privateIpAddress: string;
+            /**
+             * The public Ip of a connected vpn client.
+             */
+            publicIpAddress: string;
+            /**
+             * The duration time of a connected vpn client.
+             */
+            vpnConnectionDuration: number;
+            /**
+             * The vpn client Id.
+             */
+            vpnConnectionId: string;
+            /**
+             * The start time of a connected vpn client.
+             */
+            vpnConnectionTime: string;
+            /**
+             * The user name of a connected vpn client.
+             */
+            vpnUserName: string;
+        }
+
+        /**
          * VpnClientConnectionHealth properties.
          */
         export interface VpnClientConnectionHealthResponse {
@@ -291214,7 +295485,7 @@ export namespace network {
             /**
              * The connection status.
              */
-            connectionStatus?: string;
+            connectionStatus: string;
             /**
              * Egress bytes transferred.
              */
@@ -291254,7 +295525,7 @@ export namespace network {
             /**
              * The provisioning state of the VPN connection resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Id of the connected vpn site.
              */
@@ -291324,7 +295595,7 @@ export namespace network {
             /**
              * The connection status.
              */
-            connectionStatus?: string;
+            connectionStatus: string;
             /**
              * Egress bytes transferred.
              */
@@ -291360,7 +295631,7 @@ export namespace network {
             /**
              * The provisioning state of the VPN site link connection resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Routing weight for vpn connection.
              */
@@ -291422,7 +295693,7 @@ export namespace network {
             /**
              * The provisioning state of the VPN site link resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Resource type.
              */
@@ -291512,7 +295783,7 @@ export namespace network {
             /**
              * The provisioning state of the authentication certificate resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Type of the resource.
              */
@@ -291560,7 +295831,7 @@ export namespace network {
             /**
              * The provisioning state of the backend address pool resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Type of the resource.
              */
@@ -291579,6 +295850,42 @@ export namespace network {
              * IP address.
              */
             ipAddress?: string;
+        }
+
+        /**
+         * Application gateway BackendHealthHttp settings.
+         */
+        export interface ApplicationGatewayBackendHealthHttpSettingsResponse {
+            /**
+             * Reference of an ApplicationGatewayBackendHttpSettings resource.
+             */
+            backendHttpSettings?: outputs.network.v20190801.ApplicationGatewayBackendHttpSettingsResponse;
+            /**
+             * List of ApplicationGatewayBackendHealthServer resources.
+             */
+            servers?: outputs.network.v20190801.ApplicationGatewayBackendHealthServerResponse[];
+        }
+
+        /**
+         * Application gateway backendhealth http settings.
+         */
+        export interface ApplicationGatewayBackendHealthServerResponse {
+            /**
+             * IP address or FQDN of backend server.
+             */
+            address?: string;
+            /**
+             * Health of backend server.
+             */
+            health?: string;
+            /**
+             * Health Probe Log.
+             */
+            healthProbeLog?: string;
+            /**
+             * Reference of IP configuration of backend server.
+             */
+            ipConfiguration?: outputs.network.v20190801.NetworkInterfaceIPConfigurationResponse;
         }
 
         /**
@@ -291644,7 +295951,7 @@ export namespace network {
             /**
              * The provisioning state of the backend HTTP settings resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Request timeout in seconds. Application Gateway will fail the request if response is not received within RequestTimeout. Acceptable values are from 1 second to 86400 seconds.
              */
@@ -291746,7 +296053,7 @@ export namespace network {
             /**
              * The provisioning state of the frontend IP configuration resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Reference of the PublicIP resource.
              */
@@ -291784,7 +296091,7 @@ export namespace network {
             /**
              * The provisioning state of the frontend port resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Type of the resource.
              */
@@ -291844,7 +296151,7 @@ export namespace network {
             /**
              * The provisioning state of the HTTP listener resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Applicable only if protocol is https. Enables SNI for multi-hosting.
              */
@@ -291878,7 +296185,7 @@ export namespace network {
             /**
              * The provisioning state of the application gateway IP configuration resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Reference of the subnet resource. A subnet from where application gateway gets its private address.
              */
@@ -291920,7 +296227,7 @@ export namespace network {
             /**
              * The provisioning state of the path rule resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Redirect configuration resource of URL path map path rule.
              */
@@ -292000,7 +296307,7 @@ export namespace network {
             /**
              * The provisioning state of the probe resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The probe timeout in seconds. Probe marked as failed if valid response is not received with this timeout period. Acceptable values are from 1 second to 86400 seconds.
              */
@@ -292104,7 +296411,7 @@ export namespace network {
             /**
              * The provisioning state of the request routing rule resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Redirect configuration resource of the application gateway.
              */
@@ -292210,7 +296517,7 @@ export namespace network {
             /**
              * The provisioning state of the application gateway resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Redirect configurations of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
              */
@@ -292398,7 +296705,7 @@ export namespace network {
             /**
              * The provisioning state of the SSL certificate resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Base-64 encoded Public cert data corresponding to pfx specified in data. Only applicable in GET request.
              */
@@ -292462,7 +296769,7 @@ export namespace network {
             /**
              * The provisioning state of the trusted root certificate resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Type of the resource.
              */
@@ -292508,7 +296815,7 @@ export namespace network {
             /**
              * The provisioning state of the URL path map resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Type of the resource.
              */
@@ -292664,7 +296971,7 @@ export namespace network {
             /**
              * The provisioning state of the application rule collection resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Collection of rules used by a application rule collection.
              */
@@ -292738,7 +297045,7 @@ export namespace network {
             /**
              * The provisioning state of the Azure firewall IP configuration resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Reference of the PublicIP resource. This field is a mandatory input if subnet is not null.
              */
@@ -292786,7 +297093,7 @@ export namespace network {
             /**
              * The provisioning state of the NAT rule collection resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Collection of rules used by a NAT rule collection.
              */
@@ -292858,7 +297165,7 @@ export namespace network {
             /**
              * The provisioning state of the network rule collection resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Collection of rules used by a network rule collection.
              */
@@ -292964,7 +297271,7 @@ export namespace network {
             /**
              * The provisioning state of the backend address pool resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Type of the resource.
              */
@@ -292994,7 +297301,7 @@ export namespace network {
             /**
              * The provisioning state of the bastion host IP configuration resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Reference of the PublicIP resource.
              */
@@ -293007,6 +297314,44 @@ export namespace network {
              * Ip configuration type.
              */
             type: string;
+        }
+
+        /**
+         * BGP peer status details.
+         */
+        export interface BgpPeerStatusResponse {
+            /**
+             * The autonomous system number of the remote BGP peer.
+             */
+            asn: number;
+            /**
+             * For how long the peering has been up.
+             */
+            connectedDuration: string;
+            /**
+             * The virtual network gateway's local address.
+             */
+            localAddress: string;
+            /**
+             * The number of BGP messages received.
+             */
+            messagesReceived: number;
+            /**
+             * The number of BGP messages sent.
+             */
+            messagesSent: number;
+            /**
+             * The remote BGP peer.
+             */
+            neighbor: string;
+            /**
+             * The number of routes learned from this peer.
+             */
+            routesReceived: number;
+            /**
+             * The BGP peer state.
+             */
+            state: string;
         }
 
         /**
@@ -293262,7 +297607,7 @@ export namespace network {
             /**
              * The provisioning state of the authorization resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Type of the resource.
              */
@@ -293284,7 +297629,7 @@ export namespace network {
             /**
              * Express Route Circuit connection state.
              */
-            circuitConnectionStatus?: string;
+            circuitConnectionStatus: string;
             /**
              * A unique read-only string that changes whenever the resource is updated.
              */
@@ -293422,7 +297767,7 @@ export namespace network {
             /**
              * The provisioning state of the express route circuit peering resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The reference of the RouteFilter resource.
              */
@@ -293548,7 +297893,7 @@ export namespace network {
             /**
              * The provisioning state of the express route connection resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The routing weight associated to the connection.
              */
@@ -293788,7 +298133,7 @@ export namespace network {
             /**
              * The provisioning state of the frontend IP configuration resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The reference of the Public IP resource.
              */
@@ -293809,6 +298154,40 @@ export namespace network {
              * A list of availability zones denoting the IP allocated for the resource needs to come from.
              */
             zones?: string[];
+        }
+
+        /**
+         * Gateway routing details.
+         */
+        export interface GatewayRouteResponse {
+            /**
+             * The route's AS path sequence.
+             */
+            asPath: string;
+            /**
+             * The gateway's local address.
+             */
+            localAddress: string;
+            /**
+             * The route's network prefix.
+             */
+            network: string;
+            /**
+             * The route's next hop.
+             */
+            nextHop: string;
+            /**
+             * The source this route was learned from.
+             */
+            origin: string;
+            /**
+             * The peer this route was learned from.
+             */
+            sourcePeer: string;
+            /**
+             * The route's weight.
+             */
+            weight: number;
         }
 
         /**
@@ -293856,7 +298235,7 @@ export namespace network {
             /**
              * The provisioning state of the hub virtual network connection resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Reference to the remote virtual network.
              */
@@ -293920,7 +298299,7 @@ export namespace network {
             /**
              * The provisioning state of the IP configuration resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The reference of the public IP resource.
              */
@@ -293982,7 +298361,7 @@ export namespace network {
             /**
              * The provisioning state of the inbound NAT pool resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Type of the resource.
              */
@@ -294040,7 +298419,7 @@ export namespace network {
             /**
              * The provisioning state of the inbound NAT rule resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Type of the resource.
              */
@@ -294198,7 +298577,7 @@ export namespace network {
             /**
              * The provisioning state of the load balancing rule resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Type of the resource.
              */
@@ -294497,7 +298876,7 @@ export namespace network {
             /**
              * The provisioning state of the network interface IP configuration.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Public IP address bound to the IP configuration.
              */
@@ -294571,7 +298950,7 @@ export namespace network {
             /**
              * The provisioning state of the network interface resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The resource GUID property of the network interface resource.
              */
@@ -294689,7 +299068,7 @@ export namespace network {
             /**
              * The provisioning state of the network security group resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The resource GUID property of the network security group resource.
              */
@@ -294755,7 +299134,7 @@ export namespace network {
             /**
              * The provisioning state of the outbound rule resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Type of the resource.
              */
@@ -294799,7 +299178,7 @@ export namespace network {
             /**
              * The provisioning state of the P2SConnectionConfiguration resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The reference of the address space resource which represents Address space for P2S VpnClient.
              */
@@ -294833,7 +299212,7 @@ export namespace network {
             /**
              * The provisioning state of the P2S VPN gateway resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Resource tags.
              */
@@ -294919,7 +299298,7 @@ export namespace network {
             /**
              * Express Route Circuit connection state.
              */
-            circuitConnectionStatus?: string;
+            circuitConnectionStatus: string;
             /**
              * The name of the express route circuit connection resource.
              */
@@ -295007,7 +299386,7 @@ export namespace network {
             /**
              * The provisioning state of the private endpoint connection resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The resource type.
              */
@@ -295049,7 +299428,7 @@ export namespace network {
             /**
              * The provisioning state of the private endpoint resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The ID of the subnet from which the private IP will be allocated.
              */
@@ -295095,7 +299474,7 @@ export namespace network {
             /**
              * The provisioning state of the private link service connection resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * A message passed to the owner of the remote resource with this connection request. Restricted to 140 chars.
              */
@@ -295159,7 +299538,7 @@ export namespace network {
             /**
              * The provisioning state of the private link service IP configuration resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The reference to the subnet resource.
              */
@@ -295229,7 +299608,7 @@ export namespace network {
             /**
              * The provisioning state of the probe resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The URI used for requesting health status from the VM. Path is required if a protocol is set to http. Otherwise, it is not allowed. There is no default value.
              */
@@ -295327,7 +299706,7 @@ export namespace network {
             /**
              * The provisioning state of the public IP address resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The public IP address version.
              */
@@ -295495,7 +299874,7 @@ export namespace network {
             /**
              * The provisioning state of the route resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
         }
 
         /**
@@ -295525,7 +299904,7 @@ export namespace network {
             /**
              * The provisioning state of the route table resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Collection of routes contained within a route table.
              */
@@ -295603,7 +299982,7 @@ export namespace network {
             /**
              * The provisioning state of the security rule resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from.
              */
@@ -295759,7 +300138,7 @@ export namespace network {
             /**
              * The provisioning state of the service endpoint resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The type of the endpoint service.
              */
@@ -295835,7 +300214,7 @@ export namespace network {
             /**
              * The provisioning state of the subnet resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * A read-only string identifying the intention of use for this subnet based on delegations and other user-defined properties.
              */
@@ -296127,7 +300506,7 @@ export namespace network {
             /**
              * The provisioning state of the virtual network peering resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The reference of the remote virtual network address space.
              */
@@ -296243,6 +300622,60 @@ export namespace network {
         }
 
         /**
+         * VPN client connection health detail.
+         */
+        export interface VpnClientConnectionHealthDetailResponse {
+            /**
+             * The egress bytes per second.
+             */
+            egressBytesTransferred: number;
+            /**
+             * The egress packets per second.
+             */
+            egressPacketsTransferred: number;
+            /**
+             * The ingress bytes per second.
+             */
+            ingressBytesTransferred: number;
+            /**
+             * The ingress packets per second.
+             */
+            ingressPacketsTransferred: number;
+            /**
+             * The max band width.
+             */
+            maxBandwidth: number;
+            /**
+             * The max packets transferred per second.
+             */
+            maxPacketsPerSecond: number;
+            /**
+             * The assigned private Ip of a connected vpn client.
+             */
+            privateIpAddress: string;
+            /**
+             * The public Ip of a connected vpn client.
+             */
+            publicIpAddress: string;
+            /**
+             * The duration time of a connected vpn client.
+             */
+            vpnConnectionDuration: number;
+            /**
+             * The vpn client Id.
+             */
+            vpnConnectionId: string;
+            /**
+             * The start time of a connected vpn client.
+             */
+            vpnConnectionTime: string;
+            /**
+             * The user name of a connected vpn client.
+             */
+            vpnUserName: string;
+        }
+
+        /**
          * VpnClientConnectionHealth properties.
          */
         export interface VpnClientConnectionHealthResponse {
@@ -296327,7 +300760,7 @@ export namespace network {
             /**
              * The connection status.
              */
-            connectionStatus?: string;
+            connectionStatus: string;
             /**
              * Egress bytes transferred.
              */
@@ -296367,7 +300800,7 @@ export namespace network {
             /**
              * The provisioning state of the VPN connection resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Id of the connected vpn site.
              */
@@ -296493,7 +300926,7 @@ export namespace network {
             /**
              * The connection status.
              */
-            connectionStatus?: string;
+            connectionStatus: string;
             /**
              * Egress bytes transferred.
              */
@@ -296529,7 +300962,7 @@ export namespace network {
             /**
              * The provisioning state of the VPN site link connection resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Routing weight for vpn connection.
              */
@@ -296591,7 +301024,7 @@ export namespace network {
             /**
              * The provisioning state of the VPN site link resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * Resource type.
              */
@@ -296748,6 +301181,42 @@ export namespace network {
              * IP address.
              */
             ipAddress?: string;
+        }
+
+        /**
+         * Application gateway BackendHealthHttp settings.
+         */
+        export interface ApplicationGatewayBackendHealthHttpSettingsResponse {
+            /**
+             * Reference of an ApplicationGatewayBackendHttpSettings resource.
+             */
+            backendHttpSettings?: outputs.network.v20190901.ApplicationGatewayBackendHttpSettingsResponse;
+            /**
+             * List of ApplicationGatewayBackendHealthServer resources.
+             */
+            servers?: outputs.network.v20190901.ApplicationGatewayBackendHealthServerResponse[];
+        }
+
+        /**
+         * Application gateway backendhealth http settings.
+         */
+        export interface ApplicationGatewayBackendHealthServerResponse {
+            /**
+             * IP address or FQDN of backend server.
+             */
+            address?: string;
+            /**
+             * Health of backend server.
+             */
+            health?: string;
+            /**
+             * Health Probe Log.
+             */
+            healthProbeLog?: string;
+            /**
+             * Reference of IP configuration of backend server.
+             */
+            ipConfiguration?: outputs.network.v20190901.NetworkInterfaceIPConfigurationResponse;
         }
 
         /**
@@ -298177,6 +302646,56 @@ export namespace network {
         }
 
         /**
+         * The session detail for a target.
+         */
+        export interface BastionActiveSessionResponse {
+            /**
+             * The protocol used to connect to the target.
+             */
+            protocol: string;
+            /**
+             * The type of the resource.
+             */
+            resourceType: string;
+            /**
+             * Duration in mins the session has been active.
+             */
+            sessionDurationInMins: number;
+            /**
+             * A unique id for the session.
+             */
+            sessionId: string;
+            /**
+             * The time when the session started.
+             */
+            startTime: {[key: string]: any};
+            /**
+             * The host name of the target.
+             */
+            targetHostName: string;
+            /**
+             * The IP Address of the target.
+             */
+            targetIpAddress: string;
+            /**
+             * The resource group of the target.
+             */
+            targetResourceGroup: string;
+            /**
+             * The resource id of the target.
+             */
+            targetResourceId: string;
+            /**
+             * The subscription id for the target virtual machine.
+             */
+            targetSubscriptionId: string;
+            /**
+             * The user name who is active on this session.
+             */
+            userName: string;
+        }
+
+        /**
          * IP configuration of an Bastion Host.
          */
         export interface BastionHostIPConfigurationResponse {
@@ -298212,6 +302731,66 @@ export namespace network {
              * Ip configuration type.
              */
             type: string;
+        }
+
+        /**
+         * Bastion Shareable Link.
+         */
+        export interface BastionShareableLinkResponse {
+            /**
+             * The unique Bastion Shareable Link to the virtual machine.
+             */
+            bsl: string;
+            /**
+             * The time when the link was created.
+             */
+            createdAt: string;
+            /**
+             * Optional field indicating the warning or error message related to the vm in case of partial failure
+             */
+            message: string;
+            /**
+             * Reference of the virtual machine resource.
+             */
+            vm: outputs.network.v20190901.VMResponse;
+        }
+
+        /**
+         * BGP peer status details.
+         */
+        export interface BgpPeerStatusResponse {
+            /**
+             * The autonomous system number of the remote BGP peer.
+             */
+            asn: number;
+            /**
+             * For how long the peering has been up.
+             */
+            connectedDuration: string;
+            /**
+             * The virtual network gateway's local address.
+             */
+            localAddress: string;
+            /**
+             * The number of BGP messages received.
+             */
+            messagesReceived: number;
+            /**
+             * The number of BGP messages sent.
+             */
+            messagesSent: number;
+            /**
+             * The remote BGP peer.
+             */
+            neighbor: string;
+            /**
+             * The number of routes learned from this peer.
+             */
+            routesReceived: number;
+            /**
+             * The BGP peer state.
+             */
+            state: string;
         }
 
         /**
@@ -298489,7 +303068,7 @@ export namespace network {
             /**
              * Express Route Circuit connection state.
              */
-            circuitConnectionStatus?: string;
+            circuitConnectionStatus: string;
             /**
              * A unique read-only string that changes whenever the resource is updated.
              */
@@ -299018,6 +303597,40 @@ export namespace network {
              * A list of availability zones denoting the IP allocated for the resource needs to come from.
              */
             zones?: string[];
+        }
+
+        /**
+         * Gateway routing details.
+         */
+        export interface GatewayRouteResponse {
+            /**
+             * The route's AS path sequence.
+             */
+            asPath: string;
+            /**
+             * The gateway's local address.
+             */
+            localAddress: string;
+            /**
+             * The route's network prefix.
+             */
+            network: string;
+            /**
+             * The route's next hop.
+             */
+            nextHop: string;
+            /**
+             * The source this route was learned from.
+             */
+            origin: string;
+            /**
+             * The peer this route was learned from.
+             */
+            sourcePeer: string;
+            /**
+             * The route's weight.
+             */
+            weight: number;
         }
 
         /**
@@ -300128,7 +304741,7 @@ export namespace network {
             /**
              * Express Route Circuit connection state.
              */
-            circuitConnectionStatus?: string;
+            circuitConnectionStatus: string;
             /**
              * The name of the express route circuit connection resource.
              */
@@ -301116,6 +305729,32 @@ export namespace network {
         }
 
         /**
+         * Describes a Virtual Machine.
+         */
+        export interface VMResponse {
+            /**
+             * Resource ID.
+             */
+            id?: string;
+            /**
+             * Resource location.
+             */
+            location?: string;
+            /**
+             * Resource name.
+             */
+            name: string;
+            /**
+             * Resource tags.
+             */
+            tags?: {[key: string]: string};
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        /**
          * Virtual Hub identifier.
          */
         export interface VirtualHubIdResponse {
@@ -301508,6 +306147,60 @@ export namespace network {
         }
 
         /**
+         * VPN client connection health detail.
+         */
+        export interface VpnClientConnectionHealthDetailResponse {
+            /**
+             * The egress bytes per second.
+             */
+            egressBytesTransferred: number;
+            /**
+             * The egress packets per second.
+             */
+            egressPacketsTransferred: number;
+            /**
+             * The ingress bytes per second.
+             */
+            ingressBytesTransferred: number;
+            /**
+             * The ingress packets per second.
+             */
+            ingressPacketsTransferred: number;
+            /**
+             * The max band width.
+             */
+            maxBandwidth: number;
+            /**
+             * The max packets transferred per second.
+             */
+            maxPacketsPerSecond: number;
+            /**
+             * The assigned private Ip of a connected vpn client.
+             */
+            privateIpAddress: string;
+            /**
+             * The public Ip of a connected vpn client.
+             */
+            publicIpAddress: string;
+            /**
+             * The duration time of a connected vpn client.
+             */
+            vpnConnectionDuration: number;
+            /**
+             * The vpn client Id.
+             */
+            vpnConnectionId: string;
+            /**
+             * The start time of a connected vpn client.
+             */
+            vpnConnectionTime: string;
+            /**
+             * The user name of a connected vpn client.
+             */
+            vpnUserName: string;
+        }
+
+        /**
          * VpnClientConnectionHealth properties.
          */
         export interface VpnClientConnectionHealthResponse {
@@ -301592,7 +306285,7 @@ export namespace network {
             /**
              * The connection status.
              */
-            connectionStatus?: string;
+            connectionStatus: string;
             /**
              * Egress bytes transferred.
              */
@@ -301758,7 +306451,7 @@ export namespace network {
             /**
              * The connection status.
              */
-            connectionStatus?: string;
+            connectionStatus: string;
             /**
              * Egress bytes transferred.
              */
@@ -302219,6 +306912,42 @@ export namespace network {
              * IP address.
              */
             ipAddress?: string;
+        }
+
+        /**
+         * Application gateway BackendHealthHttp settings.
+         */
+        export interface ApplicationGatewayBackendHealthHttpSettingsResponse {
+            /**
+             * Reference to an ApplicationGatewayBackendHttpSettings resource.
+             */
+            backendHttpSettings?: outputs.network.v20191101.ApplicationGatewayBackendHttpSettingsResponse;
+            /**
+             * List of ApplicationGatewayBackendHealthServer resources.
+             */
+            servers?: outputs.network.v20191101.ApplicationGatewayBackendHealthServerResponse[];
+        }
+
+        /**
+         * Application gateway backendhealth http settings.
+         */
+        export interface ApplicationGatewayBackendHealthServerResponse {
+            /**
+             * IP address or FQDN of backend server.
+             */
+            address?: string;
+            /**
+             * Health of backend server.
+             */
+            health?: string;
+            /**
+             * Health Probe Log.
+             */
+            healthProbeLog?: string;
+            /**
+             * Reference to IP configuration of backend server.
+             */
+            ipConfiguration?: outputs.network.v20191101.NetworkInterfaceIPConfigurationResponse;
         }
 
         /**
@@ -303688,6 +308417,56 @@ export namespace network {
         }
 
         /**
+         * The session detail for a target.
+         */
+        export interface BastionActiveSessionResponse {
+            /**
+             * The protocol used to connect to the target.
+             */
+            protocol: string;
+            /**
+             * The type of the resource.
+             */
+            resourceType: string;
+            /**
+             * Duration in mins the session has been active.
+             */
+            sessionDurationInMins: number;
+            /**
+             * A unique id for the session.
+             */
+            sessionId: string;
+            /**
+             * The time when the session started.
+             */
+            startTime: {[key: string]: any};
+            /**
+             * The host name of the target.
+             */
+            targetHostName: string;
+            /**
+             * The IP Address of the target.
+             */
+            targetIpAddress: string;
+            /**
+             * The resource group of the target.
+             */
+            targetResourceGroup: string;
+            /**
+             * The resource id of the target.
+             */
+            targetResourceId: string;
+            /**
+             * The subscription id for the target virtual machine.
+             */
+            targetSubscriptionId: string;
+            /**
+             * The user name who is active on this session.
+             */
+            userName: string;
+        }
+
+        /**
          * IP configuration of an Bastion Host.
          */
         export interface BastionHostIPConfigurationResponse {
@@ -303723,6 +308502,66 @@ export namespace network {
              * Ip configuration type.
              */
             type: string;
+        }
+
+        /**
+         * Bastion Shareable Link.
+         */
+        export interface BastionShareableLinkResponse {
+            /**
+             * The unique Bastion Shareable Link to the virtual machine.
+             */
+            bsl: string;
+            /**
+             * The time when the link was created.
+             */
+            createdAt: string;
+            /**
+             * Optional field indicating the warning or error message related to the vm in case of partial failure.
+             */
+            message: string;
+            /**
+             * Reference of the virtual machine resource.
+             */
+            vm: outputs.network.v20191101.VMResponse;
+        }
+
+        /**
+         * BGP peer status details.
+         */
+        export interface BgpPeerStatusResponse {
+            /**
+             * The autonomous system number of the remote BGP peer.
+             */
+            asn: number;
+            /**
+             * For how long the peering has been up.
+             */
+            connectedDuration: string;
+            /**
+             * The virtual network gateway's local address.
+             */
+            localAddress: string;
+            /**
+             * The number of BGP messages received.
+             */
+            messagesReceived: number;
+            /**
+             * The number of BGP messages sent.
+             */
+            messagesSent: number;
+            /**
+             * The remote BGP peer.
+             */
+            neighbor: string;
+            /**
+             * The number of routes learned from this peer.
+             */
+            routesReceived: number;
+            /**
+             * The BGP peer state.
+             */
+            state: string;
         }
 
         /**
@@ -304224,7 +309063,7 @@ export namespace network {
             /**
              * Express Route Circuit connection state.
              */
-            circuitConnectionStatus?: string;
+            circuitConnectionStatus: string;
             /**
              * A unique read-only string that changes whenever the resource is updated.
              */
@@ -304767,6 +309606,40 @@ export namespace network {
              * A list of availability zones denoting the IP allocated for the resource needs to come from.
              */
             zones?: string[];
+        }
+
+        /**
+         * Gateway routing details.
+         */
+        export interface GatewayRouteResponse {
+            /**
+             * The route's AS path sequence.
+             */
+            asPath: string;
+            /**
+             * The gateway's local address.
+             */
+            localAddress: string;
+            /**
+             * The route's network prefix.
+             */
+            network: string;
+            /**
+             * The route's next hop.
+             */
+            nextHop: string;
+            /**
+             * The source this route was learned from.
+             */
+            origin: string;
+            /**
+             * The peer this route was learned from.
+             */
+            sourcePeer: string;
+            /**
+             * The route's weight.
+             */
+            weight: number;
         }
 
         /**
@@ -305891,7 +310764,7 @@ export namespace network {
             /**
              * Express Route Circuit connection state.
              */
-            circuitConnectionStatus?: string;
+            circuitConnectionStatus: string;
             /**
              * The name of the express route circuit connection resource.
              */
@@ -306929,6 +311802,32 @@ export namespace network {
         }
 
         /**
+         * Describes a Virtual Machine.
+         */
+        export interface VMResponse {
+            /**
+             * Resource ID.
+             */
+            id?: string;
+            /**
+             * Resource location.
+             */
+            location?: string;
+            /**
+             * Resource name.
+             */
+            name: string;
+            /**
+             * Resource tags.
+             */
+            tags?: {[key: string]: string};
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        /**
          * Virtual Hub identifier.
          */
         export interface VirtualHubIdResponse {
@@ -307321,6 +312220,60 @@ export namespace network {
         }
 
         /**
+         * VPN client connection health detail.
+         */
+        export interface VpnClientConnectionHealthDetailResponse {
+            /**
+             * The egress bytes per second.
+             */
+            egressBytesTransferred: number;
+            /**
+             * The egress packets per second.
+             */
+            egressPacketsTransferred: number;
+            /**
+             * The ingress bytes per second.
+             */
+            ingressBytesTransferred: number;
+            /**
+             * The ingress packets per second.
+             */
+            ingressPacketsTransferred: number;
+            /**
+             * The max band width.
+             */
+            maxBandwidth: number;
+            /**
+             * The max packets transferred per second.
+             */
+            maxPacketsPerSecond: number;
+            /**
+             * The assigned private Ip of a connected vpn client.
+             */
+            privateIpAddress: string;
+            /**
+             * The public Ip of a connected vpn client.
+             */
+            publicIpAddress: string;
+            /**
+             * The duration time of a connected vpn client.
+             */
+            vpnConnectionDuration: number;
+            /**
+             * The vpn client Id.
+             */
+            vpnConnectionId: string;
+            /**
+             * The start time of a connected vpn client.
+             */
+            vpnConnectionTime: string;
+            /**
+             * The user name of a connected vpn client.
+             */
+            vpnUserName: string;
+        }
+
+        /**
          * VpnClientConnectionHealth properties.
          */
         export interface VpnClientConnectionHealthResponse {
@@ -307405,7 +312358,7 @@ export namespace network {
             /**
              * The connection status.
              */
-            connectionStatus?: string;
+            connectionStatus: string;
             /**
              * Egress bytes transferred.
              */
@@ -307571,7 +312524,7 @@ export namespace network {
             /**
              * The connection status.
              */
-            connectionStatus?: string;
+            connectionStatus: string;
             /**
              * Egress bytes transferred.
              */
@@ -307826,6 +312779,42 @@ export namespace network {
              * IP address.
              */
             ipAddress?: string;
+        }
+
+        /**
+         * Application gateway BackendHealthHttp settings.
+         */
+        export interface ApplicationGatewayBackendHealthHttpSettingsResponse {
+            /**
+             * Reference to an ApplicationGatewayBackendHttpSettings resource.
+             */
+            backendHttpSettings?: outputs.network.v20191201.ApplicationGatewayBackendHttpSettingsResponse;
+            /**
+             * List of ApplicationGatewayBackendHealthServer resources.
+             */
+            servers?: outputs.network.v20191201.ApplicationGatewayBackendHealthServerResponse[];
+        }
+
+        /**
+         * Application gateway backendhealth http settings.
+         */
+        export interface ApplicationGatewayBackendHealthServerResponse {
+            /**
+             * IP address or FQDN of backend server.
+             */
+            address?: string;
+            /**
+             * Health of backend server.
+             */
+            health?: string;
+            /**
+             * Health Probe Log.
+             */
+            healthProbeLog?: string;
+            /**
+             * Reference to IP configuration of backend server.
+             */
+            ipConfiguration?: outputs.network.v20191201.NetworkInterfaceIPConfigurationResponse;
         }
 
         /**
@@ -309299,6 +314288,56 @@ export namespace network {
         }
 
         /**
+         * The session detail for a target.
+         */
+        export interface BastionActiveSessionResponse {
+            /**
+             * The protocol used to connect to the target.
+             */
+            protocol: string;
+            /**
+             * The type of the resource.
+             */
+            resourceType: string;
+            /**
+             * Duration in mins the session has been active.
+             */
+            sessionDurationInMins: number;
+            /**
+             * A unique id for the session.
+             */
+            sessionId: string;
+            /**
+             * The time when the session started.
+             */
+            startTime: {[key: string]: any};
+            /**
+             * The host name of the target.
+             */
+            targetHostName: string;
+            /**
+             * The IP Address of the target.
+             */
+            targetIpAddress: string;
+            /**
+             * The resource group of the target.
+             */
+            targetResourceGroup: string;
+            /**
+             * The resource id of the target.
+             */
+            targetResourceId: string;
+            /**
+             * The subscription id for the target virtual machine.
+             */
+            targetSubscriptionId: string;
+            /**
+             * The user name who is active on this session.
+             */
+            userName: string;
+        }
+
+        /**
          * IP configuration of an Bastion Host.
          */
         export interface BastionHostIPConfigurationResponse {
@@ -309334,6 +314373,66 @@ export namespace network {
              * Ip configuration type.
              */
             type: string;
+        }
+
+        /**
+         * Bastion Shareable Link.
+         */
+        export interface BastionShareableLinkResponse {
+            /**
+             * The unique Bastion Shareable Link to the virtual machine.
+             */
+            bsl: string;
+            /**
+             * The time when the link was created.
+             */
+            createdAt: string;
+            /**
+             * Optional field indicating the warning or error message related to the vm in case of partial failure.
+             */
+            message: string;
+            /**
+             * Reference of the virtual machine resource.
+             */
+            vm: outputs.network.v20191201.VMResponse;
+        }
+
+        /**
+         * BGP peer status details.
+         */
+        export interface BgpPeerStatusResponse {
+            /**
+             * The autonomous system number of the remote BGP peer.
+             */
+            asn: number;
+            /**
+             * For how long the peering has been up.
+             */
+            connectedDuration: string;
+            /**
+             * The virtual network gateway's local address.
+             */
+            localAddress: string;
+            /**
+             * The number of BGP messages received.
+             */
+            messagesReceived: number;
+            /**
+             * The number of BGP messages sent.
+             */
+            messagesSent: number;
+            /**
+             * The remote BGP peer.
+             */
+            neighbor: string;
+            /**
+             * The number of routes learned from this peer.
+             */
+            routesReceived: number;
+            /**
+             * The BGP peer state.
+             */
+            state: string;
         }
 
         /**
@@ -309825,7 +314924,7 @@ export namespace network {
             /**
              * Express Route Circuit connection state.
              */
-            circuitConnectionStatus?: string;
+            circuitConnectionStatus: string;
             /**
              * A unique read-only string that changes whenever the resource is updated.
              */
@@ -310434,6 +315533,40 @@ export namespace network {
              * A list of availability zones denoting the IP allocated for the resource needs to come from.
              */
             zones?: string[];
+        }
+
+        /**
+         * Gateway routing details.
+         */
+        export interface GatewayRouteResponse {
+            /**
+             * The route's AS path sequence.
+             */
+            asPath: string;
+            /**
+             * The gateway's local address.
+             */
+            localAddress: string;
+            /**
+             * The route's network prefix.
+             */
+            network: string;
+            /**
+             * The route's next hop.
+             */
+            nextHop: string;
+            /**
+             * The source this route was learned from.
+             */
+            origin: string;
+            /**
+             * The peer this route was learned from.
+             */
+            sourcePeer: string;
+            /**
+             * The route's weight.
+             */
+            weight: number;
         }
 
         /**
@@ -311648,7 +316781,7 @@ export namespace network {
             /**
              * Express Route Circuit connection state.
              */
-            circuitConnectionStatus?: string;
+            circuitConnectionStatus: string;
             /**
              * The name of the express route circuit connection resource.
              */
@@ -312686,6 +317819,32 @@ export namespace network {
         }
 
         /**
+         * Describes a Virtual Machine.
+         */
+        export interface VMResponse {
+            /**
+             * Resource ID.
+             */
+            id?: string;
+            /**
+             * Resource location.
+             */
+            location?: string;
+            /**
+             * Resource name.
+             */
+            name: string;
+            /**
+             * Resource tags.
+             */
+            tags?: {[key: string]: string};
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        /**
          * Network Virtual Appliance NIC properties.
          */
         export interface VirtualApplianceNicPropertiesResponse {
@@ -313122,6 +318281,60 @@ export namespace network {
         }
 
         /**
+         * VPN client connection health detail.
+         */
+        export interface VpnClientConnectionHealthDetailResponse {
+            /**
+             * The egress bytes per second.
+             */
+            egressBytesTransferred: number;
+            /**
+             * The egress packets per second.
+             */
+            egressPacketsTransferred: number;
+            /**
+             * The ingress bytes per second.
+             */
+            ingressBytesTransferred: number;
+            /**
+             * The ingress packets per second.
+             */
+            ingressPacketsTransferred: number;
+            /**
+             * The max band width.
+             */
+            maxBandwidth: number;
+            /**
+             * The max packets transferred per second.
+             */
+            maxPacketsPerSecond: number;
+            /**
+             * The assigned private Ip of a connected vpn client.
+             */
+            privateIpAddress: string;
+            /**
+             * The public Ip of a connected vpn client.
+             */
+            publicIpAddress: string;
+            /**
+             * The duration time of a connected vpn client.
+             */
+            vpnConnectionDuration: number;
+            /**
+             * The vpn client Id.
+             */
+            vpnConnectionId: string;
+            /**
+             * The start time of a connected vpn client.
+             */
+            vpnConnectionTime: string;
+            /**
+             * The user name of a connected vpn client.
+             */
+            vpnUserName: string;
+        }
+
+        /**
          * VpnClientConnectionHealth properties.
          */
         export interface VpnClientConnectionHealthResponse {
@@ -313206,7 +318419,7 @@ export namespace network {
             /**
              * The connection status.
              */
-            connectionStatus?: string;
+            connectionStatus: string;
             /**
              * Egress bytes transferred.
              */
@@ -313372,7 +318585,7 @@ export namespace network {
             /**
              * The connection status.
              */
-            connectionStatus?: string;
+            connectionStatus: string;
             /**
              * Egress bytes transferred.
              */
@@ -313540,7 +318753,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * Resource type.
              */
@@ -313717,7 +318930,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
              */
@@ -313799,7 +319012,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * Resource type.
              */
@@ -313835,7 +319048,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * The number of samples to consider for load balancing decisions
              */
@@ -313912,7 +319125,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * A reference to the routing configuration.
              */
@@ -313990,7 +319203,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * A list of rules that define a particular Rules Engine Configuration.
              */
@@ -314157,6 +319370,42 @@ export namespace network {
              * IP address.
              */
             ipAddress?: string;
+        }
+
+        /**
+         * Application gateway BackendHealthHttp settings.
+         */
+        export interface ApplicationGatewayBackendHealthHttpSettingsResponse {
+            /**
+             * Reference to an ApplicationGatewayBackendHttpSettings resource.
+             */
+            backendHttpSettings?: outputs.network.v20200301.ApplicationGatewayBackendHttpSettingsResponse;
+            /**
+             * List of ApplicationGatewayBackendHealthServer resources.
+             */
+            servers?: outputs.network.v20200301.ApplicationGatewayBackendHealthServerResponse[];
+        }
+
+        /**
+         * Application gateway backendhealth http settings.
+         */
+        export interface ApplicationGatewayBackendHealthServerResponse {
+            /**
+             * IP address or FQDN of backend server.
+             */
+            address?: string;
+            /**
+             * Health of backend server.
+             */
+            health?: string;
+            /**
+             * Health Probe Log.
+             */
+            healthProbeLog?: string;
+            /**
+             * Reference to IP configuration of backend server.
+             */
+            ipConfiguration?: outputs.network.v20200301.NetworkInterfaceIPConfigurationResponse;
         }
 
         /**
@@ -315634,6 +320883,56 @@ export namespace network {
         }
 
         /**
+         * The session detail for a target.
+         */
+        export interface BastionActiveSessionResponse {
+            /**
+             * The protocol used to connect to the target.
+             */
+            protocol: string;
+            /**
+             * The type of the resource.
+             */
+            resourceType: string;
+            /**
+             * Duration in mins the session has been active.
+             */
+            sessionDurationInMins: number;
+            /**
+             * A unique id for the session.
+             */
+            sessionId: string;
+            /**
+             * The time when the session started.
+             */
+            startTime: {[key: string]: any};
+            /**
+             * The host name of the target.
+             */
+            targetHostName: string;
+            /**
+             * The IP Address of the target.
+             */
+            targetIpAddress: string;
+            /**
+             * The resource group of the target.
+             */
+            targetResourceGroup: string;
+            /**
+             * The resource id of the target.
+             */
+            targetResourceId: string;
+            /**
+             * The subscription id for the target virtual machine.
+             */
+            targetSubscriptionId: string;
+            /**
+             * The user name who is active on this session.
+             */
+            userName: string;
+        }
+
+        /**
          * IP configuration of an Bastion Host.
          */
         export interface BastionHostIPConfigurationResponse {
@@ -315669,6 +320968,66 @@ export namespace network {
              * Ip configuration type.
              */
             type: string;
+        }
+
+        /**
+         * Bastion Shareable Link.
+         */
+        export interface BastionShareableLinkResponse {
+            /**
+             * The unique Bastion Shareable Link to the virtual machine.
+             */
+            bsl: string;
+            /**
+             * The time when the link was created.
+             */
+            createdAt: string;
+            /**
+             * Optional field indicating the warning or error message related to the vm in case of partial failure.
+             */
+            message: string;
+            /**
+             * Reference of the virtual machine resource.
+             */
+            vm: outputs.network.v20200301.VMResponse;
+        }
+
+        /**
+         * BGP peer status details.
+         */
+        export interface BgpPeerStatusResponse {
+            /**
+             * The autonomous system number of the remote BGP peer.
+             */
+            asn: number;
+            /**
+             * For how long the peering has been up.
+             */
+            connectedDuration: string;
+            /**
+             * The virtual network gateway's local address.
+             */
+            localAddress: string;
+            /**
+             * The number of BGP messages received.
+             */
+            messagesReceived: number;
+            /**
+             * The number of BGP messages sent.
+             */
+            messagesSent: number;
+            /**
+             * The remote BGP peer.
+             */
+            neighbor: string;
+            /**
+             * The number of routes learned from this peer.
+             */
+            routesReceived: number;
+            /**
+             * The BGP peer state.
+             */
+            state: string;
         }
 
         /**
@@ -316174,7 +321533,7 @@ export namespace network {
             /**
              * Express Route Circuit connection state.
              */
-            circuitConnectionStatus?: string;
+            circuitConnectionStatus: string;
             /**
              * A unique read-only string that changes whenever the resource is updated.
              */
@@ -316783,6 +322142,40 @@ export namespace network {
              * A list of availability zones denoting the IP allocated for the resource needs to come from.
              */
             zones?: string[];
+        }
+
+        /**
+         * Gateway routing details.
+         */
+        export interface GatewayRouteResponse {
+            /**
+             * The route's AS path sequence.
+             */
+            asPath: string;
+            /**
+             * The gateway's local address.
+             */
+            localAddress: string;
+            /**
+             * The route's network prefix.
+             */
+            network: string;
+            /**
+             * The route's next hop.
+             */
+            nextHop: string;
+            /**
+             * The source this route was learned from.
+             */
+            origin: string;
+            /**
+             * The peer this route was learned from.
+             */
+            sourcePeer: string;
+            /**
+             * The route's weight.
+             */
+            weight: number;
         }
 
         /**
@@ -317997,7 +323390,7 @@ export namespace network {
             /**
              * Express Route Circuit connection state.
              */
-            circuitConnectionStatus?: string;
+            circuitConnectionStatus: string;
             /**
              * The name of the express route circuit connection resource.
              */
@@ -319109,6 +324502,32 @@ export namespace network {
         }
 
         /**
+         * Describes a Virtual Machine.
+         */
+        export interface VMResponse {
+            /**
+             * Resource ID.
+             */
+            id?: string;
+            /**
+             * Resource location.
+             */
+            location?: string;
+            /**
+             * Resource name.
+             */
+            name: string;
+            /**
+             * Resource tags.
+             */
+            tags?: {[key: string]: string};
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        /**
          * Network Virtual Appliance NIC properties.
          */
         export interface VirtualApplianceNicPropertiesResponse {
@@ -319549,6 +324968,60 @@ export namespace network {
         }
 
         /**
+         * VPN client connection health detail.
+         */
+        export interface VpnClientConnectionHealthDetailResponse {
+            /**
+             * The egress bytes per second.
+             */
+            egressBytesTransferred: number;
+            /**
+             * The egress packets per second.
+             */
+            egressPacketsTransferred: number;
+            /**
+             * The ingress bytes per second.
+             */
+            ingressBytesTransferred: number;
+            /**
+             * The ingress packets per second.
+             */
+            ingressPacketsTransferred: number;
+            /**
+             * The max band width.
+             */
+            maxBandwidth: number;
+            /**
+             * The max packets transferred per second.
+             */
+            maxPacketsPerSecond: number;
+            /**
+             * The assigned private Ip of a connected vpn client.
+             */
+            privateIpAddress: string;
+            /**
+             * The public Ip of a connected vpn client.
+             */
+            publicIpAddress: string;
+            /**
+             * The duration time of a connected vpn client.
+             */
+            vpnConnectionDuration: number;
+            /**
+             * The vpn client Id.
+             */
+            vpnConnectionId: string;
+            /**
+             * The start time of a connected vpn client.
+             */
+            vpnConnectionTime: string;
+            /**
+             * The user name of a connected vpn client.
+             */
+            vpnUserName: string;
+        }
+
+        /**
          * VpnClientConnectionHealth properties.
          */
         export interface VpnClientConnectionHealthResponse {
@@ -319633,7 +325106,7 @@ export namespace network {
             /**
              * The connection status.
              */
-            connectionStatus?: string;
+            connectionStatus: string;
             /**
              * The dead peer detection timeout for a vpn connection in seconds.
              */
@@ -319803,7 +325276,7 @@ export namespace network {
             /**
              * The connection status.
              */
-            connectionStatus?: string;
+            connectionStatus: string;
             /**
              * Egress bytes transferred.
              */
@@ -320062,6 +325535,42 @@ export namespace network {
              * IP address.
              */
             ipAddress?: string;
+        }
+
+        /**
+         * Application gateway BackendHealthHttp settings.
+         */
+        export interface ApplicationGatewayBackendHealthHttpSettingsResponse {
+            /**
+             * Reference to an ApplicationGatewayBackendHttpSettings resource.
+             */
+            backendHttpSettings?: outputs.network.v20200401.ApplicationGatewayBackendHttpSettingsResponse;
+            /**
+             * List of ApplicationGatewayBackendHealthServer resources.
+             */
+            servers?: outputs.network.v20200401.ApplicationGatewayBackendHealthServerResponse[];
+        }
+
+        /**
+         * Application gateway backendhealth http settings.
+         */
+        export interface ApplicationGatewayBackendHealthServerResponse {
+            /**
+             * IP address or FQDN of backend server.
+             */
+            address?: string;
+            /**
+             * Health of backend server.
+             */
+            health?: string;
+            /**
+             * Health Probe Log.
+             */
+            healthProbeLog?: string;
+            /**
+             * Reference to IP configuration of backend server.
+             */
+            ipConfiguration?: outputs.network.v20200401.NetworkInterfaceIPConfigurationResponse;
         }
 
         /**
@@ -321569,7 +327078,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * Resource type.
              */
@@ -321637,6 +327146,56 @@ export namespace network {
         }
 
         /**
+         * The session detail for a target.
+         */
+        export interface BastionActiveSessionResponse {
+            /**
+             * The protocol used to connect to the target.
+             */
+            protocol: string;
+            /**
+             * The type of the resource.
+             */
+            resourceType: string;
+            /**
+             * Duration in mins the session has been active.
+             */
+            sessionDurationInMins: number;
+            /**
+             * A unique id for the session.
+             */
+            sessionId: string;
+            /**
+             * The time when the session started.
+             */
+            startTime: {[key: string]: any};
+            /**
+             * The host name of the target.
+             */
+            targetHostName: string;
+            /**
+             * The IP Address of the target.
+             */
+            targetIpAddress: string;
+            /**
+             * The resource group of the target.
+             */
+            targetResourceGroup: string;
+            /**
+             * The resource id of the target.
+             */
+            targetResourceId: string;
+            /**
+             * The subscription id for the target virtual machine.
+             */
+            targetSubscriptionId: string;
+            /**
+             * The user name who is active on this session.
+             */
+            userName: string;
+        }
+
+        /**
          * IP configuration of an Bastion Host.
          */
         export interface BastionHostIPConfigurationResponse {
@@ -321672,6 +327231,66 @@ export namespace network {
              * Ip configuration type.
              */
             type: string;
+        }
+
+        /**
+         * Bastion Shareable Link.
+         */
+        export interface BastionShareableLinkResponse {
+            /**
+             * The unique Bastion Shareable Link to the virtual machine.
+             */
+            bsl: string;
+            /**
+             * The time when the link was created.
+             */
+            createdAt: string;
+            /**
+             * Optional field indicating the warning or error message related to the vm in case of partial failure.
+             */
+            message: string;
+            /**
+             * Reference of the virtual machine resource.
+             */
+            vm: outputs.network.v20200401.VMResponse;
+        }
+
+        /**
+         * BGP peer status details.
+         */
+        export interface BgpPeerStatusResponse {
+            /**
+             * The autonomous system number of the remote BGP peer.
+             */
+            asn: number;
+            /**
+             * For how long the peering has been up.
+             */
+            connectedDuration: string;
+            /**
+             * The virtual network gateway's local address.
+             */
+            localAddress: string;
+            /**
+             * The number of BGP messages received.
+             */
+            messagesReceived: number;
+            /**
+             * The number of BGP messages sent.
+             */
+            messagesSent: number;
+            /**
+             * The remote BGP peer.
+             */
+            neighbor: string;
+            /**
+             * The number of routes learned from this peer.
+             */
+            routesReceived: number;
+            /**
+             * The BGP peer state.
+             */
+            state: string;
         }
 
         /**
@@ -322281,7 +327900,7 @@ export namespace network {
             /**
              * Express Route Circuit connection state.
              */
-            circuitConnectionStatus?: string;
+            circuitConnectionStatus: string;
             /**
              * A unique read-only string that changes whenever the resource is updated.
              */
@@ -322904,7 +328523,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
              */
@@ -323004,6 +328623,40 @@ export namespace network {
         }
 
         /**
+         * Gateway routing details.
+         */
+        export interface GatewayRouteResponse {
+            /**
+             * The route's AS path sequence.
+             */
+            asPath: string;
+            /**
+             * The gateway's local address.
+             */
+            localAddress: string;
+            /**
+             * The route's network prefix.
+             */
+            network: string;
+            /**
+             * The route's next hop.
+             */
+            nextHop: string;
+            /**
+             * The source this route was learned from.
+             */
+            origin: string;
+            /**
+             * The peer this route was learned from.
+             */
+            sourcePeer: string;
+            /**
+             * The route's weight.
+             */
+            weight: number;
+        }
+
+        /**
          * The HTTP header.
          */
         export interface HTTPHeaderResponse {
@@ -323070,7 +328723,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * Resource type.
              */
@@ -323588,7 +329241,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * The number of samples to consider for load balancing decisions
              */
@@ -324385,7 +330038,7 @@ export namespace network {
             /**
              * Express Route Circuit connection state.
              */
-            circuitConnectionStatus?: string;
+            circuitConnectionStatus: string;
             /**
              * The name of the express route circuit connection resource.
              */
@@ -325202,7 +330855,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * A reference to the routing configuration.
              */
@@ -325294,7 +330947,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * A list of rules that define a particular Rules Engine Configuration.
              */
@@ -325748,6 +331401,32 @@ export namespace network {
         }
 
         /**
+         * Describes a Virtual Machine.
+         */
+        export interface VMResponse {
+            /**
+             * Resource ID.
+             */
+            id?: string;
+            /**
+             * Resource location.
+             */
+            location?: string;
+            /**
+             * Resource name.
+             */
+            name: string;
+            /**
+             * Resource tags.
+             */
+            tags?: {[key: string]: string};
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        /**
          * Network Virtual Appliance NIC properties.
          */
         export interface VirtualApplianceNicPropertiesResponse {
@@ -326198,6 +331877,60 @@ export namespace network {
         }
 
         /**
+         * VPN client connection health detail.
+         */
+        export interface VpnClientConnectionHealthDetailResponse {
+            /**
+             * The egress bytes per second.
+             */
+            egressBytesTransferred: number;
+            /**
+             * The egress packets per second.
+             */
+            egressPacketsTransferred: number;
+            /**
+             * The ingress bytes per second.
+             */
+            ingressBytesTransferred: number;
+            /**
+             * The ingress packets per second.
+             */
+            ingressPacketsTransferred: number;
+            /**
+             * The max band width.
+             */
+            maxBandwidth: number;
+            /**
+             * The max packets transferred per second.
+             */
+            maxPacketsPerSecond: number;
+            /**
+             * The assigned private Ip of a connected vpn client.
+             */
+            privateIpAddress: string;
+            /**
+             * The public Ip of a connected vpn client.
+             */
+            publicIpAddress: string;
+            /**
+             * The duration time of a connected vpn client.
+             */
+            vpnConnectionDuration: number;
+            /**
+             * The vpn client Id.
+             */
+            vpnConnectionId: string;
+            /**
+             * The start time of a connected vpn client.
+             */
+            vpnConnectionTime: string;
+            /**
+             * The user name of a connected vpn client.
+             */
+            vpnUserName: string;
+        }
+
+        /**
          * VpnClientConnectionHealth properties.
          */
         export interface VpnClientConnectionHealthResponse {
@@ -326282,7 +332015,7 @@ export namespace network {
             /**
              * The connection status.
              */
-            connectionStatus?: string;
+            connectionStatus: string;
             /**
              * The dead peer detection timeout for a vpn connection in seconds.
              */
@@ -326456,7 +332189,7 @@ export namespace network {
             /**
              * The connection status.
              */
-            connectionStatus?: string;
+            connectionStatus: string;
             /**
              * Egress bytes transferred.
              */
@@ -326715,6 +332448,42 @@ export namespace network {
              * IP address.
              */
             ipAddress?: string;
+        }
+
+        /**
+         * Application gateway BackendHealthHttp settings.
+         */
+        export interface ApplicationGatewayBackendHealthHttpSettingsResponse {
+            /**
+             * Reference to an ApplicationGatewayBackendHttpSettings resource.
+             */
+            backendHttpSettings?: outputs.network.v20200501.ApplicationGatewayBackendHttpSettingsResponse;
+            /**
+             * List of ApplicationGatewayBackendHealthServer resources.
+             */
+            servers?: outputs.network.v20200501.ApplicationGatewayBackendHealthServerResponse[];
+        }
+
+        /**
+         * Application gateway backendhealth http settings.
+         */
+        export interface ApplicationGatewayBackendHealthServerResponse {
+            /**
+             * IP address or FQDN of backend server.
+             */
+            address?: string;
+            /**
+             * Health of backend server.
+             */
+            health?: string;
+            /**
+             * Health Probe Log.
+             */
+            healthProbeLog?: string;
+            /**
+             * Reference to IP configuration of backend server.
+             */
+            ipConfiguration?: outputs.network.v20200501.NetworkInterfaceIPConfigurationResponse;
         }
 
         /**
@@ -328344,7 +334113,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * Resource type.
              */
@@ -328420,6 +334189,56 @@ export namespace network {
         }
 
         /**
+         * The session detail for a target.
+         */
+        export interface BastionActiveSessionResponse {
+            /**
+             * The protocol used to connect to the target.
+             */
+            protocol: string;
+            /**
+             * The type of the resource.
+             */
+            resourceType: string;
+            /**
+             * Duration in mins the session has been active.
+             */
+            sessionDurationInMins: number;
+            /**
+             * A unique id for the session.
+             */
+            sessionId: string;
+            /**
+             * The time when the session started.
+             */
+            startTime: {[key: string]: any};
+            /**
+             * The host name of the target.
+             */
+            targetHostName: string;
+            /**
+             * The IP Address of the target.
+             */
+            targetIpAddress: string;
+            /**
+             * The resource group of the target.
+             */
+            targetResourceGroup: string;
+            /**
+             * The resource id of the target.
+             */
+            targetResourceId: string;
+            /**
+             * The subscription id for the target virtual machine.
+             */
+            targetSubscriptionId: string;
+            /**
+             * The user name who is active on this session.
+             */
+            userName: string;
+        }
+
+        /**
          * IP configuration of an Bastion Host.
          */
         export interface BastionHostIPConfigurationResponse {
@@ -328455,6 +334274,66 @@ export namespace network {
              * Ip configuration type.
              */
             type: string;
+        }
+
+        /**
+         * Bastion Shareable Link.
+         */
+        export interface BastionShareableLinkResponse {
+            /**
+             * The unique Bastion Shareable Link to the virtual machine.
+             */
+            bsl: string;
+            /**
+             * The time when the link was created.
+             */
+            createdAt: string;
+            /**
+             * Optional field indicating the warning or error message related to the vm in case of partial failure.
+             */
+            message: string;
+            /**
+             * Reference of the virtual machine resource.
+             */
+            vm: outputs.network.v20200501.VMResponse;
+        }
+
+        /**
+         * BGP peer status details.
+         */
+        export interface BgpPeerStatusResponse {
+            /**
+             * The autonomous system number of the remote BGP peer.
+             */
+            asn: number;
+            /**
+             * For how long the peering has been up.
+             */
+            connectedDuration: string;
+            /**
+             * The virtual network gateway's local address.
+             */
+            localAddress: string;
+            /**
+             * The number of BGP messages received.
+             */
+            messagesReceived: number;
+            /**
+             * The number of BGP messages sent.
+             */
+            messagesSent: number;
+            /**
+             * The remote BGP peer.
+             */
+            neighbor: string;
+            /**
+             * The number of routes learned from this peer.
+             */
+            routesReceived: number;
+            /**
+             * The BGP peer state.
+             */
+            state: string;
         }
 
         /**
@@ -329052,7 +334931,7 @@ export namespace network {
             /**
              * Express Route Circuit connection state.
              */
-            circuitConnectionStatus?: string;
+            circuitConnectionStatus: string;
             /**
              * A unique read-only string that changes whenever the resource is updated.
              */
@@ -329657,7 +335536,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
              */
@@ -329757,6 +335636,40 @@ export namespace network {
         }
 
         /**
+         * Gateway routing details.
+         */
+        export interface GatewayRouteResponse {
+            /**
+             * The route's AS path sequence.
+             */
+            asPath: string;
+            /**
+             * The gateway's local address.
+             */
+            localAddress: string;
+            /**
+             * The route's network prefix.
+             */
+            network: string;
+            /**
+             * The route's next hop.
+             */
+            nextHop: string;
+            /**
+             * The source this route was learned from.
+             */
+            origin: string;
+            /**
+             * The peer this route was learned from.
+             */
+            sourcePeer: string;
+            /**
+             * The route's weight.
+             */
+            weight: number;
+        }
+
+        /**
          * The HTTP header.
          */
         export interface HTTPHeaderResponse {
@@ -329823,7 +335736,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * Resource type.
              */
@@ -330313,7 +336226,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * The number of samples to consider for load balancing decisions
              */
@@ -331126,7 +337039,7 @@ export namespace network {
             /**
              * Express Route Circuit connection state.
              */
-            circuitConnectionStatus?: string;
+            circuitConnectionStatus: string;
             /**
              * The name of the express route circuit connection resource.
              */
@@ -331933,7 +337846,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * A reference to the routing configuration.
              */
@@ -332025,7 +337938,7 @@ export namespace network {
             /**
              * Resource status.
              */
-            resourceState?: string;
+            resourceState: string;
             /**
              * A list of rules that define a particular Rules Engine Configuration.
              */
@@ -332479,6 +338392,32 @@ export namespace network {
         }
 
         /**
+         * Describes a Virtual Machine.
+         */
+        export interface VMResponse {
+            /**
+             * Resource ID.
+             */
+            id?: string;
+            /**
+             * Resource location.
+             */
+            location?: string;
+            /**
+             * Resource name.
+             */
+            name: string;
+            /**
+             * Resource tags.
+             */
+            tags?: {[key: string]: string};
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        /**
          * Network Virtual Appliance NIC properties.
          */
         export interface VirtualApplianceNicPropertiesResponse {
@@ -332929,6 +338868,60 @@ export namespace network {
         }
 
         /**
+         * VPN client connection health detail.
+         */
+        export interface VpnClientConnectionHealthDetailResponse {
+            /**
+             * The egress bytes per second.
+             */
+            egressBytesTransferred: number;
+            /**
+             * The egress packets per second.
+             */
+            egressPacketsTransferred: number;
+            /**
+             * The ingress bytes per second.
+             */
+            ingressBytesTransferred: number;
+            /**
+             * The ingress packets per second.
+             */
+            ingressPacketsTransferred: number;
+            /**
+             * The max band width.
+             */
+            maxBandwidth: number;
+            /**
+             * The max packets transferred per second.
+             */
+            maxPacketsPerSecond: number;
+            /**
+             * The assigned private Ip of a connected vpn client.
+             */
+            privateIpAddress: string;
+            /**
+             * The public Ip of a connected vpn client.
+             */
+            publicIpAddress: string;
+            /**
+             * The duration time of a connected vpn client.
+             */
+            vpnConnectionDuration: number;
+            /**
+             * The vpn client Id.
+             */
+            vpnConnectionId: string;
+            /**
+             * The start time of a connected vpn client.
+             */
+            vpnConnectionTime: string;
+            /**
+             * The user name of a connected vpn client.
+             */
+            vpnUserName: string;
+        }
+
+        /**
          * VpnClientConnectionHealth properties.
          */
         export interface VpnClientConnectionHealthResponse {
@@ -333013,7 +339006,7 @@ export namespace network {
             /**
              * The connection status.
              */
-            connectionStatus?: string;
+            connectionStatus: string;
             /**
              * The dead peer detection timeout for a vpn connection in seconds.
              */
@@ -333187,7 +339180,7 @@ export namespace network {
             /**
              * The connection status.
              */
-            connectionStatus?: string;
+            connectionStatus: string;
             /**
              * Egress bytes transferred.
              */
@@ -333446,6 +339439,42 @@ export namespace network {
              * IP address.
              */
             ipAddress?: string;
+        }
+
+        /**
+         * Application gateway BackendHealthHttp settings.
+         */
+        export interface ApplicationGatewayBackendHealthHttpSettingsResponse {
+            /**
+             * Reference to an ApplicationGatewayBackendHttpSettings resource.
+             */
+            backendHttpSettings?: outputs.network.v20200601.ApplicationGatewayBackendHttpSettingsResponse;
+            /**
+             * List of ApplicationGatewayBackendHealthServer resources.
+             */
+            servers?: outputs.network.v20200601.ApplicationGatewayBackendHealthServerResponse[];
+        }
+
+        /**
+         * Application gateway backendhealth http settings.
+         */
+        export interface ApplicationGatewayBackendHealthServerResponse {
+            /**
+             * IP address or FQDN of backend server.
+             */
+            address?: string;
+            /**
+             * Health of backend server.
+             */
+            health?: string;
+            /**
+             * Health Probe Log.
+             */
+            healthProbeLog?: string;
+            /**
+             * Reference to IP configuration of backend server.
+             */
+            ipConfiguration?: outputs.network.v20200601.NetworkInterfaceIPConfigurationResponse;
         }
 
         /**
@@ -335139,6 +341168,56 @@ export namespace network {
         }
 
         /**
+         * The session detail for a target.
+         */
+        export interface BastionActiveSessionResponse {
+            /**
+             * The protocol used to connect to the target.
+             */
+            protocol: string;
+            /**
+             * The type of the resource.
+             */
+            resourceType: string;
+            /**
+             * Duration in mins the session has been active.
+             */
+            sessionDurationInMins: number;
+            /**
+             * A unique id for the session.
+             */
+            sessionId: string;
+            /**
+             * The time when the session started.
+             */
+            startTime: {[key: string]: any};
+            /**
+             * The host name of the target.
+             */
+            targetHostName: string;
+            /**
+             * The IP Address of the target.
+             */
+            targetIpAddress: string;
+            /**
+             * The resource group of the target.
+             */
+            targetResourceGroup: string;
+            /**
+             * The resource id of the target.
+             */
+            targetResourceId: string;
+            /**
+             * The subscription id for the target virtual machine.
+             */
+            targetSubscriptionId: string;
+            /**
+             * The user name who is active on this session.
+             */
+            userName: string;
+        }
+
+        /**
          * IP configuration of an Bastion Host.
          */
         export interface BastionHostIPConfigurationResponse {
@@ -335174,6 +341253,66 @@ export namespace network {
              * Ip configuration type.
              */
             type: string;
+        }
+
+        /**
+         * Bastion Shareable Link.
+         */
+        export interface BastionShareableLinkResponse {
+            /**
+             * The unique Bastion Shareable Link to the virtual machine.
+             */
+            bsl: string;
+            /**
+             * The time when the link was created.
+             */
+            createdAt: string;
+            /**
+             * Optional field indicating the warning or error message related to the vm in case of partial failure.
+             */
+            message: string;
+            /**
+             * Reference of the virtual machine resource.
+             */
+            vm: outputs.network.v20200601.VMResponse;
+        }
+
+        /**
+         * BGP peer status details.
+         */
+        export interface BgpPeerStatusResponse {
+            /**
+             * The autonomous system number of the remote BGP peer.
+             */
+            asn: number;
+            /**
+             * For how long the peering has been up.
+             */
+            connectedDuration: string;
+            /**
+             * The virtual network gateway's local address.
+             */
+            localAddress: string;
+            /**
+             * The number of BGP messages received.
+             */
+            messagesReceived: number;
+            /**
+             * The number of BGP messages sent.
+             */
+            messagesSent: number;
+            /**
+             * The remote BGP peer.
+             */
+            neighbor: string;
+            /**
+             * The number of routes learned from this peer.
+             */
+            routesReceived: number;
+            /**
+             * The BGP peer state.
+             */
+            state: string;
         }
 
         /**
@@ -335755,7 +341894,7 @@ export namespace network {
             /**
              * Express Route Circuit connection state.
              */
-            circuitConnectionStatus?: string;
+            circuitConnectionStatus: string;
             /**
              * A unique read-only string that changes whenever the resource is updated.
              */
@@ -336378,6 +342517,40 @@ export namespace network {
              * A list of availability zones denoting the IP allocated for the resource needs to come from.
              */
             zones?: string[];
+        }
+
+        /**
+         * Gateway routing details.
+         */
+        export interface GatewayRouteResponse {
+            /**
+             * The route's AS path sequence.
+             */
+            asPath: string;
+            /**
+             * The gateway's local address.
+             */
+            localAddress: string;
+            /**
+             * The route's network prefix.
+             */
+            network: string;
+            /**
+             * The route's next hop.
+             */
+            nextHop: string;
+            /**
+             * The source this route was learned from.
+             */
+            origin: string;
+            /**
+             * The peer this route was learned from.
+             */
+            sourcePeer: string;
+            /**
+             * The route's weight.
+             */
+            weight: number;
         }
 
         /**
@@ -337682,7 +343855,7 @@ export namespace network {
             /**
              * Express Route Circuit connection state.
              */
-            circuitConnectionStatus?: string;
+            circuitConnectionStatus: string;
             /**
              * The name of the express route circuit connection resource.
              */
@@ -338872,6 +345045,32 @@ export namespace network {
         }
 
         /**
+         * Describes a Virtual Machine.
+         */
+        export interface VMResponse {
+            /**
+             * Resource ID.
+             */
+            id?: string;
+            /**
+             * Resource location.
+             */
+            location?: string;
+            /**
+             * Resource name.
+             */
+            name: string;
+            /**
+             * Resource tags.
+             */
+            tags?: {[key: string]: string};
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        /**
          * Network Virtual Appliance NIC properties.
          */
         export interface VirtualApplianceNicPropertiesResponse {
@@ -339326,6 +345525,60 @@ export namespace network {
         }
 
         /**
+         * VPN client connection health detail.
+         */
+        export interface VpnClientConnectionHealthDetailResponse {
+            /**
+             * The egress bytes per second.
+             */
+            egressBytesTransferred: number;
+            /**
+             * The egress packets per second.
+             */
+            egressPacketsTransferred: number;
+            /**
+             * The ingress bytes per second.
+             */
+            ingressBytesTransferred: number;
+            /**
+             * The ingress packets per second.
+             */
+            ingressPacketsTransferred: number;
+            /**
+             * The max band width.
+             */
+            maxBandwidth: number;
+            /**
+             * The max packets transferred per second.
+             */
+            maxPacketsPerSecond: number;
+            /**
+             * The assigned private Ip of a connected vpn client.
+             */
+            privateIpAddress: string;
+            /**
+             * The public Ip of a connected vpn client.
+             */
+            publicIpAddress: string;
+            /**
+             * The duration time of a connected vpn client.
+             */
+            vpnConnectionDuration: number;
+            /**
+             * The vpn client Id.
+             */
+            vpnConnectionId: string;
+            /**
+             * The start time of a connected vpn client.
+             */
+            vpnConnectionTime: string;
+            /**
+             * The user name of a connected vpn client.
+             */
+            vpnUserName: string;
+        }
+
+        /**
          * VpnClientConnectionHealth properties.
          */
         export interface VpnClientConnectionHealthResponse {
@@ -339410,7 +345663,7 @@ export namespace network {
             /**
              * The connection status.
              */
-            connectionStatus?: string;
+            connectionStatus: string;
             /**
              * DPD timeout in seconds for vpn connection.
              */
@@ -339602,7 +345855,7 @@ export namespace network {
             /**
              * The connection status.
              */
-            connectionStatus?: string;
+            connectionStatus: string;
             /**
              * Egress bytes transferred.
              */
@@ -343780,7 +350033,7 @@ export namespace powerplatform {
             /**
              * The state of onboarding, which only appears in the response.
              */
-            status?: string;
+            status: string;
         }
 
         /**
@@ -343828,7 +350081,7 @@ export namespace powerplatform {
             /**
              * lockbox configuration
              */
-            status?: string;
+            status: string;
         }
 
         /**
@@ -348235,11 +354488,11 @@ export namespace recoveryservices {
             /**
              * The Private Endpoint network resource that is linked to the Private Endpoint connection.
              */
-            privateEndpoint?: outputs.recoveryservices.latest.PrivateEndpointResponse;
+            privateEndpoint: outputs.recoveryservices.latest.PrivateEndpointResponse;
             /**
              * Gets or sets private link service connection state.
              */
-            privateLinkServiceConnectionState?: outputs.recoveryservices.latest.PrivateLinkServiceConnectionStateResponse;
+            privateLinkServiceConnectionState: outputs.recoveryservices.latest.PrivateLinkServiceConnectionStateResponse;
             /**
              * Gets or sets provisioning state of the private endpoint connection.
              */
@@ -348257,7 +354510,7 @@ export namespace recoveryservices {
             /**
              * Private Endpoint Connection Response Properties.
              */
-            properties?: outputs.recoveryservices.latest.PrivateEndpointConnectionResponse;
+            properties: outputs.recoveryservices.latest.PrivateEndpointConnectionResponse;
         }
 
         /**
@@ -350162,11 +356415,11 @@ export namespace recoveryservices {
             /**
              * The Private Endpoint network resource that is linked to the Private Endpoint connection.
              */
-            privateEndpoint?: outputs.recoveryservices.v20160601.PrivateEndpointResponse;
+            privateEndpoint: outputs.recoveryservices.v20160601.PrivateEndpointResponse;
             /**
              * Gets or sets private link service connection state.
              */
-            privateLinkServiceConnectionState?: outputs.recoveryservices.v20160601.PrivateLinkServiceConnectionStateResponse;
+            privateLinkServiceConnectionState: outputs.recoveryservices.v20160601.PrivateLinkServiceConnectionStateResponse;
             /**
              * Gets or sets provisioning state of the private endpoint connection.
              */
@@ -350184,7 +356437,7 @@ export namespace recoveryservices {
             /**
              * Private Endpoint Connection Response Properties.
              */
-            properties?: outputs.recoveryservices.v20160601.PrivateEndpointConnectionResponse;
+            properties: outputs.recoveryservices.v20160601.PrivateEndpointConnectionResponse;
         }
 
         /**
@@ -373578,20 +379831,6 @@ export namespace servicebus {
         }
 
         /**
-         * Properties to configure Encryption
-         */
-        export interface EncryptionResponse {
-            /**
-             * Enumerates the possible value of keySource for Encryption
-             */
-            keySource?: string;
-            /**
-             * Properties of KeyVault
-             */
-            keyVaultProperties?: outputs.servicebus.v20180101preview.KeyVaultPropertiesResponse;
-        }
-
-        /**
          * Properties to configure keyVault Properties
          */
         export interface KeyVaultPropertiesResponse {
@@ -384696,7 +390935,7 @@ export namespace storage {
             /**
              * The provisioning state of the private endpoint connection resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
              */
@@ -384760,7 +390999,7 @@ export namespace storage {
             /**
              * The SKU tier. This is based on the SKU name.
              */
-            tier?: string;
+            tier: string;
         }
 
         /**
@@ -388570,7 +394809,7 @@ export namespace storage {
             /**
              * The provisioning state of the private endpoint connection resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
              */
@@ -388634,7 +394873,7 @@ export namespace storage {
             /**
              * The SKU tier. This is based on the SKU name.
              */
-            tier?: string;
+            tier: string;
         }
 
         /**
@@ -389332,7 +395571,7 @@ export namespace storage {
             /**
              * The provisioning state of the private endpoint connection resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
              */
@@ -389396,7 +395635,7 @@ export namespace storage {
             /**
              * The SKU tier. This is based on the SKU name.
              */
-            tier?: string;
+            tier: string;
         }
 
         /**
@@ -390274,7 +396513,7 @@ export namespace storagesync {
             /**
              * The provisioning state of the private endpoint connection resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
              */
@@ -391540,7 +397779,7 @@ export namespace storagesync {
             /**
              * The provisioning state of the private endpoint connection resource.
              */
-            provisioningState?: string;
+            provisioningState: string;
             /**
              * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
              */
@@ -395286,7 +401525,7 @@ export namespace streamanalytics {
             /**
              * The current execution state of the streaming job.
              */
-            jobState?: string;
+            jobState: string;
             /**
              * The number of streaming units that are used by the streaming job.
              */
@@ -395316,7 +401555,7 @@ export namespace streamanalytics {
             /**
              * The status of the cluster provisioning. The three terminal states are: Succeeded, Failed and Canceled
              */
-            provisioningState?: string;
+            provisioningState: string;
         }
 
         /**
@@ -395756,6 +401995,32 @@ export namespace synapse {
         }
 
         /**
+         * The linked integration runtime information.
+         */
+        export interface LinkedIntegrationRuntimeResponse {
+            /**
+             * The creating time of the linked integration runtime.
+             */
+            createTime: string;
+            /**
+             * The location of the workspace for which the linked integration runtime belong to.
+             */
+            dataFactoryLocation: string;
+            /**
+             * The name of the workspace for which the linked integration runtime belong to.
+             */
+            dataFactoryName: string;
+            /**
+             * The name of the linked integration runtime.
+             */
+            name: string;
+            /**
+             * The subscription ID for which the linked integration runtime belong to.
+             */
+            subscriptionId: string;
+        }
+
+        /**
          * The workspace managed identity
          */
         export interface ManagedIdentityResponse {
@@ -395771,6 +402036,76 @@ export namespace synapse {
              * The type of managed identity for the workspace
              */
             type?: string;
+        }
+
+        /**
+         * Error definition for managed integration runtime.
+         */
+        export interface ManagedIntegrationRuntimeErrorResponse {
+            /**
+             * Error code.
+             */
+            code: string;
+            /**
+             * Error message.
+             */
+            message: string;
+            /**
+             * Managed integration runtime error parameters.
+             */
+            parameters: string[];
+            /**
+             * The time when the error occurred.
+             */
+            time: string;
+        }
+
+        /**
+         * Properties of integration runtime node.
+         */
+        export interface ManagedIntegrationRuntimeNodeResponse {
+            /**
+             * The errors that occurred on this integration runtime node.
+             */
+            errors?: outputs.synapse.v20190601preview.ManagedIntegrationRuntimeErrorResponse[];
+            /**
+             * The managed integration runtime node id.
+             */
+            nodeId: string;
+            /**
+             * The managed integration runtime node status.
+             */
+            status: string;
+        }
+
+        /**
+         * Properties of managed integration runtime operation result.
+         */
+        export interface ManagedIntegrationRuntimeOperationResultResponse {
+            /**
+             * The activity id for the operation request.
+             */
+            activityId: string;
+            /**
+             * The error code.
+             */
+            errorCode: string;
+            /**
+             * Managed integration runtime error parameters.
+             */
+            parameters: string[];
+            /**
+             * The operation result.
+             */
+            result: string;
+            /**
+             * The start time of the operation.
+             */
+            startTime: string;
+            /**
+             * The operation type. Could be start or stop.
+             */
+            type: string;
         }
 
         /**
@@ -395791,6 +402126,40 @@ export namespace synapse {
             ssisProperties?: outputs.synapse.v20190601preview.IntegrationRuntimeSsisPropertiesResponse;
             /**
              * Integration runtime state, only valid for managed dedicated integration runtime.
+             */
+            state: string;
+            /**
+             * Type of integration runtime.
+             */
+            type: "Managed";
+        }
+
+        /**
+         * Managed integration runtime status.
+         */
+        export interface ManagedIntegrationRuntimeStatusResponse {
+            /**
+             * The time at which the integration runtime was created, in ISO8601 format.
+             */
+            createTime: string;
+            /**
+             * The workspace name which the integration runtime belong to.
+             */
+            dataFactoryName: string;
+            /**
+             * The last operation result that occurred on this integration runtime.
+             */
+            lastOperation: outputs.synapse.v20190601preview.ManagedIntegrationRuntimeOperationResultResponse;
+            /**
+             * The list of nodes for managed integration runtime.
+             */
+            nodes: outputs.synapse.v20190601preview.ManagedIntegrationRuntimeNodeResponse[];
+            /**
+             * The errors that occurred on this integration runtime.
+             */
+            otherErrors: outputs.synapse.v20190601preview.ManagedIntegrationRuntimeErrorResponse[];
+            /**
+             * The state of integration runtime.
              */
             state: string;
             /**
@@ -395872,6 +402241,84 @@ export namespace synapse {
         }
 
         /**
+         * Properties of Self-hosted integration runtime node.
+         */
+        export interface SelfHostedIntegrationRuntimeNodeResponse {
+            /**
+             * The integration runtime capabilities dictionary
+             */
+            capabilities: {[key: string]: string};
+            /**
+             * Maximum concurrent jobs on the integration runtime node.
+             */
+            concurrentJobsLimit: number;
+            /**
+             * The time at which the integration runtime will expire in ISO8601 format.
+             */
+            expiryTime: string;
+            /**
+             * URI for the host machine of the integration runtime.
+             */
+            hostServiceUri: string;
+            /**
+             * Indicates whether this node is the active dispatcher for integration runtime requests.
+             */
+            isActiveDispatcher: boolean;
+            /**
+             * The most recent time at which the integration runtime was connected in ISO8601 format.
+             */
+            lastConnectTime: string;
+            /**
+             * The last time for the integration runtime node update end.
+             */
+            lastEndUpdateTime: string;
+            /**
+             * The time the node last started up.
+             */
+            lastStartTime: string;
+            /**
+             * The last time for the integration runtime node update start.
+             */
+            lastStartUpdateTime: string;
+            /**
+             * The integration runtime node last stop time.
+             */
+            lastStopTime: string;
+            /**
+             * The result of the last integration runtime node update.
+             */
+            lastUpdateResult: string;
+            /**
+             * Machine name of the integration runtime node.
+             */
+            machineName: string;
+            /**
+             * The maximum concurrent jobs in this integration runtime.
+             */
+            maxConcurrentJobs: number;
+            /**
+             * Name of the integration runtime node.
+             */
+            nodeName: string;
+            /**
+             * The time at which the integration runtime node was registered in ISO8601 format.
+             */
+            registerTime: string;
+            /**
+             * Status of the integration runtime node.
+             */
+            status: string;
+            /**
+             * Version of the integration runtime node.
+             */
+            version: string;
+            /**
+             * Status of the integration runtime node version.
+             */
+            versionStatus: string;
+        }
+
+        /**
          * Self-hosted integration runtime.
          */
         export interface SelfHostedIntegrationRuntimeResponse {
@@ -395890,6 +402337,88 @@ export namespace synapse {
         }
 
         /**
+         * Self-hosted integration runtime status.
+         */
+        export interface SelfHostedIntegrationRuntimeStatusResponse {
+            /**
+             * Whether Self-hosted integration runtime auto update has been turned on.
+             */
+            autoUpdate: string;
+            /**
+             * The estimated time when the self-hosted integration runtime will be updated.
+             */
+            autoUpdateETA: string;
+            /**
+             * Object with additional information about integration runtime capabilities.
+             */
+            capabilities: {[key: string]: string};
+            /**
+             * The time at which the integration runtime was created, in ISO8601 format.
+             */
+            createTime: string;
+            /**
+             * The workspace name which the integration runtime belong to.
+             */
+            dataFactoryName: string;
+            /**
+             * It is used to set the encryption mode for node-node communication channel (when more than 2 self-hosted integration runtime nodes exist).
+             */
+            internalChannelEncryption: string;
+            /**
+             * The latest version on download center.
+             */
+            latestVersion: string;
+            /**
+             * The list of linked integration runtimes that are created to share with this integration runtime.
+             */
+            links?: outputs.synapse.v20190601preview.LinkedIntegrationRuntimeResponse[];
+            /**
+             * The local time zone offset in hours.
+             */
+            localTimeZoneOffset: string;
+            /**
+             * The list of nodes for this integration runtime.
+             */
+            nodes?: outputs.synapse.v20190601preview.SelfHostedIntegrationRuntimeNodeResponse[];
+            /**
+             * The version that the integration runtime is going to update to.
+             */
+            pushedVersion: string;
+            /**
+             * The date at which the integration runtime will be scheduled to update, in ISO8601 format.
+             */
+            scheduledUpdateDate: string;
+            /**
+             * The URLs for the services used in integration runtime backend service.
+             */
+            serviceUrls: string[];
+            /**
+             * The state of integration runtime.
+             */
+            state: string;
+            /**
+             * The task queue id of the integration runtime.
+             */
+            taskQueueId: string;
+            /**
+             * Type of integration runtime.
+             */
+            type: "SelfHosted";
+            /**
+             * The time in the date scheduled by service to update the integration runtime, e.g., PT03H is 3 hours
+             */
+            updateDelayOffset: string;
+            /**
+             * Version of the integration runtime.
+             */
+            version: string;
+            /**
+             * Status of the integration runtime version.
+             */
+            versionStatus: string;
+        }
+
+        /**
          * SQL pool SKU
          */
         export interface SkuResponse {
@@ -395905,6 +402434,244 @@ export namespace synapse {
              * The service tier
              */
             tier?: string;
+        }
+
+        /**
+         * Ssis environment reference.
+         */
+        export interface SsisEnvironmentReferenceResponse {
+            /**
+             * Environment folder name.
+             */
+            environmentFolderName?: string;
+            /**
+             * Environment name.
+             */
+            environmentName?: string;
+            /**
+             * Environment reference id.
+             */
+            id?: number;
+            /**
+             * Reference type
+             */
+            referenceType?: string;
+        }
+
+        /**
+         * Ssis environment.
+         */
+        export interface SsisEnvironmentResponse {
+            /**
+             * Metadata description.
+             */
+            description?: string;
+            /**
+             * Folder id which contains environment.
+             */
+            folderId?: number;
+            /**
+             * Metadata id.
+             */
+            id?: number;
+            /**
+             * Metadata name.
+             */
+            name?: string;
+            /**
+             * Type of metadata.
+             */
+            type: "Environment";
+            /**
+             * Variable in environment
+             */
+            variables?: outputs.synapse.v20190601preview.SsisVariableResponse[];
+        }
+
+        /**
+         * Ssis folder.
+         */
+        export interface SsisFolderResponse {
+            /**
+             * Metadata description.
+             */
+            description?: string;
+            /**
+             * Metadata id.
+             */
+            id?: number;
+            /**
+             * Metadata name.
+             */
+            name?: string;
+            /**
+             * Type of metadata.
+             */
+            type: "Folder";
+        }
+
+        /**
+         * Ssis Package.
+         */
+        export interface SsisPackageResponse {
+            /**
+             * Metadata description.
+             */
+            description?: string;
+            /**
+             * Folder id which contains package.
+             */
+            folderId?: number;
+            /**
+             * Metadata id.
+             */
+            id?: number;
+            /**
+             * Metadata name.
+             */
+            name?: string;
+            /**
+             * Parameters in package
+             */
+            parameters?: outputs.synapse.v20190601preview.SsisParameterResponse[];
+            /**
+             * Project id which contains package.
+             */
+            projectId?: number;
+            /**
+             * Project version which contains package.
+             */
+            projectVersion?: number;
+            /**
+             * Type of metadata.
+             */
+            type: "Package";
+        }
+
+        /**
+         * Ssis parameter.
+         */
+        export interface SsisParameterResponse {
+            /**
+             * Parameter type.
+             */
+            dataType?: string;
+            /**
+             * Default value of parameter.
+             */
+            defaultValue?: string;
+            /**
+             * Parameter description.
+             */
+            description?: string;
+            /**
+             * Design default value of parameter.
+             */
+            designDefaultValue?: string;
+            /**
+             * Parameter id.
+             */
+            id?: number;
+            /**
+             * Parameter name.
+             */
+            name?: string;
+            /**
+             * Whether parameter is required.
+             */
+            required?: boolean;
+            /**
+             * Whether parameter is sensitive.
+             */
+            sensitive?: boolean;
+            /**
+             * Default sensitive value of parameter.
+             */
+            sensitiveDefaultValue?: string;
+            /**
+             * Parameter value set.
+             */
+            valueSet?: boolean;
+            /**
+             * Parameter value type.
+             */
+            valueType?: string;
+            /**
+             * Parameter reference variable.
+             */
+            variable?: string;
+        }
+
+        /**
+         * Ssis project.
+         */
+        export interface SsisProjectResponse {
+            /**
+             * Metadata description.
+             */
+            description?: string;
+            /**
+             * Environment reference in project
+             */
+            environmentRefs?: outputs.synapse.v20190601preview.SsisEnvironmentReferenceResponse[];
+            /**
+             * Folder id which contains project.
+             */
+            folderId?: number;
+            /**
+             * Metadata id.
+             */
+            id?: number;
+            /**
+             * Metadata name.
+             */
+            name?: string;
+            /**
+             * Parameters in project
+             */
+            parameters?: outputs.synapse.v20190601preview.SsisParameterResponse[];
+            /**
+             * Type of metadata.
+             */
+            type: "Project";
+            /**
+             * Project version.
+             */
+            version?: number;
+        }
+
+        /**
+         * Ssis variable.
+         */
+        export interface SsisVariableResponse {
+            /**
+             * Variable type.
+             */
+            dataType?: string;
+            /**
+             * Variable description.
+             */
+            description?: string;
+            /**
+             * Variable id.
+             */
+            id?: number;
+            /**
+             * Variable name.
+             */
+            name?: string;
+            /**
+             * Whether variable is sensitive.
+             */
+            sensitive?: boolean;
+            /**
+             * Variable sensitive value.
+             */
+            sensitiveValue?: string;
+            /**
+             * Variable value.
+             */
+            value?: string;
         }
 
         /**
@@ -396066,7 +402833,7 @@ export namespace timeseriesinsights {
             /**
              * An object that represents the status of ingress on an environment.
              */
-            ingress?: outputs.timeseriesinsights.v20171115.IngressEnvironmentStatusResponse;
+            ingress: outputs.timeseriesinsights.v20171115.IngressEnvironmentStatusResponse;
         }
 
         /**
@@ -396080,7 +402847,7 @@ export namespace timeseriesinsights {
             /**
              * An object that contains the details about an environment's state.
              */
-            stateDetails?: outputs.timeseriesinsights.v20171115.EnvironmentStateDetailsResponse;
+            stateDetails: outputs.timeseriesinsights.v20171115.EnvironmentStateDetailsResponse;
         }
 
         /**

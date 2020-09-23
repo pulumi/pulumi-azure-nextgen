@@ -63675,10 +63675,6 @@ export namespace databricks {
          */
         export interface WorkspaceCustomBooleanParameter {
             /**
-             * The type of variable that this is
-             */
-            type?: pulumi.Input<string>;
-            /**
              * The value which should be used for this field.
              */
             value: pulumi.Input<boolean>;
@@ -63727,10 +63723,6 @@ export namespace databricks {
          */
         export interface WorkspaceCustomStringParameter {
             /**
-             * The type of variable that this is
-             */
-            type?: pulumi.Input<string>;
-            /**
              * The value which should be used for this field.
              */
             value: pulumi.Input<string>;
@@ -63740,10 +63732,6 @@ export namespace databricks {
          * The object that contains details of encryption used on the workspace.
          */
         export interface WorkspaceEncryptionParameter {
-            /**
-             * The type of variable that this is
-             */
-            type?: pulumi.Input<string>;
             /**
              * The value which should be used for this field.
              */
@@ -63838,10 +63826,6 @@ export namespace databricks {
          */
         export interface WorkspaceCustomBooleanParameter {
             /**
-             * The type of variable that this is
-             */
-            type?: pulumi.Input<string>;
-            /**
              * The value which should be used for this field.
              */
             value: pulumi.Input<boolean>;
@@ -63890,10 +63874,6 @@ export namespace databricks {
          */
         export interface WorkspaceCustomStringParameter {
             /**
-             * The type of variable that this is
-             */
-            type?: pulumi.Input<string>;
-            /**
              * The value which should be used for this field.
              */
             value: pulumi.Input<string>;
@@ -63903,10 +63883,6 @@ export namespace databricks {
          * The object that contains details of encryption used on the workspace.
          */
         export interface WorkspaceEncryptionParameter {
-            /**
-             * The type of variable that this is
-             */
-            type?: pulumi.Input<string>;
             /**
              * The value which should be used for this field.
              */
@@ -111129,10 +111105,6 @@ export namespace documentdb {
              * The name of the region.
              */
             locationName?: pulumi.Input<string>;
-            /**
-             * The status of the Cosmos DB account at the time the operation was called. The status can be one of following. 'Creating' – the Cosmos DB account is being created. When an account is in Creating state, only properties that are specified as input for the Create Cosmos DB account operation are returned. 'Succeeded' – the Cosmos DB account is active for use. 'Updating' – the Cosmos DB account is being updated. 'Deleting' – the Cosmos DB account is being deleted. 'Failed' – the Cosmos DB account failed creation. 'DeletionFailed' – the Cosmos DB account deletion failed.
-             */
-            provisioningState?: pulumi.Input<string>;
         }
 
         /**
@@ -111618,10 +111590,6 @@ export namespace documentdb {
              * The name of the region.
              */
             locationName?: pulumi.Input<string>;
-            /**
-             * The status of the Cosmos DB account at the time the operation was called. The status can be one of following. 'Creating' – the Cosmos DB account is being created. When an account is in Creating state, only properties that are specified as input for the Create Cosmos DB account operation are returned. 'Succeeded' – the Cosmos DB account is active for use. 'Updating' – the Cosmos DB account is being updated. 'Deleting' – the Cosmos DB account is being deleted. 'Failed' – the Cosmos DB account failed creation. 'Offline' - the Cosmos DB account is not active. 'DeletionFailed' – the Cosmos DB account deletion failed.
-             */
-            provisioningState?: pulumi.Input<string>;
         }
 
         /**
@@ -112038,10 +112006,6 @@ export namespace documentdb {
              * The name of the region.
              */
             locationName?: pulumi.Input<string>;
-            /**
-             * The status of the Cosmos DB account at the time the operation was called. The status can be one of following. 'Creating' – the Cosmos DB account is being created. When an account is in Creating state, only properties that are specified as input for the Create Cosmos DB account operation are returned. 'Succeeded' – the Cosmos DB account is active for use. 'Updating' – the Cosmos DB account is being updated. 'Deleting' – the Cosmos DB account is being deleted. 'Failed' – the Cosmos DB account failed creation. 'Offline' - the Cosmos DB account is not active. 'DeletionFailed' – the Cosmos DB account deletion failed.
-             */
-            provisioningState?: pulumi.Input<string>;
         }
 
         /**
@@ -112458,10 +112422,6 @@ export namespace documentdb {
              * The name of the region.
              */
             locationName?: pulumi.Input<string>;
-            /**
-             * The status of the Cosmos DB account at the time the operation was called. The status can be one of following. 'Creating' – the Cosmos DB account is being created. When an account is in Creating state, only properties that are specified as input for the Create Cosmos DB account operation are returned. 'Succeeded' – the Cosmos DB account is active for use. 'Updating' – the Cosmos DB account is being updated. 'Deleting' – the Cosmos DB account is being deleted. 'Failed' – the Cosmos DB account failed creation. 'Offline' - the Cosmos DB account is not active. 'DeletionFailed' – the Cosmos DB account deletion failed.
-             */
-            provisioningState?: pulumi.Input<string>;
         }
 
         /**
@@ -112878,10 +112838,6 @@ export namespace documentdb {
              * The name of the region.
              */
             locationName?: pulumi.Input<string>;
-            /**
-             * The status of the Cosmos DB account at the time the operation was called. The status can be one of following. 'Creating' – the Cosmos DB account is being created. When an account is in Creating state, only properties that are specified as input for the Create Cosmos DB account operation are returned. 'Succeeded' – the Cosmos DB account is active for use. 'Updating' – the Cosmos DB account is being updated. 'Deleting' – the Cosmos DB account is being deleted. 'Failed' – the Cosmos DB account failed creation. 'Offline' - the Cosmos DB account is not active. 'DeletionFailed' – the Cosmos DB account deletion failed.
-             */
-            provisioningState?: pulumi.Input<string>;
         }
 
         /**
@@ -113298,10 +113254,6 @@ export namespace documentdb {
              * The name of the region.
              */
             locationName?: pulumi.Input<string>;
-            /**
-             * The status of the Cosmos DB account at the time the operation was called. The status can be one of following. 'Creating' – the Cosmos DB account is being created. When an account is in Creating state, only properties that are specified as input for the Create Cosmos DB account operation are returned. 'Succeeded' – the Cosmos DB account is active for use. 'Updating' – the Cosmos DB account is being updated. 'Deleting' – the Cosmos DB account is being deleted. 'Failed' – the Cosmos DB account failed creation. 'Offline' - the Cosmos DB account is not active. 'DeletionFailed' – the Cosmos DB account deletion failed.
-             */
-            provisioningState?: pulumi.Input<string>;
         }
 
         /**
@@ -113741,10 +113693,6 @@ export namespace documentdb {
              * The name of the region.
              */
             locationName?: pulumi.Input<string>;
-            /**
-             * The status of the Cosmos DB account at the time the operation was called. The status can be one of following. 'Creating' – the Cosmos DB account is being created. When an account is in Creating state, only properties that are specified as input for the Create Cosmos DB account operation are returned. 'Succeeded' – the Cosmos DB account is active for use. 'Updating' – the Cosmos DB account is being updated. 'Deleting' – the Cosmos DB account is being deleted. 'Failed' – the Cosmos DB account failed creation. 'Offline' - the Cosmos DB account is not active. 'DeletionFailed' – the Cosmos DB account deletion failed.
-             */
-            provisioningState?: pulumi.Input<string>;
         }
 
         /**
@@ -114282,10 +114230,6 @@ export namespace documentdb {
              * The name of the region.
              */
             locationName?: pulumi.Input<string>;
-            /**
-             * The status of the Cosmos DB account at the time the operation was called. The status can be one of following. 'Creating' – the Cosmos DB account is being created. When an account is in Creating state, only properties that are specified as input for the Create Cosmos DB account operation are returned. 'Succeeded' – the Cosmos DB account is active for use. 'Updating' – the Cosmos DB account is being updated. 'Deleting' – the Cosmos DB account is being deleted. 'Failed' – the Cosmos DB account failed creation. 'Offline' - the Cosmos DB account is not active. 'DeletionFailed' – the Cosmos DB account deletion failed.
-             */
-            provisioningState?: pulumi.Input<string>;
         }
 
         /**
@@ -114796,10 +114740,6 @@ export namespace documentdb {
              * The name of the region.
              */
             locationName?: pulumi.Input<string>;
-            /**
-             * The status of the Cosmos DB account at the time the operation was called. The status can be one of following. 'Creating' – the Cosmos DB account is being created. When an account is in Creating state, only properties that are specified as input for the Create Cosmos DB account operation are returned. 'Succeeded' – the Cosmos DB account is active for use. 'Updating' – the Cosmos DB account is being updated. 'Deleting' – the Cosmos DB account is being deleted. 'Failed' – the Cosmos DB account failed creation. 'DeletionFailed' – the Cosmos DB account deletion failed.
-             */
-            provisioningState?: pulumi.Input<string>;
         }
 
         /**
@@ -115368,10 +115308,6 @@ export namespace documentdb {
              * The name of the region.
              */
             locationName?: pulumi.Input<string>;
-            /**
-             * The status of the Cosmos DB account at the time the operation was called. The status can be one of following. 'Creating' – the Cosmos DB account is being created. When an account is in Creating state, only properties that are specified as input for the Create Cosmos DB account operation are returned. 'Succeeded' – the Cosmos DB account is active for use. 'Updating' – the Cosmos DB account is being updated. 'Deleting' – the Cosmos DB account is being deleted. 'Failed' – the Cosmos DB account failed creation. 'DeletionFailed' – the Cosmos DB account deletion failed.
-             */
-            provisioningState?: pulumi.Input<string>;
         }
 
         /**
@@ -115914,10 +115850,6 @@ export namespace documentdb {
              */
             locations: pulumi.Input<pulumi.Input<inputs.documentdb.v20200601preview.Location>[]>;
             /**
-             * Whether requests from Public Network are allowed
-             */
-            publicNetworkAccess?: pulumi.Input<string>;
-            /**
              * List of Virtual Network ACL rules configured for the Cosmos DB account.
              */
             virtualNetworkRules?: pulumi.Input<pulumi.Input<inputs.documentdb.v20200601preview.VirtualNetworkRule>[]>;
@@ -116058,10 +115990,6 @@ export namespace documentdb {
              * The name of the region.
              */
             locationName?: pulumi.Input<string>;
-            /**
-             * The status of the Cosmos DB account at the time the operation was called. The status can be one of following. 'Creating' – the Cosmos DB account is being created. When an account is in Creating state, only properties that are specified as input for the Create Cosmos DB account operation are returned. 'Succeeded' – the Cosmos DB account is active for use. 'Updating' – the Cosmos DB account is being updated. 'Deleting' – the Cosmos DB account is being deleted. 'Failed' – the Cosmos DB account failed creation. 'DeletionFailed' – the Cosmos DB account deletion failed.
-             */
-            provisioningState?: pulumi.Input<string>;
         }
 
         /**
@@ -116270,10 +116198,6 @@ export namespace documentdb {
              * An array that contains the georeplication locations enabled for the Cosmos DB account.
              */
             locations: pulumi.Input<pulumi.Input<inputs.documentdb.v20200601preview.Location>[]>;
-            /**
-             * Whether requests from Public Network are allowed
-             */
-            publicNetworkAccess?: pulumi.Input<string>;
             /**
              * Parameters to indicate the information about the restore.
              */
@@ -121140,38 +121064,6 @@ export namespace eventhub {
              * Status of the connection.
              */
             status?: pulumi.Input<string>;
-        }
-
-        /**
-         * Properties to configure Encryption
-         */
-        export interface Encryption {
-            /**
-             * Enumerates the possible value of keySource for Encryption
-             */
-            keySource?: pulumi.Input<string>;
-            /**
-             * Properties of KeyVault
-             */
-            keyVaultProperties?: pulumi.Input<pulumi.Input<inputs.eventhub.v20180101preview.KeyVaultProperties>[]>;
-        }
-
-        /**
-         * Properties to configure Identity for Bring your Own Keys
-         */
-        export interface Identity {
-            /**
-             * ObjectId from the KeyVault
-             */
-            principalId?: pulumi.Input<string>;
-            /**
-             * TenantId from the KeyVault
-             */
-            tenantId?: pulumi.Input<string>;
-            /**
-             * Enumerates the possible value Identity type, which currently supports only 'SystemAssigned'
-             */
-            type?: pulumi.Input<string>;
         }
 
         /**
@@ -129732,13 +129624,6 @@ export namespace kusto {
             tier: pulumi.Input<string>;
         }
 
-        export interface DatabaseStatistics {
-            /**
-             * The database size - the total size of compressed data and index in bytes.
-             */
-            size?: pulumi.Input<number>;
-        }
-
         export interface TrustedExternalTenant {
             /**
              * GUID representing an external tenant.
@@ -129762,13 +129647,6 @@ export namespace kusto {
              * SKU tier.
              */
             tier: pulumi.Input<string>;
-        }
-
-        export interface DatabaseStatistics {
-            /**
-             * The database size - the total size of compressed data and index in bytes.
-             */
-            size?: pulumi.Input<number>;
         }
 
         export interface TrustedExternalTenant {
@@ -129800,16 +129678,6 @@ export namespace kusto {
         }
 
         /**
-         * A class that contains database statistics information.
-         */
-        export interface DatabaseStatistics {
-            /**
-             * The database size - the total size of compressed data and index in bytes.
-             */
-            size?: pulumi.Input<number>;
-        }
-
-        /**
          * Represents a tenant ID that is trusted by the cluster.
          */
         export interface TrustedExternalTenant {
@@ -129838,16 +129706,6 @@ export namespace kusto {
              * SKU tier.
              */
             tier: pulumi.Input<string>;
-        }
-
-        /**
-         * A class that contains database statistics information.
-         */
-        export interface DatabaseStatistics {
-            /**
-             * The database size - the total size of compressed data and index in bytes.
-             */
-            size?: pulumi.Input<number>;
         }
 
         /**
@@ -158566,10 +158424,6 @@ export namespace migrate {
          */
         export interface MoveCollectionProperties {
             /**
-             * Defines the provisioning states.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * Gets or sets the source region.
              */
             sourceRegion: pulumi.Input<string>;
@@ -158606,10 +158460,6 @@ export namespace migrate {
              * Gets or sets the existing target ARM Id of the resource.
              */
             existingTargetId?: pulumi.Input<string>;
-            /**
-             * Defines the provisioning states.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Gets or sets the resource settings.
              */
@@ -162109,10 +161959,6 @@ export namespace network {
              * Resource name.
              */
             name?: pulumi.Input<string>;
-            /**
-             * Resource status.
-             */
-            resourceState?: pulumi.Input<string>;
         }
 
         /**
@@ -162153,6 +161999,16 @@ export namespace network {
              * Reference of the subnet resource.
              */
             subnet: pulumi.Input<inputs.network.latest.SubResource>;
+        }
+
+        /**
+         * Bastion Shareable Link.
+         */
+        export interface BastionShareableLink {
+            /**
+             * Reference of the virtual machine resource.
+             */
+            vm: inputs.network.latest.VM;
         }
 
         /**
@@ -162824,10 +162680,6 @@ export namespace network {
              */
             authorizationKey?: pulumi.Input<string>;
             /**
-             * Express Route Circuit connection state.
-             */
-            circuitConnectionStatus?: pulumi.Input<string>;
-            /**
              * Reference to Express Route Circuit Private Peering Resource of the circuit initiating connection.
              */
             expressRouteCircuitPeering?: pulumi.Input<inputs.network.latest.SubResource>;
@@ -163337,10 +163189,6 @@ export namespace network {
              */
             name?: pulumi.Input<string>;
             /**
-             * Resource status.
-             */
-            resourceState?: pulumi.Input<string>;
-            /**
              * Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
              */
             sessionAffinityEnabledState?: pulumi.Input<string>;
@@ -163470,10 +163318,6 @@ export namespace network {
              * Protocol scheme to use for this probe
              */
             protocol?: pulumi.Input<string>;
-            /**
-             * Resource status.
-             */
-            resourceState?: pulumi.Input<string>;
         }
 
         /**
@@ -163840,10 +163684,6 @@ export namespace network {
              * Resource name.
              */
             name?: pulumi.Input<string>;
-            /**
-             * Resource status.
-             */
-            resourceState?: pulumi.Input<string>;
             /**
              * The number of samples to consider for load balancing decisions
              */
@@ -165158,10 +164998,6 @@ export namespace network {
              */
             patternsToMatch?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Resource status.
-             */
-            resourceState?: pulumi.Input<string>;
-            /**
              * A reference to the routing configuration.
              */
             routeConfiguration?: pulumi.Input<inputs.network.latest.ForwardingConfiguration | inputs.network.latest.RedirectConfiguration>;
@@ -165598,6 +165434,24 @@ export namespace network {
         }
 
         /**
+         * Describes a Virtual Machine.
+         */
+        export interface VM {
+            /**
+             * Resource ID.
+             */
+            id?: string;
+            /**
+             * Resource location.
+             */
+            location?: string;
+            /**
+             * Resource tags.
+             */
+            tags?: {[key: string]: string};
+        }
+
+        /**
          * Network Virtual Appliance Sku Properties.
          */
         export interface VirtualApplianceSkuProperties {
@@ -165994,10 +165848,6 @@ export namespace network {
              */
             connectionBandwidth?: pulumi.Input<number>;
             /**
-             * The connection status.
-             */
-            connectionStatus?: pulumi.Input<string>;
-            /**
              * DPD timeout in seconds for vpn connection.
              */
             dpdTimeoutSeconds?: pulumi.Input<number>;
@@ -166181,10 +166031,6 @@ export namespace network {
              * Expected bandwidth in MBPS.
              */
             connectionBandwidth?: pulumi.Input<number>;
-            /**
-             * The connection status.
-             */
-            connectionStatus?: pulumi.Input<string>;
             /**
              * EnableBgp flag.
              */
@@ -194752,10 +194598,6 @@ export namespace network {
              */
             priority?: pulumi.Input<number>;
             /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * Collection of rules used by a application rule collection.
              */
             rules?: pulumi.Input<pulumi.Input<inputs.network.v20180401.AzureFirewallApplicationRule>[]>;
@@ -194799,10 +194641,6 @@ export namespace network {
              * The Firewall Internal Load Balancer IP to be used as the next hop in User Defined Routes.
              */
             privateIPAddress?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Reference of the PublicIP resource. This field is populated in the output.
              */
@@ -194863,10 +194701,6 @@ export namespace network {
              * Priority of the network rule collection resource.
              */
             priority?: pulumi.Input<number>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Collection of rules used by a network rule collection.
              */
@@ -195383,10 +195217,6 @@ export namespace network {
              * Resource location.
              */
             location?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Reference to the remote virtual network.
              */
@@ -196642,10 +196472,6 @@ export namespace network {
          */
         export interface VpnConnection {
             /**
-             * The connection status.
-             */
-            connectionStatus?: pulumi.Input<string>;
-            /**
              * EnableBgp flag
              */
             enableBgp?: pulumi.Input<boolean>;
@@ -196661,10 +196487,6 @@ export namespace network {
              * The name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Id of the connected vpn site.
              */
@@ -197654,10 +197476,6 @@ export namespace network {
              */
             priority?: pulumi.Input<number>;
             /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * Collection of rules used by a application rule collection.
              */
             rules?: pulumi.Input<pulumi.Input<inputs.network.v20180601.AzureFirewallApplicationRule>[]>;
@@ -197701,10 +197519,6 @@ export namespace network {
              * The Firewall Internal Load Balancer IP to be used as the next hop in User Defined Routes.
              */
             privateIPAddress?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Reference of the PublicIP resource. This field is populated in the output.
              */
@@ -197765,10 +197579,6 @@ export namespace network {
              * Priority of the network rule collection resource.
              */
             priority?: pulumi.Input<number>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Collection of rules used by a network rule collection.
              */
@@ -198177,10 +197987,6 @@ export namespace network {
              * Resource location.
              */
             location?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Reference to the remote virtual network.
              */
@@ -199366,10 +199172,6 @@ export namespace network {
          */
         export interface VpnConnection {
             /**
-             * The connection status.
-             */
-            connectionStatus?: pulumi.Input<string>;
-            /**
              * EnableBgp flag
              */
             enableBgp?: pulumi.Input<boolean>;
@@ -199385,10 +199187,6 @@ export namespace network {
              * The name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Id of the connected vpn site.
              */
@@ -200217,10 +200015,6 @@ export namespace network {
              */
             priority?: pulumi.Input<number>;
             /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * Collection of rules used by a application rule collection.
              */
             rules?: pulumi.Input<pulumi.Input<inputs.network.v20180701.AzureFirewallApplicationRule>[]>;
@@ -200264,10 +200058,6 @@ export namespace network {
              * The Firewall Internal Load Balancer IP to be used as the next hop in User Defined Routes.
              */
             privateIPAddress?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Reference of the PublicIP resource. This field is populated in the output.
              */
@@ -200328,10 +200118,6 @@ export namespace network {
              * Priority of the network rule collection resource.
              */
             priority?: pulumi.Input<number>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Collection of rules used by a network rule collection.
              */
@@ -200744,10 +200530,6 @@ export namespace network {
              * Resource location.
              */
             location?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Reference to the remote virtual network.
              */
@@ -202050,10 +201832,6 @@ export namespace network {
          */
         export interface VpnConnection {
             /**
-             * The connection status.
-             */
-            connectionStatus?: pulumi.Input<string>;
-            /**
              * EnableBgp flag
              */
             enableBgp?: pulumi.Input<boolean>;
@@ -202069,10 +201847,6 @@ export namespace network {
              * The name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Id of the connected vpn site.
              */
@@ -202977,10 +202751,6 @@ export namespace network {
              */
             priority?: pulumi.Input<number>;
             /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * Collection of rules used by a application rule collection.
              */
             rules?: pulumi.Input<pulumi.Input<inputs.network.v20180801.AzureFirewallApplicationRule>[]>;
@@ -203016,10 +202786,6 @@ export namespace network {
              * The Firewall Internal Load Balancer IP to be used as the next hop in User Defined Routes.
              */
             privateIPAddress?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Reference of the PublicIP resource. This field is a mandatory input if subnet is not null.
              */
@@ -203099,10 +202865,6 @@ export namespace network {
              */
             priority?: pulumi.Input<number>;
             /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * Collection of rules used by a NAT rule collection.
              */
             rules?: pulumi.Input<pulumi.Input<inputs.network.v20180801.AzureFirewallNatRule>[]>;
@@ -203158,10 +202920,6 @@ export namespace network {
              * Priority of the network rule collection resource.
              */
             priority?: pulumi.Input<number>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Collection of rules used by a network rule collection.
              */
@@ -203294,10 +203052,6 @@ export namespace network {
              * Resource name.
              */
             name?: pulumi.Input<string>;
-            /**
-             * Resource status.
-             */
-            resourceState?: pulumi.Input<string>;
         }
 
         /**
@@ -203855,10 +203609,6 @@ export namespace network {
              */
             name?: pulumi.Input<string>;
             /**
-             * Resource status.
-             */
-            resourceState?: pulumi.Input<string>;
-            /**
              * Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
              */
             sessionAffinityEnabledState?: pulumi.Input<string>;
@@ -203952,10 +203702,6 @@ export namespace network {
              * Protocol scheme to use for this probe
              */
             protocol?: pulumi.Input<string>;
-            /**
-             * Resource status.
-             */
-            resourceState?: pulumi.Input<string>;
         }
 
         /**
@@ -203982,10 +203728,6 @@ export namespace network {
              * The name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Reference to the remote virtual network.
              */
@@ -204288,10 +204030,6 @@ export namespace network {
              * Resource name.
              */
             name?: pulumi.Input<string>;
-            /**
-             * Resource status.
-             */
-            resourceState?: pulumi.Input<string>;
             /**
              * The number of samples to consider for load balancing decisions
              */
@@ -205113,10 +204851,6 @@ export namespace network {
              * The route patterns of the rule.
              */
             patternsToMatch?: pulumi.Input<pulumi.Input<string>[]>;
-            /**
-             * Resource status.
-             */
-            resourceState?: pulumi.Input<string>;
         }
 
         /**
@@ -205680,10 +205414,6 @@ export namespace network {
              */
             connectionBandwidth?: pulumi.Input<number>;
             /**
-             * The connection status.
-             */
-            connectionStatus?: pulumi.Input<string>;
-            /**
              * EnableBgp flag
              */
             enableBgp?: pulumi.Input<boolean>;
@@ -205707,10 +205437,6 @@ export namespace network {
              * The name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Id of the connected vpn site.
              */
@@ -206828,10 +206554,6 @@ export namespace network {
              */
             priority?: pulumi.Input<number>;
             /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * Collection of rules used by a application rule collection.
              */
             rules?: pulumi.Input<pulumi.Input<inputs.network.v20181001.AzureFirewallApplicationRule>[]>;
@@ -206863,10 +206585,6 @@ export namespace network {
              * Name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Reference of the PublicIP resource. This field is a mandatory input if subnet is not null.
              */
@@ -206946,10 +206664,6 @@ export namespace network {
              */
             priority?: pulumi.Input<number>;
             /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * Collection of rules used by a NAT rule collection.
              */
             rules?: pulumi.Input<pulumi.Input<inputs.network.v20181001.AzureFirewallNatRule>[]>;
@@ -207005,10 +206719,6 @@ export namespace network {
              * Priority of the network rule collection resource.
              */
             priority?: pulumi.Input<number>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Collection of rules used by a network rule collection.
              */
@@ -207593,10 +207303,6 @@ export namespace network {
              * The name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Reference to the remote virtual network.
              */
@@ -209171,10 +208877,6 @@ export namespace network {
              */
             connectionBandwidth?: pulumi.Input<number>;
             /**
-             * The connection status.
-             */
-            connectionStatus?: pulumi.Input<string>;
-            /**
              * EnableBgp flag
              */
             enableBgp?: pulumi.Input<boolean>;
@@ -209198,10 +208900,6 @@ export namespace network {
              * The name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Id of the connected vpn site.
              */
@@ -210190,10 +209888,6 @@ export namespace network {
              */
             priority?: pulumi.Input<number>;
             /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * Collection of rules used by a application rule collection.
              */
             rules?: pulumi.Input<pulumi.Input<inputs.network.v20181101.AzureFirewallApplicationRule>[]>;
@@ -210225,10 +209919,6 @@ export namespace network {
              * Name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Reference of the PublicIP resource. This field is a mandatory input if subnet is not null.
              */
@@ -210308,10 +209998,6 @@ export namespace network {
              */
             priority?: pulumi.Input<number>;
             /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * Collection of rules used by a NAT rule collection.
              */
             rules?: pulumi.Input<pulumi.Input<inputs.network.v20181101.AzureFirewallNatRule>[]>;
@@ -210367,10 +210053,6 @@ export namespace network {
              * Priority of the network rule collection resource.
              */
             priority?: pulumi.Input<number>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Collection of rules used by a network rule collection.
              */
@@ -210969,10 +210651,6 @@ export namespace network {
              * The name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Reference to the remote virtual network.
              */
@@ -212573,10 +212251,6 @@ export namespace network {
              */
             connectionBandwidth?: pulumi.Input<number>;
             /**
-             * The connection status.
-             */
-            connectionStatus?: pulumi.Input<string>;
-            /**
              * EnableBgp flag
              */
             enableBgp?: pulumi.Input<boolean>;
@@ -212600,10 +212274,6 @@ export namespace network {
              * The name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Id of the connected vpn site.
              */
@@ -213622,10 +213292,6 @@ export namespace network {
              */
             priority?: pulumi.Input<number>;
             /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * Collection of rules used by a application rule collection.
              */
             rules?: pulumi.Input<pulumi.Input<inputs.network.v20181201.AzureFirewallApplicationRule>[]>;
@@ -213657,10 +213323,6 @@ export namespace network {
              * Name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Reference of the PublicIP resource. This field is a mandatory input if subnet is not null.
              */
@@ -213740,10 +213402,6 @@ export namespace network {
              */
             priority?: pulumi.Input<number>;
             /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * Collection of rules used by a NAT rule collection.
              */
             rules?: pulumi.Input<pulumi.Input<inputs.network.v20181201.AzureFirewallNatRule>[]>;
@@ -213799,10 +213457,6 @@ export namespace network {
              * Priority of the network rule collection resource.
              */
             priority?: pulumi.Input<number>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Collection of rules used by a network rule collection.
              */
@@ -214401,10 +214055,6 @@ export namespace network {
              * The name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Reference to the remote virtual network.
              */
@@ -216059,10 +215709,6 @@ export namespace network {
              */
             connectionBandwidth?: pulumi.Input<number>;
             /**
-             * The connection status.
-             */
-            connectionStatus?: pulumi.Input<string>;
-            /**
              * EnableBgp flag
              */
             enableBgp?: pulumi.Input<boolean>;
@@ -216086,10 +215732,6 @@ export namespace network {
              * The name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Id of the connected vpn site.
              */
@@ -217134,10 +216776,6 @@ export namespace network {
              */
             priority?: pulumi.Input<number>;
             /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * Collection of rules used by a application rule collection.
              */
             rules?: pulumi.Input<pulumi.Input<inputs.network.v20190201.AzureFirewallApplicationRule>[]>;
@@ -217169,10 +216807,6 @@ export namespace network {
              * Name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Reference of the PublicIP resource. This field is a mandatory input if subnet is not null.
              */
@@ -217252,10 +216886,6 @@ export namespace network {
              */
             priority?: pulumi.Input<number>;
             /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * Collection of rules used by a NAT rule collection.
              */
             rules?: pulumi.Input<pulumi.Input<inputs.network.v20190201.AzureFirewallNatRule>[]>;
@@ -217311,10 +216941,6 @@ export namespace network {
              * Priority of the network rule collection resource.
              */
             priority?: pulumi.Input<number>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Collection of rules used by a network rule collection.
              */
@@ -217599,10 +217225,6 @@ export namespace network {
              * The authorization key.
              */
             authorizationKey?: pulumi.Input<string>;
-            /**
-             * Express Route Circuit connection state.
-             */
-            circuitConnectionStatus?: pulumi.Input<string>;
             /**
              * Reference to Express Route Circuit Private Peering Resource of the circuit initiating connection.
              */
@@ -217917,10 +217539,6 @@ export namespace network {
              * The name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Reference to the remote virtual network.
              */
@@ -219596,10 +219214,6 @@ export namespace network {
              */
             connectionBandwidth?: pulumi.Input<number>;
             /**
-             * The connection status.
-             */
-            connectionStatus?: pulumi.Input<string>;
-            /**
              * EnableBgp flag
              */
             enableBgp?: pulumi.Input<boolean>;
@@ -219623,10 +219237,6 @@ export namespace network {
              * The name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Id of the connected vpn site.
              */
@@ -220846,10 +220456,6 @@ export namespace network {
              */
             priority?: pulumi.Input<number>;
             /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * Collection of rules used by a application rule collection.
              */
             rules?: pulumi.Input<pulumi.Input<inputs.network.v20190401.AzureFirewallApplicationRule>[]>;
@@ -220881,10 +220487,6 @@ export namespace network {
              * Name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Reference of the PublicIP resource. This field is a mandatory input if subnet is not null.
              */
@@ -220964,10 +220566,6 @@ export namespace network {
              */
             priority?: pulumi.Input<number>;
             /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * Collection of rules used by a NAT rule collection.
              */
             rules?: pulumi.Input<pulumi.Input<inputs.network.v20190401.AzureFirewallNatRule>[]>;
@@ -221023,10 +220621,6 @@ export namespace network {
              * Priority of the network rule collection resource.
              */
             priority?: pulumi.Input<number>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Collection of rules used by a network rule collection.
              */
@@ -221123,10 +220717,6 @@ export namespace network {
              * Resource name.
              */
             name?: pulumi.Input<string>;
-            /**
-             * Resource status.
-             */
-            resourceState?: pulumi.Input<string>;
         }
 
         /**
@@ -221155,10 +220745,6 @@ export namespace network {
              * Private IP allocation method.
              */
             privateIPAllocationMethod?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Reference of the PublicIP resource.
              */
@@ -221419,10 +221005,6 @@ export namespace network {
              * The authorization key.
              */
             authorizationKey?: pulumi.Input<string>;
-            /**
-             * Express Route Circuit connection state.
-             */
-            circuitConnectionStatus?: pulumi.Input<string>;
             /**
              * Reference to Express Route Circuit Private Peering Resource of the circuit initiating connection.
              */
@@ -221707,10 +221289,6 @@ export namespace network {
              */
             name?: pulumi.Input<string>;
             /**
-             * Resource status.
-             */
-            resourceState?: pulumi.Input<string>;
-            /**
              * Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
              */
             sessionAffinityEnabledState?: pulumi.Input<string>;
@@ -221808,10 +221386,6 @@ export namespace network {
              * Protocol scheme to use for this probe
              */
             protocol?: pulumi.Input<string>;
-            /**
-             * Resource status.
-             */
-            resourceState?: pulumi.Input<string>;
         }
 
         /**
@@ -221838,10 +221412,6 @@ export namespace network {
              * The name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Reference to the remote virtual network.
              */
@@ -222144,10 +221714,6 @@ export namespace network {
              * Resource name.
              */
             name?: pulumi.Input<string>;
-            /**
-             * Resource status.
-             */
-            resourceState?: pulumi.Input<string>;
             /**
              * The number of samples to consider for load balancing decisions
              */
@@ -223170,10 +222736,6 @@ export namespace network {
              */
             patternsToMatch?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Resource status.
-             */
-            resourceState?: pulumi.Input<string>;
-            /**
              * A reference to the routing configuration.
              */
             routeConfiguration?: pulumi.Input<inputs.network.v20190401.ForwardingConfiguration | inputs.network.v20190401.RedirectConfiguration>;
@@ -223780,10 +223342,6 @@ export namespace network {
              */
             connectionBandwidth?: pulumi.Input<number>;
             /**
-             * The connection status.
-             */
-            connectionStatus?: pulumi.Input<string>;
-            /**
              * EnableBgp flag.
              */
             enableBgp?: pulumi.Input<boolean>;
@@ -223807,10 +223365,6 @@ export namespace network {
              * The name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Id of the connected vpn site.
              */
@@ -223924,10 +223478,6 @@ export namespace network {
              * Resource name.
              */
             name?: pulumi.Input<string>;
-            /**
-             * Resource status.
-             */
-            resourceState?: pulumi.Input<string>;
         }
 
         /**
@@ -223998,10 +223548,6 @@ export namespace network {
              */
             name?: pulumi.Input<string>;
             /**
-             * Resource status.
-             */
-            resourceState?: pulumi.Input<string>;
-            /**
              * Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
              */
             sessionAffinityEnabledState?: pulumi.Input<string>;
@@ -224057,10 +223603,6 @@ export namespace network {
              * Protocol scheme to use for this probe
              */
             protocol?: pulumi.Input<string>;
-            /**
-             * Resource status.
-             */
-            resourceState?: pulumi.Input<string>;
         }
 
         /**
@@ -224079,10 +223621,6 @@ export namespace network {
              * Resource name.
              */
             name?: pulumi.Input<string>;
-            /**
-             * Resource status.
-             */
-            resourceState?: pulumi.Input<string>;
             /**
              * The number of samples to consider for load balancing decisions
              */
@@ -224152,10 +223690,6 @@ export namespace network {
              * The route patterns of the rule.
              */
             patternsToMatch?: pulumi.Input<pulumi.Input<string>[]>;
-            /**
-             * Resource status.
-             */
-            resourceState?: pulumi.Input<string>;
             /**
              * A reference to the routing configuration.
              */
@@ -225214,10 +224748,6 @@ export namespace network {
              */
             priority?: pulumi.Input<number>;
             /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * Collection of rules used by a application rule collection.
              */
             rules?: pulumi.Input<pulumi.Input<inputs.network.v20190601.AzureFirewallApplicationRule>[]>;
@@ -225249,10 +224779,6 @@ export namespace network {
              * Name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Reference of the PublicIP resource. This field is a mandatory input if subnet is not null.
              */
@@ -225332,10 +224858,6 @@ export namespace network {
              */
             priority?: pulumi.Input<number>;
             /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * Collection of rules used by a NAT rule collection.
              */
             rules?: pulumi.Input<pulumi.Input<inputs.network.v20190601.AzureFirewallNatRule>[]>;
@@ -225392,10 +224914,6 @@ export namespace network {
              */
             priority?: pulumi.Input<number>;
             /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * Collection of rules used by a network rule collection.
              */
             rules?: pulumi.Input<pulumi.Input<inputs.network.v20190601.AzureFirewallNetworkRule>[]>;
@@ -225449,10 +224967,6 @@ export namespace network {
              * Private IP allocation method.
              */
             privateIPAllocationMethod?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Reference of the PublicIP resource.
              */
@@ -225699,10 +225213,6 @@ export namespace network {
              * The authorization key.
              */
             authorizationKey?: pulumi.Input<string>;
-            /**
-             * Express Route Circuit connection state.
-             */
-            circuitConnectionStatus?: pulumi.Input<string>;
             /**
              * Reference to Express Route Circuit Private Peering Resource of the circuit initiating connection.
              */
@@ -226115,10 +225625,6 @@ export namespace network {
              * The name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Reference to the remote virtual network.
              */
@@ -226956,10 +226462,6 @@ export namespace network {
              */
             privateLinkServiceConnections?: pulumi.Input<pulumi.Input<inputs.network.v20190601.PrivateLinkServiceConnection>[]>;
             /**
-             * The provisioning state of the private endpoint.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * The ID of the subnet from which the private IP will be allocated.
              */
             subnet?: pulumi.Input<inputs.network.v20190601.Subnet>;
@@ -226989,10 +226491,6 @@ export namespace network {
              * A collection of information about the state of the connection between service consumer and provider.
              */
             privateLinkServiceConnectionState?: pulumi.Input<inputs.network.v20190601.PrivateLinkServiceConnectionState>;
-            /**
-             * The provisioning state of the private endpoint connection.
-             */
-            provisioningState?: pulumi.Input<string>;
         }
 
         /**
@@ -227019,10 +226517,6 @@ export namespace network {
              * The resource id of private link service.
              */
             privateLinkServiceId?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the private link service connection.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * A message passed to the owner of the remote resource with this connection request. Restricted to 140 chars.
              */
@@ -227075,10 +226569,6 @@ export namespace network {
              * The private IP address allocation method.
              */
             privateIPAllocationMethod?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the private link service ip configuration.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * The reference of the subnet resource.
              */
@@ -228008,10 +227498,6 @@ export namespace network {
              */
             connectionBandwidth?: pulumi.Input<number>;
             /**
-             * The connection status.
-             */
-            connectionStatus?: pulumi.Input<string>;
-            /**
              * EnableBgp flag.
              */
             enableBgp?: pulumi.Input<boolean>;
@@ -228035,10 +227521,6 @@ export namespace network {
              * The name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Id of the connected vpn site.
              */
@@ -228121,10 +227603,6 @@ export namespace network {
              * The name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
         }
 
         /**
@@ -228135,10 +227613,6 @@ export namespace network {
              * Expected bandwidth in MBPS.
              */
             connectionBandwidth?: pulumi.Input<number>;
-            /**
-             * The connection status.
-             */
-            connectionStatus?: pulumi.Input<string>;
             /**
              * EnableBgp flag.
              */
@@ -228159,10 +227633,6 @@ export namespace network {
              * The name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Routing weight for vpn connection.
              */
@@ -228249,10 +227719,6 @@ export namespace network {
              */
             name?: pulumi.Input<string>;
             /**
-             * The provisioning state of the authentication certificate resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * Type of the resource.
              */
             type?: pulumi.Input<string>;
@@ -228310,10 +227776,6 @@ export namespace network {
              * Name of the backend address pool that is unique within an Application Gateway.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the backend address pool resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Type of the resource.
              */
@@ -228380,10 +227842,6 @@ export namespace network {
              * The protocol used to communicate with the backend.
              */
             protocol?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the backend HTTP settings resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Request timeout in seconds. Application Gateway will fail the request if response is not received within RequestTimeout. Acceptable values are from 1 second to 86400 seconds.
              */
@@ -228483,10 +227941,6 @@ export namespace network {
              */
             privateIPAllocationMethod?: pulumi.Input<string>;
             /**
-             * The provisioning state of the frontend IP configuration resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * Reference of the PublicIP resource.
              */
             publicIPAddress?: pulumi.Input<inputs.network.v20190701.SubResource>;
@@ -228520,10 +227974,6 @@ export namespace network {
              * Frontend port.
              */
             port?: pulumi.Input<number>;
-            /**
-             * The provisioning state of the frontend port resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Type of the resource.
              */
@@ -228581,10 +228031,6 @@ export namespace network {
              */
             protocol?: pulumi.Input<string>;
             /**
-             * The provisioning state of the HTTP listener resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * Applicable only if protocol is https. Enables SNI for multi-hosting.
              */
             requireServerNameIndication?: pulumi.Input<boolean>;
@@ -228614,10 +228060,6 @@ export namespace network {
              * Name of the IP configuration that is unique within an Application Gateway.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the application gateway IP configuration resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Reference of the subnet resource. A subnet from where application gateway gets its private address.
              */
@@ -228656,10 +228098,6 @@ export namespace network {
              * Path rules of URL path map.
              */
             paths?: pulumi.Input<pulumi.Input<string>[]>;
-            /**
-             * The provisioning state of the path rule resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Redirect configuration resource of URL path map path rule.
              */
@@ -228722,10 +228160,6 @@ export namespace network {
              * The protocol used for the probe.
              */
             protocol?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the probe resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * The probe timeout in seconds. Probe marked as failed if valid response is not received with this timeout period. Acceptable values are from 1 second to 86400 seconds.
              */
@@ -228840,10 +228274,6 @@ export namespace network {
              * Priority of the request routing rule.
              */
             priority?: pulumi.Input<number>;
-            /**
-             * The provisioning state of the request routing rule resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Redirect configuration resource of the application gateway.
              */
@@ -228989,10 +228419,6 @@ export namespace network {
              */
             password?: pulumi.Input<string>;
             /**
-             * The provisioning state of the SSL certificate resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * Base-64 encoded Public cert data corresponding to pfx specified in data. Only applicable in GET request.
              */
             publicCertData?: pulumi.Input<string>;
@@ -229053,10 +228479,6 @@ export namespace network {
              */
             name?: pulumi.Input<string>;
             /**
-             * The provisioning state of the trusted root certificate resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * Type of the resource.
              */
             type?: pulumi.Input<string>;
@@ -229098,10 +228520,6 @@ export namespace network {
              * Path rule of URL path map resource.
              */
             pathRules?: pulumi.Input<pulumi.Input<inputs.network.v20190701.ApplicationGatewayPathRule>[]>;
-            /**
-             * The provisioning state of the URL path map resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Type of the resource.
              */
@@ -229261,10 +228679,6 @@ export namespace network {
              */
             priority?: pulumi.Input<number>;
             /**
-             * The provisioning state of the application rule collection resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * Collection of rules used by a application rule collection.
              */
             rules?: pulumi.Input<pulumi.Input<inputs.network.v20190701.AzureFirewallApplicationRule>[]>;
@@ -229296,10 +228710,6 @@ export namespace network {
              * Name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the Azure firewall IP configuration resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Reference of the PublicIP resource. This field is a mandatory input if subnet is not null.
              */
@@ -229379,10 +228789,6 @@ export namespace network {
              */
             priority?: pulumi.Input<number>;
             /**
-             * The provisioning state of the NAT rule collection resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * Collection of rules used by a NAT rule collection.
              */
             rules?: pulumi.Input<pulumi.Input<inputs.network.v20190701.AzureFirewallNatRule>[]>;
@@ -229439,10 +228845,6 @@ export namespace network {
              */
             priority?: pulumi.Input<number>;
             /**
-             * The provisioning state of the network rule collection resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * Collection of rules used by a network rule collection.
              */
             rules?: pulumi.Input<pulumi.Input<inputs.network.v20190701.AzureFirewallNetworkRule>[]>;
@@ -229474,10 +228876,6 @@ export namespace network {
              * The name of the resource that is unique within the set of backend address pools used by the load balancer. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the backend address pool resource.
-             */
-            provisioningState?: pulumi.Input<string>;
         }
 
         /**
@@ -229496,10 +228894,6 @@ export namespace network {
              * Private IP allocation method.
              */
             privateIPAllocationMethod?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the bastion host IP configuration resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Reference of the PublicIP resource.
              */
@@ -229728,10 +229122,6 @@ export namespace network {
              * The name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the authorization resource.
-             */
-            provisioningState?: pulumi.Input<string>;
         }
 
         /**
@@ -229746,10 +229136,6 @@ export namespace network {
              * The authorization key.
              */
             authorizationKey?: pulumi.Input<string>;
-            /**
-             * Express Route Circuit connection state.
-             */
-            circuitConnectionStatus?: pulumi.Input<string>;
             /**
              * Reference to Express Route Circuit Private Peering Resource of the circuit initiating connection.
              */
@@ -229820,10 +229206,6 @@ export namespace network {
              * The primary address prefix.
              */
             primaryPeerAddressPrefix?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the express route circuit peering resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * The reference of the RouteFilter resource.
              */
@@ -230139,10 +229521,6 @@ export namespace network {
              */
             privateIPAllocationMethod?: pulumi.Input<string>;
             /**
-             * The provisioning state of the frontend IP configuration resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * The reference of the Public IP resource.
              */
             publicIPAddress?: pulumi.Input<inputs.network.v20190701.PublicIPAddress>;
@@ -230184,10 +229562,6 @@ export namespace network {
              * The name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the hub virtual network connection resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Reference to the remote virtual network.
              */
@@ -230264,10 +229638,6 @@ export namespace network {
              * The reference to the transport protocol used by the inbound NAT pool.
              */
             protocol: pulumi.Input<string>;
-            /**
-             * The provisioning state of the inbound NAT pool resource.
-             */
-            provisioningState?: pulumi.Input<string>;
         }
 
         /**
@@ -230314,10 +229684,6 @@ export namespace network {
              * The reference to the transport protocol used by the load balancing rule.
              */
             protocol?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the inbound NAT rule resource.
-             */
-            provisioningState?: pulumi.Input<string>;
         }
 
         /**
@@ -230468,10 +229834,6 @@ export namespace network {
              * The reference to the transport protocol used by the load balancing rule.
              */
             protocol: pulumi.Input<string>;
-            /**
-             * The provisioning state of the load balancing rule resource.
-             */
-            provisioningState?: pulumi.Input<string>;
         }
 
         /**
@@ -230647,10 +230009,6 @@ export namespace network {
              */
             privateIPAllocationMethod?: pulumi.Input<string>;
             /**
-             * The provisioning state of the network interface IP configuration.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * Public IP address bound to the IP configuration.
              */
             publicIPAddress?: pulumi.Input<inputs.network.v20190701.PublicIPAddress>;
@@ -230741,10 +230099,6 @@ export namespace network {
              */
             location?: pulumi.Input<string>;
             /**
-             * The provisioning state of the network security group resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * The resource GUID property of the network security group resource.
              */
             resourceGuid?: pulumi.Input<string>;
@@ -230798,10 +230152,6 @@ export namespace network {
              * The protocol for the outbound rule in load balancer.
              */
             protocol: pulumi.Input<string>;
-            /**
-             * The provisioning state of the outbound rule resource.
-             */
-            provisioningState?: pulumi.Input<string>;
         }
 
         /**
@@ -231025,10 +230375,6 @@ export namespace network {
              */
             privateLinkServiceConnections?: pulumi.Input<pulumi.Input<inputs.network.v20190701.PrivateLinkServiceConnection>[]>;
             /**
-             * The provisioning state of the private endpoint resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * The ID of the subnet from which the private IP will be allocated.
              */
             subnet?: pulumi.Input<inputs.network.v20190701.Subnet>;
@@ -231058,10 +230404,6 @@ export namespace network {
              * A collection of information about the state of the connection between service consumer and provider.
              */
             privateLinkServiceConnectionState?: pulumi.Input<inputs.network.v20190701.PrivateLinkServiceConnectionState>;
-            /**
-             * The provisioning state of the private endpoint connection resource.
-             */
-            provisioningState?: pulumi.Input<string>;
         }
 
         /**
@@ -231088,10 +230430,6 @@ export namespace network {
              * The resource id of private link service.
              */
             privateLinkServiceId?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the private link service connection resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * A message passed to the owner of the remote resource with this connection request. Restricted to 140 chars.
              */
@@ -231144,10 +230482,6 @@ export namespace network {
              * The private IP address allocation method.
              */
             privateIPAllocationMethod?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the private link service IP configuration resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * The reference to the subnet resource.
              */
@@ -231206,10 +230540,6 @@ export namespace network {
              * The protocol of the end point. If 'Tcp' is specified, a received ACK is required for the probe to be successful. If 'Http' or 'Https' is specified, a 200 OK response from the specifies URI is required for the probe to be successful.
              */
             protocol: pulumi.Input<string>;
-            /**
-             * The provisioning state of the probe resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * The URI used for requesting health status from the VM. Path is required if a protocol is set to http. Otherwise, it is not allowed. There is no default value.
              */
@@ -231274,10 +230604,6 @@ export namespace network {
              * Resource location.
              */
             location?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the public IP address resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * The public IP address version.
              */
@@ -231406,10 +230732,6 @@ export namespace network {
              * The type of Azure hop the packet should be sent to.
              */
             nextHopType: pulumi.Input<string>;
-            /**
-             * The provisioning state of the route resource.
-             */
-            provisioningState?: pulumi.Input<string>;
         }
 
         /**
@@ -231462,10 +230784,6 @@ export namespace network {
              * Resource location.
              */
             location?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the route table resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Collection of routes contained within a route table.
              */
@@ -231532,10 +230850,6 @@ export namespace network {
              * Network protocol this rule applies to.
              */
             protocol: pulumi.Input<string>;
-            /**
-             * The provisioning state of the security rule resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from.
              */
@@ -231657,10 +230971,6 @@ export namespace network {
              */
             locations?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * The provisioning state of the service endpoint resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * The type of the endpoint service.
              */
             service?: pulumi.Input<string>;
@@ -231720,10 +231030,6 @@ export namespace network {
              * Enable or Disable apply network policies on private link service in the subnet.
              */
             privateLinkServiceNetworkPolicies?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the subnet resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * An array of references to the external resources using subnet.
              */
@@ -231945,10 +231251,6 @@ export namespace network {
              */
             peeringState?: pulumi.Input<string>;
             /**
-             * The provisioning state of the virtual network peering resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * The reference of the remote virtual network address space.
              */
             remoteAddressSpace?: pulumi.Input<inputs.network.v20190701.AddressSpace>;
@@ -232095,10 +231397,6 @@ export namespace network {
              */
             connectionBandwidth?: pulumi.Input<number>;
             /**
-             * The connection status.
-             */
-            connectionStatus?: pulumi.Input<string>;
-            /**
              * EnableBgp flag.
              */
             enableBgp?: pulumi.Input<boolean>;
@@ -232122,10 +231420,6 @@ export namespace network {
              * The name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the VPN connection resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Id of the connected vpn site.
              */
@@ -232208,10 +231502,6 @@ export namespace network {
              * The name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the VPN site link resource.
-             */
-            provisioningState?: pulumi.Input<string>;
         }
 
         /**
@@ -232222,10 +231512,6 @@ export namespace network {
              * Expected bandwidth in MBPS.
              */
             connectionBandwidth?: pulumi.Input<number>;
-            /**
-             * The connection status.
-             */
-            connectionStatus?: pulumi.Input<string>;
             /**
              * EnableBgp flag.
              */
@@ -232246,10 +231532,6 @@ export namespace network {
              * The name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the VPN site link connection resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Routing weight for vpn connection.
              */
@@ -232354,10 +231636,6 @@ export namespace network {
              */
             name?: pulumi.Input<string>;
             /**
-             * The provisioning state of the authentication certificate resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * Type of the resource.
              */
             type?: pulumi.Input<string>;
@@ -232415,10 +231693,6 @@ export namespace network {
              * Name of the backend address pool that is unique within an Application Gateway.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the backend address pool resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Type of the resource.
              */
@@ -232485,10 +231759,6 @@ export namespace network {
              * The protocol used to communicate with the backend.
              */
             protocol?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the backend HTTP settings resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Request timeout in seconds. Application Gateway will fail the request if response is not received within RequestTimeout. Acceptable values are from 1 second to 86400 seconds.
              */
@@ -232588,10 +231858,6 @@ export namespace network {
              */
             privateIPAllocationMethod?: pulumi.Input<string>;
             /**
-             * The provisioning state of the frontend IP configuration resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * Reference of the PublicIP resource.
              */
             publicIPAddress?: pulumi.Input<inputs.network.v20190801.SubResource>;
@@ -232625,10 +231891,6 @@ export namespace network {
              * Frontend port.
              */
             port?: pulumi.Input<number>;
-            /**
-             * The provisioning state of the frontend port resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Type of the resource.
              */
@@ -232686,10 +231948,6 @@ export namespace network {
              */
             protocol?: pulumi.Input<string>;
             /**
-             * The provisioning state of the HTTP listener resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * Applicable only if protocol is https. Enables SNI for multi-hosting.
              */
             requireServerNameIndication?: pulumi.Input<boolean>;
@@ -232719,10 +231977,6 @@ export namespace network {
              * Name of the IP configuration that is unique within an Application Gateway.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the application gateway IP configuration resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Reference of the subnet resource. A subnet from where application gateway gets its private address.
              */
@@ -232761,10 +232015,6 @@ export namespace network {
              * Path rules of URL path map.
              */
             paths?: pulumi.Input<pulumi.Input<string>[]>;
-            /**
-             * The provisioning state of the path rule resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Redirect configuration resource of URL path map path rule.
              */
@@ -232827,10 +232077,6 @@ export namespace network {
              * The protocol used for the probe.
              */
             protocol?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the probe resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * The probe timeout in seconds. Probe marked as failed if valid response is not received with this timeout period. Acceptable values are from 1 second to 86400 seconds.
              */
@@ -232945,10 +232191,6 @@ export namespace network {
              * Priority of the request routing rule.
              */
             priority?: pulumi.Input<number>;
-            /**
-             * The provisioning state of the request routing rule resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Redirect configuration resource of the application gateway.
              */
@@ -233094,10 +232336,6 @@ export namespace network {
              */
             password?: pulumi.Input<string>;
             /**
-             * The provisioning state of the SSL certificate resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * Base-64 encoded Public cert data corresponding to pfx specified in data. Only applicable in GET request.
              */
             publicCertData?: pulumi.Input<string>;
@@ -233158,10 +232396,6 @@ export namespace network {
              */
             name?: pulumi.Input<string>;
             /**
-             * The provisioning state of the trusted root certificate resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * Type of the resource.
              */
             type?: pulumi.Input<string>;
@@ -233203,10 +232437,6 @@ export namespace network {
              * Path rule of URL path map resource.
              */
             pathRules?: pulumi.Input<pulumi.Input<inputs.network.v20190801.ApplicationGatewayPathRule>[]>;
-            /**
-             * The provisioning state of the URL path map resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Type of the resource.
              */
@@ -233366,10 +232596,6 @@ export namespace network {
              */
             priority?: pulumi.Input<number>;
             /**
-             * The provisioning state of the application rule collection resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * Collection of rules used by a application rule collection.
              */
             rules?: pulumi.Input<pulumi.Input<inputs.network.v20190801.AzureFirewallApplicationRule>[]>;
@@ -233401,10 +232627,6 @@ export namespace network {
              * Name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the Azure firewall IP configuration resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Reference of the PublicIP resource. This field is a mandatory input if subnet is not null.
              */
@@ -233484,10 +232706,6 @@ export namespace network {
              */
             priority?: pulumi.Input<number>;
             /**
-             * The provisioning state of the NAT rule collection resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * Collection of rules used by a NAT rule collection.
              */
             rules?: pulumi.Input<pulumi.Input<inputs.network.v20190801.AzureFirewallNatRule>[]>;
@@ -233544,10 +232762,6 @@ export namespace network {
              */
             priority?: pulumi.Input<number>;
             /**
-             * The provisioning state of the network rule collection resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * Collection of rules used by a network rule collection.
              */
             rules?: pulumi.Input<pulumi.Input<inputs.network.v20190801.AzureFirewallNetworkRule>[]>;
@@ -233593,10 +232807,6 @@ export namespace network {
              * The name of the resource that is unique within the set of backend address pools used by the load balancer. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the backend address pool resource.
-             */
-            provisioningState?: pulumi.Input<string>;
         }
 
         /**
@@ -233615,10 +232825,6 @@ export namespace network {
              * Private IP allocation method.
              */
             privateIPAllocationMethod?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the bastion host IP configuration resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Reference of the PublicIP resource.
              */
@@ -233847,10 +233053,6 @@ export namespace network {
              * The name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the authorization resource.
-             */
-            provisioningState?: pulumi.Input<string>;
         }
 
         /**
@@ -233865,10 +233067,6 @@ export namespace network {
              * The authorization key.
              */
             authorizationKey?: pulumi.Input<string>;
-            /**
-             * Express Route Circuit connection state.
-             */
-            circuitConnectionStatus?: pulumi.Input<string>;
             /**
              * Reference to Express Route Circuit Private Peering Resource of the circuit initiating connection.
              */
@@ -233939,10 +233137,6 @@ export namespace network {
              * The primary address prefix.
              */
             primaryPeerAddressPrefix?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the express route circuit peering resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * The reference of the RouteFilter resource.
              */
@@ -234258,10 +233452,6 @@ export namespace network {
              */
             privateIPAllocationMethod?: pulumi.Input<string>;
             /**
-             * The provisioning state of the frontend IP configuration resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * The reference of the Public IP resource.
              */
             publicIPAddress?: pulumi.Input<inputs.network.v20190801.PublicIPAddress>;
@@ -234303,10 +233493,6 @@ export namespace network {
              * The name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the hub virtual network connection resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Reference to the remote virtual network.
              */
@@ -234383,10 +233569,6 @@ export namespace network {
              * The reference to the transport protocol used by the inbound NAT pool.
              */
             protocol: pulumi.Input<string>;
-            /**
-             * The provisioning state of the inbound NAT pool resource.
-             */
-            provisioningState?: pulumi.Input<string>;
         }
 
         /**
@@ -234433,10 +233615,6 @@ export namespace network {
              * The reference to the transport protocol used by the load balancing rule.
              */
             protocol?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the inbound NAT rule resource.
-             */
-            provisioningState?: pulumi.Input<string>;
         }
 
         /**
@@ -234587,10 +233765,6 @@ export namespace network {
              * The reference to the transport protocol used by the load balancing rule.
              */
             protocol: pulumi.Input<string>;
-            /**
-             * The provisioning state of the load balancing rule resource.
-             */
-            provisioningState?: pulumi.Input<string>;
         }
 
         /**
@@ -234826,10 +234000,6 @@ export namespace network {
              */
             privateIPAllocationMethod?: pulumi.Input<string>;
             /**
-             * The provisioning state of the network interface IP configuration.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * Public IP address bound to the IP configuration.
              */
             publicIPAddress?: pulumi.Input<inputs.network.v20190801.PublicIPAddress>;
@@ -234920,10 +234090,6 @@ export namespace network {
              */
             location?: pulumi.Input<string>;
             /**
-             * The provisioning state of the network security group resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * The resource GUID property of the network security group resource.
              */
             resourceGuid?: pulumi.Input<string>;
@@ -234977,10 +234143,6 @@ export namespace network {
              * The protocol for the outbound rule in load balancer.
              */
             protocol: pulumi.Input<string>;
-            /**
-             * The provisioning state of the outbound rule resource.
-             */
-            provisioningState?: pulumi.Input<string>;
         }
 
         /**
@@ -235013,10 +234175,6 @@ export namespace network {
              * The name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the P2SConnectionConfiguration resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * The reference of the address space resource which represents Address space for P2S VpnClient.
              */
@@ -235118,10 +234276,6 @@ export namespace network {
              */
             privateLinkServiceConnections?: pulumi.Input<pulumi.Input<inputs.network.v20190801.PrivateLinkServiceConnection>[]>;
             /**
-             * The provisioning state of the private endpoint resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * The ID of the subnet from which the private IP will be allocated.
              */
             subnet?: pulumi.Input<inputs.network.v20190801.Subnet>;
@@ -235151,10 +234305,6 @@ export namespace network {
              * A collection of information about the state of the connection between service consumer and provider.
              */
             privateLinkServiceConnectionState?: pulumi.Input<inputs.network.v20190801.PrivateLinkServiceConnectionState>;
-            /**
-             * The provisioning state of the private endpoint connection resource.
-             */
-            provisioningState?: pulumi.Input<string>;
         }
 
         /**
@@ -235181,10 +234331,6 @@ export namespace network {
              * The resource id of private link service.
              */
             privateLinkServiceId?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the private link service connection resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * A message passed to the owner of the remote resource with this connection request. Restricted to 140 chars.
              */
@@ -235237,10 +234383,6 @@ export namespace network {
              * The private IP address allocation method.
              */
             privateIPAllocationMethod?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the private link service IP configuration resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * The reference to the subnet resource.
              */
@@ -235299,10 +234441,6 @@ export namespace network {
              * The protocol of the end point. If 'Tcp' is specified, a received ACK is required for the probe to be successful. If 'Http' or 'Https' is specified, a 200 OK response from the specifies URI is required for the probe to be successful.
              */
             protocol: pulumi.Input<string>;
-            /**
-             * The provisioning state of the probe resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * The URI used for requesting health status from the VM. Path is required if a protocol is set to http. Otherwise, it is not allowed. There is no default value.
              */
@@ -235367,10 +234505,6 @@ export namespace network {
              * Resource location.
              */
             location?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the public IP address resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * The public IP address version.
              */
@@ -235499,10 +234633,6 @@ export namespace network {
              * The type of Azure hop the packet should be sent to.
              */
             nextHopType: pulumi.Input<string>;
-            /**
-             * The provisioning state of the route resource.
-             */
-            provisioningState?: pulumi.Input<string>;
         }
 
         /**
@@ -235555,10 +234685,6 @@ export namespace network {
              * Resource location.
              */
             location?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the route table resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Collection of routes contained within a route table.
              */
@@ -235625,10 +234751,6 @@ export namespace network {
              * Network protocol this rule applies to.
              */
             protocol: pulumi.Input<string>;
-            /**
-             * The provisioning state of the security rule resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from.
              */
@@ -235750,10 +234872,6 @@ export namespace network {
              */
             locations?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * The provisioning state of the service endpoint resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * The type of the endpoint service.
              */
             service?: pulumi.Input<string>;
@@ -235813,10 +234931,6 @@ export namespace network {
              * Enable or Disable apply network policies on private link service in the subnet.
              */
             privateLinkServiceNetworkPolicies?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the subnet resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * An array of references to the external resources using subnet.
              */
@@ -236052,10 +235166,6 @@ export namespace network {
              */
             peeringState?: pulumi.Input<string>;
             /**
-             * The provisioning state of the virtual network peering resource.
-             */
-            provisioningState?: pulumi.Input<string>;
-            /**
              * The reference of the remote virtual network address space.
              */
             remoteAddressSpace?: pulumi.Input<inputs.network.v20190801.AddressSpace>;
@@ -236202,10 +235312,6 @@ export namespace network {
              */
             connectionBandwidth?: pulumi.Input<number>;
             /**
-             * The connection status.
-             */
-            connectionStatus?: pulumi.Input<string>;
-            /**
              * EnableBgp flag.
              */
             enableBgp?: pulumi.Input<boolean>;
@@ -236229,10 +235335,6 @@ export namespace network {
              * The name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the VPN connection resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Id of the connected vpn site.
              */
@@ -236371,10 +235473,6 @@ export namespace network {
              * The name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the VPN site link resource.
-             */
-            provisioningState?: pulumi.Input<string>;
         }
 
         /**
@@ -236385,10 +235483,6 @@ export namespace network {
              * Expected bandwidth in MBPS.
              */
             connectionBandwidth?: pulumi.Input<number>;
-            /**
-             * The connection status.
-             */
-            connectionStatus?: pulumi.Input<string>;
             /**
              * EnableBgp flag.
              */
@@ -236409,10 +235503,6 @@ export namespace network {
              * The name of the resource that is unique within a resource group. This name can be used to access the resource.
              */
             name?: pulumi.Input<string>;
-            /**
-             * The provisioning state of the VPN site link connection resource.
-             */
-            provisioningState?: pulumi.Input<string>;
             /**
              * Routing weight for vpn connection.
              */
@@ -237629,6 +236719,16 @@ export namespace network {
         }
 
         /**
+         * Bastion Shareable Link.
+         */
+        export interface BastionShareableLink {
+            /**
+             * Reference of the virtual machine resource.
+             */
+            vm: inputs.network.v20190901.VM;
+        }
+
+        /**
          * BGP settings details.
          */
         export interface BgpSettings {
@@ -237794,10 +236894,6 @@ export namespace network {
              * The authorization key.
              */
             authorizationKey?: pulumi.Input<string>;
-            /**
-             * Express Route Circuit connection state.
-             */
-            circuitConnectionStatus?: pulumi.Input<string>;
             /**
              * Reference to Express Route Circuit Private Peering Resource of the circuit initiating connection.
              */
@@ -239443,6 +238539,24 @@ export namespace network {
         }
 
         /**
+         * Describes a Virtual Machine.
+         */
+        export interface VM {
+            /**
+             * Resource ID.
+             */
+            id?: string;
+            /**
+             * Resource location.
+             */
+            location?: string;
+            /**
+             * Resource tags.
+             */
+            tags?: {[key: string]: string};
+        }
+
+        /**
          * Virtual Hub identifier.
          */
         export interface VirtualHubId {
@@ -239799,10 +238913,6 @@ export namespace network {
              */
             connectionBandwidth?: pulumi.Input<number>;
             /**
-             * The connection status.
-             */
-            connectionStatus?: pulumi.Input<string>;
-            /**
              * EnableBgp flag.
              */
             enableBgp?: pulumi.Input<boolean>;
@@ -239974,10 +239084,6 @@ export namespace network {
              * Expected bandwidth in MBPS.
              */
             connectionBandwidth?: pulumi.Input<number>;
-            /**
-             * The connection status.
-             */
-            connectionStatus?: pulumi.Input<string>;
             /**
              * EnableBgp flag.
              */
@@ -241433,6 +240539,16 @@ export namespace network {
         }
 
         /**
+         * Bastion Shareable Link.
+         */
+        export interface BastionShareableLink {
+            /**
+             * Reference of the virtual machine resource.
+             */
+            vm: inputs.network.v20191101.VM;
+        }
+
+        /**
          * BGP settings details.
          */
         export interface BgpSettings {
@@ -241822,10 +240938,6 @@ export namespace network {
              * The authorization key.
              */
             authorizationKey?: pulumi.Input<string>;
-            /**
-             * Express Route Circuit connection state.
-             */
-            circuitConnectionStatus?: pulumi.Input<string>;
             /**
              * Reference to Express Route Circuit Private Peering Resource of the circuit initiating connection.
              */
@@ -243549,6 +242661,24 @@ export namespace network {
         }
 
         /**
+         * Describes a Virtual Machine.
+         */
+        export interface VM {
+            /**
+             * Resource ID.
+             */
+            id?: string;
+            /**
+             * Resource location.
+             */
+            location?: string;
+            /**
+             * Resource tags.
+             */
+            tags?: {[key: string]: string};
+        }
+
+        /**
          * Virtual Hub identifier.
          */
         export interface VirtualHubId {
@@ -243905,10 +243035,6 @@ export namespace network {
              */
             connectionBandwidth?: pulumi.Input<number>;
             /**
-             * The connection status.
-             */
-            connectionStatus?: pulumi.Input<string>;
-            /**
              * EnableBgp flag.
              */
             enableBgp?: pulumi.Input<boolean>;
@@ -244080,10 +243206,6 @@ export namespace network {
              * Expected bandwidth in MBPS.
              */
             connectionBandwidth?: pulumi.Input<number>;
-            /**
-             * The connection status.
-             */
-            connectionStatus?: pulumi.Input<string>;
             /**
              * EnableBgp flag.
              */
@@ -245346,6 +244468,16 @@ export namespace network {
         }
 
         /**
+         * Bastion Shareable Link.
+         */
+        export interface BastionShareableLink {
+            /**
+             * Reference of the virtual machine resource.
+             */
+            vm: inputs.network.v20191201.VM;
+        }
+
+        /**
          * BGP settings details.
          */
         export interface BgpSettings {
@@ -245725,10 +244857,6 @@ export namespace network {
              * The authorization key.
              */
             authorizationKey?: pulumi.Input<string>;
-            /**
-             * Express Route Circuit connection state.
-             */
-            circuitConnectionStatus?: pulumi.Input<string>;
             /**
              * Reference to Express Route Circuit Private Peering Resource of the circuit initiating connection.
              */
@@ -247530,6 +246658,24 @@ export namespace network {
         }
 
         /**
+         * Describes a Virtual Machine.
+         */
+        export interface VM {
+            /**
+             * Resource ID.
+             */
+            id?: string;
+            /**
+             * Resource location.
+             */
+            location?: string;
+            /**
+             * Resource tags.
+             */
+            tags?: {[key: string]: string};
+        }
+
+        /**
          * Network Virtual Appliance Sku Properties.
          */
         export interface VirtualApplianceSkuProperties {
@@ -247908,10 +247054,6 @@ export namespace network {
              */
             connectionBandwidth?: pulumi.Input<number>;
             /**
-             * The connection status.
-             */
-            connectionStatus?: pulumi.Input<string>;
-            /**
              * EnableBgp flag.
              */
             enableBgp?: pulumi.Input<boolean>;
@@ -248088,10 +247230,6 @@ export namespace network {
              */
             connectionBandwidth?: pulumi.Input<number>;
             /**
-             * The connection status.
-             */
-            connectionStatus?: pulumi.Input<string>;
-            /**
              * EnableBgp flag.
              */
             enableBgp?: pulumi.Input<boolean>;
@@ -248232,10 +247370,6 @@ export namespace network {
              * Resource name.
              */
             name?: pulumi.Input<string>;
-            /**
-             * Resource status.
-             */
-            resourceState?: pulumi.Input<string>;
         }
 
         /**
@@ -248314,10 +247448,6 @@ export namespace network {
              */
             name?: pulumi.Input<string>;
             /**
-             * Resource status.
-             */
-            resourceState?: pulumi.Input<string>;
-            /**
              * Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
              */
             sessionAffinityEnabledState?: pulumi.Input<string>;
@@ -248391,10 +247521,6 @@ export namespace network {
              * Protocol scheme to use for this probe
              */
             protocol?: pulumi.Input<string>;
-            /**
-             * Resource status.
-             */
-            resourceState?: pulumi.Input<string>;
         }
 
         /**
@@ -248413,10 +247539,6 @@ export namespace network {
              * Resource name.
              */
             name?: pulumi.Input<string>;
-            /**
-             * Resource status.
-             */
-            resourceState?: pulumi.Input<string>;
             /**
              * The number of samples to consider for load balancing decisions
              */
@@ -248486,10 +247608,6 @@ export namespace network {
              * The route patterns of the rule.
              */
             patternsToMatch?: pulumi.Input<pulumi.Input<string>[]>;
-            /**
-             * Resource status.
-             */
-            resourceState?: pulumi.Input<string>;
             /**
              * A reference to the routing configuration.
              */
@@ -249774,6 +248892,16 @@ export namespace network {
         }
 
         /**
+         * Bastion Shareable Link.
+         */
+        export interface BastionShareableLink {
+            /**
+             * Reference of the virtual machine resource.
+             */
+            vm: inputs.network.v20200301.VM;
+        }
+
+        /**
          * BGP settings details.
          */
         export interface BgpSettings {
@@ -250167,10 +249295,6 @@ export namespace network {
              * The authorization key.
              */
             authorizationKey?: pulumi.Input<string>;
-            /**
-             * Express Route Circuit connection state.
-             */
-            circuitConnectionStatus?: pulumi.Input<string>;
             /**
              * Reference to Express Route Circuit Private Peering Resource of the circuit initiating connection.
              */
@@ -252008,6 +251132,24 @@ export namespace network {
         }
 
         /**
+         * Describes a Virtual Machine.
+         */
+        export interface VM {
+            /**
+             * Resource ID.
+             */
+            id?: string;
+            /**
+             * Resource location.
+             */
+            location?: string;
+            /**
+             * Resource tags.
+             */
+            tags?: {[key: string]: string};
+        }
+
+        /**
          * Network Virtual Appliance Sku Properties.
          */
         export interface VirtualApplianceSkuProperties {
@@ -252390,10 +251532,6 @@ export namespace network {
              */
             connectionBandwidth?: pulumi.Input<number>;
             /**
-             * The connection status.
-             */
-            connectionStatus?: pulumi.Input<string>;
-            /**
              * The dead peer detection timeout for a vpn connection in seconds.
              */
             dpdTimeoutSeconds?: pulumi.Input<number>;
@@ -252573,10 +251711,6 @@ export namespace network {
              * Expected bandwidth in MBPS.
              */
             connectionBandwidth?: pulumi.Input<number>;
-            /**
-             * The connection status.
-             */
-            connectionStatus?: pulumi.Input<string>;
             /**
              * EnableBgp flag.
              */
@@ -253882,10 +253016,6 @@ export namespace network {
              * Resource name.
              */
             name?: pulumi.Input<string>;
-            /**
-             * Resource status.
-             */
-            resourceState?: pulumi.Input<string>;
         }
 
         /**
@@ -253926,6 +253056,16 @@ export namespace network {
              * Reference of the subnet resource.
              */
             subnet: pulumi.Input<inputs.network.v20200401.SubResource>;
+        }
+
+        /**
+         * Bastion Shareable Link.
+         */
+        export interface BastionShareableLink {
+            /**
+             * Reference of the virtual machine resource.
+             */
+            vm: inputs.network.v20200401.VM;
         }
 
         /**
@@ -254393,10 +253533,6 @@ export namespace network {
              */
             authorizationKey?: pulumi.Input<string>;
             /**
-             * Express Route Circuit connection state.
-             */
-            circuitConnectionStatus?: pulumi.Input<string>;
-            /**
              * Reference to Express Route Circuit Private Peering Resource of the circuit initiating connection.
              */
             expressRouteCircuitPeering?: pulumi.Input<inputs.network.v20200401.SubResource>;
@@ -254816,10 +253952,6 @@ export namespace network {
              */
             name?: pulumi.Input<string>;
             /**
-             * Resource status.
-             */
-            resourceState?: pulumi.Input<string>;
-            /**
              * Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
              */
             sessionAffinityEnabledState?: pulumi.Input<string>;
@@ -254949,10 +254081,6 @@ export namespace network {
              * Protocol scheme to use for this probe
              */
             protocol?: pulumi.Input<string>;
-            /**
-             * Resource status.
-             */
-            resourceState?: pulumi.Input<string>;
         }
 
         /**
@@ -255325,10 +254453,6 @@ export namespace network {
              * Resource name.
              */
             name?: pulumi.Input<string>;
-            /**
-             * Resource status.
-             */
-            resourceState?: pulumi.Input<string>;
             /**
              * The number of samples to consider for load balancing decisions
              */
@@ -256299,10 +255423,6 @@ export namespace network {
              */
             patternsToMatch?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Resource status.
-             */
-            resourceState?: pulumi.Input<string>;
-            /**
              * A reference to the routing configuration.
              */
             routeConfiguration?: pulumi.Input<inputs.network.v20200401.ForwardingConfiguration | inputs.network.v20200401.RedirectConfiguration>;
@@ -256670,6 +255790,24 @@ export namespace network {
              * A collection of remote address spaces in CIDR format.
              */
             remoteAddressRanges: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * Describes a Virtual Machine.
+         */
+        export interface VM {
+            /**
+             * Resource ID.
+             */
+            id?: string;
+            /**
+             * Resource location.
+             */
+            location?: string;
+            /**
+             * Resource tags.
+             */
+            tags?: {[key: string]: string};
         }
 
         /**
@@ -257065,10 +256203,6 @@ export namespace network {
              */
             connectionBandwidth?: pulumi.Input<number>;
             /**
-             * The connection status.
-             */
-            connectionStatus?: pulumi.Input<string>;
-            /**
              * The dead peer detection timeout for a vpn connection in seconds.
              */
             dpdTimeoutSeconds?: pulumi.Input<number>;
@@ -257252,10 +256386,6 @@ export namespace network {
              * Expected bandwidth in MBPS.
              */
             connectionBandwidth?: pulumi.Input<number>;
-            /**
-             * The connection status.
-             */
-            connectionStatus?: pulumi.Input<string>;
             /**
              * EnableBgp flag.
              */
@@ -258631,10 +257761,6 @@ export namespace network {
              * Resource name.
              */
             name?: pulumi.Input<string>;
-            /**
-             * Resource status.
-             */
-            resourceState?: pulumi.Input<string>;
         }
 
         /**
@@ -258675,6 +257801,16 @@ export namespace network {
              * Reference of the subnet resource.
              */
             subnet: pulumi.Input<inputs.network.v20200501.SubResource>;
+        }
+
+        /**
+         * Bastion Shareable Link.
+         */
+        export interface BastionShareableLink {
+            /**
+             * Reference of the virtual machine resource.
+             */
+            vm: inputs.network.v20200501.VM;
         }
 
         /**
@@ -259130,10 +258266,6 @@ export namespace network {
              */
             authorizationKey?: pulumi.Input<string>;
             /**
-             * Express Route Circuit connection state.
-             */
-            circuitConnectionStatus?: pulumi.Input<string>;
-            /**
              * Reference to Express Route Circuit Private Peering Resource of the circuit initiating connection.
              */
             expressRouteCircuitPeering?: pulumi.Input<inputs.network.v20200501.SubResource>;
@@ -259545,10 +258677,6 @@ export namespace network {
              */
             name?: pulumi.Input<string>;
             /**
-             * Resource status.
-             */
-            resourceState?: pulumi.Input<string>;
-            /**
              * Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
              */
             sessionAffinityEnabledState?: pulumi.Input<string>;
@@ -259678,10 +258806,6 @@ export namespace network {
              * Protocol scheme to use for this probe
              */
             protocol?: pulumi.Input<string>;
-            /**
-             * Resource status.
-             */
-            resourceState?: pulumi.Input<string>;
         }
 
         /**
@@ -260048,10 +259172,6 @@ export namespace network {
              * Resource name.
              */
             name?: pulumi.Input<string>;
-            /**
-             * Resource status.
-             */
-            resourceState?: pulumi.Input<string>;
             /**
              * The number of samples to consider for load balancing decisions
              */
@@ -261034,10 +260154,6 @@ export namespace network {
              */
             patternsToMatch?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Resource status.
-             */
-            resourceState?: pulumi.Input<string>;
-            /**
              * A reference to the routing configuration.
              */
             routeConfiguration?: pulumi.Input<inputs.network.v20200501.ForwardingConfiguration | inputs.network.v20200501.RedirectConfiguration>;
@@ -261405,6 +260521,24 @@ export namespace network {
              * A collection of remote address spaces in CIDR format.
              */
             remoteAddressRanges: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * Describes a Virtual Machine.
+         */
+        export interface VM {
+            /**
+             * Resource ID.
+             */
+            id?: string;
+            /**
+             * Resource location.
+             */
+            location?: string;
+            /**
+             * Resource tags.
+             */
+            tags?: {[key: string]: string};
         }
 
         /**
@@ -261800,10 +260934,6 @@ export namespace network {
              */
             connectionBandwidth?: pulumi.Input<number>;
             /**
-             * The connection status.
-             */
-            connectionStatus?: pulumi.Input<string>;
-            /**
              * The dead peer detection timeout for a vpn connection in seconds.
              */
             dpdTimeoutSeconds?: pulumi.Input<number>;
@@ -261987,10 +261117,6 @@ export namespace network {
              * Expected bandwidth in MBPS.
              */
             connectionBandwidth?: pulumi.Input<number>;
-            /**
-             * The connection status.
-             */
-            connectionStatus?: pulumi.Input<string>;
             /**
              * EnableBgp flag.
              */
@@ -263377,6 +262503,16 @@ export namespace network {
         }
 
         /**
+         * Bastion Shareable Link.
+         */
+        export interface BastionShareableLink {
+            /**
+             * Reference of the virtual machine resource.
+             */
+            vm: inputs.network.v20200601.VM;
+        }
+
+        /**
          * BGP settings details.
          */
         export interface BgpSettings {
@@ -263846,10 +262982,6 @@ export namespace network {
              * The authorization key.
              */
             authorizationKey?: pulumi.Input<string>;
-            /**
-             * Express Route Circuit connection state.
-             */
-            circuitConnectionStatus?: pulumi.Input<string>;
             /**
              * Reference to Express Route Circuit Private Peering Resource of the circuit initiating connection.
              */
@@ -265875,6 +265007,24 @@ export namespace network {
         }
 
         /**
+         * Describes a Virtual Machine.
+         */
+        export interface VM {
+            /**
+             * Resource ID.
+             */
+            id?: string;
+            /**
+             * Resource location.
+             */
+            location?: string;
+            /**
+             * Resource tags.
+             */
+            tags?: {[key: string]: string};
+        }
+
+        /**
          * Network Virtual Appliance Sku Properties.
          */
         export interface VirtualApplianceSkuProperties {
@@ -266271,10 +265421,6 @@ export namespace network {
              */
             connectionBandwidth?: pulumi.Input<number>;
             /**
-             * The connection status.
-             */
-            connectionStatus?: pulumi.Input<string>;
-            /**
              * DPD timeout in seconds for vpn connection.
              */
             dpdTimeoutSeconds?: pulumi.Input<number>;
@@ -266458,10 +265604,6 @@ export namespace network {
              * Expected bandwidth in MBPS.
              */
             connectionBandwidth?: pulumi.Input<number>;
-            /**
-             * The connection status.
-             */
-            connectionStatus?: pulumi.Input<string>;
             /**
              * EnableBgp flag.
              */
@@ -269555,10 +268697,6 @@ export namespace powerplatform {
              * Identity of the secret that includes name and version.
              */
             key?: pulumi.Input<inputs.powerplatform.v20201030preview.KeyProperties>;
-            /**
-             * The state of onboarding, which only appears in the response.
-             */
-            status?: pulumi.Input<string>;
         }
 
         /**
@@ -269587,46 +268725,6 @@ export namespace powerplatform {
              * Key vault properties.
              */
             keyVaultProperties?: pulumi.Input<inputs.powerplatform.v20201030preview.KeyVaultProperties>;
-        }
-
-        /**
-         * Settings concerning lockbox.
-         */
-        export interface PropertiesLockbox {
-            /**
-             * lockbox configuration
-             */
-            status?: pulumi.Input<string>;
-        }
-
-        /**
-         * Metadata pertaining to creation and last modification of the resource.
-         */
-        export interface SystemData {
-            /**
-             * The timestamp of resource creation (UTC).
-             */
-            createdAt?: pulumi.Input<string>;
-            /**
-             * The identity that created the resource.
-             */
-            createdBy?: pulumi.Input<string>;
-            /**
-             * The type of identity that created the resource.
-             */
-            createdByType?: pulumi.Input<string>;
-            /**
-             * The type of identity that last modified the resource.
-             */
-            lastModifiedAt?: pulumi.Input<string>;
-            /**
-             * The identity that last modified the resource.
-             */
-            lastModifiedBy?: pulumi.Input<string>;
-            /**
-             * The type of identity that last modified the resource.
-             */
-            lastModifiedByType?: pulumi.Input<string>;
         }
 
     }
@@ -285192,20 +284290,6 @@ export namespace servicebus {
         }
 
         /**
-         * Properties to configure Encryption
-         */
-        export interface Encryption {
-            /**
-             * Enumerates the possible value of keySource for Encryption
-             */
-            keySource?: pulumi.Input<string>;
-            /**
-             * Properties of KeyVault
-             */
-            keyVaultProperties?: pulumi.Input<inputs.servicebus.v20180101preview.KeyVaultProperties>;
-        }
-
-        /**
          * Properties to configure keyVault Properties
          */
         export interface KeyVaultProperties {
@@ -292479,10 +291563,6 @@ export namespace solutions {
              * The start time of the request.
              */
             startTime: pulumi.Input<string>;
-            /**
-             * The type of JIT schedule.
-             */
-            type: pulumi.Input<string>;
         }
 
         /**
@@ -293020,10 +292100,6 @@ export namespace solutions {
              * The start time of the request.
              */
             startTime: pulumi.Input<string>;
-            /**
-             * The type of JIT schedule.
-             */
-            type: pulumi.Input<string>;
         }
 
         /**
@@ -293258,10 +292334,6 @@ export namespace solutions {
              * The start time of the request.
              */
             startTime: pulumi.Input<string>;
-            /**
-             * The type of JIT schedule.
-             */
-            type: pulumi.Input<string>;
         }
 
         /**
@@ -294743,10 +293815,6 @@ export namespace storage {
              * The SKU name. Required for account creation; optional for update. Note that in older versions, SKU name was called accountType.
              */
             name: pulumi.Input<string>;
-            /**
-             * The SKU tier. This is based on the SKU name.
-             */
-            tier?: pulumi.Input<string>;
         }
 
         /**
@@ -296810,10 +295878,6 @@ export namespace storage {
              * The SKU name. Required for account creation; optional for update. Note that in older versions, SKU name was called accountType.
              */
             name: pulumi.Input<string>;
-            /**
-             * The SKU tier. This is based on the SKU name.
-             */
-            tier?: pulumi.Input<string>;
         }
 
         /**
@@ -297241,10 +296305,6 @@ export namespace storage {
              * The SKU name. Required for account creation; optional for update. Note that in older versions, SKU name was called accountType.
              */
             name: pulumi.Input<string>;
-            /**
-             * The SKU tier. This is based on the SKU name.
-             */
-            tier?: pulumi.Input<string>;
         }
 
         /**
@@ -300633,16 +299693,6 @@ export namespace streamanalytics {
     }
 
     export namespace v20200301preview {
-        /**
-         * The properties associated with a Stream Analytics cluster.
-         */
-        export interface ClusterProperties {
-            /**
-             * The status of the cluster provisioning. The three terminal states are: Succeeded, Failed and Canceled
-             */
-            provisioningState?: pulumi.Input<string>;
-        }
-
         /**
          * The SKU of the cluster. This determines the size/capacity of the cluster. Required on PUT (CreateOrUpdate) requests.
          */
