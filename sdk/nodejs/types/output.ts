@@ -9702,6 +9702,50 @@ export namespace automation {
     }
 }
 
+export namespace autonomousdevelopmentplatform {
+    export namespace v20200701preview {
+        /**
+         * Location of a Data Pool
+         */
+        export interface DataPoolLocationResponse {
+            /**
+             * The location name
+             */
+            name: string;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
+        }
+    }
+}
+
 export namespace avs {
     export namespace latest {
         /**
@@ -88987,6 +89031,82 @@ export namespace datafactory {
         }
 
         /**
+         * The MongoDB Atlas database dataset.
+         */
+        export interface MongoDbAtlasCollectionDatasetResponse {
+            /**
+             * List of tags that can be used for describing the Dataset.
+             */
+            annotations?: {[key: string]: any}[];
+            /**
+             * The collection name of the MongoDB Atlas database. Type: string (or Expression with resultType string).
+             */
+            collection: {[key: string]: any};
+            /**
+             * Dataset description.
+             */
+            description?: string;
+            /**
+             * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+             */
+            folder?: outputs.datafactory.latest.DatasetResponseFolder;
+            /**
+             * Linked service reference.
+             */
+            linkedServiceName: outputs.datafactory.latest.LinkedServiceReferenceResponse;
+            /**
+             * Parameters for dataset.
+             */
+            parameters?: {[key: string]: outputs.datafactory.latest.ParameterSpecificationResponse};
+            /**
+             * Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+             */
+            schema?: {[key: string]: any};
+            /**
+             * Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+             */
+            structure?: {[key: string]: any};
+            /**
+             * Type of dataset.
+             */
+            type: "MongoDbAtlasCollection";
+        }
+
+        /**
+         * Linked service for MongoDB Atlas data source.
+         */
+        export interface MongoDbAtlasLinkedServiceResponse {
+            /**
+             * List of tags that can be used for describing the linked service.
+             */
+            annotations?: {[key: string]: any}[];
+            /**
+             * The integration runtime reference.
+             */
+            connectVia?: outputs.datafactory.latest.IntegrationRuntimeReferenceResponse;
+            /**
+             * The MongoDB Atlas connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Type: string, SecureString or AzureKeyVaultSecretReference.
+             */
+            connectionString: {[key: string]: any};
+            /**
+             * The name of the MongoDB Atlas database that you want to access. Type: string (or Expression with resultType string).
+             */
+            database: {[key: string]: any};
+            /**
+             * Linked service description.
+             */
+            description?: string;
+            /**
+             * Parameters for linked service.
+             */
+            parameters?: {[key: string]: outputs.datafactory.latest.ParameterSpecificationResponse};
+            /**
+             * Type of linked service.
+             */
+            type: "MongoDbAtlas";
+        }
+
+        /**
          * The MongoDB database dataset.
          */
         export interface MongoDbCollectionDatasetResponse {
@@ -107129,6 +107249,82 @@ export namespace datafactory {
              * Type of dataset.
              */
             type: "MicrosoftAccessTable";
+        }
+
+        /**
+         * The MongoDB Atlas database dataset.
+         */
+        export interface MongoDbAtlasCollectionDatasetResponse {
+            /**
+             * List of tags that can be used for describing the Dataset.
+             */
+            annotations?: {[key: string]: any}[];
+            /**
+             * The collection name of the MongoDB Atlas database. Type: string (or Expression with resultType string).
+             */
+            collection: {[key: string]: any};
+            /**
+             * Dataset description.
+             */
+            description?: string;
+            /**
+             * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+             */
+            folder?: outputs.datafactory.v20180601.DatasetResponseFolder;
+            /**
+             * Linked service reference.
+             */
+            linkedServiceName: outputs.datafactory.v20180601.LinkedServiceReferenceResponse;
+            /**
+             * Parameters for dataset.
+             */
+            parameters?: {[key: string]: outputs.datafactory.v20180601.ParameterSpecificationResponse};
+            /**
+             * Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+             */
+            schema?: {[key: string]: any};
+            /**
+             * Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+             */
+            structure?: {[key: string]: any};
+            /**
+             * Type of dataset.
+             */
+            type: "MongoDbAtlasCollection";
+        }
+
+        /**
+         * Linked service for MongoDB Atlas data source.
+         */
+        export interface MongoDbAtlasLinkedServiceResponse {
+            /**
+             * List of tags that can be used for describing the linked service.
+             */
+            annotations?: {[key: string]: any}[];
+            /**
+             * The integration runtime reference.
+             */
+            connectVia?: outputs.datafactory.v20180601.IntegrationRuntimeReferenceResponse;
+            /**
+             * The MongoDB Atlas connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Type: string, SecureString or AzureKeyVaultSecretReference.
+             */
+            connectionString: {[key: string]: any};
+            /**
+             * The name of the MongoDB Atlas database that you want to access. Type: string (or Expression with resultType string).
+             */
+            database: {[key: string]: any};
+            /**
+             * Linked service description.
+             */
+            description?: string;
+            /**
+             * Parameters for linked service.
+             */
+            parameters?: {[key: string]: outputs.datafactory.v20180601.ParameterSpecificationResponse};
+            /**
+             * Type of linked service.
+             */
+            type: "MongoDbAtlas";
         }
 
         /**
@@ -129460,6 +129656,83 @@ export namespace dbforpostgresql {
         }
     }
 
+    export namespace v20200214preview {
+        /**
+         * Identity for the resource.
+         */
+        export interface IdentityResponse {
+            /**
+             * The principal ID of resource identity.
+             */
+            principalId: string;
+            /**
+             * The tenant ID of resource.
+             */
+            tenantId: string;
+            /**
+             * The identity type.
+             */
+            type?: string;
+        }
+
+        /**
+         * Maintenance window of a server.
+         */
+        export interface MaintenanceWindowResponse {
+            /**
+             * indicates whether custom window is enabled or disabled
+             */
+            customWindow?: string;
+            /**
+             * day of week for maintenance window
+             */
+            dayOfWeek?: number;
+            /**
+             * start hour for maintenance window
+             */
+            startHour?: number;
+            /**
+             * start minute for maintenance window
+             */
+            startMinute?: number;
+        }
+
+        export interface ServerPropertiesResponseDelegatedSubnetArguments {
+            /**
+             * delegated subnet arm resource id.
+             */
+            subnetArmResourceId?: string;
+        }
+
+        /**
+         * Sku information related properties of a server.
+         */
+        export interface SkuResponse {
+            /**
+             * The name of the sku, typically, tier + family + cores, e.g. Standard_D4s_v3.
+             */
+            name: string;
+            /**
+             * The tier of the particular SKU, e.g. Burstable.
+             */
+            tier: string;
+        }
+
+        /**
+         * Storage Profile properties of a server
+         */
+        export interface StorageProfileResponse {
+            /**
+             * Backup retention days for the server.
+             */
+            backupRetentionDays?: number;
+            /**
+             * Max storage allowed for a server.
+             */
+            storageMB?: number;
+        }
+    }
+
     export namespace v20200214privatepreview {
         /**
          * Identity for the resource.
@@ -149251,6 +149524,20 @@ export namespace documentdb {
              * An integer representing the time (in hours) that each backup is retained
              */
             backupRetentionIntervalInHours?: number;
+        }
+
+        /**
+         * The set of data plane operations permitted through this Role Definition.
+         */
+        export interface PermissionResponse {
+            /**
+             * An array of data actions that are allowed.
+             */
+            dataActions?: string[];
+            /**
+             * An array of data actions that are denied.
+             */
+            notDataActions?: string[];
         }
 
         /**
@@ -395269,6 +395556,20 @@ export namespace storage {
         }
 
         /**
+         * The complex type of the extended location.
+         */
+        export interface ExtendedLocationResponse {
+            /**
+             * The name of the extended location.
+             */
+            name?: string;
+            /**
+             * The type of the extended location.
+             */
+            type?: string;
+        }
+
+        /**
          * Statistics related to replication for storage account's Blob, Table, Queue and File services. It is only available when geo-redundant replication is enabled for the storage account.
          */
         export interface GeoReplicationStatsResponse {
@@ -395506,6 +395807,7 @@ export namespace storage {
              * Sets the IP ACL rules
              */
             ipRules?: outputs.storage.v20200801preview.IPRuleResponse[];
+            resourceAccessRules?: outputs.storage.v20200801preview.ResourceAccessRuleResponse[];
             /**
              * Sets the virtual network rules
              */
@@ -395604,6 +395906,20 @@ export namespace storage {
              * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
              */
             status?: string;
+        }
+
+        /**
+         * Resource Access Rule.
+         */
+        export interface ResourceAccessRuleResponse {
+            /**
+             * Resource Id
+             */
+            resourceId?: string;
+            /**
+             * Tenant Id
+             */
+            tenantId?: string;
         }
 
         /**

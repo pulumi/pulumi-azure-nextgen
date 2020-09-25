@@ -8255,6 +8255,21 @@ export namespace automation {
     }
 }
 
+export namespace autonomousdevelopmentplatform {
+    export namespace v20200701preview {
+        /**
+         * Location of a Data Pool
+         */
+        export interface DataPoolLocation {
+            /**
+             * The location name
+             */
+            name: pulumi.Input<string>;
+        }
+
+    }
+}
+
 export namespace avs {
     export namespace latest {
         /**
@@ -70530,6 +70545,82 @@ export namespace datafactory {
         }
 
         /**
+         * The MongoDB Atlas database dataset.
+         */
+        export interface MongoDbAtlasCollectionDataset {
+            /**
+             * List of tags that can be used for describing the Dataset.
+             */
+            annotations?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+            /**
+             * The collection name of the MongoDB Atlas database. Type: string (or Expression with resultType string).
+             */
+            collection: pulumi.Input<{[key: string]: any}>;
+            /**
+             * Dataset description.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+             */
+            folder?: pulumi.Input<inputs.datafactory.latest.DatasetFolder>;
+            /**
+             * Linked service reference.
+             */
+            linkedServiceName: pulumi.Input<inputs.datafactory.latest.LinkedServiceReference>;
+            /**
+             * Parameters for dataset.
+             */
+            parameters?: pulumi.Input<{[key: string]: pulumi.Input<inputs.datafactory.latest.ParameterSpecification>}>;
+            /**
+             * Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+             */
+            schema?: pulumi.Input<{[key: string]: any}>;
+            /**
+             * Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+             */
+            structure?: pulumi.Input<{[key: string]: any}>;
+            /**
+             * Type of dataset.
+             */
+            type: pulumi.Input<"MongoDbAtlasCollection">;
+        }
+
+        /**
+         * Linked service for MongoDB Atlas data source.
+         */
+        export interface MongoDbAtlasLinkedService {
+            /**
+             * List of tags that can be used for describing the linked service.
+             */
+            annotations?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+            /**
+             * The integration runtime reference.
+             */
+            connectVia?: pulumi.Input<inputs.datafactory.latest.IntegrationRuntimeReference>;
+            /**
+             * The MongoDB Atlas connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Type: string, SecureString or AzureKeyVaultSecretReference.
+             */
+            connectionString: pulumi.Input<{[key: string]: any}>;
+            /**
+             * The name of the MongoDB Atlas database that you want to access. Type: string (or Expression with resultType string).
+             */
+            database: pulumi.Input<{[key: string]: any}>;
+            /**
+             * Linked service description.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Parameters for linked service.
+             */
+            parameters?: pulumi.Input<{[key: string]: pulumi.Input<inputs.datafactory.latest.ParameterSpecification>}>;
+            /**
+             * Type of linked service.
+             */
+            type: pulumi.Input<"MongoDbAtlas">;
+        }
+
+        /**
          * The MongoDB database dataset.
          */
         export interface MongoDbCollectionDataset {
@@ -87767,6 +87858,82 @@ export namespace datafactory {
         }
 
         /**
+         * The MongoDB Atlas database dataset.
+         */
+        export interface MongoDbAtlasCollectionDataset {
+            /**
+             * List of tags that can be used for describing the Dataset.
+             */
+            annotations?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+            /**
+             * The collection name of the MongoDB Atlas database. Type: string (or Expression with resultType string).
+             */
+            collection: pulumi.Input<{[key: string]: any}>;
+            /**
+             * Dataset description.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+             */
+            folder?: pulumi.Input<inputs.datafactory.v20180601.DatasetFolder>;
+            /**
+             * Linked service reference.
+             */
+            linkedServiceName: pulumi.Input<inputs.datafactory.v20180601.LinkedServiceReference>;
+            /**
+             * Parameters for dataset.
+             */
+            parameters?: pulumi.Input<{[key: string]: pulumi.Input<inputs.datafactory.v20180601.ParameterSpecification>}>;
+            /**
+             * Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+             */
+            schema?: pulumi.Input<{[key: string]: any}>;
+            /**
+             * Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+             */
+            structure?: pulumi.Input<{[key: string]: any}>;
+            /**
+             * Type of dataset.
+             */
+            type: pulumi.Input<"MongoDbAtlasCollection">;
+        }
+
+        /**
+         * Linked service for MongoDB Atlas data source.
+         */
+        export interface MongoDbAtlasLinkedService {
+            /**
+             * List of tags that can be used for describing the linked service.
+             */
+            annotations?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+            /**
+             * The integration runtime reference.
+             */
+            connectVia?: pulumi.Input<inputs.datafactory.v20180601.IntegrationRuntimeReference>;
+            /**
+             * The MongoDB Atlas connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Type: string, SecureString or AzureKeyVaultSecretReference.
+             */
+            connectionString: pulumi.Input<{[key: string]: any}>;
+            /**
+             * The name of the MongoDB Atlas database that you want to access. Type: string (or Expression with resultType string).
+             */
+            database: pulumi.Input<{[key: string]: any}>;
+            /**
+             * Linked service description.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Parameters for linked service.
+             */
+            parameters?: pulumi.Input<{[key: string]: pulumi.Input<inputs.datafactory.v20180601.ParameterSpecification>}>;
+            /**
+             * Type of linked service.
+             */
+            type: pulumi.Input<"MongoDbAtlas">;
+        }
+
+        /**
          * The MongoDB database dataset.
          */
         export interface MongoDbCollectionDataset {
@@ -99444,6 +99611,76 @@ export namespace dbforpostgresql {
              * The private link service connection status.
              */
             status: pulumi.Input<string>;
+        }
+
+    }
+
+    export namespace v20200214preview {
+        /**
+         * Identity for the resource.
+         */
+        export interface Identity {
+            /**
+             * The identity type.
+             */
+            type?: pulumi.Input<string>;
+        }
+
+        /**
+         * Maintenance window of a server.
+         */
+        export interface MaintenanceWindow {
+            /**
+             * indicates whether custom window is enabled or disabled
+             */
+            customWindow?: pulumi.Input<string>;
+            /**
+             * day of week for maintenance window
+             */
+            dayOfWeek?: pulumi.Input<number>;
+            /**
+             * start hour for maintenance window
+             */
+            startHour?: pulumi.Input<number>;
+            /**
+             * start minute for maintenance window
+             */
+            startMinute?: pulumi.Input<number>;
+        }
+
+        export interface ServerPropertiesDelegatedSubnetArguments {
+            /**
+             * delegated subnet arm resource id.
+             */
+            subnetArmResourceId?: pulumi.Input<string>;
+        }
+
+        /**
+         * Sku information related properties of a server.
+         */
+        export interface Sku {
+            /**
+             * The name of the sku, typically, tier + family + cores, e.g. Standard_D4s_v3.
+             */
+            name: pulumi.Input<string>;
+            /**
+             * The tier of the particular SKU, e.g. Burstable.
+             */
+            tier: pulumi.Input<string>;
+        }
+
+        /**
+         * Storage Profile properties of a server
+         */
+        export interface StorageProfile {
+            /**
+             * Backup retention days for the server.
+             */
+            backupRetentionDays?: pulumi.Input<number>;
+            /**
+             * Max storage allowed for a server.
+             */
+            storageMB?: pulumi.Input<number>;
         }
 
     }
@@ -116098,6 +116335,20 @@ export namespace documentdb {
              * An integer representing the time (in hours) that each backup is retained
              */
             backupRetentionIntervalInHours?: pulumi.Input<number>;
+        }
+
+        /**
+         * The set of data plane operations permitted through this Role Definition.
+         */
+        export interface Permission {
+            /**
+             * An array of data actions that are allowed.
+             */
+            dataActions?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * An array of data actions that are denied.
+             */
+            notDataActions?: pulumi.Input<pulumi.Input<string>[]>;
         }
 
         /**
@@ -296056,6 +296307,20 @@ export namespace storage {
         }
 
         /**
+         * The complex type of the extended location.
+         */
+        export interface ExtendedLocation {
+            /**
+             * The name of the extended location.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * The type of the extended location.
+             */
+            type?: pulumi.Input<string>;
+        }
+
+        /**
          * IP rule with specific IP or IP range in CIDR format.
          */
         export interface IPRule {
@@ -296219,6 +296484,7 @@ export namespace storage {
              * Sets the IP ACL rules
              */
             ipRules?: pulumi.Input<pulumi.Input<inputs.storage.v20200801preview.IPRule>[]>;
+            resourceAccessRules?: pulumi.Input<pulumi.Input<inputs.storage.v20200801preview.ResourceAccessRule>[]>;
             /**
              * Sets the virtual network rules
              */
@@ -296277,6 +296543,20 @@ export namespace storage {
              * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
              */
             status?: pulumi.Input<string>;
+        }
+
+        /**
+         * Resource Access Rule.
+         */
+        export interface ResourceAccessRule {
+            /**
+             * Resource Id
+             */
+            resourceId?: pulumi.Input<string>;
+            /**
+             * Tenant Id
+             */
+            tenantId?: pulumi.Input<string>;
         }
 
         /**

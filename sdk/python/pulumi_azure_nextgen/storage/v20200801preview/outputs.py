@@ -22,6 +22,7 @@ __all__ = [
     'EncryptionServiceResponse',
     'EncryptionServicesResponse',
     'EndpointsResponse',
+    'ExtendedLocationResponse',
     'GeoReplicationStatsResponse',
     'IPRuleResponse',
     'IdentityResponse',
@@ -41,6 +42,7 @@ __all__ = [
     'PrivateEndpointConnectionResponse',
     'PrivateEndpointResponse',
     'PrivateLinkServiceConnectionStateResponse',
+    'ResourceAccessRuleResponse',
     'RoutingPreferenceResponse',
     'SkuResponse',
     'StorageAccountInternetEndpointsResponse',
@@ -663,6 +665,44 @@ class EndpointsResponse(dict):
 
 
 @pulumi.output_type
+class ExtendedLocationResponse(dict):
+    """
+    The complex type of the extended location.
+    """
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 type: Optional[str] = None):
+        """
+        The complex type of the extended location.
+        :param str name: The name of the extended location.
+        :param str type: The type of the extended location.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the extended location.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        The type of the extended location.
+        """
+        return pulumi.get(self, "type")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
 class GeoReplicationStatsResponse(dict):
     """
     Statistics related to replication for storage account's Blob, Table, Queue and File services. It is only available when geo-redundant replication is enabled for the storage account.
@@ -1266,6 +1306,7 @@ class NetworkRuleSetResponse(dict):
                  default_action: str,
                  bypass: Optional[str] = None,
                  ip_rules: Optional[Sequence['outputs.IPRuleResponse']] = None,
+                 resource_access_rules: Optional[Sequence['outputs.ResourceAccessRuleResponse']] = None,
                  virtual_network_rules: Optional[Sequence['outputs.VirtualNetworkRuleResponse']] = None):
         """
         Network rule set
@@ -1279,6 +1320,8 @@ class NetworkRuleSetResponse(dict):
             pulumi.set(__self__, "bypass", bypass)
         if ip_rules is not None:
             pulumi.set(__self__, "ip_rules", ip_rules)
+        if resource_access_rules is not None:
+            pulumi.set(__self__, "resource_access_rules", resource_access_rules)
         if virtual_network_rules is not None:
             pulumi.set(__self__, "virtual_network_rules", virtual_network_rules)
 
@@ -1305,6 +1348,11 @@ class NetworkRuleSetResponse(dict):
         Sets the IP ACL rules
         """
         return pulumi.get(self, "ip_rules")
+
+    @property
+    @pulumi.getter(name="resourceAccessRules")
+    def resource_access_rules(self) -> Optional[Sequence['outputs.ResourceAccessRuleResponse']]:
+        return pulumi.get(self, "resource_access_rules")
 
     @property
     @pulumi.getter(name="virtualNetworkRules")
@@ -1567,6 +1615,44 @@ class PrivateLinkServiceConnectionStateResponse(dict):
         Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
         """
         return pulumi.get(self, "status")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ResourceAccessRuleResponse(dict):
+    """
+    Resource Access Rule.
+    """
+    def __init__(__self__, *,
+                 resource_id: Optional[str] = None,
+                 tenant_id: Optional[str] = None):
+        """
+        Resource Access Rule.
+        :param str resource_id: Resource Id
+        :param str tenant_id: Tenant Id
+        """
+        if resource_id is not None:
+            pulumi.set(__self__, "resource_id", resource_id)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> Optional[str]:
+        """
+        Resource Id
+        """
+        return pulumi.get(self, "resource_id")
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[str]:
+        """
+        Tenant Id
+        """
+        return pulumi.get(self, "tenant_id")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
