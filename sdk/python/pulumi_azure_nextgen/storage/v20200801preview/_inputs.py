@@ -17,6 +17,7 @@ __all__ = [
     'EncryptionArgs',
     'EncryptionServiceArgs',
     'EncryptionServicesArgs',
+    'ExtendedLocationArgs',
     'IPRuleArgs',
     'IdentityArgs',
     'KeyVaultPropertiesArgs',
@@ -31,6 +32,7 @@ __all__ = [
     'ObjectReplicationPolicyFilterArgs',
     'ObjectReplicationPolicyRuleArgs',
     'PrivateLinkServiceConnectionStateArgs',
+    'ResourceAccessRuleArgs',
     'RoutingPreferenceArgs',
     'SkuArgs',
     'TagFilterArgs',
@@ -440,6 +442,46 @@ class EncryptionServicesArgs:
     @table.setter
     def table(self, value: Optional[pulumi.Input['EncryptionServiceArgs']]):
         pulumi.set(self, "table", value)
+
+
+@pulumi.input_type
+class ExtendedLocationArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        The complex type of the extended location.
+        :param pulumi.Input[str] name: The name of the extended location.
+        :param pulumi.Input[str] type: The type of the extended location.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the extended location.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the extended location.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
@@ -872,6 +914,7 @@ class NetworkRuleSetArgs:
                  default_action: pulumi.Input[str],
                  bypass: Optional[pulumi.Input[str]] = None,
                  ip_rules: Optional[pulumi.Input[Sequence[pulumi.Input['IPRuleArgs']]]] = None,
+                 resource_access_rules: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceAccessRuleArgs']]]] = None,
                  virtual_network_rules: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualNetworkRuleArgs']]]] = None):
         """
         Network rule set
@@ -885,6 +928,8 @@ class NetworkRuleSetArgs:
             pulumi.set(__self__, "bypass", bypass)
         if ip_rules is not None:
             pulumi.set(__self__, "ip_rules", ip_rules)
+        if resource_access_rules is not None:
+            pulumi.set(__self__, "resource_access_rules", resource_access_rules)
         if virtual_network_rules is not None:
             pulumi.set(__self__, "virtual_network_rules", virtual_network_rules)
 
@@ -923,6 +968,15 @@ class NetworkRuleSetArgs:
     @ip_rules.setter
     def ip_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IPRuleArgs']]]]):
         pulumi.set(self, "ip_rules", value)
+
+    @property
+    @pulumi.getter(name="resourceAccessRules")
+    def resource_access_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResourceAccessRuleArgs']]]]:
+        return pulumi.get(self, "resource_access_rules")
+
+    @resource_access_rules.setter
+    def resource_access_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceAccessRuleArgs']]]]):
+        pulumi.set(self, "resource_access_rules", value)
 
     @property
     @pulumi.getter(name="virtualNetworkRules")
@@ -1101,6 +1155,46 @@ class PrivateLinkServiceConnectionStateArgs:
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
+
+
+@pulumi.input_type
+class ResourceAccessRuleArgs:
+    def __init__(__self__, *,
+                 resource_id: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None):
+        """
+        Resource Access Rule.
+        :param pulumi.Input[str] resource_id: Resource Id
+        :param pulumi.Input[str] tenant_id: Tenant Id
+        """
+        if resource_id is not None:
+            pulumi.set(__self__, "resource_id", resource_id)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource Id
+        """
+        return pulumi.get(self, "resource_id")
+
+    @resource_id.setter
+    def resource_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_id", value)
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Tenant Id
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tenant_id", value)
 
 
 @pulumi.input_type
