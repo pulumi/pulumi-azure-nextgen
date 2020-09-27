@@ -18770,7 +18770,7 @@ export namespace billing {
             /**
              * The status of the billing profile.
              */
-            billingProfileStatus: {[key: string]: any};
+            billingProfileStatus: string;
             /**
              * Reason for the specified billing profile status.
              */
@@ -19179,14 +19179,6 @@ export namespace blueprint {
          * Represent a parameter with constrains and metadata.
          */
         export interface ParameterDefinitionResponse {
-            /**
-             * Array of allowed values for this parameter.
-             */
-            allowedValues?: {[key: string]: any}[];
-            /**
-             * Default Value for this parameter.
-             */
-            defaultValue?: {[key: string]: any};
             /**
              * Description of this parameter/resourceGroup.
              */
@@ -143490,10 +143482,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         /**
@@ -143560,10 +143548,6 @@ export namespace documentdb {
              * Schema of the Cosmos DB Cassandra table
              */
             schema?: outputs.documentdb.latest.CassandraSchemaResponse;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         /**
@@ -143748,10 +143732,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         export interface GremlinGraphGetPropertiesResponseOptions {
@@ -143794,10 +143774,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
             /**
              * The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
              */
@@ -143942,10 +143918,6 @@ export namespace documentdb {
              * A key-value pair of shard keys to be applied for the request.
              */
             shardKey?: {[key: string]: string};
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         export interface MongoDBDatabaseGetPropertiesResponseOptions {
@@ -143972,10 +143944,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         /**
@@ -144122,10 +144090,6 @@ export namespace documentdb {
              */
             rid: string;
             /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
-            /**
              * The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
              */
             uniqueKeyPolicy?: outputs.documentdb.latest.UniqueKeyPolicyResponse;
@@ -144160,10 +144124,6 @@ export namespace documentdb {
              */
             rid: string;
             /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
-            /**
              * A system generated property that specifies the addressable path of the users resource.
              */
             users?: string;
@@ -144186,10 +144146,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         export interface SqlTriggerGetPropertiesResponseResource {
@@ -144217,10 +144173,6 @@ export namespace documentdb {
              * Type of the Trigger
              */
             triggerType?: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         export interface SqlUserDefinedFunctionGetPropertiesResponseResource {
@@ -144240,10 +144192,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         export interface TableGetPropertiesResponseOptions {
@@ -144270,10 +144218,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         /**
@@ -145900,10 +145844,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         /**
@@ -145955,10 +145895,6 @@ export namespace documentdb {
              * Schema of the Cosmos DB Cassandra table
              */
             schema?: outputs.documentdb.v20190801.CassandraSchemaResponse;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         /**
@@ -146106,10 +146042,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         export interface GremlinGraphGetPropertiesResponseResource {
@@ -146141,10 +146073,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
             /**
              * The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
              */
@@ -146264,10 +146192,6 @@ export namespace documentdb {
              * A key-value pair of shard keys to be applied for the request.
              */
             shardKey?: {[key: string]: string};
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         export interface MongoDBDatabaseGetPropertiesResponseResource {
@@ -146283,10 +146207,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         /**
@@ -146368,10 +146288,6 @@ export namespace documentdb {
              */
             rid: string;
             /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
-            /**
              * The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
              */
             uniqueKeyPolicy?: outputs.documentdb.v20190801.UniqueKeyPolicyResponse;
@@ -146395,10 +146311,6 @@ export namespace documentdb {
              */
             rid: string;
             /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
-            /**
              * A system generated property that specifies the addressable path of the users resource.
              */
             users?: string;
@@ -146421,10 +146333,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         export interface SqlTriggerGetPropertiesResponseResource {
@@ -146452,10 +146360,6 @@ export namespace documentdb {
              * Type of the Trigger
              */
             triggerType?: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         export interface SqlUserDefinedFunctionGetPropertiesResponseResource {
@@ -146475,10 +146379,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         export interface TableGetPropertiesResponseResource {
@@ -146494,10 +146394,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         /**
@@ -146589,10 +146485,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         /**
@@ -146644,10 +146536,6 @@ export namespace documentdb {
              * Schema of the Cosmos DB Cassandra table
              */
             schema?: outputs.documentdb.v20191212.CassandraSchemaResponse;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         /**
@@ -146795,10 +146683,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         export interface GremlinGraphGetPropertiesResponseResource {
@@ -146830,10 +146714,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
             /**
              * The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
              */
@@ -146953,10 +146833,6 @@ export namespace documentdb {
              * A key-value pair of shard keys to be applied for the request.
              */
             shardKey?: {[key: string]: string};
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         export interface MongoDBDatabaseGetPropertiesResponseResource {
@@ -146972,10 +146848,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         /**
@@ -147057,10 +146929,6 @@ export namespace documentdb {
              */
             rid: string;
             /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
-            /**
              * The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
              */
             uniqueKeyPolicy?: outputs.documentdb.v20191212.UniqueKeyPolicyResponse;
@@ -147084,10 +146952,6 @@ export namespace documentdb {
              */
             rid: string;
             /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
-            /**
              * A system generated property that specifies the addressable path of the users resource.
              */
             users?: string;
@@ -147110,10 +146974,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         export interface SqlTriggerGetPropertiesResponseResource {
@@ -147141,10 +147001,6 @@ export namespace documentdb {
              * Type of the Trigger
              */
             triggerType?: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         export interface SqlUserDefinedFunctionGetPropertiesResponseResource {
@@ -147164,10 +147020,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         export interface TableGetPropertiesResponseResource {
@@ -147183,10 +147035,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         /**
@@ -147255,10 +147103,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         /**
@@ -147317,10 +147161,6 @@ export namespace documentdb {
              * Schema of the Cosmos DB Cassandra table
              */
             schema?: outputs.documentdb.v20200301.CassandraSchemaResponse;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         /**
@@ -147475,10 +147315,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         export interface GremlinGraphGetPropertiesResponseOptions {
@@ -147517,10 +147353,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
             /**
              * The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
              */
@@ -147647,10 +147479,6 @@ export namespace documentdb {
              * A key-value pair of shard keys to be applied for the request.
              */
             shardKey?: {[key: string]: string};
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         export interface MongoDBDatabaseGetPropertiesResponseOptions {
@@ -147673,10 +147501,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         /**
@@ -147815,10 +147639,6 @@ export namespace documentdb {
              */
             rid: string;
             /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
-            /**
              * The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
              */
             uniqueKeyPolicy?: outputs.documentdb.v20200301.UniqueKeyPolicyResponse;
@@ -147849,10 +147669,6 @@ export namespace documentdb {
              */
             rid: string;
             /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
-            /**
              * A system generated property that specifies the addressable path of the users resource.
              */
             users?: string;
@@ -147875,10 +147691,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         export interface SqlTriggerGetPropertiesResponseResource {
@@ -147906,10 +147718,6 @@ export namespace documentdb {
              * Type of the Trigger
              */
             triggerType?: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         export interface SqlUserDefinedFunctionGetPropertiesResponseResource {
@@ -147929,10 +147737,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         export interface TableGetPropertiesResponseOptions {
@@ -147955,10 +147759,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         /**
@@ -148045,10 +147845,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         /**
@@ -148115,10 +147911,6 @@ export namespace documentdb {
              * Schema of the Cosmos DB Cassandra table
              */
             schema?: outputs.documentdb.v20200401.CassandraSchemaResponse;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         /**
@@ -148303,10 +148095,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         export interface GremlinGraphGetPropertiesResponseOptions {
@@ -148349,10 +148137,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
             /**
              * The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
              */
@@ -148497,10 +148281,6 @@ export namespace documentdb {
              * A key-value pair of shard keys to be applied for the request.
              */
             shardKey?: {[key: string]: string};
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         export interface MongoDBDatabaseGetPropertiesResponseOptions {
@@ -148527,10 +148307,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         /**
@@ -148677,10 +148453,6 @@ export namespace documentdb {
              */
             rid: string;
             /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
-            /**
              * The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
              */
             uniqueKeyPolicy?: outputs.documentdb.v20200401.UniqueKeyPolicyResponse;
@@ -148715,10 +148487,6 @@ export namespace documentdb {
              */
             rid: string;
             /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
-            /**
              * A system generated property that specifies the addressable path of the users resource.
              */
             users?: string;
@@ -148741,10 +148509,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         export interface SqlTriggerGetPropertiesResponseResource {
@@ -148772,10 +148536,6 @@ export namespace documentdb {
              * Type of the Trigger
              */
             triggerType?: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         export interface SqlUserDefinedFunctionGetPropertiesResponseResource {
@@ -148795,10 +148555,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         export interface TableGetPropertiesResponseOptions {
@@ -148825,10 +148581,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         /**
@@ -148915,10 +148667,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         /**
@@ -148985,10 +148733,6 @@ export namespace documentdb {
              * Schema of the Cosmos DB Cassandra table
              */
             schema?: outputs.documentdb.v20200601preview.CassandraSchemaResponse;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         /**
@@ -149197,10 +148941,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         export interface GremlinGraphGetPropertiesResponseOptions {
@@ -149243,10 +148983,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
             /**
              * The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
              */
@@ -149424,10 +149160,6 @@ export namespace documentdb {
              * A key-value pair of shard keys to be applied for the request.
              */
             shardKey?: {[key: string]: string};
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         export interface MongoDBDatabaseGetPropertiesResponseOptions {
@@ -149454,10 +149186,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         /**
@@ -149664,10 +149392,6 @@ export namespace documentdb {
              */
             rid: string;
             /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
-            /**
              * The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
              */
             uniqueKeyPolicy?: outputs.documentdb.v20200601preview.UniqueKeyPolicyResponse;
@@ -149702,10 +149426,6 @@ export namespace documentdb {
              */
             rid: string;
             /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
-            /**
              * A system generated property that specifies the addressable path of the users resource.
              */
             users?: string;
@@ -149728,10 +149448,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         export interface SqlTriggerGetPropertiesResponseResource {
@@ -149759,10 +149475,6 @@ export namespace documentdb {
              * Type of the Trigger
              */
             triggerType?: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         export interface SqlUserDefinedFunctionGetPropertiesResponseResource {
@@ -149782,10 +149494,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         /**
@@ -149842,10 +149550,6 @@ export namespace documentdb {
              * A system generated property. A unique identifier.
              */
             rid: string;
-            /**
-             * A system generated property that denotes the last updated timestamp of the resource.
-             */
-            ts: {[key: string]: any};
         }
 
         /**
@@ -160018,7 +159722,7 @@ export namespace insights {
             /**
              * the criteria time aggregation types.
              */
-            timeAggregation: {[key: string]: any};
+            timeAggregation: string;
         }
 
         /**
@@ -160298,7 +160002,7 @@ export namespace insights {
             /**
              * the criteria time aggregation types.
              */
-            timeAggregation: {[key: string]: any};
+            timeAggregation: string;
         }
 
         /**
@@ -161770,7 +161474,7 @@ export namespace insights {
             /**
              * the criteria time aggregation types.
              */
-            timeAggregation: {[key: string]: any};
+            timeAggregation: string;
         }
 
         /**
@@ -161930,7 +161634,7 @@ export namespace insights {
             /**
              * the criteria time aggregation types.
              */
-            timeAggregation: {[key: string]: any};
+            timeAggregation: string;
         }
 
         /**
@@ -167295,7 +166999,6 @@ export namespace logic {
              * The artifact changed time.
              */
             changedTime?: string;
-            content?: {[key: string]: any};
             /**
              * The content link.
              */
@@ -167308,7 +167011,6 @@ export namespace logic {
              * The artifact creation time.
              */
             createdTime?: string;
-            metadata?: {[key: string]: any};
         }
 
         /**
@@ -167355,7 +167057,6 @@ export namespace logic {
              * The artifact creation time.
              */
             createdTime?: string;
-            metadata?: {[key: string]: any};
             /**
              * The batch release criteria.
              */
@@ -168082,7 +167783,6 @@ export namespace logic {
              * The text.
              */
             text?: string;
-            value?: {[key: string]: any};
         }
 
         /**
@@ -168105,7 +167805,6 @@ export namespace logic {
              * The text.
              */
             text?: string;
-            value?: {[key: string]: any};
         }
 
         /**
@@ -171128,7 +170827,6 @@ export namespace logic {
              * The artifact changed time.
              */
             changedTime?: string;
-            content?: {[key: string]: any};
             /**
              * The content link.
              */
@@ -171141,7 +170839,6 @@ export namespace logic {
              * The artifact creation time.
              */
             createdTime?: string;
-            metadata?: {[key: string]: any};
         }
 
         /**
@@ -171188,7 +170885,6 @@ export namespace logic {
              * The artifact creation time.
              */
             createdTime?: string;
-            metadata?: {[key: string]: any};
             /**
              * The batch release criteria.
              */
@@ -171906,7 +171602,6 @@ export namespace logic {
             error?: outputs.logic.v20160601.AzureResourceErrorInfoResponse;
             subexpressions?: outputs.logic.v20160601.ExpressionResponse[];
             text?: string;
-            value?: {[key: string]: any};
         }
 
         export interface ExpressionRootResponse {
@@ -171920,7 +171615,6 @@ export namespace logic {
             path?: string;
             subexpressions?: outputs.logic.v20160601.ExpressionResponse[];
             text?: string;
-            value?: {[key: string]: any};
         }
 
         /**
@@ -173171,7 +172865,6 @@ export namespace logic {
              * The artifact changed time.
              */
             changedTime?: string;
-            content?: {[key: string]: any};
             /**
              * The content link.
              */
@@ -173184,7 +172877,6 @@ export namespace logic {
              * The artifact creation time.
              */
             createdTime?: string;
-            metadata?: {[key: string]: any};
         }
 
         /**
@@ -173231,7 +172923,6 @@ export namespace logic {
              * The artifact creation time.
              */
             createdTime?: string;
-            metadata?: {[key: string]: any};
             /**
              * The batch release criteria.
              */
@@ -173949,7 +173640,6 @@ export namespace logic {
             error?: outputs.logic.v20180701preview.AzureResourceErrorInfoResponse;
             subexpressions?: outputs.logic.v20180701preview.ExpressionResponse[];
             text?: string;
-            value?: {[key: string]: any};
         }
 
         export interface ExpressionRootResponse {
@@ -173963,7 +173653,6 @@ export namespace logic {
             path?: string;
             subexpressions?: outputs.logic.v20180701preview.ExpressionResponse[];
             text?: string;
-            value?: {[key: string]: any};
         }
 
         /**
@@ -175304,7 +174993,6 @@ export namespace logic {
              * The artifact changed time.
              */
             changedTime?: string;
-            content?: {[key: string]: any};
             /**
              * The content link.
              */
@@ -175317,7 +175005,6 @@ export namespace logic {
              * The artifact creation time.
              */
             createdTime?: string;
-            metadata?: {[key: string]: any};
         }
 
         /**
@@ -175364,7 +175051,6 @@ export namespace logic {
              * The artifact creation time.
              */
             createdTime?: string;
-            metadata?: {[key: string]: any};
             /**
              * The batch release criteria.
              */
@@ -176091,7 +175777,6 @@ export namespace logic {
              * The text.
              */
             text?: string;
-            value?: {[key: string]: any};
         }
 
         /**
@@ -176114,7 +175799,6 @@ export namespace logic {
              * The text.
              */
             text?: string;
-            value?: {[key: string]: any};
         }
 
         /**
@@ -195158,14 +194842,6 @@ export namespace management {
          * Represent a parameter with constrains and metadata.
          */
         export interface ParameterDefinitionResponse {
-            /**
-             * Array of allowed values for this parameter.
-             */
-            allowedValues?: {[key: string]: any}[];
-            /**
-             * Default Value for this parameter.
-             */
-            defaultValue?: {[key: string]: any};
             /**
              * Description of this parameter/resourceGroup.
              */
@@ -349632,10 +349308,6 @@ export namespace policyinsights {
          */
         export interface TypedErrorInfoResponse {
             /**
-             * The scenario specific error details.
-             */
-            info: {[key: string]: any};
-            /**
              * The type of included error details.
              */
             type: string;
@@ -349736,10 +349408,6 @@ export namespace policyinsights {
          */
         export interface TypedErrorInfoResponse {
             /**
-             * The scenario specific error details.
-             */
-            info: {[key: string]: any};
-            /**
              * The type of included error details.
              */
             type: string;
@@ -349839,10 +349507,6 @@ export namespace policyinsights {
          * Scenario specific error details.
          */
         export interface TypedErrorInfoResponse {
-            /**
-             * The scenario specific error details.
-             */
-            info: {[key: string]: any};
             /**
              * The type of included error details.
              */
@@ -385652,10 +385316,6 @@ export namespace servicefabricmesh {
              */
             description?: string;
             /**
-             * Azure Internal monitoring agent fluentd configuration.
-             */
-            fluentdConfigUrl?: {[key: string]: any};
-            /**
              * The kind of DiagnosticsSink.
              */
             kind: "AzureInternalMonitoringPipeline";
@@ -386235,10 +385895,6 @@ export namespace servicefabricmesh {
              * A description of the sink.
              */
             description?: string;
-            /**
-             * Azure Internal monitoring agent fluentd configuration.
-             */
-            fluentdConfigUrl?: {[key: string]: any};
             /**
              * The kind of DiagnosticsSink.
              */

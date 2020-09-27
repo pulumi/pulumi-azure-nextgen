@@ -15542,11 +15542,11 @@ export namespace blueprint {
             /**
              * Array of allowed values for this parameter.
              */
-            allowedValues?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+            allowedValues?: pulumi.Input<any[]>;
             /**
              * Default Value for this parameter.
              */
-            defaultValue?: pulumi.Input<{[key: string]: any}>;
+            defaultValue?: any;
             /**
              * Description of this parameter/resourceGroup.
              */
@@ -125296,7 +125296,7 @@ export namespace insights {
             /**
              * the criteria time aggregation types.
              */
-            timeAggregation: pulumi.Input<{[key: string]: any}>;
+            timeAggregation: pulumi.Input<string>;
         }
 
         /**
@@ -125572,7 +125572,7 @@ export namespace insights {
             /**
              * the criteria time aggregation types.
              */
-            timeAggregation: pulumi.Input<{[key: string]: any}>;
+            timeAggregation: pulumi.Input<string>;
         }
 
         /**
@@ -127011,7 +127011,7 @@ export namespace insights {
             /**
              * the criteria time aggregation types.
              */
-            timeAggregation: pulumi.Input<{[key: string]: any}>;
+            timeAggregation: pulumi.Input<string>;
         }
 
         /**
@@ -127167,7 +127167,7 @@ export namespace insights {
             /**
              * the criteria time aggregation types.
              */
-            timeAggregation: pulumi.Input<{[key: string]: any}>;
+            timeAggregation: pulumi.Input<string>;
         }
 
         /**
@@ -130856,7 +130856,7 @@ export namespace logic {
              * The artifact changed time.
              */
             changedTime?: pulumi.Input<string>;
-            content?: pulumi.Input<{[key: string]: any}>;
+            content?: any;
             /**
              * The content link.
              */
@@ -130869,7 +130869,7 @@ export namespace logic {
              * The artifact creation time.
              */
             createdTime?: pulumi.Input<string>;
-            metadata?: pulumi.Input<{[key: string]: any}>;
+            metadata?: any;
         }
 
         /**
@@ -130898,7 +130898,7 @@ export namespace logic {
              * The artifact creation time.
              */
             createdTime?: pulumi.Input<string>;
-            metadata?: pulumi.Input<{[key: string]: any}>;
+            metadata?: any;
             /**
              * The batch release criteria.
              */
@@ -134478,7 +134478,7 @@ export namespace logic {
              * The artifact changed time.
              */
             changedTime?: pulumi.Input<string>;
-            content?: pulumi.Input<{[key: string]: any}>;
+            content?: any;
             /**
              * The content link.
              */
@@ -134491,7 +134491,7 @@ export namespace logic {
              * The artifact creation time.
              */
             createdTime?: pulumi.Input<string>;
-            metadata?: pulumi.Input<{[key: string]: any}>;
+            metadata?: any;
         }
 
         /**
@@ -134520,7 +134520,7 @@ export namespace logic {
              * The artifact creation time.
              */
             createdTime?: pulumi.Input<string>;
-            metadata?: pulumi.Input<{[key: string]: any}>;
+            metadata?: any;
             /**
              * The batch release criteria.
              */
@@ -136402,7 +136402,7 @@ export namespace logic {
              * The artifact changed time.
              */
             changedTime?: pulumi.Input<string>;
-            content?: pulumi.Input<{[key: string]: any}>;
+            content?: any;
             /**
              * The content link.
              */
@@ -136415,7 +136415,7 @@ export namespace logic {
              * The artifact creation time.
              */
             createdTime?: pulumi.Input<string>;
-            metadata?: pulumi.Input<{[key: string]: any}>;
+            metadata?: any;
         }
 
         /**
@@ -136444,7 +136444,7 @@ export namespace logic {
              * The artifact creation time.
              */
             createdTime?: pulumi.Input<string>;
-            metadata?: pulumi.Input<{[key: string]: any}>;
+            metadata?: any;
             /**
              * The batch release criteria.
              */
@@ -138222,7 +138222,7 @@ export namespace logic {
              * The artifact changed time.
              */
             changedTime?: pulumi.Input<string>;
-            content?: pulumi.Input<{[key: string]: any}>;
+            content?: any;
             /**
              * The content link.
              */
@@ -138235,7 +138235,7 @@ export namespace logic {
              * The artifact creation time.
              */
             createdTime?: pulumi.Input<string>;
-            metadata?: pulumi.Input<{[key: string]: any}>;
+            metadata?: any;
         }
 
         /**
@@ -138264,7 +138264,7 @@ export namespace logic {
              * The artifact creation time.
              */
             createdTime?: pulumi.Input<string>;
-            metadata?: pulumi.Input<{[key: string]: any}>;
+            metadata?: any;
             /**
              * The batch release criteria.
              */
@@ -150214,11 +150214,11 @@ export namespace management {
             /**
              * Array of allowed values for this parameter.
              */
-            allowedValues?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+            allowedValues?: pulumi.Input<any[]>;
             /**
              * Default Value for this parameter.
              */
-            defaultValue?: pulumi.Input<{[key: string]: any}>;
+            defaultValue?: any;
             /**
              * Description of this parameter/resourceGroup.
              */
@@ -289844,7 +289844,7 @@ export namespace servicefabricmesh {
             /**
              * Azure Internal monitoring agent fluentd configuration.
              */
-            fluentdConfigUrl?: pulumi.Input<{[key: string]: any}>;
+            fluentdConfigUrl?: any;
             /**
              * The kind of DiagnosticsSink.
              */
@@ -290331,7 +290331,7 @@ export namespace servicefabricmesh {
             /**
              * Azure Internal monitoring agent fluentd configuration.
              */
-            fluentdConfigUrl?: pulumi.Input<{[key: string]: any}>;
+            fluentdConfigUrl?: any;
             /**
              * The kind of DiagnosticsSink.
              */
