@@ -13,7 +13,7 @@ New features:
 Bug fixes:
 - Fixed handling of `@odata.type` fields ([#18](https://github.com/pulumi/pulumi-azure-nextgen/issues/18))
 - Handle unspecified types in Open API specs more gracefully: accept an "any" type (e.g., `object` in .NET) for inputs and ignore
-- them for outputs ([#14](https://github.com/pulumi/pulumi-azure-nextgen/issues/14))
+  them for outputs ([#14](https://github.com/pulumi/pulumi-azure-nextgen/issues/14))
 
 ---
 
