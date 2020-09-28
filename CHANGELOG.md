@@ -21,7 +21,7 @@ Bug fixes:
 - Fixed the serialization of `CompositeIndexes` property of `SqlResourceSqlContainer`
   ([#28](https://github.com/pulumi/pulumi-azure-nextgen/issues/28))
 - Data Factory enum properties (e.g. `CompressionCodec`) changed to strings
-  ([#28](https://github.com/pulumi/pulumi-azure-nextgen/issues/29))
+  ([#29](https://github.com/pulumi/pulumi-azure-nextgen/issues/29))
 
 ---
 
