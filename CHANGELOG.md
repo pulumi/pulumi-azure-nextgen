@@ -9,6 +9,7 @@ Breaking changes:
 
 New features:
 - Added `appplatform.getResourceUploadUrl` and other `get*` POST-based invokes ([#11](https://github.com/pulumi/pulumi-azure-nextgen/issues/11))
+- Resource import is now supported ([#7](https://github.com/pulumi/pulumi-azure-nextgen/issues/7))
 
 Bug fixes:
 - Fixed handling of `@odata.type` fields ([#18](https://github.com/pulumi/pulumi-azure-nextgen/issues/18))
