@@ -563,7 +563,7 @@ type CookiesMatchConditionParameters struct {
 	// Describes operator to be matched
 	Operator string `pulumi:"operator"`
 	// Name of Cookies to be matched
-	Selector string `pulumi:"selector"`
+	Selector *string `pulumi:"selector"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
 }
@@ -589,7 +589,7 @@ type CookiesMatchConditionParametersArgs struct {
 	// Describes operator to be matched
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// Name of Cookies to be matched
-	Selector pulumi.StringInput `pulumi:"selector"`
+	Selector pulumi.StringPtrInput `pulumi:"selector"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
 }
@@ -641,8 +641,8 @@ func (o CookiesMatchConditionParametersOutput) Operator() pulumi.StringOutput {
 }
 
 // Name of Cookies to be matched
-func (o CookiesMatchConditionParametersOutput) Selector() pulumi.StringOutput {
-	return o.ApplyT(func(v CookiesMatchConditionParameters) string { return v.Selector }).(pulumi.StringOutput)
+func (o CookiesMatchConditionParametersOutput) Selector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CookiesMatchConditionParameters) *string { return v.Selector }).(pulumi.StringPtrOutput)
 }
 
 // List of transforms
@@ -660,7 +660,7 @@ type CookiesMatchConditionParametersResponse struct {
 	// Describes operator to be matched
 	Operator string `pulumi:"operator"`
 	// Name of Cookies to be matched
-	Selector string `pulumi:"selector"`
+	Selector *string `pulumi:"selector"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
 }
@@ -686,7 +686,7 @@ type CookiesMatchConditionParametersResponseArgs struct {
 	// Describes operator to be matched
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// Name of Cookies to be matched
-	Selector pulumi.StringInput `pulumi:"selector"`
+	Selector pulumi.StringPtrInput `pulumi:"selector"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
 }
@@ -738,8 +738,8 @@ func (o CookiesMatchConditionParametersResponseOutput) Operator() pulumi.StringO
 }
 
 // Name of Cookies to be matched
-func (o CookiesMatchConditionParametersResponseOutput) Selector() pulumi.StringOutput {
-	return o.ApplyT(func(v CookiesMatchConditionParametersResponse) string { return v.Selector }).(pulumi.StringOutput)
+func (o CookiesMatchConditionParametersResponseOutput) Selector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CookiesMatchConditionParametersResponse) *string { return v.Selector }).(pulumi.StringPtrOutput)
 }
 
 // List of transforms
@@ -6828,6 +6828,426 @@ func (o MatchConditionResponseArrayOutput) Index(i pulumi.IntInput) MatchConditi
 	}).(MatchConditionResponseOutput)
 }
 
+// Defines contents of a web application firewall global configuration
+type PolicySettings struct {
+	// If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
+	DefaultCustomBlockResponseBody *string `pulumi:"defaultCustomBlockResponseBody"`
+	// If the action type is block, this field defines the default customer overridable http response status code.
+	DefaultCustomBlockResponseStatusCode *int `pulumi:"defaultCustomBlockResponseStatusCode"`
+	// If action type is redirect, this field represents the default redirect URL for the client.
+	DefaultRedirectUrl *string `pulumi:"defaultRedirectUrl"`
+	// describes if the policy is in enabled state or disabled state
+	EnabledState *string `pulumi:"enabledState"`
+	// Describes if it is in detection mode or prevention mode at policy level.
+	Mode *string `pulumi:"mode"`
+}
+
+// PolicySettingsInput is an input type that accepts PolicySettingsArgs and PolicySettingsOutput values.
+// You can construct a concrete instance of `PolicySettingsInput` via:
+//
+//          PolicySettingsArgs{...}
+type PolicySettingsInput interface {
+	pulumi.Input
+
+	ToPolicySettingsOutput() PolicySettingsOutput
+	ToPolicySettingsOutputWithContext(context.Context) PolicySettingsOutput
+}
+
+// Defines contents of a web application firewall global configuration
+type PolicySettingsArgs struct {
+	// If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
+	DefaultCustomBlockResponseBody pulumi.StringPtrInput `pulumi:"defaultCustomBlockResponseBody"`
+	// If the action type is block, this field defines the default customer overridable http response status code.
+	DefaultCustomBlockResponseStatusCode pulumi.IntPtrInput `pulumi:"defaultCustomBlockResponseStatusCode"`
+	// If action type is redirect, this field represents the default redirect URL for the client.
+	DefaultRedirectUrl pulumi.StringPtrInput `pulumi:"defaultRedirectUrl"`
+	// describes if the policy is in enabled state or disabled state
+	EnabledState pulumi.StringPtrInput `pulumi:"enabledState"`
+	// Describes if it is in detection mode or prevention mode at policy level.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+}
+
+func (PolicySettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicySettings)(nil)).Elem()
+}
+
+func (i PolicySettingsArgs) ToPolicySettingsOutput() PolicySettingsOutput {
+	return i.ToPolicySettingsOutputWithContext(context.Background())
+}
+
+func (i PolicySettingsArgs) ToPolicySettingsOutputWithContext(ctx context.Context) PolicySettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicySettingsOutput)
+}
+
+func (i PolicySettingsArgs) ToPolicySettingsPtrOutput() PolicySettingsPtrOutput {
+	return i.ToPolicySettingsPtrOutputWithContext(context.Background())
+}
+
+func (i PolicySettingsArgs) ToPolicySettingsPtrOutputWithContext(ctx context.Context) PolicySettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicySettingsOutput).ToPolicySettingsPtrOutputWithContext(ctx)
+}
+
+// PolicySettingsPtrInput is an input type that accepts PolicySettingsArgs, PolicySettingsPtr and PolicySettingsPtrOutput values.
+// You can construct a concrete instance of `PolicySettingsPtrInput` via:
+//
+//          PolicySettingsArgs{...}
+//
+//  or:
+//
+//          nil
+type PolicySettingsPtrInput interface {
+	pulumi.Input
+
+	ToPolicySettingsPtrOutput() PolicySettingsPtrOutput
+	ToPolicySettingsPtrOutputWithContext(context.Context) PolicySettingsPtrOutput
+}
+
+type policySettingsPtrType PolicySettingsArgs
+
+func PolicySettingsPtr(v *PolicySettingsArgs) PolicySettingsPtrInput {
+	return (*policySettingsPtrType)(v)
+}
+
+func (*policySettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicySettings)(nil)).Elem()
+}
+
+func (i *policySettingsPtrType) ToPolicySettingsPtrOutput() PolicySettingsPtrOutput {
+	return i.ToPolicySettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *policySettingsPtrType) ToPolicySettingsPtrOutputWithContext(ctx context.Context) PolicySettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicySettingsPtrOutput)
+}
+
+// Defines contents of a web application firewall global configuration
+type PolicySettingsOutput struct{ *pulumi.OutputState }
+
+func (PolicySettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicySettings)(nil)).Elem()
+}
+
+func (o PolicySettingsOutput) ToPolicySettingsOutput() PolicySettingsOutput {
+	return o
+}
+
+func (o PolicySettingsOutput) ToPolicySettingsOutputWithContext(ctx context.Context) PolicySettingsOutput {
+	return o
+}
+
+func (o PolicySettingsOutput) ToPolicySettingsPtrOutput() PolicySettingsPtrOutput {
+	return o.ToPolicySettingsPtrOutputWithContext(context.Background())
+}
+
+func (o PolicySettingsOutput) ToPolicySettingsPtrOutputWithContext(ctx context.Context) PolicySettingsPtrOutput {
+	return o.ApplyT(func(v PolicySettings) *PolicySettings {
+		return &v
+	}).(PolicySettingsPtrOutput)
+}
+
+// If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
+func (o PolicySettingsOutput) DefaultCustomBlockResponseBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicySettings) *string { return v.DefaultCustomBlockResponseBody }).(pulumi.StringPtrOutput)
+}
+
+// If the action type is block, this field defines the default customer overridable http response status code.
+func (o PolicySettingsOutput) DefaultCustomBlockResponseStatusCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PolicySettings) *int { return v.DefaultCustomBlockResponseStatusCode }).(pulumi.IntPtrOutput)
+}
+
+// If action type is redirect, this field represents the default redirect URL for the client.
+func (o PolicySettingsOutput) DefaultRedirectUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicySettings) *string { return v.DefaultRedirectUrl }).(pulumi.StringPtrOutput)
+}
+
+// describes if the policy is in enabled state or disabled state
+func (o PolicySettingsOutput) EnabledState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicySettings) *string { return v.EnabledState }).(pulumi.StringPtrOutput)
+}
+
+// Describes if it is in detection mode or prevention mode at policy level.
+func (o PolicySettingsOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicySettings) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+type PolicySettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (PolicySettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicySettings)(nil)).Elem()
+}
+
+func (o PolicySettingsPtrOutput) ToPolicySettingsPtrOutput() PolicySettingsPtrOutput {
+	return o
+}
+
+func (o PolicySettingsPtrOutput) ToPolicySettingsPtrOutputWithContext(ctx context.Context) PolicySettingsPtrOutput {
+	return o
+}
+
+func (o PolicySettingsPtrOutput) Elem() PolicySettingsOutput {
+	return o.ApplyT(func(v *PolicySettings) PolicySettings { return *v }).(PolicySettingsOutput)
+}
+
+// If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
+func (o PolicySettingsPtrOutput) DefaultCustomBlockResponseBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicySettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultCustomBlockResponseBody
+	}).(pulumi.StringPtrOutput)
+}
+
+// If the action type is block, this field defines the default customer overridable http response status code.
+func (o PolicySettingsPtrOutput) DefaultCustomBlockResponseStatusCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PolicySettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultCustomBlockResponseStatusCode
+	}).(pulumi.IntPtrOutput)
+}
+
+// If action type is redirect, this field represents the default redirect URL for the client.
+func (o PolicySettingsPtrOutput) DefaultRedirectUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicySettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultRedirectUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// describes if the policy is in enabled state or disabled state
+func (o PolicySettingsPtrOutput) EnabledState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicySettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnabledState
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes if it is in detection mode or prevention mode at policy level.
+func (o PolicySettingsPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicySettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines contents of a web application firewall global configuration
+type PolicySettingsResponse struct {
+	// If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
+	DefaultCustomBlockResponseBody *string `pulumi:"defaultCustomBlockResponseBody"`
+	// If the action type is block, this field defines the default customer overridable http response status code.
+	DefaultCustomBlockResponseStatusCode *int `pulumi:"defaultCustomBlockResponseStatusCode"`
+	// If action type is redirect, this field represents the default redirect URL for the client.
+	DefaultRedirectUrl *string `pulumi:"defaultRedirectUrl"`
+	// describes if the policy is in enabled state or disabled state
+	EnabledState *string `pulumi:"enabledState"`
+	// Describes if it is in detection mode or prevention mode at policy level.
+	Mode *string `pulumi:"mode"`
+}
+
+// PolicySettingsResponseInput is an input type that accepts PolicySettingsResponseArgs and PolicySettingsResponseOutput values.
+// You can construct a concrete instance of `PolicySettingsResponseInput` via:
+//
+//          PolicySettingsResponseArgs{...}
+type PolicySettingsResponseInput interface {
+	pulumi.Input
+
+	ToPolicySettingsResponseOutput() PolicySettingsResponseOutput
+	ToPolicySettingsResponseOutputWithContext(context.Context) PolicySettingsResponseOutput
+}
+
+// Defines contents of a web application firewall global configuration
+type PolicySettingsResponseArgs struct {
+	// If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
+	DefaultCustomBlockResponseBody pulumi.StringPtrInput `pulumi:"defaultCustomBlockResponseBody"`
+	// If the action type is block, this field defines the default customer overridable http response status code.
+	DefaultCustomBlockResponseStatusCode pulumi.IntPtrInput `pulumi:"defaultCustomBlockResponseStatusCode"`
+	// If action type is redirect, this field represents the default redirect URL for the client.
+	DefaultRedirectUrl pulumi.StringPtrInput `pulumi:"defaultRedirectUrl"`
+	// describes if the policy is in enabled state or disabled state
+	EnabledState pulumi.StringPtrInput `pulumi:"enabledState"`
+	// Describes if it is in detection mode or prevention mode at policy level.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+}
+
+func (PolicySettingsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicySettingsResponse)(nil)).Elem()
+}
+
+func (i PolicySettingsResponseArgs) ToPolicySettingsResponseOutput() PolicySettingsResponseOutput {
+	return i.ToPolicySettingsResponseOutputWithContext(context.Background())
+}
+
+func (i PolicySettingsResponseArgs) ToPolicySettingsResponseOutputWithContext(ctx context.Context) PolicySettingsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicySettingsResponseOutput)
+}
+
+func (i PolicySettingsResponseArgs) ToPolicySettingsResponsePtrOutput() PolicySettingsResponsePtrOutput {
+	return i.ToPolicySettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i PolicySettingsResponseArgs) ToPolicySettingsResponsePtrOutputWithContext(ctx context.Context) PolicySettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicySettingsResponseOutput).ToPolicySettingsResponsePtrOutputWithContext(ctx)
+}
+
+// PolicySettingsResponsePtrInput is an input type that accepts PolicySettingsResponseArgs, PolicySettingsResponsePtr and PolicySettingsResponsePtrOutput values.
+// You can construct a concrete instance of `PolicySettingsResponsePtrInput` via:
+//
+//          PolicySettingsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type PolicySettingsResponsePtrInput interface {
+	pulumi.Input
+
+	ToPolicySettingsResponsePtrOutput() PolicySettingsResponsePtrOutput
+	ToPolicySettingsResponsePtrOutputWithContext(context.Context) PolicySettingsResponsePtrOutput
+}
+
+type policySettingsResponsePtrType PolicySettingsResponseArgs
+
+func PolicySettingsResponsePtr(v *PolicySettingsResponseArgs) PolicySettingsResponsePtrInput {
+	return (*policySettingsResponsePtrType)(v)
+}
+
+func (*policySettingsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicySettingsResponse)(nil)).Elem()
+}
+
+func (i *policySettingsResponsePtrType) ToPolicySettingsResponsePtrOutput() PolicySettingsResponsePtrOutput {
+	return i.ToPolicySettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *policySettingsResponsePtrType) ToPolicySettingsResponsePtrOutputWithContext(ctx context.Context) PolicySettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicySettingsResponsePtrOutput)
+}
+
+// Defines contents of a web application firewall global configuration
+type PolicySettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (PolicySettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicySettingsResponse)(nil)).Elem()
+}
+
+func (o PolicySettingsResponseOutput) ToPolicySettingsResponseOutput() PolicySettingsResponseOutput {
+	return o
+}
+
+func (o PolicySettingsResponseOutput) ToPolicySettingsResponseOutputWithContext(ctx context.Context) PolicySettingsResponseOutput {
+	return o
+}
+
+func (o PolicySettingsResponseOutput) ToPolicySettingsResponsePtrOutput() PolicySettingsResponsePtrOutput {
+	return o.ToPolicySettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o PolicySettingsResponseOutput) ToPolicySettingsResponsePtrOutputWithContext(ctx context.Context) PolicySettingsResponsePtrOutput {
+	return o.ApplyT(func(v PolicySettingsResponse) *PolicySettingsResponse {
+		return &v
+	}).(PolicySettingsResponsePtrOutput)
+}
+
+// If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
+func (o PolicySettingsResponseOutput) DefaultCustomBlockResponseBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicySettingsResponse) *string { return v.DefaultCustomBlockResponseBody }).(pulumi.StringPtrOutput)
+}
+
+// If the action type is block, this field defines the default customer overridable http response status code.
+func (o PolicySettingsResponseOutput) DefaultCustomBlockResponseStatusCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PolicySettingsResponse) *int { return v.DefaultCustomBlockResponseStatusCode }).(pulumi.IntPtrOutput)
+}
+
+// If action type is redirect, this field represents the default redirect URL for the client.
+func (o PolicySettingsResponseOutput) DefaultRedirectUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicySettingsResponse) *string { return v.DefaultRedirectUrl }).(pulumi.StringPtrOutput)
+}
+
+// describes if the policy is in enabled state or disabled state
+func (o PolicySettingsResponseOutput) EnabledState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicySettingsResponse) *string { return v.EnabledState }).(pulumi.StringPtrOutput)
+}
+
+// Describes if it is in detection mode or prevention mode at policy level.
+func (o PolicySettingsResponseOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicySettingsResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+type PolicySettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PolicySettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicySettingsResponse)(nil)).Elem()
+}
+
+func (o PolicySettingsResponsePtrOutput) ToPolicySettingsResponsePtrOutput() PolicySettingsResponsePtrOutput {
+	return o
+}
+
+func (o PolicySettingsResponsePtrOutput) ToPolicySettingsResponsePtrOutputWithContext(ctx context.Context) PolicySettingsResponsePtrOutput {
+	return o
+}
+
+func (o PolicySettingsResponsePtrOutput) Elem() PolicySettingsResponseOutput {
+	return o.ApplyT(func(v *PolicySettingsResponse) PolicySettingsResponse { return *v }).(PolicySettingsResponseOutput)
+}
+
+// If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
+func (o PolicySettingsResponsePtrOutput) DefaultCustomBlockResponseBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicySettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultCustomBlockResponseBody
+	}).(pulumi.StringPtrOutput)
+}
+
+// If the action type is block, this field defines the default customer overridable http response status code.
+func (o PolicySettingsResponsePtrOutput) DefaultCustomBlockResponseStatusCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PolicySettingsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultCustomBlockResponseStatusCode
+	}).(pulumi.IntPtrOutput)
+}
+
+// If action type is redirect, this field represents the default redirect URL for the client.
+func (o PolicySettingsResponsePtrOutput) DefaultRedirectUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicySettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultRedirectUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// describes if the policy is in enabled state or disabled state
+func (o PolicySettingsResponsePtrOutput) EnabledState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicySettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnabledState
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes if it is in detection mode or prevention mode at policy level.
+func (o PolicySettingsResponsePtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicySettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
 // Defines the parameters for PostArgs match conditions
 type PostArgsMatchConditionParameters struct {
 	// The match value for the condition of the delivery rule
@@ -6838,7 +7258,7 @@ type PostArgsMatchConditionParameters struct {
 	// Describes operator to be matched
 	Operator string `pulumi:"operator"`
 	// Name of PostArg to be matched
-	Selector string `pulumi:"selector"`
+	Selector *string `pulumi:"selector"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
 }
@@ -6864,7 +7284,7 @@ type PostArgsMatchConditionParametersArgs struct {
 	// Describes operator to be matched
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// Name of PostArg to be matched
-	Selector pulumi.StringInput `pulumi:"selector"`
+	Selector pulumi.StringPtrInput `pulumi:"selector"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
 }
@@ -6916,8 +7336,8 @@ func (o PostArgsMatchConditionParametersOutput) Operator() pulumi.StringOutput {
 }
 
 // Name of PostArg to be matched
-func (o PostArgsMatchConditionParametersOutput) Selector() pulumi.StringOutput {
-	return o.ApplyT(func(v PostArgsMatchConditionParameters) string { return v.Selector }).(pulumi.StringOutput)
+func (o PostArgsMatchConditionParametersOutput) Selector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostArgsMatchConditionParameters) *string { return v.Selector }).(pulumi.StringPtrOutput)
 }
 
 // List of transforms
@@ -6935,7 +7355,7 @@ type PostArgsMatchConditionParametersResponse struct {
 	// Describes operator to be matched
 	Operator string `pulumi:"operator"`
 	// Name of PostArg to be matched
-	Selector string `pulumi:"selector"`
+	Selector *string `pulumi:"selector"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
 }
@@ -6961,7 +7381,7 @@ type PostArgsMatchConditionParametersResponseArgs struct {
 	// Describes operator to be matched
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// Name of PostArg to be matched
-	Selector pulumi.StringInput `pulumi:"selector"`
+	Selector pulumi.StringPtrInput `pulumi:"selector"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
 }
@@ -7013,8 +7433,8 @@ func (o PostArgsMatchConditionParametersResponseOutput) Operator() pulumi.String
 }
 
 // Name of PostArg to be matched
-func (o PostArgsMatchConditionParametersResponseOutput) Selector() pulumi.StringOutput {
-	return o.ApplyT(func(v PostArgsMatchConditionParametersResponse) string { return v.Selector }).(pulumi.StringOutput)
+func (o PostArgsMatchConditionParametersResponseOutput) Selector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostArgsMatchConditionParametersResponse) *string { return v.Selector }).(pulumi.StringPtrOutput)
 }
 
 // List of transforms
@@ -8136,7 +8556,7 @@ type RequestHeaderMatchConditionParameters struct {
 	// Describes operator to be matched
 	Operator string `pulumi:"operator"`
 	// Name of Header to be matched
-	Selector string `pulumi:"selector"`
+	Selector *string `pulumi:"selector"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
 }
@@ -8162,7 +8582,7 @@ type RequestHeaderMatchConditionParametersArgs struct {
 	// Describes operator to be matched
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// Name of Header to be matched
-	Selector pulumi.StringInput `pulumi:"selector"`
+	Selector pulumi.StringPtrInput `pulumi:"selector"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
 }
@@ -8214,8 +8634,8 @@ func (o RequestHeaderMatchConditionParametersOutput) Operator() pulumi.StringOut
 }
 
 // Name of Header to be matched
-func (o RequestHeaderMatchConditionParametersOutput) Selector() pulumi.StringOutput {
-	return o.ApplyT(func(v RequestHeaderMatchConditionParameters) string { return v.Selector }).(pulumi.StringOutput)
+func (o RequestHeaderMatchConditionParametersOutput) Selector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RequestHeaderMatchConditionParameters) *string { return v.Selector }).(pulumi.StringPtrOutput)
 }
 
 // List of transforms
@@ -8233,7 +8653,7 @@ type RequestHeaderMatchConditionParametersResponse struct {
 	// Describes operator to be matched
 	Operator string `pulumi:"operator"`
 	// Name of Header to be matched
-	Selector string `pulumi:"selector"`
+	Selector *string `pulumi:"selector"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
 }
@@ -8259,7 +8679,7 @@ type RequestHeaderMatchConditionParametersResponseArgs struct {
 	// Describes operator to be matched
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// Name of Header to be matched
-	Selector pulumi.StringInput `pulumi:"selector"`
+	Selector pulumi.StringPtrInput `pulumi:"selector"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
 }
@@ -8311,8 +8731,8 @@ func (o RequestHeaderMatchConditionParametersResponseOutput) Operator() pulumi.S
 }
 
 // Name of Header to be matched
-func (o RequestHeaderMatchConditionParametersResponseOutput) Selector() pulumi.StringOutput {
-	return o.ApplyT(func(v RequestHeaderMatchConditionParametersResponse) string { return v.Selector }).(pulumi.StringOutput)
+func (o RequestHeaderMatchConditionParametersResponseOutput) Selector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RequestHeaderMatchConditionParametersResponse) *string { return v.Selector }).(pulumi.StringPtrOutput)
 }
 
 // List of transforms
@@ -10318,426 +10738,6 @@ func (o UserManagedHttpsParametersResponseOutput) ProtocolType() pulumi.StringOu
 	return o.ApplyT(func(v UserManagedHttpsParametersResponse) string { return v.ProtocolType }).(pulumi.StringOutput)
 }
 
-// Defines contents of a web application firewall global configuration
-type PolicySettings struct {
-	// If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
-	DefaultCustomBlockResponseBody *string `pulumi:"defaultCustomBlockResponseBody"`
-	// If the action type is block, this field defines the default customer overridable http response status code.
-	DefaultCustomBlockResponseStatusCode *int `pulumi:"defaultCustomBlockResponseStatusCode"`
-	// If action type is redirect, this field represents the default redirect URL for the client.
-	DefaultRedirectUrl *string `pulumi:"defaultRedirectUrl"`
-	// describes if the policy is in enabled state or disabled state
-	EnabledState *string `pulumi:"enabledState"`
-	// Describes if it is in detection mode or prevention mode at policy level.
-	Mode *string `pulumi:"mode"`
-}
-
-// PolicySettingsInput is an input type that accepts PolicySettingsArgs and PolicySettingsOutput values.
-// You can construct a concrete instance of `PolicySettingsInput` via:
-//
-//          PolicySettingsArgs{...}
-type PolicySettingsInput interface {
-	pulumi.Input
-
-	ToPolicySettingsOutput() PolicySettingsOutput
-	ToPolicySettingsOutputWithContext(context.Context) PolicySettingsOutput
-}
-
-// Defines contents of a web application firewall global configuration
-type PolicySettingsArgs struct {
-	// If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
-	DefaultCustomBlockResponseBody pulumi.StringPtrInput `pulumi:"defaultCustomBlockResponseBody"`
-	// If the action type is block, this field defines the default customer overridable http response status code.
-	DefaultCustomBlockResponseStatusCode pulumi.IntPtrInput `pulumi:"defaultCustomBlockResponseStatusCode"`
-	// If action type is redirect, this field represents the default redirect URL for the client.
-	DefaultRedirectUrl pulumi.StringPtrInput `pulumi:"defaultRedirectUrl"`
-	// describes if the policy is in enabled state or disabled state
-	EnabledState pulumi.StringPtrInput `pulumi:"enabledState"`
-	// Describes if it is in detection mode or prevention mode at policy level.
-	Mode pulumi.StringPtrInput `pulumi:"mode"`
-}
-
-func (PolicySettingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicySettings)(nil)).Elem()
-}
-
-func (i PolicySettingsArgs) ToPolicySettingsOutput() PolicySettingsOutput {
-	return i.ToPolicySettingsOutputWithContext(context.Background())
-}
-
-func (i PolicySettingsArgs) ToPolicySettingsOutputWithContext(ctx context.Context) PolicySettingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicySettingsOutput)
-}
-
-func (i PolicySettingsArgs) ToPolicySettingsPtrOutput() PolicySettingsPtrOutput {
-	return i.ToPolicySettingsPtrOutputWithContext(context.Background())
-}
-
-func (i PolicySettingsArgs) ToPolicySettingsPtrOutputWithContext(ctx context.Context) PolicySettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicySettingsOutput).ToPolicySettingsPtrOutputWithContext(ctx)
-}
-
-// PolicySettingsPtrInput is an input type that accepts PolicySettingsArgs, PolicySettingsPtr and PolicySettingsPtrOutput values.
-// You can construct a concrete instance of `PolicySettingsPtrInput` via:
-//
-//          PolicySettingsArgs{...}
-//
-//  or:
-//
-//          nil
-type PolicySettingsPtrInput interface {
-	pulumi.Input
-
-	ToPolicySettingsPtrOutput() PolicySettingsPtrOutput
-	ToPolicySettingsPtrOutputWithContext(context.Context) PolicySettingsPtrOutput
-}
-
-type policySettingsPtrType PolicySettingsArgs
-
-func PolicySettingsPtr(v *PolicySettingsArgs) PolicySettingsPtrInput {
-	return (*policySettingsPtrType)(v)
-}
-
-func (*policySettingsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PolicySettings)(nil)).Elem()
-}
-
-func (i *policySettingsPtrType) ToPolicySettingsPtrOutput() PolicySettingsPtrOutput {
-	return i.ToPolicySettingsPtrOutputWithContext(context.Background())
-}
-
-func (i *policySettingsPtrType) ToPolicySettingsPtrOutputWithContext(ctx context.Context) PolicySettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicySettingsPtrOutput)
-}
-
-// Defines contents of a web application firewall global configuration
-type PolicySettingsOutput struct{ *pulumi.OutputState }
-
-func (PolicySettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicySettings)(nil)).Elem()
-}
-
-func (o PolicySettingsOutput) ToPolicySettingsOutput() PolicySettingsOutput {
-	return o
-}
-
-func (o PolicySettingsOutput) ToPolicySettingsOutputWithContext(ctx context.Context) PolicySettingsOutput {
-	return o
-}
-
-func (o PolicySettingsOutput) ToPolicySettingsPtrOutput() PolicySettingsPtrOutput {
-	return o.ToPolicySettingsPtrOutputWithContext(context.Background())
-}
-
-func (o PolicySettingsOutput) ToPolicySettingsPtrOutputWithContext(ctx context.Context) PolicySettingsPtrOutput {
-	return o.ApplyT(func(v PolicySettings) *PolicySettings {
-		return &v
-	}).(PolicySettingsPtrOutput)
-}
-
-// If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
-func (o PolicySettingsOutput) DefaultCustomBlockResponseBody() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicySettings) *string { return v.DefaultCustomBlockResponseBody }).(pulumi.StringPtrOutput)
-}
-
-// If the action type is block, this field defines the default customer overridable http response status code.
-func (o PolicySettingsOutput) DefaultCustomBlockResponseStatusCode() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v PolicySettings) *int { return v.DefaultCustomBlockResponseStatusCode }).(pulumi.IntPtrOutput)
-}
-
-// If action type is redirect, this field represents the default redirect URL for the client.
-func (o PolicySettingsOutput) DefaultRedirectUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicySettings) *string { return v.DefaultRedirectUrl }).(pulumi.StringPtrOutput)
-}
-
-// describes if the policy is in enabled state or disabled state
-func (o PolicySettingsOutput) EnabledState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicySettings) *string { return v.EnabledState }).(pulumi.StringPtrOutput)
-}
-
-// Describes if it is in detection mode or prevention mode at policy level.
-func (o PolicySettingsOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicySettings) *string { return v.Mode }).(pulumi.StringPtrOutput)
-}
-
-type PolicySettingsPtrOutput struct{ *pulumi.OutputState }
-
-func (PolicySettingsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PolicySettings)(nil)).Elem()
-}
-
-func (o PolicySettingsPtrOutput) ToPolicySettingsPtrOutput() PolicySettingsPtrOutput {
-	return o
-}
-
-func (o PolicySettingsPtrOutput) ToPolicySettingsPtrOutputWithContext(ctx context.Context) PolicySettingsPtrOutput {
-	return o
-}
-
-func (o PolicySettingsPtrOutput) Elem() PolicySettingsOutput {
-	return o.ApplyT(func(v *PolicySettings) PolicySettings { return *v }).(PolicySettingsOutput)
-}
-
-// If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
-func (o PolicySettingsPtrOutput) DefaultCustomBlockResponseBody() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PolicySettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DefaultCustomBlockResponseBody
-	}).(pulumi.StringPtrOutput)
-}
-
-// If the action type is block, this field defines the default customer overridable http response status code.
-func (o PolicySettingsPtrOutput) DefaultCustomBlockResponseStatusCode() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *PolicySettings) *int {
-		if v == nil {
-			return nil
-		}
-		return v.DefaultCustomBlockResponseStatusCode
-	}).(pulumi.IntPtrOutput)
-}
-
-// If action type is redirect, this field represents the default redirect URL for the client.
-func (o PolicySettingsPtrOutput) DefaultRedirectUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PolicySettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DefaultRedirectUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-// describes if the policy is in enabled state or disabled state
-func (o PolicySettingsPtrOutput) EnabledState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PolicySettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.EnabledState
-	}).(pulumi.StringPtrOutput)
-}
-
-// Describes if it is in detection mode or prevention mode at policy level.
-func (o PolicySettingsPtrOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PolicySettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Mode
-	}).(pulumi.StringPtrOutput)
-}
-
-// Defines contents of a web application firewall global configuration
-type PolicySettingsResponse struct {
-	// If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
-	DefaultCustomBlockResponseBody *string `pulumi:"defaultCustomBlockResponseBody"`
-	// If the action type is block, this field defines the default customer overridable http response status code.
-	DefaultCustomBlockResponseStatusCode *int `pulumi:"defaultCustomBlockResponseStatusCode"`
-	// If action type is redirect, this field represents the default redirect URL for the client.
-	DefaultRedirectUrl *string `pulumi:"defaultRedirectUrl"`
-	// describes if the policy is in enabled state or disabled state
-	EnabledState *string `pulumi:"enabledState"`
-	// Describes if it is in detection mode or prevention mode at policy level.
-	Mode *string `pulumi:"mode"`
-}
-
-// PolicySettingsResponseInput is an input type that accepts PolicySettingsResponseArgs and PolicySettingsResponseOutput values.
-// You can construct a concrete instance of `PolicySettingsResponseInput` via:
-//
-//          PolicySettingsResponseArgs{...}
-type PolicySettingsResponseInput interface {
-	pulumi.Input
-
-	ToPolicySettingsResponseOutput() PolicySettingsResponseOutput
-	ToPolicySettingsResponseOutputWithContext(context.Context) PolicySettingsResponseOutput
-}
-
-// Defines contents of a web application firewall global configuration
-type PolicySettingsResponseArgs struct {
-	// If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
-	DefaultCustomBlockResponseBody pulumi.StringPtrInput `pulumi:"defaultCustomBlockResponseBody"`
-	// If the action type is block, this field defines the default customer overridable http response status code.
-	DefaultCustomBlockResponseStatusCode pulumi.IntPtrInput `pulumi:"defaultCustomBlockResponseStatusCode"`
-	// If action type is redirect, this field represents the default redirect URL for the client.
-	DefaultRedirectUrl pulumi.StringPtrInput `pulumi:"defaultRedirectUrl"`
-	// describes if the policy is in enabled state or disabled state
-	EnabledState pulumi.StringPtrInput `pulumi:"enabledState"`
-	// Describes if it is in detection mode or prevention mode at policy level.
-	Mode pulumi.StringPtrInput `pulumi:"mode"`
-}
-
-func (PolicySettingsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicySettingsResponse)(nil)).Elem()
-}
-
-func (i PolicySettingsResponseArgs) ToPolicySettingsResponseOutput() PolicySettingsResponseOutput {
-	return i.ToPolicySettingsResponseOutputWithContext(context.Background())
-}
-
-func (i PolicySettingsResponseArgs) ToPolicySettingsResponseOutputWithContext(ctx context.Context) PolicySettingsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicySettingsResponseOutput)
-}
-
-func (i PolicySettingsResponseArgs) ToPolicySettingsResponsePtrOutput() PolicySettingsResponsePtrOutput {
-	return i.ToPolicySettingsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i PolicySettingsResponseArgs) ToPolicySettingsResponsePtrOutputWithContext(ctx context.Context) PolicySettingsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicySettingsResponseOutput).ToPolicySettingsResponsePtrOutputWithContext(ctx)
-}
-
-// PolicySettingsResponsePtrInput is an input type that accepts PolicySettingsResponseArgs, PolicySettingsResponsePtr and PolicySettingsResponsePtrOutput values.
-// You can construct a concrete instance of `PolicySettingsResponsePtrInput` via:
-//
-//          PolicySettingsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type PolicySettingsResponsePtrInput interface {
-	pulumi.Input
-
-	ToPolicySettingsResponsePtrOutput() PolicySettingsResponsePtrOutput
-	ToPolicySettingsResponsePtrOutputWithContext(context.Context) PolicySettingsResponsePtrOutput
-}
-
-type policySettingsResponsePtrType PolicySettingsResponseArgs
-
-func PolicySettingsResponsePtr(v *PolicySettingsResponseArgs) PolicySettingsResponsePtrInput {
-	return (*policySettingsResponsePtrType)(v)
-}
-
-func (*policySettingsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PolicySettingsResponse)(nil)).Elem()
-}
-
-func (i *policySettingsResponsePtrType) ToPolicySettingsResponsePtrOutput() PolicySettingsResponsePtrOutput {
-	return i.ToPolicySettingsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *policySettingsResponsePtrType) ToPolicySettingsResponsePtrOutputWithContext(ctx context.Context) PolicySettingsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicySettingsResponsePtrOutput)
-}
-
-// Defines contents of a web application firewall global configuration
-type PolicySettingsResponseOutput struct{ *pulumi.OutputState }
-
-func (PolicySettingsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicySettingsResponse)(nil)).Elem()
-}
-
-func (o PolicySettingsResponseOutput) ToPolicySettingsResponseOutput() PolicySettingsResponseOutput {
-	return o
-}
-
-func (o PolicySettingsResponseOutput) ToPolicySettingsResponseOutputWithContext(ctx context.Context) PolicySettingsResponseOutput {
-	return o
-}
-
-func (o PolicySettingsResponseOutput) ToPolicySettingsResponsePtrOutput() PolicySettingsResponsePtrOutput {
-	return o.ToPolicySettingsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o PolicySettingsResponseOutput) ToPolicySettingsResponsePtrOutputWithContext(ctx context.Context) PolicySettingsResponsePtrOutput {
-	return o.ApplyT(func(v PolicySettingsResponse) *PolicySettingsResponse {
-		return &v
-	}).(PolicySettingsResponsePtrOutput)
-}
-
-// If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
-func (o PolicySettingsResponseOutput) DefaultCustomBlockResponseBody() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicySettingsResponse) *string { return v.DefaultCustomBlockResponseBody }).(pulumi.StringPtrOutput)
-}
-
-// If the action type is block, this field defines the default customer overridable http response status code.
-func (o PolicySettingsResponseOutput) DefaultCustomBlockResponseStatusCode() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v PolicySettingsResponse) *int { return v.DefaultCustomBlockResponseStatusCode }).(pulumi.IntPtrOutput)
-}
-
-// If action type is redirect, this field represents the default redirect URL for the client.
-func (o PolicySettingsResponseOutput) DefaultRedirectUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicySettingsResponse) *string { return v.DefaultRedirectUrl }).(pulumi.StringPtrOutput)
-}
-
-// describes if the policy is in enabled state or disabled state
-func (o PolicySettingsResponseOutput) EnabledState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicySettingsResponse) *string { return v.EnabledState }).(pulumi.StringPtrOutput)
-}
-
-// Describes if it is in detection mode or prevention mode at policy level.
-func (o PolicySettingsResponseOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicySettingsResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
-}
-
-type PolicySettingsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PolicySettingsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PolicySettingsResponse)(nil)).Elem()
-}
-
-func (o PolicySettingsResponsePtrOutput) ToPolicySettingsResponsePtrOutput() PolicySettingsResponsePtrOutput {
-	return o
-}
-
-func (o PolicySettingsResponsePtrOutput) ToPolicySettingsResponsePtrOutputWithContext(ctx context.Context) PolicySettingsResponsePtrOutput {
-	return o
-}
-
-func (o PolicySettingsResponsePtrOutput) Elem() PolicySettingsResponseOutput {
-	return o.ApplyT(func(v *PolicySettingsResponse) PolicySettingsResponse { return *v }).(PolicySettingsResponseOutput)
-}
-
-// If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
-func (o PolicySettingsResponsePtrOutput) DefaultCustomBlockResponseBody() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PolicySettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DefaultCustomBlockResponseBody
-	}).(pulumi.StringPtrOutput)
-}
-
-// If the action type is block, this field defines the default customer overridable http response status code.
-func (o PolicySettingsResponsePtrOutput) DefaultCustomBlockResponseStatusCode() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *PolicySettingsResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.DefaultCustomBlockResponseStatusCode
-	}).(pulumi.IntPtrOutput)
-}
-
-// If action type is redirect, this field represents the default redirect URL for the client.
-func (o PolicySettingsResponsePtrOutput) DefaultRedirectUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PolicySettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DefaultRedirectUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-// describes if the policy is in enabled state or disabled state
-func (o PolicySettingsResponsePtrOutput) EnabledState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PolicySettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.EnabledState
-	}).(pulumi.StringPtrOutput)
-}
-
-// Describes if it is in detection mode or prevention mode at policy level.
-func (o PolicySettingsResponsePtrOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PolicySettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Mode
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterOutputType(CacheExpirationActionParametersOutput{})
 	pulumi.RegisterOutputType(CacheExpirationActionParametersResponseOutput{})
@@ -10840,6 +10840,10 @@ func init() {
 	pulumi.RegisterOutputType(MatchConditionArrayOutput{})
 	pulumi.RegisterOutputType(MatchConditionResponseOutput{})
 	pulumi.RegisterOutputType(MatchConditionResponseArrayOutput{})
+	pulumi.RegisterOutputType(PolicySettingsOutput{})
+	pulumi.RegisterOutputType(PolicySettingsPtrOutput{})
+	pulumi.RegisterOutputType(PolicySettingsResponseOutput{})
+	pulumi.RegisterOutputType(PolicySettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(PostArgsMatchConditionParametersOutput{})
 	pulumi.RegisterOutputType(PostArgsMatchConditionParametersResponseOutput{})
 	pulumi.RegisterOutputType(QueryStringMatchConditionParametersOutput{})
@@ -10883,8 +10887,4 @@ func init() {
 	pulumi.RegisterOutputType(UrlRewriteActionParametersResponseOutput{})
 	pulumi.RegisterOutputType(UrlRewriteActionResponseOutput{})
 	pulumi.RegisterOutputType(UserManagedHttpsParametersResponseOutput{})
-	pulumi.RegisterOutputType(PolicySettingsOutput{})
-	pulumi.RegisterOutputType(PolicySettingsPtrOutput{})
-	pulumi.RegisterOutputType(PolicySettingsResponseOutput{})
-	pulumi.RegisterOutputType(PolicySettingsResponsePtrOutput{})
 }

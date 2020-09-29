@@ -22784,7 +22784,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -22797,7 +22797,7 @@ export namespace cdn {
             /**
              * Name of Cookies to be matched
              */
-            selector: string;
+            selector?: string;
             /**
              * List of transforms
              */
@@ -23298,7 +23298,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -23317,7 +23317,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -23487,7 +23487,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -23500,7 +23500,7 @@ export namespace cdn {
             /**
              * Name of PostArg to be matched
              */
-            selector: string;
+            selector?: string;
             /**
              * List of transforms
              */
@@ -23514,7 +23514,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -23581,7 +23581,7 @@ export namespace cdn {
             /**
              * Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match.
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -23604,7 +23604,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -23627,7 +23627,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -23640,7 +23640,7 @@ export namespace cdn {
             /**
              * Name of Header to be matched
              */
-            selector: string;
+            selector?: string;
             /**
              * List of transforms
              */
@@ -23654,7 +23654,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -23673,7 +23673,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -23692,7 +23692,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -23753,7 +23753,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -23776,7 +23776,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -23799,7 +23799,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -24377,7 +24377,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -24390,7 +24390,7 @@ export namespace cdn {
             /**
              * Name of Cookies to be matched
              */
-            selector: string;
+            selector?: string;
             /**
              * List of transforms
              */
@@ -24751,7 +24751,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -24770,7 +24770,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -24828,7 +24828,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -24841,7 +24841,7 @@ export namespace cdn {
             /**
              * Name of PostArg to be matched
              */
-            selector: string;
+            selector?: string;
             /**
              * List of transforms
              */
@@ -24855,7 +24855,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -24878,7 +24878,7 @@ export namespace cdn {
             /**
              * Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match.
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -24901,7 +24901,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -24924,7 +24924,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -24937,7 +24937,7 @@ export namespace cdn {
             /**
              * Name of Header to be matched
              */
-            selector: string;
+            selector?: string;
             /**
              * List of transforms
              */
@@ -24951,7 +24951,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -24970,7 +24970,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -24989,7 +24989,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -25022,7 +25022,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -25045,7 +25045,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -25068,7 +25068,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -25270,7 +25270,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -25283,7 +25283,7 @@ export namespace cdn {
             /**
              * Name of Cookies to be matched
              */
-            selector: string;
+            selector?: string;
             /**
              * List of transforms
              */
@@ -25690,7 +25690,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -25709,7 +25709,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -25887,7 +25887,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -25900,7 +25900,7 @@ export namespace cdn {
             /**
              * Name of PostArg to be matched
              */
-            selector: string;
+            selector?: string;
             /**
              * List of transforms
              */
@@ -25914,7 +25914,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -25981,7 +25981,7 @@ export namespace cdn {
             /**
              * Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match.
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -26004,7 +26004,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -26027,7 +26027,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -26040,7 +26040,7 @@ export namespace cdn {
             /**
              * Name of Header to be matched
              */
-            selector: string;
+            selector?: string;
             /**
              * List of transforms
              */
@@ -26054,7 +26054,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -26073,7 +26073,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -26092,7 +26092,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -26125,7 +26125,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -26148,7 +26148,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -26171,7 +26171,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -27433,7 +27433,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -27446,7 +27446,7 @@ export namespace cdn {
             /**
              * Name of Cookies to be matched
              */
-            selector: string;
+            selector?: string;
             /**
              * List of transforms
              */
@@ -27885,7 +27885,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -27904,7 +27904,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -27952,7 +27952,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -27965,7 +27965,7 @@ export namespace cdn {
             /**
              * Name of PostArg to be matched
              */
-            selector: string;
+            selector?: string;
             /**
              * List of transforms
              */
@@ -27979,7 +27979,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -28002,7 +28002,7 @@ export namespace cdn {
             /**
              * Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match.
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -28025,7 +28025,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -28048,7 +28048,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -28061,7 +28061,7 @@ export namespace cdn {
             /**
              * Name of Header to be matched
              */
-            selector: string;
+            selector?: string;
             /**
              * List of transforms
              */
@@ -28075,7 +28075,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -28094,7 +28094,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -28113,7 +28113,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -28174,7 +28174,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -28197,7 +28197,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -28220,7 +28220,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -28367,7 +28367,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -28380,7 +28380,7 @@ export namespace cdn {
             /**
              * Name of Cookies to be matched
              */
-            selector: string;
+            selector?: string;
             /**
              * List of transforms
              */
@@ -28865,7 +28865,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -28884,7 +28884,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -29054,7 +29054,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -29067,7 +29067,7 @@ export namespace cdn {
             /**
              * Name of PostArg to be matched
              */
-            selector: string;
+            selector?: string;
             /**
              * List of transforms
              */
@@ -29081,7 +29081,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -29148,7 +29148,7 @@ export namespace cdn {
             /**
              * Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match.
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -29171,7 +29171,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -29194,7 +29194,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -29207,7 +29207,7 @@ export namespace cdn {
             /**
              * Name of Header to be matched
              */
-            selector: string;
+            selector?: string;
             /**
              * List of transforms
              */
@@ -29221,7 +29221,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -29240,7 +29240,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -29259,7 +29259,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -29320,7 +29320,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -29343,7 +29343,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -29366,7 +29366,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -29578,7 +29578,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -29591,7 +29591,7 @@ export namespace cdn {
             /**
              * Name of Cookies to be matched
              */
-            selector: string;
+            selector?: string;
             /**
              * List of transforms
              */
@@ -30092,7 +30092,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -30111,7 +30111,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -30281,7 +30281,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -30294,7 +30294,7 @@ export namespace cdn {
             /**
              * Name of PostArg to be matched
              */
-            selector: string;
+            selector?: string;
             /**
              * List of transforms
              */
@@ -30308,7 +30308,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -30375,7 +30375,7 @@ export namespace cdn {
             /**
              * Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match.
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -30398,7 +30398,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -30421,7 +30421,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -30434,7 +30434,7 @@ export namespace cdn {
             /**
              * Name of Header to be matched
              */
-            selector: string;
+            selector?: string;
             /**
              * List of transforms
              */
@@ -30448,7 +30448,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -30467,7 +30467,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -30486,7 +30486,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -30547,7 +30547,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -30570,7 +30570,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -30593,7 +30593,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: string[];
+            matchValues?: string[];
             /**
              * Describes if this is negate condition or not
              */
@@ -84846,7 +84846,7 @@ export namespace datafactory {
             /**
              * The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
              */
-            servicePrincipalCredentialType?: {[key: string]: any};
+            servicePrincipalCredentialType?: string;
             /**
              * The client ID of the application in Azure Active Directory used for Server-To-Server authentication. Type: string (or Expression with resultType string).
              */
@@ -85410,7 +85410,7 @@ export namespace datafactory {
             /**
              * The Deflate compression level.
              */
-            level?: {[key: string]: any};
+            level?: string;
             /**
              * Type of dataset compression.
              */
@@ -85424,7 +85424,7 @@ export namespace datafactory {
             /**
              * The GZip compression level.
              */
-            level?: {[key: string]: any};
+            level?: string;
             /**
              * Type of dataset compression.
              */
@@ -85476,7 +85476,7 @@ export namespace datafactory {
             /**
              * The TarGZip compression level.
              */
-            level?: {[key: string]: any};
+            level?: string;
             /**
              * Type of dataset compression.
              */
@@ -85490,7 +85490,7 @@ export namespace datafactory {
             /**
              * The ZipDeflate compression level.
              */
-            level?: {[key: string]: any};
+            level?: string;
             /**
              * Type of dataset compression.
              */
@@ -85617,11 +85617,11 @@ export namespace datafactory {
              * The column delimiter. Type: string (or Expression with resultType string).
              */
             columnDelimiter?: {[key: string]: any};
-            compressionCodec?: {[key: string]: any};
+            compressionCodec?: string;
             /**
              * The data compression method used for DelimitedText.
              */
-            compressionLevel?: {[key: string]: any};
+            compressionLevel?: string;
             /**
              * Dataset description.
              */
@@ -85995,7 +85995,7 @@ export namespace datafactory {
             /**
              * The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
              */
-            servicePrincipalCredentialType?: {[key: string]: any};
+            servicePrincipalCredentialType?: string;
             /**
              * The client ID of the application in Azure Active Directory used for Server-To-Server authentication. Type: string (or Expression with resultType string).
              */
@@ -86067,7 +86067,7 @@ export namespace datafactory {
             /**
              * The authentication type to connect to Dynamics server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario, 'AADServicePrincipal' for Server-To-Server authentication in online scenario. Type: string (or Expression with resultType string).
              */
-            authenticationType: {[key: string]: any};
+            authenticationType: string;
             /**
              * The integration runtime reference.
              */
@@ -86075,7 +86075,7 @@ export namespace datafactory {
             /**
              * The deployment type of the Dynamics instance. 'Online' for Dynamics Online and 'OnPremisesWithIfd' for Dynamics on-premises with Ifd. Type: string (or Expression with resultType string).
              */
-            deploymentType: {[key: string]: any};
+            deploymentType: string;
             /**
              * Linked service description.
              */
@@ -86111,7 +86111,7 @@ export namespace datafactory {
             /**
              * The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
              */
-            servicePrincipalCredentialType?: {[key: string]: any};
+            servicePrincipalCredentialType?: string;
             /**
              * The client ID of the application in Azure Active Directory used for Server-To-Server authentication. Type: string (or Expression with resultType string).
              */
@@ -88369,7 +88369,7 @@ export namespace datafactory {
             /**
              * File pattern of JSON. To be more specific, the way of separating a collection of JSON objects. The default value is 'setOfObjects'. It is case-sensitive.
              */
-            filePattern?: {[key: string]: any};
+            filePattern?: string;
             /**
              * The JSONPath of the JSON array element to be flattened. Example: "$.ArrayPath". Type: string (or Expression with resultType string).
              */
@@ -90053,7 +90053,7 @@ export namespace datafactory {
              * List of tags that can be used for describing the Dataset.
              */
             annotations?: {[key: string]: any}[];
-            compressionCodec?: {[key: string]: any};
+            compressionCodec?: string;
             /**
              * Dataset description.
              */
@@ -91883,7 +91883,7 @@ export namespace datafactory {
             /**
              * The node types on which the script action should be executed.
              */
-            roles: {[key: string]: any};
+            roles: string;
             /**
              * The URI for the script action.
              */
@@ -95518,7 +95518,7 @@ export namespace datafactory {
             /**
              * The Deflate compression level.
              */
-            level?: {[key: string]: any};
+            level?: string;
             /**
              * Type of dataset compression.
              */
@@ -95532,7 +95532,7 @@ export namespace datafactory {
             /**
              * The GZip compression level.
              */
-            level?: {[key: string]: any};
+            level?: string;
             /**
              * Type of dataset compression.
              */
@@ -95546,7 +95546,7 @@ export namespace datafactory {
             /**
              * The ZipDeflate compression level.
              */
-            level?: {[key: string]: any};
+            level?: string;
             /**
              * Type of dataset compression.
              */
@@ -95746,7 +95746,7 @@ export namespace datafactory {
             /**
              * The authentication type to connect to Dynamics server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario. Type: string (or Expression with resultType string).
              */
-            authenticationType: {[key: string]: any};
+            authenticationType: string;
             /**
              * The integration runtime reference.
              */
@@ -95754,7 +95754,7 @@ export namespace datafactory {
             /**
              * The deployment type of the Dynamics instance. 'Online' for Dynamics Online and 'OnPremisesWithIfd' for Dynamics on-premises with Ifd. Type: string (or Expression with resultType string).
              */
-            deploymentType: {[key: string]: any};
+            deploymentType: string;
             /**
              * Linked service description.
              */
@@ -103067,7 +103067,7 @@ export namespace datafactory {
             /**
              * The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
              */
-            servicePrincipalCredentialType?: {[key: string]: any};
+            servicePrincipalCredentialType?: string;
             /**
              * The client ID of the application in Azure Active Directory used for Server-To-Server authentication. Type: string (or Expression with resultType string).
              */
@@ -103631,7 +103631,7 @@ export namespace datafactory {
             /**
              * The Deflate compression level.
              */
-            level?: {[key: string]: any};
+            level?: string;
             /**
              * Type of dataset compression.
              */
@@ -103645,7 +103645,7 @@ export namespace datafactory {
             /**
              * The GZip compression level.
              */
-            level?: {[key: string]: any};
+            level?: string;
             /**
              * Type of dataset compression.
              */
@@ -103697,7 +103697,7 @@ export namespace datafactory {
             /**
              * The TarGZip compression level.
              */
-            level?: {[key: string]: any};
+            level?: string;
             /**
              * Type of dataset compression.
              */
@@ -103711,7 +103711,7 @@ export namespace datafactory {
             /**
              * The ZipDeflate compression level.
              */
-            level?: {[key: string]: any};
+            level?: string;
             /**
              * Type of dataset compression.
              */
@@ -103838,11 +103838,11 @@ export namespace datafactory {
              * The column delimiter. Type: string (or Expression with resultType string).
              */
             columnDelimiter?: {[key: string]: any};
-            compressionCodec?: {[key: string]: any};
+            compressionCodec?: string;
             /**
              * The data compression method used for DelimitedText.
              */
-            compressionLevel?: {[key: string]: any};
+            compressionLevel?: string;
             /**
              * Dataset description.
              */
@@ -104216,7 +104216,7 @@ export namespace datafactory {
             /**
              * The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
              */
-            servicePrincipalCredentialType?: {[key: string]: any};
+            servicePrincipalCredentialType?: string;
             /**
              * The client ID of the application in Azure Active Directory used for Server-To-Server authentication. Type: string (or Expression with resultType string).
              */
@@ -104288,7 +104288,7 @@ export namespace datafactory {
             /**
              * The authentication type to connect to Dynamics server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario, 'AADServicePrincipal' for Server-To-Server authentication in online scenario. Type: string (or Expression with resultType string).
              */
-            authenticationType: {[key: string]: any};
+            authenticationType: string;
             /**
              * The integration runtime reference.
              */
@@ -104296,7 +104296,7 @@ export namespace datafactory {
             /**
              * The deployment type of the Dynamics instance. 'Online' for Dynamics Online and 'OnPremisesWithIfd' for Dynamics on-premises with Ifd. Type: string (or Expression with resultType string).
              */
-            deploymentType: {[key: string]: any};
+            deploymentType: string;
             /**
              * Linked service description.
              */
@@ -104332,7 +104332,7 @@ export namespace datafactory {
             /**
              * The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
              */
-            servicePrincipalCredentialType?: {[key: string]: any};
+            servicePrincipalCredentialType?: string;
             /**
              * The client ID of the application in Azure Active Directory used for Server-To-Server authentication. Type: string (or Expression with resultType string).
              */
@@ -106590,7 +106590,7 @@ export namespace datafactory {
             /**
              * File pattern of JSON. To be more specific, the way of separating a collection of JSON objects. The default value is 'setOfObjects'. It is case-sensitive.
              */
-            filePattern?: {[key: string]: any};
+            filePattern?: string;
             /**
              * The JSONPath of the JSON array element to be flattened. Example: "$.ArrayPath". Type: string (or Expression with resultType string).
              */
@@ -108274,7 +108274,7 @@ export namespace datafactory {
              * List of tags that can be used for describing the Dataset.
              */
             annotations?: {[key: string]: any}[];
-            compressionCodec?: {[key: string]: any};
+            compressionCodec?: string;
             /**
              * Dataset description.
              */
@@ -110104,7 +110104,7 @@ export namespace datafactory {
             /**
              * The node types on which the script action should be executed.
              */
-            roles: {[key: string]: any};
+            roles: string;
             /**
              * The URI for the script action.
              */
@@ -129799,6 +129799,45 @@ export namespace dbforpostgresql {
              * Max storage allowed for a server.
              */
             storageMB?: number;
+        }
+    }
+}
+
+export namespace delegatednetwork {
+    export namespace v20200808preview {
+        /**
+         * controller details
+         */
+        export interface ControllerDetailsResponse {
+            /**
+             * controller arm resource id
+             */
+            id?: string;
+        }
+
+        export interface OrchestratorIdentityResponse {
+            /**
+             * The principal id of the system assigned identity which is used by orchestrator.
+             */
+            principalId: string;
+            /**
+             * The tenant id of the system assigned identity which is used by orchestrator.
+             */
+            tenantId: string;
+            /**
+             * The type of identity used for orchestrator cluster. Type 'SystemAssigned' will use an implicitly created identity orchestrator clusters
+             */
+            type?: string;
+        }
+
+        /**
+         * Properties of orchestrator
+         */
+        export interface SubnetDetailsResponse {
+            /**
+             * subnet arm resource id
+             */
+            id?: string;
         }
     }
 }
@@ -349851,6 +349890,105 @@ export namespace portal {
             y: number;
         }
     }
+
+    export namespace v20200901preview {
+        /**
+         * A dashboard lens.
+         */
+        export interface DashboardLensResponse {
+            /**
+             * The dashboard len's metadata.
+             */
+            metadata?: {[key: string]: {[key: string]: any}};
+            /**
+             * The lens order.
+             */
+            order: number;
+            /**
+             * The dashboard parts.
+             */
+            parts: outputs.portal.v20200901preview.DashboardPartsResponse[];
+        }
+
+        /**
+         * A dashboard part.
+         */
+        export interface DashboardPartsResponse {
+            /**
+             * The dashboard part's metadata.
+             */
+            metadata?: outputs.portal.v20200901preview.MarkdownPartMetadataResponse;
+            /**
+             * The dashboard's part position.
+             */
+            position: outputs.portal.v20200901preview.DashboardPartsResponsePosition;
+        }
+
+        /**
+         * The dashboard's part position.
+         */
+        export interface DashboardPartsResponsePosition {
+            /**
+             * The dashboard's part column span.
+             */
+            colSpan: number;
+            /**
+             * The dashboard part's metadata.
+             */
+            metadata?: {[key: string]: {[key: string]: any}};
+            /**
+             * The dashboard's part row span.
+             */
+            rowSpan: number;
+            /**
+             * The dashboard's part x coordinate.
+             */
+            x: number;
+            /**
+             * The dashboard's part y coordinate.
+             */
+            y: number;
+        }
+
+        /**
+         * Markdown part metadata.
+         */
+        export interface MarkdownPartMetadataResponse {
+            /**
+             * Input to dashboard part.
+             */
+            inputs?: {[key: string]: any}[];
+            /**
+             * Markdown part settings.
+             */
+            settings?: outputs.portal.v20200901preview.MarkdownPartMetadataResponseSettings;
+            /**
+             * The type of dashboard part.
+             */
+            type: "Extension/HubsExtension/PartType/MarkdownPart";
+        }
+
+        /**
+         * The content of markdown part.
+         */
+        export interface MarkdownPartMetadataResponseContent {
+            /**
+             * The setting of the content of markdown part.
+             */
+            settings?: outputs.portal.v20200901preview.MarkdownPartMetadataResponseSettings;
+        }
+
+        /**
+         * Markdown part settings.
+         */
+        export interface MarkdownPartMetadataResponseSettings {
+            /**
+             * The content of markdown part.
+             */
+            content?: outputs.portal.v20200901preview.MarkdownPartMetadataResponseContent;
+        }
+
+    }
 }
 
 export namespace powerbi {
@@ -397996,6 +398134,392 @@ export namespace storagesync {
             uploadStatus: outputs.storagesync.v20200301.ServerEndpointSyncSessionStatusResponse;
         }
     }
+
+    export namespace v20200901 {
+        /**
+         * Server endpoint cloud tiering status object.
+         */
+        export interface CloudTieringCachePerformanceResponse {
+            /**
+             * Count of bytes that were served from the local server
+             */
+            cacheHitBytes: number;
+            /**
+             * Percentage of total bytes (hit + miss) that were served from the local server
+             */
+            cacheHitBytesPercent: number;
+            /**
+             * Count of bytes that were served from the cloud
+             */
+            cacheMissBytes: number;
+            /**
+             * Last updated timestamp
+             */
+            lastUpdatedTimestamp: string;
+        }
+
+        /**
+         * Status of the date policy
+         */
+        export interface CloudTieringDatePolicyStatusResponse {
+            /**
+             * Last updated timestamp
+             */
+            lastUpdatedTimestamp: string;
+            /**
+             * Most recent access time of tiered files
+             */
+            tieredFilesMostRecentAccessTimestamp: string;
+        }
+
+        /**
+         * Server endpoint cloud tiering status object.
+         */
+        export interface CloudTieringFilesNotTieringResponse {
+            /**
+             * Array of tiering errors
+             */
+            errors: outputs.storagesync.v20200901.FilesNotTieringErrorResponse[];
+            /**
+             * Last updated timestamp
+             */
+            lastUpdatedTimestamp: string;
+            /**
+             * Last cloud tiering result (HResult)
+             */
+            totalFileCount: number;
+        }
+
+        /**
+         * Server endpoint cloud tiering status object.
+         */
+        export interface CloudTieringSpaceSavingsResponse {
+            /**
+             * Cached content size on the server
+             */
+            cachedSizeBytes: number;
+            /**
+             * Last updated timestamp
+             */
+            lastUpdatedTimestamp: string;
+            /**
+             * Count of bytes saved on the server
+             */
+            spaceSavingsBytes: number;
+            /**
+             * Percentage of cached size over total size
+             */
+            spaceSavingsPercent: number;
+            /**
+             * Total size of content in the azure file share
+             */
+            totalSizeCloudBytes: number;
+            /**
+             * Volume size
+             */
+            volumeSizeBytes: number;
+        }
+
+        /**
+         * Status of the volume free space policy
+         */
+        export interface CloudTieringVolumeFreeSpacePolicyStatusResponse {
+            /**
+             * Current volume free space percentage.
+             */
+            currentVolumeFreeSpacePercent: number;
+            /**
+             * In the case where multiple server endpoints are present in a volume, an effective free space policy is applied.
+             */
+            effectiveVolumeFreeSpacePolicy: number;
+            /**
+             * Last updated timestamp
+             */
+            lastUpdatedTimestamp: string;
+        }
+
+        /**
+         * Files not tiering error object
+         */
+        export interface FilesNotTieringErrorResponse {
+            /**
+             * Error code (HResult)
+             */
+            errorCode: number;
+            /**
+             * Count of files with this error
+             */
+            fileCount: number;
+        }
+
+        /**
+         * The Private Endpoint Connection resource.
+         */
+        export interface PrivateEndpointConnectionResponse {
+            /**
+             * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             */
+            id: string;
+            /**
+             * The name of the resource
+             */
+            name: string;
+            /**
+             * The resource of private end point.
+             */
+            privateEndpoint?: outputs.storagesync.v20200901.PrivateEndpointResponse;
+            /**
+             * A collection of information about the state of the connection between service consumer and provider.
+             */
+            privateLinkServiceConnectionState: outputs.storagesync.v20200901.PrivateLinkServiceConnectionStateResponse;
+            /**
+             * The provisioning state of the private endpoint connection resource.
+             */
+            provisioningState: string;
+            /**
+             * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+             */
+            type: string;
+        }
+
+        /**
+         * The Private Endpoint resource.
+         */
+        export interface PrivateEndpointResponse {
+            /**
+             * The ARM identifier for Private Endpoint
+             */
+            id: string;
+        }
+
+        /**
+         * A collection of information about the state of the connection between service consumer and provider.
+         */
+        export interface PrivateLinkServiceConnectionStateResponse {
+            /**
+             * A message indicating if changes on the service provider require any updates on the consumer.
+             */
+            actionsRequired?: string;
+            /**
+             * The reason for approval/rejection of the connection.
+             */
+            description?: string;
+            /**
+             * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+             */
+            status?: string;
+        }
+
+        /**
+         * Server endpoint cloud tiering status object.
+         */
+        export interface ServerEndpointCloudTieringStatusResponse {
+            /**
+             * Information regarding how well the local cache on the server is performing.
+             */
+            cachePerformance: outputs.storagesync.v20200901.CloudTieringCachePerformanceResponse;
+            /**
+             * Status of the date policy
+             */
+            datePolicyStatus: outputs.storagesync.v20200901.CloudTieringDatePolicyStatusResponse;
+            /**
+             * Information regarding files that failed to be tiered
+             */
+            filesNotTiering: outputs.storagesync.v20200901.CloudTieringFilesNotTieringResponse;
+            /**
+             * Cloud tiering health state.
+             */
+            health: string;
+            /**
+             * The last updated timestamp of health state
+             */
+            healthLastUpdatedTimestamp: string;
+            /**
+             * Last cloud tiering result (HResult)
+             */
+            lastCloudTieringResult: number;
+            /**
+             * Last cloud tiering success timestamp
+             */
+            lastSuccessTimestamp: string;
+            /**
+             * Last updated timestamp
+             */
+            lastUpdatedTimestamp: string;
+            /**
+             * Information regarding how much local space cloud tiering is saving.
+             */
+            spaceSavings: outputs.storagesync.v20200901.CloudTieringSpaceSavingsResponse;
+            /**
+             * Status of the volume free space policy
+             */
+            volumeFreeSpacePolicyStatus: outputs.storagesync.v20200901.CloudTieringVolumeFreeSpacePolicyStatusResponse;
+        }
+
+        /**
+         * Files not syncing error object
+         */
+        export interface ServerEndpointFilesNotSyncingErrorResponse {
+            /**
+             * Error code (HResult)
+             */
+            errorCode: number;
+            /**
+             * Count of persistent files not syncing with the specified error code
+             */
+            persistentCount: number;
+            /**
+             * Count of transient files not syncing with the specified error code
+             */
+            transientCount: number;
+        }
+
+        /**
+         * Server endpoint recall error object
+         */
+        export interface ServerEndpointRecallErrorResponse {
+            /**
+             * Count of occurences of the error
+             */
+            count: number;
+            /**
+             * Error code (HResult)
+             */
+            errorCode: number;
+        }
+
+        /**
+         * Server endpoint recall status object.
+         */
+        export interface ServerEndpointRecallStatusResponse {
+            /**
+             * Last updated timestamp
+             */
+            lastUpdatedTimestamp: string;
+            /**
+             * Array of recall errors
+             */
+            recallErrors: outputs.storagesync.v20200901.ServerEndpointRecallErrorResponse[];
+            /**
+             * Total count of recall errors.
+             */
+            totalRecallErrorsCount: number;
+        }
+
+        /**
+         * Sync Session status object.
+         */
+        export interface ServerEndpointSyncActivityStatusResponse {
+            /**
+             * Applied bytes
+             */
+            appliedBytes: number;
+            /**
+             * Applied item count.
+             */
+            appliedItemCount: number;
+            /**
+             * Per item error count
+             */
+            perItemErrorCount: number;
+            /**
+             * Timestamp when properties were updated
+             */
+            timestamp: string;
+            /**
+             * Total bytes (if available)
+             */
+            totalBytes: number;
+            /**
+             * Total item count (if available)
+             */
+            totalItemCount: number;
+        }
+
+        /**
+         * Sync Session status object.
+         */
+        export interface ServerEndpointSyncSessionStatusResponse {
+            /**
+             * Array of per-item errors coming from the last sync session.
+             */
+            filesNotSyncingErrors: outputs.storagesync.v20200901.ServerEndpointFilesNotSyncingErrorResponse[];
+            /**
+             * Last sync per item error count.
+             */
+            lastSyncPerItemErrorCount: number;
+            /**
+             * Last sync result (HResult)
+             */
+            lastSyncResult: number;
+            /**
+             * Last sync success timestamp
+             */
+            lastSyncSuccessTimestamp: string;
+            /**
+             * Last sync timestamp
+             */
+            lastSyncTimestamp: string;
+            /**
+             * Count of persistent files not syncing.
+             */
+            persistentFilesNotSyncingCount: number;
+            /**
+             * Count of transient files not syncing.
+             */
+            transientFilesNotSyncingCount: number;
+        }
+
+        /**
+         * Server Endpoint sync status
+         */
+        export interface ServerEndpointSyncStatusResponse {
+            /**
+             * Combined Health Status.
+             */
+            combinedHealth: string;
+            /**
+             * Download sync activity
+             */
+            downloadActivity: outputs.storagesync.v20200901.ServerEndpointSyncActivityStatusResponse;
+            /**
+             * Download Health Status.
+             */
+            downloadHealth: string;
+            /**
+             * Download Status
+             */
+            downloadStatus: outputs.storagesync.v20200901.ServerEndpointSyncSessionStatusResponse;
+            /**
+             * Last Updated Timestamp
+             */
+            lastUpdatedTimestamp: string;
+            /**
+             * Offline Data Transfer State
+             */
+            offlineDataTransferStatus: string;
+            /**
+             * Sync activity
+             */
+            syncActivity: string;
+            /**
+             * Total count of persistent files not syncing (combined upload + download).
+             */
+            totalPersistentFilesNotSyncingCount: number;
+            /**
+             * Upload sync activity
+             */
+            uploadActivity: outputs.storagesync.v20200901.ServerEndpointSyncActivityStatusResponse;
+            /**
+             * Upload Health Status.
+             */
+            uploadHealth: string;
+            /**
+             * Upload Status
+             */
+            uploadStatus: outputs.storagesync.v20200901.ServerEndpointSyncSessionStatusResponse;
+        }
+    }
 }
 
 export namespace storsimple {
@@ -406167,6 +406691,10 @@ export namespace web {
              */
             scmIpSecurityRestrictionsUseMain?: boolean;
             /**
+             * ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
+             */
+            scmMinTlsVersion?: string;
+            /**
              * SCM type.
              */
             scmType?: string;
@@ -414010,6 +414538,10 @@ export namespace web {
              * IP security restrictions for scm to use main.
              */
             scmIpSecurityRestrictionsUseMain?: boolean;
+            /**
+             * ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
+             */
+            scmMinTlsVersion?: string;
             /**
              * SCM type.
              */

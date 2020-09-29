@@ -18328,7 +18328,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -18341,7 +18341,7 @@ export namespace cdn {
             /**
              * Name of Cookies to be matched
              */
-            selector: pulumi.Input<string>;
+            selector?: pulumi.Input<string>;
             /**
              * List of transforms
              */
@@ -18842,7 +18842,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -18861,7 +18861,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -19031,7 +19031,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -19044,7 +19044,7 @@ export namespace cdn {
             /**
              * Name of PostArg to be matched
              */
-            selector: pulumi.Input<string>;
+            selector?: pulumi.Input<string>;
             /**
              * List of transforms
              */
@@ -19058,7 +19058,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -19125,7 +19125,7 @@ export namespace cdn {
             /**
              * Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match.
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -19148,7 +19148,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -19171,7 +19171,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -19184,7 +19184,7 @@ export namespace cdn {
             /**
              * Name of Header to be matched
              */
-            selector: pulumi.Input<string>;
+            selector?: pulumi.Input<string>;
             /**
              * List of transforms
              */
@@ -19198,7 +19198,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -19217,7 +19217,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -19236,7 +19236,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -19297,7 +19297,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -19320,7 +19320,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -19343,7 +19343,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -19894,7 +19894,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -19907,7 +19907,7 @@ export namespace cdn {
             /**
              * Name of Cookies to be matched
              */
-            selector: pulumi.Input<string>;
+            selector?: pulumi.Input<string>;
             /**
              * List of transforms
              */
@@ -20268,7 +20268,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -20287,7 +20287,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -20310,7 +20310,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -20323,7 +20323,7 @@ export namespace cdn {
             /**
              * Name of PostArg to be matched
              */
-            selector: pulumi.Input<string>;
+            selector?: pulumi.Input<string>;
             /**
              * List of transforms
              */
@@ -20337,7 +20337,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -20360,7 +20360,7 @@ export namespace cdn {
             /**
              * Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match.
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -20383,7 +20383,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -20406,7 +20406,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -20419,7 +20419,7 @@ export namespace cdn {
             /**
              * Name of Header to be matched
              */
-            selector: pulumi.Input<string>;
+            selector?: pulumi.Input<string>;
             /**
              * List of transforms
              */
@@ -20433,7 +20433,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -20452,7 +20452,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -20471,7 +20471,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -20504,7 +20504,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -20527,7 +20527,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -20550,7 +20550,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -20688,7 +20688,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -20701,7 +20701,7 @@ export namespace cdn {
             /**
              * Name of Cookies to be matched
              */
-            selector: pulumi.Input<string>;
+            selector?: pulumi.Input<string>;
             /**
              * List of transforms
              */
@@ -21108,7 +21108,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -21127,7 +21127,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -21270,7 +21270,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -21283,7 +21283,7 @@ export namespace cdn {
             /**
              * Name of PostArg to be matched
              */
-            selector: pulumi.Input<string>;
+            selector?: pulumi.Input<string>;
             /**
              * List of transforms
              */
@@ -21297,7 +21297,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -21364,7 +21364,7 @@ export namespace cdn {
             /**
              * Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match.
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -21387,7 +21387,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -21410,7 +21410,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -21423,7 +21423,7 @@ export namespace cdn {
             /**
              * Name of Header to be matched
              */
-            selector: pulumi.Input<string>;
+            selector?: pulumi.Input<string>;
             /**
              * List of transforms
              */
@@ -21437,7 +21437,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -21456,7 +21456,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -21475,7 +21475,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -21508,7 +21508,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -21531,7 +21531,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -21554,7 +21554,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -22696,7 +22696,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -22709,7 +22709,7 @@ export namespace cdn {
             /**
              * Name of Cookies to be matched
              */
-            selector: pulumi.Input<string>;
+            selector?: pulumi.Input<string>;
             /**
              * List of transforms
              */
@@ -23148,7 +23148,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -23167,7 +23167,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -23215,7 +23215,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -23228,7 +23228,7 @@ export namespace cdn {
             /**
              * Name of PostArg to be matched
              */
-            selector: pulumi.Input<string>;
+            selector?: pulumi.Input<string>;
             /**
              * List of transforms
              */
@@ -23242,7 +23242,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -23265,7 +23265,7 @@ export namespace cdn {
             /**
              * Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match.
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -23288,7 +23288,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -23311,7 +23311,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -23324,7 +23324,7 @@ export namespace cdn {
             /**
              * Name of Header to be matched
              */
-            selector: pulumi.Input<string>;
+            selector?: pulumi.Input<string>;
             /**
              * List of transforms
              */
@@ -23338,7 +23338,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -23357,7 +23357,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -23376,7 +23376,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -23437,7 +23437,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -23460,7 +23460,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -23483,7 +23483,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -23621,7 +23621,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -23634,7 +23634,7 @@ export namespace cdn {
             /**
              * Name of Cookies to be matched
              */
-            selector: pulumi.Input<string>;
+            selector?: pulumi.Input<string>;
             /**
              * List of transforms
              */
@@ -24119,7 +24119,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -24138,7 +24138,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -24308,7 +24308,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -24321,7 +24321,7 @@ export namespace cdn {
             /**
              * Name of PostArg to be matched
              */
-            selector: pulumi.Input<string>;
+            selector?: pulumi.Input<string>;
             /**
              * List of transforms
              */
@@ -24335,7 +24335,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -24402,7 +24402,7 @@ export namespace cdn {
             /**
              * Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match.
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -24425,7 +24425,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -24448,7 +24448,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -24461,7 +24461,7 @@ export namespace cdn {
             /**
              * Name of Header to be matched
              */
-            selector: pulumi.Input<string>;
+            selector?: pulumi.Input<string>;
             /**
              * List of transforms
              */
@@ -24475,7 +24475,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -24494,7 +24494,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -24513,7 +24513,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -24574,7 +24574,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -24597,7 +24597,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -24620,7 +24620,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -24823,7 +24823,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -24836,7 +24836,7 @@ export namespace cdn {
             /**
              * Name of Cookies to be matched
              */
-            selector: pulumi.Input<string>;
+            selector?: pulumi.Input<string>;
             /**
              * List of transforms
              */
@@ -25337,7 +25337,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -25356,7 +25356,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -25526,7 +25526,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -25539,7 +25539,7 @@ export namespace cdn {
             /**
              * Name of PostArg to be matched
              */
-            selector: pulumi.Input<string>;
+            selector?: pulumi.Input<string>;
             /**
              * List of transforms
              */
@@ -25553,7 +25553,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -25620,7 +25620,7 @@ export namespace cdn {
             /**
              * Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match.
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -25643,7 +25643,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -25666,7 +25666,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -25679,7 +25679,7 @@ export namespace cdn {
             /**
              * Name of Header to be matched
              */
-            selector: pulumi.Input<string>;
+            selector?: pulumi.Input<string>;
             /**
              * List of transforms
              */
@@ -25693,7 +25693,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -25712,7 +25712,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -25731,7 +25731,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -25792,7 +25792,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -25815,7 +25815,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -25838,7 +25838,7 @@ export namespace cdn {
             /**
              * The match value for the condition of the delivery rule
              */
-            matchValues: pulumi.Input<pulumi.Input<string>[]>;
+            matchValues?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Describes if this is negate condition or not
              */
@@ -66540,7 +66540,7 @@ export namespace datafactory {
             /**
              * The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
              */
-            servicePrincipalCredentialType?: pulumi.Input<{[key: string]: any}>;
+            servicePrincipalCredentialType?: pulumi.Input<string>;
             /**
              * The client ID of the application in Azure Active Directory used for Server-To-Server authentication. Type: string (or Expression with resultType string).
              */
@@ -67086,7 +67086,7 @@ export namespace datafactory {
             /**
              * The Deflate compression level.
              */
-            level?: pulumi.Input<{[key: string]: any}>;
+            level?: pulumi.Input<string>;
             /**
              * Type of dataset compression.
              */
@@ -67110,7 +67110,7 @@ export namespace datafactory {
             /**
              * The GZip compression level.
              */
-            level?: pulumi.Input<{[key: string]: any}>;
+            level?: pulumi.Input<string>;
             /**
              * Type of dataset compression.
              */
@@ -67152,7 +67152,7 @@ export namespace datafactory {
             /**
              * The TarGZip compression level.
              */
-            level?: pulumi.Input<{[key: string]: any}>;
+            level?: pulumi.Input<string>;
             /**
              * Type of dataset compression.
              */
@@ -67166,7 +67166,7 @@ export namespace datafactory {
             /**
              * The ZipDeflate compression level.
              */
-            level?: pulumi.Input<{[key: string]: any}>;
+            level?: pulumi.Input<string>;
             /**
              * Type of dataset compression.
              */
@@ -67293,11 +67293,11 @@ export namespace datafactory {
              * The column delimiter. Type: string (or Expression with resultType string).
              */
             columnDelimiter?: pulumi.Input<{[key: string]: any}>;
-            compressionCodec?: pulumi.Input<{[key: string]: any}>;
+            compressionCodec?: pulumi.Input<string>;
             /**
              * The data compression method used for DelimitedText.
              */
-            compressionLevel?: pulumi.Input<{[key: string]: any}>;
+            compressionLevel?: pulumi.Input<string>;
             /**
              * Dataset description.
              */
@@ -67671,7 +67671,7 @@ export namespace datafactory {
             /**
              * The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
              */
-            servicePrincipalCredentialType?: pulumi.Input<{[key: string]: any}>;
+            servicePrincipalCredentialType?: pulumi.Input<string>;
             /**
              * The client ID of the application in Azure Active Directory used for Server-To-Server authentication. Type: string (or Expression with resultType string).
              */
@@ -67743,7 +67743,7 @@ export namespace datafactory {
             /**
              * The authentication type to connect to Dynamics server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario, 'AADServicePrincipal' for Server-To-Server authentication in online scenario. Type: string (or Expression with resultType string).
              */
-            authenticationType: pulumi.Input<{[key: string]: any}>;
+            authenticationType: pulumi.Input<string>;
             /**
              * The integration runtime reference.
              */
@@ -67751,7 +67751,7 @@ export namespace datafactory {
             /**
              * The deployment type of the Dynamics instance. 'Online' for Dynamics Online and 'OnPremisesWithIfd' for Dynamics on-premises with Ifd. Type: string (or Expression with resultType string).
              */
-            deploymentType: pulumi.Input<{[key: string]: any}>;
+            deploymentType: pulumi.Input<string>;
             /**
              * Linked service description.
              */
@@ -67787,7 +67787,7 @@ export namespace datafactory {
             /**
              * The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
              */
-            servicePrincipalCredentialType?: pulumi.Input<{[key: string]: any}>;
+            servicePrincipalCredentialType?: pulumi.Input<string>;
             /**
              * The client ID of the application in Azure Active Directory used for Server-To-Server authentication. Type: string (or Expression with resultType string).
              */
@@ -70037,7 +70037,7 @@ export namespace datafactory {
             /**
              * File pattern of JSON. To be more specific, the way of separating a collection of JSON objects. The default value is 'setOfObjects'. It is case-sensitive.
              */
-            filePattern?: pulumi.Input<{[key: string]: any}>;
+            filePattern?: pulumi.Input<string>;
             /**
              * The JSONPath of the JSON array element to be flattened. Example: "$.ArrayPath". Type: string (or Expression with resultType string).
              */
@@ -71571,7 +71571,7 @@ export namespace datafactory {
              * List of tags that can be used for describing the Dataset.
              */
             annotations?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
-            compressionCodec?: pulumi.Input<{[key: string]: any}>;
+            compressionCodec?: pulumi.Input<string>;
             /**
              * Dataset description.
              */
@@ -73397,7 +73397,7 @@ export namespace datafactory {
             /**
              * The node types on which the script action should be executed.
              */
-            roles: pulumi.Input<{[key: string]: any}>;
+            roles: pulumi.Input<string>;
             /**
              * The URI for the script action.
              */
@@ -76605,7 +76605,7 @@ export namespace datafactory {
             /**
              * The Deflate compression level.
              */
-            level?: pulumi.Input<{[key: string]: any}>;
+            level?: pulumi.Input<string>;
             /**
              * Type of dataset compression.
              */
@@ -76619,7 +76619,7 @@ export namespace datafactory {
             /**
              * The GZip compression level.
              */
-            level?: pulumi.Input<{[key: string]: any}>;
+            level?: pulumi.Input<string>;
             /**
              * Type of dataset compression.
              */
@@ -76633,7 +76633,7 @@ export namespace datafactory {
             /**
              * The ZipDeflate compression level.
              */
-            level?: pulumi.Input<{[key: string]: any}>;
+            level?: pulumi.Input<string>;
             /**
              * Type of dataset compression.
              */
@@ -76833,7 +76833,7 @@ export namespace datafactory {
             /**
              * The authentication type to connect to Dynamics server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario. Type: string (or Expression with resultType string).
              */
-            authenticationType: pulumi.Input<{[key: string]: any}>;
+            authenticationType: pulumi.Input<string>;
             /**
              * The integration runtime reference.
              */
@@ -76841,7 +76841,7 @@ export namespace datafactory {
             /**
              * The deployment type of the Dynamics instance. 'Online' for Dynamics Online and 'OnPremisesWithIfd' for Dynamics on-premises with Ifd. Type: string (or Expression with resultType string).
              */
-            deploymentType: pulumi.Input<{[key: string]: any}>;
+            deploymentType: pulumi.Input<string>;
             /**
              * Linked service description.
              */
@@ -83853,7 +83853,7 @@ export namespace datafactory {
             /**
              * The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
              */
-            servicePrincipalCredentialType?: pulumi.Input<{[key: string]: any}>;
+            servicePrincipalCredentialType?: pulumi.Input<string>;
             /**
              * The client ID of the application in Azure Active Directory used for Server-To-Server authentication. Type: string (or Expression with resultType string).
              */
@@ -84399,7 +84399,7 @@ export namespace datafactory {
             /**
              * The Deflate compression level.
              */
-            level?: pulumi.Input<{[key: string]: any}>;
+            level?: pulumi.Input<string>;
             /**
              * Type of dataset compression.
              */
@@ -84423,7 +84423,7 @@ export namespace datafactory {
             /**
              * The GZip compression level.
              */
-            level?: pulumi.Input<{[key: string]: any}>;
+            level?: pulumi.Input<string>;
             /**
              * Type of dataset compression.
              */
@@ -84465,7 +84465,7 @@ export namespace datafactory {
             /**
              * The TarGZip compression level.
              */
-            level?: pulumi.Input<{[key: string]: any}>;
+            level?: pulumi.Input<string>;
             /**
              * Type of dataset compression.
              */
@@ -84479,7 +84479,7 @@ export namespace datafactory {
             /**
              * The ZipDeflate compression level.
              */
-            level?: pulumi.Input<{[key: string]: any}>;
+            level?: pulumi.Input<string>;
             /**
              * Type of dataset compression.
              */
@@ -84606,11 +84606,11 @@ export namespace datafactory {
              * The column delimiter. Type: string (or Expression with resultType string).
              */
             columnDelimiter?: pulumi.Input<{[key: string]: any}>;
-            compressionCodec?: pulumi.Input<{[key: string]: any}>;
+            compressionCodec?: pulumi.Input<string>;
             /**
              * The data compression method used for DelimitedText.
              */
-            compressionLevel?: pulumi.Input<{[key: string]: any}>;
+            compressionLevel?: pulumi.Input<string>;
             /**
              * Dataset description.
              */
@@ -84984,7 +84984,7 @@ export namespace datafactory {
             /**
              * The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
              */
-            servicePrincipalCredentialType?: pulumi.Input<{[key: string]: any}>;
+            servicePrincipalCredentialType?: pulumi.Input<string>;
             /**
              * The client ID of the application in Azure Active Directory used for Server-To-Server authentication. Type: string (or Expression with resultType string).
              */
@@ -85056,7 +85056,7 @@ export namespace datafactory {
             /**
              * The authentication type to connect to Dynamics server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario, 'AADServicePrincipal' for Server-To-Server authentication in online scenario. Type: string (or Expression with resultType string).
              */
-            authenticationType: pulumi.Input<{[key: string]: any}>;
+            authenticationType: pulumi.Input<string>;
             /**
              * The integration runtime reference.
              */
@@ -85064,7 +85064,7 @@ export namespace datafactory {
             /**
              * The deployment type of the Dynamics instance. 'Online' for Dynamics Online and 'OnPremisesWithIfd' for Dynamics on-premises with Ifd. Type: string (or Expression with resultType string).
              */
-            deploymentType: pulumi.Input<{[key: string]: any}>;
+            deploymentType: pulumi.Input<string>;
             /**
              * Linked service description.
              */
@@ -85100,7 +85100,7 @@ export namespace datafactory {
             /**
              * The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
              */
-            servicePrincipalCredentialType?: pulumi.Input<{[key: string]: any}>;
+            servicePrincipalCredentialType?: pulumi.Input<string>;
             /**
              * The client ID of the application in Azure Active Directory used for Server-To-Server authentication. Type: string (or Expression with resultType string).
              */
@@ -87350,7 +87350,7 @@ export namespace datafactory {
             /**
              * File pattern of JSON. To be more specific, the way of separating a collection of JSON objects. The default value is 'setOfObjects'. It is case-sensitive.
              */
-            filePattern?: pulumi.Input<{[key: string]: any}>;
+            filePattern?: pulumi.Input<string>;
             /**
              * The JSONPath of the JSON array element to be flattened. Example: "$.ArrayPath". Type: string (or Expression with resultType string).
              */
@@ -88884,7 +88884,7 @@ export namespace datafactory {
              * List of tags that can be used for describing the Dataset.
              */
             annotations?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
-            compressionCodec?: pulumi.Input<{[key: string]: any}>;
+            compressionCodec?: pulumi.Input<string>;
             /**
              * Dataset description.
              */
@@ -90710,7 +90710,7 @@ export namespace datafactory {
             /**
              * The node types on which the script action should be executed.
              */
-            roles: pulumi.Input<{[key: string]: any}>;
+            roles: pulumi.Input<string>;
             /**
              * The URI for the script action.
              */
@@ -99751,6 +99751,38 @@ export namespace dbforpostgresql {
              * Max storage allowed for a server.
              */
             storageMB?: pulumi.Input<number>;
+        }
+
+    }
+}
+
+export namespace delegatednetwork {
+    export namespace v20200808preview {
+        /**
+         * controller details
+         */
+        export interface ControllerDetails {
+            /**
+             * controller arm resource id
+             */
+            id?: pulumi.Input<string>;
+        }
+
+        export interface OrchestratorIdentity {
+            /**
+             * The type of identity used for orchestrator cluster. Type 'SystemAssigned' will use an implicitly created identity orchestrator clusters
+             */
+            type?: pulumi.Input<string>;
+        }
+
+        /**
+         * Properties of orchestrator
+         */
+        export interface SubnetDetails {
+            /**
+             * subnet arm resource id
+             */
+            id?: pulumi.Input<string>;
         }
 
     }
@@ -268822,6 +268854,104 @@ export namespace portal {
         }
 
     }
+
+    export namespace v20200901preview {
+        /**
+         * A dashboard lens.
+         */
+        export interface DashboardLens {
+            /**
+             * The dashboard len's metadata.
+             */
+            metadata?: pulumi.Input<{[key: string]: pulumi.Input<{[key: string]: any}>}>;
+            /**
+             * The lens order.
+             */
+            order: pulumi.Input<number>;
+            /**
+             * The dashboard parts.
+             */
+            parts: pulumi.Input<pulumi.Input<inputs.portal.v20200901preview.DashboardParts>[]>;
+        }
+
+        /**
+         * A dashboard part.
+         */
+        export interface DashboardParts {
+            /**
+             * The dashboard part's metadata.
+             */
+            metadata?: pulumi.Input<inputs.portal.v20200901preview.MarkdownPartMetadata>;
+            /**
+             * The dashboard's part position.
+             */
+            position: pulumi.Input<inputs.portal.v20200901preview.DashboardPartsPosition>;
+        }
+
+        /**
+         * The dashboard's part position.
+         */
+        export interface DashboardPartsPosition {
+            /**
+             * The dashboard's part column span.
+             */
+            colSpan: pulumi.Input<number>;
+            /**
+             * The dashboard part's metadata.
+             */
+            metadata?: pulumi.Input<{[key: string]: pulumi.Input<{[key: string]: any}>}>;
+            /**
+             * The dashboard's part row span.
+             */
+            rowSpan: pulumi.Input<number>;
+            /**
+             * The dashboard's part x coordinate.
+             */
+            x: pulumi.Input<number>;
+            /**
+             * The dashboard's part y coordinate.
+             */
+            y: pulumi.Input<number>;
+        }
+
+        /**
+         * Markdown part metadata.
+         */
+        export interface MarkdownPartMetadata {
+            /**
+             * Input to dashboard part.
+             */
+            inputs?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+            /**
+             * Markdown part settings.
+             */
+            settings?: pulumi.Input<inputs.portal.v20200901preview.MarkdownPartMetadataSettings>;
+            /**
+             * The type of dashboard part.
+             */
+            type: pulumi.Input<"Extension/HubsExtension/PartType/MarkdownPart">;
+        }
+
+        /**
+         * The content of markdown part.
+         */
+        export interface MarkdownPartMetadataContent {
+            /**
+             * The setting of the content of markdown part.
+             */
+            settings?: pulumi.Input<inputs.portal.v20200901preview.MarkdownPartMetadataSettings>;
+        }
+
+        /**
+         * Markdown part settings.
+         */
+        export interface MarkdownPartMetadataSettings {
+            /**
+             * The content of markdown part.
+             */
+            content?: pulumi.Input<inputs.portal.v20200901preview.MarkdownPartMetadataContent>;
+        }
+    }
 }
 
 export namespace powerbi {
@@ -297073,6 +297203,27 @@ export namespace storagesync {
         }
 
     }
+
+    export namespace v20200901 {
+        /**
+         * A collection of information about the state of the connection between service consumer and provider.
+         */
+        export interface PrivateLinkServiceConnectionState {
+            /**
+             * A message indicating if changes on the service provider require any updates on the consumer.
+             */
+            actionsRequired?: pulumi.Input<string>;
+            /**
+             * The reason for approval/rejection of the connection.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+             */
+            status?: pulumi.Input<string>;
+        }
+
+    }
 }
 
 export namespace storsimple {
@@ -303510,6 +303661,10 @@ export namespace web {
              * IP security restrictions for scm to use main.
              */
             scmIpSecurityRestrictionsUseMain?: pulumi.Input<boolean>;
+            /**
+             * ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
+             */
+            scmMinTlsVersion?: pulumi.Input<string>;
             /**
              * SCM type.
              */
@@ -310074,6 +310229,10 @@ export namespace web {
              * IP security restrictions for scm to use main.
              */
             scmIpSecurityRestrictionsUseMain?: pulumi.Input<boolean>;
+            /**
+             * ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
+             */
+            scmMinTlsVersion?: pulumi.Input<string>;
             /**
              * SCM type.
              */
