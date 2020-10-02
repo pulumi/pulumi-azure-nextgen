@@ -3,6 +3,10 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
+---
+
+## 0.2.0 (2020-10-02)
+
 Breaking changes:
 
 - Resolved an issue when some output properties were erroneously presented as input properties too
@@ -25,8 +29,6 @@ Bug fixes:
 - API types "object" are mapped to "any" type in Pulumi.
   Fixed [#30](https://github.com/pulumi/pulumi-azure-nextgen/issues/30) and [#32](https://github.com/pulumi/pulumi-azure-nextgen/issues/32)
 - Fix serialization of multi-flattened properties [#31](https://github.com/pulumi/pulumi-azure-nextgen/issues/31)
-
----
 
 ## 0.1.0 (2020-09-21)
 
