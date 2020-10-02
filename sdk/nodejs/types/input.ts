@@ -96532,6 +96532,10 @@ export namespace datamigration {
              */
             sourceSetting?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
             /**
+             * Mapping of source to target tables
+             */
+            tableMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
              * Name of target database. Note: Target database will be truncated before starting migration.
              */
             targetDatabaseName?: pulumi.Input<string>;
@@ -96664,6 +96668,10 @@ export namespace datamigration {
              */
             name?: pulumi.Input<string>;
             /**
+             * Tables selected for migration
+             */
+            selectedTables?: pulumi.Input<pulumi.Input<inputs.datamigration.v20180715preview.MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInput>[]>;
+            /**
              * Source settings to tune source endpoint migration behavior
              */
             sourceSetting?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -96675,6 +96683,16 @@ export namespace datamigration {
              * Target settings to tune target endpoint migration behavior
              */
             targetSetting?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        }
+
+        /**
+         * Selected tables for the migration
+         */
+        export interface MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInput {
+            /**
+             * Name of the table to migrate
+             */
+            name?: pulumi.Input<string>;
         }
 
         /**

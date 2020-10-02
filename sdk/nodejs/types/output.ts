@@ -125133,6 +125133,10 @@ export namespace datamigration {
              */
             sourceSetting?: {[key: string]: string};
             /**
+             * Mapping of source to target tables
+             */
+            tableMap?: {[key: string]: string};
+            /**
              * Name of target database. Note: Target database will be truncated before starting migration.
              */
             targetDatabaseName?: string;
@@ -125703,6 +125707,10 @@ export namespace datamigration {
              */
             name?: string;
             /**
+             * Tables selected for migration
+             */
+            selectedTables?: outputs.datamigration.v20180715preview.MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInputResponse[];
+            /**
              * Source settings to tune source endpoint migration behavior
              */
             sourceSetting?: {[key: string]: string};
@@ -125714,6 +125722,16 @@ export namespace datamigration {
              * Target settings to tune target endpoint migration behavior
              */
             targetSetting?: {[key: string]: string};
+        }
+
+        /**
+         * Selected tables for the migration
+         */
+        export interface MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInputResponse {
+            /**
+             * Name of the table to migrate
+             */
+            name?: string;
         }
 
         /**
