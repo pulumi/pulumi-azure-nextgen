@@ -24,6 +24,7 @@ Bug fixes:
   ([#29](https://github.com/pulumi/pulumi-azure-nextgen/issues/29))
 - API types "object" are mapped to "any" type in Pulumi.
   Fixed [#30](https://github.com/pulumi/pulumi-azure-nextgen/issues/30) and [#32](https://github.com/pulumi/pulumi-azure-nextgen/issues/32)
+- Fix serialization of multi-flattened properties [#31](https://github.com/pulumi/pulumi-azure-nextgen/issues/31)
 
 ---
 
