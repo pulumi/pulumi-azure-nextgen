@@ -5,6 +5,12 @@ CHANGELOG
 
 ---
 
+## 0.2.1 (2020-10-03)
+
+Bug fixes:
+
+- Fix the packaging of the Go SDK
+
 ## 0.2.0 (2020-10-02)
 
 Breaking changes:
