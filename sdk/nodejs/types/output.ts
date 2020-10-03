@@ -180221,6 +180221,24 @@ export namespace machinelearningservices {
         }
 
         /**
+         * The last operation on ComputeInstance.
+         */
+        export interface ComputeInstanceLastOperationResponse {
+            /**
+             * Name of the last operation.
+             */
+            operationName?: string;
+            /**
+             * Operation status.
+             */
+            operationStatus?: string;
+            /**
+             * Time of the last operation.
+             */
+            operationTime?: string;
+        }
+
+        /**
          * An Azure Machine Learning compute instance.
          */
         export interface ComputeInstanceResponse {
@@ -180290,6 +180308,10 @@ export namespace machinelearningservices {
              * Collection of errors encountered on this ComputeInstance.
              */
             errors: outputs.machinelearningservices.latest.MachineLearningServiceErrorResponse[];
+            /**
+             * The last operation on ComputeInstance.
+             */
+            lastOperation: outputs.machinelearningservices.latest.ComputeInstanceLastOperationResponse;
             /**
              * Specifies policy and settings for SSH access.
              */
@@ -192354,6 +192376,1043 @@ export namespace machinelearningservices {
         }
     }
 
+    export namespace v20200801 {
+        /**
+         * A Machine Learning compute based on AKS.
+         */
+        export interface AKSResponse {
+            /**
+             * Location for the underlying compute
+             */
+            computeLocation?: string;
+            /**
+             * The type of compute
+             */
+            computeType: "AKS";
+            /**
+             * The date and time when the compute was created.
+             */
+            createdOn: string;
+            /**
+             * The description of the Machine Learning compute.
+             */
+            description?: string;
+            /**
+             * Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
+             */
+            isAttachedCompute: boolean;
+            /**
+             * The date and time when the compute was last modified.
+             */
+            modifiedOn: string;
+            /**
+             * AKS properties
+             */
+            properties?: outputs.machinelearningservices.v20200801.AKSResponseProperties;
+            /**
+             * Errors during provisioning
+             */
+            provisioningErrors: outputs.machinelearningservices.v20200801.MachineLearningServiceErrorResponse[];
+            /**
+             * The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
+             */
+            provisioningState: string;
+            /**
+             * ARM resource id of the underlying compute
+             */
+            resourceId?: string;
+        }
+
+        /**
+         * AKS properties
+         */
+        export interface AKSResponseProperties {
+            /**
+             * Number of agents
+             */
+            agentCount?: number;
+            /**
+             * Agent virtual machine size
+             */
+            agentVMSize?: string;
+            /**
+             * AKS networking configuration for vnet
+             */
+            aksNetworkingConfiguration?: outputs.machinelearningservices.v20200801.AksNetworkingConfigurationResponse;
+            /**
+             * Cluster full qualified domain name
+             */
+            clusterFqdn?: string;
+            /**
+             * SSL configuration
+             */
+            sslConfiguration?: outputs.machinelearningservices.v20200801.SslConfigurationResponse;
+            /**
+             * System services
+             */
+            systemServices: outputs.machinelearningservices.v20200801.SystemServiceResponse[];
+        }
+
+        /**
+         * Advance configuration for AKS networking
+         */
+        export interface AksNetworkingConfigurationResponse {
+            /**
+             * An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr.
+             */
+            dnsServiceIP?: string;
+            /**
+             * A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes service address range.
+             */
+            dockerBridgeCidr?: string;
+            /**
+             * A CIDR notation IP range from which to assign service cluster IPs. It must not overlap with any Subnet IP ranges.
+             */
+            serviceCidr?: string;
+            /**
+             * Virtual network subnet resource ID the compute nodes belong to
+             */
+            subnetId?: string;
+        }
+
+        /**
+         * Compute node information related to a AmlCompute.
+         */
+        export interface AmlComputeNodeInformationResponse {
+            /**
+             * ID of the compute node.
+             */
+            nodeId: string;
+            /**
+             * State of the compute node. Values are idle, running, preparing, unusable, leaving and preempted.
+             */
+            nodeState: string;
+            /**
+             * SSH port number of the node.
+             */
+            port: number;
+            /**
+             * Private IP address of the compute node.
+             */
+            privateIpAddress: string;
+            /**
+             * Public IP address of the compute node.
+             */
+            publicIpAddress: string;
+            /**
+             * ID of the Experiment running on the node, if any else null.
+             */
+            runId: string;
+        }
+
+        /**
+         * An Azure Machine Learning compute.
+         */
+        export interface AmlComputeResponse {
+            /**
+             * Location for the underlying compute
+             */
+            computeLocation?: string;
+            /**
+             * The type of compute
+             */
+            computeType: "AmlCompute";
+            /**
+             * The date and time when the compute was created.
+             */
+            createdOn: string;
+            /**
+             * The description of the Machine Learning compute.
+             */
+            description?: string;
+            /**
+             * Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
+             */
+            isAttachedCompute: boolean;
+            /**
+             * The date and time when the compute was last modified.
+             */
+            modifiedOn: string;
+            /**
+             * AML Compute properties
+             */
+            properties?: outputs.machinelearningservices.v20200801.AmlComputeResponseProperties;
+            /**
+             * Errors during provisioning
+             */
+            provisioningErrors: outputs.machinelearningservices.v20200801.MachineLearningServiceErrorResponse[];
+            /**
+             * The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
+             */
+            provisioningState: string;
+            /**
+             * ARM resource id of the underlying compute
+             */
+            resourceId?: string;
+        }
+
+        /**
+         * AML Compute properties
+         */
+        export interface AmlComputeResponseProperties {
+            /**
+             * Allocation state of the compute. Possible values are: steady - Indicates that the compute is not resizing. There are no changes to the number of compute nodes in the compute in progress. A compute enters this state when it is created and when no operations are being performed on the compute to change the number of compute nodes. resizing - Indicates that the compute is resizing; that is, compute nodes are being added to or removed from the compute.
+             */
+            allocationState: string;
+            /**
+             * The time at which the compute entered its current allocation state.
+             */
+            allocationStateTransitionTime: string;
+            /**
+             * The number of compute nodes currently assigned to the compute.
+             */
+            currentNodeCount: number;
+            /**
+             * Collection of errors encountered by various compute nodes during node setup.
+             */
+            errors: outputs.machinelearningservices.v20200801.MachineLearningServiceErrorResponse[];
+            /**
+             * Counts of various node states on the compute.
+             */
+            nodeStateCounts: outputs.machinelearningservices.v20200801.NodeStateCountsResponse;
+            /**
+             * State of the public SSH port. Possible values are: Disabled - Indicates that the public ssh port is closed on all nodes of the cluster. Enabled - Indicates that the public ssh port is open on all nodes of the cluster. NotSpecified - Indicates that the public ssh port is closed on all nodes of the cluster if VNet is defined, else is open all public nodes. It can be default only during cluster creation time, after creation it will be either enabled or disabled.
+             */
+            remoteLoginPortPublicAccess?: string;
+            /**
+             * Scale settings for AML Compute
+             */
+            scaleSettings?: outputs.machinelearningservices.v20200801.ScaleSettingsResponse;
+            /**
+             * Virtual network subnet resource ID the compute nodes belong to.
+             */
+            subnet?: outputs.machinelearningservices.v20200801.ResourceIdResponse;
+            /**
+             * The target number of compute nodes for the compute. If the allocationState is resizing, this property denotes the target node count for the ongoing resize operation. If the allocationState is steady, this property denotes the target node count for the previous resize operation.
+             */
+            targetNodeCount: number;
+            /**
+             * Credentials for an administrator user account that will be created on each compute node.
+             */
+            userAccountCredentials?: outputs.machinelearningservices.v20200801.UserAccountCredentialsResponse;
+            /**
+             * Virtual Machine priority
+             */
+            vmPriority?: string;
+            /**
+             * Virtual Machine Size
+             */
+            vmSize?: string;
+        }
+
+        /**
+         * Defines an Aml Instance application and its connectivity endpoint URI.
+         */
+        export interface ComputeInstanceApplicationResponse {
+            /**
+             * Name of the ComputeInstance application.
+             */
+            displayName?: string;
+            /**
+             * Application' endpoint URI.
+             */
+            endpointUri?: string;
+        }
+
+        /**
+         * Defines all connectivity endpoints and properties for a ComputeInstance.
+         */
+        export interface ComputeInstanceConnectivityEndpointsResponse {
+            /**
+             * Private IP Address of this ComputeInstance (local to the VNET in which the compute instance is deployed).
+             */
+            privateIpAddress: string;
+            /**
+             * Public IP Address of this ComputeInstance.
+             */
+            publicIpAddress: string;
+        }
+
+        /**
+         * Describes information on user who created this ComputeInstance.
+         */
+        export interface ComputeInstanceCreatedByResponse {
+            /**
+             * Uniquely identifies the user within his/her organization.
+             */
+            userId: string;
+            /**
+             * Name of the user.
+             */
+            userName: string;
+            /**
+             * Uniquely identifies user' Azure Active Directory organization.
+             */
+            userOrgId: string;
+        }
+
+        /**
+         * The last operation on ComputeInstance.
+         */
+        export interface ComputeInstanceLastOperationResponse {
+            /**
+             * Name of the last operation.
+             */
+            operationName?: string;
+            /**
+             * Operation status.
+             */
+            operationStatus?: string;
+            /**
+             * Time of the last operation.
+             */
+            operationTime?: string;
+        }
+
+        /**
+         * An Azure Machine Learning compute instance.
+         */
+        export interface ComputeInstanceResponse {
+            /**
+             * Location for the underlying compute
+             */
+            computeLocation?: string;
+            /**
+             * The type of compute
+             */
+            computeType: "ComputeInstance";
+            /**
+             * The date and time when the compute was created.
+             */
+            createdOn: string;
+            /**
+             * The description of the Machine Learning compute.
+             */
+            description?: string;
+            /**
+             * Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
+             */
+            isAttachedCompute: boolean;
+            /**
+             * The date and time when the compute was last modified.
+             */
+            modifiedOn: string;
+            /**
+             * Compute Instance properties
+             */
+            properties?: outputs.machinelearningservices.v20200801.ComputeInstanceResponseProperties;
+            /**
+             * Errors during provisioning
+             */
+            provisioningErrors: outputs.machinelearningservices.v20200801.MachineLearningServiceErrorResponse[];
+            /**
+             * The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
+             */
+            provisioningState: string;
+            /**
+             * ARM resource id of the underlying compute
+             */
+            resourceId?: string;
+        }
+
+        /**
+         * Compute Instance properties
+         */
+        export interface ComputeInstanceResponseProperties {
+            /**
+             * Policy for sharing applications on this compute instance among users of parent workspace. If Personal, only the creator can access applications on this compute instance. When Shared, any workspace user can access applications on this instance depending on his/her assigned role.
+             */
+            applicationSharingPolicy?: string;
+            /**
+             * Describes available applications and their endpoints on this ComputeInstance.
+             */
+            applications: outputs.machinelearningservices.v20200801.ComputeInstanceApplicationResponse[];
+            /**
+             * Describes all connectivity endpoints available for this ComputeInstance.
+             */
+            connectivityEndpoints: outputs.machinelearningservices.v20200801.ComputeInstanceConnectivityEndpointsResponse;
+            /**
+             * Describes information on user who created this ComputeInstance.
+             */
+            createdBy: outputs.machinelearningservices.v20200801.ComputeInstanceCreatedByResponse;
+            /**
+             * Collection of errors encountered on this ComputeInstance.
+             */
+            errors: outputs.machinelearningservices.v20200801.MachineLearningServiceErrorResponse[];
+            /**
+             * The last operation on ComputeInstance.
+             */
+            lastOperation: outputs.machinelearningservices.v20200801.ComputeInstanceLastOperationResponse;
+            /**
+             * Specifies policy and settings for SSH access.
+             */
+            sshSettings?: outputs.machinelearningservices.v20200801.ComputeInstanceSshSettingsResponse;
+            /**
+             * The current state of this ComputeInstance.
+             */
+            state: string;
+            /**
+             * Virtual network subnet resource ID the compute nodes belong to.
+             */
+            subnet?: outputs.machinelearningservices.v20200801.ResourceIdResponse;
+            /**
+             * Virtual Machine Size
+             */
+            vmSize?: string;
+        }
+
+        /**
+         * Specifies policy and settings for SSH access.
+         */
+        export interface ComputeInstanceSshSettingsResponse {
+            /**
+             * Specifies the SSH rsa public key file as a string. Use "ssh-keygen -t rsa -b 2048" to generate your SSH key pairs.
+             */
+            adminPublicKey?: string;
+            /**
+             * Describes the admin user name.
+             */
+            adminUserName: string;
+            /**
+             * Describes the port for connecting through SSH.
+             */
+            sshPort: number;
+            /**
+             * State of the public SSH port. Possible values are: Disabled - Indicates that the public ssh port is closed on this instance. Enabled - Indicates that the public ssh port is open and accessible according to the VNet/subnet policy if applicable.
+             */
+            sshPublicAccess?: string;
+        }
+
+        /**
+         * A DataFactory compute.
+         */
+        export interface DataFactoryResponse {
+            /**
+             * Location for the underlying compute
+             */
+            computeLocation?: string;
+            /**
+             * The type of compute
+             */
+            computeType: "DataFactory";
+            /**
+             * The date and time when the compute was created.
+             */
+            createdOn: string;
+            /**
+             * The description of the Machine Learning compute.
+             */
+            description?: string;
+            /**
+             * Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
+             */
+            isAttachedCompute: boolean;
+            /**
+             * The date and time when the compute was last modified.
+             */
+            modifiedOn: string;
+            /**
+             * Errors during provisioning
+             */
+            provisioningErrors: outputs.machinelearningservices.v20200801.MachineLearningServiceErrorResponse[];
+            /**
+             * The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
+             */
+            provisioningState: string;
+            /**
+             * ARM resource id of the underlying compute
+             */
+            resourceId?: string;
+        }
+
+        /**
+         * A DataLakeAnalytics compute.
+         */
+        export interface DataLakeAnalyticsResponse {
+            /**
+             * Location for the underlying compute
+             */
+            computeLocation?: string;
+            /**
+             * The type of compute
+             */
+            computeType: "DataLakeAnalytics";
+            /**
+             * The date and time when the compute was created.
+             */
+            createdOn: string;
+            /**
+             * The description of the Machine Learning compute.
+             */
+            description?: string;
+            /**
+             * Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
+             */
+            isAttachedCompute: boolean;
+            /**
+             * The date and time when the compute was last modified.
+             */
+            modifiedOn: string;
+            properties?: outputs.machinelearningservices.v20200801.DataLakeAnalyticsResponseProperties;
+            /**
+             * Errors during provisioning
+             */
+            provisioningErrors: outputs.machinelearningservices.v20200801.MachineLearningServiceErrorResponse[];
+            /**
+             * The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
+             */
+            provisioningState: string;
+            /**
+             * ARM resource id of the underlying compute
+             */
+            resourceId?: string;
+        }
+
+        export interface DataLakeAnalyticsResponseProperties {
+            /**
+             * DataLake Store Account Name
+             */
+            dataLakeStoreAccountName?: string;
+        }
+
+        /**
+         * A DataFactory compute.
+         */
+        export interface DatabricksResponse {
+            /**
+             * Location for the underlying compute
+             */
+            computeLocation?: string;
+            /**
+             * The type of compute
+             */
+            computeType: "Databricks";
+            /**
+             * The date and time when the compute was created.
+             */
+            createdOn: string;
+            /**
+             * The description of the Machine Learning compute.
+             */
+            description?: string;
+            /**
+             * Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
+             */
+            isAttachedCompute: boolean;
+            /**
+             * The date and time when the compute was last modified.
+             */
+            modifiedOn: string;
+            properties?: outputs.machinelearningservices.v20200801.DatabricksResponseProperties;
+            /**
+             * Errors during provisioning
+             */
+            provisioningErrors: outputs.machinelearningservices.v20200801.MachineLearningServiceErrorResponse[];
+            /**
+             * The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
+             */
+            provisioningState: string;
+            /**
+             * ARM resource id of the underlying compute
+             */
+            resourceId?: string;
+        }
+
+        export interface DatabricksResponseProperties {
+            /**
+             * Databricks access token
+             */
+            databricksAccessToken?: string;
+        }
+
+        export interface EncryptionPropertyResponse {
+            /**
+             * Customer Key vault properties.
+             */
+            keyVaultProperties: outputs.machinelearningservices.v20200801.KeyVaultPropertiesResponse;
+            /**
+             * Indicates whether or not the encryption is enabled for the workspace.
+             */
+            status: string;
+        }
+
+        /**
+         * Error detail information.
+         */
+        export interface ErrorDetailResponse {
+            /**
+             * Error code.
+             */
+            code: string;
+            /**
+             * Error message.
+             */
+            message: string;
+        }
+
+        /**
+         * Error response information.
+         */
+        export interface ErrorResponseResponse {
+            /**
+             * Error code.
+             */
+            code: string;
+            /**
+             * An array of error detail objects.
+             */
+            details: outputs.machinelearningservices.v20200801.ErrorDetailResponse[];
+            /**
+             * Error message.
+             */
+            message: string;
+        }
+
+        /**
+         * A HDInsight compute.
+         */
+        export interface HDInsightResponse {
+            /**
+             * Location for the underlying compute
+             */
+            computeLocation?: string;
+            /**
+             * The type of compute
+             */
+            computeType: "HDInsight";
+            /**
+             * The date and time when the compute was created.
+             */
+            createdOn: string;
+            /**
+             * The description of the Machine Learning compute.
+             */
+            description?: string;
+            /**
+             * Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
+             */
+            isAttachedCompute: boolean;
+            /**
+             * The date and time when the compute was last modified.
+             */
+            modifiedOn: string;
+            properties?: outputs.machinelearningservices.v20200801.HDInsightResponseProperties;
+            /**
+             * Errors during provisioning
+             */
+            provisioningErrors: outputs.machinelearningservices.v20200801.MachineLearningServiceErrorResponse[];
+            /**
+             * The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
+             */
+            provisioningState: string;
+            /**
+             * ARM resource id of the underlying compute
+             */
+            resourceId?: string;
+        }
+
+        export interface HDInsightResponseProperties {
+            /**
+             * Public IP address of the master node of the cluster.
+             */
+            address?: string;
+            /**
+             * Admin credentials for master node of the cluster
+             */
+            administratorAccount?: outputs.machinelearningservices.v20200801.VirtualMachineSshCredentialsResponse;
+            /**
+             * Port open for ssh connections on the master node of the cluster.
+             */
+            sshPort?: number;
+        }
+
+        /**
+         * Identity for the resource.
+         */
+        export interface IdentityResponse {
+            /**
+             * The principal ID of resource identity.
+             */
+            principalId: string;
+            /**
+             * The tenant ID of resource.
+             */
+            tenantId: string;
+            /**
+             * The identity type.
+             */
+            type: string;
+            /**
+             * The list of user identities associated with resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+             */
+            userAssignedIdentities?: {[key: string]: outputs.machinelearningservices.v20200801.IdentityResponseUserAssignedIdentities};
+        }
+
+        export interface IdentityResponseUserAssignedIdentities {
+            /**
+             * The client id of user assigned identity.
+             */
+            clientId: string;
+            /**
+             * The principal id of user assigned identity.
+             */
+            principalId: string;
+        }
+
+        export interface KeyVaultPropertiesResponse {
+            /**
+             * For future use - The client id of the identity which will be used to access key vault.
+             */
+            identityClientId?: string;
+            /**
+             * Key vault uri to access the encryption key.
+             */
+            keyIdentifier: string;
+            /**
+             * The ArmId of the keyVault where the customer owned encryption key is present.
+             */
+            keyVaultArmId: string;
+        }
+
+        /**
+         * Wrapper for error response to follow ARM guidelines.
+         */
+        export interface MachineLearningServiceErrorResponse {
+            /**
+             * The error response.
+             */
+            error: outputs.machinelearningservices.v20200801.ErrorResponseResponse;
+        }
+
+        /**
+         * Counts of various compute node states on the amlCompute.
+         */
+        export interface NodeStateCountsResponse {
+            /**
+             * Number of compute nodes in idle state.
+             */
+            idleNodeCount: number;
+            /**
+             * Number of compute nodes which are leaving the amlCompute.
+             */
+            leavingNodeCount: number;
+            /**
+             * Number of compute nodes which are in preempted state.
+             */
+            preemptedNodeCount: number;
+            /**
+             * Number of compute nodes which are being prepared.
+             */
+            preparingNodeCount: number;
+            /**
+             * Number of compute nodes which are running jobs.
+             */
+            runningNodeCount: number;
+            /**
+             * Number of compute nodes which are in unusable state.
+             */
+            unusableNodeCount: number;
+        }
+
+        export interface NotebookListCredentialsResultResponse {
+            primaryAccessKey?: string;
+            secondaryAccessKey?: string;
+        }
+
+        export interface NotebookPreparationErrorResponse {
+            errorMessage?: string;
+            statusCode?: number;
+        }
+
+        export interface NotebookResourceInfoResponse {
+            fqdn?: string;
+            /**
+             * The error that occurs when preparing notebook.
+             */
+            notebookPreparationError?: outputs.machinelearningservices.v20200801.NotebookPreparationErrorResponse;
+            /**
+             * the data plane resourceId that used to initialize notebook component
+             */
+            resourceId?: string;
+        }
+
+        export interface PasswordResponse {
+            name: string;
+            value: string;
+        }
+
+        /**
+         * The Private Endpoint Connection resource.
+         */
+        export interface PrivateEndpointConnectionResponse {
+            /**
+             * ResourceId of the private endpoint connection.
+             */
+            id: string;
+            /**
+             * Friendly name of the private endpoint connection.
+             */
+            name: string;
+            /**
+             * The resource of private end point.
+             */
+            privateEndpoint?: outputs.machinelearningservices.v20200801.PrivateEndpointResponse;
+            /**
+             * A collection of information about the state of the connection between service consumer and provider.
+             */
+            privateLinkServiceConnectionState: outputs.machinelearningservices.v20200801.PrivateLinkServiceConnectionStateResponse;
+            /**
+             * The provisioning state of the private endpoint connection resource.
+             */
+            provisioningState: string;
+            /**
+             * Resource type of private endpoint connection.
+             */
+            type: string;
+        }
+
+        /**
+         * The Private Endpoint resource.
+         */
+        export interface PrivateEndpointResponse {
+            /**
+             * The ARM identifier for Private Endpoint
+             */
+            id: string;
+        }
+
+        /**
+         * A collection of information about the state of the connection between service consumer and provider.
+         */
+        export interface PrivateLinkServiceConnectionStateResponse {
+            /**
+             * A message indicating if changes on the service provider require any updates on the consumer.
+             */
+            actionsRequired?: string;
+            /**
+             * The reason for approval/rejection of the connection.
+             */
+            description?: string;
+            /**
+             * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+             */
+            status?: string;
+        }
+
+        export interface RegistryListCredentialsResultResponse {
+            location: string;
+            passwords?: outputs.machinelearningservices.v20200801.PasswordResponse[];
+            username: string;
+        }
+
+        /**
+         * Represents a resource ID. For example, for a subnet, it is the resource URL for the subnet.
+         */
+        export interface ResourceIdResponse {
+            /**
+             * The ID of the resource
+             */
+            id: string;
+        }
+
+        /**
+         * scale settings for AML Compute
+         */
+        export interface ScaleSettingsResponse {
+            /**
+             * Max number of nodes to use
+             */
+            maxNodeCount: number;
+            /**
+             * Min number of nodes to use
+             */
+            minNodeCount?: number;
+            /**
+             * Node Idle Time before scaling down amlCompute
+             */
+            nodeIdleTimeBeforeScaleDown?: string;
+        }
+
+        export interface SharedPrivateLinkResourceResponse {
+            /**
+             * The private link resource group id.
+             */
+            groupId?: string;
+            /**
+             * Unique name of the private link.
+             */
+            name?: string;
+            /**
+             * The resource id that private link links to.
+             */
+            privateLinkResourceId?: string;
+            /**
+             * Request message.
+             */
+            requestMessage?: string;
+            /**
+             * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+             */
+            status?: string;
+        }
+
+        /**
+         * Sku of the resource
+         */
+        export interface SkuResponse {
+            /**
+             * Name of the sku
+             */
+            name?: string;
+            /**
+             * Tier of the sku like Basic or Enterprise
+             */
+            tier?: string;
+        }
+
+        /**
+         * The ssl configuration for scoring
+         */
+        export interface SslConfigurationResponse {
+            /**
+             * Cert data
+             */
+            cert?: string;
+            /**
+             * CNAME of the cert
+             */
+            cname?: string;
+            /**
+             * Key data
+             */
+            key?: string;
+            /**
+             * Enable or disable ssl for scoring
+             */
+            status?: string;
+        }
+
+        /**
+         * A system service running on a compute.
+         */
+        export interface SystemServiceResponse {
+            /**
+             * Public IP address
+             */
+            publicIpAddress: string;
+            /**
+             * The type of this system service.
+             */
+            systemServiceType: string;
+            /**
+             * The version for this type.
+             */
+            version: string;
+        }
+
+        /**
+         * Settings for user account that gets created on each on the nodes of a compute.
+         */
+        export interface UserAccountCredentialsResponse {
+            /**
+             * Name of the administrator user account which can be used to SSH to nodes.
+             */
+            adminUserName: string;
+            /**
+             * Password of the administrator user account.
+             */
+            adminUserPassword?: string;
+            /**
+             * SSH public key of the administrator user account.
+             */
+            adminUserSshPublicKey?: string;
+        }
+
+        /**
+         * A Machine Learning compute based on Azure Virtual Machines.
+         */
+        export interface VirtualMachineResponse {
+            /**
+             * Location for the underlying compute
+             */
+            computeLocation?: string;
+            /**
+             * The type of compute
+             */
+            computeType: "VirtualMachine";
+            /**
+             * The date and time when the compute was created.
+             */
+            createdOn: string;
+            /**
+             * The description of the Machine Learning compute.
+             */
+            description?: string;
+            /**
+             * Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
+             */
+            isAttachedCompute: boolean;
+            /**
+             * The date and time when the compute was last modified.
+             */
+            modifiedOn: string;
+            properties?: outputs.machinelearningservices.v20200801.VirtualMachineResponseProperties;
+            /**
+             * Errors during provisioning
+             */
+            provisioningErrors: outputs.machinelearningservices.v20200801.MachineLearningServiceErrorResponse[];
+            /**
+             * The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
+             */
+            provisioningState: string;
+            /**
+             * ARM resource id of the underlying compute
+             */
+            resourceId?: string;
+        }
+
+        export interface VirtualMachineResponseProperties {
+            /**
+             * Public IP address of the virtual machine.
+             */
+            address?: string;
+            /**
+             * Admin credentials for virtual machine
+             */
+            administratorAccount?: outputs.machinelearningservices.v20200801.VirtualMachineSshCredentialsResponse;
+            /**
+             * Port open for ssh connections.
+             */
+            sshPort?: number;
+            /**
+             * Virtual Machine size
+             */
+            virtualMachineSize?: string;
+        }
+
+        /**
+         * Admin credentials for virtual machine
+         */
+        export interface VirtualMachineSshCredentialsResponse {
+            /**
+             * Password of admin account
+             */
+            password?: string;
+            /**
+             * Private key data
+             */
+            privateKeyData?: string;
+            /**
+             * Public key data
+             */
+            publicKeyData?: string;
+            /**
+             * Username of admin account
+             */
+            username?: string;
+        }
+    }
+
     export namespace v20200901preview {
         /**
          * The response for an ACI service.
@@ -198901,13 +199960,17 @@ export namespace media {
          */
         export interface AudioAnalyzerPresetResponse {
             /**
-             * The language for the audio payload in the input using the BCP-47 format of 'language tag-region' (e.g: 'en-US').  If you know the language of your content, it is recommended that you specify it. If the language isn't specified or set to null, automatic language detection will choose the first language detected and process with the selected language for the duration of the file. It does not currently support dynamically switching between languages after the first language is detected. The automatic detection works best with audio recordings with clearly discernable speech. If automatic detection fails to find the language, transcription would fallback to 'en-US'." The list of supported languages is available here: https://go.microsoft.com/fwlink/?linkid=2109463
+             * The language for the audio payload in the input using the BCP-47 format of 'language tag-region' (e.g: 'en-US').  If you know the language of your content, it is recommended that you specify it. The language must be specified explicitly for AudioAnalysisMode::Basic, since automatic language detection is not included in basic mode. If the language isn't specified or set to null, automatic language detection will choose the first language detected and process with the selected language for the duration of the file. It does not currently support dynamically switching between languages after the first language is detected. The automatic detection works best with audio recordings with clearly discernable speech. If automatic detection fails to find the language, transcription would fallback to 'en-US'." The list of supported languages is available here: https://go.microsoft.com/fwlink/?linkid=2109463
              */
             audioLanguage?: string;
             /**
              * Dictionary containing key value pairs for parameters not exposed in the preset itself
              */
             experimentalOptions?: {[key: string]: string};
+            /**
+             * Determines the set of audio analysis operations to be performed. If unspecified, the Standard AudioAnalysisMode would be chosen.
+             */
+            mode?: string;
             /**
              * The discriminator for derived types.
              */
@@ -198923,7 +199986,7 @@ export namespace media {
              */
             audioGainLevel?: number;
             /**
-             * The position in the input video at which the overlay ends. The value should be in ISO 8601 duration format. For example, PT30S to end the overlay at 30 seconds in to the input video. If not specified the overlay will be applied until the end of the input video if inputLoop is true. Else, if inputLoop is false, then overlay will last as long as the duration of the overlay media.
+             * The end position, with reference to the input video, at which the overlay ends. The value should be in ISO 8601 format. For example, PT30S to end the overlay at 30 seconds into the input video. If not specified or the value is greater than the input video duration, the overlay will be applied until the end of the input video if the overlay media duration is greater than the input video duration, else the overlay will last as long as the overlay media duration.
              */
             end?: string;
             /**
@@ -198943,7 +200006,7 @@ export namespace media {
              */
             odataType: "#Microsoft.Media.AudioOverlay";
             /**
-             * The start position, with reference to the input video, at which the overlay starts. The value should be in ISO 8601 format. For example, PT05S to start the overlay at 5 seconds in to the input video. If not specified the overlay starts from the beginning of the input video.
+             * The start position, with reference to the input video, at which the overlay starts. The value should be in ISO 8601 format. For example, PT05S to start the overlay at 5 seconds into the input video. If not specified the overlay starts from the beginning of the input video.
              */
             start?: string;
         }
@@ -199670,11 +200733,11 @@ export namespace media {
         }
 
         /**
-         * The HLS configuration.
+         * HTTP Live Streaming (HLS) packing setting for the live output.
          */
         export interface HlsResponse {
             /**
-             * The amount of fragments per HTTP Live Streaming (HLS) segment.
+             * The number of fragments in an HTTP Live Streaming (HLS) TS segment in the output of the live event. This value does not affect the packing ratio for HLS CMAF output.
              */
             fragmentsPerTsSegment?: number;
         }
@@ -199712,7 +200775,7 @@ export namespace media {
          */
         export interface ImageFormatResponse {
             /**
-             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - The base name of the input video {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
+             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
              */
             filenamePattern: string;
             /**
@@ -199768,7 +200831,7 @@ export namespace media {
             /**
              * Defines a point on the timeline of the input media at which processing will end. Defaults to the end of the input media.
              */
-            end?: outputs.media.latest.AbsoluteClipTimeResponse;
+            end?: outputs.media.latest.AbsoluteClipTimeResponse | outputs.media.latest.UtcClipTimeResponse;
             /**
              * List of files. Required for JobInputHttp. Maximum of 4000 characters each.
              */
@@ -199784,7 +200847,7 @@ export namespace media {
             /**
              * Defines a point on the timeline of the input media at which processing will start. Defaults to the beginning of the input media.
              */
-            start?: outputs.media.latest.AbsoluteClipTimeResponse;
+            start?: outputs.media.latest.AbsoluteClipTimeResponse | outputs.media.latest.UtcClipTimeResponse;
         }
 
         /**
@@ -199851,21 +200914,29 @@ export namespace media {
         }
 
         /**
-         * The Live Event encoding.
+         * Specifies the live event type and optional encoding settings for encoding live events.
          */
         export interface LiveEventEncodingResponse {
             /**
-             * The encoding type for Live Event. This value is specified at creation time and cannot be updated. When encodingType is set to None, the service simply passes through the incoming video and audio layer(s) to the output. When encodingType is set to Standard or Premium1080p, a live encoder transcodes the incoming stream into multiple bit rates or layers. See https://go.microsoft.com/fwlink/?linkid=2095101 for more information. The encodingType of Basic is obsolete – if specified, the service will treat this as a Standard Live Event.
+             * Live event type. When encodingType is set to None, the service simply passes through the incoming video and audio layer(s) to the output. When encodingType is set to Standard or Premium1080p, a live encoder transcodes the incoming stream into multiple bitrates or layers. See https://go.microsoft.com/fwlink/?linkid=2095101 for more information. This property cannot be modified after the live event is created.
              */
             encodingType?: string;
+            /**
+             * Use an ISO 8601 time value between 0.5 to 20 seconds to specify the output fragment length for the video and audio tracks of an encoding live event. For example, use PT2S to indicate 2 seconds. For the video track it also defines the key frame interval, or the length of a GoP (group of pictures).   If this value is not set for an encoding live event, the fragment duration defaults to 2 seconds. The value cannot be set for pass-through live events.
+             */
+            keyFrameInterval?: string;
             /**
              * The optional encoding preset name, used when encodingType is not None. This value is specified at creation time and cannot be updated. If the encodingType is set to Standard, then the default preset name is ‘Default720p’. Else if the encodingType is set to Premium1080p, the default preset is ‘Default1080p’.
              */
             presetName?: string;
+            /**
+             * Specifies how the input video will be resized to fit the desired output resolution(s). Default is None
+             */
+            stretchMode?: string;
         }
 
         /**
-         * The Live Event endpoint.
+         * The live event endpoint.
          */
         export interface LiveEventEndpointResponse {
             /**
@@ -199879,7 +200950,7 @@ export namespace media {
         }
 
         /**
-         * The IP access control for Live Event Input.
+         * The IP access control for live event input.
          */
         export interface LiveEventInputAccessControlResponse {
             /**
@@ -199889,33 +200960,61 @@ export namespace media {
         }
 
         /**
-         * The Live Event input.
+         * The live event input.
          */
         export interface LiveEventInputResponse {
             /**
-             * The access control for LiveEvent Input.
+             * Access control for live event input.
              */
             accessControl?: outputs.media.latest.LiveEventInputAccessControlResponse;
             /**
-             * A UUID in string form to uniquely identify the stream. This can be specified at creation time but cannot be updated.  If omitted, the service will generate a unique value.
+             * A UUID in string form to uniquely identify the stream. This can be specified at creation time but cannot be updated. If omitted, the service will generate a unique value.
              */
             accessToken?: string;
             /**
-             * The input endpoints for the Live Event.
+             * The input endpoints for the live event.
              */
             endpoints?: outputs.media.latest.LiveEventEndpointResponse[];
             /**
-             * ISO 8601 timespan duration of the key frame interval duration.
+             * ISO 8601 time duration of the key frame interval duration of the input. This value sets the EXT-X-TARGETDURATION property in the HLS output. For example, use PT2S to indicate 2 seconds. Leave the value empty for encoding live events.
              */
             keyFrameIntervalDuration?: string;
             /**
-             * The streaming protocol for the Live Event.  This is specified at creation time and cannot be updated.
+             * The input protocol for the live event. This is specified at creation time and cannot be updated.
              */
             streamingProtocol: string;
         }
 
         /**
-         * The IP access control for Live Event preview.
+         * A track selection condition. This property is reserved for future use, any value set on this property will be ignored.
+         */
+        export interface LiveEventInputTrackSelectionResponse {
+            /**
+             * Comparing operation. This property is reserved for future use, any value set on this property will be ignored.
+             */
+            operation?: string;
+            /**
+             * Property name to select. This property is reserved for future use, any value set on this property will be ignored.
+             */
+            property?: string;
+            /**
+             * Property value to select. This property is reserved for future use, any value set on this property will be ignored.
+             */
+            value?: string;
+        }
+
+        /**
+         * Describes a transcription track in the output of a live event, generated using speech-to-text transcription. This property is reserved for future use, any value set on this property will be ignored.
+         */
+        export interface LiveEventOutputTranscriptionTrackResponse {
+            /**
+             * The output track name. This property is reserved for future use, any value set on this property will be ignored.
+             */
+            trackName: string;
+        }
+
+        /**
+         * The IP access control for the live event preview endpoint.
          */
         export interface LiveEventPreviewAccessControlResponse {
             /**
@@ -199925,29 +201024,47 @@ export namespace media {
         }
 
         /**
-         * The Live Event preview.
+         * Live event preview settings.
          */
         export interface LiveEventPreviewResponse {
             /**
-             * The access control for LiveEvent preview.
+             * The access control for live event preview.
              */
             accessControl?: outputs.media.latest.LiveEventPreviewAccessControlResponse;
             /**
-             * An Alternative Media Identifier associated with the StreamingLocator created for the preview.  This value is specified at creation time and cannot be updated.  The identifier can be used in the CustomLicenseAcquisitionUrlTemplate or the CustomKeyAcquisitionUrlTemplate of the StreamingPolicy specified in the StreamingPolicyName field.
+             * An alternative media identifier associated with the streaming locator created for the preview. This value is specified at creation time and cannot be updated. The identifier can be used in the CustomLicenseAcquisitionUrlTemplate or the CustomKeyAcquisitionUrlTemplate of the StreamingPolicy specified in the StreamingPolicyName field.
              */
             alternativeMediaId?: string;
             /**
-             * The endpoints for preview.
+             * The endpoints for preview. Do not share the preview URL with the live event audience.
              */
             endpoints?: outputs.media.latest.LiveEventEndpointResponse[];
             /**
-             * The identifier of the preview locator in Guid format.  Specifying this at creation time allows the caller to know the preview locator url before the event is created.  If omitted, the service will generate a random identifier.  This value cannot be updated once the live event is created.
+             * The identifier of the preview locator in Guid format. Specifying this at creation time allows the caller to know the preview locator url before the event is created. If omitted, the service will generate a random identifier. This value cannot be updated once the live event is created.
              */
             previewLocator?: string;
             /**
-             * The name of streaming policy used for the LiveEvent preview.  This value is specified at creation time and cannot be updated.
+             * The name of streaming policy used for the live event preview. This value is specified at creation time and cannot be updated.
              */
             streamingPolicyName?: string;
+        }
+
+        /**
+         * Describes the transcription tracks in the output of a live event, generated using speech-to-text transcription. This property is reserved for future use, any value set on this property will be ignored.
+         */
+        export interface LiveEventTranscriptionResponse {
+            /**
+             * Provides a mechanism to select the audio track in the input live feed, to which speech-to-text transcription is applied. This property is reserved for future use, any value set on this property will be ignored.
+             */
+            inputTrackSelection?: outputs.media.latest.LiveEventInputTrackSelectionResponse[];
+            /**
+             * Specifies the language (locale) to be used for speech-to-text transcription – it should match the spoken language in the audio track. The value should be in BCP-47 format (e.g: 'en-US'). See https://go.microsoft.com/fwlink/?linkid=2133742 for more information about the live transcription feature and the list of supported languages.
+             */
+            language?: string;
+            /**
+             * Describes a transcription track in the output of a live event, generated using speech-to-text transcription. This property is reserved for future use, any value set on this property will be ignored.
+             */
+            outputTranscriptionTrack?: outputs.media.latest.LiveEventOutputTranscriptionTrackResponse;
         }
 
         export interface MediaServiceIdentityResponse {
@@ -199970,7 +201087,7 @@ export namespace media {
          */
         export interface MultiBitrateFormatResponse {
             /**
-             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - The base name of the input video {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
+             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
              */
             filenamePattern: string;
             /**
@@ -200120,7 +201237,7 @@ export namespace media {
         }
 
         /**
-         * StreamingEndpoint access control definition.
+         * Streaming endpoint access control definition.
          */
         export interface StreamingEndpointAccessControlResponse {
             /**
@@ -200128,7 +201245,7 @@ export namespace media {
              */
             akamai?: outputs.media.latest.AkamaiAccessControlResponse;
             /**
-             * The IP access control of the StreamingEndpoint.
+             * The IP access control of the streaming endpoint.
              */
             ip?: outputs.media.latest.IPAccessControlResponse;
         }
@@ -200298,6 +201415,20 @@ export namespace media {
         }
 
         /**
+         * Specifies the clip time as a Utc time position in the media file.  The Utc time can point to a different position depending on whether the media file starts from a timestamp of zero or not.
+         */
+        export interface UtcClipTimeResponse {
+            /**
+             * The discriminator for derived types.
+             */
+            odataType: "#Microsoft.Media.UtcClipTime";
+            /**
+             * The time position on the timeline of the input media based on Utc time.
+             */
+            time: string;
+        }
+
+        /**
          * Describes the properties of a video overlay.
          */
         export interface VideoOverlayResponse {
@@ -200310,7 +201441,7 @@ export namespace media {
              */
             cropRectangle?: outputs.media.latest.RectangleResponse;
             /**
-             * The position in the input video at which the overlay ends. The value should be in ISO 8601 duration format. For example, PT30S to end the overlay at 30 seconds in to the input video. If not specified the overlay will be applied until the end of the input video if inputLoop is true. Else, if inputLoop is false, then overlay will last as long as the duration of the overlay media.
+             * The end position, with reference to the input video, at which the overlay ends. The value should be in ISO 8601 format. For example, PT30S to end the overlay at 30 seconds into the input video. If not specified or the value is greater than the input video duration, the overlay will be applied until the end of the input video if the overlay media duration is greater than the input video duration, else the overlay will last as long as the overlay media duration.
              */
             end?: string;
             /**
@@ -200338,7 +201469,7 @@ export namespace media {
              */
             position?: outputs.media.latest.RectangleResponse;
             /**
-             * The start position, with reference to the input video, at which the overlay starts. The value should be in ISO 8601 format. For example, PT05S to start the overlay at 5 seconds in to the input video. If not specified the overlay starts from the beginning of the input video.
+             * The start position, with reference to the input video, at which the overlay starts. The value should be in ISO 8601 format. For example, PT05S to start the overlay at 5 seconds into the input video. If not specified the overlay starts from the beginning of the input video.
              */
             start?: string;
         }
@@ -205034,13 +206165,17 @@ export namespace media {
          */
         export interface AudioAnalyzerPresetResponse {
             /**
-             * The language for the audio payload in the input using the BCP-47 format of 'language tag-region' (e.g: 'en-US').  If you know the language of your content, it is recommended that you specify it. If the language isn't specified or set to null, automatic language detection will choose the first language detected and process with the selected language for the duration of the file. It does not currently support dynamically switching between languages after the first language is detected. The automatic detection works best with audio recordings with clearly discernable speech. If automatic detection fails to find the language, transcription would fallback to 'en-US'." The list of supported languages is available here: https://go.microsoft.com/fwlink/?linkid=2109463
+             * The language for the audio payload in the input using the BCP-47 format of 'language tag-region' (e.g: 'en-US').  If you know the language of your content, it is recommended that you specify it. The language must be specified explicitly for AudioAnalysisMode::Basic, since automatic language detection is not included in basic mode. If the language isn't specified or set to null, automatic language detection will choose the first language detected and process with the selected language for the duration of the file. It does not currently support dynamically switching between languages after the first language is detected. The automatic detection works best with audio recordings with clearly discernable speech. If automatic detection fails to find the language, transcription would fallback to 'en-US'." The list of supported languages is available here: https://go.microsoft.com/fwlink/?linkid=2109463
              */
             audioLanguage?: string;
             /**
              * Dictionary containing key value pairs for parameters not exposed in the preset itself
              */
             experimentalOptions?: {[key: string]: string};
+            /**
+             * Determines the set of audio analysis operations to be performed. If unspecified, the Standard AudioAnalysisMode would be chosen.
+             */
+            mode?: string;
             /**
              * The discriminator for derived types.
              */
@@ -205056,7 +206191,7 @@ export namespace media {
              */
             audioGainLevel?: number;
             /**
-             * The position in the input video at which the overlay ends. The value should be in ISO 8601 duration format. For example, PT30S to end the overlay at 30 seconds in to the input video. If not specified the overlay will be applied until the end of the input video if inputLoop is true. Else, if inputLoop is false, then overlay will last as long as the duration of the overlay media.
+             * The end position, with reference to the input video, at which the overlay ends. The value should be in ISO 8601 format. For example, PT30S to end the overlay at 30 seconds into the input video. If not specified or the value is greater than the input video duration, the overlay will be applied until the end of the input video if the overlay media duration is greater than the input video duration, else the overlay will last as long as the overlay media duration.
              */
             end?: string;
             /**
@@ -205076,7 +206211,7 @@ export namespace media {
              */
             odataType: "#Microsoft.Media.AudioOverlay";
             /**
-             * The start position, with reference to the input video, at which the overlay starts. The value should be in ISO 8601 format. For example, PT05S to start the overlay at 5 seconds in to the input video. If not specified the overlay starts from the beginning of the input video.
+             * The start position, with reference to the input video, at which the overlay starts. The value should be in ISO 8601 format. For example, PT05S to start the overlay at 5 seconds into the input video. If not specified the overlay starts from the beginning of the input video.
              */
             start?: string;
         }
@@ -205803,11 +206938,11 @@ export namespace media {
         }
 
         /**
-         * The HLS configuration.
+         * HTTP Live Streaming (HLS) packing setting for the live output.
          */
         export interface HlsResponse {
             /**
-             * The amount of fragments per HTTP Live Streaming (HLS) segment.
+             * The number of fragments in an HTTP Live Streaming (HLS) TS segment in the output of the live event. This value does not affect the packing ratio for HLS CMAF output.
              */
             fragmentsPerTsSegment?: number;
         }
@@ -205845,7 +206980,7 @@ export namespace media {
          */
         export interface ImageFormatResponse {
             /**
-             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - The base name of the input video {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
+             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
              */
             filenamePattern: string;
             /**
@@ -205901,7 +207036,7 @@ export namespace media {
             /**
              * Defines a point on the timeline of the input media at which processing will end. Defaults to the end of the input media.
              */
-            end?: outputs.media.v20200501.AbsoluteClipTimeResponse;
+            end?: outputs.media.v20200501.AbsoluteClipTimeResponse | outputs.media.v20200501.UtcClipTimeResponse;
             /**
              * List of files. Required for JobInputHttp. Maximum of 4000 characters each.
              */
@@ -205917,7 +207052,7 @@ export namespace media {
             /**
              * Defines a point on the timeline of the input media at which processing will start. Defaults to the beginning of the input media.
              */
-            start?: outputs.media.v20200501.AbsoluteClipTimeResponse;
+            start?: outputs.media.v20200501.AbsoluteClipTimeResponse | outputs.media.v20200501.UtcClipTimeResponse;
         }
 
         /**
@@ -205984,21 +207119,29 @@ export namespace media {
         }
 
         /**
-         * The Live Event encoding.
+         * Specifies the live event type and optional encoding settings for encoding live events.
          */
         export interface LiveEventEncodingResponse {
             /**
-             * The encoding type for Live Event. This value is specified at creation time and cannot be updated. When encodingType is set to None, the service simply passes through the incoming video and audio layer(s) to the output. When encodingType is set to Standard or Premium1080p, a live encoder transcodes the incoming stream into multiple bit rates or layers. See https://go.microsoft.com/fwlink/?linkid=2095101 for more information. The encodingType of Basic is obsolete – if specified, the service will treat this as a Standard Live Event.
+             * Live event type. When encodingType is set to None, the service simply passes through the incoming video and audio layer(s) to the output. When encodingType is set to Standard or Premium1080p, a live encoder transcodes the incoming stream into multiple bitrates or layers. See https://go.microsoft.com/fwlink/?linkid=2095101 for more information. This property cannot be modified after the live event is created.
              */
             encodingType?: string;
+            /**
+             * Use an ISO 8601 time value between 0.5 to 20 seconds to specify the output fragment length for the video and audio tracks of an encoding live event. For example, use PT2S to indicate 2 seconds. For the video track it also defines the key frame interval, or the length of a GoP (group of pictures).   If this value is not set for an encoding live event, the fragment duration defaults to 2 seconds. The value cannot be set for pass-through live events.
+             */
+            keyFrameInterval?: string;
             /**
              * The optional encoding preset name, used when encodingType is not None. This value is specified at creation time and cannot be updated. If the encodingType is set to Standard, then the default preset name is ‘Default720p’. Else if the encodingType is set to Premium1080p, the default preset is ‘Default1080p’.
              */
             presetName?: string;
+            /**
+             * Specifies how the input video will be resized to fit the desired output resolution(s). Default is None
+             */
+            stretchMode?: string;
         }
 
         /**
-         * The Live Event endpoint.
+         * The live event endpoint.
          */
         export interface LiveEventEndpointResponse {
             /**
@@ -206012,7 +207155,7 @@ export namespace media {
         }
 
         /**
-         * The IP access control for Live Event Input.
+         * The IP access control for live event input.
          */
         export interface LiveEventInputAccessControlResponse {
             /**
@@ -206022,33 +207165,61 @@ export namespace media {
         }
 
         /**
-         * The Live Event input.
+         * The live event input.
          */
         export interface LiveEventInputResponse {
             /**
-             * The access control for LiveEvent Input.
+             * Access control for live event input.
              */
             accessControl?: outputs.media.v20200501.LiveEventInputAccessControlResponse;
             /**
-             * A UUID in string form to uniquely identify the stream. This can be specified at creation time but cannot be updated.  If omitted, the service will generate a unique value.
+             * A UUID in string form to uniquely identify the stream. This can be specified at creation time but cannot be updated. If omitted, the service will generate a unique value.
              */
             accessToken?: string;
             /**
-             * The input endpoints for the Live Event.
+             * The input endpoints for the live event.
              */
             endpoints?: outputs.media.v20200501.LiveEventEndpointResponse[];
             /**
-             * ISO 8601 timespan duration of the key frame interval duration.
+             * ISO 8601 time duration of the key frame interval duration of the input. This value sets the EXT-X-TARGETDURATION property in the HLS output. For example, use PT2S to indicate 2 seconds. Leave the value empty for encoding live events.
              */
             keyFrameIntervalDuration?: string;
             /**
-             * The streaming protocol for the Live Event.  This is specified at creation time and cannot be updated.
+             * The input protocol for the live event. This is specified at creation time and cannot be updated.
              */
             streamingProtocol: string;
         }
 
         /**
-         * The IP access control for Live Event preview.
+         * A track selection condition. This property is reserved for future use, any value set on this property will be ignored.
+         */
+        export interface LiveEventInputTrackSelectionResponse {
+            /**
+             * Comparing operation. This property is reserved for future use, any value set on this property will be ignored.
+             */
+            operation?: string;
+            /**
+             * Property name to select. This property is reserved for future use, any value set on this property will be ignored.
+             */
+            property?: string;
+            /**
+             * Property value to select. This property is reserved for future use, any value set on this property will be ignored.
+             */
+            value?: string;
+        }
+
+        /**
+         * Describes a transcription track in the output of a live event, generated using speech-to-text transcription. This property is reserved for future use, any value set on this property will be ignored.
+         */
+        export interface LiveEventOutputTranscriptionTrackResponse {
+            /**
+             * The output track name. This property is reserved for future use, any value set on this property will be ignored.
+             */
+            trackName: string;
+        }
+
+        /**
+         * The IP access control for the live event preview endpoint.
          */
         export interface LiveEventPreviewAccessControlResponse {
             /**
@@ -206058,29 +207229,47 @@ export namespace media {
         }
 
         /**
-         * The Live Event preview.
+         * Live event preview settings.
          */
         export interface LiveEventPreviewResponse {
             /**
-             * The access control for LiveEvent preview.
+             * The access control for live event preview.
              */
             accessControl?: outputs.media.v20200501.LiveEventPreviewAccessControlResponse;
             /**
-             * An Alternative Media Identifier associated with the StreamingLocator created for the preview.  This value is specified at creation time and cannot be updated.  The identifier can be used in the CustomLicenseAcquisitionUrlTemplate or the CustomKeyAcquisitionUrlTemplate of the StreamingPolicy specified in the StreamingPolicyName field.
+             * An alternative media identifier associated with the streaming locator created for the preview. This value is specified at creation time and cannot be updated. The identifier can be used in the CustomLicenseAcquisitionUrlTemplate or the CustomKeyAcquisitionUrlTemplate of the StreamingPolicy specified in the StreamingPolicyName field.
              */
             alternativeMediaId?: string;
             /**
-             * The endpoints for preview.
+             * The endpoints for preview. Do not share the preview URL with the live event audience.
              */
             endpoints?: outputs.media.v20200501.LiveEventEndpointResponse[];
             /**
-             * The identifier of the preview locator in Guid format.  Specifying this at creation time allows the caller to know the preview locator url before the event is created.  If omitted, the service will generate a random identifier.  This value cannot be updated once the live event is created.
+             * The identifier of the preview locator in Guid format. Specifying this at creation time allows the caller to know the preview locator url before the event is created. If omitted, the service will generate a random identifier. This value cannot be updated once the live event is created.
              */
             previewLocator?: string;
             /**
-             * The name of streaming policy used for the LiveEvent preview.  This value is specified at creation time and cannot be updated.
+             * The name of streaming policy used for the live event preview. This value is specified at creation time and cannot be updated.
              */
             streamingPolicyName?: string;
+        }
+
+        /**
+         * Describes the transcription tracks in the output of a live event, generated using speech-to-text transcription. This property is reserved for future use, any value set on this property will be ignored.
+         */
+        export interface LiveEventTranscriptionResponse {
+            /**
+             * Provides a mechanism to select the audio track in the input live feed, to which speech-to-text transcription is applied. This property is reserved for future use, any value set on this property will be ignored.
+             */
+            inputTrackSelection?: outputs.media.v20200501.LiveEventInputTrackSelectionResponse[];
+            /**
+             * Specifies the language (locale) to be used for speech-to-text transcription – it should match the spoken language in the audio track. The value should be in BCP-47 format (e.g: 'en-US'). See https://go.microsoft.com/fwlink/?linkid=2133742 for more information about the live transcription feature and the list of supported languages.
+             */
+            language?: string;
+            /**
+             * Describes a transcription track in the output of a live event, generated using speech-to-text transcription. This property is reserved for future use, any value set on this property will be ignored.
+             */
+            outputTranscriptionTrack?: outputs.media.v20200501.LiveEventOutputTranscriptionTrackResponse;
         }
 
         export interface MediaServiceIdentityResponse {
@@ -206103,7 +207292,7 @@ export namespace media {
          */
         export interface MultiBitrateFormatResponse {
             /**
-             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - The base name of the input video {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
+             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
              */
             filenamePattern: string;
             /**
@@ -206253,7 +207442,7 @@ export namespace media {
         }
 
         /**
-         * StreamingEndpoint access control definition.
+         * Streaming endpoint access control definition.
          */
         export interface StreamingEndpointAccessControlResponse {
             /**
@@ -206261,7 +207450,7 @@ export namespace media {
              */
             akamai?: outputs.media.v20200501.AkamaiAccessControlResponse;
             /**
-             * The IP access control of the StreamingEndpoint.
+             * The IP access control of the streaming endpoint.
              */
             ip?: outputs.media.v20200501.IPAccessControlResponse;
         }
@@ -206431,6 +207620,20 @@ export namespace media {
         }
 
         /**
+         * Specifies the clip time as a Utc time position in the media file.  The Utc time can point to a different position depending on whether the media file starts from a timestamp of zero or not.
+         */
+        export interface UtcClipTimeResponse {
+            /**
+             * The discriminator for derived types.
+             */
+            odataType: "#Microsoft.Media.UtcClipTime";
+            /**
+             * The time position on the timeline of the input media based on Utc time.
+             */
+            time: string;
+        }
+
+        /**
          * Describes the properties of a video overlay.
          */
         export interface VideoOverlayResponse {
@@ -206443,7 +207646,7 @@ export namespace media {
              */
             cropRectangle?: outputs.media.v20200501.RectangleResponse;
             /**
-             * The position in the input video at which the overlay ends. The value should be in ISO 8601 duration format. For example, PT30S to end the overlay at 30 seconds in to the input video. If not specified the overlay will be applied until the end of the input video if inputLoop is true. Else, if inputLoop is false, then overlay will last as long as the duration of the overlay media.
+             * The end position, with reference to the input video, at which the overlay ends. The value should be in ISO 8601 format. For example, PT30S to end the overlay at 30 seconds into the input video. If not specified or the value is greater than the input video duration, the overlay will be applied until the end of the input video if the overlay media duration is greater than the input video duration, else the overlay will last as long as the overlay media duration.
              */
             end?: string;
             /**
@@ -206471,7 +207674,7 @@ export namespace media {
              */
             position?: outputs.media.v20200501.RectangleResponse;
             /**
-             * The start position, with reference to the input video, at which the overlay starts. The value should be in ISO 8601 format. For example, PT05S to start the overlay at 5 seconds in to the input video. If not specified the overlay starts from the beginning of the input video.
+             * The start position, with reference to the input video, at which the overlay starts. The value should be in ISO 8601 format. For example, PT05S to start the overlay at 5 seconds into the input video. If not specified the overlay starts from the beginning of the input video.
              */
             start?: string;
         }

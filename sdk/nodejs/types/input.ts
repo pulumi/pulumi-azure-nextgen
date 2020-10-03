@@ -148495,6 +148495,544 @@ export namespace machinelearningservices {
 
     }
 
+    export namespace v20200801 {
+        /**
+         * A Machine Learning compute based on AKS.
+         */
+        export interface AKS {
+            /**
+             * Location for the underlying compute
+             */
+            computeLocation?: pulumi.Input<string>;
+            /**
+             * The type of compute
+             */
+            computeType: pulumi.Input<"AKS">;
+            /**
+             * The description of the Machine Learning compute.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * AKS properties
+             */
+            properties?: pulumi.Input<inputs.machinelearningservices.v20200801.AKSProperties>;
+            /**
+             * ARM resource id of the underlying compute
+             */
+            resourceId?: pulumi.Input<string>;
+        }
+
+        /**
+         * AKS properties
+         */
+        export interface AKSProperties {
+            /**
+             * Number of agents
+             */
+            agentCount?: pulumi.Input<number>;
+            /**
+             * Agent virtual machine size
+             */
+            agentVMSize?: pulumi.Input<string>;
+            /**
+             * AKS networking configuration for vnet
+             */
+            aksNetworkingConfiguration?: pulumi.Input<inputs.machinelearningservices.v20200801.AksNetworkingConfiguration>;
+            /**
+             * Cluster full qualified domain name
+             */
+            clusterFqdn?: pulumi.Input<string>;
+            /**
+             * SSL configuration
+             */
+            sslConfiguration?: pulumi.Input<inputs.machinelearningservices.v20200801.SslConfiguration>;
+        }
+
+        /**
+         * Advance configuration for AKS networking
+         */
+        export interface AksNetworkingConfiguration {
+            /**
+             * An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr.
+             */
+            dnsServiceIP?: pulumi.Input<string>;
+            /**
+             * A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes service address range.
+             */
+            dockerBridgeCidr?: pulumi.Input<string>;
+            /**
+             * A CIDR notation IP range from which to assign service cluster IPs. It must not overlap with any Subnet IP ranges.
+             */
+            serviceCidr?: pulumi.Input<string>;
+            /**
+             * Virtual network subnet resource ID the compute nodes belong to
+             */
+            subnetId?: pulumi.Input<string>;
+        }
+
+        /**
+         * An Azure Machine Learning compute.
+         */
+        export interface AmlCompute {
+            /**
+             * Location for the underlying compute
+             */
+            computeLocation?: pulumi.Input<string>;
+            /**
+             * The type of compute
+             */
+            computeType: pulumi.Input<"AmlCompute">;
+            /**
+             * The description of the Machine Learning compute.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * AML Compute properties
+             */
+            properties?: pulumi.Input<inputs.machinelearningservices.v20200801.AmlComputeProperties>;
+            /**
+             * ARM resource id of the underlying compute
+             */
+            resourceId?: pulumi.Input<string>;
+        }
+
+        /**
+         * AML Compute properties
+         */
+        export interface AmlComputeProperties {
+            /**
+             * State of the public SSH port. Possible values are: Disabled - Indicates that the public ssh port is closed on all nodes of the cluster. Enabled - Indicates that the public ssh port is open on all nodes of the cluster. NotSpecified - Indicates that the public ssh port is closed on all nodes of the cluster if VNet is defined, else is open all public nodes. It can be default only during cluster creation time, after creation it will be either enabled or disabled.
+             */
+            remoteLoginPortPublicAccess?: pulumi.Input<string>;
+            /**
+             * Scale settings for AML Compute
+             */
+            scaleSettings?: pulumi.Input<inputs.machinelearningservices.v20200801.ScaleSettings>;
+            /**
+             * Virtual network subnet resource ID the compute nodes belong to.
+             */
+            subnet?: pulumi.Input<inputs.machinelearningservices.v20200801.ResourceId>;
+            /**
+             * Credentials for an administrator user account that will be created on each compute node.
+             */
+            userAccountCredentials?: pulumi.Input<inputs.machinelearningservices.v20200801.UserAccountCredentials>;
+            /**
+             * Virtual Machine priority
+             */
+            vmPriority?: pulumi.Input<string>;
+            /**
+             * Virtual Machine Size
+             */
+            vmSize?: pulumi.Input<string>;
+        }
+
+        /**
+         * An Azure Machine Learning compute instance.
+         */
+        export interface ComputeInstance {
+            /**
+             * Location for the underlying compute
+             */
+            computeLocation?: pulumi.Input<string>;
+            /**
+             * The type of compute
+             */
+            computeType: pulumi.Input<"ComputeInstance">;
+            /**
+             * The description of the Machine Learning compute.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Compute Instance properties
+             */
+            properties?: pulumi.Input<inputs.machinelearningservices.v20200801.ComputeInstanceProperties>;
+            /**
+             * ARM resource id of the underlying compute
+             */
+            resourceId?: pulumi.Input<string>;
+        }
+
+        /**
+         * Compute Instance properties
+         */
+        export interface ComputeInstanceProperties {
+            /**
+             * Policy for sharing applications on this compute instance among users of parent workspace. If Personal, only the creator can access applications on this compute instance. When Shared, any workspace user can access applications on this instance depending on his/her assigned role.
+             */
+            applicationSharingPolicy?: pulumi.Input<string>;
+            /**
+             * Specifies policy and settings for SSH access.
+             */
+            sshSettings?: pulumi.Input<inputs.machinelearningservices.v20200801.ComputeInstanceSshSettings>;
+            /**
+             * Virtual network subnet resource ID the compute nodes belong to.
+             */
+            subnet?: pulumi.Input<inputs.machinelearningservices.v20200801.ResourceId>;
+            /**
+             * Virtual Machine Size
+             */
+            vmSize?: pulumi.Input<string>;
+        }
+
+        /**
+         * Specifies policy and settings for SSH access.
+         */
+        export interface ComputeInstanceSshSettings {
+            /**
+             * Specifies the SSH rsa public key file as a string. Use "ssh-keygen -t rsa -b 2048" to generate your SSH key pairs.
+             */
+            adminPublicKey?: pulumi.Input<string>;
+            /**
+             * State of the public SSH port. Possible values are: Disabled - Indicates that the public ssh port is closed on this instance. Enabled - Indicates that the public ssh port is open and accessible according to the VNet/subnet policy if applicable.
+             */
+            sshPublicAccess?: pulumi.Input<string>;
+        }
+
+        /**
+         * A DataFactory compute.
+         */
+        export interface DataFactory {
+            /**
+             * Location for the underlying compute
+             */
+            computeLocation?: pulumi.Input<string>;
+            /**
+             * The type of compute
+             */
+            computeType: pulumi.Input<"DataFactory">;
+            /**
+             * The description of the Machine Learning compute.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * ARM resource id of the underlying compute
+             */
+            resourceId?: pulumi.Input<string>;
+        }
+
+        /**
+         * A DataLakeAnalytics compute.
+         */
+        export interface DataLakeAnalytics {
+            /**
+             * Location for the underlying compute
+             */
+            computeLocation?: pulumi.Input<string>;
+            /**
+             * The type of compute
+             */
+            computeType: pulumi.Input<"DataLakeAnalytics">;
+            /**
+             * The description of the Machine Learning compute.
+             */
+            description?: pulumi.Input<string>;
+            properties?: pulumi.Input<inputs.machinelearningservices.v20200801.DataLakeAnalyticsProperties>;
+            /**
+             * ARM resource id of the underlying compute
+             */
+            resourceId?: pulumi.Input<string>;
+        }
+
+        export interface DataLakeAnalyticsProperties {
+            /**
+             * DataLake Store Account Name
+             */
+            dataLakeStoreAccountName?: pulumi.Input<string>;
+        }
+
+        /**
+         * A DataFactory compute.
+         */
+        export interface Databricks {
+            /**
+             * Location for the underlying compute
+             */
+            computeLocation?: pulumi.Input<string>;
+            /**
+             * The type of compute
+             */
+            computeType: pulumi.Input<"Databricks">;
+            /**
+             * The description of the Machine Learning compute.
+             */
+            description?: pulumi.Input<string>;
+            properties?: pulumi.Input<inputs.machinelearningservices.v20200801.DatabricksProperties>;
+            /**
+             * ARM resource id of the underlying compute
+             */
+            resourceId?: pulumi.Input<string>;
+        }
+
+        export interface DatabricksProperties {
+            /**
+             * Databricks access token
+             */
+            databricksAccessToken?: pulumi.Input<string>;
+        }
+
+        export interface EncryptionProperty {
+            /**
+             * Customer Key vault properties.
+             */
+            keyVaultProperties: pulumi.Input<inputs.machinelearningservices.v20200801.KeyVaultProperties>;
+            /**
+             * Indicates whether or not the encryption is enabled for the workspace.
+             */
+            status: pulumi.Input<string>;
+        }
+
+        /**
+         * A HDInsight compute.
+         */
+        export interface HDInsight {
+            /**
+             * Location for the underlying compute
+             */
+            computeLocation?: pulumi.Input<string>;
+            /**
+             * The type of compute
+             */
+            computeType: pulumi.Input<"HDInsight">;
+            /**
+             * The description of the Machine Learning compute.
+             */
+            description?: pulumi.Input<string>;
+            properties?: pulumi.Input<inputs.machinelearningservices.v20200801.HDInsightProperties>;
+            /**
+             * ARM resource id of the underlying compute
+             */
+            resourceId?: pulumi.Input<string>;
+        }
+
+        export interface HDInsightProperties {
+            /**
+             * Public IP address of the master node of the cluster.
+             */
+            address?: pulumi.Input<string>;
+            /**
+             * Admin credentials for master node of the cluster
+             */
+            administratorAccount?: pulumi.Input<inputs.machinelearningservices.v20200801.VirtualMachineSshCredentials>;
+            /**
+             * Port open for ssh connections on the master node of the cluster.
+             */
+            sshPort?: pulumi.Input<number>;
+        }
+
+        /**
+         * Identity for the resource.
+         */
+        export interface Identity {
+            /**
+             * The identity type.
+             */
+            type: pulumi.Input<string>;
+        }
+
+        export interface KeyVaultProperties {
+            /**
+             * For future use - The client id of the identity which will be used to access key vault.
+             */
+            identityClientId?: pulumi.Input<string>;
+            /**
+             * Key vault uri to access the encryption key.
+             */
+            keyIdentifier: pulumi.Input<string>;
+            /**
+             * The ArmId of the keyVault where the customer owned encryption key is present.
+             */
+            keyVaultArmId: pulumi.Input<string>;
+        }
+
+        /**
+         * A collection of information about the state of the connection between service consumer and provider.
+         */
+        export interface PrivateLinkServiceConnectionState {
+            /**
+             * A message indicating if changes on the service provider require any updates on the consumer.
+             */
+            actionsRequired?: pulumi.Input<string>;
+            /**
+             * The reason for approval/rejection of the connection.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+             */
+            status?: pulumi.Input<string>;
+        }
+
+        /**
+         * Represents a resource ID. For example, for a subnet, it is the resource URL for the subnet.
+         */
+        export interface ResourceId {
+            /**
+             * The ID of the resource
+             */
+            id: pulumi.Input<string>;
+        }
+
+        /**
+         * scale settings for AML Compute
+         */
+        export interface ScaleSettings {
+            /**
+             * Max number of nodes to use
+             */
+            maxNodeCount: pulumi.Input<number>;
+            /**
+             * Min number of nodes to use
+             */
+            minNodeCount?: pulumi.Input<number>;
+            /**
+             * Node Idle Time before scaling down amlCompute
+             */
+            nodeIdleTimeBeforeScaleDown?: pulumi.Input<string>;
+        }
+
+        export interface SharedPrivateLinkResource {
+            /**
+             * The private link resource group id.
+             */
+            groupId?: pulumi.Input<string>;
+            /**
+             * Unique name of the private link.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * The resource id that private link links to.
+             */
+            privateLinkResourceId?: pulumi.Input<string>;
+            /**
+             * Request message.
+             */
+            requestMessage?: pulumi.Input<string>;
+            /**
+             * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+             */
+            status?: pulumi.Input<string>;
+        }
+
+        /**
+         * Sku of the resource
+         */
+        export interface Sku {
+            /**
+             * Name of the sku
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Tier of the sku like Basic or Enterprise
+             */
+            tier?: pulumi.Input<string>;
+        }
+
+        /**
+         * The ssl configuration for scoring
+         */
+        export interface SslConfiguration {
+            /**
+             * Cert data
+             */
+            cert?: pulumi.Input<string>;
+            /**
+             * CNAME of the cert
+             */
+            cname?: pulumi.Input<string>;
+            /**
+             * Key data
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * Enable or disable ssl for scoring
+             */
+            status?: pulumi.Input<string>;
+        }
+
+        /**
+         * Settings for user account that gets created on each on the nodes of a compute.
+         */
+        export interface UserAccountCredentials {
+            /**
+             * Name of the administrator user account which can be used to SSH to nodes.
+             */
+            adminUserName: pulumi.Input<string>;
+            /**
+             * Password of the administrator user account.
+             */
+            adminUserPassword?: pulumi.Input<string>;
+            /**
+             * SSH public key of the administrator user account.
+             */
+            adminUserSshPublicKey?: pulumi.Input<string>;
+        }
+
+        /**
+         * A Machine Learning compute based on Azure Virtual Machines.
+         */
+        export interface VirtualMachine {
+            /**
+             * Location for the underlying compute
+             */
+            computeLocation?: pulumi.Input<string>;
+            /**
+             * The type of compute
+             */
+            computeType: pulumi.Input<"VirtualMachine">;
+            /**
+             * The description of the Machine Learning compute.
+             */
+            description?: pulumi.Input<string>;
+            properties?: pulumi.Input<inputs.machinelearningservices.v20200801.VirtualMachineProperties>;
+            /**
+             * ARM resource id of the underlying compute
+             */
+            resourceId?: pulumi.Input<string>;
+        }
+
+        export interface VirtualMachineProperties {
+            /**
+             * Public IP address of the virtual machine.
+             */
+            address?: pulumi.Input<string>;
+            /**
+             * Admin credentials for virtual machine
+             */
+            administratorAccount?: pulumi.Input<inputs.machinelearningservices.v20200801.VirtualMachineSshCredentials>;
+            /**
+             * Port open for ssh connections.
+             */
+            sshPort?: pulumi.Input<number>;
+            /**
+             * Virtual Machine size
+             */
+            virtualMachineSize?: pulumi.Input<string>;
+        }
+
+        /**
+         * Admin credentials for virtual machine
+         */
+        export interface VirtualMachineSshCredentials {
+            /**
+             * Password of admin account
+             */
+            password?: pulumi.Input<string>;
+            /**
+             * Private key data
+             */
+            privateKeyData?: pulumi.Input<string>;
+            /**
+             * Public key data
+             */
+            publicKeyData?: pulumi.Input<string>;
+            /**
+             * Username of admin account
+             */
+            username?: pulumi.Input<string>;
+        }
+
+    }
+
     export namespace v20200901preview {
         /**
          * A Machine Learning compute based on AKS.
@@ -151396,13 +151934,17 @@ export namespace media {
          */
         export interface AudioAnalyzerPreset {
             /**
-             * The language for the audio payload in the input using the BCP-47 format of 'language tag-region' (e.g: 'en-US').  If you know the language of your content, it is recommended that you specify it. If the language isn't specified or set to null, automatic language detection will choose the first language detected and process with the selected language for the duration of the file. It does not currently support dynamically switching between languages after the first language is detected. The automatic detection works best with audio recordings with clearly discernable speech. If automatic detection fails to find the language, transcription would fallback to 'en-US'." The list of supported languages is available here: https://go.microsoft.com/fwlink/?linkid=2109463
+             * The language for the audio payload in the input using the BCP-47 format of 'language tag-region' (e.g: 'en-US').  If you know the language of your content, it is recommended that you specify it. The language must be specified explicitly for AudioAnalysisMode::Basic, since automatic language detection is not included in basic mode. If the language isn't specified or set to null, automatic language detection will choose the first language detected and process with the selected language for the duration of the file. It does not currently support dynamically switching between languages after the first language is detected. The automatic detection works best with audio recordings with clearly discernable speech. If automatic detection fails to find the language, transcription would fallback to 'en-US'." The list of supported languages is available here: https://go.microsoft.com/fwlink/?linkid=2109463
              */
             audioLanguage?: pulumi.Input<string>;
             /**
              * Dictionary containing key value pairs for parameters not exposed in the preset itself
              */
             experimentalOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * Determines the set of audio analysis operations to be performed. If unspecified, the Standard AudioAnalysisMode would be chosen.
+             */
+            mode?: pulumi.Input<string>;
             /**
              * The discriminator for derived types.
              */
@@ -151418,7 +151960,7 @@ export namespace media {
              */
             audioGainLevel?: pulumi.Input<number>;
             /**
-             * The position in the input video at which the overlay ends. The value should be in ISO 8601 duration format. For example, PT30S to end the overlay at 30 seconds in to the input video. If not specified the overlay will be applied until the end of the input video if inputLoop is true. Else, if inputLoop is false, then overlay will last as long as the duration of the overlay media.
+             * The end position, with reference to the input video, at which the overlay ends. The value should be in ISO 8601 format. For example, PT30S to end the overlay at 30 seconds into the input video. If not specified or the value is greater than the input video duration, the overlay will be applied until the end of the input video if the overlay media duration is greater than the input video duration, else the overlay will last as long as the overlay media duration.
              */
             end?: pulumi.Input<string>;
             /**
@@ -151438,7 +151980,7 @@ export namespace media {
              */
             odataType: pulumi.Input<"#Microsoft.Media.AudioOverlay">;
             /**
-             * The start position, with reference to the input video, at which the overlay starts. The value should be in ISO 8601 format. For example, PT05S to start the overlay at 5 seconds in to the input video. If not specified the overlay starts from the beginning of the input video.
+             * The start position, with reference to the input video, at which the overlay starts. The value should be in ISO 8601 format. For example, PT05S to start the overlay at 5 seconds into the input video. If not specified the overlay starts from the beginning of the input video.
              */
             start?: pulumi.Input<string>;
         }
@@ -152101,11 +152643,11 @@ export namespace media {
         }
 
         /**
-         * The HLS configuration.
+         * HTTP Live Streaming (HLS) packing setting for the live output.
          */
         export interface Hls {
             /**
-             * The amount of fragments per HTTP Live Streaming (HLS) segment.
+             * The number of fragments in an HTTP Live Streaming (HLS) TS segment in the output of the live event. This value does not affect the packing ratio for HLS CMAF output.
              */
             fragmentsPerTsSegment?: pulumi.Input<number>;
         }
@@ -152143,7 +152685,7 @@ export namespace media {
          */
         export interface ImageFormat {
             /**
-             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - The base name of the input video {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
+             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
              */
             filenamePattern: pulumi.Input<string>;
             /**
@@ -152159,7 +152701,7 @@ export namespace media {
             /**
              * Defines a point on the timeline of the input media at which processing will end. Defaults to the end of the input media.
              */
-            end?: pulumi.Input<inputs.media.latest.AbsoluteClipTime>;
+            end?: pulumi.Input<inputs.media.latest.AbsoluteClipTime | inputs.media.latest.UtcClipTime>;
             /**
              * List of files. Required for JobInputHttp. Maximum of 4000 characters each.
              */
@@ -152175,7 +152717,7 @@ export namespace media {
             /**
              * Defines a point on the timeline of the input media at which processing will start. Defaults to the beginning of the input media.
              */
-            start?: pulumi.Input<inputs.media.latest.AbsoluteClipTime>;
+            start?: pulumi.Input<inputs.media.latest.AbsoluteClipTime | inputs.media.latest.UtcClipTime>;
         }
 
         /**
@@ -152218,21 +152760,29 @@ export namespace media {
         }
 
         /**
-         * The Live Event encoding.
+         * Specifies the live event type and optional encoding settings for encoding live events.
          */
         export interface LiveEventEncoding {
             /**
-             * The encoding type for Live Event. This value is specified at creation time and cannot be updated. When encodingType is set to None, the service simply passes through the incoming video and audio layer(s) to the output. When encodingType is set to Standard or Premium1080p, a live encoder transcodes the incoming stream into multiple bit rates or layers. See https://go.microsoft.com/fwlink/?linkid=2095101 for more information. The encodingType of Basic is obsolete – if specified, the service will treat this as a Standard Live Event.
+             * Live event type. When encodingType is set to None, the service simply passes through the incoming video and audio layer(s) to the output. When encodingType is set to Standard or Premium1080p, a live encoder transcodes the incoming stream into multiple bitrates or layers. See https://go.microsoft.com/fwlink/?linkid=2095101 for more information. This property cannot be modified after the live event is created.
              */
             encodingType?: pulumi.Input<string>;
+            /**
+             * Use an ISO 8601 time value between 0.5 to 20 seconds to specify the output fragment length for the video and audio tracks of an encoding live event. For example, use PT2S to indicate 2 seconds. For the video track it also defines the key frame interval, or the length of a GoP (group of pictures).   If this value is not set for an encoding live event, the fragment duration defaults to 2 seconds. The value cannot be set for pass-through live events.
+             */
+            keyFrameInterval?: pulumi.Input<string>;
             /**
              * The optional encoding preset name, used when encodingType is not None. This value is specified at creation time and cannot be updated. If the encodingType is set to Standard, then the default preset name is ‘Default720p’. Else if the encodingType is set to Premium1080p, the default preset is ‘Default1080p’.
              */
             presetName?: pulumi.Input<string>;
+            /**
+             * Specifies how the input video will be resized to fit the desired output resolution(s). Default is None
+             */
+            stretchMode?: pulumi.Input<string>;
         }
 
         /**
-         * The Live Event endpoint.
+         * The live event endpoint.
          */
         export interface LiveEventEndpoint {
             /**
@@ -152246,33 +152796,33 @@ export namespace media {
         }
 
         /**
-         * The Live Event input.
+         * The live event input.
          */
         export interface LiveEventInput {
             /**
-             * The access control for LiveEvent Input.
+             * Access control for live event input.
              */
             accessControl?: pulumi.Input<inputs.media.latest.LiveEventInputAccessControl>;
             /**
-             * A UUID in string form to uniquely identify the stream. This can be specified at creation time but cannot be updated.  If omitted, the service will generate a unique value.
+             * A UUID in string form to uniquely identify the stream. This can be specified at creation time but cannot be updated. If omitted, the service will generate a unique value.
              */
             accessToken?: pulumi.Input<string>;
             /**
-             * The input endpoints for the Live Event.
+             * The input endpoints for the live event.
              */
             endpoints?: pulumi.Input<pulumi.Input<inputs.media.latest.LiveEventEndpoint>[]>;
             /**
-             * ISO 8601 timespan duration of the key frame interval duration.
+             * ISO 8601 time duration of the key frame interval duration of the input. This value sets the EXT-X-TARGETDURATION property in the HLS output. For example, use PT2S to indicate 2 seconds. Leave the value empty for encoding live events.
              */
             keyFrameIntervalDuration?: pulumi.Input<string>;
             /**
-             * The streaming protocol for the Live Event.  This is specified at creation time and cannot be updated.
+             * The input protocol for the live event. This is specified at creation time and cannot be updated.
              */
             streamingProtocol: pulumi.Input<string>;
         }
 
         /**
-         * The IP access control for Live Event Input.
+         * The IP access control for live event input.
          */
         export interface LiveEventInputAccessControl {
             /**
@@ -152282,39 +152832,85 @@ export namespace media {
         }
 
         /**
-         * The Live Event preview.
+         * A track selection condition. This property is reserved for future use, any value set on this property will be ignored.
+         */
+        export interface LiveEventInputTrackSelection {
+            /**
+             * Comparing operation. This property is reserved for future use, any value set on this property will be ignored.
+             */
+            operation?: pulumi.Input<string>;
+            /**
+             * Property name to select. This property is reserved for future use, any value set on this property will be ignored.
+             */
+            property?: pulumi.Input<string>;
+            /**
+             * Property value to select. This property is reserved for future use, any value set on this property will be ignored.
+             */
+            value?: pulumi.Input<string>;
+        }
+
+        /**
+         * Describes a transcription track in the output of a live event, generated using speech-to-text transcription. This property is reserved for future use, any value set on this property will be ignored.
+         */
+        export interface LiveEventOutputTranscriptionTrack {
+            /**
+             * The output track name. This property is reserved for future use, any value set on this property will be ignored.
+             */
+            trackName: pulumi.Input<string>;
+        }
+
+        /**
+         * Live event preview settings.
          */
         export interface LiveEventPreview {
             /**
-             * The access control for LiveEvent preview.
+             * The access control for live event preview.
              */
             accessControl?: pulumi.Input<inputs.media.latest.LiveEventPreviewAccessControl>;
             /**
-             * An Alternative Media Identifier associated with the StreamingLocator created for the preview.  This value is specified at creation time and cannot be updated.  The identifier can be used in the CustomLicenseAcquisitionUrlTemplate or the CustomKeyAcquisitionUrlTemplate of the StreamingPolicy specified in the StreamingPolicyName field.
+             * An alternative media identifier associated with the streaming locator created for the preview. This value is specified at creation time and cannot be updated. The identifier can be used in the CustomLicenseAcquisitionUrlTemplate or the CustomKeyAcquisitionUrlTemplate of the StreamingPolicy specified in the StreamingPolicyName field.
              */
             alternativeMediaId?: pulumi.Input<string>;
             /**
-             * The endpoints for preview.
+             * The endpoints for preview. Do not share the preview URL with the live event audience.
              */
             endpoints?: pulumi.Input<pulumi.Input<inputs.media.latest.LiveEventEndpoint>[]>;
             /**
-             * The identifier of the preview locator in Guid format.  Specifying this at creation time allows the caller to know the preview locator url before the event is created.  If omitted, the service will generate a random identifier.  This value cannot be updated once the live event is created.
+             * The identifier of the preview locator in Guid format. Specifying this at creation time allows the caller to know the preview locator url before the event is created. If omitted, the service will generate a random identifier. This value cannot be updated once the live event is created.
              */
             previewLocator?: pulumi.Input<string>;
             /**
-             * The name of streaming policy used for the LiveEvent preview.  This value is specified at creation time and cannot be updated.
+             * The name of streaming policy used for the live event preview. This value is specified at creation time and cannot be updated.
              */
             streamingPolicyName?: pulumi.Input<string>;
         }
 
         /**
-         * The IP access control for Live Event preview.
+         * The IP access control for the live event preview endpoint.
          */
         export interface LiveEventPreviewAccessControl {
             /**
              * The IP access control properties.
              */
             ip?: pulumi.Input<inputs.media.latest.IPAccessControl>;
+        }
+
+        /**
+         * Describes the transcription tracks in the output of a live event, generated using speech-to-text transcription. This property is reserved for future use, any value set on this property will be ignored.
+         */
+        export interface LiveEventTranscription {
+            /**
+             * Provides a mechanism to select the audio track in the input live feed, to which speech-to-text transcription is applied. This property is reserved for future use, any value set on this property will be ignored.
+             */
+            inputTrackSelection?: pulumi.Input<pulumi.Input<inputs.media.latest.LiveEventInputTrackSelection>[]>;
+            /**
+             * Specifies the language (locale) to be used for speech-to-text transcription – it should match the spoken language in the audio track. The value should be in BCP-47 format (e.g: 'en-US'). See https://go.microsoft.com/fwlink/?linkid=2133742 for more information about the live transcription feature and the list of supported languages.
+             */
+            language?: pulumi.Input<string>;
+            /**
+             * Describes a transcription track in the output of a live event, generated using speech-to-text transcription. This property is reserved for future use, any value set on this property will be ignored.
+             */
+            outputTranscriptionTrack?: pulumi.Input<inputs.media.latest.LiveEventOutputTranscriptionTrack>;
         }
 
         export interface MediaServiceIdentity {
@@ -152329,7 +152925,7 @@ export namespace media {
          */
         export interface MultiBitrateFormat {
             /**
-             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - The base name of the input video {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
+             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
              */
             filenamePattern: pulumi.Input<string>;
             /**
@@ -152469,7 +153065,7 @@ export namespace media {
         }
 
         /**
-         * StreamingEndpoint access control definition.
+         * Streaming endpoint access control definition.
          */
         export interface StreamingEndpointAccessControl {
             /**
@@ -152477,7 +153073,7 @@ export namespace media {
              */
             akamai?: pulumi.Input<inputs.media.latest.AkamaiAccessControl>;
             /**
-             * The IP access control of the StreamingEndpoint.
+             * The IP access control of the streaming endpoint.
              */
             ip?: pulumi.Input<inputs.media.latest.IPAccessControl>;
         }
@@ -152617,6 +153213,20 @@ export namespace media {
         }
 
         /**
+         * Specifies the clip time as a Utc time position in the media file.  The Utc time can point to a different position depending on whether the media file starts from a timestamp of zero or not.
+         */
+        export interface UtcClipTime {
+            /**
+             * The discriminator for derived types.
+             */
+            odataType: pulumi.Input<"#Microsoft.Media.UtcClipTime">;
+            /**
+             * The time position on the timeline of the input media based on Utc time.
+             */
+            time: pulumi.Input<string>;
+        }
+
+        /**
          * Describes the basic properties for encoding the input video.
          */
         export interface Video {
@@ -152655,7 +153265,7 @@ export namespace media {
              */
             cropRectangle?: pulumi.Input<inputs.media.latest.Rectangle>;
             /**
-             * The position in the input video at which the overlay ends. The value should be in ISO 8601 duration format. For example, PT30S to end the overlay at 30 seconds in to the input video. If not specified the overlay will be applied until the end of the input video if inputLoop is true. Else, if inputLoop is false, then overlay will last as long as the duration of the overlay media.
+             * The end position, with reference to the input video, at which the overlay ends. The value should be in ISO 8601 format. For example, PT30S to end the overlay at 30 seconds into the input video. If not specified or the value is greater than the input video duration, the overlay will be applied until the end of the input video if the overlay media duration is greater than the input video duration, else the overlay will last as long as the overlay media duration.
              */
             end?: pulumi.Input<string>;
             /**
@@ -152683,7 +153293,7 @@ export namespace media {
              */
             position?: pulumi.Input<inputs.media.latest.Rectangle>;
             /**
-             * The start position, with reference to the input video, at which the overlay starts. The value should be in ISO 8601 format. For example, PT05S to start the overlay at 5 seconds in to the input video. If not specified the overlay starts from the beginning of the input video.
+             * The start position, with reference to the input video, at which the overlay starts. The value should be in ISO 8601 format. For example, PT05S to start the overlay at 5 seconds into the input video. If not specified the overlay starts from the beginning of the input video.
              */
             start?: pulumi.Input<string>;
         }
@@ -156947,13 +157557,17 @@ export namespace media {
          */
         export interface AudioAnalyzerPreset {
             /**
-             * The language for the audio payload in the input using the BCP-47 format of 'language tag-region' (e.g: 'en-US').  If you know the language of your content, it is recommended that you specify it. If the language isn't specified or set to null, automatic language detection will choose the first language detected and process with the selected language for the duration of the file. It does not currently support dynamically switching between languages after the first language is detected. The automatic detection works best with audio recordings with clearly discernable speech. If automatic detection fails to find the language, transcription would fallback to 'en-US'." The list of supported languages is available here: https://go.microsoft.com/fwlink/?linkid=2109463
+             * The language for the audio payload in the input using the BCP-47 format of 'language tag-region' (e.g: 'en-US').  If you know the language of your content, it is recommended that you specify it. The language must be specified explicitly for AudioAnalysisMode::Basic, since automatic language detection is not included in basic mode. If the language isn't specified or set to null, automatic language detection will choose the first language detected and process with the selected language for the duration of the file. It does not currently support dynamically switching between languages after the first language is detected. The automatic detection works best with audio recordings with clearly discernable speech. If automatic detection fails to find the language, transcription would fallback to 'en-US'." The list of supported languages is available here: https://go.microsoft.com/fwlink/?linkid=2109463
              */
             audioLanguage?: pulumi.Input<string>;
             /**
              * Dictionary containing key value pairs for parameters not exposed in the preset itself
              */
             experimentalOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * Determines the set of audio analysis operations to be performed. If unspecified, the Standard AudioAnalysisMode would be chosen.
+             */
+            mode?: pulumi.Input<string>;
             /**
              * The discriminator for derived types.
              */
@@ -156969,7 +157583,7 @@ export namespace media {
              */
             audioGainLevel?: pulumi.Input<number>;
             /**
-             * The position in the input video at which the overlay ends. The value should be in ISO 8601 duration format. For example, PT30S to end the overlay at 30 seconds in to the input video. If not specified the overlay will be applied until the end of the input video if inputLoop is true. Else, if inputLoop is false, then overlay will last as long as the duration of the overlay media.
+             * The end position, with reference to the input video, at which the overlay ends. The value should be in ISO 8601 format. For example, PT30S to end the overlay at 30 seconds into the input video. If not specified or the value is greater than the input video duration, the overlay will be applied until the end of the input video if the overlay media duration is greater than the input video duration, else the overlay will last as long as the overlay media duration.
              */
             end?: pulumi.Input<string>;
             /**
@@ -156989,7 +157603,7 @@ export namespace media {
              */
             odataType: pulumi.Input<"#Microsoft.Media.AudioOverlay">;
             /**
-             * The start position, with reference to the input video, at which the overlay starts. The value should be in ISO 8601 format. For example, PT05S to start the overlay at 5 seconds in to the input video. If not specified the overlay starts from the beginning of the input video.
+             * The start position, with reference to the input video, at which the overlay starts. The value should be in ISO 8601 format. For example, PT05S to start the overlay at 5 seconds into the input video. If not specified the overlay starts from the beginning of the input video.
              */
             start?: pulumi.Input<string>;
         }
@@ -157652,11 +158266,11 @@ export namespace media {
         }
 
         /**
-         * The HLS configuration.
+         * HTTP Live Streaming (HLS) packing setting for the live output.
          */
         export interface Hls {
             /**
-             * The amount of fragments per HTTP Live Streaming (HLS) segment.
+             * The number of fragments in an HTTP Live Streaming (HLS) TS segment in the output of the live event. This value does not affect the packing ratio for HLS CMAF output.
              */
             fragmentsPerTsSegment?: pulumi.Input<number>;
         }
@@ -157694,7 +158308,7 @@ export namespace media {
          */
         export interface ImageFormat {
             /**
-             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - The base name of the input video {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
+             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
              */
             filenamePattern: pulumi.Input<string>;
             /**
@@ -157710,7 +158324,7 @@ export namespace media {
             /**
              * Defines a point on the timeline of the input media at which processing will end. Defaults to the end of the input media.
              */
-            end?: pulumi.Input<inputs.media.v20200501.AbsoluteClipTime>;
+            end?: pulumi.Input<inputs.media.v20200501.AbsoluteClipTime | inputs.media.v20200501.UtcClipTime>;
             /**
              * List of files. Required for JobInputHttp. Maximum of 4000 characters each.
              */
@@ -157726,7 +158340,7 @@ export namespace media {
             /**
              * Defines a point on the timeline of the input media at which processing will start. Defaults to the beginning of the input media.
              */
-            start?: pulumi.Input<inputs.media.v20200501.AbsoluteClipTime>;
+            start?: pulumi.Input<inputs.media.v20200501.AbsoluteClipTime | inputs.media.v20200501.UtcClipTime>;
         }
 
         /**
@@ -157769,21 +158383,29 @@ export namespace media {
         }
 
         /**
-         * The Live Event encoding.
+         * Specifies the live event type and optional encoding settings for encoding live events.
          */
         export interface LiveEventEncoding {
             /**
-             * The encoding type for Live Event. This value is specified at creation time and cannot be updated. When encodingType is set to None, the service simply passes through the incoming video and audio layer(s) to the output. When encodingType is set to Standard or Premium1080p, a live encoder transcodes the incoming stream into multiple bit rates or layers. See https://go.microsoft.com/fwlink/?linkid=2095101 for more information. The encodingType of Basic is obsolete – if specified, the service will treat this as a Standard Live Event.
+             * Live event type. When encodingType is set to None, the service simply passes through the incoming video and audio layer(s) to the output. When encodingType is set to Standard or Premium1080p, a live encoder transcodes the incoming stream into multiple bitrates or layers. See https://go.microsoft.com/fwlink/?linkid=2095101 for more information. This property cannot be modified after the live event is created.
              */
             encodingType?: pulumi.Input<string>;
+            /**
+             * Use an ISO 8601 time value between 0.5 to 20 seconds to specify the output fragment length for the video and audio tracks of an encoding live event. For example, use PT2S to indicate 2 seconds. For the video track it also defines the key frame interval, or the length of a GoP (group of pictures).   If this value is not set for an encoding live event, the fragment duration defaults to 2 seconds. The value cannot be set for pass-through live events.
+             */
+            keyFrameInterval?: pulumi.Input<string>;
             /**
              * The optional encoding preset name, used when encodingType is not None. This value is specified at creation time and cannot be updated. If the encodingType is set to Standard, then the default preset name is ‘Default720p’. Else if the encodingType is set to Premium1080p, the default preset is ‘Default1080p’.
              */
             presetName?: pulumi.Input<string>;
+            /**
+             * Specifies how the input video will be resized to fit the desired output resolution(s). Default is None
+             */
+            stretchMode?: pulumi.Input<string>;
         }
 
         /**
-         * The Live Event endpoint.
+         * The live event endpoint.
          */
         export interface LiveEventEndpoint {
             /**
@@ -157797,33 +158419,33 @@ export namespace media {
         }
 
         /**
-         * The Live Event input.
+         * The live event input.
          */
         export interface LiveEventInput {
             /**
-             * The access control for LiveEvent Input.
+             * Access control for live event input.
              */
             accessControl?: pulumi.Input<inputs.media.v20200501.LiveEventInputAccessControl>;
             /**
-             * A UUID in string form to uniquely identify the stream. This can be specified at creation time but cannot be updated.  If omitted, the service will generate a unique value.
+             * A UUID in string form to uniquely identify the stream. This can be specified at creation time but cannot be updated. If omitted, the service will generate a unique value.
              */
             accessToken?: pulumi.Input<string>;
             /**
-             * The input endpoints for the Live Event.
+             * The input endpoints for the live event.
              */
             endpoints?: pulumi.Input<pulumi.Input<inputs.media.v20200501.LiveEventEndpoint>[]>;
             /**
-             * ISO 8601 timespan duration of the key frame interval duration.
+             * ISO 8601 time duration of the key frame interval duration of the input. This value sets the EXT-X-TARGETDURATION property in the HLS output. For example, use PT2S to indicate 2 seconds. Leave the value empty for encoding live events.
              */
             keyFrameIntervalDuration?: pulumi.Input<string>;
             /**
-             * The streaming protocol for the Live Event.  This is specified at creation time and cannot be updated.
+             * The input protocol for the live event. This is specified at creation time and cannot be updated.
              */
             streamingProtocol: pulumi.Input<string>;
         }
 
         /**
-         * The IP access control for Live Event Input.
+         * The IP access control for live event input.
          */
         export interface LiveEventInputAccessControl {
             /**
@@ -157833,39 +158455,85 @@ export namespace media {
         }
 
         /**
-         * The Live Event preview.
+         * A track selection condition. This property is reserved for future use, any value set on this property will be ignored.
+         */
+        export interface LiveEventInputTrackSelection {
+            /**
+             * Comparing operation. This property is reserved for future use, any value set on this property will be ignored.
+             */
+            operation?: pulumi.Input<string>;
+            /**
+             * Property name to select. This property is reserved for future use, any value set on this property will be ignored.
+             */
+            property?: pulumi.Input<string>;
+            /**
+             * Property value to select. This property is reserved for future use, any value set on this property will be ignored.
+             */
+            value?: pulumi.Input<string>;
+        }
+
+        /**
+         * Describes a transcription track in the output of a live event, generated using speech-to-text transcription. This property is reserved for future use, any value set on this property will be ignored.
+         */
+        export interface LiveEventOutputTranscriptionTrack {
+            /**
+             * The output track name. This property is reserved for future use, any value set on this property will be ignored.
+             */
+            trackName: pulumi.Input<string>;
+        }
+
+        /**
+         * Live event preview settings.
          */
         export interface LiveEventPreview {
             /**
-             * The access control for LiveEvent preview.
+             * The access control for live event preview.
              */
             accessControl?: pulumi.Input<inputs.media.v20200501.LiveEventPreviewAccessControl>;
             /**
-             * An Alternative Media Identifier associated with the StreamingLocator created for the preview.  This value is specified at creation time and cannot be updated.  The identifier can be used in the CustomLicenseAcquisitionUrlTemplate or the CustomKeyAcquisitionUrlTemplate of the StreamingPolicy specified in the StreamingPolicyName field.
+             * An alternative media identifier associated with the streaming locator created for the preview. This value is specified at creation time and cannot be updated. The identifier can be used in the CustomLicenseAcquisitionUrlTemplate or the CustomKeyAcquisitionUrlTemplate of the StreamingPolicy specified in the StreamingPolicyName field.
              */
             alternativeMediaId?: pulumi.Input<string>;
             /**
-             * The endpoints for preview.
+             * The endpoints for preview. Do not share the preview URL with the live event audience.
              */
             endpoints?: pulumi.Input<pulumi.Input<inputs.media.v20200501.LiveEventEndpoint>[]>;
             /**
-             * The identifier of the preview locator in Guid format.  Specifying this at creation time allows the caller to know the preview locator url before the event is created.  If omitted, the service will generate a random identifier.  This value cannot be updated once the live event is created.
+             * The identifier of the preview locator in Guid format. Specifying this at creation time allows the caller to know the preview locator url before the event is created. If omitted, the service will generate a random identifier. This value cannot be updated once the live event is created.
              */
             previewLocator?: pulumi.Input<string>;
             /**
-             * The name of streaming policy used for the LiveEvent preview.  This value is specified at creation time and cannot be updated.
+             * The name of streaming policy used for the live event preview. This value is specified at creation time and cannot be updated.
              */
             streamingPolicyName?: pulumi.Input<string>;
         }
 
         /**
-         * The IP access control for Live Event preview.
+         * The IP access control for the live event preview endpoint.
          */
         export interface LiveEventPreviewAccessControl {
             /**
              * The IP access control properties.
              */
             ip?: pulumi.Input<inputs.media.v20200501.IPAccessControl>;
+        }
+
+        /**
+         * Describes the transcription tracks in the output of a live event, generated using speech-to-text transcription. This property is reserved for future use, any value set on this property will be ignored.
+         */
+        export interface LiveEventTranscription {
+            /**
+             * Provides a mechanism to select the audio track in the input live feed, to which speech-to-text transcription is applied. This property is reserved for future use, any value set on this property will be ignored.
+             */
+            inputTrackSelection?: pulumi.Input<pulumi.Input<inputs.media.v20200501.LiveEventInputTrackSelection>[]>;
+            /**
+             * Specifies the language (locale) to be used for speech-to-text transcription – it should match the spoken language in the audio track. The value should be in BCP-47 format (e.g: 'en-US'). See https://go.microsoft.com/fwlink/?linkid=2133742 for more information about the live transcription feature and the list of supported languages.
+             */
+            language?: pulumi.Input<string>;
+            /**
+             * Describes a transcription track in the output of a live event, generated using speech-to-text transcription. This property is reserved for future use, any value set on this property will be ignored.
+             */
+            outputTranscriptionTrack?: pulumi.Input<inputs.media.v20200501.LiveEventOutputTranscriptionTrack>;
         }
 
         export interface MediaServiceIdentity {
@@ -157880,7 +158548,7 @@ export namespace media {
          */
         export interface MultiBitrateFormat {
             /**
-             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - The base name of the input video {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
+             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
              */
             filenamePattern: pulumi.Input<string>;
             /**
@@ -158020,7 +158688,7 @@ export namespace media {
         }
 
         /**
-         * StreamingEndpoint access control definition.
+         * Streaming endpoint access control definition.
          */
         export interface StreamingEndpointAccessControl {
             /**
@@ -158028,7 +158696,7 @@ export namespace media {
              */
             akamai?: pulumi.Input<inputs.media.v20200501.AkamaiAccessControl>;
             /**
-             * The IP access control of the StreamingEndpoint.
+             * The IP access control of the streaming endpoint.
              */
             ip?: pulumi.Input<inputs.media.v20200501.IPAccessControl>;
         }
@@ -158168,6 +158836,20 @@ export namespace media {
         }
 
         /**
+         * Specifies the clip time as a Utc time position in the media file.  The Utc time can point to a different position depending on whether the media file starts from a timestamp of zero or not.
+         */
+        export interface UtcClipTime {
+            /**
+             * The discriminator for derived types.
+             */
+            odataType: pulumi.Input<"#Microsoft.Media.UtcClipTime">;
+            /**
+             * The time position on the timeline of the input media based on Utc time.
+             */
+            time: pulumi.Input<string>;
+        }
+
+        /**
          * Describes the basic properties for encoding the input video.
          */
         export interface Video {
@@ -158206,7 +158888,7 @@ export namespace media {
              */
             cropRectangle?: pulumi.Input<inputs.media.v20200501.Rectangle>;
             /**
-             * The position in the input video at which the overlay ends. The value should be in ISO 8601 duration format. For example, PT30S to end the overlay at 30 seconds in to the input video. If not specified the overlay will be applied until the end of the input video if inputLoop is true. Else, if inputLoop is false, then overlay will last as long as the duration of the overlay media.
+             * The end position, with reference to the input video, at which the overlay ends. The value should be in ISO 8601 format. For example, PT30S to end the overlay at 30 seconds into the input video. If not specified or the value is greater than the input video duration, the overlay will be applied until the end of the input video if the overlay media duration is greater than the input video duration, else the overlay will last as long as the overlay media duration.
              */
             end?: pulumi.Input<string>;
             /**
@@ -158234,7 +158916,7 @@ export namespace media {
              */
             position?: pulumi.Input<inputs.media.v20200501.Rectangle>;
             /**
-             * The start position, with reference to the input video, at which the overlay starts. The value should be in ISO 8601 format. For example, PT05S to start the overlay at 5 seconds in to the input video. If not specified the overlay starts from the beginning of the input video.
+             * The start position, with reference to the input video, at which the overlay starts. The value should be in ISO 8601 format. For example, PT05S to start the overlay at 5 seconds into the input video. If not specified the overlay starts from the beginning of the input video.
              */
             start?: pulumi.Input<string>;
         }
@@ -300202,6 +300884,10 @@ export namespace subscription {
              */
             displayName?: pulumi.Input<string>;
             /**
+             * Reseller ID, basically MPN Id
+             */
+            resellerId?: pulumi.Input<string>;
+            /**
              * This parameter can be used to create alias for existing subscription Id
              */
             subscriptionId?: pulumi.Input<string>;
@@ -300251,6 +300937,10 @@ export namespace subscription {
              * The friendly name of the subscription.
              */
             displayName?: pulumi.Input<string>;
+            /**
+             * Reseller ID, basically MPN Id
+             */
+            resellerId?: pulumi.Input<string>;
             /**
              * This parameter can be used to create alias for existing subscription Id
              */
