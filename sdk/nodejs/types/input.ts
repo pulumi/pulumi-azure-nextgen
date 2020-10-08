@@ -8596,7 +8596,13 @@ export namespace azurestack {
 }
 
 export namespace azurestackhci {
+    export namespace latest {
+    }
+
     export namespace v20200301preview {
+    }
+
+    export namespace v20201001 {
     }
 }
 
@@ -63952,6 +63958,69 @@ export namespace datacatalog {
              * UPN of the user.
              */
             upn?: pulumi.Input<string>;
+        }
+
+    }
+}
+
+export namespace datadog {
+    export namespace v20200201preview {
+        export interface DatadogOrganizationProperties {
+            /**
+             * The Id of the Enterprise App used for Single sign on.
+             */
+            enterpriseAppId?: pulumi.Input<string>;
+            /**
+             * The auth code used to linking to an existing datadog organization.
+             */
+            linkingAuthCode?: pulumi.Input<string>;
+            /**
+             * The client_id from an existing in exchange for an auth token to link organization.
+             */
+            linkingClientId?: pulumi.Input<string>;
+        }
+
+        export interface IdentityProperties {
+            type?: pulumi.Input<string>;
+        }
+
+        /**
+         * Properties specific to the monitor resource.
+         */
+        export interface MonitorProperties {
+            datadogOrganizationProperties?: pulumi.Input<inputs.datadog.v20200201preview.DatadogOrganizationProperties>;
+            /**
+             * Flag specifying the Marketplace Subscription Status of the resource. If payment is not made in time, the resource will go in Suspended state.
+             */
+            marketplaceSubscriptionStatus?: pulumi.Input<string>;
+            /**
+             * Flag specifying if the resource monitoring is enabled or disabled.
+             */
+            monitoringStatus?: pulumi.Input<string>;
+            provisioningState?: pulumi.Input<string>;
+            userInfo?: pulumi.Input<inputs.datadog.v20200201preview.UserInfo>;
+        }
+
+        export interface ResourceSku {
+            /**
+             * Name of the SKU.
+             */
+            name: pulumi.Input<string>;
+        }
+
+        export interface UserInfo {
+            /**
+             * Email of the user used by Datadog for contacting them if needed
+             */
+            emailAddress?: pulumi.Input<string>;
+            /**
+             * Name of the user
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Phone number of the user used by Datadog for contacting them if needed
+             */
+            phoneNumber?: pulumi.Input<string>;
         }
 
     }
@@ -161176,6 +161245,183 @@ export namespace netapp {
              * Export policy rule
              */
             rules?: pulumi.Input<pulumi.Input<inputs.netapp.v20200201.ExportPolicyRule>[]>;
+        }
+
+        /**
+         * Volume Snapshot Properties
+         */
+        export interface VolumeSnapshotProperties {
+            /**
+             * Snapshot Policy ResourceId
+             */
+            snapshotPolicyId?: pulumi.Input<string>;
+        }
+
+    }
+
+    export namespace v20200301 {
+        /**
+         * Active Directory
+         */
+        export interface ActiveDirectory {
+            /**
+             * Id of the Active Directory
+             */
+            activeDirectoryId?: pulumi.Input<string>;
+            /**
+             * Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier
+             */
+            backupOperators?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Comma separated list of DNS server IP addresses (IPv4 only) for the Active Directory domain
+             */
+            dns?: pulumi.Input<string>;
+            /**
+             * Name of the Active Directory domain
+             */
+            domain?: pulumi.Input<string>;
+            /**
+             * The Organizational Unit (OU) within the Windows Active Directory
+             */
+            organizationalUnit?: pulumi.Input<string>;
+            /**
+             * Plain text password of Active Directory domain administrator
+             */
+            password?: pulumi.Input<string>;
+            /**
+             * The Active Directory site the service will limit Domain Controller discovery to
+             */
+            site?: pulumi.Input<string>;
+            /**
+             * NetBIOS name of the SMB server. This name will be registered as a computer account in the AD and used to mount volumes
+             */
+            smbServerName?: pulumi.Input<string>;
+            /**
+             * Status of the Active Directory
+             */
+            status?: pulumi.Input<string>;
+            /**
+             * Username of Active Directory domain administrator
+             */
+            username?: pulumi.Input<string>;
+        }
+
+        /**
+         * Volume Export Policy Rule
+         */
+        export interface ExportPolicyRule {
+            /**
+             * Client ingress specification as comma separated string with IPv4 CIDRs, IPv4 host addresses and host names
+             */
+            allowedClients?: pulumi.Input<string>;
+            /**
+             * Allows CIFS protocol
+             */
+            cifs?: pulumi.Input<boolean>;
+            /**
+             * Allows NFSv3 protocol. Enable only for NFSv3 type volumes
+             */
+            nfsv3?: pulumi.Input<boolean>;
+            /**
+             * Allows NFSv4.1 protocol. Enable only for NFSv4.1 type volumes
+             */
+            nfsv41?: pulumi.Input<boolean>;
+            /**
+             * Order index
+             */
+            ruleIndex?: pulumi.Input<number>;
+            /**
+             * Read only access
+             */
+            unixReadOnly?: pulumi.Input<boolean>;
+            /**
+             * Read and write access
+             */
+            unixReadWrite?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Mount target properties
+         */
+        export interface MountTargetProperties {
+            /**
+             * The end of IPv4 address range to use when creating a new mount target
+             */
+            endIp?: pulumi.Input<string>;
+            /**
+             * UUID v4 used to identify the MountTarget
+             */
+            fileSystemId: pulumi.Input<string>;
+            /**
+             * The gateway of the IPv4 address range to use when creating a new mount target
+             */
+            gateway?: pulumi.Input<string>;
+            /**
+             * The netmask of the IPv4 address range to use when creating a new mount target
+             */
+            netmask?: pulumi.Input<string>;
+            /**
+             * The SMB server's Fully Qualified Domain Name, FQDN
+             */
+            smbServerFqdn?: pulumi.Input<string>;
+            /**
+             * The start of IPv4 address range to use when creating a new mount target
+             */
+            startIp?: pulumi.Input<string>;
+            /**
+             * The subnet
+             */
+            subnet?: pulumi.Input<string>;
+        }
+
+        /**
+         * Replication properties
+         */
+        export interface ReplicationObject {
+            /**
+             * Indicates whether the local volume is the source or destination for the Volume Replication
+             */
+            endpointType?: pulumi.Input<string>;
+            /**
+             * The remote region for the other end of the Volume Replication.
+             */
+            remoteVolumeRegion?: pulumi.Input<string>;
+            /**
+             * The resource ID of the remote volume.
+             */
+            remoteVolumeResourceId: pulumi.Input<string>;
+            /**
+             * Id
+             */
+            replicationId?: pulumi.Input<string>;
+            /**
+             * Schedule
+             */
+            replicationSchedule: pulumi.Input<string>;
+        }
+
+        /**
+         * DataProtection type volumes include an object containing details of the replication
+         */
+        export interface VolumePropertiesDataProtection {
+            /**
+             * Replication properties
+             */
+            replication?: pulumi.Input<inputs.netapp.v20200301.ReplicationObject>;
+            /**
+             * Snapshot properties.
+             */
+            snapshot?: pulumi.Input<inputs.netapp.v20200301.VolumeSnapshotProperties>;
+        }
+
+        /**
+         * Set of export policy rules
+         */
+        export interface VolumePropertiesExportPolicy {
+            /**
+             * Export policy rule
+             */
+            rules?: pulumi.Input<pulumi.Input<inputs.netapp.v20200301.ExportPolicyRule>[]>;
         }
 
         /**
@@ -301784,6 +302030,10 @@ export namespace virtualmachineimages {
              */
             name?: pulumi.Input<string>;
             /**
+             * If specified, the PowerShell script will be run with elevated privileges using the Local System user. Can only be true when the runElevated field above is set to true.
+             */
+            runAsSystem?: pulumi.Input<boolean>;
+            /**
              * If specified, the PowerShell script will be run with elevated privileges
              */
             runElevated?: pulumi.Input<boolean>;
@@ -302709,6 +302959,10 @@ export namespace virtualmachineimages {
              * Friendly Name to provide context on what this customization step does
              */
             name?: pulumi.Input<string>;
+            /**
+             * If specified, the PowerShell script will be run with elevated privileges using the Local System user. Can only be true when the runElevated field above is set to true.
+             */
+            runAsSystem?: pulumi.Input<boolean>;
             /**
              * If specified, the PowerShell script will be run with elevated privileges
              */
