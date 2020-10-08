@@ -3,6 +3,10 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
+Bug fixes:
+
+- Fix reading/importing resources with scope URL parameters (e.g., [#51](https://github.com/pulumi/pulumi-azure-nextgen/issues/51))
+
 ---
 
 ## 0.2.1 (2020-10-03)
