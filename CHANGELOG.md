@@ -3,12 +3,15 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
-Bug fixes:
+-
+
+---
+
+## 0.2.2 (2020-10-09)
 
 - Fix reading/importing resources with scope URL parameters (e.g., [#51](https://github.com/pulumi/pulumi-azure-nextgen/issues/51))
 - Fix result types for invokes that list WebApp settings and similar ([#41](https://github.com/pulumi/pulumi-azure-nextgen/issues/41))
-
----
+- Fix serialization of free-form dictionary arguments (e.g., [#58](https://github.com/pulumi/pulumi-azure-nextgen/issues/58))
 
 ## 0.2.1 (2020-10-03)
 
