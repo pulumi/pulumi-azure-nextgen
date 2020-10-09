@@ -24954,7 +24954,7 @@ export namespace cdn {
             /**
              * The version(GUID) of Key Vault Secret in Key Vault.
              */
-            secretVersion: string;
+            secretVersion?: string;
             /**
              * Subscription Id of the user's Key Vault containing the SSL certificate
              */
@@ -25893,7 +25893,7 @@ export namespace cdn {
             /**
              * The version(GUID) of Key Vault Secret in Key Vault.
              */
-            secretVersion: string;
+            secretVersion?: string;
             /**
              * Subscription Id of the user's Key Vault containing the SSL certificate
              */
@@ -65019,11 +65019,11 @@ export namespace containerservice {
             /**
              * Number of agents (VMs) to host docker containers. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 1. 
              */
-            count?: number;
+            count: number;
             /**
              * DNS prefix to be used to create the FQDN for the agent pool.
              */
-            dnsPrefix?: string;
+            dnsPrefix: string;
             /**
              * FQDN for the agent pool.
              */
@@ -65033,29 +65033,9 @@ export namespace containerservice {
              */
             name: string;
             /**
-             * OS Disk Size in GB to be used to specify the disk size for every machine in this master/agent pool. If you specify 0, it will apply the default osDisk size according to the vmSize specified.
-             */
-            osDiskSizeGB?: number;
-            /**
-             * OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux.
-             */
-            osType?: string;
-            /**
-             * Ports number array used to expose on this agent pool. The default opened ports are different based on your choice of orchestrator.
-             */
-            ports?: number[];
-            /**
-             * Storage profile specifies what kind of storage used. Choose from StorageAccount and ManagedDisks. Leave it empty, we will choose for you based on the orchestrator choice.
-             */
-            storageProfile?: string;
-            /**
              * Size of agent VMs.
              */
             vmSize: string;
-            /**
-             * VNet SubnetID specifies the VNet's subnet identifier.
-             */
-            vnetSubnetID?: string;
         }
 
         /**
@@ -65068,12 +65048,9 @@ export namespace containerservice {
             orchestrator: string;
         }
 
-        /**
-         * Profile for diagnostics on the container service cluster.
-         */
         export interface ContainerServiceDiagnosticsProfileResponse {
             /**
-             * Profile for diagnostics on the container service VMs.
+             * Profile for the container service VM diagnostic agent.
              */
             vmDiagnostics: outputs.containerservice.latest.ContainerServiceVMDiagnosticsResponse;
         }
@@ -65101,33 +65078,13 @@ export namespace containerservice {
              */
             count?: number;
             /**
-             * DNS prefix to be used to create the FQDN for the master pool.
+             * DNS prefix to be used to create the FQDN for master.
              */
             dnsPrefix: string;
             /**
-             * FirstConsecutiveStaticIP used to specify the first static ip of masters.
-             */
-            firstConsecutiveStaticIP?: string;
-            /**
-             * FQDN for the master pool.
+             * FQDN for the master.
              */
             fqdn: string;
-            /**
-             * OS Disk Size in GB to be used to specify the disk size for every machine in this master/agent pool. If you specify 0, it will apply the default osDisk size according to the vmSize specified.
-             */
-            osDiskSizeGB?: number;
-            /**
-             * Storage profile specifies what kind of storage used. Choose from StorageAccount and ManagedDisks. Leave it empty, we will choose for you based on the orchestrator choice.
-             */
-            storageProfile?: string;
-            /**
-             * Size of agent VMs.
-             */
-            vmSize: string;
-            /**
-             * VNet SubnetID specifies the VNet's subnet identifier.
-             */
-            vnetSubnetID?: string;
         }
 
         /**
@@ -65181,17 +65138,13 @@ export namespace containerservice {
          */
         export interface ContainerServiceOrchestratorProfileResponse {
             /**
-             * The orchestrator to use to manage container service cluster resources. Valid values are Kubernetes, Swarm, DCOS, DockerCE and Custom.
+             * The orchestrator to use to manage container service cluster resources. Valid values are Swarm, DCOS, and Custom.
              */
             orchestratorType: string;
-            /**
-             * The version of the orchestrator to use. You can specify the major.minor.patch part of the actual version.For example, you can specify version as "1.6.11".
-             */
-            orchestratorVersion?: string;
         }
 
         /**
-         * Information about a service principal identity for the cluster to use for manipulating Azure APIs. Either secret or keyVaultSecretRef must be specified.
+         * Information about a service principal identity for the cluster to use for manipulating Azure APIs.
          */
         export interface ContainerServiceServicePrincipalProfileResponse {
             /**
@@ -65199,13 +65152,9 @@ export namespace containerservice {
              */
             clientId: string;
             /**
-             * Reference to a secret stored in Azure Key Vault.
+             * The secret password associated with the service principal.
              */
-            keyVaultSecretRef?: outputs.containerservice.latest.KeyVaultSecretRefResponse;
-            /**
-             * The secret password associated with the service principal in plain text.
-             */
-            secret?: string;
+            secret: string;
         }
 
         /**
@@ -65268,24 +65217,6 @@ export namespace containerservice {
              * Base64-encoded Kubernetes configuration file.
              */
             value: string;
-        }
-
-        /**
-         * Reference to a secret stored in Azure Key Vault.
-         */
-        export interface KeyVaultSecretRefResponse {
-            /**
-             * The secret name.
-             */
-            secretName: string;
-            /**
-             * Key vault identifier.
-             */
-            vaultID: string;
-            /**
-             * The secret version.
-             */
-            version?: string;
         }
 
         /**
@@ -66413,224 +66344,6 @@ export namespace containerservice {
              * The administrator username to use for Windows VMs.
              */
             adminUsername: string;
-        }
-    }
-
-    export namespace v20170701 {
-        /**
-         * Profile for the container service agent pool.
-         */
-        export interface ContainerServiceAgentPoolProfileResponse {
-            /**
-             * Number of agents (VMs) to host docker containers. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 1. 
-             */
-            count?: number;
-            /**
-             * DNS prefix to be used to create the FQDN for the agent pool.
-             */
-            dnsPrefix?: string;
-            /**
-             * FQDN for the agent pool.
-             */
-            fqdn: string;
-            /**
-             * Unique name of the agent pool profile in the context of the subscription and resource group.
-             */
-            name: string;
-            /**
-             * OS Disk Size in GB to be used to specify the disk size for every machine in this master/agent pool. If you specify 0, it will apply the default osDisk size according to the vmSize specified.
-             */
-            osDiskSizeGB?: number;
-            /**
-             * OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux.
-             */
-            osType?: string;
-            /**
-             * Ports number array used to expose on this agent pool. The default opened ports are different based on your choice of orchestrator.
-             */
-            ports?: number[];
-            /**
-             * Storage profile specifies what kind of storage used. Choose from StorageAccount and ManagedDisks. Leave it empty, we will choose for you based on the orchestrator choice.
-             */
-            storageProfile?: string;
-            /**
-             * Size of agent VMs.
-             */
-            vmSize: string;
-            /**
-             * VNet SubnetID specifies the VNet's subnet identifier.
-             */
-            vnetSubnetID?: string;
-        }
-
-        /**
-         * Properties to configure a custom container service cluster.
-         */
-        export interface ContainerServiceCustomProfileResponse {
-            /**
-             * The name of the custom orchestrator to use.
-             */
-            orchestrator: string;
-        }
-
-        /**
-         * Profile for diagnostics on the container service cluster.
-         */
-        export interface ContainerServiceDiagnosticsProfileResponse {
-            /**
-             * Profile for diagnostics on the container service VMs.
-             */
-            vmDiagnostics: outputs.containerservice.v20170701.ContainerServiceVMDiagnosticsResponse;
-        }
-
-        /**
-         * Profile for Linux VMs in the container service cluster.
-         */
-        export interface ContainerServiceLinuxProfileResponse {
-            /**
-             * The administrator username to use for Linux VMs.
-             */
-            adminUsername: string;
-            /**
-             * SSH configuration for Linux-based VMs running on Azure.
-             */
-            ssh: outputs.containerservice.v20170701.ContainerServiceSshConfigurationResponse;
-        }
-
-        /**
-         * Profile for the container service master.
-         */
-        export interface ContainerServiceMasterProfileResponse {
-            /**
-             * Number of masters (VMs) in the container service cluster. Allowed values are 1, 3, and 5. The default value is 1.
-             */
-            count?: number;
-            /**
-             * DNS prefix to be used to create the FQDN for the master pool.
-             */
-            dnsPrefix: string;
-            /**
-             * FirstConsecutiveStaticIP used to specify the first static ip of masters.
-             */
-            firstConsecutiveStaticIP?: string;
-            /**
-             * FQDN for the master pool.
-             */
-            fqdn: string;
-            /**
-             * OS Disk Size in GB to be used to specify the disk size for every machine in this master/agent pool. If you specify 0, it will apply the default osDisk size according to the vmSize specified.
-             */
-            osDiskSizeGB?: number;
-            /**
-             * Storage profile specifies what kind of storage used. Choose from StorageAccount and ManagedDisks. Leave it empty, we will choose for you based on the orchestrator choice.
-             */
-            storageProfile?: string;
-            /**
-             * Size of agent VMs.
-             */
-            vmSize: string;
-            /**
-             * VNet SubnetID specifies the VNet's subnet identifier.
-             */
-            vnetSubnetID?: string;
-        }
-
-        /**
-         * Profile for the container service orchestrator.
-         */
-        export interface ContainerServiceOrchestratorProfileResponse {
-            /**
-             * The orchestrator to use to manage container service cluster resources. Valid values are Kubernetes, Swarm, DCOS, DockerCE and Custom.
-             */
-            orchestratorType: string;
-            /**
-             * The version of the orchestrator to use. You can specify the major.minor.patch part of the actual version.For example, you can specify version as "1.6.11".
-             */
-            orchestratorVersion?: string;
-        }
-
-        /**
-         * Information about a service principal identity for the cluster to use for manipulating Azure APIs. Either secret or keyVaultSecretRef must be specified.
-         */
-        export interface ContainerServiceServicePrincipalProfileResponse {
-            /**
-             * The ID for the service principal.
-             */
-            clientId: string;
-            /**
-             * Reference to a secret stored in Azure Key Vault.
-             */
-            keyVaultSecretRef?: outputs.containerservice.v20170701.KeyVaultSecretRefResponse;
-            /**
-             * The secret password associated with the service principal in plain text.
-             */
-            secret?: string;
-        }
-
-        /**
-         * SSH configuration for Linux-based VMs running on Azure.
-         */
-        export interface ContainerServiceSshConfigurationResponse {
-            /**
-             * The list of SSH public keys used to authenticate with Linux-based VMs. Only expect one key specified.
-             */
-            publicKeys: outputs.containerservice.v20170701.ContainerServiceSshPublicKeyResponse[];
-        }
-
-        /**
-         * Contains information about SSH certificate public key data.
-         */
-        export interface ContainerServiceSshPublicKeyResponse {
-            /**
-             * Certificate public key used to authenticate with VMs through SSH. The certificate must be in PEM format with or without headers.
-             */
-            keyData: string;
-        }
-
-        /**
-         * Profile for diagnostics on the container service VMs.
-         */
-        export interface ContainerServiceVMDiagnosticsResponse {
-            /**
-             * Whether the VM diagnostic agent is provisioned on the VM.
-             */
-            enabled: boolean;
-            /**
-             * The URI of the storage account where diagnostics are stored.
-             */
-            storageUri: string;
-        }
-
-        /**
-         * Profile for Windows VMs in the container service cluster.
-         */
-        export interface ContainerServiceWindowsProfileResponse {
-            /**
-             * The administrator password to use for Windows VMs.
-             */
-            adminPassword: string;
-            /**
-             * The administrator username to use for Windows VMs.
-             */
-            adminUsername: string;
-        }
-
-        /**
-         * Reference to a secret stored in Azure Key Vault.
-         */
-        export interface KeyVaultSecretRefResponse {
-            /**
-             * The secret name.
-             */
-            secretName: string;
-            /**
-             * Key vault identifier.
-             */
-            vaultID: string;
-            /**
-             * The secret version.
-             */
-            version?: string;
         }
     }
 
@@ -140974,6 +140687,10 @@ export namespace devops {
              */
             id: string;
             /**
+             * Repository-specific properties.
+             */
+            properties?: {[key: string]: string};
+            /**
              * Type of code repository.
              */
             repositoryType: string;
@@ -156532,10 +156249,6 @@ export namespace hdinsight {
              */
             minSupportedTlsVersion?: string;
             /**
-             * The network settings.
-             */
-            networkSettings?: outputs.hdinsight.v20150301preview.NetworkSettingsResponse;
-            /**
              * The type of operating system.
              */
             osType?: string;
@@ -156730,20 +156443,6 @@ export namespace hdinsight {
              * The username.
              */
             username?: string;
-        }
-
-        /**
-         * The network settings.
-         */
-        export interface NetworkSettingsResponse {
-            /**
-             * The mechanism through which the cluster will have outbound access to the public network.
-             */
-            outboundOnlyPublicNetworkAccessType?: string;
-            /**
-             * Specifies whether public network access is enabled for inbound and outbound, or outbound only.
-             */
-            publicNetworkAccess?: string;
         }
 
         /**
@@ -157187,10 +156886,6 @@ export namespace hdinsight {
              */
             minSupportedTlsVersion?: string;
             /**
-             * The network settings.
-             */
-            networkSettings?: outputs.hdinsight.v20180601preview.NetworkSettingsResponse;
-            /**
              * The type of operating system.
              */
             osType?: string;
@@ -157385,20 +157080,6 @@ export namespace hdinsight {
              * The username.
              */
             username?: string;
-        }
-
-        /**
-         * The network settings.
-         */
-        export interface NetworkSettingsResponse {
-            /**
-             * The mechanism through which the cluster will have outbound access to the public network.
-             */
-            outboundOnlyPublicNetworkAccessType?: string;
-            /**
-             * Specifies whether public network access is enabled for inbound and outbound, or outbound only.
-             */
-            publicNetworkAccess?: string;
         }
 
         /**
@@ -162411,56 +162092,6 @@ export namespace insights {
              * the period of time (in ISO 8601 duration format) that is used to monitor alert activity based on the threshold. If specified then it must be between 5 minutes and 1 day.
              */
             windowSize?: string;
-        }
-    }
-
-    export namespace v20170301preview {
-        /**
-         * A pointer to an Azure Action Group.
-         */
-        export interface ActivityLogAlertActionGroupResponse {
-            /**
-             * The resourceId of the action group. This cannot be null or empty.
-             */
-            actionGroupId: string;
-            /**
-             * The dictionary of custom properties to include with the post operation. These data are appended to the webhook payload.
-             */
-            webhookProperties?: {[key: string]: string};
-        }
-
-        /**
-         * A list of activity log alert actions.
-         */
-        export interface ActivityLogAlertActionListResponse {
-            /**
-             * The list of activity log alerts.
-             */
-            actionGroups?: outputs.insights.v20170301preview.ActivityLogAlertActionGroupResponse[];
-        }
-
-        /**
-         * An Activity Log alert condition that is met when all its member conditions are met.
-         */
-        export interface ActivityLogAlertAllOfConditionResponse {
-            /**
-             * The list of activity log alert conditions.
-             */
-            allOf: outputs.insights.v20170301preview.ActivityLogAlertLeafConditionResponse[];
-        }
-
-        /**
-         * An Activity Log alert condition that is met by comparing an activity log field and value.
-         */
-        export interface ActivityLogAlertLeafConditionResponse {
-            /**
-             * The field value will be compared to this value (case-insensitive) to determine if the condition is met.
-             */
-            equals: string;
-            /**
-             * The name of the field that this condition will examine. The possible values for this field are (case-insensitive): 'resourceId', 'category', 'caller', 'level', 'operationName', 'resourceGroup', 'resourceProvider', 'status', 'subStatus', 'resourceType', or anything beginning with 'properties.'.
-             */
-            field: string;
         }
     }
 
@@ -377110,6 +376741,10 @@ export namespace resources {
          */
         export interface ManagedServiceIdentityResponse {
             /**
+             * ID of the Azure Active Directory.
+             */
+            tenantId?: string;
+            /**
              * Type of the managed identity.
              */
             type?: string;
@@ -399403,6 +399038,24 @@ export namespace storagesync {
         }
 
         /**
+         * Background data download activity object
+         */
+        export interface ServerEndpointBackgroundDataDownloadActivityResponse {
+            /**
+             * Running count of bytes downloaded
+             */
+            downloadedBytes: number;
+            /**
+             * Progress percentage
+             */
+            percentProgress: number;
+            /**
+             * Timestamp when properties were updated
+             */
+            timestamp: string;
+        }
+
+        /**
          * Server endpoint cloud tiering status object.
          */
         export interface ServerEndpointCloudTieringStatusResponse {
@@ -399515,6 +399168,10 @@ export namespace storagesync {
              */
             perItemErrorCount: number;
             /**
+             * Sync mode
+             */
+            syncMode: string;
+            /**
              * Timestamp when properties were updated
              */
             timestamp: string;
@@ -399536,6 +399193,10 @@ export namespace storagesync {
              * Array of per-item errors coming from the last sync session.
              */
             filesNotSyncingErrors: outputs.storagesync.latest.ServerEndpointFilesNotSyncingErrorResponse[];
+            /**
+             * Sync mode
+             */
+            lastSyncMode: string;
             /**
              * Last sync per item error count.
              */
@@ -399566,6 +399227,10 @@ export namespace storagesync {
          * Server Endpoint sync status
          */
         export interface ServerEndpointSyncStatusResponse {
+            /**
+             * Background data download activity
+             */
+            backgroundDataDownloadActivity: outputs.storagesync.latest.ServerEndpointBackgroundDataDownloadActivityResponse;
             /**
              * Combined Health Status.
              */
@@ -401055,6 +400720,24 @@ export namespace storagesync {
         }
 
         /**
+         * Background data download activity object
+         */
+        export interface ServerEndpointBackgroundDataDownloadActivityResponse {
+            /**
+             * Running count of bytes downloaded
+             */
+            downloadedBytes: number;
+            /**
+             * Progress percentage
+             */
+            percentProgress: number;
+            /**
+             * Timestamp when properties were updated
+             */
+            timestamp: string;
+        }
+
+        /**
          * Server endpoint cloud tiering status object.
          */
         export interface ServerEndpointCloudTieringStatusResponse {
@@ -401167,6 +400850,10 @@ export namespace storagesync {
              */
             perItemErrorCount: number;
             /**
+             * Sync mode
+             */
+            syncMode: string;
+            /**
              * Timestamp when properties were updated
              */
             timestamp: string;
@@ -401188,6 +400875,10 @@ export namespace storagesync {
              * Array of per-item errors coming from the last sync session.
              */
             filesNotSyncingErrors: outputs.storagesync.v20200901.ServerEndpointFilesNotSyncingErrorResponse[];
+            /**
+             * Sync mode
+             */
+            lastSyncMode: string;
             /**
              * Last sync per item error count.
              */
@@ -401218,6 +400909,10 @@ export namespace storagesync {
          * Server Endpoint sync status
          */
         export interface ServerEndpointSyncStatusResponse {
+            /**
+             * Background data download activity
+             */
+            backgroundDataDownloadActivity: outputs.storagesync.v20200901.ServerEndpointBackgroundDataDownloadActivityResponse;
             /**
              * Combined Health Status.
              */
@@ -408480,6 +408175,36 @@ export namespace web {
         }
 
         /**
+         * Azure Files or Blob Storage access information value for dictionary storage.
+         */
+        export interface AzureStorageInfoValueResponse {
+            /**
+             * Access key for the storage account.
+             */
+            accessKey?: string;
+            /**
+             * Name of the storage account.
+             */
+            accountName?: string;
+            /**
+             * Path to mount the storage within the site's runtime environment.
+             */
+            mountPath?: string;
+            /**
+             * Name of the file share (container name, for Blob storage).
+             */
+            shareName?: string;
+            /**
+             * State of the storage account.
+             */
+            state: string;
+            /**
+             * Type of storage.
+             */
+            type?: string;
+        }
+
+        /**
          * Backup description.
          */
         export interface BackupItemResponse {
@@ -408672,6 +408397,20 @@ export namespace web {
              * Type of database.
              */
             type?: string;
+        }
+
+        /**
+         * Database connection string value to type pair.
+         */
+        export interface ConnStringValueTypePairResponse {
+            /**
+             * Type of database.
+             */
+            type: string;
+            /**
+             * Value of pair.
+             */
+            value: string;
         }
 
         /**
@@ -410137,6 +409876,20 @@ export namespace web {
              * Type of database
              */
             type: string;
+        }
+
+        /**
+         * Database connection string value to type pair
+         */
+        export interface ConnStringValueTypePairResponse {
+            /**
+             * Type of database
+             */
+            type: string;
+            /**
+             * Value of pair
+             */
+            value?: string;
         }
 
         /**
@@ -412053,6 +411806,20 @@ export namespace web {
         }
 
         /**
+         * Database connection string value to type pair.
+         */
+        export interface ConnStringValueTypePairResponse {
+            /**
+             * Type of database.
+             */
+            type: string;
+            /**
+             * Value of pair.
+             */
+            value: string;
+        }
+
+        /**
          * Cross-Origin Resource Sharing (CORS) settings for the app.
          */
         export interface CorsSettingsResponse {
@@ -413216,6 +412983,20 @@ export namespace web {
         }
 
         /**
+         * Database connection string value to type pair.
+         */
+        export interface ConnStringValueTypePairResponse {
+            /**
+             * Type of database.
+             */
+            type: string;
+            /**
+             * Value of pair.
+             */
+            value: string;
+        }
+
+        /**
          * Cross-Origin Resource Sharing (CORS) settings for the app.
          */
         export interface CorsSettingsResponse {
@@ -414375,6 +414156,20 @@ export namespace web {
         }
 
         /**
+         * Database connection string value to type pair.
+         */
+        export interface ConnStringValueTypePairResponse {
+            /**
+             * Type of database.
+             */
+            type: string;
+            /**
+             * Value of pair.
+             */
+            value: string;
+        }
+
+        /**
          * Cross-Origin Resource Sharing (CORS) settings for the app.
          */
         export interface CorsSettingsResponse {
@@ -415190,6 +414985,36 @@ export namespace web {
         }
 
         /**
+         * Azure Files or Blob Storage access information value for dictionary storage.
+         */
+        export interface AzureStorageInfoValueResponse {
+            /**
+             * Access key for the storage account.
+             */
+            accessKey?: string;
+            /**
+             * Name of the storage account.
+             */
+            accountName?: string;
+            /**
+             * Path to mount the storage within the site's runtime environment.
+             */
+            mountPath?: string;
+            /**
+             * Name of the file share (container name, for Blob storage).
+             */
+            shareName?: string;
+            /**
+             * State of the storage account.
+             */
+            state: string;
+            /**
+             * Type of storage.
+             */
+            type?: string;
+        }
+
+        /**
          * Backup description.
          */
         export interface BackupItemResponse {
@@ -415382,6 +415207,20 @@ export namespace web {
              * Type of database.
              */
             type?: string;
+        }
+
+        /**
+         * Database connection string value to type pair.
+         */
+        export interface ConnStringValueTypePairResponse {
+            /**
+             * Type of database.
+             */
+            type: string;
+            /**
+             * Value of pair.
+             */
+            value: string;
         }
 
         /**
@@ -416512,6 +416351,36 @@ export namespace web {
         }
 
         /**
+         * Azure Files or Blob Storage access information value for dictionary storage.
+         */
+        export interface AzureStorageInfoValueResponse {
+            /**
+             * Access key for the storage account.
+             */
+            accessKey?: string;
+            /**
+             * Name of the storage account.
+             */
+            accountName?: string;
+            /**
+             * Path to mount the storage within the site's runtime environment.
+             */
+            mountPath?: string;
+            /**
+             * Name of the file share (container name, for Blob storage).
+             */
+            shareName?: string;
+            /**
+             * State of the storage account.
+             */
+            state: string;
+            /**
+             * Type of storage.
+             */
+            type?: string;
+        }
+
+        /**
          * Backup description.
          */
         export interface BackupItemResponse {
@@ -416704,6 +416573,20 @@ export namespace web {
              * Type of database.
              */
             type?: string;
+        }
+
+        /**
+         * Database connection string value to type pair.
+         */
+        export interface ConnStringValueTypePairResponse {
+            /**
+             * Type of database.
+             */
+            type: string;
+            /**
+             * Value of pair.
+             */
+            value: string;
         }
 
         /**

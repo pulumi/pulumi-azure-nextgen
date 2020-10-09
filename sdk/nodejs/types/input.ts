@@ -50597,39 +50597,19 @@ export namespace containerservice {
             /**
              * Number of agents (VMs) to host docker containers. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 1. 
              */
-            count?: pulumi.Input<number>;
+            count: pulumi.Input<number>;
             /**
              * DNS prefix to be used to create the FQDN for the agent pool.
              */
-            dnsPrefix?: pulumi.Input<string>;
+            dnsPrefix: pulumi.Input<string>;
             /**
              * Unique name of the agent pool profile in the context of the subscription and resource group.
              */
             name: pulumi.Input<string>;
             /**
-             * OS Disk Size in GB to be used to specify the disk size for every machine in this master/agent pool. If you specify 0, it will apply the default osDisk size according to the vmSize specified.
-             */
-            osDiskSizeGB?: pulumi.Input<number>;
-            /**
-             * OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux.
-             */
-            osType?: pulumi.Input<string>;
-            /**
-             * Ports number array used to expose on this agent pool. The default opened ports are different based on your choice of orchestrator.
-             */
-            ports?: pulumi.Input<pulumi.Input<number>[]>;
-            /**
-             * Storage profile specifies what kind of storage used. Choose from StorageAccount and ManagedDisks. Leave it empty, we will choose for you based on the orchestrator choice.
-             */
-            storageProfile?: pulumi.Input<string>;
-            /**
              * Size of agent VMs.
              */
             vmSize: pulumi.Input<string>;
-            /**
-             * VNet SubnetID specifies the VNet's subnet identifier.
-             */
-            vnetSubnetID?: pulumi.Input<string>;
         }
 
         /**
@@ -50642,12 +50622,9 @@ export namespace containerservice {
             orchestrator: pulumi.Input<string>;
         }
 
-        /**
-         * Profile for diagnostics on the container service cluster.
-         */
         export interface ContainerServiceDiagnosticsProfile {
             /**
-             * Profile for diagnostics on the container service VMs.
+             * Profile for the container service VM diagnostic agent.
              */
             vmDiagnostics: pulumi.Input<inputs.containerservice.latest.ContainerServiceVMDiagnostics>;
         }
@@ -50675,29 +50652,9 @@ export namespace containerservice {
              */
             count?: pulumi.Input<number>;
             /**
-             * DNS prefix to be used to create the FQDN for the master pool.
+             * DNS prefix to be used to create the FQDN for master.
              */
             dnsPrefix: pulumi.Input<string>;
-            /**
-             * FirstConsecutiveStaticIP used to specify the first static ip of masters.
-             */
-            firstConsecutiveStaticIP?: pulumi.Input<string>;
-            /**
-             * OS Disk Size in GB to be used to specify the disk size for every machine in this master/agent pool. If you specify 0, it will apply the default osDisk size according to the vmSize specified.
-             */
-            osDiskSizeGB?: pulumi.Input<number>;
-            /**
-             * Storage profile specifies what kind of storage used. Choose from StorageAccount and ManagedDisks. Leave it empty, we will choose for you based on the orchestrator choice.
-             */
-            storageProfile?: pulumi.Input<string>;
-            /**
-             * Size of agent VMs.
-             */
-            vmSize: pulumi.Input<string>;
-            /**
-             * VNet SubnetID specifies the VNet's subnet identifier.
-             */
-            vnetSubnetID?: pulumi.Input<string>;
         }
 
         /**
@@ -50751,17 +50708,13 @@ export namespace containerservice {
          */
         export interface ContainerServiceOrchestratorProfile {
             /**
-             * The orchestrator to use to manage container service cluster resources. Valid values are Kubernetes, Swarm, DCOS, DockerCE and Custom.
+             * The orchestrator to use to manage container service cluster resources. Valid values are Swarm, DCOS, and Custom.
              */
             orchestratorType: pulumi.Input<string>;
-            /**
-             * The version of the orchestrator to use. You can specify the major.minor.patch part of the actual version.For example, you can specify version as "1.6.11".
-             */
-            orchestratorVersion?: pulumi.Input<string>;
         }
 
         /**
-         * Information about a service principal identity for the cluster to use for manipulating Azure APIs. Either secret or keyVaultSecretRef must be specified.
+         * Information about a service principal identity for the cluster to use for manipulating Azure APIs.
          */
         export interface ContainerServiceServicePrincipalProfile {
             /**
@@ -50769,13 +50722,9 @@ export namespace containerservice {
              */
             clientId: pulumi.Input<string>;
             /**
-             * Reference to a secret stored in Azure Key Vault.
+             * The secret password associated with the service principal.
              */
-            keyVaultSecretRef?: pulumi.Input<inputs.containerservice.latest.KeyVaultSecretRef>;
-            /**
-             * The secret password associated with the service principal in plain text.
-             */
-            secret?: pulumi.Input<string>;
+            secret: pulumi.Input<string>;
         }
 
         /**
@@ -50820,24 +50769,6 @@ export namespace containerservice {
              * The administrator username to use for Windows VMs.
              */
             adminUsername: pulumi.Input<string>;
-        }
-
-        /**
-         * Reference to a secret stored in Azure Key Vault.
-         */
-        export interface KeyVaultSecretRef {
-            /**
-             * The secret name.
-             */
-            secretName: pulumi.Input<string>;
-            /**
-             * Key vault identifier.
-             */
-            vaultID: pulumi.Input<string>;
-            /**
-             * The secret version.
-             */
-            version?: pulumi.Input<string>;
         }
 
         /**
@@ -51846,213 +51777,6 @@ export namespace containerservice {
              * The administrator username to use for Windows VMs.
              */
             adminUsername: pulumi.Input<string>;
-        }
-
-    }
-
-    export namespace v20170701 {
-        /**
-         * Profile for the container service agent pool.
-         */
-        export interface ContainerServiceAgentPoolProfile {
-            /**
-             * Number of agents (VMs) to host docker containers. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 1. 
-             */
-            count?: pulumi.Input<number>;
-            /**
-             * DNS prefix to be used to create the FQDN for the agent pool.
-             */
-            dnsPrefix?: pulumi.Input<string>;
-            /**
-             * Unique name of the agent pool profile in the context of the subscription and resource group.
-             */
-            name: pulumi.Input<string>;
-            /**
-             * OS Disk Size in GB to be used to specify the disk size for every machine in this master/agent pool. If you specify 0, it will apply the default osDisk size according to the vmSize specified.
-             */
-            osDiskSizeGB?: pulumi.Input<number>;
-            /**
-             * OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux.
-             */
-            osType?: pulumi.Input<string>;
-            /**
-             * Ports number array used to expose on this agent pool. The default opened ports are different based on your choice of orchestrator.
-             */
-            ports?: pulumi.Input<pulumi.Input<number>[]>;
-            /**
-             * Storage profile specifies what kind of storage used. Choose from StorageAccount and ManagedDisks. Leave it empty, we will choose for you based on the orchestrator choice.
-             */
-            storageProfile?: pulumi.Input<string>;
-            /**
-             * Size of agent VMs.
-             */
-            vmSize: pulumi.Input<string>;
-            /**
-             * VNet SubnetID specifies the VNet's subnet identifier.
-             */
-            vnetSubnetID?: pulumi.Input<string>;
-        }
-
-        /**
-         * Properties to configure a custom container service cluster.
-         */
-        export interface ContainerServiceCustomProfile {
-            /**
-             * The name of the custom orchestrator to use.
-             */
-            orchestrator: pulumi.Input<string>;
-        }
-
-        /**
-         * Profile for diagnostics on the container service cluster.
-         */
-        export interface ContainerServiceDiagnosticsProfile {
-            /**
-             * Profile for diagnostics on the container service VMs.
-             */
-            vmDiagnostics: pulumi.Input<inputs.containerservice.v20170701.ContainerServiceVMDiagnostics>;
-        }
-
-        /**
-         * Profile for Linux VMs in the container service cluster.
-         */
-        export interface ContainerServiceLinuxProfile {
-            /**
-             * The administrator username to use for Linux VMs.
-             */
-            adminUsername: pulumi.Input<string>;
-            /**
-             * SSH configuration for Linux-based VMs running on Azure.
-             */
-            ssh: pulumi.Input<inputs.containerservice.v20170701.ContainerServiceSshConfiguration>;
-        }
-
-        /**
-         * Profile for the container service master.
-         */
-        export interface ContainerServiceMasterProfile {
-            /**
-             * Number of masters (VMs) in the container service cluster. Allowed values are 1, 3, and 5. The default value is 1.
-             */
-            count?: pulumi.Input<number>;
-            /**
-             * DNS prefix to be used to create the FQDN for the master pool.
-             */
-            dnsPrefix: pulumi.Input<string>;
-            /**
-             * FirstConsecutiveStaticIP used to specify the first static ip of masters.
-             */
-            firstConsecutiveStaticIP?: pulumi.Input<string>;
-            /**
-             * OS Disk Size in GB to be used to specify the disk size for every machine in this master/agent pool. If you specify 0, it will apply the default osDisk size according to the vmSize specified.
-             */
-            osDiskSizeGB?: pulumi.Input<number>;
-            /**
-             * Storage profile specifies what kind of storage used. Choose from StorageAccount and ManagedDisks. Leave it empty, we will choose for you based on the orchestrator choice.
-             */
-            storageProfile?: pulumi.Input<string>;
-            /**
-             * Size of agent VMs.
-             */
-            vmSize: pulumi.Input<string>;
-            /**
-             * VNet SubnetID specifies the VNet's subnet identifier.
-             */
-            vnetSubnetID?: pulumi.Input<string>;
-        }
-
-        /**
-         * Profile for the container service orchestrator.
-         */
-        export interface ContainerServiceOrchestratorProfile {
-            /**
-             * The orchestrator to use to manage container service cluster resources. Valid values are Kubernetes, Swarm, DCOS, DockerCE and Custom.
-             */
-            orchestratorType: pulumi.Input<string>;
-            /**
-             * The version of the orchestrator to use. You can specify the major.minor.patch part of the actual version.For example, you can specify version as "1.6.11".
-             */
-            orchestratorVersion?: pulumi.Input<string>;
-        }
-
-        /**
-         * Information about a service principal identity for the cluster to use for manipulating Azure APIs. Either secret or keyVaultSecretRef must be specified.
-         */
-        export interface ContainerServiceServicePrincipalProfile {
-            /**
-             * The ID for the service principal.
-             */
-            clientId: pulumi.Input<string>;
-            /**
-             * Reference to a secret stored in Azure Key Vault.
-             */
-            keyVaultSecretRef?: pulumi.Input<inputs.containerservice.v20170701.KeyVaultSecretRef>;
-            /**
-             * The secret password associated with the service principal in plain text.
-             */
-            secret?: pulumi.Input<string>;
-        }
-
-        /**
-         * SSH configuration for Linux-based VMs running on Azure.
-         */
-        export interface ContainerServiceSshConfiguration {
-            /**
-             * The list of SSH public keys used to authenticate with Linux-based VMs. Only expect one key specified.
-             */
-            publicKeys: pulumi.Input<pulumi.Input<inputs.containerservice.v20170701.ContainerServiceSshPublicKey>[]>;
-        }
-
-        /**
-         * Contains information about SSH certificate public key data.
-         */
-        export interface ContainerServiceSshPublicKey {
-            /**
-             * Certificate public key used to authenticate with VMs through SSH. The certificate must be in PEM format with or without headers.
-             */
-            keyData: pulumi.Input<string>;
-        }
-
-        /**
-         * Profile for diagnostics on the container service VMs.
-         */
-        export interface ContainerServiceVMDiagnostics {
-            /**
-             * Whether the VM diagnostic agent is provisioned on the VM.
-             */
-            enabled: pulumi.Input<boolean>;
-        }
-
-        /**
-         * Profile for Windows VMs in the container service cluster.
-         */
-        export interface ContainerServiceWindowsProfile {
-            /**
-             * The administrator password to use for Windows VMs.
-             */
-            adminPassword: pulumi.Input<string>;
-            /**
-             * The administrator username to use for Windows VMs.
-             */
-            adminUsername: pulumi.Input<string>;
-        }
-
-        /**
-         * Reference to a secret stored in Azure Key Vault.
-         */
-        export interface KeyVaultSecretRef {
-            /**
-             * The secret name.
-             */
-            secretName: pulumi.Input<string>;
-            /**
-             * Key vault identifier.
-             */
-            vaultID: pulumi.Input<string>;
-            /**
-             * The secret version.
-             */
-            version?: pulumi.Input<string>;
         }
 
     }
@@ -108173,6 +107897,10 @@ export namespace devops {
              */
             id: pulumi.Input<string>;
             /**
+             * Repository-specific properties.
+             */
+            properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
              * Type of code repository.
              */
             repositoryType: pulumi.Input<string>;
@@ -121796,10 +121524,6 @@ export namespace hdinsight {
              */
             minSupportedTlsVersion?: pulumi.Input<string>;
             /**
-             * The network settings.
-             */
-            networkSettings?: pulumi.Input<inputs.hdinsight.v20150301preview.NetworkSettings>;
-            /**
              * The type of operating system.
              */
             osType?: pulumi.Input<string>;
@@ -121959,20 +121683,6 @@ export namespace hdinsight {
              * The username.
              */
             username?: pulumi.Input<string>;
-        }
-
-        /**
-         * The network settings.
-         */
-        export interface NetworkSettings {
-            /**
-             * The mechanism through which the cluster will have outbound access to the public network.
-             */
-            outboundOnlyPublicNetworkAccessType?: pulumi.Input<string>;
-            /**
-             * Specifies whether public network access is enabled for inbound and outbound, or outbound only.
-             */
-            publicNetworkAccess?: pulumi.Input<string>;
         }
 
         /**
@@ -122393,10 +122103,6 @@ export namespace hdinsight {
              */
             minSupportedTlsVersion?: pulumi.Input<string>;
             /**
-             * The network settings.
-             */
-            networkSettings?: pulumi.Input<inputs.hdinsight.v20180601preview.NetworkSettings>;
-            /**
              * The type of operating system.
              */
             osType?: pulumi.Input<string>;
@@ -122556,20 +122262,6 @@ export namespace hdinsight {
              * The username.
              */
             username?: pulumi.Input<string>;
-        }
-
-        /**
-         * The network settings.
-         */
-        export interface NetworkSettings {
-            /**
-             * The mechanism through which the cluster will have outbound access to the public network.
-             */
-            outboundOnlyPublicNetworkAccessType?: pulumi.Input<string>;
-            /**
-             * Specifies whether public network access is enabled for inbound and outbound, or outbound only.
-             */
-            publicNetworkAccess?: pulumi.Input<string>;
         }
 
         /**
@@ -126723,57 +126415,6 @@ export namespace insights {
              * the period of time (in ISO 8601 duration format) that is used to monitor alert activity based on the threshold. If specified then it must be between 5 minutes and 1 day.
              */
             windowSize?: pulumi.Input<string>;
-        }
-
-    }
-
-    export namespace v20170301preview {
-        /**
-         * A pointer to an Azure Action Group.
-         */
-        export interface ActivityLogAlertActionGroup {
-            /**
-             * The resourceId of the action group. This cannot be null or empty.
-             */
-            actionGroupId: pulumi.Input<string>;
-            /**
-             * The dictionary of custom properties to include with the post operation. These data are appended to the webhook payload.
-             */
-            webhookProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-        }
-
-        /**
-         * A list of activity log alert actions.
-         */
-        export interface ActivityLogAlertActionList {
-            /**
-             * The list of activity log alerts.
-             */
-            actionGroups?: pulumi.Input<pulumi.Input<inputs.insights.v20170301preview.ActivityLogAlertActionGroup>[]>;
-        }
-
-        /**
-         * An Activity Log alert condition that is met when all its member conditions are met.
-         */
-        export interface ActivityLogAlertAllOfCondition {
-            /**
-             * The list of activity log alert conditions.
-             */
-            allOf: pulumi.Input<pulumi.Input<inputs.insights.v20170301preview.ActivityLogAlertLeafCondition>[]>;
-        }
-
-        /**
-         * An Activity Log alert condition that is met by comparing an activity log field and value.
-         */
-        export interface ActivityLogAlertLeafCondition {
-            /**
-             * The field value will be compared to this value (case-insensitive) to determine if the condition is met.
-             */
-            equals: pulumi.Input<string>;
-            /**
-             * The name of the field that this condition will examine. The possible values for this field are (case-insensitive): 'resourceId', 'category', 'caller', 'level', 'operationName', 'resourceGroup', 'resourceProvider', 'status', 'subStatus', 'resourceType', or anything beginning with 'properties.'.
-             */
-            field: pulumi.Input<string>;
         }
 
     }
@@ -281232,6 +280873,10 @@ export namespace resources {
          */
         export interface ManagedServiceIdentity {
             /**
+             * ID of the Azure Active Directory.
+             */
+            tenantId?: pulumi.Input<string>;
+            /**
              * Type of the managed identity.
              */
             type?: pulumi.Input<string>;
@@ -285237,24 +284882,6 @@ export namespace securityinsights {
              * The user principal name of the user the incident is assigned to.
              */
             userPrincipalName?: pulumi.Input<string>;
-        }
-
-        /**
-         * Relation node
-         */
-        export interface RelationNode {
-            /**
-             * Etag for relation node
-             */
-            etag?: pulumi.Input<string>;
-            /**
-             * Additional set of properties
-             */
-            relationAdditionalProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-            /**
-             * Relation Node Id
-             */
-            relationNodeId?: pulumi.Input<string>;
         }
 
         /**
