@@ -220,7 +220,7 @@ class IdentityResponse(dict):
         Identity for the resource.
         :param str principal_id: The principal ID of resource identity.
         :param str tenant_id: The tenant ID of resource.
-        :param str type: The identity type.
+        :param str type: The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove all identities.
         :param Mapping[str, 'IdentityResponseUserAssignedIdentitiesArgs'] user_assigned_identities: The list of user identities associated with the Kusto cluster. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
         """
         pulumi.set(__self__, "principal_id", principal_id)
@@ -249,7 +249,7 @@ class IdentityResponse(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The identity type.
+        The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove all identities.
         """
         return pulumi.get(self, "type")
 
@@ -305,16 +305,21 @@ class KeyVaultPropertiesResponse(dict):
     def __init__(__self__, *,
                  key_name: str,
                  key_vault_uri: str,
-                 key_version: str):
+                 key_version: Optional[str] = None,
+                 user_identity: Optional[str] = None):
         """
         Properties of the key vault.
         :param str key_name: The name of the key vault key.
         :param str key_vault_uri: The Uri of the key vault.
         :param str key_version: The version of the key vault key.
+        :param str user_identity: The user assigned identity (ARM resource id) that has access to the key.
         """
         pulumi.set(__self__, "key_name", key_name)
         pulumi.set(__self__, "key_vault_uri", key_vault_uri)
-        pulumi.set(__self__, "key_version", key_version)
+        if key_version is not None:
+            pulumi.set(__self__, "key_version", key_version)
+        if user_identity is not None:
+            pulumi.set(__self__, "user_identity", user_identity)
 
     @property
     @pulumi.getter(name="keyName")
@@ -334,11 +339,19 @@ class KeyVaultPropertiesResponse(dict):
 
     @property
     @pulumi.getter(name="keyVersion")
-    def key_version(self) -> str:
+    def key_version(self) -> Optional[str]:
         """
         The version of the key vault key.
         """
         return pulumi.get(self, "key_version")
+
+    @property
+    @pulumi.getter(name="userIdentity")
+    def user_identity(self) -> Optional[str]:
+        """
+        The user assigned identity (ARM resource id) that has access to the key.
+        """
+        return pulumi.get(self, "user_identity")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -33670,6 +33670,20 @@ export namespace compute {
         }
 
         /**
+         * Describes the properties of a run command parameter.
+         */
+        export interface RunCommandInputParameterResponse {
+            /**
+             * The run command parameter name.
+             */
+            name: string;
+            /**
+             * The run command parameter value.
+             */
+            value: string;
+        }
+
+        /**
          * Describes a scale-in policy for a virtual machine scale set.
          */
         export interface ScaleInPolicyResponse {
@@ -34206,6 +34220,62 @@ export namespace compute {
              * The installation summary of the latest installation operation for the virtual machine.
              */
             lastPatchInstallationSummary?: outputs.compute.latest.LastPatchInstallationSummaryResponse;
+        }
+
+        /**
+         * The instance view of a virtual machine run command.
+         */
+        export interface VirtualMachineRunCommandInstanceViewResponse {
+            /**
+             * Script end time.
+             */
+            endTime?: string;
+            /**
+             * Script error stream.
+             */
+            error?: string;
+            /**
+             * Communicate script configuration errors or execution messages.
+             */
+            executionMessage?: string;
+            /**
+             * Script execution status.
+             */
+            executionState?: string;
+            /**
+             * Exit code returned from script execution.
+             */
+            exitCode?: number;
+            /**
+             * Script output stream.
+             */
+            output?: string;
+            /**
+             * Script start time.
+             */
+            startTime?: string;
+            /**
+             * The resource status information.
+             */
+            statuses?: outputs.compute.latest.InstanceViewStatusResponse[];
+        }
+
+        /**
+         * Describes the script sources for run command.
+         */
+        export interface VirtualMachineRunCommandScriptSourceResponse {
+            /**
+             * Specifies a commandId of predefined built-in script.
+             */
+            commandId?: string;
+            /**
+             * Specifies the script content to be executed on the VM.
+             */
+            script?: string;
+            /**
+             * Specifies the script download location.
+             */
+            scriptUri?: string;
         }
 
         /**
@@ -53352,6 +53422,20 @@ export namespace compute {
         }
 
         /**
+         * Describes the properties of a run command parameter.
+         */
+        export interface RunCommandInputParameterResponse {
+            /**
+             * The run command parameter name.
+             */
+            name: string;
+            /**
+             * The run command parameter value.
+             */
+            value: string;
+        }
+
+        /**
          * Describes a scale-in policy for a virtual machine scale set.
          */
         export interface ScaleInPolicyResponse {
@@ -53779,6 +53863,62 @@ export namespace compute {
              * The installation summary of the latest installation operation for the virtual machine.
              */
             lastPatchInstallationSummary?: outputs.compute.v20200601.LastPatchInstallationSummaryResponse;
+        }
+
+        /**
+         * The instance view of a virtual machine run command.
+         */
+        export interface VirtualMachineRunCommandInstanceViewResponse {
+            /**
+             * Script end time.
+             */
+            endTime?: string;
+            /**
+             * Script error stream.
+             */
+            error?: string;
+            /**
+             * Communicate script configuration errors or execution messages.
+             */
+            executionMessage?: string;
+            /**
+             * Script execution status.
+             */
+            executionState?: string;
+            /**
+             * Exit code returned from script execution.
+             */
+            exitCode?: number;
+            /**
+             * Script output stream.
+             */
+            output?: string;
+            /**
+             * Script start time.
+             */
+            startTime?: string;
+            /**
+             * The resource status information.
+             */
+            statuses?: outputs.compute.v20200601.InstanceViewStatusResponse[];
+        }
+
+        /**
+         * Describes the script sources for run command.
+         */
+        export interface VirtualMachineRunCommandScriptSourceResponse {
+            /**
+             * Specifies a commandId of predefined built-in script.
+             */
+            commandId?: string;
+            /**
+             * Specifies the script content to be executed on the VM.
+             */
+            script?: string;
+            /**
+             * Specifies the script download location.
+             */
+            scriptUri?: string;
         }
 
         /**
@@ -165396,6 +165536,9 @@ export namespace keyvault {
 
 export namespace kubernetes {
     export namespace v20200101preview {
+        /**
+         * AAD profile of the connected cluster
+         */
         export interface ConnectedClusterAADProfileResponse {
             /**
              * The client app id configured on target K8 cluster 
@@ -165570,7 +165713,7 @@ export namespace kusto {
              */
             tenantId: string;
             /**
-             * The identity type.
+             * The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove all identities.
              */
             type: string;
             /**
@@ -165605,7 +165748,11 @@ export namespace kusto {
             /**
              * The version of the key vault key.
              */
-            keyVersion: string;
+            keyVersion?: string;
+            /**
+             * The user assigned identity (ARM resource id) that has access to the key.
+             */
+            userIdentity?: string;
         }
 
         /**
@@ -166658,6 +166805,203 @@ export namespace kusto {
              * The list of language extensions.
              */
             value?: outputs.kusto.v20200614.LanguageExtensionResponse[];
+        }
+
+        /**
+         * A class that contains the optimized auto scale definition.
+         */
+        export interface OptimizedAutoscaleResponse {
+            /**
+             * A boolean value that indicate if the optimized autoscale feature is enabled or not.
+             */
+            isEnabled: boolean;
+            /**
+             * Maximum allowed instances count.
+             */
+            maximum: number;
+            /**
+             * Minimum allowed instances count.
+             */
+            minimum: number;
+            /**
+             * The version of the template defined, for instance 1.
+             */
+            version: number;
+        }
+
+        /**
+         * Represents a tenant ID that is trusted by the cluster.
+         */
+        export interface TrustedExternalTenantResponse {
+            /**
+             * GUID representing an external tenant.
+             */
+            value?: string;
+        }
+
+        /**
+         * A class that contains virtual network definition.
+         */
+        export interface VirtualNetworkConfigurationResponse {
+            /**
+             * Data management's service public IP address resource id.
+             */
+            dataManagementPublicIpId: string;
+            /**
+             * Engine service's public IP address resource id.
+             */
+            enginePublicIpId: string;
+            /**
+             * The subnet resource id.
+             */
+            subnetId: string;
+        }
+    }
+
+    export namespace v20200918 {
+        /**
+         * Azure SKU definition.
+         */
+        export interface AzureSkuResponse {
+            /**
+             * The number of instances of the cluster.
+             */
+            capacity?: number;
+            /**
+             * SKU name.
+             */
+            name: string;
+            /**
+             * SKU tier.
+             */
+            tier: string;
+        }
+
+        /**
+         * A class representing database principal entity.
+         */
+        export interface DatabasePrincipalResponse {
+            /**
+             * Application id - relevant only for application principal type.
+             */
+            appId?: string;
+            /**
+             * Database principal email if exists.
+             */
+            email?: string;
+            /**
+             * Database principal fully qualified name.
+             */
+            fqn?: string;
+            /**
+             * Database principal name.
+             */
+            name: string;
+            /**
+             * Database principal role.
+             */
+            role: string;
+            /**
+             * The tenant name of the principal
+             */
+            tenantName: string;
+            /**
+             * Database principal type.
+             */
+            type: string;
+        }
+
+        /**
+         * A class representing follower database request.
+         */
+        export interface FollowerDatabaseDefinitionResponse {
+            /**
+             * Resource name of the attached database configuration in the follower cluster.
+             */
+            attachedDatabaseConfigurationName: string;
+            /**
+             * Resource id of the cluster that follows a database owned by this cluster.
+             */
+            clusterResourceId: string;
+            /**
+             * The database name owned by this cluster that was followed. * in case following all databases.
+             */
+            databaseName: string;
+        }
+
+        /**
+         * Identity for the resource.
+         */
+        export interface IdentityResponse {
+            /**
+             * The principal ID of resource identity.
+             */
+            principalId: string;
+            /**
+             * The tenant ID of resource.
+             */
+            tenantId: string;
+            /**
+             * The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove all identities.
+             */
+            type: string;
+            /**
+             * The list of user identities associated with the Kusto cluster. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+             */
+            userAssignedIdentities?: {[key: string]: outputs.kusto.v20200918.IdentityResponseUserAssignedIdentities};
+        }
+
+        export interface IdentityResponseUserAssignedIdentities {
+            /**
+             * The client id of user assigned identity.
+             */
+            clientId: string;
+            /**
+             * The principal id of user assigned identity.
+             */
+            principalId: string;
+        }
+
+        /**
+         * Properties of the key vault.
+         */
+        export interface KeyVaultPropertiesResponse {
+            /**
+             * The name of the key vault key.
+             */
+            keyName: string;
+            /**
+             * The Uri of the key vault.
+             */
+            keyVaultUri: string;
+            /**
+             * The version of the key vault key.
+             */
+            keyVersion?: string;
+            /**
+             * The user assigned identity (ARM resource id) that has access to the key.
+             */
+            userIdentity?: string;
+        }
+
+        /**
+         * The language extension object.
+         */
+        export interface LanguageExtensionResponse {
+            /**
+             * The language extension name.
+             */
+            languageExtensionName?: string;
+        }
+
+        /**
+         * The list of language extension objects.
+         */
+        export interface LanguageExtensionsListResponse {
+            /**
+             * The list of language extensions.
+             */
+            value?: outputs.kusto.v20200918.LanguageExtensionResponse[];
         }
 
         /**
@@ -350552,6 +350896,10 @@ export namespace peering {
              */
             errorMessage: string;
             /**
+             * The ID used within Microsoft's peering provisioning system to track the connection
+             */
+            microsoftTrackingId: string;
+            /**
              * The PeeringDB.com ID of the facility at which the connection has to be set up.
              */
             peeringDBFacilityId?: number;
@@ -351535,6 +351883,252 @@ export namespace peering {
              * The reference of the peer ASN.
              */
             peerAsn?: outputs.peering.v20200401.SubResourceResponse;
+        }
+
+        /**
+         * The details of the event associated with a prefix.
+         */
+        export interface PeeringServicePrefixEventResponse {
+            /**
+             * The description of the event associated with a prefix.
+             */
+            eventDescription: string;
+            /**
+             * The level of the event associated with a prefix.
+             */
+            eventLevel: string;
+            /**
+             * The summary of the event associated with a prefix.
+             */
+            eventSummary: string;
+            /**
+             * The timestamp of the event associated with a prefix.
+             */
+            eventTimestamp: string;
+            /**
+             * The type of the event associated with a prefix.
+             */
+            eventType: string;
+        }
+
+        /**
+         * The SKU that defines the type of the peering service.
+         */
+        export interface PeeringServiceSkuResponse {
+            /**
+             * The name of the peering service SKU.
+             */
+            name?: string;
+        }
+
+        /**
+         * The SKU that defines the tier and kind of the peering.
+         */
+        export interface PeeringSkuResponse {
+            /**
+             * The family of the peering SKU.
+             */
+            family?: string;
+            /**
+             * The name of the peering SKU.
+             */
+            name?: string;
+            /**
+             * The size of the peering SKU.
+             */
+            size?: string;
+            /**
+             * The tier of the peering SKU.
+             */
+            tier?: string;
+        }
+
+        /**
+         * The sub resource.
+         */
+        export interface SubResourceResponse {
+            /**
+             * The identifier of the referenced resource.
+             */
+            id?: string;
+        }
+    }
+
+    export namespace v20201001 {
+        /**
+         * The properties that define a BGP session.
+         */
+        export interface BgpSessionResponse {
+            /**
+             * The maximum number of prefixes advertised over the IPv4 session.
+             */
+            maxPrefixesAdvertisedV4?: number;
+            /**
+             * The maximum number of prefixes advertised over the IPv6 session.
+             */
+            maxPrefixesAdvertisedV6?: number;
+            /**
+             * The MD5 authentication key of the session.
+             */
+            md5AuthenticationKey?: string;
+            /**
+             * The IPv4 session address on Microsoft's end.
+             */
+            microsoftSessionIPv4Address?: string;
+            /**
+             * The IPv6 session address on Microsoft's end.
+             */
+            microsoftSessionIPv6Address?: string;
+            /**
+             * The IPv4 session address on peer's end.
+             */
+            peerSessionIPv4Address?: string;
+            /**
+             * The IPv6 session address on peer's end.
+             */
+            peerSessionIPv6Address?: string;
+            /**
+             * The IPv4 prefix that contains both ends' IPv4 addresses.
+             */
+            sessionPrefixV4?: string;
+            /**
+             * The IPv6 prefix that contains both ends' IPv6 addresses.
+             */
+            sessionPrefixV6?: string;
+            /**
+             * The state of the IPv4 session.
+             */
+            sessionStateV4: string;
+            /**
+             * The state of the IPv6 session.
+             */
+            sessionStateV6: string;
+        }
+
+        /**
+         * The contact detail class.
+         */
+        export interface ContactDetailResponse {
+            /**
+             * The e-mail address of the contact.
+             */
+            email?: string;
+            /**
+             * The phone number of the contact.
+             */
+            phone?: string;
+            /**
+             * The role of the contact.
+             */
+            role?: string;
+        }
+
+        /**
+         * The properties that define a direct connection.
+         */
+        export interface DirectConnectionResponse {
+            /**
+             * The bandwidth of the connection.
+             */
+            bandwidthInMbps?: number;
+            /**
+             * The BGP session associated with the connection.
+             */
+            bgpSession?: outputs.peering.v20201001.BgpSessionResponse;
+            /**
+             * The unique identifier (GUID) for the connection.
+             */
+            connectionIdentifier?: string;
+            /**
+             * The state of the connection.
+             */
+            connectionState: string;
+            /**
+             * The error message related to the connection state, if any.
+             */
+            errorMessage: string;
+            /**
+             * The ID used within Microsoft's peering provisioning system to track the connection
+             */
+            microsoftTrackingId: string;
+            /**
+             * The PeeringDB.com ID of the facility at which the connection has to be set up.
+             */
+            peeringDBFacilityId?: number;
+            /**
+             * The bandwidth that is actually provisioned.
+             */
+            provisionedBandwidthInMbps: number;
+            /**
+             * The field indicating if Microsoft provides session ip addresses.
+             */
+            sessionAddressProvider?: string;
+            /**
+             * The flag that indicates whether or not the connection is used for peering service.
+             */
+            useForPeeringService?: boolean;
+        }
+
+        /**
+         * The properties that define an exchange connection.
+         */
+        export interface ExchangeConnectionResponse {
+            /**
+             * The BGP session associated with the connection.
+             */
+            bgpSession?: outputs.peering.v20201001.BgpSessionResponse;
+            /**
+             * The unique identifier (GUID) for the connection.
+             */
+            connectionIdentifier?: string;
+            /**
+             * The state of the connection.
+             */
+            connectionState: string;
+            /**
+             * The error message related to the connection state, if any.
+             */
+            errorMessage: string;
+            /**
+             * The PeeringDB.com ID of the facility at which the connection has to be set up.
+             */
+            peeringDBFacilityId?: number;
+        }
+
+        /**
+         * The properties that define a direct peering.
+         */
+        export interface PeeringPropertiesDirectResponse {
+            /**
+             * The set of connections that constitute a direct peering.
+             */
+            connections?: outputs.peering.v20201001.DirectConnectionResponse[];
+            /**
+             * The type of direct peering.
+             */
+            directPeeringType?: string;
+            /**
+             * The reference of the peer ASN.
+             */
+            peerAsn?: outputs.peering.v20201001.SubResourceResponse;
+            /**
+             * The flag that indicates whether or not the peering is used for peering service.
+             */
+            useForPeeringService: boolean;
+        }
+
+        /**
+         * The properties that define an exchange peering.
+         */
+        export interface PeeringPropertiesExchangeResponse {
+            /**
+             * The set of connections that constitute an exchange peering.
+             */
+            connections?: outputs.peering.v20201001.ExchangeConnectionResponse[];
+            /**
+             * The reference of the peer ASN.
+             */
+            peerAsn?: outputs.peering.v20201001.SubResourceResponse;
         }
 
         /**
@@ -377348,6 +377942,56 @@ export namespace resources {
              * Azure Active Directory principal ID associated with this identity.
              */
             principalId?: string;
+        }
+    }
+
+    export namespace v20201001preview {
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
+        }
+
+        /**
+         * Represents a Template Spec artifact containing an embedded Azure Resource Manager template.
+         */
+        export interface TemplateSpecTemplateArtifactResponse {
+            /**
+             * The kind of artifact.
+             */
+            kind: "template";
+            /**
+             * A filesystem safe relative path of the artifact.
+             */
+            path: string;
+            /**
+             * The Azure Resource Manager template.
+             */
+            template: any;
         }
     }
 }

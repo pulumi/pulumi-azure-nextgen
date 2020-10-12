@@ -77,7 +77,7 @@ class IdentityArgs:
                  type: pulumi.Input[str]):
         """
         Identity for the resource.
-        :param pulumi.Input[str] type: The identity type.
+        :param pulumi.Input[str] type: The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove all identities.
         """
         pulumi.set(__self__, "type", type)
 
@@ -85,7 +85,7 @@ class IdentityArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The identity type.
+        The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove all identities.
         """
         return pulumi.get(self, "type")
 
@@ -99,16 +99,21 @@ class KeyVaultPropertiesArgs:
     def __init__(__self__, *,
                  key_name: pulumi.Input[str],
                  key_vault_uri: pulumi.Input[str],
-                 key_version: pulumi.Input[str]):
+                 key_version: Optional[pulumi.Input[str]] = None,
+                 user_identity: Optional[pulumi.Input[str]] = None):
         """
         Properties of the key vault.
         :param pulumi.Input[str] key_name: The name of the key vault key.
         :param pulumi.Input[str] key_vault_uri: The Uri of the key vault.
         :param pulumi.Input[str] key_version: The version of the key vault key.
+        :param pulumi.Input[str] user_identity: The user assigned identity (ARM resource id) that has access to the key.
         """
         pulumi.set(__self__, "key_name", key_name)
         pulumi.set(__self__, "key_vault_uri", key_vault_uri)
-        pulumi.set(__self__, "key_version", key_version)
+        if key_version is not None:
+            pulumi.set(__self__, "key_version", key_version)
+        if user_identity is not None:
+            pulumi.set(__self__, "user_identity", user_identity)
 
     @property
     @pulumi.getter(name="keyName")
@@ -136,15 +141,27 @@ class KeyVaultPropertiesArgs:
 
     @property
     @pulumi.getter(name="keyVersion")
-    def key_version(self) -> pulumi.Input[str]:
+    def key_version(self) -> Optional[pulumi.Input[str]]:
         """
         The version of the key vault key.
         """
         return pulumi.get(self, "key_version")
 
     @key_version.setter
-    def key_version(self, value: pulumi.Input[str]):
+    def key_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "key_version", value)
+
+    @property
+    @pulumi.getter(name="userIdentity")
+    def user_identity(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user assigned identity (ARM resource id) that has access to the key.
+        """
+        return pulumi.get(self, "user_identity")
+
+    @user_identity.setter
+    def user_identity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_identity", value)
 
 
 @pulumi.input_type

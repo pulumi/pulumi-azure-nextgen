@@ -27825,6 +27825,20 @@ export namespace compute {
         }
 
         /**
+         * Describes the properties of a run command parameter.
+         */
+        export interface RunCommandInputParameter {
+            /**
+             * The run command parameter name.
+             */
+            name: pulumi.Input<string>;
+            /**
+             * The run command parameter value.
+             */
+            value: pulumi.Input<string>;
+        }
+
+        /**
          * Describes a scale-in policy for a virtual machine scale set.
          */
         export interface ScaleInPolicy {
@@ -28085,6 +28099,24 @@ export namespace compute {
              * The type of identity used for the virtual machine. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the virtual machine.
              */
             type?: pulumi.Input<string>;
+        }
+
+        /**
+         * Describes the script sources for run command.
+         */
+        export interface VirtualMachineRunCommandScriptSource {
+            /**
+             * Specifies a commandId of predefined built-in script.
+             */
+            commandId?: pulumi.Input<string>;
+            /**
+             * Specifies the script content to be executed on the VM.
+             */
+            script?: pulumi.Input<string>;
+            /**
+             * Specifies the script download location.
+             */
+            scriptUri?: pulumi.Input<string>;
         }
 
         /**
@@ -42913,6 +42945,20 @@ export namespace compute {
         }
 
         /**
+         * Describes the properties of a run command parameter.
+         */
+        export interface RunCommandInputParameter {
+            /**
+             * The run command parameter name.
+             */
+            name: pulumi.Input<string>;
+            /**
+             * The run command parameter value.
+             */
+            value: pulumi.Input<string>;
+        }
+
+        /**
          * Describes a scale-in policy for a virtual machine scale set.
          */
         export interface ScaleInPolicy {
@@ -43107,6 +43153,24 @@ export namespace compute {
              * The type of identity used for the virtual machine. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the virtual machine.
              */
             type?: pulumi.Input<string>;
+        }
+
+        /**
+         * Describes the script sources for run command.
+         */
+        export interface VirtualMachineRunCommandScriptSource {
+            /**
+             * Specifies a commandId of predefined built-in script.
+             */
+            commandId?: pulumi.Input<string>;
+            /**
+             * Specifies the script content to be executed on the VM.
+             */
+            script?: pulumi.Input<string>;
+            /**
+             * Specifies the script download location.
+             */
+            scriptUri?: pulumi.Input<string>;
         }
 
         /**
@@ -129465,6 +129529,9 @@ export namespace keyvault {
 
 export namespace kubernetes {
     export namespace v20200101preview {
+        /**
+         * Authentication token value.
+         */
         export interface AuthenticationDetailsValue {
             /**
              * Authentication token.
@@ -129472,6 +129539,9 @@ export namespace kubernetes {
             token?: string;
         }
 
+        /**
+         * AAD profile of the connected cluster
+         */
         export interface ConnectedClusterAADProfile {
             /**
              * The client app id configured on target K8 cluster 
@@ -129544,7 +129614,7 @@ export namespace kusto {
          */
         export interface Identity {
             /**
-             * The identity type.
+             * The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove all identities.
              */
             type: pulumi.Input<string>;
         }
@@ -129564,7 +129634,11 @@ export namespace kusto {
             /**
              * The version of the key vault key.
              */
-            keyVersion: pulumi.Input<string>;
+            keyVersion?: pulumi.Input<string>;
+            /**
+             * The user assigned identity (ARM resource id) that has access to the key.
+             */
+            userIdentity?: pulumi.Input<string>;
         }
 
         /**
@@ -130133,6 +130207,109 @@ export namespace kusto {
              * The version of the key vault key.
              */
             keyVersion: pulumi.Input<string>;
+        }
+
+        /**
+         * A class that contains the optimized auto scale definition.
+         */
+        export interface OptimizedAutoscale {
+            /**
+             * A boolean value that indicate if the optimized autoscale feature is enabled or not.
+             */
+            isEnabled: pulumi.Input<boolean>;
+            /**
+             * Maximum allowed instances count.
+             */
+            maximum: pulumi.Input<number>;
+            /**
+             * Minimum allowed instances count.
+             */
+            minimum: pulumi.Input<number>;
+            /**
+             * The version of the template defined, for instance 1.
+             */
+            version: pulumi.Input<number>;
+        }
+
+        /**
+         * Represents a tenant ID that is trusted by the cluster.
+         */
+        export interface TrustedExternalTenant {
+            /**
+             * GUID representing an external tenant.
+             */
+            value?: pulumi.Input<string>;
+        }
+
+        /**
+         * A class that contains virtual network definition.
+         */
+        export interface VirtualNetworkConfiguration {
+            /**
+             * Data management's service public IP address resource id.
+             */
+            dataManagementPublicIpId: pulumi.Input<string>;
+            /**
+             * Engine service's public IP address resource id.
+             */
+            enginePublicIpId: pulumi.Input<string>;
+            /**
+             * The subnet resource id.
+             */
+            subnetId: pulumi.Input<string>;
+        }
+
+    }
+
+    export namespace v20200918 {
+        /**
+         * Azure SKU definition.
+         */
+        export interface AzureSku {
+            /**
+             * The number of instances of the cluster.
+             */
+            capacity?: pulumi.Input<number>;
+            /**
+             * SKU name.
+             */
+            name: pulumi.Input<string>;
+            /**
+             * SKU tier.
+             */
+            tier: pulumi.Input<string>;
+        }
+
+        /**
+         * Identity for the resource.
+         */
+        export interface Identity {
+            /**
+             * The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove all identities.
+             */
+            type: pulumi.Input<string>;
+        }
+
+        /**
+         * Properties of the key vault.
+         */
+        export interface KeyVaultProperties {
+            /**
+             * The name of the key vault key.
+             */
+            keyName: pulumi.Input<string>;
+            /**
+             * The Uri of the key vault.
+             */
+            keyVaultUri: pulumi.Input<string>;
+            /**
+             * The version of the key vault key.
+             */
+            keyVersion?: pulumi.Input<string>;
+            /**
+             * The user assigned identity (ARM resource id) that has access to the key.
+             */
+            userIdentity?: pulumi.Input<string>;
         }
 
         /**
@@ -269039,6 +269216,191 @@ export namespace peering {
         }
 
     }
+
+    export namespace v20201001 {
+        /**
+         * The properties that define a BGP session.
+         */
+        export interface BgpSession {
+            /**
+             * The maximum number of prefixes advertised over the IPv4 session.
+             */
+            maxPrefixesAdvertisedV4?: pulumi.Input<number>;
+            /**
+             * The maximum number of prefixes advertised over the IPv6 session.
+             */
+            maxPrefixesAdvertisedV6?: pulumi.Input<number>;
+            /**
+             * The MD5 authentication key of the session.
+             */
+            md5AuthenticationKey?: pulumi.Input<string>;
+            /**
+             * The IPv4 session address on Microsoft's end.
+             */
+            microsoftSessionIPv4Address?: pulumi.Input<string>;
+            /**
+             * The IPv6 session address on Microsoft's end.
+             */
+            microsoftSessionIPv6Address?: pulumi.Input<string>;
+            /**
+             * The IPv4 session address on peer's end.
+             */
+            peerSessionIPv4Address?: pulumi.Input<string>;
+            /**
+             * The IPv6 session address on peer's end.
+             */
+            peerSessionIPv6Address?: pulumi.Input<string>;
+            /**
+             * The IPv4 prefix that contains both ends' IPv4 addresses.
+             */
+            sessionPrefixV4?: pulumi.Input<string>;
+            /**
+             * The IPv6 prefix that contains both ends' IPv6 addresses.
+             */
+            sessionPrefixV6?: pulumi.Input<string>;
+        }
+
+        /**
+         * The contact detail class.
+         */
+        export interface ContactDetail {
+            /**
+             * The e-mail address of the contact.
+             */
+            email?: pulumi.Input<string>;
+            /**
+             * The phone number of the contact.
+             */
+            phone?: pulumi.Input<string>;
+            /**
+             * The role of the contact.
+             */
+            role?: pulumi.Input<string>;
+        }
+
+        /**
+         * The properties that define a direct connection.
+         */
+        export interface DirectConnection {
+            /**
+             * The bandwidth of the connection.
+             */
+            bandwidthInMbps?: pulumi.Input<number>;
+            /**
+             * The BGP session associated with the connection.
+             */
+            bgpSession?: pulumi.Input<inputs.peering.v20201001.BgpSession>;
+            /**
+             * The unique identifier (GUID) for the connection.
+             */
+            connectionIdentifier?: pulumi.Input<string>;
+            /**
+             * The PeeringDB.com ID of the facility at which the connection has to be set up.
+             */
+            peeringDBFacilityId?: pulumi.Input<number>;
+            /**
+             * The field indicating if Microsoft provides session ip addresses.
+             */
+            sessionAddressProvider?: pulumi.Input<string>;
+            /**
+             * The flag that indicates whether or not the connection is used for peering service.
+             */
+            useForPeeringService?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * The properties that define an exchange connection.
+         */
+        export interface ExchangeConnection {
+            /**
+             * The BGP session associated with the connection.
+             */
+            bgpSession?: pulumi.Input<inputs.peering.v20201001.BgpSession>;
+            /**
+             * The unique identifier (GUID) for the connection.
+             */
+            connectionIdentifier?: pulumi.Input<string>;
+            /**
+             * The PeeringDB.com ID of the facility at which the connection has to be set up.
+             */
+            peeringDBFacilityId?: pulumi.Input<number>;
+        }
+
+        /**
+         * The properties that define a direct peering.
+         */
+        export interface PeeringPropertiesDirect {
+            /**
+             * The set of connections that constitute a direct peering.
+             */
+            connections?: pulumi.Input<pulumi.Input<inputs.peering.v20201001.DirectConnection>[]>;
+            /**
+             * The type of direct peering.
+             */
+            directPeeringType?: pulumi.Input<string>;
+            /**
+             * The reference of the peer ASN.
+             */
+            peerAsn?: pulumi.Input<inputs.peering.v20201001.SubResource>;
+        }
+
+        /**
+         * The properties that define an exchange peering.
+         */
+        export interface PeeringPropertiesExchange {
+            /**
+             * The set of connections that constitute an exchange peering.
+             */
+            connections?: pulumi.Input<pulumi.Input<inputs.peering.v20201001.ExchangeConnection>[]>;
+            /**
+             * The reference of the peer ASN.
+             */
+            peerAsn?: pulumi.Input<inputs.peering.v20201001.SubResource>;
+        }
+
+        /**
+         * The SKU that defines the type of the peering service.
+         */
+        export interface PeeringServiceSku {
+            /**
+             * The name of the peering service SKU.
+             */
+            name?: pulumi.Input<string>;
+        }
+
+        /**
+         * The SKU that defines the tier and kind of the peering.
+         */
+        export interface PeeringSku {
+            /**
+             * The family of the peering SKU.
+             */
+            family?: pulumi.Input<string>;
+            /**
+             * The name of the peering SKU.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * The size of the peering SKU.
+             */
+            size?: pulumi.Input<string>;
+            /**
+             * The tier of the peering SKU.
+             */
+            tier?: pulumi.Input<string>;
+        }
+
+        /**
+         * The sub resource.
+         */
+        export interface SubResource {
+            /**
+             * The identifier of the referenced resource.
+             */
+            id?: pulumi.Input<string>;
+        }
+
+    }
 }
 
 export namespace policyinsights {
@@ -281099,6 +281461,27 @@ export namespace resources {
              * Azure Active Directory principal ID associated with this identity.
              */
             principalId?: pulumi.Input<string>;
+        }
+
+    }
+
+    export namespace v20201001preview {
+        /**
+         * Represents a Template Spec artifact containing an embedded Azure Resource Manager template.
+         */
+        export interface TemplateSpecTemplateArtifact {
+            /**
+             * The kind of artifact.
+             */
+            kind: pulumi.Input<"template">;
+            /**
+             * A filesystem safe relative path of the artifact.
+             */
+            path: pulumi.Input<string>;
+            /**
+             * The Azure Resource Manager template.
+             */
+            template: any;
         }
 
     }

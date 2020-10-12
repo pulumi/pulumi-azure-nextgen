@@ -224,6 +224,7 @@ class DirectConnectionResponse(dict):
     def __init__(__self__, *,
                  connection_state: str,
                  error_message: str,
+                 microsoft_tracking_id: str,
                  provisioned_bandwidth_in_mbps: int,
                  bandwidth_in_mbps: Optional[int] = None,
                  bgp_session: Optional['outputs.BgpSessionResponse'] = None,
@@ -235,6 +236,7 @@ class DirectConnectionResponse(dict):
         The properties that define a direct connection.
         :param str connection_state: The state of the connection.
         :param str error_message: The error message related to the connection state, if any.
+        :param str microsoft_tracking_id: The ID used within Microsoft's peering provisioning system to track the connection
         :param int provisioned_bandwidth_in_mbps: The bandwidth that is actually provisioned.
         :param int bandwidth_in_mbps: The bandwidth of the connection.
         :param 'BgpSessionResponseArgs' bgp_session: The BGP session associated with the connection.
@@ -245,6 +247,7 @@ class DirectConnectionResponse(dict):
         """
         pulumi.set(__self__, "connection_state", connection_state)
         pulumi.set(__self__, "error_message", error_message)
+        pulumi.set(__self__, "microsoft_tracking_id", microsoft_tracking_id)
         pulumi.set(__self__, "provisioned_bandwidth_in_mbps", provisioned_bandwidth_in_mbps)
         if bandwidth_in_mbps is not None:
             pulumi.set(__self__, "bandwidth_in_mbps", bandwidth_in_mbps)
@@ -274,6 +277,14 @@ class DirectConnectionResponse(dict):
         The error message related to the connection state, if any.
         """
         return pulumi.get(self, "error_message")
+
+    @property
+    @pulumi.getter(name="microsoftTrackingId")
+    def microsoft_tracking_id(self) -> str:
+        """
+        The ID used within Microsoft's peering provisioning system to track the connection
+        """
+        return pulumi.get(self, "microsoft_tracking_id")
 
     @property
     @pulumi.getter(name="provisionedBandwidthInMbps")
