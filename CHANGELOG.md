@@ -3,7 +3,7 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
--
+- Fix refreshing resource state ([#60](https://github.com/pulumi/pulumi-azure-nextgen/issues/60))
 
 ---
 
