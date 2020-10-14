@@ -44274,6 +44274,58 @@ export namespace compute {
     }
 }
 
+export namespace confluent {
+    export namespace v20200301preview {
+        /**
+         * Confluent offer detail
+         */
+        export interface OrganizationResourcePropertiesOfferDetail {
+            /**
+             * Offer Id
+             */
+            id?: pulumi.Input<string>;
+            /**
+             * Offer Plan Id
+             */
+            planId?: pulumi.Input<string>;
+            /**
+             * Offer Plan Name
+             */
+            planName?: pulumi.Input<string>;
+            /**
+             * Publisher Id
+             */
+            publisherId?: pulumi.Input<string>;
+            /**
+             * SaaS Offer Status
+             */
+            status?: pulumi.Input<string>;
+            /**
+             * Offer Plan Term unit
+             */
+            termUnit?: pulumi.Input<string>;
+        }
+
+        /**
+         * Subscriber detail
+         */
+        export interface OrganizationResourcePropertiesUserDetail {
+            /**
+             * Email address
+             */
+            emailAddress?: pulumi.Input<string>;
+            /**
+             * First name
+             */
+            firstName?: pulumi.Input<string>;
+            /**
+             * Last name
+             */
+            lastName?: pulumi.Input<string>;
+        }
+    }
+}
+
 export namespace consumption {
     export namespace latest {
         /**
@@ -100090,6 +100142,79 @@ export namespace desktopvirtualization {
         }
 
     }
+
+    export namespace v20200921preview {
+        /**
+         * Schema for MSIX Package Application properties.
+         */
+        export interface MsixPackageApplications {
+            /**
+             * Package Application Id, found in appxmanifest.xml.
+             */
+            appId?: pulumi.Input<string>;
+            /**
+             * Used to activate Package Application. Consists of Package Name and ApplicationID. Found in appxmanifest.xml.
+             */
+            appUserModelID?: pulumi.Input<string>;
+            /**
+             * Description of Package Application.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * User friendly name.
+             */
+            friendlyName?: pulumi.Input<string>;
+            /**
+             * User friendly name.
+             */
+            iconImageName?: pulumi.Input<string>;
+            /**
+             * the icon a 64 bit string as a byte array.
+             */
+            rawIcon?: pulumi.Input<string>;
+            /**
+             * the icon a 64 bit string as a byte array.
+             */
+            rawPng?: pulumi.Input<string>;
+        }
+
+        /**
+         * Schema for MSIX Package Dependencies properties.
+         */
+        export interface MsixPackageDependencies {
+            /**
+             * Name of package dependency.
+             */
+            dependencyName?: pulumi.Input<string>;
+            /**
+             * Dependency version required.
+             */
+            minVersion?: pulumi.Input<string>;
+            /**
+             * Name of dependency publisher.
+             */
+            publisher?: pulumi.Input<string>;
+        }
+
+        /**
+         * Represents a RegistrationInfo definition.
+         */
+        export interface RegistrationInfo {
+            /**
+             * Expiration time of registration token.
+             */
+            expirationTime?: pulumi.Input<string>;
+            /**
+             * The type of resetting the token.
+             */
+            registrationTokenOperation?: pulumi.Input<string>;
+            /**
+             * The registration token base64 encoded string.
+             */
+            token?: pulumi.Input<string>;
+        }
+
+    }
 }
 
 export namespace devices {
@@ -121588,6 +121713,10 @@ export namespace hdinsight {
              */
             minSupportedTlsVersion?: pulumi.Input<string>;
             /**
+             * The network properties.
+             */
+            networkProperties?: pulumi.Input<inputs.hdinsight.v20150301preview.NetworkProperties>;
+            /**
              * The type of operating system.
              */
             osType?: pulumi.Input<string>;
@@ -121747,6 +121876,20 @@ export namespace hdinsight {
              * The username.
              */
             username?: pulumi.Input<string>;
+        }
+
+        /**
+         * The network properties.
+         */
+        export interface NetworkProperties {
+            /**
+             * Indicates whether or not private link is enabled.
+             */
+            privateLink?: pulumi.Input<string>;
+            /**
+             * The direction for the resource provider connection.
+             */
+            resourceProviderConnection?: pulumi.Input<string>;
         }
 
         /**
@@ -122167,6 +122310,10 @@ export namespace hdinsight {
              */
             minSupportedTlsVersion?: pulumi.Input<string>;
             /**
+             * The network properties.
+             */
+            networkProperties?: pulumi.Input<inputs.hdinsight.v20180601preview.NetworkProperties>;
+            /**
              * The type of operating system.
              */
             osType?: pulumi.Input<string>;
@@ -122326,6 +122473,20 @@ export namespace hdinsight {
              * The username.
              */
             username?: pulumi.Input<string>;
+        }
+
+        /**
+         * The network properties.
+         */
+        export interface NetworkProperties {
+            /**
+             * Indicates whether or not private link is enabled.
+             */
+            privateLink?: pulumi.Input<string>;
+            /**
+             * The direction for the resource provider connection.
+             */
+            resourceProviderConnection?: pulumi.Input<string>;
         }
 
         /**
@@ -269900,6 +270061,7 @@ export namespace portal {
              */
             content?: pulumi.Input<inputs.portal.v20200901preview.MarkdownPartMetadataContent>;
         }
+
     }
 }
 
@@ -301552,6 +301714,24 @@ export namespace synapse {
              * Type of integration runtime.
              */
             type: pulumi.Input<"Managed">;
+        }
+
+        /**
+         * Managed Virtual Network Settings
+         */
+        export interface ManagedVirtualNetworkSettings {
+            /**
+             * Allowed Aad Tenant Ids For Linking
+             */
+            allowedAadTenantIdsForLinking?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Linked Access Check On Target Resource
+             */
+            linkedAccessCheckOnTargetResource?: pulumi.Input<boolean>;
+            /**
+             * Prevent Data Exfiltration
+             */
+            preventDataExfiltration?: pulumi.Input<boolean>;
         }
 
         /**

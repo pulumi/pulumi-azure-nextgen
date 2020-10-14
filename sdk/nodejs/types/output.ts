@@ -55438,6 +55438,59 @@ export namespace compute {
     }
 }
 
+export namespace confluent {
+    export namespace v20200301preview {
+        /**
+         * Confluent offer detail
+         */
+        export interface OrganizationResourcePropertiesResponseOfferDetail {
+            /**
+             * Offer Id
+             */
+            id?: string;
+            /**
+             * Offer Plan Id
+             */
+            planId?: string;
+            /**
+             * Offer Plan Name
+             */
+            planName?: string;
+            /**
+             * Publisher Id
+             */
+            publisherId?: string;
+            /**
+             * SaaS Offer Status
+             */
+            status?: string;
+            /**
+             * Offer Plan Term unit
+             */
+            termUnit?: string;
+        }
+
+        /**
+         * Subscriber detail
+         */
+        export interface OrganizationResourcePropertiesResponseUserDetail {
+            /**
+             * Email address
+             */
+            emailAddress?: string;
+            /**
+             * First name
+             */
+            firstName?: string;
+            /**
+             * Last name
+             */
+            lastName?: string;
+        }
+
+    }
+}
+
 export namespace consumption {
     export namespace latest {
         /**
@@ -131538,6 +131591,78 @@ export namespace desktopvirtualization {
             token?: string;
         }
     }
+
+    export namespace v20200921preview {
+        /**
+         * Schema for MSIX Package Application properties.
+         */
+        export interface MsixPackageApplicationsResponse {
+            /**
+             * Package Application Id, found in appxmanifest.xml.
+             */
+            appId?: string;
+            /**
+             * Used to activate Package Application. Consists of Package Name and ApplicationID. Found in appxmanifest.xml.
+             */
+            appUserModelID?: string;
+            /**
+             * Description of Package Application.
+             */
+            description?: string;
+            /**
+             * User friendly name.
+             */
+            friendlyName?: string;
+            /**
+             * User friendly name.
+             */
+            iconImageName?: string;
+            /**
+             * the icon a 64 bit string as a byte array.
+             */
+            rawIcon?: string;
+            /**
+             * the icon a 64 bit string as a byte array.
+             */
+            rawPng?: string;
+        }
+
+        /**
+         * Schema for MSIX Package Dependencies properties.
+         */
+        export interface MsixPackageDependenciesResponse {
+            /**
+             * Name of package dependency.
+             */
+            dependencyName?: string;
+            /**
+             * Dependency version required.
+             */
+            minVersion?: string;
+            /**
+             * Name of dependency publisher.
+             */
+            publisher?: string;
+        }
+
+        /**
+         * Represents a RegistrationInfo definition.
+         */
+        export interface RegistrationInfoResponse {
+            /**
+             * Expiration time of registration token.
+             */
+            expirationTime?: string;
+            /**
+             * The type of resetting the token.
+             */
+            registrationTokenOperation?: string;
+            /**
+             * The registration token base64 encoded string.
+             */
+            token?: string;
+        }
+    }
 }
 
 export namespace devices {
@@ -156349,6 +156474,10 @@ export namespace hdinsight {
              */
             clusterDefinition: outputs.hdinsight.v20150301preview.ClusterDefinitionResponse;
             /**
+             * The cluster id.
+             */
+            clusterId?: string;
+            /**
              * The state of the cluster.
              */
             clusterState?: string;
@@ -156388,6 +156517,10 @@ export namespace hdinsight {
              * The minimal supported tls version.
              */
             minSupportedTlsVersion?: string;
+            /**
+             * The network properties.
+             */
+            networkProperties?: outputs.hdinsight.v20150301preview.NetworkPropertiesResponse;
             /**
              * The type of operating system.
              */
@@ -156583,6 +156716,20 @@ export namespace hdinsight {
              * The username.
              */
             username?: string;
+        }
+
+        /**
+         * The network properties.
+         */
+        export interface NetworkPropertiesResponse {
+            /**
+             * Indicates whether or not private link is enabled.
+             */
+            privateLink?: string;
+            /**
+             * The direction for the resource provider connection.
+             */
+            resourceProviderConnection?: string;
         }
 
         /**
@@ -156986,6 +157133,10 @@ export namespace hdinsight {
              */
             clusterDefinition: outputs.hdinsight.v20180601preview.ClusterDefinitionResponse;
             /**
+             * The cluster id.
+             */
+            clusterId?: string;
+            /**
              * The state of the cluster.
              */
             clusterState?: string;
@@ -157025,6 +157176,10 @@ export namespace hdinsight {
              * The minimal supported tls version.
              */
             minSupportedTlsVersion?: string;
+            /**
+             * The network properties.
+             */
+            networkProperties?: outputs.hdinsight.v20180601preview.NetworkPropertiesResponse;
             /**
              * The type of operating system.
              */
@@ -157220,6 +157375,20 @@ export namespace hdinsight {
              * The username.
              */
             username?: string;
+        }
+
+        /**
+         * The network properties.
+         */
+        export interface NetworkPropertiesResponse {
+            /**
+             * Indicates whether or not private link is enabled.
+             */
+            privateLink?: string;
+            /**
+             * The direction for the resource provider connection.
+             */
+            resourceProviderConnection?: string;
         }
 
         /**
@@ -352949,6 +353118,23 @@ export namespace portal {
             content?: outputs.portal.v20200901preview.MarkdownPartMetadataResponseContent;
         }
 
+        /**
+         * Violation information.
+         */
+        export interface ViolationResponse {
+            /**
+             * Error message.
+             */
+            errorMessage: string;
+            /**
+             * Id of the item that violates tenant configuration.
+             */
+            id: string;
+            /**
+             * Id of the user who owns violated item.
+             */
+            userId: string;
+        }
     }
 }
 
@@ -405745,6 +405931,24 @@ export namespace synapse {
              * Type of integration runtime.
              */
             type: "Managed";
+        }
+
+        /**
+         * Managed Virtual Network Settings
+         */
+        export interface ManagedVirtualNetworkSettingsResponse {
+            /**
+             * Allowed Aad Tenant Ids For Linking
+             */
+            allowedAadTenantIdsForLinking?: string[];
+            /**
+             * Linked Access Check On Target Resource
+             */
+            linkedAccessCheckOnTargetResource?: boolean;
+            /**
+             * Prevent Data Exfiltration
+             */
+            preventDataExfiltration?: boolean;
         }
 
         /**
