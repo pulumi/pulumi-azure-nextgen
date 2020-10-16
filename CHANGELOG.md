@@ -4,6 +4,8 @@ CHANGELOG
 ## HEAD (Unreleased)
 
 - Fix refreshing resource state ([#60](https://github.com/pulumi/pulumi-azure-nextgen/issues/60))
+- Update of a parent resource doesn't cause replacement of child resources using its `name` property anymore
+  ([#64](https://github.com/pulumi/pulumi-azure-nextgen/issues/64))
 
 ---
 
