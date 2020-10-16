@@ -3,13 +3,17 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
+None
+
+---
+
+## 0.2.3 (2020-10-16)
+
 - Fix refreshing resource state ([#60](https://github.com/pulumi/pulumi-azure-nextgen/issues/60))
 - Update of a parent resource doesn't cause replacement of child resources using its `name` property anymore
   ([#64](https://github.com/pulumi/pulumi-azure-nextgen/issues/64))
 - Fix choice-array type handling, e.g., creation of CDN endpoint with a delivery rules
   ([#68](https://github.com/pulumi/pulumi-azure-nextgen/issues/68))
-
----
 
 ## 0.2.2 (2020-10-09)
 
