@@ -9,37 +9,94 @@ from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
 
 __all__ = [
-    'ResourceIdentityArgs',
+    'PrivateEndpointConnectionArgs',
+    'PrivateLinkServiceConnectionStateArgs',
     'ServiceAccessPolicyEntryArgs',
     'ServiceAuthenticationConfigurationInfoArgs',
     'ServiceCorsConfigurationInfoArgs',
     'ServiceCosmosDbConfigurationInfoArgs',
     'ServiceExportConfigurationInfoArgs',
     'ServicesPropertiesArgs',
+    'ServicesResourceIdentityArgs',
 ]
 
 @pulumi.input_type
-class ResourceIdentityArgs:
+class PrivateEndpointConnectionArgs:
     def __init__(__self__, *,
-                 type: Optional[pulumi.Input[str]] = None):
+                 private_link_service_connection_state: pulumi.Input['PrivateLinkServiceConnectionStateArgs']):
         """
-        Setting indicating whether the service has a managed identity associated with it.
-        :param pulumi.Input[str] type: Type of identity being specified, currently SystemAssigned and None are allowed.
+        The Private Endpoint Connection resource.
+        :param pulumi.Input['PrivateLinkServiceConnectionStateArgs'] private_link_service_connection_state: A collection of information about the state of the connection between service consumer and provider.
         """
-        if type is not None:
-            pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "private_link_service_connection_state", private_link_service_connection_state)
+
+    @property
+    @pulumi.getter(name="privateLinkServiceConnectionState")
+    def private_link_service_connection_state(self) -> pulumi.Input['PrivateLinkServiceConnectionStateArgs']:
+        """
+        A collection of information about the state of the connection between service consumer and provider.
+        """
+        return pulumi.get(self, "private_link_service_connection_state")
+
+    @private_link_service_connection_state.setter
+    def private_link_service_connection_state(self, value: pulumi.Input['PrivateLinkServiceConnectionStateArgs']):
+        pulumi.set(self, "private_link_service_connection_state", value)
+
+
+@pulumi.input_type
+class PrivateLinkServiceConnectionStateArgs:
+    def __init__(__self__, *,
+                 actions_required: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None):
+        """
+        A collection of information about the state of the connection between service consumer and provider.
+        :param pulumi.Input[str] actions_required: A message indicating if changes on the service provider require any updates on the consumer.
+        :param pulumi.Input[str] description: The reason for approval/rejection of the connection.
+        :param pulumi.Input[str] status: Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+        """
+        if actions_required is not None:
+            pulumi.set(__self__, "actions_required", actions_required)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="actionsRequired")
+    def actions_required(self) -> Optional[pulumi.Input[str]]:
+        """
+        A message indicating if changes on the service provider require any updates on the consumer.
+        """
+        return pulumi.get(self, "actions_required")
+
+    @actions_required.setter
+    def actions_required(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "actions_required", value)
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of identity being specified, currently SystemAssigned and None are allowed.
+        The reason for approval/rejection of the connection.
         """
-        return pulumi.get(self, "type")
+        return pulumi.get(self, "description")
 
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "type", value)
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
@@ -280,7 +337,9 @@ class ServicesPropertiesArgs:
                  authentication_configuration: Optional[pulumi.Input['ServiceAuthenticationConfigurationInfoArgs']] = None,
                  cors_configuration: Optional[pulumi.Input['ServiceCorsConfigurationInfoArgs']] = None,
                  cosmos_db_configuration: Optional[pulumi.Input['ServiceCosmosDbConfigurationInfoArgs']] = None,
-                 export_configuration: Optional[pulumi.Input['ServiceExportConfigurationInfoArgs']] = None):
+                 export_configuration: Optional[pulumi.Input['ServiceExportConfigurationInfoArgs']] = None,
+                 private_endpoint_connections: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateEndpointConnectionArgs']]]] = None,
+                 public_network_access: Optional[pulumi.Input[str]] = None):
         """
         The properties of a service instance.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceAccessPolicyEntryArgs']]] access_policies: The access policies of the service instance.
@@ -288,6 +347,8 @@ class ServicesPropertiesArgs:
         :param pulumi.Input['ServiceCorsConfigurationInfoArgs'] cors_configuration: The settings for the CORS configuration of the service instance.
         :param pulumi.Input['ServiceCosmosDbConfigurationInfoArgs'] cosmos_db_configuration: The settings for the Cosmos DB database backing the service.
         :param pulumi.Input['ServiceExportConfigurationInfoArgs'] export_configuration: The settings for the export operation of the service instance.
+        :param pulumi.Input[Sequence[pulumi.Input['PrivateEndpointConnectionArgs']]] private_endpoint_connections: The list of private endpoint connections that are set up for this resource.
+        :param pulumi.Input[str] public_network_access: Control permission for data plane traffic coming from public networks while private endpoint is enabled.
         """
         if access_policies is not None:
             pulumi.set(__self__, "access_policies", access_policies)
@@ -299,6 +360,10 @@ class ServicesPropertiesArgs:
             pulumi.set(__self__, "cosmos_db_configuration", cosmos_db_configuration)
         if export_configuration is not None:
             pulumi.set(__self__, "export_configuration", export_configuration)
+        if private_endpoint_connections is not None:
+            pulumi.set(__self__, "private_endpoint_connections", private_endpoint_connections)
+        if public_network_access is not None:
+            pulumi.set(__self__, "public_network_access", public_network_access)
 
     @property
     @pulumi.getter(name="accessPolicies")
@@ -359,5 +424,53 @@ class ServicesPropertiesArgs:
     @export_configuration.setter
     def export_configuration(self, value: Optional[pulumi.Input['ServiceExportConfigurationInfoArgs']]):
         pulumi.set(self, "export_configuration", value)
+
+    @property
+    @pulumi.getter(name="privateEndpointConnections")
+    def private_endpoint_connections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PrivateEndpointConnectionArgs']]]]:
+        """
+        The list of private endpoint connections that are set up for this resource.
+        """
+        return pulumi.get(self, "private_endpoint_connections")
+
+    @private_endpoint_connections.setter
+    def private_endpoint_connections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateEndpointConnectionArgs']]]]):
+        pulumi.set(self, "private_endpoint_connections", value)
+
+    @property
+    @pulumi.getter(name="publicNetworkAccess")
+    def public_network_access(self) -> Optional[pulumi.Input[str]]:
+        """
+        Control permission for data plane traffic coming from public networks while private endpoint is enabled.
+        """
+        return pulumi.get(self, "public_network_access")
+
+    @public_network_access.setter
+    def public_network_access(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public_network_access", value)
+
+
+@pulumi.input_type
+class ServicesResourceIdentityArgs:
+    def __init__(__self__, *,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        Setting indicating whether the service has a managed identity associated with it.
+        :param pulumi.Input[str] type: Type of identity being specified, currently SystemAssigned and None are allowed.
+        """
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of identity being specified, currently SystemAssigned and None are allowed.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 

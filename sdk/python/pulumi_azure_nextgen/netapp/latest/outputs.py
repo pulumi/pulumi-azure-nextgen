@@ -35,10 +35,12 @@ class ActiveDirectoryResponse(dict):
                  status_details: str,
                  active_directory_id: Optional[str] = None,
                  ad_name: Optional[str] = None,
+                 aes_encryption: Optional[bool] = None,
                  backup_operators: Optional[Sequence[str]] = None,
                  dns: Optional[str] = None,
                  domain: Optional[str] = None,
                  kdc_ip: Optional[str] = None,
+                 ldap_signing: Optional[bool] = None,
                  organizational_unit: Optional[str] = None,
                  password: Optional[str] = None,
                  server_root_ca_certificate: Optional[str] = None,
@@ -51,10 +53,12 @@ class ActiveDirectoryResponse(dict):
         :param str status_details: Any details in regards to the Status of the Active Directory
         :param str active_directory_id: Id of the Active Directory
         :param str ad_name: Name of the active directory machine. This optional parameter is used only while creating kerberos volume
+        :param bool aes_encryption: If enabled, AES encryption will be enabled for SMB communication.
         :param Sequence[str] backup_operators: Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier
         :param str dns: Comma separated list of DNS server IP addresses (IPv4 only) for the Active Directory domain
         :param str domain: Name of the Active Directory domain
         :param str kdc_ip: kdc server IP addresses for the active directory machine. This optional parameter is used only while creating kerberos volume.
+        :param bool ldap_signing: Specifies whether or not the LDAP traffic needs to be signed.
         :param str organizational_unit: The Organizational Unit (OU) within the Windows Active Directory
         :param str password: Plain text password of Active Directory domain administrator, value is masked in the response
         :param str server_root_ca_certificate: When LDAP over SSL/TLS is enabled, the LDAP client is required to have base64 encoded Active Directory Certificate Service's self-signed root CA certificate, this optional parameter is used only for dual protocol with LDAP user-mapping volumes.
@@ -68,6 +72,8 @@ class ActiveDirectoryResponse(dict):
             pulumi.set(__self__, "active_directory_id", active_directory_id)
         if ad_name is not None:
             pulumi.set(__self__, "ad_name", ad_name)
+        if aes_encryption is not None:
+            pulumi.set(__self__, "aes_encryption", aes_encryption)
         if backup_operators is not None:
             pulumi.set(__self__, "backup_operators", backup_operators)
         if dns is not None:
@@ -76,6 +82,8 @@ class ActiveDirectoryResponse(dict):
             pulumi.set(__self__, "domain", domain)
         if kdc_ip is not None:
             pulumi.set(__self__, "kdc_ip", kdc_ip)
+        if ldap_signing is not None:
+            pulumi.set(__self__, "ldap_signing", ldap_signing)
         if organizational_unit is not None:
             pulumi.set(__self__, "organizational_unit", organizational_unit)
         if password is not None:
@@ -122,6 +130,14 @@ class ActiveDirectoryResponse(dict):
         return pulumi.get(self, "ad_name")
 
     @property
+    @pulumi.getter(name="aesEncryption")
+    def aes_encryption(self) -> Optional[bool]:
+        """
+        If enabled, AES encryption will be enabled for SMB communication.
+        """
+        return pulumi.get(self, "aes_encryption")
+
+    @property
     @pulumi.getter(name="backupOperators")
     def backup_operators(self) -> Optional[Sequence[str]]:
         """
@@ -152,6 +168,14 @@ class ActiveDirectoryResponse(dict):
         kdc server IP addresses for the active directory machine. This optional parameter is used only while creating kerberos volume.
         """
         return pulumi.get(self, "kdc_ip")
+
+    @property
+    @pulumi.getter(name="ldapSigning")
+    def ldap_signing(self) -> Optional[bool]:
+        """
+        Specifies whether or not the LDAP traffic needs to be signed.
+        """
+        return pulumi.get(self, "ldap_signing")
 
     @property
     @pulumi.getter(name="organizationalUnit")

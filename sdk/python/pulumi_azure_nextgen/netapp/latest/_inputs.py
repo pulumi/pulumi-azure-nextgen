@@ -29,10 +29,12 @@ class ActiveDirectoryArgs:
     def __init__(__self__, *,
                  active_directory_id: Optional[pulumi.Input[str]] = None,
                  ad_name: Optional[pulumi.Input[str]] = None,
+                 aes_encryption: Optional[pulumi.Input[bool]] = None,
                  backup_operators: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dns: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  kdc_ip: Optional[pulumi.Input[str]] = None,
+                 ldap_signing: Optional[pulumi.Input[bool]] = None,
                  organizational_unit: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  server_root_ca_certificate: Optional[pulumi.Input[str]] = None,
@@ -43,10 +45,12 @@ class ActiveDirectoryArgs:
         Active Directory
         :param pulumi.Input[str] active_directory_id: Id of the Active Directory
         :param pulumi.Input[str] ad_name: Name of the active directory machine. This optional parameter is used only while creating kerberos volume
+        :param pulumi.Input[bool] aes_encryption: If enabled, AES encryption will be enabled for SMB communication.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_operators: Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier
         :param pulumi.Input[str] dns: Comma separated list of DNS server IP addresses (IPv4 only) for the Active Directory domain
         :param pulumi.Input[str] domain: Name of the Active Directory domain
         :param pulumi.Input[str] kdc_ip: kdc server IP addresses for the active directory machine. This optional parameter is used only while creating kerberos volume.
+        :param pulumi.Input[bool] ldap_signing: Specifies whether or not the LDAP traffic needs to be signed.
         :param pulumi.Input[str] organizational_unit: The Organizational Unit (OU) within the Windows Active Directory
         :param pulumi.Input[str] password: Plain text password of Active Directory domain administrator, value is masked in the response
         :param pulumi.Input[str] server_root_ca_certificate: When LDAP over SSL/TLS is enabled, the LDAP client is required to have base64 encoded Active Directory Certificate Service's self-signed root CA certificate, this optional parameter is used only for dual protocol with LDAP user-mapping volumes.
@@ -58,6 +62,8 @@ class ActiveDirectoryArgs:
             pulumi.set(__self__, "active_directory_id", active_directory_id)
         if ad_name is not None:
             pulumi.set(__self__, "ad_name", ad_name)
+        if aes_encryption is not None:
+            pulumi.set(__self__, "aes_encryption", aes_encryption)
         if backup_operators is not None:
             pulumi.set(__self__, "backup_operators", backup_operators)
         if dns is not None:
@@ -66,6 +72,8 @@ class ActiveDirectoryArgs:
             pulumi.set(__self__, "domain", domain)
         if kdc_ip is not None:
             pulumi.set(__self__, "kdc_ip", kdc_ip)
+        if ldap_signing is not None:
+            pulumi.set(__self__, "ldap_signing", ldap_signing)
         if organizational_unit is not None:
             pulumi.set(__self__, "organizational_unit", organizational_unit)
         if password is not None:
@@ -102,6 +110,18 @@ class ActiveDirectoryArgs:
     @ad_name.setter
     def ad_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ad_name", value)
+
+    @property
+    @pulumi.getter(name="aesEncryption")
+    def aes_encryption(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If enabled, AES encryption will be enabled for SMB communication.
+        """
+        return pulumi.get(self, "aes_encryption")
+
+    @aes_encryption.setter
+    def aes_encryption(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "aes_encryption", value)
 
     @property
     @pulumi.getter(name="backupOperators")
@@ -150,6 +170,18 @@ class ActiveDirectoryArgs:
     @kdc_ip.setter
     def kdc_ip(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "kdc_ip", value)
+
+    @property
+    @pulumi.getter(name="ldapSigning")
+    def ldap_signing(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether or not the LDAP traffic needs to be signed.
+        """
+        return pulumi.get(self, "ldap_signing")
+
+    @ldap_signing.setter
+    def ldap_signing(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ldap_signing", value)
 
     @property
     @pulumi.getter(name="organizationalUnit")

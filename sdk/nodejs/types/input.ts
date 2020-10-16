@@ -18037,6 +18037,24 @@ export namespace botservice {
 export namespace cache {
     export namespace latest {
         /**
+         * A collection of information about the state of the connection between service consumer and provider.
+         */
+        export interface PrivateLinkServiceConnectionState {
+            /**
+             * A message indicating if changes on the service provider require any updates on the consumer.
+             */
+            actionsRequired?: pulumi.Input<string>;
+            /**
+             * The reason for approval/rejection of the connection.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+             */
+            status?: pulumi.Input<string>;
+        }
+
+        /**
          * Patch schedule entry for a Premium Redis Cache.
          */
         export interface ScheduleEntry {
@@ -18059,7 +18077,7 @@ export namespace cache {
          */
         export interface Sku {
             /**
-             * The size of the Redis cache to deploy. Valid values: for C (Basic/Standard) family (0, 1, 2, 3, 4, 5, 6), for P (Premium) family (1, 2, 3, 4, 5).
+             * The size of the Redis cache to deploy. Valid values: for C (Basic/Standard) family (0, 1, 2, 3, 4, 5, 6), for P (Premium) family (1, 2, 3, 4).
              */
             capacity: pulumi.Input<number>;
             /**
@@ -18276,6 +18294,63 @@ export namespace cache {
         export interface Sku {
             /**
              * The size of the Redis cache to deploy. Valid values: for C (Basic/Standard) family (0, 1, 2, 3, 4, 5, 6), for P (Premium) family (1, 2, 3, 4, 5).
+             */
+            capacity: pulumi.Input<number>;
+            /**
+             * The SKU family to use. Valid values: (C, P). (C = Basic/Standard, P = Premium).
+             */
+            family: pulumi.Input<string>;
+            /**
+             * The type of Redis cache to deploy. Valid values: (Basic, Standard, Premium)
+             */
+            name: pulumi.Input<string>;
+        }
+
+    }
+
+    export namespace v20200601 {
+        /**
+         * A collection of information about the state of the connection between service consumer and provider.
+         */
+        export interface PrivateLinkServiceConnectionState {
+            /**
+             * A message indicating if changes on the service provider require any updates on the consumer.
+             */
+            actionsRequired?: pulumi.Input<string>;
+            /**
+             * The reason for approval/rejection of the connection.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+             */
+            status?: pulumi.Input<string>;
+        }
+
+        /**
+         * Patch schedule entry for a Premium Redis Cache.
+         */
+        export interface ScheduleEntry {
+            /**
+             * Day of the week when a cache can be patched.
+             */
+            dayOfWeek: pulumi.Input<string>;
+            /**
+             * ISO8601 timespan specifying how much time cache patching can take. 
+             */
+            maintenanceWindow?: pulumi.Input<string>;
+            /**
+             * Start hour after which cache patching can start.
+             */
+            startHourUtc: pulumi.Input<number>;
+        }
+
+        /**
+         * SKU parameters supplied to the create Redis operation.
+         */
+        export interface Sku {
+            /**
+             * The size of the Redis cache to deploy. Valid values: for C (Basic/Standard) family (0, 1, 2, 3, 4, 5, 6), for P (Premium) family (1, 2, 3, 4).
              */
             capacity: pulumi.Input<number>;
             /**
@@ -122707,13 +122782,31 @@ export namespace hdinsight {
 export namespace healthcareapis {
     export namespace latest {
         /**
-         * Setting indicating whether the service has a managed identity associated with it.
+         * The Private Endpoint Connection resource.
          */
-        export interface ResourceIdentity {
+        export interface PrivateEndpointConnection {
             /**
-             * Type of identity being specified, currently SystemAssigned and None are allowed.
+             * A collection of information about the state of the connection between service consumer and provider.
              */
-            type?: pulumi.Input<string>;
+            privateLinkServiceConnectionState: pulumi.Input<inputs.healthcareapis.latest.PrivateLinkServiceConnectionState>;
+        }
+
+        /**
+         * A collection of information about the state of the connection between service consumer and provider.
+         */
+        export interface PrivateLinkServiceConnectionState {
+            /**
+             * A message indicating if changes on the service provider require any updates on the consumer.
+             */
+            actionsRequired?: pulumi.Input<string>;
+            /**
+             * The reason for approval/rejection of the connection.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+             */
+            status?: pulumi.Input<string>;
         }
 
         /**
@@ -122818,6 +122911,24 @@ export namespace healthcareapis {
              * The settings for the export operation of the service instance.
              */
             exportConfiguration?: pulumi.Input<inputs.healthcareapis.latest.ServiceExportConfigurationInfo>;
+            /**
+             * The list of private endpoint connections that are set up for this resource.
+             */
+            privateEndpointConnections?: pulumi.Input<pulumi.Input<inputs.healthcareapis.latest.PrivateEndpointConnection>[]>;
+            /**
+             * Control permission for data plane traffic coming from public networks while private endpoint is enabled.
+             */
+            publicNetworkAccess?: pulumi.Input<string>;
+        }
+
+        /**
+         * Setting indicating whether the service has a managed identity associated with it.
+         */
+        export interface ServicesResourceIdentity {
+            /**
+             * Type of identity being specified, currently SystemAssigned and None are allowed.
+             */
+            type?: pulumi.Input<string>;
         }
 
     }
@@ -123137,6 +123248,159 @@ export namespace healthcareapis {
              * The settings for the export operation of the service instance.
              */
             exportConfiguration?: pulumi.Input<inputs.healthcareapis.v20200315.ServiceExportConfigurationInfo>;
+        }
+
+    }
+
+    export namespace v20200330 {
+        /**
+         * The Private Endpoint Connection resource.
+         */
+        export interface PrivateEndpointConnection {
+            /**
+             * A collection of information about the state of the connection between service consumer and provider.
+             */
+            privateLinkServiceConnectionState: pulumi.Input<inputs.healthcareapis.v20200330.PrivateLinkServiceConnectionState>;
+        }
+
+        /**
+         * A collection of information about the state of the connection between service consumer and provider.
+         */
+        export interface PrivateLinkServiceConnectionState {
+            /**
+             * A message indicating if changes on the service provider require any updates on the consumer.
+             */
+            actionsRequired?: pulumi.Input<string>;
+            /**
+             * The reason for approval/rejection of the connection.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+             */
+            status?: pulumi.Input<string>;
+        }
+
+        /**
+         * An access policy entry.
+         */
+        export interface ServiceAccessPolicyEntry {
+            /**
+             * An Azure AD object ID (User or Apps) that is allowed access to the FHIR service.
+             */
+            objectId: pulumi.Input<string>;
+        }
+
+        /**
+         * Authentication configuration information
+         */
+        export interface ServiceAuthenticationConfigurationInfo {
+            /**
+             * The audience url for the service
+             */
+            audience?: pulumi.Input<string>;
+            /**
+             * The authority url for the service
+             */
+            authority?: pulumi.Input<string>;
+            /**
+             * If the SMART on FHIR proxy is enabled
+             */
+            smartProxyEnabled?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * The settings for the CORS configuration of the service instance.
+         */
+        export interface ServiceCorsConfigurationInfo {
+            /**
+             * If credentials are allowed via CORS.
+             */
+            allowCredentials?: pulumi.Input<boolean>;
+            /**
+             * The headers to be allowed via CORS.
+             */
+            headers?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The max age to be allowed via CORS.
+             */
+            maxAge?: pulumi.Input<number>;
+            /**
+             * The methods to be allowed via CORS.
+             */
+            methods?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The origins to be allowed via CORS.
+             */
+            origins?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * The settings for the Cosmos DB database backing the service.
+         */
+        export interface ServiceCosmosDbConfigurationInfo {
+            /**
+             * The URI of the customer-managed key for the backing database.
+             */
+            keyVaultKeyUri?: pulumi.Input<string>;
+            /**
+             * The provisioned throughput for the backing database.
+             */
+            offerThroughput?: pulumi.Input<number>;
+        }
+
+        /**
+         * Export operation configuration information
+         */
+        export interface ServiceExportConfigurationInfo {
+            /**
+             * The name of the default export storage account.
+             */
+            storageAccountName?: pulumi.Input<string>;
+        }
+
+        /**
+         * The properties of a service instance.
+         */
+        export interface ServicesProperties {
+            /**
+             * The access policies of the service instance.
+             */
+            accessPolicies?: pulumi.Input<pulumi.Input<inputs.healthcareapis.v20200330.ServiceAccessPolicyEntry>[]>;
+            /**
+             * The authentication configuration for the service instance.
+             */
+            authenticationConfiguration?: pulumi.Input<inputs.healthcareapis.v20200330.ServiceAuthenticationConfigurationInfo>;
+            /**
+             * The settings for the CORS configuration of the service instance.
+             */
+            corsConfiguration?: pulumi.Input<inputs.healthcareapis.v20200330.ServiceCorsConfigurationInfo>;
+            /**
+             * The settings for the Cosmos DB database backing the service.
+             */
+            cosmosDbConfiguration?: pulumi.Input<inputs.healthcareapis.v20200330.ServiceCosmosDbConfigurationInfo>;
+            /**
+             * The settings for the export operation of the service instance.
+             */
+            exportConfiguration?: pulumi.Input<inputs.healthcareapis.v20200330.ServiceExportConfigurationInfo>;
+            /**
+             * The list of private endpoint connections that are set up for this resource.
+             */
+            privateEndpointConnections?: pulumi.Input<pulumi.Input<inputs.healthcareapis.v20200330.PrivateEndpointConnection>[]>;
+            /**
+             * Control permission for data plane traffic coming from public networks while private endpoint is enabled.
+             */
+            publicNetworkAccess?: pulumi.Input<string>;
+        }
+
+        /**
+         * Setting indicating whether the service has a managed identity associated with it.
+         */
+        export interface ServicesResourceIdentity {
+            /**
+             * Type of identity being specified, currently SystemAssigned and None are allowed.
+             */
+            type?: pulumi.Input<string>;
         }
 
     }
@@ -159842,6 +160106,10 @@ export namespace netapp {
              */
             adName?: pulumi.Input<string>;
             /**
+             * If enabled, AES encryption will be enabled for SMB communication.
+             */
+            aesEncryption?: pulumi.Input<boolean>;
+            /**
              * Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier
              */
             backupOperators?: pulumi.Input<pulumi.Input<string>[]>;
@@ -159857,6 +160125,10 @@ export namespace netapp {
              * kdc server IP addresses for the active directory machine. This optional parameter is used only while creating kerberos volume.
              */
             kdcIP?: pulumi.Input<string>;
+            /**
+             * Specifies whether or not the LDAP traffic needs to be signed.
+             */
+            ldapSigning?: pulumi.Input<boolean>;
             /**
              * The Organizational Unit (OU) within the Windows Active Directory
              */
@@ -161704,6 +161976,343 @@ export namespace netapp {
              * Export policy rule
              */
             rules?: pulumi.Input<pulumi.Input<inputs.netapp.v20200601.ExportPolicyRule>[]>;
+        }
+
+        /**
+         * Volume Snapshot Properties
+         */
+        export interface VolumeSnapshotProperties {
+            /**
+             * Snapshot Policy ResourceId
+             */
+            snapshotPolicyId?: pulumi.Input<string>;
+        }
+
+        /**
+         * Weekly Schedule properties, make a snapshot every week at a specific day or days
+         */
+        export interface WeeklySchedule {
+            /**
+             * Indicates which weekdays snapshot should be taken, accepts a comma separated list of week day names in english
+             */
+            day?: pulumi.Input<string>;
+            /**
+             * Indicates which hour in UTC timezone a snapshot should be taken
+             */
+            hour?: pulumi.Input<number>;
+            /**
+             * Indicates which minute snapshot should be taken
+             */
+            minute?: pulumi.Input<number>;
+            /**
+             * Weekly snapshot count to keep
+             */
+            snapshotsToKeep?: pulumi.Input<number>;
+            /**
+             * Resource size in bytes, current storage usage for the volume in bytes
+             */
+            usedBytes?: pulumi.Input<number>;
+        }
+
+    }
+
+    export namespace v20200701 {
+        /**
+         * Active Directory
+         */
+        export interface ActiveDirectory {
+            /**
+             * Id of the Active Directory
+             */
+            activeDirectoryId?: pulumi.Input<string>;
+            /**
+             * Name of the active directory machine. This optional parameter is used only while creating kerberos volume
+             */
+            adName?: pulumi.Input<string>;
+            /**
+             * If enabled, AES encryption will be enabled for SMB communication.
+             */
+            aesEncryption?: pulumi.Input<boolean>;
+            /**
+             * Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier
+             */
+            backupOperators?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Comma separated list of DNS server IP addresses (IPv4 only) for the Active Directory domain
+             */
+            dns?: pulumi.Input<string>;
+            /**
+             * Name of the Active Directory domain
+             */
+            domain?: pulumi.Input<string>;
+            /**
+             * kdc server IP addresses for the active directory machine. This optional parameter is used only while creating kerberos volume.
+             */
+            kdcIP?: pulumi.Input<string>;
+            /**
+             * Specifies whether or not the LDAP traffic needs to be signed.
+             */
+            ldapSigning?: pulumi.Input<boolean>;
+            /**
+             * The Organizational Unit (OU) within the Windows Active Directory
+             */
+            organizationalUnit?: pulumi.Input<string>;
+            /**
+             * Plain text password of Active Directory domain administrator, value is masked in the response
+             */
+            password?: pulumi.Input<string>;
+            /**
+             * When LDAP over SSL/TLS is enabled, the LDAP client is required to have base64 encoded Active Directory Certificate Service's self-signed root CA certificate, this optional parameter is used only for dual protocol with LDAP user-mapping volumes.
+             */
+            serverRootCACertificate?: pulumi.Input<string>;
+            /**
+             * The Active Directory site the service will limit Domain Controller discovery to
+             */
+            site?: pulumi.Input<string>;
+            /**
+             * NetBIOS name of the SMB server. This name will be registered as a computer account in the AD and used to mount volumes
+             */
+            smbServerName?: pulumi.Input<string>;
+            /**
+             * Username of Active Directory domain administrator
+             */
+            username?: pulumi.Input<string>;
+        }
+
+        /**
+         * Daily Schedule properties
+         */
+        export interface DailySchedule {
+            /**
+             * Indicates which hour in UTC timezone a snapshot should be taken
+             */
+            hour?: pulumi.Input<number>;
+            /**
+             * Indicates which minute snapshot should be taken
+             */
+            minute?: pulumi.Input<number>;
+            /**
+             * Daily snapshot count to keep
+             */
+            snapshotsToKeep?: pulumi.Input<number>;
+            /**
+             * Resource size in bytes, current storage usage for the volume in bytes
+             */
+            usedBytes?: pulumi.Input<number>;
+        }
+
+        /**
+         * Volume Export Policy Rule
+         */
+        export interface ExportPolicyRule {
+            /**
+             * Client ingress specification as comma separated string with IPv4 CIDRs, IPv4 host addresses and host names
+             */
+            allowedClients?: pulumi.Input<string>;
+            /**
+             * Allows CIFS protocol
+             */
+            cifs?: pulumi.Input<boolean>;
+            /**
+             * Has root access to volume
+             */
+            hasRootAccess?: pulumi.Input<boolean>;
+            /**
+             * Kerberos5 Read only access. To be use with swagger version 2020-05-01 or later
+             */
+            kerberos5ReadOnly?: pulumi.Input<boolean>;
+            /**
+             * Kerberos5 Read and write access. To be use with swagger version 2020-05-01 or later
+             */
+            kerberos5ReadWrite?: pulumi.Input<boolean>;
+            /**
+             * Kerberos5i Read only access. To be use with swagger version 2020-05-01 or later
+             */
+            kerberos5iReadOnly?: pulumi.Input<boolean>;
+            /**
+             * Kerberos5i Read and write access. To be use with swagger version 2020-05-01 or later
+             */
+            kerberos5iReadWrite?: pulumi.Input<boolean>;
+            /**
+             * Kerberos5p Read only access. To be use with swagger version 2020-05-01 or later
+             */
+            kerberos5pReadOnly?: pulumi.Input<boolean>;
+            /**
+             * Kerberos5p Read and write access. To be use with swagger version 2020-05-01 or later
+             */
+            kerberos5pReadWrite?: pulumi.Input<boolean>;
+            /**
+             * Allows NFSv3 protocol. Enable only for NFSv3 type volumes
+             */
+            nfsv3?: pulumi.Input<boolean>;
+            /**
+             * Allows NFSv4.1 protocol. Enable only for NFSv4.1 type volumes
+             */
+            nfsv41?: pulumi.Input<boolean>;
+            /**
+             * Order index
+             */
+            ruleIndex?: pulumi.Input<number>;
+            /**
+             * Read only access
+             */
+            unixReadOnly?: pulumi.Input<boolean>;
+            /**
+             * Read and write access
+             */
+            unixReadWrite?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Hourly Schedule properties
+         */
+        export interface HourlySchedule {
+            /**
+             * Indicates which minute snapshot should be taken
+             */
+            minute?: pulumi.Input<number>;
+            /**
+             * Hourly snapshot count to keep
+             */
+            snapshotsToKeep?: pulumi.Input<number>;
+            /**
+             * Resource size in bytes, current storage usage for the volume in bytes
+             */
+            usedBytes?: pulumi.Input<number>;
+        }
+
+        /**
+         * Monthly Schedule properties
+         */
+        export interface MonthlySchedule {
+            /**
+             * Indicates which days of the month snapshot should be taken. A comma delimited string.
+             */
+            daysOfMonth?: pulumi.Input<string>;
+            /**
+             * Indicates which hour in UTC timezone a snapshot should be taken
+             */
+            hour?: pulumi.Input<number>;
+            /**
+             * Indicates which minute snapshot should be taken
+             */
+            minute?: pulumi.Input<number>;
+            /**
+             * Monthly snapshot count to keep
+             */
+            snapshotsToKeep?: pulumi.Input<number>;
+            /**
+             * Resource size in bytes, current storage usage for the volume in bytes
+             */
+            usedBytes?: pulumi.Input<number>;
+        }
+
+        /**
+         * Mount target properties
+         */
+        export interface MountTargetProperties {
+            /**
+             * UUID v4 used to identify the MountTarget
+             */
+            fileSystemId: pulumi.Input<string>;
+            /**
+             * The SMB server's Fully Qualified Domain Name, FQDN
+             */
+            smbServerFqdn?: pulumi.Input<string>;
+        }
+
+        /**
+         * Replication properties
+         */
+        export interface ReplicationObject {
+            /**
+             * Indicates whether the local volume is the source or destination for the Volume Replication
+             */
+            endpointType?: pulumi.Input<string>;
+            /**
+             * The remote region for the other end of the Volume Replication.
+             */
+            remoteVolumeRegion?: pulumi.Input<string>;
+            /**
+             * The resource ID of the remote volume.
+             */
+            remoteVolumeResourceId: pulumi.Input<string>;
+            /**
+             * Id
+             */
+            replicationId?: pulumi.Input<string>;
+            /**
+             * Schedule
+             */
+            replicationSchedule: pulumi.Input<string>;
+        }
+
+        /**
+         * Volume Backup Properties
+         */
+        export interface VolumeBackupProperties {
+            /**
+             * Backup Enabled
+             */
+            backupEnabled?: pulumi.Input<boolean>;
+            /**
+             * Backup Policy Resource ID
+             */
+            backupPolicyId?: pulumi.Input<string>;
+            /**
+             * Policy Enforced
+             */
+            policyEnforced?: pulumi.Input<boolean>;
+            /**
+             * Vault Resource ID
+             */
+            vaultId?: pulumi.Input<string>;
+        }
+
+        /**
+         * Volume details using the backup policy
+         */
+        export interface VolumeBackups {
+            /**
+             * Total count of backups for volume
+             */
+            backupsCount?: pulumi.Input<number>;
+            /**
+             * Policy enabled
+             */
+            policyEnabled?: pulumi.Input<boolean>;
+            /**
+             * Volume name
+             */
+            volumeName?: pulumi.Input<string>;
+        }
+
+        /**
+         * DataProtection type volumes include an object containing details of the replication
+         */
+        export interface VolumePropertiesDataProtection {
+            /**
+             * Backup Properties
+             */
+            backup?: pulumi.Input<inputs.netapp.v20200701.VolumeBackupProperties>;
+            /**
+             * Replication properties
+             */
+            replication?: pulumi.Input<inputs.netapp.v20200701.ReplicationObject>;
+            /**
+             * Snapshot properties.
+             */
+            snapshot?: pulumi.Input<inputs.netapp.v20200701.VolumeSnapshotProperties>;
+        }
+
+        /**
+         * Set of export policy rules
+         */
+        export interface VolumePropertiesExportPolicy {
+            /**
+             * Export policy rule
+             */
+            rules?: pulumi.Input<pulumi.Input<inputs.netapp.v20200701.ExportPolicyRule>[]>;
         }
 
         /**
@@ -297491,9 +298100,13 @@ export namespace storage {
          */
         export interface DateAfterModification {
             /**
+             * Value indicating the age in days after last blob access. This property can only be used in conjunction with last access time tracking policy
+             */
+            daysAfterLastAccessTimeGreaterThan?: pulumi.Input<number>;
+            /**
              * Value indicating the age in days after last modification
              */
-            daysAfterModificationGreaterThan: pulumi.Input<number>;
+            daysAfterModificationGreaterThan?: pulumi.Input<number>;
         }
 
         /**
@@ -297632,6 +298245,10 @@ export namespace storage {
              * The function to delete the blob
              */
             delete?: pulumi.Input<inputs.storage.v20200801preview.DateAfterModification>;
+            /**
+             * This property enables auto tiering of a blob from cool to hot on a blob access. This property requires tierToCool.daysAfterLastAccessTimeGreaterThan.
+             */
+            enableAutoTierToHotFromCool?: pulumi.Input<boolean>;
             /**
              * The function to tier blobs to archive storage. Support blobs currently at Hot or Cool tier
              */

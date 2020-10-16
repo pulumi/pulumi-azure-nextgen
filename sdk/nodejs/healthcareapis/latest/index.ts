@@ -2,5 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 // Export members:
+export * from "./getPrivateEndpointConnection";
 export * from "./getService";
+export * from "./privateEndpointConnection";
 export * from "./service";

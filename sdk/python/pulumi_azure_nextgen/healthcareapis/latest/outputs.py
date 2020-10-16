@@ -10,58 +10,169 @@ from ... import _utilities, _tables
 from . import outputs
 
 __all__ = [
-    'ResourceResponseIdentity',
+    'PrivateEndpointConnectionResponse',
+    'PrivateEndpointResponse',
+    'PrivateLinkServiceConnectionStateResponse',
     'ServiceAccessPolicyEntryResponse',
     'ServiceAuthenticationConfigurationInfoResponse',
     'ServiceCorsConfigurationInfoResponse',
     'ServiceCosmosDbConfigurationInfoResponse',
     'ServiceExportConfigurationInfoResponse',
     'ServicesPropertiesResponse',
+    'ServicesResourceResponseIdentity',
 ]
 
 @pulumi.output_type
-class ResourceResponseIdentity(dict):
+class PrivateEndpointConnectionResponse(dict):
     """
-    Setting indicating whether the service has a managed identity associated with it.
+    The Private Endpoint Connection resource.
     """
     def __init__(__self__, *,
-                 principal_id: str,
-                 tenant_id: str,
-                 type: Optional[str] = None):
+                 id: str,
+                 name: str,
+                 private_link_service_connection_state: 'outputs.PrivateLinkServiceConnectionStateResponse',
+                 provisioning_state: str,
+                 type: str,
+                 private_endpoint: Optional['outputs.PrivateEndpointResponse'] = None):
         """
-        Setting indicating whether the service has a managed identity associated with it.
-        :param str principal_id: The principal ID of the resource identity.
-        :param str tenant_id: The tenant ID of the resource.
-        :param str type: Type of identity being specified, currently SystemAssigned and None are allowed.
+        The Private Endpoint Connection resource.
+        :param str id: Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        :param str name: The name of the resource
+        :param 'PrivateLinkServiceConnectionStateResponseArgs' private_link_service_connection_state: A collection of information about the state of the connection between service consumer and provider.
+        :param str provisioning_state: The provisioning state of the private endpoint connection resource.
+        :param str type: The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+        :param 'PrivateEndpointResponseArgs' private_endpoint: The resource of private end point.
         """
-        pulumi.set(__self__, "principal_id", principal_id)
-        pulumi.set(__self__, "tenant_id", tenant_id)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter(name="principalId")
-    def principal_id(self) -> str:
-        """
-        The principal ID of the resource identity.
-        """
-        return pulumi.get(self, "principal_id")
-
-    @property
-    @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> str:
-        """
-        The tenant ID of the resource.
-        """
-        return pulumi.get(self, "tenant_id")
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "private_link_service_connection_state", private_link_service_connection_state)
+        pulumi.set(__self__, "provisioning_state", provisioning_state)
+        pulumi.set(__self__, "type", type)
+        if private_endpoint is not None:
+            pulumi.set(__self__, "private_endpoint", private_endpoint)
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[str]:
+    def id(self) -> str:
         """
-        Type of identity being specified, currently SystemAssigned and None are allowed.
+        Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the resource
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="privateLinkServiceConnectionState")
+    def private_link_service_connection_state(self) -> 'outputs.PrivateLinkServiceConnectionStateResponse':
+        """
+        A collection of information about the state of the connection between service consumer and provider.
+        """
+        return pulumi.get(self, "private_link_service_connection_state")
+
+    @property
+    @pulumi.getter(name="provisioningState")
+    def provisioning_state(self) -> str:
+        """
+        The provisioning state of the private endpoint connection resource.
+        """
+        return pulumi.get(self, "provisioning_state")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="privateEndpoint")
+    def private_endpoint(self) -> Optional['outputs.PrivateEndpointResponse']:
+        """
+        The resource of private end point.
+        """
+        return pulumi.get(self, "private_endpoint")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class PrivateEndpointResponse(dict):
+    """
+    The Private Endpoint resource.
+    """
+    def __init__(__self__, *,
+                 id: str):
+        """
+        The Private Endpoint resource.
+        :param str id: The ARM identifier for Private Endpoint
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ARM identifier for Private Endpoint
+        """
+        return pulumi.get(self, "id")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class PrivateLinkServiceConnectionStateResponse(dict):
+    """
+    A collection of information about the state of the connection between service consumer and provider.
+    """
+    def __init__(__self__, *,
+                 actions_required: Optional[str] = None,
+                 description: Optional[str] = None,
+                 status: Optional[str] = None):
+        """
+        A collection of information about the state of the connection between service consumer and provider.
+        :param str actions_required: A message indicating if changes on the service provider require any updates on the consumer.
+        :param str description: The reason for approval/rejection of the connection.
+        :param str status: Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+        """
+        if actions_required is not None:
+            pulumi.set(__self__, "actions_required", actions_required)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="actionsRequired")
+    def actions_required(self) -> Optional[str]:
+        """
+        A message indicating if changes on the service provider require any updates on the consumer.
+        """
+        return pulumi.get(self, "actions_required")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The reason for approval/rejection of the connection.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+        """
+        return pulumi.get(self, "status")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -291,7 +402,9 @@ class ServicesPropertiesResponse(dict):
                  authentication_configuration: Optional['outputs.ServiceAuthenticationConfigurationInfoResponse'] = None,
                  cors_configuration: Optional['outputs.ServiceCorsConfigurationInfoResponse'] = None,
                  cosmos_db_configuration: Optional['outputs.ServiceCosmosDbConfigurationInfoResponse'] = None,
-                 export_configuration: Optional['outputs.ServiceExportConfigurationInfoResponse'] = None):
+                 export_configuration: Optional['outputs.ServiceExportConfigurationInfoResponse'] = None,
+                 private_endpoint_connections: Optional[Sequence['outputs.PrivateEndpointConnectionResponse']] = None,
+                 public_network_access: Optional[str] = None):
         """
         The properties of a service instance.
         :param str provisioning_state: The provisioning state.
@@ -300,6 +413,8 @@ class ServicesPropertiesResponse(dict):
         :param 'ServiceCorsConfigurationInfoResponseArgs' cors_configuration: The settings for the CORS configuration of the service instance.
         :param 'ServiceCosmosDbConfigurationInfoResponseArgs' cosmos_db_configuration: The settings for the Cosmos DB database backing the service.
         :param 'ServiceExportConfigurationInfoResponseArgs' export_configuration: The settings for the export operation of the service instance.
+        :param Sequence['PrivateEndpointConnectionResponseArgs'] private_endpoint_connections: The list of private endpoint connections that are set up for this resource.
+        :param str public_network_access: Control permission for data plane traffic coming from public networks while private endpoint is enabled.
         """
         pulumi.set(__self__, "provisioning_state", provisioning_state)
         if access_policies is not None:
@@ -312,6 +427,10 @@ class ServicesPropertiesResponse(dict):
             pulumi.set(__self__, "cosmos_db_configuration", cosmos_db_configuration)
         if export_configuration is not None:
             pulumi.set(__self__, "export_configuration", export_configuration)
+        if private_endpoint_connections is not None:
+            pulumi.set(__self__, "private_endpoint_connections", private_endpoint_connections)
+        if public_network_access is not None:
+            pulumi.set(__self__, "public_network_access", public_network_access)
 
     @property
     @pulumi.getter(name="provisioningState")
@@ -360,6 +479,70 @@ class ServicesPropertiesResponse(dict):
         The settings for the export operation of the service instance.
         """
         return pulumi.get(self, "export_configuration")
+
+    @property
+    @pulumi.getter(name="privateEndpointConnections")
+    def private_endpoint_connections(self) -> Optional[Sequence['outputs.PrivateEndpointConnectionResponse']]:
+        """
+        The list of private endpoint connections that are set up for this resource.
+        """
+        return pulumi.get(self, "private_endpoint_connections")
+
+    @property
+    @pulumi.getter(name="publicNetworkAccess")
+    def public_network_access(self) -> Optional[str]:
+        """
+        Control permission for data plane traffic coming from public networks while private endpoint is enabled.
+        """
+        return pulumi.get(self, "public_network_access")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ServicesResourceResponseIdentity(dict):
+    """
+    Setting indicating whether the service has a managed identity associated with it.
+    """
+    def __init__(__self__, *,
+                 principal_id: str,
+                 tenant_id: str,
+                 type: Optional[str] = None):
+        """
+        Setting indicating whether the service has a managed identity associated with it.
+        :param str principal_id: The principal ID of the resource identity.
+        :param str tenant_id: The tenant ID of the resource.
+        :param str type: Type of identity being specified, currently SystemAssigned and None are allowed.
+        """
+        pulumi.set(__self__, "principal_id", principal_id)
+        pulumi.set(__self__, "tenant_id", tenant_id)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="principalId")
+    def principal_id(self) -> str:
+        """
+        The principal ID of the resource identity.
+        """
+        return pulumi.get(self, "principal_id")
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> str:
+        """
+        The tenant ID of the resource.
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Type of identity being specified, currently SystemAssigned and None are allowed.
+        """
+        return pulumi.get(self, "type")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

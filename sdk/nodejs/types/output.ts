@@ -22422,6 +22422,64 @@ export namespace botservice {
 export namespace cache {
     export namespace latest {
         /**
+         * The Private Endpoint Connection resource.
+         */
+        export interface PrivateEndpointConnectionResponse {
+            /**
+             * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             */
+            id: string;
+            /**
+             * The name of the resource
+             */
+            name: string;
+            /**
+             * The resource of private end point.
+             */
+            privateEndpoint?: outputs.cache.latest.PrivateEndpointResponse;
+            /**
+             * A collection of information about the state of the connection between service consumer and provider.
+             */
+            privateLinkServiceConnectionState: outputs.cache.latest.PrivateLinkServiceConnectionStateResponse;
+            /**
+             * The provisioning state of the private endpoint connection resource.
+             */
+            provisioningState: string;
+            /**
+             * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+             */
+            type: string;
+        }
+
+        /**
+         * The Private Endpoint resource.
+         */
+        export interface PrivateEndpointResponse {
+            /**
+             * The ARM identifier for Private Endpoint
+             */
+            id: string;
+        }
+
+        /**
+         * A collection of information about the state of the connection between service consumer and provider.
+         */
+        export interface PrivateLinkServiceConnectionStateResponse {
+            /**
+             * A message indicating if changes on the service provider require any updates on the consumer.
+             */
+            actionsRequired?: string;
+            /**
+             * The reason for approval/rejection of the connection.
+             */
+            description?: string;
+            /**
+             * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+             */
+            status?: string;
+        }
+
+        /**
          * Redis cache access keys.
          */
         export interface RedisAccessKeysResponse {
@@ -22494,7 +22552,7 @@ export namespace cache {
          */
         export interface SkuResponse {
             /**
-             * The size of the Redis cache to deploy. Valid values: for C (Basic/Standard) family (0, 1, 2, 3, 4, 5, 6), for P (Premium) family (1, 2, 3, 4, 5).
+             * The size of the Redis cache to deploy. Valid values: for C (Basic/Standard) family (0, 1, 2, 3, 4, 5, 6), for P (Premium) family (1, 2, 3, 4).
              */
             capacity: number;
             /**
@@ -22865,6 +22923,152 @@ export namespace cache {
         export interface SkuResponse {
             /**
              * The size of the Redis cache to deploy. Valid values: for C (Basic/Standard) family (0, 1, 2, 3, 4, 5, 6), for P (Premium) family (1, 2, 3, 4, 5).
+             */
+            capacity: number;
+            /**
+             * The SKU family to use. Valid values: (C, P). (C = Basic/Standard, P = Premium).
+             */
+            family: string;
+            /**
+             * The type of Redis cache to deploy. Valid values: (Basic, Standard, Premium)
+             */
+            name: string;
+        }
+    }
+
+    export namespace v20200601 {
+        /**
+         * The Private Endpoint Connection resource.
+         */
+        export interface PrivateEndpointConnectionResponse {
+            /**
+             * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             */
+            id: string;
+            /**
+             * The name of the resource
+             */
+            name: string;
+            /**
+             * The resource of private end point.
+             */
+            privateEndpoint?: outputs.cache.v20200601.PrivateEndpointResponse;
+            /**
+             * A collection of information about the state of the connection between service consumer and provider.
+             */
+            privateLinkServiceConnectionState: outputs.cache.v20200601.PrivateLinkServiceConnectionStateResponse;
+            /**
+             * The provisioning state of the private endpoint connection resource.
+             */
+            provisioningState: string;
+            /**
+             * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+             */
+            type: string;
+        }
+
+        /**
+         * The Private Endpoint resource.
+         */
+        export interface PrivateEndpointResponse {
+            /**
+             * The ARM identifier for Private Endpoint
+             */
+            id: string;
+        }
+
+        /**
+         * A collection of information about the state of the connection between service consumer and provider.
+         */
+        export interface PrivateLinkServiceConnectionStateResponse {
+            /**
+             * A message indicating if changes on the service provider require any updates on the consumer.
+             */
+            actionsRequired?: string;
+            /**
+             * The reason for approval/rejection of the connection.
+             */
+            description?: string;
+            /**
+             * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+             */
+            status?: string;
+        }
+
+        /**
+         * Redis cache access keys.
+         */
+        export interface RedisAccessKeysResponse {
+            /**
+             * The current primary key that clients can use to authenticate with Redis cache.
+             */
+            primaryKey: string;
+            /**
+             * The current secondary key that clients can use to authenticate with Redis cache.
+             */
+            secondaryKey: string;
+        }
+
+        /**
+         * Details of single instance of redis.
+         */
+        export interface RedisInstanceDetailsResponse {
+            /**
+             * Specifies whether the instance is a master node.
+             */
+            isMaster: boolean;
+            /**
+             * If enableNonSslPort is true, provides Redis instance Non-SSL port.
+             */
+            nonSslPort: number;
+            /**
+             * If clustering is enabled, the Shard ID of Redis Instance
+             */
+            shardId: number;
+            /**
+             * Redis instance SSL port.
+             */
+            sslPort: number;
+            /**
+             * If the Cache uses availability zones, specifies availability zone where this instance is located.
+             */
+            zone: string;
+        }
+
+        /**
+         * Linked server Id
+         */
+        export interface RedisLinkedServerResponse {
+            /**
+             * Linked server Id.
+             */
+            id: string;
+        }
+
+        /**
+         * Patch schedule entry for a Premium Redis Cache.
+         */
+        export interface ScheduleEntryResponse {
+            /**
+             * Day of the week when a cache can be patched.
+             */
+            dayOfWeek: string;
+            /**
+             * ISO8601 timespan specifying how much time cache patching can take. 
+             */
+            maintenanceWindow?: string;
+            /**
+             * Start hour after which cache patching can start.
+             */
+            startHourUtc: number;
+        }
+
+        /**
+         * SKU parameters supplied to the create Redis operation.
+         */
+        export interface SkuResponse {
+            /**
+             * The size of the Redis cache to deploy. Valid values: for C (Basic/Standard) family (0, 1, 2, 3, 4, 5, 6), for P (Premium) family (1, 2, 3, 4).
              */
             capacity: number;
             /**
@@ -157578,21 +157782,61 @@ export namespace hdinsight {
 export namespace healthcareapis {
     export namespace latest {
         /**
-         * Setting indicating whether the service has a managed identity associated with it.
+         * The Private Endpoint Connection resource.
          */
-        export interface ResourceResponseIdentity {
+        export interface PrivateEndpointConnectionResponse {
             /**
-             * The principal ID of the resource identity.
+             * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
              */
-            principalId: string;
+            id: string;
             /**
-             * The tenant ID of the resource.
+             * The name of the resource
              */
-            tenantId: string;
+            name: string;
             /**
-             * Type of identity being specified, currently SystemAssigned and None are allowed.
+             * The resource of private end point.
              */
-            type?: string;
+            privateEndpoint?: outputs.healthcareapis.latest.PrivateEndpointResponse;
+            /**
+             * A collection of information about the state of the connection between service consumer and provider.
+             */
+            privateLinkServiceConnectionState: outputs.healthcareapis.latest.PrivateLinkServiceConnectionStateResponse;
+            /**
+             * The provisioning state of the private endpoint connection resource.
+             */
+            provisioningState: string;
+            /**
+             * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+             */
+            type: string;
+        }
+
+        /**
+         * The Private Endpoint resource.
+         */
+        export interface PrivateEndpointResponse {
+            /**
+             * The ARM identifier for Private Endpoint
+             */
+            id: string;
+        }
+
+        /**
+         * A collection of information about the state of the connection between service consumer and provider.
+         */
+        export interface PrivateLinkServiceConnectionStateResponse {
+            /**
+             * A message indicating if changes on the service provider require any updates on the consumer.
+             */
+            actionsRequired?: string;
+            /**
+             * The reason for approval/rejection of the connection.
+             */
+            description?: string;
+            /**
+             * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+             */
+            status?: string;
         }
 
         /**
@@ -157698,9 +157942,35 @@ export namespace healthcareapis {
              */
             exportConfiguration?: outputs.healthcareapis.latest.ServiceExportConfigurationInfoResponse;
             /**
+             * The list of private endpoint connections that are set up for this resource.
+             */
+            privateEndpointConnections?: outputs.healthcareapis.latest.PrivateEndpointConnectionResponse[];
+            /**
              * The provisioning state.
              */
             provisioningState: string;
+            /**
+             * Control permission for data plane traffic coming from public networks while private endpoint is enabled.
+             */
+            publicNetworkAccess?: string;
+        }
+
+        /**
+         * Setting indicating whether the service has a managed identity associated with it.
+         */
+        export interface ServicesResourceResponseIdentity {
+            /**
+             * The principal ID of the resource identity.
+             */
+            principalId: string;
+            /**
+             * The tenant ID of the resource.
+             */
+            tenantId: string;
+            /**
+             * Type of identity being specified, currently SystemAssigned and None are allowed.
+             */
+            type?: string;
         }
     }
 
@@ -158045,6 +158315,200 @@ export namespace healthcareapis {
              * The provisioning state.
              */
             provisioningState: string;
+        }
+    }
+
+    export namespace v20200330 {
+        /**
+         * The Private Endpoint Connection resource.
+         */
+        export interface PrivateEndpointConnectionResponse {
+            /**
+             * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             */
+            id: string;
+            /**
+             * The name of the resource
+             */
+            name: string;
+            /**
+             * The resource of private end point.
+             */
+            privateEndpoint?: outputs.healthcareapis.v20200330.PrivateEndpointResponse;
+            /**
+             * A collection of information about the state of the connection between service consumer and provider.
+             */
+            privateLinkServiceConnectionState: outputs.healthcareapis.v20200330.PrivateLinkServiceConnectionStateResponse;
+            /**
+             * The provisioning state of the private endpoint connection resource.
+             */
+            provisioningState: string;
+            /**
+             * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+             */
+            type: string;
+        }
+
+        /**
+         * The Private Endpoint resource.
+         */
+        export interface PrivateEndpointResponse {
+            /**
+             * The ARM identifier for Private Endpoint
+             */
+            id: string;
+        }
+
+        /**
+         * A collection of information about the state of the connection between service consumer and provider.
+         */
+        export interface PrivateLinkServiceConnectionStateResponse {
+            /**
+             * A message indicating if changes on the service provider require any updates on the consumer.
+             */
+            actionsRequired?: string;
+            /**
+             * The reason for approval/rejection of the connection.
+             */
+            description?: string;
+            /**
+             * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+             */
+            status?: string;
+        }
+
+        /**
+         * An access policy entry.
+         */
+        export interface ServiceAccessPolicyEntryResponse {
+            /**
+             * An Azure AD object ID (User or Apps) that is allowed access to the FHIR service.
+             */
+            objectId: string;
+        }
+
+        /**
+         * Authentication configuration information
+         */
+        export interface ServiceAuthenticationConfigurationInfoResponse {
+            /**
+             * The audience url for the service
+             */
+            audience?: string;
+            /**
+             * The authority url for the service
+             */
+            authority?: string;
+            /**
+             * If the SMART on FHIR proxy is enabled
+             */
+            smartProxyEnabled?: boolean;
+        }
+
+        /**
+         * The settings for the CORS configuration of the service instance.
+         */
+        export interface ServiceCorsConfigurationInfoResponse {
+            /**
+             * If credentials are allowed via CORS.
+             */
+            allowCredentials?: boolean;
+            /**
+             * The headers to be allowed via CORS.
+             */
+            headers?: string[];
+            /**
+             * The max age to be allowed via CORS.
+             */
+            maxAge?: number;
+            /**
+             * The methods to be allowed via CORS.
+             */
+            methods?: string[];
+            /**
+             * The origins to be allowed via CORS.
+             */
+            origins?: string[];
+        }
+
+        /**
+         * The settings for the Cosmos DB database backing the service.
+         */
+        export interface ServiceCosmosDbConfigurationInfoResponse {
+            /**
+             * The URI of the customer-managed key for the backing database.
+             */
+            keyVaultKeyUri?: string;
+            /**
+             * The provisioned throughput for the backing database.
+             */
+            offerThroughput?: number;
+        }
+
+        /**
+         * Export operation configuration information
+         */
+        export interface ServiceExportConfigurationInfoResponse {
+            /**
+             * The name of the default export storage account.
+             */
+            storageAccountName?: string;
+        }
+
+        /**
+         * The properties of a service instance.
+         */
+        export interface ServicesPropertiesResponse {
+            /**
+             * The access policies of the service instance.
+             */
+            accessPolicies?: outputs.healthcareapis.v20200330.ServiceAccessPolicyEntryResponse[];
+            /**
+             * The authentication configuration for the service instance.
+             */
+            authenticationConfiguration?: outputs.healthcareapis.v20200330.ServiceAuthenticationConfigurationInfoResponse;
+            /**
+             * The settings for the CORS configuration of the service instance.
+             */
+            corsConfiguration?: outputs.healthcareapis.v20200330.ServiceCorsConfigurationInfoResponse;
+            /**
+             * The settings for the Cosmos DB database backing the service.
+             */
+            cosmosDbConfiguration?: outputs.healthcareapis.v20200330.ServiceCosmosDbConfigurationInfoResponse;
+            /**
+             * The settings for the export operation of the service instance.
+             */
+            exportConfiguration?: outputs.healthcareapis.v20200330.ServiceExportConfigurationInfoResponse;
+            /**
+             * The list of private endpoint connections that are set up for this resource.
+             */
+            privateEndpointConnections?: outputs.healthcareapis.v20200330.PrivateEndpointConnectionResponse[];
+            /**
+             * The provisioning state.
+             */
+            provisioningState: string;
+            /**
+             * Control permission for data plane traffic coming from public networks while private endpoint is enabled.
+             */
+            publicNetworkAccess?: string;
+        }
+
+        /**
+         * Setting indicating whether the service has a managed identity associated with it.
+         */
+        export interface ServicesResourceResponseIdentity {
+            /**
+             * The principal ID of the resource identity.
+             */
+            principalId: string;
+            /**
+             * The tenant ID of the resource.
+             */
+            tenantId: string;
+            /**
+             * Type of identity being specified, currently SystemAssigned and None are allowed.
+             */
+            type?: string;
         }
     }
 }
@@ -209614,6 +210078,10 @@ export namespace netapp {
              */
             adName?: string;
             /**
+             * If enabled, AES encryption will be enabled for SMB communication.
+             */
+            aesEncryption?: boolean;
+            /**
              * Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier
              */
             backupOperators?: string[];
@@ -209629,6 +210097,10 @@ export namespace netapp {
              * kdc server IP addresses for the active directory machine. This optional parameter is used only while creating kerberos volume.
              */
             kdcIP?: string;
+            /**
+             * Specifies whether or not the LDAP traffic needs to be signed.
+             */
+            ldapSigning?: boolean;
             /**
              * The Organizational Unit (OU) within the Windows Active Directory
              */
@@ -211582,6 +212054,358 @@ export namespace netapp {
              * Export policy rule
              */
             rules?: outputs.netapp.v20200601.ExportPolicyRuleResponse[];
+        }
+
+        /**
+         * Volume Snapshot Properties
+         */
+        export interface VolumeSnapshotPropertiesResponse {
+            /**
+             * Snapshot Policy ResourceId
+             */
+            snapshotPolicyId?: string;
+        }
+
+        /**
+         * Weekly Schedule properties, make a snapshot every week at a specific day or days
+         */
+        export interface WeeklyScheduleResponse {
+            /**
+             * Indicates which weekdays snapshot should be taken, accepts a comma separated list of week day names in english
+             */
+            day?: string;
+            /**
+             * Indicates which hour in UTC timezone a snapshot should be taken
+             */
+            hour?: number;
+            /**
+             * Indicates which minute snapshot should be taken
+             */
+            minute?: number;
+            /**
+             * Weekly snapshot count to keep
+             */
+            snapshotsToKeep?: number;
+            /**
+             * Resource size in bytes, current storage usage for the volume in bytes
+             */
+            usedBytes?: number;
+        }
+    }
+
+    export namespace v20200701 {
+        /**
+         * Active Directory
+         */
+        export interface ActiveDirectoryResponse {
+            /**
+             * Id of the Active Directory
+             */
+            activeDirectoryId?: string;
+            /**
+             * Name of the active directory machine. This optional parameter is used only while creating kerberos volume
+             */
+            adName?: string;
+            /**
+             * If enabled, AES encryption will be enabled for SMB communication.
+             */
+            aesEncryption?: boolean;
+            /**
+             * Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier
+             */
+            backupOperators?: string[];
+            /**
+             * Comma separated list of DNS server IP addresses (IPv4 only) for the Active Directory domain
+             */
+            dns?: string;
+            /**
+             * Name of the Active Directory domain
+             */
+            domain?: string;
+            /**
+             * kdc server IP addresses for the active directory machine. This optional parameter is used only while creating kerberos volume.
+             */
+            kdcIP?: string;
+            /**
+             * Specifies whether or not the LDAP traffic needs to be signed.
+             */
+            ldapSigning?: boolean;
+            /**
+             * The Organizational Unit (OU) within the Windows Active Directory
+             */
+            organizationalUnit?: string;
+            /**
+             * Plain text password of Active Directory domain administrator, value is masked in the response
+             */
+            password?: string;
+            /**
+             * When LDAP over SSL/TLS is enabled, the LDAP client is required to have base64 encoded Active Directory Certificate Service's self-signed root CA certificate, this optional parameter is used only for dual protocol with LDAP user-mapping volumes.
+             */
+            serverRootCACertificate?: string;
+            /**
+             * The Active Directory site the service will limit Domain Controller discovery to
+             */
+            site?: string;
+            /**
+             * NetBIOS name of the SMB server. This name will be registered as a computer account in the AD and used to mount volumes
+             */
+            smbServerName?: string;
+            /**
+             * Status of the Active Directory
+             */
+            status: string;
+            /**
+             * Any details in regards to the Status of the Active Directory
+             */
+            statusDetails: string;
+            /**
+             * Username of Active Directory domain administrator
+             */
+            username?: string;
+        }
+
+        /**
+         * Daily Schedule properties
+         */
+        export interface DailyScheduleResponse {
+            /**
+             * Indicates which hour in UTC timezone a snapshot should be taken
+             */
+            hour?: number;
+            /**
+             * Indicates which minute snapshot should be taken
+             */
+            minute?: number;
+            /**
+             * Daily snapshot count to keep
+             */
+            snapshotsToKeep?: number;
+            /**
+             * Resource size in bytes, current storage usage for the volume in bytes
+             */
+            usedBytes?: number;
+        }
+
+        /**
+         * Volume Export Policy Rule
+         */
+        export interface ExportPolicyRuleResponse {
+            /**
+             * Client ingress specification as comma separated string with IPv4 CIDRs, IPv4 host addresses and host names
+             */
+            allowedClients?: string;
+            /**
+             * Allows CIFS protocol
+             */
+            cifs?: boolean;
+            /**
+             * Has root access to volume
+             */
+            hasRootAccess?: boolean;
+            /**
+             * Kerberos5 Read only access. To be use with swagger version 2020-05-01 or later
+             */
+            kerberos5ReadOnly?: boolean;
+            /**
+             * Kerberos5 Read and write access. To be use with swagger version 2020-05-01 or later
+             */
+            kerberos5ReadWrite?: boolean;
+            /**
+             * Kerberos5i Read only access. To be use with swagger version 2020-05-01 or later
+             */
+            kerberos5iReadOnly?: boolean;
+            /**
+             * Kerberos5i Read and write access. To be use with swagger version 2020-05-01 or later
+             */
+            kerberos5iReadWrite?: boolean;
+            /**
+             * Kerberos5p Read only access. To be use with swagger version 2020-05-01 or later
+             */
+            kerberos5pReadOnly?: boolean;
+            /**
+             * Kerberos5p Read and write access. To be use with swagger version 2020-05-01 or later
+             */
+            kerberos5pReadWrite?: boolean;
+            /**
+             * Allows NFSv3 protocol. Enable only for NFSv3 type volumes
+             */
+            nfsv3?: boolean;
+            /**
+             * Allows NFSv4.1 protocol. Enable only for NFSv4.1 type volumes
+             */
+            nfsv41?: boolean;
+            /**
+             * Order index
+             */
+            ruleIndex?: number;
+            /**
+             * Read only access
+             */
+            unixReadOnly?: boolean;
+            /**
+             * Read and write access
+             */
+            unixReadWrite?: boolean;
+        }
+
+        /**
+         * Hourly Schedule properties
+         */
+        export interface HourlyScheduleResponse {
+            /**
+             * Indicates which minute snapshot should be taken
+             */
+            minute?: number;
+            /**
+             * Hourly snapshot count to keep
+             */
+            snapshotsToKeep?: number;
+            /**
+             * Resource size in bytes, current storage usage for the volume in bytes
+             */
+            usedBytes?: number;
+        }
+
+        /**
+         * Monthly Schedule properties
+         */
+        export interface MonthlyScheduleResponse {
+            /**
+             * Indicates which days of the month snapshot should be taken. A comma delimited string.
+             */
+            daysOfMonth?: string;
+            /**
+             * Indicates which hour in UTC timezone a snapshot should be taken
+             */
+            hour?: number;
+            /**
+             * Indicates which minute snapshot should be taken
+             */
+            minute?: number;
+            /**
+             * Monthly snapshot count to keep
+             */
+            snapshotsToKeep?: number;
+            /**
+             * Resource size in bytes, current storage usage for the volume in bytes
+             */
+            usedBytes?: number;
+        }
+
+        /**
+         * Mount target properties
+         */
+        export interface MountTargetPropertiesResponse {
+            /**
+             * UUID v4 used to identify the MountTarget
+             */
+            fileSystemId: string;
+            /**
+             * The mount target's IPv4 address
+             */
+            ipAddress: string;
+            /**
+             * UUID v4 used to identify the MountTarget
+             */
+            mountTargetId: string;
+            /**
+             * The SMB server's Fully Qualified Domain Name, FQDN
+             */
+            smbServerFqdn?: string;
+        }
+
+        /**
+         * Replication properties
+         */
+        export interface ReplicationObjectResponse {
+            /**
+             * Indicates whether the local volume is the source or destination for the Volume Replication
+             */
+            endpointType?: string;
+            /**
+             * The remote region for the other end of the Volume Replication.
+             */
+            remoteVolumeRegion?: string;
+            /**
+             * The resource ID of the remote volume.
+             */
+            remoteVolumeResourceId: string;
+            /**
+             * Id
+             */
+            replicationId?: string;
+            /**
+             * Schedule
+             */
+            replicationSchedule: string;
+        }
+
+        /**
+         * Volume Backup Properties
+         */
+        export interface VolumeBackupPropertiesResponse {
+            /**
+             * Backup Enabled
+             */
+            backupEnabled?: boolean;
+            /**
+             * Backup Policy Resource ID
+             */
+            backupPolicyId?: string;
+            /**
+             * Policy Enforced
+             */
+            policyEnforced?: boolean;
+            /**
+             * Vault Resource ID
+             */
+            vaultId?: string;
+        }
+
+        /**
+         * Volume details using the backup policy
+         */
+        export interface VolumeBackupsResponse {
+            /**
+             * Total count of backups for volume
+             */
+            backupsCount?: number;
+            /**
+             * Policy enabled
+             */
+            policyEnabled?: boolean;
+            /**
+             * Volume name
+             */
+            volumeName?: string;
+        }
+
+        /**
+         * DataProtection type volumes include an object containing details of the replication
+         */
+        export interface VolumePropertiesResponseDataProtection {
+            /**
+             * Backup Properties
+             */
+            backup?: outputs.netapp.v20200701.VolumeBackupPropertiesResponse;
+            /**
+             * Replication properties
+             */
+            replication?: outputs.netapp.v20200701.ReplicationObjectResponse;
+            /**
+             * Snapshot properties.
+             */
+            snapshot?: outputs.netapp.v20200701.VolumeSnapshotPropertiesResponse;
+        }
+
+        /**
+         * Set of export policy rules
+         */
+        export interface VolumePropertiesResponseExportPolicy {
+            /**
+             * Export policy rule
+             */
+            rules?: outputs.netapp.v20200701.ExportPolicyRuleResponse[];
         }
 
         /**
@@ -398453,9 +399277,13 @@ export namespace storage {
          */
         export interface DateAfterModificationResponse {
             /**
+             * Value indicating the age in days after last blob access. This property can only be used in conjunction with last access time tracking policy
+             */
+            daysAfterLastAccessTimeGreaterThan?: number;
+            /**
              * Value indicating the age in days after last modification
              */
-            daysAfterModificationGreaterThan: number;
+            daysAfterModificationGreaterThan?: number;
         }
 
         /**
@@ -398710,6 +399538,10 @@ export namespace storage {
              * The function to delete the blob
              */
             delete?: outputs.storage.v20200801preview.DateAfterModificationResponse;
+            /**
+             * This property enables auto tiering of a blob from cool to hot on a blob access. This property requires tierToCool.daysAfterLastAccessTimeGreaterThan.
+             */
+            enableAutoTierToHotFromCool?: boolean;
             /**
              * The function to tier blobs to archive storage. Support blobs currently at Hot or Cool tier
              */
