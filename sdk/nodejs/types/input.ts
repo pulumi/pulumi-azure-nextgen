@@ -5284,6 +5284,657 @@ export namespace apimanagement {
         }
 
     }
+
+    export namespace v20200601preview {
+        /**
+         * Description of an additional API Management resource location.
+         */
+        export interface AdditionalLocation {
+            /**
+             * Property only valid for an Api Management service deployed in multiple locations. This can be used to disable the gateway in this additional location.
+             */
+            disableGateway?: pulumi.Input<boolean>;
+            /**
+             * The location name of the additional region among Azure Data center regions.
+             */
+            location: pulumi.Input<string>;
+            /**
+             * SKU properties of the API Management service.
+             */
+            sku: pulumi.Input<inputs.apimanagement.v20200601preview.ApiManagementServiceSkuProperties>;
+            /**
+             * Virtual network configuration for the location.
+             */
+            virtualNetworkConfiguration?: pulumi.Input<inputs.apimanagement.v20200601preview.VirtualNetworkConfiguration>;
+            /**
+             * A list of availability zones denoting where the resource needs to come from.
+             */
+            zones?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * Criteria to limit import of WSDL to a subset of the document.
+         */
+        export interface ApiCreateOrUpdatePropertiesWsdlSelector {
+            /**
+             * Name of endpoint(port) to import from WSDL
+             */
+            wsdlEndpointName?: pulumi.Input<string>;
+            /**
+             * Name of service to import from WSDL
+             */
+            wsdlServiceName?: pulumi.Input<string>;
+        }
+
+        /**
+         * Identity properties of the Api Management service resource.
+         */
+        export interface ApiManagementServiceIdentity {
+            /**
+             * The type of identity used for the resource. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the service.
+             */
+            type: pulumi.Input<string>;
+            /**
+             * The list of user identities associated with the resource. The user identity 
+             * dictionary key references will be ARM resource ids in the form: 
+             * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/
+             *     providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+             */
+            userAssignedIdentities?: pulumi.Input<{[key: string]: pulumi.Input<inputs.apimanagement.v20200601preview.UserIdentityProperties>}>;
+        }
+
+        /**
+         * API Management service resource SKU properties.
+         */
+        export interface ApiManagementServiceSkuProperties {
+            /**
+             * Capacity of the SKU (number of deployed units of the SKU). For Consumption SKU capacity must be specified as 0.
+             */
+            capacity: pulumi.Input<number>;
+            /**
+             * Name of the Sku.
+             */
+            name: pulumi.Input<string>;
+        }
+
+        /**
+         * Control Plane Apis version constraint for the API Management service.
+         */
+        export interface ApiVersionConstraint {
+            /**
+             * Limit control plane API calls to API Management service with version equal to or newer than this value.
+             */
+            minApiVersion?: pulumi.Input<string>;
+        }
+
+        /**
+         * An API Version Set contains the common configuration for a set of API Versions relating 
+         */
+        export interface ApiVersionSetContractDetails {
+            /**
+             * Description of API Version Set.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Identifier for existing API Version Set. Omit this value to create a new Version Set.
+             */
+            id?: pulumi.Input<string>;
+            /**
+             * The display Name of the API Version Set.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Name of HTTP header parameter that indicates the API Version if versioningScheme is set to `header`.
+             */
+            versionHeaderName?: pulumi.Input<string>;
+            /**
+             * Name of query parameter that indicates the API Version if versioningScheme is set to `query`.
+             */
+            versionQueryName?: pulumi.Input<string>;
+            /**
+             * An value that determines where the API Version identifer will be located in a HTTP request.
+             */
+            versioningScheme?: pulumi.Input<string>;
+        }
+
+        /**
+         * API Authentication Settings.
+         */
+        export interface AuthenticationSettingsContract {
+            /**
+             * OAuth2 Authentication settings
+             */
+            oAuth2?: pulumi.Input<inputs.apimanagement.v20200601preview.OAuth2AuthenticationSettingsContract>;
+            /**
+             * OpenID Connect Authentication Settings
+             */
+            openid?: pulumi.Input<inputs.apimanagement.v20200601preview.OpenIdAuthenticationSettingsContract>;
+        }
+
+        /**
+         * Authorization header information.
+         */
+        export interface BackendAuthorizationHeaderCredentials {
+            /**
+             * Authentication Parameter value.
+             */
+            parameter: pulumi.Input<string>;
+            /**
+             * Authentication Scheme name.
+             */
+            scheme: pulumi.Input<string>;
+        }
+
+        /**
+         * Details of the Credentials used to connect to Backend.
+         */
+        export interface BackendCredentialsContract {
+            /**
+             * Authorization header authentication
+             */
+            authorization?: pulumi.Input<inputs.apimanagement.v20200601preview.BackendAuthorizationHeaderCredentials>;
+            /**
+             * List of Client Certificate Thumbprint.
+             */
+            certificate?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Header Parameter description.
+             */
+            header?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
+            /**
+             * Query Parameter description.
+             */
+            query?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
+        }
+
+        /**
+         * Properties specific to the Backend Type.
+         */
+        export interface BackendProperties {
+            /**
+             * Backend Service Fabric Cluster Properties
+             */
+            serviceFabricCluster?: pulumi.Input<inputs.apimanagement.v20200601preview.BackendServiceFabricClusterProperties>;
+        }
+
+        /**
+         * Details of the Backend WebProxy Server to use in the Request to Backend.
+         */
+        export interface BackendProxyContract {
+            /**
+             * Password to connect to the WebProxy Server
+             */
+            password?: pulumi.Input<string>;
+            /**
+             * WebProxy Server AbsoluteUri property which includes the entire URI stored in the Uri instance, including all fragments and query strings.
+             */
+            url: pulumi.Input<string>;
+            /**
+             * Username to connect to the WebProxy server
+             */
+            username?: pulumi.Input<string>;
+        }
+
+        /**
+         * Properties of the Service Fabric Type Backend.
+         */
+        export interface BackendServiceFabricClusterProperties {
+            /**
+             * The client certificate thumbprint for the management endpoint.
+             */
+            clientCertificatethumbprint: pulumi.Input<string>;
+            /**
+             * The cluster management endpoint.
+             */
+            managementEndpoints: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Maximum number of retries while attempting resolve the partition.
+             */
+            maxPartitionResolutionRetries?: pulumi.Input<number>;
+            /**
+             * Thumbprints of certificates cluster management service uses for tls communication
+             */
+            serverCertificateThumbprints?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Server X509 Certificate Names Collection
+             */
+            serverX509Names?: pulumi.Input<pulumi.Input<inputs.apimanagement.v20200601preview.X509CertificateName>[]>;
+        }
+
+        /**
+         * Properties controlling TLS Certificate Validation.
+         */
+        export interface BackendTlsProperties {
+            /**
+             * Flag indicating whether SSL certificate chain validation should be done when using self-signed certificates for this backend host.
+             */
+            validateCertificateChain?: pulumi.Input<boolean>;
+            /**
+             * Flag indicating whether SSL certificate name validation should be done when using self-signed certificates for this backend host.
+             */
+            validateCertificateName?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Body logging settings.
+         */
+        export interface BodyDiagnosticSettings {
+            /**
+             * Number of request body bytes to log.
+             */
+            bytes?: pulumi.Input<number>;
+        }
+
+        /**
+         * Certificate configuration which consist of non-trusted intermediates and root certificates.
+         */
+        export interface CertificateConfiguration {
+            /**
+             * Certificate information.
+             */
+            certificate?: pulumi.Input<inputs.apimanagement.v20200601preview.CertificateInformation>;
+            /**
+             * Certificate Password.
+             */
+            certificatePassword?: pulumi.Input<string>;
+            /**
+             * Base64 Encoded certificate.
+             */
+            encodedCertificate?: pulumi.Input<string>;
+            /**
+             * The System.Security.Cryptography.x509certificates.StoreName certificate store location. Only Root and CertificateAuthority are valid locations.
+             */
+            storeName: pulumi.Input<string>;
+        }
+
+        /**
+         * SSL certificate information.
+         */
+        export interface CertificateInformation {
+            /**
+             * Expiration date of the certificate. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
+             */
+            expiry: pulumi.Input<string>;
+            /**
+             * Subject of the certificate.
+             */
+            subject: pulumi.Input<string>;
+            /**
+             * Thumbprint of the certificate.
+             */
+            thumbprint: pulumi.Input<string>;
+        }
+
+        export interface DataMasking {
+            /**
+             * Masking settings for headers
+             */
+            headers?: pulumi.Input<pulumi.Input<inputs.apimanagement.v20200601preview.DataMaskingEntity>[]>;
+            /**
+             * Masking settings for Url query parameters
+             */
+            queryParams?: pulumi.Input<pulumi.Input<inputs.apimanagement.v20200601preview.DataMaskingEntity>[]>;
+        }
+
+        export interface DataMaskingEntity {
+            /**
+             * Data masking mode.
+             */
+            mode?: pulumi.Input<string>;
+            /**
+             * The name of an entity to mask (e.g. a name of a header or a query parameter).
+             */
+            value?: pulumi.Input<string>;
+        }
+
+        /**
+         * Email Template Parameter contract.
+         */
+        export interface EmailTemplateParametersContractProperties {
+            /**
+             * Template parameter description.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Template parameter name.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Template parameter title.
+             */
+            title?: pulumi.Input<string>;
+        }
+
+        /**
+         * Custom hostname configuration.
+         */
+        export interface HostnameConfiguration {
+            /**
+             * Certificate information.
+             */
+            certificate?: pulumi.Input<inputs.apimanagement.v20200601preview.CertificateInformation>;
+            /**
+             * Certificate Password.
+             */
+            certificatePassword?: pulumi.Input<string>;
+            /**
+             * Specify true to setup the certificate associated with this Hostname as the Default SSL Certificate. If a client does not send the SNI header, then this will be the certificate that will be challenged. The property is useful if a service has multiple custom hostname enabled and it needs to decide on the default ssl certificate. The setting only applied to Proxy Hostname Type.
+             */
+            defaultSslBinding?: pulumi.Input<boolean>;
+            /**
+             * Base64 Encoded certificate.
+             */
+            encodedCertificate?: pulumi.Input<string>;
+            /**
+             * Hostname to configure on the Api Management service.
+             */
+            hostName: pulumi.Input<string>;
+            /**
+             * System or User Assigned Managed identity clientId as generated by Azure AD, which has GET access to the keyVault containing the SSL certificate.
+             */
+            identityClientId?: pulumi.Input<string>;
+            /**
+             * Url to the KeyVault Secret containing the Ssl Certificate. If absolute Url containing version is provided, auto-update of ssl certificate will not work. This requires Api Management service to be configured with MSI. The secret should be of type *application/x-pkcs12*
+             */
+            keyVaultId?: pulumi.Input<string>;
+            /**
+             * Specify true to always negotiate client certificate on the hostname. Default Value is false.
+             */
+            negotiateClientCertificate?: pulumi.Input<boolean>;
+            /**
+             * Hostname type.
+             */
+            type: pulumi.Input<string>;
+        }
+
+        /**
+         * Http message diagnostic settings.
+         */
+        export interface HttpMessageDiagnostic {
+            /**
+             * Body logging settings.
+             */
+            body?: pulumi.Input<inputs.apimanagement.v20200601preview.BodyDiagnosticSettings>;
+            /**
+             * Data masking settings.
+             */
+            dataMasking?: pulumi.Input<inputs.apimanagement.v20200601preview.DataMasking>;
+            /**
+             * Array of HTTP Headers to log.
+             */
+            headers?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * Create keyVault contract details.
+         */
+        export interface KeyVaultContractCreateProperties {
+            /**
+             * SystemAssignedIdentity or UserAssignedIdentity Client Id which will be used to access key vault secret.
+             */
+            identityClientId?: pulumi.Input<string>;
+            /**
+             * Key vault secret identifier for fetching secret.
+             */
+            secretIdentifier?: pulumi.Input<string>;
+        }
+
+        /**
+         * API OAuth2 Authentication settings details.
+         */
+        export interface OAuth2AuthenticationSettingsContract {
+            /**
+             * OAuth authorization server identifier.
+             */
+            authorizationServerId?: pulumi.Input<string>;
+            /**
+             * operations scope.
+             */
+            scope?: pulumi.Input<string>;
+        }
+
+        /**
+         * API OAuth2 Authentication settings details.
+         */
+        export interface OpenIdAuthenticationSettingsContract {
+            /**
+             * How to send token to the server.
+             */
+            bearerTokenSendingMethods?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * OAuth authorization server identifier.
+             */
+            openidProviderId?: pulumi.Input<string>;
+        }
+
+        /**
+         * Operation parameters details.
+         */
+        export interface ParameterContract {
+            /**
+             * Default parameter value.
+             */
+            defaultValue?: pulumi.Input<string>;
+            /**
+             * Parameter description.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Parameter name.
+             */
+            name: pulumi.Input<string>;
+            /**
+             * Specifies whether parameter is required or not.
+             */
+            required?: pulumi.Input<boolean>;
+            /**
+             * Parameter type.
+             */
+            type: pulumi.Input<string>;
+            /**
+             * Parameter values.
+             */
+            values?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * Diagnostic settings for incoming/outgoing HTTP messages to the Gateway.
+         */
+        export interface PipelineDiagnosticSettings {
+            /**
+             * Diagnostic settings for request.
+             */
+            request?: pulumi.Input<inputs.apimanagement.v20200601preview.HttpMessageDiagnostic>;
+            /**
+             * Diagnostic settings for response.
+             */
+            response?: pulumi.Input<inputs.apimanagement.v20200601preview.HttpMessageDiagnostic>;
+        }
+
+        /**
+         * Operation request/response representation details.
+         */
+        export interface RepresentationContract {
+            /**
+             * Specifies a registered or custom content type for this representation, e.g. application/xml.
+             */
+            contentType: pulumi.Input<string>;
+            /**
+             * Collection of form parameters. Required if 'contentType' value is either 'application/x-www-form-urlencoded' or 'multipart/form-data'..
+             */
+            formParameters?: pulumi.Input<pulumi.Input<inputs.apimanagement.v20200601preview.ParameterContract>[]>;
+            /**
+             * An example of the representation.
+             */
+            sample?: pulumi.Input<string>;
+            /**
+             * Schema identifier. Applicable only if 'contentType' value is neither 'application/x-www-form-urlencoded' nor 'multipart/form-data'.
+             */
+            schemaId?: pulumi.Input<string>;
+            /**
+             * Type name defined by the schema. Applicable only if 'contentType' value is neither 'application/x-www-form-urlencoded' nor 'multipart/form-data'.
+             */
+            typeName?: pulumi.Input<string>;
+        }
+
+        /**
+         * Operation request details.
+         */
+        export interface RequestContract {
+            /**
+             * Operation request description.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Collection of operation request headers.
+             */
+            headers?: pulumi.Input<pulumi.Input<inputs.apimanagement.v20200601preview.ParameterContract>[]>;
+            /**
+             * Collection of operation request query parameters.
+             */
+            queryParameters?: pulumi.Input<pulumi.Input<inputs.apimanagement.v20200601preview.ParameterContract>[]>;
+            /**
+             * Collection of operation request representations.
+             */
+            representations?: pulumi.Input<pulumi.Input<inputs.apimanagement.v20200601preview.RepresentationContract>[]>;
+        }
+
+        /**
+         * Resource location data properties.
+         */
+        export interface ResourceLocationDataContract {
+            /**
+             * The city or locality where the resource is located.
+             */
+            city?: pulumi.Input<string>;
+            /**
+             * The country or region where the resource is located.
+             */
+            countryOrRegion?: pulumi.Input<string>;
+            /**
+             * The district, state, or province where the resource is located.
+             */
+            district?: pulumi.Input<string>;
+            /**
+             * A canonical name for the geographic or physical location.
+             */
+            name: pulumi.Input<string>;
+        }
+
+        /**
+         * Operation response details.
+         */
+        export interface ResponseContract {
+            /**
+             * Operation response description.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Collection of operation response headers.
+             */
+            headers?: pulumi.Input<pulumi.Input<inputs.apimanagement.v20200601preview.ParameterContract>[]>;
+            /**
+             * Collection of operation response representations.
+             */
+            representations?: pulumi.Input<pulumi.Input<inputs.apimanagement.v20200601preview.RepresentationContract>[]>;
+            /**
+             * Operation response HTTP status code.
+             */
+            statusCode: pulumi.Input<number>;
+        }
+
+        /**
+         * Sampling settings for Diagnostic.
+         */
+        export interface SamplingSettings {
+            /**
+             * Rate of sampling for fixed-rate sampling.
+             */
+            percentage?: pulumi.Input<number>;
+            /**
+             * Sampling type.
+             */
+            samplingType?: pulumi.Input<string>;
+        }
+
+        /**
+         * Subscription key parameter names details.
+         */
+        export interface SubscriptionKeyParameterNamesContract {
+            /**
+             * Subscription key header name.
+             */
+            header?: pulumi.Input<string>;
+            /**
+             * Subscription key query string parameter name.
+             */
+            query?: pulumi.Input<string>;
+        }
+
+        /**
+         * OAuth acquire token request body parameter (www-url-form-encoded).
+         */
+        export interface TokenBodyParameterContract {
+            /**
+             * body parameter name.
+             */
+            name: pulumi.Input<string>;
+            /**
+             * body parameter value.
+             */
+            value: pulumi.Input<string>;
+        }
+
+        /**
+         * User identity details.
+         */
+        export interface UserIdentityContract {
+            /**
+             * Identifier value within provider.
+             */
+            id?: pulumi.Input<string>;
+            /**
+             * Identity provider name.
+             */
+            provider?: pulumi.Input<string>;
+        }
+
+        export interface UserIdentityProperties {
+            /**
+             * The client id of user assigned identity.
+             */
+            clientId?: pulumi.Input<string>;
+            /**
+             * The principal id of user assigned identity.
+             */
+            principalId?: pulumi.Input<string>;
+        }
+
+        /**
+         * Configuration of a virtual network to which API Management service is deployed.
+         */
+        export interface VirtualNetworkConfiguration {
+            /**
+             * The full resource ID of a subnet in a virtual network to deploy the API Management service in.
+             */
+            subnetResourceId?: pulumi.Input<string>;
+        }
+
+        /**
+         * Properties of server X509Names.
+         */
+        export interface X509CertificateName {
+            /**
+             * Thumbprint for the Issuer of the Certificate.
+             */
+            issuerCertificateThumbprint?: pulumi.Input<string>;
+            /**
+             * Common Name of the Certificate.
+             */
+            name?: pulumi.Input<string>;
+        }
+
+    }
 }
 
 export namespace appconfiguration {
@@ -5458,6 +6109,77 @@ export namespace appconfiguration {
              * Key vault properties.
              */
             keyVaultProperties?: pulumi.Input<inputs.appconfiguration.v20200601.KeyVaultProperties>;
+        }
+
+        /**
+         * Settings concerning key vault encryption for a configuration store.
+         */
+        export interface KeyVaultProperties {
+            /**
+             * The client id of the identity which will be used to access key vault.
+             */
+            identityClientId?: pulumi.Input<string>;
+            /**
+             * The URI of the key vault key used to encrypt data.
+             */
+            keyIdentifier?: pulumi.Input<string>;
+        }
+
+        /**
+         * Private endpoint which a connection belongs to.
+         */
+        export interface PrivateEndpoint {
+            /**
+             * The resource Id for private endpoint
+             */
+            id?: pulumi.Input<string>;
+        }
+
+        /**
+         * The state of a private link service connection.
+         */
+        export interface PrivateLinkServiceConnectionState {
+            /**
+             * The private link service connection description.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * The private link service connection status.
+             */
+            status?: pulumi.Input<string>;
+        }
+
+        /**
+         * An identity that can be associated with a resource.
+         */
+        export interface ResourceIdentity {
+            /**
+             * The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities.
+             */
+            type?: pulumi.Input<string>;
+        }
+
+        /**
+         * Describes a configuration store SKU.
+         */
+        export interface Sku {
+            /**
+             * The SKU name of the configuration store.
+             */
+            name: pulumi.Input<string>;
+        }
+
+    }
+
+    export namespace v20200701preview {
+        /**
+         * The encryption settings for a configuration store.
+         */
+        export interface EncryptionProperties {
+            /**
+             * Key vault properties.
+             */
+            keyVaultProperties?: pulumi.Input<inputs.appconfiguration.v20200701preview.KeyVaultProperties>;
         }
 
         /**
@@ -27215,10 +27937,6 @@ export namespace compute {
          */
         export interface GalleryApplicationVersionPublishingProfile {
             /**
-             * Optional. May be used to help process this file. The type of file contained in the source, e.g. zip, json, etc.
-             */
-            contentType?: pulumi.Input<string>;
-            /**
              * Optional. Whether or not this application reports health.
              */
             enableHealthCheck?: pulumi.Input<boolean>;
@@ -27230,6 +27948,7 @@ export namespace compute {
              * If set to true, Virtual Machines deployed from the latest version of the Image Definition won't use this Image Version.
              */
             excludeFromLatest?: pulumi.Input<boolean>;
+            manageActions?: pulumi.Input<inputs.compute.latest.UserArtifactManage>;
             /**
              * The number of replicas of the Image Version to be created per region. This property would take effect for a region when regionalReplicaCount is not specified. This property is updatable.
              */
@@ -28088,16 +28807,31 @@ export namespace compute {
             rollingUpgradePolicy?: pulumi.Input<inputs.compute.latest.RollingUpgradePolicy>;
         }
 
+        export interface UserArtifactManage {
+            /**
+             * Required. The path and arguments to install the gallery application. This is limited to 4096 characters.
+             */
+            install: pulumi.Input<string>;
+            /**
+             * Required. The path and arguments to remove the gallery application. This is limited to 4096 characters.
+             */
+            remove: pulumi.Input<string>;
+            /**
+             * Optional. The path and arguments to update the gallery application. If not present, then update operation will invoke remove command on the previous version and install command on the current version of the gallery application. This is limited to 4096 characters.
+             */
+            update?: pulumi.Input<string>;
+        }
+
         /**
          * The source image from which the Image Version is going to be created.
          */
         export interface UserArtifactSource {
             /**
-             * Required. The fileName of the artifact.
+             * Optional. The defaultConfigurationLink of the artifact, must be a readable storage page blob.
              */
-            fileName: pulumi.Input<string>;
+            defaultConfigurationLink?: pulumi.Input<string>;
             /**
-             * Required. The mediaLink of the artifact, must be a readable storage blob.
+             * Required. The mediaLink of the artifact, must be a readable storage page blob.
              */
             mediaLink: pulumi.Input<string>;
         }
@@ -44089,10 +44823,6 @@ export namespace compute {
          */
         export interface GalleryApplicationVersionPublishingProfile {
             /**
-             * Optional. May be used to help process this file. The type of file contained in the source, e.g. zip, json, etc.
-             */
-            contentType?: pulumi.Input<string>;
-            /**
              * Optional. Whether or not this application reports health.
              */
             enableHealthCheck?: pulumi.Input<boolean>;
@@ -44104,6 +44834,7 @@ export namespace compute {
              * If set to true, Virtual Machines deployed from the latest version of the Image Definition won't use this Image Version.
              */
             excludeFromLatest?: pulumi.Input<boolean>;
+            manageActions?: pulumi.Input<inputs.compute.v20200930.UserArtifactManage>;
             /**
              * The number of replicas of the Image Version to be created per region. This property would take effect for a region when regionalReplicaCount is not specified. This property is updatable.
              */
@@ -44332,16 +45063,31 @@ export namespace compute {
             storageAccountType?: pulumi.Input<string>;
         }
 
+        export interface UserArtifactManage {
+            /**
+             * Required. The path and arguments to install the gallery application. This is limited to 4096 characters.
+             */
+            install: pulumi.Input<string>;
+            /**
+             * Required. The path and arguments to remove the gallery application. This is limited to 4096 characters.
+             */
+            remove: pulumi.Input<string>;
+            /**
+             * Optional. The path and arguments to update the gallery application. If not present, then update operation will invoke remove command on the previous version and install command on the current version of the gallery application. This is limited to 4096 characters.
+             */
+            update?: pulumi.Input<string>;
+        }
+
         /**
          * The source image from which the Image Version is going to be created.
          */
         export interface UserArtifactSource {
             /**
-             * Required. The fileName of the artifact.
+             * Optional. The defaultConfigurationLink of the artifact, must be a readable storage page blob.
              */
-            fileName: pulumi.Input<string>;
+            defaultConfigurationLink?: pulumi.Input<string>;
             /**
-             * Required. The mediaLink of the artifact, must be a readable storage blob.
+             * Required. The mediaLink of the artifact, must be a readable storage page blob.
              */
             mediaLink: pulumi.Input<string>;
         }
@@ -51263,11 +52009,11 @@ export namespace containerservice {
          */
         export interface ManagedClusterWindowsProfile {
             /**
-             * The administrator password to use for Windows VMs.
+             * Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:** 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!"
              */
             adminPassword?: pulumi.Input<string>;
             /**
-             * The administrator username to use for Windows VMs.
+             * Specifies the name of the administrator account. <br><br> **restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length:** 1 character <br><br> **Max-length:** 20 characters
              */
             adminUsername: pulumi.Input<string>;
             /**
@@ -52931,11 +53677,11 @@ export namespace containerservice {
          */
         export interface ManagedClusterWindowsProfile {
             /**
-             * The administrator password to use for Windows VMs.
+             * Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:** 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!"
              */
             adminPassword?: pulumi.Input<string>;
             /**
-             * The administrator username to use for Windows VMs.
+             * Specifies the name of the administrator account. <br><br> **restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length:** 1 character <br><br> **Max-length:** 20 characters
              */
             adminUsername: pulumi.Input<string>;
         }
@@ -53309,11 +54055,11 @@ export namespace containerservice {
          */
         export interface ManagedClusterWindowsProfile {
             /**
-             * The administrator password to use for Windows VMs.
+             * Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:** 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!"
              */
             adminPassword?: pulumi.Input<string>;
             /**
-             * The administrator username to use for Windows VMs.
+             * Specifies the name of the administrator account. <br><br> **restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length:** 1 character <br><br> **Max-length:** 20 characters
              */
             adminUsername: pulumi.Input<string>;
         }
@@ -53598,11 +54344,11 @@ export namespace containerservice {
          */
         export interface ManagedClusterWindowsProfile {
             /**
-             * The administrator password to use for Windows VMs.
+             * Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:** 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!"
              */
             adminPassword?: pulumi.Input<string>;
             /**
-             * The administrator username to use for Windows VMs.
+             * Specifies the name of the administrator account. <br><br> **restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length:** 1 character <br><br> **Max-length:** 20 characters
              */
             adminUsername: pulumi.Input<string>;
         }
@@ -54070,11 +54816,11 @@ export namespace containerservice {
          */
         export interface ManagedClusterWindowsProfile {
             /**
-             * The administrator password to use for Windows VMs.
+             * Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:** 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!"
              */
             adminPassword?: pulumi.Input<string>;
             /**
-             * The administrator username to use for Windows VMs.
+             * Specifies the name of the administrator account. <br><br> **restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length:** 1 character <br><br> **Max-length:** 20 characters
              */
             adminUsername: pulumi.Input<string>;
         }
@@ -54583,11 +55329,11 @@ export namespace containerservice {
          */
         export interface ManagedClusterWindowsProfile {
             /**
-             * The administrator password to use for Windows VMs.
+             * Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:** 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!"
              */
             adminPassword?: pulumi.Input<string>;
             /**
-             * The administrator username to use for Windows VMs.
+             * Specifies the name of the administrator account. <br><br> **restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length:** 1 character <br><br> **Max-length:** 20 characters
              */
             adminUsername: pulumi.Input<string>;
         }
@@ -54917,11 +55663,11 @@ export namespace containerservice {
          */
         export interface ManagedClusterWindowsProfile {
             /**
-             * The administrator password to use for Windows VMs.
+             * Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:** 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!"
              */
             adminPassword?: pulumi.Input<string>;
             /**
-             * The administrator username to use for Windows VMs.
+             * Specifies the name of the administrator account. <br><br> **restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length:** 1 character <br><br> **Max-length:** 20 characters
              */
             adminUsername: pulumi.Input<string>;
         }
@@ -55273,11 +56019,11 @@ export namespace containerservice {
          */
         export interface ManagedClusterWindowsProfile {
             /**
-             * The administrator password to use for Windows VMs.
+             * Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:** 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!"
              */
             adminPassword?: pulumi.Input<string>;
             /**
-             * The administrator username to use for Windows VMs.
+             * Specifies the name of the administrator account. <br><br> **restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length:** 1 character <br><br> **Max-length:** 20 characters
              */
             adminUsername: pulumi.Input<string>;
         }
@@ -55653,11 +56399,11 @@ export namespace containerservice {
          */
         export interface ManagedClusterWindowsProfile {
             /**
-             * The administrator password to use for Windows VMs.
+             * Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:** 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!"
              */
             adminPassword?: pulumi.Input<string>;
             /**
-             * The administrator username to use for Windows VMs.
+             * Specifies the name of the administrator account. <br><br> **restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length:** 1 character <br><br> **Max-length:** 20 characters
              */
             adminUsername: pulumi.Input<string>;
         }
@@ -56051,11 +56797,11 @@ export namespace containerservice {
          */
         export interface ManagedClusterWindowsProfile {
             /**
-             * The administrator password to use for Windows VMs.
+             * Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:** 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!"
              */
             adminPassword?: pulumi.Input<string>;
             /**
-             * The administrator username to use for Windows VMs.
+             * Specifies the name of the administrator account. <br><br> **restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length:** 1 character <br><br> **Max-length:** 20 characters
              */
             adminUsername: pulumi.Input<string>;
         }
@@ -56457,11 +57203,11 @@ export namespace containerservice {
          */
         export interface ManagedClusterWindowsProfile {
             /**
-             * The administrator password to use for Windows VMs.
+             * Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:** 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!"
              */
             adminPassword?: pulumi.Input<string>;
             /**
-             * The administrator username to use for Windows VMs.
+             * Specifies the name of the administrator account. <br><br> **restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length:** 1 character <br><br> **Max-length:** 20 characters
              */
             adminUsername: pulumi.Input<string>;
         }
@@ -56883,11 +57629,11 @@ export namespace containerservice {
          */
         export interface ManagedClusterWindowsProfile {
             /**
-             * The administrator password to use for Windows VMs.
+             * Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:** 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!"
              */
             adminPassword?: pulumi.Input<string>;
             /**
-             * The administrator username to use for Windows VMs.
+             * Specifies the name of the administrator account. <br><br> **restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length:** 1 character <br><br> **Max-length:** 20 characters
              */
             adminUsername: pulumi.Input<string>;
             /**
@@ -57324,11 +58070,11 @@ export namespace containerservice {
          */
         export interface ManagedClusterWindowsProfile {
             /**
-             * The administrator password to use for Windows VMs.
+             * Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:** 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!"
              */
             adminPassword?: pulumi.Input<string>;
             /**
-             * The administrator username to use for Windows VMs.
+             * Specifies the name of the administrator account. <br><br> **restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length:** 1 character <br><br> **Max-length:** 20 characters
              */
             adminUsername: pulumi.Input<string>;
             /**
@@ -64270,6 +65016,10 @@ export namespace datafactory {
              */
             annotations?: pulumi.Input<any[]>;
             /**
+             * The authentication type of S3. Allowed value: AccessKey (default) or TemporarySecurityCredentials. Type: string (or Expression with resultType string).
+             */
+            authenticationType?: any;
+            /**
              * The integration runtime reference.
              */
             connectVia?: pulumi.Input<inputs.datafactory.latest.IntegrationRuntimeReference>;
@@ -64293,6 +65043,10 @@ export namespace datafactory {
              * This value specifies the endpoint to access with the S3 Connector. This is an optional property; change it only if you want to try a different service endpoint or want to switch between https and http. Type: string (or Expression with resultType string).
              */
             serviceUrl?: any;
+            /**
+             * The session token for the S3 temporary security credential.
+             */
+            sessionToken?: pulumi.Input<inputs.datafactory.latest.AzureKeyVaultSecretReference | inputs.datafactory.latest.SecureString>;
             /**
              * Type of linked service.
              */
@@ -66577,6 +67331,10 @@ export namespace datafactory {
              * The integration runtime reference.
              */
             connectVia?: pulumi.Input<inputs.datafactory.latest.IntegrationRuntimeReference>;
+            /**
+             * Properties used to connect to Concur. It is mutually exclusive with any other properties in the linked service. Type: object.
+             */
+            connectionProperties?: any;
             /**
              * Linked service description.
              */
@@ -81583,6 +82341,10 @@ export namespace datafactory {
              */
             annotations?: pulumi.Input<any[]>;
             /**
+             * The authentication type of S3. Allowed value: AccessKey (default) or TemporarySecurityCredentials. Type: string (or Expression with resultType string).
+             */
+            authenticationType?: any;
+            /**
              * The integration runtime reference.
              */
             connectVia?: pulumi.Input<inputs.datafactory.v20180601.IntegrationRuntimeReference>;
@@ -81606,6 +82368,10 @@ export namespace datafactory {
              * This value specifies the endpoint to access with the S3 Connector. This is an optional property; change it only if you want to try a different service endpoint or want to switch between https and http. Type: string (or Expression with resultType string).
              */
             serviceUrl?: any;
+            /**
+             * The session token for the S3 temporary security credential.
+             */
+            sessionToken?: pulumi.Input<inputs.datafactory.v20180601.AzureKeyVaultSecretReference | inputs.datafactory.v20180601.SecureString>;
             /**
              * Type of linked service.
              */
@@ -83890,6 +84656,10 @@ export namespace datafactory {
              * The integration runtime reference.
              */
             connectVia?: pulumi.Input<inputs.datafactory.v20180601.IntegrationRuntimeReference>;
+            /**
+             * Properties used to connect to Concur. It is mutually exclusive with any other properties in the linked service. Type: object.
+             */
+            connectionProperties?: any;
             /**
              * Linked service description.
              */
@@ -98853,6 +99623,87 @@ export namespace dbformysql {
 
     }
 
+    export namespace v20200701preview {
+        /**
+         * Delegated subnet arguments of a server
+         */
+        export interface DelegatedSubnetArguments {
+            /**
+             * delegated subnet arm resource id.
+             */
+            subnetArmResourceId?: pulumi.Input<string>;
+        }
+
+        /**
+         * Identity for the resource.
+         */
+        export interface Identity {
+            /**
+             * The identity type.
+             */
+            type?: pulumi.Input<string>;
+        }
+
+        /**
+         * Maintenance window of a server.
+         */
+        export interface MaintenanceWindow {
+            /**
+             * indicates whether custom window is enabled or disabled
+             */
+            customWindow?: pulumi.Input<string>;
+            /**
+             * day of week for maintenance window
+             */
+            dayOfWeek?: pulumi.Input<number>;
+            /**
+             * start hour for maintenance window
+             */
+            startHour?: pulumi.Input<number>;
+            /**
+             * start minute for maintenance window
+             */
+            startMinute?: pulumi.Input<number>;
+        }
+
+        /**
+         * Billing information related properties of a server.
+         */
+        export interface Sku {
+            /**
+             * The name of the sku, e.g. Standard_D32s_v3.
+             */
+            name: pulumi.Input<string>;
+            /**
+             * The tier of the particular SKU, e.g. GeneralPurpose.
+             */
+            tier: pulumi.Input<string>;
+        }
+
+        /**
+         * Storage Profile properties of a server
+         */
+        export interface StorageProfile {
+            /**
+             * Backup retention days for the server.
+             */
+            backupRetentionDays?: pulumi.Input<number>;
+            /**
+             * Enable Storage Auto Grow.
+             */
+            storageAutogrow?: pulumi.Input<string>;
+            /**
+             * Storage IOPS for a server.
+             */
+            storageIops?: pulumi.Input<number>;
+            /**
+             * Max storage allowed for a server.
+             */
+            storageMB?: pulumi.Input<number>;
+        }
+
+    }
+
     export namespace v20200701privatepreview {
         /**
          * Delegated subnet arguments of a server
@@ -111279,6 +112130,16 @@ export namespace documentdb {
         }
 
         /**
+         * The object representing continuous mode backup policy.
+         */
+        export interface ContinuousModeBackupPolicy {
+            /**
+             * Describes the mode of backups.
+             */
+            type: pulumi.Input<"Continuous">;
+        }
+
+        /**
          * The CORS policy for the Cosmos DB database account.
          */
         export interface CorsPolicy {
@@ -111523,6 +112384,34 @@ export namespace documentdb {
              * Is unique or not
              */
             unique?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * The object representing periodic mode backup policy.
+         */
+        export interface PeriodicModeBackupPolicy {
+            /**
+             * Configuration values for periodic mode backup
+             */
+            periodicModeProperties?: pulumi.Input<inputs.documentdb.latest.PeriodicModeProperties>;
+            /**
+             * Describes the mode of backups.
+             */
+            type: pulumi.Input<"Periodic">;
+        }
+
+        /**
+         * Configuration values for periodic mode backup
+         */
+        export interface PeriodicModeProperties {
+            /**
+             * An integer representing the interval in minutes between two backups
+             */
+            backupIntervalInMinutes?: pulumi.Input<number>;
+            /**
+             * An integer representing the time (in hours) that each backup is retained
+             */
+            backupRetentionIntervalInHours?: pulumi.Input<number>;
         }
 
         export interface SpatialSpec {
@@ -116475,7 +117364,7 @@ export namespace documentdb {
              */
             restoreMode?: pulumi.Input<string>;
             /**
-             * Path of the source account from which the restore has to be initiated
+             * The id of the restorable database account from which the restore has to be initiated. For example: /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{restorableDatabaseAccountName}
              */
             restoreSource?: pulumi.Input<string>;
             /**
@@ -116699,6 +117588,620 @@ export namespace documentdb {
              * List of unique keys on that enforces uniqueness constraint on documents in the collection in the Azure Cosmos DB service.
              */
             uniqueKeys?: pulumi.Input<pulumi.Input<inputs.documentdb.v20200601preview.UniqueKey>[]>;
+        }
+
+        /**
+         * Virtual Network ACL Rule object
+         */
+        export interface VirtualNetworkRule {
+            /**
+             * Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}.
+             */
+            id?: pulumi.Input<string>;
+            /**
+             * Create firewall rule before the virtual network has vnet service endpoint enabled.
+             */
+            ignoreMissingVNetServiceEndpoint?: pulumi.Input<boolean>;
+        }
+
+    }
+
+    export namespace v20200901 {
+        export interface ApiProperties {
+            /**
+             * Describes the ServerVersion of an a MongoDB account.
+             */
+            serverVersion?: pulumi.Input<string>;
+        }
+
+        export interface AutoscaleSettings {
+            /**
+             * Represents maximum throughput, the resource can scale up to.
+             */
+            maxThroughput?: pulumi.Input<number>;
+        }
+
+        /**
+         * Cosmos DB capability object
+         */
+        export interface Capability {
+            /**
+             * Name of the Cosmos DB capability. For example, "name": "EnableCassandra". Current values also include "EnableTable" and "EnableGremlin".
+             */
+            name?: pulumi.Input<string>;
+        }
+
+        /**
+         * Cosmos DB Cassandra keyspace resource object
+         */
+        export interface CassandraKeyspaceResource {
+            /**
+             * Name of the Cosmos DB Cassandra keyspace
+             */
+            id: pulumi.Input<string>;
+        }
+
+        /**
+         * Cosmos DB Cassandra table partition key
+         */
+        export interface CassandraPartitionKey {
+            /**
+             * Name of the Cosmos DB Cassandra table partition key
+             */
+            name?: pulumi.Input<string>;
+        }
+
+        /**
+         * Cosmos DB Cassandra table schema
+         */
+        export interface CassandraSchema {
+            /**
+             * List of cluster key.
+             */
+            clusterKeys?: pulumi.Input<pulumi.Input<inputs.documentdb.v20200901.ClusterKey>[]>;
+            /**
+             * List of Cassandra table columns.
+             */
+            columns?: pulumi.Input<pulumi.Input<inputs.documentdb.v20200901.Column>[]>;
+            /**
+             * List of partition key.
+             */
+            partitionKeys?: pulumi.Input<pulumi.Input<inputs.documentdb.v20200901.CassandraPartitionKey>[]>;
+        }
+
+        /**
+         * Cosmos DB Cassandra table resource object
+         */
+        export interface CassandraTableResource {
+            /**
+             * Analytical TTL.
+             */
+            analyticalStorageTtl?: pulumi.Input<number>;
+            /**
+             * Time to live of the Cosmos DB Cassandra table
+             */
+            defaultTtl?: pulumi.Input<number>;
+            /**
+             * Name of the Cosmos DB Cassandra table
+             */
+            id: pulumi.Input<string>;
+            /**
+             * Schema of the Cosmos DB Cassandra table
+             */
+            schema?: pulumi.Input<inputs.documentdb.v20200901.CassandraSchema>;
+        }
+
+        /**
+         * Cosmos DB Cassandra table cluster key
+         */
+        export interface ClusterKey {
+            /**
+             * Name of the Cosmos DB Cassandra table cluster key
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Order of the Cosmos DB Cassandra table cluster key, only support "Asc" and "Desc"
+             */
+            orderBy?: pulumi.Input<string>;
+        }
+
+        /**
+         * Cosmos DB Cassandra table column
+         */
+        export interface Column {
+            /**
+             * Name of the Cosmos DB Cassandra table column
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Type of the Cosmos DB Cassandra table column
+             */
+            type?: pulumi.Input<string>;
+        }
+
+        export interface CompositePath {
+            /**
+             * Sort order for composite paths.
+             */
+            order?: pulumi.Input<string>;
+            /**
+             * The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)
+             */
+            path?: pulumi.Input<string>;
+        }
+
+        /**
+         * The conflict resolution policy for the container.
+         */
+        export interface ConflictResolutionPolicy {
+            /**
+             * The conflict resolution path in the case of LastWriterWins mode.
+             */
+            conflictResolutionPath?: pulumi.Input<string>;
+            /**
+             * The procedure to resolve conflicts in the case of custom mode.
+             */
+            conflictResolutionProcedure?: pulumi.Input<string>;
+            /**
+             * Indicates the conflict resolution mode.
+             */
+            mode?: pulumi.Input<string>;
+        }
+
+        /**
+         * The consistency policy for the Cosmos DB database account.
+         */
+        export interface ConsistencyPolicy {
+            /**
+             * The default consistency level and configuration settings of the Cosmos DB account.
+             */
+            defaultConsistencyLevel: pulumi.Input<string>;
+            /**
+             * When used with the Bounded Staleness consistency level, this value represents the time amount of staleness (in seconds) tolerated. Accepted range for this value is 5 - 86400. Required when defaultConsistencyPolicy is set to 'BoundedStaleness'.
+             */
+            maxIntervalInSeconds?: pulumi.Input<number>;
+            /**
+             * When used with the Bounded Staleness consistency level, this value represents the number of stale requests tolerated. Accepted range for this value is 1 – 2,147,483,647. Required when defaultConsistencyPolicy is set to 'BoundedStaleness'.
+             */
+            maxStalenessPrefix?: pulumi.Input<number>;
+        }
+
+        /**
+         * The configuration of the partition key to be used for partitioning data into multiple partitions
+         */
+        export interface ContainerPartitionKey {
+            /**
+             * Indicates the kind of algorithm used for partitioning
+             */
+            kind?: pulumi.Input<string>;
+            /**
+             * List of paths using which data within the container can be partitioned
+             */
+            paths?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Indicates the version of the partition key definition
+             */
+            version?: pulumi.Input<number>;
+        }
+
+        /**
+         * The object representing continuous mode backup policy.
+         */
+        export interface ContinuousModeBackupPolicy {
+            /**
+             * Describes the mode of backups.
+             */
+            type: pulumi.Input<"Continuous">;
+        }
+
+        /**
+         * The CORS policy for the Cosmos DB database account.
+         */
+        export interface CorsPolicy {
+            /**
+             * The request headers that the origin domain may specify on the CORS request.
+             */
+            allowedHeaders?: pulumi.Input<string>;
+            /**
+             * The methods (HTTP request verbs) that the origin domain may use for a CORS request.
+             */
+            allowedMethods?: pulumi.Input<string>;
+            /**
+             * The origin domains that are permitted to make a request against the service via CORS.
+             */
+            allowedOrigins: pulumi.Input<string>;
+            /**
+             * The response headers that may be sent in the response to the CORS request and exposed by the browser to the request issuer.
+             */
+            exposedHeaders?: pulumi.Input<string>;
+            /**
+             * The maximum amount time that a browser should cache the preflight OPTIONS request.
+             */
+            maxAgeInSeconds?: pulumi.Input<number>;
+        }
+
+        /**
+         * CreateUpdateOptions are a list of key-value pairs that describe the resource. Supported keys are "If-Match", "If-None-Match", "Session-Token" and "Throughput"
+         */
+        export interface CreateUpdateOptions {
+            /**
+             * Specifies the Autoscale settings.
+             */
+            autoscaleSettings?: pulumi.Input<inputs.documentdb.v20200901.AutoscaleSettings>;
+            /**
+             * Request Units per second. For example, "throughput": 10000.
+             */
+            throughput?: pulumi.Input<number>;
+        }
+
+        export interface ExcludedPath {
+            /**
+             * The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)
+             */
+            path?: pulumi.Input<string>;
+        }
+
+        /**
+         * Cosmos DB Gremlin database resource object
+         */
+        export interface GremlinDatabaseResource {
+            /**
+             * Name of the Cosmos DB Gremlin database
+             */
+            id: pulumi.Input<string>;
+        }
+
+        /**
+         * Cosmos DB Gremlin graph resource object
+         */
+        export interface GremlinGraphResource {
+            /**
+             * The conflict resolution policy for the graph.
+             */
+            conflictResolutionPolicy?: pulumi.Input<inputs.documentdb.v20200901.ConflictResolutionPolicy>;
+            /**
+             * Default time to live
+             */
+            defaultTtl?: pulumi.Input<number>;
+            /**
+             * Name of the Cosmos DB Gremlin graph
+             */
+            id: pulumi.Input<string>;
+            /**
+             * The configuration of the indexing policy. By default, the indexing is automatic for all document paths within the graph
+             */
+            indexingPolicy?: pulumi.Input<inputs.documentdb.v20200901.IndexingPolicy>;
+            /**
+             * The configuration of the partition key to be used for partitioning data into multiple partitions
+             */
+            partitionKey?: pulumi.Input<inputs.documentdb.v20200901.ContainerPartitionKey>;
+            /**
+             * The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
+             */
+            uniqueKeyPolicy?: pulumi.Input<inputs.documentdb.v20200901.UniqueKeyPolicy>;
+        }
+
+        /**
+         * The paths that are included in indexing
+         */
+        export interface IncludedPath {
+            /**
+             * List of indexes for this path
+             */
+            indexes?: pulumi.Input<pulumi.Input<inputs.documentdb.v20200901.Indexes>[]>;
+            /**
+             * The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)
+             */
+            path?: pulumi.Input<string>;
+        }
+
+        /**
+         * The indexes for the path.
+         */
+        export interface Indexes {
+            /**
+             * The datatype for which the indexing behavior is applied to.
+             */
+            dataType?: pulumi.Input<string>;
+            /**
+             * Indicates the type of index.
+             */
+            kind?: pulumi.Input<string>;
+            /**
+             * The precision of the index. -1 is maximum precision.
+             */
+            precision?: pulumi.Input<number>;
+        }
+
+        /**
+         * Cosmos DB indexing policy
+         */
+        export interface IndexingPolicy {
+            /**
+             * Indicates if the indexing policy is automatic
+             */
+            automatic?: pulumi.Input<boolean>;
+            /**
+             * List of composite path list
+             */
+            compositeIndexes?: pulumi.Input<pulumi.Input<pulumi.Input<inputs.documentdb.v20200901.CompositePath>[]>[]>;
+            /**
+             * List of paths to exclude from indexing
+             */
+            excludedPaths?: pulumi.Input<pulumi.Input<inputs.documentdb.v20200901.ExcludedPath>[]>;
+            /**
+             * List of paths to include in the indexing
+             */
+            includedPaths?: pulumi.Input<pulumi.Input<inputs.documentdb.v20200901.IncludedPath>[]>;
+            /**
+             * Indicates the indexing mode.
+             */
+            indexingMode?: pulumi.Input<string>;
+            /**
+             * List of spatial specifics
+             */
+            spatialIndexes?: pulumi.Input<pulumi.Input<inputs.documentdb.v20200901.SpatialSpec>[]>;
+        }
+
+        /**
+         * IpAddressOrRange object
+         */
+        export interface IpAddressOrRange {
+            /**
+             * A single IPv4 address or a single IPv4 address range in CIDR format. Provided IPs must be well-formatted and cannot be contained in one of the following ranges: 10.0.0.0/8, 100.64.0.0/10, 172.16.0.0/12, 192.168.0.0/16, since these are not enforceable by the IP address filter. Example of valid inputs: “23.40.210.245” or “23.40.210.0/8”.
+             */
+            ipAddressOrRange?: pulumi.Input<string>;
+        }
+
+        /**
+         * A region in which the Azure Cosmos DB database account is deployed.
+         */
+        export interface Location {
+            /**
+             * The failover priority of the region. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists.
+             */
+            failoverPriority?: pulumi.Input<number>;
+            /**
+             * Flag to indicate whether or not this region is an AvailabilityZone region
+             */
+            isZoneRedundant?: pulumi.Input<boolean>;
+            /**
+             * The name of the region.
+             */
+            locationName?: pulumi.Input<string>;
+        }
+
+        /**
+         * Cosmos DB MongoDB collection resource object
+         */
+        export interface MongoDBCollectionResource {
+            /**
+             * Analytical TTL.
+             */
+            analyticalStorageTtl?: pulumi.Input<number>;
+            /**
+             * Name of the Cosmos DB MongoDB collection
+             */
+            id: pulumi.Input<string>;
+            /**
+             * List of index keys
+             */
+            indexes?: pulumi.Input<pulumi.Input<inputs.documentdb.v20200901.MongoIndex>[]>;
+            /**
+             * A key-value pair of shard keys to be applied for the request.
+             */
+            shardKey?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        }
+
+        /**
+         * Cosmos DB MongoDB database resource object
+         */
+        export interface MongoDBDatabaseResource {
+            /**
+             * Name of the Cosmos DB MongoDB database
+             */
+            id: pulumi.Input<string>;
+        }
+
+        /**
+         * Cosmos DB MongoDB collection index key
+         */
+        export interface MongoIndex {
+            /**
+             * Cosmos DB MongoDB collection index keys
+             */
+            key?: pulumi.Input<inputs.documentdb.v20200901.MongoIndexKeys>;
+            /**
+             * Cosmos DB MongoDB collection index key options
+             */
+            options?: pulumi.Input<inputs.documentdb.v20200901.MongoIndexOptions>;
+        }
+
+        /**
+         * Cosmos DB MongoDB collection resource object
+         */
+        export interface MongoIndexKeys {
+            /**
+             * List of keys for each MongoDB collection in the Azure Cosmos DB service
+             */
+            keys?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * Cosmos DB MongoDB collection index options
+         */
+        export interface MongoIndexOptions {
+            /**
+             * Expire after seconds
+             */
+            expireAfterSeconds?: pulumi.Input<number>;
+            /**
+             * Is unique or not
+             */
+            unique?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * The object representing periodic mode backup policy.
+         */
+        export interface PeriodicModeBackupPolicy {
+            /**
+             * Configuration values for periodic mode backup
+             */
+            periodicModeProperties?: pulumi.Input<inputs.documentdb.v20200901.PeriodicModeProperties>;
+            /**
+             * Describes the mode of backups.
+             */
+            type: pulumi.Input<"Periodic">;
+        }
+
+        /**
+         * Configuration values for periodic mode backup
+         */
+        export interface PeriodicModeProperties {
+            /**
+             * An integer representing the interval in minutes between two backups
+             */
+            backupIntervalInMinutes?: pulumi.Input<number>;
+            /**
+             * An integer representing the time (in hours) that each backup is retained
+             */
+            backupRetentionIntervalInHours?: pulumi.Input<number>;
+        }
+
+        export interface SpatialSpec {
+            /**
+             * The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)
+             */
+            path?: pulumi.Input<string>;
+            /**
+             * List of path's spatial type
+             */
+            types?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * Cosmos DB SQL container resource object
+         */
+        export interface SqlContainerResource {
+            /**
+             * Analytical TTL.
+             */
+            analyticalStorageTtl?: pulumi.Input<number>;
+            /**
+             * The conflict resolution policy for the container.
+             */
+            conflictResolutionPolicy?: pulumi.Input<inputs.documentdb.v20200901.ConflictResolutionPolicy>;
+            /**
+             * Default time to live
+             */
+            defaultTtl?: pulumi.Input<number>;
+            /**
+             * Name of the Cosmos DB SQL container
+             */
+            id: pulumi.Input<string>;
+            /**
+             * The configuration of the indexing policy. By default, the indexing is automatic for all document paths within the container
+             */
+            indexingPolicy?: pulumi.Input<inputs.documentdb.v20200901.IndexingPolicy>;
+            /**
+             * The configuration of the partition key to be used for partitioning data into multiple partitions
+             */
+            partitionKey?: pulumi.Input<inputs.documentdb.v20200901.ContainerPartitionKey>;
+            /**
+             * The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
+             */
+            uniqueKeyPolicy?: pulumi.Input<inputs.documentdb.v20200901.UniqueKeyPolicy>;
+        }
+
+        /**
+         * Cosmos DB SQL database resource object
+         */
+        export interface SqlDatabaseResource {
+            /**
+             * Name of the Cosmos DB SQL database
+             */
+            id: pulumi.Input<string>;
+        }
+
+        /**
+         * Cosmos DB SQL storedProcedure resource object
+         */
+        export interface SqlStoredProcedureResource {
+            /**
+             * Body of the Stored Procedure
+             */
+            body?: pulumi.Input<string>;
+            /**
+             * Name of the Cosmos DB SQL storedProcedure
+             */
+            id: pulumi.Input<string>;
+        }
+
+        /**
+         * Cosmos DB SQL trigger resource object
+         */
+        export interface SqlTriggerResource {
+            /**
+             * Body of the Trigger
+             */
+            body?: pulumi.Input<string>;
+            /**
+             * Name of the Cosmos DB SQL trigger
+             */
+            id: pulumi.Input<string>;
+            /**
+             * The operation the trigger is associated with
+             */
+            triggerOperation?: pulumi.Input<string>;
+            /**
+             * Type of the Trigger
+             */
+            triggerType?: pulumi.Input<string>;
+        }
+
+        /**
+         * Cosmos DB SQL userDefinedFunction resource object
+         */
+        export interface SqlUserDefinedFunctionResource {
+            /**
+             * Body of the User Defined Function
+             */
+            body?: pulumi.Input<string>;
+            /**
+             * Name of the Cosmos DB SQL userDefinedFunction
+             */
+            id: pulumi.Input<string>;
+        }
+
+        /**
+         * Cosmos DB table resource object
+         */
+        export interface TableResource {
+            /**
+             * Name of the Cosmos DB table
+             */
+            id: pulumi.Input<string>;
+        }
+
+        /**
+         * The unique key on that enforces uniqueness constraint on documents in the collection in the Azure Cosmos DB service.
+         */
+        export interface UniqueKey {
+            /**
+             * List of paths must be unique for each document in the Azure Cosmos DB service
+             */
+            paths?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
+         */
+        export interface UniqueKeyPolicy {
+            /**
+             * List of unique keys on that enforces uniqueness constraint on documents in the collection in the Azure Cosmos DB service.
+             */
+            uniqueKeys?: pulumi.Input<pulumi.Input<inputs.documentdb.v20200901.UniqueKey>[]>;
         }
 
         /**
@@ -124266,25 +125769,151 @@ export namespace hybriddata {
 export namespace hybridnetwork {
     export namespace v20200101preview {
         /**
+         * Specifies the custom settings for the virtual machine.
+         */
+        export interface CustomProfile {
+            /**
+             * Path for metadata configuration.
+             */
+            metadataConfigurationPath?: pulumi.Input<string>;
+        }
+
+        /**
+         * Specifies information about the operating system disk used by the virtual machine. <br><br> For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+         */
+        export interface DataDisk {
+            /**
+             * Specifies how the virtual machine should be created.
+             */
+            createOption?: pulumi.Input<string>;
+            /**
+             * Specifies the size of an empty disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image.
+             */
+            diskSizeGB?: pulumi.Input<number>;
+            /**
+             * The name of data disk.
+             */
+            name?: pulumi.Input<string>;
+        }
+
+        /**
          * The image reference properties.
          */
         export interface ImageReference {
             /**
-             * The OS type.
+             * Specifies in decimal numbers, the exact version of image used to create the virtual machine.
              */
-            osType?: pulumi.Input<string>;
+            exactVersion?: pulumi.Input<string>;
             /**
-             * The VHD SAS URI.
+             * Specifies the offer of the image used to create the virtual machine.
              */
-            sasUri?: pulumi.Input<string>;
+            offer?: pulumi.Input<string>;
             /**
-             * The VHD name.
+             * The image publisher.
              */
-            vhdName?: pulumi.Input<string>;
+            publisher?: pulumi.Input<string>;
             /**
-             * The VHD type.
+             * The image SKU.
              */
-            vhdType?: pulumi.Input<string>;
+            sku?: pulumi.Input<string>;
+            /**
+             * Specifies the version of the image used to create the virtual machine. The allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest version of an image available at deploy time. Even if you use 'latest', the VM image will not automatically update after deploy time even if a new version becomes available.
+             */
+            version?: pulumi.Input<string>;
+        }
+
+        /**
+         * Specifies the Linux operating system settings on the virtual machine.
+         */
+        export interface LinuxConfiguration {
+            /**
+             * Specifies the ssh key configuration for a Linux OS.
+             */
+            ssh?: pulumi.Input<inputs.hybridnetwork.v20200101preview.SshConfiguration>;
+        }
+
+        /**
+         * Network function role configuration.
+         */
+        export interface NetworkFunctionRoleConfiguration {
+            /**
+             * Specifies the custom settings for the virtual machine.
+             */
+            customProfile?: pulumi.Input<inputs.hybridnetwork.v20200101preview.CustomProfile>;
+            /**
+             * The network interface configurations.
+             */
+            networkInterfaces?: pulumi.Input<pulumi.Input<inputs.hybridnetwork.v20200101preview.NetworkInterface>[]>;
+            /**
+             * Specifies the operating system settings for the role instance. This value can be updated during the deployment of network function.
+             */
+            osProfile?: pulumi.Input<inputs.hybridnetwork.v20200101preview.OsProfile>;
+            /**
+             * The name of the network function role.
+             */
+            roleName?: pulumi.Input<string>;
+            /**
+             * Role type.
+             */
+            roleType?: pulumi.Input<string>;
+            /**
+             * Specifies the storage settings for the virtual machine disks.
+             */
+            storageProfile?: pulumi.Input<inputs.hybridnetwork.v20200101preview.StorageProfile>;
+            /**
+             * The user parameters for customers. The format of user data parameters has to be matched with the provided user data template.
+             */
+            userDataParameters?: any;
+            /**
+             * The user data template for customers. This is a json schema template describing the format and data type of user data parameters.
+             */
+            userDataTemplate?: any;
+            /**
+             * The size of the virtual machine.
+             */
+            virtualMachineSize?: pulumi.Input<string>;
+        }
+
+        /**
+         * The network function template.
+         */
+        export interface NetworkFunctionTemplate {
+            /**
+             * An array of network function role definitions.
+             */
+            networkFunctionRoleConfigurations?: pulumi.Input<pulumi.Input<inputs.hybridnetwork.v20200101preview.NetworkFunctionRoleConfiguration>[]>;
+        }
+
+        /**
+         * The network function user configuration.
+         */
+        export interface NetworkFunctionUserConfiguration {
+            /**
+             * The network interface configuration.
+             */
+            networkInterfaces?: pulumi.Input<pulumi.Input<inputs.hybridnetwork.v20200101preview.NetworkInterface>[]>;
+            /**
+             * Specifies the operating system settings for the role instance.
+             */
+            osProfile?: pulumi.Input<inputs.hybridnetwork.v20200101preview.NetworkFunctionUserConfigurationOsProfile>;
+            /**
+             * The name of the network function role.
+             */
+            roleName?: pulumi.Input<string>;
+            /**
+             * The user data parameters from the customer.
+             */
+            userDataParameters?: any;
+        }
+
+        /**
+         * Specifies the operating system settings for the role instance.
+         */
+        export interface NetworkFunctionUserConfigurationOsProfile {
+            /**
+             * Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the virtual machine. The maximum length of the binary array is 65535 bytes. <br><br> **Note: Do not pass any secrets or passwords in customData property** <br><br> This property cannot be updated after the VM is created. <br><br> customData is passed to the VM to be saved as a file. For more information see [Custom Data on Azure VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/) <br><br> For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+             */
+            customData?: pulumi.Input<string>;
         }
 
         /**
@@ -124304,7 +125933,7 @@ export namespace hybridnetwork {
              */
             networkInterfaceName?: pulumi.Input<string>;
             /**
-             * The type of VM switch
+             * The type of the VM switch.
              */
             vmSwitchType?: pulumi.Input<string>;
         }
@@ -124340,21 +125969,89 @@ export namespace hybridnetwork {
         }
 
         /**
+         * Specifies information about the operating system disk used by the virtual machine. <br><br> For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+         */
+        export interface OsDisk {
+            /**
+             * Specifies the size of os disk in gigabytes. This is the fully expanded disk size needed of the VHD image on the ASE. This disk size should be greater than the size of the VHD provided in vhdUri.
+             */
+            diskSizeGB?: pulumi.Input<number>;
+            /**
+             * The VHD name.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * The OS type.
+             */
+            osType?: pulumi.Input<string>;
+            /**
+             * The virtual hard disk.
+             */
+            vhd?: pulumi.Input<inputs.hybridnetwork.v20200101preview.VirtualHardDisk>;
+        }
+
+        /**
          * Specifies the operating system settings for the role instance.
          */
         export interface OsProfile {
-            /**
-             * Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-reset-rdp?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-vmaccess-extension?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#reset-root-password).
-             */
-            adminPassword?: pulumi.Input<string>;
             /**
              * Specifies the name of the administrator account. <br><br> **Windows-only restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters <br><br> **Max-length (Windows):** 20 characters  <br><br><li> For root access to the Linux VM, see [Using root privileges on Linux virtual machines in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)<br><li> For a list of built-in system users on Linux that should not be used in this field, see [Selecting User Names for Linux on Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
              */
             adminUsername?: pulumi.Input<string>;
             /**
-             * Contains information about SSH certificate public key and the path on the Linux VM where the public key is placed.
+             * Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the virtual machine. The maximum length of the binary array is 65535 bytes. <br><br> **Note: Do not pass any secrets or passwords in customData property** <br><br> This property cannot be updated after the VM is created. <br><br> customData is passed to the VM to be saved as a file. For more information see [Custom Data on Azure VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/) <br><br> For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
              */
-            sshPublicKey?: pulumi.Input<string>;
+            customData?: pulumi.Input<string>;
+            /**
+             * Indicates if custom data is required to deploy this role.
+             */
+            customDataRequired?: pulumi.Input<boolean>;
+            /**
+             * Specifies the Linux operating system settings on the virtual machine. <br><br>For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-endorsed-distros?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) <br><br> For running non-endorsed distributions, see [Information for Non-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+             */
+            linuxConfiguration?: pulumi.Input<inputs.hybridnetwork.v20200101preview.LinuxConfiguration>;
+        }
+
+        /**
+         * SSH configuration for Linux based VMs running on Azure
+         */
+        export interface SshConfiguration {
+            /**
+             * The list of SSH public keys used to authenticate with linux based VMs.
+             */
+            publicKeys?: pulumi.Input<pulumi.Input<inputs.hybridnetwork.v20200101preview.SshPublicKey>[]>;
+        }
+
+        /**
+         * Contains information about SSH certificate public key and the path on the Linux VM where the public key is placed.
+         */
+        export interface SshPublicKey {
+            /**
+             * SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+             */
+            keyData?: pulumi.Input<string>;
+            /**
+             * Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
+             */
+            path?: pulumi.Input<string>;
+        }
+
+        /**
+         * Specifies the storage settings for the virtual machine disks.
+         */
+        export interface StorageProfile {
+            /**
+             * Specifies the parameters that are used to add a data disk to a virtual machine.
+             */
+            dataDisks?: pulumi.Input<pulumi.Input<inputs.hybridnetwork.v20200101preview.DataDisk>[]>;
+            /**
+             * The image reference properties.
+             */
+            imageReference?: pulumi.Input<inputs.hybridnetwork.v20200101preview.ImageReference>;
+            /**
+             * Specifies information about the operating system disk used by the virtual machine.
+             */
+            osDisk?: pulumi.Input<inputs.hybridnetwork.v20200101preview.OsDisk>;
         }
 
         /**
@@ -124368,69 +126065,13 @@ export namespace hybridnetwork {
         }
 
         /**
-         * Virtual network function role configuration.
+         * Describes the uri of a disk.
          */
-        export interface VirtualNetworkFunctionRoleConfiguration {
+        export interface VirtualHardDisk {
             /**
-             * The definition of image reference.
+             * Specifies the virtual hard disk's uri.
              */
-            imageReference?: pulumi.Input<inputs.hybridnetwork.v20200101preview.ImageReference>;
-            /**
-             * The network interface configurations.
-             */
-            networkInterfaces?: pulumi.Input<pulumi.Input<inputs.hybridnetwork.v20200101preview.NetworkInterface>[]>;
-            /**
-             * Specifies the operating system settings for the role instance. This value can be updated during the deployment of virtual network function.
-             */
-            osProfile?: pulumi.Input<inputs.hybridnetwork.v20200101preview.OsProfile>;
-            /**
-             * The name of the virtual network function role.
-             */
-            roleName?: pulumi.Input<string>;
-            /**
-             * Role type.
-             */
-            roleType?: pulumi.Input<string>;
-            /**
-             * The user parameters for customers. The format of user data parameters has to be matched with the provided user data template.
-             */
-            userDataParameters?: any;
-            /**
-             * The user data template for customers. This is json scheme template describing the format and data type of user data parameters.
-             */
-            userDataTemplate?: any;
-            /**
-             * The size of the virtual machine.
-             */
-            virtualMachineSize?: pulumi.Input<string>;
-        }
-
-        /**
-         * The virtual network function template.
-         */
-        export interface VirtualNetworkFunctionTemplate {
-            /**
-             * An array of virtual network function role definitions.
-             */
-            virutalNetworkFunctionRoleConfigurations?: pulumi.Input<pulumi.Input<inputs.hybridnetwork.v20200101preview.VirtualNetworkFunctionRoleConfiguration>[]>;
-        }
-
-        /**
-         * The virtual network function user configuration.
-         */
-        export interface VirtualNetworkFunctionUserConfiguration {
-            /**
-             * The network interface configuration.
-             */
-            networkInterfaces?: pulumi.Input<pulumi.Input<inputs.hybridnetwork.v20200101preview.NetworkInterface>[]>;
-            /**
-             * The name of the virtual network function role.
-             */
-            roleName?: pulumi.Input<string>;
-            /**
-             * The user data parameters from the customer.
-             */
-            userDataParameters?: any;
+            uri?: pulumi.Input<string>;
         }
 
     }
@@ -128749,6 +130390,91 @@ export namespace insights {
         }
 
     }
+
+    export namespace v20201005preview {
+        /**
+         * A header to add to the WebTest.
+         */
+        export interface HeaderField {
+            /**
+             * The name of the header.
+             */
+            headerFieldName?: pulumi.Input<string>;
+            /**
+             * The value of the header.
+             */
+            headerFieldValue?: pulumi.Input<string>;
+        }
+
+        /**
+         * Geo-physical location to run a WebTest from. You must specify one or more locations for the test to run from.
+         */
+        export interface WebTestGeolocation {
+            /**
+             * Location ID for the WebTest to run from.
+             */
+            location?: pulumi.Input<string>;
+        }
+
+        /**
+         * An XML configuration specification for a WebTest.
+         */
+        export interface WebTestPropertiesConfiguration {
+            /**
+             * The XML specification of a WebTest to run against an application.
+             */
+            webTest?: pulumi.Input<string>;
+        }
+
+        /**
+         * The collection of content validation properties
+         */
+        export interface WebTestPropertiesContentValidation {
+            /**
+             * Content to look for in the return of the WebTest.
+             */
+            contentMatch?: pulumi.Input<string>;
+            /**
+             * When set, this value makes the ContentMatch validation case insensitive.
+             */
+            ignoreCase?: pulumi.Input<boolean>;
+            /**
+             * When true, validation will pass if there is a match for the ContentMatch string.  If false, validation will fail if there is a match
+             */
+            passIfTextFound?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * The collection of request properties
+         */
+        export interface WebTestPropertiesRequest {
+            /**
+             * Follow redirects for this web test.
+             */
+            followRedirects?: pulumi.Input<boolean>;
+            /**
+             * List of headers and their values to add to the WebTest call.
+             */
+            headers?: pulumi.Input<pulumi.Input<inputs.insights.v20201005preview.HeaderField>[]>;
+            /**
+             * Http verb to use for this web test.
+             */
+            httpVerb?: pulumi.Input<string>;
+            /**
+             * Parse Dependent request for this WebTest.
+             */
+            parseDependentRequests?: pulumi.Input<boolean>;
+            /**
+             * Base64 encoded string body to send with this web test.
+             */
+            requestBody?: pulumi.Input<string>;
+            /**
+             * Url location to test.
+             */
+            requestUrl?: pulumi.Input<string>;
+        }
+
+    }
 }
 
 export namespace iotcentral {
@@ -129997,6 +131723,23 @@ export namespace kubernetes {
 
 export namespace kubernetesconfiguration {
     export namespace v20191101preview {
+        /**
+         * Properties for Helm operator.
+         */
+        export interface HelmOperatorProperties {
+            /**
+             * Values override for the operator Helm chart.
+             */
+            chartValues?: pulumi.Input<string>;
+            /**
+             * Version of the operator Helm chart.
+             */
+            chartVersion?: pulumi.Input<string>;
+        }
+
+    }
+
+    export namespace v20201001preview {
         /**
          * Properties for Helm operator.
          */
@@ -150915,6 +152658,10 @@ export namespace management {
              */
             debugSetting?: pulumi.Input<inputs.management.latest.DebugSetting>;
             /**
+             * Specifies whether template expressions are evaluated within the scope of the parent template or nested template. Only applicable to nested templates. If not specified, default value is outer.
+             */
+            expressionEvaluationOptions?: pulumi.Input<inputs.management.latest.ExpressionEvaluationOptions>;
+            /**
              * The mode that is used to deploy resources. This value can be either Incremental or Complete. In Incremental mode, resources are deployed without deleting existing resources that are not included in the template. In Complete mode, resources are deployed and existing resources in the resource group that are not included in the template are deleted. Be careful when using Complete mode as you may unintentionally delete resources.
              */
             mode: pulumi.Input<string>;
@@ -150938,6 +152685,16 @@ export namespace management {
              * The URI of the template. Use either the templateLink property or the template property, but not both.
              */
             templateLink?: pulumi.Input<inputs.management.latest.TemplateLink>;
+        }
+
+        /**
+         * Specifies whether template expressions are evaluated within the scope of the parent template or nested template.
+         */
+        export interface ExpressionEvaluationOptions {
+            /**
+             * The scope to be used for evaluation of parameters, variables and functions in a nested template.
+             */
+            scope?: pulumi.Input<string>;
         }
 
         /**
@@ -152028,6 +153785,10 @@ export namespace management {
              */
             debugSetting?: pulumi.Input<inputs.management.v20200601.DebugSetting>;
             /**
+             * Specifies whether template expressions are evaluated within the scope of the parent template or nested template. Only applicable to nested templates. If not specified, default value is outer.
+             */
+            expressionEvaluationOptions?: pulumi.Input<inputs.management.v20200601.ExpressionEvaluationOptions>;
+            /**
              * The mode that is used to deploy resources. This value can be either Incremental or Complete. In Incremental mode, resources are deployed without deleting existing resources that are not included in the template. In Complete mode, resources are deployed and existing resources in the resource group that are not included in the template are deleted. Be careful when using Complete mode as you may unintentionally delete resources.
              */
             mode: pulumi.Input<string>;
@@ -152051,6 +153812,16 @@ export namespace management {
              * The URI of the template. Use either the templateLink property or the template property, but not both.
              */
             templateLink?: pulumi.Input<inputs.management.v20200601.TemplateLink>;
+        }
+
+        /**
+         * Specifies whether template expressions are evaluated within the scope of the parent template or nested template.
+         */
+        export interface ExpressionEvaluationOptions {
+            /**
+             * The scope to be used for evaluation of parameters, variables and functions in a nested template.
+             */
+            scope?: pulumi.Input<string>;
         }
 
         /**
@@ -161683,6 +163454,335 @@ export namespace netapp {
              * Snapshot Policy ResourceId
              */
             snapshotPolicyId?: pulumi.Input<string>;
+        }
+
+    }
+
+    export namespace v20200501 {
+        /**
+         * Active Directory
+         */
+        export interface ActiveDirectory {
+            /**
+             * Id of the Active Directory
+             */
+            activeDirectoryId?: pulumi.Input<string>;
+            /**
+             * Name of the active directory machine. This optional parameter is used only while creating kerberos volume
+             */
+            adName?: pulumi.Input<string>;
+            /**
+             * Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier
+             */
+            backupOperators?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Comma separated list of DNS server IP addresses (IPv4 only) for the Active Directory domain
+             */
+            dns?: pulumi.Input<string>;
+            /**
+             * Name of the Active Directory domain
+             */
+            domain?: pulumi.Input<string>;
+            /**
+             * kdc server IP addresses for the active directory machine. This optional parameter is used only while creating kerberos volume.
+             */
+            kdcIP?: pulumi.Input<string>;
+            /**
+             * The Organizational Unit (OU) within the Windows Active Directory
+             */
+            organizationalUnit?: pulumi.Input<string>;
+            /**
+             * Plain text password of Active Directory domain administrator, value is masked in the response
+             */
+            password?: pulumi.Input<string>;
+            /**
+             * The Active Directory site the service will limit Domain Controller discovery to
+             */
+            site?: pulumi.Input<string>;
+            /**
+             * NetBIOS name of the SMB server. This name will be registered as a computer account in the AD and used to mount volumes
+             */
+            smbServerName?: pulumi.Input<string>;
+            /**
+             * Status of the Active Directory
+             */
+            status?: pulumi.Input<string>;
+            /**
+             * Username of Active Directory domain administrator
+             */
+            username?: pulumi.Input<string>;
+        }
+
+        /**
+         * Daily Schedule properties
+         */
+        export interface DailySchedule {
+            /**
+             * Indicates which hour in UTC timezone a snapshot should be taken
+             */
+            hour?: pulumi.Input<number>;
+            /**
+             * Indicates which minute snapshot should be taken
+             */
+            minute?: pulumi.Input<number>;
+            /**
+             * Daily snapshot count to keep
+             */
+            snapshotsToKeep?: pulumi.Input<number>;
+            /**
+             * Resource size in bytes, current storage usage for the volume in bytes
+             */
+            usedBytes?: pulumi.Input<number>;
+        }
+
+        /**
+         * Volume Export Policy Rule
+         */
+        export interface ExportPolicyRule {
+            /**
+             * Client ingress specification as comma separated string with IPv4 CIDRs, IPv4 host addresses and host names
+             */
+            allowedClients?: pulumi.Input<string>;
+            /**
+             * Allows CIFS protocol
+             */
+            cifs?: pulumi.Input<boolean>;
+            /**
+             * Has root access to volume
+             */
+            hasRootAccess?: pulumi.Input<boolean>;
+            /**
+             * Kerberos5 Read only access. To be use with swagger version 2020-05-01 or later
+             */
+            kerberos5ReadOnly?: pulumi.Input<boolean>;
+            /**
+             * Kerberos5 Read and write access. To be use with swagger version 2020-05-01 or later
+             */
+            kerberos5ReadWrite?: pulumi.Input<boolean>;
+            /**
+             * Kerberos5i Read only access. To be use with swagger version 2020-05-01 or later
+             */
+            kerberos5iReadOnly?: pulumi.Input<boolean>;
+            /**
+             * Kerberos5i Read and write access. To be use with swagger version 2020-05-01 or later
+             */
+            kerberos5iReadWrite?: pulumi.Input<boolean>;
+            /**
+             * Kerberos5p Read only access. To be use with swagger version 2020-05-01 or later
+             */
+            kerberos5pReadOnly?: pulumi.Input<boolean>;
+            /**
+             * Kerberos5p Read and write access. To be use with swagger version 2020-05-01 or later
+             */
+            kerberos5pReadWrite?: pulumi.Input<boolean>;
+            /**
+             * Allows NFSv3 protocol. Enable only for NFSv3 type volumes
+             */
+            nfsv3?: pulumi.Input<boolean>;
+            /**
+             * Allows NFSv4.1 protocol. Enable only for NFSv4.1 type volumes
+             */
+            nfsv41?: pulumi.Input<boolean>;
+            /**
+             * Order index
+             */
+            ruleIndex?: pulumi.Input<number>;
+            /**
+             * Read only access
+             */
+            unixReadOnly?: pulumi.Input<boolean>;
+            /**
+             * Read and write access
+             */
+            unixReadWrite?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Hourly Schedule properties
+         */
+        export interface HourlySchedule {
+            /**
+             * Indicates which minute snapshot should be taken
+             */
+            minute?: pulumi.Input<number>;
+            /**
+             * Hourly snapshot count to keep
+             */
+            snapshotsToKeep?: pulumi.Input<number>;
+            /**
+             * Resource size in bytes, current storage usage for the volume in bytes
+             */
+            usedBytes?: pulumi.Input<number>;
+        }
+
+        /**
+         * Monthly Schedule properties
+         */
+        export interface MonthlySchedule {
+            /**
+             * Indicates which days of the month snapshot should be taken. A comma delimited string.
+             */
+            daysOfMonth?: pulumi.Input<string>;
+            /**
+             * Indicates which hour in UTC timezone a snapshot should be taken
+             */
+            hour?: pulumi.Input<number>;
+            /**
+             * Indicates which minute snapshot should be taken
+             */
+            minute?: pulumi.Input<number>;
+            /**
+             * Monthly snapshot count to keep
+             */
+            snapshotsToKeep?: pulumi.Input<number>;
+            /**
+             * Resource size in bytes, current storage usage for the volume in bytes
+             */
+            usedBytes?: pulumi.Input<number>;
+        }
+
+        /**
+         * Mount target properties
+         */
+        export interface MountTargetProperties {
+            /**
+             * UUID v4 used to identify the MountTarget
+             */
+            fileSystemId: pulumi.Input<string>;
+            /**
+             * The SMB server's Fully Qualified Domain Name, FQDN
+             */
+            smbServerFqdn?: pulumi.Input<string>;
+        }
+
+        /**
+         * Replication properties
+         */
+        export interface ReplicationObject {
+            /**
+             * Indicates whether the local volume is the source or destination for the Volume Replication
+             */
+            endpointType?: pulumi.Input<string>;
+            /**
+             * The remote region for the other end of the Volume Replication.
+             */
+            remoteVolumeRegion?: pulumi.Input<string>;
+            /**
+             * The resource ID of the remote volume.
+             */
+            remoteVolumeResourceId: pulumi.Input<string>;
+            /**
+             * Id
+             */
+            replicationId?: pulumi.Input<string>;
+            /**
+             * Schedule
+             */
+            replicationSchedule: pulumi.Input<string>;
+        }
+
+        /**
+         * Volume Backup Properties
+         */
+        export interface VolumeBackupProperties {
+            /**
+             * Backup Enabled
+             */
+            backupEnabled?: pulumi.Input<boolean>;
+            /**
+             * Backup Policy Resource ID
+             */
+            backupPolicyId?: pulumi.Input<string>;
+            /**
+             * Policy Enforced
+             */
+            policyEnforced?: pulumi.Input<boolean>;
+            /**
+             * Vault Resource ID
+             */
+            vaultId?: pulumi.Input<string>;
+        }
+
+        /**
+         * Volume details using the backup policy
+         */
+        export interface VolumeBackups {
+            /**
+             * Total count of backups for volume
+             */
+            backupsCount?: pulumi.Input<number>;
+            /**
+             * Policy enabled
+             */
+            policyEnabled?: pulumi.Input<boolean>;
+            /**
+             * Volume name
+             */
+            volumeName?: pulumi.Input<string>;
+        }
+
+        /**
+         * DataProtection type volumes include an object containing details of the replication
+         */
+        export interface VolumePropertiesDataProtection {
+            /**
+             * Backup Properties
+             */
+            backup?: pulumi.Input<inputs.netapp.v20200501.VolumeBackupProperties>;
+            /**
+             * Replication properties
+             */
+            replication?: pulumi.Input<inputs.netapp.v20200501.ReplicationObject>;
+            /**
+             * Snapshot properties.
+             */
+            snapshot?: pulumi.Input<inputs.netapp.v20200501.VolumeSnapshotProperties>;
+        }
+
+        /**
+         * Set of export policy rules
+         */
+        export interface VolumePropertiesExportPolicy {
+            /**
+             * Export policy rule
+             */
+            rules?: pulumi.Input<pulumi.Input<inputs.netapp.v20200501.ExportPolicyRule>[]>;
+        }
+
+        /**
+         * Volume Snapshot Properties
+         */
+        export interface VolumeSnapshotProperties {
+            /**
+             * Snapshot Policy ResourceId
+             */
+            snapshotPolicyId?: pulumi.Input<string>;
+        }
+
+        /**
+         * Weekly Schedule properties, make a snapshot every week at a specific day or days
+         */
+        export interface WeeklySchedule {
+            /**
+             * Indicates which weekdays snapshot should be taken, accepts a comma separated list of week day names in english
+             */
+            day?: pulumi.Input<string>;
+            /**
+             * Indicates which hour in UTC timezone a snapshot should be taken
+             */
+            hour?: pulumi.Input<number>;
+            /**
+             * Indicates which minute snapshot should be taken
+             */
+            minute?: pulumi.Input<number>;
+            /**
+             * Weekly snapshot count to keep
+             */
+            snapshotsToKeep?: pulumi.Input<number>;
+            /**
+             * Resource size in bytes, current storage usage for the volume in bytes
+             */
+            usedBytes?: pulumi.Input<number>;
         }
 
     }
@@ -279982,6 +282082,10 @@ export namespace resources {
              */
             debugSetting?: pulumi.Input<inputs.resources.latest.DebugSetting>;
             /**
+             * Specifies whether template expressions are evaluated within the scope of the parent template or nested template. Only applicable to nested templates. If not specified, default value is outer.
+             */
+            expressionEvaluationOptions?: pulumi.Input<inputs.resources.latest.ExpressionEvaluationOptions>;
+            /**
              * The mode that is used to deploy resources. This value can be either Incremental or Complete. In Incremental mode, resources are deployed without deleting existing resources that are not included in the template. In Complete mode, resources are deployed and existing resources in the resource group that are not included in the template are deleted. Be careful when using Complete mode as you may unintentionally delete resources.
              */
             mode: pulumi.Input<string>;
@@ -280005,6 +282109,16 @@ export namespace resources {
              * The URI of the template. Use either the templateLink property or the template property, but not both.
              */
             templateLink?: pulumi.Input<inputs.resources.latest.TemplateLink>;
+        }
+
+        /**
+         * Specifies whether template expressions are evaluated within the scope of the parent template or nested template.
+         */
+        export interface ExpressionEvaluationOptions {
+            /**
+             * The scope to be used for evaluation of parameters, variables and functions in a nested template.
+             */
+            scope?: pulumi.Input<string>;
         }
 
         /**
@@ -282055,6 +284169,10 @@ export namespace resources {
              */
             debugSetting?: pulumi.Input<inputs.resources.v20200601.DebugSetting>;
             /**
+             * Specifies whether template expressions are evaluated within the scope of the parent template or nested template. Only applicable to nested templates. If not specified, default value is outer.
+             */
+            expressionEvaluationOptions?: pulumi.Input<inputs.resources.v20200601.ExpressionEvaluationOptions>;
+            /**
              * The mode that is used to deploy resources. This value can be either Incremental or Complete. In Incremental mode, resources are deployed without deleting existing resources that are not included in the template. In Complete mode, resources are deployed and existing resources in the resource group that are not included in the template are deleted. Be careful when using Complete mode as you may unintentionally delete resources.
              */
             mode: pulumi.Input<string>;
@@ -282078,6 +284196,16 @@ export namespace resources {
              * The URI of the template. Use either the templateLink property or the template property, but not both.
              */
             templateLink?: pulumi.Input<inputs.resources.v20200601.TemplateLink>;
+        }
+
+        /**
+         * Specifies whether template expressions are evaluated within the scope of the parent template or nested template.
+         */
+        export interface ExpressionEvaluationOptions {
+            /**
+             * The scope to be used for evaluation of parameters, variables and functions in a nested template.
+             */
+            scope?: pulumi.Input<string>;
         }
 
         /**
@@ -302426,6 +304554,16 @@ export namespace synapse {
         }
 
         /**
+         * Properties for an Sql pool vulnerability assessment rule baseline's result.
+         */
+        export interface SqlPoolVulnerabilityAssessmentRuleBaselineItem {
+            /**
+             * The rule baseline result
+             */
+            result: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
          * Virtual Network Profile
          */
         export interface VirtualNetworkProfile {
@@ -305454,6 +307592,14 @@ export namespace web {
              * Virtual Network name.
              */
             vnetName?: pulumi.Input<string>;
+            /**
+             * The number of private ports assigned to this app. These will be assigned dynamically on runtime.
+             */
+            vnetPrivatePortsCount?: pulumi.Input<number>;
+            /**
+             * Virtual Network Route All enabled. This causes all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied.
+             */
+            vnetRouteAllEnabled?: pulumi.Input<boolean>;
             /**
              * <code>true</code> if WebSocket is enabled; otherwise, <code>false</code>.
              */
@@ -312022,6 +314168,14 @@ export namespace web {
              * Virtual Network name.
              */
             vnetName?: pulumi.Input<string>;
+            /**
+             * The number of private ports assigned to this app. These will be assigned dynamically on runtime.
+             */
+            vnetPrivatePortsCount?: pulumi.Input<number>;
+            /**
+             * Virtual Network Route All enabled. This causes all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied.
+             */
+            vnetRouteAllEnabled?: pulumi.Input<boolean>;
             /**
              * <code>true</code> if WebSocket is enabled; otherwise, <code>false</code>.
              */

@@ -6106,6 +6106,718 @@ export namespace apimanagement {
             name?: string;
         }
     }
+
+    export namespace v20200601preview {
+        /**
+         * Description of an additional API Management resource location.
+         */
+        export interface AdditionalLocationResponse {
+            /**
+             * Property only valid for an Api Management service deployed in multiple locations. This can be used to disable the gateway in this additional location.
+             */
+            disableGateway?: boolean;
+            /**
+             * Gateway URL of the API Management service in the Region.
+             */
+            gatewayRegionalUrl: string;
+            /**
+             * The location name of the additional region among Azure Data center regions.
+             */
+            location: string;
+            /**
+             * Private Static Load Balanced IP addresses of the API Management service which is deployed in an Internal Virtual Network in a particular additional location. Available only for Basic, Standard, Premium and Isolated SKU.
+             */
+            privateIPAddresses: string[];
+            /**
+             * Public Static Load Balanced IP addresses of the API Management service in the additional location. Available only for Basic, Standard, Premium and Isolated SKU.
+             */
+            publicIPAddresses: string[];
+            /**
+             * SKU properties of the API Management service.
+             */
+            sku: outputs.apimanagement.v20200601preview.ApiManagementServiceSkuPropertiesResponse;
+            /**
+             * Virtual network configuration for the location.
+             */
+            virtualNetworkConfiguration?: outputs.apimanagement.v20200601preview.VirtualNetworkConfigurationResponse;
+            /**
+             * A list of availability zones denoting where the resource needs to come from.
+             */
+            zones?: string[];
+        }
+
+        /**
+         * Identity properties of the Api Management service resource.
+         */
+        export interface ApiManagementServiceIdentityResponse {
+            /**
+             * The principal id of the identity.
+             */
+            principalId: string;
+            /**
+             * The client tenant id of the identity.
+             */
+            tenantId: string;
+            /**
+             * The type of identity used for the resource. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the service.
+             */
+            type: string;
+            /**
+             * The list of user identities associated with the resource. The user identity 
+             * dictionary key references will be ARM resource ids in the form: 
+             * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/
+             *     providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+             */
+            userAssignedIdentities?: {[key: string]: outputs.apimanagement.v20200601preview.UserIdentityPropertiesResponse};
+        }
+
+        /**
+         * API Management service resource SKU properties.
+         */
+        export interface ApiManagementServiceSkuPropertiesResponse {
+            /**
+             * Capacity of the SKU (number of deployed units of the SKU). For Consumption SKU capacity must be specified as 0.
+             */
+            capacity: number;
+            /**
+             * Name of the Sku.
+             */
+            name: string;
+        }
+
+        /**
+         * Control Plane Apis version constraint for the API Management service.
+         */
+        export interface ApiVersionConstraintResponse {
+            /**
+             * Limit control plane API calls to API Management service with version equal to or newer than this value.
+             */
+            minApiVersion?: string;
+        }
+
+        /**
+         * An API Version Set contains the common configuration for a set of API Versions relating 
+         */
+        export interface ApiVersionSetContractDetailsResponse {
+            /**
+             * Description of API Version Set.
+             */
+            description?: string;
+            /**
+             * Identifier for existing API Version Set. Omit this value to create a new Version Set.
+             */
+            id?: string;
+            /**
+             * The display Name of the API Version Set.
+             */
+            name?: string;
+            /**
+             * Name of HTTP header parameter that indicates the API Version if versioningScheme is set to `header`.
+             */
+            versionHeaderName?: string;
+            /**
+             * Name of query parameter that indicates the API Version if versioningScheme is set to `query`.
+             */
+            versionQueryName?: string;
+            /**
+             * An value that determines where the API Version identifer will be located in a HTTP request.
+             */
+            versioningScheme?: string;
+        }
+
+        /**
+         * API Authentication Settings.
+         */
+        export interface AuthenticationSettingsContractResponse {
+            /**
+             * OAuth2 Authentication settings
+             */
+            oAuth2?: outputs.apimanagement.v20200601preview.OAuth2AuthenticationSettingsContractResponse;
+            /**
+             * OpenID Connect Authentication Settings
+             */
+            openid?: outputs.apimanagement.v20200601preview.OpenIdAuthenticationSettingsContractResponse;
+        }
+
+        /**
+         * Authorization header information.
+         */
+        export interface BackendAuthorizationHeaderCredentialsResponse {
+            /**
+             * Authentication Parameter value.
+             */
+            parameter: string;
+            /**
+             * Authentication Scheme name.
+             */
+            scheme: string;
+        }
+
+        /**
+         * Details of the Credentials used to connect to Backend.
+         */
+        export interface BackendCredentialsContractResponse {
+            /**
+             * Authorization header authentication
+             */
+            authorization?: outputs.apimanagement.v20200601preview.BackendAuthorizationHeaderCredentialsResponse;
+            /**
+             * List of Client Certificate Thumbprint.
+             */
+            certificate?: string[];
+            /**
+             * Header Parameter description.
+             */
+            header?: {[key: string]: string[]};
+            /**
+             * Query Parameter description.
+             */
+            query?: {[key: string]: string[]};
+        }
+
+        /**
+         * Properties specific to the Backend Type.
+         */
+        export interface BackendPropertiesResponse {
+            /**
+             * Backend Service Fabric Cluster Properties
+             */
+            serviceFabricCluster?: outputs.apimanagement.v20200601preview.BackendServiceFabricClusterPropertiesResponse;
+        }
+
+        /**
+         * Details of the Backend WebProxy Server to use in the Request to Backend.
+         */
+        export interface BackendProxyContractResponse {
+            /**
+             * Password to connect to the WebProxy Server
+             */
+            password?: string;
+            /**
+             * WebProxy Server AbsoluteUri property which includes the entire URI stored in the Uri instance, including all fragments and query strings.
+             */
+            url: string;
+            /**
+             * Username to connect to the WebProxy server
+             */
+            username?: string;
+        }
+
+        /**
+         * Properties of the Service Fabric Type Backend.
+         */
+        export interface BackendServiceFabricClusterPropertiesResponse {
+            /**
+             * The client certificate thumbprint for the management endpoint.
+             */
+            clientCertificatethumbprint: string;
+            /**
+             * The cluster management endpoint.
+             */
+            managementEndpoints: string[];
+            /**
+             * Maximum number of retries while attempting resolve the partition.
+             */
+            maxPartitionResolutionRetries?: number;
+            /**
+             * Thumbprints of certificates cluster management service uses for tls communication
+             */
+            serverCertificateThumbprints?: string[];
+            /**
+             * Server X509 Certificate Names Collection
+             */
+            serverX509Names?: outputs.apimanagement.v20200601preview.X509CertificateNameResponse[];
+        }
+
+        /**
+         * Properties controlling TLS Certificate Validation.
+         */
+        export interface BackendTlsPropertiesResponse {
+            /**
+             * Flag indicating whether SSL certificate chain validation should be done when using self-signed certificates for this backend host.
+             */
+            validateCertificateChain?: boolean;
+            /**
+             * Flag indicating whether SSL certificate name validation should be done when using self-signed certificates for this backend host.
+             */
+            validateCertificateName?: boolean;
+        }
+
+        /**
+         * Body logging settings.
+         */
+        export interface BodyDiagnosticSettingsResponse {
+            /**
+             * Number of request body bytes to log.
+             */
+            bytes?: number;
+        }
+
+        /**
+         * Certificate configuration which consist of non-trusted intermediates and root certificates.
+         */
+        export interface CertificateConfigurationResponse {
+            /**
+             * Certificate information.
+             */
+            certificate?: outputs.apimanagement.v20200601preview.CertificateInformationResponse;
+            /**
+             * Certificate Password.
+             */
+            certificatePassword?: string;
+            /**
+             * Base64 Encoded certificate.
+             */
+            encodedCertificate?: string;
+            /**
+             * The System.Security.Cryptography.x509certificates.StoreName certificate store location. Only Root and CertificateAuthority are valid locations.
+             */
+            storeName: string;
+        }
+
+        /**
+         * SSL certificate information.
+         */
+        export interface CertificateInformationResponse {
+            /**
+             * Expiration date of the certificate. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
+             */
+            expiry: string;
+            /**
+             * Subject of the certificate.
+             */
+            subject: string;
+            /**
+             * Thumbprint of the certificate.
+             */
+            thumbprint: string;
+        }
+
+        export interface DataMaskingEntityResponse {
+            /**
+             * Data masking mode.
+             */
+            mode?: string;
+            /**
+             * The name of an entity to mask (e.g. a name of a header or a query parameter).
+             */
+            value?: string;
+        }
+
+        export interface DataMaskingResponse {
+            /**
+             * Masking settings for headers
+             */
+            headers?: outputs.apimanagement.v20200601preview.DataMaskingEntityResponse[];
+            /**
+             * Masking settings for Url query parameters
+             */
+            queryParams?: outputs.apimanagement.v20200601preview.DataMaskingEntityResponse[];
+        }
+
+        /**
+         * Email Template Parameter contract.
+         */
+        export interface EmailTemplateParametersContractPropertiesResponse {
+            /**
+             * Template parameter description.
+             */
+            description?: string;
+            /**
+             * Template parameter name.
+             */
+            name?: string;
+            /**
+             * Template parameter title.
+             */
+            title?: string;
+        }
+
+        /**
+         * Group contract Properties.
+         */
+        export interface GroupContractPropertiesResponse {
+            /**
+             * true if the group is one of the three system groups (Administrators, Developers, or Guests); otherwise false.
+             */
+            builtIn: boolean;
+            /**
+             * Group description. Can contain HTML formatting tags.
+             */
+            description?: string;
+            /**
+             * Group name.
+             */
+            displayName: string;
+            /**
+             * For external groups, this property contains the id of the group from the external identity provider, e.g. for Azure Active Directory `aad://<tenant>.onmicrosoft.com/groups/<group object id>`; otherwise the value is null.
+             */
+            externalId?: string;
+            /**
+             * Group type.
+             */
+            type?: string;
+        }
+
+        /**
+         * Custom hostname configuration.
+         */
+        export interface HostnameConfigurationResponse {
+            /**
+             * Certificate information.
+             */
+            certificate?: outputs.apimanagement.v20200601preview.CertificateInformationResponse;
+            /**
+             * Certificate Password.
+             */
+            certificatePassword?: string;
+            /**
+             * Specify true to setup the certificate associated with this Hostname as the Default SSL Certificate. If a client does not send the SNI header, then this will be the certificate that will be challenged. The property is useful if a service has multiple custom hostname enabled and it needs to decide on the default ssl certificate. The setting only applied to Proxy Hostname Type.
+             */
+            defaultSslBinding?: boolean;
+            /**
+             * Base64 Encoded certificate.
+             */
+            encodedCertificate?: string;
+            /**
+             * Hostname to configure on the Api Management service.
+             */
+            hostName: string;
+            /**
+             * System or User Assigned Managed identity clientId as generated by Azure AD, which has GET access to the keyVault containing the SSL certificate.
+             */
+            identityClientId?: string;
+            /**
+             * Url to the KeyVault Secret containing the Ssl Certificate. If absolute Url containing version is provided, auto-update of ssl certificate will not work. This requires Api Management service to be configured with MSI. The secret should be of type *application/x-pkcs12*
+             */
+            keyVaultId?: string;
+            /**
+             * Specify true to always negotiate client certificate on the hostname. Default Value is false.
+             */
+            negotiateClientCertificate?: boolean;
+            /**
+             * Hostname type.
+             */
+            type: string;
+        }
+
+        /**
+         * Http message diagnostic settings.
+         */
+        export interface HttpMessageDiagnosticResponse {
+            /**
+             * Body logging settings.
+             */
+            body?: outputs.apimanagement.v20200601preview.BodyDiagnosticSettingsResponse;
+            /**
+             * Data masking settings.
+             */
+            dataMasking?: outputs.apimanagement.v20200601preview.DataMaskingResponse;
+            /**
+             * Array of HTTP Headers to log.
+             */
+            headers?: string[];
+        }
+
+        /**
+         * KeyVault contract details.
+         */
+        export interface KeyVaultContractPropertiesResponse {
+            /**
+             * SystemAssignedIdentity or UserAssignedIdentity Client Id which will be used to access key vault secret.
+             */
+            identityClientId?: string;
+            /**
+             * Last time sync and refresh status of secret from key vault.
+             */
+            lastStatus?: outputs.apimanagement.v20200601preview.KeyVaultLastAccessStatusContractPropertiesResponse;
+            /**
+             * Key vault secret identifier for fetching secret.
+             */
+            secretIdentifier?: string;
+        }
+
+        /**
+         * Issue contract Update Properties.
+         */
+        export interface KeyVaultLastAccessStatusContractPropertiesResponse {
+            /**
+             * Last status code for sync and refresh of secret from key vault.
+             */
+            code?: string;
+            /**
+             * Details of the error else empty.
+             */
+            message?: string;
+            /**
+             * Last time secret was accessed. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
+             */
+            timeStampUtc?: string;
+        }
+
+        /**
+         * API OAuth2 Authentication settings details.
+         */
+        export interface OAuth2AuthenticationSettingsContractResponse {
+            /**
+             * OAuth authorization server identifier.
+             */
+            authorizationServerId?: string;
+            /**
+             * operations scope.
+             */
+            scope?: string;
+        }
+
+        /**
+         * API OAuth2 Authentication settings details.
+         */
+        export interface OpenIdAuthenticationSettingsContractResponse {
+            /**
+             * How to send token to the server.
+             */
+            bearerTokenSendingMethods?: string[];
+            /**
+             * OAuth authorization server identifier.
+             */
+            openidProviderId?: string;
+        }
+
+        /**
+         * Operation parameters details.
+         */
+        export interface ParameterContractResponse {
+            /**
+             * Default parameter value.
+             */
+            defaultValue?: string;
+            /**
+             * Parameter description.
+             */
+            description?: string;
+            /**
+             * Parameter name.
+             */
+            name: string;
+            /**
+             * Specifies whether parameter is required or not.
+             */
+            required?: boolean;
+            /**
+             * Parameter type.
+             */
+            type: string;
+            /**
+             * Parameter values.
+             */
+            values?: string[];
+        }
+
+        /**
+         * Diagnostic settings for incoming/outgoing HTTP messages to the Gateway.
+         */
+        export interface PipelineDiagnosticSettingsResponse {
+            /**
+             * Diagnostic settings for request.
+             */
+            request?: outputs.apimanagement.v20200601preview.HttpMessageDiagnosticResponse;
+            /**
+             * Diagnostic settings for response.
+             */
+            response?: outputs.apimanagement.v20200601preview.HttpMessageDiagnosticResponse;
+        }
+
+        /**
+         * Operation request/response representation details.
+         */
+        export interface RepresentationContractResponse {
+            /**
+             * Specifies a registered or custom content type for this representation, e.g. application/xml.
+             */
+            contentType: string;
+            /**
+             * Collection of form parameters. Required if 'contentType' value is either 'application/x-www-form-urlencoded' or 'multipart/form-data'..
+             */
+            formParameters?: outputs.apimanagement.v20200601preview.ParameterContractResponse[];
+            /**
+             * An example of the representation.
+             */
+            sample?: string;
+            /**
+             * Schema identifier. Applicable only if 'contentType' value is neither 'application/x-www-form-urlencoded' nor 'multipart/form-data'.
+             */
+            schemaId?: string;
+            /**
+             * Type name defined by the schema. Applicable only if 'contentType' value is neither 'application/x-www-form-urlencoded' nor 'multipart/form-data'.
+             */
+            typeName?: string;
+        }
+
+        /**
+         * Operation request details.
+         */
+        export interface RequestContractResponse {
+            /**
+             * Operation request description.
+             */
+            description?: string;
+            /**
+             * Collection of operation request headers.
+             */
+            headers?: outputs.apimanagement.v20200601preview.ParameterContractResponse[];
+            /**
+             * Collection of operation request query parameters.
+             */
+            queryParameters?: outputs.apimanagement.v20200601preview.ParameterContractResponse[];
+            /**
+             * Collection of operation request representations.
+             */
+            representations?: outputs.apimanagement.v20200601preview.RepresentationContractResponse[];
+        }
+
+        /**
+         * Resource location data properties.
+         */
+        export interface ResourceLocationDataContractResponse {
+            /**
+             * The city or locality where the resource is located.
+             */
+            city?: string;
+            /**
+             * The country or region where the resource is located.
+             */
+            countryOrRegion?: string;
+            /**
+             * The district, state, or province where the resource is located.
+             */
+            district?: string;
+            /**
+             * A canonical name for the geographic or physical location.
+             */
+            name: string;
+        }
+
+        /**
+         * Operation response details.
+         */
+        export interface ResponseContractResponse {
+            /**
+             * Operation response description.
+             */
+            description?: string;
+            /**
+             * Collection of operation response headers.
+             */
+            headers?: outputs.apimanagement.v20200601preview.ParameterContractResponse[];
+            /**
+             * Collection of operation response representations.
+             */
+            representations?: outputs.apimanagement.v20200601preview.RepresentationContractResponse[];
+            /**
+             * Operation response HTTP status code.
+             */
+            statusCode: number;
+        }
+
+        /**
+         * Sampling settings for Diagnostic.
+         */
+        export interface SamplingSettingsResponse {
+            /**
+             * Rate of sampling for fixed-rate sampling.
+             */
+            percentage?: number;
+            /**
+             * Sampling type.
+             */
+            samplingType?: string;
+        }
+
+        /**
+         * Subscription key parameter names details.
+         */
+        export interface SubscriptionKeyParameterNamesContractResponse {
+            /**
+             * Subscription key header name.
+             */
+            header?: string;
+            /**
+             * Subscription key query string parameter name.
+             */
+            query?: string;
+        }
+
+        /**
+         * OAuth acquire token request body parameter (www-url-form-encoded).
+         */
+        export interface TokenBodyParameterContractResponse {
+            /**
+             * body parameter name.
+             */
+            name: string;
+            /**
+             * body parameter value.
+             */
+            value: string;
+        }
+
+        /**
+         * User identity details.
+         */
+        export interface UserIdentityContractResponse {
+            /**
+             * Identifier value within provider.
+             */
+            id?: string;
+            /**
+             * Identity provider name.
+             */
+            provider?: string;
+        }
+
+        export interface UserIdentityPropertiesResponse {
+            /**
+             * The client id of user assigned identity.
+             */
+            clientId?: string;
+            /**
+             * The principal id of user assigned identity.
+             */
+            principalId?: string;
+        }
+
+        /**
+         * Configuration of a virtual network to which API Management service is deployed.
+         */
+        export interface VirtualNetworkConfigurationResponse {
+            /**
+             * The full resource ID of a subnet in a virtual network to deploy the API Management service in.
+             */
+            subnetResourceId?: string;
+            /**
+             * The name of the subnet.
+             */
+            subnetname: string;
+            /**
+             * The virtual network ID. This is typically a GUID. Expect a null GUID by default.
+             */
+            vnetid: string;
+        }
+
+        /**
+         * Properties of server X509Names.
+         */
+        export interface X509CertificateNameResponse {
+            /**
+             * Thumbprint for the Issuer of the Certificate.
+             */
+            issuerCertificateThumbprint?: string;
+            /**
+             * Common Name of the Certificate.
+             */
+            name?: string;
+        }
+    }
 }
 
 export namespace appconfiguration {
@@ -6514,6 +7226,166 @@ export namespace appconfiguration {
              * The list of user-assigned identities associated with the resource. The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
              */
             userAssignedIdentities?: {[key: string]: outputs.appconfiguration.v20200601.UserIdentityResponse};
+        }
+
+        /**
+         * Describes a configuration store SKU.
+         */
+        export interface SkuResponse {
+            /**
+             * The SKU name of the configuration store.
+             */
+            name: string;
+        }
+
+        /**
+         * A resource identity that is managed by the user of the service.
+         */
+        export interface UserIdentityResponse {
+            /**
+             * The client ID of the user-assigned identity.
+             */
+            clientId: string;
+            /**
+             * The principal ID of the user-assigned identity.
+             */
+            principalId: string;
+        }
+    }
+
+    export namespace v20200701preview {
+        /**
+         * An API key used for authenticating with a configuration store endpoint.
+         */
+        export interface ApiKeyResponse {
+            /**
+             * A connection string that can be used by supporting clients for authentication.
+             */
+            connectionString: string;
+            /**
+             * The key ID.
+             */
+            id: string;
+            /**
+             * The last time any of the key's properties were modified.
+             */
+            lastModified: string;
+            /**
+             * A name for the key describing its usage.
+             */
+            name: string;
+            /**
+             * Whether this key can only be used for read operations.
+             */
+            readOnly: boolean;
+            /**
+             * The value of the key that is used for authentication purposes.
+             */
+            value: string;
+        }
+
+        /**
+         * The encryption settings for a configuration store.
+         */
+        export interface EncryptionPropertiesResponse {
+            /**
+             * Key vault properties.
+             */
+            keyVaultProperties?: outputs.appconfiguration.v20200701preview.KeyVaultPropertiesResponse;
+        }
+
+        /**
+         * Settings concerning key vault encryption for a configuration store.
+         */
+        export interface KeyVaultPropertiesResponse {
+            /**
+             * The client id of the identity which will be used to access key vault.
+             */
+            identityClientId?: string;
+            /**
+             * The URI of the key vault key used to encrypt data.
+             */
+            keyIdentifier?: string;
+        }
+
+        /**
+         * A reference to a related private endpoint connection.
+         */
+        export interface PrivateEndpointConnectionReferenceResponse {
+            /**
+             * The resource ID.
+             */
+            id: string;
+            /**
+             * The name of the resource.
+             */
+            name: string;
+            /**
+             * The resource of private endpoint.
+             */
+            privateEndpoint?: outputs.appconfiguration.v20200701preview.PrivateEndpointResponse;
+            /**
+             * A collection of information about the state of the connection between service consumer and provider.
+             */
+            privateLinkServiceConnectionState: outputs.appconfiguration.v20200701preview.PrivateLinkServiceConnectionStateResponse;
+            /**
+             * The provisioning status of the private endpoint connection.
+             */
+            provisioningState: string;
+            /**
+             * The type of the resource.
+             */
+            type: string;
+        }
+
+        /**
+         * Private endpoint which a connection belongs to.
+         */
+        export interface PrivateEndpointResponse {
+            /**
+             * The resource Id for private endpoint
+             */
+            id?: string;
+        }
+
+        /**
+         * The state of a private link service connection.
+         */
+        export interface PrivateLinkServiceConnectionStateResponse {
+            /**
+             * Any action that is required beyond basic workflow (approve/ reject/ disconnect)
+             */
+            actionsRequired: string;
+            /**
+             * The private link service connection description.
+             */
+            description?: string;
+            /**
+             * The private link service connection status.
+             */
+            status?: string;
+        }
+
+        /**
+         * An identity that can be associated with a resource.
+         */
+        export interface ResourceIdentityResponse {
+            /**
+             * The principal id of the identity. This property will only be provided for a system-assigned identity.
+             */
+            principalId: string;
+            /**
+             * The tenant id associated with the resource's identity. This property will only be provided for a system-assigned identity.
+             */
+            tenantId: string;
+            /**
+             * The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities.
+             */
+            type?: string;
+            /**
+             * The list of user-assigned identities associated with the resource. The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+             */
+            userAssignedIdentities?: {[key: string]: outputs.appconfiguration.v20200701preview.UserIdentityResponse};
         }
 
         /**
@@ -32913,10 +33785,6 @@ export namespace compute {
          */
         export interface GalleryApplicationVersionPublishingProfileResponse {
             /**
-             * Optional. May be used to help process this file. The type of file contained in the source, e.g. zip, json, etc.
-             */
-            contentType?: string;
-            /**
              * Optional. Whether or not this application reports health.
              */
             enableHealthCheck?: boolean;
@@ -32928,6 +33796,7 @@ export namespace compute {
              * If set to true, Virtual Machines deployed from the latest version of the Image Definition won't use this Image Version.
              */
             excludeFromLatest?: boolean;
+            manageActions?: outputs.compute.latest.UserArtifactManageResponse;
             /**
              * The timestamp for when the gallery image version is published.
              */
@@ -34109,16 +34978,31 @@ export namespace compute {
             rollingUpgradePolicy?: outputs.compute.latest.RollingUpgradePolicyResponse;
         }
 
+        export interface UserArtifactManageResponse {
+            /**
+             * Required. The path and arguments to install the gallery application. This is limited to 4096 characters.
+             */
+            install: string;
+            /**
+             * Required. The path and arguments to remove the gallery application. This is limited to 4096 characters.
+             */
+            remove: string;
+            /**
+             * Optional. The path and arguments to update the gallery application. If not present, then update operation will invoke remove command on the previous version and install command on the current version of the gallery application. This is limited to 4096 characters.
+             */
+            update?: string;
+        }
+
         /**
          * The source image from which the Image Version is going to be created.
          */
         export interface UserArtifactSourceResponse {
             /**
-             * Required. The fileName of the artifact.
+             * Optional. The defaultConfigurationLink of the artifact, must be a readable storage page blob.
              */
-            fileName: string;
+            defaultConfigurationLink?: string;
             /**
-             * Required. The mediaLink of the artifact, must be a readable storage blob.
+             * Required. The mediaLink of the artifact, must be a readable storage page blob.
              */
             mediaLink: string;
         }
@@ -55303,10 +56187,6 @@ export namespace compute {
          */
         export interface GalleryApplicationVersionPublishingProfileResponse {
             /**
-             * Optional. May be used to help process this file. The type of file contained in the source, e.g. zip, json, etc.
-             */
-            contentType?: string;
-            /**
              * Optional. Whether or not this application reports health.
              */
             enableHealthCheck?: boolean;
@@ -55318,6 +56198,7 @@ export namespace compute {
              * If set to true, Virtual Machines deployed from the latest version of the Image Definition won't use this Image Version.
              */
             excludeFromLatest?: boolean;
+            manageActions?: outputs.compute.v20200930.UserArtifactManageResponse;
             /**
              * The timestamp for when the gallery image version is published.
              */
@@ -55626,16 +56507,31 @@ export namespace compute {
             storageAccountType?: string;
         }
 
+        export interface UserArtifactManageResponse {
+            /**
+             * Required. The path and arguments to install the gallery application. This is limited to 4096 characters.
+             */
+            install: string;
+            /**
+             * Required. The path and arguments to remove the gallery application. This is limited to 4096 characters.
+             */
+            remove: string;
+            /**
+             * Optional. The path and arguments to update the gallery application. If not present, then update operation will invoke remove command on the previous version and install command on the current version of the gallery application. This is limited to 4096 characters.
+             */
+            update?: string;
+        }
+
         /**
          * The source image from which the Image Version is going to be created.
          */
         export interface UserArtifactSourceResponse {
             /**
-             * Required. The fileName of the artifact.
+             * Optional. The defaultConfigurationLink of the artifact, must be a readable storage page blob.
              */
-            fileName: string;
+            defaultConfigurationLink?: string;
             /**
-             * Required. The mediaLink of the artifact, must be a readable storage blob.
+             * Required. The mediaLink of the artifact, must be a readable storage page blob.
              */
             mediaLink: string;
         }
@@ -65974,11 +66870,11 @@ export namespace containerservice {
          */
         export interface ManagedClusterWindowsProfileResponse {
             /**
-             * The administrator password to use for Windows VMs.
+             * Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:** 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!"
              */
             adminPassword?: string;
             /**
-             * The administrator username to use for Windows VMs.
+             * Specifies the name of the administrator account. <br><br> **restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length:** 1 character <br><br> **Max-length:** 20 characters
              */
             adminUsername: string;
             /**
@@ -67782,11 +68678,11 @@ export namespace containerservice {
          */
         export interface ManagedClusterWindowsProfileResponse {
             /**
-             * The administrator password to use for Windows VMs.
+             * Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:** 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!"
              */
             adminPassword?: string;
             /**
-             * The administrator username to use for Windows VMs.
+             * Specifies the name of the administrator account. <br><br> **restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length:** 1 character <br><br> **Max-length:** 20 characters
              */
             adminUsername: string;
         }
@@ -68192,11 +69088,11 @@ export namespace containerservice {
          */
         export interface ManagedClusterWindowsProfileResponse {
             /**
-             * The administrator password to use for Windows VMs.
+             * Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:** 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!"
              */
             adminPassword?: string;
             /**
-             * The administrator username to use for Windows VMs.
+             * Specifies the name of the administrator account. <br><br> **restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length:** 1 character <br><br> **Max-length:** 20 characters
              */
             adminUsername: string;
         }
@@ -68506,11 +69402,11 @@ export namespace containerservice {
          */
         export interface ManagedClusterWindowsProfileResponse {
             /**
-             * The administrator password to use for Windows VMs.
+             * Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:** 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!"
              */
             adminPassword?: string;
             /**
-             * The administrator username to use for Windows VMs.
+             * Specifies the name of the administrator account. <br><br> **restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length:** 1 character <br><br> **Max-length:** 20 characters
              */
             adminUsername: string;
         }
@@ -69010,11 +69906,11 @@ export namespace containerservice {
          */
         export interface ManagedClusterWindowsProfileResponse {
             /**
-             * The administrator password to use for Windows VMs.
+             * Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:** 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!"
              */
             adminPassword?: string;
             /**
-             * The administrator username to use for Windows VMs.
+             * Specifies the name of the administrator account. <br><br> **restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length:** 1 character <br><br> **Max-length:** 20 characters
              */
             adminUsername: string;
         }
@@ -69577,11 +70473,11 @@ export namespace containerservice {
          */
         export interface ManagedClusterWindowsProfileResponse {
             /**
-             * The administrator password to use for Windows VMs.
+             * Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:** 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!"
              */
             adminPassword?: string;
             /**
-             * The administrator username to use for Windows VMs.
+             * Specifies the name of the administrator account. <br><br> **restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length:** 1 character <br><br> **Max-length:** 20 characters
              */
             adminUsername: string;
         }
@@ -69958,11 +70854,11 @@ export namespace containerservice {
          */
         export interface ManagedClusterWindowsProfileResponse {
             /**
-             * The administrator password to use for Windows VMs.
+             * Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:** 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!"
              */
             adminPassword?: string;
             /**
-             * The administrator username to use for Windows VMs.
+             * Specifies the name of the administrator account. <br><br> **restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length:** 1 character <br><br> **Max-length:** 20 characters
              */
             adminUsername: string;
         }
@@ -70361,11 +71257,11 @@ export namespace containerservice {
          */
         export interface ManagedClusterWindowsProfileResponse {
             /**
-             * The administrator password to use for Windows VMs.
+             * Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:** 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!"
              */
             adminPassword?: string;
             /**
-             * The administrator username to use for Windows VMs.
+             * Specifies the name of the administrator account. <br><br> **restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length:** 1 character <br><br> **Max-length:** 20 characters
              */
             adminUsername: string;
         }
@@ -70788,11 +71684,11 @@ export namespace containerservice {
          */
         export interface ManagedClusterWindowsProfileResponse {
             /**
-             * The administrator password to use for Windows VMs.
+             * Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:** 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!"
              */
             adminPassword?: string;
             /**
-             * The administrator username to use for Windows VMs.
+             * Specifies the name of the administrator account. <br><br> **restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length:** 1 character <br><br> **Max-length:** 20 characters
              */
             adminUsername: string;
         }
@@ -71233,11 +72129,11 @@ export namespace containerservice {
          */
         export interface ManagedClusterWindowsProfileResponse {
             /**
-             * The administrator password to use for Windows VMs.
+             * Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:** 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!"
              */
             adminPassword?: string;
             /**
-             * The administrator username to use for Windows VMs.
+             * Specifies the name of the administrator account. <br><br> **restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length:** 1 character <br><br> **Max-length:** 20 characters
              */
             adminUsername: string;
         }
@@ -71701,11 +72597,11 @@ export namespace containerservice {
          */
         export interface ManagedClusterWindowsProfileResponse {
             /**
-             * The administrator password to use for Windows VMs.
+             * Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:** 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!"
              */
             adminPassword?: string;
             /**
-             * The administrator username to use for Windows VMs.
+             * Specifies the name of the administrator account. <br><br> **restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length:** 1 character <br><br> **Max-length:** 20 characters
              */
             adminUsername: string;
         }
@@ -72193,11 +73089,11 @@ export namespace containerservice {
          */
         export interface ManagedClusterWindowsProfileResponse {
             /**
-             * The administrator password to use for Windows VMs.
+             * Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:** 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!"
              */
             adminPassword?: string;
             /**
-             * The administrator username to use for Windows VMs.
+             * Specifies the name of the administrator account. <br><br> **restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length:** 1 character <br><br> **Max-length:** 20 characters
              */
             adminUsername: string;
             /**
@@ -72704,11 +73600,11 @@ export namespace containerservice {
          */
         export interface ManagedClusterWindowsProfileResponse {
             /**
-             * The administrator password to use for Windows VMs.
+             * Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:** 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!"
              */
             adminPassword?: string;
             /**
-             * The administrator username to use for Windows VMs.
+             * Specifies the name of the administrator account. <br><br> **restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length:** 1 character <br><br> **Max-length:** 20 characters
              */
             adminUsername: string;
             /**
@@ -83031,6 +83927,10 @@ export namespace datafactory {
              */
             annotations?: any[];
             /**
+             * The authentication type of S3. Allowed value: AccessKey (default) or TemporarySecurityCredentials. Type: string (or Expression with resultType string).
+             */
+            authenticationType?: any;
+            /**
              * The integration runtime reference.
              */
             connectVia?: outputs.datafactory.latest.IntegrationRuntimeReferenceResponse;
@@ -83054,6 +83954,10 @@ export namespace datafactory {
              * This value specifies the endpoint to access with the S3 Connector. This is an optional property; change it only if you want to try a different service endpoint or want to switch between https and http. Type: string (or Expression with resultType string).
              */
             serviceUrl?: any;
+            /**
+             * The session token for the S3 temporary security credential.
+             */
+            sessionToken?: outputs.datafactory.latest.AzureKeyVaultSecretReferenceResponse | outputs.datafactory.latest.SecureStringResponse;
             /**
              * Type of linked service.
              */
@@ -85342,6 +86246,10 @@ export namespace datafactory {
              * The integration runtime reference.
              */
             connectVia?: outputs.datafactory.latest.IntegrationRuntimeReferenceResponse;
+            /**
+             * Properties used to connect to Concur. It is mutually exclusive with any other properties in the linked service. Type: object.
+             */
+            connectionProperties?: any;
             /**
              * Linked service description.
              */
@@ -101252,6 +102160,10 @@ export namespace datafactory {
              */
             annotations?: any[];
             /**
+             * The authentication type of S3. Allowed value: AccessKey (default) or TemporarySecurityCredentials. Type: string (or Expression with resultType string).
+             */
+            authenticationType?: any;
+            /**
              * The integration runtime reference.
              */
             connectVia?: outputs.datafactory.v20180601.IntegrationRuntimeReferenceResponse;
@@ -101275,6 +102187,10 @@ export namespace datafactory {
              * This value specifies the endpoint to access with the S3 Connector. This is an optional property; change it only if you want to try a different service endpoint or want to switch between https and http. Type: string (or Expression with resultType string).
              */
             serviceUrl?: any;
+            /**
+             * The session token for the S3 temporary security credential.
+             */
+            sessionToken?: outputs.datafactory.v20180601.AzureKeyVaultSecretReferenceResponse | outputs.datafactory.v20180601.SecureStringResponse;
             /**
              * Type of linked service.
              */
@@ -103563,6 +104479,10 @@ export namespace datafactory {
              * The integration runtime reference.
              */
             connectVia?: outputs.datafactory.v20180601.IntegrationRuntimeReferenceResponse;
+            /**
+             * Properties used to connect to Concur. It is mutually exclusive with any other properties in the linked service. Type: object.
+             */
+            connectionProperties?: any;
             /**
              * Linked service description.
              */
@@ -130260,6 +131180,94 @@ export namespace dbformysql {
         }
     }
 
+    export namespace v20200701preview {
+        /**
+         * Delegated subnet arguments of a server
+         */
+        export interface DelegatedSubnetArgumentsResponse {
+            /**
+             * delegated subnet arm resource id.
+             */
+            subnetArmResourceId?: string;
+        }
+
+        /**
+         * Identity for the resource.
+         */
+        export interface IdentityResponse {
+            /**
+             * The principal ID of resource identity.
+             */
+            principalId: string;
+            /**
+             * The tenant ID of resource.
+             */
+            tenantId: string;
+            /**
+             * The identity type.
+             */
+            type?: string;
+        }
+
+        /**
+         * Maintenance window of a server.
+         */
+        export interface MaintenanceWindowResponse {
+            /**
+             * indicates whether custom window is enabled or disabled
+             */
+            customWindow?: string;
+            /**
+             * day of week for maintenance window
+             */
+            dayOfWeek?: number;
+            /**
+             * start hour for maintenance window
+             */
+            startHour?: number;
+            /**
+             * start minute for maintenance window
+             */
+            startMinute?: number;
+        }
+
+        /**
+         * Billing information related properties of a server.
+         */
+        export interface SkuResponse {
+            /**
+             * The name of the sku, e.g. Standard_D32s_v3.
+             */
+            name: string;
+            /**
+             * The tier of the particular SKU, e.g. GeneralPurpose.
+             */
+            tier: string;
+        }
+
+        /**
+         * Storage Profile properties of a server
+         */
+        export interface StorageProfileResponse {
+            /**
+             * Backup retention days for the server.
+             */
+            backupRetentionDays?: number;
+            /**
+             * Enable Storage Auto Grow.
+             */
+            storageAutogrow?: string;
+            /**
+             * Storage IOPS for a server.
+             */
+            storageIops?: number;
+            /**
+             * Max storage allowed for a server.
+             */
+            storageMB?: number;
+        }
+    }
+
     export namespace v20200701privatepreview {
         /**
          * Delegated subnet arguments of a server
@@ -144731,7 +145739,7 @@ export namespace documentdb {
             /**
              * A system generated property that denotes the last updated timestamp of the resource.
              */
-            ts: any;
+            ts: number;
         }
 
         /**
@@ -144801,7 +145809,7 @@ export namespace documentdb {
             /**
              * A system generated property that denotes the last updated timestamp of the resource.
              */
-            ts: any;
+            ts: number;
         }
 
         /**
@@ -144898,6 +145906,16 @@ export namespace documentdb {
         }
 
         /**
+         * The object representing continuous mode backup policy.
+         */
+        export interface ContinuousModeBackupPolicyResponse {
+            /**
+             * Describes the mode of backups.
+             */
+            type: "Continuous";
+        }
+
+        /**
          * The CORS policy for the Cosmos DB database account.
          */
         export interface CorsPolicyResponse {
@@ -144989,7 +146007,7 @@ export namespace documentdb {
             /**
              * A system generated property that denotes the last updated timestamp of the resource.
              */
-            ts: any;
+            ts: number;
         }
 
         export interface GremlinGraphGetPropertiesResponseOptions {
@@ -145035,7 +146053,7 @@ export namespace documentdb {
             /**
              * A system generated property that denotes the last updated timestamp of the resource.
              */
-            ts: any;
+            ts: number;
             /**
              * The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
              */
@@ -145183,7 +146201,7 @@ export namespace documentdb {
             /**
              * A system generated property that denotes the last updated timestamp of the resource.
              */
-            ts: any;
+            ts: number;
         }
 
         export interface MongoDBDatabaseGetPropertiesResponseOptions {
@@ -145213,7 +146231,7 @@ export namespace documentdb {
             /**
              * A system generated property that denotes the last updated timestamp of the resource.
              */
-            ts: any;
+            ts: number;
         }
 
         /**
@@ -145252,6 +146270,34 @@ export namespace documentdb {
              * Cosmos DB MongoDB collection index key options
              */
             options?: outputs.documentdb.latest.MongoIndexOptionsResponse;
+        }
+
+        /**
+         * The object representing periodic mode backup policy.
+         */
+        export interface PeriodicModeBackupPolicyResponse {
+            /**
+             * Configuration values for periodic mode backup
+             */
+            periodicModeProperties?: outputs.documentdb.latest.PeriodicModePropertiesResponse;
+            /**
+             * Describes the mode of backups.
+             */
+            type: "Periodic";
+        }
+
+        /**
+         * Configuration values for periodic mode backup
+         */
+        export interface PeriodicModePropertiesResponse {
+            /**
+             * An integer representing the interval in minutes between two backups
+             */
+            backupIntervalInMinutes?: number;
+            /**
+             * An integer representing the time (in hours) that each backup is retained
+             */
+            backupRetentionIntervalInHours?: number;
         }
 
         /**
@@ -145362,7 +146408,7 @@ export namespace documentdb {
             /**
              * A system generated property that denotes the last updated timestamp of the resource.
              */
-            ts: any;
+            ts: number;
             /**
              * The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
              */
@@ -145400,7 +146446,7 @@ export namespace documentdb {
             /**
              * A system generated property that denotes the last updated timestamp of the resource.
              */
-            ts: any;
+            ts: number;
             /**
              * A system generated property that specifies the addressable path of the users resource.
              */
@@ -145427,7 +146473,7 @@ export namespace documentdb {
             /**
              * A system generated property that denotes the last updated timestamp of the resource.
              */
-            ts: any;
+            ts: number;
         }
 
         export interface SqlTriggerGetPropertiesResponseResource {
@@ -145458,7 +146504,7 @@ export namespace documentdb {
             /**
              * A system generated property that denotes the last updated timestamp of the resource.
              */
-            ts: any;
+            ts: number;
         }
 
         export interface SqlUserDefinedFunctionGetPropertiesResponseResource {
@@ -145481,7 +146527,7 @@ export namespace documentdb {
             /**
              * A system generated property that denotes the last updated timestamp of the resource.
              */
-            ts: any;
+            ts: number;
         }
 
         export interface TableGetPropertiesResponseOptions {
@@ -145511,7 +146557,7 @@ export namespace documentdb {
             /**
              * A system generated property that denotes the last updated timestamp of the resource.
              */
-            ts: any;
+            ts: number;
         }
 
         /**
@@ -150841,7 +151887,7 @@ export namespace documentdb {
              */
             restoreMode?: string;
             /**
-             * Path of the source account from which the restore has to be initiated
+             * The id of the restorable database account from which the restore has to be initiated. For example: /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{restorableDatabaseAccountName}
              */
             restoreSource?: string;
             /**
@@ -151094,6 +152140,914 @@ export namespace documentdb {
              * List of unique keys on that enforces uniqueness constraint on documents in the collection in the Azure Cosmos DB service.
              */
             uniqueKeys?: outputs.documentdb.v20200601preview.UniqueKeyResponse[];
+        }
+
+        /**
+         * The unique key on that enforces uniqueness constraint on documents in the collection in the Azure Cosmos DB service.
+         */
+        export interface UniqueKeyResponse {
+            /**
+             * List of paths must be unique for each document in the Azure Cosmos DB service
+             */
+            paths?: string[];
+        }
+
+        /**
+         * Virtual Network ACL Rule object
+         */
+        export interface VirtualNetworkRuleResponse {
+            /**
+             * Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}.
+             */
+            id?: string;
+            /**
+             * Create firewall rule before the virtual network has vnet service endpoint enabled.
+             */
+            ignoreMissingVNetServiceEndpoint?: boolean;
+        }
+    }
+
+    export namespace v20200901 {
+        export interface ApiPropertiesResponse {
+            /**
+             * Describes the ServerVersion of an a MongoDB account.
+             */
+            serverVersion?: string;
+        }
+
+        export interface AutoscaleSettingsResponse {
+            /**
+             * Represents maximum throughput, the resource can scale up to.
+             */
+            maxThroughput?: number;
+        }
+
+        /**
+         * Cosmos DB capability object
+         */
+        export interface CapabilityResponse {
+            /**
+             * Name of the Cosmos DB capability. For example, "name": "EnableCassandra". Current values also include "EnableTable" and "EnableGremlin".
+             */
+            name?: string;
+        }
+
+        export interface CassandraKeyspaceGetPropertiesResponseOptions {
+            /**
+             * Specifies the Autoscale settings.
+             */
+            autoscaleSettings?: outputs.documentdb.v20200901.AutoscaleSettingsResponse;
+            /**
+             * Value of the Cosmos DB resource throughput or autoscaleSettings. Use the ThroughputSetting resource when retrieving offer details.
+             */
+            throughput?: number;
+        }
+
+        export interface CassandraKeyspaceGetPropertiesResponseResource {
+            /**
+             * A system generated property representing the resource etag required for optimistic concurrency control.
+             */
+            etag: string;
+            /**
+             * Name of the Cosmos DB Cassandra keyspace
+             */
+            id: string;
+            /**
+             * A system generated property. A unique identifier.
+             */
+            rid: string;
+            /**
+             * A system generated property that denotes the last updated timestamp of the resource.
+             */
+            ts: number;
+        }
+
+        /**
+         * Cosmos DB Cassandra table partition key
+         */
+        export interface CassandraPartitionKeyResponse {
+            /**
+             * Name of the Cosmos DB Cassandra table partition key
+             */
+            name?: string;
+        }
+
+        /**
+         * Cosmos DB Cassandra table schema
+         */
+        export interface CassandraSchemaResponse {
+            /**
+             * List of cluster key.
+             */
+            clusterKeys?: outputs.documentdb.v20200901.ClusterKeyResponse[];
+            /**
+             * List of Cassandra table columns.
+             */
+            columns?: outputs.documentdb.v20200901.ColumnResponse[];
+            /**
+             * List of partition key.
+             */
+            partitionKeys?: outputs.documentdb.v20200901.CassandraPartitionKeyResponse[];
+        }
+
+        export interface CassandraTableGetPropertiesResponseOptions {
+            /**
+             * Specifies the Autoscale settings.
+             */
+            autoscaleSettings?: outputs.documentdb.v20200901.AutoscaleSettingsResponse;
+            /**
+             * Value of the Cosmos DB resource throughput or autoscaleSettings. Use the ThroughputSetting resource when retrieving offer details.
+             */
+            throughput?: number;
+        }
+
+        export interface CassandraTableGetPropertiesResponseResource {
+            /**
+             * Analytical TTL.
+             */
+            analyticalStorageTtl?: number;
+            /**
+             * Time to live of the Cosmos DB Cassandra table
+             */
+            defaultTtl?: number;
+            /**
+             * A system generated property representing the resource etag required for optimistic concurrency control.
+             */
+            etag: string;
+            /**
+             * Name of the Cosmos DB Cassandra table
+             */
+            id: string;
+            /**
+             * A system generated property. A unique identifier.
+             */
+            rid: string;
+            /**
+             * Schema of the Cosmos DB Cassandra table
+             */
+            schema?: outputs.documentdb.v20200901.CassandraSchemaResponse;
+            /**
+             * A system generated property that denotes the last updated timestamp of the resource.
+             */
+            ts: number;
+        }
+
+        /**
+         * Cosmos DB Cassandra table cluster key
+         */
+        export interface ClusterKeyResponse {
+            /**
+             * Name of the Cosmos DB Cassandra table cluster key
+             */
+            name?: string;
+            /**
+             * Order of the Cosmos DB Cassandra table cluster key, only support "Asc" and "Desc"
+             */
+            orderBy?: string;
+        }
+
+        /**
+         * Cosmos DB Cassandra table column
+         */
+        export interface ColumnResponse {
+            /**
+             * Name of the Cosmos DB Cassandra table column
+             */
+            name?: string;
+            /**
+             * Type of the Cosmos DB Cassandra table column
+             */
+            type?: string;
+        }
+
+        export interface CompositePathResponse {
+            /**
+             * Sort order for composite paths.
+             */
+            order?: string;
+            /**
+             * The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)
+             */
+            path?: string;
+        }
+
+        /**
+         * The conflict resolution policy for the container.
+         */
+        export interface ConflictResolutionPolicyResponse {
+            /**
+             * The conflict resolution path in the case of LastWriterWins mode.
+             */
+            conflictResolutionPath?: string;
+            /**
+             * The procedure to resolve conflicts in the case of custom mode.
+             */
+            conflictResolutionProcedure?: string;
+            /**
+             * Indicates the conflict resolution mode.
+             */
+            mode?: string;
+        }
+
+        /**
+         * The consistency policy for the Cosmos DB database account.
+         */
+        export interface ConsistencyPolicyResponse {
+            /**
+             * The default consistency level and configuration settings of the Cosmos DB account.
+             */
+            defaultConsistencyLevel: string;
+            /**
+             * When used with the Bounded Staleness consistency level, this value represents the time amount of staleness (in seconds) tolerated. Accepted range for this value is 5 - 86400. Required when defaultConsistencyPolicy is set to 'BoundedStaleness'.
+             */
+            maxIntervalInSeconds?: number;
+            /**
+             * When used with the Bounded Staleness consistency level, this value represents the number of stale requests tolerated. Accepted range for this value is 1 – 2,147,483,647. Required when defaultConsistencyPolicy is set to 'BoundedStaleness'.
+             */
+            maxStalenessPrefix?: number;
+        }
+
+        /**
+         * The configuration of the partition key to be used for partitioning data into multiple partitions
+         */
+        export interface ContainerPartitionKeyResponse {
+            /**
+             * Indicates the kind of algorithm used for partitioning
+             */
+            kind?: string;
+            /**
+             * List of paths using which data within the container can be partitioned
+             */
+            paths?: string[];
+            /**
+             * Indicates the version of the partition key definition
+             */
+            version?: number;
+        }
+
+        /**
+         * The object representing continuous mode backup policy.
+         */
+        export interface ContinuousModeBackupPolicyResponse {
+            /**
+             * Describes the mode of backups.
+             */
+            type: "Continuous";
+        }
+
+        /**
+         * The CORS policy for the Cosmos DB database account.
+         */
+        export interface CorsPolicyResponse {
+            /**
+             * The request headers that the origin domain may specify on the CORS request.
+             */
+            allowedHeaders?: string;
+            /**
+             * The methods (HTTP request verbs) that the origin domain may use for a CORS request.
+             */
+            allowedMethods?: string;
+            /**
+             * The origin domains that are permitted to make a request against the service via CORS.
+             */
+            allowedOrigins: string;
+            /**
+             * The response headers that may be sent in the response to the CORS request and exposed by the browser to the request issuer.
+             */
+            exposedHeaders?: string;
+            /**
+             * The maximum amount time that a browser should cache the preflight OPTIONS request.
+             */
+            maxAgeInSeconds?: number;
+        }
+
+        /**
+         * Connection string for the Cosmos DB account
+         */
+        export interface DatabaseAccountConnectionStringResponse {
+            /**
+             * Value of the connection string
+             */
+            connectionString: string;
+            /**
+             * Description of the connection string
+             */
+            description: string;
+        }
+
+        export interface ExcludedPathResponse {
+            /**
+             * The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)
+             */
+            path?: string;
+        }
+
+        /**
+         * The failover policy for a given region of a database account.
+         */
+        export interface FailoverPolicyResponse {
+            /**
+             * The failover priority of the region. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists.
+             */
+            failoverPriority?: number;
+            /**
+             * The unique identifier of the region in which the database account replicates to. Example: &lt;accountName&gt;-&lt;locationName&gt;.
+             */
+            id: string;
+            /**
+             * The name of the region in which the database account exists.
+             */
+            locationName?: string;
+        }
+
+        export interface GremlinDatabaseGetPropertiesResponseOptions {
+            /**
+             * Specifies the Autoscale settings.
+             */
+            autoscaleSettings?: outputs.documentdb.v20200901.AutoscaleSettingsResponse;
+            /**
+             * Value of the Cosmos DB resource throughput or autoscaleSettings. Use the ThroughputSetting resource when retrieving offer details.
+             */
+            throughput?: number;
+        }
+
+        export interface GremlinDatabaseGetPropertiesResponseResource {
+            /**
+             * A system generated property representing the resource etag required for optimistic concurrency control.
+             */
+            etag: string;
+            /**
+             * Name of the Cosmos DB Gremlin database
+             */
+            id: string;
+            /**
+             * A system generated property. A unique identifier.
+             */
+            rid: string;
+            /**
+             * A system generated property that denotes the last updated timestamp of the resource.
+             */
+            ts: number;
+        }
+
+        export interface GremlinGraphGetPropertiesResponseOptions {
+            /**
+             * Specifies the Autoscale settings.
+             */
+            autoscaleSettings?: outputs.documentdb.v20200901.AutoscaleSettingsResponse;
+            /**
+             * Value of the Cosmos DB resource throughput or autoscaleSettings. Use the ThroughputSetting resource when retrieving offer details.
+             */
+            throughput?: number;
+        }
+
+        export interface GremlinGraphGetPropertiesResponseResource {
+            /**
+             * The conflict resolution policy for the graph.
+             */
+            conflictResolutionPolicy?: outputs.documentdb.v20200901.ConflictResolutionPolicyResponse;
+            /**
+             * Default time to live
+             */
+            defaultTtl?: number;
+            /**
+             * A system generated property representing the resource etag required for optimistic concurrency control.
+             */
+            etag: string;
+            /**
+             * Name of the Cosmos DB Gremlin graph
+             */
+            id: string;
+            /**
+             * The configuration of the indexing policy. By default, the indexing is automatic for all document paths within the graph
+             */
+            indexingPolicy?: outputs.documentdb.v20200901.IndexingPolicyResponse;
+            /**
+             * The configuration of the partition key to be used for partitioning data into multiple partitions
+             */
+            partitionKey?: outputs.documentdb.v20200901.ContainerPartitionKeyResponse;
+            /**
+             * A system generated property. A unique identifier.
+             */
+            rid: string;
+            /**
+             * A system generated property that denotes the last updated timestamp of the resource.
+             */
+            ts: number;
+            /**
+             * The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
+             */
+            uniqueKeyPolicy?: outputs.documentdb.v20200901.UniqueKeyPolicyResponse;
+        }
+
+        /**
+         * The paths that are included in indexing
+         */
+        export interface IncludedPathResponse {
+            /**
+             * List of indexes for this path
+             */
+            indexes?: outputs.documentdb.v20200901.IndexesResponse[];
+            /**
+             * The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)
+             */
+            path?: string;
+        }
+
+        /**
+         * The indexes for the path.
+         */
+        export interface IndexesResponse {
+            /**
+             * The datatype for which the indexing behavior is applied to.
+             */
+            dataType?: string;
+            /**
+             * Indicates the type of index.
+             */
+            kind?: string;
+            /**
+             * The precision of the index. -1 is maximum precision.
+             */
+            precision?: number;
+        }
+
+        /**
+         * Cosmos DB indexing policy
+         */
+        export interface IndexingPolicyResponse {
+            /**
+             * Indicates if the indexing policy is automatic
+             */
+            automatic?: boolean;
+            /**
+             * List of composite path list
+             */
+            compositeIndexes?: outputs.documentdb.v20200901.CompositePathResponse[][];
+            /**
+             * List of paths to exclude from indexing
+             */
+            excludedPaths?: outputs.documentdb.v20200901.ExcludedPathResponse[];
+            /**
+             * List of paths to include in the indexing
+             */
+            includedPaths?: outputs.documentdb.v20200901.IncludedPathResponse[];
+            /**
+             * Indicates the indexing mode.
+             */
+            indexingMode?: string;
+            /**
+             * List of spatial specifics
+             */
+            spatialIndexes?: outputs.documentdb.v20200901.SpatialSpecResponse[];
+        }
+
+        /**
+         * IpAddressOrRange object
+         */
+        export interface IpAddressOrRangeResponse {
+            /**
+             * A single IPv4 address or a single IPv4 address range in CIDR format. Provided IPs must be well-formatted and cannot be contained in one of the following ranges: 10.0.0.0/8, 100.64.0.0/10, 172.16.0.0/12, 192.168.0.0/16, since these are not enforceable by the IP address filter. Example of valid inputs: “23.40.210.245” or “23.40.210.0/8”.
+             */
+            ipAddressOrRange?: string;
+        }
+
+        /**
+         * A region in which the Azure Cosmos DB database account is deployed.
+         */
+        export interface LocationResponse {
+            /**
+             * The connection endpoint for the specific region. Example: https://&lt;accountName&gt;-&lt;locationName&gt;.documents.azure.com:443/
+             */
+            documentEndpoint: string;
+            /**
+             * The failover priority of the region. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists.
+             */
+            failoverPriority?: number;
+            /**
+             * The unique identifier of the region within the database account. Example: &lt;accountName&gt;-&lt;locationName&gt;.
+             */
+            id: string;
+            /**
+             * Flag to indicate whether or not this region is an AvailabilityZone region
+             */
+            isZoneRedundant?: boolean;
+            /**
+             * The name of the region.
+             */
+            locationName?: string;
+            /**
+             * The status of the Cosmos DB account at the time the operation was called. The status can be one of following. 'Creating' – the Cosmos DB account is being created. When an account is in Creating state, only properties that are specified as input for the Create Cosmos DB account operation are returned. 'Succeeded' – the Cosmos DB account is active for use. 'Updating' – the Cosmos DB account is being updated. 'Deleting' – the Cosmos DB account is being deleted. 'Failed' – the Cosmos DB account failed creation. 'DeletionFailed' – the Cosmos DB account deletion failed.
+             */
+            provisioningState: string;
+        }
+
+        export interface MongoDBCollectionGetPropertiesResponseOptions {
+            /**
+             * Specifies the Autoscale settings.
+             */
+            autoscaleSettings?: outputs.documentdb.v20200901.AutoscaleSettingsResponse;
+            /**
+             * Value of the Cosmos DB resource throughput or autoscaleSettings. Use the ThroughputSetting resource when retrieving offer details.
+             */
+            throughput?: number;
+        }
+
+        export interface MongoDBCollectionGetPropertiesResponseResource {
+            /**
+             * Analytical TTL.
+             */
+            analyticalStorageTtl?: number;
+            /**
+             * A system generated property representing the resource etag required for optimistic concurrency control.
+             */
+            etag: string;
+            /**
+             * Name of the Cosmos DB MongoDB collection
+             */
+            id: string;
+            /**
+             * List of index keys
+             */
+            indexes?: outputs.documentdb.v20200901.MongoIndexResponse[];
+            /**
+             * A system generated property. A unique identifier.
+             */
+            rid: string;
+            /**
+             * A key-value pair of shard keys to be applied for the request.
+             */
+            shardKey?: {[key: string]: string};
+            /**
+             * A system generated property that denotes the last updated timestamp of the resource.
+             */
+            ts: number;
+        }
+
+        export interface MongoDBDatabaseGetPropertiesResponseOptions {
+            /**
+             * Specifies the Autoscale settings.
+             */
+            autoscaleSettings?: outputs.documentdb.v20200901.AutoscaleSettingsResponse;
+            /**
+             * Value of the Cosmos DB resource throughput or autoscaleSettings. Use the ThroughputSetting resource when retrieving offer details.
+             */
+            throughput?: number;
+        }
+
+        export interface MongoDBDatabaseGetPropertiesResponseResource {
+            /**
+             * A system generated property representing the resource etag required for optimistic concurrency control.
+             */
+            etag: string;
+            /**
+             * Name of the Cosmos DB MongoDB database
+             */
+            id: string;
+            /**
+             * A system generated property. A unique identifier.
+             */
+            rid: string;
+            /**
+             * A system generated property that denotes the last updated timestamp of the resource.
+             */
+            ts: number;
+        }
+
+        /**
+         * Cosmos DB MongoDB collection resource object
+         */
+        export interface MongoIndexKeysResponse {
+            /**
+             * List of keys for each MongoDB collection in the Azure Cosmos DB service
+             */
+            keys?: string[];
+        }
+
+        /**
+         * Cosmos DB MongoDB collection index options
+         */
+        export interface MongoIndexOptionsResponse {
+            /**
+             * Expire after seconds
+             */
+            expireAfterSeconds?: number;
+            /**
+             * Is unique or not
+             */
+            unique?: boolean;
+        }
+
+        /**
+         * Cosmos DB MongoDB collection index key
+         */
+        export interface MongoIndexResponse {
+            /**
+             * Cosmos DB MongoDB collection index keys
+             */
+            key?: outputs.documentdb.v20200901.MongoIndexKeysResponse;
+            /**
+             * Cosmos DB MongoDB collection index key options
+             */
+            options?: outputs.documentdb.v20200901.MongoIndexOptionsResponse;
+        }
+
+        /**
+         * The object representing periodic mode backup policy.
+         */
+        export interface PeriodicModeBackupPolicyResponse {
+            /**
+             * Configuration values for periodic mode backup
+             */
+            periodicModeProperties?: outputs.documentdb.v20200901.PeriodicModePropertiesResponse;
+            /**
+             * Describes the mode of backups.
+             */
+            type: "Periodic";
+        }
+
+        /**
+         * Configuration values for periodic mode backup
+         */
+        export interface PeriodicModePropertiesResponse {
+            /**
+             * An integer representing the interval in minutes between two backups
+             */
+            backupIntervalInMinutes?: number;
+            /**
+             * An integer representing the time (in hours) that each backup is retained
+             */
+            backupRetentionIntervalInHours?: number;
+        }
+
+        /**
+         * A private endpoint connection
+         */
+        export interface PrivateEndpointConnectionResponse {
+            /**
+             * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             */
+            id: string;
+            /**
+             * The name of the resource
+             */
+            name: string;
+            /**
+             * Private endpoint which the connection belongs to.
+             */
+            privateEndpoint?: outputs.documentdb.v20200901.PrivateEndpointPropertyResponse;
+            /**
+             * Connection State of the Private Endpoint Connection.
+             */
+            privateLinkServiceConnectionState?: outputs.documentdb.v20200901.PrivateLinkServiceConnectionStatePropertyResponse;
+            /**
+             * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+             */
+            type: string;
+        }
+
+        /**
+         * Private endpoint which the connection belongs to.
+         */
+        export interface PrivateEndpointPropertyResponse {
+            /**
+             * Resource id of the private endpoint.
+             */
+            id?: string;
+        }
+
+        /**
+         * Connection State of the Private Endpoint Connection.
+         */
+        export interface PrivateLinkServiceConnectionStatePropertyResponse {
+            /**
+             * Any action that is required beyond basic workflow (approve/ reject/ disconnect)
+             */
+            actionsRequired: string;
+            /**
+             * The private link service connection status.
+             */
+            status?: string;
+        }
+
+        export interface SpatialSpecResponse {
+            /**
+             * The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)
+             */
+            path?: string;
+            /**
+             * List of path's spatial type
+             */
+            types?: string[];
+        }
+
+        export interface SqlContainerGetPropertiesResponseOptions {
+            /**
+             * Specifies the Autoscale settings.
+             */
+            autoscaleSettings?: outputs.documentdb.v20200901.AutoscaleSettingsResponse;
+            /**
+             * Value of the Cosmos DB resource throughput or autoscaleSettings. Use the ThroughputSetting resource when retrieving offer details.
+             */
+            throughput?: number;
+        }
+
+        export interface SqlContainerGetPropertiesResponseResource {
+            /**
+             * Analytical TTL.
+             */
+            analyticalStorageTtl?: number;
+            /**
+             * The conflict resolution policy for the container.
+             */
+            conflictResolutionPolicy?: outputs.documentdb.v20200901.ConflictResolutionPolicyResponse;
+            /**
+             * Default time to live
+             */
+            defaultTtl?: number;
+            /**
+             * A system generated property representing the resource etag required for optimistic concurrency control.
+             */
+            etag: string;
+            /**
+             * Name of the Cosmos DB SQL container
+             */
+            id: string;
+            /**
+             * The configuration of the indexing policy. By default, the indexing is automatic for all document paths within the container
+             */
+            indexingPolicy?: outputs.documentdb.v20200901.IndexingPolicyResponse;
+            /**
+             * The configuration of the partition key to be used for partitioning data into multiple partitions
+             */
+            partitionKey?: outputs.documentdb.v20200901.ContainerPartitionKeyResponse;
+            /**
+             * A system generated property. A unique identifier.
+             */
+            rid: string;
+            /**
+             * A system generated property that denotes the last updated timestamp of the resource.
+             */
+            ts: number;
+            /**
+             * The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
+             */
+            uniqueKeyPolicy?: outputs.documentdb.v20200901.UniqueKeyPolicyResponse;
+        }
+
+        export interface SqlDatabaseGetPropertiesResponseOptions {
+            /**
+             * Specifies the Autoscale settings.
+             */
+            autoscaleSettings?: outputs.documentdb.v20200901.AutoscaleSettingsResponse;
+            /**
+             * Value of the Cosmos DB resource throughput or autoscaleSettings. Use the ThroughputSetting resource when retrieving offer details.
+             */
+            throughput?: number;
+        }
+
+        export interface SqlDatabaseGetPropertiesResponseResource {
+            /**
+             * A system generated property that specified the addressable path of the collections resource.
+             */
+            colls?: string;
+            /**
+             * A system generated property representing the resource etag required for optimistic concurrency control.
+             */
+            etag: string;
+            /**
+             * Name of the Cosmos DB SQL database
+             */
+            id: string;
+            /**
+             * A system generated property. A unique identifier.
+             */
+            rid: string;
+            /**
+             * A system generated property that denotes the last updated timestamp of the resource.
+             */
+            ts: number;
+            /**
+             * A system generated property that specifies the addressable path of the users resource.
+             */
+            users?: string;
+        }
+
+        export interface SqlStoredProcedureGetPropertiesResponseResource {
+            /**
+             * Body of the Stored Procedure
+             */
+            body?: string;
+            /**
+             * A system generated property representing the resource etag required for optimistic concurrency control.
+             */
+            etag: string;
+            /**
+             * Name of the Cosmos DB SQL storedProcedure
+             */
+            id: string;
+            /**
+             * A system generated property. A unique identifier.
+             */
+            rid: string;
+            /**
+             * A system generated property that denotes the last updated timestamp of the resource.
+             */
+            ts: number;
+        }
+
+        export interface SqlTriggerGetPropertiesResponseResource {
+            /**
+             * Body of the Trigger
+             */
+            body?: string;
+            /**
+             * A system generated property representing the resource etag required for optimistic concurrency control.
+             */
+            etag: string;
+            /**
+             * Name of the Cosmos DB SQL trigger
+             */
+            id: string;
+            /**
+             * A system generated property. A unique identifier.
+             */
+            rid: string;
+            /**
+             * The operation the trigger is associated with
+             */
+            triggerOperation?: string;
+            /**
+             * Type of the Trigger
+             */
+            triggerType?: string;
+            /**
+             * A system generated property that denotes the last updated timestamp of the resource.
+             */
+            ts: number;
+        }
+
+        export interface SqlUserDefinedFunctionGetPropertiesResponseResource {
+            /**
+             * Body of the User Defined Function
+             */
+            body?: string;
+            /**
+             * A system generated property representing the resource etag required for optimistic concurrency control.
+             */
+            etag: string;
+            /**
+             * Name of the Cosmos DB SQL userDefinedFunction
+             */
+            id: string;
+            /**
+             * A system generated property. A unique identifier.
+             */
+            rid: string;
+            /**
+             * A system generated property that denotes the last updated timestamp of the resource.
+             */
+            ts: number;
+        }
+
+        export interface TableGetPropertiesResponseOptions {
+            /**
+             * Specifies the Autoscale settings.
+             */
+            autoscaleSettings?: outputs.documentdb.v20200901.AutoscaleSettingsResponse;
+            /**
+             * Value of the Cosmos DB resource throughput or autoscaleSettings. Use the ThroughputSetting resource when retrieving offer details.
+             */
+            throughput?: number;
+        }
+
+        export interface TableGetPropertiesResponseResource {
+            /**
+             * A system generated property representing the resource etag required for optimistic concurrency control.
+             */
+            etag: string;
+            /**
+             * Name of the Cosmos DB table
+             */
+            id: string;
+            /**
+             * A system generated property. A unique identifier.
+             */
+            rid: string;
+            /**
+             * A system generated property that denotes the last updated timestamp of the resource.
+             */
+            ts: number;
+        }
+
+        /**
+         * The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
+         */
+        export interface UniqueKeyPolicyResponse {
+            /**
+             * List of unique keys on that enforces uniqueness constraint on documents in the collection in the Azure Cosmos DB service.
+             */
+            uniqueKeys?: outputs.documentdb.v20200901.UniqueKeyResponse[];
         }
 
         /**
@@ -160112,25 +162066,151 @@ export namespace hybriddata {
 export namespace hybridnetwork {
     export namespace v20200101preview {
         /**
+         * Specifies the custom settings for the virtual machine.
+         */
+        export interface CustomProfileResponse {
+            /**
+             * Path for metadata configuration.
+             */
+            metadataConfigurationPath?: string;
+        }
+
+        /**
+         * Specifies information about the operating system disk used by the virtual machine. <br><br> For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+         */
+        export interface DataDiskResponse {
+            /**
+             * Specifies how the virtual machine should be created.
+             */
+            createOption?: string;
+            /**
+             * Specifies the size of an empty disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image.
+             */
+            diskSizeGB?: number;
+            /**
+             * The name of data disk.
+             */
+            name?: string;
+        }
+
+        /**
          * The image reference properties.
          */
         export interface ImageReferenceResponse {
             /**
-             * The OS type.
+             * Specifies in decimal numbers, the exact version of image used to create the virtual machine.
              */
-            osType?: string;
+            exactVersion?: string;
             /**
-             * The VHD SAS URI.
+             * Specifies the offer of the image used to create the virtual machine.
              */
-            sasUri?: string;
+            offer?: string;
             /**
-             * The VHD name.
+             * The image publisher.
              */
-            vhdName?: string;
+            publisher?: string;
             /**
-             * The VHD type.
+             * The image SKU.
              */
-            vhdType?: string;
+            sku?: string;
+            /**
+             * Specifies the version of the image used to create the virtual machine. The allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest version of an image available at deploy time. Even if you use 'latest', the VM image will not automatically update after deploy time even if a new version becomes available.
+             */
+            version?: string;
+        }
+
+        /**
+         * Specifies the Linux operating system settings on the virtual machine.
+         */
+        export interface LinuxConfigurationResponse {
+            /**
+             * Specifies the ssh key configuration for a Linux OS.
+             */
+            ssh?: outputs.hybridnetwork.v20200101preview.SshConfigurationResponse;
+        }
+
+        /**
+         * Network function role configuration.
+         */
+        export interface NetworkFunctionRoleConfigurationResponse {
+            /**
+             * Specifies the custom settings for the virtual machine.
+             */
+            customProfile?: outputs.hybridnetwork.v20200101preview.CustomProfileResponse;
+            /**
+             * The network interface configurations.
+             */
+            networkInterfaces?: outputs.hybridnetwork.v20200101preview.NetworkInterfaceResponse[];
+            /**
+             * Specifies the operating system settings for the role instance. This value can be updated during the deployment of network function.
+             */
+            osProfile?: outputs.hybridnetwork.v20200101preview.OsProfileResponse;
+            /**
+             * The name of the network function role.
+             */
+            roleName?: string;
+            /**
+             * Role type.
+             */
+            roleType?: string;
+            /**
+             * Specifies the storage settings for the virtual machine disks.
+             */
+            storageProfile?: outputs.hybridnetwork.v20200101preview.StorageProfileResponse;
+            /**
+             * The user parameters for customers. The format of user data parameters has to be matched with the provided user data template.
+             */
+            userDataParameters?: any;
+            /**
+             * The user data template for customers. This is a json schema template describing the format and data type of user data parameters.
+             */
+            userDataTemplate?: any;
+            /**
+             * The size of the virtual machine.
+             */
+            virtualMachineSize?: string;
+        }
+
+        /**
+         * The network function template.
+         */
+        export interface NetworkFunctionTemplateResponse {
+            /**
+             * An array of network function role definitions.
+             */
+            networkFunctionRoleConfigurations?: outputs.hybridnetwork.v20200101preview.NetworkFunctionRoleConfigurationResponse[];
+        }
+
+        /**
+         * The network function user configuration.
+         */
+        export interface NetworkFunctionUserConfigurationResponse {
+            /**
+             * The network interface configuration.
+             */
+            networkInterfaces?: outputs.hybridnetwork.v20200101preview.NetworkInterfaceResponse[];
+            /**
+             * Specifies the operating system settings for the role instance.
+             */
+            osProfile?: outputs.hybridnetwork.v20200101preview.NetworkFunctionUserConfigurationResponseOsProfile;
+            /**
+             * The name of the network function role.
+             */
+            roleName?: string;
+            /**
+             * The user data parameters from the customer.
+             */
+            userDataParameters?: any;
+        }
+
+        /**
+         * Specifies the operating system settings for the role instance.
+         */
+        export interface NetworkFunctionUserConfigurationResponseOsProfile {
+            /**
+             * Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the virtual machine. The maximum length of the binary array is 65535 bytes. <br><br> **Note: Do not pass any secrets or passwords in customData property** <br><br> This property cannot be updated after the VM is created. <br><br> customData is passed to the VM to be saved as a file. For more information see [Custom Data on Azure VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/) <br><br> For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+             */
+            customData?: string;
         }
 
         /**
@@ -160180,9 +162260,31 @@ export namespace hybridnetwork {
              */
             networkInterfaceName?: string;
             /**
-             * The type of VM switch
+             * The type of the VM switch.
              */
             vmSwitchType?: string;
+        }
+
+        /**
+         * Specifies information about the operating system disk used by the virtual machine. <br><br> For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+         */
+        export interface OsDiskResponse {
+            /**
+             * Specifies the size of os disk in gigabytes. This is the fully expanded disk size needed of the VHD image on the ASE. This disk size should be greater than the size of the VHD provided in vhdUri.
+             */
+            diskSizeGB?: number;
+            /**
+             * The VHD name.
+             */
+            name?: string;
+            /**
+             * The OS type.
+             */
+            osType?: string;
+            /**
+             * The virtual hard disk.
+             */
+            vhd?: outputs.hybridnetwork.v20200101preview.VirtualHardDiskResponse;
         }
 
         /**
@@ -160190,17 +162292,63 @@ export namespace hybridnetwork {
          */
         export interface OsProfileResponse {
             /**
-             * Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-reset-rdp?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-vmaccess-extension?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#reset-root-password).
-             */
-            adminPassword?: string;
-            /**
              * Specifies the name of the administrator account. <br><br> **Windows-only restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters <br><br> **Max-length (Windows):** 20 characters  <br><br><li> For root access to the Linux VM, see [Using root privileges on Linux virtual machines in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)<br><li> For a list of built-in system users on Linux that should not be used in this field, see [Selecting User Names for Linux on Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
              */
             adminUsername?: string;
             /**
-             * Contains information about SSH certificate public key and the path on the Linux VM where the public key is placed.
+             * Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the virtual machine. The maximum length of the binary array is 65535 bytes. <br><br> **Note: Do not pass any secrets or passwords in customData property** <br><br> This property cannot be updated after the VM is created. <br><br> customData is passed to the VM to be saved as a file. For more information see [Custom Data on Azure VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/) <br><br> For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
              */
-            sshPublicKey?: string;
+            customData?: string;
+            /**
+             * Indicates if custom data is required to deploy this role.
+             */
+            customDataRequired?: boolean;
+            /**
+             * Specifies the Linux operating system settings on the virtual machine. <br><br>For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-endorsed-distros?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) <br><br> For running non-endorsed distributions, see [Information for Non-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+             */
+            linuxConfiguration?: outputs.hybridnetwork.v20200101preview.LinuxConfigurationResponse;
+        }
+
+        /**
+         * SSH configuration for Linux based VMs running on Azure
+         */
+        export interface SshConfigurationResponse {
+            /**
+             * The list of SSH public keys used to authenticate with linux based VMs.
+             */
+            publicKeys?: outputs.hybridnetwork.v20200101preview.SshPublicKeyResponse[];
+        }
+
+        /**
+         * Contains information about SSH certificate public key and the path on the Linux VM where the public key is placed.
+         */
+        export interface SshPublicKeyResponse {
+            /**
+             * SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+             */
+            keyData?: string;
+            /**
+             * Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
+             */
+            path?: string;
+        }
+
+        /**
+         * Specifies the storage settings for the virtual machine disks.
+         */
+        export interface StorageProfileResponse {
+            /**
+             * Specifies the parameters that are used to add a data disk to a virtual machine.
+             */
+            dataDisks?: outputs.hybridnetwork.v20200101preview.DataDiskResponse[];
+            /**
+             * The image reference properties.
+             */
+            imageReference?: outputs.hybridnetwork.v20200101preview.ImageReferenceResponse;
+            /**
+             * Specifies information about the operating system disk used by the virtual machine.
+             */
+            osDisk?: outputs.hybridnetwork.v20200101preview.OsDiskResponse;
         }
 
         /**
@@ -160214,69 +162362,13 @@ export namespace hybridnetwork {
         }
 
         /**
-         * Virtual network function role configuration.
+         * Describes the uri of a disk.
          */
-        export interface VirtualNetworkFunctionRoleConfigurationResponse {
+        export interface VirtualHardDiskResponse {
             /**
-             * The definition of image reference.
+             * Specifies the virtual hard disk's uri.
              */
-            imageReference?: outputs.hybridnetwork.v20200101preview.ImageReferenceResponse;
-            /**
-             * The network interface configurations.
-             */
-            networkInterfaces?: outputs.hybridnetwork.v20200101preview.NetworkInterfaceResponse[];
-            /**
-             * Specifies the operating system settings for the role instance. This value can be updated during the deployment of virtual network function.
-             */
-            osProfile?: outputs.hybridnetwork.v20200101preview.OsProfileResponse;
-            /**
-             * The name of the virtual network function role.
-             */
-            roleName?: string;
-            /**
-             * Role type.
-             */
-            roleType?: string;
-            /**
-             * The user parameters for customers. The format of user data parameters has to be matched with the provided user data template.
-             */
-            userDataParameters?: any;
-            /**
-             * The user data template for customers. This is json scheme template describing the format and data type of user data parameters.
-             */
-            userDataTemplate?: any;
-            /**
-             * The size of the virtual machine.
-             */
-            virtualMachineSize?: string;
-        }
-
-        /**
-         * The virtual network function template.
-         */
-        export interface VirtualNetworkFunctionTemplateResponse {
-            /**
-             * An array of virtual network function role definitions.
-             */
-            virutalNetworkFunctionRoleConfigurations?: outputs.hybridnetwork.v20200101preview.VirtualNetworkFunctionRoleConfigurationResponse[];
-        }
-
-        /**
-         * The virtual network function user configuration.
-         */
-        export interface VirtualNetworkFunctionUserConfigurationResponse {
-            /**
-             * The network interface configuration.
-             */
-            networkInterfaces?: outputs.hybridnetwork.v20200101preview.NetworkInterfaceResponse[];
-            /**
-             * The name of the virtual network function role.
-             */
-            roleName?: string;
-            /**
-             * The user data parameters from the customer.
-             */
-            userDataParameters?: any;
+            uri?: string;
         }
     }
 }
@@ -164827,6 +166919,90 @@ export namespace insights {
             allOf?: outputs.insights.v20200501preview.ConditionResponse[];
         }
     }
+
+    export namespace v20201005preview {
+        /**
+         * A header to add to the WebTest.
+         */
+        export interface HeaderFieldResponse {
+            /**
+             * The name of the header.
+             */
+            headerFieldName?: string;
+            /**
+             * The value of the header.
+             */
+            headerFieldValue?: string;
+        }
+
+        /**
+         * Geo-physical location to run a WebTest from. You must specify one or more locations for the test to run from.
+         */
+        export interface WebTestGeolocationResponse {
+            /**
+             * Location ID for the WebTest to run from.
+             */
+            location?: string;
+        }
+
+        /**
+         * An XML configuration specification for a WebTest.
+         */
+        export interface WebTestPropertiesResponseConfiguration {
+            /**
+             * The XML specification of a WebTest to run against an application.
+             */
+            webTest?: string;
+        }
+
+        /**
+         * The collection of content validation properties
+         */
+        export interface WebTestPropertiesResponseContentValidation {
+            /**
+             * Content to look for in the return of the WebTest.
+             */
+            contentMatch?: string;
+            /**
+             * When set, this value makes the ContentMatch validation case insensitive.
+             */
+            ignoreCase?: boolean;
+            /**
+             * When true, validation will pass if there is a match for the ContentMatch string.  If false, validation will fail if there is a match
+             */
+            passIfTextFound?: boolean;
+        }
+
+        /**
+         * The collection of request properties
+         */
+        export interface WebTestPropertiesResponseRequest {
+            /**
+             * Follow redirects for this web test.
+             */
+            followRedirects?: boolean;
+            /**
+             * List of headers and their values to add to the WebTest call.
+             */
+            headers?: outputs.insights.v20201005preview.HeaderFieldResponse[];
+            /**
+             * Http verb to use for this web test.
+             */
+            httpVerb?: string;
+            /**
+             * Parse Dependent request for this WebTest.
+             */
+            parseDependentRequests?: boolean;
+            /**
+             * Base64 encoded string body to send with this web test.
+             */
+            requestBody?: string;
+            /**
+             * Url location to test.
+             */
+            requestUrl?: string;
+        }
+    }
 }
 
 export namespace iotcentral {
@@ -166257,6 +168433,74 @@ export namespace kubernetesconfiguration {
              * Version of the operator Helm chart.
              */
             chartVersion?: string;
+        }
+    }
+
+    export namespace v20201001preview {
+        /**
+         * Compliance Status details
+         */
+        export interface ComplianceStatusResponse {
+            /**
+             * The compliance state of the configuration.
+             */
+            complianceState: string;
+            /**
+             * Datetime the configuration was last applied.
+             */
+            lastConfigApplied?: string;
+            /**
+             * Message from when the configuration was applied.
+             */
+            message?: string;
+            /**
+             * Level of the message.
+             */
+            messageLevel?: string;
+        }
+
+        /**
+         * Properties for Helm operator.
+         */
+        export interface HelmOperatorPropertiesResponse {
+            /**
+             * Values override for the operator Helm chart.
+             */
+            chartValues?: string;
+            /**
+             * Version of the operator Helm chart.
+             */
+            chartVersion?: string;
+        }
+
+        /**
+         * Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC)
+             */
+            createdAt: string;
+            /**
+             * A string identifier for the identity that created the resource
+             */
+            createdBy: string;
+            /**
+             * The type of identity that created the resource: user, application, managedIdentity, key
+             */
+            createdByType: string;
+            /**
+             * The timestamp of resource last modification (UTC)
+             */
+            lastModifiedAt: string;
+            /**
+             * A string identifier for the identity that last modified the resource
+             */
+            lastModifiedBy: string;
+            /**
+             * The type of identity that last modified the resource: user, application, managedIdentity, key
+             */
+            lastModifiedByType: string;
         }
     }
 }
@@ -211746,6 +213990,342 @@ export namespace netapp {
              * Snapshot Policy ResourceId
              */
             snapshotPolicyId?: string;
+        }
+    }
+
+    export namespace v20200501 {
+        /**
+         * Active Directory
+         */
+        export interface ActiveDirectoryResponse {
+            /**
+             * Id of the Active Directory
+             */
+            activeDirectoryId?: string;
+            /**
+             * Name of the active directory machine. This optional parameter is used only while creating kerberos volume
+             */
+            adName?: string;
+            /**
+             * Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier
+             */
+            backupOperators?: string[];
+            /**
+             * Comma separated list of DNS server IP addresses (IPv4 only) for the Active Directory domain
+             */
+            dns?: string;
+            /**
+             * Name of the Active Directory domain
+             */
+            domain?: string;
+            /**
+             * kdc server IP addresses for the active directory machine. This optional parameter is used only while creating kerberos volume.
+             */
+            kdcIP?: string;
+            /**
+             * The Organizational Unit (OU) within the Windows Active Directory
+             */
+            organizationalUnit?: string;
+            /**
+             * Plain text password of Active Directory domain administrator, value is masked in the response
+             */
+            password?: string;
+            /**
+             * The Active Directory site the service will limit Domain Controller discovery to
+             */
+            site?: string;
+            /**
+             * NetBIOS name of the SMB server. This name will be registered as a computer account in the AD and used to mount volumes
+             */
+            smbServerName?: string;
+            /**
+             * Status of the Active Directory
+             */
+            status?: string;
+            /**
+             * Username of Active Directory domain administrator
+             */
+            username?: string;
+        }
+
+        /**
+         * Daily Schedule properties
+         */
+        export interface DailyScheduleResponse {
+            /**
+             * Indicates which hour in UTC timezone a snapshot should be taken
+             */
+            hour?: number;
+            /**
+             * Indicates which minute snapshot should be taken
+             */
+            minute?: number;
+            /**
+             * Daily snapshot count to keep
+             */
+            snapshotsToKeep?: number;
+            /**
+             * Resource size in bytes, current storage usage for the volume in bytes
+             */
+            usedBytes?: number;
+        }
+
+        /**
+         * Volume Export Policy Rule
+         */
+        export interface ExportPolicyRuleResponse {
+            /**
+             * Client ingress specification as comma separated string with IPv4 CIDRs, IPv4 host addresses and host names
+             */
+            allowedClients?: string;
+            /**
+             * Allows CIFS protocol
+             */
+            cifs?: boolean;
+            /**
+             * Has root access to volume
+             */
+            hasRootAccess?: boolean;
+            /**
+             * Kerberos5 Read only access. To be use with swagger version 2020-05-01 or later
+             */
+            kerberos5ReadOnly?: boolean;
+            /**
+             * Kerberos5 Read and write access. To be use with swagger version 2020-05-01 or later
+             */
+            kerberos5ReadWrite?: boolean;
+            /**
+             * Kerberos5i Read only access. To be use with swagger version 2020-05-01 or later
+             */
+            kerberos5iReadOnly?: boolean;
+            /**
+             * Kerberos5i Read and write access. To be use with swagger version 2020-05-01 or later
+             */
+            kerberos5iReadWrite?: boolean;
+            /**
+             * Kerberos5p Read only access. To be use with swagger version 2020-05-01 or later
+             */
+            kerberos5pReadOnly?: boolean;
+            /**
+             * Kerberos5p Read and write access. To be use with swagger version 2020-05-01 or later
+             */
+            kerberos5pReadWrite?: boolean;
+            /**
+             * Allows NFSv3 protocol. Enable only for NFSv3 type volumes
+             */
+            nfsv3?: boolean;
+            /**
+             * Allows NFSv4.1 protocol. Enable only for NFSv4.1 type volumes
+             */
+            nfsv41?: boolean;
+            /**
+             * Order index
+             */
+            ruleIndex?: number;
+            /**
+             * Read only access
+             */
+            unixReadOnly?: boolean;
+            /**
+             * Read and write access
+             */
+            unixReadWrite?: boolean;
+        }
+
+        /**
+         * Hourly Schedule properties
+         */
+        export interface HourlyScheduleResponse {
+            /**
+             * Indicates which minute snapshot should be taken
+             */
+            minute?: number;
+            /**
+             * Hourly snapshot count to keep
+             */
+            snapshotsToKeep?: number;
+            /**
+             * Resource size in bytes, current storage usage for the volume in bytes
+             */
+            usedBytes?: number;
+        }
+
+        /**
+         * Monthly Schedule properties
+         */
+        export interface MonthlyScheduleResponse {
+            /**
+             * Indicates which days of the month snapshot should be taken. A comma delimited string.
+             */
+            daysOfMonth?: string;
+            /**
+             * Indicates which hour in UTC timezone a snapshot should be taken
+             */
+            hour?: number;
+            /**
+             * Indicates which minute snapshot should be taken
+             */
+            minute?: number;
+            /**
+             * Monthly snapshot count to keep
+             */
+            snapshotsToKeep?: number;
+            /**
+             * Resource size in bytes, current storage usage for the volume in bytes
+             */
+            usedBytes?: number;
+        }
+
+        /**
+         * Mount target properties
+         */
+        export interface MountTargetPropertiesResponse {
+            /**
+             * UUID v4 used to identify the MountTarget
+             */
+            fileSystemId: string;
+            /**
+             * The mount target's IPv4 address
+             */
+            ipAddress: string;
+            /**
+             * UUID v4 used to identify the MountTarget
+             */
+            mountTargetId: string;
+            /**
+             * The SMB server's Fully Qualified Domain Name, FQDN
+             */
+            smbServerFqdn?: string;
+        }
+
+        /**
+         * Replication properties
+         */
+        export interface ReplicationObjectResponse {
+            /**
+             * Indicates whether the local volume is the source or destination for the Volume Replication
+             */
+            endpointType?: string;
+            /**
+             * The remote region for the other end of the Volume Replication.
+             */
+            remoteVolumeRegion?: string;
+            /**
+             * The resource ID of the remote volume.
+             */
+            remoteVolumeResourceId: string;
+            /**
+             * Id
+             */
+            replicationId?: string;
+            /**
+             * Schedule
+             */
+            replicationSchedule: string;
+        }
+
+        /**
+         * Volume Backup Properties
+         */
+        export interface VolumeBackupPropertiesResponse {
+            /**
+             * Backup Enabled
+             */
+            backupEnabled?: boolean;
+            /**
+             * Backup Policy Resource ID
+             */
+            backupPolicyId?: string;
+            /**
+             * Policy Enforced
+             */
+            policyEnforced?: boolean;
+            /**
+             * Vault Resource ID
+             */
+            vaultId?: string;
+        }
+
+        /**
+         * Volume details using the backup policy
+         */
+        export interface VolumeBackupsResponse {
+            /**
+             * Total count of backups for volume
+             */
+            backupsCount?: number;
+            /**
+             * Policy enabled
+             */
+            policyEnabled?: boolean;
+            /**
+             * Volume name
+             */
+            volumeName?: string;
+        }
+
+        /**
+         * DataProtection type volumes include an object containing details of the replication
+         */
+        export interface VolumePropertiesResponseDataProtection {
+            /**
+             * Backup Properties
+             */
+            backup?: outputs.netapp.v20200501.VolumeBackupPropertiesResponse;
+            /**
+             * Replication properties
+             */
+            replication?: outputs.netapp.v20200501.ReplicationObjectResponse;
+            /**
+             * Snapshot properties.
+             */
+            snapshot?: outputs.netapp.v20200501.VolumeSnapshotPropertiesResponse;
+        }
+
+        /**
+         * Set of export policy rules
+         */
+        export interface VolumePropertiesResponseExportPolicy {
+            /**
+             * Export policy rule
+             */
+            rules?: outputs.netapp.v20200501.ExportPolicyRuleResponse[];
+        }
+
+        /**
+         * Volume Snapshot Properties
+         */
+        export interface VolumeSnapshotPropertiesResponse {
+            /**
+             * Snapshot Policy ResourceId
+             */
+            snapshotPolicyId?: string;
+        }
+
+        /**
+         * Weekly Schedule properties, make a snapshot every week at a specific day or days
+         */
+        export interface WeeklyScheduleResponse {
+            /**
+             * Indicates which weekdays snapshot should be taken, accepts a comma separated list of week day names in english
+             */
+            day?: string;
+            /**
+             * Indicates which hour in UTC timezone a snapshot should be taken
+             */
+            hour?: number;
+            /**
+             * Indicates which minute snapshot should be taken
+             */
+            minute?: number;
+            /**
+             * Weekly snapshot count to keep
+             */
+            snapshotsToKeep?: number;
+            /**
+             * Resource size in bytes, current storage usage for the volume in bytes
+             */
+            usedBytes?: number;
         }
     }
 
@@ -377205,6 +379785,24 @@ export namespace resources {
              */
             template: any;
         }
+
+        /**
+         * High-level information about a Template Spec version.
+         */
+        export interface TemplateSpecVersionInfoResponse {
+            /**
+             * Template Spec version description.
+             */
+            description: string;
+            /**
+             * The timestamp of when the version was created.
+             */
+            timeCreated: string;
+            /**
+             * The timestamp of when the version was last modified.
+             */
+            timeModified: string;
+        }
     }
 
     export namespace v20190701 {
@@ -407052,6 +409650,16 @@ export namespace synapse {
         }
 
         /**
+         * Properties for an Sql pool vulnerability assessment rule baseline's result.
+         */
+        export interface SqlPoolVulnerabilityAssessmentRuleBaselineItemResponse {
+            /**
+             * The rule baseline result
+             */
+            result: string[];
+        }
+
+        /**
          * Ssis environment reference.
          */
         export interface SsisEnvironmentReferenceResponse {
@@ -410885,6 +413493,14 @@ export namespace web {
              * Virtual Network name.
              */
             vnetName?: string;
+            /**
+             * The number of private ports assigned to this app. These will be assigned dynamically on runtime.
+             */
+            vnetPrivatePortsCount?: number;
+            /**
+             * Virtual Network Route All enabled. This causes all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied.
+             */
+            vnetRouteAllEnabled?: boolean;
             /**
              * <code>true</code> if WebSocket is enabled; otherwise, <code>false</code>.
              */
@@ -418877,6 +421493,14 @@ export namespace web {
              * Virtual Network name.
              */
             vnetName?: string;
+            /**
+             * The number of private ports assigned to this app. These will be assigned dynamically on runtime.
+             */
+            vnetPrivatePortsCount?: number;
+            /**
+             * Virtual Network Route All enabled. This causes all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied.
+             */
+            vnetRouteAllEnabled?: boolean;
             /**
              * <code>true</code> if WebSocket is enabled; otherwise, <code>false</code>.
              */
