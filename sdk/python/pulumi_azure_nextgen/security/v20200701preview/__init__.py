@@ -3,9 +3,6 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .get_template_spec import *
-from .get_template_spec_version import *
-from .template_spec import *
-from .template_spec_version import *
-from ._inputs import *
+from .get_sql_vulnerability_assessment_baseline_rule import *
+from .sql_vulnerability_assessment_baseline_rule import *
 from . import outputs

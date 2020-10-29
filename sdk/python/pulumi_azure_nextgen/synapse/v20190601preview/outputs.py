@@ -24,6 +24,7 @@ __all__ = [
     'IntegrationRuntimeSsisCatalogInfoResponse',
     'IntegrationRuntimeSsisPropertiesResponse',
     'IntegrationRuntimeVNetPropertiesResponse',
+    'LibraryInfoResponse',
     'LibraryRequirementsResponse',
     'LinkedIntegrationRuntimeKeyAuthorizationResponse',
     'LinkedIntegrationRuntimeRbacAuthorizationResponse',
@@ -795,6 +796,80 @@ class IntegrationRuntimeVNetPropertiesResponse(dict):
 
 
 @pulumi.output_type
+class LibraryInfoResponse(dict):
+    """
+    Library/package information of a Big Data pool powered by Apache Spark
+    """
+    def __init__(__self__, *,
+                 container_name: Optional[str] = None,
+                 name: Optional[str] = None,
+                 path: Optional[str] = None,
+                 type: Optional[str] = None,
+                 uploaded_timestamp: Optional[str] = None):
+        """
+        Library/package information of a Big Data pool powered by Apache Spark
+        :param str container_name: Storage blob container name.
+        :param str name: Name of the library.
+        :param str path: Storage blob path of library.
+        :param str type: Type of the library.
+        :param str uploaded_timestamp: The last update time of the library.
+        """
+        if container_name is not None:
+            pulumi.set(__self__, "container_name", container_name)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if uploaded_timestamp is not None:
+            pulumi.set(__self__, "uploaded_timestamp", uploaded_timestamp)
+
+    @property
+    @pulumi.getter(name="containerName")
+    def container_name(self) -> Optional[str]:
+        """
+        Storage blob container name.
+        """
+        return pulumi.get(self, "container_name")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the library.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        """
+        Storage blob path of library.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Type of the library.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="uploadedTimestamp")
+    def uploaded_timestamp(self) -> Optional[str]:
+        """
+        The last update time of the library.
+        """
+        return pulumi.get(self, "uploaded_timestamp")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
 class LibraryRequirementsResponse(dict):
     """
     Library requirements for a Big Data pool powered by Apache Spark
@@ -1430,10 +1505,10 @@ class PrivateEndpointConnectionResponse(dict):
                  private_link_service_connection_state: Optional['outputs.PrivateLinkServiceConnectionStateResponse'] = None):
         """
         A private endpoint connection
-        :param str id: Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        :param str id: Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         :param str name: The name of the resource
         :param str provisioning_state: Provisioning state of the private endpoint connection.
-        :param str type: The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+        :param str type: The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
         :param 'PrivateEndpointResponseArgs' private_endpoint: The private endpoint which the connection belongs to.
         :param 'PrivateLinkServiceConnectionStateResponseArgs' private_link_service_connection_state: Connection state of the private endpoint connection.
         """
@@ -1450,7 +1525,7 @@ class PrivateEndpointConnectionResponse(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         """
         return pulumi.get(self, "id")
 
@@ -1474,7 +1549,7 @@ class PrivateEndpointConnectionResponse(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+        The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
         """
         return pulumi.get(self, "type")
 

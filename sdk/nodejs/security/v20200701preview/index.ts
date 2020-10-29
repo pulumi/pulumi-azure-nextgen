@@ -2,7 +2,5 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 // Export members:
-export * from "./getTemplateSpec";
-export * from "./getTemplateSpecVersion";
-export * from "./templateSpec";
-export * from "./templateSpecVersion";
+export * from "./getSqlVulnerabilityAssessmentBaselineRule";
+export * from "./sqlVulnerabilityAssessmentBaselineRule";

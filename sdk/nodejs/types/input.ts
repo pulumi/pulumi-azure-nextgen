@@ -284363,27 +284363,6 @@ export namespace resources {
         }
 
     }
-
-    export namespace v20201001preview {
-        /**
-         * Represents a Template Spec artifact containing an embedded Azure Resource Manager template.
-         */
-        export interface TemplateSpecTemplateArtifact {
-            /**
-             * The kind of artifact.
-             */
-            kind: pulumi.Input<"template">;
-            /**
-             * A filesystem safe relative path of the artifact.
-             */
-            path: pulumi.Input<string>;
-            /**
-             * The Azure Resource Manager template.
-             */
-            template: any;
-        }
-
-    }
 }
 
 export namespace scheduler {
@@ -287964,7 +287943,7 @@ export namespace security {
 
     export namespace v20200101preview {
         /**
-         * AWS cloud account connector based assume role, the role enables delegating access to your AWS resources. The role is composed of role arn and external id, for more details, refer to <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html">Creating a Role to Delegate Permissions to an IAM User (write only)</a>
+         * AWS cloud account connector based assume role, the role enables delegating access to your AWS resources. The role is composed of role Amazon Resource Name (ARN) and external ID. For more details, refer to <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html">Creating a Role to Delegate Permissions to an IAM User (write only)</a>
          */
         export interface AwAssumeRoleAuthenticationDetailsProperties {
             /**
@@ -287982,7 +287961,7 @@ export namespace security {
         }
 
         /**
-         * AWS cloud account connector based credentials, the credentials is composed of access key id and secret key, for more details, refer to <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html">Creating an IAM User in Your AWS Account (write only)</a>
+         * AWS cloud account connector based credentials, the credentials is composed of access key ID and secret key, for more details, refer to <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html">Creating an IAM User in Your AWS Account (write only)</a>
          */
         export interface AwsCredsAuthenticationDetailsProperties {
             /**
@@ -288000,15 +287979,15 @@ export namespace security {
         }
 
         /**
-         * GCP cloud account connector based service to service credentials, the credentials is composed of organization id and json api key (write only)</a>
+         * GCP cloud account connector based service to service credentials, the credentials are composed of the organization ID and a JSON API key (write only)
          */
         export interface GcpCredentialsDetailsProperties {
             /**
-             * Auth provider x509 certificate url field of the API key (write only)
+             * Auth provider x509 certificate URL field of the API key (write only)
              */
             authProviderX509CertUrl: pulumi.Input<string>;
             /**
-             * Auth Uri field of the API key (write only)
+             * Auth URI field of the API key (write only)
              */
             authUri: pulumi.Input<string>;
             /**
@@ -288020,15 +287999,15 @@ export namespace security {
              */
             clientEmail: pulumi.Input<string>;
             /**
-             * Client Id field of the API key (write only)
+             * Client ID field of the API key (write only)
              */
             clientId: pulumi.Input<string>;
             /**
-             * Client x509 certificate url field of the API key (write only)
+             * Client x509 certificate URL field of the API key (write only)
              */
             clientX509CertUrl: pulumi.Input<string>;
             /**
-             * The Organization ID of the GCP cloud account
+             * The organization ID of the GCP cloud account
              */
             organizationId: pulumi.Input<string>;
             /**
@@ -288036,15 +288015,15 @@ export namespace security {
              */
             privateKey: pulumi.Input<string>;
             /**
-             * Private key Id field of the API key (write only)
+             * Private key ID field of the API key (write only)
              */
             privateKeyId: pulumi.Input<string>;
             /**
-             * Project Id field of the API key (write only)
+             * Project ID field of the API key (write only)
              */
             projectId: pulumi.Input<string>;
             /**
-             * Token Uri field of the API key (write only)
+             * Token URI field of the API key (write only)
              */
             tokenUri: pulumi.Input<string>;
             /**
@@ -288066,7 +288045,7 @@ export namespace security {
              */
             proxyServer?: pulumi.Input<inputs.security.v20200101preview.ProxyServerProperties>;
             /**
-             * The location where the meta data of machines will be stored
+             * The location where the metadata of machines will be stored
              */
             region?: pulumi.Input<string>;
             /**
@@ -288098,7 +288077,7 @@ export namespace security {
          */
         export interface ServicePrincipalProperties {
             /**
-             * Application id of service principal.
+             * Application ID of service principal.
              */
             applicationId?: pulumi.Input<string>;
             /**
@@ -288107,6 +288086,9 @@ export namespace security {
             secret?: pulumi.Input<string>;
         }
 
+    }
+
+    export namespace v20200701preview {
     }
 }
 
@@ -304385,6 +304367,32 @@ export namespace synapse {
              * The ID of the VNet that this integration runtime will join.
              */
             vNetId?: pulumi.Input<string>;
+        }
+
+        /**
+         * Library/package information of a Big Data pool powered by Apache Spark
+         */
+        export interface LibraryInfo {
+            /**
+             * Storage blob container name.
+             */
+            containerName?: pulumi.Input<string>;
+            /**
+             * Name of the library.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Storage blob path of library.
+             */
+            path?: pulumi.Input<string>;
+            /**
+             * Type of the library.
+             */
+            type?: pulumi.Input<string>;
+            /**
+             * The last update time of the library.
+             */
+            uploadedTimestamp?: pulumi.Input<string>;
         }
 
         /**

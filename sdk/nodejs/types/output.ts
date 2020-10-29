@@ -10722,6 +10722,10 @@ export namespace avs {
              * The hosts
              */
             hosts: string[];
+            /**
+             * The state of the cluster provisioning
+             */
+            provisioningState: string;
         }
 
         /**
@@ -11060,6 +11064,10 @@ export namespace avs {
              * The hosts
              */
             hosts: string[];
+            /**
+             * The state of the cluster provisioning
+             */
+            provisioningState: string;
         }
 
         /**
@@ -23298,7 +23306,7 @@ export namespace cache {
          */
         export interface PrivateEndpointConnectionResponse {
             /**
-             * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
              */
             id: string;
             /**
@@ -23318,7 +23326,7 @@ export namespace cache {
              */
             provisioningState: string;
             /**
-             * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+             * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
              */
             type: string;
         }
@@ -23814,7 +23822,7 @@ export namespace cache {
          */
         export interface PrivateEndpointConnectionResponse {
             /**
-             * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
              */
             id: string;
             /**
@@ -23834,7 +23842,7 @@ export namespace cache {
              */
             provisioningState: string;
             /**
-             * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+             * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
              */
             type: string;
         }
@@ -32641,7 +32649,7 @@ export namespace cognitiveservices {
          */
         export interface PrivateEndpointConnectionResponse {
             /**
-             * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
              */
             id: string;
             /**
@@ -32653,7 +32661,7 @@ export namespace cognitiveservices {
              */
             properties?: outputs.cognitiveservices.latest.PrivateEndpointConnectionPropertiesResponse;
             /**
-             * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+             * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
              */
             type: string;
         }
@@ -32967,7 +32975,7 @@ export namespace cognitiveservices {
          */
         export interface PrivateEndpointConnectionResponse {
             /**
-             * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
              */
             id: string;
             /**
@@ -32979,7 +32987,7 @@ export namespace cognitiveservices {
              */
             properties?: outputs.cognitiveservices.v20170418.PrivateEndpointConnectionPropertiesResponse;
             /**
-             * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+             * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
              */
             type: string;
         }
@@ -146305,7 +146313,7 @@ export namespace documentdb {
          */
         export interface PrivateEndpointConnectionResponse {
             /**
-             * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
              */
             id: string;
             /**
@@ -146321,7 +146329,7 @@ export namespace documentdb {
              */
             privateLinkServiceConnectionState?: outputs.documentdb.latest.PrivateLinkServiceConnectionStatePropertyResponse;
             /**
-             * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+             * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
              */
             type: string;
         }
@@ -150006,7 +150014,7 @@ export namespace documentdb {
          */
         export interface PrivateEndpointConnectionResponse {
             /**
-             * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
              */
             id: string;
             /**
@@ -150022,7 +150030,7 @@ export namespace documentdb {
              */
             privateLinkServiceConnectionState?: outputs.documentdb.v20200301.PrivateLinkServiceConnectionStatePropertyResponse;
             /**
-             * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+             * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
              */
             type: string;
         }
@@ -150860,7 +150868,7 @@ export namespace documentdb {
          */
         export interface PrivateEndpointConnectionResponse {
             /**
-             * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
              */
             id: string;
             /**
@@ -150876,7 +150884,7 @@ export namespace documentdb {
              */
             privateLinkServiceConnectionState?: outputs.documentdb.v20200401.PrivateLinkServiceConnectionStatePropertyResponse;
             /**
-             * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+             * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
              */
             type: string;
         }
@@ -151829,7 +151837,7 @@ export namespace documentdb {
          */
         export interface PrivateEndpointConnectionResponse {
             /**
-             * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
              */
             id: string;
             /**
@@ -151845,7 +151853,7 @@ export namespace documentdb {
              */
             privateLinkServiceConnectionState?: outputs.documentdb.v20200601preview.PrivateLinkServiceConnectionStatePropertyResponse;
             /**
-             * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+             * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
              */
             type: string;
         }
@@ -152785,7 +152793,7 @@ export namespace documentdb {
          */
         export interface PrivateEndpointConnectionResponse {
             /**
-             * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
              */
             id: string;
             /**
@@ -152801,7 +152809,7 @@ export namespace documentdb {
              */
             privateLinkServiceConnectionState?: outputs.documentdb.v20200901.PrivateLinkServiceConnectionStatePropertyResponse;
             /**
-             * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+             * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
              */
             type: string;
         }
@@ -159740,7 +159748,7 @@ export namespace healthcareapis {
          */
         export interface PrivateEndpointConnectionResponse {
             /**
-             * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
              */
             id: string;
             /**
@@ -159760,7 +159768,7 @@ export namespace healthcareapis {
              */
             provisioningState: string;
             /**
-             * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+             * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
              */
             type: string;
         }
@@ -160278,7 +160286,7 @@ export namespace healthcareapis {
          */
         export interface PrivateEndpointConnectionResponse {
             /**
-             * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
              */
             id: string;
             /**
@@ -160298,7 +160306,7 @@ export namespace healthcareapis {
              */
             provisioningState: string;
             /**
-             * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+             * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
              */
             type: string;
         }
@@ -161862,7 +161870,7 @@ export namespace hybridcompute {
          */
         export interface PrivateEndpointConnectionResponse {
             /**
-             * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
              */
             id: string;
             /**
@@ -161882,7 +161890,7 @@ export namespace hybridcompute {
              */
             provisioningState: string;
             /**
-             * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+             * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
              */
             type: string;
         }
@@ -199698,7 +199706,7 @@ export namespace management {
         }
 
         /**
-         * The resource management error response.
+         * Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.)
          */
         export interface ErrorResponseResponse {
             /**
@@ -201769,7 +201777,7 @@ export namespace management {
         }
 
         /**
-         * The resource management error response.
+         * Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.)
          */
         export interface ErrorResponseResponse {
             /**
@@ -202710,7 +202718,7 @@ export namespace management {
         }
 
         /**
-         * The resource management error response.
+         * Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.)
          */
         export interface ErrorResponseResponse {
             /**
@@ -376436,7 +376444,7 @@ export namespace resources {
         }
 
         /**
-         * The resource management error response.
+         * Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.)
          */
         export interface ErrorResponseResponse {
             /**
@@ -380693,7 +380701,7 @@ export namespace resources {
         }
 
         /**
-         * The resource management error response.
+         * Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.)
          */
         export interface ErrorResponseResponse {
             /**
@@ -381233,7 +381241,7 @@ export namespace resources {
         }
 
         /**
-         * The resource management error response.
+         * Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.)
          */
         export interface ErrorResponseResponse {
             /**
@@ -381550,56 +381558,6 @@ export namespace resources {
              * Azure Active Directory principal ID associated with this identity.
              */
             principalId?: string;
-        }
-    }
-
-    export namespace v20201001preview {
-        /**
-         * Metadata pertaining to creation and last modification of the resource.
-         */
-        export interface SystemDataResponse {
-            /**
-             * The timestamp of resource creation (UTC).
-             */
-            createdAt?: string;
-            /**
-             * The identity that created the resource.
-             */
-            createdBy?: string;
-            /**
-             * The type of identity that created the resource.
-             */
-            createdByType?: string;
-            /**
-             * The type of identity that last modified the resource.
-             */
-            lastModifiedAt?: string;
-            /**
-             * The identity that last modified the resource.
-             */
-            lastModifiedBy?: string;
-            /**
-             * The type of identity that last modified the resource.
-             */
-            lastModifiedByType?: string;
-        }
-
-        /**
-         * Represents a Template Spec artifact containing an embedded Azure Resource Manager template.
-         */
-        export interface TemplateSpecTemplateArtifactResponse {
-            /**
-             * The kind of artifact.
-             */
-            kind: "template";
-            /**
-             * A filesystem safe relative path of the artifact.
-             */
-            path: string;
-            /**
-             * The Azure Resource Manager template.
-             */
-            template: any;
         }
     }
 }
@@ -383425,7 +383383,7 @@ export namespace search {
          */
         export interface PrivateEndpointConnectionResponse {
             /**
-             * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
              */
             id: string;
             /**
@@ -383437,7 +383395,7 @@ export namespace search {
              */
             properties?: outputs.search.latest.PrivateEndpointConnectionPropertiesResponse;
             /**
-             * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+             * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
              */
             type: string;
         }
@@ -383491,7 +383449,7 @@ export namespace search {
          */
         export interface SharedPrivateLinkResourceResponse {
             /**
-             * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
              */
             id: string;
             /**
@@ -383503,7 +383461,7 @@ export namespace search {
              */
             properties?: outputs.search.latest.SharedPrivateLinkResourcePropertiesResponse;
             /**
-             * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+             * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
              */
             type: string;
         }
@@ -383909,7 +383867,7 @@ export namespace search {
          */
         export interface PrivateEndpointConnectionResponse {
             /**
-             * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
              */
             id: string;
             /**
@@ -383921,7 +383879,7 @@ export namespace search {
              */
             properties?: outputs.search.v20200801.PrivateEndpointConnectionPropertiesResponse;
             /**
-             * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+             * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
              */
             type: string;
         }
@@ -383975,7 +383933,7 @@ export namespace search {
          */
         export interface SharedPrivateLinkResourceResponse {
             /**
-             * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
              */
             id: string;
             /**
@@ -383987,7 +383945,7 @@ export namespace search {
              */
             properties?: outputs.search.v20200801.SharedPrivateLinkResourcePropertiesResponse;
             /**
-             * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+             * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
              */
             type: string;
         }
@@ -384089,7 +384047,7 @@ export namespace search {
          */
         export interface PrivateEndpointConnectionResponse {
             /**
-             * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
              */
             id: string;
             /**
@@ -384101,7 +384059,7 @@ export namespace search {
              */
             properties?: outputs.search.v20200801preview.PrivateEndpointConnectionPropertiesResponse;
             /**
-             * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+             * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
              */
             type: string;
         }
@@ -384155,7 +384113,7 @@ export namespace search {
          */
         export interface SharedPrivateLinkResourceResponse {
             /**
-             * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
              */
             id: string;
             /**
@@ -384167,7 +384125,7 @@ export namespace search {
              */
             properties?: outputs.search.v20200801preview.SharedPrivateLinkResourcePropertiesResponse;
             /**
-             * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+             * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
              */
             type: string;
         }
@@ -385801,7 +385759,7 @@ export namespace security {
 
     export namespace v20200101preview {
         /**
-         * AWS cloud account connector based assume role, the role enables delegating access to your AWS resources. The role is composed of role arn and external id, for more details, refer to <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html">Creating a Role to Delegate Permissions to an IAM User (write only)</a>
+         * AWS cloud account connector based assume role, the role enables delegating access to your AWS resources. The role is composed of role Amazon Resource Name (ARN) and external ID. For more details, refer to <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html">Creating a Role to Delegate Permissions to an IAM User (write only)</a>
          */
         export interface AwAssumeRoleAuthenticationDetailsPropertiesResponse {
             /**
@@ -385831,7 +385789,7 @@ export namespace security {
         }
 
         /**
-         * AWS cloud account connector based credentials, the credentials is composed of access key id and secret key, for more details, refer to <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html">Creating an IAM User in Your AWS Account (write only)</a>
+         * AWS cloud account connector based credentials, the credentials is composed of access key ID and secret key, for more details, refer to <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html">Creating an IAM User in Your AWS Account (write only)</a>
          */
         export interface AwsCredsAuthenticationDetailsPropertiesResponse {
             /**
@@ -385861,15 +385819,15 @@ export namespace security {
         }
 
         /**
-         * GCP cloud account connector based service to service credentials, the credentials is composed of organization id and json api key (write only)</a>
+         * GCP cloud account connector based service to service credentials, the credentials are composed of the organization ID and a JSON API key (write only)
          */
         export interface GcpCredentialsDetailsPropertiesResponse {
             /**
-             * Auth provider x509 certificate url field of the API key (write only)
+             * Auth provider x509 certificate URL field of the API key (write only)
              */
             authProviderX509CertUrl: string;
             /**
-             * Auth Uri field of the API key (write only)
+             * Auth URI field of the API key (write only)
              */
             authUri: string;
             /**
@@ -385885,11 +385843,11 @@ export namespace security {
              */
             clientEmail: string;
             /**
-             * Client Id field of the API key (write only)
+             * Client ID field of the API key (write only)
              */
             clientId: string;
             /**
-             * Client x509 certificate url field of the API key (write only)
+             * Client x509 certificate URL field of the API key (write only)
              */
             clientX509CertUrl: string;
             /**
@@ -385897,7 +385855,7 @@ export namespace security {
              */
             grantedPermissions: string[];
             /**
-             * The Organization ID of the GCP cloud account
+             * The organization ID of the GCP cloud account
              */
             organizationId: string;
             /**
@@ -385905,15 +385863,15 @@ export namespace security {
              */
             privateKey: string;
             /**
-             * Private key Id field of the API key (write only)
+             * Private key ID field of the API key (write only)
              */
             privateKeyId: string;
             /**
-             * Project Id field of the API key (write only)
+             * Project ID field of the API key (write only)
              */
             projectId: string;
             /**
-             * Token Uri field of the API key (write only)
+             * Token URI field of the API key (write only)
              */
             tokenUri: string;
             /**
@@ -385939,7 +385897,7 @@ export namespace security {
              */
             proxyServer?: outputs.security.v20200101preview.ProxyServerPropertiesResponse;
             /**
-             * The location where the meta data of machines will be stored
+             * The location where the metadata of machines will be stored
              */
             region?: string;
             /**
@@ -385999,7 +385957,7 @@ export namespace security {
          */
         export interface ServicePrincipalPropertiesResponse {
             /**
-             * Application id of service principal.
+             * Application ID of service principal.
              */
             applicationId?: string;
             /**
@@ -386008,10 +385966,44 @@ export namespace security {
             secret?: string;
         }
     }
+
+    export namespace v20200701preview {
+        /**
+         * Rule results properties.
+         */
+        export interface RuleResultsPropertiesResponse {
+            /**
+             * Expected results in the baseline.
+             */
+            results?: string[][];
+        }
+    }
 }
 
 export namespace securityinsights {
     export namespace v20190101preview {
+        /**
+         * Information on the client (user or application) that made some action
+         */
+        export interface ClientInfoResponse {
+            /**
+             * The email of the client.
+             */
+            email?: string;
+            /**
+             * The name of the client.
+             */
+            name?: string;
+            /**
+             * The object id of the client.
+             */
+            objectId?: string;
+            /**
+             * The user principal name of the client.
+             */
+            userPrincipalName?: string;
+        }
+
         /**
          * Incident additional data property bag.
          */
@@ -397629,7 +397621,7 @@ export namespace storage {
          */
         export interface PrivateEndpointConnectionResponse {
             /**
-             * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
              */
             id: string;
             /**
@@ -397649,7 +397641,7 @@ export namespace storage {
              */
             provisioningState: string;
             /**
-             * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+             * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
              */
             type: string;
         }
@@ -401503,7 +401495,7 @@ export namespace storage {
          */
         export interface PrivateEndpointConnectionResponse {
             /**
-             * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
              */
             id: string;
             /**
@@ -401523,7 +401515,7 @@ export namespace storage {
              */
             provisioningState: string;
             /**
-             * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+             * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
              */
             type: string;
         }
@@ -402288,7 +402280,7 @@ export namespace storage {
          */
         export interface PrivateEndpointConnectionResponse {
             /**
-             * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
              */
             id: string;
             /**
@@ -402308,7 +402300,7 @@ export namespace storage {
              */
             provisioningState: string;
             /**
-             * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+             * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
              */
             type: string;
         }
@@ -403244,7 +403236,7 @@ export namespace storagesync {
          */
         export interface PrivateEndpointConnectionResponse {
             /**
-             * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
              */
             id: string;
             /**
@@ -403264,7 +403256,7 @@ export namespace storagesync {
              */
             provisioningState: string;
             /**
-             * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+             * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
              */
             type: string;
         }
@@ -404540,7 +404532,7 @@ export namespace storagesync {
          */
         export interface PrivateEndpointConnectionResponse {
             /**
-             * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
              */
             id: string;
             /**
@@ -404560,7 +404552,7 @@ export namespace storagesync {
              */
             provisioningState: string;
             /**
-             * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+             * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
              */
             type: string;
         }
@@ -404926,7 +404918,7 @@ export namespace storagesync {
          */
         export interface PrivateEndpointConnectionResponse {
             /**
-             * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
              */
             id: string;
             /**
@@ -404946,7 +404938,7 @@ export namespace storagesync {
              */
             provisioningState: string;
             /**
-             * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+             * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
              */
             type: string;
         }
@@ -409144,6 +409136,32 @@ export namespace synapse {
         }
 
         /**
+         * Library/package information of a Big Data pool powered by Apache Spark
+         */
+        export interface LibraryInfoResponse {
+            /**
+             * Storage blob container name.
+             */
+            containerName?: string;
+            /**
+             * Name of the library.
+             */
+            name?: string;
+            /**
+             * Storage blob path of library.
+             */
+            path?: string;
+            /**
+             * Type of the library.
+             */
+            type?: string;
+            /**
+             * The last update time of the library.
+             */
+            uploadedTimestamp?: string;
+        }
+
+        /**
          * Library requirements for a Big Data pool powered by Apache Spark
          */
         export interface LibraryRequirementsResponse {
@@ -409386,7 +409404,7 @@ export namespace synapse {
          */
         export interface PrivateEndpointConnectionResponse {
             /**
-             * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
              */
             id: string;
             /**
@@ -409406,7 +409424,7 @@ export namespace synapse {
              */
             provisioningState: string;
             /**
-             * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+             * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
              */
             type: string;
         }
