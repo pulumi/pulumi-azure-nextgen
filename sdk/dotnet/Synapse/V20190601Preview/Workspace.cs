@@ -15,6 +15,12 @@ namespace Pulumi.AzureNextGen.Synapse.V20190601Preview
     public partial class Workspace : Pulumi.CustomResource
     {
         /// <summary>
+        /// Babylon Configuration
+        /// </summary>
+        [Output("babylonConfiguration")]
+        public Output<Outputs.BabylonConfigurationResponse?> BabylonConfiguration { get; private set; } = null!;
+
+        /// <summary>
         /// Connectivity endpoints
         /// </summary>
         [Output("connectivityEndpoints")]
@@ -25,6 +31,12 @@ namespace Pulumi.AzureNextGen.Synapse.V20190601Preview
         /// </summary>
         [Output("defaultDataLakeStorage")]
         public Output<Outputs.DataLakeStorageAccountDetailsResponse?> DefaultDataLakeStorage { get; private set; } = null!;
+
+        /// <summary>
+        /// The encryption details of the workspace
+        /// </summary>
+        [Output("encryption")]
+        public Output<Outputs.EncryptionDetailsResponse?> Encryption { get; private set; } = null!;
 
         /// <summary>
         /// Workspace level configs and feature flags
@@ -110,6 +122,12 @@ namespace Pulumi.AzureNextGen.Synapse.V20190601Preview
         [Output("virtualNetworkProfile")]
         public Output<Outputs.VirtualNetworkProfileResponse?> VirtualNetworkProfile { get; private set; } = null!;
 
+        /// <summary>
+        /// The workspace unique identifier
+        /// </summary>
+        [Output("workspaceUID")]
+        public Output<string> WorkspaceUID { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Workspace resource with the given unique name, arguments, and options.
@@ -155,6 +173,12 @@ namespace Pulumi.AzureNextGen.Synapse.V20190601Preview
 
     public sealed class WorkspaceArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Babylon Configuration
+        /// </summary>
+        [Input("babylonConfiguration")]
+        public Input<Inputs.BabylonConfigurationArgs>? BabylonConfiguration { get; set; }
+
         [Input("connectivityEndpoints")]
         private InputMap<string>? _connectivityEndpoints;
 
@@ -172,6 +196,12 @@ namespace Pulumi.AzureNextGen.Synapse.V20190601Preview
         /// </summary>
         [Input("defaultDataLakeStorage")]
         public Input<Inputs.DataLakeStorageAccountDetailsArgs>? DefaultDataLakeStorage { get; set; }
+
+        /// <summary>
+        /// The encryption details of the workspace
+        /// </summary>
+        [Input("encryption")]
+        public Input<Inputs.EncryptionDetailsArgs>? Encryption { get; set; }
 
         /// <summary>
         /// Identity of the workspace
@@ -202,18 +232,6 @@ namespace Pulumi.AzureNextGen.Synapse.V20190601Preview
         /// </summary>
         [Input("managedVirtualNetworkSettings")]
         public Input<Inputs.ManagedVirtualNetworkSettingsArgs>? ManagedVirtualNetworkSettings { get; set; }
-
-        [Input("privateEndpointConnections")]
-        private InputList<Inputs.PrivateEndpointConnectionArgs>? _privateEndpointConnections;
-
-        /// <summary>
-        /// Private endpoint connections to the workspace
-        /// </summary>
-        public InputList<Inputs.PrivateEndpointConnectionArgs> PrivateEndpointConnections
-        {
-            get => _privateEndpointConnections ?? (_privateEndpointConnections = new InputList<Inputs.PrivateEndpointConnectionArgs>());
-            set => _privateEndpointConnections = value;
-        }
 
         /// <summary>
         /// The name of the resource group. The name is case insensitive.

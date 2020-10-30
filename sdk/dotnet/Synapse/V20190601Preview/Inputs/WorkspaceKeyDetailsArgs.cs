@@ -11,23 +11,23 @@ namespace Pulumi.AzureNextGen.Synapse.V20190601Preview.Inputs
 {
 
     /// <summary>
-    /// Connection state details of the private endpoint
+    /// Details of the customer managed key associated with the workspace
     /// </summary>
-    public sealed class PrivateLinkServiceConnectionStateArgs : Pulumi.ResourceArgs
+    public sealed class WorkspaceKeyDetailsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The private link service connection description.
+        /// Workspace Key sub-resource key vault url
         /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
+        [Input("keyVaultUrl")]
+        public Input<string>? KeyVaultUrl { get; set; }
 
         /// <summary>
-        /// The private link service connection status.
+        /// Workspace Key sub-resource name
         /// </summary>
-        [Input("status")]
-        public Input<string>? Status { get; set; }
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
-        public PrivateLinkServiceConnectionStateArgs()
+        public WorkspaceKeyDetailsArgs()
         {
         }
     }

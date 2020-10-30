@@ -40,6 +40,10 @@ namespace Pulumi.AzureNextGen.Synapse.V20190601Preview
     public sealed class GetWorkspaceResult
     {
         /// <summary>
+        /// Babylon Configuration
+        /// </summary>
+        public readonly Outputs.BabylonConfigurationResponse? BabylonConfiguration;
+        /// <summary>
         /// Connectivity endpoints
         /// </summary>
         public readonly ImmutableDictionary<string, string>? ConnectivityEndpoints;
@@ -47,6 +51,10 @@ namespace Pulumi.AzureNextGen.Synapse.V20190601Preview
         /// Workspace default data lake storage account details
         /// </summary>
         public readonly Outputs.DataLakeStorageAccountDetailsResponse? DefaultDataLakeStorage;
+        /// <summary>
+        /// The encryption details of the workspace
+        /// </summary>
+        public readonly Outputs.EncryptionDetailsResponse? Encryption;
         /// <summary>
         /// Workspace level configs and feature flags
         /// </summary>
@@ -103,12 +111,20 @@ namespace Pulumi.AzureNextGen.Synapse.V20190601Preview
         /// Virtual Network profile
         /// </summary>
         public readonly Outputs.VirtualNetworkProfileResponse? VirtualNetworkProfile;
+        /// <summary>
+        /// The workspace unique identifier
+        /// </summary>
+        public readonly string WorkspaceUID;
 
         [OutputConstructor]
         private GetWorkspaceResult(
+            Outputs.BabylonConfigurationResponse? babylonConfiguration,
+
             ImmutableDictionary<string, string>? connectivityEndpoints,
 
             Outputs.DataLakeStorageAccountDetailsResponse? defaultDataLakeStorage,
+
+            Outputs.EncryptionDetailsResponse? encryption,
 
             ImmutableDictionary<string, object> extraProperties,
 
@@ -136,10 +152,14 @@ namespace Pulumi.AzureNextGen.Synapse.V20190601Preview
 
             string type,
 
-            Outputs.VirtualNetworkProfileResponse? virtualNetworkProfile)
+            Outputs.VirtualNetworkProfileResponse? virtualNetworkProfile,
+
+            string workspaceUID)
         {
+            BabylonConfiguration = babylonConfiguration;
             ConnectivityEndpoints = connectivityEndpoints;
             DefaultDataLakeStorage = defaultDataLakeStorage;
+            Encryption = encryption;
             ExtraProperties = extraProperties;
             Identity = identity;
             Location = location;
@@ -154,6 +174,7 @@ namespace Pulumi.AzureNextGen.Synapse.V20190601Preview
             Tags = tags;
             Type = type;
             VirtualNetworkProfile = virtualNetworkProfile;
+            WorkspaceUID = workspaceUID;
         }
     }
 }
