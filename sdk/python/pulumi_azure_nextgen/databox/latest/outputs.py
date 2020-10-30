@@ -34,7 +34,9 @@ __all__ = [
     'DataboxJobSecretsResponseResult',
     'DcAccessSecurityCodeResponseResult',
     'DiskSecretResponseResult',
+    'EncryptionPreferencesResponse',
     'FilterFileDetailsResponse',
+    'IdentityPropertiesResponse',
     'JobDeliveryInfoResponse',
     'JobStagesResponse',
     'KeyEncryptionKeyResponse',
@@ -54,6 +56,8 @@ __all__ = [
     'TransferFilterDetailsResponse',
     'TransportPreferencesResponse',
     'UnencryptedCredentialsResponseResult',
+    'UserAssignedIdentityResponse',
+    'UserAssignedPropertiesResponse',
 ]
 
 @pulumi.output_type
@@ -1923,6 +1927,32 @@ class DiskSecretResponseResult(dict):
 
 
 @pulumi.output_type
+class EncryptionPreferencesResponse(dict):
+    """
+    Preferences related to the Encryption.
+    """
+    def __init__(__self__, *,
+                 double_encryption: Optional[str] = None):
+        """
+        Preferences related to the Encryption.
+        :param str double_encryption: Defines secondary layer of software-based encryption enablement.
+        """
+        if double_encryption is not None:
+            pulumi.set(__self__, "double_encryption", double_encryption)
+
+    @property
+    @pulumi.getter(name="doubleEncryption")
+    def double_encryption(self) -> Optional[str]:
+        """
+        Defines secondary layer of software-based encryption enablement.
+        """
+        return pulumi.get(self, "double_encryption")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
 class FilterFileDetailsResponse(dict):
     """
     Details of the filter files to be used for data transfer.
@@ -1953,6 +1983,44 @@ class FilterFileDetailsResponse(dict):
         Type of the filter file.
         """
         return pulumi.get(self, "filter_file_type")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class IdentityPropertiesResponse(dict):
+    """
+    Managed identity properties.
+    """
+    def __init__(__self__, *,
+                 type: Optional[str] = None,
+                 user_assigned: Optional['outputs.UserAssignedPropertiesResponse'] = None):
+        """
+        Managed identity properties.
+        :param str type: Managed service identity type.
+        :param 'UserAssignedPropertiesResponseArgs' user_assigned: User assigned identity properties.
+        """
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if user_assigned is not None:
+            pulumi.set(__self__, "user_assigned", user_assigned)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Managed service identity type.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="userAssigned")
+    def user_assigned(self) -> Optional['outputs.UserAssignedPropertiesResponse']:
+        """
+        User assigned identity properties.
+        """
+        return pulumi.get(self, "user_assigned")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -2060,15 +2128,19 @@ class KeyEncryptionKeyResponse(dict):
     """
     def __init__(__self__, *,
                  kek_type: str,
+                 identity_properties: Optional['outputs.IdentityPropertiesResponse'] = None,
                  kek_url: Optional[str] = None,
                  kek_vault_resource_id: Optional[str] = None):
         """
         Encryption key containing details about key to encrypt different keys.
         :param str kek_type: Type of encryption key used for key encryption.
+        :param 'IdentityPropertiesResponseArgs' identity_properties: Managed identity properties used for key encryption.
         :param str kek_url: Key encryption key. It is required in case of Customer managed KekType.
         :param str kek_vault_resource_id: Kek vault resource id. It is required in case of Customer managed KekType.
         """
         pulumi.set(__self__, "kek_type", kek_type)
+        if identity_properties is not None:
+            pulumi.set(__self__, "identity_properties", identity_properties)
         if kek_url is not None:
             pulumi.set(__self__, "kek_url", kek_url)
         if kek_vault_resource_id is not None:
@@ -2081,6 +2153,14 @@ class KeyEncryptionKeyResponse(dict):
         Type of encryption key used for key encryption.
         """
         return pulumi.get(self, "kek_type")
+
+    @property
+    @pulumi.getter(name="identityProperties")
+    def identity_properties(self) -> Optional['outputs.IdentityPropertiesResponse']:
+        """
+        Managed identity properties used for key encryption.
+        """
+        return pulumi.get(self, "identity_properties")
 
     @property
     @pulumi.getter(name="kekUrl")
@@ -2250,17 +2330,29 @@ class PreferencesResponse(dict):
     Preferences related to the order
     """
     def __init__(__self__, *,
+                 encryption_preferences: Optional['outputs.EncryptionPreferencesResponse'] = None,
                  preferred_data_center_region: Optional[Sequence[str]] = None,
                  transport_preferences: Optional['outputs.TransportPreferencesResponse'] = None):
         """
         Preferences related to the order
+        :param 'EncryptionPreferencesResponseArgs' encryption_preferences: Preferences related to the Encryption.
         :param Sequence[str] preferred_data_center_region: Preferred data center region.
         :param 'TransportPreferencesResponseArgs' transport_preferences: Preferences related to the shipment logistics of the sku.
         """
+        if encryption_preferences is not None:
+            pulumi.set(__self__, "encryption_preferences", encryption_preferences)
         if preferred_data_center_region is not None:
             pulumi.set(__self__, "preferred_data_center_region", preferred_data_center_region)
         if transport_preferences is not None:
             pulumi.set(__self__, "transport_preferences", transport_preferences)
+
+    @property
+    @pulumi.getter(name="encryptionPreferences")
+    def encryption_preferences(self) -> Optional['outputs.EncryptionPreferencesResponse']:
+        """
+        Preferences related to the Encryption.
+        """
+        return pulumi.get(self, "encryption_preferences")
 
     @property
     @pulumi.getter(name="preferredDataCenterRegion")
@@ -2290,17 +2382,21 @@ class ResourceIdentityResponse(dict):
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
-                 type: Optional[str] = None):
+                 type: Optional[str] = None,
+                 user_assigned_identities: Optional[Mapping[str, 'outputs.UserAssignedIdentityResponse']] = None):
         """
         Msi identity details of the resource
         :param str principal_id: Service Principal Id backing the Msi
         :param str tenant_id: Home Tenant Id
         :param str type: Identity type
+        :param Mapping[str, 'UserAssignedIdentityResponseArgs'] user_assigned_identities: User Assigned Identities
         """
         pulumi.set(__self__, "principal_id", principal_id)
         pulumi.set(__self__, "tenant_id", tenant_id)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if user_assigned_identities is not None:
+            pulumi.set(__self__, "user_assigned_identities", user_assigned_identities)
 
     @property
     @pulumi.getter(name="principalId")
@@ -2325,6 +2421,14 @@ class ResourceIdentityResponse(dict):
         Identity type
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="userAssignedIdentities")
+    def user_assigned_identities(self) -> Optional[Mapping[str, 'outputs.UserAssignedIdentityResponse']]:
+        """
+        User Assigned Identities
+        """
+        return pulumi.get(self, "user_assigned_identities")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -2403,11 +2507,11 @@ class ShippingAddressResponse(dict):
     """
     def __init__(__self__, *,
                  country: str,
-                 postal_code: str,
                  street_address1: str,
                  address_type: Optional[str] = None,
                  city: Optional[str] = None,
                  company_name: Optional[str] = None,
+                 postal_code: Optional[str] = None,
                  state_or_province: Optional[str] = None,
                  street_address2: Optional[str] = None,
                  street_address3: Optional[str] = None,
@@ -2415,18 +2519,17 @@ class ShippingAddressResponse(dict):
         """
         Shipping address where customer wishes to receive the device.
         :param str country: Name of the Country.
-        :param str postal_code: Postal code.
         :param str street_address1: Street Address line 1.
         :param str address_type: Type of address.
         :param str city: Name of the City.
         :param str company_name: Name of the company.
+        :param str postal_code: Postal code.
         :param str state_or_province: Name of the State or Province.
         :param str street_address2: Street Address line 2.
         :param str street_address3: Street Address line 3.
         :param str zip_extended_code: Extended Zip Code.
         """
         pulumi.set(__self__, "country", country)
-        pulumi.set(__self__, "postal_code", postal_code)
         pulumi.set(__self__, "street_address1", street_address1)
         if address_type is not None:
             pulumi.set(__self__, "address_type", address_type)
@@ -2434,6 +2537,8 @@ class ShippingAddressResponse(dict):
             pulumi.set(__self__, "city", city)
         if company_name is not None:
             pulumi.set(__self__, "company_name", company_name)
+        if postal_code is not None:
+            pulumi.set(__self__, "postal_code", postal_code)
         if state_or_province is not None:
             pulumi.set(__self__, "state_or_province", state_or_province)
         if street_address2 is not None:
@@ -2450,14 +2555,6 @@ class ShippingAddressResponse(dict):
         Name of the Country.
         """
         return pulumi.get(self, "country")
-
-    @property
-    @pulumi.getter(name="postalCode")
-    def postal_code(self) -> str:
-        """
-        Postal code.
-        """
-        return pulumi.get(self, "postal_code")
 
     @property
     @pulumi.getter(name="streetAddress1")
@@ -2490,6 +2587,14 @@ class ShippingAddressResponse(dict):
         Name of the company.
         """
         return pulumi.get(self, "company_name")
+
+    @property
+    @pulumi.getter(name="postalCode")
+    def postal_code(self) -> Optional[str]:
+        """
+        Postal code.
+        """
+        return pulumi.get(self, "postal_code")
 
     @property
     @pulumi.getter(name="stateOrProvince")
@@ -2891,5 +2996,67 @@ class UnencryptedCredentialsResponseResult(dict):
         Secrets related to this job.
         """
         return pulumi.get(self, "job_secrets")
+
+
+@pulumi.output_type
+class UserAssignedIdentityResponse(dict):
+    """
+    Class defining User assigned identity details.
+    """
+    def __init__(__self__, *,
+                 client_id: str,
+                 principal_id: str):
+        """
+        Class defining User assigned identity details.
+        :param str client_id: The client id of user assigned identity.
+        :param str principal_id: The principal id of user assigned identity.
+        """
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "principal_id", principal_id)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> str:
+        """
+        The client id of user assigned identity.
+        """
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="principalId")
+    def principal_id(self) -> str:
+        """
+        The principal id of user assigned identity.
+        """
+        return pulumi.get(self, "principal_id")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class UserAssignedPropertiesResponse(dict):
+    """
+    User assigned identity properties.
+    """
+    def __init__(__self__, *,
+                 resource_id: Optional[str] = None):
+        """
+        User assigned identity properties.
+        :param str resource_id: Arm resource id for user assigned identity to be used to fetch MSI token.
+        """
+        if resource_id is not None:
+            pulumi.set(__self__, "resource_id", resource_id)
+
+    @property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> Optional[str]:
+        """
+        Arm resource id for user assigned identity to be used to fetch MSI token.
+        """
+        return pulumi.get(self, "resource_id")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

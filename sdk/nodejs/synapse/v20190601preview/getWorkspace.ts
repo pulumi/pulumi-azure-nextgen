@@ -36,6 +36,10 @@ export interface GetWorkspaceArgs {
  */
 export interface GetWorkspaceResult {
     /**
+     * Babylon Configuration
+     */
+    readonly babylonConfiguration?: outputs.synapse.v20190601preview.BabylonConfigurationResponse;
+    /**
      * Connectivity endpoints
      */
     readonly connectivityEndpoints?: {[key: string]: string};
@@ -43,6 +47,10 @@ export interface GetWorkspaceResult {
      * Workspace default data lake storage account details
      */
     readonly defaultDataLakeStorage?: outputs.synapse.v20190601preview.DataLakeStorageAccountDetailsResponse;
+    /**
+     * The encryption details of the workspace
+     */
+    readonly encryption?: outputs.synapse.v20190601preview.EncryptionDetailsResponse;
     /**
      * Workspace level configs and feature flags
      */
@@ -99,4 +107,8 @@ export interface GetWorkspaceResult {
      * Virtual Network profile
      */
     readonly virtualNetworkProfile?: outputs.synapse.v20190601preview.VirtualNetworkProfileResponse;
+    /**
+     * The workspace unique identifier
+     */
+    readonly workspaceUID: string;
 }

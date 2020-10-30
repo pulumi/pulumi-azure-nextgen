@@ -11,9 +11,12 @@ from ... import _utilities, _tables
 __all__ = [
     'AutoPausePropertiesArgs',
     'AutoScalePropertiesArgs',
+    'BabylonConfigurationArgs',
     'CmdkeySetupArgs',
     'ComponentSetupArgs',
+    'CustomerManagedKeyDetailsArgs',
     'DataLakeStorageAccountDetailsArgs',
+    'EncryptionDetailsArgs',
     'EntityReferenceArgs',
     'EnvironmentVariableSetupArgs',
     'IntegrationRuntimeComputePropertiesArgs',
@@ -30,14 +33,13 @@ __all__ = [
     'ManagedIdentityArgs',
     'ManagedIntegrationRuntimeArgs',
     'ManagedVirtualNetworkSettingsArgs',
-    'PrivateEndpointConnectionArgs',
-    'PrivateLinkServiceConnectionStateArgs',
     'SecureStringArgs',
     'SelfHostedIntegrationRuntimeArgs',
     'SkuArgs',
     'SqlPoolVulnerabilityAssessmentRuleBaselineItemArgs',
     'VirtualNetworkProfileArgs',
     'VulnerabilityAssessmentRecurringScansPropertiesArgs',
+    'WorkspaceKeyDetailsArgs',
 ]
 
 @pulumi.input_type
@@ -134,6 +136,30 @@ class AutoScalePropertiesArgs:
     @min_node_count.setter
     def min_node_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_node_count", value)
+
+
+@pulumi.input_type
+class BabylonConfigurationArgs:
+    def __init__(__self__, *,
+                 babylon_resource_id: Optional[pulumi.Input[str]] = None):
+        """
+        Babylon Configuration
+        :param pulumi.Input[str] babylon_resource_id: Babylon Resource ID
+        """
+        if babylon_resource_id is not None:
+            pulumi.set(__self__, "babylon_resource_id", babylon_resource_id)
+
+    @property
+    @pulumi.getter(name="babylonResourceId")
+    def babylon_resource_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Babylon Resource ID
+        """
+        return pulumi.get(self, "babylon_resource_id")
+
+    @babylon_resource_id.setter
+    def babylon_resource_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "babylon_resource_id", value)
 
 
 @pulumi.input_type
@@ -259,6 +285,30 @@ class ComponentSetupArgs:
 
 
 @pulumi.input_type
+class CustomerManagedKeyDetailsArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input['WorkspaceKeyDetailsArgs']] = None):
+        """
+        Details of the customer managed key associated with the workspace
+        :param pulumi.Input['WorkspaceKeyDetailsArgs'] key: The key object of the workspace
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input['WorkspaceKeyDetailsArgs']]:
+        """
+        The key object of the workspace
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input['WorkspaceKeyDetailsArgs']]):
+        pulumi.set(self, "key", value)
+
+
+@pulumi.input_type
 class DataLakeStorageAccountDetailsArgs:
     def __init__(__self__, *,
                  account_url: Optional[pulumi.Input[str]] = None,
@@ -296,6 +346,30 @@ class DataLakeStorageAccountDetailsArgs:
     @filesystem.setter
     def filesystem(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "filesystem", value)
+
+
+@pulumi.input_type
+class EncryptionDetailsArgs:
+    def __init__(__self__, *,
+                 cmk: Optional[pulumi.Input['CustomerManagedKeyDetailsArgs']] = None):
+        """
+        Details of the encryption associated with the workspace
+        :param pulumi.Input['CustomerManagedKeyDetailsArgs'] cmk: Customer Managed Key Details
+        """
+        if cmk is not None:
+            pulumi.set(__self__, "cmk", cmk)
+
+    @property
+    @pulumi.getter
+    def cmk(self) -> Optional[pulumi.Input['CustomerManagedKeyDetailsArgs']]:
+        """
+        Customer Managed Key Details
+        """
+        return pulumi.get(self, "cmk")
+
+    @cmk.setter
+    def cmk(self, value: Optional[pulumi.Input['CustomerManagedKeyDetailsArgs']]):
+        pulumi.set(self, "cmk", value)
 
 
 @pulumi.input_type
@@ -1235,70 +1309,6 @@ class ManagedVirtualNetworkSettingsArgs:
 
 
 @pulumi.input_type
-class PrivateEndpointConnectionArgs:
-    def __init__(__self__, *,
-                 private_link_service_connection_state: Optional[pulumi.Input['PrivateLinkServiceConnectionStateArgs']] = None):
-        """
-        A private endpoint connection
-        :param pulumi.Input['PrivateLinkServiceConnectionStateArgs'] private_link_service_connection_state: Connection state of the private endpoint connection.
-        """
-        if private_link_service_connection_state is not None:
-            pulumi.set(__self__, "private_link_service_connection_state", private_link_service_connection_state)
-
-    @property
-    @pulumi.getter(name="privateLinkServiceConnectionState")
-    def private_link_service_connection_state(self) -> Optional[pulumi.Input['PrivateLinkServiceConnectionStateArgs']]:
-        """
-        Connection state of the private endpoint connection.
-        """
-        return pulumi.get(self, "private_link_service_connection_state")
-
-    @private_link_service_connection_state.setter
-    def private_link_service_connection_state(self, value: Optional[pulumi.Input['PrivateLinkServiceConnectionStateArgs']]):
-        pulumi.set(self, "private_link_service_connection_state", value)
-
-
-@pulumi.input_type
-class PrivateLinkServiceConnectionStateArgs:
-    def __init__(__self__, *,
-                 description: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None):
-        """
-        Connection state details of the private endpoint
-        :param pulumi.Input[str] description: The private link service connection description.
-        :param pulumi.Input[str] status: The private link service connection status.
-        """
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        The private link service connection description.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
-        """
-        The private link service connection status.
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "status", value)
-
-
-@pulumi.input_type
 class SecureStringArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
@@ -1548,5 +1558,45 @@ class VulnerabilityAssessmentRecurringScansPropertiesArgs:
     @is_enabled.setter
     def is_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_enabled", value)
+
+
+@pulumi.input_type
+class WorkspaceKeyDetailsArgs:
+    def __init__(__self__, *,
+                 key_vault_url: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        Details of the customer managed key associated with the workspace
+        :param pulumi.Input[str] key_vault_url: Workspace Key sub-resource key vault url
+        :param pulumi.Input[str] name: Workspace Key sub-resource name
+        """
+        if key_vault_url is not None:
+            pulumi.set(__self__, "key_vault_url", key_vault_url)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="keyVaultUrl")
+    def key_vault_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        Workspace Key sub-resource key vault url
+        """
+        return pulumi.get(self, "key_vault_url")
+
+    @key_vault_url.setter
+    def key_vault_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_vault_url", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Workspace Key sub-resource name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 

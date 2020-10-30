@@ -19086,6 +19086,55 @@ export namespace cache {
         }
 
     }
+
+    export namespace v20201001preview {
+        /**
+         * Specifies configuration of a redis module
+         */
+        export interface Module {
+            /**
+             * Configuration options for the module, e.g. 'ERROR_RATE 0.00 INITIAL_SIZE 400'.
+             */
+            args?: pulumi.Input<string>;
+            /**
+             * The name of the module, e.g. 'RedisBloom', 'RediSearch', 'RedisTimeSeries'
+             */
+            name: pulumi.Input<string>;
+        }
+
+        /**
+         * A collection of information about the state of the connection between service consumer and provider.
+         */
+        export interface PrivateLinkServiceConnectionState {
+            /**
+             * A message indicating if changes on the service provider require any updates on the consumer.
+             */
+            actionsRequired?: pulumi.Input<string>;
+            /**
+             * The reason for approval/rejection of the connection.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+             */
+            status?: pulumi.Input<string>;
+        }
+
+        /**
+         * SKU parameters supplied to the create RedisEnterprise operation.
+         */
+        export interface Sku {
+            /**
+             * The size of the RedisEnterprise cluster. Defaults to 2 or 3 depending on SKU. Valid values are (2, 4, 6, ...) for Enterprise SKUs and (3, 9, 15, ...) for Flash SKUs.
+             */
+            capacity?: pulumi.Input<number>;
+            /**
+             * The type of RedisEnterprise cluster to deploy. Possible values: (Enterprise_E10, EnterpriseFlash_F300 etc.)
+             */
+            name: pulumi.Input<string>;
+        }
+
+    }
 }
 
 export namespace cdn {
@@ -62081,6 +62130,16 @@ export namespace databox {
         }
 
         /**
+         * Preferences related to the Encryption.
+         */
+        export interface EncryptionPreferences {
+            /**
+             * Defines secondary layer of software-based encryption enablement.
+             */
+            doubleEncryption?: pulumi.Input<string>;
+        }
+
+        /**
          * Details of the filter files to be used for data transfer.
          */
         export interface FilterFileDetails {
@@ -62145,6 +62204,10 @@ export namespace databox {
          */
         export interface Preferences {
             /**
+             * Preferences related to the Encryption.
+             */
+            encryptionPreferences?: pulumi.Input<inputs.databox.latest.EncryptionPreferences>;
+            /**
              * Preferred data center region.
              */
             preferredDataCenterRegion?: pulumi.Input<pulumi.Input<string>[]>;
@@ -62187,7 +62250,7 @@ export namespace databox {
             /**
              * Postal code.
              */
-            postalCode: pulumi.Input<string>;
+            postalCode?: pulumi.Input<string>;
             /**
              * Name of the State or Province.
              */
@@ -63346,6 +63409,489 @@ export namespace databox {
              * Details of the filter files to be used for data transfer.
              */
             filterFileDetails?: pulumi.Input<pulumi.Input<inputs.databox.v20200401.FilterFileDetails>[]>;
+        }
+
+        /**
+         * Preferences related to the shipment logistics of the sku
+         */
+        export interface TransportPreferences {
+            /**
+             * Indicates Shipment Logistics type that the customer preferred.
+             */
+            preferredShipmentType: pulumi.Input<string>;
+        }
+
+    }
+
+    export namespace v20201101 {
+        /**
+         * Filter details to transfer Azure files
+         */
+        export interface AzureFileFilterDetails {
+            /**
+             * List of full path of the files to be transferred.
+             */
+            filePathList?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Prefix list of the Azure files to be transferred.
+             */
+            filePrefixList?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * List of file shares to be transferred.
+             */
+            fileShareList?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * Filter details to transfer Azure Blobs
+         */
+        export interface BlobFilterDetails {
+            /**
+             * List of full path of the blobs to be transferred.
+             */
+            blobPathList?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Prefix list of the Azure blobs to be transferred.
+             */
+            blobPrefixList?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * List of blob containers to be transferred.
+             */
+            containerList?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * Contact Details.
+         */
+        export interface ContactDetails {
+            /**
+             * Contact name of the person.
+             */
+            contactName: pulumi.Input<string>;
+            /**
+             * List of Email-ids to be notified about job progress.
+             */
+            emailList: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Mobile number of the contact person.
+             */
+            mobile?: pulumi.Input<string>;
+            /**
+             * Notification preference for a job stage.
+             */
+            notificationPreference?: pulumi.Input<pulumi.Input<inputs.databox.v20201101.NotificationPreference>[]>;
+            /**
+             * Phone number of the contact person.
+             */
+            phone: pulumi.Input<string>;
+            /**
+             * Phone extension number of the contact person.
+             */
+            phoneExtension?: pulumi.Input<string>;
+        }
+
+        /**
+         * DataBox Disk Job Details.
+         */
+        export interface DataBoxDiskJobDetails {
+            /**
+             * Contact details for notification and shipping.
+             */
+            contactDetails: pulumi.Input<inputs.databox.v20201101.ContactDetails>;
+            /**
+             * Details of the data to be exported from azure.
+             */
+            dataExportDetails?: pulumi.Input<pulumi.Input<inputs.databox.v20201101.DataExportDetails>[]>;
+            /**
+             * Details of the data to be imported into azure.
+             */
+            dataImportDetails?: pulumi.Input<pulumi.Input<inputs.databox.v20201101.DataImportDetails>[]>;
+            /**
+             * The expected size of the data, which needs to be transferred in this job, in terabytes.
+             */
+            expectedDataSizeInTerabytes?: pulumi.Input<number>;
+            /**
+             * Indicates the type of job details.
+             */
+            jobDetailsType: pulumi.Input<"DataBoxDisk">;
+            /**
+             * User entered passkey for DataBox Disk job.
+             */
+            passkey?: pulumi.Input<string>;
+            /**
+             * Preferences for the order.
+             */
+            preferences?: pulumi.Input<inputs.databox.v20201101.Preferences>;
+            /**
+             * User preference on what size disks are needed for the job. The map is from the disk size in TB to the count. Eg. {2,5} means 5 disks of 2 TB size. Key is string but will be checked against an int.
+             */
+            preferredDisks?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
+            /**
+             * Shipping address of the customer.
+             */
+            shippingAddress?: pulumi.Input<inputs.databox.v20201101.ShippingAddress>;
+        }
+
+        /**
+         * Databox Heavy Device Job Details
+         */
+        export interface DataBoxHeavyJobDetails {
+            /**
+             * Contact details for notification and shipping.
+             */
+            contactDetails: pulumi.Input<inputs.databox.v20201101.ContactDetails>;
+            /**
+             * Details of the data to be exported from azure.
+             */
+            dataExportDetails?: pulumi.Input<pulumi.Input<inputs.databox.v20201101.DataExportDetails>[]>;
+            /**
+             * Details of the data to be imported into azure.
+             */
+            dataImportDetails?: pulumi.Input<pulumi.Input<inputs.databox.v20201101.DataImportDetails>[]>;
+            /**
+             * Set Device password for unlocking Databox Heavy. Should not be passed for TransferType:ExportFromAzure jobs. If this is not passed, the service will generate password itself. This will not be returned in Get Call. Password Requirements :  Password must be minimum of 12 and maximum of 64 characters. Password must have at least one uppercase alphabet, one number and one special character. Password cannot have the following characters : IilLoO0 Password can have only alphabets, numbers and these characters : @#\-$%^!+=;:_()]+
+             */
+            devicePassword?: pulumi.Input<string>;
+            /**
+             * The expected size of the data, which needs to be transferred in this job, in terabytes.
+             */
+            expectedDataSizeInTerabytes?: pulumi.Input<number>;
+            /**
+             * Indicates the type of job details.
+             */
+            jobDetailsType: pulumi.Input<"DataBoxHeavy">;
+            /**
+             * Preferences for the order.
+             */
+            preferences?: pulumi.Input<inputs.databox.v20201101.Preferences>;
+            /**
+             * Shipping address of the customer.
+             */
+            shippingAddress?: pulumi.Input<inputs.databox.v20201101.ShippingAddress>;
+        }
+
+        /**
+         * Databox Job Details
+         */
+        export interface DataBoxJobDetails {
+            /**
+             * Contact details for notification and shipping.
+             */
+            contactDetails: pulumi.Input<inputs.databox.v20201101.ContactDetails>;
+            /**
+             * Details of the data to be exported from azure.
+             */
+            dataExportDetails?: pulumi.Input<pulumi.Input<inputs.databox.v20201101.DataExportDetails>[]>;
+            /**
+             * Details of the data to be imported into azure.
+             */
+            dataImportDetails?: pulumi.Input<pulumi.Input<inputs.databox.v20201101.DataImportDetails>[]>;
+            /**
+             * Set Device password for unlocking Databox. Should not be passed for TransferType:ExportFromAzure jobs. If this is not passed, the service will generate password itself. This will not be returned in Get Call. Password Requirements :  Password must be minimum of 12 and maximum of 64 characters. Password must have at least one uppercase alphabet, one number and one special character. Password cannot have the following characters : IilLoO0 Password can have only alphabets, numbers and these characters : @#\-$%^!+=;:_()]+
+             */
+            devicePassword?: pulumi.Input<string>;
+            /**
+             * The expected size of the data, which needs to be transferred in this job, in terabytes.
+             */
+            expectedDataSizeInTerabytes?: pulumi.Input<number>;
+            /**
+             * Indicates the type of job details.
+             */
+            jobDetailsType: pulumi.Input<"DataBox">;
+            /**
+             * Preferences for the order.
+             */
+            preferences?: pulumi.Input<inputs.databox.v20201101.Preferences>;
+            /**
+             * Shipping address of the customer.
+             */
+            shippingAddress?: pulumi.Input<inputs.databox.v20201101.ShippingAddress>;
+        }
+
+        /**
+         * Details of the data to be used for exporting data from azure.
+         */
+        export interface DataExportDetails {
+            /**
+             * Account details of the data to be transferred
+             */
+            accountDetails: pulumi.Input<inputs.databox.v20201101.ManagedDiskDetails | inputs.databox.v20201101.StorageAccountDetails>;
+            /**
+             * Level of the logs to be collected.
+             */
+            logCollectionLevel?: pulumi.Input<string>;
+            /**
+             * Configuration for the data transfer.
+             */
+            transferConfiguration: pulumi.Input<inputs.databox.v20201101.TransferConfiguration>;
+        }
+
+        /**
+         * Details of the data to be used for importing data to azure.
+         */
+        export interface DataImportDetails {
+            /**
+             * Account details of the data to be transferred
+             */
+            accountDetails: pulumi.Input<inputs.databox.v20201101.ManagedDiskDetails | inputs.databox.v20201101.StorageAccountDetails>;
+        }
+
+        /**
+         * Preferences related to the Encryption.
+         */
+        export interface EncryptionPreferences {
+            /**
+             * Defines secondary layer of software-based encryption enablement.
+             */
+            doubleEncryption?: pulumi.Input<string>;
+        }
+
+        /**
+         * Details of the filter files to be used for data transfer.
+         */
+        export interface FilterFileDetails {
+            /**
+             * Path of the file that contains the details of all items to transfer.
+             */
+            filterFilePath: pulumi.Input<string>;
+            /**
+             * Type of the filter file.
+             */
+            filterFileType: pulumi.Input<string>;
+        }
+
+        /**
+         * Additional delivery info.
+         */
+        export interface JobDeliveryInfo {
+            /**
+             * Scheduled date time.
+             */
+            scheduledDateTime?: pulumi.Input<string>;
+        }
+
+        /**
+         * Details of the managed disks.
+         */
+        export interface ManagedDiskDetails {
+            /**
+             * Account Type of the data to be transferred.
+             */
+            dataAccountType: pulumi.Input<"ManagedDisk">;
+            /**
+             * Resource Group Id of the compute disks.
+             */
+            resourceGroupId: pulumi.Input<string>;
+            /**
+             * Password for all the shares to be created on the device. Should not be passed for TransferType:ExportFromAzure jobs. If this is not passed, the service will generate password itself. This will not be returned in Get Call. Password Requirements :  Password must be minimum of 12 and maximum of 64 characters. Password must have at least one uppercase alphabet, one number and one special character. Password cannot have the following characters : IilLoO0 Password can have only alphabets, numbers and these characters : @#\-$%^!+=;:_()]+
+             */
+            sharePassword?: pulumi.Input<string>;
+            /**
+             * Resource Id of the storage account that can be used to copy the vhd for staging.
+             */
+            stagingStorageAccountId: pulumi.Input<string>;
+        }
+
+        /**
+         * Notification preference for a job stage.
+         */
+        export interface NotificationPreference {
+            /**
+             * Notification is required or not.
+             */
+            sendNotification: pulumi.Input<boolean>;
+            /**
+             * Name of the stage.
+             */
+            stageName: pulumi.Input<string>;
+        }
+
+        /**
+         * Preferences related to the order
+         */
+        export interface Preferences {
+            /**
+             * Preferences related to the Encryption.
+             */
+            encryptionPreferences?: pulumi.Input<inputs.databox.v20201101.EncryptionPreferences>;
+            /**
+             * Preferred data center region.
+             */
+            preferredDataCenterRegion?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Preferences related to the shipment logistics of the sku.
+             */
+            transportPreferences?: pulumi.Input<inputs.databox.v20201101.TransportPreferences>;
+        }
+
+        /**
+         * Msi identity details of the resource
+         */
+        export interface ResourceIdentity {
+            /**
+             * Identity type
+             */
+            type?: pulumi.Input<string>;
+        }
+
+        /**
+         * Shipping address where customer wishes to receive the device.
+         */
+        export interface ShippingAddress {
+            /**
+             * Type of address.
+             */
+            addressType?: pulumi.Input<string>;
+            /**
+             * Name of the City.
+             */
+            city?: pulumi.Input<string>;
+            /**
+             * Name of the company.
+             */
+            companyName?: pulumi.Input<string>;
+            /**
+             * Name of the Country.
+             */
+            country: pulumi.Input<string>;
+            /**
+             * Postal code.
+             */
+            postalCode?: pulumi.Input<string>;
+            /**
+             * Name of the State or Province.
+             */
+            stateOrProvince?: pulumi.Input<string>;
+            /**
+             * Street Address line 1.
+             */
+            streetAddress1: pulumi.Input<string>;
+            /**
+             * Street Address line 2.
+             */
+            streetAddress2?: pulumi.Input<string>;
+            /**
+             * Street Address line 3.
+             */
+            streetAddress3?: pulumi.Input<string>;
+            /**
+             * Extended Zip Code.
+             */
+            zipExtendedCode?: pulumi.Input<string>;
+        }
+
+        /**
+         * The Sku.
+         */
+        export interface Sku {
+            /**
+             * The display name of the sku.
+             */
+            displayName?: pulumi.Input<string>;
+            /**
+             * The sku family.
+             */
+            family?: pulumi.Input<string>;
+            /**
+             * The sku name.
+             */
+            name: pulumi.Input<string>;
+        }
+
+        /**
+         * Details for the storage account.
+         */
+        export interface StorageAccountDetails {
+            /**
+             * Account Type of the data to be transferred.
+             */
+            dataAccountType: pulumi.Input<"StorageAccount">;
+            /**
+             * Password for all the shares to be created on the device. Should not be passed for TransferType:ExportFromAzure jobs. If this is not passed, the service will generate password itself. This will not be returned in Get Call. Password Requirements :  Password must be minimum of 12 and maximum of 64 characters. Password must have at least one uppercase alphabet, one number and one special character. Password cannot have the following characters : IilLoO0 Password can have only alphabets, numbers and these characters : @#\-$%^!+=;:_()]+
+             */
+            sharePassword?: pulumi.Input<string>;
+            /**
+             * Storage Account Resource Id.
+             */
+            storageAccountId: pulumi.Input<string>;
+        }
+
+        /**
+         * Details to transfer all data.
+         */
+        export interface TransferAllDetails {
+            /**
+             * Type of the account of data
+             */
+            dataAccountType: pulumi.Input<string>;
+            /**
+             * To indicate if all Azure blobs have to be transferred
+             */
+            transferAllBlobs?: pulumi.Input<boolean>;
+            /**
+             * To indicate if all Azure Files have to be transferred
+             */
+            transferAllFiles?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Configuration for defining the transfer of data.
+         */
+        export interface TransferConfiguration {
+            /**
+             * Map of filter type and the details to transfer all data. This field is required only if the TransferConfigurationType is given as TransferAll
+             */
+            transferAllDetails?: pulumi.Input<inputs.databox.v20201101.TransferConfigurationTransferAllDetails>;
+            /**
+             * Type of the configuration for transfer.
+             */
+            transferConfigurationType: pulumi.Input<string>;
+            /**
+             * Map of filter type and the details to filter. This field is required only if the TransferConfigurationType is given as TransferUsingFilter.
+             */
+            transferFilterDetails?: pulumi.Input<inputs.databox.v20201101.TransferConfigurationTransferFilterDetails>;
+        }
+
+        /**
+         * Map of filter type and the details to transfer all data. This field is required only if the TransferConfigurationType is given as TransferAll
+         */
+        export interface TransferConfigurationTransferAllDetails {
+            /**
+             * Details to transfer all data.
+             */
+            include?: pulumi.Input<inputs.databox.v20201101.TransferAllDetails>;
+        }
+
+        /**
+         * Map of filter type and the details to filter. This field is required only if the TransferConfigurationType is given as TransferUsingFilter.
+         */
+        export interface TransferConfigurationTransferFilterDetails {
+            /**
+             * Details of the filtering the transfer of data.
+             */
+            include?: pulumi.Input<inputs.databox.v20201101.TransferFilterDetails>;
+        }
+
+        /**
+         * Details of the filtering the transfer of data.
+         */
+        export interface TransferFilterDetails {
+            /**
+             * Filter details to transfer Azure files.
+             */
+            azureFileFilterDetails?: pulumi.Input<inputs.databox.v20201101.AzureFileFilterDetails>;
+            /**
+             * Filter details to transfer blobs.
+             */
+            blobFilterDetails?: pulumi.Input<inputs.databox.v20201101.BlobFilterDetails>;
+            /**
+             * Type of the account of data.
+             */
+            dataAccountType: pulumi.Input<string>;
+            /**
+             * Details of the filter files to be used for data transfer.
+             */
+            filterFileDetails?: pulumi.Input<pulumi.Input<inputs.databox.v20201101.FilterFileDetails>[]>;
         }
 
         /**
@@ -101070,6 +101616,79 @@ export namespace desktopvirtualization {
     }
 
     export namespace v20200921preview {
+        /**
+         * Schema for MSIX Package Application properties.
+         */
+        export interface MsixPackageApplications {
+            /**
+             * Package Application Id, found in appxmanifest.xml.
+             */
+            appId?: pulumi.Input<string>;
+            /**
+             * Used to activate Package Application. Consists of Package Name and ApplicationID. Found in appxmanifest.xml.
+             */
+            appUserModelID?: pulumi.Input<string>;
+            /**
+             * Description of Package Application.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * User friendly name.
+             */
+            friendlyName?: pulumi.Input<string>;
+            /**
+             * User friendly name.
+             */
+            iconImageName?: pulumi.Input<string>;
+            /**
+             * the icon a 64 bit string as a byte array.
+             */
+            rawIcon?: pulumi.Input<string>;
+            /**
+             * the icon a 64 bit string as a byte array.
+             */
+            rawPng?: pulumi.Input<string>;
+        }
+
+        /**
+         * Schema for MSIX Package Dependencies properties.
+         */
+        export interface MsixPackageDependencies {
+            /**
+             * Name of package dependency.
+             */
+            dependencyName?: pulumi.Input<string>;
+            /**
+             * Dependency version required.
+             */
+            minVersion?: pulumi.Input<string>;
+            /**
+             * Name of dependency publisher.
+             */
+            publisher?: pulumi.Input<string>;
+        }
+
+        /**
+         * Represents a RegistrationInfo definition.
+         */
+        export interface RegistrationInfo {
+            /**
+             * Expiration time of registration token.
+             */
+            expirationTime?: pulumi.Input<string>;
+            /**
+             * The type of resetting the token.
+             */
+            registrationTokenOperation?: pulumi.Input<string>;
+            /**
+             * The registration token base64 encoded string.
+             */
+            token?: pulumi.Input<string>;
+        }
+
+    }
+
+    export namespace v20201019preview {
         /**
          * Schema for MSIX Package Application properties.
          */
@@ -153926,6 +154545,36 @@ export namespace maps {
              * The name of the SKU, in standard format (such as S0).
              */
             name: pulumi.Input<string>;
+        }
+
+    }
+}
+
+export namespace marketplace {
+    export namespace latest {
+        export interface Icon {
+            /**
+             * Icon size
+             */
+            iconKind?: pulumi.Input<string>;
+            /**
+             * Icon uri
+             */
+            uri?: pulumi.Input<string>;
+        }
+
+    }
+
+    export namespace v20200101 {
+        export interface Icon {
+            /**
+             * Icon size
+             */
+            iconKind?: pulumi.Input<string>;
+            /**
+             * Icon uri
+             */
+            uri?: pulumi.Input<string>;
         }
 
     }
@@ -304134,6 +304783,16 @@ export namespace synapse {
         }
 
         /**
+         * Babylon Configuration
+         */
+        export interface BabylonConfiguration {
+            /**
+             * Babylon Resource ID
+             */
+            babylonResourceId?: pulumi.Input<string>;
+        }
+
+        /**
          * The custom setup of running cmdkey commands.
          */
         export interface CmdkeySetup {
@@ -304174,6 +304833,16 @@ export namespace synapse {
         }
 
         /**
+         * Details of the customer managed key associated with the workspace
+         */
+        export interface CustomerManagedKeyDetails {
+            /**
+             * The key object of the workspace
+             */
+            key?: pulumi.Input<inputs.synapse.v20190601preview.WorkspaceKeyDetails>;
+        }
+
+        /**
          * Details of the data lake storage account associated with the workspace
          */
         export interface DataLakeStorageAccountDetails {
@@ -304185,6 +304854,16 @@ export namespace synapse {
              * Filesystem name
              */
             filesystem?: pulumi.Input<string>;
+        }
+
+        /**
+         * Details of the encryption associated with the workspace
+         */
+        export interface EncryptionDetails {
+            /**
+             * Customer Managed Key Details
+             */
+            cmk?: pulumi.Input<inputs.synapse.v20190601preview.CustomerManagedKeyDetails>;
         }
 
         /**
@@ -304488,30 +305167,6 @@ export namespace synapse {
         }
 
         /**
-         * A private endpoint connection
-         */
-        export interface PrivateEndpointConnection {
-            /**
-             * Connection state of the private endpoint connection.
-             */
-            privateLinkServiceConnectionState?: pulumi.Input<inputs.synapse.v20190601preview.PrivateLinkServiceConnectionState>;
-        }
-
-        /**
-         * Connection state details of the private endpoint
-         */
-        export interface PrivateLinkServiceConnectionState {
-            /**
-             * The private link service connection description.
-             */
-            description?: pulumi.Input<string>;
-            /**
-             * The private link service connection status.
-             */
-            status?: pulumi.Input<string>;
-        }
-
-        /**
          * Azure Synapse secure string definition. The string value will be masked with asterisks '*' during Get or List API calls.
          */
         export interface SecureString {
@@ -304597,6 +305252,20 @@ export namespace synapse {
              * Recurring scans state.
              */
             isEnabled?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Details of the customer managed key associated with the workspace
+         */
+        export interface WorkspaceKeyDetails {
+            /**
+             * Workspace Key sub-resource key vault url
+             */
+            keyVaultUrl?: pulumi.Input<string>;
+            /**
+             * Workspace Key sub-resource name
+             */
+            name?: pulumi.Input<string>;
         }
 
     }

@@ -17,6 +17,7 @@ __all__ = [
     'DataBoxJobDetailsArgs',
     'DataExportDetailsArgs',
     'DataImportDetailsArgs',
+    'EncryptionPreferencesArgs',
     'FilterFileDetailsArgs',
     'JobDeliveryInfoArgs',
     'ManagedDiskDetailsArgs',
@@ -743,6 +744,30 @@ class DataImportDetailsArgs:
 
 
 @pulumi.input_type
+class EncryptionPreferencesArgs:
+    def __init__(__self__, *,
+                 double_encryption: Optional[pulumi.Input[str]] = None):
+        """
+        Preferences related to the Encryption.
+        :param pulumi.Input[str] double_encryption: Defines secondary layer of software-based encryption enablement.
+        """
+        if double_encryption is not None:
+            pulumi.set(__self__, "double_encryption", double_encryption)
+
+    @property
+    @pulumi.getter(name="doubleEncryption")
+    def double_encryption(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines secondary layer of software-based encryption enablement.
+        """
+        return pulumi.get(self, "double_encryption")
+
+    @double_encryption.setter
+    def double_encryption(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "double_encryption", value)
+
+
+@pulumi.input_type
 class FilterFileDetailsArgs:
     def __init__(__self__, *,
                  filter_file_path: pulumi.Input[str],
@@ -914,17 +939,33 @@ class NotificationPreferenceArgs:
 @pulumi.input_type
 class PreferencesArgs:
     def __init__(__self__, *,
+                 encryption_preferences: Optional[pulumi.Input['EncryptionPreferencesArgs']] = None,
                  preferred_data_center_region: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  transport_preferences: Optional[pulumi.Input['TransportPreferencesArgs']] = None):
         """
         Preferences related to the order
+        :param pulumi.Input['EncryptionPreferencesArgs'] encryption_preferences: Preferences related to the Encryption.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_data_center_region: Preferred data center region.
         :param pulumi.Input['TransportPreferencesArgs'] transport_preferences: Preferences related to the shipment logistics of the sku.
         """
+        if encryption_preferences is not None:
+            pulumi.set(__self__, "encryption_preferences", encryption_preferences)
         if preferred_data_center_region is not None:
             pulumi.set(__self__, "preferred_data_center_region", preferred_data_center_region)
         if transport_preferences is not None:
             pulumi.set(__self__, "transport_preferences", transport_preferences)
+
+    @property
+    @pulumi.getter(name="encryptionPreferences")
+    def encryption_preferences(self) -> Optional[pulumi.Input['EncryptionPreferencesArgs']]:
+        """
+        Preferences related to the Encryption.
+        """
+        return pulumi.get(self, "encryption_preferences")
+
+    @encryption_preferences.setter
+    def encryption_preferences(self, value: Optional[pulumi.Input['EncryptionPreferencesArgs']]):
+        pulumi.set(self, "encryption_preferences", value)
 
     @property
     @pulumi.getter(name="preferredDataCenterRegion")
@@ -979,11 +1020,11 @@ class ResourceIdentityArgs:
 class ShippingAddressArgs:
     def __init__(__self__, *,
                  country: pulumi.Input[str],
-                 postal_code: pulumi.Input[str],
                  street_address1: pulumi.Input[str],
                  address_type: Optional[pulumi.Input[str]] = None,
                  city: Optional[pulumi.Input[str]] = None,
                  company_name: Optional[pulumi.Input[str]] = None,
+                 postal_code: Optional[pulumi.Input[str]] = None,
                  state_or_province: Optional[pulumi.Input[str]] = None,
                  street_address2: Optional[pulumi.Input[str]] = None,
                  street_address3: Optional[pulumi.Input[str]] = None,
@@ -991,18 +1032,17 @@ class ShippingAddressArgs:
         """
         Shipping address where customer wishes to receive the device.
         :param pulumi.Input[str] country: Name of the Country.
-        :param pulumi.Input[str] postal_code: Postal code.
         :param pulumi.Input[str] street_address1: Street Address line 1.
         :param pulumi.Input[str] address_type: Type of address.
         :param pulumi.Input[str] city: Name of the City.
         :param pulumi.Input[str] company_name: Name of the company.
+        :param pulumi.Input[str] postal_code: Postal code.
         :param pulumi.Input[str] state_or_province: Name of the State or Province.
         :param pulumi.Input[str] street_address2: Street Address line 2.
         :param pulumi.Input[str] street_address3: Street Address line 3.
         :param pulumi.Input[str] zip_extended_code: Extended Zip Code.
         """
         pulumi.set(__self__, "country", country)
-        pulumi.set(__self__, "postal_code", postal_code)
         pulumi.set(__self__, "street_address1", street_address1)
         if address_type is not None:
             pulumi.set(__self__, "address_type", address_type)
@@ -1010,6 +1050,8 @@ class ShippingAddressArgs:
             pulumi.set(__self__, "city", city)
         if company_name is not None:
             pulumi.set(__self__, "company_name", company_name)
+        if postal_code is not None:
+            pulumi.set(__self__, "postal_code", postal_code)
         if state_or_province is not None:
             pulumi.set(__self__, "state_or_province", state_or_province)
         if street_address2 is not None:
@@ -1030,18 +1072,6 @@ class ShippingAddressArgs:
     @country.setter
     def country(self, value: pulumi.Input[str]):
         pulumi.set(self, "country", value)
-
-    @property
-    @pulumi.getter(name="postalCode")
-    def postal_code(self) -> pulumi.Input[str]:
-        """
-        Postal code.
-        """
-        return pulumi.get(self, "postal_code")
-
-    @postal_code.setter
-    def postal_code(self, value: pulumi.Input[str]):
-        pulumi.set(self, "postal_code", value)
 
     @property
     @pulumi.getter(name="streetAddress1")
@@ -1090,6 +1120,18 @@ class ShippingAddressArgs:
     @company_name.setter
     def company_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "company_name", value)
+
+    @property
+    @pulumi.getter(name="postalCode")
+    def postal_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        Postal code.
+        """
+        return pulumi.get(self, "postal_code")
+
+    @postal_code.setter
+    def postal_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "postal_code", value)
 
     @property
     @pulumi.getter(name="stateOrProvince")

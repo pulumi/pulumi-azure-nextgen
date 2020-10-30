@@ -23961,6 +23961,98 @@ export namespace cache {
             name: string;
         }
     }
+
+    export namespace v20201001preview {
+        /**
+         * Specifies configuration of a redis module
+         */
+        export interface ModuleResponse {
+            /**
+             * Configuration options for the module, e.g. 'ERROR_RATE 0.00 INITIAL_SIZE 400'.
+             */
+            args?: string;
+            /**
+             * The name of the module, e.g. 'RedisBloom', 'RediSearch', 'RedisTimeSeries'
+             */
+            name: string;
+            /**
+             * The version of the module, e.g. '1.0'.
+             */
+            version: string;
+        }
+
+        /**
+         * The Private Endpoint Connection resource.
+         */
+        export interface PrivateEndpointConnectionResponse {
+            /**
+             * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             */
+            id: string;
+            /**
+             * The name of the resource
+             */
+            name: string;
+            /**
+             * The resource of private end point.
+             */
+            privateEndpoint?: outputs.cache.v20201001preview.PrivateEndpointResponse;
+            /**
+             * A collection of information about the state of the connection between service consumer and provider.
+             */
+            privateLinkServiceConnectionState: outputs.cache.v20201001preview.PrivateLinkServiceConnectionStateResponse;
+            /**
+             * The provisioning state of the private endpoint connection resource.
+             */
+            provisioningState: string;
+            /**
+             * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+             */
+            type: string;
+        }
+
+        /**
+         * The Private Endpoint resource.
+         */
+        export interface PrivateEndpointResponse {
+            /**
+             * The ARM identifier for Private Endpoint
+             */
+            id: string;
+        }
+
+        /**
+         * A collection of information about the state of the connection between service consumer and provider.
+         */
+        export interface PrivateLinkServiceConnectionStateResponse {
+            /**
+             * A message indicating if changes on the service provider require any updates on the consumer.
+             */
+            actionsRequired?: string;
+            /**
+             * The reason for approval/rejection of the connection.
+             */
+            description?: string;
+            /**
+             * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+             */
+            status?: string;
+        }
+
+        /**
+         * SKU parameters supplied to the create RedisEnterprise operation.
+         */
+        export interface SkuResponse {
+            /**
+             * The size of the RedisEnterprise cluster. Defaults to 2 or 3 depending on SKU. Valid values are (2, 4, 6, ...) for Enterprise SKUs and (3, 9, 15, ...) for Flash SKUs.
+             */
+            capacity?: number;
+            /**
+             * The type of RedisEnterprise cluster to deploy. Possible values: (Enterprise_E10, EnterpriseFlash_F300 etc.)
+             */
+            name: string;
+        }
+    }
 }
 
 export namespace cdn {
@@ -78803,6 +78895,16 @@ export namespace databox {
         }
 
         /**
+         * Preferences related to the Encryption.
+         */
+        export interface EncryptionPreferencesResponse {
+            /**
+             * Defines secondary layer of software-based encryption enablement.
+             */
+            doubleEncryption?: string;
+        }
+
+        /**
          * Details of the filter files to be used for data transfer.
          */
         export interface FilterFileDetailsResponse {
@@ -78814,6 +78916,20 @@ export namespace databox {
              * Type of the filter file.
              */
             filterFileType: string;
+        }
+
+        /**
+         * Managed identity properties.
+         */
+        export interface IdentityPropertiesResponse {
+            /**
+             * Managed service identity type.
+             */
+            type?: string;
+            /**
+             * User assigned identity properties.
+             */
+            userAssigned?: outputs.databox.latest.UserAssignedPropertiesResponse;
         }
 
         /**
@@ -78856,6 +78972,10 @@ export namespace databox {
          * Encryption key containing details about key to encrypt different keys.
          */
         export interface KeyEncryptionKeyResponse {
+            /**
+             * Managed identity properties used for key encryption.
+             */
+            identityProperties?: outputs.databox.latest.IdentityPropertiesResponse;
             /**
              * Type of encryption key used for key encryption.
              */
@@ -78929,6 +79049,10 @@ export namespace databox {
          */
         export interface PreferencesResponse {
             /**
+             * Preferences related to the Encryption.
+             */
+            encryptionPreferences?: outputs.databox.latest.EncryptionPreferencesResponse;
+            /**
              * Preferred data center region.
              */
             preferredDataCenterRegion?: string[];
@@ -78954,6 +79078,10 @@ export namespace databox {
              * Identity type
              */
             type?: string;
+            /**
+             * User Assigned Identities
+             */
+            userAssignedIdentities?: {[key: string]: outputs.databox.latest.UserAssignedIdentityResponse};
         }
 
         /**
@@ -79005,7 +79133,7 @@ export namespace databox {
             /**
              * Postal code.
              */
-            postalCode: string;
+            postalCode?: string;
             /**
              * Name of the State or Province.
              */
@@ -79164,6 +79292,30 @@ export namespace databox {
              * Secrets related to this job.
              */
             jobSecrets: outputs.databox.latest.DataBoxDiskJobSecretsResponse | outputs.databox.latest.DataBoxHeavyJobSecretsResponse | outputs.databox.latest.DataboxJobSecretsResponse;
+        }
+
+        /**
+         * Class defining User assigned identity details.
+         */
+        export interface UserAssignedIdentityResponse {
+            /**
+             * The client id of user assigned identity.
+             */
+            clientId: string;
+            /**
+             * The principal id of user assigned identity.
+             */
+            principalId: string;
+        }
+
+        /**
+         * User assigned identity properties.
+         */
+        export interface UserAssignedPropertiesResponse {
+            /**
+             * Arm resource id for user assigned identity to be used to fetch MSI token.
+             */
+            resourceId?: string;
         }
     }
 
@@ -81794,6 +81946,1129 @@ export namespace databox {
              * Secrets related to this job.
              */
             jobSecrets: outputs.databox.v20200401.DataBoxDiskJobSecretsResponse | outputs.databox.v20200401.DataBoxHeavyJobSecretsResponse | outputs.databox.v20200401.DataboxJobSecretsResponse;
+        }
+    }
+
+    export namespace v20201101 {
+        /**
+         * Credential details of the account.
+         */
+        export interface AccountCredentialDetailsResponse {
+            /**
+             * Connection string of the account endpoint to use the account as a storage endpoint on the device.
+             */
+            accountConnectionString: string;
+            /**
+             * Name of the account.
+             */
+            accountName: string;
+            /**
+             * Type of the account.
+             */
+            dataAccountType: string;
+            /**
+             * Per share level unencrypted access credentials.
+             */
+            shareCredentialDetails: outputs.databox.v20201101.ShareCredentialDetailsResponse[];
+        }
+
+        /**
+         * Additional error info.
+         */
+        export interface AdditionalErrorInfoResponse {
+            /**
+             * Additional error info.
+             */
+            info?: any;
+            /**
+             * Additional error type.
+             */
+            type?: string;
+        }
+
+        /**
+         * The Network Adapter configuration of a DataBox.
+         */
+        export interface ApplianceNetworkConfigurationResponse {
+            /**
+             * Mac Address.
+             */
+            macAddress: string;
+            /**
+             * Name of the network.
+             */
+            name: string;
+        }
+
+        /**
+         * Filter details to transfer Azure files
+         */
+        export interface AzureFileFilterDetailsResponse {
+            /**
+             * List of full path of the files to be transferred.
+             */
+            filePathList?: string[];
+            /**
+             * Prefix list of the Azure files to be transferred.
+             */
+            filePrefixList?: string[];
+            /**
+             * List of file shares to be transferred.
+             */
+            fileShareList?: string[];
+        }
+
+        /**
+         * Filter details to transfer Azure Blobs
+         */
+        export interface BlobFilterDetailsResponse {
+            /**
+             * List of full path of the blobs to be transferred.
+             */
+            blobPathList?: string[];
+            /**
+             * Prefix list of the Azure blobs to be transferred.
+             */
+            blobPrefixList?: string[];
+            /**
+             * List of blob containers to be transferred.
+             */
+            containerList?: string[];
+        }
+
+        /**
+         * Cloud error.
+         */
+        export interface CloudErrorResponse {
+            /**
+             * Cloud error additional info.
+             */
+            additionalInfo: outputs.databox.v20201101.AdditionalErrorInfoResponse[];
+            /**
+             * Cloud error code.
+             */
+            code?: string;
+            /**
+             * Cloud error details.
+             */
+            details: outputs.databox.v20201101.CloudErrorResponse[];
+            /**
+             * Cloud error message.
+             */
+            message?: string;
+            /**
+             * Cloud error target.
+             */
+            target?: string;
+        }
+
+        /**
+         * Contact Details.
+         */
+        export interface ContactDetailsResponse {
+            /**
+             * Contact name of the person.
+             */
+            contactName: string;
+            /**
+             * List of Email-ids to be notified about job progress.
+             */
+            emailList: string[];
+            /**
+             * Mobile number of the contact person.
+             */
+            mobile?: string;
+            /**
+             * Notification preference for a job stage.
+             */
+            notificationPreference?: outputs.databox.v20201101.NotificationPreferenceResponse[];
+            /**
+             * Phone number of the contact person.
+             */
+            phone: string;
+            /**
+             * Phone extension number of the contact person.
+             */
+            phoneExtension?: string;
+        }
+
+        /**
+         * Copy progress.
+         */
+        export interface CopyProgressResponse {
+            /**
+             * Id of the account where the data needs to be uploaded.
+             */
+            accountId: string;
+            /**
+             * To indicate bytes transferred.
+             */
+            bytesProcessed: number;
+            /**
+             * Data Account Type.
+             */
+            dataAccountType: string;
+            /**
+             * To indicate directories errored out in the job.
+             */
+            directoriesErroredOut: number;
+            /**
+             * Number of files which could not be copied
+             */
+            filesErroredOut: number;
+            /**
+             * Number of files processed
+             */
+            filesProcessed: number;
+            /**
+             * To indicate directories renamed
+             */
+            invalidDirectoriesProcessed: number;
+            /**
+             * Total amount of data not adhering to azure naming conventions which were processed by automatic renaming
+             */
+            invalidFileBytesUploaded: number;
+            /**
+             * Number of files not adhering to azure naming conventions which were processed by automatic renaming
+             */
+            invalidFilesProcessed: number;
+            /**
+             * To indicate if enumeration of data is in progress. 
+             * Until this is true, the TotalBytesToProcess may not be valid.
+             */
+            isEnumerationInProgress: boolean;
+            /**
+             * Number of folders not adhering to azure naming conventions which were processed by automatic renaming
+             */
+            renamedContainerCount: number;
+            /**
+             * Name of the storage account. This will be empty for data account types other than storage account.
+             */
+            storageAccountName: string;
+            /**
+             * Total amount of data to be processed by the job.
+             */
+            totalBytesToProcess: number;
+            /**
+             * Total files to process
+             */
+            totalFilesToProcess: number;
+            /**
+             * Transfer type of data
+             */
+            transferType: string;
+        }
+
+        /**
+         * Copy log details for a storage account of a DataBox job
+         */
+        export interface DataBoxAccountCopyLogDetailsResponse {
+            /**
+             * Account name.
+             */
+            accountName: string;
+            /**
+             * Indicates the type of job details.
+             */
+            copyLogDetailsType: "DataBox";
+            /**
+             * Link for copy logs.
+             */
+            copyLogLink: string;
+            /**
+             * Link for copy verbose logs. This will be set only when LogCollectionLevel is set to Verbose.
+             */
+            copyVerboseLogLink: string;
+        }
+
+        /**
+         * Copy Log Details for a disk
+         */
+        export interface DataBoxDiskCopyLogDetailsResponse {
+            /**
+             * Indicates the type of job details.
+             */
+            copyLogDetailsType: "DataBoxDisk";
+            /**
+             * Disk Serial Number.
+             */
+            diskSerialNumber: string;
+            /**
+             * Link for copy error logs.
+             */
+            errorLogLink: string;
+            /**
+             * Link for copy verbose logs.
+             */
+            verboseLogLink: string;
+        }
+
+        /**
+         * DataBox Disk Copy Progress
+         */
+        export interface DataBoxDiskCopyProgressResponse {
+            /**
+             * Bytes copied during the copy of disk.
+             */
+            bytesCopied: number;
+            /**
+             * Indicates the percentage completed for the copy of the disk.
+             */
+            percentComplete: number;
+            /**
+             * The serial number of the disk
+             */
+            serialNumber: string;
+            /**
+             * The Status of the copy
+             */
+            status: string;
+        }
+
+        /**
+         * DataBox Disk Job Details.
+         */
+        export interface DataBoxDiskJobDetailsResponse {
+            /**
+             * Shared access key to download the chain of custody logs
+             */
+            chainOfCustodySasKey: string;
+            /**
+             * Contact details for notification and shipping.
+             */
+            contactDetails: outputs.databox.v20201101.ContactDetailsResponse;
+            /**
+             * List of copy log details.
+             */
+            copyLogDetails: outputs.databox.v20201101.DataBoxAccountCopyLogDetailsResponse | outputs.databox.v20201101.DataBoxDiskCopyLogDetailsResponse | outputs.databox.v20201101.DataBoxHeavyAccountCopyLogDetailsResponse[];
+            /**
+             * Copy progress per disk.
+             */
+            copyProgress: outputs.databox.v20201101.DataBoxDiskCopyProgressResponse[];
+            /**
+             * Details of the data to be exported from azure.
+             */
+            dataExportDetails?: outputs.databox.v20201101.DataExportDetailsResponse[];
+            /**
+             * Details of the data to be imported into azure.
+             */
+            dataImportDetails?: outputs.databox.v20201101.DataImportDetailsResponse[];
+            /**
+             * Delivery package shipping details.
+             */
+            deliveryPackage: outputs.databox.v20201101.PackageShippingDetailsResponse;
+            /**
+             * Contains the map of disk serial number to the disk size being used for the job. Is returned only after the disks are shipped to the customer.
+             */
+            disksAndSizeDetails: {[key: string]: number};
+            /**
+             * The expected size of the data, which needs to be transferred in this job, in terabytes.
+             */
+            expectedDataSizeInTerabytes?: number;
+            /**
+             * Indicates the type of job details.
+             */
+            jobDetailsType: "DataBoxDisk";
+            /**
+             * List of stages that run in the job.
+             */
+            jobStages: outputs.databox.v20201101.JobStagesResponse[];
+            /**
+             * Details about which key encryption type is being used.
+             */
+            keyEncryptionKey: outputs.databox.v20201101.KeyEncryptionKeyResponse;
+            /**
+             * User entered passkey for DataBox Disk job.
+             */
+            passkey?: string;
+            /**
+             * Preferences for the order.
+             */
+            preferences?: outputs.databox.v20201101.PreferencesResponse;
+            /**
+             * User preference on what size disks are needed for the job. The map is from the disk size in TB to the count. Eg. {2,5} means 5 disks of 2 TB size. Key is string but will be checked against an int.
+             */
+            preferredDisks?: {[key: string]: number};
+            /**
+             * Return package shipping details.
+             */
+            returnPackage: outputs.databox.v20201101.PackageShippingDetailsResponse;
+            /**
+             * Shared access key to download the return shipment label
+             */
+            reverseShipmentLabelSasKey: string;
+            /**
+             * Shipping address of the customer.
+             */
+            shippingAddress?: outputs.databox.v20201101.ShippingAddressResponse;
+        }
+
+        /**
+         * The secrets related to disk job.
+         */
+        export interface DataBoxDiskJobSecretsResponse {
+            /**
+             * Dc Access Security Code for Customer Managed Shipping
+             */
+            dcAccessSecurityCode: outputs.databox.v20201101.DcAccessSecurityCodeResponse;
+            /**
+             * Contains the list of secrets object for that device.
+             */
+            diskSecrets: outputs.databox.v20201101.DiskSecretResponse[];
+            /**
+             * Error while fetching the secrets.
+             */
+            error: outputs.databox.v20201101.CloudErrorResponse;
+            /**
+             * Whether passkey was provided by user.
+             */
+            isPasskeyUserDefined: boolean;
+            /**
+             * Used to indicate what type of job secrets object.
+             */
+            jobSecretsType: "DataBoxDisk";
+            /**
+             * PassKey for the disk Job.
+             */
+            passKey: string;
+        }
+
+        /**
+         * Copy log details for a storage account for Databox heavy
+         */
+        export interface DataBoxHeavyAccountCopyLogDetailsResponse {
+            /**
+             * Account name.
+             */
+            accountName: string;
+            /**
+             * Indicates the type of job details.
+             */
+            copyLogDetailsType: "DataBoxHeavy";
+            /**
+             * Link for copy logs.
+             */
+            copyLogLink: string[];
+            /**
+             * Link for copy verbose logs. This will be set only when the LogCollectionLevel is set to verbose.
+             */
+            copyVerboseLogLink: string[];
+        }
+
+        /**
+         * Databox Heavy Device Job Details
+         */
+        export interface DataBoxHeavyJobDetailsResponse {
+            /**
+             * Shared access key to download the chain of custody logs
+             */
+            chainOfCustodySasKey: string;
+            /**
+             * Contact details for notification and shipping.
+             */
+            contactDetails: outputs.databox.v20201101.ContactDetailsResponse;
+            /**
+             * List of copy log details.
+             */
+            copyLogDetails: outputs.databox.v20201101.DataBoxAccountCopyLogDetailsResponse | outputs.databox.v20201101.DataBoxDiskCopyLogDetailsResponse | outputs.databox.v20201101.DataBoxHeavyAccountCopyLogDetailsResponse[];
+            /**
+             * Copy progress per account.
+             */
+            copyProgress: outputs.databox.v20201101.CopyProgressResponse[];
+            /**
+             * Details of the data to be exported from azure.
+             */
+            dataExportDetails?: outputs.databox.v20201101.DataExportDetailsResponse[];
+            /**
+             * Details of the data to be imported into azure.
+             */
+            dataImportDetails?: outputs.databox.v20201101.DataImportDetailsResponse[];
+            /**
+             * Delivery package shipping details.
+             */
+            deliveryPackage: outputs.databox.v20201101.PackageShippingDetailsResponse;
+            /**
+             * Set Device password for unlocking Databox Heavy. Should not be passed for TransferType:ExportFromAzure jobs. If this is not passed, the service will generate password itself. This will not be returned in Get Call. Password Requirements :  Password must be minimum of 12 and maximum of 64 characters. Password must have at least one uppercase alphabet, one number and one special character. Password cannot have the following characters : IilLoO0 Password can have only alphabets, numbers and these characters : @#\-$%^!+=;:_()]+
+             */
+            devicePassword?: string;
+            /**
+             * The expected size of the data, which needs to be transferred in this job, in terabytes.
+             */
+            expectedDataSizeInTerabytes?: number;
+            /**
+             * Indicates the type of job details.
+             */
+            jobDetailsType: "DataBoxHeavy";
+            /**
+             * List of stages that run in the job.
+             */
+            jobStages: outputs.databox.v20201101.JobStagesResponse[];
+            /**
+             * Details about which key encryption type is being used.
+             */
+            keyEncryptionKey: outputs.databox.v20201101.KeyEncryptionKeyResponse;
+            /**
+             * Preferences for the order.
+             */
+            preferences?: outputs.databox.v20201101.PreferencesResponse;
+            /**
+             * Return package shipping details.
+             */
+            returnPackage: outputs.databox.v20201101.PackageShippingDetailsResponse;
+            /**
+             * Shared access key to download the return shipment label
+             */
+            reverseShipmentLabelSasKey: string;
+            /**
+             * Shipping address of the customer.
+             */
+            shippingAddress?: outputs.databox.v20201101.ShippingAddressResponse;
+        }
+
+        /**
+         * The secrets related to a databox heavy job.
+         */
+        export interface DataBoxHeavyJobSecretsResponse {
+            /**
+             * Contains the list of secret objects for a databox heavy job.
+             */
+            cabinetPodSecrets: outputs.databox.v20201101.DataBoxHeavySecretResponse[];
+            /**
+             * Dc Access Security Code for Customer Managed Shipping
+             */
+            dcAccessSecurityCode: outputs.databox.v20201101.DcAccessSecurityCodeResponse;
+            /**
+             * Error while fetching the secrets.
+             */
+            error: outputs.databox.v20201101.CloudErrorResponse;
+            /**
+             * Used to indicate what type of job secrets object.
+             */
+            jobSecretsType: "DataBoxHeavy";
+        }
+
+        /**
+         * The secrets related to a databox heavy.
+         */
+        export interface DataBoxHeavySecretResponse {
+            /**
+             * Per account level access credentials.
+             */
+            accountCredentialDetails: outputs.databox.v20201101.AccountCredentialDetailsResponse[];
+            /**
+             * Password for out of the box experience on device.
+             */
+            devicePassword: string;
+            /**
+             * Serial number of the assigned device.
+             */
+            deviceSerialNumber: string;
+            /**
+             * The base 64 encoded public key to authenticate with the device
+             */
+            encodedValidationCertPubKey: string;
+            /**
+             * Network configuration of the appliance.
+             */
+            networkConfigurations: outputs.databox.v20201101.ApplianceNetworkConfigurationResponse[];
+        }
+
+        /**
+         * Databox Job Details
+         */
+        export interface DataBoxJobDetailsResponse {
+            /**
+             * Shared access key to download the chain of custody logs
+             */
+            chainOfCustodySasKey: string;
+            /**
+             * Contact details for notification and shipping.
+             */
+            contactDetails: outputs.databox.v20201101.ContactDetailsResponse;
+            /**
+             * List of copy log details.
+             */
+            copyLogDetails: outputs.databox.v20201101.DataBoxAccountCopyLogDetailsResponse | outputs.databox.v20201101.DataBoxDiskCopyLogDetailsResponse | outputs.databox.v20201101.DataBoxHeavyAccountCopyLogDetailsResponse[];
+            /**
+             * Copy progress per storage account.
+             */
+            copyProgress: outputs.databox.v20201101.CopyProgressResponse[];
+            /**
+             * Details of the data to be exported from azure.
+             */
+            dataExportDetails?: outputs.databox.v20201101.DataExportDetailsResponse[];
+            /**
+             * Details of the data to be imported into azure.
+             */
+            dataImportDetails?: outputs.databox.v20201101.DataImportDetailsResponse[];
+            /**
+             * Delivery package shipping details.
+             */
+            deliveryPackage: outputs.databox.v20201101.PackageShippingDetailsResponse;
+            /**
+             * Set Device password for unlocking Databox. Should not be passed for TransferType:ExportFromAzure jobs. If this is not passed, the service will generate password itself. This will not be returned in Get Call. Password Requirements :  Password must be minimum of 12 and maximum of 64 characters. Password must have at least one uppercase alphabet, one number and one special character. Password cannot have the following characters : IilLoO0 Password can have only alphabets, numbers and these characters : @#\-$%^!+=;:_()]+
+             */
+            devicePassword?: string;
+            /**
+             * The expected size of the data, which needs to be transferred in this job, in terabytes.
+             */
+            expectedDataSizeInTerabytes?: number;
+            /**
+             * Indicates the type of job details.
+             */
+            jobDetailsType: "DataBox";
+            /**
+             * List of stages that run in the job.
+             */
+            jobStages: outputs.databox.v20201101.JobStagesResponse[];
+            /**
+             * Details about which key encryption type is being used.
+             */
+            keyEncryptionKey: outputs.databox.v20201101.KeyEncryptionKeyResponse;
+            /**
+             * Preferences for the order.
+             */
+            preferences?: outputs.databox.v20201101.PreferencesResponse;
+            /**
+             * Return package shipping details.
+             */
+            returnPackage: outputs.databox.v20201101.PackageShippingDetailsResponse;
+            /**
+             * Shared access key to download the return shipment label
+             */
+            reverseShipmentLabelSasKey: string;
+            /**
+             * Shipping address of the customer.
+             */
+            shippingAddress?: outputs.databox.v20201101.ShippingAddressResponse;
+        }
+
+        /**
+         * The secrets related to a DataBox.
+         */
+        export interface DataBoxSecretResponse {
+            /**
+             * Per account level access credentials.
+             */
+            accountCredentialDetails: outputs.databox.v20201101.AccountCredentialDetailsResponse[];
+            /**
+             * Password for out of the box experience on device.
+             */
+            devicePassword: string;
+            /**
+             * Serial number of the assigned device.
+             */
+            deviceSerialNumber: string;
+            /**
+             * The base 64 encoded public key to authenticate with the device
+             */
+            encodedValidationCertPubKey: string;
+            /**
+             * Network configuration of the appliance.
+             */
+            networkConfigurations: outputs.databox.v20201101.ApplianceNetworkConfigurationResponse[];
+        }
+
+        /**
+         * Details of the data to be used for exporting data from azure.
+         */
+        export interface DataExportDetailsResponse {
+            /**
+             * Account details of the data to be transferred
+             */
+            accountDetails: outputs.databox.v20201101.ManagedDiskDetailsResponse | outputs.databox.v20201101.StorageAccountDetailsResponse;
+            /**
+             * Level of the logs to be collected.
+             */
+            logCollectionLevel?: string;
+            /**
+             * Configuration for the data transfer.
+             */
+            transferConfiguration: outputs.databox.v20201101.TransferConfigurationResponse;
+        }
+
+        /**
+         * Details of the data to be used for importing data to azure.
+         */
+        export interface DataImportDetailsResponse {
+            /**
+             * Account details of the data to be transferred
+             */
+            accountDetails: outputs.databox.v20201101.ManagedDiskDetailsResponse | outputs.databox.v20201101.StorageAccountDetailsResponse;
+        }
+
+        /**
+         * The secrets related to a databox job.
+         */
+        export interface DataboxJobSecretsResponse {
+            /**
+             * Dc Access Security Code for Customer Managed Shipping
+             */
+            dcAccessSecurityCode: outputs.databox.v20201101.DcAccessSecurityCodeResponse;
+            /**
+             * Error while fetching the secrets.
+             */
+            error: outputs.databox.v20201101.CloudErrorResponse;
+            /**
+             * Used to indicate what type of job secrets object.
+             */
+            jobSecretsType: "DataBox";
+            /**
+             * Contains the list of secret objects for a job.
+             */
+            podSecrets?: outputs.databox.v20201101.DataBoxSecretResponse[];
+        }
+
+        /**
+         * Dc access security code
+         */
+        export interface DcAccessSecurityCodeResponse {
+            /**
+             * Forward Dc access security code.
+             */
+            forwardDcAccessCode?: string;
+            /**
+             * Reverse Dc access security code.
+             */
+            reverseDcAccessCode?: string;
+        }
+
+        /**
+         * Contains all the secrets of a Disk.
+         */
+        export interface DiskSecretResponse {
+            /**
+             * Bit Locker key of the disk which can be used to unlock the disk to copy data.
+             */
+            bitLockerKey: string;
+            /**
+             * Serial number of the assigned disk.
+             */
+            diskSerialNumber: string;
+        }
+
+        /**
+         * Preferences related to the Encryption.
+         */
+        export interface EncryptionPreferencesResponse {
+            /**
+             * Defines secondary layer of software-based encryption enablement.
+             */
+            doubleEncryption?: string;
+        }
+
+        /**
+         * Details of the filter files to be used for data transfer.
+         */
+        export interface FilterFileDetailsResponse {
+            /**
+             * Path of the file that contains the details of all items to transfer.
+             */
+            filterFilePath: string;
+            /**
+             * Type of the filter file.
+             */
+            filterFileType: string;
+        }
+
+        /**
+         * Managed identity properties.
+         */
+        export interface IdentityPropertiesResponse {
+            /**
+             * Managed service identity type.
+             */
+            type?: string;
+            /**
+             * User assigned identity properties.
+             */
+            userAssigned?: outputs.databox.v20201101.UserAssignedPropertiesResponse;
+        }
+
+        /**
+         * Additional delivery info.
+         */
+        export interface JobDeliveryInfoResponse {
+            /**
+             * Scheduled date time.
+             */
+            scheduledDateTime?: string;
+        }
+
+        /**
+         * Job stages.
+         */
+        export interface JobStagesResponse {
+            /**
+             * Display name of the job stage.
+             */
+            displayName: string;
+            /**
+             * Job Stage Details
+             */
+            jobStageDetails: any;
+            /**
+             * Name of the job stage.
+             */
+            stageName: string;
+            /**
+             * Status of the job stage.
+             */
+            stageStatus: string;
+            /**
+             * Time for the job stage in UTC ISO 8601 format.
+             */
+            stageTime: string;
+        }
+
+        /**
+         * Encryption key containing details about key to encrypt different keys.
+         */
+        export interface KeyEncryptionKeyResponse {
+            /**
+             * Managed identity properties used for key encryption.
+             */
+            identityProperties?: outputs.databox.v20201101.IdentityPropertiesResponse;
+            /**
+             * Type of encryption key used for key encryption.
+             */
+            kekType: string;
+            /**
+             * Key encryption key. It is required in case of Customer managed KekType.
+             */
+            kekUrl?: string;
+            /**
+             * Kek vault resource id. It is required in case of Customer managed KekType.
+             */
+            kekVaultResourceID?: string;
+        }
+
+        /**
+         * Details of the managed disks.
+         */
+        export interface ManagedDiskDetailsResponse {
+            /**
+             * Account Type of the data to be transferred.
+             */
+            dataAccountType: "ManagedDisk";
+            /**
+             * Resource Group Id of the compute disks.
+             */
+            resourceGroupId: string;
+            /**
+             * Password for all the shares to be created on the device. Should not be passed for TransferType:ExportFromAzure jobs. If this is not passed, the service will generate password itself. This will not be returned in Get Call. Password Requirements :  Password must be minimum of 12 and maximum of 64 characters. Password must have at least one uppercase alphabet, one number and one special character. Password cannot have the following characters : IilLoO0 Password can have only alphabets, numbers and these characters : @#\-$%^!+=;:_()]+
+             */
+            sharePassword?: string;
+            /**
+             * Resource Id of the storage account that can be used to copy the vhd for staging.
+             */
+            stagingStorageAccountId: string;
+        }
+
+        /**
+         * Notification preference for a job stage.
+         */
+        export interface NotificationPreferenceResponse {
+            /**
+             * Notification is required or not.
+             */
+            sendNotification: boolean;
+            /**
+             * Name of the stage.
+             */
+            stageName: string;
+        }
+
+        /**
+         * Shipping details.
+         */
+        export interface PackageShippingDetailsResponse {
+            /**
+             * Name of the carrier.
+             */
+            carrierName: string;
+            /**
+             * Tracking Id of shipment.
+             */
+            trackingId: string;
+            /**
+             * Url where shipment can be tracked.
+             */
+            trackingUrl: string;
+        }
+
+        /**
+         * Preferences related to the order
+         */
+        export interface PreferencesResponse {
+            /**
+             * Preferences related to the Encryption.
+             */
+            encryptionPreferences?: outputs.databox.v20201101.EncryptionPreferencesResponse;
+            /**
+             * Preferred data center region.
+             */
+            preferredDataCenterRegion?: string[];
+            /**
+             * Preferences related to the shipment logistics of the sku.
+             */
+            transportPreferences?: outputs.databox.v20201101.TransportPreferencesResponse;
+        }
+
+        /**
+         * Msi identity details of the resource
+         */
+        export interface ResourceIdentityResponse {
+            /**
+             * Service Principal Id backing the Msi
+             */
+            principalId: string;
+            /**
+             * Home Tenant Id
+             */
+            tenantId: string;
+            /**
+             * Identity type
+             */
+            type?: string;
+            /**
+             * User Assigned Identities
+             */
+            userAssignedIdentities?: {[key: string]: outputs.databox.v20201101.UserAssignedIdentityResponse};
+        }
+
+        /**
+         * Credential details of the shares in account.
+         */
+        export interface ShareCredentialDetailsResponse {
+            /**
+             * Password for the share.
+             */
+            password: string;
+            /**
+             * Name of the share.
+             */
+            shareName: string;
+            /**
+             * Type of the share.
+             */
+            shareType: string;
+            /**
+             * Access protocols supported on the device.
+             */
+            supportedAccessProtocols: string[];
+            /**
+             * User name for the share.
+             */
+            userName: string;
+        }
+
+        /**
+         * Shipping address where customer wishes to receive the device.
+         */
+        export interface ShippingAddressResponse {
+            /**
+             * Type of address.
+             */
+            addressType?: string;
+            /**
+             * Name of the City.
+             */
+            city?: string;
+            /**
+             * Name of the company.
+             */
+            companyName?: string;
+            /**
+             * Name of the Country.
+             */
+            country: string;
+            /**
+             * Postal code.
+             */
+            postalCode?: string;
+            /**
+             * Name of the State or Province.
+             */
+            stateOrProvince?: string;
+            /**
+             * Street Address line 1.
+             */
+            streetAddress1: string;
+            /**
+             * Street Address line 2.
+             */
+            streetAddress2?: string;
+            /**
+             * Street Address line 3.
+             */
+            streetAddress3?: string;
+            /**
+             * Extended Zip Code.
+             */
+            zipExtendedCode?: string;
+        }
+
+        /**
+         * The Sku.
+         */
+        export interface SkuResponse {
+            /**
+             * The display name of the sku.
+             */
+            displayName?: string;
+            /**
+             * The sku family.
+             */
+            family?: string;
+            /**
+             * The sku name.
+             */
+            name: string;
+        }
+
+        /**
+         * Details for the storage account.
+         */
+        export interface StorageAccountDetailsResponse {
+            /**
+             * Account Type of the data to be transferred.
+             */
+            dataAccountType: "StorageAccount";
+            /**
+             * Password for all the shares to be created on the device. Should not be passed for TransferType:ExportFromAzure jobs. If this is not passed, the service will generate password itself. This will not be returned in Get Call. Password Requirements :  Password must be minimum of 12 and maximum of 64 characters. Password must have at least one uppercase alphabet, one number and one special character. Password cannot have the following characters : IilLoO0 Password can have only alphabets, numbers and these characters : @#\-$%^!+=;:_()]+
+             */
+            sharePassword?: string;
+            /**
+             * Storage Account Resource Id.
+             */
+            storageAccountId: string;
+        }
+
+        /**
+         * Details to transfer all data.
+         */
+        export interface TransferAllDetailsResponse {
+            /**
+             * Type of the account of data
+             */
+            dataAccountType: string;
+            /**
+             * To indicate if all Azure blobs have to be transferred
+             */
+            transferAllBlobs?: boolean;
+            /**
+             * To indicate if all Azure Files have to be transferred
+             */
+            transferAllFiles?: boolean;
+        }
+
+        /**
+         * Configuration for defining the transfer of data.
+         */
+        export interface TransferConfigurationResponse {
+            /**
+             * Map of filter type and the details to transfer all data. This field is required only if the TransferConfigurationType is given as TransferAll
+             */
+            transferAllDetails?: outputs.databox.v20201101.TransferConfigurationResponseTransferAllDetails;
+            /**
+             * Type of the configuration for transfer.
+             */
+            transferConfigurationType: string;
+            /**
+             * Map of filter type and the details to filter. This field is required only if the TransferConfigurationType is given as TransferUsingFilter.
+             */
+            transferFilterDetails?: outputs.databox.v20201101.TransferConfigurationResponseTransferFilterDetails;
+        }
+
+        /**
+         * Map of filter type and the details to transfer all data. This field is required only if the TransferConfigurationType is given as TransferAll
+         */
+        export interface TransferConfigurationResponseTransferAllDetails {
+            /**
+             * Details to transfer all data.
+             */
+            include?: outputs.databox.v20201101.TransferAllDetailsResponse;
+        }
+
+        /**
+         * Map of filter type and the details to filter. This field is required only if the TransferConfigurationType is given as TransferUsingFilter.
+         */
+        export interface TransferConfigurationResponseTransferFilterDetails {
+            /**
+             * Details of the filtering the transfer of data.
+             */
+            include?: outputs.databox.v20201101.TransferFilterDetailsResponse;
+        }
+
+        /**
+         * Details of the filtering the transfer of data.
+         */
+        export interface TransferFilterDetailsResponse {
+            /**
+             * Filter details to transfer Azure files.
+             */
+            azureFileFilterDetails?: outputs.databox.v20201101.AzureFileFilterDetailsResponse;
+            /**
+             * Filter details to transfer blobs.
+             */
+            blobFilterDetails?: outputs.databox.v20201101.BlobFilterDetailsResponse;
+            /**
+             * Type of the account of data.
+             */
+            dataAccountType: string;
+            /**
+             * Details of the filter files to be used for data transfer.
+             */
+            filterFileDetails?: outputs.databox.v20201101.FilterFileDetailsResponse[];
+        }
+
+        /**
+         * Preferences related to the shipment logistics of the sku
+         */
+        export interface TransportPreferencesResponse {
+            /**
+             * Indicates Shipment Logistics type that the customer preferred.
+             */
+            preferredShipmentType: string;
+        }
+
+        /**
+         * Unencrypted credentials for accessing device.
+         */
+        export interface UnencryptedCredentialsResponse {
+            /**
+             * Name of the job.
+             */
+            jobName: string;
+            /**
+             * Secrets related to this job.
+             */
+            jobSecrets: outputs.databox.v20201101.DataBoxDiskJobSecretsResponse | outputs.databox.v20201101.DataBoxHeavyJobSecretsResponse | outputs.databox.v20201101.DataboxJobSecretsResponse;
+        }
+
+        /**
+         * Class defining User assigned identity details.
+         */
+        export interface UserAssignedIdentityResponse {
+            /**
+             * The client id of user assigned identity.
+             */
+            clientId: string;
+            /**
+             * The principal id of user assigned identity.
+             */
+            principalId: string;
+        }
+
+        /**
+         * User assigned identity properties.
+         */
+        export interface UserAssignedPropertiesResponse {
+            /**
+             * Arm resource id for user assigned identity to be used to fetch MSI token.
+             */
+            resourceId?: string;
         }
     }
 }
@@ -132813,6 +134088,78 @@ export namespace desktopvirtualization {
     }
 
     export namespace v20200921preview {
+        /**
+         * Schema for MSIX Package Application properties.
+         */
+        export interface MsixPackageApplicationsResponse {
+            /**
+             * Package Application Id, found in appxmanifest.xml.
+             */
+            appId?: string;
+            /**
+             * Used to activate Package Application. Consists of Package Name and ApplicationID. Found in appxmanifest.xml.
+             */
+            appUserModelID?: string;
+            /**
+             * Description of Package Application.
+             */
+            description?: string;
+            /**
+             * User friendly name.
+             */
+            friendlyName?: string;
+            /**
+             * User friendly name.
+             */
+            iconImageName?: string;
+            /**
+             * the icon a 64 bit string as a byte array.
+             */
+            rawIcon?: string;
+            /**
+             * the icon a 64 bit string as a byte array.
+             */
+            rawPng?: string;
+        }
+
+        /**
+         * Schema for MSIX Package Dependencies properties.
+         */
+        export interface MsixPackageDependenciesResponse {
+            /**
+             * Name of package dependency.
+             */
+            dependencyName?: string;
+            /**
+             * Dependency version required.
+             */
+            minVersion?: string;
+            /**
+             * Name of dependency publisher.
+             */
+            publisher?: string;
+        }
+
+        /**
+         * Represents a RegistrationInfo definition.
+         */
+        export interface RegistrationInfoResponse {
+            /**
+             * Expiration time of registration token.
+             */
+            expirationTime?: string;
+            /**
+             * The type of resetting the token.
+             */
+            registrationTokenOperation?: string;
+            /**
+             * The registration token base64 encoded string.
+             */
+            token?: string;
+        }
+    }
+
+    export namespace v20201019preview {
         /**
          * Schema for MSIX Package Application properties.
          */
@@ -203025,6 +204372,34 @@ export namespace maps {
              * The type of identity that last modified the resource.
              */
             lastModifiedByType?: string;
+        }
+    }
+}
+
+export namespace marketplace {
+    export namespace latest {
+        export interface IconResponse {
+            /**
+             * Icon size
+             */
+            iconKind?: string;
+            /**
+             * Icon uri
+             */
+            uri?: string;
+        }
+    }
+
+    export namespace v20200101 {
+        export interface IconResponse {
+            /**
+             * Icon size
+             */
+            iconKind?: string;
+            /**
+             * Icon uri
+             */
+            uri?: string;
         }
     }
 }
@@ -408900,6 +410275,16 @@ export namespace synapse {
         }
 
         /**
+         * Babylon Configuration
+         */
+        export interface BabylonConfigurationResponse {
+            /**
+             * Babylon Resource ID
+             */
+            babylonResourceId?: string;
+        }
+
+        /**
          * The custom setup of running cmdkey commands.
          */
         export interface CmdkeySetupResponse {
@@ -408940,6 +410325,20 @@ export namespace synapse {
         }
 
         /**
+         * Details of the customer managed key associated with the workspace
+         */
+        export interface CustomerManagedKeyDetailsResponse {
+            /**
+             * The key object of the workspace
+             */
+            key?: outputs.synapse.v20190601preview.WorkspaceKeyDetailsResponse;
+            /**
+             * The customer managed key status on the workspace
+             */
+            status: string;
+        }
+
+        /**
          * Details of the data lake storage account associated with the workspace
          */
         export interface DataLakeStorageAccountDetailsResponse {
@@ -408951,6 +410350,20 @@ export namespace synapse {
              * Filesystem name
              */
             filesystem?: string;
+        }
+
+        /**
+         * Details of the encryption associated with the workspace
+         */
+        export interface EncryptionDetailsResponse {
+            /**
+             * Customer Managed Key Details
+             */
+            cmk?: outputs.synapse.v20190601preview.CustomerManagedKeyDetailsResponse;
+            /**
+             * Double Encryption enabled
+             */
+            doubleEncryptionEnabled: boolean;
         }
 
         /**
@@ -409400,8 +410813,37 @@ export namespace synapse {
         }
 
         /**
-         * A private endpoint connection
+         * Private Endpoint Connection For Private Link Hub - Basic
          */
+        export interface PrivateEndpointConnectionForPrivateLinkHubBasicResponse {
+            /**
+             * identifier
+             */
+            id: string;
+            /**
+             * Private Endpoint Connection Properties
+             */
+            properties?: outputs.synapse.v20190601preview.PrivateEndpointConnectionPropertiesResponse;
+        }
+
+        /**
+         * Private Endpoint Connection Properties
+         */
+        export interface PrivateEndpointConnectionPropertiesResponse {
+            /**
+             * Private Endpoint
+             */
+            privateEndpoint?: outputs.synapse.v20190601preview.PrivateEndpointResponse;
+            /**
+             * Private Link Service Connection State
+             */
+            privateLinkServiceConnectionState?: outputs.synapse.v20190601preview.PrivateLinkServiceConnectionStateResponse;
+            /**
+             * Provisioning state
+             */
+            provisioningState: string;
+        }
+
         export interface PrivateEndpointConnectionResponse {
             /**
              * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -409412,15 +410854,15 @@ export namespace synapse {
              */
             name: string;
             /**
-             * The private endpoint which the connection belongs to.
+             * Private Endpoint
              */
             privateEndpoint?: outputs.synapse.v20190601preview.PrivateEndpointResponse;
             /**
-             * Connection state of the private endpoint connection.
+             * Private Link Service Connection State
              */
             privateLinkServiceConnectionState?: outputs.synapse.v20190601preview.PrivateLinkServiceConnectionStateResponse;
             /**
-             * Provisioning state of the private endpoint connection.
+             * Provisioning state
              */
             provisioningState: string;
             /**
@@ -409430,31 +410872,31 @@ export namespace synapse {
         }
 
         /**
-         * Private endpoint details
+         * Private Endpoint
          */
         export interface PrivateEndpointResponse {
             /**
-             * Resource id of the private endpoint.
+             * identifier
              */
             id: string;
         }
 
         /**
-         * Connection state details of the private endpoint
+         * Private Link Service Connection State
          */
         export interface PrivateLinkServiceConnectionStateResponse {
             /**
-             * The actions required for private link service connection.
+             * Actions Required
              */
             actionsRequired: string;
             /**
-             * The private link service connection description.
+             * Description of private link service connection state
              */
-            description?: string;
+            description: string;
             /**
-             * The private link service connection status.
+             * Status of private link service connection state
              */
-            status?: string;
+            status: string;
         }
 
         /**
@@ -409607,6 +411049,10 @@ export namespace synapse {
              * The local time zone offset in hours.
              */
             localTimeZoneOffset: string;
+            /**
+             * The node communication Channel encryption mode
+             */
+            nodeCommunicationChannelEncryptionMode: string;
             /**
              * The list of nodes for this integration runtime.
              */
@@ -409941,6 +411387,20 @@ export namespace synapse {
              * Recurring scans state.
              */
             isEnabled?: boolean;
+        }
+
+        /**
+         * Details of the customer managed key associated with the workspace
+         */
+        export interface WorkspaceKeyDetailsResponse {
+            /**
+             * Workspace Key sub-resource key vault url
+             */
+            keyVaultUrl?: string;
+            /**
+             * Workspace Key sub-resource name
+             */
+            name?: string;
         }
     }
 
