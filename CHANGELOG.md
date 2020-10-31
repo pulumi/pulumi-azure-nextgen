@@ -3,10 +3,14 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
-- Fix Cannot create Azure SQL firewall rules ([#87](https://github.com/pulumi/pulumi-azure-nextgen/issues/87))
-- Detect deleted resources on refresh ([#66](https://github.com/pulumi/pulumi-azure-nextgen/issues/66))
+None
 
 ---
+
+## 0.2.4 (2020-10-30)
+
+- Fix Cannot create Azure SQL firewall rules ([#87](https://github.com/pulumi/pulumi-azure-nextgen/issues/87))
+- Detect deleted resources on refresh ([#66](https://github.com/pulumi/pulumi-azure-nextgen/issues/66))
 
 ## 0.2.3 (2020-10-16)
 
