@@ -3,7 +3,7 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
-None
+- Fix API Connection creation ([#102](https://github.com/pulumi/pulumi-azure-nextgen/issues/102))
 
 ---
 
