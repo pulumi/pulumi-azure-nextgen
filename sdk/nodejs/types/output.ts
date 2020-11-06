@@ -8759,7 +8759,71 @@ export namespace appplatform {
 }
 
 export namespace attestation {
-    export namespace v20180901preview {
+    export namespace latest {
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
+        }
+    }
+
+    export namespace v20180901 {
+    }
+
+    export namespace v20201001 {
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
+        }
     }
 }
 
@@ -134230,6 +134294,78 @@ export namespace desktopvirtualization {
             token?: string;
         }
     }
+
+    export namespace v20201102preview {
+        /**
+         * Schema for MSIX Package Application properties.
+         */
+        export interface MsixPackageApplicationsResponse {
+            /**
+             * Package Application Id, found in appxmanifest.xml.
+             */
+            appId?: string;
+            /**
+             * Used to activate Package Application. Consists of Package Name and ApplicationID. Found in appxmanifest.xml.
+             */
+            appUserModelID?: string;
+            /**
+             * Description of Package Application.
+             */
+            description?: string;
+            /**
+             * User friendly name.
+             */
+            friendlyName?: string;
+            /**
+             * User friendly name.
+             */
+            iconImageName?: string;
+            /**
+             * the icon a 64 bit string as a byte array.
+             */
+            rawIcon?: string;
+            /**
+             * the icon a 64 bit string as a byte array.
+             */
+            rawPng?: string;
+        }
+
+        /**
+         * Schema for MSIX Package Dependencies properties.
+         */
+        export interface MsixPackageDependenciesResponse {
+            /**
+             * Name of package dependency.
+             */
+            dependencyName?: string;
+            /**
+             * Dependency version required.
+             */
+            minVersion?: string;
+            /**
+             * Name of dependency publisher.
+             */
+            publisher?: string;
+        }
+
+        /**
+         * Represents a RegistrationInfo definition.
+         */
+        export interface RegistrationInfoResponse {
+            /**
+             * Expiration time of registration token.
+             */
+            expirationTime?: string;
+            /**
+             * The type of resetting the token.
+             */
+            registrationTokenOperation?: string;
+            /**
+             * The registration token base64 encoded string.
+             */
+            token?: string;
+        }
+    }
 }
 
 export namespace devices {
@@ -141908,6 +142044,27 @@ export namespace devices {
     }
 
     export namespace v20200710preview {
+        export interface ArmIdentityResponse {
+            /**
+             * Identity type. Only allowed values are SystemAssigned and UserAssigned. Comma separated if both for ex: SystemAssigned,UserAssigned
+             */
+            identityType?: string;
+            /**
+             * Principal Id
+             */
+            principalId: string;
+            /**
+             * Tenant Id
+             */
+            tenantId: string;
+            userAssignedIdentities?: {[key: string]: outputs.devices.v20200710preview.ArmUserIdentityResponse};
+        }
+
+        export interface ArmUserIdentityResponse {
+            clientId: string;
+            principalId: string;
+        }
+
         /**
          * The description of an X509 CA Certificate.
          */
@@ -142205,9 +142362,23 @@ export namespace devices {
         }
 
         /**
+         * The properties of the KeyVault identity.
+         */
+        export interface KEKIdentityResponse {
+            /**
+             * The user assigned identity.
+             */
+            userAssignedIdentity?: string;
+        }
+
+        /**
          * The properties of the KeyVault key.
          */
         export interface KeyVaultKeyPropertiesResponse {
+            /**
+             * The identity.
+             */
+            identity?: outputs.devices.v20200710preview.KEKIdentityResponse;
             /**
              * The identifier of the key.
              */
@@ -159419,6 +159590,34 @@ export namespace eventhub {
         }
 
         /**
+         * Description of NetWorkRuleSet - IpRules resource.
+         */
+        export interface NWRuleSetIpRulesResponse {
+            /**
+             * The IP Filter Action
+             */
+            action?: string;
+            /**
+             * IP Mask
+             */
+            ipMask?: string;
+        }
+
+        /**
+         * Description of VirtualNetworkRules - NetworkRules resource.
+         */
+        export interface NWRuleSetVirtualNetworkRulesResponse {
+            /**
+             * Value that indicates whether to ignore missing VNet Service Endpoint
+             */
+            ignoreMissingVnetServiceEndpoint?: boolean;
+            /**
+             * Subnet properties
+             */
+            subnet?: outputs.eventhub.latest.SubnetResponse;
+        }
+
+        /**
          * SKU parameters supplied to the create namespace operation
          */
         export interface SkuResponse {
@@ -159434,6 +159633,16 @@ export namespace eventhub {
              * The billing tier of this particular SKU.
              */
             tier?: string;
+        }
+
+        /**
+         * Properties supplied for Subnet
+         */
+        export interface SubnetResponse {
+            /**
+             * Resource ID of Virtual Network Subnet
+             */
+            id: string;
         }
     }
 
@@ -159531,6 +159740,34 @@ export namespace eventhub {
         }
 
         /**
+         * Description of NetWorkRuleSet - IpRules resource.
+         */
+        export interface NWRuleSetIpRulesResponse {
+            /**
+             * The IP Filter Action
+             */
+            action?: string;
+            /**
+             * IP Mask
+             */
+            ipMask?: string;
+        }
+
+        /**
+         * Description of VirtualNetworkRules - NetworkRules resource.
+         */
+        export interface NWRuleSetVirtualNetworkRulesResponse {
+            /**
+             * Value that indicates whether to ignore missing VNet Service Endpoint
+             */
+            ignoreMissingVnetServiceEndpoint?: boolean;
+            /**
+             * Subnet properties
+             */
+            subnet?: outputs.eventhub.v20170401.SubnetResponse;
+        }
+
+        /**
          * SKU parameters supplied to the create namespace operation
          */
         export interface SkuResponse {
@@ -159546,6 +159783,16 @@ export namespace eventhub {
              * The billing tier of this particular SKU.
              */
             tier?: string;
+        }
+
+        /**
+         * Properties supplied for Subnet
+         */
+        export interface SubnetResponse {
+            /**
+             * Resource ID of Virtual Network Subnet
+             */
+            id: string;
         }
     }
 
@@ -159594,6 +159841,20 @@ export namespace eventhub {
              * Key Version
              */
             keyVersion?: string;
+        }
+
+        /**
+         * The response from the List namespace operation.
+         */
+        export interface NWRuleSetIpRulesResponse {
+            /**
+             * The IP Filter Action
+             */
+            action?: string;
+            /**
+             * IP Mask
+             */
+            ipMask?: string;
         }
 
         /**
@@ -165135,6 +165396,20 @@ export namespace insights {
         }
 
         /**
+         * Customer Managed Identity
+         */
+        export interface ManagedIdentityResponse {
+            /**
+             * The identity type.
+             */
+            type?: string;
+            /**
+             * Customer Managed Identity
+             */
+            userAssignedIdentities?: outputs.insights.latest.UserAssignedIdentitiesResponse;
+        }
+
+        /**
          * How the data that is collected should be combined over time.
          */
         export interface ManagementEventAggregationConditionResponse {
@@ -165690,6 +165965,20 @@ export namespace insights {
              * Evaluation operation for rule - 'GreaterThan' or 'LessThan.
              */
             thresholdOperator: string;
+        }
+
+        /**
+         * Customer Managed Identity
+         */
+        export interface UserAssignedIdentitiesResponse {
+            /**
+             * The principal ID of resource identity.
+             */
+            principalId: string;
+            /**
+             * The tenant ID of resource.
+             */
+            tenantId: string;
         }
 
         /**
@@ -168356,6 +168645,36 @@ export namespace insights {
              * Url location to test.
              */
             requestUrl?: string;
+        }
+    }
+
+    export namespace v20201020 {
+        /**
+         * Customer Managed Identity
+         */
+        export interface ManagedIdentityResponse {
+            /**
+             * The identity type.
+             */
+            type?: string;
+            /**
+             * Customer Managed Identity
+             */
+            userAssignedIdentities?: outputs.insights.v20201020.UserAssignedIdentitiesResponse;
+        }
+
+        /**
+         * Customer Managed Identity
+         */
+        export interface UserAssignedIdentitiesResponse {
+            /**
+             * The principal ID of resource identity.
+             */
+            principalId: string;
+            /**
+             * The tenant ID of resource.
+             */
+            tenantId: string;
         }
     }
 }
@@ -213305,7 +213624,7 @@ export namespace migrate {
             /**
              * Gets or sets the source resource settings.
              */
-            sourceResourceSettings: outputs.migrate.v20191001preview.MoveResourcePropertiesResponseSourceResourceSettings;
+            sourceResourceSettings: outputs.migrate.v20191001preview.AvailabilitySetResourceSettingsResponse | outputs.migrate.v20191001preview.LoadBalancerResourceSettingsResponse | outputs.migrate.v20191001preview.NetworkInterfaceResourceSettingsResponse | outputs.migrate.v20191001preview.NetworkSecurityGroupResourceSettingsResponse | outputs.migrate.v20191001preview.PublicIPAddressResourceSettingsResponse | outputs.migrate.v20191001preview.ResourceGroupResourceSettingsResponse | outputs.migrate.v20191001preview.SqlDatabaseResourceSettingsResponse | outputs.migrate.v20191001preview.SqlElasticPoolResourceSettingsResponse | outputs.migrate.v20191001preview.SqlServerResourceSettingsResponse | outputs.migrate.v20191001preview.VirtualMachineResourceSettingsResponse | outputs.migrate.v20191001preview.VirtualNetworkResourceSettingsResponse;
             /**
              * Gets or sets the Target ARM Id of the resource.
              */
@@ -213342,20 +213661,6 @@ export namespace migrate {
              * Gets the Target ARM Id of the resource.
              */
             targetId: string;
-        }
-
-        /**
-         * Gets or sets the source resource settings.
-         */
-        export interface MoveResourcePropertiesResponseSourceResourceSettings {
-            /**
-             * The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
-             */
-            resourceType: "MoveResourceProperties";
-            /**
-             * Gets or sets the target Resource name.
-             */
-            targetResourceName: string;
         }
 
         /**
@@ -394815,68 +395120,6 @@ export namespace securityinsights {
              */
             objectId?: string;
         }
-
-        /**
-         * Represents a Watchlist Item in Azure Security Insights.
-         */
-        export interface WatchlistItemResponse {
-            /**
-             * Describes a user that created the watchlist
-             */
-            createdBy?: outputs.securityinsights.v20190101preview.UserInfoResponse;
-            /**
-             * The time the watchlist item was created
-             */
-            createdTimeUtc?: string;
-            /**
-             * A key-value pair for a watchlist item entity mapping
-             */
-            entityMapping?: any;
-            /**
-             * Azure resource Id
-             */
-            id: string;
-            /**
-             * The last time the watchlist item was updated
-             */
-            lastUpdatedTimeUtc?: string;
-            /**
-             * Azure resource name
-             */
-            name: string;
-            /**
-             * The tenantId to which this watchlist item belongs to
-             */
-            tenantId?: string;
-            /**
-             * The time to live for the watchlist item
-             */
-            timeToLiveUtc?: string;
-            /**
-             * Azure resource type
-             */
-            type: string;
-            /**
-             * Describes a user that updated the watchlist
-             */
-            updatedBy?: outputs.securityinsights.v20190101preview.UserInfoResponse;
-            /**
-             * The watchlist id of the parent of this watchlist item
-             */
-            watchlistId: string;
-            /**
-             * Name of the watchlist item
-             */
-            watchlistItemName?: string;
-            /**
-             * A key-value pair for a watchlist item
-             */
-            watchlistItemPair: any;
-            /**
-             * The type of the watchlist item
-             */
-            watchlistItemType?: string;
-        }
     }
 }
 
@@ -394973,6 +395216,34 @@ export namespace servicebus {
         }
 
         /**
+         * Description of NetWorkRuleSet - IpRules resource.
+         */
+        export interface NWRuleSetIpRulesResponse {
+            /**
+             * The IP Filter Action
+             */
+            action?: string;
+            /**
+             * IP Mask
+             */
+            ipMask?: string;
+        }
+
+        /**
+         * Description of VirtualNetworkRules - NetworkRules resource.
+         */
+        export interface NWRuleSetVirtualNetworkRulesResponse {
+            /**
+             * Value that indicates whether to ignore missing VNet Service Endpoint
+             */
+            ignoreMissingVnetServiceEndpoint?: boolean;
+            /**
+             * Subnet properties
+             */
+            subnet?: outputs.servicebus.latest.SubnetResponse;
+        }
+
+        /**
          * SKU of the namespace.
          */
         export interface SBSkuResponse {
@@ -395006,6 +395277,16 @@ export namespace servicebus {
              * The SQL expression. e.g. MyProperty='ABC'
              */
             sqlExpression?: string;
+        }
+
+        /**
+         * Properties supplied for Subnet
+         */
+        export interface SubnetResponse {
+            /**
+             * Resource ID of Virtual Network Subnet
+             */
+            id: string;
         }
     }
 
@@ -395193,6 +395474,34 @@ export namespace servicebus {
         }
 
         /**
+         * Description of NetWorkRuleSet - IpRules resource.
+         */
+        export interface NWRuleSetIpRulesResponse {
+            /**
+             * The IP Filter Action
+             */
+            action?: string;
+            /**
+             * IP Mask
+             */
+            ipMask?: string;
+        }
+
+        /**
+         * Description of VirtualNetworkRules - NetworkRules resource.
+         */
+        export interface NWRuleSetVirtualNetworkRulesResponse {
+            /**
+             * Value that indicates whether to ignore missing VNet Service Endpoint
+             */
+            ignoreMissingVnetServiceEndpoint?: boolean;
+            /**
+             * Subnet properties
+             */
+            subnet?: outputs.servicebus.v20170401.SubnetResponse;
+        }
+
+        /**
          * SKU of the namespace.
          */
         export interface SBSkuResponse {
@@ -395227,6 +395536,16 @@ export namespace servicebus {
              */
             sqlExpression?: string;
         }
+
+        /**
+         * Properties supplied for Subnet
+         */
+        export interface SubnetResponse {
+            /**
+             * Resource ID of Virtual Network Subnet
+             */
+            id: string;
+        }
     }
 
     export namespace v20180101preview {
@@ -395259,6 +395578,34 @@ export namespace servicebus {
         }
 
         /**
+         * The response from the List namespace operation.
+         */
+        export interface NWRuleSetIpRulesResponse {
+            /**
+             * The IP Filter Action
+             */
+            action?: string;
+            /**
+             * IP Mask
+             */
+            ipMask?: string;
+        }
+
+        /**
+         * The response from the List namespace operation.
+         */
+        export interface NWRuleSetVirtualNetworkRulesResponse {
+            /**
+             * Value that indicates whether to ignore missing Vnet Service Endpoint
+             */
+            ignoreMissingVnetServiceEndpoint?: boolean;
+            /**
+             * Subnet properties
+             */
+            subnet?: outputs.servicebus.v20180101preview.SubnetResponse;
+        }
+
+        /**
          * PrivateEndpoint information.
          */
         export interface PrivateEndpointResponse {
@@ -395284,6 +395631,16 @@ export namespace servicebus {
              * The billing tier of this particular SKU.
              */
             tier?: string;
+        }
+
+        /**
+         * Properties supplied for Subnet
+         */
+        export interface SubnetResponse {
+            /**
+             * Resource ID of Virtual Network Subnet
+             */
+            id?: string;
         }
     }
 }
@@ -405913,6 +406270,52 @@ export namespace storage {
         }
 
         /**
+         * The blob service properties for change feed events.
+         */
+        export interface ChangeFeedResponse {
+            /**
+             * Indicates whether change feed event logging is enabled for the Blob service.
+             */
+            enabled?: boolean;
+        }
+
+        /**
+         * Specifies a CORS rule for the Blob service.
+         */
+        export interface CorsRuleResponse {
+            /**
+             * Required if CorsRule element is present. A list of headers allowed to be part of the cross-origin request.
+             */
+            allowedHeaders: string[];
+            /**
+             * Required if CorsRule element is present. A list of HTTP methods that are allowed to be executed by the origin.
+             */
+            allowedMethods: string[];
+            /**
+             * Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or "*" to allow all domains
+             */
+            allowedOrigins: string[];
+            /**
+             * Required if CorsRule element is present. A list of response headers to expose to CORS clients.
+             */
+            exposedHeaders: string[];
+            /**
+             * Required if CorsRule element is present. The number of seconds that the client/browser should cache a preflight response.
+             */
+            maxAgeInSeconds: number;
+        }
+
+        /**
+         * Sets the CORS rules. You can include up to five CorsRule elements in the request. 
+         */
+        export interface CorsRulesResponse {
+            /**
+             * The List of CORS rules. You can include up to five CorsRule elements in the request. 
+             */
+            corsRules?: outputs.storage.latest.CorsRuleResponse[];
+        }
+
+        /**
          * The custom domain assigned to this storage account. This can be set via Update.
          */
         export interface CustomDomainResponse {
@@ -405944,6 +406347,20 @@ export namespace storage {
              * Value indicating the age in days after last modification
              */
             daysAfterModificationGreaterThan: number;
+        }
+
+        /**
+         * The service properties for soft delete.
+         */
+        export interface DeleteRetentionPolicyResponse {
+            /**
+             * Indicates the number of days that the deleted item should be retained. The minimum specified value can be 1 and the maximum value can be 365.
+             */
+            days?: number;
+            /**
+             * Indicates whether DeleteRetentionPolicy is enabled.
+             */
+            enabled?: boolean;
         }
 
         /**
@@ -406382,6 +406799,28 @@ export namespace storage {
              * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
              */
             status?: string;
+        }
+
+        /**
+         * The blob service properties for blob restore policy
+         */
+        export interface RestorePolicyPropertiesResponse {
+            /**
+             * how long this blob can be restored. It should be great than zero and less than DeleteRetentionPolicy.days.
+             */
+            days?: number;
+            /**
+             * Blob restore is enabled if set to true.
+             */
+            enabled: boolean;
+            /**
+             * Deprecated in favor of minRestoreTime property.
+             */
+            lastEnabledTime: string;
+            /**
+             * Returns the minimum date and time that the restore can be started.
+             */
+            minRestoreTime: string;
         }
 
         /**
@@ -408253,6 +408692,42 @@ export namespace storage {
 
     export namespace v20180701 {
         /**
+         * Specifies a CORS rule for the Blob service.
+         */
+        export interface CorsRuleResponse {
+            /**
+             * Required if CorsRule element is present. A list of headers allowed to be part of the cross-origin request.
+             */
+            allowedHeaders: string[];
+            /**
+             * Required if CorsRule element is present. A list of HTTP methods that are allowed to be executed by the origin.
+             */
+            allowedMethods: string[];
+            /**
+             * Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or "*" to allow all domains
+             */
+            allowedOrigins: string[];
+            /**
+             * Required if CorsRule element is present. A list of response headers to expose to CORS clients.
+             */
+            exposedHeaders: string[];
+            /**
+             * Required if CorsRule element is present. The number of seconds that the client/browser should cache a preflight response.
+             */
+            maxAgeInSeconds: number;
+        }
+
+        /**
+         * Sets the CORS rules. You can include up to five CorsRule elements in the request. 
+         */
+        export interface CorsRulesResponse {
+            /**
+             * The List of CORS rules. You can include up to five CorsRule elements in the request. 
+             */
+            corsRules?: outputs.storage.v20180701.CorsRuleResponse[];
+        }
+
+        /**
          * The custom domain assigned to this storage account. This can be set via Update.
          */
         export interface CustomDomainResponse {
@@ -408264,6 +408739,20 @@ export namespace storage {
              * Indicates whether indirect CName validation is enabled. Default value is false. This should only be set on updates.
              */
             useSubDomainName?: boolean;
+        }
+
+        /**
+         * The blob service properties for soft delete.
+         */
+        export interface DeleteRetentionPolicyResponse {
+            /**
+             * Indicates the number of days that the deleted blob should be retained. The minimum specified value can be 1 and the maximum value can be 365.
+             */
+            days?: number;
+            /**
+             * Indicates whether DeleteRetentionPolicy is enabled for the Blob service.
+             */
+            enabled?: boolean;
         }
 
         /**
@@ -408637,6 +409126,42 @@ export namespace storage {
 
     export namespace v20181101 {
         /**
+         * Specifies a CORS rule for the Blob service.
+         */
+        export interface CorsRuleResponse {
+            /**
+             * Required if CorsRule element is present. A list of headers allowed to be part of the cross-origin request.
+             */
+            allowedHeaders: string[];
+            /**
+             * Required if CorsRule element is present. A list of HTTP methods that are allowed to be executed by the origin.
+             */
+            allowedMethods: string[];
+            /**
+             * Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or "*" to allow all domains
+             */
+            allowedOrigins: string[];
+            /**
+             * Required if CorsRule element is present. A list of response headers to expose to CORS clients.
+             */
+            exposedHeaders: string[];
+            /**
+             * Required if CorsRule element is present. The number of seconds that the client/browser should cache a preflight response.
+             */
+            maxAgeInSeconds: number;
+        }
+
+        /**
+         * Sets the CORS rules. You can include up to five CorsRule elements in the request. 
+         */
+        export interface CorsRulesResponse {
+            /**
+             * The List of CORS rules. You can include up to five CorsRule elements in the request. 
+             */
+            corsRules?: outputs.storage.v20181101.CorsRuleResponse[];
+        }
+
+        /**
          * The custom domain assigned to this storage account. This can be set via Update.
          */
         export interface CustomDomainResponse {
@@ -408668,6 +409193,20 @@ export namespace storage {
              * Integer value indicating the age in days after last modification
              */
             daysAfterModificationGreaterThan: number;
+        }
+
+        /**
+         * The blob service properties for soft delete.
+         */
+        export interface DeleteRetentionPolicyResponse {
+            /**
+             * Indicates the number of days that the deleted blob should be retained. The minimum specified value can be 1 and the maximum value can be 365.
+             */
+            days?: number;
+            /**
+             * Indicates whether DeleteRetentionPolicy is enabled for the Blob service.
+             */
+            enabled?: boolean;
         }
 
         /**
@@ -409187,6 +409726,52 @@ export namespace storage {
         }
 
         /**
+         * The blob service properties for change feed events.
+         */
+        export interface ChangeFeedResponse {
+            /**
+             * Indicates whether change feed event logging is enabled for the Blob service.
+             */
+            enabled?: boolean;
+        }
+
+        /**
+         * Specifies a CORS rule for the Blob service.
+         */
+        export interface CorsRuleResponse {
+            /**
+             * Required if CorsRule element is present. A list of headers allowed to be part of the cross-origin request.
+             */
+            allowedHeaders: string[];
+            /**
+             * Required if CorsRule element is present. A list of HTTP methods that are allowed to be executed by the origin.
+             */
+            allowedMethods: string[];
+            /**
+             * Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or "*" to allow all domains
+             */
+            allowedOrigins: string[];
+            /**
+             * Required if CorsRule element is present. A list of response headers to expose to CORS clients.
+             */
+            exposedHeaders: string[];
+            /**
+             * Required if CorsRule element is present. The number of seconds that the client/browser should cache a preflight response.
+             */
+            maxAgeInSeconds: number;
+        }
+
+        /**
+         * Sets the CORS rules. You can include up to five CorsRule elements in the request. 
+         */
+        export interface CorsRulesResponse {
+            /**
+             * The List of CORS rules. You can include up to five CorsRule elements in the request. 
+             */
+            corsRules?: outputs.storage.v20190401.CorsRuleResponse[];
+        }
+
+        /**
          * The custom domain assigned to this storage account. This can be set via Update.
          */
         export interface CustomDomainResponse {
@@ -409218,6 +409803,20 @@ export namespace storage {
              * Value indicating the age in days after last modification
              */
             daysAfterModificationGreaterThan: number;
+        }
+
+        /**
+         * The blob service properties for soft delete.
+         */
+        export interface DeleteRetentionPolicyResponse {
+            /**
+             * Indicates the number of days that the deleted blob should be retained. The minimum specified value can be 1 and the maximum value can be 365.
+             */
+            days?: number;
+            /**
+             * Indicates whether DeleteRetentionPolicy is enabled for the Blob service.
+             */
+            enabled?: boolean;
         }
 
         /**
@@ -409787,6 +410386,52 @@ export namespace storage {
         }
 
         /**
+         * The blob service properties for change feed events.
+         */
+        export interface ChangeFeedResponse {
+            /**
+             * Indicates whether change feed event logging is enabled for the Blob service.
+             */
+            enabled?: boolean;
+        }
+
+        /**
+         * Specifies a CORS rule for the Blob service.
+         */
+        export interface CorsRuleResponse {
+            /**
+             * Required if CorsRule element is present. A list of headers allowed to be part of the cross-origin request.
+             */
+            allowedHeaders: string[];
+            /**
+             * Required if CorsRule element is present. A list of HTTP methods that are allowed to be executed by the origin.
+             */
+            allowedMethods: string[];
+            /**
+             * Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or "*" to allow all domains
+             */
+            allowedOrigins: string[];
+            /**
+             * Required if CorsRule element is present. A list of response headers to expose to CORS clients.
+             */
+            exposedHeaders: string[];
+            /**
+             * Required if CorsRule element is present. The number of seconds that the client/browser should cache a preflight response.
+             */
+            maxAgeInSeconds: number;
+        }
+
+        /**
+         * Sets the CORS rules. You can include up to five CorsRule elements in the request. 
+         */
+        export interface CorsRulesResponse {
+            /**
+             * The List of CORS rules. You can include up to five CorsRule elements in the request. 
+             */
+            corsRules?: outputs.storage.v20190601.CorsRuleResponse[];
+        }
+
+        /**
          * The custom domain assigned to this storage account. This can be set via Update.
          */
         export interface CustomDomainResponse {
@@ -409818,6 +410463,20 @@ export namespace storage {
              * Value indicating the age in days after last modification
              */
             daysAfterModificationGreaterThan: number;
+        }
+
+        /**
+         * The service properties for soft delete.
+         */
+        export interface DeleteRetentionPolicyResponse {
+            /**
+             * Indicates the number of days that the deleted item should be retained. The minimum specified value can be 1 and the maximum value can be 365.
+             */
+            days?: number;
+            /**
+             * Indicates whether DeleteRetentionPolicy is enabled.
+             */
+            enabled?: boolean;
         }
 
         /**
@@ -410259,6 +410918,28 @@ export namespace storage {
         }
 
         /**
+         * The blob service properties for blob restore policy
+         */
+        export interface RestorePolicyPropertiesResponse {
+            /**
+             * how long this blob can be restored. It should be great than zero and less than DeleteRetentionPolicy.days.
+             */
+            days?: number;
+            /**
+             * Blob restore is enabled if set to true.
+             */
+            enabled: boolean;
+            /**
+             * Deprecated in favor of minRestoreTime property.
+             */
+            lastEnabledTime: string;
+            /**
+             * Returns the minimum date and time that the restore can be started.
+             */
+            minRestoreTime: string;
+        }
+
+        /**
          * Routing preference defines the type of network, either microsoft or internet routing to be used to deliver the user data, the default option is microsoft routing
          */
         export interface RoutingPreferenceResponse {
@@ -410621,6 +411302,52 @@ export namespace storage {
         }
 
         /**
+         * The blob service properties for change feed events.
+         */
+        export interface ChangeFeedResponse {
+            /**
+             * Indicates whether change feed event logging is enabled for the Blob service.
+             */
+            enabled?: boolean;
+        }
+
+        /**
+         * Specifies a CORS rule for the Blob service.
+         */
+        export interface CorsRuleResponse {
+            /**
+             * Required if CorsRule element is present. A list of headers allowed to be part of the cross-origin request.
+             */
+            allowedHeaders: string[];
+            /**
+             * Required if CorsRule element is present. A list of HTTP methods that are allowed to be executed by the origin.
+             */
+            allowedMethods: string[];
+            /**
+             * Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or "*" to allow all domains
+             */
+            allowedOrigins: string[];
+            /**
+             * Required if CorsRule element is present. A list of response headers to expose to CORS clients.
+             */
+            exposedHeaders: string[];
+            /**
+             * Required if CorsRule element is present. The number of seconds that the client/browser should cache a preflight response.
+             */
+            maxAgeInSeconds: number;
+        }
+
+        /**
+         * Sets the CORS rules. You can include up to five CorsRule elements in the request. 
+         */
+        export interface CorsRulesResponse {
+            /**
+             * The List of CORS rules. You can include up to five CorsRule elements in the request. 
+             */
+            corsRules?: outputs.storage.v20200801preview.CorsRuleResponse[];
+        }
+
+        /**
          * The custom domain assigned to this storage account. This can be set via Update.
          */
         export interface CustomDomainResponse {
@@ -410656,6 +411383,20 @@ export namespace storage {
              * Value indicating the age in days after last modification
              */
             daysAfterModificationGreaterThan?: number;
+        }
+
+        /**
+         * The service properties for soft delete.
+         */
+        export interface DeleteRetentionPolicyResponse {
+            /**
+             * Indicates the number of days that the deleted item should be retained. The minimum specified value can be 1 and the maximum value can be 365.
+             */
+            days?: number;
+            /**
+             * Indicates whether DeleteRetentionPolicy is enabled.
+             */
+            enabled?: boolean;
         }
 
         /**
@@ -410875,6 +411616,28 @@ export namespace storage {
         }
 
         /**
+         * The blob service properties for Last access time based tracking policy.
+         */
+        export interface LastAccessTimeTrackingPolicyResponse {
+            /**
+             * An array of predefined supported blob types. Only blockBlob is the supported value. This field is currently read only
+             */
+            blobType?: string[];
+            /**
+             * When set to true last access time based tracking is enabled.
+             */
+            enable: boolean;
+            /**
+             * Name of the policy. The valid value is AccessTimeTracking. This field is currently read only
+             */
+            name?: string;
+            /**
+             * The field specifies blob object tracking granularity in days, typically how often the blob object should be tracked.This field is currently read only with value as 1
+             */
+            trackingGranularityInDays?: number;
+        }
+
+        /**
          * The LegalHold property of a blob container.
          */
         export interface LegalHoldPropertiesResponse {
@@ -410999,6 +411762,16 @@ export namespace storage {
         }
 
         /**
+         * Multichannel setting. Applies to Premium FileStorage only.
+         */
+        export interface MultichannelResponse {
+            /**
+             * Indicates whether multichannel is enabled
+             */
+            enabled?: boolean;
+        }
+
+        /**
          * Network rule set
          */
         export interface NetworkRuleSetResponse {
@@ -411116,6 +411889,16 @@ export namespace storage {
         }
 
         /**
+         * Protocol settings for file service
+         */
+        export interface ProtocolSettingsResponse {
+            /**
+             * Setting for SMB protocol
+             */
+            smb?: outputs.storage.v20200801preview.SmbSettingResponse;
+        }
+
+        /**
          * Resource Access Rule.
          */
         export interface ResourceAccessRuleResponse {
@@ -411127,6 +411910,28 @@ export namespace storage {
              * Tenant Id
              */
             tenantId?: string;
+        }
+
+        /**
+         * The blob service properties for blob restore policy
+         */
+        export interface RestorePolicyPropertiesResponse {
+            /**
+             * how long this blob can be restored. It should be great than zero and less than DeleteRetentionPolicy.days.
+             */
+            days?: number;
+            /**
+             * Blob restore is enabled if set to true.
+             */
+            enabled: boolean;
+            /**
+             * Deprecated in favor of minRestoreTime property.
+             */
+            lastEnabledTime: string;
+            /**
+             * Returns the minimum date and time that the restore can be started.
+             */
+            minRestoreTime: string;
         }
 
         /**
@@ -411159,6 +411964,16 @@ export namespace storage {
              * The SKU tier. This is based on the SKU name.
              */
             tier: string;
+        }
+
+        /**
+         * Setting for SMB protocol
+         */
+        export interface SmbSettingResponse {
+            /**
+             * Multichannel setting. Applies to Premium FileStorage only.
+             */
+            multichannel?: outputs.storage.v20200801preview.MultichannelResponse;
         }
 
         /**
@@ -417994,6 +418809,10 @@ export namespace synapse {
              */
             containerName?: string;
             /**
+             * Creator Id of the library/package.
+             */
+            creatorId: string;
+            /**
              * Name of the library.
              */
             name?: string;
@@ -418001,6 +418820,10 @@ export namespace synapse {
              * Storage blob path of library.
              */
             path?: string;
+            /**
+             * Provisioning status of the library/package.
+             */
+            provisioningStatus: string;
             /**
              * Type of the library.
              */

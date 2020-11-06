@@ -7151,19 +7151,15 @@ export namespace appplatform {
 }
 
 export namespace attestation {
-    export namespace v20180901preview {
+    export namespace latest {
         /**
          * Client supplied parameters used to create a new attestation service instance.
          */
         export interface AttestationServiceCreationSpecificParams {
             /**
-             * Name of attestation policy.
-             */
-            attestationPolicy?: pulumi.Input<string>;
-            /**
              * JSON Web Key Set defining a set of X.509 Certificates that will represent the parent certificate for the signing certificate used for policy operations
              */
-            policySigningCertificates?: pulumi.Input<inputs.attestation.v20180901preview.JSONWebKeySet>;
+            policySigningCertificates?: pulumi.Input<inputs.attestation.latest.JSONWebKeySet>;
         }
 
         export interface JSONWebKey {
@@ -7270,8 +7266,252 @@ export namespace attestation {
              * can choose to assign a meaning to the order for their purposes, if
              * desired.
              */
-            keys?: pulumi.Input<pulumi.Input<inputs.attestation.v20180901preview.JSONWebKey>[]>;
+            keys?: pulumi.Input<pulumi.Input<inputs.attestation.latest.JSONWebKey>[]>;
         }
+
+    }
+
+    export namespace v20180901 {
+        /**
+         * Client supplied parameters used to create a new attestation service instance.
+         */
+        export interface AttestationServiceCreationSpecificParams {
+            /**
+             * Name of attestation policy.
+             */
+            attestationPolicy?: pulumi.Input<string>;
+            /**
+             * JSON Web Key Set defining a set of X.509 Certificates that will represent the parent certificate for the signing certificate used for policy operations
+             */
+            policySigningCertificates?: pulumi.Input<inputs.attestation.v20180901.JSONWebKeySet>;
+        }
+
+        export interface JSONWebKey {
+            /**
+             * The "alg" (algorithm) parameter identifies the algorithm intended for
+             * use with the key.  The values used should either be registered in the
+             * IANA "JSON Web Signature and Encryption Algorithms" registry
+             * established by [JWA] or be a value that contains a Collision-
+             * Resistant Name.
+             */
+            alg: pulumi.Input<string>;
+            /**
+             * The "crv" (curve) parameter identifies the curve type
+             */
+            crv?: pulumi.Input<string>;
+            /**
+             * RSA private exponent or ECC private key
+             */
+            d?: pulumi.Input<string>;
+            /**
+             * RSA Private Key Parameter
+             */
+            dp?: pulumi.Input<string>;
+            /**
+             * RSA Private Key Parameter
+             */
+            dq?: pulumi.Input<string>;
+            /**
+             * RSA public exponent, in Base64
+             */
+            e?: pulumi.Input<string>;
+            /**
+             * Symmetric key
+             */
+            k?: pulumi.Input<string>;
+            /**
+             * The "kid" (key ID) parameter is used to match a specific key.  This
+             * is used, for instance, to choose among a set of keys within a JWK Set
+             * during key rollover.  The structure of the "kid" value is
+             * unspecified.  When "kid" values are used within a JWK Set, different
+             * keys within the JWK Set SHOULD use distinct "kid" values.  (One
+             * example in which different keys might use the same "kid" value is if
+             * they have different "kty" (key type) values but are considered to be
+             * equivalent alternatives by the application using them.)  The "kid"
+             * value is a case-sensitive string.
+             */
+            kid: pulumi.Input<string>;
+            /**
+             * The "kty" (key type) parameter identifies the cryptographic algorithm
+             * family used with the key, such as "RSA" or "EC". "kty" values should
+             * either be registered in the IANA "JSON Web Key Types" registry
+             * established by [JWA] or be a value that contains a Collision-
+             * Resistant Name.  The "kty" value is a case-sensitive string.
+             */
+            kty: pulumi.Input<string>;
+            /**
+             * RSA modulus, in Base64
+             */
+            n?: pulumi.Input<string>;
+            /**
+             * RSA secret prime
+             */
+            p?: pulumi.Input<string>;
+            /**
+             * RSA secret prime, with p < q
+             */
+            q?: pulumi.Input<string>;
+            /**
+             * RSA Private Key Parameter
+             */
+            qi?: pulumi.Input<string>;
+            /**
+             * Use ("public key use") identifies the intended use of
+             * the public key. The "use" parameter is employed to indicate whether
+             * a public key is used for encrypting data or verifying the signature
+             * on data. Values are commonly "sig" (signature) or "enc" (encryption).
+             */
+            use: pulumi.Input<string>;
+            /**
+             * X coordinate for the Elliptic Curve point
+             */
+            x?: pulumi.Input<string>;
+            /**
+             * The "x5c" (X.509 certificate chain) parameter contains a chain of one
+             * or more PKIX certificates [RFC5280].  The certificate chain is
+             * represented as a JSON array of certificate value strings.  Each
+             * string in the array is a base64-encoded (Section 4 of [RFC4648] --
+             * not base64url-encoded) DER [ITU.X690.1994] PKIX certificate value.
+             * The PKIX certificate containing the key value MUST be the first
+             * certificate.
+             */
+            x5c?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Y coordinate for the Elliptic Curve point
+             */
+            y?: pulumi.Input<string>;
+        }
+
+        export interface JSONWebKeySet {
+            /**
+             * The value of the "keys" parameter is an array of JWK values.  By
+             * default, the order of the JWK values within the array does not imply
+             * an order of preference among them, although applications of JWK Sets
+             * can choose to assign a meaning to the order for their purposes, if
+             * desired.
+             */
+            keys?: pulumi.Input<pulumi.Input<inputs.attestation.v20180901.JSONWebKey>[]>;
+        }
+    }
+
+    export namespace v20201001 {
+        /**
+         * Client supplied parameters used to create a new attestation service instance.
+         */
+        export interface AttestationServiceCreationSpecificParams {
+            /**
+             * JSON Web Key Set defining a set of X.509 Certificates that will represent the parent certificate for the signing certificate used for policy operations
+             */
+            policySigningCertificates?: pulumi.Input<inputs.attestation.v20201001.JSONWebKeySet>;
+        }
+
+        export interface JSONWebKey {
+            /**
+             * The "alg" (algorithm) parameter identifies the algorithm intended for
+             * use with the key.  The values used should either be registered in the
+             * IANA "JSON Web Signature and Encryption Algorithms" registry
+             * established by [JWA] or be a value that contains a Collision-
+             * Resistant Name.
+             */
+            alg: pulumi.Input<string>;
+            /**
+             * The "crv" (curve) parameter identifies the curve type
+             */
+            crv?: pulumi.Input<string>;
+            /**
+             * RSA private exponent or ECC private key
+             */
+            d?: pulumi.Input<string>;
+            /**
+             * RSA Private Key Parameter
+             */
+            dp?: pulumi.Input<string>;
+            /**
+             * RSA Private Key Parameter
+             */
+            dq?: pulumi.Input<string>;
+            /**
+             * RSA public exponent, in Base64
+             */
+            e?: pulumi.Input<string>;
+            /**
+             * Symmetric key
+             */
+            k?: pulumi.Input<string>;
+            /**
+             * The "kid" (key ID) parameter is used to match a specific key.  This
+             * is used, for instance, to choose among a set of keys within a JWK Set
+             * during key rollover.  The structure of the "kid" value is
+             * unspecified.  When "kid" values are used within a JWK Set, different
+             * keys within the JWK Set SHOULD use distinct "kid" values.  (One
+             * example in which different keys might use the same "kid" value is if
+             * they have different "kty" (key type) values but are considered to be
+             * equivalent alternatives by the application using them.)  The "kid"
+             * value is a case-sensitive string.
+             */
+            kid: pulumi.Input<string>;
+            /**
+             * The "kty" (key type) parameter identifies the cryptographic algorithm
+             * family used with the key, such as "RSA" or "EC". "kty" values should
+             * either be registered in the IANA "JSON Web Key Types" registry
+             * established by [JWA] or be a value that contains a Collision-
+             * Resistant Name.  The "kty" value is a case-sensitive string.
+             */
+            kty: pulumi.Input<string>;
+            /**
+             * RSA modulus, in Base64
+             */
+            n?: pulumi.Input<string>;
+            /**
+             * RSA secret prime
+             */
+            p?: pulumi.Input<string>;
+            /**
+             * RSA secret prime, with p < q
+             */
+            q?: pulumi.Input<string>;
+            /**
+             * RSA Private Key Parameter
+             */
+            qi?: pulumi.Input<string>;
+            /**
+             * Use ("public key use") identifies the intended use of
+             * the public key. The "use" parameter is employed to indicate whether
+             * a public key is used for encrypting data or verifying the signature
+             * on data. Values are commonly "sig" (signature) or "enc" (encryption).
+             */
+            use: pulumi.Input<string>;
+            /**
+             * X coordinate for the Elliptic Curve point
+             */
+            x?: pulumi.Input<string>;
+            /**
+             * The "x5c" (X.509 certificate chain) parameter contains a chain of one
+             * or more PKIX certificates [RFC5280].  The certificate chain is
+             * represented as a JSON array of certificate value strings.  Each
+             * string in the array is a base64-encoded (Section 4 of [RFC4648] --
+             * not base64url-encoded) DER [ITU.X690.1994] PKIX certificate value.
+             * The PKIX certificate containing the key value MUST be the first
+             * certificate.
+             */
+            x5c?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Y coordinate for the Elliptic Curve point
+             */
+            y?: pulumi.Input<string>;
+        }
+
+        export interface JSONWebKeySet {
+            /**
+             * The value of the "keys" parameter is an array of JWK values.  By
+             * default, the order of the JWK values within the array does not imply
+             * an order of preference among them, although applications of JWK Sets
+             * can choose to assign a meaning to the order for their purposes, if
+             * desired.
+             */
+            keys?: pulumi.Input<pulumi.Input<inputs.attestation.v20201001.JSONWebKey>[]>;
+        }
+
     }
 }
 
@@ -101760,6 +102000,79 @@ export namespace desktopvirtualization {
         }
 
     }
+
+    export namespace v20201102preview {
+        /**
+         * Schema for MSIX Package Application properties.
+         */
+        export interface MsixPackageApplications {
+            /**
+             * Package Application Id, found in appxmanifest.xml.
+             */
+            appId?: pulumi.Input<string>;
+            /**
+             * Used to activate Package Application. Consists of Package Name and ApplicationID. Found in appxmanifest.xml.
+             */
+            appUserModelID?: pulumi.Input<string>;
+            /**
+             * Description of Package Application.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * User friendly name.
+             */
+            friendlyName?: pulumi.Input<string>;
+            /**
+             * User friendly name.
+             */
+            iconImageName?: pulumi.Input<string>;
+            /**
+             * the icon a 64 bit string as a byte array.
+             */
+            rawIcon?: pulumi.Input<string>;
+            /**
+             * the icon a 64 bit string as a byte array.
+             */
+            rawPng?: pulumi.Input<string>;
+        }
+
+        /**
+         * Schema for MSIX Package Dependencies properties.
+         */
+        export interface MsixPackageDependencies {
+            /**
+             * Name of package dependency.
+             */
+            dependencyName?: pulumi.Input<string>;
+            /**
+             * Dependency version required.
+             */
+            minVersion?: pulumi.Input<string>;
+            /**
+             * Name of dependency publisher.
+             */
+            publisher?: pulumi.Input<string>;
+        }
+
+        /**
+         * Represents a RegistrationInfo definition.
+         */
+        export interface RegistrationInfo {
+            /**
+             * Expiration time of registration token.
+             */
+            expirationTime?: pulumi.Input<string>;
+            /**
+             * The type of resetting the token.
+             */
+            registrationTokenOperation?: pulumi.Input<string>;
+            /**
+             * The registration token base64 encoded string.
+             */
+            token?: pulumi.Input<string>;
+        }
+
+    }
 }
 
 export namespace devices {
@@ -108265,6 +108578,13 @@ export namespace devices {
     }
 
     export namespace v20200710preview {
+        export interface ArmIdentity {
+            /**
+             * Identity type. Only allowed values are SystemAssigned and UserAssigned. Comma separated if both for ex: SystemAssigned,UserAssigned
+             */
+            identityType?: pulumi.Input<string>;
+        }
+
         /**
          * The description of an X509 CA Certificate.
          */
@@ -108502,9 +108822,23 @@ export namespace devices {
         }
 
         /**
+         * The properties of the KeyVault identity.
+         */
+        export interface KEKIdentity {
+            /**
+             * The user assigned identity.
+             */
+            userAssignedIdentity?: pulumi.Input<string>;
+        }
+
+        /**
          * The properties of the KeyVault key.
          */
         export interface KeyVaultKeyProperties {
+            /**
+             * The identity.
+             */
+            identity?: pulumi.Input<inputs.devices.v20200710preview.KEKIdentity>;
             /**
              * The identifier of the key.
              */
@@ -123387,6 +123721,34 @@ export namespace eventhub {
         }
 
         /**
+         * Description of NetWorkRuleSet - IpRules resource.
+         */
+        export interface NWRuleSetIpRules {
+            /**
+             * The IP Filter Action
+             */
+            action?: pulumi.Input<string>;
+            /**
+             * IP Mask
+             */
+            ipMask?: pulumi.Input<string>;
+        }
+
+        /**
+         * Description of VirtualNetworkRules - NetworkRules resource.
+         */
+        export interface NWRuleSetVirtualNetworkRules {
+            /**
+             * Value that indicates whether to ignore missing VNet Service Endpoint
+             */
+            ignoreMissingVnetServiceEndpoint?: pulumi.Input<boolean>;
+            /**
+             * Subnet properties
+             */
+            subnet?: pulumi.Input<inputs.eventhub.latest.Subnet>;
+        }
+
+        /**
          * SKU parameters supplied to the create namespace operation
          */
         export interface Sku {
@@ -123402,6 +123764,16 @@ export namespace eventhub {
              * The billing tier of this particular SKU.
              */
             tier?: pulumi.Input<string>;
+        }
+
+        /**
+         * Properties supplied for Subnet
+         */
+        export interface Subnet {
+            /**
+             * Resource ID of Virtual Network Subnet
+             */
+            id: pulumi.Input<string>;
         }
 
     }
@@ -123502,6 +123874,34 @@ export namespace eventhub {
         }
 
         /**
+         * Description of NetWorkRuleSet - IpRules resource.
+         */
+        export interface NWRuleSetIpRules {
+            /**
+             * The IP Filter Action
+             */
+            action?: pulumi.Input<string>;
+            /**
+             * IP Mask
+             */
+            ipMask?: pulumi.Input<string>;
+        }
+
+        /**
+         * Description of VirtualNetworkRules - NetworkRules resource.
+         */
+        export interface NWRuleSetVirtualNetworkRules {
+            /**
+             * Value that indicates whether to ignore missing VNet Service Endpoint
+             */
+            ignoreMissingVnetServiceEndpoint?: pulumi.Input<boolean>;
+            /**
+             * Subnet properties
+             */
+            subnet?: pulumi.Input<inputs.eventhub.v20170401.Subnet>;
+        }
+
+        /**
          * SKU parameters supplied to the create namespace operation
          */
         export interface Sku {
@@ -123517,6 +123917,16 @@ export namespace eventhub {
              * The billing tier of this particular SKU.
              */
             tier?: pulumi.Input<string>;
+        }
+
+        /**
+         * Properties supplied for Subnet
+         */
+        export interface Subnet {
+            /**
+             * Resource ID of Virtual Network Subnet
+             */
+            id: pulumi.Input<string>;
         }
 
     }
@@ -123566,6 +123976,20 @@ export namespace eventhub {
              * Key Version
              */
             keyVersion?: pulumi.Input<string>;
+        }
+
+        /**
+         * The response from the List namespace operation.
+         */
+        export interface NWRuleSetIpRules {
+            /**
+             * The IP Filter Action
+             */
+            action?: pulumi.Input<string>;
+            /**
+             * IP Mask
+             */
+            ipMask?: pulumi.Input<string>;
         }
 
         /**
@@ -128016,6 +128440,16 @@ export namespace insights {
         }
 
         /**
+         * Customer Managed Identity
+         */
+        export interface ManagedIdentity {
+            /**
+             * The identity type.
+             */
+            type?: pulumi.Input<string>;
+        }
+
+        /**
          * How the data that is collected should be combined over time.
          */
         export interface ManagementEventAggregationCondition {
@@ -131091,6 +131525,19 @@ export namespace insights {
              * Url location to test.
              */
             requestUrl?: pulumi.Input<string>;
+        }
+
+    }
+
+    export namespace v20201020 {
+        /**
+         * Customer Managed Identity
+         */
+        export interface ManagedIdentity {
+            /**
+             * The identity type.
+             */
+            type?: pulumi.Input<string>;
         }
 
     }
@@ -293747,56 +294194,6 @@ export namespace securityinsights {
             objectId?: pulumi.Input<string>;
         }
 
-        /**
-         * Represents a Watchlist Item in Azure Security Insights.
-         */
-        export interface WatchlistItem {
-            /**
-             * Describes a user that created the watchlist
-             */
-            createdBy?: pulumi.Input<inputs.securityinsights.v20190101preview.UserInfo>;
-            /**
-             * The time the watchlist item was created
-             */
-            createdTimeUtc?: pulumi.Input<string>;
-            /**
-             * A key-value pair for a watchlist item entity mapping
-             */
-            entityMapping?: any;
-            /**
-             * The last time the watchlist item was updated
-             */
-            lastUpdatedTimeUtc?: pulumi.Input<string>;
-            /**
-             * The tenantId to which this watchlist item belongs to
-             */
-            tenantId?: pulumi.Input<string>;
-            /**
-             * The time to live for the watchlist item
-             */
-            timeToLiveUtc?: pulumi.Input<string>;
-            /**
-             * Describes a user that updated the watchlist
-             */
-            updatedBy?: pulumi.Input<inputs.securityinsights.v20190101preview.UserInfo>;
-            /**
-             * The watchlist id of the parent of this watchlist item
-             */
-            watchlistId: pulumi.Input<string>;
-            /**
-             * Name of the watchlist item
-             */
-            watchlistItemName?: pulumi.Input<string>;
-            /**
-             * A key-value pair for a watchlist item
-             */
-            watchlistItemPair: any;
-            /**
-             * The type of the watchlist item
-             */
-            watchlistItemType?: pulumi.Input<string>;
-        }
-
     }
 }
 
@@ -293867,6 +294264,34 @@ export namespace servicebus {
         }
 
         /**
+         * Description of NetWorkRuleSet - IpRules resource.
+         */
+        export interface NWRuleSetIpRules {
+            /**
+             * The IP Filter Action
+             */
+            action?: pulumi.Input<string>;
+            /**
+             * IP Mask
+             */
+            ipMask?: pulumi.Input<string>;
+        }
+
+        /**
+         * Description of VirtualNetworkRules - NetworkRules resource.
+         */
+        export interface NWRuleSetVirtualNetworkRules {
+            /**
+             * Value that indicates whether to ignore missing VNet Service Endpoint
+             */
+            ignoreMissingVnetServiceEndpoint?: pulumi.Input<boolean>;
+            /**
+             * Subnet properties
+             */
+            subnet?: pulumi.Input<inputs.servicebus.latest.Subnet>;
+        }
+
+        /**
          * SKU of the namespace.
          */
         export interface SBSku {
@@ -293900,6 +294325,16 @@ export namespace servicebus {
              * The SQL expression. e.g. MyProperty='ABC'
              */
             sqlExpression?: pulumi.Input<string>;
+        }
+
+        /**
+         * Properties supplied for Subnet
+         */
+        export interface Subnet {
+            /**
+             * Resource ID of Virtual Network Subnet
+             */
+            id: pulumi.Input<string>;
         }
 
     }
@@ -294012,6 +294447,34 @@ export namespace servicebus {
         }
 
         /**
+         * Description of NetWorkRuleSet - IpRules resource.
+         */
+        export interface NWRuleSetIpRules {
+            /**
+             * The IP Filter Action
+             */
+            action?: pulumi.Input<string>;
+            /**
+             * IP Mask
+             */
+            ipMask?: pulumi.Input<string>;
+        }
+
+        /**
+         * Description of VirtualNetworkRules - NetworkRules resource.
+         */
+        export interface NWRuleSetVirtualNetworkRules {
+            /**
+             * Value that indicates whether to ignore missing VNet Service Endpoint
+             */
+            ignoreMissingVnetServiceEndpoint?: pulumi.Input<boolean>;
+            /**
+             * Subnet properties
+             */
+            subnet?: pulumi.Input<inputs.servicebus.v20170401.Subnet>;
+        }
+
+        /**
          * SKU of the namespace.
          */
         export interface SBSku {
@@ -294047,6 +294510,16 @@ export namespace servicebus {
             sqlExpression?: pulumi.Input<string>;
         }
 
+        /**
+         * Properties supplied for Subnet
+         */
+        export interface Subnet {
+            /**
+             * Resource ID of Virtual Network Subnet
+             */
+            id: pulumi.Input<string>;
+        }
+
     }
 
     export namespace v20180101preview {
@@ -294079,6 +294552,34 @@ export namespace servicebus {
         }
 
         /**
+         * The response from the List namespace operation.
+         */
+        export interface NWRuleSetIpRules {
+            /**
+             * The IP Filter Action
+             */
+            action?: pulumi.Input<string>;
+            /**
+             * IP Mask
+             */
+            ipMask?: pulumi.Input<string>;
+        }
+
+        /**
+         * The response from the List namespace operation.
+         */
+        export interface NWRuleSetVirtualNetworkRules {
+            /**
+             * Value that indicates whether to ignore missing Vnet Service Endpoint
+             */
+            ignoreMissingVnetServiceEndpoint?: pulumi.Input<boolean>;
+            /**
+             * Subnet properties
+             */
+            subnet?: pulumi.Input<inputs.servicebus.v20180101preview.Subnet>;
+        }
+
+        /**
          * PrivateEndpoint information.
          */
         export interface PrivateEndpoint {
@@ -294104,6 +294605,16 @@ export namespace servicebus {
              * The billing tier of this particular SKU.
              */
             tier?: pulumi.Input<string>;
+        }
+
+        /**
+         * Properties supplied for Subnet
+         */
+        export interface Subnet {
+            /**
+             * Resource ID of Virtual Network Subnet
+             */
+            id?: pulumi.Input<string>;
         }
 
     }
@@ -303249,6 +303760,52 @@ export namespace storage {
         }
 
         /**
+         * The blob service properties for change feed events.
+         */
+        export interface ChangeFeed {
+            /**
+             * Indicates whether change feed event logging is enabled for the Blob service.
+             */
+            enabled?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Specifies a CORS rule for the Blob service.
+         */
+        export interface CorsRule {
+            /**
+             * Required if CorsRule element is present. A list of headers allowed to be part of the cross-origin request.
+             */
+            allowedHeaders: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Required if CorsRule element is present. A list of HTTP methods that are allowed to be executed by the origin.
+             */
+            allowedMethods: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or "*" to allow all domains
+             */
+            allowedOrigins: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Required if CorsRule element is present. A list of response headers to expose to CORS clients.
+             */
+            exposedHeaders: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Required if CorsRule element is present. The number of seconds that the client/browser should cache a preflight response.
+             */
+            maxAgeInSeconds: pulumi.Input<number>;
+        }
+
+        /**
+         * Sets the CORS rules. You can include up to five CorsRule elements in the request. 
+         */
+        export interface CorsRules {
+            /**
+             * The List of CORS rules. You can include up to five CorsRule elements in the request. 
+             */
+            corsRules?: pulumi.Input<pulumi.Input<inputs.storage.latest.CorsRule>[]>;
+        }
+
+        /**
          * The custom domain assigned to this storage account. This can be set via Update.
          */
         export interface CustomDomain {
@@ -303280,6 +303837,20 @@ export namespace storage {
              * Value indicating the age in days after last modification
              */
             daysAfterModificationGreaterThan: pulumi.Input<number>;
+        }
+
+        /**
+         * The service properties for soft delete.
+         */
+        export interface DeleteRetentionPolicy {
+            /**
+             * Indicates the number of days that the deleted item should be retained. The minimum specified value can be 1 and the maximum value can be 365.
+             */
+            days?: pulumi.Input<number>;
+            /**
+             * Indicates whether DeleteRetentionPolicy is enabled.
+             */
+            enabled?: pulumi.Input<boolean>;
         }
 
         /**
@@ -303562,6 +304133,20 @@ export namespace storage {
              * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
              */
             status?: pulumi.Input<string>;
+        }
+
+        /**
+         * The blob service properties for blob restore policy
+         */
+        export interface RestorePolicyProperties {
+            /**
+             * how long this blob can be restored. It should be great than zero and less than DeleteRetentionPolicy.days.
+             */
+            days?: pulumi.Input<number>;
+            /**
+             * Blob restore is enabled if set to true.
+             */
+            enabled: pulumi.Input<boolean>;
         }
 
         /**
@@ -304485,6 +305070,42 @@ export namespace storage {
 
     export namespace v20180701 {
         /**
+         * Specifies a CORS rule for the Blob service.
+         */
+        export interface CorsRule {
+            /**
+             * Required if CorsRule element is present. A list of headers allowed to be part of the cross-origin request.
+             */
+            allowedHeaders: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Required if CorsRule element is present. A list of HTTP methods that are allowed to be executed by the origin.
+             */
+            allowedMethods: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or "*" to allow all domains
+             */
+            allowedOrigins: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Required if CorsRule element is present. A list of response headers to expose to CORS clients.
+             */
+            exposedHeaders: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Required if CorsRule element is present. The number of seconds that the client/browser should cache a preflight response.
+             */
+            maxAgeInSeconds: pulumi.Input<number>;
+        }
+
+        /**
+         * Sets the CORS rules. You can include up to five CorsRule elements in the request. 
+         */
+        export interface CorsRules {
+            /**
+             * The List of CORS rules. You can include up to five CorsRule elements in the request. 
+             */
+            corsRules?: pulumi.Input<pulumi.Input<inputs.storage.v20180701.CorsRule>[]>;
+        }
+
+        /**
          * The custom domain assigned to this storage account. This can be set via Update.
          */
         export interface CustomDomain {
@@ -304496,6 +305117,20 @@ export namespace storage {
              * Indicates whether indirect CName validation is enabled. Default value is false. This should only be set on updates.
              */
             useSubDomainName?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * The blob service properties for soft delete.
+         */
+        export interface DeleteRetentionPolicy {
+            /**
+             * Indicates the number of days that the deleted blob should be retained. The minimum specified value can be 1 and the maximum value can be 365.
+             */
+            days?: pulumi.Input<number>;
+            /**
+             * Indicates whether DeleteRetentionPolicy is enabled for the Blob service.
+             */
+            enabled?: pulumi.Input<boolean>;
         }
 
         /**
@@ -304650,6 +305285,42 @@ export namespace storage {
 
     export namespace v20181101 {
         /**
+         * Specifies a CORS rule for the Blob service.
+         */
+        export interface CorsRule {
+            /**
+             * Required if CorsRule element is present. A list of headers allowed to be part of the cross-origin request.
+             */
+            allowedHeaders: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Required if CorsRule element is present. A list of HTTP methods that are allowed to be executed by the origin.
+             */
+            allowedMethods: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or "*" to allow all domains
+             */
+            allowedOrigins: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Required if CorsRule element is present. A list of response headers to expose to CORS clients.
+             */
+            exposedHeaders: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Required if CorsRule element is present. The number of seconds that the client/browser should cache a preflight response.
+             */
+            maxAgeInSeconds: pulumi.Input<number>;
+        }
+
+        /**
+         * Sets the CORS rules. You can include up to five CorsRule elements in the request. 
+         */
+        export interface CorsRules {
+            /**
+             * The List of CORS rules. You can include up to five CorsRule elements in the request. 
+             */
+            corsRules?: pulumi.Input<pulumi.Input<inputs.storage.v20181101.CorsRule>[]>;
+        }
+
+        /**
          * The custom domain assigned to this storage account. This can be set via Update.
          */
         export interface CustomDomain {
@@ -304681,6 +305352,20 @@ export namespace storage {
              * Integer value indicating the age in days after last modification
              */
             daysAfterModificationGreaterThan: pulumi.Input<number>;
+        }
+
+        /**
+         * The blob service properties for soft delete.
+         */
+        export interface DeleteRetentionPolicy {
+            /**
+             * Indicates the number of days that the deleted blob should be retained. The minimum specified value can be 1 and the maximum value can be 365.
+             */
+            days?: pulumi.Input<number>;
+            /**
+             * Indicates whether DeleteRetentionPolicy is enabled for the Blob service.
+             */
+            enabled?: pulumi.Input<boolean>;
         }
 
         /**
@@ -304981,6 +305666,52 @@ export namespace storage {
         }
 
         /**
+         * The blob service properties for change feed events.
+         */
+        export interface ChangeFeed {
+            /**
+             * Indicates whether change feed event logging is enabled for the Blob service.
+             */
+            enabled?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Specifies a CORS rule for the Blob service.
+         */
+        export interface CorsRule {
+            /**
+             * Required if CorsRule element is present. A list of headers allowed to be part of the cross-origin request.
+             */
+            allowedHeaders: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Required if CorsRule element is present. A list of HTTP methods that are allowed to be executed by the origin.
+             */
+            allowedMethods: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or "*" to allow all domains
+             */
+            allowedOrigins: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Required if CorsRule element is present. A list of response headers to expose to CORS clients.
+             */
+            exposedHeaders: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Required if CorsRule element is present. The number of seconds that the client/browser should cache a preflight response.
+             */
+            maxAgeInSeconds: pulumi.Input<number>;
+        }
+
+        /**
+         * Sets the CORS rules. You can include up to five CorsRule elements in the request. 
+         */
+        export interface CorsRules {
+            /**
+             * The List of CORS rules. You can include up to five CorsRule elements in the request. 
+             */
+            corsRules?: pulumi.Input<pulumi.Input<inputs.storage.v20190401.CorsRule>[]>;
+        }
+
+        /**
          * The custom domain assigned to this storage account. This can be set via Update.
          */
         export interface CustomDomain {
@@ -305012,6 +305743,20 @@ export namespace storage {
              * Value indicating the age in days after last modification
              */
             daysAfterModificationGreaterThan: pulumi.Input<number>;
+        }
+
+        /**
+         * The blob service properties for soft delete.
+         */
+        export interface DeleteRetentionPolicy {
+            /**
+             * Indicates the number of days that the deleted blob should be retained. The minimum specified value can be 1 and the maximum value can be 365.
+             */
+            days?: pulumi.Input<number>;
+            /**
+             * Indicates whether DeleteRetentionPolicy is enabled for the Blob service.
+             */
+            enabled?: pulumi.Input<boolean>;
         }
 
         /**
@@ -305312,6 +306057,52 @@ export namespace storage {
         }
 
         /**
+         * The blob service properties for change feed events.
+         */
+        export interface ChangeFeed {
+            /**
+             * Indicates whether change feed event logging is enabled for the Blob service.
+             */
+            enabled?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Specifies a CORS rule for the Blob service.
+         */
+        export interface CorsRule {
+            /**
+             * Required if CorsRule element is present. A list of headers allowed to be part of the cross-origin request.
+             */
+            allowedHeaders: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Required if CorsRule element is present. A list of HTTP methods that are allowed to be executed by the origin.
+             */
+            allowedMethods: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or "*" to allow all domains
+             */
+            allowedOrigins: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Required if CorsRule element is present. A list of response headers to expose to CORS clients.
+             */
+            exposedHeaders: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Required if CorsRule element is present. The number of seconds that the client/browser should cache a preflight response.
+             */
+            maxAgeInSeconds: pulumi.Input<number>;
+        }
+
+        /**
+         * Sets the CORS rules. You can include up to five CorsRule elements in the request. 
+         */
+        export interface CorsRules {
+            /**
+             * The List of CORS rules. You can include up to five CorsRule elements in the request. 
+             */
+            corsRules?: pulumi.Input<pulumi.Input<inputs.storage.v20190601.CorsRule>[]>;
+        }
+
+        /**
          * The custom domain assigned to this storage account. This can be set via Update.
          */
         export interface CustomDomain {
@@ -305343,6 +306134,20 @@ export namespace storage {
              * Value indicating the age in days after last modification
              */
             daysAfterModificationGreaterThan: pulumi.Input<number>;
+        }
+
+        /**
+         * The service properties for soft delete.
+         */
+        export interface DeleteRetentionPolicy {
+            /**
+             * Indicates the number of days that the deleted item should be retained. The minimum specified value can be 1 and the maximum value can be 365.
+             */
+            days?: pulumi.Input<number>;
+            /**
+             * Indicates whether DeleteRetentionPolicy is enabled.
+             */
+            enabled?: pulumi.Input<boolean>;
         }
 
         /**
@@ -305628,6 +306433,20 @@ export namespace storage {
         }
 
         /**
+         * The blob service properties for blob restore policy
+         */
+        export interface RestorePolicyProperties {
+            /**
+             * how long this blob can be restored. It should be great than zero and less than DeleteRetentionPolicy.days.
+             */
+            days?: pulumi.Input<number>;
+            /**
+             * Blob restore is enabled if set to true.
+             */
+            enabled: pulumi.Input<boolean>;
+        }
+
+        /**
          * Routing preference defines the type of network, either microsoft or internet routing to be used to deliver the user data, the default option is microsoft routing
          */
         export interface RoutingPreference {
@@ -305811,6 +306630,52 @@ export namespace storage {
         }
 
         /**
+         * The blob service properties for change feed events.
+         */
+        export interface ChangeFeed {
+            /**
+             * Indicates whether change feed event logging is enabled for the Blob service.
+             */
+            enabled?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Specifies a CORS rule for the Blob service.
+         */
+        export interface CorsRule {
+            /**
+             * Required if CorsRule element is present. A list of headers allowed to be part of the cross-origin request.
+             */
+            allowedHeaders: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Required if CorsRule element is present. A list of HTTP methods that are allowed to be executed by the origin.
+             */
+            allowedMethods: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or "*" to allow all domains
+             */
+            allowedOrigins: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Required if CorsRule element is present. A list of response headers to expose to CORS clients.
+             */
+            exposedHeaders: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Required if CorsRule element is present. The number of seconds that the client/browser should cache a preflight response.
+             */
+            maxAgeInSeconds: pulumi.Input<number>;
+        }
+
+        /**
+         * Sets the CORS rules. You can include up to five CorsRule elements in the request. 
+         */
+        export interface CorsRules {
+            /**
+             * The List of CORS rules. You can include up to five CorsRule elements in the request. 
+             */
+            corsRules?: pulumi.Input<pulumi.Input<inputs.storage.v20200801preview.CorsRule>[]>;
+        }
+
+        /**
          * The custom domain assigned to this storage account. This can be set via Update.
          */
         export interface CustomDomain {
@@ -305846,6 +306711,20 @@ export namespace storage {
              * Value indicating the age in days after last modification
              */
             daysAfterModificationGreaterThan?: pulumi.Input<number>;
+        }
+
+        /**
+         * The service properties for soft delete.
+         */
+        export interface DeleteRetentionPolicy {
+            /**
+             * Indicates the number of days that the deleted item should be retained. The minimum specified value can be 1 and the maximum value can be 365.
+             */
+            days?: pulumi.Input<number>;
+            /**
+             * Indicates whether DeleteRetentionPolicy is enabled.
+             */
+            enabled?: pulumi.Input<boolean>;
         }
 
         /**
@@ -305963,6 +306842,28 @@ export namespace storage {
         }
 
         /**
+         * The blob service properties for Last access time based tracking policy.
+         */
+        export interface LastAccessTimeTrackingPolicy {
+            /**
+             * An array of predefined supported blob types. Only blockBlob is the supported value. This field is currently read only
+             */
+            blobType?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * When set to true last access time based tracking is enabled.
+             */
+            enable: pulumi.Input<boolean>;
+            /**
+             * Name of the policy. The valid value is AccessTimeTracking. This field is currently read only
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * The field specifies blob object tracking granularity in days, typically how often the blob object should be tracked.This field is currently read only with value as 1
+             */
+            trackingGranularityInDays?: pulumi.Input<number>;
+        }
+
+        /**
          * Actions are applied to the filtered blobs when the execution condition is met.
          */
         export interface ManagementPolicyAction {
@@ -306073,6 +306974,16 @@ export namespace storage {
         }
 
         /**
+         * Multichannel setting. Applies to Premium FileStorage only.
+         */
+        export interface Multichannel {
+            /**
+             * Indicates whether multichannel is enabled
+             */
+            enabled?: pulumi.Input<boolean>;
+        }
+
+        /**
          * Network rule set
          */
         export interface NetworkRuleSet {
@@ -306150,6 +307061,16 @@ export namespace storage {
         }
 
         /**
+         * Protocol settings for file service
+         */
+        export interface ProtocolSettings {
+            /**
+             * Setting for SMB protocol
+             */
+            smb?: pulumi.Input<inputs.storage.v20200801preview.SmbSetting>;
+        }
+
+        /**
          * Resource Access Rule.
          */
         export interface ResourceAccessRule {
@@ -306161,6 +307082,20 @@ export namespace storage {
              * Tenant Id
              */
             tenantId?: pulumi.Input<string>;
+        }
+
+        /**
+         * The blob service properties for blob restore policy
+         */
+        export interface RestorePolicyProperties {
+            /**
+             * how long this blob can be restored. It should be great than zero and less than DeleteRetentionPolicy.days.
+             */
+            days?: pulumi.Input<number>;
+            /**
+             * Blob restore is enabled if set to true.
+             */
+            enabled: pulumi.Input<boolean>;
         }
 
         /**
@@ -306189,6 +307124,16 @@ export namespace storage {
              * The SKU name. Required for account creation; optional for update. Note that in older versions, SKU name was called accountType.
              */
             name: pulumi.Input<string>;
+        }
+
+        /**
+         * Setting for SMB protocol
+         */
+        export interface SmbSetting {
+            /**
+             * Multichannel setting. Applies to Premium FileStorage only.
+             */
+            multichannel?: pulumi.Input<inputs.storage.v20200801preview.Multichannel>;
         }
 
         /**
