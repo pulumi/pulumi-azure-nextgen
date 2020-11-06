@@ -3,6 +3,12 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
+None
+
+---
+
+## 0.2.5 (2020-11-06)
+
 Bug fixes:
 
 - API Connection creation ([#102](https://github.com/pulumi/pulumi-azure-nextgen/issues/102))
@@ -14,8 +20,6 @@ New resources:
 - WebApp SourceControl ([#79](https://github.com/pulumi/pulumi-azure-nextgen/issues/79))
 - DBforPostgreSQL Configurations ([#80](https://github.com/pulumi/pulumi-azure-nextgen/issues/80))
 - StorageAccount BlobServices ([#91](https://github.com/pulumi/pulumi-azure-nextgen/issues/91))
-
----
 
 ## 0.2.4 (2020-10-30)
 
