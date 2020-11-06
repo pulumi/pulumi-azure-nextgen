@@ -3,7 +3,17 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
-- Fix API Connection creation ([#102](https://github.com/pulumi/pulumi-azure-nextgen/issues/102))
+Bug fixes:
+
+- API Connection creation ([#102](https://github.com/pulumi/pulumi-azure-nextgen/issues/102))
+- WebAppSwiftVirtualNetworkConnection creation ([#94](https://github.com/pulumi/pulumi-azure-nextgen/issues/94))
+
+New resources:
+
+- Azure Event Hubs Namespace Network Rules ([#17](https://github.com/pulumi/pulumi-azure-nextgen/issues/17))
+- WebApp SourceControl ([#79](https://github.com/pulumi/pulumi-azure-nextgen/issues/79))
+- DBforPostgreSQL Configurations ([#80](https://github.com/pulumi/pulumi-azure-nextgen/issues/80))
+- StorageAccount BlobServices ([#91](https://github.com/pulumi/pulumi-azure-nextgen/issues/91))
 
 ---
 
