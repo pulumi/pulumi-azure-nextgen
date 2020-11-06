@@ -13,6 +13,7 @@ Bug fixes:
 
 - API Connection creation ([#102](https://github.com/pulumi/pulumi-azure-nextgen/issues/102))
 - WebAppSwiftVirtualNetworkConnection creation ([#94](https://github.com/pulumi/pulumi-azure-nextgen/issues/94))
+- Fix plugin acquisition - requires Pulumi CLI 2.13.0+ ([#70](https://github.com/pulumi/pulumi-azure-nextgen/issues/70))
 
 New resources:
 
