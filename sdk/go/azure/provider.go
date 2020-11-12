@@ -21,7 +21,7 @@ func NewProvider(ctx *pulumi.Context,
 		args = &ProviderArgs{}
 	}
 	if args.AuxiliaryTenantIds == nil {
-		args.AuxiliaryTenantIds = pulumi.StringArray(getEnvOrDefault("", nil, "ARM_AUXILIARY_TENANT_IDS").(string))
+		args.AuxiliaryTenantIds = pulumi.StringArray{pulumi.String(getEnvOrDefault("", nil, "ARM_AUXILIARY_TENANT_IDS").(string))}
 	}
 	if args.ClientCertificatePassword == nil {
 		args.ClientCertificatePassword = pulumi.StringPtr(getEnvOrDefault("", nil, "ARM_CLIENT_CERTIFICATE_PASSWORD").(string))
