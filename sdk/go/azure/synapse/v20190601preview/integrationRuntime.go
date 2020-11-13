@@ -4,6 +4,7 @@
 package v20190601preview
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -96,7 +97,7 @@ type integrationRuntimeArgs struct {
 	Properties interface{} `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
@@ -108,10 +109,49 @@ type IntegrationRuntimeArgs struct {
 	Properties pulumi.Input
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// The name of the workspace
+	// The name of the workspace.
 	WorkspaceName pulumi.StringInput
 }
 
 func (IntegrationRuntimeArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*integrationRuntimeArgs)(nil)).Elem()
+}
+
+type IntegrationRuntimeInput interface {
+	pulumi.Input
+
+	ToIntegrationRuntimeOutput() IntegrationRuntimeOutput
+	ToIntegrationRuntimeOutputWithContext(ctx context.Context) IntegrationRuntimeOutput
+}
+
+func (IntegrationRuntime) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationRuntime)(nil)).Elem()
+}
+
+func (i IntegrationRuntime) ToIntegrationRuntimeOutput() IntegrationRuntimeOutput {
+	return i.ToIntegrationRuntimeOutputWithContext(context.Background())
+}
+
+func (i IntegrationRuntime) ToIntegrationRuntimeOutputWithContext(ctx context.Context) IntegrationRuntimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeOutput)
+}
+
+type IntegrationRuntimeOutput struct {
+	*pulumi.OutputState
+}
+
+func (IntegrationRuntimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationRuntimeOutput)(nil)).Elem()
+}
+
+func (o IntegrationRuntimeOutput) ToIntegrationRuntimeOutput() IntegrationRuntimeOutput {
+	return o
+}
+
+func (o IntegrationRuntimeOutput) ToIntegrationRuntimeOutputWithContext(ctx context.Context) IntegrationRuntimeOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(IntegrationRuntimeOutput{})
 }

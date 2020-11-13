@@ -1036,13 +1036,15 @@ class LogAnalyticsArgs:
                  workspace_id: pulumi.Input[str],
                  workspace_key: pulumi.Input[str],
                  log_type: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 workspace_resource_id: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Container group log analytics information.
         :param pulumi.Input[str] workspace_id: The workspace id for log analytics
         :param pulumi.Input[str] workspace_key: The workspace key for log analytics
         :param pulumi.Input[str] log_type: The log type to be used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata for log analytics.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] workspace_resource_id: The workspace resource id for log analytics
         """
         pulumi.set(__self__, "workspace_id", workspace_id)
         pulumi.set(__self__, "workspace_key", workspace_key)
@@ -1050,6 +1052,8 @@ class LogAnalyticsArgs:
             pulumi.set(__self__, "log_type", log_type)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
+        if workspace_resource_id is not None:
+            pulumi.set(__self__, "workspace_resource_id", workspace_resource_id)
 
     @property
     @pulumi.getter(name="workspaceId")
@@ -1098,6 +1102,18 @@ class LogAnalyticsArgs:
     @metadata.setter
     def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "metadata", value)
+
+    @property
+    @pulumi.getter(name="workspaceResourceId")
+    def workspace_resource_id(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The workspace resource id for log analytics
+        """
+        return pulumi.get(self, "workspace_resource_id")
+
+    @workspace_resource_id.setter
+    def workspace_resource_id(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "workspace_resource_id", value)
 
 
 @pulumi.input_type

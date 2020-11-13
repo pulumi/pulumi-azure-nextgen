@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../../types/input";
-import * as outputs from "../../types/output";
+import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getBigDataPool(args: GetBigDataPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetBigDataPoolResult> {
@@ -53,10 +52,6 @@ export interface GetBigDataPoolResult {
      */
     readonly creationDate?: string;
     /**
-     * List of custom libraries/packages associated with the spark pool.
-     */
-    readonly customLibraries?: outputs.synapse.v20190601preview.LibraryInfoResponse[];
-    /**
      * The default folder where Spark logs will be written.
      */
     readonly defaultSparkLogFolder?: string;
@@ -92,10 +87,6 @@ export interface GetBigDataPoolResult {
      * The state of the Big Data pool.
      */
     readonly provisioningState?: string;
-    /**
-     * Whether session level library/package management is enabled or not.
-     */
-    readonly sessionLevelPackagesEnabled?: boolean;
     /**
      * Spark configuration file to specify additional properties
      */

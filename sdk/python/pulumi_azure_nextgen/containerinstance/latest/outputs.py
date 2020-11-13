@@ -1328,13 +1328,15 @@ class LogAnalyticsResponse(dict):
                  workspace_id: str,
                  workspace_key: str,
                  log_type: Optional[str] = None,
-                 metadata: Optional[Mapping[str, str]] = None):
+                 metadata: Optional[Mapping[str, str]] = None,
+                 workspace_resource_id: Optional[Mapping[str, str]] = None):
         """
         Container group log analytics information.
         :param str workspace_id: The workspace id for log analytics
         :param str workspace_key: The workspace key for log analytics
         :param str log_type: The log type to be used.
         :param Mapping[str, str] metadata: Metadata for log analytics.
+        :param Mapping[str, str] workspace_resource_id: The workspace resource id for log analytics
         """
         pulumi.set(__self__, "workspace_id", workspace_id)
         pulumi.set(__self__, "workspace_key", workspace_key)
@@ -1342,6 +1344,8 @@ class LogAnalyticsResponse(dict):
             pulumi.set(__self__, "log_type", log_type)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
+        if workspace_resource_id is not None:
+            pulumi.set(__self__, "workspace_resource_id", workspace_resource_id)
 
     @property
     @pulumi.getter(name="workspaceId")
@@ -1374,6 +1378,14 @@ class LogAnalyticsResponse(dict):
         Metadata for log analytics.
         """
         return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter(name="workspaceResourceId")
+    def workspace_resource_id(self) -> Optional[Mapping[str, str]]:
+        """
+        The workspace resource id for log analytics
+        """
+        return pulumi.get(self, "workspace_resource_id")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

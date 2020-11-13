@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 
 export namespace aad {
     export namespace latest {
@@ -34,13 +33,47 @@ export namespace aad {
              */
             ntlmV1?: string;
             /**
+             * A flag to determine whether or not SyncKerberosPasswords is enabled or disabled.
+             */
+            syncKerberosPasswords?: string;
+            /**
              * A flag to determine whether or not SyncNtlmPasswords is enabled or disabled.
              */
             syncNtlmPasswords?: string;
             /**
+             * A flag to determine whether or not SyncOnPremPasswords is enabled or disabled.
+             */
+            syncOnPremPasswords?: string;
+            /**
              * A flag to determine whether or not TlsV1 is enabled or disabled.
              */
             tlsV1?: string;
+        }
+
+        /**
+         * Forest Trust Setting
+         */
+        export interface ForestTrustResponse {
+            /**
+             * Friendly Name
+             */
+            friendlyName?: string;
+            /**
+             * Remote Dns ips
+             */
+            remoteDnsIps?: string;
+            /**
+             * Trust Direction
+             */
+            trustDirection?: string;
+            /**
+             * Trust Password
+             */
+            trustPassword?: string;
+            /**
+             * Trusted Domain FQDN
+             */
+            trustedDomainFqdn?: string;
         }
 
         /**
@@ -191,6 +224,20 @@ export namespace aad {
              * Virtual network site id
              */
             vnetSiteId: string;
+        }
+
+        /**
+         * Settings for Resource Forest
+         */
+        export interface ResourceForestSettingsResponse {
+            /**
+             * Resource Forest
+             */
+            resourceForest?: string;
+            /**
+             * List of settings for Resource Forest
+             */
+            settings?: outputs.aad.latest.ForestTrustResponse[];
         }
     }
 
@@ -350,13 +397,47 @@ export namespace aad {
              */
             ntlmV1?: string;
             /**
+             * A flag to determine whether or not SyncKerberosPasswords is enabled or disabled.
+             */
+            syncKerberosPasswords?: string;
+            /**
              * A flag to determine whether or not SyncNtlmPasswords is enabled or disabled.
              */
             syncNtlmPasswords?: string;
             /**
+             * A flag to determine whether or not SyncOnPremPasswords is enabled or disabled.
+             */
+            syncOnPremPasswords?: string;
+            /**
              * A flag to determine whether or not TlsV1 is enabled or disabled.
              */
             tlsV1?: string;
+        }
+
+        /**
+         * Forest Trust Setting
+         */
+        export interface ForestTrustResponse {
+            /**
+             * Friendly Name
+             */
+            friendlyName?: string;
+            /**
+             * Remote Dns ips
+             */
+            remoteDnsIps?: string;
+            /**
+             * Trust Direction
+             */
+            trustDirection?: string;
+            /**
+             * Trust Password
+             */
+            trustPassword?: string;
+            /**
+             * Trusted Domain FQDN
+             */
+            trustedDomainFqdn?: string;
         }
 
         /**
@@ -466,6 +547,20 @@ export namespace aad {
              */
             notifyGlobalAdmins?: string;
         }
+
+        /**
+         * Settings for Resource Forest
+         */
+        export interface ResourceForestSettingsResponse {
+            /**
+             * Resource Forest
+             */
+            resourceForest?: string;
+            /**
+             * List of settings for Resource Forest
+             */
+            settings?: outputs.aad.v20170601.ForestTrustResponse[];
+        }
     }
 
     export namespace v20200101 {
@@ -496,13 +591,47 @@ export namespace aad {
              */
             ntlmV1?: string;
             /**
+             * A flag to determine whether or not SyncKerberosPasswords is enabled or disabled.
+             */
+            syncKerberosPasswords?: string;
+            /**
              * A flag to determine whether or not SyncNtlmPasswords is enabled or disabled.
              */
             syncNtlmPasswords?: string;
             /**
+             * A flag to determine whether or not SyncOnPremPasswords is enabled or disabled.
+             */
+            syncOnPremPasswords?: string;
+            /**
              * A flag to determine whether or not TlsV1 is enabled or disabled.
              */
             tlsV1?: string;
+        }
+
+        /**
+         * Forest Trust Setting
+         */
+        export interface ForestTrustResponse {
+            /**
+             * Friendly Name
+             */
+            friendlyName?: string;
+            /**
+             * Remote Dns ips
+             */
+            remoteDnsIps?: string;
+            /**
+             * Trust Direction
+             */
+            trustDirection?: string;
+            /**
+             * Trust Password
+             */
+            trustPassword?: string;
+            /**
+             * Trusted Domain FQDN
+             */
+            trustedDomainFqdn?: string;
         }
 
         /**
@@ -653,6 +782,20 @@ export namespace aad {
              * Virtual network site id
              */
             vnetSiteId: string;
+        }
+
+        /**
+         * Settings for Resource Forest
+         */
+        export interface ResourceForestSettingsResponse {
+            /**
+             * Resource Forest
+             */
+            resourceForest?: string;
+            /**
+             * List of settings for Resource Forest
+             */
+            settings?: outputs.aad.v20200101.ForestTrustResponse[];
         }
     }
 }
@@ -6488,7 +6631,7 @@ export namespace apimanagement {
              */
             identityClientId?: string;
             /**
-             * Url to the KeyVault Secret containing the Ssl Certificate. If absolute Url containing version is provided, auto-update of ssl certificate will not work. This requires Api Management service to be configured with MSI. The secret should be of type *application/x-pkcs12*
+             * Url to the KeyVault Secret containing the Ssl Certificate. If absolute Url containing version is provided, auto-update of ssl certificate will not work. This requires Api Management service to be configured with aka.ms/apimmsi. The secret should be of type *application/x-pkcs12*
              */
             keyVaultId?: string;
             /**
@@ -6532,7 +6675,7 @@ export namespace apimanagement {
              */
             lastStatus?: outputs.apimanagement.v20200601preview.KeyVaultLastAccessStatusContractPropertiesResponse;
             /**
-             * Key vault secret identifier for fetching secret.
+             * Key vault secret identifier for fetching secret. Providing a versioned secret will prevent auto-refresh. This requires Api Management service to be configured with aka.ms/apimmsi
              */
             secretIdentifier?: string;
         }
@@ -11142,6 +11285,150 @@ export namespace avs {
              * The name of the SKU.
              */
             name: string;
+        }
+    }
+
+    export namespace v20200717preview {
+        /**
+         * An ExpressRoute Circuit
+         */
+        export interface CircuitResponse {
+            /**
+             * Identifier of the ExpressRoute Circuit (Microsoft Colo only)
+             */
+            expressRouteID: string;
+            /**
+             * ExpressRoute Circuit private peering identifier
+             */
+            expressRoutePrivatePeeringID: string;
+            /**
+             * CIDR of primary subnet
+             */
+            primarySubnet: string;
+            /**
+             * CIDR of secondary subnet
+             */
+            secondarySubnet: string;
+        }
+
+        /**
+         * Endpoint addresses
+         */
+        export interface EndpointsResponse {
+            /**
+             * Endpoint for the HCX Cloud Manager
+             */
+            hcxCloudManager: string;
+            /**
+             * Endpoint for the NSX-T Data Center manager
+             */
+            nsxtManager: string;
+            /**
+             * Endpoint for Virtual Center Server Appliance
+             */
+            vcsa: string;
+        }
+
+        /**
+         * vCenter Single Sign On Identity Source
+         */
+        export interface IdentitySourceResponse {
+            /**
+             * The domain's NetBIOS name
+             */
+            alias?: string;
+            /**
+             * The base distinguished name for groups
+             */
+            baseGroupDN?: string;
+            /**
+             * The base distinguished name for users
+             */
+            baseUserDN?: string;
+            /**
+             * The domain's dns name
+             */
+            domain?: string;
+            /**
+             * The name of the identity source
+             */
+            name?: string;
+            /**
+             * The password of the Active Directory user with a minimum of read-only access to Base DN for users and groups.
+             */
+            password?: string;
+            /**
+             * Primary server URL
+             */
+            primaryServer?: string;
+            /**
+             * Secondary server URL
+             */
+            secondaryServer?: string;
+            /**
+             * Protect LDAP communication using SSL certificate (LDAPS)
+             */
+            ssl?: string;
+            /**
+             * The ID of an Active Directory user with a minimum of read-only access to Base DN for users and group
+             */
+            username?: string;
+        }
+
+        /**
+         * The properties of a management cluster
+         */
+        export interface ManagementClusterResponse {
+            /**
+             * The identity
+             */
+            clusterId: number;
+            /**
+             * The cluster size
+             */
+            clusterSize: number;
+            /**
+             * The hosts
+             */
+            hosts: string[];
+            /**
+             * The state of the cluster provisioning
+             */
+            provisioningState: string;
+        }
+
+        /**
+         * The resource model definition representing SKU
+         */
+        export interface SkuResponse {
+            /**
+             * The name of the SKU.
+             */
+            name: string;
+        }
+
+        /**
+         * Ports and any VIF attached to segment.
+         */
+        export interface WorkloadNetworkSegmentPortVifResponse {
+            /**
+             * Name of port or VIF attached to segment.
+             */
+            portName?: string;
+        }
+
+        /**
+         * Subnet configuration for segment
+         */
+        export interface WorkloadNetworkSegmentSubnetResponse {
+            /**
+             * DHCP Range assigned for subnet.
+             */
+            dhcpRanges?: string[];
+            /**
+             * Gateway address.
+             */
+            gatewayAddress?: string;
         }
     }
 }
@@ -58376,6 +58663,10 @@ export namespace containerinstance {
              * The workspace key for log analytics
              */
             workspaceKey: string;
+            /**
+             * The workspace resource id for log analytics
+             */
+            workspaceResourceId?: {[key: string]: string};
         }
 
         /**
@@ -62132,6 +62423,613 @@ export namespace containerinstance {
              * The git repo volume.
              */
             gitRepo?: outputs.containerinstance.v20191201.GitRepoVolumeResponse;
+            /**
+             * The name of the volume.
+             */
+            name: string;
+            /**
+             * The secret volume.
+             */
+            secret?: {[key: string]: string};
+        }
+    }
+
+    export namespace v20201101 {
+        /**
+         * The properties of the Azure File volume. Azure File shares are mounted as volumes.
+         */
+        export interface AzureFileVolumeResponse {
+            /**
+             * The flag indicating whether the Azure File shared mounted as a volume is read-only.
+             */
+            readOnly?: boolean;
+            /**
+             * The name of the Azure File share to be mounted as a volume.
+             */
+            shareName: string;
+            /**
+             * The storage account access key used to access the Azure File share.
+             */
+            storageAccountKey?: string;
+            /**
+             * The name of the storage account that contains the Azure File share.
+             */
+            storageAccountName: string;
+        }
+
+        /**
+         * The container execution command, for liveness or readiness probe
+         */
+        export interface ContainerExecResponse {
+            /**
+             * The commands to execute within the container.
+             */
+            command?: string[];
+        }
+
+        /**
+         * Container group diagnostic information.
+         */
+        export interface ContainerGroupDiagnosticsResponse {
+            /**
+             * Container group log analytics information.
+             */
+            logAnalytics?: outputs.containerinstance.v20201101.LogAnalyticsResponse;
+        }
+
+        /**
+         * Identity for the container group.
+         */
+        export interface ContainerGroupIdentityResponse {
+            /**
+             * The principal id of the container group identity. This property will only be provided for a system assigned identity.
+             */
+            principalId: string;
+            /**
+             * The tenant id associated with the container group. This property will only be provided for a system assigned identity.
+             */
+            tenantId: string;
+            /**
+             * The type of identity used for the container group. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the container group.
+             */
+            type?: string;
+            /**
+             * The list of user identities associated with the container group. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+             */
+            userAssignedIdentities?: {[key: string]: outputs.containerinstance.v20201101.ContainerGroupIdentityResponseUserAssignedIdentities};
+        }
+
+        export interface ContainerGroupIdentityResponseUserAssignedIdentities {
+            /**
+             * The client id of user assigned identity.
+             */
+            clientId: string;
+            /**
+             * The principal id of user assigned identity.
+             */
+            principalId: string;
+        }
+
+        /**
+         * Container group network profile information.
+         */
+        export interface ContainerGroupNetworkProfileResponse {
+            /**
+             * The identifier for a network profile.
+             */
+            id: string;
+        }
+
+        /**
+         * The instance view of the container group. Only valid in response.
+         */
+        export interface ContainerGroupResponseInstanceView {
+            /**
+             * The events of this container group.
+             */
+            events: outputs.containerinstance.v20201101.EventResponse[];
+            /**
+             * The state of the container group. Only valid in response.
+             */
+            state: string;
+        }
+
+        /**
+         * The container Http Get settings, for liveness or readiness probe
+         */
+        export interface ContainerHttpGetResponse {
+            /**
+             * The path to probe.
+             */
+            path?: string;
+            /**
+             * The port number to probe.
+             */
+            port: number;
+            /**
+             * The scheme.
+             */
+            scheme?: string;
+        }
+
+        /**
+         * The port exposed on the container instance.
+         */
+        export interface ContainerPortResponse {
+            /**
+             * The port number exposed within the container group.
+             */
+            port: number;
+            /**
+             * The protocol associated with the port.
+             */
+            protocol?: string;
+        }
+
+        /**
+         * The container probe, for liveness or readiness
+         */
+        export interface ContainerProbeResponse {
+            /**
+             * The execution command to probe
+             */
+            exec?: outputs.containerinstance.v20201101.ContainerExecResponse;
+            /**
+             * The failure threshold.
+             */
+            failureThreshold?: number;
+            /**
+             * The Http Get settings to probe
+             */
+            httpGet?: outputs.containerinstance.v20201101.ContainerHttpGetResponse;
+            /**
+             * The initial delay seconds.
+             */
+            initialDelaySeconds?: number;
+            /**
+             * The period seconds.
+             */
+            periodSeconds?: number;
+            /**
+             * The success threshold.
+             */
+            successThreshold?: number;
+            /**
+             * The timeout seconds.
+             */
+            timeoutSeconds?: number;
+        }
+
+        /**
+         * The instance view of the container instance. Only valid in response.
+         */
+        export interface ContainerPropertiesResponseInstanceView {
+            /**
+             * Current container instance state.
+             */
+            currentState: outputs.containerinstance.v20201101.ContainerStateResponse;
+            /**
+             * The events of the container instance.
+             */
+            events: outputs.containerinstance.v20201101.EventResponse[];
+            /**
+             * Previous container instance state.
+             */
+            previousState: outputs.containerinstance.v20201101.ContainerStateResponse;
+            /**
+             * The number of times that the container instance has been restarted.
+             */
+            restartCount: number;
+        }
+
+        /**
+         * A container instance.
+         */
+        export interface ContainerResponse {
+            /**
+             * The commands to execute within the container instance in exec form.
+             */
+            command?: string[];
+            /**
+             * The environment variables to set in the container instance.
+             */
+            environmentVariables?: outputs.containerinstance.v20201101.EnvironmentVariableResponse[];
+            /**
+             * The name of the image used to create the container instance.
+             */
+            image: string;
+            /**
+             * The instance view of the container instance. Only valid in response.
+             */
+            instanceView: outputs.containerinstance.v20201101.ContainerPropertiesResponseInstanceView;
+            /**
+             * The liveness probe.
+             */
+            livenessProbe?: outputs.containerinstance.v20201101.ContainerProbeResponse;
+            /**
+             * The user-provided name of the container instance.
+             */
+            name: string;
+            /**
+             * The exposed ports on the container instance.
+             */
+            ports?: outputs.containerinstance.v20201101.ContainerPortResponse[];
+            /**
+             * The readiness probe.
+             */
+            readinessProbe?: outputs.containerinstance.v20201101.ContainerProbeResponse;
+            /**
+             * The resource requirements of the container instance.
+             */
+            resources: outputs.containerinstance.v20201101.ResourceRequirementsResponse;
+            /**
+             * The volume mounts available to the container instance.
+             */
+            volumeMounts?: outputs.containerinstance.v20201101.VolumeMountResponse[];
+        }
+
+        /**
+         * The container instance state.
+         */
+        export interface ContainerStateResponse {
+            /**
+             * The human-readable status of the container instance state.
+             */
+            detailStatus: string;
+            /**
+             * The container instance exit codes correspond to those from the `docker run` command.
+             */
+            exitCode: number;
+            /**
+             * The date-time when the container instance state finished.
+             */
+            finishTime: string;
+            /**
+             * The date-time when the container instance state started.
+             */
+            startTime: string;
+            /**
+             * The state of the container instance.
+             */
+            state: string;
+        }
+
+        /**
+         * DNS configuration for the container group.
+         */
+        export interface DnsConfigurationResponse {
+            /**
+             * The DNS servers for the container group.
+             */
+            nameServers: string[];
+            /**
+             * The DNS options for the container group.
+             */
+            options?: string;
+            /**
+             * The DNS search domains for hostname lookup in the container group.
+             */
+            searchDomains?: string;
+        }
+
+        /**
+         * The container group encryption properties.
+         */
+        export interface EncryptionPropertiesResponse {
+            /**
+             * The encryption key name.
+             */
+            keyName: string;
+            /**
+             * The encryption key version.
+             */
+            keyVersion: string;
+            /**
+             * The keyvault base url.
+             */
+            vaultBaseUrl: string;
+        }
+
+        /**
+         * The environment variable to set within the container instance.
+         */
+        export interface EnvironmentVariableResponse {
+            /**
+             * The name of the environment variable.
+             */
+            name: string;
+            /**
+             * The value of the secure environment variable.
+             */
+            secureValue?: string;
+            /**
+             * The value of the environment variable.
+             */
+            value?: string;
+        }
+
+        /**
+         * A container group or container instance event.
+         */
+        export interface EventResponse {
+            /**
+             * The count of the event.
+             */
+            count: number;
+            /**
+             * The date-time of the earliest logged event.
+             */
+            firstTimestamp: string;
+            /**
+             * The date-time of the latest logged event.
+             */
+            lastTimestamp: string;
+            /**
+             * The event message.
+             */
+            message: string;
+            /**
+             * The event name.
+             */
+            name: string;
+            /**
+             * The event type.
+             */
+            type: string;
+        }
+
+        /**
+         * Represents a volume that is populated with the contents of a git repository
+         */
+        export interface GitRepoVolumeResponse {
+            /**
+             * Target directory name. Must not contain or start with '..'.  If '.' is supplied, the volume directory will be the git repository.  Otherwise, if specified, the volume will contain the git repository in the subdirectory with the given name.
+             */
+            directory?: string;
+            /**
+             * Repository URL
+             */
+            repository: string;
+            /**
+             * Commit hash for the specified revision.
+             */
+            revision?: string;
+        }
+
+        /**
+         * The GPU resource.
+         */
+        export interface GpuResourceResponse {
+            /**
+             * The count of the GPU resource.
+             */
+            count: number;
+            /**
+             * The SKU of the GPU resource.
+             */
+            sku: string;
+        }
+
+        /**
+         * Image registry credential.
+         */
+        export interface ImageRegistryCredentialResponse {
+            /**
+             * The password for the private registry.
+             */
+            password?: string;
+            /**
+             * The Docker image registry server without a protocol such as "http" and "https".
+             */
+            server: string;
+            /**
+             * The username for the private registry.
+             */
+            username: string;
+        }
+
+        /**
+         * The init container definition.
+         */
+        export interface InitContainerDefinitionResponse {
+            /**
+             * The command to execute within the init container in exec form.
+             */
+            command?: string[];
+            /**
+             * The environment variables to set in the init container.
+             */
+            environmentVariables?: outputs.containerinstance.v20201101.EnvironmentVariableResponse[];
+            /**
+             * The image of the init container.
+             */
+            image?: string;
+            /**
+             * The instance view of the init container. Only valid in response.
+             */
+            instanceView: outputs.containerinstance.v20201101.InitContainerPropertiesDefinitionResponseInstanceView;
+            /**
+             * The name for the init container.
+             */
+            name: string;
+            /**
+             * The volume mounts available to the init container.
+             */
+            volumeMounts?: outputs.containerinstance.v20201101.VolumeMountResponse[];
+        }
+
+        /**
+         * The instance view of the init container. Only valid in response.
+         */
+        export interface InitContainerPropertiesDefinitionResponseInstanceView {
+            /**
+             * The current state of the init container.
+             */
+            currentState: outputs.containerinstance.v20201101.ContainerStateResponse;
+            /**
+             * The events of the init container.
+             */
+            events: outputs.containerinstance.v20201101.EventResponse[];
+            /**
+             * The previous state of the init container.
+             */
+            previousState: outputs.containerinstance.v20201101.ContainerStateResponse;
+            /**
+             * The number of times that the init container has been restarted.
+             */
+            restartCount: number;
+        }
+
+        /**
+         * IP address for the container group.
+         */
+        export interface IpAddressResponse {
+            /**
+             * The Dns name label for the IP.
+             */
+            dnsNameLabel?: string;
+            /**
+             * The FQDN for the IP.
+             */
+            fqdn: string;
+            /**
+             * The IP exposed to the public internet.
+             */
+            ip?: string;
+            /**
+             * The list of ports exposed on the container group.
+             */
+            ports: outputs.containerinstance.v20201101.PortResponse[];
+            /**
+             * Specifies if the IP is exposed to the public internet or private VNET.
+             */
+            type: string;
+        }
+
+        /**
+         * Container group log analytics information.
+         */
+        export interface LogAnalyticsResponse {
+            /**
+             * The log type to be used.
+             */
+            logType?: string;
+            /**
+             * Metadata for log analytics.
+             */
+            metadata?: {[key: string]: string};
+            /**
+             * The workspace id for log analytics
+             */
+            workspaceId: string;
+            /**
+             * The workspace key for log analytics
+             */
+            workspaceKey: string;
+            /**
+             * The workspace resource id for log analytics
+             */
+            workspaceResourceId?: {[key: string]: string};
+        }
+
+        /**
+         * The port exposed on the container group.
+         */
+        export interface PortResponse {
+            /**
+             * The port number.
+             */
+            port: number;
+            /**
+             * The protocol associated with the port.
+             */
+            protocol?: string;
+        }
+
+        /**
+         * The resource limits.
+         */
+        export interface ResourceLimitsResponse {
+            /**
+             * The CPU limit of this container instance.
+             */
+            cpu?: number;
+            /**
+             * The GPU limit of this container instance.
+             */
+            gpu?: outputs.containerinstance.v20201101.GpuResourceResponse;
+            /**
+             * The memory limit in GB of this container instance.
+             */
+            memoryInGB?: number;
+        }
+
+        /**
+         * The resource requests.
+         */
+        export interface ResourceRequestsResponse {
+            /**
+             * The CPU request of this container instance.
+             */
+            cpu: number;
+            /**
+             * The GPU request of this container instance.
+             */
+            gpu?: outputs.containerinstance.v20201101.GpuResourceResponse;
+            /**
+             * The memory request in GB of this container instance.
+             */
+            memoryInGB: number;
+        }
+
+        /**
+         * The resource requirements.
+         */
+        export interface ResourceRequirementsResponse {
+            /**
+             * The resource limits of this container instance.
+             */
+            limits?: outputs.containerinstance.v20201101.ResourceLimitsResponse;
+            /**
+             * The resource requests of this container instance.
+             */
+            requests: outputs.containerinstance.v20201101.ResourceRequestsResponse;
+        }
+
+        /**
+         * The properties of the volume mount.
+         */
+        export interface VolumeMountResponse {
+            /**
+             * The path within the container where the volume should be mounted. Must not contain colon (:).
+             */
+            mountPath: string;
+            /**
+             * The name of the volume mount.
+             */
+            name: string;
+            /**
+             * The flag indicating whether the volume mount is read-only.
+             */
+            readOnly?: boolean;
+        }
+
+        /**
+         * The properties of the volume.
+         */
+        export interface VolumeResponse {
+            /**
+             * The Azure File volume.
+             */
+            azureFile?: outputs.containerinstance.v20201101.AzureFileVolumeResponse;
+            /**
+             * The empty directory volume.
+             */
+            emptyDir?: any;
+            /**
+             * The git repo volume.
+             */
+            gitRepo?: outputs.containerinstance.v20201101.GitRepoVolumeResponse;
             /**
              * The name of the volume.
              */
@@ -66470,6 +67368,38 @@ export namespace containerservice {
         }
 
         /**
+         * An error response from the Container service.
+         */
+        export interface CloudErrorBodyResponse {
+            /**
+             * An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
+             */
+            code?: string;
+            /**
+             * A list of additional details about the error.
+             */
+            details?: outputs.containerservice.latest.CloudErrorBodyResponse[];
+            /**
+             * A message describing the error, intended to be suitable for display in a user interface.
+             */
+            message?: string;
+            /**
+             * The target of the particular error. For example, the name of the property in error.
+             */
+            target?: string;
+        }
+
+        /**
+         * An error response from the Container service.
+         */
+        export interface CloudErrorResponse {
+            /**
+             * Details about the error.
+             */
+            error?: outputs.containerservice.latest.CloudErrorBodyResponse;
+        }
+
+        /**
          * Profile for the container service agent pool.
          */
         export interface ContainerServiceAgentPoolProfileResponse {
@@ -66677,6 +67607,66 @@ export namespace containerservice {
         }
 
         /**
+         * Kubelet configurations of agent nodes.
+         */
+        export interface KubeletConfigResponse {
+            /**
+             * Allowlist of unsafe sysctls or unsafe sysctl patterns (ending in `*`).
+             */
+            allowedUnsafeSysctls?: string[];
+            /**
+             * Enable CPU CFS quota enforcement for containers that specify CPU limits.
+             */
+            cpuCfsQuota?: boolean;
+            /**
+             * Sets CPU CFS quota period value.
+             */
+            cpuCfsQuotaPeriod?: string;
+            /**
+             * CPU Manager policy to use.
+             */
+            cpuManagerPolicy?: string;
+            /**
+             * If set to true it will make the Kubelet fail to start if swap is enabled on the node.
+             */
+            failSwapOn?: boolean;
+            /**
+             * The percent of disk usage after which image garbage collection is always run.
+             */
+            imageGcHighThreshold?: number;
+            /**
+             * The percent of disk usage before which image garbage collection is never run.
+             */
+            imageGcLowThreshold?: number;
+            /**
+             * Topology Manager policy to use.
+             */
+            topologyManagerPolicy?: string;
+        }
+
+        /**
+         * OS configurations of Linux agent nodes.
+         */
+        export interface LinuxOSConfigResponse {
+            /**
+             * SwapFileSizeMB specifies size in MB of a swap file will be created on each node.
+             */
+            swapFileSizeMB?: number;
+            /**
+             * Sysctl settings for Linux agent nodes.
+             */
+            sysctls?: outputs.containerservice.latest.SysctlConfigResponse;
+            /**
+             * Transparent Huge Page defrag configuration.
+             */
+            transparentHugePageDefrag?: string;
+            /**
+             * Transparent Huge Page enabled configuration.
+             */
+            transparentHugePageEnabled?: string;
+        }
+
+        /**
          * AADProfile specifies attributes for Azure Active Directory integration.
          */
         export interface ManagedClusterAADProfileResponse {
@@ -66722,6 +67712,10 @@ export namespace containerservice {
              * Whether to create the cluster as a private cluster or not.
              */
             enablePrivateCluster?: boolean;
+            /**
+             * Private dns zone mode for private cluster. 
+             */
+            privateDNSZone?: string;
         }
 
         /**
@@ -66781,6 +67775,14 @@ export namespace containerservice {
              */
             enableNodePublicIP?: boolean;
             /**
+             * KubeletConfig specifies the configuration of kubelet on agent nodes.
+             */
+            kubeletConfig?: outputs.containerservice.latest.KubeletConfigResponse;
+            /**
+             * LinuxOSConfig specifies the OS configuration of linux agent nodes.
+             */
+            linuxOSConfig?: outputs.containerservice.latest.LinuxOSConfigResponse;
+            /**
              * Maximum number of nodes for auto-scaling
              */
             maxCount?: number;
@@ -66829,6 +67831,10 @@ export namespace containerservice {
              */
             osType?: string;
             /**
+             * Pod SubnetID specifies the VNet's subnet identifier for pods.
+             */
+            podSubnetID?: string;
+            /**
              * Describes whether the Agent Pool is Running or Stopped
              */
             powerState: outputs.containerservice.latest.PowerStateResponse;
@@ -66869,9 +67875,19 @@ export namespace containerservice {
              */
             vmSize?: string;
             /**
-             * VNet SubnetID specifies the VNet's subnet identifier.
+             * VNet SubnetID specifies the VNet's subnet identifier for nodes and maybe pods
              */
             vnetSubnetID?: string;
+        }
+
+        /**
+         * Auto upgrade profile for a managed cluster.
+         */
+        export interface ManagedClusterAutoUpgradeProfileResponse {
+            /**
+             * upgrade channel for auto upgrade.
+             */
+            upgradeChannel?: string;
         }
 
         /**
@@ -66965,6 +67981,63 @@ export namespace containerservice {
              * A list of public IP resources.
              */
             publicIPs?: outputs.containerservice.latest.ResourceReferenceResponse[];
+        }
+
+        export interface ManagedClusterPodIdentityExceptionResponse {
+            /**
+             * Name of the pod identity exception.
+             */
+            name: string;
+            /**
+             * Namespace of the pod identity exception.
+             */
+            namespace: string;
+            /**
+             * Pod labels to match.
+             */
+            podLabels: {[key: string]: string};
+        }
+
+        export interface ManagedClusterPodIdentityProfileResponse {
+            /**
+             * Whether the pod identity addon is enabled.
+             */
+            enabled?: boolean;
+            /**
+             * User assigned pod identity settings.
+             */
+            userAssignedIdentities?: outputs.containerservice.latest.ManagedClusterPodIdentityResponse[];
+            /**
+             * User assigned pod identity exception settings.
+             */
+            userAssignedIdentityExceptions?: outputs.containerservice.latest.ManagedClusterPodIdentityExceptionResponse[];
+        }
+
+        export interface ManagedClusterPodIdentityResponse {
+            /**
+             * Information of the user assigned identity.
+             */
+            identity: outputs.containerservice.latest.UserAssignedIdentityResponse;
+            /**
+             * Name of the pod identity.
+             */
+            name: string;
+            /**
+             * Namespace of the pod identity.
+             */
+            namespace: string;
+            provisioningInfo: outputs.containerservice.latest.ManagedClusterPodIdentityResponseProvisioningInfo;
+            /**
+             * The current provisioning state of the pod identity.
+             */
+            provisioningState: string;
+        }
+
+        export interface ManagedClusterPodIdentityResponseProvisioningInfo {
+            /**
+             * Pod identity assignment error (if any).
+             */
+            error?: outputs.containerservice.latest.CloudErrorResponse;
         }
 
         /**
@@ -67253,6 +68326,139 @@ export namespace containerservice {
              * The fully qualified Azure resource id.
              */
             id?: string;
+        }
+
+        /**
+         * Sysctl settings for Linux agent nodes.
+         */
+        export interface SysctlConfigResponse {
+            /**
+             * Sysctl setting fs.aio-max-nr.
+             */
+            fsAioMaxNr?: number;
+            /**
+             * Sysctl setting fs.file-max.
+             */
+            fsFileMax?: number;
+            /**
+             * Sysctl setting fs.inotify.max_user_watches.
+             */
+            fsInotifyMaxUserWatches?: number;
+            /**
+             * Sysctl setting fs.nr_open.
+             */
+            fsNrOpen?: number;
+            /**
+             * Sysctl setting kernel.threads-max.
+             */
+            kernelThreadsMax?: number;
+            /**
+             * Sysctl setting net.core.netdev_max_backlog.
+             */
+            netCoreNetdevMaxBacklog?: number;
+            /**
+             * Sysctl setting net.core.optmem_max.
+             */
+            netCoreOptmemMax?: number;
+            /**
+             * Sysctl setting net.core.rmem_max.
+             */
+            netCoreRmemMax?: number;
+            /**
+             * Sysctl setting net.core.somaxconn.
+             */
+            netCoreSomaxconn?: number;
+            /**
+             * Sysctl setting net.core.wmem_max.
+             */
+            netCoreWmemMax?: number;
+            /**
+             * Sysctl setting net.ipv4.ip_local_port_range.
+             */
+            netIpv4IpLocalPortRange?: string;
+            /**
+             * Sysctl setting net.ipv4.neigh.default.gc_thresh1.
+             */
+            netIpv4NeighDefaultGcThresh1?: number;
+            /**
+             * Sysctl setting net.ipv4.neigh.default.gc_thresh2.
+             */
+            netIpv4NeighDefaultGcThresh2?: number;
+            /**
+             * Sysctl setting net.ipv4.neigh.default.gc_thresh3.
+             */
+            netIpv4NeighDefaultGcThresh3?: number;
+            /**
+             * Sysctl setting net.ipv4.tcp_fin_timeout.
+             */
+            netIpv4TcpFinTimeout?: number;
+            /**
+             * Sysctl setting net.ipv4.tcp_keepalive_probes.
+             */
+            netIpv4TcpKeepaliveProbes?: number;
+            /**
+             * Sysctl setting net.ipv4.tcp_keepalive_time.
+             */
+            netIpv4TcpKeepaliveTime?: number;
+            /**
+             * Sysctl setting net.ipv4.tcp_max_syn_backlog.
+             */
+            netIpv4TcpMaxSynBacklog?: number;
+            /**
+             * Sysctl setting net.ipv4.tcp_max_tw_buckets.
+             */
+            netIpv4TcpMaxTwBuckets?: number;
+            /**
+             * Sysctl setting net.ipv4.tcp_rmem.
+             */
+            netIpv4TcpRmem?: number;
+            /**
+             * Sysctl setting net.ipv4.tcp_tw_reuse.
+             */
+            netIpv4TcpTwReuse?: boolean;
+            /**
+             * Sysctl setting net.ipv4.tcp_wmem.
+             */
+            netIpv4TcpWmem?: number;
+            /**
+             * Sysctl setting net.ipv4.tcp_keepalive_intvl.
+             */
+            netIpv4TcpkeepaliveIntvl?: number;
+            /**
+             * Sysctl setting net.netfilter.nf_conntrack_buckets.
+             */
+            netNetfilterNfConntrackBuckets?: number;
+            /**
+             * Sysctl setting net.netfilter.nf_conntrack_max.
+             */
+            netNetfilterNfConntrackMax?: number;
+            /**
+             * Sysctl setting vm.max_map_count.
+             */
+            vmMaxMapCount?: number;
+            /**
+             * Sysctl setting vm.swappiness.
+             */
+            vmSwappiness?: number;
+            /**
+             * Sysctl setting vm.vfs_cache_pressure.
+             */
+            vmVfsCachePressure?: number;
+        }
+
+        export interface UserAssignedIdentityResponse {
+            /**
+             * The client id of the user assigned identity.
+             */
+            clientId?: string;
+            /**
+             * The object id of the user assigned identity.
+             */
+            objectId?: string;
+            /**
+             * The resource id of the user assigned identity.
+             */
+            resourceId?: string;
         }
     }
 
@@ -73819,6 +75025,835 @@ export namespace containerservice {
              * The fully qualified Azure resource id.
              */
             id?: string;
+        }
+    }
+
+    export namespace v20201101 {
+        /**
+         * Settings for upgrading an agentpool
+         */
+        export interface AgentPoolUpgradeSettingsResponse {
+            /**
+             * Count or percentage of additional nodes to be added during upgrade. If empty uses AKS default
+             */
+            maxSurge?: string;
+        }
+
+        /**
+         * An error response from the Container service.
+         */
+        export interface CloudErrorBodyResponse {
+            /**
+             * An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
+             */
+            code?: string;
+            /**
+             * A list of additional details about the error.
+             */
+            details?: outputs.containerservice.v20201101.CloudErrorBodyResponse[];
+            /**
+             * A message describing the error, intended to be suitable for display in a user interface.
+             */
+            message?: string;
+            /**
+             * The target of the particular error. For example, the name of the property in error.
+             */
+            target?: string;
+        }
+
+        /**
+         * An error response from the Container service.
+         */
+        export interface CloudErrorResponse {
+            /**
+             * Details about the error.
+             */
+            error?: outputs.containerservice.v20201101.CloudErrorBodyResponse;
+        }
+
+        /**
+         * Profile for Linux VMs in the container service cluster.
+         */
+        export interface ContainerServiceLinuxProfileResponse {
+            /**
+             * The administrator username to use for Linux VMs.
+             */
+            adminUsername: string;
+            /**
+             * SSH configuration for Linux-based VMs running on Azure.
+             */
+            ssh: outputs.containerservice.v20201101.ContainerServiceSshConfigurationResponse;
+        }
+
+        /**
+         * Profile of network configuration.
+         */
+        export interface ContainerServiceNetworkProfileResponse {
+            /**
+             * An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr.
+             */
+            dnsServiceIP?: string;
+            /**
+             * A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes service address range.
+             */
+            dockerBridgeCidr?: string;
+            /**
+             * Profile of the cluster load balancer.
+             */
+            loadBalancerProfile?: outputs.containerservice.v20201101.ManagedClusterLoadBalancerProfileResponse;
+            /**
+             * The load balancer sku for the managed cluster.
+             */
+            loadBalancerSku?: string;
+            /**
+             * Network mode used for building Kubernetes network.
+             */
+            networkMode?: string;
+            /**
+             * Network plugin used for building Kubernetes network.
+             */
+            networkPlugin?: string;
+            /**
+             * Network policy used for building Kubernetes network.
+             */
+            networkPolicy?: string;
+            /**
+             * The outbound (egress) routing method.
+             */
+            outboundType?: string;
+            /**
+             * A CIDR notation IP range from which to assign pod IPs when kubenet is used.
+             */
+            podCidr?: string;
+            /**
+             * A CIDR notation IP range from which to assign service cluster IPs. It must not overlap with any Subnet IP ranges.
+             */
+            serviceCidr?: string;
+        }
+
+        /**
+         * SSH configuration for Linux-based VMs running on Azure.
+         */
+        export interface ContainerServiceSshConfigurationResponse {
+            /**
+             * The list of SSH public keys used to authenticate with Linux-based VMs. Only expect one key specified.
+             */
+            publicKeys: outputs.containerservice.v20201101.ContainerServiceSshPublicKeyResponse[];
+        }
+
+        /**
+         * Contains information about SSH certificate public key data.
+         */
+        export interface ContainerServiceSshPublicKeyResponse {
+            /**
+             * Certificate public key used to authenticate with VMs through SSH. The certificate must be in PEM format with or without headers.
+             */
+            keyData: string;
+        }
+
+        /**
+         * The credential result response.
+         */
+        export interface CredentialResultResponse {
+            /**
+             * The name of the credential.
+             */
+            name: string;
+            /**
+             * Base64-encoded Kubernetes configuration file.
+             */
+            value: string;
+        }
+
+        /**
+         * Kubelet configurations of agent nodes.
+         */
+        export interface KubeletConfigResponse {
+            /**
+             * Allowlist of unsafe sysctls or unsafe sysctl patterns (ending in `*`).
+             */
+            allowedUnsafeSysctls?: string[];
+            /**
+             * Enable CPU CFS quota enforcement for containers that specify CPU limits.
+             */
+            cpuCfsQuota?: boolean;
+            /**
+             * Sets CPU CFS quota period value.
+             */
+            cpuCfsQuotaPeriod?: string;
+            /**
+             * CPU Manager policy to use.
+             */
+            cpuManagerPolicy?: string;
+            /**
+             * If set to true it will make the Kubelet fail to start if swap is enabled on the node.
+             */
+            failSwapOn?: boolean;
+            /**
+             * The percent of disk usage after which image garbage collection is always run.
+             */
+            imageGcHighThreshold?: number;
+            /**
+             * The percent of disk usage before which image garbage collection is never run.
+             */
+            imageGcLowThreshold?: number;
+            /**
+             * Topology Manager policy to use.
+             */
+            topologyManagerPolicy?: string;
+        }
+
+        /**
+         * OS configurations of Linux agent nodes.
+         */
+        export interface LinuxOSConfigResponse {
+            /**
+             * SwapFileSizeMB specifies size in MB of a swap file will be created on each node.
+             */
+            swapFileSizeMB?: number;
+            /**
+             * Sysctl settings for Linux agent nodes.
+             */
+            sysctls?: outputs.containerservice.v20201101.SysctlConfigResponse;
+            /**
+             * Transparent Huge Page defrag configuration.
+             */
+            transparentHugePageDefrag?: string;
+            /**
+             * Transparent Huge Page enabled configuration.
+             */
+            transparentHugePageEnabled?: string;
+        }
+
+        /**
+         * AADProfile specifies attributes for Azure Active Directory integration.
+         */
+        export interface ManagedClusterAADProfileResponse {
+            /**
+             * AAD group object IDs that will have admin role of the cluster.
+             */
+            adminGroupObjectIDs?: string[];
+            /**
+             * The client AAD application ID.
+             */
+            clientAppID?: string;
+            /**
+             * Whether to enable Azure RBAC for Kubernetes authorization.
+             */
+            enableAzureRBAC?: boolean;
+            /**
+             * Whether to enable managed AAD.
+             */
+            managed?: boolean;
+            /**
+             * The server AAD application ID.
+             */
+            serverAppID?: string;
+            /**
+             * The server AAD application secret.
+             */
+            serverAppSecret?: string;
+            /**
+             * The AAD tenant ID to use for authentication. If not specified, will use the tenant of the deployment subscription.
+             */
+            tenantID?: string;
+        }
+
+        /**
+         * Access profile for managed cluster API server.
+         */
+        export interface ManagedClusterAPIServerAccessProfileResponse {
+            /**
+             * Authorized IP Ranges to kubernetes API server.
+             */
+            authorizedIPRanges?: string[];
+            /**
+             * Whether to create the cluster as a private cluster or not.
+             */
+            enablePrivateCluster?: boolean;
+            /**
+             * Private dns zone mode for private cluster. 
+             */
+            privateDNSZone?: string;
+        }
+
+        /**
+         * A Kubernetes add-on profile for a managed cluster.
+         */
+        export interface ManagedClusterAddonProfileResponse {
+            /**
+             * Key-value pairs for configuring an add-on.
+             */
+            config?: {[key: string]: string};
+            /**
+             * Whether the add-on is enabled or not.
+             */
+            enabled: boolean;
+            /**
+             * Information of user assigned identity used by this add-on.
+             */
+            identity: outputs.containerservice.v20201101.ManagedClusterAddonProfileResponseIdentity;
+        }
+
+        /**
+         * Information of user assigned identity used by this add-on.
+         */
+        export interface ManagedClusterAddonProfileResponseIdentity {
+            /**
+             * The client id of the user assigned identity.
+             */
+            clientId?: string;
+            /**
+             * The object id of the user assigned identity.
+             */
+            objectId?: string;
+            /**
+             * The resource id of the user assigned identity.
+             */
+            resourceId?: string;
+        }
+
+        /**
+         * Profile for the container service agent pool.
+         */
+        export interface ManagedClusterAgentPoolProfileResponse {
+            /**
+             * Availability zones for nodes. Must use VirtualMachineScaleSets AgentPoolType.
+             */
+            availabilityZones?: string[];
+            /**
+             * Number of agents (VMs) to host docker containers. Allowed values must be in the range of 0 to 100 (inclusive) for user pools and in the range of 1 to 100 (inclusive) for system pools. The default value is 1.
+             */
+            count?: number;
+            /**
+             * Whether to enable auto-scaler
+             */
+            enableAutoScaling?: boolean;
+            /**
+             * Enable public IP for nodes
+             */
+            enableNodePublicIP?: boolean;
+            /**
+             * KubeletConfig specifies the configuration of kubelet on agent nodes.
+             */
+            kubeletConfig?: outputs.containerservice.v20201101.KubeletConfigResponse;
+            /**
+             * LinuxOSConfig specifies the OS configuration of linux agent nodes.
+             */
+            linuxOSConfig?: outputs.containerservice.v20201101.LinuxOSConfigResponse;
+            /**
+             * Maximum number of nodes for auto-scaling
+             */
+            maxCount?: number;
+            /**
+             * Maximum number of pods that can run on a node.
+             */
+            maxPods?: number;
+            /**
+             * Minimum number of nodes for auto-scaling
+             */
+            minCount?: number;
+            /**
+             * AgentPoolMode represents mode of an agent pool
+             */
+            mode?: string;
+            /**
+             * Unique name of the agent pool profile in the context of the subscription and resource group.
+             */
+            name: string;
+            /**
+             * Version of node image
+             */
+            nodeImageVersion: string;
+            /**
+             * Agent pool node labels to be persisted across all nodes in agent pool.
+             */
+            nodeLabels?: {[key: string]: string};
+            /**
+             * Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule.
+             */
+            nodeTaints?: string[];
+            /**
+             * Version of orchestrator specified when creating the managed cluster.
+             */
+            orchestratorVersion?: string;
+            /**
+             * OS Disk Size in GB to be used to specify the disk size for every machine in this master/agent pool. If you specify 0, it will apply the default osDisk size according to the vmSize specified.
+             */
+            osDiskSizeGB?: number;
+            /**
+             * OS disk type to be used for machines in a given agent pool. Allowed values are 'Ephemeral' and 'Managed'. Defaults to 'Managed'. May not be changed after creation.
+             */
+            osDiskType?: string;
+            /**
+             * OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux.
+             */
+            osType?: string;
+            /**
+             * Pod SubnetID specifies the VNet's subnet identifier for pods.
+             */
+            podSubnetID?: string;
+            /**
+             * Describes whether the Agent Pool is Running or Stopped
+             */
+            powerState: outputs.containerservice.v20201101.PowerStateResponse;
+            /**
+             * The current deployment or provisioning state, which only appears in the response.
+             */
+            provisioningState: string;
+            /**
+             * The ID for Proximity Placement Group.
+             */
+            proximityPlacementGroupID?: string;
+            /**
+             * ScaleSetEvictionPolicy to be used to specify eviction policy for Spot virtual machine scale set. Default to Delete.
+             */
+            scaleSetEvictionPolicy?: string;
+            /**
+             * ScaleSetPriority to be used to specify virtual machine scale set priority. Default to regular.
+             */
+            scaleSetPriority?: string;
+            /**
+             * SpotMaxPrice to be used to specify the maximum price you are willing to pay in US Dollars. Possible values are any decimal value greater than zero or -1 which indicates default price to be up-to on-demand.
+             */
+            spotMaxPrice?: number;
+            /**
+             * Agent pool tags to be persisted on the agent pool virtual machine scale set.
+             */
+            tags?: {[key: string]: string};
+            /**
+             * AgentPoolType represents types of an agent pool
+             */
+            type?: string;
+            /**
+             * Settings for upgrading the agentpool
+             */
+            upgradeSettings?: outputs.containerservice.v20201101.AgentPoolUpgradeSettingsResponse;
+            /**
+             * Size of agent VMs.
+             */
+            vmSize?: string;
+            /**
+             * VNet SubnetID specifies the VNet's subnet identifier for nodes and maybe pods
+             */
+            vnetSubnetID?: string;
+        }
+
+        /**
+         * Auto upgrade profile for a managed cluster.
+         */
+        export interface ManagedClusterAutoUpgradeProfileResponse {
+            /**
+             * upgrade channel for auto upgrade.
+             */
+            upgradeChannel?: string;
+        }
+
+        /**
+         * Identity for the managed cluster.
+         */
+        export interface ManagedClusterIdentityResponse {
+            /**
+             * The principal id of the system assigned identity which is used by master components.
+             */
+            principalId: string;
+            /**
+             * The tenant id of the system assigned identity which is used by master components.
+             */
+            tenantId: string;
+            /**
+             * The type of identity used for the managed cluster. Type 'SystemAssigned' will use an implicitly created identity in master components and an auto-created user assigned identity in MC_ resource group in agent nodes. Type 'None' will not use MSI for the managed cluster, service principal will be used instead.
+             */
+            type?: string;
+            /**
+             * The user identity associated with the managed cluster. This identity will be used in control plane and only one user assigned identity is allowed. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+             */
+            userAssignedIdentities?: {[key: string]: outputs.containerservice.v20201101.ManagedClusterIdentityResponseUserAssignedIdentities};
+        }
+
+        export interface ManagedClusterIdentityResponseUserAssignedIdentities {
+            /**
+             * The client id of user assigned identity.
+             */
+            clientId: string;
+            /**
+             * The principal id of user assigned identity.
+             */
+            principalId: string;
+        }
+
+        /**
+         * Profile of the managed cluster load balancer.
+         */
+        export interface ManagedClusterLoadBalancerProfileResponse {
+            /**
+             * Desired number of allocated SNAT ports per VM. Allowed values must be in the range of 0 to 64000 (inclusive). The default value is 0 which results in Azure dynamically allocating ports.
+             */
+            allocatedOutboundPorts?: number;
+            /**
+             * The effective outbound IP resources of the cluster load balancer.
+             */
+            effectiveOutboundIPs?: outputs.containerservice.v20201101.ResourceReferenceResponse[];
+            /**
+             * Desired outbound flow idle timeout in minutes. Allowed values must be in the range of 4 to 120 (inclusive). The default value is 30 minutes.
+             */
+            idleTimeoutInMinutes?: number;
+            /**
+             * Desired managed outbound IPs for the cluster load balancer.
+             */
+            managedOutboundIPs?: outputs.containerservice.v20201101.ManagedClusterLoadBalancerProfileResponseManagedOutboundIPs;
+            /**
+             * Desired outbound IP Prefix resources for the cluster load balancer.
+             */
+            outboundIPPrefixes?: outputs.containerservice.v20201101.ManagedClusterLoadBalancerProfileResponseOutboundIPPrefixes;
+            /**
+             * Desired outbound IP resources for the cluster load balancer.
+             */
+            outboundIPs?: outputs.containerservice.v20201101.ManagedClusterLoadBalancerProfileResponseOutboundIPs;
+        }
+
+        /**
+         * Desired managed outbound IPs for the cluster load balancer.
+         */
+        export interface ManagedClusterLoadBalancerProfileResponseManagedOutboundIPs {
+            /**
+             * Desired number of outbound IP created/managed by Azure for the cluster load balancer. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 1. 
+             */
+            count?: number;
+        }
+
+        /**
+         * Desired outbound IP Prefix resources for the cluster load balancer.
+         */
+        export interface ManagedClusterLoadBalancerProfileResponseOutboundIPPrefixes {
+            /**
+             * A list of public IP prefix resources.
+             */
+            publicIPPrefixes?: outputs.containerservice.v20201101.ResourceReferenceResponse[];
+        }
+
+        /**
+         * Desired outbound IP resources for the cluster load balancer.
+         */
+        export interface ManagedClusterLoadBalancerProfileResponseOutboundIPs {
+            /**
+             * A list of public IP resources.
+             */
+            publicIPs?: outputs.containerservice.v20201101.ResourceReferenceResponse[];
+        }
+
+        export interface ManagedClusterPodIdentityExceptionResponse {
+            /**
+             * Name of the pod identity exception.
+             */
+            name: string;
+            /**
+             * Namespace of the pod identity exception.
+             */
+            namespace: string;
+            /**
+             * Pod labels to match.
+             */
+            podLabels: {[key: string]: string};
+        }
+
+        export interface ManagedClusterPodIdentityProfileResponse {
+            /**
+             * Whether the pod identity addon is enabled.
+             */
+            enabled?: boolean;
+            /**
+             * User assigned pod identity settings.
+             */
+            userAssignedIdentities?: outputs.containerservice.v20201101.ManagedClusterPodIdentityResponse[];
+            /**
+             * User assigned pod identity exception settings.
+             */
+            userAssignedIdentityExceptions?: outputs.containerservice.v20201101.ManagedClusterPodIdentityExceptionResponse[];
+        }
+
+        export interface ManagedClusterPodIdentityResponse {
+            /**
+             * Information of the user assigned identity.
+             */
+            identity: outputs.containerservice.v20201101.UserAssignedIdentityResponse;
+            /**
+             * Name of the pod identity.
+             */
+            name: string;
+            /**
+             * Namespace of the pod identity.
+             */
+            namespace: string;
+            provisioningInfo: outputs.containerservice.v20201101.ManagedClusterPodIdentityResponseProvisioningInfo;
+            /**
+             * The current provisioning state of the pod identity.
+             */
+            provisioningState: string;
+        }
+
+        export interface ManagedClusterPodIdentityResponseProvisioningInfo {
+            /**
+             * Pod identity assignment error (if any).
+             */
+            error?: outputs.containerservice.v20201101.CloudErrorResponse;
+        }
+
+        /**
+         * Parameters to be applied to the cluster-autoscaler when enabled
+         */
+        export interface ManagedClusterPropertiesResponseAutoScalerProfile {
+            balanceSimilarNodeGroups?: string;
+            expander?: string;
+            maxEmptyBulkDelete?: string;
+            maxGracefulTerminationSec?: string;
+            maxTotalUnreadyPercentage?: string;
+            newPodScaleUpDelay?: string;
+            okTotalUnreadyCount?: string;
+            scaleDownDelayAfterAdd?: string;
+            scaleDownDelayAfterDelete?: string;
+            scaleDownDelayAfterFailure?: string;
+            scaleDownUnneededTime?: string;
+            scaleDownUnreadyTime?: string;
+            scaleDownUtilizationThreshold?: string;
+            scanInterval?: string;
+            skipNodesWithLocalStorage?: string;
+            skipNodesWithSystemPods?: string;
+        }
+
+        export interface ManagedClusterPropertiesResponseIdentityProfile {
+            /**
+             * The client id of the user assigned identity.
+             */
+            clientId?: string;
+            /**
+             * The object id of the user assigned identity.
+             */
+            objectId?: string;
+            /**
+             * The resource id of the user assigned identity.
+             */
+            resourceId?: string;
+        }
+
+        export interface ManagedClusterSKUResponse {
+            /**
+             * Name of a managed cluster SKU.
+             */
+            name?: string;
+            /**
+             * Tier of a managed cluster SKU.
+             */
+            tier?: string;
+        }
+
+        /**
+         * Information about a service principal identity for the cluster to use for manipulating Azure APIs.
+         */
+        export interface ManagedClusterServicePrincipalProfileResponse {
+            /**
+             * The ID for the service principal.
+             */
+            clientId: string;
+            /**
+             * The secret password associated with the service principal in plain text.
+             */
+            secret?: string;
+        }
+
+        /**
+         * Profile for Windows VMs in the container service cluster.
+         */
+        export interface ManagedClusterWindowsProfileResponse {
+            /**
+             * Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:** 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!"
+             */
+            adminPassword?: string;
+            /**
+             * Specifies the name of the administrator account. <br><br> **restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length:** 1 character <br><br> **Max-length:** 20 characters
+             */
+            adminUsername: string;
+            /**
+             * The licenseType to use for Windows VMs. Windows_Server is used to enable Azure Hybrid User Benefits for Windows VMs.
+             */
+            licenseType?: string;
+        }
+
+        /**
+         * Describes the Power State of the cluster
+         */
+        export interface PowerStateResponse {
+            /**
+             * Tells whether the cluster is Running or Stopped
+             */
+            code?: string;
+        }
+
+        /**
+         * Private endpoint which a connection belongs to.
+         */
+        export interface PrivateEndpointResponse {
+            /**
+             * The resource Id for private endpoint
+             */
+            id?: string;
+        }
+
+        /**
+         * The state of a private link service connection.
+         */
+        export interface PrivateLinkServiceConnectionStateResponse {
+            /**
+             * The private link service connection description.
+             */
+            description?: string;
+            /**
+             * The private link service connection status.
+             */
+            status?: string;
+        }
+
+        /**
+         * A reference to an Azure resource.
+         */
+        export interface ResourceReferenceResponse {
+            /**
+             * The fully qualified Azure resource id.
+             */
+            id?: string;
+        }
+
+        /**
+         * Sysctl settings for Linux agent nodes.
+         */
+        export interface SysctlConfigResponse {
+            /**
+             * Sysctl setting fs.aio-max-nr.
+             */
+            fsAioMaxNr?: number;
+            /**
+             * Sysctl setting fs.file-max.
+             */
+            fsFileMax?: number;
+            /**
+             * Sysctl setting fs.inotify.max_user_watches.
+             */
+            fsInotifyMaxUserWatches?: number;
+            /**
+             * Sysctl setting fs.nr_open.
+             */
+            fsNrOpen?: number;
+            /**
+             * Sysctl setting kernel.threads-max.
+             */
+            kernelThreadsMax?: number;
+            /**
+             * Sysctl setting net.core.netdev_max_backlog.
+             */
+            netCoreNetdevMaxBacklog?: number;
+            /**
+             * Sysctl setting net.core.optmem_max.
+             */
+            netCoreOptmemMax?: number;
+            /**
+             * Sysctl setting net.core.rmem_max.
+             */
+            netCoreRmemMax?: number;
+            /**
+             * Sysctl setting net.core.somaxconn.
+             */
+            netCoreSomaxconn?: number;
+            /**
+             * Sysctl setting net.core.wmem_max.
+             */
+            netCoreWmemMax?: number;
+            /**
+             * Sysctl setting net.ipv4.ip_local_port_range.
+             */
+            netIpv4IpLocalPortRange?: string;
+            /**
+             * Sysctl setting net.ipv4.neigh.default.gc_thresh1.
+             */
+            netIpv4NeighDefaultGcThresh1?: number;
+            /**
+             * Sysctl setting net.ipv4.neigh.default.gc_thresh2.
+             */
+            netIpv4NeighDefaultGcThresh2?: number;
+            /**
+             * Sysctl setting net.ipv4.neigh.default.gc_thresh3.
+             */
+            netIpv4NeighDefaultGcThresh3?: number;
+            /**
+             * Sysctl setting net.ipv4.tcp_fin_timeout.
+             */
+            netIpv4TcpFinTimeout?: number;
+            /**
+             * Sysctl setting net.ipv4.tcp_keepalive_probes.
+             */
+            netIpv4TcpKeepaliveProbes?: number;
+            /**
+             * Sysctl setting net.ipv4.tcp_keepalive_time.
+             */
+            netIpv4TcpKeepaliveTime?: number;
+            /**
+             * Sysctl setting net.ipv4.tcp_max_syn_backlog.
+             */
+            netIpv4TcpMaxSynBacklog?: number;
+            /**
+             * Sysctl setting net.ipv4.tcp_max_tw_buckets.
+             */
+            netIpv4TcpMaxTwBuckets?: number;
+            /**
+             * Sysctl setting net.ipv4.tcp_rmem.
+             */
+            netIpv4TcpRmem?: number;
+            /**
+             * Sysctl setting net.ipv4.tcp_tw_reuse.
+             */
+            netIpv4TcpTwReuse?: boolean;
+            /**
+             * Sysctl setting net.ipv4.tcp_wmem.
+             */
+            netIpv4TcpWmem?: number;
+            /**
+             * Sysctl setting net.ipv4.tcp_keepalive_intvl.
+             */
+            netIpv4TcpkeepaliveIntvl?: number;
+            /**
+             * Sysctl setting net.netfilter.nf_conntrack_buckets.
+             */
+            netNetfilterNfConntrackBuckets?: number;
+            /**
+             * Sysctl setting net.netfilter.nf_conntrack_max.
+             */
+            netNetfilterNfConntrackMax?: number;
+            /**
+             * Sysctl setting vm.max_map_count.
+             */
+            vmMaxMapCount?: number;
+            /**
+             * Sysctl setting vm.swappiness.
+             */
+            vmSwappiness?: number;
+            /**
+             * Sysctl setting vm.vfs_cache_pressure.
+             */
+            vmVfsCachePressure?: number;
+        }
+
+        export interface UserAssignedIdentityResponse {
+            /**
+             * The client id of the user assigned identity.
+             */
+            clientId?: string;
+            /**
+             * The object id of the user assigned identity.
+             */
+            objectId?: string;
+            /**
+             * The resource id of the user assigned identity.
+             */
+            resourceId?: string;
         }
     }
 }
@@ -84828,6 +86863,9 @@ export namespace datadog {
             transport?: string;
         }
 
+        /**
+         * Datadog organization properties
+         */
         export interface DatadogOrganizationPropertiesResponse {
             /**
              * The Id of the Enterprise App used for Single sign on.
@@ -84860,6 +86898,9 @@ export namespace datadog {
              * The tenant ID of resource.
              */
             tenantId: string;
+            /**
+             * Identity type
+             */
             type?: string;
         }
 
@@ -84877,6 +86918,9 @@ export namespace datadog {
          * Properties specific to the monitor resource.
          */
         export interface MonitorPropertiesResponse {
+            /**
+             * Datadog organization properties
+             */
             datadogOrganizationProperties?: outputs.datadog.v20200201preview.DatadogOrganizationPropertiesResponse;
             liftrResourceCategory: string;
             /**
@@ -84892,6 +86936,9 @@ export namespace datadog {
              */
             monitoringStatus?: string;
             provisioningState?: string;
+            /**
+             * User info
+             */
             userInfo?: outputs.datadog.v20200201preview.UserInfoResponse;
         }
 
@@ -84928,6 +86975,9 @@ export namespace datadog {
             name: string;
         }
 
+        /**
+         * User info
+         */
         export interface UserInfoResponse {
             /**
              * Email of the user used by Datadog for contacting them if needed
@@ -219976,10 +222026,6 @@ export namespace network {
              * The ExpressRoute circuit peering.
              */
             expressRouteCircuitPeering: outputs.network.latest.ExpressRouteCircuitPeeringIdResponse;
-            /**
-             * Enable FastPath to vWan Firewall hub.
-             */
-            expressRouteGatewayBypass?: boolean;
             /**
              * Resource ID.
              */
@@ -357001,10 +359047,6 @@ export namespace network {
              */
             expressRouteCircuitPeering: outputs.network.v20200701.ExpressRouteCircuitPeeringIdResponse;
             /**
-             * Enable FastPath to vWan Firewall hub.
-             */
-            expressRouteGatewayBypass?: boolean;
-            /**
              * Resource ID.
              */
             id?: string;
@@ -418801,40 +420843,6 @@ export namespace synapse {
         }
 
         /**
-         * Library/package information of a Big Data pool powered by Apache Spark
-         */
-        export interface LibraryInfoResponse {
-            /**
-             * Storage blob container name.
-             */
-            containerName?: string;
-            /**
-             * Creator Id of the library/package.
-             */
-            creatorId: string;
-            /**
-             * Name of the library.
-             */
-            name?: string;
-            /**
-             * Storage blob path of library.
-             */
-            path?: string;
-            /**
-             * Provisioning status of the library/package.
-             */
-            provisioningStatus: string;
-            /**
-             * Type of the library.
-             */
-            type?: string;
-            /**
-             * The last update time of the library.
-             */
-            uploadedTimestamp?: string;
-        }
-
-        /**
          * Library requirements for a Big Data pool powered by Apache Spark
          */
         export interface LibraryRequirementsResponse {
@@ -419654,6 +421662,40 @@ export namespace synapse {
              * Workspace Key sub-resource name
              */
             name?: string;
+        }
+
+        /**
+         * Git integration settings
+         */
+        export interface WorkspaceRepositoryConfigurationResponse {
+            /**
+             * Account name
+             */
+            accountName?: string;
+            /**
+             * Collaboration branch
+             */
+            collaborationBranch?: string;
+            /**
+             * GitHub Enterprise host name. For example: https://github.mydomain.com
+             */
+            hostName?: string;
+            /**
+             * VSTS project name
+             */
+            projectName?: string;
+            /**
+             * Repository name
+             */
+            repositoryName?: string;
+            /**
+             * Root folder to use in the repository
+             */
+            rootFolder?: string;
+            /**
+             * Type of workspace repositoryID configuration. Example WorkspaceVSTSConfiguration, WorkspaceGitHubConfiguration
+             */
+            type?: string;
         }
     }
 
