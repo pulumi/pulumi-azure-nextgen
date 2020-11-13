@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../../types/input";
-import * as outputs from "../../types/output";
+import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -48,10 +47,6 @@ export class ExpressRouteConnection extends pulumi.CustomResource {
      * The ExpressRoute circuit peering.
      */
     public readonly expressRouteCircuitPeering!: pulumi.Output<outputs.network.v20200701.ExpressRouteCircuitPeeringIdResponse>;
-    /**
-     * Enable FastPath to vWan Firewall hub.
-     */
-    public readonly expressRouteGatewayBypass!: pulumi.Output<boolean | undefined>;
     /**
      * The name of the resource.
      */
@@ -98,7 +93,6 @@ export class ExpressRouteConnection extends pulumi.CustomResource {
             inputs["connectionName"] = args ? args.connectionName : undefined;
             inputs["enableInternetSecurity"] = args ? args.enableInternetSecurity : undefined;
             inputs["expressRouteCircuitPeering"] = args ? args.expressRouteCircuitPeering : undefined;
-            inputs["expressRouteGatewayBypass"] = args ? args.expressRouteGatewayBypass : undefined;
             inputs["expressRouteGatewayName"] = args ? args.expressRouteGatewayName : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -110,7 +104,6 @@ export class ExpressRouteConnection extends pulumi.CustomResource {
             inputs["authorizationKey"] = undefined /*out*/;
             inputs["enableInternetSecurity"] = undefined /*out*/;
             inputs["expressRouteCircuitPeering"] = undefined /*out*/;
-            inputs["expressRouteGatewayBypass"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["provisioningState"] = undefined /*out*/;
             inputs["routingConfiguration"] = undefined /*out*/;
@@ -149,10 +142,6 @@ export interface ExpressRouteConnectionArgs {
      * The ExpressRoute circuit peering.
      */
     readonly expressRouteCircuitPeering: pulumi.Input<inputs.network.v20200701.ExpressRouteCircuitPeeringId>;
-    /**
-     * Enable FastPath to vWan Firewall hub.
-     */
-    readonly expressRouteGatewayBypass?: pulumi.Input<boolean>;
     /**
      * The name of the ExpressRoute gateway.
      */

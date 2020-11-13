@@ -27,7 +27,6 @@ __all__ = [
     'IntegrationRuntimeSsisCatalogInfoResponse',
     'IntegrationRuntimeSsisPropertiesResponse',
     'IntegrationRuntimeVNetPropertiesResponse',
-    'LibraryInfoResponse',
     'LibraryRequirementsResponse',
     'LinkedIntegrationRuntimeKeyAuthorizationResponse',
     'LinkedIntegrationRuntimeRbacAuthorizationResponse',
@@ -59,6 +58,7 @@ __all__ = [
     'VirtualNetworkProfileResponse',
     'VulnerabilityAssessmentRecurringScansPropertiesResponse',
     'WorkspaceKeyDetailsResponse',
+    'WorkspaceRepositoryConfigurationResponse',
 ]
 
 @pulumi.output_type
@@ -895,102 +895,6 @@ class IntegrationRuntimeVNetPropertiesResponse(dict):
         The ID of the VNet that this integration runtime will join.
         """
         return pulumi.get(self, "v_net_id")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-
-@pulumi.output_type
-class LibraryInfoResponse(dict):
-    """
-    Library/package information of a Big Data pool powered by Apache Spark
-    """
-    def __init__(__self__, *,
-                 creator_id: str,
-                 provisioning_status: str,
-                 container_name: Optional[str] = None,
-                 name: Optional[str] = None,
-                 path: Optional[str] = None,
-                 type: Optional[str] = None,
-                 uploaded_timestamp: Optional[str] = None):
-        """
-        Library/package information of a Big Data pool powered by Apache Spark
-        :param str creator_id: Creator Id of the library/package.
-        :param str provisioning_status: Provisioning status of the library/package.
-        :param str container_name: Storage blob container name.
-        :param str name: Name of the library.
-        :param str path: Storage blob path of library.
-        :param str type: Type of the library.
-        :param str uploaded_timestamp: The last update time of the library.
-        """
-        pulumi.set(__self__, "creator_id", creator_id)
-        pulumi.set(__self__, "provisioning_status", provisioning_status)
-        if container_name is not None:
-            pulumi.set(__self__, "container_name", container_name)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if path is not None:
-            pulumi.set(__self__, "path", path)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-        if uploaded_timestamp is not None:
-            pulumi.set(__self__, "uploaded_timestamp", uploaded_timestamp)
-
-    @property
-    @pulumi.getter(name="creatorId")
-    def creator_id(self) -> str:
-        """
-        Creator Id of the library/package.
-        """
-        return pulumi.get(self, "creator_id")
-
-    @property
-    @pulumi.getter(name="provisioningStatus")
-    def provisioning_status(self) -> str:
-        """
-        Provisioning status of the library/package.
-        """
-        return pulumi.get(self, "provisioning_status")
-
-    @property
-    @pulumi.getter(name="containerName")
-    def container_name(self) -> Optional[str]:
-        """
-        Storage blob container name.
-        """
-        return pulumi.get(self, "container_name")
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[str]:
-        """
-        Name of the library.
-        """
-        return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def path(self) -> Optional[str]:
-        """
-        Storage blob path of library.
-        """
-        return pulumi.get(self, "path")
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[str]:
-        """
-        Type of the library.
-        """
-        return pulumi.get(self, "type")
-
-    @property
-    @pulumi.getter(name="uploadedTimestamp")
-    def uploaded_timestamp(self) -> Optional[str]:
-        """
-        The last update time of the library.
-        """
-        return pulumi.get(self, "uploaded_timestamp")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -3206,6 +3110,104 @@ class WorkspaceKeyDetailsResponse(dict):
         Workspace Key sub-resource name
         """
         return pulumi.get(self, "name")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class WorkspaceRepositoryConfigurationResponse(dict):
+    """
+    Git integration settings
+    """
+    def __init__(__self__, *,
+                 account_name: Optional[str] = None,
+                 collaboration_branch: Optional[str] = None,
+                 host_name: Optional[str] = None,
+                 project_name: Optional[str] = None,
+                 repository_name: Optional[str] = None,
+                 root_folder: Optional[str] = None,
+                 type: Optional[str] = None):
+        """
+        Git integration settings
+        :param str account_name: Account name
+        :param str collaboration_branch: Collaboration branch
+        :param str host_name: GitHub Enterprise host name. For example: https://github.mydomain.com
+        :param str project_name: VSTS project name
+        :param str repository_name: Repository name
+        :param str root_folder: Root folder to use in the repository
+        :param str type: Type of workspace repositoryID configuration. Example WorkspaceVSTSConfiguration, WorkspaceGitHubConfiguration
+        """
+        if account_name is not None:
+            pulumi.set(__self__, "account_name", account_name)
+        if collaboration_branch is not None:
+            pulumi.set(__self__, "collaboration_branch", collaboration_branch)
+        if host_name is not None:
+            pulumi.set(__self__, "host_name", host_name)
+        if project_name is not None:
+            pulumi.set(__self__, "project_name", project_name)
+        if repository_name is not None:
+            pulumi.set(__self__, "repository_name", repository_name)
+        if root_folder is not None:
+            pulumi.set(__self__, "root_folder", root_folder)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> Optional[str]:
+        """
+        Account name
+        """
+        return pulumi.get(self, "account_name")
+
+    @property
+    @pulumi.getter(name="collaborationBranch")
+    def collaboration_branch(self) -> Optional[str]:
+        """
+        Collaboration branch
+        """
+        return pulumi.get(self, "collaboration_branch")
+
+    @property
+    @pulumi.getter(name="hostName")
+    def host_name(self) -> Optional[str]:
+        """
+        GitHub Enterprise host name. For example: https://github.mydomain.com
+        """
+        return pulumi.get(self, "host_name")
+
+    @property
+    @pulumi.getter(name="projectName")
+    def project_name(self) -> Optional[str]:
+        """
+        VSTS project name
+        """
+        return pulumi.get(self, "project_name")
+
+    @property
+    @pulumi.getter(name="repositoryName")
+    def repository_name(self) -> Optional[str]:
+        """
+        Repository name
+        """
+        return pulumi.get(self, "repository_name")
+
+    @property
+    @pulumi.getter(name="rootFolder")
+    def root_folder(self) -> Optional[str]:
+        """
+        Root folder to use in the repository
+        """
+        return pulumi.get(self, "root_folder")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Type of workspace repositoryID configuration. Example WorkspaceVSTSConfiguration, WorkspaceGitHubConfiguration
+        """
+        return pulumi.get(self, "type")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
