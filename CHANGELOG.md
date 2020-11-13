@@ -7,11 +7,12 @@ None
 
 ---
 
-## 0.2.6 (2020-11-12)
+## 0.2.6 (2020-11-13)
 
 Bug fixes:
 
 - Support non-public Azure environments ([#123](https://github.com/pulumi/pulumi-azure-nextgen/issues/123))
+- Fix an error in Go SDK's first-class provider config ([#126](https://github.com/pulumi/pulumi-azure-nextgen/issues/126))
 
 ## 0.2.5 (2020-11-06)
 
