@@ -7,6 +7,12 @@ None
 
 ---
 
+## 0.2.6 (2020-11-12)
+
+Bug fixes:
+
+- Support non-public Azure environments ([#123](https://github.com/pulumi/pulumi-azure-nextgen/issues/123))
+
 ## 0.2.5 (2020-11-06)
 
 Bug fixes:
