@@ -3,7 +3,8 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
-None
+- Fix creation of UserAssignedIdentity ([#100](https://github.com/pulumi/pulumi-azure-nextgen/issues/100))
+- Fix creation of Budget ([#122](https://github.com/pulumi/pulumi-azure-nextgen/issues/122))
 
 ---
 
