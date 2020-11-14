@@ -3,11 +3,15 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
+None
+
+---
+
+## 0.2.7 (2020-11-14)
+
 - Fix creation of UserAssignedIdentity ([#100](https://github.com/pulumi/pulumi-azure-nextgen/issues/100))
 - Fix creation of Budget ([#122](https://github.com/pulumi/pulumi-azure-nextgen/issues/122))
 - Default to 'public' Azure environment ([#133](https://github.com/pulumi/pulumi-azure-nextgen/issues/133))
-
----
 
 ## 0.2.6 (2020-11-13)
 
