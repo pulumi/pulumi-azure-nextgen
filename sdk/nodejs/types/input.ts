@@ -7414,7 +7414,7 @@ export namespace attestation {
 
     }
 
-    export namespace v20180901 {
+    export namespace v20180901preview {
         /**
          * Client supplied parameters used to create a new attestation service instance.
          */
@@ -7426,7 +7426,7 @@ export namespace attestation {
             /**
              * JSON Web Key Set defining a set of X.509 Certificates that will represent the parent certificate for the signing certificate used for policy operations
              */
-            policySigningCertificates?: pulumi.Input<inputs.attestation.v20180901.JSONWebKeySet>;
+            policySigningCertificates?: pulumi.Input<inputs.attestation.v20180901preview.JSONWebKeySet>;
         }
 
         export interface JSONWebKey {
@@ -7533,7 +7533,7 @@ export namespace attestation {
              * can choose to assign a meaning to the order for their purposes, if
              * desired.
              */
-            keys?: pulumi.Input<pulumi.Input<inputs.attestation.v20180901.JSONWebKey>[]>;
+            keys?: pulumi.Input<pulumi.Input<inputs.attestation.v20180901preview.JSONWebKey>[]>;
         }
     }
 
@@ -156672,7 +156672,10 @@ export namespace maps {
 
 export namespace marketplace {
     export namespace latest {
-        export interface Icon {
+        /**
+         * Icon File Uris
+         */
+        export interface OfferPropertiesIconFileUris {
             /**
              * Icon size
              */
@@ -156683,10 +156686,20 @@ export namespace marketplace {
             uri?: pulumi.Input<string>;
         }
 
+        export interface Plan {
+            /**
+             * Plan accessibility
+             */
+            accessibility?: pulumi.Input<string>;
+        }
+
     }
 
     export namespace v20200101 {
-        export interface Icon {
+        /**
+         * Icon File Uris
+         */
+        export interface OfferPropertiesIconFileUris {
             /**
              * Icon size
              */
@@ -156695,6 +156708,13 @@ export namespace marketplace {
              * Icon uri
              */
             uri?: pulumi.Input<string>;
+        }
+
+        export interface Plan {
+            /**
+             * Plan accessibility
+             */
+            accessibility?: pulumi.Input<string>;
         }
 
     }
@@ -312381,16 +312401,6 @@ export namespace synapse {
         }
 
         /**
-         * Babylon Configuration
-         */
-        export interface BabylonConfiguration {
-            /**
-             * Babylon Resource ID
-             */
-            babylonResourceId?: pulumi.Input<string>;
-        }
-
-        /**
          * The custom setup of running cmdkey commands.
          */
         export interface CmdkeySetup {
@@ -312760,6 +312770,16 @@ export namespace synapse {
              * The private link service connection status.
              */
             status?: pulumi.Input<string>;
+        }
+
+        /**
+         * Purview Configuration
+         */
+        export interface PurviewConfiguration {
+            /**
+             * Purview Resource ID
+             */
+            purviewResourceId?: pulumi.Input<string>;
         }
 
         /**

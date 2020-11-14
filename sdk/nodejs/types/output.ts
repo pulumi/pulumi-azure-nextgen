@@ -8934,7 +8934,7 @@ export namespace attestation {
         }
     }
 
-    export namespace v20180901 {
+    export namespace v20180901preview {
     }
 
     export namespace v20201001 {
@@ -206747,7 +206747,10 @@ export namespace maps {
 
 export namespace marketplace {
     export namespace latest {
-        export interface IconResponse {
+        /**
+         * Icon File Uris
+         */
+        export interface OfferPropertiesResponseIconFileUris {
             /**
              * Icon size
              */
@@ -206757,10 +206760,40 @@ export namespace marketplace {
              */
             uri?: string;
         }
+
+        export interface PlanResponse {
+            /**
+             * Plan accessibility
+             */
+            accessibility?: string;
+            /**
+             * Alternative stack type
+             */
+            altStackReference: string;
+            /**
+             * Friendly name for the plan for display in the marketplace
+             */
+            planDisplayName: string;
+            /**
+             * Text identifier for this plan
+             */
+            planId: string;
+            /**
+             * Identifier for this plan
+             */
+            skuId: string;
+            /**
+             * Stack type (classic or arm)
+             */
+            stackType: string;
+        }
     }
 
     export namespace v20200101 {
-        export interface IconResponse {
+        /**
+         * Icon File Uris
+         */
+        export interface OfferPropertiesResponseIconFileUris {
             /**
              * Icon size
              */
@@ -206769,6 +206802,33 @@ export namespace marketplace {
              * Icon uri
              */
             uri?: string;
+        }
+
+        export interface PlanResponse {
+            /**
+             * Plan accessibility
+             */
+            accessibility?: string;
+            /**
+             * Alternative stack type
+             */
+            altStackReference: string;
+            /**
+             * Friendly name for the plan for display in the marketplace
+             */
+            planDisplayName: string;
+            /**
+             * Text identifier for this plan
+             */
+            planId: string;
+            /**
+             * Identifier for this plan
+             */
+            skuId: string;
+            /**
+             * Stack type (classic or arm)
+             */
+            stackType: string;
         }
     }
 }
@@ -420569,16 +420629,6 @@ export namespace synapse {
         }
 
         /**
-         * Babylon Configuration
-         */
-        export interface BabylonConfigurationResponse {
-            /**
-             * Babylon Resource ID
-             */
-            babylonResourceId?: string;
-        }
-
-        /**
          * The custom setup of running cmdkey commands.
          */
         export interface CmdkeySetupResponse {
@@ -421158,6 +421208,16 @@ export namespace synapse {
              * The private link service connection status.
              */
             status?: string;
+        }
+
+        /**
+         * Purview Configuration
+         */
+        export interface PurviewConfigurationResponse {
+            /**
+             * Purview Resource ID
+             */
+            purviewResourceId?: string;
         }
 
         /**

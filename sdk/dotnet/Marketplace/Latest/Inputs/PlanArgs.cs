@@ -7,21 +7,18 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.AzureNextGen.Synapse.V20190601Preview.Inputs
+namespace Pulumi.AzureNextGen.Marketplace.Latest.Inputs
 {
 
-    /// <summary>
-    /// Babylon Configuration
-    /// </summary>
-    public sealed class BabylonConfigurationArgs : Pulumi.ResourceArgs
+    public sealed class PlanArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Babylon Resource ID
+        /// Plan accessibility
         /// </summary>
-        [Input("babylonResourceId")]
-        public Input<string>? BabylonResourceId { get; set; }
+        [Input("accessibility")]
+        public Input<string>? Accessibility { get; set; }
 
-        public BabylonConfigurationArgs()
+        public PlanArgs()
         {
         }
     }

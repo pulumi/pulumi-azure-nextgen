@@ -7,25 +7,29 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.AzureNextGen.Marketplace.Latest.Inputs
+namespace Pulumi.AzureNextGen.Marketplace.V20200101.Outputs
 {
 
-    public sealed class IconArgs : Pulumi.ResourceArgs
+    [OutputType]
+    public sealed class OfferPropertiesResponseIconFileUris
     {
         /// <summary>
         /// Icon size
         /// </summary>
-        [Input("iconKind")]
-        public Input<string>? IconKind { get; set; }
-
+        public readonly string? IconKind;
         /// <summary>
         /// Icon uri
         /// </summary>
-        [Input("uri")]
-        public Input<string>? Uri { get; set; }
+        public readonly string? Uri;
 
-        public IconArgs()
+        [OutputConstructor]
+        private OfferPropertiesResponseIconFileUris(
+            string? iconKind,
+
+            string? uri)
         {
+            IconKind = iconKind;
+            Uri = uri;
         }
     }
 }

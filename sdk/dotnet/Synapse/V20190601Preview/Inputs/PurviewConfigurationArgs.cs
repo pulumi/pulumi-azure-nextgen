@@ -7,21 +7,22 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.AzureNextGen.Synapse.V20190601Preview.Outputs
+namespace Pulumi.AzureNextGen.Synapse.V20190601Preview.Inputs
 {
 
-    [OutputType]
-    public sealed class BabylonConfigurationResponse
+    /// <summary>
+    /// Purview Configuration
+    /// </summary>
+    public sealed class PurviewConfigurationArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Babylon Resource ID
+        /// Purview Resource ID
         /// </summary>
-        public readonly string? BabylonResourceId;
+        [Input("purviewResourceId")]
+        public Input<string>? PurviewResourceId { get; set; }
 
-        [OutputConstructor]
-        private BabylonConfigurationResponse(string? babylonResourceId)
+        public PurviewConfigurationArgs()
         {
-            BabylonResourceId = babylonResourceId;
         }
     }
 }

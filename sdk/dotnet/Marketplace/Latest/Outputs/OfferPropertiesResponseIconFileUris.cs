@@ -11,7 +11,7 @@ namespace Pulumi.AzureNextGen.Marketplace.Latest.Outputs
 {
 
     [OutputType]
-    public sealed class IconResponse
+    public sealed class OfferPropertiesResponseIconFileUris
     {
         /// <summary>
         /// Icon size
@@ -23,7 +23,7 @@ namespace Pulumi.AzureNextGen.Marketplace.Latest.Outputs
         public readonly string? Uri;
 
         [OutputConstructor]
-        private IconResponse(
+        private OfferPropertiesResponseIconFileUris(
             string? iconKind,
 
             string? uri)

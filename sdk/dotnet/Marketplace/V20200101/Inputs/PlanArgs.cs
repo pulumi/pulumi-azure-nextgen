@@ -10,21 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureNextGen.Marketplace.V20200101.Inputs
 {
 
-    public sealed class IconArgs : Pulumi.ResourceArgs
+    public sealed class PlanArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Icon size
+        /// Plan accessibility
         /// </summary>
-        [Input("iconKind")]
-        public Input<string>? IconKind { get; set; }
+        [Input("accessibility")]
+        public Input<string>? Accessibility { get; set; }
 
-        /// <summary>
-        /// Icon uri
-        /// </summary>
-        [Input("uri")]
-        public Input<string>? Uri { get; set; }
-
-        public IconArgs()
+        public PlanArgs()
         {
         }
     }
