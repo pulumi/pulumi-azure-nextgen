@@ -32954,6 +32954,10 @@ export namespace cognitiveservices {
              */
             customSubDomainName?: string;
             /**
+             * Gets the date of cognitive services account creation.
+             */
+            dateCreated: string;
+            /**
              * The encryption properties for this resource.
              */
             encryption?: outputs.cognitiveservices.latest.EncryptionResponse;
@@ -33279,6 +33283,10 @@ export namespace cognitiveservices {
              * Optional subdomain name used for token-based authentication.
              */
             customSubDomainName?: string;
+            /**
+             * Gets the date of cognitive services account creation.
+             */
+            dateCreated: string;
             /**
              * The encryption properties for this resource.
              */
@@ -56987,6 +56995,271 @@ export namespace compute {
             mediaLink: string;
         }
     }
+
+    export namespace v20201001preview {
+        /**
+         * Describes a cloud service extension profile.
+         */
+        export interface CloudServiceExtensionProfileResponse {
+            /**
+             * List of extensions for the cloud service.
+             */
+            extensions?: outputs.compute.v20201001preview.ExtensionResponse[];
+        }
+
+        /**
+         * Extension Properties.
+         */
+        export interface CloudServiceExtensionPropertiesResponse {
+            /**
+             * Explicitly specify whether platform can automatically upgrade typeHandlerVersion to higher minor versions when they become available.
+             */
+            autoUpgradeMinorVersion?: boolean;
+            /**
+             * Tag to force apply the provided public and protected settings.
+             * Changing the tag value allows for re-running the extension without changing any of the public or protected settings.
+             * If forceUpdateTag is not changed, updates to public or protected settings would still be applied by the handler.
+             * If neither forceUpdateTag nor any of public or protected settings change, extension would flow to the role instance with the same sequence-number, and
+             * it is up to handler implementation whether to re-run it or not
+             */
+            forceUpdateTag?: string;
+            /**
+             * Protected settings for the extension which are encrypted before sent to the role instance.
+             */
+            protectedSettings?: string;
+            protectedSettingsFromKeyVault?: outputs.compute.v20201001preview.CloudServiceVaultAndSecretReferenceResponse;
+            /**
+             * The provisioning state, which only appears in the response.
+             */
+            provisioningState: string;
+            /**
+             * The name of the extension handler publisher.
+             */
+            publisher?: string;
+            /**
+             * Optional list of roles to apply this extension. If property is not specified or '*' is specified, extension is applied to all roles in the cloud service.
+             */
+            rolesAppliedTo?: string[];
+            /**
+             * Public settings for the extension. For JSON extensions, this is the JSON settings for the extension. For XML Extension (like RDP), this is the XML setting for the extension.
+             */
+            settings?: string;
+            /**
+             * Specifies the type of the extension.
+             */
+            type?: string;
+            /**
+             * Specifies the version of the extension. Specifies the version of the extension. If this element is not specified or an asterisk (*) is used as the value, the latest version of the extension is used. If the value is specified with a major version number and an asterisk as the minor version number (X.), the latest minor version of the specified major version is selected. If a major version number and a minor version number are specified (X.Y), the specific extension version is selected. If a version is specified, an auto-upgrade is performed on the role instance.
+             */
+            typeHandlerVersion?: string;
+        }
+
+        /**
+         * Network Profile for the cloud service.
+         */
+        export interface CloudServiceNetworkProfileResponse {
+            /**
+             * The list of load balancer configurations for the cloud service.
+             */
+            loadBalancerConfigurations?: outputs.compute.v20201001preview.LoadBalancerConfigurationResponse[];
+            swappableCloudService?: outputs.compute.v20201001preview.SubResourceResponse;
+        }
+
+        /**
+         * Describes the OS profile for the cloud service.
+         */
+        export interface CloudServiceOsProfileResponse {
+            /**
+             * Specifies set of certificates that should be installed onto the role instances.
+             */
+            secrets?: outputs.compute.v20201001preview.CloudServiceVaultSecretGroupResponse[];
+        }
+
+        /**
+         * Cloud service properties
+         */
+        export interface CloudServicePropertiesResponse {
+            /**
+             * Specifies the XML service configuration (.cscfg) for the cloud service.
+             */
+            configuration?: string;
+            /**
+             * Specifies a URL that refers to the location of the service configuration in the Blob service. The service package URL  can be Shared Access Signature (SAS) URI from any storage account.
+             * This is a write-only property and is not returned in GET calls.
+             */
+            configurationUrl?: string;
+            /**
+             * Describes a cloud service extension profile.
+             */
+            extensionProfile?: outputs.compute.v20201001preview.CloudServiceExtensionProfileResponse;
+            /**
+             * Network Profile for the cloud service.
+             */
+            networkProfile?: outputs.compute.v20201001preview.CloudServiceNetworkProfileResponse;
+            /**
+             * Describes the OS profile for the cloud service.
+             */
+            osProfile?: outputs.compute.v20201001preview.CloudServiceOsProfileResponse;
+            /**
+             * Specifies a URL that refers to the location of the service package in the Blob service. The service package URL can be Shared Access Signature (SAS) URI from any storage account.
+             * This is a write-only property and is not returned in GET calls.
+             */
+            packageUrl?: string;
+            /**
+             * The provisioning state, which only appears in the response.
+             */
+            provisioningState: string;
+            /**
+             * Describes the role profile for the cloud service.
+             */
+            roleProfile?: outputs.compute.v20201001preview.CloudServiceRoleProfileResponse;
+            /**
+             * (Optional) Indicates whether to start the cloud service immediately after it is created. The default value is `true`.
+             * If false, the service model is still deployed, but the code is not run immediately. Instead, the service is PoweredOff until you call Start, at which time the service will be started. A deployed service still incurs charges, even if it is poweredoff.
+             */
+            startCloudService?: boolean;
+            /**
+             * The unique identifier for the cloud service.
+             */
+            uniqueId: string;
+            /**
+             * Update mode for the cloud service. Role instances are allocated to update domains when the service is deployed. Updates can be initiated manually in each update domain or initiated automatically in all update domains.
+             * Possible Values are <br /><br />**Auto**<br /><br />**Manual** <br /><br />**Simultaneous**<br /><br />
+             * If not specified, the default value is Auto. If set to Manual, PUT UpdateDomain must be called to apply the update. If set to Auto, the update is automatically applied to each update domain in sequence.
+             */
+            upgradeMode?: string;
+        }
+
+        /**
+         * Describes the role properties.
+         */
+        export interface CloudServiceRoleProfilePropertiesResponse {
+            /**
+             * Resource name.
+             */
+            name?: string;
+            /**
+             * Describes the cloud service role sku.
+             */
+            sku?: outputs.compute.v20201001preview.CloudServiceRoleSkuResponse;
+        }
+
+        /**
+         * Describes the role profile for the cloud service.
+         */
+        export interface CloudServiceRoleProfileResponse {
+            /**
+             * List of roles for the cloud service.
+             */
+            roles?: outputs.compute.v20201001preview.CloudServiceRoleProfilePropertiesResponse[];
+        }
+
+        /**
+         * Describes the cloud service role sku.
+         */
+        export interface CloudServiceRoleSkuResponse {
+            /**
+             * Specifies the number of role instances in the cloud service.
+             */
+            capacity?: number;
+            /**
+             * The sku name. NOTE: If the new SKU is not supported on the hardware the cloud service is currently on, you need to delete and recreate the cloud service or move back to the old sku.
+             */
+            name?: string;
+            /**
+             * Specifies the tier of the cloud service. Possible Values are <br /><br /> **Standard** <br /><br /> **Basic**
+             */
+            tier?: string;
+        }
+
+        export interface CloudServiceVaultAndSecretReferenceResponse {
+            secretUrl?: string;
+            sourceVault?: outputs.compute.v20201001preview.SubResourceResponse;
+        }
+
+        /**
+         * Describes a single certificate reference in a Key Vault, and where the certificate should reside on the role instance.
+         */
+        export interface CloudServiceVaultCertificateResponse {
+            /**
+             * This is the URL of a certificate that has been uploaded to Key Vault as a secret.
+             */
+            certificateUrl?: string;
+        }
+
+        /**
+         * Describes a set of certificates which are all in the same Key Vault.
+         */
+        export interface CloudServiceVaultSecretGroupResponse {
+            /**
+             * The relative URL of the Key Vault containing all of the certificates in VaultCertificates.
+             */
+            sourceVault?: outputs.compute.v20201001preview.SubResourceResponse;
+            /**
+             * The list of key vault references in SourceVault which contain certificates.
+             */
+            vaultCertificates?: outputs.compute.v20201001preview.CloudServiceVaultCertificateResponse[];
+        }
+
+        /**
+         * Describes a cloud service Extension.
+         */
+        export interface ExtensionResponse {
+            /**
+             * The name of the extension.
+             */
+            name?: string;
+            /**
+             * Extension Properties.
+             */
+            properties?: outputs.compute.v20201001preview.CloudServiceExtensionPropertiesResponse;
+        }
+
+        export interface LoadBalancerConfigurationPropertiesResponse {
+            /**
+             * List of IP
+             */
+            frontendIPConfigurations?: outputs.compute.v20201001preview.LoadBalancerFrontendIPConfigurationResponse[];
+        }
+
+        /**
+         * Describes the load balancer configuration.
+         */
+        export interface LoadBalancerConfigurationResponse {
+            /**
+             * Resource Name
+             */
+            name?: string;
+            properties?: outputs.compute.v20201001preview.LoadBalancerConfigurationPropertiesResponse;
+        }
+
+        /**
+         * Describes a cloud service IP Configuration
+         */
+        export interface LoadBalancerFrontendIPConfigurationPropertiesResponse {
+            /**
+             * The private IP address referenced by the cloud service.
+             */
+            privateIPAddress?: string;
+            publicIPAddress?: outputs.compute.v20201001preview.SubResourceResponse;
+            subnet?: outputs.compute.v20201001preview.SubResourceResponse;
+        }
+
+        export interface LoadBalancerFrontendIPConfigurationResponse {
+            name?: string;
+            /**
+             * Describes a cloud service IP Configuration
+             */
+            properties?: outputs.compute.v20201001preview.LoadBalancerFrontendIPConfigurationPropertiesResponse;
+        }
+
+        export interface SubResourceResponse {
+            /**
+             * Resource Id
+             */
+            id?: string;
+        }
+    }
 }
 
 export namespace confluent {
@@ -65780,6 +66053,36 @@ export namespace containerregistry {
         }
 
         /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The timestamp of resource modification (UTC).
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
+        }
+
+        /**
          * The properties of a certificate used for authenticating a token.
          */
         export interface TokenCertificateResponse {
@@ -66470,6 +66773,10 @@ export namespace containerregistry {
              */
             status?: string;
             /**
+             * Metadata pertaining to creation and last modification of the resource.
+             */
+            systemData: outputs.containerregistry.v20190601preview.SystemDataResponse;
+            /**
              * The task against which run was scheduled.
              */
             task?: string;
@@ -66611,6 +66918,36 @@ export namespace containerregistry {
              * The current status of trigger.
              */
             status?: string;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The timestamp of resource modification (UTC).
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
         }
 
         /**
@@ -66917,6 +67254,14 @@ export namespace containerregistry {
              */
             keyIdentifier?: string;
             /**
+             * Auto key rotation status for a CMK enabled registry.
+             */
+            keyRotationEnabled: boolean;
+            /**
+             * Timestamp of the last successful key rotation.
+             */
+            lastKeyRotationTimestamp: string;
+            /**
              * The fully qualified key identifier that includes the version of the key that is actually used for encryption.
              */
             versionedKeyIdentifier: string;
@@ -67108,6 +67453,10 @@ export namespace containerregistry {
              */
             provisioningState: string;
             /**
+             * Metadata pertaining to creation and last modification of the resource.
+             */
+            systemData: outputs.containerregistry.v20191201preview.SystemDataResponse;
+            /**
              * The type of the resource.
              */
             type: string;
@@ -67270,6 +67619,36 @@ export namespace containerregistry {
              * The resource ID of the storage account.
              */
             id: string;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The timestamp of resource modification (UTC).
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
         }
 
         /**
@@ -136416,6 +136795,170 @@ export namespace desktopvirtualization {
             token?: string;
         }
     }
+
+    export namespace v20201110preview {
+        /**
+         * Schema for MSIX Package Application properties.
+         */
+        export interface MsixPackageApplicationsResponse {
+            /**
+             * Package Application Id, found in appxmanifest.xml.
+             */
+            appId?: string;
+            /**
+             * Used to activate Package Application. Consists of Package Name and ApplicationID. Found in appxmanifest.xml.
+             */
+            appUserModelID?: string;
+            /**
+             * Description of Package Application.
+             */
+            description?: string;
+            /**
+             * User friendly name.
+             */
+            friendlyName?: string;
+            /**
+             * User friendly name.
+             */
+            iconImageName?: string;
+            /**
+             * the icon a 64 bit string as a byte array.
+             */
+            rawIcon?: string;
+            /**
+             * the icon a 64 bit string as a byte array.
+             */
+            rawPng?: string;
+        }
+
+        /**
+         * Schema for MSIX Package Dependencies properties.
+         */
+        export interface MsixPackageDependenciesResponse {
+            /**
+             * Name of package dependency.
+             */
+            dependencyName?: string;
+            /**
+             * Dependency version required.
+             */
+            minVersion?: string;
+            /**
+             * Name of dependency publisher.
+             */
+            publisher?: string;
+        }
+
+        /**
+         * Represents a RegistrationInfo definition.
+         */
+        export interface RegistrationInfoResponse {
+            /**
+             * Expiration time of registration token.
+             */
+            expirationTime?: string;
+            /**
+             * The type of resetting the token.
+             */
+            registrationTokenOperation?: string;
+            /**
+             * The registration token base64 encoded string.
+             */
+            token?: string;
+        }
+
+        /**
+         * Scaling plan reference to hostpool.
+         */
+        export interface ScalingHostPoolReferenceResponse {
+            /**
+             * Arm path of referenced hostpool.
+             */
+            hostPoolArmPath?: string;
+            /**
+             * Is the scaling plan enabled for this hostpool.
+             */
+            scalingPlanEnabled?: boolean;
+        }
+
+        /**
+         * Scaling plan schedule.
+         */
+        export interface ScalingScheduleResponse {
+            /**
+             * Set of days of the week on which this schedule is active.
+             */
+            daysOfWeek?: string[];
+            /**
+             * Name of the scaling schedule.
+             */
+            name?: string;
+            /**
+             * Load balancing algorithm for off-peak period.
+             */
+            offPeakLoadBalancingAlgorithm?: string;
+            /**
+             * Starting time for off-peak period.
+             */
+            offPeakStartTime?: string;
+            /**
+             * Load balancing algorithm for peak period.
+             */
+            peakLoadBalancingAlgorithm?: string;
+            /**
+             * Starting time for peak period.
+             */
+            peakStartTime?: string;
+            /**
+             * Capacity threshold for ramp down period.
+             */
+            rampDownCapacityThresholdPct?: number;
+            /**
+             * Should users be logged off forcefully from hosts.
+             */
+            rampDownForceLogoffUsers?: boolean;
+            /**
+             * Load balancing algorithm for ramp down period.
+             */
+            rampDownLoadBalancingAlgorithm?: string;
+            /**
+             * Minimum host percentage for ramp down period.
+             */
+            rampDownMinimumHostsPct?: number;
+            /**
+             * Notification message for users during ramp down period.
+             */
+            rampDownNotificationMessage?: string;
+            /**
+             * Number of minutes to wait to stop hosts during ramp down period.
+             */
+            rampDownNotificationMinutes?: number;
+            /**
+             * Starting time for ramp down period.
+             */
+            rampDownStartTime?: string;
+            /**
+             * Specifies when to stop hosts during ramp down period.
+             */
+            rampDownStopHostsWhen?: string;
+            /**
+             * Load balancing algorithm for ramp up period.
+             */
+            rampUpAlgorithm?: string;
+            /**
+             * Capacity threshold for ramp up period.
+             */
+            rampUpCapacityThresholdPct?: number;
+            /**
+             * Minimum host percentage for ramp up period.
+             */
+            rampUpMinimumHostPct?: number;
+            /**
+             * Starting time for ramp up period.
+             */
+            rampUpStartTime?: string;
+        }
+    }
 }
 
 export namespace devices {
@@ -202167,9 +202710,17 @@ export namespace managedservices {
          */
         export interface AuthorizationResponse {
             /**
+             * The delegatedRoleDefinitionIds field is required when the roleDefinitionId refers to the User Access Administrator Role. It is the list of role definition ids which define all the permissions that the user in the authorization can assign to other security groups/service principals/users.
+             */
+            delegatedRoleDefinitionIds?: string[];
+            /**
              * Principal Id of the security group/service principal/user that would be assigned permissions to the projected subscription
              */
             principalId: string;
+            /**
+             * Display name of the principal Id.
+             */
+            principalIdDisplayName?: string;
             /**
              * The role definition identifier. This role will define all the permissions that the security group/service principal/user must have on the projected subscription. This role cannot be an owner role.
              */
@@ -202317,9 +202868,17 @@ export namespace managedservices {
          */
         export interface AuthorizationResponse {
             /**
+             * The delegatedRoleDefinitionIds field is required when the roleDefinitionId refers to the User Access Administrator Role. It is the list of role definition ids which define all the permissions that the user in the authorization can assign to other security groups/service principals/users.
+             */
+            delegatedRoleDefinitionIds?: string[];
+            /**
              * Principal Id of the security group/service principal/user that would be assigned permissions to the projected subscription
              */
             principalId: string;
+            /**
+             * Display name of the principal Id.
+             */
+            principalIdDisplayName?: string;
             /**
              * The role definition identifier. This role will define all the permissions that the security group/service principal/user must have on the projected subscription. This role cannot be an owner role.
              */
@@ -202467,9 +203026,17 @@ export namespace managedservices {
          */
         export interface AuthorizationResponse {
             /**
+             * The delegatedRoleDefinitionIds field is required when the roleDefinitionId refers to the User Access Administrator Role. It is the list of role definition ids which define all the permissions that the user in the authorization can assign to other security groups/service principals/users.
+             */
+            delegatedRoleDefinitionIds?: string[];
+            /**
              * Principal Id of the security group/service principal/user that would be assigned permissions to the projected subscription
              */
             principalId: string;
+            /**
+             * Display name of the principal Id.
+             */
+            principalIdDisplayName?: string;
             /**
              * The role definition identifier. This role will define all the permissions that the security group/service principal/user must have on the projected subscription. This role cannot be an owner role.
              */
@@ -202617,9 +203184,17 @@ export namespace managedservices {
          */
         export interface AuthorizationResponse {
             /**
+             * The delegatedRoleDefinitionIds field is required when the roleDefinitionId refers to the User Access Administrator Role. It is the list of role definition ids which define all the permissions that the user in the authorization can assign to other security groups/service principals/users.
+             */
+            delegatedRoleDefinitionIds?: string[];
+            /**
              * Principal Id of the security group/service principal/user that would be assigned permissions to the projected subscription
              */
             principalId: string;
+            /**
+             * Display name of the principal Id.
+             */
+            principalIdDisplayName?: string;
             /**
              * The role definition identifier. This role will define all the permissions that the security group/service principal/user must have on the projected subscription. This role cannot be an owner role.
              */
@@ -202767,9 +203342,17 @@ export namespace managedservices {
          */
         export interface AuthorizationResponse {
             /**
+             * The delegatedRoleDefinitionIds field is required when the roleDefinitionId refers to the User Access Administrator Role. It is the list of role definition ids which define all the permissions that the user in the authorization can assign to other security groups/service principals/users.
+             */
+            delegatedRoleDefinitionIds?: string[];
+            /**
              * Principal Id of the security group/service principal/user that would be assigned permissions to the projected subscription
              */
             principalId: string;
+            /**
+             * Display name of the principal Id.
+             */
+            principalIdDisplayName?: string;
             /**
              * The role definition identifier. This role will define all the permissions that the security group/service principal/user must have on the projected subscription. This role cannot be an owner role.
              */
@@ -203740,7 +204323,11 @@ export namespace management {
              */
             id?: string;
             /**
-             * Applicable only if this template link references a Template Spec. This relativePath property can optionally be used to reference a Template Spec artifact by path.
+             * The query string (for example, a SAS token) to be used with the templateLink URI.
+             */
+            queryString?: string;
+            /**
+             * The relativePath property can be used to deploy a linked template at a location relative to the parent. If the parent template was linked with a TemplateSpec, this will reference an artifact in the TemplateSpec.  If the parent was linked with a URI, the child deployment will be a combination of the parent and relativePath URIs
              */
             relativePath?: string;
             /**
@@ -206579,6 +207166,396 @@ export namespace management {
             id?: string;
             /**
              * Applicable only if this template link references a Template Spec. This relativePath property can optionally be used to reference a Template Spec artifact by path.
+             */
+            relativePath?: string;
+            /**
+             * The URI of the template to deploy. Use either the uri or id property, but not both.
+             */
+            uri?: string;
+        }
+    }
+
+    export namespace v20201001 {
+        export interface AliasPathMetadataResponse {
+            /**
+             * The attributes of the token that the alias path is referring to.
+             */
+            attributes: string;
+            /**
+             * The type of the token that the alias path is referring to.
+             */
+            type: string;
+        }
+
+        /**
+         * The type of the paths for alias.
+         */
+        export interface AliasPathResponse {
+            /**
+             * The API versions.
+             */
+            apiVersions?: string[];
+            /**
+             * The metadata of the alias path. If missing, fall back to the default metadata of the alias.
+             */
+            metadata: outputs.management.v20201001.AliasPathMetadataResponse;
+            /**
+             * The path of an alias.
+             */
+            path?: string;
+            /**
+             * The pattern for an alias path.
+             */
+            pattern?: outputs.management.v20201001.AliasPatternResponse;
+        }
+
+        /**
+         * The type of the pattern for an alias path.
+         */
+        export interface AliasPatternResponse {
+            /**
+             * The alias pattern phrase.
+             */
+            phrase?: string;
+            /**
+             * The type of alias pattern
+             */
+            type?: string;
+            /**
+             * The alias pattern variable.
+             */
+            variable?: string;
+        }
+
+        /**
+         * The alias type. 
+         */
+        export interface AliasResponse {
+            /**
+             * The default alias path metadata. Applies to the default path and to any alias path that doesn't have metadata
+             */
+            defaultMetadata: outputs.management.v20201001.AliasPathMetadataResponse;
+            /**
+             * The default path for an alias.
+             */
+            defaultPath?: string;
+            /**
+             * The default pattern for an alias.
+             */
+            defaultPattern?: outputs.management.v20201001.AliasPatternResponse;
+            /**
+             * The alias name.
+             */
+            name?: string;
+            /**
+             * The paths for an alias.
+             */
+            paths?: outputs.management.v20201001.AliasPathResponse[];
+            /**
+             * The type of the alias.
+             */
+            type?: string;
+        }
+
+        export interface ApiProfileResponse {
+            /**
+             * The API version.
+             */
+            apiVersion: string;
+            /**
+             * The profile version.
+             */
+            profileVersion: string;
+        }
+
+        /**
+         * Deployment dependency information.
+         */
+        export interface BasicDependencyResponse {
+            /**
+             * The ID of the dependency.
+             */
+            id?: string;
+            /**
+             * The dependency resource name.
+             */
+            resourceName?: string;
+            /**
+             * The dependency resource type.
+             */
+            resourceType?: string;
+        }
+
+        /**
+         * The debug setting.
+         */
+        export interface DebugSettingResponse {
+            /**
+             * Specifies the type of information to log for debugging. The permitted values are none, requestContent, responseContent, or both requestContent and responseContent separated by a comma. The default is none. When setting this value, carefully consider the type of information you are passing in during deployment. By logging information about the request or response, you could potentially expose sensitive data that is retrieved through the deployment operations.
+             */
+            detailLevel?: string;
+        }
+
+        /**
+         * Deployment dependency information.
+         */
+        export interface DependencyResponse {
+            /**
+             * The list of dependencies.
+             */
+            dependsOn?: outputs.management.v20201001.BasicDependencyResponse[];
+            /**
+             * The ID of the dependency.
+             */
+            id?: string;
+            /**
+             * The dependency resource name.
+             */
+            resourceName?: string;
+            /**
+             * The dependency resource type.
+             */
+            resourceType?: string;
+        }
+
+        /**
+         * Deployment properties with additional details.
+         */
+        export interface DeploymentPropertiesExtendedResponse {
+            /**
+             * The correlation ID of the deployment.
+             */
+            correlationId: string;
+            /**
+             * The debug setting of the deployment.
+             */
+            debugSetting: outputs.management.v20201001.DebugSettingResponse;
+            /**
+             * The list of deployment dependencies.
+             */
+            dependencies: outputs.management.v20201001.DependencyResponse[];
+            /**
+             * The duration of the template deployment.
+             */
+            duration: string;
+            /**
+             * The deployment error.
+             */
+            error: outputs.management.v20201001.ErrorResponseResponse;
+            /**
+             * The deployment mode. Possible values are Incremental and Complete.
+             */
+            mode: string;
+            /**
+             * The deployment on error behavior.
+             */
+            onErrorDeployment: outputs.management.v20201001.OnErrorDeploymentExtendedResponse;
+            /**
+             * Array of provisioned resources.
+             */
+            outputResources: outputs.management.v20201001.ResourceReferenceResponse[];
+            /**
+             * Key/value pairs that represent deployment output.
+             */
+            outputs: any;
+            /**
+             * Deployment parameters. 
+             */
+            parameters: any;
+            /**
+             * The URI referencing the parameters. 
+             */
+            parametersLink: outputs.management.v20201001.ParametersLinkResponse;
+            /**
+             * The list of resource providers needed for the deployment.
+             */
+            providers: outputs.management.v20201001.ProviderResponse[];
+            /**
+             * Denotes the state of provisioning.
+             */
+            provisioningState: string;
+            /**
+             * The hash produced for the template.
+             */
+            templateHash: string;
+            /**
+             * The URI referencing the template.
+             */
+            templateLink: outputs.management.v20201001.TemplateLinkResponse;
+            /**
+             * The timestamp of the template deployment.
+             */
+            timestamp: string;
+            /**
+             * Array of validated resources.
+             */
+            validatedResources: outputs.management.v20201001.ResourceReferenceResponse[];
+        }
+
+        /**
+         * The resource management error additional info.
+         */
+        export interface ErrorAdditionalInfoResponse {
+            /**
+             * The additional info.
+             */
+            info: any;
+            /**
+             * The additional info type.
+             */
+            type: string;
+        }
+
+        /**
+         * Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.)
+         */
+        export interface ErrorResponseResponse {
+            /**
+             * The error additional info.
+             */
+            additionalInfo: outputs.management.v20201001.ErrorAdditionalInfoResponse[];
+            /**
+             * The error code.
+             */
+            code: string;
+            /**
+             * The error details.
+             */
+            details: outputs.management.v20201001.ErrorResponseResponse[];
+            /**
+             * The error message.
+             */
+            message: string;
+            /**
+             * The error target.
+             */
+            target: string;
+        }
+
+        /**
+         * Deployment on error behavior with additional details.
+         */
+        export interface OnErrorDeploymentExtendedResponse {
+            /**
+             * The deployment to be used on error case.
+             */
+            deploymentName?: string;
+            /**
+             * The state of the provisioning for the on error deployment.
+             */
+            provisioningState: string;
+            /**
+             * The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment.
+             */
+            type?: string;
+        }
+
+        /**
+         * Entity representing the reference to the deployment parameters.
+         */
+        export interface ParametersLinkResponse {
+            /**
+             * If included, must match the ContentVersion in the template.
+             */
+            contentVersion?: string;
+            /**
+             * The URI of the parameters file.
+             */
+            uri: string;
+        }
+
+        /**
+         * Resource type managed by the resource provider.
+         */
+        export interface ProviderResourceTypeResponse {
+            /**
+             * The aliases that are supported by this resource type.
+             */
+            aliases?: outputs.management.v20201001.AliasResponse[];
+            /**
+             * The API profiles for the resource provider.
+             */
+            apiProfiles: outputs.management.v20201001.ApiProfileResponse[];
+            /**
+             * The API version.
+             */
+            apiVersions?: string[];
+            /**
+             * The additional capabilities offered by this resource type.
+             */
+            capabilities?: string;
+            /**
+             * The default API version.
+             */
+            defaultApiVersion: string;
+            /**
+             * The collection of locations where this resource type can be created.
+             */
+            locations?: string[];
+            /**
+             * The properties.
+             */
+            properties?: {[key: string]: string};
+            /**
+             * The resource type.
+             */
+            resourceType?: string;
+        }
+
+        /**
+         * Resource provider information.
+         */
+        export interface ProviderResponse {
+            /**
+             * The provider ID.
+             */
+            id: string;
+            /**
+             * The namespace of the resource provider.
+             */
+            namespace?: string;
+            /**
+             * The registration policy of the resource provider.
+             */
+            registrationPolicy: string;
+            /**
+             * The registration state of the resource provider.
+             */
+            registrationState: string;
+            /**
+             * The collection of provider resource types.
+             */
+            resourceTypes: outputs.management.v20201001.ProviderResourceTypeResponse[];
+        }
+
+        /**
+         * The resource Id model.
+         */
+        export interface ResourceReferenceResponse {
+            /**
+             * The fully qualified resource Id.
+             */
+            id: string;
+        }
+
+        /**
+         * Entity representing the reference to the template.
+         */
+        export interface TemplateLinkResponse {
+            /**
+             * If included, must match the ContentVersion in the template.
+             */
+            contentVersion?: string;
+            /**
+             * The resource id of a Template Spec. Use either the id or uri property, but not both.
+             */
+            id?: string;
+            /**
+             * The query string (for example, a SAS token) to be used with the templateLink URI.
+             */
+            queryString?: string;
+            /**
+             * The relativePath property can be used to deploy a linked template at a location relative to the parent. If the parent template was linked with a TemplateSpec, this will reference an artifact in the TemplateSpec.  If the parent was linked with a URI, the child deployment will be a combination of the parent and relativePath URIs
              */
             relativePath?: string;
             /**
@@ -226334,15 +227311,11 @@ export namespace network {
              */
             peeringState?: string;
             /**
-             * The peering sync status of the virtual network peering.
-             */
-            peeringSyncLevel?: string;
-            /**
              * The provisioning state of the virtual network peering resource.
              */
             provisioningState: string;
             /**
-             * The reference to the address space peered with the remote virtual network.
+             * The reference to the remote virtual network address space.
              */
             remoteAddressSpace?: outputs.network.latest.AddressSpaceResponse;
             /**
@@ -226353,14 +227326,6 @@ export namespace network {
              * The reference to the remote virtual network. The remote virtual network can be in the same or different region (preview). See here to register for the preview and learn more (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
              */
             remoteVirtualNetwork?: outputs.network.latest.SubResourceResponse;
-            /**
-             * The reference to the current address space of the remote virtual network.
-             */
-            remoteVirtualNetworkAddressSpace?: outputs.network.latest.AddressSpaceResponse;
-            /**
-             * Provided when user wants to sync the peering with address space on the remote virtual network after the address space is updated.
-             */
-            syncRemoteAddressSpace?: boolean;
             /**
              * If remote gateways can be used on this virtual network. If the flag is set to true, and allowGatewayTransit on remote peering is also true, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to true. This flag cannot be set if virtual network already has a gateway.
              */
@@ -328991,6 +329956,26 @@ export namespace network {
 
     export namespace v20200101 {
         /**
+         * An A record.
+         */
+        export interface ARecordResponse {
+            /**
+             * The IPv4 address of this A record.
+             */
+            ipv4Address?: string;
+        }
+
+        /**
+         * An AAAA record.
+         */
+        export interface AaaaRecordResponse {
+            /**
+             * The IPv6 address of this AAAA record.
+             */
+            ipv6Address?: string;
+        }
+
+        /**
          * A backend pool is a collection of backends that can be routed to.
          */
         export interface BackendPoolResponse {
@@ -329104,6 +330089,16 @@ export namespace network {
              * query parameters to include or exclude (comma separated).
              */
             queryParameters?: string;
+        }
+
+        /**
+         * A CNAME record.
+         */
+        export interface CnameRecordResponse {
+            /**
+             * The canonical name for this CNAME record.
+             */
+            cname?: string;
         }
 
         /**
@@ -329328,6 +330323,30 @@ export namespace network {
         }
 
         /**
+         * An MX record.
+         */
+        export interface MxRecordResponse {
+            /**
+             * The domain name of the mail host for this MX record.
+             */
+            exchange?: string;
+            /**
+             * The preference value for this MX record.
+             */
+            preference?: number;
+        }
+
+        /**
+         * A PTR record.
+         */
+        export interface PtrRecordResponse {
+            /**
+             * The PTR target domain name for this PTR record.
+             */
+            ptrdname?: string;
+        }
+
+        /**
          * Describes Redirect Route.
          */
         export interface RedirectConfigurationResponse {
@@ -329505,6 +330524,62 @@ export namespace network {
         }
 
         /**
+         * An SOA record.
+         */
+        export interface SoaRecordResponse {
+            /**
+             * The email contact for this SOA record.
+             */
+            email?: string;
+            /**
+             * The expire time for this SOA record.
+             */
+            expireTime?: number;
+            /**
+             * The domain name of the authoritative name server for this SOA record.
+             */
+            host?: string;
+            /**
+             * The minimum value for this SOA record. By convention this is used to determine the negative caching duration.
+             */
+            minimumTtl?: number;
+            /**
+             * The refresh value for this SOA record.
+             */
+            refreshTime?: number;
+            /**
+             * The retry time for this SOA record.
+             */
+            retryTime?: number;
+            /**
+             * The serial number for this SOA record.
+             */
+            serialNumber?: number;
+        }
+
+        /**
+         * An SRV record.
+         */
+        export interface SrvRecordResponse {
+            /**
+             * The port value for this SRV record.
+             */
+            port?: number;
+            /**
+             * The priority value for this SRV record.
+             */
+            priority?: number;
+            /**
+             * The target domain name for this SRV record.
+             */
+            target?: string;
+            /**
+             * The weight value for this SRV record.
+             */
+            weight?: number;
+        }
+
+        /**
          * Reference to another subresource.
          */
         export interface SubResourceResponse {
@@ -329512,6 +330587,16 @@ export namespace network {
              * Resource ID.
              */
             id?: string;
+        }
+
+        /**
+         * A TXT record.
+         */
+        export interface TxtRecordResponse {
+            /**
+             * The text value of this TXT record.
+             */
+            value?: string[];
         }
     }
 
@@ -349586,6 +350671,26 @@ export namespace network {
 
     export namespace v20200601 {
         /**
+         * An A record.
+         */
+        export interface ARecordResponse {
+            /**
+             * The IPv4 address of this A record.
+             */
+            ipv4Address?: string;
+        }
+
+        /**
+         * An AAAA record.
+         */
+        export interface AaaaRecordResponse {
+            /**
+             * The IPv6 address of this AAAA record.
+             */
+            ipv6Address?: string;
+        }
+
+        /**
          * AAD Vpn authentication type related parameters.
          */
         export interface AadAuthenticationParametersResponse {
@@ -351620,6 +352725,16 @@ export namespace network {
         }
 
         /**
+         * A CNAME record.
+         */
+        export interface CnameRecordResponse {
+            /**
+             * The canonical name for this CNAME record.
+             */
+            cname?: string;
+        }
+
+        /**
          * Describes the destination of connection monitor.
          */
         export interface ConnectionMonitorDestinationResponse {
@@ -353473,6 +354588,20 @@ export namespace network {
         }
 
         /**
+         * An MX record.
+         */
+        export interface MxRecordResponse {
+            /**
+             * The domain name of the mail host for this MX record.
+             */
+            exchange?: string;
+            /**
+             * The preference value for this MX record.
+             */
+            preference?: number;
+        }
+
+        /**
          * SKU of nat gateway.
          */
         export interface NatGatewaySkuResponse {
@@ -354503,6 +355632,16 @@ export namespace network {
         }
 
         /**
+         * A PTR record.
+         */
+        export interface PtrRecordResponse {
+            /**
+             * The PTR target domain name for this PTR record.
+             */
+            ptrdname?: string;
+        }
+
+        /**
          * Contains FQDN of the DNS record associated with the public IP address.
          */
         export interface PublicIPAddressDnsSettingsResponse {
@@ -355115,6 +356254,62 @@ export namespace network {
         }
 
         /**
+         * An SOA record.
+         */
+        export interface SoaRecordResponse {
+            /**
+             * The email contact for this SOA record.
+             */
+            email?: string;
+            /**
+             * The expire time for this SOA record.
+             */
+            expireTime?: number;
+            /**
+             * The domain name of the authoritative name server for this SOA record.
+             */
+            host?: string;
+            /**
+             * The minimum value for this SOA record. By convention this is used to determine the negative caching duration.
+             */
+            minimumTtl?: number;
+            /**
+             * The refresh value for this SOA record.
+             */
+            refreshTime?: number;
+            /**
+             * The retry time for this SOA record.
+             */
+            retryTime?: number;
+            /**
+             * The serial number for this SOA record.
+             */
+            serialNumber?: number;
+        }
+
+        /**
+         * An SRV record.
+         */
+        export interface SrvRecordResponse {
+            /**
+             * The port value for this SRV record.
+             */
+            port?: number;
+            /**
+             * The priority value for this SRV record.
+             */
+            priority?: number;
+            /**
+             * The target domain name for this SRV record.
+             */
+            target?: string;
+            /**
+             * The weight value for this SRV record.
+             */
+            weight?: number;
+        }
+
+        /**
          * List of all Static Routes.
          */
         export interface StaticRouteResponse {
@@ -355306,6 +356501,16 @@ export namespace network {
              * Tunnel name.
              */
             tunnel: string;
+        }
+
+        /**
+         * A TXT record.
+         */
+        export interface TxtRecordResponse {
+            /**
+             * The text value of this TXT record.
+             */
+            value?: string[];
         }
 
         /**
@@ -362508,15 +363713,11 @@ export namespace network {
              */
             peeringState?: string;
             /**
-             * The peering sync status of the virtual network peering.
-             */
-            peeringSyncLevel?: string;
-            /**
              * The provisioning state of the virtual network peering resource.
              */
             provisioningState: string;
             /**
-             * The reference to the address space peered with the remote virtual network.
+             * The reference to the remote virtual network address space.
              */
             remoteAddressSpace?: outputs.network.v20200701.AddressSpaceResponse;
             /**
@@ -362527,14 +363728,6 @@ export namespace network {
              * The reference to the remote virtual network. The remote virtual network can be in the same or different region (preview). See here to register for the preview and learn more (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
              */
             remoteVirtualNetwork?: outputs.network.v20200701.SubResourceResponse;
-            /**
-             * The reference to the current address space of the remote virtual network.
-             */
-            remoteVirtualNetworkAddressSpace?: outputs.network.v20200701.AddressSpaceResponse;
-            /**
-             * Provided when user wants to sync the peering with address space on the remote virtual network after the address space is updated.
-             */
-            syncRemoteAddressSpace?: boolean;
             /**
              * If remote gateways can be used on this virtual network. If the flag is set to true, and allowGatewayTransit on remote peering is also true, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to true. This flag cannot be set if virtual network already has a gateway.
              */
@@ -364523,6 +365716,10 @@ export namespace operationalinsights {
              */
             keyName?: string;
             /**
+             * Selected key minimum required size.
+             */
+            keyRsaSize?: number;
+            /**
              * The Key Vault uri which holds they key associated with the Log Analytics cluster.
              */
             keyVaultUri?: string;
@@ -364530,10 +365727,6 @@ export namespace operationalinsights {
              * The version of the key associated with the Log Analytics cluster.
              */
             keyVersion?: string;
-            /**
-             * Selected key minimum required key size.
-             */
-            rsaKeySize?: number;
         }
 
         /**
@@ -365200,6 +366393,10 @@ export namespace operationalinsights {
              */
             keyName?: string;
             /**
+             * Selected key minimum required size.
+             */
+            keyRsaSize?: number;
+            /**
              * The Key Vault uri which holds they key associated with the Log Analytics cluster.
              */
             keyVaultUri?: string;
@@ -365207,10 +366404,20 @@ export namespace operationalinsights {
              * The version of the key associated with the Log Analytics cluster.
              */
             keyVersion?: string;
+        }
+
+        /**
+         * The private link scope resource reference.
+         */
+        export interface PrivateLinkScopedResourceResponse {
             /**
-             * Selected key minimum required key size.
+             * The full resource Id of the private link scope resource.
              */
-            rsaKeySize?: number;
+            resourceId?: string;
+            /**
+             * The private link scope unique Identifier.
+             */
+            scopeId?: string;
         }
 
         /**
@@ -365225,6 +366432,46 @@ export namespace operationalinsights {
              * The principal id of user assigned identity.
              */
             principalId: string;
+        }
+
+        /**
+         * The daily volume cap for ingestion.
+         */
+        export interface WorkspaceCappingResponse {
+            /**
+             * The workspace daily quota for ingestion.
+             */
+            dailyQuotaGb?: number;
+            /**
+             * The status of data ingestion for this workspace.
+             */
+            dataIngestionStatus: string;
+            /**
+             * The time when the quota will be rest.
+             */
+            quotaNextResetTime: string;
+        }
+
+        /**
+         * The SKU (tier) of a workspace.
+         */
+        export interface WorkspaceSkuResponse {
+            /**
+             * The capacity reservation level for this workspace, when CapacityReservation sku is selected.
+             */
+            capacityReservationLevel?: number;
+            /**
+             * The last time when the sku was updated.
+             */
+            lastSkuUpdate: string;
+            /**
+             * The maximum capacity reservation level available for this workspace, when CapacityReservation sku is selected.
+             */
+            maxCapacityReservationLevel: number;
+            /**
+             * The name of the SKU.
+             */
+            name: string;
         }
     }
 }
@@ -387448,20 +388695,6 @@ export namespace resources {
         }
 
         /**
-         * Managed identity generic object.
-         */
-        export interface ManagedServiceIdentityResponse {
-            /**
-             * Type of the managed identity.
-             */
-            type?: string;
-            /**
-             * The list of user-assigned managed identities associated with the resource. Key is the Azure resource Id of the managed identity.
-             */
-            userAssignedIdentities?: {[key: string]: outputs.resources.latest.UserAssignedIdentityResponse};
-        }
-
-        /**
          * Deployment on error behavior with additional details.
          */
         export interface OnErrorDeploymentExtendedResponse {
@@ -387634,36 +388867,6 @@ export namespace resources {
         }
 
         /**
-         * Metadata pertaining to creation and last modification of the resource.
-         */
-        export interface SystemDataResponse {
-            /**
-             * The timestamp of resource creation (UTC).
-             */
-            createdAt?: string;
-            /**
-             * The identity that created the resource.
-             */
-            createdBy?: string;
-            /**
-             * The type of identity that created the resource.
-             */
-            createdByType?: string;
-            /**
-             * The type of identity that last modified the resource.
-             */
-            lastModifiedAt?: string;
-            /**
-             * The identity that last modified the resource.
-             */
-            lastModifiedBy?: string;
-            /**
-             * The type of identity that last modified the resource.
-             */
-            lastModifiedByType?: string;
-        }
-
-        /**
          * A dictionary of name and value pairs.
          */
         export interface TagsResponse {
@@ -387690,20 +388893,6 @@ export namespace resources {
              * The URI of the template to deploy. Use either the uri or id property, but not both.
              */
             uri?: string;
-        }
-
-        /**
-         * User-assigned managed identity.
-         */
-        export interface UserAssignedIdentityResponse {
-            /**
-             * Client App Id associated with this identity.
-             */
-            clientId?: string;
-            /**
-             * Azure Active Directory principal ID associated with this identity.
-             */
-            principalId?: string;
         }
     }
 
@@ -392447,6 +393636,295 @@ export namespace resources {
     }
 
     export namespace v20201001 {
+        export interface AliasPathMetadataResponse {
+            /**
+             * The attributes of the token that the alias path is referring to.
+             */
+            attributes: string;
+            /**
+             * The type of the token that the alias path is referring to.
+             */
+            type: string;
+        }
+
+        /**
+         * The type of the paths for alias.
+         */
+        export interface AliasPathResponse {
+            /**
+             * The API versions.
+             */
+            apiVersions?: string[];
+            /**
+             * The metadata of the alias path. If missing, fall back to the default metadata of the alias.
+             */
+            metadata: outputs.resources.v20201001.AliasPathMetadataResponse;
+            /**
+             * The path of an alias.
+             */
+            path?: string;
+            /**
+             * The pattern for an alias path.
+             */
+            pattern?: outputs.resources.v20201001.AliasPatternResponse;
+        }
+
+        /**
+         * The type of the pattern for an alias path.
+         */
+        export interface AliasPatternResponse {
+            /**
+             * The alias pattern phrase.
+             */
+            phrase?: string;
+            /**
+             * The type of alias pattern
+             */
+            type?: string;
+            /**
+             * The alias pattern variable.
+             */
+            variable?: string;
+        }
+
+        /**
+         * The alias type. 
+         */
+        export interface AliasResponse {
+            /**
+             * The default alias path metadata. Applies to the default path and to any alias path that doesn't have metadata
+             */
+            defaultMetadata: outputs.resources.v20201001.AliasPathMetadataResponse;
+            /**
+             * The default path for an alias.
+             */
+            defaultPath?: string;
+            /**
+             * The default pattern for an alias.
+             */
+            defaultPattern?: outputs.resources.v20201001.AliasPatternResponse;
+            /**
+             * The alias name.
+             */
+            name?: string;
+            /**
+             * The paths for an alias.
+             */
+            paths?: outputs.resources.v20201001.AliasPathResponse[];
+            /**
+             * The type of the alias.
+             */
+            type?: string;
+        }
+
+        export interface ApiProfileResponse {
+            /**
+             * The API version.
+             */
+            apiVersion: string;
+            /**
+             * The profile version.
+             */
+            profileVersion: string;
+        }
+
+        /**
+         * Deployment dependency information.
+         */
+        export interface BasicDependencyResponse {
+            /**
+             * The ID of the dependency.
+             */
+            id?: string;
+            /**
+             * The dependency resource name.
+             */
+            resourceName?: string;
+            /**
+             * The dependency resource type.
+             */
+            resourceType?: string;
+        }
+
+        /**
+         * The debug setting.
+         */
+        export interface DebugSettingResponse {
+            /**
+             * Specifies the type of information to log for debugging. The permitted values are none, requestContent, responseContent, or both requestContent and responseContent separated by a comma. The default is none. When setting this value, carefully consider the type of information you are passing in during deployment. By logging information about the request or response, you could potentially expose sensitive data that is retrieved through the deployment operations.
+             */
+            detailLevel?: string;
+        }
+
+        /**
+         * Deployment dependency information.
+         */
+        export interface DependencyResponse {
+            /**
+             * The list of dependencies.
+             */
+            dependsOn?: outputs.resources.v20201001.BasicDependencyResponse[];
+            /**
+             * The ID of the dependency.
+             */
+            id?: string;
+            /**
+             * The dependency resource name.
+             */
+            resourceName?: string;
+            /**
+             * The dependency resource type.
+             */
+            resourceType?: string;
+        }
+
+        /**
+         * Deployment properties with additional details.
+         */
+        export interface DeploymentPropertiesExtendedResponse {
+            /**
+             * The correlation ID of the deployment.
+             */
+            correlationId: string;
+            /**
+             * The debug setting of the deployment.
+             */
+            debugSetting: outputs.resources.v20201001.DebugSettingResponse;
+            /**
+             * The list of deployment dependencies.
+             */
+            dependencies: outputs.resources.v20201001.DependencyResponse[];
+            /**
+             * The duration of the template deployment.
+             */
+            duration: string;
+            /**
+             * The deployment error.
+             */
+            error: outputs.resources.v20201001.ErrorResponseResponse;
+            /**
+             * The deployment mode. Possible values are Incremental and Complete.
+             */
+            mode: string;
+            /**
+             * The deployment on error behavior.
+             */
+            onErrorDeployment: outputs.resources.v20201001.OnErrorDeploymentExtendedResponse;
+            /**
+             * Array of provisioned resources.
+             */
+            outputResources: outputs.resources.v20201001.ResourceReferenceResponse[];
+            /**
+             * Key/value pairs that represent deployment output.
+             */
+            outputs: any;
+            /**
+             * Deployment parameters. 
+             */
+            parameters: any;
+            /**
+             * The URI referencing the parameters. 
+             */
+            parametersLink: outputs.resources.v20201001.ParametersLinkResponse;
+            /**
+             * The list of resource providers needed for the deployment.
+             */
+            providers: outputs.resources.v20201001.ProviderResponse[];
+            /**
+             * Denotes the state of provisioning.
+             */
+            provisioningState: string;
+            /**
+             * The hash produced for the template.
+             */
+            templateHash: string;
+            /**
+             * The URI referencing the template.
+             */
+            templateLink: outputs.resources.v20201001.TemplateLinkResponse;
+            /**
+             * The timestamp of the template deployment.
+             */
+            timestamp: string;
+            /**
+             * Array of validated resources.
+             */
+            validatedResources: outputs.resources.v20201001.ResourceReferenceResponse[];
+        }
+
+        /**
+         * The resource management error additional info.
+         */
+        export interface ErrorAdditionalInfoResponse {
+            /**
+             * The additional info.
+             */
+            info: any;
+            /**
+             * The additional info type.
+             */
+            type: string;
+        }
+
+        /**
+         * Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.)
+         */
+        export interface ErrorResponseResponse {
+            /**
+             * The error additional info.
+             */
+            additionalInfo: outputs.resources.v20201001.ErrorAdditionalInfoResponse[];
+            /**
+             * The error code.
+             */
+            code: string;
+            /**
+             * The error details.
+             */
+            details: outputs.resources.v20201001.ErrorResponseResponse[];
+            /**
+             * The error message.
+             */
+            message: string;
+            /**
+             * The error target.
+             */
+            target: string;
+        }
+
+        /**
+         * Identity for the resource.
+         */
+        export interface IdentityResponse {
+            /**
+             * The principal ID of resource identity.
+             */
+            principalId: string;
+            /**
+             * The tenant ID of resource.
+             */
+            tenantId: string;
+            /**
+             * The identity type.
+             */
+            type?: string;
+            /**
+             * The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+             */
+            userAssignedIdentities?: {[key: string]: outputs.resources.v20201001.IdentityResponseUserAssignedIdentities};
+        }
+
+        export interface IdentityResponseUserAssignedIdentities {
+            /**
+             * The client id of user assigned identity.
+             */
+            clientId: string;
+            /**
+             * The principal id of user assigned identity.
+             */
+            principalId: string;
+        }
+
         /**
          * Managed identity generic object.
          */
@@ -392459,6 +393937,178 @@ export namespace resources {
              * The list of user-assigned managed identities associated with the resource. Key is the Azure resource Id of the managed identity.
              */
             userAssignedIdentities?: {[key: string]: outputs.resources.v20201001.UserAssignedIdentityResponse};
+        }
+
+        /**
+         * Deployment on error behavior with additional details.
+         */
+        export interface OnErrorDeploymentExtendedResponse {
+            /**
+             * The deployment to be used on error case.
+             */
+            deploymentName?: string;
+            /**
+             * The state of the provisioning for the on error deployment.
+             */
+            provisioningState: string;
+            /**
+             * The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment.
+             */
+            type?: string;
+        }
+
+        /**
+         * Entity representing the reference to the deployment parameters.
+         */
+        export interface ParametersLinkResponse {
+            /**
+             * If included, must match the ContentVersion in the template.
+             */
+            contentVersion?: string;
+            /**
+             * The URI of the parameters file.
+             */
+            uri: string;
+        }
+
+        /**
+         * Plan for the resource.
+         */
+        export interface PlanResponse {
+            /**
+             * The plan ID.
+             */
+            name?: string;
+            /**
+             * The offer ID.
+             */
+            product?: string;
+            /**
+             * The promotion code.
+             */
+            promotionCode?: string;
+            /**
+             * The publisher ID.
+             */
+            publisher?: string;
+            /**
+             * The plan's version.
+             */
+            version?: string;
+        }
+
+        /**
+         * Resource type managed by the resource provider.
+         */
+        export interface ProviderResourceTypeResponse {
+            /**
+             * The aliases that are supported by this resource type.
+             */
+            aliases?: outputs.resources.v20201001.AliasResponse[];
+            /**
+             * The API profiles for the resource provider.
+             */
+            apiProfiles: outputs.resources.v20201001.ApiProfileResponse[];
+            /**
+             * The API version.
+             */
+            apiVersions?: string[];
+            /**
+             * The additional capabilities offered by this resource type.
+             */
+            capabilities?: string;
+            /**
+             * The default API version.
+             */
+            defaultApiVersion: string;
+            /**
+             * The collection of locations where this resource type can be created.
+             */
+            locations?: string[];
+            /**
+             * The properties.
+             */
+            properties?: {[key: string]: string};
+            /**
+             * The resource type.
+             */
+            resourceType?: string;
+        }
+
+        /**
+         * Resource provider information.
+         */
+        export interface ProviderResponse {
+            /**
+             * The provider ID.
+             */
+            id: string;
+            /**
+             * The namespace of the resource provider.
+             */
+            namespace?: string;
+            /**
+             * The registration policy of the resource provider.
+             */
+            registrationPolicy: string;
+            /**
+             * The registration state of the resource provider.
+             */
+            registrationState: string;
+            /**
+             * The collection of provider resource types.
+             */
+            resourceTypes: outputs.resources.v20201001.ProviderResourceTypeResponse[];
+        }
+
+        /**
+         * The resource group properties.
+         */
+        export interface ResourceGroupPropertiesResponse {
+            /**
+             * The provisioning state. 
+             */
+            provisioningState: string;
+        }
+
+        /**
+         * The resource Id model.
+         */
+        export interface ResourceReferenceResponse {
+            /**
+             * The fully qualified resource Id.
+             */
+            id: string;
+        }
+
+        /**
+         * SKU for the resource.
+         */
+        export interface SkuResponse {
+            /**
+             * The SKU capacity.
+             */
+            capacity?: number;
+            /**
+             * The SKU family.
+             */
+            family?: string;
+            /**
+             * The SKU model.
+             */
+            model?: string;
+            /**
+             * The SKU name.
+             */
+            name?: string;
+            /**
+             * The SKU size.
+             */
+            size?: string;
+            /**
+             * The SKU tier.
+             */
+            tier?: string;
         }
 
         /**
@@ -392489,6 +394139,39 @@ export namespace resources {
              * The type of identity that last modified the resource.
              */
             lastModifiedByType?: string;
+        }
+
+        /**
+         * A dictionary of name and value pairs.
+         */
+        export interface TagsResponse {
+            tags?: {[key: string]: string};
+        }
+
+        /**
+         * Entity representing the reference to the template.
+         */
+        export interface TemplateLinkResponse {
+            /**
+             * If included, must match the ContentVersion in the template.
+             */
+            contentVersion?: string;
+            /**
+             * The resource id of a Template Spec. Use either the id or uri property, but not both.
+             */
+            id?: string;
+            /**
+             * The query string (for example, a SAS token) to be used with the templateLink URI.
+             */
+            queryString?: string;
+            /**
+             * The relativePath property can be used to deploy a linked template at a location relative to the parent. If the parent template was linked with a TemplateSpec, this will reference an artifact in the TemplateSpec.  If the parent was linked with a URI, the child deployment will be a combination of the parent and relativePath URIs
+             */
+            relativePath?: string;
+            /**
+             * The URI of the template to deploy. Use either the uri or id property, but not both.
+             */
+            uri?: string;
         }
 
         /**
@@ -414838,6 +416521,156 @@ export namespace storagecache {
              * Dictionary of string->string pairs containing information about the Storage Target.
              */
             unknownMap?: {[key: string]: string};
+        }
+    }
+}
+
+export namespace storagepool {
+    export namespace v20200315preview {
+        /**
+         * Access Control List (ACL) for an iSCSI target lun
+         */
+        export interface AclResponse {
+            /**
+             * iSCSI initiator iqn (iSCSI Qualified Name); example: iqn.2005-03.org.iscsi:client
+             */
+            initiatorIqn: string;
+            /**
+             * Array of lun names mapped to the ACL
+             */
+            mappedLuns: string[];
+            /**
+             * Password for Challenge Handshake Authentication Protocol (CHAP) authentication
+             */
+            password: string;
+            /**
+             * Username for Challenge Handshake Authentication Protocol (CHAP) authentication
+             */
+            username: string;
+        }
+
+        /**
+         * Attributes of an iSCSI target
+         */
+        export interface AttributesResponse {
+            /**
+             * Indicates whether or not authentication is enabled on the ACL.
+             */
+            authentication: boolean;
+            /**
+             * Indicates whether or not write protect is enabled on the luns.
+             */
+            prodModeWriteProtect: boolean;
+        }
+
+        /**
+         * Managed disk to attach to the DiskPool. Required.
+         */
+        export interface DiskResponse {
+            /**
+             * Unique Azure resource id of the managed disk. Required.
+             */
+            id: string;
+        }
+
+        /**
+         * Lun to expose the ManagedDisk.
+         */
+        export interface IscsiLunResponse {
+            /**
+             * Unique Azure resource id of the managed disk. Required.
+             */
+            managedDiskAzureResourceId: string;
+            /**
+             * Lun name.
+             */
+            name: string;
+        }
+
+        /**
+         * The resource model definition representing SKU
+         */
+        export interface SkuResponse {
+            /**
+             * If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+             */
+            capacity?: number;
+            /**
+             * If the service has different generations of hardware, for the same SKU, then that can be captured here.
+             */
+            family?: string;
+            /**
+             * The name of the SKU. Ex - P3. It is typically a letter+number code
+             */
+            name: string;
+            /**
+             * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+             */
+            size?: string;
+            /**
+             * This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+             */
+            tier?: string;
+        }
+
+        /**
+         * Resource metadata required by ARM RPC
+         */
+        export interface SystemMetadataResponse {
+            /**
+             * The timestamp of resource creation (UTC)
+             */
+            createdAt?: string;
+            /**
+             * A string identifier for the identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource: user, application, managedIdentity
+             */
+            createdByType?: string;
+            /**
+             * The timestamp of resource last modification (UTC)
+             */
+            lastModifiedAt?: string;
+            /**
+             * A string identifier for the identity that last modified the resource
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource: user, application, managedIdentity
+             */
+            lastModifiedByType?: string;
+        }
+
+        /**
+         * iSCSI target portal group
+         */
+        export interface TargetPortalGroupResponse {
+            /**
+             * Access Control List (ACL) for an iSCSI target lun
+             */
+            acls: outputs.storagepool.v20200315preview.AclResponse[];
+            /**
+             * Attributes of an iSCSI target
+             */
+            attributes: outputs.storagepool.v20200315preview.AttributesResponse;
+            /**
+             * list of public ip addresses to connect to the iSCSI target
+             */
+            endpoints: string[];
+            /**
+             * Lun list to be exposed through the iSCSI target. Required
+             */
+            luns: outputs.storagepool.v20200315preview.IscsiLunResponse[];
+            /**
+             * The port at which the iSCSI target is available
+             */
+            port: number;
+            /**
+             * The tag associated with the iSCSI target portal group
+             */
+            tag: number;
         }
     }
 }

@@ -45684,6 +45684,260 @@ export namespace compute {
         }
 
     }
+
+    export namespace v20201001preview {
+        /**
+         * Describes a cloud service extension profile.
+         */
+        export interface CloudServiceExtensionProfile {
+            /**
+             * List of extensions for the cloud service.
+             */
+            extensions?: pulumi.Input<pulumi.Input<inputs.compute.v20201001preview.Extension>[]>;
+        }
+
+        /**
+         * Extension Properties.
+         */
+        export interface CloudServiceExtensionProperties {
+            /**
+             * Explicitly specify whether platform can automatically upgrade typeHandlerVersion to higher minor versions when they become available.
+             */
+            autoUpgradeMinorVersion?: pulumi.Input<boolean>;
+            /**
+             * Tag to force apply the provided public and protected settings.
+             * Changing the tag value allows for re-running the extension without changing any of the public or protected settings.
+             * If forceUpdateTag is not changed, updates to public or protected settings would still be applied by the handler.
+             * If neither forceUpdateTag nor any of public or protected settings change, extension would flow to the role instance with the same sequence-number, and
+             * it is up to handler implementation whether to re-run it or not
+             */
+            forceUpdateTag?: pulumi.Input<string>;
+            /**
+             * Protected settings for the extension which are encrypted before sent to the role instance.
+             */
+            protectedSettings?: pulumi.Input<string>;
+            protectedSettingsFromKeyVault?: pulumi.Input<inputs.compute.v20201001preview.CloudServiceVaultAndSecretReference>;
+            /**
+             * The name of the extension handler publisher.
+             */
+            publisher?: pulumi.Input<string>;
+            /**
+             * Optional list of roles to apply this extension. If property is not specified or '*' is specified, extension is applied to all roles in the cloud service.
+             */
+            rolesAppliedTo?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Public settings for the extension. For JSON extensions, this is the JSON settings for the extension. For XML Extension (like RDP), this is the XML setting for the extension.
+             */
+            settings?: pulumi.Input<string>;
+            /**
+             * Specifies the type of the extension.
+             */
+            type?: pulumi.Input<string>;
+            /**
+             * Specifies the version of the extension. Specifies the version of the extension. If this element is not specified or an asterisk (*) is used as the value, the latest version of the extension is used. If the value is specified with a major version number and an asterisk as the minor version number (X.), the latest minor version of the specified major version is selected. If a major version number and a minor version number are specified (X.Y), the specific extension version is selected. If a version is specified, an auto-upgrade is performed on the role instance.
+             */
+            typeHandlerVersion?: pulumi.Input<string>;
+        }
+
+        /**
+         * Network Profile for the cloud service.
+         */
+        export interface CloudServiceNetworkProfile {
+            /**
+             * The list of load balancer configurations for the cloud service.
+             */
+            loadBalancerConfigurations?: pulumi.Input<pulumi.Input<inputs.compute.v20201001preview.LoadBalancerConfiguration>[]>;
+            swappableCloudService?: pulumi.Input<inputs.compute.v20201001preview.SubResource>;
+        }
+
+        /**
+         * Describes the OS profile for the cloud service.
+         */
+        export interface CloudServiceOsProfile {
+            /**
+             * Specifies set of certificates that should be installed onto the role instances.
+             */
+            secrets?: pulumi.Input<pulumi.Input<inputs.compute.v20201001preview.CloudServiceVaultSecretGroup>[]>;
+        }
+
+        /**
+         * Cloud service properties
+         */
+        export interface CloudServiceProperties {
+            /**
+             * Specifies the XML service configuration (.cscfg) for the cloud service.
+             */
+            configuration?: pulumi.Input<string>;
+            /**
+             * Specifies a URL that refers to the location of the service configuration in the Blob service. The service package URL  can be Shared Access Signature (SAS) URI from any storage account.
+             * This is a write-only property and is not returned in GET calls.
+             */
+            configurationUrl?: pulumi.Input<string>;
+            /**
+             * Describes a cloud service extension profile.
+             */
+            extensionProfile?: pulumi.Input<inputs.compute.v20201001preview.CloudServiceExtensionProfile>;
+            /**
+             * Network Profile for the cloud service.
+             */
+            networkProfile?: pulumi.Input<inputs.compute.v20201001preview.CloudServiceNetworkProfile>;
+            /**
+             * Describes the OS profile for the cloud service.
+             */
+            osProfile?: pulumi.Input<inputs.compute.v20201001preview.CloudServiceOsProfile>;
+            /**
+             * Specifies a URL that refers to the location of the service package in the Blob service. The service package URL can be Shared Access Signature (SAS) URI from any storage account.
+             * This is a write-only property and is not returned in GET calls.
+             */
+            packageUrl?: pulumi.Input<string>;
+            /**
+             * Describes the role profile for the cloud service.
+             */
+            roleProfile?: pulumi.Input<inputs.compute.v20201001preview.CloudServiceRoleProfile>;
+            /**
+             * (Optional) Indicates whether to start the cloud service immediately after it is created. The default value is `true`.
+             * If false, the service model is still deployed, but the code is not run immediately. Instead, the service is PoweredOff until you call Start, at which time the service will be started. A deployed service still incurs charges, even if it is poweredoff.
+             */
+            startCloudService?: pulumi.Input<boolean>;
+            /**
+             * Update mode for the cloud service. Role instances are allocated to update domains when the service is deployed. Updates can be initiated manually in each update domain or initiated automatically in all update domains.
+             * Possible Values are <br /><br />**Auto**<br /><br />**Manual** <br /><br />**Simultaneous**<br /><br />
+             * If not specified, the default value is Auto. If set to Manual, PUT UpdateDomain must be called to apply the update. If set to Auto, the update is automatically applied to each update domain in sequence.
+             */
+            upgradeMode?: pulumi.Input<string>;
+        }
+
+        /**
+         * Describes the role profile for the cloud service.
+         */
+        export interface CloudServiceRoleProfile {
+            /**
+             * List of roles for the cloud service.
+             */
+            roles?: pulumi.Input<pulumi.Input<inputs.compute.v20201001preview.CloudServiceRoleProfileProperties>[]>;
+        }
+
+        /**
+         * Describes the role properties.
+         */
+        export interface CloudServiceRoleProfileProperties {
+            /**
+             * Resource name.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Describes the cloud service role sku.
+             */
+            sku?: pulumi.Input<inputs.compute.v20201001preview.CloudServiceRoleSku>;
+        }
+
+        /**
+         * Describes the cloud service role sku.
+         */
+        export interface CloudServiceRoleSku {
+            /**
+             * Specifies the number of role instances in the cloud service.
+             */
+            capacity?: pulumi.Input<number>;
+            /**
+             * The sku name. NOTE: If the new SKU is not supported on the hardware the cloud service is currently on, you need to delete and recreate the cloud service or move back to the old sku.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Specifies the tier of the cloud service. Possible Values are <br /><br /> **Standard** <br /><br /> **Basic**
+             */
+            tier?: pulumi.Input<string>;
+        }
+
+        export interface CloudServiceVaultAndSecretReference {
+            secretUrl?: pulumi.Input<string>;
+            sourceVault?: pulumi.Input<inputs.compute.v20201001preview.SubResource>;
+        }
+
+        /**
+         * Describes a single certificate reference in a Key Vault, and where the certificate should reside on the role instance.
+         */
+        export interface CloudServiceVaultCertificate {
+            /**
+             * This is the URL of a certificate that has been uploaded to Key Vault as a secret.
+             */
+            certificateUrl?: pulumi.Input<string>;
+        }
+
+        /**
+         * Describes a set of certificates which are all in the same Key Vault.
+         */
+        export interface CloudServiceVaultSecretGroup {
+            /**
+             * The relative URL of the Key Vault containing all of the certificates in VaultCertificates.
+             */
+            sourceVault?: pulumi.Input<inputs.compute.v20201001preview.SubResource>;
+            /**
+             * The list of key vault references in SourceVault which contain certificates.
+             */
+            vaultCertificates?: pulumi.Input<pulumi.Input<inputs.compute.v20201001preview.CloudServiceVaultCertificate>[]>;
+        }
+
+        /**
+         * Describes a cloud service Extension.
+         */
+        export interface Extension {
+            /**
+             * The name of the extension.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Extension Properties.
+             */
+            properties?: pulumi.Input<inputs.compute.v20201001preview.CloudServiceExtensionProperties>;
+        }
+
+        /**
+         * Describes the load balancer configuration.
+         */
+        export interface LoadBalancerConfiguration {
+            /**
+             * Resource Name
+             */
+            name?: pulumi.Input<string>;
+            properties?: pulumi.Input<inputs.compute.v20201001preview.LoadBalancerConfigurationProperties>;
+        }
+
+        export interface LoadBalancerConfigurationProperties {
+            /**
+             * List of IP
+             */
+            frontendIPConfigurations?: pulumi.Input<pulumi.Input<inputs.compute.v20201001preview.LoadBalancerFrontendIPConfiguration>[]>;
+        }
+
+        export interface LoadBalancerFrontendIPConfiguration {
+            name?: pulumi.Input<string>;
+            /**
+             * Describes a cloud service IP Configuration
+             */
+            properties?: pulumi.Input<inputs.compute.v20201001preview.LoadBalancerFrontendIPConfigurationProperties>;
+        }
+
+        /**
+         * Describes a cloud service IP Configuration
+         */
+        export interface LoadBalancerFrontendIPConfigurationProperties {
+            /**
+             * The private IP address referenced by the cloud service.
+             */
+            privateIPAddress?: pulumi.Input<string>;
+            publicIPAddress?: pulumi.Input<inputs.compute.v20201001preview.SubResource>;
+            subnet?: pulumi.Input<inputs.compute.v20201001preview.SubResource>;
+        }
+
+        export interface SubResource {
+            /**
+             * Resource Id
+             */
+            id?: pulumi.Input<string>;
+        }
+
+    }
 }
 
 export namespace confluent {
@@ -103866,6 +104120,171 @@ export namespace desktopvirtualization {
         }
 
     }
+
+    export namespace v20201110preview {
+        /**
+         * Schema for MSIX Package Application properties.
+         */
+        export interface MsixPackageApplications {
+            /**
+             * Package Application Id, found in appxmanifest.xml.
+             */
+            appId?: pulumi.Input<string>;
+            /**
+             * Used to activate Package Application. Consists of Package Name and ApplicationID. Found in appxmanifest.xml.
+             */
+            appUserModelID?: pulumi.Input<string>;
+            /**
+             * Description of Package Application.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * User friendly name.
+             */
+            friendlyName?: pulumi.Input<string>;
+            /**
+             * User friendly name.
+             */
+            iconImageName?: pulumi.Input<string>;
+            /**
+             * the icon a 64 bit string as a byte array.
+             */
+            rawIcon?: pulumi.Input<string>;
+            /**
+             * the icon a 64 bit string as a byte array.
+             */
+            rawPng?: pulumi.Input<string>;
+        }
+
+        /**
+         * Schema for MSIX Package Dependencies properties.
+         */
+        export interface MsixPackageDependencies {
+            /**
+             * Name of package dependency.
+             */
+            dependencyName?: pulumi.Input<string>;
+            /**
+             * Dependency version required.
+             */
+            minVersion?: pulumi.Input<string>;
+            /**
+             * Name of dependency publisher.
+             */
+            publisher?: pulumi.Input<string>;
+        }
+
+        /**
+         * Represents a RegistrationInfo definition.
+         */
+        export interface RegistrationInfo {
+            /**
+             * Expiration time of registration token.
+             */
+            expirationTime?: pulumi.Input<string>;
+            /**
+             * The type of resetting the token.
+             */
+            registrationTokenOperation?: pulumi.Input<string>;
+            /**
+             * The registration token base64 encoded string.
+             */
+            token?: pulumi.Input<string>;
+        }
+
+        /**
+         * Scaling plan reference to hostpool.
+         */
+        export interface ScalingHostPoolReference {
+            /**
+             * Arm path of referenced hostpool.
+             */
+            hostPoolArmPath?: pulumi.Input<string>;
+            /**
+             * Is the scaling plan enabled for this hostpool.
+             */
+            scalingPlanEnabled?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Scaling plan schedule.
+         */
+        export interface ScalingSchedule {
+            /**
+             * Set of days of the week on which this schedule is active.
+             */
+            daysOfWeek?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Name of the scaling schedule.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Load balancing algorithm for off-peak period.
+             */
+            offPeakLoadBalancingAlgorithm?: pulumi.Input<string>;
+            /**
+             * Starting time for off-peak period.
+             */
+            offPeakStartTime?: pulumi.Input<string>;
+            /**
+             * Load balancing algorithm for peak period.
+             */
+            peakLoadBalancingAlgorithm?: pulumi.Input<string>;
+            /**
+             * Starting time for peak period.
+             */
+            peakStartTime?: pulumi.Input<string>;
+            /**
+             * Capacity threshold for ramp down period.
+             */
+            rampDownCapacityThresholdPct?: pulumi.Input<number>;
+            /**
+             * Should users be logged off forcefully from hosts.
+             */
+            rampDownForceLogoffUsers?: pulumi.Input<boolean>;
+            /**
+             * Load balancing algorithm for ramp down period.
+             */
+            rampDownLoadBalancingAlgorithm?: pulumi.Input<string>;
+            /**
+             * Minimum host percentage for ramp down period.
+             */
+            rampDownMinimumHostsPct?: pulumi.Input<number>;
+            /**
+             * Notification message for users during ramp down period.
+             */
+            rampDownNotificationMessage?: pulumi.Input<string>;
+            /**
+             * Number of minutes to wait to stop hosts during ramp down period.
+             */
+            rampDownNotificationMinutes?: pulumi.Input<number>;
+            /**
+             * Starting time for ramp down period.
+             */
+            rampDownStartTime?: pulumi.Input<string>;
+            /**
+             * Specifies when to stop hosts during ramp down period.
+             */
+            rampDownStopHostsWhen?: pulumi.Input<string>;
+            /**
+             * Load balancing algorithm for ramp up period.
+             */
+            rampUpAlgorithm?: pulumi.Input<string>;
+            /**
+             * Capacity threshold for ramp up period.
+             */
+            rampUpCapacityThresholdPct?: pulumi.Input<number>;
+            /**
+             * Minimum host percentage for ramp up period.
+             */
+            rampUpMinimumHostPct?: pulumi.Input<number>;
+            /**
+             * Starting time for ramp up period.
+             */
+            rampUpStartTime?: pulumi.Input<string>;
+        }
+
+    }
 }
 
 export namespace devices {
@@ -155072,9 +155491,17 @@ export namespace managedservices {
          */
         export interface Authorization {
             /**
+             * The delegatedRoleDefinitionIds field is required when the roleDefinitionId refers to the User Access Administrator Role. It is the list of role definition ids which define all the permissions that the user in the authorization can assign to other security groups/service principals/users.
+             */
+            delegatedRoleDefinitionIds?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
              * Principal Id of the security group/service principal/user that would be assigned permissions to the projected subscription
              */
             principalId: pulumi.Input<string>;
+            /**
+             * Display name of the principal Id.
+             */
+            principalIdDisplayName?: pulumi.Input<string>;
             /**
              * The role definition identifier. This role will define all the permissions that the security group/service principal/user must have on the projected subscription. This role cannot be an owner role.
              */
@@ -155143,9 +155570,17 @@ export namespace managedservices {
          */
         export interface Authorization {
             /**
+             * The delegatedRoleDefinitionIds field is required when the roleDefinitionId refers to the User Access Administrator Role. It is the list of role definition ids which define all the permissions that the user in the authorization can assign to other security groups/service principals/users.
+             */
+            delegatedRoleDefinitionIds?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
              * Principal Id of the security group/service principal/user that would be assigned permissions to the projected subscription
              */
             principalId: pulumi.Input<string>;
+            /**
+             * Display name of the principal Id.
+             */
+            principalIdDisplayName?: pulumi.Input<string>;
             /**
              * The role definition identifier. This role will define all the permissions that the security group/service principal/user must have on the projected subscription. This role cannot be an owner role.
              */
@@ -155214,9 +155649,17 @@ export namespace managedservices {
          */
         export interface Authorization {
             /**
+             * The delegatedRoleDefinitionIds field is required when the roleDefinitionId refers to the User Access Administrator Role. It is the list of role definition ids which define all the permissions that the user in the authorization can assign to other security groups/service principals/users.
+             */
+            delegatedRoleDefinitionIds?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
              * Principal Id of the security group/service principal/user that would be assigned permissions to the projected subscription
              */
             principalId: pulumi.Input<string>;
+            /**
+             * Display name of the principal Id.
+             */
+            principalIdDisplayName?: pulumi.Input<string>;
             /**
              * The role definition identifier. This role will define all the permissions that the security group/service principal/user must have on the projected subscription. This role cannot be an owner role.
              */
@@ -155285,9 +155728,17 @@ export namespace managedservices {
          */
         export interface Authorization {
             /**
+             * The delegatedRoleDefinitionIds field is required when the roleDefinitionId refers to the User Access Administrator Role. It is the list of role definition ids which define all the permissions that the user in the authorization can assign to other security groups/service principals/users.
+             */
+            delegatedRoleDefinitionIds?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
              * Principal Id of the security group/service principal/user that would be assigned permissions to the projected subscription
              */
             principalId: pulumi.Input<string>;
+            /**
+             * Display name of the principal Id.
+             */
+            principalIdDisplayName?: pulumi.Input<string>;
             /**
              * The role definition identifier. This role will define all the permissions that the security group/service principal/user must have on the projected subscription. This role cannot be an owner role.
              */
@@ -155356,9 +155807,17 @@ export namespace managedservices {
          */
         export interface Authorization {
             /**
+             * The delegatedRoleDefinitionIds field is required when the roleDefinitionId refers to the User Access Administrator Role. It is the list of role definition ids which define all the permissions that the user in the authorization can assign to other security groups/service principals/users.
+             */
+            delegatedRoleDefinitionIds?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
              * Principal Id of the security group/service principal/user that would be assigned permissions to the projected subscription
              */
             principalId: pulumi.Input<string>;
+            /**
+             * Display name of the principal Id.
+             */
+            principalIdDisplayName?: pulumi.Input<string>;
             /**
              * The role definition identifier. This role will define all the permissions that the security group/service principal/user must have on the projected subscription. This role cannot be an owner role.
              */
@@ -155756,7 +156215,11 @@ export namespace management {
              */
             id?: pulumi.Input<string>;
             /**
-             * Applicable only if this template link references a Template Spec. This relativePath property can optionally be used to reference a Template Spec artifact by path.
+             * The query string (for example, a SAS token) to be used with the templateLink URI.
+             */
+            queryString?: pulumi.Input<string>;
+            /**
+             * The relativePath property can be used to deploy a linked template at a location relative to the parent. If the parent template was linked with a TemplateSpec, this will reference an artifact in the TemplateSpec.  If the parent was linked with a URI, the child deployment will be a combination of the parent and relativePath URIs
              */
             relativePath?: pulumi.Input<string>;
             /**
@@ -156790,6 +157253,121 @@ export namespace management {
             id?: pulumi.Input<string>;
             /**
              * Applicable only if this template link references a Template Spec. This relativePath property can optionally be used to reference a Template Spec artifact by path.
+             */
+            relativePath?: pulumi.Input<string>;
+            /**
+             * The URI of the template to deploy. Use either the uri or id property, but not both.
+             */
+            uri?: pulumi.Input<string>;
+        }
+
+    }
+
+    export namespace v20201001 {
+        /**
+         * The debug setting.
+         */
+        export interface DebugSetting {
+            /**
+             * Specifies the type of information to log for debugging. The permitted values are none, requestContent, responseContent, or both requestContent and responseContent separated by a comma. The default is none. When setting this value, carefully consider the type of information you are passing in during deployment. By logging information about the request or response, you could potentially expose sensitive data that is retrieved through the deployment operations.
+             */
+            detailLevel?: pulumi.Input<string>;
+        }
+
+        /**
+         * Deployment properties.
+         */
+        export interface DeploymentProperties {
+            /**
+             * The debug setting of the deployment.
+             */
+            debugSetting?: pulumi.Input<inputs.management.v20201001.DebugSetting>;
+            /**
+             * Specifies whether template expressions are evaluated within the scope of the parent template or nested template. Only applicable to nested templates. If not specified, default value is outer.
+             */
+            expressionEvaluationOptions?: pulumi.Input<inputs.management.v20201001.ExpressionEvaluationOptions>;
+            /**
+             * The mode that is used to deploy resources. This value can be either Incremental or Complete. In Incremental mode, resources are deployed without deleting existing resources that are not included in the template. In Complete mode, resources are deployed and existing resources in the resource group that are not included in the template are deleted. Be careful when using Complete mode as you may unintentionally delete resources.
+             */
+            mode: pulumi.Input<string>;
+            /**
+             * The deployment on error behavior.
+             */
+            onErrorDeployment?: pulumi.Input<inputs.management.v20201001.OnErrorDeployment>;
+            /**
+             * Name and value pairs that define the deployment parameters for the template. You use this element when you want to provide the parameter values directly in the request rather than link to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. It can be a JObject or a well formed JSON string.
+             */
+            parameters?: any;
+            /**
+             * The URI of parameters file. You use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
+             */
+            parametersLink?: pulumi.Input<inputs.management.v20201001.ParametersLink>;
+            /**
+             * The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both.
+             */
+            template?: any;
+            /**
+             * The URI of the template. Use either the templateLink property or the template property, but not both.
+             */
+            templateLink?: pulumi.Input<inputs.management.v20201001.TemplateLink>;
+        }
+
+        /**
+         * Specifies whether template expressions are evaluated within the scope of the parent template or nested template.
+         */
+        export interface ExpressionEvaluationOptions {
+            /**
+             * The scope to be used for evaluation of parameters, variables and functions in a nested template.
+             */
+            scope?: pulumi.Input<string>;
+        }
+
+        /**
+         * Deployment on error behavior.
+         */
+        export interface OnErrorDeployment {
+            /**
+             * The deployment to be used on error case.
+             */
+            deploymentName?: pulumi.Input<string>;
+            /**
+             * The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment.
+             */
+            type?: pulumi.Input<string>;
+        }
+
+        /**
+         * Entity representing the reference to the deployment parameters.
+         */
+        export interface ParametersLink {
+            /**
+             * If included, must match the ContentVersion in the template.
+             */
+            contentVersion?: pulumi.Input<string>;
+            /**
+             * The URI of the parameters file.
+             */
+            uri: pulumi.Input<string>;
+        }
+
+        /**
+         * Entity representing the reference to the template.
+         */
+        export interface TemplateLink {
+            /**
+             * If included, must match the ContentVersion in the template.
+             */
+            contentVersion?: pulumi.Input<string>;
+            /**
+             * The resource id of a Template Spec. Use either the id or uri property, but not both.
+             */
+            id?: pulumi.Input<string>;
+            /**
+             * The query string (for example, a SAS token) to be used with the templateLink URI.
+             */
+            queryString?: pulumi.Input<string>;
+            /**
+             * The relativePath property can be used to deploy a linked template at a location relative to the parent. If the parent template was linked with a TemplateSpec, this will reference an artifact in the TemplateSpec.  If the parent was linked with a URI, the child deployment will be a combination of the parent and relativePath URIs
              */
             relativePath?: pulumi.Input<string>;
             /**
@@ -172763,11 +173341,7 @@ export namespace network {
              */
             peeringState?: pulumi.Input<string>;
             /**
-             * The peering sync status of the virtual network peering.
-             */
-            peeringSyncLevel?: pulumi.Input<string>;
-            /**
-             * The reference to the address space peered with the remote virtual network.
+             * The reference to the remote virtual network address space.
              */
             remoteAddressSpace?: pulumi.Input<inputs.network.latest.AddressSpace>;
             /**
@@ -172778,14 +173352,6 @@ export namespace network {
              * The reference to the remote virtual network. The remote virtual network can be in the same or different region (preview). See here to register for the preview and learn more (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
              */
             remoteVirtualNetwork?: pulumi.Input<inputs.network.latest.SubResource>;
-            /**
-             * The reference to the current address space of the remote virtual network.
-             */
-            remoteVirtualNetworkAddressSpace?: pulumi.Input<inputs.network.latest.AddressSpace>;
-            /**
-             * Provided when user wants to sync the peering with address space on the remote virtual network after the address space is updated.
-             */
-            syncRemoteAddressSpace?: pulumi.Input<boolean>;
             /**
              * If remote gateways can be used on this virtual network. If the flag is set to true, and allowGatewayTransit on remote peering is also true, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to true. This flag cannot be set if virtual network already has a gateway.
              */
@@ -254428,6 +254994,26 @@ export namespace network {
 
     export namespace v20200101 {
         /**
+         * An A record.
+         */
+        export interface ARecord {
+            /**
+             * The IPv4 address of this A record.
+             */
+            ipv4Address?: pulumi.Input<string>;
+        }
+
+        /**
+         * An AAAA record.
+         */
+        export interface AaaaRecord {
+            /**
+             * The IPv6 address of this AAAA record.
+             */
+            ipv6Address?: pulumi.Input<string>;
+        }
+
+        /**
          * Backend address of a frontDoor load balancer.
          */
         export interface Backend {
@@ -254529,6 +255115,16 @@ export namespace network {
              * query parameters to include or exclude (comma separated).
              */
             queryParameters?: pulumi.Input<string>;
+        }
+
+        /**
+         * A CNAME record.
+         */
+        export interface CnameRecord {
+            /**
+             * The canonical name for this CNAME record.
+             */
+            cname?: pulumi.Input<string>;
         }
 
         /**
@@ -254670,6 +255266,30 @@ export namespace network {
              * The number of samples within the sample period that must succeed
              */
             successfulSamplesRequired?: pulumi.Input<number>;
+        }
+
+        /**
+         * An MX record.
+         */
+        export interface MxRecord {
+            /**
+             * The domain name of the mail host for this MX record.
+             */
+            exchange?: pulumi.Input<string>;
+            /**
+             * The preference value for this MX record.
+             */
+            preference?: pulumi.Input<number>;
+        }
+
+        /**
+         * A PTR record.
+         */
+        export interface PtrRecord {
+            /**
+             * The PTR target domain name for this PTR record.
+             */
+            ptrdname?: pulumi.Input<string>;
         }
 
         /**
@@ -254816,6 +255436,62 @@ export namespace network {
         }
 
         /**
+         * An SOA record.
+         */
+        export interface SoaRecord {
+            /**
+             * The email contact for this SOA record.
+             */
+            email?: pulumi.Input<string>;
+            /**
+             * The expire time for this SOA record.
+             */
+            expireTime?: pulumi.Input<number>;
+            /**
+             * The domain name of the authoritative name server for this SOA record.
+             */
+            host?: pulumi.Input<string>;
+            /**
+             * The minimum value for this SOA record. By convention this is used to determine the negative caching duration.
+             */
+            minimumTtl?: pulumi.Input<number>;
+            /**
+             * The refresh value for this SOA record.
+             */
+            refreshTime?: pulumi.Input<number>;
+            /**
+             * The retry time for this SOA record.
+             */
+            retryTime?: pulumi.Input<number>;
+            /**
+             * The serial number for this SOA record.
+             */
+            serialNumber?: pulumi.Input<number>;
+        }
+
+        /**
+         * An SRV record.
+         */
+        export interface SrvRecord {
+            /**
+             * The port value for this SRV record.
+             */
+            port?: pulumi.Input<number>;
+            /**
+             * The priority value for this SRV record.
+             */
+            priority?: pulumi.Input<number>;
+            /**
+             * The target domain name for this SRV record.
+             */
+            target?: pulumi.Input<string>;
+            /**
+             * The weight value for this SRV record.
+             */
+            weight?: pulumi.Input<number>;
+        }
+
+        /**
          * Reference to another subresource.
          */
         export interface SubResource {
@@ -254823,6 +255499,16 @@ export namespace network {
              * Resource ID.
              */
             id?: pulumi.Input<string>;
+        }
+
+        /**
+         * A TXT record.
+         */
+        export interface TxtRecord {
+            /**
+             * The text value of this TXT record.
+             */
+            value?: pulumi.Input<pulumi.Input<string>[]>;
         }
 
     }
@@ -268328,6 +269014,26 @@ export namespace network {
 
     export namespace v20200601 {
         /**
+         * An A record.
+         */
+        export interface ARecord {
+            /**
+             * The IPv4 address of this A record.
+             */
+            ipv4Address?: pulumi.Input<string>;
+        }
+
+        /**
+         * An AAAA record.
+         */
+        export interface AaaaRecord {
+            /**
+             * The IPv6 address of this AAAA record.
+             */
+            ipv6Address?: pulumi.Input<string>;
+        }
+
+        /**
          * AAD Vpn authentication type related parameters.
          */
         export interface AadAuthenticationParameters {
@@ -269685,6 +270391,16 @@ export namespace network {
              * Flag to control breakout of o365 optimize category.
              */
             optimize?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * A CNAME record.
+         */
+        export interface CnameRecord {
+            /**
+             * The canonical name for this CNAME record.
+             */
+            cname?: pulumi.Input<string>;
         }
 
         /**
@@ -271046,6 +271762,20 @@ export namespace network {
         }
 
         /**
+         * An MX record.
+         */
+        export interface MxRecord {
+            /**
+             * The domain name of the mail host for this MX record.
+             */
+            exchange?: pulumi.Input<string>;
+            /**
+             * The preference value for this MX record.
+             */
+            preference?: pulumi.Input<number>;
+        }
+
+        /**
          * SKU of nat gateway.
          */
         export interface NatGatewaySku {
@@ -271618,6 +272348,16 @@ export namespace network {
         }
 
         /**
+         * A PTR record.
+         */
+        export interface PtrRecord {
+            /**
+             * The PTR target domain name for this PTR record.
+             */
+            ptrdname?: pulumi.Input<string>;
+        }
+
+        /**
          * Public IP address resource.
          */
         export interface PublicIPAddress {
@@ -272010,6 +272750,62 @@ export namespace network {
         }
 
         /**
+         * An SOA record.
+         */
+        export interface SoaRecord {
+            /**
+             * The email contact for this SOA record.
+             */
+            email?: pulumi.Input<string>;
+            /**
+             * The expire time for this SOA record.
+             */
+            expireTime?: pulumi.Input<number>;
+            /**
+             * The domain name of the authoritative name server for this SOA record.
+             */
+            host?: pulumi.Input<string>;
+            /**
+             * The minimum value for this SOA record. By convention this is used to determine the negative caching duration.
+             */
+            minimumTtl?: pulumi.Input<number>;
+            /**
+             * The refresh value for this SOA record.
+             */
+            refreshTime?: pulumi.Input<number>;
+            /**
+             * The retry time for this SOA record.
+             */
+            retryTime?: pulumi.Input<number>;
+            /**
+             * The serial number for this SOA record.
+             */
+            serialNumber?: pulumi.Input<number>;
+        }
+
+        /**
+         * An SRV record.
+         */
+        export interface SrvRecord {
+            /**
+             * The port value for this SRV record.
+             */
+            port?: pulumi.Input<number>;
+            /**
+             * The priority value for this SRV record.
+             */
+            priority?: pulumi.Input<number>;
+            /**
+             * The target domain name for this SRV record.
+             */
+            target?: pulumi.Input<string>;
+            /**
+             * The weight value for this SRV record.
+             */
+            weight?: pulumi.Input<number>;
+        }
+
+        /**
          * List of all Static Routes.
          */
         export interface StaticRoute {
@@ -272143,6 +272939,16 @@ export namespace network {
              * A collection of remote address spaces in CIDR format.
              */
             remoteAddressRanges: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * A TXT record.
+         */
+        export interface TxtRecord {
+            /**
+             * The text value of this TXT record.
+             */
+            value?: pulumi.Input<pulumi.Input<string>[]>;
         }
 
         /**
@@ -277071,11 +277877,7 @@ export namespace network {
              */
             peeringState?: pulumi.Input<string>;
             /**
-             * The peering sync status of the virtual network peering.
-             */
-            peeringSyncLevel?: pulumi.Input<string>;
-            /**
-             * The reference to the address space peered with the remote virtual network.
+             * The reference to the remote virtual network address space.
              */
             remoteAddressSpace?: pulumi.Input<inputs.network.v20200701.AddressSpace>;
             /**
@@ -277086,14 +277888,6 @@ export namespace network {
              * The reference to the remote virtual network. The remote virtual network can be in the same or different region (preview). See here to register for the preview and learn more (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
              */
             remoteVirtualNetwork?: pulumi.Input<inputs.network.v20200701.SubResource>;
-            /**
-             * The reference to the current address space of the remote virtual network.
-             */
-            remoteVirtualNetworkAddressSpace?: pulumi.Input<inputs.network.v20200701.AddressSpace>;
-            /**
-             * Provided when user wants to sync the peering with address space on the remote virtual network after the address space is updated.
-             */
-            syncRemoteAddressSpace?: pulumi.Input<boolean>;
             /**
              * If remote gateways can be used on this virtual network. If the flag is set to true, and allowGatewayTransit on remote peering is also true, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to true. This flag cannot be set if virtual network already has a gateway.
              */
@@ -278611,6 +279405,10 @@ export namespace operationalinsights {
              */
             keyName?: pulumi.Input<string>;
             /**
+             * Selected key minimum required size.
+             */
+            keyRsaSize?: pulumi.Input<number>;
+            /**
              * The Key Vault uri which holds they key associated with the Log Analytics cluster.
              */
             keyVaultUri?: pulumi.Input<string>;
@@ -278618,10 +279416,6 @@ export namespace operationalinsights {
              * The version of the key associated with the Log Analytics cluster.
              */
             keyVersion?: pulumi.Input<string>;
-            /**
-             * Selected key minimum required key size.
-             */
-            rsaKeySize?: pulumi.Input<number>;
         }
 
         /**
@@ -279048,6 +279842,10 @@ export namespace operationalinsights {
              */
             keyName?: pulumi.Input<string>;
             /**
+             * Selected key minimum required size.
+             */
+            keyRsaSize?: pulumi.Input<number>;
+            /**
              * The Key Vault uri which holds they key associated with the Log Analytics cluster.
              */
             keyVaultUri?: pulumi.Input<string>;
@@ -279055,10 +279853,30 @@ export namespace operationalinsights {
              * The version of the key associated with the Log Analytics cluster.
              */
             keyVersion?: pulumi.Input<string>;
+        }
+
+        /**
+         * The daily volume cap for ingestion.
+         */
+        export interface WorkspaceCapping {
             /**
-             * Selected key minimum required key size.
+             * The workspace daily quota for ingestion.
              */
-            rsaKeySize?: pulumi.Input<number>;
+            dailyQuotaGb?: pulumi.Input<number>;
+        }
+
+        /**
+         * The SKU (tier) of a workspace.
+         */
+        export interface WorkspaceSku {
+            /**
+             * The capacity reservation level for this workspace, when CapacityReservation sku is selected.
+             */
+            capacityReservationLevel?: pulumi.Input<number>;
+            /**
+             * The name of the SKU.
+             */
+            name: pulumi.Input<string>;
         }
 
     }
@@ -290094,20 +290912,6 @@ export namespace resources {
         }
 
         /**
-         * Managed identity generic object.
-         */
-        export interface ManagedServiceIdentity {
-            /**
-             * Type of the managed identity.
-             */
-            type?: pulumi.Input<string>;
-            /**
-             * The list of user-assigned managed identities associated with the resource. Key is the Azure resource Id of the managed identity.
-             */
-            userAssignedIdentities?: pulumi.Input<{[key: string]: pulumi.Input<inputs.resources.latest.UserAssignedIdentity>}>;
-        }
-
-        /**
          * Deployment on error behavior.
          */
         export interface OnErrorDeployment {
@@ -290218,20 +291022,6 @@ export namespace resources {
              * The URI of the template to deploy. Use either the uri or id property, but not both.
              */
             uri?: pulumi.Input<string>;
-        }
-
-        /**
-         * User-assigned managed identity.
-         */
-        export interface UserAssignedIdentity {
-            /**
-             * Client App Id associated with this identity.
-             */
-            clientId?: pulumi.Input<string>;
-            /**
-             * Azure Active Directory principal ID associated with this identity.
-             */
-            principalId?: pulumi.Input<string>;
         }
 
     }
@@ -292329,6 +293119,78 @@ export namespace resources {
 
     export namespace v20201001 {
         /**
+         * The debug setting.
+         */
+        export interface DebugSetting {
+            /**
+             * Specifies the type of information to log for debugging. The permitted values are none, requestContent, responseContent, or both requestContent and responseContent separated by a comma. The default is none. When setting this value, carefully consider the type of information you are passing in during deployment. By logging information about the request or response, you could potentially expose sensitive data that is retrieved through the deployment operations.
+             */
+            detailLevel?: pulumi.Input<string>;
+        }
+
+        /**
+         * Deployment properties.
+         */
+        export interface DeploymentProperties {
+            /**
+             * The debug setting of the deployment.
+             */
+            debugSetting?: pulumi.Input<inputs.resources.v20201001.DebugSetting>;
+            /**
+             * Specifies whether template expressions are evaluated within the scope of the parent template or nested template. Only applicable to nested templates. If not specified, default value is outer.
+             */
+            expressionEvaluationOptions?: pulumi.Input<inputs.resources.v20201001.ExpressionEvaluationOptions>;
+            /**
+             * The mode that is used to deploy resources. This value can be either Incremental or Complete. In Incremental mode, resources are deployed without deleting existing resources that are not included in the template. In Complete mode, resources are deployed and existing resources in the resource group that are not included in the template are deleted. Be careful when using Complete mode as you may unintentionally delete resources.
+             */
+            mode: pulumi.Input<string>;
+            /**
+             * The deployment on error behavior.
+             */
+            onErrorDeployment?: pulumi.Input<inputs.resources.v20201001.OnErrorDeployment>;
+            /**
+             * Name and value pairs that define the deployment parameters for the template. You use this element when you want to provide the parameter values directly in the request rather than link to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. It can be a JObject or a well formed JSON string.
+             */
+            parameters?: any;
+            /**
+             * The URI of parameters file. You use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
+             */
+            parametersLink?: pulumi.Input<inputs.resources.v20201001.ParametersLink>;
+            /**
+             * The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both.
+             */
+            template?: any;
+            /**
+             * The URI of the template. Use either the templateLink property or the template property, but not both.
+             */
+            templateLink?: pulumi.Input<inputs.resources.v20201001.TemplateLink>;
+        }
+
+        /**
+         * Specifies whether template expressions are evaluated within the scope of the parent template or nested template.
+         */
+        export interface ExpressionEvaluationOptions {
+            /**
+             * The scope to be used for evaluation of parameters, variables and functions in a nested template.
+             */
+            scope?: pulumi.Input<string>;
+        }
+
+        /**
+         * Identity for the resource.
+         */
+        export interface Identity {
+            /**
+             * The identity type.
+             */
+            type?: pulumi.Input<string>;
+            /**
+             * The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+             */
+            userAssignedIdentities?: pulumi.Input<{[key: string]: any}>;
+        }
+
+        /**
          * Managed identity generic object.
          */
         export interface ManagedServiceIdentity {
@@ -292340,6 +293202,123 @@ export namespace resources {
              * The list of user-assigned managed identities associated with the resource. Key is the Azure resource Id of the managed identity.
              */
             userAssignedIdentities?: pulumi.Input<{[key: string]: pulumi.Input<inputs.resources.v20201001.UserAssignedIdentity>}>;
+        }
+
+        /**
+         * Deployment on error behavior.
+         */
+        export interface OnErrorDeployment {
+            /**
+             * The deployment to be used on error case.
+             */
+            deploymentName?: pulumi.Input<string>;
+            /**
+             * The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment.
+             */
+            type?: pulumi.Input<string>;
+        }
+
+        /**
+         * Entity representing the reference to the deployment parameters.
+         */
+        export interface ParametersLink {
+            /**
+             * If included, must match the ContentVersion in the template.
+             */
+            contentVersion?: pulumi.Input<string>;
+            /**
+             * The URI of the parameters file.
+             */
+            uri: pulumi.Input<string>;
+        }
+
+        /**
+         * Plan for the resource.
+         */
+        export interface Plan {
+            /**
+             * The plan ID.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * The offer ID.
+             */
+            product?: pulumi.Input<string>;
+            /**
+             * The promotion code.
+             */
+            promotionCode?: pulumi.Input<string>;
+            /**
+             * The publisher ID.
+             */
+            publisher?: pulumi.Input<string>;
+            /**
+             * The plan's version.
+             */
+            version?: pulumi.Input<string>;
+        }
+
+        /**
+         * SKU for the resource.
+         */
+        export interface Sku {
+            /**
+             * The SKU capacity.
+             */
+            capacity?: pulumi.Input<number>;
+            /**
+             * The SKU family.
+             */
+            family?: pulumi.Input<string>;
+            /**
+             * The SKU model.
+             */
+            model?: pulumi.Input<string>;
+            /**
+             * The SKU name.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * The SKU size.
+             */
+            size?: pulumi.Input<string>;
+            /**
+             * The SKU tier.
+             */
+            tier?: pulumi.Input<string>;
+        }
+
+        /**
+         * A dictionary of name and value pairs.
+         */
+        export interface Tags {
+            tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        }
+
+        /**
+         * Entity representing the reference to the template.
+         */
+        export interface TemplateLink {
+            /**
+             * If included, must match the ContentVersion in the template.
+             */
+            contentVersion?: pulumi.Input<string>;
+            /**
+             * The resource id of a Template Spec. Use either the id or uri property, but not both.
+             */
+            id?: pulumi.Input<string>;
+            /**
+             * The query string (for example, a SAS token) to be used with the templateLink URI.
+             */
+            queryString?: pulumi.Input<string>;
+            /**
+             * The relativePath property can be used to deploy a linked template at a location relative to the parent. If the parent template was linked with a TemplateSpec, this will reference an artifact in the TemplateSpec.  If the parent was linked with a URI, the child deployment will be a combination of the parent and relativePath URIs
+             */
+            relativePath?: pulumi.Input<string>;
+            /**
+             * The URI of the template to deploy. Use either the uri or id property, but not both.
+             */
+            uri?: pulumi.Input<string>;
         }
 
         /**
@@ -309586,6 +310565,115 @@ export namespace storagecache {
              * Dictionary of string->string pairs containing information about the Storage Target.
              */
             unknownMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        }
+
+    }
+}
+
+export namespace storagepool {
+    export namespace v20200315preview {
+        /**
+         * Access Control List (ACL) for an iSCSI target lun
+         */
+        export interface Acl {
+            /**
+             * iSCSI initiator iqn (iSCSI Qualified Name); example: iqn.2005-03.org.iscsi:client
+             */
+            initiatorIqn: pulumi.Input<string>;
+            /**
+             * Array of lun names mapped to the ACL
+             */
+            mappedLuns: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Password for Challenge Handshake Authentication Protocol (CHAP) authentication
+             */
+            password: pulumi.Input<string>;
+            /**
+             * Username for Challenge Handshake Authentication Protocol (CHAP) authentication
+             */
+            username: pulumi.Input<string>;
+        }
+
+        /**
+         * Attributes of an iSCSI target
+         */
+        export interface Attributes {
+            /**
+             * Indicates whether or not authentication is enabled on the ACL.
+             */
+            authentication: pulumi.Input<boolean>;
+            /**
+             * Indicates whether or not write protect is enabled on the luns.
+             */
+            prodModeWriteProtect: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Managed disk to attach to the DiskPool. Required.
+         */
+        export interface Disk {
+            /**
+             * Unique Azure resource id of the managed disk. Required.
+             */
+            id: pulumi.Input<string>;
+        }
+
+        /**
+         * Lun to expose the ManagedDisk.
+         */
+        export interface IscsiLun {
+            /**
+             * Unique Azure resource id of the managed disk. Required.
+             */
+            managedDiskAzureResourceId: pulumi.Input<string>;
+            /**
+             * Lun name.
+             */
+            name: pulumi.Input<string>;
+        }
+
+        /**
+         * The resource model definition representing SKU
+         */
+        export interface Sku {
+            /**
+             * If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+             */
+            capacity?: pulumi.Input<number>;
+            /**
+             * If the service has different generations of hardware, for the same SKU, then that can be captured here.
+             */
+            family?: pulumi.Input<string>;
+            /**
+             * The name of the SKU. Ex - P3. It is typically a letter+number code
+             */
+            name: pulumi.Input<string>;
+            /**
+             * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+             */
+            size?: pulumi.Input<string>;
+            /**
+             * This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+             */
+            tier?: pulumi.Input<string>;
+        }
+
+        /**
+         * iSCSI target portal group
+         */
+        export interface TargetPortalGroup {
+            /**
+             * Access Control List (ACL) for an iSCSI target lun
+             */
+            acls: pulumi.Input<pulumi.Input<inputs.storagepool.v20200315preview.Acl>[]>;
+            /**
+             * Attributes of an iSCSI target
+             */
+            attributes: pulumi.Input<inputs.storagepool.v20200315preview.Attributes>;
+            /**
+             * Lun list to be exposed through the iSCSI target. Required
+             */
+            luns: pulumi.Input<pulumi.Input<inputs.storagepool.v20200315preview.IscsiLun>[]>;
         }
 
     }
