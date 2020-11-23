@@ -3,9 +3,13 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
-- Add `userAssignedIdentities` to several resources ([#136](https://github.com/pulumi/pulumi-azure-nextgen/issues/136))
+None
 
 ---
+
+## 0.2.8 (2020-11-23)
+
+- Add `userAssignedIdentities` to several resources ([#136](https://github.com/pulumi/pulumi-azure-nextgen/issues/136))
 
 ## 0.2.7 (2020-11-14)
 
