@@ -76,6 +76,7 @@ import * as eventhub from "./eventhub";
 import * as hanaonazure from "./hanaonazure";
 import * as hardwaresecuritymodules from "./hardwaresecuritymodules";
 import * as hdinsight from "./hdinsight";
+import * as healthbot from "./healthbot";
 import * as healthcareapis from "./healthcareapis";
 import * as hybridcompute from "./hybridcompute";
 import * as hybriddata from "./hybriddata";
@@ -119,11 +120,13 @@ import * as portal from "./portal";
 import * as powerbi from "./powerbi";
 import * as powerbidedicated from "./powerbidedicated";
 import * as powerplatform from "./powerplatform";
+import * as providerhub from "./providerhub";
 import * as recoveryservices from "./recoveryservices";
 import * as redhatopenshift from "./redhatopenshift";
 import * as relay from "./relay";
 import * as resourcegraph from "./resourcegraph";
 import * as resources from "./resources";
+import * as saas from "./saas";
 import * as scheduler from "./scheduler";
 import * as search from "./search";
 import * as security from "./security";
@@ -225,6 +228,7 @@ export {
     hanaonazure,
     hardwaresecuritymodules,
     hdinsight,
+    healthbot,
     healthcareapis,
     hybridcompute,
     hybriddata,
@@ -268,11 +272,13 @@ export {
     powerbi,
     powerbidedicated,
     powerplatform,
+    providerhub,
     recoveryservices,
     redhatopenshift,
     relay,
     resourcegraph,
     resources,
+    saas,
     scheduler,
     search,
     security,
