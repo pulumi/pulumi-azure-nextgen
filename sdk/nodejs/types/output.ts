@@ -34503,7 +34503,7 @@ export namespace compute {
          */
         export interface HardwareProfileResponse {
             /**
-             * Specifies the size of the virtual machine. For more information about virtual machine sizes, see [Sizes for virtual machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). <br><br> The available VM sizes depend on region and availability set. For a list of available sizes use these APIs:  <br><br> [List all available virtual machine sizes in an availability set](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes) <br><br> [List all available virtual machine sizes in a region](https://docs.microsoft.com/rest/api/compute/virtualmachinesizes/list) <br><br> [List all available virtual machine sizes for resizing](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes)
+             * Specifies the size of the virtual machine. For more information about virtual machine sizes, see [Sizes for virtual machines](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes). <br><br> The available VM sizes depend on region and availability set. For a list of available sizes use these APIs:  <br><br> [List all available virtual machine sizes in an availability set](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes) <br><br> [List all available virtual machine sizes in a region]( https://docs.microsoft.com/en-us/rest/api/compute/resourceskus/list) <br><br> [List all available virtual machine sizes for resizing](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes). <br><br> This list of sizes is no longer updated and the **VirtualMachineSizeTypes** string constants will be removed from the subsequent REST API specification. Use [List all available virtual machine sizes in a region]( https://docs.microsoft.com/en-us/rest/api/compute/resourceskus/list) to get the latest sizes.
              */
             vmSize?: string;
         }
@@ -54462,7 +54462,7 @@ export namespace compute {
          */
         export interface HardwareProfileResponse {
             /**
-             * Specifies the size of the virtual machine. For more information about virtual machine sizes, see [Sizes for virtual machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). <br><br> The available VM sizes depend on region and availability set. For a list of available sizes use these APIs:  <br><br> [List all available virtual machine sizes in an availability set](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes) <br><br> [List all available virtual machine sizes in a region](https://docs.microsoft.com/rest/api/compute/virtualmachinesizes/list) <br><br> [List all available virtual machine sizes for resizing](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes)
+             * Specifies the size of the virtual machine. For more information about virtual machine sizes, see [Sizes for virtual machines](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes). <br><br> The available VM sizes depend on region and availability set. For a list of available sizes use these APIs:  <br><br> [List all available virtual machine sizes in an availability set](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes) <br><br> [List all available virtual machine sizes in a region]( https://docs.microsoft.com/en-us/rest/api/compute/resourceskus/list) <br><br> [List all available virtual machine sizes for resizing](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes). <br><br> This list of sizes is no longer updated and the **VirtualMachineSizeTypes** string constants will be removed from the subsequent REST API specification. Use [List all available virtual machine sizes in a region]( https://docs.microsoft.com/en-us/rest/api/compute/resourceskus/list) to get the latest sizes.
              */
             vmSize?: string;
         }
@@ -67691,6 +67691,885 @@ export namespace containerregistry {
              * The version of the artifact.
              */
             version?: string;
+        }
+
+        /**
+         * The content trust policy for a container registry.
+         */
+        export interface TrustPolicyResponse {
+            /**
+             * The value that indicates whether the policy is enabled or not.
+             */
+            status?: string;
+            /**
+             * The type of trust policy.
+             */
+            type?: string;
+        }
+
+        export interface UserIdentityPropertiesResponse {
+            /**
+             * The client id of user assigned identity.
+             */
+            clientId?: string;
+            /**
+             * The principal id of user assigned identity.
+             */
+            principalId?: string;
+        }
+
+        /**
+         * Virtual network rule.
+         */
+        export interface VirtualNetworkRuleResponse {
+            /**
+             * The action of virtual network rule.
+             */
+            action?: string;
+            /**
+             * Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
+             */
+            virtualNetworkResourceId: string;
+        }
+    }
+
+    export namespace v20201101preview {
+        /**
+         * The activation properties of the connected registry.
+         */
+        export interface ActivationPropertiesResponse {
+            /**
+             * The activation status of the connected registry.
+             */
+            status: string;
+        }
+
+        /**
+         * The agent that initiated the event. For most situations, this could be from the authorization context of the request.
+         */
+        export interface ActorResponse {
+            /**
+             * The subject or username associated with the request context that generated the event.
+             */
+            name?: string;
+        }
+
+        export interface EncryptionPropertyResponse {
+            /**
+             * Key vault properties.
+             */
+            keyVaultProperties?: outputs.containerregistry.v20201101preview.KeyVaultPropertiesResponse;
+            /**
+             * Indicates whether or not the encryption is enabled for container registry.
+             */
+            status?: string;
+        }
+
+        /**
+         * The content of the event request message.
+         */
+        export interface EventContentResponse {
+            /**
+             * The action that encompasses the provided event.
+             */
+            action?: string;
+            /**
+             * The agent that initiated the event. For most situations, this could be from the authorization context of the request.
+             */
+            actor?: outputs.containerregistry.v20201101preview.ActorResponse;
+            /**
+             * The event ID.
+             */
+            id?: string;
+            /**
+             * The request that generated the event.
+             */
+            request?: outputs.containerregistry.v20201101preview.RequestResponse;
+            /**
+             * The registry node that generated the event. Put differently, while the actor initiates the event, the source generates it.
+             */
+            source?: outputs.containerregistry.v20201101preview.SourceResponse;
+            /**
+             * The target of the event.
+             */
+            target?: outputs.containerregistry.v20201101preview.TargetResponse;
+            /**
+             * The time at which the event occurred.
+             */
+            timestamp?: string;
+        }
+
+        /**
+         * The event request message sent to the service URI.
+         */
+        export interface EventRequestMessageResponse {
+            /**
+             * The content of the event request message.
+             */
+            content?: outputs.containerregistry.v20201101preview.EventContentResponse;
+            /**
+             * The headers of the event request message.
+             */
+            headers?: {[key: string]: string};
+            /**
+             * The HTTP method used to send the event request message.
+             */
+            method?: string;
+            /**
+             * The URI used to send the event request message.
+             */
+            requestUri?: string;
+            /**
+             * The HTTP message version.
+             */
+            version?: string;
+        }
+
+        /**
+         * The event for a webhook.
+         */
+        export interface EventResponse {
+            /**
+             * The event request message sent to the service URI.
+             */
+            eventRequestMessage?: outputs.containerregistry.v20201101preview.EventRequestMessageResponse;
+            /**
+             * The event response message received from the service URI.
+             */
+            eventResponseMessage?: outputs.containerregistry.v20201101preview.EventResponseMessageResponse;
+            /**
+             * The event ID.
+             */
+            id?: string;
+        }
+
+        /**
+         * The event response message received from the service URI.
+         */
+        export interface EventResponseMessageResponse {
+            /**
+             * The content of the event response message.
+             */
+            content?: string;
+            /**
+             * The headers of the event response message.
+             */
+            headers?: {[key: string]: string};
+            /**
+             * The reason phrase of the event response message.
+             */
+            reasonPhrase?: string;
+            /**
+             * The status code of the event response message.
+             */
+            statusCode?: string;
+            /**
+             * The HTTP message version.
+             */
+            version?: string;
+        }
+
+        /**
+         * The properties of the export pipeline target.
+         */
+        export interface ExportPipelineTargetPropertiesResponse {
+            /**
+             * They key vault secret uri to obtain the target storage SAS token.
+             */
+            keyVaultUri: string;
+            /**
+             * The type of target for the export pipeline.
+             */
+            type?: string;
+            /**
+             * The target uri of the export pipeline.
+             * When 'AzureStorageBlob': "https://accountName.blob.core.windows.net/containerName/blobName"
+             * When 'AzureStorageBlobContainer':  "https://accountName.blob.core.windows.net/containerName"
+             */
+            uri?: string;
+        }
+
+        /**
+         * IP rule with specific IP or IP range in CIDR format.
+         */
+        export interface IPRuleResponse {
+            /**
+             * The action of IP ACL rule.
+             */
+            action?: string;
+            /**
+             * Specifies the IP or IP range in CIDR format. Only IPV4 address is allowed.
+             */
+            iPAddressOrRange: string;
+        }
+
+        /**
+         * Managed identity for the resource.
+         */
+        export interface IdentityPropertiesResponse {
+            /**
+             * The principal ID of resource identity.
+             */
+            principalId?: string;
+            /**
+             * The tenant ID of resource.
+             */
+            tenantId?: string;
+            /**
+             * The identity type.
+             */
+            type?: string;
+            /**
+             * The list of user identities associated with the resource. The user identity 
+             * dictionary key references will be ARM resource ids in the form: 
+             * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/
+             *     providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+             */
+            userAssignedIdentities?: {[key: string]: outputs.containerregistry.v20201101preview.UserIdentityPropertiesResponse};
+        }
+
+        /**
+         * The properties of the import pipeline source.
+         */
+        export interface ImportPipelineSourcePropertiesResponse {
+            /**
+             * They key vault secret uri to obtain the source storage SAS token.
+             */
+            keyVaultUri: string;
+            /**
+             * The type of source for the import pipeline.
+             */
+            type?: string;
+            /**
+             * The source uri of the import pipeline.
+             * When 'AzureStorageBlob': "https://accountName.blob.core.windows.net/containerName/blobName"
+             * When 'AzureStorageBlobContainer': "https://accountName.blob.core.windows.net/containerName"
+             */
+            uri?: string;
+        }
+
+        export interface KeyVaultPropertiesResponse {
+            /**
+             * The client id of the identity which will be used to access key vault.
+             */
+            identity?: string;
+            /**
+             * Key vault uri to access the encryption key.
+             */
+            keyIdentifier?: string;
+            /**
+             * Auto key rotation status for a CMK enabled registry.
+             */
+            keyRotationEnabled: boolean;
+            /**
+             * Timestamp of the last successful key rotation.
+             */
+            lastKeyRotationTimestamp: string;
+            /**
+             * The fully qualified key identifier that includes the version of the key that is actually used for encryption.
+             */
+            versionedKeyIdentifier: string;
+        }
+
+        /**
+         * The logging properties of the connected registry.
+         */
+        export interface LoggingPropertiesResponse {
+            /**
+             * Indicates whether audit logs are enabled on the connected registry.
+             */
+            auditLogStatus?: string;
+            /**
+             * The verbosity of logs persisted on the connected registry.
+             */
+            logLevel?: string;
+        }
+
+        /**
+         * The login server properties of the connected registry.
+         */
+        export interface LoginServerPropertiesResponse {
+            /**
+             * The host of the connected registry. Can be FQDN or IP.
+             */
+            host: string;
+            /**
+             * The TLS properties of the connected registry login server.
+             */
+            tls: outputs.containerregistry.v20201101preview.TlsPropertiesResponse;
+        }
+
+        /**
+         * The network rule set for a container registry.
+         */
+        export interface NetworkRuleSetResponse {
+            /**
+             * The default action of allow or deny when no other rules match.
+             */
+            defaultAction: string;
+            /**
+             * The IP ACL rules.
+             */
+            ipRules?: outputs.containerregistry.v20201101preview.IPRuleResponse[];
+            /**
+             * The virtual network rules.
+             */
+            virtualNetworkRules?: outputs.containerregistry.v20201101preview.VirtualNetworkRuleResponse[];
+        }
+
+        /**
+         * The properties of the connected registry parent.
+         */
+        export interface ParentPropertiesResponse {
+            /**
+             * The resource ID of the parent to which the connected registry will be associated.
+             */
+            id?: string;
+            /**
+             * The sync properties of the connected registry with its parent.
+             */
+            syncProperties: outputs.containerregistry.v20201101preview.SyncPropertiesResponse;
+        }
+
+        /**
+         * The request properties provided for a pipeline run.
+         */
+        export interface PipelineRunRequestResponse {
+            /**
+             * List of source artifacts to be transferred by the pipeline. 
+             * Specify an image by repository ('hello-world'). This will use the 'latest' tag.
+             * Specify an image by tag ('hello-world:latest').
+             * Specify an image by sha256-based manifest digest ('hello-world@sha256:abc123').
+             */
+            artifacts?: string[];
+            /**
+             * The digest of the tar used to transfer the artifacts.
+             */
+            catalogDigest?: string;
+            /**
+             * The resource ID of the pipeline to run.
+             */
+            pipelineResourceId?: string;
+            /**
+             * The source properties of the pipeline run.
+             */
+            source?: outputs.containerregistry.v20201101preview.PipelineRunSourcePropertiesResponse;
+            /**
+             * The target properties of the pipeline run.
+             */
+            target?: outputs.containerregistry.v20201101preview.PipelineRunTargetPropertiesResponse;
+        }
+
+        /**
+         * The response properties returned for a pipeline run.
+         */
+        export interface PipelineRunResponseResponse {
+            /**
+             * The digest of the tar used to transfer the artifacts.
+             */
+            catalogDigest?: string;
+            /**
+             * The time the pipeline run finished.
+             */
+            finishTime?: string;
+            /**
+             * The artifacts imported in the pipeline run.
+             */
+            importedArtifacts?: string[];
+            /**
+             * The detailed error message for the pipeline run in the case of failure.
+             */
+            pipelineRunErrorMessage?: string;
+            /**
+             * The current progress of the copy operation.
+             */
+            progress?: outputs.containerregistry.v20201101preview.ProgressPropertiesResponse;
+            /**
+             * The source of the pipeline run.
+             */
+            source?: outputs.containerregistry.v20201101preview.ImportPipelineSourcePropertiesResponse;
+            /**
+             * The time the pipeline run started.
+             */
+            startTime?: string;
+            /**
+             * The current status of the pipeline run.
+             */
+            status?: string;
+            /**
+             * The target of the pipeline run.
+             */
+            target?: outputs.containerregistry.v20201101preview.ExportPipelineTargetPropertiesResponse;
+            /**
+             * The trigger that caused the pipeline run.
+             */
+            trigger?: outputs.containerregistry.v20201101preview.PipelineTriggerDescriptorResponse;
+        }
+
+        export interface PipelineRunSourcePropertiesResponse {
+            /**
+             * The name of the source.
+             */
+            name?: string;
+            /**
+             * The type of the source.
+             */
+            type?: string;
+        }
+
+        export interface PipelineRunTargetPropertiesResponse {
+            /**
+             * The name of the target.
+             */
+            name?: string;
+            /**
+             * The type of the target.
+             */
+            type?: string;
+        }
+
+        export interface PipelineSourceTriggerDescriptorResponse {
+            /**
+             * The timestamp when the source update happened.
+             */
+            timestamp?: string;
+        }
+
+        export interface PipelineSourceTriggerPropertiesResponse {
+            /**
+             * The current status of the source trigger.
+             */
+            status: string;
+        }
+
+        export interface PipelineTriggerDescriptorResponse {
+            /**
+             * The source trigger that caused the pipeline run.
+             */
+            sourceTrigger?: outputs.containerregistry.v20201101preview.PipelineSourceTriggerDescriptorResponse;
+        }
+
+        export interface PipelineTriggerPropertiesResponse {
+            /**
+             * The source trigger properties of the pipeline.
+             */
+            sourceTrigger?: outputs.containerregistry.v20201101preview.PipelineSourceTriggerPropertiesResponse;
+        }
+
+        /**
+         * The policies for a container registry.
+         */
+        export interface PoliciesResponse {
+            /**
+             * The quarantine policy for a container registry.
+             */
+            quarantinePolicy?: outputs.containerregistry.v20201101preview.QuarantinePolicyResponse;
+            /**
+             * The retention policy for a container registry.
+             */
+            retentionPolicy?: outputs.containerregistry.v20201101preview.RetentionPolicyResponse;
+            /**
+             * The content trust policy for a container registry.
+             */
+            trustPolicy?: outputs.containerregistry.v20201101preview.TrustPolicyResponse;
+        }
+
+        /**
+         * An object that represents a private endpoint connection for a container registry.
+         */
+        export interface PrivateEndpointConnectionResponse {
+            /**
+             * The resource ID.
+             */
+            id: string;
+            /**
+             * The name of the resource.
+             */
+            name: string;
+            /**
+             * The resource of private endpoint.
+             */
+            privateEndpoint?: outputs.containerregistry.v20201101preview.PrivateEndpointResponse;
+            /**
+             * A collection of information about the state of the connection between service consumer and provider.
+             */
+            privateLinkServiceConnectionState?: outputs.containerregistry.v20201101preview.PrivateLinkServiceConnectionStateResponse;
+            /**
+             * The provisioning state of private endpoint connection resource.
+             */
+            provisioningState: string;
+            /**
+             * Metadata pertaining to creation and last modification of the resource.
+             */
+            systemData: outputs.containerregistry.v20201101preview.SystemDataResponse;
+            /**
+             * The type of the resource.
+             */
+            type: string;
+        }
+
+        /**
+         * The Private Endpoint resource.
+         */
+        export interface PrivateEndpointResponse {
+            /**
+             * This is private endpoint resource created with Microsoft.Network resource provider.
+             */
+            id?: string;
+        }
+
+        /**
+         * The state of a private link service connection.
+         */
+        export interface PrivateLinkServiceConnectionStateResponse {
+            /**
+             * A message indicating if changes on the service provider require any updates on the consumer.
+             */
+            actionsRequired?: string;
+            /**
+             * The description for connection status. For example if connection is rejected it can indicate reason for rejection.
+             */
+            description?: string;
+            /**
+             * The private link service connection status.
+             */
+            status?: string;
+        }
+
+        export interface ProgressPropertiesResponse {
+            /**
+             * The percentage complete of the copy operation.
+             */
+            percentage?: string;
+        }
+
+        /**
+         * The quarantine policy for a container registry.
+         */
+        export interface QuarantinePolicyResponse {
+            /**
+             * The value that indicates whether the policy is enabled or not.
+             */
+            status?: string;
+        }
+
+        /**
+         * The login password for the container registry.
+         */
+        export interface RegistryPasswordResponse {
+            /**
+             * The password name.
+             */
+            name?: string;
+            /**
+             * The password value.
+             */
+            value?: string;
+        }
+
+        /**
+         * The request that generated the event.
+         */
+        export interface RequestResponse {
+            /**
+             * The IP or hostname and possibly port of the client connection that initiated the event. This is the RemoteAddr from the standard http request.
+             */
+            addr?: string;
+            /**
+             * The externally accessible hostname of the registry instance, as specified by the http host header on incoming requests.
+             */
+            host?: string;
+            /**
+             * The ID of the request that initiated the event.
+             */
+            id?: string;
+            /**
+             * The request method that generated the event.
+             */
+            method?: string;
+            /**
+             * The user agent header of the request.
+             */
+            useragent?: string;
+        }
+
+        /**
+         * The retention policy for a container registry.
+         */
+        export interface RetentionPolicyResponse {
+            /**
+             * The number of days to retain an untagged manifest after which it gets purged.
+             */
+            days?: number;
+            /**
+             * The timestamp when the policy was last updated.
+             */
+            lastUpdatedTime: string;
+            /**
+             * The value that indicates whether the policy is enabled or not.
+             */
+            status?: string;
+        }
+
+        /**
+         * The SKU of a container registry.
+         */
+        export interface SkuResponse {
+            /**
+             * The SKU name of the container registry. Required for registry creation.
+             */
+            name: string;
+            /**
+             * The SKU tier based on the SKU name.
+             */
+            tier: string;
+        }
+
+        /**
+         * The registry node that generated the event. Put differently, while the actor initiates the event, the source generates it.
+         */
+        export interface SourceResponse {
+            /**
+             * The IP or hostname and the port of the registry node that generated the event. Generally, this will be resolved by os.Hostname() along with the running port.
+             */
+            addr?: string;
+            /**
+             * The running instance of an application. Changes after each restart.
+             */
+            instanceID?: string;
+        }
+
+        /**
+         * The status detail properties of the connected registry.
+         */
+        export interface StatusDetailPropertiesResponse {
+            /**
+             * The code of the status.
+             */
+            code: string;
+            /**
+             * The correlation ID of the status.
+             */
+            correlationId: string;
+            /**
+             * The description of the status.
+             */
+            description: string;
+            /**
+             * The timestamp of the status.
+             */
+            timestamp: string;
+            /**
+             * The component of the connected registry corresponding to the status.
+             */
+            type: string;
+        }
+
+        /**
+         * The status of an Azure resource at the time the operation was called.
+         */
+        export interface StatusResponse {
+            /**
+             * The short label for the status.
+             */
+            displayStatus: string;
+            /**
+             * The detailed message for the status, including alerts and error messages.
+             */
+            message: string;
+            /**
+             * The timestamp when the status was changed to the current value.
+             */
+            timestamp: string;
+        }
+
+        /**
+         * The properties of a storage account for a container registry. Only applicable to Classic SKU.
+         */
+        export interface StorageAccountPropertiesResponse {
+            /**
+             * The resource ID of the storage account.
+             */
+            id: string;
+        }
+
+        /**
+         * The sync properties of the connected registry with its parent.
+         */
+        export interface SyncPropertiesResponse {
+            /**
+             * The gateway endpoint used by the connected registry to communicate with its parent.
+             */
+            gatewayEndpoint: string;
+            /**
+             * The last time a sync occurred between the connected registry and its parent.
+             */
+            lastSyncTime: string;
+            /**
+             * The period of time for which a message is available to sync before it is expired. Specify the duration using the format P[n]Y[n]M[n]DT[n]H[n]M[n]S as per ISO8601.
+             */
+            messageTtl: string;
+            /**
+             * The cron expression indicating the schedule that the connected registry will sync with its parent.
+             */
+            schedule?: string;
+            /**
+             * The time window during which sync is enabled for each schedule occurrence. Specify the duration using the format P[n]Y[n]M[n]DT[n]H[n]M[n]S as per ISO8601.
+             */
+            syncWindow?: string;
+            /**
+             * The resource ID of the ACR token used to authenticate the connected registry to its parent during sync.
+             */
+            tokenId: string;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The timestamp of resource modification (UTC).
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
+        }
+
+        /**
+         * The target of the event.
+         */
+        export interface TargetResponse {
+            /**
+             * The digest of the content, as defined by the Registry V2 HTTP API Specification.
+             */
+            digest?: string;
+            /**
+             * The number of bytes of the content. Same as Size field.
+             */
+            length?: number;
+            /**
+             * The MIME type of the referenced object.
+             */
+            mediaType?: string;
+            /**
+             * The name of the artifact.
+             */
+            name?: string;
+            /**
+             * The repository name.
+             */
+            repository?: string;
+            /**
+             * The number of bytes of the content. Same as Length field.
+             */
+            size?: number;
+            /**
+             * The tag name.
+             */
+            tag?: string;
+            /**
+             * The direct URL to the content.
+             */
+            url?: string;
+            /**
+             * The version of the artifact.
+             */
+            version?: string;
+        }
+
+        /**
+         * The TLS certificate properties of the connected registry login server.
+         */
+        export interface TlsCertificatePropertiesResponse {
+            /**
+             * Indicates the location of the certificates.
+             */
+            location: string;
+            /**
+             * The type of certificate location.
+             */
+            type: string;
+        }
+
+        /**
+         * The TLS properties of the connected registry login server.
+         */
+        export interface TlsPropertiesResponse {
+            /**
+             * The certificate used to configure HTTPS for the login server.
+             */
+            certificate: outputs.containerregistry.v20201101preview.TlsCertificatePropertiesResponse;
+            /**
+             * Indicates whether HTTPS is enabled for the login server.
+             */
+            status: string;
+        }
+
+        /**
+         * The properties of a certificate used for authenticating a token.
+         */
+        export interface TokenCertificateResponse {
+            /**
+             * Base 64 encoded string of the public certificate1 in PEM format that will be used for authenticating the token.
+             */
+            encodedPemCertificate?: string;
+            /**
+             * The expiry datetime of the certificate.
+             */
+            expiry?: string;
+            name?: string;
+            /**
+             * The thumbprint of the certificate.
+             */
+            thumbprint?: string;
+        }
+
+        /**
+         * The properties of the credentials that can be used for authenticating the token.
+         */
+        export interface TokenCredentialsPropertiesResponse {
+            certificates?: outputs.containerregistry.v20201101preview.TokenCertificateResponse[];
+            passwords?: outputs.containerregistry.v20201101preview.TokenPasswordResponse[];
+        }
+
+        /**
+         * The password that will be used for authenticating the token of a container registry.
+         */
+        export interface TokenPasswordResponse {
+            /**
+             * The creation datetime of the password.
+             */
+            creationTime?: string;
+            /**
+             * The expiry datetime of the password.
+             */
+            expiry?: string;
+            /**
+             * The password name "password1" or "password2"
+             */
+            name?: string;
+            /**
+             * The password value.
+             */
+            value: string;
         }
 
         /**
@@ -163942,6 +164821,224 @@ export namespace hdinsight {
     }
 }
 
+export namespace healthbot {
+    export namespace latest {
+        /**
+         * The properties of a HealthBot. The Health Bot Service is a cloud platform that empowers developers in Healthcare organizations to build and deploy their compliant, AI-powered virtual health assistants and health bots, that help them improve processes and reduce costs.
+         */
+        export interface HealthBotPropertiesResponse {
+            /**
+             * The link.
+             */
+            botManagementPortalLink: string;
+            /**
+             * The provisioning state of the Healthcare bot resource.
+             */
+            provisioningState: string;
+        }
+
+        /**
+         * The resource model definition representing SKU
+         */
+        export interface SkuResponse {
+            /**
+             * If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+             */
+            capacity?: number;
+            /**
+             * If the service has different generations of hardware, for the same SKU, then that can be captured here.
+             */
+            family?: string;
+            /**
+             * The name of the HealthBot SKU
+             */
+            name: string;
+            /**
+             * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+             */
+            size?: string;
+            /**
+             * This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+             */
+            tier?: string;
+        }
+
+        /**
+         * Read only system data
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC)
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource
+             */
+            createdByType?: string;
+            /**
+             * The timestamp of resource last modification (UTC)
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource
+             */
+            lastModifiedByType?: string;
+        }
+    }
+
+    export namespace v20201020 {
+        /**
+         * The properties of a HealthBot. The Health Bot Service is a cloud platform that empowers developers in Healthcare organizations to build and deploy their compliant, AI-powered virtual health assistants and health bots, that help them improve processes and reduce costs.
+         */
+        export interface HealthBotPropertiesResponse {
+            /**
+             * The link.
+             */
+            botManagementPortalLink: string;
+            /**
+             * The provisioning state of the Healthcare bot resource.
+             */
+            provisioningState: string;
+        }
+
+        /**
+         * The resource model definition representing SKU
+         */
+        export interface SkuResponse {
+            /**
+             * If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+             */
+            capacity?: number;
+            /**
+             * If the service has different generations of hardware, for the same SKU, then that can be captured here.
+             */
+            family?: string;
+            /**
+             * The name of the HealthBot SKU
+             */
+            name: string;
+            /**
+             * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+             */
+            size?: string;
+            /**
+             * This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+             */
+            tier?: string;
+        }
+
+        /**
+         * Read only system data
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC)
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource
+             */
+            createdByType?: string;
+            /**
+             * The timestamp of resource last modification (UTC)
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource
+             */
+            lastModifiedByType?: string;
+        }
+    }
+
+    export namespace v20201020preview {
+        /**
+         * The properties of a HealthBot. The Health Bot Service is a cloud platform that empowers developers in Healthcare organizations to build and deploy their compliant, AI-powered virtual health assistants and health bots, that help them improve processes and reduce costs.
+         */
+        export interface HealthBotPropertiesResponse {
+            /**
+             * The link.
+             */
+            botManagementPortalLink: string;
+            /**
+             * The provisioning state of the Healthcare bot resource.
+             */
+            provisioningState: string;
+        }
+
+        /**
+         * The resource model definition representing SKU
+         */
+        export interface SkuResponse {
+            /**
+             * If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+             */
+            capacity?: number;
+            /**
+             * If the service has different generations of hardware, for the same SKU, then that can be captured here.
+             */
+            family?: string;
+            /**
+             * The name of the HealthBot SKU
+             */
+            name: string;
+            /**
+             * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+             */
+            size?: string;
+            /**
+             * This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+             */
+            tier?: string;
+        }
+
+        /**
+         * Read only system data
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC)
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource
+             */
+            createdByType?: string;
+            /**
+             * The timestamp of resource last modification (UTC)
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource
+             */
+            lastModifiedByType?: string;
+        }
+    }
+}
+
 export namespace healthcareapis {
     export namespace latest {
         /**
@@ -166585,6 +167682,28 @@ export namespace hybridnetwork {
 export namespace importexport {
     export namespace latest {
         /**
+         * Contains information about the delivery package being shipped by the customer to the Microsoft data center.
+         */
+        export interface DeliveryPackageInformationResponse {
+            /**
+             * The name of the carrier that is used to ship the import or export drives.
+             */
+            carrierName: string;
+            /**
+             * The number of drives included in the package.
+             */
+            driveCount?: number;
+            /**
+             * The date when the package is shipped.
+             */
+            shipDate?: string;
+            /**
+             * The tracking number of the package.
+             */
+            trackingNumber: string;
+        }
+
+        /**
          * BitLocker recovery key or password to the specified drive
          */
         export interface DriveBitLockerKeyResponse {
@@ -166721,7 +167840,7 @@ export namespace importexport {
             /**
              * Contains information about the package being shipped by the customer to the Microsoft data center. 
              */
-            deliveryPackage?: outputs.importexport.latest.PackageInformationResponse;
+            deliveryPackage?: outputs.importexport.latest.DeliveryPackageInformationResponse;
             /**
              * The virtual blob directory to which the copy logs and backups of drive manifest files (if enabled) will be stored.
              */
@@ -167185,6 +168304,28 @@ export namespace importexport {
 
     export namespace v20200801 {
         /**
+         * Contains information about the delivery package being shipped by the customer to the Microsoft data center.
+         */
+        export interface DeliveryPackageInformationResponse {
+            /**
+             * The name of the carrier that is used to ship the import or export drives.
+             */
+            carrierName: string;
+            /**
+             * The number of drives included in the package.
+             */
+            driveCount?: number;
+            /**
+             * The date when the package is shipped.
+             */
+            shipDate?: string;
+            /**
+             * The tracking number of the package.
+             */
+            trackingNumber: string;
+        }
+
+        /**
          * BitLocker recovery key or password to the specified drive
          */
         export interface DriveBitLockerKeyResponse {
@@ -167321,7 +168462,7 @@ export namespace importexport {
             /**
              * Contains information about the package being shipped by the customer to the Microsoft data center. 
              */
-            deliveryPackage?: outputs.importexport.v20200801.PackageInformationResponse;
+            deliveryPackage?: outputs.importexport.v20200801.DeliveryPackageInformationResponse;
             /**
              * The virtual blob directory to which the copy logs and backups of drive manifest files (if enabled) will be stored.
              */
@@ -172661,6 +173802,28 @@ export namespace kubernetes {
              */
             value: string;
         }
+
+        /**
+         * Contains the REP (rendezvous endpoint) and “Sender” access token.
+         */
+        export interface HybridConnectionConfigResponse {
+            /**
+             * Timestamp when this token will be expired.
+             */
+            expirationTime: number;
+            /**
+             * Name of the connection
+             */
+            hybridConnectionName: string;
+            /**
+             * Name of the relay.
+             */
+            relay: string;
+            /**
+             * Sender access token
+             */
+            token: string;
+        }
     }
 }
 
@@ -176364,6 +177527,34 @@ export namespace logic {
         }
 
         /**
+         * The encryption configuration for the integration service environment.
+         */
+        export interface IntegrationServiceEnvironmenEncryptionConfigurationResponse {
+            /**
+             * The encryption key reference.
+             */
+            encryptionKeyReference?: outputs.logic.latest.IntegrationServiceEnvironmenEncryptionKeyReferenceResponse;
+        }
+
+        /**
+         * The encryption key details for the integration service environment.
+         */
+        export interface IntegrationServiceEnvironmenEncryptionKeyReferenceResponse {
+            /**
+             * Gets the key name in the Key Vault.
+             */
+            keyName?: string;
+            /**
+             * The key vault reference.
+             */
+            keyVault?: outputs.logic.latest.ResourceReferenceResponse;
+            /**
+             * Gets the version of the key specified in the keyName property.
+             */
+            keyVersion?: string;
+        }
+
+        /**
          * The integration service environment access endpoint.
          */
         export interface IntegrationServiceEnvironmentAccessEndpointResponse {
@@ -176377,6 +177568,10 @@ export namespace logic {
          * The integration service environment properties.
          */
         export interface IntegrationServiceEnvironmentPropertiesResponse {
+            /**
+             * The encryption configuration.
+             */
+            encryptionConfiguration?: outputs.logic.latest.IntegrationServiceEnvironmenEncryptionConfigurationResponse;
             /**
              * The endpoints configuration.
              */
@@ -184373,6 +185568,34 @@ export namespace logic {
         }
 
         /**
+         * The encryption configuration for the integration service environment.
+         */
+        export interface IntegrationServiceEnvironmenEncryptionConfigurationResponse {
+            /**
+             * The encryption key reference.
+             */
+            encryptionKeyReference?: outputs.logic.v20190501.IntegrationServiceEnvironmenEncryptionKeyReferenceResponse;
+        }
+
+        /**
+         * The encryption key details for the integration service environment.
+         */
+        export interface IntegrationServiceEnvironmenEncryptionKeyReferenceResponse {
+            /**
+             * Gets the key name in the Key Vault.
+             */
+            keyName?: string;
+            /**
+             * The key vault reference.
+             */
+            keyVault?: outputs.logic.v20190501.ResourceReferenceResponse;
+            /**
+             * Gets the version of the key specified in the keyName property.
+             */
+            keyVersion?: string;
+        }
+
+        /**
          * The integration service environment access endpoint.
          */
         export interface IntegrationServiceEnvironmentAccessEndpointResponse {
@@ -184386,6 +185609,10 @@ export namespace logic {
          * The integration service environment properties.
          */
         export interface IntegrationServiceEnvironmentPropertiesResponse {
+            /**
+             * The encryption configuration.
+             */
+            encryptionConfiguration?: outputs.logic.v20190501.IntegrationServiceEnvironmenEncryptionConfigurationResponse;
             /**
              * The endpoints configuration.
              */
@@ -207724,20 +208951,6 @@ export namespace maps {
 
 export namespace marketplace {
     export namespace latest {
-        /**
-         * Icon File Uris
-         */
-        export interface OfferPropertiesResponseIconFileUris {
-            /**
-             * Icon size
-             */
-            iconKind?: string;
-            /**
-             * Icon uri
-             */
-            uri?: string;
-        }
-
         export interface PlanResponse {
             /**
              * Plan accessibility
@@ -207767,20 +208980,6 @@ export namespace marketplace {
     }
 
     export namespace v20200101 {
-        /**
-         * Icon File Uris
-         */
-        export interface OfferPropertiesResponseIconFileUris {
-            /**
-             * Icon size
-             */
-            iconKind?: string;
-            /**
-             * Icon uri
-             */
-            uri?: string;
-        }
-
         export interface PlanResponse {
             /**
              * Plan accessibility
@@ -217064,6 +218263,26 @@ export namespace migrate {
 }
 
 export namespace mixedreality {
+    export namespace v20190228preview {
+        /**
+         * Identity for the resource.
+         */
+        export interface IdentityResponse {
+            /**
+             * The principal ID of resource identity.
+             */
+            principalId: string;
+            /**
+             * The tenant ID of resource.
+             */
+            tenantId: string;
+            /**
+             * The identity type.
+             */
+            type?: string;
+        }
+    }
+
     export namespace v20200406preview {
         export interface RemoteRenderingAccountResponseIdentity {
             /**
@@ -219761,6 +220980,358 @@ export namespace netapp {
              * Export policy rule
              */
             rules?: outputs.netapp.v20200701.ExportPolicyRuleResponse[];
+        }
+
+        /**
+         * Volume Snapshot Properties
+         */
+        export interface VolumeSnapshotPropertiesResponse {
+            /**
+             * Snapshot Policy ResourceId
+             */
+            snapshotPolicyId?: string;
+        }
+
+        /**
+         * Weekly Schedule properties, make a snapshot every week at a specific day or days
+         */
+        export interface WeeklyScheduleResponse {
+            /**
+             * Indicates which weekdays snapshot should be taken, accepts a comma separated list of week day names in english
+             */
+            day?: string;
+            /**
+             * Indicates which hour in UTC timezone a snapshot should be taken
+             */
+            hour?: number;
+            /**
+             * Indicates which minute snapshot should be taken
+             */
+            minute?: number;
+            /**
+             * Weekly snapshot count to keep
+             */
+            snapshotsToKeep?: number;
+            /**
+             * Resource size in bytes, current storage usage for the volume in bytes
+             */
+            usedBytes?: number;
+        }
+    }
+
+    export namespace v20200801 {
+        /**
+         * Active Directory
+         */
+        export interface ActiveDirectoryResponse {
+            /**
+             * Id of the Active Directory
+             */
+            activeDirectoryId?: string;
+            /**
+             * Name of the active directory machine. This optional parameter is used only while creating kerberos volume
+             */
+            adName?: string;
+            /**
+             * If enabled, AES encryption will be enabled for SMB communication.
+             */
+            aesEncryption?: boolean;
+            /**
+             * Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier
+             */
+            backupOperators?: string[];
+            /**
+             * Comma separated list of DNS server IP addresses (IPv4 only) for the Active Directory domain
+             */
+            dns?: string;
+            /**
+             * Name of the Active Directory domain
+             */
+            domain?: string;
+            /**
+             * kdc server IP addresses for the active directory machine. This optional parameter is used only while creating kerberos volume.
+             */
+            kdcIP?: string;
+            /**
+             * Specifies whether or not the LDAP traffic needs to be signed.
+             */
+            ldapSigning?: boolean;
+            /**
+             * The Organizational Unit (OU) within the Windows Active Directory
+             */
+            organizationalUnit?: string;
+            /**
+             * Plain text password of Active Directory domain administrator, value is masked in the response
+             */
+            password?: string;
+            /**
+             * When LDAP over SSL/TLS is enabled, the LDAP client is required to have base64 encoded Active Directory Certificate Service's self-signed root CA certificate, this optional parameter is used only for dual protocol with LDAP user-mapping volumes.
+             */
+            serverRootCACertificate?: string;
+            /**
+             * The Active Directory site the service will limit Domain Controller discovery to
+             */
+            site?: string;
+            /**
+             * NetBIOS name of the SMB server. This name will be registered as a computer account in the AD and used to mount volumes
+             */
+            smbServerName?: string;
+            /**
+             * Status of the Active Directory
+             */
+            status: string;
+            /**
+             * Any details in regards to the Status of the Active Directory
+             */
+            statusDetails: string;
+            /**
+             * Username of Active Directory domain administrator
+             */
+            username?: string;
+        }
+
+        /**
+         * Daily Schedule properties
+         */
+        export interface DailyScheduleResponse {
+            /**
+             * Indicates which hour in UTC timezone a snapshot should be taken
+             */
+            hour?: number;
+            /**
+             * Indicates which minute snapshot should be taken
+             */
+            minute?: number;
+            /**
+             * Daily snapshot count to keep
+             */
+            snapshotsToKeep?: number;
+            /**
+             * Resource size in bytes, current storage usage for the volume in bytes
+             */
+            usedBytes?: number;
+        }
+
+        /**
+         * Volume Export Policy Rule
+         */
+        export interface ExportPolicyRuleResponse {
+            /**
+             * Client ingress specification as comma separated string with IPv4 CIDRs, IPv4 host addresses and host names
+             */
+            allowedClients?: string;
+            /**
+             * Allows CIFS protocol
+             */
+            cifs?: boolean;
+            /**
+             * Has root access to volume
+             */
+            hasRootAccess?: boolean;
+            /**
+             * Kerberos5 Read only access. To be use with swagger version 2020-05-01 or later
+             */
+            kerberos5ReadOnly?: boolean;
+            /**
+             * Kerberos5 Read and write access. To be use with swagger version 2020-05-01 or later
+             */
+            kerberos5ReadWrite?: boolean;
+            /**
+             * Kerberos5i Read only access. To be use with swagger version 2020-05-01 or later
+             */
+            kerberos5iReadOnly?: boolean;
+            /**
+             * Kerberos5i Read and write access. To be use with swagger version 2020-05-01 or later
+             */
+            kerberos5iReadWrite?: boolean;
+            /**
+             * Kerberos5p Read only access. To be use with swagger version 2020-05-01 or later
+             */
+            kerberos5pReadOnly?: boolean;
+            /**
+             * Kerberos5p Read and write access. To be use with swagger version 2020-05-01 or later
+             */
+            kerberos5pReadWrite?: boolean;
+            /**
+             * Allows NFSv3 protocol. Enable only for NFSv3 type volumes
+             */
+            nfsv3?: boolean;
+            /**
+             * Allows NFSv4.1 protocol. Enable only for NFSv4.1 type volumes
+             */
+            nfsv41?: boolean;
+            /**
+             * Order index
+             */
+            ruleIndex?: number;
+            /**
+             * Read only access
+             */
+            unixReadOnly?: boolean;
+            /**
+             * Read and write access
+             */
+            unixReadWrite?: boolean;
+        }
+
+        /**
+         * Hourly Schedule properties
+         */
+        export interface HourlyScheduleResponse {
+            /**
+             * Indicates which minute snapshot should be taken
+             */
+            minute?: number;
+            /**
+             * Hourly snapshot count to keep
+             */
+            snapshotsToKeep?: number;
+            /**
+             * Resource size in bytes, current storage usage for the volume in bytes
+             */
+            usedBytes?: number;
+        }
+
+        /**
+         * Monthly Schedule properties
+         */
+        export interface MonthlyScheduleResponse {
+            /**
+             * Indicates which days of the month snapshot should be taken. A comma delimited string.
+             */
+            daysOfMonth?: string;
+            /**
+             * Indicates which hour in UTC timezone a snapshot should be taken
+             */
+            hour?: number;
+            /**
+             * Indicates which minute snapshot should be taken
+             */
+            minute?: number;
+            /**
+             * Monthly snapshot count to keep
+             */
+            snapshotsToKeep?: number;
+            /**
+             * Resource size in bytes, current storage usage for the volume in bytes
+             */
+            usedBytes?: number;
+        }
+
+        /**
+         * Mount target properties
+         */
+        export interface MountTargetPropertiesResponse {
+            /**
+             * UUID v4 used to identify the MountTarget
+             */
+            fileSystemId: string;
+            /**
+             * The mount target's IPv4 address
+             */
+            ipAddress: string;
+            /**
+             * UUID v4 used to identify the MountTarget
+             */
+            mountTargetId: string;
+            /**
+             * The SMB server's Fully Qualified Domain Name, FQDN
+             */
+            smbServerFqdn?: string;
+        }
+
+        /**
+         * Replication properties
+         */
+        export interface ReplicationObjectResponse {
+            /**
+             * Indicates whether the local volume is the source or destination for the Volume Replication
+             */
+            endpointType?: string;
+            /**
+             * The remote region for the other end of the Volume Replication.
+             */
+            remoteVolumeRegion?: string;
+            /**
+             * The resource ID of the remote volume.
+             */
+            remoteVolumeResourceId: string;
+            /**
+             * Id
+             */
+            replicationId?: string;
+            /**
+             * Schedule
+             */
+            replicationSchedule: string;
+        }
+
+        /**
+         * Volume Backup Properties
+         */
+        export interface VolumeBackupPropertiesResponse {
+            /**
+             * Backup Enabled
+             */
+            backupEnabled?: boolean;
+            /**
+             * Backup Policy Resource ID
+             */
+            backupPolicyId?: string;
+            /**
+             * Policy Enforced
+             */
+            policyEnforced?: boolean;
+            /**
+             * Vault Resource ID
+             */
+            vaultId?: string;
+        }
+
+        /**
+         * Volume details using the backup policy
+         */
+        export interface VolumeBackupsResponse {
+            /**
+             * Total count of backups for volume
+             */
+            backupsCount?: number;
+            /**
+             * Policy enabled
+             */
+            policyEnabled?: boolean;
+            /**
+             * Volume name
+             */
+            volumeName?: string;
+        }
+
+        /**
+         * DataProtection type volumes include an object containing details of the replication
+         */
+        export interface VolumePropertiesResponseDataProtection {
+            /**
+             * Backup Properties
+             */
+            backup?: outputs.netapp.v20200801.VolumeBackupPropertiesResponse;
+            /**
+             * Replication properties
+             */
+            replication?: outputs.netapp.v20200801.ReplicationObjectResponse;
+            /**
+             * Snapshot properties.
+             */
+            snapshot?: outputs.netapp.v20200801.VolumeSnapshotPropertiesResponse;
+        }
+
+        /**
+         * Set of export policy rules
+         */
+        export interface VolumePropertiesResponseExportPolicy {
+            /**
+             * Export policy rule
+             */
+            rules?: outputs.netapp.v20200801.ExportPolicyRuleResponse[];
         }
 
         /**
@@ -365588,6 +367159,46 @@ export namespace offazure {
 export namespace operationalinsights {
     export namespace latest {
         /**
+         * The list of Log Analytics workspaces associated with the cluster.
+         */
+        export interface AssociatedWorkspaceResponse {
+            /**
+             * The time of workspace association.
+             */
+            associateDate: string;
+            /**
+             * The ResourceId id the assigned workspace.
+             */
+            resourceId: string;
+            /**
+             * The id of the assigned workspace.
+             */
+            workspaceId: string;
+            /**
+             * The name id the assigned workspace.
+             */
+            workspaceName: string;
+        }
+
+        /**
+         * The Capacity Reservation properties.
+         */
+        export interface CapacityReservationPropertiesResponse {
+            /**
+             * The last time Sku was updated.
+             */
+            lastSkuUpdate: string;
+            /**
+             * Maximum CapacityReservation value in GB.
+             */
+            maxCapacity: number;
+            /**
+             * Minimum CapacityReservation value in GB.
+             */
+            minCapacity: number;
+        }
+
+        /**
          * The cluster sku definition.
          */
         export interface ClusterSkuResponse {
@@ -366348,6 +367959,46 @@ export namespace operationalinsights {
     }
 
     export namespace v20201001 {
+        /**
+         * The list of Log Analytics workspaces associated with the cluster.
+         */
+        export interface AssociatedWorkspaceResponse {
+            /**
+             * The time of workspace association.
+             */
+            associateDate: string;
+            /**
+             * The ResourceId id the assigned workspace.
+             */
+            resourceId: string;
+            /**
+             * The id of the assigned workspace.
+             */
+            workspaceId: string;
+            /**
+             * The name id the assigned workspace.
+             */
+            workspaceName: string;
+        }
+
+        /**
+         * The Capacity Reservation properties.
+         */
+        export interface CapacityReservationPropertiesResponse {
+            /**
+             * The last time Sku was updated.
+             */
+            lastSkuUpdate: string;
+            /**
+             * Maximum CapacityReservation value in GB.
+             */
+            maxCapacity: number;
+            /**
+             * Minimum CapacityReservation value in GB.
+             */
+            minCapacity: number;
+        }
+
         /**
          * The cluster sku definition.
          */
@@ -368956,6 +370607,824 @@ export namespace powerplatform {
     }
 }
 
+export namespace providerhub {
+    export namespace latest {
+        export interface AuthorizationActionMappingResponse {
+            desired?: string;
+            original?: string;
+        }
+
+        export interface DefaultRolloutPropertiesResponseSpecification {
+            canary?: outputs.providerhub.latest.DefaultRolloutSpecificationResponseCanary;
+            highTraffic?: outputs.providerhub.latest.DefaultRolloutSpecificationResponseHighTraffic;
+            lowTraffic?: outputs.providerhub.latest.DefaultRolloutSpecificationResponseLowTraffic;
+            mediumTraffic?: outputs.providerhub.latest.DefaultRolloutSpecificationResponseMediumTraffic;
+            providerRegistration?: outputs.providerhub.latest.DefaultRolloutSpecificationResponseProviderRegistration;
+            resourceTypeRegistrations?: outputs.providerhub.latest.ResourceTypeRegistrationResponse[];
+            restOfTheWorldGroupOne?: outputs.providerhub.latest.DefaultRolloutSpecificationResponseRestOfTheWorldGroupOne;
+            restOfTheWorldGroupTwo?: outputs.providerhub.latest.DefaultRolloutSpecificationResponseRestOfTheWorldGroupTwo;
+        }
+
+        export interface DefaultRolloutPropertiesResponseStatus {
+            completedRegions?: string[];
+            failedOrSkippedRegions?: {[key: string]: outputs.providerhub.latest.ExtendedErrorInfoResponse};
+            nextTrafficRegion?: string;
+            nextTrafficRegionScheduledTime?: string;
+            subscriptionReregistrationResult?: string;
+        }
+
+        export interface DefaultRolloutSpecificationResponseCanary {
+            regions?: string[];
+            skipRegions?: string[];
+        }
+
+        export interface DefaultRolloutSpecificationResponseHighTraffic {
+            regions?: string[];
+            waitDuration?: string;
+        }
+
+        export interface DefaultRolloutSpecificationResponseLowTraffic {
+            regions?: string[];
+            waitDuration?: string;
+        }
+
+        export interface DefaultRolloutSpecificationResponseMediumTraffic {
+            regions?: string[];
+            waitDuration?: string;
+        }
+
+        export interface DefaultRolloutSpecificationResponseProviderRegistration {
+            /**
+             * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             */
+            id: string;
+            /**
+             * The name of the resource
+             */
+            name: string;
+            properties?: outputs.providerhub.latest.ProviderRegistrationResponseProperties;
+            /**
+             * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+             */
+            type: string;
+        }
+
+        export interface DefaultRolloutSpecificationResponseRestOfTheWorldGroupOne {
+            regions?: string[];
+            waitDuration?: string;
+        }
+
+        export interface DefaultRolloutSpecificationResponseRestOfTheWorldGroupTwo {
+            regions?: string[];
+            waitDuration?: string;
+        }
+
+        export interface ExtendedErrorInfoResponse {
+            additionalInfo?: outputs.providerhub.latest.TypedErrorInfoResponse[];
+            code?: string;
+            details?: outputs.providerhub.latest.ExtendedErrorInfoResponse[];
+            message?: string;
+            target?: string;
+        }
+
+        export interface ExtendedLocationOptionsResponse {
+            supportedPolicy?: string;
+            type?: string;
+        }
+
+        export interface LightHouseAuthorizationResponse {
+            principalId: string;
+            roleDefinitionId: string;
+        }
+
+        export interface LinkedAccessCheckResponse {
+            actionName?: string;
+            linkedAction?: string;
+            linkedActionVerb?: string;
+            linkedProperty?: string;
+            linkedType?: string;
+        }
+
+        export interface LoggingRuleResponse {
+            action: string;
+            detailLevel: string;
+            direction: string;
+            hiddenPropertyPaths?: outputs.providerhub.latest.LoggingRuleResponseHiddenPropertyPaths;
+        }
+
+        export interface LoggingRuleResponseHiddenPropertyPaths {
+            hiddenPathsOnRequest?: string[];
+            hiddenPathsOnResponse?: string[];
+        }
+
+        export interface NotificationEndpointResponse {
+            locations?: string[];
+            notificationDestination?: string;
+        }
+
+        export interface NotificationRegistrationResponseProperties {
+            includedEvents?: string[];
+            messageScope?: string;
+            notificationEndpoints?: outputs.providerhub.latest.NotificationEndpointResponse[];
+            notificationMode?: string;
+        }
+
+        /**
+         * Display information of the operation.
+         */
+        export interface OperationsDefinitionResponseDisplay {
+            description: string;
+            operation: string;
+            provider: string;
+            resource: string;
+        }
+
+        export interface ProviderHubMetadataResponseProviderAuthentication {
+            allowedAudiences: string[];
+        }
+
+        export interface ProviderHubMetadataResponseThirdPartyProviderAuthorization {
+            authorizations?: outputs.providerhub.latest.LightHouseAuthorizationResponse[];
+            managedByTenantId?: string;
+        }
+
+        export interface ProviderRegistrationPropertiesResponseProviderHubMetadata {
+            providerAuthentication?: outputs.providerhub.latest.ProviderHubMetadataResponseProviderAuthentication;
+            providerAuthorizations?: outputs.providerhub.latest.ResourceProviderAuthorizationResponse[];
+            thirdPartyProviderAuthorization?: outputs.providerhub.latest.ProviderHubMetadataResponseThirdPartyProviderAuthorization;
+        }
+
+        export interface ProviderRegistrationPropertiesResponseSubscriptionLifecycleNotificationSpecifications {
+            softDeleteTTL?: string;
+            subscriptionStateOverrideActions?: outputs.providerhub.latest.SubscriptionStateOverrideActionResponse[];
+        }
+
+        export interface ProviderRegistrationResponseProperties {
+            capabilities?: outputs.providerhub.latest.ResourceProviderCapabilitiesResponse[];
+            featuresRule?: outputs.providerhub.latest.ResourceProviderManifestPropertiesResponseFeaturesRule;
+            management?: outputs.providerhub.latest.ResourceProviderManifestPropertiesResponseManagement;
+            metadata?: any;
+            namespace?: string;
+            providerAuthentication?: outputs.providerhub.latest.ResourceProviderManifestPropertiesResponseProviderAuthentication;
+            providerAuthorizations?: outputs.providerhub.latest.ResourceProviderAuthorizationResponse[];
+            providerHubMetadata?: outputs.providerhub.latest.ProviderRegistrationPropertiesResponseProviderHubMetadata;
+            providerType?: string;
+            providerVersion?: string;
+            provisioningState?: string;
+            requestHeaderOptions?: outputs.providerhub.latest.ResourceProviderManifestPropertiesResponseRequestHeaderOptions;
+            requiredFeatures?: string[];
+            subscriptionLifecycleNotificationSpecifications?: outputs.providerhub.latest.ProviderRegistrationPropertiesResponseSubscriptionLifecycleNotificationSpecifications;
+            templateDeploymentOptions?: outputs.providerhub.latest.ResourceProviderManifestPropertiesResponseTemplateDeploymentOptions;
+        }
+
+        export interface ResourceProviderAuthorizationResponse {
+            applicationId?: string;
+            managedByRoleDefinitionId?: string;
+            roleDefinitionId?: string;
+        }
+
+        export interface ResourceProviderCapabilitiesResponse {
+            effect: string;
+            quotaId: string;
+            requiredFeatures?: string[];
+        }
+
+        export interface ResourceProviderManifestPropertiesResponseFeaturesRule {
+            requiredFeaturesPolicy: string;
+        }
+
+        export interface ResourceProviderManifestPropertiesResponseManagement {
+            incidentContactEmail?: string;
+            incidentRoutingService?: string;
+            incidentRoutingTeam?: string;
+            manifestOwners?: string[];
+            resourceAccessPolicy?: string;
+            resourceAccessRoles?: any[];
+            schemaOwners?: string[];
+            serviceTreeInfos?: outputs.providerhub.latest.ServiceTreeInfoResponse[];
+        }
+
+        export interface ResourceProviderManifestPropertiesResponseProviderAuthentication {
+            allowedAudiences: string[];
+        }
+
+        export interface ResourceProviderManifestPropertiesResponseRequestHeaderOptions {
+            optInHeaders?: string;
+        }
+
+        export interface ResourceProviderManifestPropertiesResponseTemplateDeploymentOptions {
+            preflightOptions?: string[];
+            preflightSupported?: boolean;
+        }
+
+        export interface ResourceTypeEndpointResponse {
+            apiVersions?: string[];
+            enabled?: boolean;
+            extensions?: outputs.providerhub.latest.ResourceTypeExtensionResponse[];
+            featuresRule?: outputs.providerhub.latest.ResourceTypeEndpointResponseFeaturesRule;
+            locations?: string[];
+            requiredFeatures?: string[];
+            timeout?: string;
+        }
+
+        export interface ResourceTypeEndpointResponseFeaturesRule {
+            requiredFeaturesPolicy: string;
+        }
+
+        export interface ResourceTypeExtensionOptionsResponseResourceCreationBegin {
+            request?: string[];
+            response?: string[];
+        }
+
+        export interface ResourceTypeExtensionResponse {
+            endpointUri?: string;
+            extensionCategories?: string[];
+            timeout?: string;
+        }
+
+        export interface ResourceTypeRegistrationPropertiesResponseCheckNameAvailabilitySpecifications {
+            enableDefaultValidation?: boolean;
+            resourceTypesWithCustomValidation?: string[];
+        }
+
+        export interface ResourceTypeRegistrationPropertiesResponseExtensionOptions {
+            resourceCreationBegin?: outputs.providerhub.latest.ResourceTypeExtensionOptionsResponseResourceCreationBegin;
+        }
+
+        export interface ResourceTypeRegistrationPropertiesResponseFeaturesRule {
+            requiredFeaturesPolicy: string;
+        }
+
+        export interface ResourceTypeRegistrationPropertiesResponseIdentityManagement {
+            applicationId?: string;
+            type?: string;
+        }
+
+        export interface ResourceTypeRegistrationPropertiesResponseRequestHeaderOptions {
+            optInHeaders?: string;
+        }
+
+        export interface ResourceTypeRegistrationPropertiesResponseResourceMovePolicy {
+            crossResourceGroupMoveEnabled?: boolean;
+            crossSubscriptionMoveEnabled?: boolean;
+            validationRequired?: boolean;
+        }
+
+        export interface ResourceTypeRegistrationPropertiesResponseSubscriptionLifecycleNotificationSpecifications {
+            softDeleteTTL?: string;
+            subscriptionStateOverrideActions?: outputs.providerhub.latest.SubscriptionStateOverrideActionResponse[];
+        }
+
+        export interface ResourceTypeRegistrationPropertiesResponseTemplateDeploymentOptions {
+            preflightOptions?: string[];
+            preflightSupported?: boolean;
+        }
+
+        export interface ResourceTypeRegistrationResponse {
+            /**
+             * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             */
+            id: string;
+            /**
+             * The name of the resource
+             */
+            name: string;
+            properties?: outputs.providerhub.latest.ResourceTypeRegistrationResponseProperties;
+            /**
+             * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+             */
+            type: string;
+        }
+
+        export interface ResourceTypeRegistrationResponseProperties {
+            allowedUnauthorizedActions?: string[];
+            authorizationActionMappings?: outputs.providerhub.latest.AuthorizationActionMappingResponse[];
+            checkNameAvailabilitySpecifications?: outputs.providerhub.latest.ResourceTypeRegistrationPropertiesResponseCheckNameAvailabilitySpecifications;
+            defaultApiVersion?: string;
+            disallowedActionVerbs?: string[];
+            enableAsyncOperation?: boolean;
+            enableThirdPartyS2S?: boolean;
+            endpoints?: outputs.providerhub.latest.ResourceTypeEndpointResponse[];
+            extendedLocations?: outputs.providerhub.latest.ExtendedLocationOptionsResponse[];
+            extensionOptions?: outputs.providerhub.latest.ResourceTypeRegistrationPropertiesResponseExtensionOptions;
+            featuresRule?: outputs.providerhub.latest.ResourceTypeRegistrationPropertiesResponseFeaturesRule;
+            identityManagement?: outputs.providerhub.latest.ResourceTypeRegistrationPropertiesResponseIdentityManagement;
+            isPureProxy?: boolean;
+            linkedAccessChecks?: outputs.providerhub.latest.LinkedAccessCheckResponse[];
+            loggingRules?: outputs.providerhub.latest.LoggingRuleResponse[];
+            marketplaceType?: string;
+            provisioningState?: string;
+            regionality?: string;
+            requestHeaderOptions?: outputs.providerhub.latest.ResourceTypeRegistrationPropertiesResponseRequestHeaderOptions;
+            requiredFeatures?: string[];
+            resourceDeletionPolicy?: string;
+            resourceMovePolicy?: outputs.providerhub.latest.ResourceTypeRegistrationPropertiesResponseResourceMovePolicy;
+            routingType?: string;
+            serviceTreeInfos?: outputs.providerhub.latest.ServiceTreeInfoResponse[];
+            subscriptionLifecycleNotificationSpecifications?: outputs.providerhub.latest.ResourceTypeRegistrationPropertiesResponseSubscriptionLifecycleNotificationSpecifications;
+            subscriptionStateRules?: outputs.providerhub.latest.SubscriptionStateRuleResponse[];
+            swaggerSpecifications?: outputs.providerhub.latest.SwaggerSpecificationResponse[];
+            templateDeploymentOptions?: outputs.providerhub.latest.ResourceTypeRegistrationPropertiesResponseTemplateDeploymentOptions;
+            throttlingRules?: outputs.providerhub.latest.ThrottlingRuleResponse[];
+        }
+
+        export interface ServiceTreeInfoResponse {
+            componentId?: string;
+            serviceId?: string;
+        }
+
+        export interface SkuCapabilityResponse {
+            name: string;
+            value: string;
+        }
+
+        export interface SkuCostResponse {
+            extendedUnit?: string;
+            meterId: string;
+            quantity?: number;
+        }
+
+        export interface SkuLocationInfoResponse {
+            extendedLocations?: string[];
+            location: string;
+            type?: string;
+            zoneDetails?: outputs.providerhub.latest.SkuZoneDetailResponse[];
+            zones?: string[];
+        }
+
+        export interface SkuResourceResponseProperties {
+            skuSettings: outputs.providerhub.latest.SkuSettingResponse[];
+        }
+
+        export interface SkuSettingResponse {
+            capabilities?: outputs.providerhub.latest.SkuCapabilityResponse[];
+            capacity?: outputs.providerhub.latest.SkuSettingResponseCapacity;
+            costs?: outputs.providerhub.latest.SkuCostResponse[];
+            family?: string;
+            kind?: string;
+            locationInfo?: outputs.providerhub.latest.SkuLocationInfoResponse[];
+            locations?: string[];
+            name: string;
+            requiredFeatures?: string[];
+            requiredQuotaIds?: string[];
+            size?: string;
+            tier?: string;
+        }
+
+        export interface SkuSettingResponseCapacity {
+            default?: number;
+            maximum?: number;
+            minimum: number;
+            scaleType?: string;
+        }
+
+        export interface SkuZoneDetailResponse {
+            capabilities?: outputs.providerhub.latest.SkuCapabilityResponse[];
+            name?: string[];
+        }
+
+        export interface SubscriptionStateOverrideActionResponse {
+            action: string;
+            state: string;
+        }
+
+        export interface SubscriptionStateRuleResponse {
+            allowedActions?: string[];
+            state?: string;
+        }
+
+        export interface SwaggerSpecificationResponse {
+            apiVersions?: string[];
+            swaggerSpecFolderUri?: string;
+        }
+
+        export interface ThrottlingMetricResponse {
+            interval?: string;
+            limit: number;
+            type: string;
+        }
+
+        export interface ThrottlingRuleResponse {
+            action: string;
+            metrics: outputs.providerhub.latest.ThrottlingMetricResponse[];
+            requiredFeatures?: string[];
+        }
+
+        export interface TypedErrorInfoResponse {
+            info: any;
+            type: string;
+        }
+    }
+
+    export namespace v20201120 {
+        export interface AuthorizationActionMappingResponse {
+            desired?: string;
+            original?: string;
+        }
+
+        export interface DefaultRolloutPropertiesResponseSpecification {
+            canary?: outputs.providerhub.v20201120.DefaultRolloutSpecificationResponseCanary;
+            highTraffic?: outputs.providerhub.v20201120.DefaultRolloutSpecificationResponseHighTraffic;
+            lowTraffic?: outputs.providerhub.v20201120.DefaultRolloutSpecificationResponseLowTraffic;
+            mediumTraffic?: outputs.providerhub.v20201120.DefaultRolloutSpecificationResponseMediumTraffic;
+            providerRegistration?: outputs.providerhub.v20201120.DefaultRolloutSpecificationResponseProviderRegistration;
+            resourceTypeRegistrations?: outputs.providerhub.v20201120.ResourceTypeRegistrationResponse[];
+            restOfTheWorldGroupOne?: outputs.providerhub.v20201120.DefaultRolloutSpecificationResponseRestOfTheWorldGroupOne;
+            restOfTheWorldGroupTwo?: outputs.providerhub.v20201120.DefaultRolloutSpecificationResponseRestOfTheWorldGroupTwo;
+        }
+
+        export interface DefaultRolloutPropertiesResponseStatus {
+            completedRegions?: string[];
+            failedOrSkippedRegions?: {[key: string]: outputs.providerhub.v20201120.ExtendedErrorInfoResponse};
+            nextTrafficRegion?: string;
+            nextTrafficRegionScheduledTime?: string;
+            subscriptionReregistrationResult?: string;
+        }
+
+        export interface DefaultRolloutSpecificationResponseCanary {
+            regions?: string[];
+            skipRegions?: string[];
+        }
+
+        export interface DefaultRolloutSpecificationResponseHighTraffic {
+            regions?: string[];
+            waitDuration?: string;
+        }
+
+        export interface DefaultRolloutSpecificationResponseLowTraffic {
+            regions?: string[];
+            waitDuration?: string;
+        }
+
+        export interface DefaultRolloutSpecificationResponseMediumTraffic {
+            regions?: string[];
+            waitDuration?: string;
+        }
+
+        export interface DefaultRolloutSpecificationResponseProviderRegistration {
+            /**
+             * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             */
+            id: string;
+            /**
+             * The name of the resource
+             */
+            name: string;
+            properties?: outputs.providerhub.v20201120.ProviderRegistrationResponseProperties;
+            /**
+             * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+             */
+            type: string;
+        }
+
+        export interface DefaultRolloutSpecificationResponseRestOfTheWorldGroupOne {
+            regions?: string[];
+            waitDuration?: string;
+        }
+
+        export interface DefaultRolloutSpecificationResponseRestOfTheWorldGroupTwo {
+            regions?: string[];
+            waitDuration?: string;
+        }
+
+        export interface ExtendedErrorInfoResponse {
+            additionalInfo?: outputs.providerhub.v20201120.TypedErrorInfoResponse[];
+            code?: string;
+            details?: outputs.providerhub.v20201120.ExtendedErrorInfoResponse[];
+            message?: string;
+            target?: string;
+        }
+
+        export interface ExtendedLocationOptionsResponse {
+            supportedPolicy?: string;
+            type?: string;
+        }
+
+        export interface LightHouseAuthorizationResponse {
+            principalId: string;
+            roleDefinitionId: string;
+        }
+
+        export interface LinkedAccessCheckResponse {
+            actionName?: string;
+            linkedAction?: string;
+            linkedActionVerb?: string;
+            linkedProperty?: string;
+            linkedType?: string;
+        }
+
+        export interface LoggingRuleResponse {
+            action: string;
+            detailLevel: string;
+            direction: string;
+            hiddenPropertyPaths?: outputs.providerhub.v20201120.LoggingRuleResponseHiddenPropertyPaths;
+        }
+
+        export interface LoggingRuleResponseHiddenPropertyPaths {
+            hiddenPathsOnRequest?: string[];
+            hiddenPathsOnResponse?: string[];
+        }
+
+        export interface NotificationEndpointResponse {
+            locations?: string[];
+            notificationDestination?: string;
+        }
+
+        export interface NotificationRegistrationResponseProperties {
+            includedEvents?: string[];
+            messageScope?: string;
+            notificationEndpoints?: outputs.providerhub.v20201120.NotificationEndpointResponse[];
+            notificationMode?: string;
+        }
+
+        /**
+         * Display information of the operation.
+         */
+        export interface OperationsDefinitionResponseDisplay {
+            description: string;
+            operation: string;
+            provider: string;
+            resource: string;
+        }
+
+        export interface ProviderHubMetadataResponseProviderAuthentication {
+            allowedAudiences: string[];
+        }
+
+        export interface ProviderHubMetadataResponseThirdPartyProviderAuthorization {
+            authorizations?: outputs.providerhub.v20201120.LightHouseAuthorizationResponse[];
+            managedByTenantId?: string;
+        }
+
+        export interface ProviderRegistrationPropertiesResponseProviderHubMetadata {
+            providerAuthentication?: outputs.providerhub.v20201120.ProviderHubMetadataResponseProviderAuthentication;
+            providerAuthorizations?: outputs.providerhub.v20201120.ResourceProviderAuthorizationResponse[];
+            thirdPartyProviderAuthorization?: outputs.providerhub.v20201120.ProviderHubMetadataResponseThirdPartyProviderAuthorization;
+        }
+
+        export interface ProviderRegistrationPropertiesResponseSubscriptionLifecycleNotificationSpecifications {
+            softDeleteTTL?: string;
+            subscriptionStateOverrideActions?: outputs.providerhub.v20201120.SubscriptionStateOverrideActionResponse[];
+        }
+
+        export interface ProviderRegistrationResponseProperties {
+            capabilities?: outputs.providerhub.v20201120.ResourceProviderCapabilitiesResponse[];
+            featuresRule?: outputs.providerhub.v20201120.ResourceProviderManifestPropertiesResponseFeaturesRule;
+            management?: outputs.providerhub.v20201120.ResourceProviderManifestPropertiesResponseManagement;
+            metadata?: any;
+            namespace?: string;
+            providerAuthentication?: outputs.providerhub.v20201120.ResourceProviderManifestPropertiesResponseProviderAuthentication;
+            providerAuthorizations?: outputs.providerhub.v20201120.ResourceProviderAuthorizationResponse[];
+            providerHubMetadata?: outputs.providerhub.v20201120.ProviderRegistrationPropertiesResponseProviderHubMetadata;
+            providerType?: string;
+            providerVersion?: string;
+            provisioningState?: string;
+            requestHeaderOptions?: outputs.providerhub.v20201120.ResourceProviderManifestPropertiesResponseRequestHeaderOptions;
+            requiredFeatures?: string[];
+            subscriptionLifecycleNotificationSpecifications?: outputs.providerhub.v20201120.ProviderRegistrationPropertiesResponseSubscriptionLifecycleNotificationSpecifications;
+            templateDeploymentOptions?: outputs.providerhub.v20201120.ResourceProviderManifestPropertiesResponseTemplateDeploymentOptions;
+        }
+
+        export interface ResourceProviderAuthorizationResponse {
+            applicationId?: string;
+            managedByRoleDefinitionId?: string;
+            roleDefinitionId?: string;
+        }
+
+        export interface ResourceProviderCapabilitiesResponse {
+            effect: string;
+            quotaId: string;
+            requiredFeatures?: string[];
+        }
+
+        export interface ResourceProviderManifestPropertiesResponseFeaturesRule {
+            requiredFeaturesPolicy: string;
+        }
+
+        export interface ResourceProviderManifestPropertiesResponseManagement {
+            incidentContactEmail?: string;
+            incidentRoutingService?: string;
+            incidentRoutingTeam?: string;
+            manifestOwners?: string[];
+            resourceAccessPolicy?: string;
+            resourceAccessRoles?: any[];
+            schemaOwners?: string[];
+            serviceTreeInfos?: outputs.providerhub.v20201120.ServiceTreeInfoResponse[];
+        }
+
+        export interface ResourceProviderManifestPropertiesResponseProviderAuthentication {
+            allowedAudiences: string[];
+        }
+
+        export interface ResourceProviderManifestPropertiesResponseRequestHeaderOptions {
+            optInHeaders?: string;
+        }
+
+        export interface ResourceProviderManifestPropertiesResponseTemplateDeploymentOptions {
+            preflightOptions?: string[];
+            preflightSupported?: boolean;
+        }
+
+        export interface ResourceTypeEndpointResponse {
+            apiVersions?: string[];
+            enabled?: boolean;
+            extensions?: outputs.providerhub.v20201120.ResourceTypeExtensionResponse[];
+            featuresRule?: outputs.providerhub.v20201120.ResourceTypeEndpointResponseFeaturesRule;
+            locations?: string[];
+            requiredFeatures?: string[];
+            timeout?: string;
+        }
+
+        export interface ResourceTypeEndpointResponseFeaturesRule {
+            requiredFeaturesPolicy: string;
+        }
+
+        export interface ResourceTypeExtensionOptionsResponseResourceCreationBegin {
+            request?: string[];
+            response?: string[];
+        }
+
+        export interface ResourceTypeExtensionResponse {
+            endpointUri?: string;
+            extensionCategories?: string[];
+            timeout?: string;
+        }
+
+        export interface ResourceTypeRegistrationPropertiesResponseCheckNameAvailabilitySpecifications {
+            enableDefaultValidation?: boolean;
+            resourceTypesWithCustomValidation?: string[];
+        }
+
+        export interface ResourceTypeRegistrationPropertiesResponseExtensionOptions {
+            resourceCreationBegin?: outputs.providerhub.v20201120.ResourceTypeExtensionOptionsResponseResourceCreationBegin;
+        }
+
+        export interface ResourceTypeRegistrationPropertiesResponseFeaturesRule {
+            requiredFeaturesPolicy: string;
+        }
+
+        export interface ResourceTypeRegistrationPropertiesResponseIdentityManagement {
+            applicationId?: string;
+            type?: string;
+        }
+
+        export interface ResourceTypeRegistrationPropertiesResponseRequestHeaderOptions {
+            optInHeaders?: string;
+        }
+
+        export interface ResourceTypeRegistrationPropertiesResponseResourceMovePolicy {
+            crossResourceGroupMoveEnabled?: boolean;
+            crossSubscriptionMoveEnabled?: boolean;
+            validationRequired?: boolean;
+        }
+
+        export interface ResourceTypeRegistrationPropertiesResponseSubscriptionLifecycleNotificationSpecifications {
+            softDeleteTTL?: string;
+            subscriptionStateOverrideActions?: outputs.providerhub.v20201120.SubscriptionStateOverrideActionResponse[];
+        }
+
+        export interface ResourceTypeRegistrationPropertiesResponseTemplateDeploymentOptions {
+            preflightOptions?: string[];
+            preflightSupported?: boolean;
+        }
+
+        export interface ResourceTypeRegistrationResponse {
+            /**
+             * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             */
+            id: string;
+            /**
+             * The name of the resource
+             */
+            name: string;
+            properties?: outputs.providerhub.v20201120.ResourceTypeRegistrationResponseProperties;
+            /**
+             * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+             */
+            type: string;
+        }
+
+        export interface ResourceTypeRegistrationResponseProperties {
+            allowedUnauthorizedActions?: string[];
+            authorizationActionMappings?: outputs.providerhub.v20201120.AuthorizationActionMappingResponse[];
+            checkNameAvailabilitySpecifications?: outputs.providerhub.v20201120.ResourceTypeRegistrationPropertiesResponseCheckNameAvailabilitySpecifications;
+            defaultApiVersion?: string;
+            disallowedActionVerbs?: string[];
+            enableAsyncOperation?: boolean;
+            enableThirdPartyS2S?: boolean;
+            endpoints?: outputs.providerhub.v20201120.ResourceTypeEndpointResponse[];
+            extendedLocations?: outputs.providerhub.v20201120.ExtendedLocationOptionsResponse[];
+            extensionOptions?: outputs.providerhub.v20201120.ResourceTypeRegistrationPropertiesResponseExtensionOptions;
+            featuresRule?: outputs.providerhub.v20201120.ResourceTypeRegistrationPropertiesResponseFeaturesRule;
+            identityManagement?: outputs.providerhub.v20201120.ResourceTypeRegistrationPropertiesResponseIdentityManagement;
+            isPureProxy?: boolean;
+            linkedAccessChecks?: outputs.providerhub.v20201120.LinkedAccessCheckResponse[];
+            loggingRules?: outputs.providerhub.v20201120.LoggingRuleResponse[];
+            marketplaceType?: string;
+            provisioningState?: string;
+            regionality?: string;
+            requestHeaderOptions?: outputs.providerhub.v20201120.ResourceTypeRegistrationPropertiesResponseRequestHeaderOptions;
+            requiredFeatures?: string[];
+            resourceDeletionPolicy?: string;
+            resourceMovePolicy?: outputs.providerhub.v20201120.ResourceTypeRegistrationPropertiesResponseResourceMovePolicy;
+            routingType?: string;
+            serviceTreeInfos?: outputs.providerhub.v20201120.ServiceTreeInfoResponse[];
+            subscriptionLifecycleNotificationSpecifications?: outputs.providerhub.v20201120.ResourceTypeRegistrationPropertiesResponseSubscriptionLifecycleNotificationSpecifications;
+            subscriptionStateRules?: outputs.providerhub.v20201120.SubscriptionStateRuleResponse[];
+            swaggerSpecifications?: outputs.providerhub.v20201120.SwaggerSpecificationResponse[];
+            templateDeploymentOptions?: outputs.providerhub.v20201120.ResourceTypeRegistrationPropertiesResponseTemplateDeploymentOptions;
+            throttlingRules?: outputs.providerhub.v20201120.ThrottlingRuleResponse[];
+        }
+
+        export interface ServiceTreeInfoResponse {
+            componentId?: string;
+            serviceId?: string;
+        }
+
+        export interface SkuCapabilityResponse {
+            name: string;
+            value: string;
+        }
+
+        export interface SkuCostResponse {
+            extendedUnit?: string;
+            meterId: string;
+            quantity?: number;
+        }
+
+        export interface SkuLocationInfoResponse {
+            extendedLocations?: string[];
+            location: string;
+            type?: string;
+            zoneDetails?: outputs.providerhub.v20201120.SkuZoneDetailResponse[];
+            zones?: string[];
+        }
+
+        export interface SkuResourceResponseProperties {
+            skuSettings: outputs.providerhub.v20201120.SkuSettingResponse[];
+        }
+
+        export interface SkuSettingResponse {
+            capabilities?: outputs.providerhub.v20201120.SkuCapabilityResponse[];
+            capacity?: outputs.providerhub.v20201120.SkuSettingResponseCapacity;
+            costs?: outputs.providerhub.v20201120.SkuCostResponse[];
+            family?: string;
+            kind?: string;
+            locationInfo?: outputs.providerhub.v20201120.SkuLocationInfoResponse[];
+            locations?: string[];
+            name: string;
+            requiredFeatures?: string[];
+            requiredQuotaIds?: string[];
+            size?: string;
+            tier?: string;
+        }
+
+        export interface SkuSettingResponseCapacity {
+            default?: number;
+            maximum?: number;
+            minimum: number;
+            scaleType?: string;
+        }
+
+        export interface SkuZoneDetailResponse {
+            capabilities?: outputs.providerhub.v20201120.SkuCapabilityResponse[];
+            name?: string[];
+        }
+
+        export interface SubscriptionStateOverrideActionResponse {
+            action: string;
+            state: string;
+        }
+
+        export interface SubscriptionStateRuleResponse {
+            allowedActions?: string[];
+            state?: string;
+        }
+
+        export interface SwaggerSpecificationResponse {
+            apiVersions?: string[];
+            swaggerSpecFolderUri?: string;
+        }
+
+        export interface ThrottlingMetricResponse {
+            interval?: string;
+            limit: number;
+            type: string;
+        }
+
+        export interface ThrottlingRuleResponse {
+            action: string;
+            metrics: outputs.providerhub.v20201120.ThrottlingMetricResponse[];
+            requiredFeatures?: string[];
+        }
+
+        export interface TypedErrorInfoResponse {
+            info: any;
+            type: string;
+        }
+    }
+}
+
 export namespace recoveryservices {
     export namespace latest {
         /**
@@ -369469,6 +371938,36 @@ export namespace recoveryservices {
         }
 
         /**
+         * AzureStorage backup policy.
+         */
+        export interface AzureFileShareProtectionPolicyResponse {
+            /**
+             * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+             */
+            backupManagementType: "AzureStorage";
+            /**
+             * Number of items associated with this policy.
+             */
+            protectedItemsCount?: number;
+            /**
+             * Retention policy with the details on backup copy retention ranges.
+             */
+            retentionPolicy?: outputs.recoveryservices.latest.LongTermRetentionPolicyResponse | outputs.recoveryservices.latest.SimpleRetentionPolicyResponse;
+            /**
+             * Backup schedule specified as part of backup policy.
+             */
+            schedulePolicy?: outputs.recoveryservices.latest.LogSchedulePolicyResponse | outputs.recoveryservices.latest.LongTermSchedulePolicyResponse | outputs.recoveryservices.latest.SimpleSchedulePolicyResponse;
+            /**
+             * TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
+             */
+            timeZone?: string;
+            /**
+             * Type of workload for the backup management
+             */
+            workLoadType?: string;
+        }
+
+        /**
          * Additional information about Azure File Share backup item.
          */
         export interface AzureFileshareProtectedItemExtendedInfoResponse {
@@ -369735,25 +372234,34 @@ export namespace recoveryservices {
         }
 
         /**
-         * Azure VM (also known as IaaS VM) workload-specific backup policy.
+         * IaaS VM workload-specific backup policy.
          */
         export interface AzureIaaSVMProtectionPolicyResponse {
             /**
-             * This property is used as the discriminator for deciding the specific types in the polymorphic chain of types.
+             * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
              */
-            backupManagementType?: "AzureIaasVM";
+            backupManagementType: "AzureIaasVM";
+            instantRPDetails?: outputs.recoveryservices.latest.InstantRPAdditionalDetailsResponse;
             /**
-             * The number of items associated with this policy.
+             * Instant RP retention policy range in days
+             */
+            instantRpRetentionRangeInDays?: number;
+            /**
+             * Number of items associated with this policy.
              */
             protectedItemsCount?: number;
             /**
-             * The retention policy with the details on backup copy retention ranges.
+             * Retention policy with the details on backup copy retention ranges.
              */
             retentionPolicy?: outputs.recoveryservices.latest.LongTermRetentionPolicyResponse | outputs.recoveryservices.latest.SimpleRetentionPolicyResponse;
             /**
-             * The backup schedule specified as part of backup policy.
+             * Backup schedule specified as part of backup policy.
              */
-            schedulePolicy?: outputs.recoveryservices.latest.LongTermSchedulePolicyResponse | outputs.recoveryservices.latest.SimpleSchedulePolicyResponse;
+            schedulePolicy?: outputs.recoveryservices.latest.LogSchedulePolicyResponse | outputs.recoveryservices.latest.LongTermSchedulePolicyResponse | outputs.recoveryservices.latest.SimpleSchedulePolicyResponse;
+            /**
+             * TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
+             */
+            timeZone?: string;
         }
 
         /**
@@ -369834,7 +372342,7 @@ export namespace recoveryservices {
              * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
              * Backup is VMAppContainer
              */
-            containerType?: "AzureSqlContainer";
+            containerType: "AzureSqlContainer";
             /**
              * Friendly name of the container.
              */
@@ -369942,19 +372450,19 @@ export namespace recoveryservices {
         }
 
         /**
-         *  The Azure SQL workload-specific backup policy.
+         * Azure SQL workload-specific backup policy.
          */
         export interface AzureSqlProtectionPolicyResponse {
             /**
-             * This property is used as the discriminator for deciding the specific types in the polymorphic chain of types.
+             * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
              */
-            backupManagementType?: "AzureSql";
+            backupManagementType: "AzureSql";
             /**
-             * The number of items associated with this policy.
+             * Number of items associated with this policy.
              */
             protectedItemsCount?: number;
             /**
-             * The retention policy details.
+             * Retention policy details.
              */
             retentionPolicy?: outputs.recoveryservices.latest.LongTermRetentionPolicyResponse | outputs.recoveryservices.latest.SimpleRetentionPolicyResponse;
         }
@@ -369973,7 +372481,7 @@ export namespace recoveryservices {
              * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
              * Backup is VMAppContainer
              */
-            containerType?: "StorageContainer";
+            containerType: "StorageContainer";
             /**
              * Friendly name of the container.
              */
@@ -370211,6 +372719,36 @@ export namespace recoveryservices {
         }
 
         /**
+         * Azure VM (Mercury) workload-specific backup policy.
+         */
+        export interface AzureVmWorkloadProtectionPolicyResponse {
+            /**
+             * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+             */
+            backupManagementType: "AzureWorkload";
+            /**
+             * Fix the policy inconsistency
+             */
+            makePolicyConsistent?: boolean;
+            /**
+             * Number of items associated with this policy.
+             */
+            protectedItemsCount?: number;
+            /**
+             * Common settings for the backup management
+             */
+            settings?: outputs.recoveryservices.latest.SettingsResponse;
+            /**
+             * List of sub-protection policies which includes schedule and retention
+             */
+            subProtectionPolicy?: outputs.recoveryservices.latest.SubProtectionPolicyResponse[];
+            /**
+             * Type of workload for the backup management
+             */
+            workLoadType?: string;
+        }
+
+        /**
          * Extended information of the container.
          */
         export interface AzureWorkloadContainerExtendedInfoResponse {
@@ -370242,7 +372780,7 @@ export namespace recoveryservices {
              * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
              * Backup is VMAppContainer
              */
-            containerType?: "AzureWorkloadContainer";
+            containerType: "AzureWorkloadContainer";
             /**
              * Additional details of a workload container.
              */
@@ -370500,11 +373038,11 @@ export namespace recoveryservices {
          */
         export interface DailyRetentionScheduleResponse {
             /**
-             * The retention duration of retention policy.
+             * Retention duration of retention Policy.
              */
             retentionDuration?: outputs.recoveryservices.latest.RetentionDurationResponse;
             /**
-             * The retention times of retention policy.
+             * Retention times of retention policy.
              */
             retentionTimes?: string[];
         }
@@ -370539,7 +373077,13 @@ export namespace recoveryservices {
          * Day of the week.
          */
         export interface DayResponse {
+            /**
+             * Date of the month
+             */
             date?: number;
+            /**
+             * Whether Date is last date of month
+             */
             isLast?: boolean;
         }
 
@@ -370617,7 +373161,7 @@ export namespace recoveryservices {
              * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
              * Backup is VMAppContainer
              */
-            containerType?: "DPMContainer";
+            containerType: "DPMContainer";
             /**
              * Backup engine Agent version
              */
@@ -370802,7 +373346,7 @@ export namespace recoveryservices {
              * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
              * Backup is VMAppContainer
              */
-            containerType?: "GenericContainer";
+            containerType: "GenericContainer";
             /**
              * Extended information (not returned in List container API calls)
              */
@@ -370909,6 +373453,32 @@ export namespace recoveryservices {
              * Type of workload this item represents.
              */
             workloadType?: string;
+        }
+
+        /**
+         * Azure VM (Mercury) workload-specific backup policy.
+         */
+        export interface GenericProtectionPolicyResponse {
+            /**
+             * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+             */
+            backupManagementType: "GenericProtectionPolicy";
+            /**
+             * Name of this policy's fabric.
+             */
+            fabricName?: string;
+            /**
+             * Number of items associated with this policy.
+             */
+            protectedItemsCount?: number;
+            /**
+             * List of sub-protection policies which includes schedule and retention
+             */
+            subProtectionPolicy?: outputs.recoveryservices.latest.SubProtectionPolicyResponse[];
+            /**
+             * TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
+             */
+            timeZone?: string;
         }
 
         /**
@@ -371435,7 +374005,7 @@ export namespace recoveryservices {
              * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
              * Backup is VMAppContainer
              */
-            containerType?: "IaaSVMContainer";
+            containerType: "IaaSVMContainer";
             /**
              * Friendly name of the container.
              */
@@ -372752,6 +375322,11 @@ export namespace recoveryservices {
             status?: string;
         }
 
+        export interface InstantRPAdditionalDetailsResponse {
+            azureBackupRGNamePrefix?: string;
+            azureBackupRGNameSuffix?: string;
+        }
+
         /**
          * KPI Resource Health Details
          */
@@ -372767,39 +375342,53 @@ export namespace recoveryservices {
         }
 
         /**
-         * Long-term retention policy.
+         * Log policy schedule.
+         */
+        export interface LogSchedulePolicyResponse {
+            /**
+             * Frequency of the log schedule operation of this policy in minutes.
+             */
+            scheduleFrequencyInMins?: number;
+            /**
+             * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+             */
+            schedulePolicyType: "LogSchedulePolicy";
+        }
+
+        /**
+         * Long term retention policy.
          */
         export interface LongTermRetentionPolicyResponse {
             /**
-             * Daily retention schedule of the backup policy.
+             * Daily retention schedule of the protection policy.
              */
             dailySchedule?: outputs.recoveryservices.latest.DailyRetentionScheduleResponse;
             /**
-             * Monthly retention schedule of the backup policy.
+             * Monthly retention schedule of the protection policy.
              */
             monthlySchedule?: outputs.recoveryservices.latest.MonthlyRetentionScheduleResponse;
             /**
-             * This property is used as the discriminator for deciding the specific types in the polymorphic chain of types.
+             * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
              */
-            retentionPolicyType?: "LongTermRetentionPolicy";
+            retentionPolicyType: "LongTermRetentionPolicy";
             /**
-             * Weekly retention schedule of the backup policy.
+             * Weekly retention schedule of the protection policy.
              */
             weeklySchedule?: outputs.recoveryservices.latest.WeeklyRetentionScheduleResponse;
             /**
-             * Yearly retention schedule of the backup policy.
+             * Yearly retention schedule of the protection policy.
              */
             yearlySchedule?: outputs.recoveryservices.latest.YearlyRetentionScheduleResponse;
         }
 
         /**
-         * Long-term policy schedule.
+         * Long term policy schedule.
          */
         export interface LongTermSchedulePolicyResponse {
             /**
-             * This property is used as the discriminator for deciding the specific types in the polymorphic chain of types.
+             * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
              */
-            schedulePolicyType?: "LongTermSchedulePolicy";
+            schedulePolicyType: "LongTermSchedulePolicy";
         }
 
         /**
@@ -372880,7 +375469,7 @@ export namespace recoveryservices {
              * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
              * Backup is VMAppContainer
              */
-            containerType?: "Windows";
+            containerType: "Windows";
             /**
              * Additional information for this container
              */
@@ -373016,25 +375605,25 @@ export namespace recoveryservices {
         }
 
         /**
-         * The backup policy for the file or folder container.
+         * Mab container-specific backup policy.
          */
         export interface MabProtectionPolicyResponse {
             /**
-             * This property is used as the discriminator for deciding the specific types in the polymorphic chain of types.
+             * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
              */
-            backupManagementType?: "MAB";
+            backupManagementType: "MAB";
             /**
-             * The number of items associated with this policy.
+             * Number of items associated with this policy.
              */
             protectedItemsCount?: number;
             /**
-             * The details specified in the Retention policy.
+             * Retention policy details.
              */
             retentionPolicy?: outputs.recoveryservices.latest.LongTermRetentionPolicyResponse | outputs.recoveryservices.latest.SimpleRetentionPolicyResponse;
             /**
-             * The schedule specified in the backup policy.
+             * Backup schedule of backup policy.
              */
-            schedulePolicy?: outputs.recoveryservices.latest.LongTermSchedulePolicyResponse | outputs.recoveryservices.latest.SimpleSchedulePolicyResponse;
+            schedulePolicy?: outputs.recoveryservices.latest.LogSchedulePolicyResponse | outputs.recoveryservices.latest.LongTermSchedulePolicyResponse | outputs.recoveryservices.latest.SimpleSchedulePolicyResponse;
         }
 
         /**
@@ -373192,15 +375781,15 @@ export namespace recoveryservices {
         }
 
         /**
-         * The monthly retention schedule.
+         * Monthly retention schedule.
          */
         export interface MonthlyRetentionScheduleResponse {
             /**
-             * Retention duration of the retention policy.
+             * Retention duration of retention Policy.
              */
             retentionDuration?: outputs.recoveryservices.latest.RetentionDurationResponse;
             /**
-             * Daily retention format for the monthly retention policy.
+             * Daily retention format for monthly retention policy.
              */
             retentionScheduleDaily?: outputs.recoveryservices.latest.DailyRetentionFormatResponse;
             /**
@@ -373208,11 +375797,11 @@ export namespace recoveryservices {
              */
             retentionScheduleFormatType?: string;
             /**
-             * Weekly retention format for the monthly retention policy.
+             * Weekly retention format for monthly retention policy.
              */
             retentionScheduleWeekly?: outputs.recoveryservices.latest.WeeklyRetentionFormatResponse;
             /**
-             * Retention times of the retention policy.
+             * Retention times of retention policy.
              */
             retentionTimes?: string[];
         }
@@ -374224,12 +376813,12 @@ export namespace recoveryservices {
          */
         export interface RetentionDurationResponse {
             /**
-             * Count of the duration types. Retention duration is determined by the combining the Count times and durationType. 
-             *    For example, if Count = 3 and durationType = Weeks, then the retention duration is three weeks.
+             * Count of duration types. Retention duration is obtained by the counting the duration type Count times.
+             * For example, when Count = 3 and DurationType = Weeks, retention duration will be three weeks.
              */
             count?: number;
             /**
-             * The retention duration type of the retention policy.
+             * Retention duration type of retention policy.
              */
             durationType?: string;
         }
@@ -374271,6 +376860,25 @@ export namespace recoveryservices {
         }
 
         /**
+         * Common settings field for backup management
+         */
+        export interface SettingsResponse {
+            /**
+             * Workload compression flag. This has been added so that 'isSqlCompression'
+             * will be deprecated once clients upgrade to consider this flag.
+             */
+            isCompression?: boolean;
+            /**
+             * SQL compression flag
+             */
+            issqlcompression?: boolean;
+            /**
+             * TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
+             */
+            timeZone?: string;
+        }
+
+        /**
          * Simple policy retention.
          */
         export interface SimpleRetentionPolicyResponse {
@@ -374279,9 +376887,9 @@ export namespace recoveryservices {
              */
             retentionDuration?: outputs.recoveryservices.latest.RetentionDurationResponse;
             /**
-             * This property is used as the discriminator for deciding the specific types in the polymorphic chain of types.
+             * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
              */
-            retentionPolicyType?: "SimpleRetentionPolicy";
+            retentionPolicyType: "SimpleRetentionPolicy";
         }
 
         /**
@@ -374289,23 +376897,23 @@ export namespace recoveryservices {
          */
         export interface SimpleSchedulePolicyResponse {
             /**
-             * This property is used as the discriminator for deciding the specific types in the polymorphic chain of types.
+             * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
              */
-            schedulePolicyType?: "SimpleSchedulePolicy";
+            schedulePolicyType: "SimpleSchedulePolicy";
             /**
-             * This list is the days of the week when the schedule runs.
+             * List of days of week this schedule has to be run.
              */
             scheduleRunDays?: string[];
             /**
-             * Defines the frequency interval (daily or weekly) for the schedule policy.
+             * Frequency of the schedule operation of this policy.
              */
             scheduleRunFrequency?: string;
             /**
-             * List of times, during a day, when the schedule runs.
+             * List of times of day this schedule has to be run.
              */
             scheduleRunTimes?: string[];
             /**
-             * The number of times per week the schedule runs.
+             * At every number weeks this schedule has to be run.
              */
             scheduleWeeklyFrequency?: number;
         }
@@ -374328,6 +376936,24 @@ export namespace recoveryservices {
              * Target storage object Id.
              */
             targetStorageClassificationId?: string;
+        }
+
+        /**
+         * Sub-protection policy which includes schedule and retention
+         */
+        export interface SubProtectionPolicyResponse {
+            /**
+             * Type of backup policy type
+             */
+            policyType?: string;
+            /**
+             * Retention policy with the details on backup copy retention ranges.
+             */
+            retentionPolicy?: outputs.recoveryservices.latest.LongTermRetentionPolicyResponse | outputs.recoveryservices.latest.SimpleRetentionPolicyResponse;
+            /**
+             * Backup schedule specified as part of backup policy.
+             */
+            schedulePolicy?: outputs.recoveryservices.latest.LogSchedulePolicyResponse | outputs.recoveryservices.latest.LongTermSchedulePolicyResponse | outputs.recoveryservices.latest.SimpleSchedulePolicyResponse;
         }
 
         /**
@@ -375001,7 +377627,7 @@ export namespace recoveryservices {
              */
             daysOfTheWeek?: string[];
             /**
-             * List of weeks of the month.
+             * List of weeks of month.
              */
             weeksOfTheMonth?: string[];
         }
@@ -375011,15 +377637,15 @@ export namespace recoveryservices {
          */
         export interface WeeklyRetentionScheduleResponse {
             /**
-             * List of the days of the week for the weekly retention policy.
+             * List of days of week for weekly retention policy.
              */
             daysOfTheWeek?: string[];
             /**
-             * Retention duration of retention policy.
+             * Retention duration of retention Policy.
              */
             retentionDuration?: outputs.recoveryservices.latest.RetentionDurationResponse;
             /**
-             * Retention times of the retention policy.
+             * Retention times of retention policy.
              */
             retentionTimes?: string[];
         }
@@ -375047,27 +377673,27 @@ export namespace recoveryservices {
          */
         export interface YearlyRetentionScheduleResponse {
             /**
-             * List of the months of year for the yearly retention policy.
+             * List of months of year of yearly retention policy.
              */
             monthsOfYear?: string[];
             /**
-             * Retention duration for the retention policy.
+             * Retention duration of retention Policy.
              */
             retentionDuration?: outputs.recoveryservices.latest.RetentionDurationResponse;
             /**
-             * Daily retention format for the yearly retention policy.
+             * Daily retention format for yearly retention policy.
              */
             retentionScheduleDaily?: outputs.recoveryservices.latest.DailyRetentionFormatResponse;
             /**
-             * Retention schedule format for the yearly retention policy.
+             * Retention schedule format for yearly retention policy.
              */
             retentionScheduleFormatType?: string;
             /**
-             * Weekly retention format for the yearly retention policy.
+             * Weekly retention format for yearly retention policy.
              */
             retentionScheduleWeekly?: outputs.recoveryservices.latest.WeeklyRetentionFormatResponse;
             /**
-             * Retention times for the retention policy.
+             * Retention times of retention policy.
              */
             retentionTimes?: string[];
         }
@@ -387993,6 +390619,1893 @@ export namespace recoveryservices {
              * Gets or sets the status
              */
             status?: string;
+        }
+    }
+
+    export namespace v20201001 {
+        /**
+         * AzureStorage backup policy.
+         */
+        export interface AzureFileShareProtectionPolicyResponse {
+            /**
+             * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+             */
+            backupManagementType: "AzureStorage";
+            /**
+             * Number of items associated with this policy.
+             */
+            protectedItemsCount?: number;
+            /**
+             * Retention policy with the details on backup copy retention ranges.
+             */
+            retentionPolicy?: outputs.recoveryservices.v20201001.LongTermRetentionPolicyResponse | outputs.recoveryservices.v20201001.SimpleRetentionPolicyResponse;
+            /**
+             * Backup schedule specified as part of backup policy.
+             */
+            schedulePolicy?: outputs.recoveryservices.v20201001.LogSchedulePolicyResponse | outputs.recoveryservices.v20201001.LongTermSchedulePolicyResponse | outputs.recoveryservices.v20201001.SimpleSchedulePolicyResponse;
+            /**
+             * TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
+             */
+            timeZone?: string;
+            /**
+             * Type of workload for the backup management
+             */
+            workLoadType?: string;
+        }
+
+        /**
+         * Additional information about Azure File Share backup item.
+         */
+        export interface AzureFileshareProtectedItemExtendedInfoResponse {
+            /**
+             * The oldest backup copy available for this item in the service.
+             */
+            oldestRecoveryPoint?: string;
+            /**
+             * Indicates consistency of policy object and policy applied to this backup item.
+             */
+            policyState?: string;
+            /**
+             * Number of available backup copies associated with this backup item.
+             */
+            recoveryPointCount?: number;
+            /**
+             * Indicates the state of this resource. Possible values are from enum ResourceState {Invalid, Active, SoftDeleted, Deleted}
+             */
+            resourceState: string;
+            /**
+             * The resource state sync time for this backup item.
+             */
+            resourceStateSyncTime: string;
+        }
+
+        /**
+         * Azure File Share workload-specific backup item.
+         */
+        export interface AzureFileshareProtectedItemResponse {
+            /**
+             * Type of backup management for the backed up item.
+             */
+            backupManagementType?: string;
+            /**
+             * Name of the backup set the backup item belongs to
+             */
+            backupSetName?: string;
+            /**
+             * Unique name of container
+             */
+            containerName?: string;
+            /**
+             * Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+             */
+            createMode?: string;
+            /**
+             * Time for deferred deletion in UTC
+             */
+            deferredDeleteTimeInUTC?: string;
+            /**
+             * Time remaining before the DS marked for deferred delete is permanently deleted
+             */
+            deferredDeleteTimeRemaining?: string;
+            /**
+             * Additional information with this backup item.
+             */
+            extendedInfo?: outputs.recoveryservices.v20201001.AzureFileshareProtectedItemExtendedInfoResponse;
+            /**
+             * Friendly name of the fileshare represented by this backup item.
+             */
+            friendlyName?: string;
+            /**
+             * Flag to identify whether the deferred deleted DS is to be purged soon
+             */
+            isDeferredDeleteScheduleUpcoming?: boolean;
+            /**
+             * Flag to identify that deferred deleted DS is to be moved into Pause state
+             */
+            isRehydrate?: boolean;
+            /**
+             * Flag to identify whether the DS is scheduled for deferred delete
+             */
+            isScheduledForDeferredDelete?: boolean;
+            /**
+             * Health details of different KPIs
+             */
+            kpisHealths?: {[key: string]: outputs.recoveryservices.v20201001.KPIResourceHealthDetailsResponse};
+            /**
+             * Last backup operation status. Possible values: Healthy, Unhealthy.
+             */
+            lastBackupStatus?: string;
+            /**
+             * Timestamp of the last backup operation on this backup item.
+             */
+            lastBackupTime?: string;
+            /**
+             * Timestamp when the last (latest) backup copy was created for this backup item.
+             */
+            lastRecoveryPoint?: string;
+            /**
+             * ID of the backup policy with which this item is backed up.
+             */
+            policyId?: string;
+            /**
+             * backup item type.
+             */
+            protectedItemType: "AzureFileShareProtectedItem";
+            /**
+             * Backup state of this backup item.
+             */
+            protectionState?: string;
+            /**
+             * Backup status of this backup item.
+             */
+            protectionStatus?: string;
+            /**
+             * ARM ID of the resource to be backed up.
+             */
+            sourceResourceId?: string;
+            /**
+             * Type of workload this item represents.
+             */
+            workloadType?: string;
+        }
+
+        /**
+         * Azure IaaS VM workload-specific Health Details.
+         */
+        export interface AzureIaaSVMHealthDetailsResponse {
+            /**
+             * Health Code
+             */
+            code: number;
+            /**
+             * Health Message
+             */
+            message: string;
+            /**
+             * Health Recommended Actions
+             */
+            recommendations: string[];
+            /**
+             * Health Title
+             */
+            title: string;
+        }
+
+        /**
+         * Additional information on Azure IaaS VM specific backup item.
+         */
+        export interface AzureIaaSVMProtectedItemExtendedInfoResponse {
+            /**
+             * The oldest backup copy available for this backup item.
+             */
+            oldestRecoveryPoint?: string;
+            /**
+             * Specifies if backup policy associated with the backup item is inconsistent.
+             */
+            policyInconsistent?: boolean;
+            /**
+             * Number of backup copies available for this backup item.
+             */
+            recoveryPointCount?: number;
+        }
+
+        /**
+         * IaaS VM workload-specific backup item.
+         */
+        export interface AzureIaaSVMProtectedItemResponse {
+            /**
+             * Type of backup management for the backed up item.
+             */
+            backupManagementType?: string;
+            /**
+             * Name of the backup set the backup item belongs to
+             */
+            backupSetName?: string;
+            /**
+             * Unique name of container
+             */
+            containerName?: string;
+            /**
+             * Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+             */
+            createMode?: string;
+            /**
+             * Time for deferred deletion in UTC
+             */
+            deferredDeleteTimeInUTC?: string;
+            /**
+             * Time remaining before the DS marked for deferred delete is permanently deleted
+             */
+            deferredDeleteTimeRemaining?: string;
+            /**
+             * Additional information for this backup item.
+             */
+            extendedInfo?: outputs.recoveryservices.v20201001.AzureIaaSVMProtectedItemExtendedInfoResponse;
+            /**
+             * Extended Properties for Azure IaasVM Backup.
+             */
+            extendedProperties?: outputs.recoveryservices.v20201001.ExtendedPropertiesResponse;
+            /**
+             * Friendly name of the VM represented by this backup item.
+             */
+            friendlyName?: string;
+            /**
+             * Health details on this backup item.
+             */
+            healthDetails?: outputs.recoveryservices.v20201001.AzureIaaSVMHealthDetailsResponse[];
+            /**
+             * Health status of protected item.
+             */
+            healthStatus?: string;
+            /**
+             * Flag to identify whether the deferred deleted DS is to be purged soon
+             */
+            isDeferredDeleteScheduleUpcoming?: boolean;
+            /**
+             * Flag to identify that deferred deleted DS is to be moved into Pause state
+             */
+            isRehydrate?: boolean;
+            /**
+             * Flag to identify whether the DS is scheduled for deferred delete
+             */
+            isScheduledForDeferredDelete?: boolean;
+            /**
+             * Health details of different KPIs
+             */
+            kpisHealths?: {[key: string]: outputs.recoveryservices.v20201001.KPIResourceHealthDetailsResponse};
+            /**
+             * Last backup operation status.
+             */
+            lastBackupStatus?: string;
+            /**
+             * Timestamp of the last backup operation on this backup item.
+             */
+            lastBackupTime?: string;
+            /**
+             * Timestamp when the last (latest) backup copy was created for this backup item.
+             */
+            lastRecoveryPoint?: string;
+            /**
+             * ID of the backup policy with which this item is backed up.
+             */
+            policyId?: string;
+            /**
+             * Data ID of the protected item.
+             */
+            protectedItemDataId?: string;
+            /**
+             * backup item type.
+             */
+            protectedItemType: "AzureIaaSVMProtectedItem";
+            /**
+             * Backup state of this backup item.
+             */
+            protectionState?: string;
+            /**
+             * Backup status of this backup item.
+             */
+            protectionStatus?: string;
+            /**
+             * ARM ID of the resource to be backed up.
+             */
+            sourceResourceId?: string;
+            /**
+             * Fully qualified ARM ID of the virtual machine represented by this item.
+             */
+            virtualMachineId?: string;
+            /**
+             * Type of workload this item represents.
+             */
+            workloadType?: string;
+        }
+
+        /**
+         * IaaS VM workload-specific backup policy.
+         */
+        export interface AzureIaaSVMProtectionPolicyResponse {
+            /**
+             * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+             */
+            backupManagementType: "AzureIaasVM";
+            instantRPDetails?: outputs.recoveryservices.v20201001.InstantRPAdditionalDetailsResponse;
+            /**
+             * Instant RP retention policy range in days
+             */
+            instantRpRetentionRangeInDays?: number;
+            /**
+             * Number of items associated with this policy.
+             */
+            protectedItemsCount?: number;
+            /**
+             * Retention policy with the details on backup copy retention ranges.
+             */
+            retentionPolicy?: outputs.recoveryservices.v20201001.LongTermRetentionPolicyResponse | outputs.recoveryservices.v20201001.SimpleRetentionPolicyResponse;
+            /**
+             * Backup schedule specified as part of backup policy.
+             */
+            schedulePolicy?: outputs.recoveryservices.v20201001.LogSchedulePolicyResponse | outputs.recoveryservices.v20201001.LongTermSchedulePolicyResponse | outputs.recoveryservices.v20201001.SimpleSchedulePolicyResponse;
+            /**
+             * TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
+             */
+            timeZone?: string;
+        }
+
+        /**
+         * Azure Sql workload-specific container.
+         */
+        export interface AzureSqlContainerResponse {
+            /**
+             * Type of backup management for the container.
+             */
+            backupManagementType?: string;
+            /**
+             * Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+             * Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+             * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+             * Backup is VMAppContainer
+             */
+            containerType: "AzureSqlContainer";
+            /**
+             * Friendly name of the container.
+             */
+            friendlyName?: string;
+            /**
+             * Status of health of the container.
+             */
+            healthStatus?: string;
+            /**
+             * Status of registration of the container with the Recovery Services Vault.
+             */
+            registrationStatus?: string;
+        }
+
+        /**
+         * Additional information on Azure Sql specific protected item.
+         */
+        export interface AzureSqlProtectedItemExtendedInfoResponse {
+            /**
+             * The oldest backup copy available for this item in the service.
+             */
+            oldestRecoveryPoint?: string;
+            /**
+             * State of the backup policy associated with this backup item.
+             */
+            policyState?: string;
+            /**
+             * Number of available backup copies associated with this backup item.
+             */
+            recoveryPointCount?: number;
+        }
+
+        /**
+         * Azure SQL workload-specific backup item.
+         */
+        export interface AzureSqlProtectedItemResponse {
+            /**
+             * Type of backup management for the backed up item.
+             */
+            backupManagementType?: string;
+            /**
+             * Name of the backup set the backup item belongs to
+             */
+            backupSetName?: string;
+            /**
+             * Unique name of container
+             */
+            containerName?: string;
+            /**
+             * Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+             */
+            createMode?: string;
+            /**
+             * Time for deferred deletion in UTC
+             */
+            deferredDeleteTimeInUTC?: string;
+            /**
+             * Time remaining before the DS marked for deferred delete is permanently deleted
+             */
+            deferredDeleteTimeRemaining?: string;
+            /**
+             * Additional information for this backup item.
+             */
+            extendedInfo?: outputs.recoveryservices.v20201001.AzureSqlProtectedItemExtendedInfoResponse;
+            /**
+             * Flag to identify whether the deferred deleted DS is to be purged soon
+             */
+            isDeferredDeleteScheduleUpcoming?: boolean;
+            /**
+             * Flag to identify that deferred deleted DS is to be moved into Pause state
+             */
+            isRehydrate?: boolean;
+            /**
+             * Flag to identify whether the DS is scheduled for deferred delete
+             */
+            isScheduledForDeferredDelete?: boolean;
+            /**
+             * Timestamp when the last (latest) backup copy was created for this backup item.
+             */
+            lastRecoveryPoint?: string;
+            /**
+             * ID of the backup policy with which this item is backed up.
+             */
+            policyId?: string;
+            /**
+             * Internal ID of a backup item. Used by Azure SQL Backup engine to contact Recovery Services.
+             */
+            protectedItemDataId?: string;
+            /**
+             * backup item type.
+             */
+            protectedItemType: "Microsoft.Sql/servers/databases";
+            /**
+             * Backup state of the backed up item.
+             */
+            protectionState?: string;
+            /**
+             * ARM ID of the resource to be backed up.
+             */
+            sourceResourceId?: string;
+            /**
+             * Type of workload this item represents.
+             */
+            workloadType?: string;
+        }
+
+        /**
+         * Azure SQL workload-specific backup policy.
+         */
+        export interface AzureSqlProtectionPolicyResponse {
+            /**
+             * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+             */
+            backupManagementType: "AzureSql";
+            /**
+             * Number of items associated with this policy.
+             */
+            protectedItemsCount?: number;
+            /**
+             * Retention policy details.
+             */
+            retentionPolicy?: outputs.recoveryservices.v20201001.LongTermRetentionPolicyResponse | outputs.recoveryservices.v20201001.SimpleRetentionPolicyResponse;
+        }
+
+        /**
+         * Azure Storage Account workload-specific container.
+         */
+        export interface AzureStorageContainerResponse {
+            /**
+             * Type of backup management for the container.
+             */
+            backupManagementType?: string;
+            /**
+             * Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+             * Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+             * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+             * Backup is VMAppContainer
+             */
+            containerType: "StorageContainer";
+            /**
+             * Friendly name of the container.
+             */
+            friendlyName?: string;
+            /**
+             * Status of health of the container.
+             */
+            healthStatus?: string;
+            /**
+             * Number of items backed up in this container.
+             */
+            protectedItemCount?: number;
+            /**
+             * Status of registration of the container with the Recovery Services Vault.
+             */
+            registrationStatus?: string;
+            /**
+             * Resource group name of Recovery Services Vault.
+             */
+            resourceGroup?: string;
+            /**
+             * Fully qualified ARM url.
+             */
+            sourceResourceId?: string;
+            /**
+             * Storage account version.
+             */
+            storageAccountVersion?: string;
+        }
+
+        /**
+         * Additional information on Azure Workload for SQL specific backup item.
+         */
+        export interface AzureVmWorkloadProtectedItemExtendedInfoResponse {
+            /**
+             * The oldest backup copy available for this backup item.
+             */
+            oldestRecoveryPoint?: string;
+            /**
+             * Indicates consistency of policy object and policy applied to this backup item.
+             */
+            policyState?: string;
+            /**
+             * Number of backup copies available for this backup item.
+             */
+            recoveryPointCount?: number;
+        }
+
+        /**
+         * Azure VM workload-specific protected item.
+         */
+        export interface AzureVmWorkloadProtectedItemResponse {
+            /**
+             * Type of backup management for the backed up item.
+             */
+            backupManagementType?: string;
+            /**
+             * Name of the backup set the backup item belongs to
+             */
+            backupSetName?: string;
+            /**
+             * Unique name of container
+             */
+            containerName?: string;
+            /**
+             * Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+             */
+            createMode?: string;
+            /**
+             * Time for deferred deletion in UTC
+             */
+            deferredDeleteTimeInUTC?: string;
+            /**
+             * Time remaining before the DS marked for deferred delete is permanently deleted
+             */
+            deferredDeleteTimeRemaining?: string;
+            /**
+             * Additional information for this backup item.
+             */
+            extendedInfo?: outputs.recoveryservices.v20201001.AzureVmWorkloadProtectedItemExtendedInfoResponse;
+            /**
+             * Friendly name of the DB represented by this backup item.
+             */
+            friendlyName?: string;
+            /**
+             * Flag to identify whether the deferred deleted DS is to be purged soon
+             */
+            isDeferredDeleteScheduleUpcoming?: boolean;
+            /**
+             * Flag to identify that deferred deleted DS is to be moved into Pause state
+             */
+            isRehydrate?: boolean;
+            /**
+             * Flag to identify whether the DS is scheduled for deferred delete
+             */
+            isScheduledForDeferredDelete?: boolean;
+            /**
+             * Health details of different KPIs
+             */
+            kpisHealths?: {[key: string]: outputs.recoveryservices.v20201001.KPIResourceHealthDetailsResponse};
+            /**
+             * Error details in last backup
+             */
+            lastBackupErrorDetail?: outputs.recoveryservices.v20201001.ErrorDetailResponse;
+            /**
+             * Last backup operation status. Possible values: Healthy, Unhealthy.
+             */
+            lastBackupStatus?: string;
+            /**
+             * Timestamp of the last backup operation on this backup item.
+             */
+            lastBackupTime?: string;
+            /**
+             * Timestamp when the last (latest) backup copy was created for this backup item.
+             */
+            lastRecoveryPoint?: string;
+            /**
+             * Parent name of the DB such as Instance or Availability Group.
+             */
+            parentName?: string;
+            /**
+             * Parent type of protected item, example: for a DB, standalone server or distributed
+             */
+            parentType?: string;
+            /**
+             * ID of the backup policy with which this item is backed up.
+             */
+            policyId?: string;
+            /**
+             * Data ID of the protected item.
+             */
+            protectedItemDataSourceId?: string;
+            /**
+             * Health status of the backup item, evaluated based on last heartbeat received
+             */
+            protectedItemHealthStatus?: string;
+            /**
+             * backup item type.
+             */
+            protectedItemType: "AzureVmWorkloadProtectedItem";
+            /**
+             * Backup state of this backup item.
+             */
+            protectionState?: string;
+            /**
+             * Backup status of this backup item.
+             */
+            protectionStatus?: string;
+            /**
+             * Host/Cluster Name for instance or AG
+             */
+            serverName?: string;
+            /**
+             * ARM ID of the resource to be backed up.
+             */
+            sourceResourceId?: string;
+            /**
+             * Type of workload this item represents.
+             */
+            workloadType?: string;
+        }
+
+        /**
+         * Azure VM (Mercury) workload-specific backup policy.
+         */
+        export interface AzureVmWorkloadProtectionPolicyResponse {
+            /**
+             * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+             */
+            backupManagementType: "AzureWorkload";
+            /**
+             * Fix the policy inconsistency
+             */
+            makePolicyConsistent?: boolean;
+            /**
+             * Number of items associated with this policy.
+             */
+            protectedItemsCount?: number;
+            /**
+             * Common settings for the backup management
+             */
+            settings?: outputs.recoveryservices.v20201001.SettingsResponse;
+            /**
+             * List of sub-protection policies which includes schedule and retention
+             */
+            subProtectionPolicy?: outputs.recoveryservices.v20201001.SubProtectionPolicyResponse[];
+            /**
+             * Type of workload for the backup management
+             */
+            workLoadType?: string;
+        }
+
+        /**
+         * Extended information of the container.
+         */
+        export interface AzureWorkloadContainerExtendedInfoResponse {
+            /**
+             * Host Os Name in case of Stand Alone and Cluster Name in case of distributed container.
+             */
+            hostServerName?: string;
+            /**
+             * Inquiry Status for the container.
+             */
+            inquiryInfo?: outputs.recoveryservices.v20201001.InquiryInfoResponse;
+            /**
+             * List of the nodes in case of distributed container.
+             */
+            nodesList?: outputs.recoveryservices.v20201001.DistributedNodesInfoResponse[];
+        }
+
+        /**
+         * Container for the workloads running inside Azure Compute or Classic Compute.
+         */
+        export interface AzureWorkloadContainerResponse {
+            /**
+             * Type of backup management for the container.
+             */
+            backupManagementType?: string;
+            /**
+             * Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+             * Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+             * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+             * Backup is VMAppContainer
+             */
+            containerType: "AzureWorkloadContainer";
+            /**
+             * Additional details of a workload container.
+             */
+            extendedInfo?: outputs.recoveryservices.v20201001.AzureWorkloadContainerExtendedInfoResponse;
+            /**
+             * Friendly name of the container.
+             */
+            friendlyName?: string;
+            /**
+             * Status of health of the container.
+             */
+            healthStatus?: string;
+            /**
+             * Time stamp when this container was updated.
+             */
+            lastUpdatedTime?: string;
+            /**
+             * Re-Do Operation
+             */
+            operationType?: string;
+            /**
+             * Status of registration of the container with the Recovery Services Vault.
+             */
+            registrationStatus?: string;
+            /**
+             * ARM ID of the virtual machine represented by this Azure Workload Container
+             */
+            sourceResourceId?: string;
+            /**
+             * Workload type for which registration was sent.
+             */
+            workloadType?: string;
+        }
+
+        /**
+         * Container identity information
+         */
+        export interface ContainerIdentityInfoResponse {
+            /**
+             * Protection container identity - AAD Tenant
+             */
+            aadTenantId?: string;
+            /**
+             * Protection container identity - Audience
+             */
+            audience?: string;
+            /**
+             * Protection container identity - AAD Service Principal
+             */
+            servicePrincipalClientId?: string;
+            /**
+             * Unique name of the container
+             */
+            uniqueName?: string;
+        }
+
+        /**
+         * Additional information of the DPMContainer.
+         */
+        export interface DPMContainerExtendedInfoResponse {
+            /**
+             * Last refresh time of the DPMContainer.
+             */
+            lastRefreshedAt?: string;
+        }
+
+        /**
+         * Additional information of DPM Protected item.
+         */
+        export interface DPMProtectedItemExtendedInfoResponse {
+            /**
+             * Used Disk storage in bytes.
+             */
+            diskStorageUsedInBytes?: string;
+            /**
+             * To check if backup item is collocated.
+             */
+            isCollocated?: boolean;
+            /**
+             * To check if backup item is cloud protected.
+             */
+            isPresentOnCloud?: boolean;
+            /**
+             * Last backup status information on backup item.
+             */
+            lastBackupStatus?: string;
+            /**
+             * Last refresh time on backup item.
+             */
+            lastRefreshedAt?: string;
+            /**
+             * Oldest cloud recovery point time.
+             */
+            oldestRecoveryPoint?: string;
+            /**
+             * latest disk recovery point time.
+             */
+            onPremiseLatestRecoveryPoint?: string;
+            /**
+             * Oldest disk recovery point time.
+             */
+            onPremiseOldestRecoveryPoint?: string;
+            /**
+             * disk recovery point count.
+             */
+            onPremiseRecoveryPointCount?: number;
+            /**
+             * Attribute to provide information on various DBs.
+             */
+            protectableObjectLoadPath?: {[key: string]: string};
+            /**
+             * To check if backup item is disk protected.
+             */
+            protected?: boolean;
+            /**
+             * Protection group name of the backup item.
+             */
+            protectionGroupName?: string;
+            /**
+             * cloud recovery point count.
+             */
+            recoveryPointCount?: number;
+            /**
+             * total Disk storage in bytes.
+             */
+            totalDiskStorageSizeInBytes?: string;
+        }
+
+        /**
+         * Additional information on Backup engine specific backup item.
+         */
+        export interface DPMProtectedItemResponse {
+            /**
+             * Backup Management server protecting this backup item
+             */
+            backupEngineName?: string;
+            /**
+             * Type of backup management for the backed up item.
+             */
+            backupManagementType?: string;
+            /**
+             * Name of the backup set the backup item belongs to
+             */
+            backupSetName?: string;
+            /**
+             * Unique name of container
+             */
+            containerName?: string;
+            /**
+             * Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+             */
+            createMode?: string;
+            /**
+             * Time for deferred deletion in UTC
+             */
+            deferredDeleteTimeInUTC?: string;
+            /**
+             * Time remaining before the DS marked for deferred delete is permanently deleted
+             */
+            deferredDeleteTimeRemaining?: string;
+            /**
+             * Extended info of the backup item.
+             */
+            extendedInfo?: outputs.recoveryservices.v20201001.DPMProtectedItemExtendedInfoResponse;
+            /**
+             * Friendly name of the managed item
+             */
+            friendlyName?: string;
+            /**
+             * Flag to identify whether the deferred deleted DS is to be purged soon
+             */
+            isDeferredDeleteScheduleUpcoming?: boolean;
+            /**
+             * Flag to identify that deferred deleted DS is to be moved into Pause state
+             */
+            isRehydrate?: boolean;
+            /**
+             * Flag to identify whether the DS is scheduled for deferred delete
+             */
+            isScheduledForDeferredDelete?: boolean;
+            /**
+             * Timestamp when the last (latest) backup copy was created for this backup item.
+             */
+            lastRecoveryPoint?: string;
+            /**
+             * ID of the backup policy with which this item is backed up.
+             */
+            policyId?: string;
+            /**
+             * backup item type.
+             */
+            protectedItemType: "DPMProtectedItem";
+            /**
+             * Protection state of the backup engine
+             */
+            protectionState?: string;
+            /**
+             * ARM ID of the resource to be backed up.
+             */
+            sourceResourceId?: string;
+            /**
+             * Type of workload this item represents.
+             */
+            workloadType?: string;
+        }
+
+        /**
+         * Daily retention format.
+         */
+        export interface DailyRetentionFormatResponse {
+            /**
+             * List of days of the month.
+             */
+            daysOfTheMonth?: outputs.recoveryservices.v20201001.DayResponse[];
+        }
+
+        /**
+         * Daily retention schedule.
+         */
+        export interface DailyRetentionScheduleResponse {
+            /**
+             * Retention duration of retention Policy.
+             */
+            retentionDuration?: outputs.recoveryservices.v20201001.RetentionDurationResponse;
+            /**
+             * Retention times of retention policy.
+             */
+            retentionTimes?: string[];
+        }
+
+        /**
+         * Day of the week.
+         */
+        export interface DayResponse {
+            /**
+             * Date of the month
+             */
+            date?: number;
+            /**
+             * Whether Date is last date of month
+             */
+            isLast?: boolean;
+        }
+
+        export interface DiskExclusionPropertiesResponse {
+            /**
+             * List of Disks' Logical Unit Numbers (LUN) to be used for VM Protection.
+             */
+            diskLunList?: number[];
+            /**
+             * Flag to indicate whether DiskLunList is to be included/ excluded from backup.
+             */
+            isInclusionList?: boolean;
+        }
+
+        /**
+         * This is used to represent the various nodes of the distributed container.
+         */
+        export interface DistributedNodesInfoResponse {
+            /**
+             * Error Details if the Status is non-success.
+             */
+            errorDetail?: outputs.recoveryservices.v20201001.ErrorDetailResponse;
+            /**
+             * Name of the node under a distributed container.
+             */
+            nodeName?: string;
+            /**
+             * Status of this Node.
+             * Failed | Succeeded
+             */
+            status?: string;
+        }
+
+        /**
+         * DPM workload-specific protection container.
+         */
+        export interface DpmContainerResponse {
+            /**
+             * Type of backup management for the container.
+             */
+            backupManagementType?: string;
+            /**
+             * Specifies whether the container is re-registrable.
+             */
+            canReRegister?: boolean;
+            /**
+             * ID of container.
+             */
+            containerId?: string;
+            /**
+             * Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+             * Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+             * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+             * Backup is VMAppContainer
+             */
+            containerType: "DPMContainer";
+            /**
+             * Backup engine Agent version
+             */
+            dpmAgentVersion?: string;
+            /**
+             * List of BackupEngines protecting the container
+             */
+            dpmServers?: string[];
+            /**
+             * Extended Info of the container.
+             */
+            extendedInfo?: outputs.recoveryservices.v20201001.DPMContainerExtendedInfoResponse;
+            /**
+             * Friendly name of the container.
+             */
+            friendlyName?: string;
+            /**
+             * Status of health of the container.
+             */
+            healthStatus?: string;
+            /**
+             * Number of protected items in the BackupEngine
+             */
+            protectedItemCount?: number;
+            /**
+             * Protection status of the container.
+             */
+            protectionStatus?: string;
+            /**
+             * Status of registration of the container with the Recovery Services Vault.
+             */
+            registrationStatus?: string;
+            /**
+             * To check if upgrade available
+             */
+            upgradeAvailable?: boolean;
+        }
+
+        /**
+         * Error Detail class which encapsulates Code, Message and Recommendations.
+         */
+        export interface ErrorDetailResponse {
+            /**
+             * Error code.
+             */
+            code: string;
+            /**
+             * Error Message related to the Code.
+             */
+            message: string;
+            /**
+             * List of recommendation strings.
+             */
+            recommendations: string[];
+        }
+
+        /**
+         * Extended Properties for Azure IaasVM Backup.
+         */
+        export interface ExtendedPropertiesResponse {
+            /**
+             * Extended Properties for Disk Exclusion.
+             */
+            diskExclusionProperties?: outputs.recoveryservices.v20201001.DiskExclusionPropertiesResponse;
+        }
+
+        /**
+         * Container extended information
+         */
+        export interface GenericContainerExtendedInfoResponse {
+            /**
+             * Container identity information
+             */
+            containerIdentityInfo?: outputs.recoveryservices.v20201001.ContainerIdentityInfoResponse;
+            /**
+             * Public key of container cert
+             */
+            rawCertData?: string;
+            /**
+             * Azure Backup Service Endpoints for the container
+             */
+            serviceEndpoints?: {[key: string]: string};
+        }
+
+        /**
+         * Base class for generic container of backup items
+         */
+        export interface GenericContainerResponse {
+            /**
+             * Type of backup management for the container.
+             */
+            backupManagementType?: string;
+            /**
+             * Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+             * Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+             * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+             * Backup is VMAppContainer
+             */
+            containerType: "GenericContainer";
+            /**
+             * Extended information (not returned in List container API calls)
+             */
+            extendedInformation?: outputs.recoveryservices.v20201001.GenericContainerExtendedInfoResponse;
+            /**
+             * Name of the container's fabric
+             */
+            fabricName?: string;
+            /**
+             * Friendly name of the container.
+             */
+            friendlyName?: string;
+            /**
+             * Status of health of the container.
+             */
+            healthStatus?: string;
+            /**
+             * Status of registration of the container with the Recovery Services Vault.
+             */
+            registrationStatus?: string;
+        }
+
+        /**
+         * Base class for backup items.
+         */
+        export interface GenericProtectedItemResponse {
+            /**
+             * Type of backup management for the backed up item.
+             */
+            backupManagementType?: string;
+            /**
+             * Name of the backup set the backup item belongs to
+             */
+            backupSetName?: string;
+            /**
+             * Unique name of container
+             */
+            containerName?: string;
+            /**
+             * Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+             */
+            createMode?: string;
+            /**
+             * Time for deferred deletion in UTC
+             */
+            deferredDeleteTimeInUTC?: string;
+            /**
+             * Time remaining before the DS marked for deferred delete is permanently deleted
+             */
+            deferredDeleteTimeRemaining?: string;
+            /**
+             * Name of this backup item's fabric.
+             */
+            fabricName?: string;
+            /**
+             * Friendly name of the container.
+             */
+            friendlyName?: string;
+            /**
+             * Flag to identify whether the deferred deleted DS is to be purged soon
+             */
+            isDeferredDeleteScheduleUpcoming?: boolean;
+            /**
+             * Flag to identify that deferred deleted DS is to be moved into Pause state
+             */
+            isRehydrate?: boolean;
+            /**
+             * Flag to identify whether the DS is scheduled for deferred delete
+             */
+            isScheduledForDeferredDelete?: boolean;
+            /**
+             * Timestamp when the last (latest) backup copy was created for this backup item.
+             */
+            lastRecoveryPoint?: string;
+            /**
+             * ID of the backup policy with which this item is backed up.
+             */
+            policyId?: string;
+            /**
+             * Indicates consistency of policy object and policy applied to this backup item.
+             */
+            policyState?: string;
+            /**
+             * Data Plane Service ID of the protected item.
+             */
+            protectedItemId?: number;
+            /**
+             * backup item type.
+             */
+            protectedItemType: "GenericProtectedItem";
+            /**
+             * Backup state of this backup item.
+             */
+            protectionState?: string;
+            /**
+             * Loosely coupled (type, value) associations (example - parent of a protected item)
+             */
+            sourceAssociations?: {[key: string]: string};
+            /**
+             * ARM ID of the resource to be backed up.
+             */
+            sourceResourceId?: string;
+            /**
+             * Type of workload this item represents.
+             */
+            workloadType?: string;
+        }
+
+        /**
+         * Azure VM (Mercury) workload-specific backup policy.
+         */
+        export interface GenericProtectionPolicyResponse {
+            /**
+             * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+             */
+            backupManagementType: "GenericProtectionPolicy";
+            /**
+             * Name of this policy's fabric.
+             */
+            fabricName?: string;
+            /**
+             * Number of items associated with this policy.
+             */
+            protectedItemsCount?: number;
+            /**
+             * List of sub-protection policies which includes schedule and retention
+             */
+            subProtectionPolicy?: outputs.recoveryservices.v20201001.SubProtectionPolicyResponse[];
+            /**
+             * TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
+             */
+            timeZone?: string;
+        }
+
+        /**
+         * IaaS VM workload-specific container.
+         */
+        export interface IaaSVMContainerResponse {
+            /**
+             * Type of backup management for the container.
+             */
+            backupManagementType?: string;
+            /**
+             * Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+             * Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+             * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+             * Backup is VMAppContainer
+             */
+            containerType: "IaaSVMContainer";
+            /**
+             * Friendly name of the container.
+             */
+            friendlyName?: string;
+            /**
+             * Status of health of the container.
+             */
+            healthStatus?: string;
+            /**
+             * Status of registration of the container with the Recovery Services Vault.
+             */
+            registrationStatus?: string;
+            /**
+             * Resource group name of Recovery Services Vault.
+             */
+            resourceGroup?: string;
+            /**
+             * Fully qualified ARM url of the virtual machine represented by this Azure IaaS VM container.
+             */
+            virtualMachineId?: string;
+            /**
+             * Specifies whether the container represents a Classic or an Azure Resource Manager VM.
+             */
+            virtualMachineVersion?: string;
+        }
+
+        /**
+         * Details about inquired protectable items under a given container.
+         */
+        export interface InquiryInfoResponse {
+            /**
+             * Error Details if the Status is non-success.
+             */
+            errorDetail?: outputs.recoveryservices.v20201001.ErrorDetailResponse;
+            /**
+             * Inquiry Details which will have workload specific details.
+             * For e.g. - For SQL and oracle this will contain different details.
+             */
+            inquiryDetails?: outputs.recoveryservices.v20201001.WorkloadInquiryDetailsResponse[];
+            /**
+             * Inquiry Status for this container such as
+             * InProgress | Failed | Succeeded
+             */
+            status?: string;
+        }
+
+        /**
+         * Validation for inquired protectable items under a given container.
+         */
+        export interface InquiryValidationResponse {
+            /**
+             * Error Additional Detail in case the status is non-success.
+             */
+            additionalDetail: string;
+            /**
+             * Error Detail in case the status is non-success.
+             */
+            errorDetail?: outputs.recoveryservices.v20201001.ErrorDetailResponse;
+            /**
+             * Status for the Inquiry Validation.
+             */
+            status?: string;
+        }
+
+        export interface InstantRPAdditionalDetailsResponse {
+            azureBackupRGNamePrefix?: string;
+            azureBackupRGNameSuffix?: string;
+        }
+
+        /**
+         * KPI Resource Health Details
+         */
+        export interface KPIResourceHealthDetailsResponse {
+            /**
+             * Resource Health Status
+             */
+            resourceHealthDetails?: outputs.recoveryservices.v20201001.ResourceHealthDetailsResponse[];
+            /**
+             * Resource Health Status
+             */
+            resourceHealthStatus?: string;
+        }
+
+        /**
+         * Log policy schedule.
+         */
+        export interface LogSchedulePolicyResponse {
+            /**
+             * Frequency of the log schedule operation of this policy in minutes.
+             */
+            scheduleFrequencyInMins?: number;
+            /**
+             * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+             */
+            schedulePolicyType: "LogSchedulePolicy";
+        }
+
+        /**
+         * Long term retention policy.
+         */
+        export interface LongTermRetentionPolicyResponse {
+            /**
+             * Daily retention schedule of the protection policy.
+             */
+            dailySchedule?: outputs.recoveryservices.v20201001.DailyRetentionScheduleResponse;
+            /**
+             * Monthly retention schedule of the protection policy.
+             */
+            monthlySchedule?: outputs.recoveryservices.v20201001.MonthlyRetentionScheduleResponse;
+            /**
+             * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+             */
+            retentionPolicyType: "LongTermRetentionPolicy";
+            /**
+             * Weekly retention schedule of the protection policy.
+             */
+            weeklySchedule?: outputs.recoveryservices.v20201001.WeeklyRetentionScheduleResponse;
+            /**
+             * Yearly retention schedule of the protection policy.
+             */
+            yearlySchedule?: outputs.recoveryservices.v20201001.YearlyRetentionScheduleResponse;
+        }
+
+        /**
+         * Long term policy schedule.
+         */
+        export interface LongTermSchedulePolicyResponse {
+            /**
+             * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+             */
+            schedulePolicyType: "LongTermSchedulePolicy";
+        }
+
+        /**
+         * MAB workload-specific Health Details.
+         */
+        export interface MABContainerHealthDetailsResponse {
+            /**
+             * Health Code
+             */
+            code?: number;
+            /**
+             * Health Message
+             */
+            message?: string;
+            /**
+             * Health Recommended Actions
+             */
+            recommendations?: string[];
+            /**
+             * Health Title
+             */
+            title?: string;
+        }
+
+        /**
+         * Additional information of the container.
+         */
+        export interface MabContainerExtendedInfoResponse {
+            /**
+             * Type of backup items associated with this container.
+             */
+            backupItemType?: string;
+            /**
+             * List of backup items associated with this container.
+             */
+            backupItems?: string[];
+            /**
+             * Latest backup status of this container.
+             */
+            lastBackupStatus?: string;
+            /**
+             * Time stamp when this container was refreshed.
+             */
+            lastRefreshedAt?: string;
+            /**
+             * Backup policy associated with this container.
+             */
+            policyName?: string;
+        }
+
+        /**
+         * Container with items backed up using MAB backup engine.
+         */
+        export interface MabContainerResponse {
+            /**
+             * Agent version of this container.
+             */
+            agentVersion?: string;
+            /**
+             * Type of backup management for the container.
+             */
+            backupManagementType?: string;
+            /**
+             * Can the container be registered one more time.
+             */
+            canReRegister?: boolean;
+            /**
+             * Health state of mab container.
+             */
+            containerHealthState?: string;
+            /**
+             * ContainerID represents the container.
+             */
+            containerId?: number;
+            /**
+             * Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+             * Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+             * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+             * Backup is VMAppContainer
+             */
+            containerType: "Windows";
+            /**
+             * Additional information for this container
+             */
+            extendedInfo?: outputs.recoveryservices.v20201001.MabContainerExtendedInfoResponse;
+            /**
+             * Friendly name of the container.
+             */
+            friendlyName?: string;
+            /**
+             * Status of health of the container.
+             */
+            healthStatus?: string;
+            /**
+             * Health details on this mab container.
+             */
+            mabContainerHealthDetails?: outputs.recoveryservices.v20201001.MABContainerHealthDetailsResponse[];
+            /**
+             * Number of items backed up in this container.
+             */
+            protectedItemCount?: number;
+            /**
+             * Status of registration of the container with the Recovery Services Vault.
+             */
+            registrationStatus?: string;
+        }
+
+        /**
+         * Additional information on the backed up item.
+         */
+        export interface MabFileFolderProtectedItemExtendedInfoResponse {
+            /**
+             * Last time when the agent data synced to service.
+             */
+            lastRefreshedAt?: string;
+            /**
+             * The oldest backup copy available.
+             */
+            oldestRecoveryPoint?: string;
+            /**
+             * Number of backup copies associated with the backup item.
+             */
+            recoveryPointCount?: number;
+        }
+
+        /**
+         * MAB workload-specific backup item.
+         */
+        export interface MabFileFolderProtectedItemResponse {
+            /**
+             * Type of backup management for the backed up item.
+             */
+            backupManagementType?: string;
+            /**
+             * Name of the backup set the backup item belongs to
+             */
+            backupSetName?: string;
+            /**
+             * Name of the computer associated with this backup item.
+             */
+            computerName?: string;
+            /**
+             * Unique name of container
+             */
+            containerName?: string;
+            /**
+             * Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+             */
+            createMode?: string;
+            /**
+             * Sync time for deferred deletion in UTC
+             */
+            deferredDeleteSyncTimeInUTC?: number;
+            /**
+             * Time for deferred deletion in UTC
+             */
+            deferredDeleteTimeInUTC?: string;
+            /**
+             * Time remaining before the DS marked for deferred delete is permanently deleted
+             */
+            deferredDeleteTimeRemaining?: string;
+            /**
+             * Additional information with this backup item.
+             */
+            extendedInfo?: outputs.recoveryservices.v20201001.MabFileFolderProtectedItemExtendedInfoResponse;
+            /**
+             * Friendly name of this backup item.
+             */
+            friendlyName?: string;
+            /**
+             * Flag to identify whether the deferred deleted DS is to be purged soon
+             */
+            isDeferredDeleteScheduleUpcoming?: boolean;
+            /**
+             * Flag to identify that deferred deleted DS is to be moved into Pause state
+             */
+            isRehydrate?: boolean;
+            /**
+             * Flag to identify whether the DS is scheduled for deferred delete
+             */
+            isScheduledForDeferredDelete?: boolean;
+            /**
+             * Status of last backup operation.
+             */
+            lastBackupStatus?: string;
+            /**
+             * Timestamp of the last backup operation on this backup item.
+             */
+            lastBackupTime?: string;
+            /**
+             * Timestamp when the last (latest) backup copy was created for this backup item.
+             */
+            lastRecoveryPoint?: string;
+            /**
+             * ID of the backup policy with which this item is backed up.
+             */
+            policyId?: string;
+            /**
+             * backup item type.
+             */
+            protectedItemType: "MabFileFolderProtectedItem";
+            /**
+             * Protected, ProtectionStopped, IRPending or ProtectionError
+             */
+            protectionState?: string;
+            /**
+             * ARM ID of the resource to be backed up.
+             */
+            sourceResourceId?: string;
+            /**
+             * Type of workload this item represents.
+             */
+            workloadType?: string;
+        }
+
+        /**
+         * Mab container-specific backup policy.
+         */
+        export interface MabProtectionPolicyResponse {
+            /**
+             * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+             */
+            backupManagementType: "MAB";
+            /**
+             * Number of items associated with this policy.
+             */
+            protectedItemsCount?: number;
+            /**
+             * Retention policy details.
+             */
+            retentionPolicy?: outputs.recoveryservices.v20201001.LongTermRetentionPolicyResponse | outputs.recoveryservices.v20201001.SimpleRetentionPolicyResponse;
+            /**
+             * Backup schedule of backup policy.
+             */
+            schedulePolicy?: outputs.recoveryservices.v20201001.LogSchedulePolicyResponse | outputs.recoveryservices.v20201001.LongTermSchedulePolicyResponse | outputs.recoveryservices.v20201001.SimpleSchedulePolicyResponse;
+        }
+
+        /**
+         * Monthly retention schedule.
+         */
+        export interface MonthlyRetentionScheduleResponse {
+            /**
+             * Retention duration of retention Policy.
+             */
+            retentionDuration?: outputs.recoveryservices.v20201001.RetentionDurationResponse;
+            /**
+             * Daily retention format for monthly retention policy.
+             */
+            retentionScheduleDaily?: outputs.recoveryservices.v20201001.DailyRetentionFormatResponse;
+            /**
+             * Retention schedule format type for monthly retention policy.
+             */
+            retentionScheduleFormatType?: string;
+            /**
+             * Weekly retention format for monthly retention policy.
+             */
+            retentionScheduleWeekly?: outputs.recoveryservices.v20201001.WeeklyRetentionFormatResponse;
+            /**
+             * Retention times of retention policy.
+             */
+            retentionTimes?: string[];
+        }
+
+        /**
+         * Private Endpoint Connection Response Properties
+         */
+        export interface PrivateEndpointConnectionResponse {
+            /**
+             * Gets or sets private endpoint associated with the private endpoint connection
+             */
+            privateEndpoint?: outputs.recoveryservices.v20201001.PrivateEndpointResponse;
+            /**
+             * Gets or sets private link service connection state
+             */
+            privateLinkServiceConnectionState?: outputs.recoveryservices.v20201001.PrivateLinkServiceConnectionStateResponse;
+            /**
+             * Gets or sets provisioning state of the private endpoint connection
+             */
+            provisioningState?: string;
+        }
+
+        /**
+         * The Private Endpoint network resource that is linked to the Private Endpoint connection
+         */
+        export interface PrivateEndpointResponse {
+            /**
+             * Gets or sets id
+             */
+            id?: string;
+        }
+
+        /**
+         * Private Link Service Connection State
+         */
+        export interface PrivateLinkServiceConnectionStateResponse {
+            /**
+             * Gets or sets actions required
+             */
+            actionRequired?: string;
+            /**
+             * Gets or sets description
+             */
+            description?: string;
+            /**
+             * Gets or sets the status
+             */
+            status?: string;
+        }
+
+        /**
+         * Health Details for backup items.
+         */
+        export interface ResourceHealthDetailsResponse {
+            /**
+             * Health Code
+             */
+            code: number;
+            /**
+             * Health Message
+             */
+            message: string;
+            /**
+             * Health Recommended Actions
+             */
+            recommendations: string[];
+            /**
+             * Health Title
+             */
+            title: string;
+        }
+
+        /**
+         * Retention duration.
+         */
+        export interface RetentionDurationResponse {
+            /**
+             * Count of duration types. Retention duration is obtained by the counting the duration type Count times.
+             * For example, when Count = 3 and DurationType = Weeks, retention duration will be three weeks.
+             */
+            count?: number;
+            /**
+             * Retention duration type of retention policy.
+             */
+            durationType?: string;
+        }
+
+        /**
+         * Common settings field for backup management
+         */
+        export interface SettingsResponse {
+            /**
+             * Workload compression flag. This has been added so that 'isSqlCompression'
+             * will be deprecated once clients upgrade to consider this flag.
+             */
+            isCompression?: boolean;
+            /**
+             * SQL compression flag
+             */
+            issqlcompression?: boolean;
+            /**
+             * TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
+             */
+            timeZone?: string;
+        }
+
+        /**
+         * Simple policy retention.
+         */
+        export interface SimpleRetentionPolicyResponse {
+            /**
+             * Retention duration of the protection policy.
+             */
+            retentionDuration?: outputs.recoveryservices.v20201001.RetentionDurationResponse;
+            /**
+             * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+             */
+            retentionPolicyType: "SimpleRetentionPolicy";
+        }
+
+        /**
+         * Simple policy schedule.
+         */
+        export interface SimpleSchedulePolicyResponse {
+            /**
+             * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+             */
+            schedulePolicyType: "SimpleSchedulePolicy";
+            /**
+             * List of days of week this schedule has to be run.
+             */
+            scheduleRunDays?: string[];
+            /**
+             * Frequency of the schedule operation of this policy.
+             */
+            scheduleRunFrequency?: string;
+            /**
+             * List of times of day this schedule has to be run.
+             */
+            scheduleRunTimes?: string[];
+            /**
+             * At every number weeks this schedule has to be run.
+             */
+            scheduleWeeklyFrequency?: number;
+        }
+
+        /**
+         * Sub-protection policy which includes schedule and retention
+         */
+        export interface SubProtectionPolicyResponse {
+            /**
+             * Type of backup policy type
+             */
+            policyType?: string;
+            /**
+             * Retention policy with the details on backup copy retention ranges.
+             */
+            retentionPolicy?: outputs.recoveryservices.v20201001.LongTermRetentionPolicyResponse | outputs.recoveryservices.v20201001.SimpleRetentionPolicyResponse;
+            /**
+             * Backup schedule specified as part of backup policy.
+             */
+            schedulePolicy?: outputs.recoveryservices.v20201001.LogSchedulePolicyResponse | outputs.recoveryservices.v20201001.LongTermSchedulePolicyResponse | outputs.recoveryservices.v20201001.SimpleSchedulePolicyResponse;
+        }
+
+        /**
+         * Weekly retention format.
+         */
+        export interface WeeklyRetentionFormatResponse {
+            /**
+             * List of days of the week.
+             */
+            daysOfTheWeek?: string[];
+            /**
+             * List of weeks of month.
+             */
+            weeksOfTheMonth?: string[];
+        }
+
+        /**
+         * Weekly retention schedule.
+         */
+        export interface WeeklyRetentionScheduleResponse {
+            /**
+             * List of days of week for weekly retention policy.
+             */
+            daysOfTheWeek?: string[];
+            /**
+             * Retention duration of retention Policy.
+             */
+            retentionDuration?: outputs.recoveryservices.v20201001.RetentionDurationResponse;
+            /**
+             * Retention times of retention policy.
+             */
+            retentionTimes?: string[];
+        }
+
+        /**
+         * Details of an inquired protectable item.
+         */
+        export interface WorkloadInquiryDetailsResponse {
+            /**
+             * Inquiry validation such as permissions and other backup validations.
+             */
+            inquiryValidation?: outputs.recoveryservices.v20201001.InquiryValidationResponse;
+            /**
+             * Contains the protectable item Count inside this Container.
+             */
+            itemCount?: number;
+            /**
+             * Type of the Workload such as SQL, Oracle etc.
+             */
+            type?: string;
+        }
+
+        /**
+         * Yearly retention schedule.
+         */
+        export interface YearlyRetentionScheduleResponse {
+            /**
+             * List of months of year of yearly retention policy.
+             */
+            monthsOfYear?: string[];
+            /**
+             * Retention duration of retention Policy.
+             */
+            retentionDuration?: outputs.recoveryservices.v20201001.RetentionDurationResponse;
+            /**
+             * Daily retention format for yearly retention policy.
+             */
+            retentionScheduleDaily?: outputs.recoveryservices.v20201001.DailyRetentionFormatResponse;
+            /**
+             * Retention schedule format for yearly retention policy.
+             */
+            retentionScheduleFormatType?: string;
+            /**
+             * Weekly retention format for yearly retention policy.
+             */
+            retentionScheduleWeekly?: outputs.recoveryservices.v20201001.WeeklyRetentionFormatResponse;
+            /**
+             * Retention times of retention policy.
+             */
+            retentionTimes?: string[];
         }
     }
 }
@@ -409575,6 +414088,16 @@ export namespace sql {
 
     export namespace v20200801preview {
         /**
+         * Properties for an Azure SQL Database Vulnerability Assessment rule baseline's result.
+         */
+        export interface DatabaseVulnerabilityAssessmentRuleBaselineItemResponse {
+            /**
+             * The rule baseline result
+             */
+            result: string[];
+        }
+
+        /**
          * Per database settings of an elastic pool.
          */
         export interface ElasticPoolPerDatabaseSettingsResponse {
@@ -409586,6 +414109,378 @@ export namespace sql {
              * The minimum capacity all databases are guaranteed.
              */
             minCapacity?: number;
+        }
+
+        /**
+         * Read-only endpoint of the failover group instance.
+         */
+        export interface FailoverGroupReadOnlyEndpointResponse {
+            /**
+             * Failover policy of the read-only endpoint for the failover group.
+             */
+            failoverPolicy?: string;
+        }
+
+        /**
+         * Read-write endpoint of the failover group instance.
+         */
+        export interface FailoverGroupReadWriteEndpointResponse {
+            /**
+             * Failover policy of the read-write endpoint for the failover group. If failoverPolicy is Automatic then failoverWithDataLossGracePeriodMinutes is required.
+             */
+            failoverPolicy: string;
+            /**
+             * Grace period before failover with data loss is attempted for the read-write endpoint. If failoverPolicy is Automatic then failoverWithDataLossGracePeriodMinutes is required.
+             */
+            failoverWithDataLossGracePeriodMinutes?: number;
+        }
+
+        /**
+         * Read-only endpoint of the failover group instance.
+         */
+        export interface InstanceFailoverGroupReadOnlyEndpointResponse {
+            /**
+             * Failover policy of the read-only endpoint for the failover group.
+             */
+            failoverPolicy?: string;
+        }
+
+        /**
+         * Read-write endpoint of the failover group instance.
+         */
+        export interface InstanceFailoverGroupReadWriteEndpointResponse {
+            /**
+             * Failover policy of the read-write endpoint for the failover group. If failoverPolicy is Automatic then failoverWithDataLossGracePeriodMinutes is required.
+             */
+            failoverPolicy: string;
+            /**
+             * Grace period before failover with data loss is attempted for the read-write endpoint. If failoverPolicy is Automatic then failoverWithDataLossGracePeriodMinutes is required.
+             */
+            failoverWithDataLossGracePeriodMinutes?: number;
+        }
+
+        /**
+         * Scheduling properties of a job.
+         */
+        export interface JobScheduleResponse {
+            /**
+             * Whether or not the schedule is enabled.
+             */
+            enabled?: boolean;
+            /**
+             * Schedule end time.
+             */
+            endTime?: string;
+            /**
+             * Value of the schedule's recurring interval, if the ScheduleType is recurring. ISO8601 duration format.
+             */
+            interval?: string;
+            /**
+             * Schedule start time.
+             */
+            startTime?: string;
+            /**
+             * Schedule interval type
+             */
+            type?: string;
+        }
+
+        /**
+         * The action to be executed by a job step.
+         */
+        export interface JobStepActionResponse {
+            /**
+             * The source of the action to execute.
+             */
+            source?: string;
+            /**
+             * Type of action being executed by the job step.
+             */
+            type?: string;
+            /**
+             * The action value, for example the text of the T-SQL script to execute.
+             */
+            value: string;
+        }
+
+        /**
+         * The execution options of a job step.
+         */
+        export interface JobStepExecutionOptionsResponse {
+            /**
+             * Initial delay between retries for job step execution.
+             */
+            initialRetryIntervalSeconds?: number;
+            /**
+             * The maximum amount of time to wait between retries for job step execution.
+             */
+            maximumRetryIntervalSeconds?: number;
+            /**
+             * Maximum number of times the job step will be reattempted if the first attempt fails.
+             */
+            retryAttempts?: number;
+            /**
+             * The backoff multiplier for the time between retries.
+             */
+            retryIntervalBackoffMultiplier?: number;
+            /**
+             * Execution timeout for the job step.
+             */
+            timeoutSeconds?: number;
+        }
+
+        /**
+         * The output configuration of a job step.
+         */
+        export interface JobStepOutputResponse {
+            /**
+             * The resource ID of the credential to use to connect to the output destination.
+             */
+            credential: string;
+            /**
+             * The output destination database.
+             */
+            databaseName: string;
+            /**
+             * The output destination resource group.
+             */
+            resourceGroupName?: string;
+            /**
+             * The output destination schema.
+             */
+            schemaName?: string;
+            /**
+             * The output destination server name.
+             */
+            serverName: string;
+            /**
+             * The output destination subscription id.
+             */
+            subscriptionId?: string;
+            /**
+             * The output destination table.
+             */
+            tableName: string;
+            /**
+             * The output destination type.
+             */
+            type?: string;
+        }
+
+        /**
+         * A job target, for example a specific database or a container of databases that is evaluated during job execution.
+         */
+        export interface JobTargetResponse {
+            /**
+             * The target database name.
+             */
+            databaseName?: string;
+            /**
+             * The target elastic pool name.
+             */
+            elasticPoolName?: string;
+            /**
+             * Whether the target is included or excluded from the group.
+             */
+            membershipType?: string;
+            /**
+             * The resource ID of the credential that is used during job execution to connect to the target and determine the list of databases inside the target.
+             */
+            refreshCredential?: string;
+            /**
+             * The target server name.
+             */
+            serverName?: string;
+            /**
+             * The target shard map.
+             */
+            shardMapName?: string;
+            /**
+             * The target type.
+             */
+            type: string;
+        }
+
+        /**
+         * Pairs of Managed Instances in the failover group.
+         */
+        export interface ManagedInstancePairInfoResponse {
+            /**
+             * Id of Partner Managed Instance in pair.
+             */
+            partnerManagedInstanceId?: string;
+            /**
+             * Id of Primary Managed Instance in pair.
+             */
+            primaryManagedInstanceId?: string;
+        }
+
+        /**
+         * A private endpoint connection under a managed instance
+         */
+        export interface ManagedInstancePecPropertyResponse {
+            /**
+             * Resource ID.
+             */
+            id: string;
+            /**
+             * Private endpoint connection properties
+             */
+            properties: outputs.sql.v20200801preview.ManagedInstancePrivateEndpointConnectionPropertiesResponse;
+        }
+
+        /**
+         * Properties of a private endpoint connection.
+         */
+        export interface ManagedInstancePrivateEndpointConnectionPropertiesResponse {
+            /**
+             * Private endpoint which the connection belongs to.
+             */
+            privateEndpoint?: outputs.sql.v20200801preview.ManagedInstancePrivateEndpointPropertyResponse;
+            /**
+             * Connection State of the Private Endpoint Connection.
+             */
+            privateLinkServiceConnectionState?: outputs.sql.v20200801preview.ManagedInstancePrivateLinkServiceConnectionStatePropertyResponse;
+            /**
+             * State of the Private Endpoint Connection.
+             */
+            provisioningState: string;
+        }
+
+        export interface ManagedInstancePrivateEndpointPropertyResponse {
+            /**
+             * Resource id of the private endpoint.
+             */
+            id?: string;
+        }
+
+        export interface ManagedInstancePrivateLinkServiceConnectionStatePropertyResponse {
+            /**
+             * The private link service connection description.
+             */
+            actionsRequired: string;
+            /**
+             * The private link service connection description.
+             */
+            description: string;
+            /**
+             * The private link service connection status.
+             */
+            status: string;
+        }
+
+        /**
+         * Partner server information for the failover group.
+         */
+        export interface PartnerInfoResponse {
+            /**
+             * Resource identifier of the partner server.
+             */
+            id: string;
+            /**
+             * Geo location of the partner server.
+             */
+            location: string;
+            /**
+             * Replication role of the partner server.
+             */
+            replicationRole: string;
+        }
+
+        /**
+         * Partner region information for the failover group.
+         */
+        export interface PartnerRegionInfoResponse {
+            /**
+             * Geo location of the partner managed instances.
+             */
+            location?: string;
+            /**
+             * Replication role of the partner managed instances.
+             */
+            replicationRole: string;
+        }
+
+        /**
+         * Properties of a private endpoint connection.
+         */
+        export interface PrivateEndpointConnectionPropertiesResponse {
+            /**
+             * Private endpoint which the connection belongs to.
+             */
+            privateEndpoint?: outputs.sql.v20200801preview.PrivateEndpointPropertyResponse;
+            /**
+             * Connection state of the private endpoint connection.
+             */
+            privateLinkServiceConnectionState?: outputs.sql.v20200801preview.PrivateLinkServiceConnectionStatePropertyResponse;
+            /**
+             * State of the private endpoint connection.
+             */
+            provisioningState: string;
+        }
+
+        export interface PrivateEndpointPropertyResponse {
+            /**
+             * Resource id of the private endpoint.
+             */
+            id?: string;
+        }
+
+        export interface PrivateLinkServiceConnectionStatePropertyResponse {
+            /**
+             * The actions required for private link service connection.
+             */
+            actionsRequired: string;
+            /**
+             * The private link service connection description.
+             */
+            description: string;
+            /**
+             * The private link service connection status.
+             */
+            status: string;
+        }
+
+        /**
+         * Azure Active Directory identity configuration for a resource.
+         */
+        export interface ResourceIdentityResponse {
+            /**
+             * The Azure Active Directory principal id.
+             */
+            principalId: string;
+            /**
+             * The Azure Active Directory tenant id.
+             */
+            tenantId: string;
+            /**
+             * The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
+             */
+            type?: string;
+        }
+
+        /**
+         * Server info for the server trust group.
+         */
+        export interface ServerInfoResponse {
+            /**
+             * Server Id.
+             */
+            serverId: string;
+        }
+
+        /**
+         * A private endpoint connection under a server
+         */
+        export interface ServerPrivateEndpointConnectionResponse {
+            /**
+             * Resource ID.
+             */
+            id: string;
+            /**
+             * Private endpoint connection properties
+             */
+            properties: outputs.sql.v20200801preview.PrivateEndpointConnectionPropertiesResponse;
         }
 
         /**
@@ -409612,6 +414507,70 @@ export namespace sql {
              * The tier or edition of the particular SKU, e.g. Basic, Premium.
              */
             tier?: string;
+        }
+
+        /**
+         * Properties of sync group schema.
+         */
+        export interface SyncGroupSchemaResponse {
+            /**
+             * Name of master sync member where the schema is from.
+             */
+            masterSyncMemberName?: string;
+            /**
+             * List of tables in sync group schema.
+             */
+            tables?: outputs.sql.v20200801preview.SyncGroupSchemaTableResponse[];
+        }
+
+        /**
+         * Properties of column in sync group table.
+         */
+        export interface SyncGroupSchemaTableColumnResponse {
+            /**
+             * Data size of the column.
+             */
+            dataSize?: string;
+            /**
+             * Data type of the column.
+             */
+            dataType?: string;
+            /**
+             * Quoted name of sync group table column.
+             */
+            quotedName?: string;
+        }
+
+        /**
+         * Properties of table in sync group schema.
+         */
+        export interface SyncGroupSchemaTableResponse {
+            /**
+             * List of columns in sync group schema.
+             */
+            columns?: outputs.sql.v20200801preview.SyncGroupSchemaTableColumnResponse[];
+            /**
+             * Quoted name of sync group schema table.
+             */
+            quotedName?: string;
+        }
+
+        /**
+         * Properties of a Vulnerability Assessment recurring scans.
+         */
+        export interface VulnerabilityAssessmentRecurringScansPropertiesResponse {
+            /**
+             * Specifies that the schedule scan notification will be is sent to the subscription administrators.
+             */
+            emailSubscriptionAdmins?: boolean;
+            /**
+             * Specifies an array of e-mail addresses to which the scan notification is sent.
+             */
+            emails?: string[];
+            /**
+             * Recurring scans state.
+             */
+            isEnabled?: boolean;
         }
     }
 }
@@ -416126,6 +421085,36 @@ export namespace storagecache {
         }
 
         /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
+        }
+
+        /**
          * Properties pertained to UnknownTarget
          */
         export interface UnknownTargetResponse {
@@ -416511,6 +421500,36 @@ export namespace storagecache {
              * Identifies the primary usage model to be used for this Storage Target. Get choices from .../usageModels
              */
             usageModel?: string;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
         }
 
         /**
