@@ -3,7 +3,9 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
-None
+New resources:
+
+- Azure KeyVault Secrets ([#54](https://github.com/pulumi/pulumi-azure-nextgen/issues/54))
 
 ---
 
