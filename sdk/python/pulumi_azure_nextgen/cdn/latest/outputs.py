@@ -10,12 +10,15 @@ from ... import _utilities, _tables
 from . import outputs
 
 __all__ = [
+    'AFDDomainHttpsParametersResponse',
     'CacheExpirationActionParametersResponse',
     'CacheKeyQueryStringActionParametersResponse',
     'CdnEndpointResponse',
+    'CompressionSettingsResponse',
     'CookiesMatchConditionParametersResponse',
     'CustomRuleListResponse',
     'CustomRuleResponse',
+    'CustomerCertificateParametersResponse',
     'DeepCreatedOriginGroupResponse',
     'DeepCreatedOriginResponse',
     'DeliveryRuleCacheExpirationActionResponse',
@@ -37,6 +40,7 @@ __all__ = [
     'DeliveryRuleUrlFileExtensionConditionResponse',
     'DeliveryRuleUrlFileNameConditionResponse',
     'DeliveryRuleUrlPathConditionResponse',
+    'DomainValidationPropertiesResponse',
     'EndpointPropertiesUpdateParametersResponseDeliveryPolicy',
     'EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLink',
     'GeoFilterResponse',
@@ -46,11 +50,15 @@ __all__ = [
     'HttpVersionMatchConditionParametersResponse',
     'IsDeviceMatchConditionParametersResponse',
     'KeyVaultSigningKeyParametersResponse',
+    'LoadBalancingSettingsParametersResponse',
+    'ManagedCertificateParametersResponse',
     'ManagedRuleGroupOverrideResponse',
     'ManagedRuleOverrideResponse',
     'ManagedRuleSetListResponse',
     'ManagedRuleSetResponse',
     'MatchConditionResponse',
+    'OriginGroupOverrideActionParametersResponse',
+    'OriginGroupOverrideActionResponse',
     'PolicySettingsResponse',
     'PostArgsMatchConditionParametersResponse',
     'QueryStringMatchConditionParametersResponse',
@@ -64,7 +72,11 @@ __all__ = [
     'RequestUriMatchConditionParametersResponse',
     'ResourceReferenceResponse',
     'ResponseBasedOriginErrorDetectionParametersResponse',
+    'SecurityPolicyWebApplicationFirewallAssociationResponse',
+    'SecurityPolicyWebApplicationFirewallParametersResponse',
+    'SharedPrivateLinkResourcePropertiesResponse',
     'SkuResponse',
+    'SystemDataResponse',
     'UrlFileExtensionMatchConditionParametersResponse',
     'UrlFileNameMatchConditionParametersResponse',
     'UrlPathMatchConditionParametersResponse',
@@ -74,9 +86,59 @@ __all__ = [
     'UrlRewriteActionResponse',
     'UrlSigningActionParametersResponse',
     'UrlSigningActionResponse',
+    'UrlSigningKeyParametersResponse',
     'UrlSigningKeyResponse',
     'UrlSigningParamIdentifierResponse',
 ]
+
+@pulumi.output_type
+class AFDDomainHttpsParametersResponse(dict):
+    """
+    The JSON object that contains the properties to secure a domain.
+    """
+    def __init__(__self__, *,
+                 certificate_type: str,
+                 minimum_tls_version: Optional[str] = None,
+                 secret: Optional['outputs.ResourceReferenceResponse'] = None):
+        """
+        The JSON object that contains the properties to secure a domain.
+        :param str certificate_type: Defines the source of the SSL certificate.
+        :param str minimum_tls_version: TLS protocol version that will be used for Https
+        :param 'ResourceReferenceResponseArgs' secret: Resource reference to the secret. ie. subs/rg/profile/secret
+        """
+        pulumi.set(__self__, "certificate_type", certificate_type)
+        if minimum_tls_version is not None:
+            pulumi.set(__self__, "minimum_tls_version", minimum_tls_version)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+
+    @property
+    @pulumi.getter(name="certificateType")
+    def certificate_type(self) -> str:
+        """
+        Defines the source of the SSL certificate.
+        """
+        return pulumi.get(self, "certificate_type")
+
+    @property
+    @pulumi.getter(name="minimumTlsVersion")
+    def minimum_tls_version(self) -> Optional[str]:
+        """
+        TLS protocol version that will be used for Https
+        """
+        return pulumi.get(self, "minimum_tls_version")
+
+    @property
+    @pulumi.getter
+    def secret(self) -> Optional['outputs.ResourceReferenceResponse']:
+        """
+        Resource reference to the secret. ie. subs/rg/profile/secret
+        """
+        return pulumi.get(self, "secret")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
 
 @pulumi.output_type
 class CacheExpirationActionParametersResponse(dict):
@@ -198,6 +260,44 @@ class CdnEndpointResponse(dict):
         ARM Resource ID string.
         """
         return pulumi.get(self, "id")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class CompressionSettingsResponse(dict):
+    """
+    settings for compression.
+    """
+    def __init__(__self__, *,
+                 content_types_to_compress: Optional[Sequence[str]] = None,
+                 is_compression_enabled: Optional[bool] = None):
+        """
+        settings for compression.
+        :param Sequence[str] content_types_to_compress: List of content types on which compression applies. The value should be a valid MIME type.
+        :param bool is_compression_enabled: Indicates whether content compression is enabled on AzureFrontDoor. Default value is false. If compression is enabled, content will be served as compressed if user requests for a compressed version. Content won't be compressed on AzureFrontDoor when requested content is smaller than 1 byte or larger than 1 MB.
+        """
+        if content_types_to_compress is not None:
+            pulumi.set(__self__, "content_types_to_compress", content_types_to_compress)
+        if is_compression_enabled is not None:
+            pulumi.set(__self__, "is_compression_enabled", is_compression_enabled)
+
+    @property
+    @pulumi.getter(name="contentTypesToCompress")
+    def content_types_to_compress(self) -> Optional[Sequence[str]]:
+        """
+        List of content types on which compression applies. The value should be a valid MIME type.
+        """
+        return pulumi.get(self, "content_types_to_compress")
+
+    @property
+    @pulumi.getter(name="isCompressionEnabled")
+    def is_compression_enabled(self) -> Optional[bool]:
+        """
+        Indicates whether content compression is enabled on AzureFrontDoor. Default value is false. If compression is enabled, content will be served as compressed if user requests for a compressed version. Content won't be compressed on AzureFrontDoor when requested content is smaller than 1 byte or larger than 1 MB.
+        """
+        return pulumi.get(self, "is_compression_enabled")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -374,6 +474,126 @@ class CustomRuleResponse(dict):
         Describes if the custom rule is in enabled or disabled state. Defaults to Enabled if not specified.
         """
         return pulumi.get(self, "enabled_state")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class CustomerCertificateParametersResponse(dict):
+    """
+    Customer Certificate used for https
+    """
+    def __init__(__self__, *,
+                 secret_source: 'outputs.ResourceReferenceResponse',
+                 type: str,
+                 certificate_authority: Optional[str] = None,
+                 expiration_date: Optional[str] = None,
+                 secret_version: Optional[str] = None,
+                 subject: Optional[str] = None,
+                 subject_alternative_names: Optional[Sequence[str]] = None,
+                 thumbprint: Optional[str] = None,
+                 use_latest_version: Optional[bool] = None):
+        """
+        Customer Certificate used for https
+        :param 'ResourceReferenceResponseArgs' secret_source: Resource reference to the KV secret
+        :param str type: The type of the Secret to create.
+        :param str certificate_authority: Certificate issuing authority.
+        :param str expiration_date: Certificate expiration date.
+        :param str secret_version: Version of the secret to be used
+        :param str subject: Subject name in the certificate.
+        :param Sequence[str] subject_alternative_names: The list of SANs.
+        :param str thumbprint: Certificate thumbprint.
+        :param bool use_latest_version: Whether to use the latest version for the certificate
+        """
+        pulumi.set(__self__, "secret_source", secret_source)
+        pulumi.set(__self__, "type", 'CustomerCertificate')
+        if certificate_authority is not None:
+            pulumi.set(__self__, "certificate_authority", certificate_authority)
+        if expiration_date is not None:
+            pulumi.set(__self__, "expiration_date", expiration_date)
+        if secret_version is not None:
+            pulumi.set(__self__, "secret_version", secret_version)
+        if subject is not None:
+            pulumi.set(__self__, "subject", subject)
+        if subject_alternative_names is not None:
+            pulumi.set(__self__, "subject_alternative_names", subject_alternative_names)
+        if thumbprint is not None:
+            pulumi.set(__self__, "thumbprint", thumbprint)
+        if use_latest_version is not None:
+            pulumi.set(__self__, "use_latest_version", use_latest_version)
+
+    @property
+    @pulumi.getter(name="secretSource")
+    def secret_source(self) -> 'outputs.ResourceReferenceResponse':
+        """
+        Resource reference to the KV secret
+        """
+        return pulumi.get(self, "secret_source")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the Secret to create.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="certificateAuthority")
+    def certificate_authority(self) -> Optional[str]:
+        """
+        Certificate issuing authority.
+        """
+        return pulumi.get(self, "certificate_authority")
+
+    @property
+    @pulumi.getter(name="expirationDate")
+    def expiration_date(self) -> Optional[str]:
+        """
+        Certificate expiration date.
+        """
+        return pulumi.get(self, "expiration_date")
+
+    @property
+    @pulumi.getter(name="secretVersion")
+    def secret_version(self) -> Optional[str]:
+        """
+        Version of the secret to be used
+        """
+        return pulumi.get(self, "secret_version")
+
+    @property
+    @pulumi.getter
+    def subject(self) -> Optional[str]:
+        """
+        Subject name in the certificate.
+        """
+        return pulumi.get(self, "subject")
+
+    @property
+    @pulumi.getter(name="subjectAlternativeNames")
+    def subject_alternative_names(self) -> Optional[Sequence[str]]:
+        """
+        The list of SANs.
+        """
+        return pulumi.get(self, "subject_alternative_names")
+
+    @property
+    @pulumi.getter
+    def thumbprint(self) -> Optional[str]:
+        """
+        Certificate thumbprint.
+        """
+        return pulumi.get(self, "thumbprint")
+
+    @property
+    @pulumi.getter(name="useLatestVersion")
+    def use_latest_version(self) -> Optional[bool]:
+        """
+        Whether to use the latest version for the certificate
+        """
+        return pulumi.get(self, "use_latest_version")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -1123,7 +1343,7 @@ class DeliveryRuleResponse(dict):
                  name: Optional[str] = None):
         """
         A rule that specifies a set of actions and conditions
-        :param Sequence[Union['DeliveryRuleCacheExpirationActionResponseArgs', 'DeliveryRuleCacheKeyQueryStringActionResponseArgs', 'DeliveryRuleRequestHeaderActionResponseArgs', 'DeliveryRuleResponseHeaderActionResponseArgs', 'UrlRedirectActionResponseArgs', 'UrlRewriteActionResponseArgs', 'UrlSigningActionResponseArgs']] actions: A list of actions that are executed when all the conditions of a rule are satisfied.
+        :param Sequence[Union['DeliveryRuleCacheExpirationActionResponseArgs', 'DeliveryRuleCacheKeyQueryStringActionResponseArgs', 'DeliveryRuleRequestHeaderActionResponseArgs', 'DeliveryRuleResponseHeaderActionResponseArgs', 'OriginGroupOverrideActionResponseArgs', 'UrlRedirectActionResponseArgs', 'UrlRewriteActionResponseArgs', 'UrlSigningActionResponseArgs']] actions: A list of actions that are executed when all the conditions of a rule are satisfied.
         :param int order: The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied.
         :param Sequence[Union['DeliveryRuleCookiesConditionResponseArgs', 'DeliveryRuleHttpVersionConditionResponseArgs', 'DeliveryRuleIsDeviceConditionResponseArgs', 'DeliveryRulePostArgsConditionResponseArgs', 'DeliveryRuleQueryStringConditionResponseArgs', 'DeliveryRuleRemoteAddressConditionResponseArgs', 'DeliveryRuleRequestBodyConditionResponseArgs', 'DeliveryRuleRequestHeaderConditionResponseArgs', 'DeliveryRuleRequestMethodConditionResponseArgs', 'DeliveryRuleRequestSchemeConditionResponseArgs', 'DeliveryRuleRequestUriConditionResponseArgs', 'DeliveryRuleUrlFileExtensionConditionResponseArgs', 'DeliveryRuleUrlFileNameConditionResponseArgs', 'DeliveryRuleUrlPathConditionResponseArgs']] conditions: A list of conditions that must be matched for the actions to be executed
         :param str name: Name of the rule
@@ -1310,6 +1530,42 @@ class DeliveryRuleUrlPathConditionResponse(dict):
         Defines the parameters for the condition.
         """
         return pulumi.get(self, "parameters")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class DomainValidationPropertiesResponse(dict):
+    """
+    The JSON object that contains the properties to validate a domain.
+    """
+    def __init__(__self__, *,
+                 expiration_date: str,
+                 validation_token: str):
+        """
+        The JSON object that contains the properties to validate a domain.
+        :param str expiration_date: The date time that the token expires
+        :param str validation_token: Challenge used for DNS TXT record or file based validation
+        """
+        pulumi.set(__self__, "expiration_date", expiration_date)
+        pulumi.set(__self__, "validation_token", validation_token)
+
+    @property
+    @pulumi.getter(name="expirationDate")
+    def expiration_date(self) -> str:
+        """
+        The date time that the token expires
+        """
+        return pulumi.get(self, "expiration_date")
+
+    @property
+    @pulumi.getter(name="validationToken")
+    def validation_token(self) -> str:
+        """
+        Challenge used for DNS TXT record or file based validation
+        """
+        return pulumi.get(self, "validation_token")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -1781,6 +2037,117 @@ class KeyVaultSigningKeyParametersResponse(dict):
 
 
 @pulumi.output_type
+class LoadBalancingSettingsParametersResponse(dict):
+    """
+    Round-Robin load balancing settings for a backend pool
+    """
+    def __init__(__self__, *,
+                 additional_latency_in_milliseconds: Optional[int] = None,
+                 sample_size: Optional[int] = None,
+                 successful_samples_required: Optional[int] = None):
+        """
+        Round-Robin load balancing settings for a backend pool
+        :param int additional_latency_in_milliseconds: The additional latency in milliseconds for probes to fall into the lowest latency bucket
+        :param int sample_size: The number of samples to consider for load balancing decisions
+        :param int successful_samples_required: The number of samples within the sample period that must succeed
+        """
+        if additional_latency_in_milliseconds is not None:
+            pulumi.set(__self__, "additional_latency_in_milliseconds", additional_latency_in_milliseconds)
+        if sample_size is not None:
+            pulumi.set(__self__, "sample_size", sample_size)
+        if successful_samples_required is not None:
+            pulumi.set(__self__, "successful_samples_required", successful_samples_required)
+
+    @property
+    @pulumi.getter(name="additionalLatencyInMilliseconds")
+    def additional_latency_in_milliseconds(self) -> Optional[int]:
+        """
+        The additional latency in milliseconds for probes to fall into the lowest latency bucket
+        """
+        return pulumi.get(self, "additional_latency_in_milliseconds")
+
+    @property
+    @pulumi.getter(name="sampleSize")
+    def sample_size(self) -> Optional[int]:
+        """
+        The number of samples to consider for load balancing decisions
+        """
+        return pulumi.get(self, "sample_size")
+
+    @property
+    @pulumi.getter(name="successfulSamplesRequired")
+    def successful_samples_required(self) -> Optional[int]:
+        """
+        The number of samples within the sample period that must succeed
+        """
+        return pulumi.get(self, "successful_samples_required")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ManagedCertificateParametersResponse(dict):
+    """
+    Managed Certificate used for https
+    """
+    def __init__(__self__, *,
+                 type: str,
+                 expiration_date: Optional[str] = None,
+                 subject: Optional[str] = None,
+                 thumbprint: Optional[str] = None):
+        """
+        Managed Certificate used for https
+        :param str type: The type of the Secret to create.
+        :param str expiration_date: Certificate expiration date.
+        :param str subject: Subject name in the certificate.
+        :param str thumbprint: Certificate thumbprint.
+        """
+        pulumi.set(__self__, "type", 'ManagedCertificate')
+        if expiration_date is not None:
+            pulumi.set(__self__, "expiration_date", expiration_date)
+        if subject is not None:
+            pulumi.set(__self__, "subject", subject)
+        if thumbprint is not None:
+            pulumi.set(__self__, "thumbprint", thumbprint)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the Secret to create.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="expirationDate")
+    def expiration_date(self) -> Optional[str]:
+        """
+        Certificate expiration date.
+        """
+        return pulumi.get(self, "expiration_date")
+
+    @property
+    @pulumi.getter
+    def subject(self) -> Optional[str]:
+        """
+        Subject name in the certificate.
+        """
+        return pulumi.get(self, "subject")
+
+    @property
+    @pulumi.getter
+    def thumbprint(self) -> Optional[str]:
+        """
+        Certificate thumbprint.
+        """
+        return pulumi.get(self, "thumbprint")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
 class ManagedRuleGroupOverrideResponse(dict):
     """
     Defines a managed rule group override setting.
@@ -2030,6 +2397,74 @@ class MatchConditionResponse(dict):
         List of transforms.
         """
         return pulumi.get(self, "transforms")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class OriginGroupOverrideActionParametersResponse(dict):
+    """
+    Defines the parameters for the origin group override action.
+    """
+    def __init__(__self__, *,
+                 odata_type: str,
+                 origin_group: 'outputs.ResourceReferenceResponse'):
+        """
+        Defines the parameters for the origin group override action.
+        :param 'ResourceReferenceResponseArgs' origin_group: defines the OriginGroup that would override the DefaultOriginGroup.
+        """
+        pulumi.set(__self__, "odata_type", odata_type)
+        pulumi.set(__self__, "origin_group", origin_group)
+
+    @property
+    @pulumi.getter(name="odataType")
+    def odata_type(self) -> str:
+        return pulumi.get(self, "odata_type")
+
+    @property
+    @pulumi.getter(name="originGroup")
+    def origin_group(self) -> 'outputs.ResourceReferenceResponse':
+        """
+        defines the OriginGroup that would override the DefaultOriginGroup.
+        """
+        return pulumi.get(self, "origin_group")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class OriginGroupOverrideActionResponse(dict):
+    """
+    Defines the origin group override action for the delivery rule.
+    """
+    def __init__(__self__, *,
+                 name: str,
+                 parameters: 'outputs.OriginGroupOverrideActionParametersResponse'):
+        """
+        Defines the origin group override action for the delivery rule.
+        :param str name: The name of the action for the delivery rule.
+        :param 'OriginGroupOverrideActionParametersResponseArgs' parameters: Defines the parameters for the action.
+        """
+        pulumi.set(__self__, "name", 'OriginGroupOverride')
+        pulumi.set(__self__, "parameters", parameters)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the action for the delivery rule.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> 'outputs.OriginGroupOverrideActionParametersResponse':
+        """
+        Defines the parameters for the action.
+        """
+        return pulumi.get(self, "parameters")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -2848,6 +3283,167 @@ class ResponseBasedOriginErrorDetectionParametersResponse(dict):
 
 
 @pulumi.output_type
+class SecurityPolicyWebApplicationFirewallAssociationResponse(dict):
+    """
+    settings for security policy patterns to match
+    """
+    def __init__(__self__, *,
+                 domains: Optional[Sequence['outputs.ResourceReferenceResponse']] = None,
+                 patterns_to_match: Optional[Sequence[str]] = None):
+        """
+        settings for security policy patterns to match
+        :param Sequence['ResourceReferenceResponseArgs'] domains: List of domains.
+        :param Sequence[str] patterns_to_match: List of paths
+        """
+        if domains is not None:
+            pulumi.set(__self__, "domains", domains)
+        if patterns_to_match is not None:
+            pulumi.set(__self__, "patterns_to_match", patterns_to_match)
+
+    @property
+    @pulumi.getter
+    def domains(self) -> Optional[Sequence['outputs.ResourceReferenceResponse']]:
+        """
+        List of domains.
+        """
+        return pulumi.get(self, "domains")
+
+    @property
+    @pulumi.getter(name="patternsToMatch")
+    def patterns_to_match(self) -> Optional[Sequence[str]]:
+        """
+        List of paths
+        """
+        return pulumi.get(self, "patterns_to_match")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class SecurityPolicyWebApplicationFirewallParametersResponse(dict):
+    """
+    The json object containing security policy waf parameters
+    """
+    def __init__(__self__, *,
+                 type: str,
+                 associations: Optional[Sequence['outputs.SecurityPolicyWebApplicationFirewallAssociationResponse']] = None,
+                 waf_policy: Optional['outputs.ResourceReferenceResponse'] = None):
+        """
+        The json object containing security policy waf parameters
+        :param str type: The type of the Security policy to create.
+        :param Sequence['SecurityPolicyWebApplicationFirewallAssociationResponseArgs'] associations: Waf associations
+        :param 'ResourceReferenceResponseArgs' waf_policy: Resource ID.
+        """
+        pulumi.set(__self__, "type", 'WebApplicationFirewall')
+        if associations is not None:
+            pulumi.set(__self__, "associations", associations)
+        if waf_policy is not None:
+            pulumi.set(__self__, "waf_policy", waf_policy)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the Security policy to create.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def associations(self) -> Optional[Sequence['outputs.SecurityPolicyWebApplicationFirewallAssociationResponse']]:
+        """
+        Waf associations
+        """
+        return pulumi.get(self, "associations")
+
+    @property
+    @pulumi.getter(name="wafPolicy")
+    def waf_policy(self) -> Optional['outputs.ResourceReferenceResponse']:
+        """
+        Resource ID.
+        """
+        return pulumi.get(self, "waf_policy")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class SharedPrivateLinkResourcePropertiesResponse(dict):
+    """
+    Describes the properties of an existing Shared Private Link Resource to use when connecting to a private origin.
+    """
+    def __init__(__self__, *,
+                 group_id: Optional[str] = None,
+                 private_link: Optional['outputs.ResourceReferenceResponse'] = None,
+                 private_link_location: Optional[str] = None,
+                 request_message: Optional[str] = None,
+                 status: Optional[str] = None):
+        """
+        Describes the properties of an existing Shared Private Link Resource to use when connecting to a private origin.
+        :param str group_id: The group id from the provider of resource the shared private link resource is for.
+        :param 'ResourceReferenceResponseArgs' private_link: The resource id of the resource the shared private link resource is for.
+        :param str private_link_location: The location of the shared private link resource
+        :param str request_message: The request message for requesting approval of the shared private link resource.
+        :param str status: Status of the shared private link resource. Can be Pending, Approved, Rejected, Disconnected, or Timeout.
+        """
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if private_link is not None:
+            pulumi.set(__self__, "private_link", private_link)
+        if private_link_location is not None:
+            pulumi.set(__self__, "private_link_location", private_link_location)
+        if request_message is not None:
+            pulumi.set(__self__, "request_message", request_message)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[str]:
+        """
+        The group id from the provider of resource the shared private link resource is for.
+        """
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter(name="privateLink")
+    def private_link(self) -> Optional['outputs.ResourceReferenceResponse']:
+        """
+        The resource id of the resource the shared private link resource is for.
+        """
+        return pulumi.get(self, "private_link")
+
+    @property
+    @pulumi.getter(name="privateLinkLocation")
+    def private_link_location(self) -> Optional[str]:
+        """
+        The location of the shared private link resource
+        """
+        return pulumi.get(self, "private_link_location")
+
+    @property
+    @pulumi.getter(name="requestMessage")
+    def request_message(self) -> Optional[str]:
+        """
+        The request message for requesting approval of the shared private link resource.
+        """
+        return pulumi.get(self, "request_message")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        Status of the shared private link resource. Can be Pending, Approved, Rejected, Disconnected, or Timeout.
+        """
+        return pulumi.get(self, "status")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
 class SkuResponse(dict):
     """
     The pricing tier (defines a CDN provider, feature list and rate) of the CDN profile.
@@ -2868,6 +3464,92 @@ class SkuResponse(dict):
         Name of the pricing tier.
         """
         return pulumi.get(self, "name")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class SystemDataResponse(dict):
+    """
+    Read only system data
+    """
+    def __init__(__self__, *,
+                 created_at: Optional[str] = None,
+                 created_by: Optional[str] = None,
+                 created_by_type: Optional[str] = None,
+                 last_modified_at: Optional[str] = None,
+                 last_modified_by: Optional[str] = None,
+                 last_modified_by_type: Optional[str] = None):
+        """
+        Read only system data
+        :param str created_at: The timestamp of resource creation (UTC)
+        :param str created_by: An identifier for the identity that created the resource
+        :param str created_by_type: The type of identity that created the resource
+        :param str last_modified_at: The timestamp of resource last modification (UTC)
+        :param str last_modified_by: An identifier for the identity that last modified the resource
+        :param str last_modified_by_type: The type of identity that last modified the resource
+        """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if created_by_type is not None:
+            pulumi.set(__self__, "created_by_type", created_by_type)
+        if last_modified_at is not None:
+            pulumi.set(__self__, "last_modified_at", last_modified_at)
+        if last_modified_by is not None:
+            pulumi.set(__self__, "last_modified_by", last_modified_by)
+        if last_modified_by_type is not None:
+            pulumi.set(__self__, "last_modified_by_type", last_modified_by_type)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[str]:
+        """
+        The timestamp of resource creation (UTC)
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[str]:
+        """
+        An identifier for the identity that created the resource
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="createdByType")
+    def created_by_type(self) -> Optional[str]:
+        """
+        The type of identity that created the resource
+        """
+        return pulumi.get(self, "created_by_type")
+
+    @property
+    @pulumi.getter(name="lastModifiedAt")
+    def last_modified_at(self) -> Optional[str]:
+        """
+        The timestamp of resource last modification (UTC)
+        """
+        return pulumi.get(self, "last_modified_at")
+
+    @property
+    @pulumi.getter(name="lastModifiedBy")
+    def last_modified_by(self) -> Optional[str]:
+        """
+        An identifier for the identity that last modified the resource
+        """
+        return pulumi.get(self, "last_modified_by")
+
+    @property
+    @pulumi.getter(name="lastModifiedByType")
+    def last_modified_by_type(self) -> Optional[str]:
+        """
+        The type of identity that last modified the resource
+        """
+        return pulumi.get(self, "last_modified_by_type")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -3302,35 +3984,24 @@ class UrlSigningActionParametersResponse(dict):
     Defines the parameters for the Url Signing action.
     """
     def __init__(__self__, *,
-                 key_id: str,
+                 odata_type: str,
                  algorithm: Optional[str] = None,
-                 ip_subnets: Optional[Sequence[str]] = None,
-                 odata_type: Optional[str] = None,
                  parameter_name_override: Optional[Sequence['outputs.UrlSigningParamIdentifierResponse']] = None):
         """
         Defines the parameters for the Url Signing action.
-        :param str key_id: Id reference of the key to be used to verify the hash and should be defined in UrlSigningKeys
         :param str algorithm: Algorithm to use for URL signing
-        :param Sequence[str] ip_subnets: Match values to match against. Supports CIDR ranges (both IPv4 and IPv6).
         :param Sequence['UrlSigningParamIdentifierResponseArgs'] parameter_name_override: Defines which query string parameters in the url to be considered for expires, key id etc. 
         """
-        pulumi.set(__self__, "key_id", key_id)
+        pulumi.set(__self__, "odata_type", odata_type)
         if algorithm is not None:
             pulumi.set(__self__, "algorithm", algorithm)
-        if ip_subnets is not None:
-            pulumi.set(__self__, "ip_subnets", ip_subnets)
-        if odata_type is not None:
-            pulumi.set(__self__, "odata_type", odata_type)
         if parameter_name_override is not None:
             pulumi.set(__self__, "parameter_name_override", parameter_name_override)
 
     @property
-    @pulumi.getter(name="keyId")
-    def key_id(self) -> str:
-        """
-        Id reference of the key to be used to verify the hash and should be defined in UrlSigningKeys
-        """
-        return pulumi.get(self, "key_id")
+    @pulumi.getter(name="odataType")
+    def odata_type(self) -> str:
+        return pulumi.get(self, "odata_type")
 
     @property
     @pulumi.getter
@@ -3339,19 +4010,6 @@ class UrlSigningActionParametersResponse(dict):
         Algorithm to use for URL signing
         """
         return pulumi.get(self, "algorithm")
-
-    @property
-    @pulumi.getter(name="ipSubnets")
-    def ip_subnets(self) -> Optional[Sequence[str]]:
-        """
-        Match values to match against. Supports CIDR ranges (both IPv4 and IPv6).
-        """
-        return pulumi.get(self, "ip_subnets")
-
-    @property
-    @pulumi.getter(name="odataType")
-    def odata_type(self) -> Optional[str]:
-        return pulumi.get(self, "odata_type")
 
     @property
     @pulumi.getter(name="parameterNameOverride")
@@ -3396,6 +4054,65 @@ class UrlSigningActionResponse(dict):
         Defines the parameters for the action.
         """
         return pulumi.get(self, "parameters")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class UrlSigningKeyParametersResponse(dict):
+    """
+    Url signing key parameters
+    """
+    def __init__(__self__, *,
+                 key_id: str,
+                 secret_source: 'outputs.ResourceReferenceResponse',
+                 type: str,
+                 secret_version: Optional[str] = None):
+        """
+        Url signing key parameters
+        :param str key_id: Defines the customer defined key Id. This id will exist in the incoming request to indicate the key used to form the hash.
+        :param 'ResourceReferenceResponseArgs' secret_source: Resource reference to the KV secret
+        :param str type: The type of the Secret to create.
+        :param str secret_version: Version of the secret to be used
+        """
+        pulumi.set(__self__, "key_id", key_id)
+        pulumi.set(__self__, "secret_source", secret_source)
+        pulumi.set(__self__, "type", 'UrlSigningKey')
+        if secret_version is not None:
+            pulumi.set(__self__, "secret_version", secret_version)
+
+    @property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> str:
+        """
+        Defines the customer defined key Id. This id will exist in the incoming request to indicate the key used to form the hash.
+        """
+        return pulumi.get(self, "key_id")
+
+    @property
+    @pulumi.getter(name="secretSource")
+    def secret_source(self) -> 'outputs.ResourceReferenceResponse':
+        """
+        Resource reference to the KV secret
+        """
+        return pulumi.get(self, "secret_source")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the Secret to create.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="secretVersion")
+    def secret_version(self) -> Optional[str]:
+        """
+        Version of the secret to be used
+        """
+        return pulumi.get(self, "secret_version")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

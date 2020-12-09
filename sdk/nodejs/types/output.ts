@@ -163,6 +163,38 @@ export namespace aad {
         }
 
         /**
+         * Migration Progress
+         */
+        export interface MigrationProgressResponse {
+            /**
+             * Completion Percentage
+             */
+            completionPercentage?: number;
+            /**
+             * Progress Message
+             */
+            progressMessage?: string;
+        }
+
+        /**
+         * Migration Properties
+         */
+        export interface MigrationPropertiesResponse {
+            /**
+             * Migration Progress
+             */
+            migrationProgress?: outputs.aad.latest.MigrationProgressResponse;
+            /**
+             * Old Subnet Id
+             */
+            oldSubnetId?: string;
+            /**
+             * Old Vnet Site Id
+             */
+            oldVnetSiteId?: string;
+        }
+
+        /**
          * Settings for notification
          */
         export interface NotificationSettingsResponse {
@@ -531,6 +563,38 @@ export namespace aad {
         }
 
         /**
+         * Migration Progress
+         */
+        export interface MigrationProgressResponse {
+            /**
+             * Completion Percentage
+             */
+            completionPercentage?: number;
+            /**
+             * Progress Message
+             */
+            progressMessage?: string;
+        }
+
+        /**
+         * Migration Properties
+         */
+        export interface MigrationPropertiesResponse {
+            /**
+             * Migration Progress
+             */
+            migrationProgress?: outputs.aad.v20170601.MigrationProgressResponse;
+            /**
+             * Old Subnet Id
+             */
+            oldSubnetId?: string;
+            /**
+             * Old Vnet Site Id
+             */
+            oldVnetSiteId?: string;
+        }
+
+        /**
          * Settings for notification
          */
         export interface NotificationSettingsResponse {
@@ -718,6 +782,38 @@ export namespace aad {
              * Public certificate used to configure secure ldap.
              */
             publicCertificate: string;
+        }
+
+        /**
+         * Migration Progress
+         */
+        export interface MigrationProgressResponse {
+            /**
+             * Completion Percentage
+             */
+            completionPercentage?: number;
+            /**
+             * Progress Message
+             */
+            progressMessage?: string;
+        }
+
+        /**
+         * Migration Properties
+         */
+        export interface MigrationPropertiesResponse {
+            /**
+             * Migration Progress
+             */
+            migrationProgress?: outputs.aad.v20200101.MigrationProgressResponse;
+            /**
+             * Old Subnet Id
+             */
+            oldSubnetId?: string;
+            /**
+             * Old Vnet Site Id
+             */
+            oldVnetSiteId?: string;
         }
 
         /**
@@ -9001,6 +9097,20 @@ export namespace authorization {
         }
 
         /**
+         * A message that describes why a resource is non-compliant with the policy. This is shown in 'deny' error messages and on resource's non-compliant compliance results.
+         */
+        export interface NonComplianceMessageResponse {
+            /**
+             * A message that describes why a resource is non-compliant with the policy. This is shown in 'deny' error messages and on resource's non-compliant compliance results.
+             */
+            message: string;
+            /**
+             * The policy definition reference ID within a policy set definition the message is intended for. This is only applicable if the policy assignment assigns a policy set definition. If this is not provided the message applies to all policies assigned by this policy assignment.
+             */
+            policyDefinitionReferenceId?: string;
+        }
+
+        /**
          * The definition of a parameter that can be provided to the policy.
          */
         export interface ParameterDefinitionsValueResponse {
@@ -9027,6 +9137,10 @@ export namespace authorization {
          */
         export interface ParameterDefinitionsValueResponseMetadata {
             /**
+             * Set to true to have Azure portal create role assignments on the resource ID or resource scope value of this parameter during policy assignment. This property is useful in case you wish to assign permissions outside the assignment scope.
+             */
+            assignPermissions?: boolean;
+            /**
              * The description of the parameter.
              */
             description?: string;
@@ -9034,6 +9148,10 @@ export namespace authorization {
              * The display name for the parameter.
              */
             displayName?: string;
+            /**
+             * Used when assigning the policy definition through the portal. Provides a context aware list of values for the user to choose from.
+             */
+            strongType?: string;
         }
 
         /**
@@ -9106,20 +9224,6 @@ export namespace authorization {
              * A unique id (within the policy set definition) for this policy definition reference.
              */
             policyDefinitionReferenceId?: string;
-        }
-
-        /**
-         * The policy sku. This property is optional, obsolete, and will be ignored.
-         */
-        export interface PolicySkuResponse {
-            /**
-             * The name of the policy sku. Possible values are A0 and A1.
-             */
-            name: string;
-            /**
-             * The policy sku tier. Possible values are Free and Standard.
-             */
-            tier?: string;
         }
 
         /**
@@ -9738,6 +9842,142 @@ export namespace authorization {
              * The type of identity that last modified the resource.
              */
             lastModifiedByType?: string;
+        }
+    }
+
+    export namespace v20200901 {
+        /**
+         * Identity for the resource.
+         */
+        export interface IdentityResponse {
+            /**
+             * The principal ID of the resource identity.
+             */
+            principalId: string;
+            /**
+             * The tenant ID of the resource identity.
+             */
+            tenantId: string;
+            /**
+             * The identity type. This is the only required field when adding a system assigned identity to a resource.
+             */
+            type?: string;
+        }
+
+        /**
+         * A message that describes why a resource is non-compliant with the policy. This is shown in 'deny' error messages and on resource's non-compliant compliance results.
+         */
+        export interface NonComplianceMessageResponse {
+            /**
+             * A message that describes why a resource is non-compliant with the policy. This is shown in 'deny' error messages and on resource's non-compliant compliance results.
+             */
+            message: string;
+            /**
+             * The policy definition reference ID within a policy set definition the message is intended for. This is only applicable if the policy assignment assigns a policy set definition. If this is not provided the message applies to all policies assigned by this policy assignment.
+             */
+            policyDefinitionReferenceId?: string;
+        }
+
+        /**
+         * The definition of a parameter that can be provided to the policy.
+         */
+        export interface ParameterDefinitionsValueResponse {
+            /**
+             * The allowed values for the parameter.
+             */
+            allowedValues?: any[];
+            /**
+             * The default value for the parameter if no value is provided.
+             */
+            defaultValue?: any;
+            /**
+             * General metadata for the parameter.
+             */
+            metadata?: outputs.authorization.v20200901.ParameterDefinitionsValueResponseMetadata;
+            /**
+             * The data type of the parameter.
+             */
+            type?: string;
+        }
+
+        /**
+         * General metadata for the parameter.
+         */
+        export interface ParameterDefinitionsValueResponseMetadata {
+            /**
+             * Set to true to have Azure portal create role assignments on the resource ID or resource scope value of this parameter during policy assignment. This property is useful in case you wish to assign permissions outside the assignment scope.
+             */
+            assignPermissions?: boolean;
+            /**
+             * The description of the parameter.
+             */
+            description?: string;
+            /**
+             * The display name for the parameter.
+             */
+            displayName?: string;
+            /**
+             * Used when assigning the policy definition through the portal. Provides a context aware list of values for the user to choose from.
+             */
+            strongType?: string;
+        }
+
+        /**
+         * The value of a parameter.
+         */
+        export interface ParameterValuesValueResponse {
+            /**
+             * The value of the parameter.
+             */
+            value?: any;
+        }
+
+        /**
+         * The policy definition group.
+         */
+        export interface PolicyDefinitionGroupResponse {
+            /**
+             * A resource ID of a resource that contains additional metadata about the group.
+             */
+            additionalMetadataId?: string;
+            /**
+             * The group's category.
+             */
+            category?: string;
+            /**
+             * The group's description.
+             */
+            description?: string;
+            /**
+             * The group's display name.
+             */
+            displayName?: string;
+            /**
+             * The name of the group.
+             */
+            name: string;
+        }
+
+        /**
+         * The policy definition reference.
+         */
+        export interface PolicyDefinitionReferenceResponse {
+            /**
+             * The name of the groups that this policy definition reference belongs to.
+             */
+            groupNames?: string[];
+            /**
+             * The parameter values for the referenced policy rule. The keys are the parameter names.
+             */
+            parameters?: {[key: string]: outputs.authorization.v20200901.ParameterValuesValueResponse};
+            /**
+             * The ID of the policy definition or policy set definition.
+             */
+            policyDefinitionId: string;
+            /**
+             * A unique id (within the policy set definition) for this policy definition reference.
+             */
+            policyDefinitionReferenceId?: string;
         }
     }
 }
@@ -24409,6 +24649,24 @@ export namespace cache {
 export namespace cdn {
     export namespace latest {
         /**
+         * The JSON object that contains the properties to secure a domain.
+         */
+        export interface AFDDomainHttpsParametersResponse {
+            /**
+             * Defines the source of the SSL certificate.
+             */
+            certificateType: string;
+            /**
+             * TLS protocol version that will be used for Https
+             */
+            minimumTlsVersion?: string;
+            /**
+             * Resource reference to the secret. ie. subs/rg/profile/secret
+             */
+            secret?: outputs.cdn.latest.ResourceReferenceResponse;
+        }
+
+        /**
          * Defines the parameters for the cache expiration action.
          */
         export interface CacheExpirationActionParametersResponse {
@@ -24450,6 +24708,20 @@ export namespace cdn {
              * ARM Resource ID string.
              */
             id?: string;
+        }
+
+        /**
+         * settings for compression.
+         */
+        export interface CompressionSettingsResponse {
+            /**
+             * List of content types on which compression applies. The value should be a valid MIME type.
+             */
+            contentTypesToCompress?: string[];
+            /**
+             * Indicates whether content compression is enabled on AzureFrontDoor. Default value is false. If compression is enabled, content will be served as compressed if user requests for a compressed version. Content won't be compressed on AzureFrontDoor when requested content is smaller than 1 byte or larger than 1 MB.
+             */
+            isCompressionEnabled?: boolean;
         }
 
         /**
@@ -24513,6 +24785,48 @@ export namespace cdn {
              * Defines in what order this rule be evaluated in the overall list of custom rules
              */
             priority: number;
+        }
+
+        /**
+         * Customer Certificate used for https
+         */
+        export interface CustomerCertificateParametersResponse {
+            /**
+             * Certificate issuing authority.
+             */
+            certificateAuthority?: string;
+            /**
+             * Certificate expiration date.
+             */
+            expirationDate?: string;
+            /**
+             * Resource reference to the KV secret
+             */
+            secretSource: outputs.cdn.latest.ResourceReferenceResponse;
+            /**
+             * Version of the secret to be used
+             */
+            secretVersion?: string;
+            /**
+             * Subject name in the certificate.
+             */
+            subject?: string;
+            /**
+             * The list of SANs.
+             */
+            subjectAlternativeNames?: string[];
+            /**
+             * Certificate thumbprint.
+             */
+            thumbprint?: string;
+            /**
+             * The type of the Secret to create.
+             */
+            type: "CustomerCertificate";
+            /**
+             * Whether to use the latest version for the certificate
+             */
+            useLatestVersion?: boolean;
         }
 
         /**
@@ -24798,7 +25112,7 @@ export namespace cdn {
             /**
              * A list of actions that are executed when all the conditions of a rule are satisfied.
              */
-            actions: outputs.cdn.latest.DeliveryRuleCacheExpirationActionResponse | outputs.cdn.latest.DeliveryRuleCacheKeyQueryStringActionResponse | outputs.cdn.latest.DeliveryRuleRequestHeaderActionResponse | outputs.cdn.latest.DeliveryRuleResponseHeaderActionResponse | outputs.cdn.latest.UrlRedirectActionResponse | outputs.cdn.latest.UrlRewriteActionResponse | outputs.cdn.latest.UrlSigningActionResponse[];
+            actions: outputs.cdn.latest.DeliveryRuleCacheExpirationActionResponse | outputs.cdn.latest.DeliveryRuleCacheKeyQueryStringActionResponse | outputs.cdn.latest.DeliveryRuleRequestHeaderActionResponse | outputs.cdn.latest.DeliveryRuleResponseHeaderActionResponse | outputs.cdn.latest.OriginGroupOverrideActionResponse | outputs.cdn.latest.UrlRedirectActionResponse | outputs.cdn.latest.UrlRewriteActionResponse | outputs.cdn.latest.UrlSigningActionResponse[];
             /**
              * A list of conditions that must be matched for the actions to be executed
              */
@@ -24867,6 +25181,20 @@ export namespace cdn {
              * Defines the parameters for the condition.
              */
             parameters: outputs.cdn.latest.UrlPathMatchConditionParametersResponse;
+        }
+
+        /**
+         * The JSON object that contains the properties to validate a domain.
+         */
+        export interface DomainValidationPropertiesResponse {
+            /**
+             * The date time that the token expires
+             */
+            expirationDate: string;
+            /**
+             * Challenge used for DNS TXT record or file based validation
+             */
+            validationToken: string;
         }
 
         /**
@@ -25036,6 +25364,46 @@ export namespace cdn {
         }
 
         /**
+         * Round-Robin load balancing settings for a backend pool
+         */
+        export interface LoadBalancingSettingsParametersResponse {
+            /**
+             * The additional latency in milliseconds for probes to fall into the lowest latency bucket
+             */
+            additionalLatencyInMilliseconds?: number;
+            /**
+             * The number of samples to consider for load balancing decisions
+             */
+            sampleSize?: number;
+            /**
+             * The number of samples within the sample period that must succeed
+             */
+            successfulSamplesRequired?: number;
+        }
+
+        /**
+         * Managed Certificate used for https
+         */
+        export interface ManagedCertificateParametersResponse {
+            /**
+             * Certificate expiration date.
+             */
+            expirationDate?: string;
+            /**
+             * Subject name in the certificate.
+             */
+            subject?: string;
+            /**
+             * Certificate thumbprint.
+             */
+            thumbprint?: string;
+            /**
+             * The type of the Secret to create.
+             */
+            type: "ManagedCertificate";
+        }
+
+        /**
          * Defines a managed rule group override setting.
          */
         export interface ManagedRuleGroupOverrideResponse {
@@ -25127,6 +25495,31 @@ export namespace cdn {
              * List of transforms.
              */
             transforms?: string[];
+        }
+
+        /**
+         * Defines the parameters for the origin group override action.
+         */
+        export interface OriginGroupOverrideActionParametersResponse {
+            odataType: string;
+            /**
+             * defines the OriginGroup that would override the DefaultOriginGroup.
+             */
+            originGroup: outputs.cdn.latest.ResourceReferenceResponse;
+        }
+
+        /**
+         * Defines the origin group override action for the delivery rule.
+         */
+        export interface OriginGroupOverrideActionResponse {
+            /**
+             * The name of the action for the delivery rule.
+             */
+            name: "OriginGroupOverride";
+            /**
+             * Defines the parameters for the action.
+             */
+            parameters: outputs.cdn.latest.OriginGroupOverrideActionParametersResponse;
         }
 
         /**
@@ -25412,6 +25805,64 @@ export namespace cdn {
         }
 
         /**
+         * settings for security policy patterns to match
+         */
+        export interface SecurityPolicyWebApplicationFirewallAssociationResponse {
+            /**
+             * List of domains.
+             */
+            domains?: outputs.cdn.latest.ResourceReferenceResponse[];
+            /**
+             * List of paths
+             */
+            patternsToMatch?: string[];
+        }
+
+        /**
+         * The json object containing security policy waf parameters
+         */
+        export interface SecurityPolicyWebApplicationFirewallParametersResponse {
+            /**
+             * Waf associations
+             */
+            associations?: outputs.cdn.latest.SecurityPolicyWebApplicationFirewallAssociationResponse[];
+            /**
+             * The type of the Security policy to create.
+             */
+            type: "WebApplicationFirewall";
+            /**
+             * Resource ID.
+             */
+            wafPolicy?: outputs.cdn.latest.ResourceReferenceResponse;
+        }
+
+        /**
+         * Describes the properties of an existing Shared Private Link Resource to use when connecting to a private origin.
+         */
+        export interface SharedPrivateLinkResourcePropertiesResponse {
+            /**
+             * The group id from the provider of resource the shared private link resource is for.
+             */
+            groupId?: string;
+            /**
+             * The resource id of the resource the shared private link resource is for.
+             */
+            privateLink?: outputs.cdn.latest.ResourceReferenceResponse;
+            /**
+             * The location of the shared private link resource
+             */
+            privateLinkLocation?: string;
+            /**
+             * The request message for requesting approval of the shared private link resource.
+             */
+            requestMessage?: string;
+            /**
+             * Status of the shared private link resource. Can be Pending, Approved, Rejected, Disconnected, or Timeout.
+             */
+            status?: string;
+        }
+
+        /**
          * The pricing tier (defines a CDN provider, feature list and rate) of the CDN profile.
          */
         export interface SkuResponse {
@@ -25419,6 +25870,36 @@ export namespace cdn {
              * Name of the pricing tier.
              */
             name?: string;
+        }
+
+        /**
+         * Read only system data
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC)
+             */
+            createdAt?: string;
+            /**
+             * An identifier for the identity that created the resource
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource
+             */
+            createdByType?: string;
+            /**
+             * The timestamp of resource last modification (UTC)
+             */
+            lastModifiedAt?: string;
+            /**
+             * An identifier for the identity that last modified the resource
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource
+             */
+            lastModifiedByType?: string;
         }
 
         /**
@@ -25576,15 +26057,7 @@ export namespace cdn {
              * Algorithm to use for URL signing
              */
             algorithm?: string;
-            /**
-             * Match values to match against. Supports CIDR ranges (both IPv4 and IPv6).
-             */
-            ipSubnets?: string[];
-            /**
-             * Id reference of the key to be used to verify the hash and should be defined in UrlSigningKeys
-             */
-            keyId: string;
-            odataType?: string;
+            odataType: string;
             /**
              * Defines which query string parameters in the url to be considered for expires, key id etc. 
              */
@@ -25603,6 +26076,28 @@ export namespace cdn {
              * Defines the parameters for the action.
              */
             parameters: outputs.cdn.latest.UrlSigningActionParametersResponse;
+        }
+
+        /**
+         * Url signing key parameters
+         */
+        export interface UrlSigningKeyParametersResponse {
+            /**
+             * Defines the customer defined key Id. This id will exist in the incoming request to indicate the key used to form the hash.
+             */
+            keyId: string;
+            /**
+             * Resource reference to the KV secret
+             */
+            secretSource: outputs.cdn.latest.ResourceReferenceResponse;
+            /**
+             * Version of the secret to be used
+             */
+            secretVersion?: string;
+            /**
+             * The type of the Secret to create.
+             */
+            type: "UrlSigningKey";
         }
 
         /**
@@ -32427,6 +32922,1488 @@ export namespace cdn {
             paramName: string;
         }
     }
+
+    export namespace v20200901 {
+        /**
+         * The JSON object that contains the properties to secure a domain.
+         */
+        export interface AFDDomainHttpsParametersResponse {
+            /**
+             * Defines the source of the SSL certificate.
+             */
+            certificateType: string;
+            /**
+             * TLS protocol version that will be used for Https
+             */
+            minimumTlsVersion?: string;
+            /**
+             * Resource reference to the secret. ie. subs/rg/profile/secret
+             */
+            secret?: outputs.cdn.v20200901.ResourceReferenceResponse;
+        }
+
+        /**
+         * Defines the parameters for the cache expiration action.
+         */
+        export interface CacheExpirationActionParametersResponse {
+            /**
+             * Caching behavior for the requests
+             */
+            cacheBehavior: string;
+            /**
+             * The duration for which the content needs to be cached. Allowed format is [d.]hh:mm:ss
+             */
+            cacheDuration?: string;
+            /**
+             * The level at which the content needs to be cached.
+             */
+            cacheType: string;
+            odataType: string;
+        }
+
+        /**
+         * Defines the parameters for the cache-key query string action.
+         */
+        export interface CacheKeyQueryStringActionParametersResponse {
+            odataType: string;
+            /**
+             * query parameters to include or exclude (comma separated).
+             */
+            queryParameters?: string;
+            /**
+             * Caching behavior for the requests
+             */
+            queryStringBehavior: string;
+        }
+
+        /**
+         * Defines the ARM Resource ID for the linked endpoints
+         */
+        export interface CdnEndpointResponse {
+            /**
+             * ARM Resource ID string.
+             */
+            id?: string;
+        }
+
+        /**
+         * settings for compression.
+         */
+        export interface CompressionSettingsResponse {
+            /**
+             * List of content types on which compression applies. The value should be a valid MIME type.
+             */
+            contentTypesToCompress?: string[];
+            /**
+             * Indicates whether content compression is enabled on AzureFrontDoor. Default value is false. If compression is enabled, content will be served as compressed if user requests for a compressed version. Content won't be compressed on AzureFrontDoor when requested content is smaller than 1 byte or larger than 1 MB.
+             */
+            isCompressionEnabled?: boolean;
+        }
+
+        /**
+         * Defines the parameters for Cookies match conditions
+         */
+        export interface CookiesMatchConditionParametersResponse {
+            /**
+             * The match value for the condition of the delivery rule
+             */
+            matchValues?: string[];
+            /**
+             * Describes if this is negate condition or not
+             */
+            negateCondition?: boolean;
+            odataType: string;
+            /**
+             * Describes operator to be matched
+             */
+            operator: string;
+            /**
+             * Name of Cookies to be matched
+             */
+            selector?: string;
+            /**
+             * List of transforms
+             */
+            transforms?: string[];
+        }
+
+        /**
+         * Defines contents of custom rules
+         */
+        export interface CustomRuleListResponse {
+            /**
+             * List of rules
+             */
+            rules?: outputs.cdn.v20200901.CustomRuleResponse[];
+        }
+
+        /**
+         * Defines the common attributes for a custom rule that can be included in a waf policy
+         */
+        export interface CustomRuleResponse {
+            /**
+             * Describes what action to be applied when rule matches
+             */
+            action: string;
+            /**
+             * Describes if the custom rule is in enabled or disabled state. Defaults to Enabled if not specified.
+             */
+            enabledState?: string;
+            /**
+             * List of match conditions.
+             */
+            matchConditions: outputs.cdn.v20200901.MatchConditionResponse[];
+            /**
+             * Defines the name of the custom rule
+             */
+            name: string;
+            /**
+             * Defines in what order this rule be evaluated in the overall list of custom rules
+             */
+            priority: number;
+        }
+
+        /**
+         * Customer Certificate used for https
+         */
+        export interface CustomerCertificateParametersResponse {
+            /**
+             * Certificate issuing authority.
+             */
+            certificateAuthority?: string;
+            /**
+             * Certificate expiration date.
+             */
+            expirationDate?: string;
+            /**
+             * Resource reference to the KV secret
+             */
+            secretSource: outputs.cdn.v20200901.ResourceReferenceResponse;
+            /**
+             * Version of the secret to be used
+             */
+            secretVersion?: string;
+            /**
+             * Subject name in the certificate.
+             */
+            subject?: string;
+            /**
+             * The list of SANs.
+             */
+            subjectAlternativeNames?: string[];
+            /**
+             * Certificate thumbprint.
+             */
+            thumbprint?: string;
+            /**
+             * The type of the Secret to create.
+             */
+            type: "CustomerCertificate";
+            /**
+             * Whether to use the latest version for the certificate
+             */
+            useLatestVersion?: boolean;
+        }
+
+        /**
+         * The origin group for CDN content which is added when creating a CDN endpoint. Traffic is sent to the origins within the origin group based on origin health.
+         */
+        export interface DeepCreatedOriginGroupResponse {
+            /**
+             * Health probe settings to the origin that is used to determine the health of the origin.
+             */
+            healthProbeSettings?: outputs.cdn.v20200901.HealthProbeParametersResponse;
+            /**
+             * Origin group name which must be unique within the endpoint.
+             */
+            name: string;
+            /**
+             * The source of the content being delivered via CDN within given origin group.
+             */
+            origins: outputs.cdn.v20200901.ResourceReferenceResponse[];
+            /**
+             * The JSON object that contains the properties to determine origin health using real requests/responses.This property is currently not supported.
+             */
+            responseBasedOriginErrorDetectionSettings?: outputs.cdn.v20200901.ResponseBasedOriginErrorDetectionParametersResponse;
+            /**
+             * Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported.
+             */
+            trafficRestorationTimeToHealedOrNewEndpointsInMinutes?: number;
+        }
+
+        /**
+         * The main origin of CDN content which is added when creating a CDN endpoint.
+         */
+        export interface DeepCreatedOriginResponse {
+            /**
+             * Origin is enabled for load balancing or not. By default, origin is always enabled.
+             */
+            enabled?: boolean;
+            /**
+             * The address of the origin. It can be a domain name, IPv4 address, or IPv6 address. This should be unique across all origins in an endpoint.
+             */
+            hostName: string;
+            /**
+             * The value of the HTTP port. Must be between 1 and 65535.
+             */
+            httpPort?: number;
+            /**
+             * The value of the HTTPS port. Must be between 1 and 65535.
+             */
+            httpsPort?: number;
+            /**
+             * Origin name which must be unique within the endpoint. 
+             */
+            name: string;
+            /**
+             * The host header value sent to the origin with each request. If you leave this blank, the request hostname determines this value. Azure CDN origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default.
+             */
+            originHostHeader?: string;
+            /**
+             * Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if any lower priority origin is healthy.Must be between 1 and 5.
+             */
+            priority?: number;
+            /**
+             * The Alias of the Private Link resource. Populating this optional field indicates that this origin is 'Private'
+             */
+            privateLinkAlias?: string;
+            /**
+             * A custom message to be included in the approval request to connect to the Private Link.
+             */
+            privateLinkApprovalMessage?: string;
+            /**
+             * The location of the Private Link resource. Required only if 'privateLinkResourceId' is populated
+             */
+            privateLinkLocation?: string;
+            /**
+             * The Resource Id of the Private Link resource. Populating this optional field indicates that this backend is 'Private'
+             */
+            privateLinkResourceId?: string;
+            /**
+             * Weight of the origin in given origin group for load balancing. Must be between 1 and 1000
+             */
+            weight?: number;
+        }
+
+        /**
+         * Defines the cache expiration action for the delivery rule.
+         */
+        export interface DeliveryRuleCacheExpirationActionResponse {
+            /**
+             * The name of the action for the delivery rule.
+             */
+            name: "CacheExpiration";
+            /**
+             * Defines the parameters for the action.
+             */
+            parameters: outputs.cdn.v20200901.CacheExpirationActionParametersResponse;
+        }
+
+        /**
+         * Defines the cache-key query string action for the delivery rule.
+         */
+        export interface DeliveryRuleCacheKeyQueryStringActionResponse {
+            /**
+             * The name of the action for the delivery rule.
+             */
+            name: "CacheKeyQueryString";
+            /**
+             * Defines the parameters for the action.
+             */
+            parameters: outputs.cdn.v20200901.CacheKeyQueryStringActionParametersResponse;
+        }
+
+        /**
+         * Defines the Cookies condition for the delivery rule.
+         */
+        export interface DeliveryRuleCookiesConditionResponse {
+            /**
+             * The name of the condition for the delivery rule.
+             */
+            name: "Cookies";
+            /**
+             * Defines the parameters for the condition.
+             */
+            parameters: outputs.cdn.v20200901.CookiesMatchConditionParametersResponse;
+        }
+
+        /**
+         * Defines the HttpVersion condition for the delivery rule.
+         */
+        export interface DeliveryRuleHttpVersionConditionResponse {
+            /**
+             * The name of the condition for the delivery rule.
+             */
+            name: "HttpVersion";
+            /**
+             * Defines the parameters for the condition.
+             */
+            parameters: outputs.cdn.v20200901.HttpVersionMatchConditionParametersResponse;
+        }
+
+        /**
+         * Defines the IsDevice condition for the delivery rule.
+         */
+        export interface DeliveryRuleIsDeviceConditionResponse {
+            /**
+             * The name of the condition for the delivery rule.
+             */
+            name: "IsDevice";
+            /**
+             * Defines the parameters for the condition.
+             */
+            parameters: outputs.cdn.v20200901.IsDeviceMatchConditionParametersResponse;
+        }
+
+        /**
+         * Defines the PostArgs condition for the delivery rule.
+         */
+        export interface DeliveryRulePostArgsConditionResponse {
+            /**
+             * The name of the condition for the delivery rule.
+             */
+            name: "PostArgs";
+            /**
+             * Defines the parameters for the condition.
+             */
+            parameters: outputs.cdn.v20200901.PostArgsMatchConditionParametersResponse;
+        }
+
+        /**
+         * Defines the QueryString condition for the delivery rule.
+         */
+        export interface DeliveryRuleQueryStringConditionResponse {
+            /**
+             * The name of the condition for the delivery rule.
+             */
+            name: "QueryString";
+            /**
+             * Defines the parameters for the condition.
+             */
+            parameters: outputs.cdn.v20200901.QueryStringMatchConditionParametersResponse;
+        }
+
+        /**
+         * Defines the RemoteAddress condition for the delivery rule.
+         */
+        export interface DeliveryRuleRemoteAddressConditionResponse {
+            /**
+             * The name of the condition for the delivery rule.
+             */
+            name: "RemoteAddress";
+            /**
+             * Defines the parameters for the condition.
+             */
+            parameters: outputs.cdn.v20200901.RemoteAddressMatchConditionParametersResponse;
+        }
+
+        /**
+         * Defines the RequestBody condition for the delivery rule.
+         */
+        export interface DeliveryRuleRequestBodyConditionResponse {
+            /**
+             * The name of the condition for the delivery rule.
+             */
+            name: "RequestBody";
+            /**
+             * Defines the parameters for the condition.
+             */
+            parameters: outputs.cdn.v20200901.RequestBodyMatchConditionParametersResponse;
+        }
+
+        /**
+         * Defines the request header action for the delivery rule.
+         */
+        export interface DeliveryRuleRequestHeaderActionResponse {
+            /**
+             * The name of the action for the delivery rule.
+             */
+            name: "ModifyRequestHeader";
+            /**
+             * Defines the parameters for the action.
+             */
+            parameters: outputs.cdn.v20200901.HeaderActionParametersResponse;
+        }
+
+        /**
+         * Defines the RequestHeader condition for the delivery rule.
+         */
+        export interface DeliveryRuleRequestHeaderConditionResponse {
+            /**
+             * The name of the condition for the delivery rule.
+             */
+            name: "RequestHeader";
+            /**
+             * Defines the parameters for the condition.
+             */
+            parameters: outputs.cdn.v20200901.RequestHeaderMatchConditionParametersResponse;
+        }
+
+        /**
+         * Defines the RequestMethod condition for the delivery rule.
+         */
+        export interface DeliveryRuleRequestMethodConditionResponse {
+            /**
+             * The name of the condition for the delivery rule.
+             */
+            name: "RequestMethod";
+            /**
+             * Defines the parameters for the condition.
+             */
+            parameters: outputs.cdn.v20200901.RequestMethodMatchConditionParametersResponse;
+        }
+
+        /**
+         * Defines the RequestScheme condition for the delivery rule.
+         */
+        export interface DeliveryRuleRequestSchemeConditionResponse {
+            /**
+             * The name of the condition for the delivery rule.
+             */
+            name: "RequestScheme";
+            /**
+             * Defines the parameters for the condition.
+             */
+            parameters: outputs.cdn.v20200901.RequestSchemeMatchConditionParametersResponse;
+        }
+
+        /**
+         * Defines the RequestUri condition for the delivery rule.
+         */
+        export interface DeliveryRuleRequestUriConditionResponse {
+            /**
+             * The name of the condition for the delivery rule.
+             */
+            name: "RequestUri";
+            /**
+             * Defines the parameters for the condition.
+             */
+            parameters: outputs.cdn.v20200901.RequestUriMatchConditionParametersResponse;
+        }
+
+        /**
+         * A rule that specifies a set of actions and conditions
+         */
+        export interface DeliveryRuleResponse {
+            /**
+             * A list of actions that are executed when all the conditions of a rule are satisfied.
+             */
+            actions: outputs.cdn.v20200901.DeliveryRuleCacheExpirationActionResponse | outputs.cdn.v20200901.DeliveryRuleCacheKeyQueryStringActionResponse | outputs.cdn.v20200901.DeliveryRuleRequestHeaderActionResponse | outputs.cdn.v20200901.DeliveryRuleResponseHeaderActionResponse | outputs.cdn.v20200901.OriginGroupOverrideActionResponse | outputs.cdn.v20200901.UrlRedirectActionResponse | outputs.cdn.v20200901.UrlRewriteActionResponse | outputs.cdn.v20200901.UrlSigningActionResponse[];
+            /**
+             * A list of conditions that must be matched for the actions to be executed
+             */
+            conditions?: outputs.cdn.v20200901.DeliveryRuleCookiesConditionResponse | outputs.cdn.v20200901.DeliveryRuleHttpVersionConditionResponse | outputs.cdn.v20200901.DeliveryRuleIsDeviceConditionResponse | outputs.cdn.v20200901.DeliveryRulePostArgsConditionResponse | outputs.cdn.v20200901.DeliveryRuleQueryStringConditionResponse | outputs.cdn.v20200901.DeliveryRuleRemoteAddressConditionResponse | outputs.cdn.v20200901.DeliveryRuleRequestBodyConditionResponse | outputs.cdn.v20200901.DeliveryRuleRequestHeaderConditionResponse | outputs.cdn.v20200901.DeliveryRuleRequestMethodConditionResponse | outputs.cdn.v20200901.DeliveryRuleRequestSchemeConditionResponse | outputs.cdn.v20200901.DeliveryRuleRequestUriConditionResponse | outputs.cdn.v20200901.DeliveryRuleUrlFileExtensionConditionResponse | outputs.cdn.v20200901.DeliveryRuleUrlFileNameConditionResponse | outputs.cdn.v20200901.DeliveryRuleUrlPathConditionResponse[];
+            /**
+             * Name of the rule
+             */
+            name?: string;
+            /**
+             * The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied.
+             */
+            order: number;
+        }
+
+        /**
+         * Defines the response header action for the delivery rule.
+         */
+        export interface DeliveryRuleResponseHeaderActionResponse {
+            /**
+             * The name of the action for the delivery rule.
+             */
+            name: "ModifyResponseHeader";
+            /**
+             * Defines the parameters for the action.
+             */
+            parameters: outputs.cdn.v20200901.HeaderActionParametersResponse;
+        }
+
+        /**
+         * Defines the UrlFileExtension condition for the delivery rule.
+         */
+        export interface DeliveryRuleUrlFileExtensionConditionResponse {
+            /**
+             * The name of the condition for the delivery rule.
+             */
+            name: "UrlFileExtension";
+            /**
+             * Defines the parameters for the condition.
+             */
+            parameters: outputs.cdn.v20200901.UrlFileExtensionMatchConditionParametersResponse;
+        }
+
+        /**
+         * Defines the UrlFileName condition for the delivery rule.
+         */
+        export interface DeliveryRuleUrlFileNameConditionResponse {
+            /**
+             * The name of the condition for the delivery rule.
+             */
+            name: "UrlFileName";
+            /**
+             * Defines the parameters for the condition.
+             */
+            parameters: outputs.cdn.v20200901.UrlFileNameMatchConditionParametersResponse;
+        }
+
+        /**
+         * Defines the UrlPath condition for the delivery rule.
+         */
+        export interface DeliveryRuleUrlPathConditionResponse {
+            /**
+             * The name of the condition for the delivery rule.
+             */
+            name: "UrlPath";
+            /**
+             * Defines the parameters for the condition.
+             */
+            parameters: outputs.cdn.v20200901.UrlPathMatchConditionParametersResponse;
+        }
+
+        /**
+         * The JSON object that contains the properties to validate a domain.
+         */
+        export interface DomainValidationPropertiesResponse {
+            /**
+             * The date time that the token expires
+             */
+            expirationDate: string;
+            /**
+             * Challenge used for DNS TXT record or file based validation
+             */
+            validationToken: string;
+        }
+
+        /**
+         * A policy that specifies the delivery rules to be used for an endpoint.
+         */
+        export interface EndpointPropertiesUpdateParametersResponseDeliveryPolicy {
+            /**
+             * User-friendly description of the policy.
+             */
+            description?: string;
+            /**
+             * A list of the delivery rules.
+             */
+            rules: outputs.cdn.v20200901.DeliveryRuleResponse[];
+        }
+
+        /**
+         * Defines the Web Application Firewall policy for the endpoint (if applicable)
+         */
+        export interface EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLink {
+            /**
+             * Resource ID.
+             */
+            id?: string;
+        }
+
+        /**
+         * Rules defining user's geo access within a CDN endpoint.
+         */
+        export interface GeoFilterResponse {
+            /**
+             * Action of the geo filter, i.e. allow or block access.
+             */
+            action: string;
+            /**
+             * Two letter country codes defining user country access in a geo filter, e.g. AU, MX, US.
+             */
+            countryCodes: string[];
+            /**
+             * Relative path applicable to geo filter. (e.g. '/mypictures', '/mypicture/kitty.jpg', and etc.)
+             */
+            relativePath: string;
+        }
+
+        /**
+         * Defines the parameters for the request header action.
+         */
+        export interface HeaderActionParametersResponse {
+            /**
+             * Action to perform
+             */
+            headerAction: string;
+            /**
+             * Name of the header to modify
+             */
+            headerName: string;
+            odataType: string;
+            /**
+             * Value for the specified action
+             */
+            value?: string;
+        }
+
+        /**
+         * The JSON object that contains the properties to send health probes to origin.
+         */
+        export interface HealthProbeParametersResponse {
+            /**
+             * The number of seconds between health probes.Default is 240sec.
+             */
+            probeIntervalInSeconds?: number;
+            /**
+             * The path relative to the origin that is used to determine the health of the origin.
+             */
+            probePath?: string;
+            /**
+             * Protocol to use for health probe.
+             */
+            probeProtocol?: string;
+            /**
+             * The type of health probe request that is made.
+             */
+            probeRequestType?: string;
+        }
+
+        /**
+         * The JSON object that represents the range for http status codes
+         */
+        export interface HttpErrorRangeParametersResponse {
+            /**
+             * The inclusive start of the http status code range.
+             */
+            begin?: number;
+            /**
+             * The inclusive end of the http status code range.
+             */
+            end?: number;
+        }
+
+        /**
+         * Defines the parameters for HttpVersion match conditions
+         */
+        export interface HttpVersionMatchConditionParametersResponse {
+            /**
+             * The match value for the condition of the delivery rule
+             */
+            matchValues?: string[];
+            /**
+             * Describes if this is negate condition or not
+             */
+            negateCondition?: boolean;
+            odataType: string;
+            /**
+             * Describes operator to be matched
+             */
+            operator: string;
+        }
+
+        /**
+         * Defines the parameters for IsDevice match conditions
+         */
+        export interface IsDeviceMatchConditionParametersResponse {
+            /**
+             * The match value for the condition of the delivery rule
+             */
+            matchValues?: string[];
+            /**
+             * Describes if this is negate condition or not
+             */
+            negateCondition?: boolean;
+            odataType: string;
+            /**
+             * Describes operator to be matched
+             */
+            operator: string;
+            /**
+             * List of transforms
+             */
+            transforms?: string[];
+        }
+
+        /**
+         * Describes the parameters for using a user's KeyVault for URL Signing Key.
+         */
+        export interface KeyVaultSigningKeyParametersResponse {
+            odataType: string;
+            /**
+             * Resource group of the user's Key Vault containing the secret
+             */
+            resourceGroupName: string;
+            /**
+             * The name of secret in Key Vault.
+             */
+            secretName: string;
+            /**
+             * The version(GUID) of secret in Key Vault.
+             */
+            secretVersion: string;
+            /**
+             * Subscription Id of the user's Key Vault containing the secret
+             */
+            subscriptionId: string;
+            /**
+             * The name of the user's Key Vault containing the secret
+             */
+            vaultName: string;
+        }
+
+        /**
+         * Round-Robin load balancing settings for a backend pool
+         */
+        export interface LoadBalancingSettingsParametersResponse {
+            /**
+             * The additional latency in milliseconds for probes to fall into the lowest latency bucket
+             */
+            additionalLatencyInMilliseconds?: number;
+            /**
+             * The number of samples to consider for load balancing decisions
+             */
+            sampleSize?: number;
+            /**
+             * The number of samples within the sample period that must succeed
+             */
+            successfulSamplesRequired?: number;
+        }
+
+        /**
+         * Managed Certificate used for https
+         */
+        export interface ManagedCertificateParametersResponse {
+            /**
+             * Certificate expiration date.
+             */
+            expirationDate?: string;
+            /**
+             * Subject name in the certificate.
+             */
+            subject?: string;
+            /**
+             * Certificate thumbprint.
+             */
+            thumbprint?: string;
+            /**
+             * The type of the Secret to create.
+             */
+            type: "ManagedCertificate";
+        }
+
+        /**
+         * Defines a managed rule group override setting.
+         */
+        export interface ManagedRuleGroupOverrideResponse {
+            /**
+             * Describes the managed rule group within the rule set to override
+             */
+            ruleGroupName: string;
+            /**
+             * List of rules that will be disabled. If none specified, all rules in the group will be disabled.
+             */
+            rules?: outputs.cdn.v20200901.ManagedRuleOverrideResponse[];
+        }
+
+        /**
+         * Defines a managed rule group override setting.
+         */
+        export interface ManagedRuleOverrideResponse {
+            /**
+             * Describes the override action to be applied when rule matches.
+             */
+            action?: string;
+            /**
+             * Describes if the managed rule is in enabled or disabled state. Defaults to Disabled if not specified.
+             */
+            enabledState?: string;
+            /**
+             * Identifier for the managed rule.
+             */
+            ruleId: string;
+        }
+
+        /**
+         * Defines the list of managed rule sets for the policy.
+         */
+        export interface ManagedRuleSetListResponse {
+            /**
+             * List of rule sets.
+             */
+            managedRuleSets?: outputs.cdn.v20200901.ManagedRuleSetResponse[];
+        }
+
+        /**
+         * Defines a managed rule set.
+         */
+        export interface ManagedRuleSetResponse {
+            /**
+             * Verizon only : If the rule set supports anomaly detection mode, this describes the threshold for blocking requests.
+             */
+            anomalyScore?: number;
+            /**
+             * Defines the rule overrides to apply to the rule set.
+             */
+            ruleGroupOverrides?: outputs.cdn.v20200901.ManagedRuleGroupOverrideResponse[];
+            /**
+             * Defines the rule set type to use.
+             */
+            ruleSetType: string;
+            /**
+             * Defines the version of the rule set to use.
+             */
+            ruleSetVersion: string;
+        }
+
+        /**
+         * Define match conditions
+         */
+        export interface MatchConditionResponse {
+            /**
+             * List of possible match values.
+             */
+            matchValue: string[];
+            /**
+             * Match variable to compare against.
+             */
+            matchVariable: string;
+            /**
+             * Describes if the result of this condition should be negated.
+             */
+            negateCondition?: boolean;
+            /**
+             * Describes operator to be matched
+             */
+            operator: string;
+            /**
+             * Selector can used to match a specific key for QueryString, Cookies, RequestHeader or PostArgs.
+             */
+            selector?: string;
+            /**
+             * List of transforms.
+             */
+            transforms?: string[];
+        }
+
+        /**
+         * Defines the parameters for the origin group override action.
+         */
+        export interface OriginGroupOverrideActionParametersResponse {
+            odataType: string;
+            /**
+             * defines the OriginGroup that would override the DefaultOriginGroup.
+             */
+            originGroup: outputs.cdn.v20200901.ResourceReferenceResponse;
+        }
+
+        /**
+         * Defines the origin group override action for the delivery rule.
+         */
+        export interface OriginGroupOverrideActionResponse {
+            /**
+             * The name of the action for the delivery rule.
+             */
+            name: "OriginGroupOverride";
+            /**
+             * Defines the parameters for the action.
+             */
+            parameters: outputs.cdn.v20200901.OriginGroupOverrideActionParametersResponse;
+        }
+
+        /**
+         * Defines contents of a web application firewall global configuration
+         */
+        export interface PolicySettingsResponse {
+            /**
+             * If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
+             */
+            defaultCustomBlockResponseBody?: string;
+            /**
+             * If the action type is block, this field defines the default customer overridable http response status code.
+             */
+            defaultCustomBlockResponseStatusCode?: number;
+            /**
+             * If action type is redirect, this field represents the default redirect URL for the client.
+             */
+            defaultRedirectUrl?: string;
+            /**
+             * describes if the policy is in enabled state or disabled state
+             */
+            enabledState?: string;
+            /**
+             * Describes if it is in detection mode or prevention mode at policy level.
+             */
+            mode?: string;
+        }
+
+        /**
+         * Defines the parameters for PostArgs match conditions
+         */
+        export interface PostArgsMatchConditionParametersResponse {
+            /**
+             * The match value for the condition of the delivery rule
+             */
+            matchValues?: string[];
+            /**
+             * Describes if this is negate condition or not
+             */
+            negateCondition?: boolean;
+            odataType: string;
+            /**
+             * Describes operator to be matched
+             */
+            operator: string;
+            /**
+             * Name of PostArg to be matched
+             */
+            selector?: string;
+            /**
+             * List of transforms
+             */
+            transforms?: string[];
+        }
+
+        /**
+         * Defines the parameters for QueryString match conditions
+         */
+        export interface QueryStringMatchConditionParametersResponse {
+            /**
+             * The match value for the condition of the delivery rule
+             */
+            matchValues?: string[];
+            /**
+             * Describes if this is negate condition or not
+             */
+            negateCondition?: boolean;
+            odataType: string;
+            /**
+             * Describes operator to be matched
+             */
+            operator: string;
+            /**
+             * List of transforms
+             */
+            transforms?: string[];
+        }
+
+        /**
+         * Defines contents of rate limit rules
+         */
+        export interface RateLimitRuleListResponse {
+            /**
+             * List of rules
+             */
+            rules?: outputs.cdn.v20200901.RateLimitRuleResponse[];
+        }
+
+        /**
+         * Defines a rate limiting rule that can be included in a waf policy
+         */
+        export interface RateLimitRuleResponse {
+            /**
+             * Describes what action to be applied when rule matches
+             */
+            action: string;
+            /**
+             * Describes if the custom rule is in enabled or disabled state. Defaults to Enabled if not specified.
+             */
+            enabledState?: string;
+            /**
+             * List of match conditions.
+             */
+            matchConditions: outputs.cdn.v20200901.MatchConditionResponse[];
+            /**
+             * Defines the name of the custom rule
+             */
+            name: string;
+            /**
+             * Defines in what order this rule be evaluated in the overall list of custom rules
+             */
+            priority: number;
+            /**
+             * Defines rate limit duration. Default is 1 minute.
+             */
+            rateLimitDurationInMinutes: number;
+            /**
+             * Defines rate limit threshold.
+             */
+            rateLimitThreshold: number;
+        }
+
+        /**
+         * Defines the parameters for RemoteAddress match conditions
+         */
+        export interface RemoteAddressMatchConditionParametersResponse {
+            /**
+             * Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match.
+             */
+            matchValues?: string[];
+            /**
+             * Describes if this is negate condition or not
+             */
+            negateCondition?: boolean;
+            odataType: string;
+            /**
+             * Describes operator to be matched
+             */
+            operator: string;
+            /**
+             * List of transforms
+             */
+            transforms?: string[];
+        }
+
+        /**
+         * Defines the parameters for RequestBody match conditions
+         */
+        export interface RequestBodyMatchConditionParametersResponse {
+            /**
+             * The match value for the condition of the delivery rule
+             */
+            matchValues?: string[];
+            /**
+             * Describes if this is negate condition or not
+             */
+            negateCondition?: boolean;
+            odataType: string;
+            /**
+             * Describes operator to be matched
+             */
+            operator: string;
+            /**
+             * List of transforms
+             */
+            transforms?: string[];
+        }
+
+        /**
+         * Defines the parameters for RequestHeader match conditions
+         */
+        export interface RequestHeaderMatchConditionParametersResponse {
+            /**
+             * The match value for the condition of the delivery rule
+             */
+            matchValues?: string[];
+            /**
+             * Describes if this is negate condition or not
+             */
+            negateCondition?: boolean;
+            odataType: string;
+            /**
+             * Describes operator to be matched
+             */
+            operator: string;
+            /**
+             * Name of Header to be matched
+             */
+            selector?: string;
+            /**
+             * List of transforms
+             */
+            transforms?: string[];
+        }
+
+        /**
+         * Defines the parameters for RequestMethod match conditions
+         */
+        export interface RequestMethodMatchConditionParametersResponse {
+            /**
+             * The match value for the condition of the delivery rule
+             */
+            matchValues?: string[];
+            /**
+             * Describes if this is negate condition or not
+             */
+            negateCondition?: boolean;
+            odataType: string;
+            /**
+             * Describes operator to be matched
+             */
+            operator: string;
+        }
+
+        /**
+         * Defines the parameters for RequestScheme match conditions 
+         */
+        export interface RequestSchemeMatchConditionParametersResponse {
+            /**
+             * The match value for the condition of the delivery rule
+             */
+            matchValues?: string[];
+            /**
+             * Describes if this is negate condition or not
+             */
+            negateCondition?: boolean;
+            odataType: string;
+            /**
+             * Describes operator to be matched
+             */
+            operator: string;
+        }
+
+        /**
+         * Defines the parameters for RequestUri match conditions
+         */
+        export interface RequestUriMatchConditionParametersResponse {
+            /**
+             * The match value for the condition of the delivery rule
+             */
+            matchValues?: string[];
+            /**
+             * Describes if this is negate condition or not
+             */
+            negateCondition?: boolean;
+            odataType: string;
+            /**
+             * Describes operator to be matched
+             */
+            operator: string;
+            /**
+             * List of transforms
+             */
+            transforms?: string[];
+        }
+
+        /**
+         * Reference to another resource.
+         */
+        export interface ResourceReferenceResponse {
+            /**
+             * Resource ID.
+             */
+            id?: string;
+        }
+
+        /**
+         * The JSON object that contains the properties to determine origin health using real requests/responses.
+         */
+        export interface ResponseBasedOriginErrorDetectionParametersResponse {
+            /**
+             * The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy.
+             */
+            httpErrorRanges?: outputs.cdn.v20200901.HttpErrorRangeParametersResponse[];
+            /**
+             * Type of response errors for real user requests for which origin will be deemed unhealthy
+             */
+            responseBasedDetectedErrorTypes?: string;
+            /**
+             * The percentage of failed requests in the sample where failover should trigger.
+             */
+            responseBasedFailoverThresholdPercentage?: number;
+        }
+
+        /**
+         * settings for security policy patterns to match
+         */
+        export interface SecurityPolicyWebApplicationFirewallAssociationResponse {
+            /**
+             * List of domains.
+             */
+            domains?: outputs.cdn.v20200901.ResourceReferenceResponse[];
+            /**
+             * List of paths
+             */
+            patternsToMatch?: string[];
+        }
+
+        /**
+         * The json object containing security policy waf parameters
+         */
+        export interface SecurityPolicyWebApplicationFirewallParametersResponse {
+            /**
+             * Waf associations
+             */
+            associations?: outputs.cdn.v20200901.SecurityPolicyWebApplicationFirewallAssociationResponse[];
+            /**
+             * The type of the Security policy to create.
+             */
+            type: "WebApplicationFirewall";
+            /**
+             * Resource ID.
+             */
+            wafPolicy?: outputs.cdn.v20200901.ResourceReferenceResponse;
+        }
+
+        /**
+         * Describes the properties of an existing Shared Private Link Resource to use when connecting to a private origin.
+         */
+        export interface SharedPrivateLinkResourcePropertiesResponse {
+            /**
+             * The group id from the provider of resource the shared private link resource is for.
+             */
+            groupId?: string;
+            /**
+             * The resource id of the resource the shared private link resource is for.
+             */
+            privateLink?: outputs.cdn.v20200901.ResourceReferenceResponse;
+            /**
+             * The location of the shared private link resource
+             */
+            privateLinkLocation?: string;
+            /**
+             * The request message for requesting approval of the shared private link resource.
+             */
+            requestMessage?: string;
+            /**
+             * Status of the shared private link resource. Can be Pending, Approved, Rejected, Disconnected, or Timeout.
+             */
+            status?: string;
+        }
+
+        /**
+         * The pricing tier (defines a CDN provider, feature list and rate) of the CDN profile.
+         */
+        export interface SkuResponse {
+            /**
+             * Name of the pricing tier.
+             */
+            name?: string;
+        }
+
+        /**
+         * Read only system data
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC)
+             */
+            createdAt?: string;
+            /**
+             * An identifier for the identity that created the resource
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource
+             */
+            createdByType?: string;
+            /**
+             * The timestamp of resource last modification (UTC)
+             */
+            lastModifiedAt?: string;
+            /**
+             * An identifier for the identity that last modified the resource
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource
+             */
+            lastModifiedByType?: string;
+        }
+
+        /**
+         * Defines the parameters for UrlFileExtension match conditions
+         */
+        export interface UrlFileExtensionMatchConditionParametersResponse {
+            /**
+             * The match value for the condition of the delivery rule
+             */
+            matchValues?: string[];
+            /**
+             * Describes if this is negate condition or not
+             */
+            negateCondition?: boolean;
+            odataType: string;
+            /**
+             * Describes operator to be matched
+             */
+            operator: string;
+            /**
+             * List of transforms
+             */
+            transforms?: string[];
+        }
+
+        /**
+         * Defines the parameters for UrlFilename match conditions
+         */
+        export interface UrlFileNameMatchConditionParametersResponse {
+            /**
+             * The match value for the condition of the delivery rule
+             */
+            matchValues?: string[];
+            /**
+             * Describes if this is negate condition or not
+             */
+            negateCondition?: boolean;
+            odataType: string;
+            /**
+             * Describes operator to be matched
+             */
+            operator: string;
+            /**
+             * List of transforms
+             */
+            transforms?: string[];
+        }
+
+        /**
+         * Defines the parameters for UrlPath match conditions
+         */
+        export interface UrlPathMatchConditionParametersResponse {
+            /**
+             * The match value for the condition of the delivery rule
+             */
+            matchValues?: string[];
+            /**
+             * Describes if this is negate condition or not
+             */
+            negateCondition?: boolean;
+            odataType: string;
+            /**
+             * Describes operator to be matched
+             */
+            operator: string;
+            /**
+             * List of transforms
+             */
+            transforms?: string[];
+        }
+
+        /**
+         * Defines the parameters for the url redirect action.
+         */
+        export interface UrlRedirectActionParametersResponse {
+            /**
+             * Fragment to add to the redirect URL. Fragment is the part of the URL that comes after #. Do not include the #.
+             */
+            customFragment?: string;
+            /**
+             * Host to redirect. Leave empty to use the incoming host as the destination host.
+             */
+            customHostname?: string;
+            /**
+             * The full path to redirect. Path cannot be empty and must start with /. Leave empty to use the incoming path as destination path.
+             */
+            customPath?: string;
+            /**
+             * The set of query strings to be placed in the redirect URL. Setting this value would replace any existing query string; leave empty to preserve the incoming query string. Query string must be in <key>=<value> format. ? and & will be added automatically so do not include them.
+             */
+            customQueryString?: string;
+            /**
+             * Protocol to use for the redirect. The default value is MatchRequest
+             */
+            destinationProtocol?: string;
+            odataType: string;
+            /**
+             * The redirect type the rule will use when redirecting traffic.
+             */
+            redirectType: string;
+        }
+
+        /**
+         * Defines the url redirect action for the delivery rule.
+         */
+        export interface UrlRedirectActionResponse {
+            /**
+             * The name of the action for the delivery rule.
+             */
+            name: "UrlRedirect";
+            /**
+             * Defines the parameters for the action.
+             */
+            parameters: outputs.cdn.v20200901.UrlRedirectActionParametersResponse;
+        }
+
+        /**
+         * Defines the parameters for the url rewrite action.
+         */
+        export interface UrlRewriteActionParametersResponse {
+            /**
+             * Define the relative URL to which the above requests will be rewritten by.
+             */
+            destination: string;
+            odataType: string;
+            /**
+             * Whether to preserve unmatched path. Default value is true.
+             */
+            preserveUnmatchedPath?: boolean;
+            /**
+             * define a request URI pattern that identifies the type of requests that may be rewritten. If value is blank, all strings are matched.
+             */
+            sourcePattern: string;
+        }
+
+        /**
+         * Defines the url rewrite action for the delivery rule.
+         */
+        export interface UrlRewriteActionResponse {
+            /**
+             * The name of the action for the delivery rule.
+             */
+            name: "UrlRewrite";
+            /**
+             * Defines the parameters for the action.
+             */
+            parameters: outputs.cdn.v20200901.UrlRewriteActionParametersResponse;
+        }
+
+        /**
+         * Defines the parameters for the Url Signing action.
+         */
+        export interface UrlSigningActionParametersResponse {
+            /**
+             * Algorithm to use for URL signing
+             */
+            algorithm?: string;
+            odataType: string;
+            /**
+             * Defines which query string parameters in the url to be considered for expires, key id etc. 
+             */
+            parameterNameOverride?: outputs.cdn.v20200901.UrlSigningParamIdentifierResponse[];
+        }
+
+        /**
+         * Defines the url signing action for the delivery rule.
+         */
+        export interface UrlSigningActionResponse {
+            /**
+             * The name of the action for the delivery rule.
+             */
+            name: "UrlSigning";
+            /**
+             * Defines the parameters for the action.
+             */
+            parameters: outputs.cdn.v20200901.UrlSigningActionParametersResponse;
+        }
+
+        /**
+         * Url signing key parameters
+         */
+        export interface UrlSigningKeyParametersResponse {
+            /**
+             * Defines the customer defined key Id. This id will exist in the incoming request to indicate the key used to form the hash.
+             */
+            keyId: string;
+            /**
+             * Resource reference to the KV secret
+             */
+            secretSource: outputs.cdn.v20200901.ResourceReferenceResponse;
+            /**
+             * Version of the secret to be used
+             */
+            secretVersion?: string;
+            /**
+             * The type of the Secret to create.
+             */
+            type: "UrlSigningKey";
+        }
+
+        /**
+         * Url signing key
+         */
+        export interface UrlSigningKeyResponse {
+            /**
+             * Defines the customer defined key Id. This id will exist in the incoming request to indicate the key used to form the hash.
+             */
+            keyId: string;
+            /**
+             * Defines the parameters for using customer key vault for Url Signing Key.
+             */
+            keySourceParameters: outputs.cdn.v20200901.KeyVaultSigningKeyParametersResponse;
+        }
+
+        /**
+         * Defines how to identify a parameter for a specific purpose e.g. expires
+         */
+        export interface UrlSigningParamIdentifierResponse {
+            /**
+             * Indicates the purpose of the parameter
+             */
+            paramIndicator: string;
+            /**
+             * Parameter name
+             */
+            paramName: string;
+        }
+    }
 }
 
 export namespace certificateregistration {
@@ -32489,6 +34466,36 @@ export namespace certificateregistration {
              * Certificate Version.
              */
             version: number;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
         }
     }
 
@@ -32803,6 +34810,98 @@ export namespace certificateregistration {
              * Certificate Version.
              */
             version: number;
+        }
+    }
+
+    export namespace v20200901 {
+        /**
+         * Key Vault container for a certificate that is purchased through Azure.
+         */
+        export interface AppServiceCertificateResponse {
+            /**
+             * Key Vault resource Id.
+             */
+            keyVaultId?: string;
+            /**
+             * Key Vault secret name.
+             */
+            keyVaultSecretName?: string;
+            /**
+             * Status of the Key Vault secret.
+             */
+            provisioningState: string;
+        }
+
+        /**
+         * SSL certificate details.
+         */
+        export interface CertificateDetailsResponse {
+            /**
+             * Certificate Issuer.
+             */
+            issuer: string;
+            /**
+             * Date Certificate is valid to.
+             */
+            notAfter: string;
+            /**
+             * Date Certificate is valid from.
+             */
+            notBefore: string;
+            /**
+             * Raw certificate data.
+             */
+            rawData: string;
+            /**
+             * Certificate Serial Number.
+             */
+            serialNumber: string;
+            /**
+             * Certificate Signature algorithm.
+             */
+            signatureAlgorithm: string;
+            /**
+             * Certificate Subject.
+             */
+            subject: string;
+            /**
+             * Certificate Thumbprint.
+             */
+            thumbprint: string;
+            /**
+             * Certificate Version.
+             */
+            version: number;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
         }
     }
 }
@@ -77247,6 +79346,10 @@ export namespace costmanagement {
          */
         export interface ExportExecutionResponse {
             /**
+             * eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
+             */
+            eTag?: string;
+            /**
              * The details of any error.
              */
             error?: outputs.costmanagement.latest.ErrorDetailsResponse;
@@ -77291,10 +79394,6 @@ export namespace costmanagement {
              */
             submittedTime?: string;
             /**
-             * Resource tags.
-             */
-            tags: {[key: string]: string};
-            /**
              * Resource type.
              */
             type: string;
@@ -77321,7 +79420,7 @@ export namespace costmanagement {
             /**
              * The schedule recurrence.
              */
-            recurrence: string;
+            recurrence?: string;
             /**
              * Has start and end date of the recurrence. The start date must be in future. If present, the end date must be greater than start date.
              */
@@ -79005,6 +81104,28 @@ export namespace costmanagement {
 
     export namespace v20191101 {
         /**
+         * The definition of a query.
+         */
+        export interface ExportDefinitionResponse {
+            /**
+             * Has definition for data in this query.
+             */
+            dataSet?: outputs.costmanagement.v20191101.QueryDatasetResponse;
+            /**
+             * Has time period for pulling data for the query.
+             */
+            timePeriod?: outputs.costmanagement.v20191101.QueryTimePeriodResponse;
+            /**
+             * The time frame for pulling data for the query. If custom, then a specific time period must be provided.
+             */
+            timeframe: string;
+            /**
+             * The type of the query.
+             */
+            type: string;
+        }
+
+        /**
          * The destination information for the delivery of the export. To allow access to a storage account, you must register the account's subscription with the Microsoft.CostManagementExports resource provider. This is required once per subscription. When creating an export in the Azure portal, it is done automatically, however API users need to register the subscription. For more information see https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-supported-services .
          */
         export interface ExportDeliveryDestinationResponse {
@@ -79162,28 +81283,6 @@ export namespace costmanagement {
              * Array of group by expression to use in the query. Query can have up to 2 group by clauses.
              */
             grouping?: outputs.costmanagement.v20191101.QueryGroupingResponse[];
-        }
-
-        /**
-         * The definition of a query.
-         */
-        export interface QueryDefinitionResponse {
-            /**
-             * Has definition for data in this query.
-             */
-            dataset?: outputs.costmanagement.v20191101.QueryDatasetResponse;
-            /**
-             * Has time period for pulling data for the query.
-             */
-            timePeriod?: outputs.costmanagement.v20191101.QueryTimePeriodResponse;
-            /**
-             * The time frame for pulling data for the query. If custom, then a specific time period must be provided.
-             */
-            timeframe: string;
-            /**
-             * The type of the query.
-             */
-            type: string;
         }
 
         /**
@@ -79511,6 +81610,10 @@ export namespace costmanagement {
          */
         export interface ExportExecutionResponse {
             /**
+             * eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
+             */
+            eTag?: string;
+            /**
              * The details of any error.
              */
             error?: outputs.costmanagement.v20200601.ErrorDetailsResponse;
@@ -79555,10 +81658,6 @@ export namespace costmanagement {
              */
             submittedTime?: string;
             /**
-             * Resource tags.
-             */
-            tags: {[key: string]: string};
-            /**
              * Resource type.
              */
             type: string;
@@ -79585,7 +81684,7 @@ export namespace costmanagement {
             /**
              * The schedule recurrence.
              */
-            recurrence: string;
+            recurrence?: string;
             /**
              * Has start and end date of the recurrence. The start date must be in future. If present, the end date must be greater than start date.
              */
@@ -90600,6 +92699,16 @@ export namespace datafactory {
         }
 
         /**
+         * Managed Identity used for CMK.
+         */
+        export interface CMKIdentityDefinitionResponse {
+            /**
+             * The resource id of the user assigned identity to authenticate to customer's key vault.
+             */
+            userAssignedIdentity?: string;
+        }
+
+        /**
          * Linked service for Cassandra data source.
          */
         export interface CassandraLinkedServiceResponse {
@@ -92233,6 +94342,28 @@ export namespace datafactory {
         }
 
         /**
+         * Definition of CMK for the factory.
+         */
+        export interface EncryptionConfigurationResponse {
+            /**
+             * User assigned identity to use to authenticate to customer's key vault. If not provided Managed Service Identity will be used.
+             */
+            identity?: outputs.datafactory.latest.CMKIdentityDefinitionResponse;
+            /**
+             * The name of the key in Azure Key Vault to use as Customer Managed Key.
+             */
+            keyName: string;
+            /**
+             * The version of the key used for CMK. If not provided, latest version will be used.
+             */
+            keyVersion?: string;
+            /**
+             * The url of the Azure Key Vault used for CMK.
+             */
+            vaultBaseUrl: string;
+        }
+
+        /**
          * The entity reference.
          */
         export interface EntityReferenceResponse {
@@ -92407,9 +94538,13 @@ export namespace datafactory {
              */
             tenantId: string;
             /**
-             * The identity type. Currently the only supported type is 'SystemAssigned'.
+             * The identity type.
              */
             type: string;
+            /**
+             * List of user assigned identities for the factory.
+             */
+            userAssignedIdentities?: {[key: string]: any};
         }
 
         /**
@@ -108833,6 +110968,16 @@ export namespace datafactory {
         }
 
         /**
+         * Managed Identity used for CMK.
+         */
+        export interface CMKIdentityDefinitionResponse {
+            /**
+             * The resource id of the user assigned identity to authenticate to customer's key vault.
+             */
+            userAssignedIdentity?: string;
+        }
+
+        /**
          * Linked service for Cassandra data source.
          */
         export interface CassandraLinkedServiceResponse {
@@ -110466,6 +112611,28 @@ export namespace datafactory {
         }
 
         /**
+         * Definition of CMK for the factory.
+         */
+        export interface EncryptionConfigurationResponse {
+            /**
+             * User assigned identity to use to authenticate to customer's key vault. If not provided Managed Service Identity will be used.
+             */
+            identity?: outputs.datafactory.v20180601.CMKIdentityDefinitionResponse;
+            /**
+             * The name of the key in Azure Key Vault to use as Customer Managed Key.
+             */
+            keyName: string;
+            /**
+             * The version of the key used for CMK. If not provided, latest version will be used.
+             */
+            keyVersion?: string;
+            /**
+             * The url of the Azure Key Vault used for CMK.
+             */
+            vaultBaseUrl: string;
+        }
+
+        /**
          * The entity reference.
          */
         export interface EntityReferenceResponse {
@@ -110640,9 +112807,13 @@ export namespace datafactory {
              */
             tenantId: string;
             /**
-             * The identity type. Currently the only supported type is 'SystemAssigned'.
+             * The identity type.
              */
             type: string;
+            /**
+             * List of user assigned identities for the factory.
+             */
+            userAssignedIdentities?: {[key: string]: any};
         }
 
         /**
@@ -158208,6 +160379,36 @@ export namespace domainregistration {
         }
 
         /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
+        }
+
+        /**
          * Legal agreement for a top level domain.
          */
         export interface TldLegalAgreementResponse {
@@ -158979,6 +161180,191 @@ export namespace domainregistration {
              * Name of the object.
              */
             name?: string;
+        }
+
+        /**
+         * Legal agreement for a top level domain.
+         */
+        export interface TldLegalAgreementResponse {
+            /**
+             * Unique identifier for the agreement.
+             */
+            agreementKey: string;
+            /**
+             * Agreement details.
+             */
+            content: string;
+            /**
+             * Agreement title.
+             */
+            title: string;
+            /**
+             * URL where a copy of the agreement details is hosted.
+             */
+            url?: string;
+        }
+    }
+
+    export namespace v20200901 {
+        /**
+         * Address information for domain registration.
+         */
+        export interface AddressResponse {
+            /**
+             * First line of an Address.
+             */
+            address1: string;
+            /**
+             * The second line of the Address. Optional.
+             */
+            address2?: string;
+            /**
+             * The city for the address.
+             */
+            city: string;
+            /**
+             * The country for the address.
+             */
+            country: string;
+            /**
+             * The postal code for the address.
+             */
+            postalCode: string;
+            /**
+             * The state or province for the address.
+             */
+            state: string;
+        }
+
+        /**
+         * Contact information for domain registration. If 'Domain Privacy' option is not selected then the contact information is made publicly available through the Whois 
+         * directories as per ICANN requirements.
+         */
+        export interface ContactResponse {
+            /**
+             * Mailing address.
+             */
+            addressMailing?: outputs.domainregistration.v20200901.AddressResponse;
+            /**
+             * Email address.
+             */
+            email: string;
+            /**
+             * Fax number.
+             */
+            fax?: string;
+            /**
+             * Job title.
+             */
+            jobTitle?: string;
+            /**
+             * First name.
+             */
+            nameFirst: string;
+            /**
+             * Last name.
+             */
+            nameLast: string;
+            /**
+             * Middle name.
+             */
+            nameMiddle?: string;
+            /**
+             * Organization contact belongs to.
+             */
+            organization?: string;
+            /**
+             * Phone number.
+             */
+            phone: string;
+        }
+
+        /**
+         * Domain purchase consent object, representing acceptance of applicable legal agreements.
+         */
+        export interface DomainPurchaseConsentResponse {
+            /**
+             * Timestamp when the agreements were accepted.
+             */
+            agreedAt?: string;
+            /**
+             * Client IP address.
+             */
+            agreedBy?: string;
+            /**
+             * List of applicable legal agreement keys. This list can be retrieved using ListLegalAgreements API under <code>TopLevelDomain</code> resource.
+             */
+            agreementKeys?: string[];
+        }
+
+        /**
+         * Details of a hostname derived from a domain.
+         */
+        export interface HostNameResponse {
+            /**
+             * Name of the Azure resource the hostname is assigned to. If it is assigned to a Traffic Manager then it will be the Traffic Manager name otherwise it will be the app name.
+             */
+            azureResourceName?: string;
+            /**
+             * Type of the Azure resource the hostname is assigned to.
+             */
+            azureResourceType?: string;
+            /**
+             * Type of the DNS record.
+             */
+            customHostNameDnsRecordType?: string;
+            /**
+             * Type of the hostname.
+             */
+            hostNameType?: string;
+            /**
+             * Name of the hostname.
+             */
+            name?: string;
+            /**
+             * List of apps the hostname is assigned to. This list will have more than one app only if the hostname is pointing to a Traffic Manager.
+             */
+            siteNames?: string[];
+        }
+
+        /**
+         * Identifies an object.
+         */
+        export interface NameIdentifierResponse {
+            /**
+             * Name of the object.
+             */
+            name?: string;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
         }
 
         /**
@@ -163270,6 +165656,36 @@ export namespace eventhub {
 
     export namespace v20180101preview {
         /**
+         * Properties to configure capture description for eventhub
+         */
+        export interface CaptureDescriptionResponse {
+            /**
+             * Properties of Destination where capture will be stored. (Storage Account, Blob Names)
+             */
+            destination?: outputs.eventhub.v20180101preview.DestinationResponse;
+            /**
+             * A value that indicates whether capture description is enabled. 
+             */
+            enabled?: boolean;
+            /**
+             * Enumerates the possible values for the encoding format of capture description. Note: 'AvroDeflate' will be deprecated in New API Version
+             */
+            encoding?: string;
+            /**
+             * The time window allows you to set the frequency with which the capture to Azure Blobs will happen, value should between 60 to 900 seconds
+             */
+            intervalInSeconds?: number;
+            /**
+             * The size window defines the amount of data built up in your Event Hub before an capture operation, value should be between 10485760 to 524288000 bytes
+             */
+            sizeLimitInBytes?: number;
+            /**
+             * A value that indicates whether to Skip Empty Archives
+             */
+            skipEmptyArchives?: boolean;
+        }
+
+        /**
          * SKU parameters particular to a cluster instance.
          */
         export interface ClusterSkuResponse {
@@ -163295,6 +165711,28 @@ export namespace eventhub {
              * Status of the connection.
              */
             status?: string;
+        }
+
+        /**
+         * Capture storage details for capture description
+         */
+        export interface DestinationResponse {
+            /**
+             * Blob naming convention for archive, e.g. {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}. Here all the parameters (Namespace,EventHub .. etc) are mandatory irrespective of order
+             */
+            archiveNameFormat?: string;
+            /**
+             * Blob container Name
+             */
+            blobContainer?: string;
+            /**
+             * Name for capture destination
+             */
+            name?: string;
+            /**
+             * Resource id of the storage account to be used to create the blobs
+             */
+            storageAccountResourceId?: string;
         }
 
         /**
@@ -172544,6 +174982,36 @@ export namespace keyvault {
         }
 
         /**
+         * The attributes of the key.
+         */
+        export interface KeyAttributesResponse {
+            /**
+             * Creation time in seconds since 1970-01-01T00:00:00Z.
+             */
+            created: number;
+            /**
+             * Determines whether or not the object is enabled.
+             */
+            enabled?: boolean;
+            /**
+             * Expiry date in seconds since 1970-01-01T00:00:00Z.
+             */
+            expires?: number;
+            /**
+             * Not before date in seconds since 1970-01-01T00:00:00Z.
+             */
+            notBefore?: number;
+            /**
+             * The deletion recovery level currently in effect for the object. If it contains 'Purgeable', then the object can be permanently deleted by a privileged user; otherwise, only the system can purge the object at the end of the retention interval.
+             */
+            recoveryLevel: string;
+            /**
+             * Last updated time in seconds since 1970-01-01T00:00:00Z.
+             */
+            updated: number;
+        }
+
+        /**
          * A set of rules governing the network accessibility of a vault.
          */
         export interface NetworkRuleSetResponse {
@@ -172634,6 +175102,58 @@ export namespace keyvault {
         }
 
         /**
+         * The secret management attributes.
+         */
+        export interface SecretAttributesResponse {
+            /**
+             * Creation time in seconds since 1970-01-01T00:00:00Z.
+             */
+            created: number;
+            /**
+             * Determines whether the object is enabled.
+             */
+            enabled?: boolean;
+            /**
+             * Expiry date in seconds since 1970-01-01T00:00:00Z.
+             */
+            expires?: number;
+            /**
+             * Not before date in seconds since 1970-01-01T00:00:00Z.
+             */
+            notBefore?: number;
+            /**
+             * Last updated time in seconds since 1970-01-01T00:00:00Z.
+             */
+            updated: number;
+        }
+
+        /**
+         * Properties of the secret
+         */
+        export interface SecretPropertiesResponse {
+            /**
+             * The attributes of the secret.
+             */
+            attributes?: outputs.keyvault.latest.SecretAttributesResponse;
+            /**
+             * The content type of the secret.
+             */
+            contentType?: string;
+            /**
+             * The URI to retrieve the current version of the secret.
+             */
+            secretUri: string;
+            /**
+             * The URI to retrieve the specific version of the secret.
+             */
+            secretUriWithVersion: string;
+            /**
+             * The value of the secret. NOTE: 'value' will never be returned from the service, as APIs using this model are is intended for internal use in ARM deployments. Users should use the data-plane REST service for interaction with vault secrets.
+             */
+            value?: string;
+        }
+
+        /**
          * SKU details
          */
         export interface SkuResponse {
@@ -172704,7 +175224,7 @@ export namespace keyvault {
              */
             tenantId: string;
             /**
-             * The URI of the vault for performing operations on keys and secrets.
+             * The URI of the vault for performing operations on keys and secrets. This property is readonly
              */
             vaultUri?: string;
         }
@@ -172857,6 +175377,58 @@ export namespace keyvault {
              * Permissions to storage accounts
              */
             storage?: string[];
+        }
+
+        /**
+         * The secret management attributes.
+         */
+        export interface SecretAttributesResponse {
+            /**
+             * Creation time in seconds since 1970-01-01T00:00:00Z.
+             */
+            created: number;
+            /**
+             * Determines whether the object is enabled.
+             */
+            enabled?: boolean;
+            /**
+             * Expiry date in seconds since 1970-01-01T00:00:00Z.
+             */
+            expires?: number;
+            /**
+             * Not before date in seconds since 1970-01-01T00:00:00Z.
+             */
+            notBefore?: number;
+            /**
+             * Last updated time in seconds since 1970-01-01T00:00:00Z.
+             */
+            updated: number;
+        }
+
+        /**
+         * Properties of the secret
+         */
+        export interface SecretPropertiesResponse {
+            /**
+             * The attributes of the secret.
+             */
+            attributes?: outputs.keyvault.v20161001.SecretAttributesResponse;
+            /**
+             * The content type of the secret.
+             */
+            contentType?: string;
+            /**
+             * The URI to retrieve the current version of the secret.
+             */
+            secretUri: string;
+            /**
+             * The URI to retrieve the specific version of the secret.
+             */
+            secretUriWithVersion: string;
+            /**
+             * The value of the secret. NOTE: 'value' will never be returned from the service, as APIs using this model are is intended for internal use in ARM deployments. Users should use the data-plane REST service for interaction with vault secrets.
+             */
+            value?: string;
         }
 
         /**
@@ -173044,6 +175616,58 @@ export namespace keyvault {
         }
 
         /**
+         * The secret management attributes.
+         */
+        export interface SecretAttributesResponse {
+            /**
+             * Creation time in seconds since 1970-01-01T00:00:00Z.
+             */
+            created: number;
+            /**
+             * Determines whether the object is enabled.
+             */
+            enabled?: boolean;
+            /**
+             * Expiry date in seconds since 1970-01-01T00:00:00Z.
+             */
+            expires?: number;
+            /**
+             * Not before date in seconds since 1970-01-01T00:00:00Z.
+             */
+            notBefore?: number;
+            /**
+             * Last updated time in seconds since 1970-01-01T00:00:00Z.
+             */
+            updated: number;
+        }
+
+        /**
+         * Properties of the secret
+         */
+        export interface SecretPropertiesResponse {
+            /**
+             * The attributes of the secret.
+             */
+            attributes?: outputs.keyvault.v20180214.SecretAttributesResponse;
+            /**
+             * The content type of the secret.
+             */
+            contentType?: string;
+            /**
+             * The URI to retrieve the current version of the secret.
+             */
+            secretUri: string;
+            /**
+             * The URI to retrieve the specific version of the secret.
+             */
+            secretUriWithVersion: string;
+            /**
+             * The value of the secret. NOTE: 'value' will never be returned from the service, as APIs using this model are is intended for internal use in ARM deployments. Users should use the data-plane REST service for interaction with vault secrets.
+             */
+            value?: string;
+        }
+
+        /**
          * SKU details
          */
         export interface SkuResponse {
@@ -173200,6 +175824,58 @@ export namespace keyvault {
         }
 
         /**
+         * The secret management attributes.
+         */
+        export interface SecretAttributesResponse {
+            /**
+             * Creation time in seconds since 1970-01-01T00:00:00Z.
+             */
+            created: number;
+            /**
+             * Determines whether the object is enabled.
+             */
+            enabled?: boolean;
+            /**
+             * Expiry date in seconds since 1970-01-01T00:00:00Z.
+             */
+            expires?: number;
+            /**
+             * Not before date in seconds since 1970-01-01T00:00:00Z.
+             */
+            notBefore?: number;
+            /**
+             * Last updated time in seconds since 1970-01-01T00:00:00Z.
+             */
+            updated: number;
+        }
+
+        /**
+         * Properties of the secret
+         */
+        export interface SecretPropertiesResponse {
+            /**
+             * The attributes of the secret.
+             */
+            attributes?: outputs.keyvault.v20180214preview.SecretAttributesResponse;
+            /**
+             * The content type of the secret.
+             */
+            contentType?: string;
+            /**
+             * The URI to retrieve the current version of the secret.
+             */
+            secretUri: string;
+            /**
+             * The URI to retrieve the specific version of the secret.
+             */
+            secretUriWithVersion: string;
+            /**
+             * The value of the secret. NOTE: 'value' will never be returned from the service, as APIs using this model are is intended for internal use in ARM deployments. Users should use the data-plane REST service for interaction with vault secrets.
+             */
+            value?: string;
+        }
+
+        /**
          * SKU details
          */
         export interface SkuResponse {
@@ -173308,6 +175984,36 @@ export namespace keyvault {
         }
 
         /**
+         * The attributes of the key.
+         */
+        export interface KeyAttributesResponse {
+            /**
+             * Creation time in seconds since 1970-01-01T00:00:00Z.
+             */
+            created: number;
+            /**
+             * Determines whether or not the object is enabled.
+             */
+            enabled?: boolean;
+            /**
+             * Expiry date in seconds since 1970-01-01T00:00:00Z.
+             */
+            expires?: number;
+            /**
+             * Not before date in seconds since 1970-01-01T00:00:00Z.
+             */
+            notBefore?: number;
+            /**
+             * The deletion recovery level currently in effect for the object. If it contains 'Purgeable', then the object can be permanently deleted by a privileged user; otherwise, only the system can purge the object at the end of the retention interval.
+             */
+            recoveryLevel: string;
+            /**
+             * Last updated time in seconds since 1970-01-01T00:00:00Z.
+             */
+            updated: number;
+        }
+
+        /**
          * A set of rules governing the network accessibility of a vault.
          */
         export interface NetworkRuleSetResponse {
@@ -173398,6 +176104,58 @@ export namespace keyvault {
         }
 
         /**
+         * The secret management attributes.
+         */
+        export interface SecretAttributesResponse {
+            /**
+             * Creation time in seconds since 1970-01-01T00:00:00Z.
+             */
+            created: number;
+            /**
+             * Determines whether the object is enabled.
+             */
+            enabled?: boolean;
+            /**
+             * Expiry date in seconds since 1970-01-01T00:00:00Z.
+             */
+            expires?: number;
+            /**
+             * Not before date in seconds since 1970-01-01T00:00:00Z.
+             */
+            notBefore?: number;
+            /**
+             * Last updated time in seconds since 1970-01-01T00:00:00Z.
+             */
+            updated: number;
+        }
+
+        /**
+         * Properties of the secret
+         */
+        export interface SecretPropertiesResponse {
+            /**
+             * The attributes of the secret.
+             */
+            attributes?: outputs.keyvault.v20190901.SecretAttributesResponse;
+            /**
+             * The content type of the secret.
+             */
+            contentType?: string;
+            /**
+             * The URI to retrieve the current version of the secret.
+             */
+            secretUri: string;
+            /**
+             * The URI to retrieve the specific version of the secret.
+             */
+            secretUriWithVersion: string;
+            /**
+             * The value of the secret. NOTE: 'value' will never be returned from the service, as APIs using this model are is intended for internal use in ARM deployments. Users should use the data-plane REST service for interaction with vault secrets.
+             */
+            value?: string;
+        }
+
+        /**
          * SKU details
          */
         export interface SkuResponse {
@@ -173468,7 +176226,7 @@ export namespace keyvault {
              */
             tenantId: string;
             /**
-             * The URI of the vault for performing operations on keys and secrets.
+             * The URI of the vault for performing operations on keys and secrets. This property is readonly
              */
             vaultUri?: string;
         }
@@ -173661,6 +176419,58 @@ export namespace keyvault {
              * Indicates whether the connection has been approved, rejected or removed by the key vault owner.
              */
             status?: string;
+        }
+
+        /**
+         * The secret management attributes.
+         */
+        export interface SecretAttributesResponse {
+            /**
+             * Creation time in seconds since 1970-01-01T00:00:00Z.
+             */
+            created: number;
+            /**
+             * Determines whether the object is enabled.
+             */
+            enabled?: boolean;
+            /**
+             * Expiry date in seconds since 1970-01-01T00:00:00Z.
+             */
+            expires?: number;
+            /**
+             * Not before date in seconds since 1970-01-01T00:00:00Z.
+             */
+            notBefore?: number;
+            /**
+             * Last updated time in seconds since 1970-01-01T00:00:00Z.
+             */
+            updated: number;
+        }
+
+        /**
+         * Properties of the secret
+         */
+        export interface SecretPropertiesResponse {
+            /**
+             * The attributes of the secret.
+             */
+            attributes?: outputs.keyvault.v20200401preview.SecretAttributesResponse;
+            /**
+             * The content type of the secret.
+             */
+            contentType?: string;
+            /**
+             * The URI to retrieve the current version of the secret.
+             */
+            secretUri: string;
+            /**
+             * The URI to retrieve the specific version of the secret.
+             */
+            secretUriWithVersion: string;
+            /**
+             * The value of the secret. NOTE: 'value' will never be returned from the service, as APIs using this model are is intended for internal use in ARM deployments. Users should use the data-plane REST service for interaction with vault secrets.
+             */
+            value?: string;
         }
 
         /**
@@ -205364,6 +208174,10 @@ export namespace management {
          */
         export interface ParameterDefinitionsValueResponseMetadata {
             /**
+             * Set to true to have Azure portal create role assignments on the resource ID or resource scope value of this parameter during policy assignment. This property is useful in case you wish to assign permissions outside the assignment scope.
+             */
+            assignPermissions?: boolean;
+            /**
              * The description of the parameter.
              */
             description?: string;
@@ -205371,6 +208185,10 @@ export namespace management {
              * The display name for the parameter.
              */
             displayName?: string;
+            /**
+             * Used when assigning the policy definition through the portal. Provides a context aware list of values for the user to choose from.
+             */
+            strongType?: string;
         }
 
         /**
@@ -205464,6 +208282,24 @@ export namespace management {
         }
 
         /**
+         * The provider extended location. 
+         */
+        export interface ProviderExtendedLocationResponse {
+            /**
+             * The extended locations for the azure location.
+             */
+            extendedLocations?: string[];
+            /**
+             * The azure location.
+             */
+            location?: string;
+            /**
+             * The extended location type.
+             */
+            type?: string;
+        }
+
+        /**
          * Resource type managed by the resource provider.
          */
         export interface ProviderResourceTypeResponse {
@@ -205487,6 +208323,10 @@ export namespace management {
              * The default API version.
              */
             defaultApiVersion: string;
+            /**
+             * The location mappings that are supported by this resource type.
+             */
+            locationMappings?: outputs.management.latest.ProviderExtendedLocationResponse[];
             /**
              * The collection of locations where this resource type can be created.
              */
@@ -208402,6 +211242,518 @@ export namespace management {
         }
     }
 
+    export namespace v20200801 {
+        export interface AliasPathMetadataResponse {
+            /**
+             * The attributes of the token that the alias path is referring to.
+             */
+            attributes: string;
+            /**
+             * The type of the token that the alias path is referring to.
+             */
+            type: string;
+        }
+
+        /**
+         * The type of the paths for alias.
+         */
+        export interface AliasPathResponse {
+            /**
+             * The API versions.
+             */
+            apiVersions?: string[];
+            /**
+             * The metadata of the alias path. If missing, fall back to the default metadata of the alias.
+             */
+            metadata: outputs.management.v20200801.AliasPathMetadataResponse;
+            /**
+             * The path of an alias.
+             */
+            path?: string;
+            /**
+             * The pattern for an alias path.
+             */
+            pattern?: outputs.management.v20200801.AliasPatternResponse;
+        }
+
+        /**
+         * The type of the pattern for an alias path.
+         */
+        export interface AliasPatternResponse {
+            /**
+             * The alias pattern phrase.
+             */
+            phrase?: string;
+            /**
+             * The type of alias pattern
+             */
+            type?: string;
+            /**
+             * The alias pattern variable.
+             */
+            variable?: string;
+        }
+
+        /**
+         * The alias type. 
+         */
+        export interface AliasResponse {
+            /**
+             * The default alias path metadata. Applies to the default path and to any alias path that doesn't have metadata
+             */
+            defaultMetadata: outputs.management.v20200801.AliasPathMetadataResponse;
+            /**
+             * The default path for an alias.
+             */
+            defaultPath?: string;
+            /**
+             * The default pattern for an alias.
+             */
+            defaultPattern?: outputs.management.v20200801.AliasPatternResponse;
+            /**
+             * The alias name.
+             */
+            name?: string;
+            /**
+             * The paths for an alias.
+             */
+            paths?: outputs.management.v20200801.AliasPathResponse[];
+            /**
+             * The type of the alias.
+             */
+            type?: string;
+        }
+
+        export interface ApiProfileResponse {
+            /**
+             * The API version.
+             */
+            apiVersion: string;
+            /**
+             * The profile version.
+             */
+            profileVersion: string;
+        }
+
+        /**
+         * Deployment dependency information.
+         */
+        export interface BasicDependencyResponse {
+            /**
+             * The ID of the dependency.
+             */
+            id?: string;
+            /**
+             * The dependency resource name.
+             */
+            resourceName?: string;
+            /**
+             * The dependency resource type.
+             */
+            resourceType?: string;
+        }
+
+        /**
+         * The debug setting.
+         */
+        export interface DebugSettingResponse {
+            /**
+             * Specifies the type of information to log for debugging. The permitted values are none, requestContent, responseContent, or both requestContent and responseContent separated by a comma. The default is none. When setting this value, carefully consider the type of information you are passing in during deployment. By logging information about the request or response, you could potentially expose sensitive data that is retrieved through the deployment operations.
+             */
+            detailLevel?: string;
+        }
+
+        /**
+         * Deployment dependency information.
+         */
+        export interface DependencyResponse {
+            /**
+             * The list of dependencies.
+             */
+            dependsOn?: outputs.management.v20200801.BasicDependencyResponse[];
+            /**
+             * The ID of the dependency.
+             */
+            id?: string;
+            /**
+             * The dependency resource name.
+             */
+            resourceName?: string;
+            /**
+             * The dependency resource type.
+             */
+            resourceType?: string;
+        }
+
+        /**
+         * Deployment properties with additional details.
+         */
+        export interface DeploymentPropertiesExtendedResponse {
+            /**
+             * The correlation ID of the deployment.
+             */
+            correlationId: string;
+            /**
+             * The debug setting of the deployment.
+             */
+            debugSetting: outputs.management.v20200801.DebugSettingResponse;
+            /**
+             * The list of deployment dependencies.
+             */
+            dependencies: outputs.management.v20200801.DependencyResponse[];
+            /**
+             * The duration of the template deployment.
+             */
+            duration: string;
+            /**
+             * The deployment error.
+             */
+            error: outputs.management.v20200801.ErrorResponseResponse;
+            /**
+             * The deployment mode. Possible values are Incremental and Complete.
+             */
+            mode: string;
+            /**
+             * The deployment on error behavior.
+             */
+            onErrorDeployment: outputs.management.v20200801.OnErrorDeploymentExtendedResponse;
+            /**
+             * Array of provisioned resources.
+             */
+            outputResources: outputs.management.v20200801.ResourceReferenceResponse[];
+            /**
+             * Key/value pairs that represent deployment output.
+             */
+            outputs: any;
+            /**
+             * Deployment parameters. 
+             */
+            parameters: any;
+            /**
+             * The URI referencing the parameters. 
+             */
+            parametersLink: outputs.management.v20200801.ParametersLinkResponse;
+            /**
+             * The list of resource providers needed for the deployment.
+             */
+            providers: outputs.management.v20200801.ProviderResponse[];
+            /**
+             * Denotes the state of provisioning.
+             */
+            provisioningState: string;
+            /**
+             * The hash produced for the template.
+             */
+            templateHash: string;
+            /**
+             * The URI referencing the template.
+             */
+            templateLink: outputs.management.v20200801.TemplateLinkResponse;
+            /**
+             * The timestamp of the template deployment.
+             */
+            timestamp: string;
+            /**
+             * Array of validated resources.
+             */
+            validatedResources: outputs.management.v20200801.ResourceReferenceResponse[];
+        }
+
+        /**
+         * The resource management error additional info.
+         */
+        export interface ErrorAdditionalInfoResponse {
+            /**
+             * The additional info.
+             */
+            info: any;
+            /**
+             * The additional info type.
+             */
+            type: string;
+        }
+
+        /**
+         * Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.)
+         */
+        export interface ErrorResponseResponse {
+            /**
+             * The error additional info.
+             */
+            additionalInfo: outputs.management.v20200801.ErrorAdditionalInfoResponse[];
+            /**
+             * The error code.
+             */
+            code: string;
+            /**
+             * The error details.
+             */
+            details: outputs.management.v20200801.ErrorResponseResponse[];
+            /**
+             * The error message.
+             */
+            message: string;
+            /**
+             * The error target.
+             */
+            target: string;
+        }
+
+        /**
+         * Deployment on error behavior with additional details.
+         */
+        export interface OnErrorDeploymentExtendedResponse {
+            /**
+             * The deployment to be used on error case.
+             */
+            deploymentName?: string;
+            /**
+             * The state of the provisioning for the on error deployment.
+             */
+            provisioningState: string;
+            /**
+             * The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment.
+             */
+            type?: string;
+        }
+
+        /**
+         * Entity representing the reference to the deployment parameters.
+         */
+        export interface ParametersLinkResponse {
+            /**
+             * If included, must match the ContentVersion in the template.
+             */
+            contentVersion?: string;
+            /**
+             * The URI of the parameters file.
+             */
+            uri: string;
+        }
+
+        /**
+         * The provider extended location. 
+         */
+        export interface ProviderExtendedLocationResponse {
+            /**
+             * The extended locations for the azure location.
+             */
+            extendedLocations?: string[];
+            /**
+             * The azure location.
+             */
+            location?: string;
+            /**
+             * The extended location type.
+             */
+            type?: string;
+        }
+
+        /**
+         * Resource type managed by the resource provider.
+         */
+        export interface ProviderResourceTypeResponse {
+            /**
+             * The aliases that are supported by this resource type.
+             */
+            aliases?: outputs.management.v20200801.AliasResponse[];
+            /**
+             * The API profiles for the resource provider.
+             */
+            apiProfiles: outputs.management.v20200801.ApiProfileResponse[];
+            /**
+             * The API version.
+             */
+            apiVersions?: string[];
+            /**
+             * The additional capabilities offered by this resource type.
+             */
+            capabilities?: string;
+            /**
+             * The default API version.
+             */
+            defaultApiVersion: string;
+            /**
+             * The location mappings that are supported by this resource type.
+             */
+            locationMappings?: outputs.management.v20200801.ProviderExtendedLocationResponse[];
+            /**
+             * The collection of locations where this resource type can be created.
+             */
+            locations?: string[];
+            /**
+             * The properties.
+             */
+            properties?: {[key: string]: string};
+            /**
+             * The resource type.
+             */
+            resourceType?: string;
+        }
+
+        /**
+         * Resource provider information.
+         */
+        export interface ProviderResponse {
+            /**
+             * The provider ID.
+             */
+            id: string;
+            /**
+             * The namespace of the resource provider.
+             */
+            namespace?: string;
+            /**
+             * The registration policy of the resource provider.
+             */
+            registrationPolicy: string;
+            /**
+             * The registration state of the resource provider.
+             */
+            registrationState: string;
+            /**
+             * The collection of provider resource types.
+             */
+            resourceTypes: outputs.management.v20200801.ProviderResourceTypeResponse[];
+        }
+
+        /**
+         * The resource Id model.
+         */
+        export interface ResourceReferenceResponse {
+            /**
+             * The fully qualified resource Id.
+             */
+            id: string;
+        }
+
+        /**
+         * Entity representing the reference to the template.
+         */
+        export interface TemplateLinkResponse {
+            /**
+             * If included, must match the ContentVersion in the template.
+             */
+            contentVersion?: string;
+            /**
+             * The resource id of a Template Spec. Use either the id or uri property, but not both.
+             */
+            id?: string;
+            /**
+             * Applicable only if this template link references a Template Spec. This relativePath property can optionally be used to reference a Template Spec artifact by path.
+             */
+            relativePath?: string;
+            /**
+             * The URI of the template to deploy. Use either the uri or id property, but not both.
+             */
+            uri?: string;
+        }
+    }
+
+    export namespace v20200901 {
+        /**
+         * The definition of a parameter that can be provided to the policy.
+         */
+        export interface ParameterDefinitionsValueResponse {
+            /**
+             * The allowed values for the parameter.
+             */
+            allowedValues?: any[];
+            /**
+             * The default value for the parameter if no value is provided.
+             */
+            defaultValue?: any;
+            /**
+             * General metadata for the parameter.
+             */
+            metadata?: outputs.management.v20200901.ParameterDefinitionsValueResponseMetadata;
+            /**
+             * The data type of the parameter.
+             */
+            type?: string;
+        }
+
+        /**
+         * General metadata for the parameter.
+         */
+        export interface ParameterDefinitionsValueResponseMetadata {
+            /**
+             * Set to true to have Azure portal create role assignments on the resource ID or resource scope value of this parameter during policy assignment. This property is useful in case you wish to assign permissions outside the assignment scope.
+             */
+            assignPermissions?: boolean;
+            /**
+             * The description of the parameter.
+             */
+            description?: string;
+            /**
+             * The display name for the parameter.
+             */
+            displayName?: string;
+            /**
+             * Used when assigning the policy definition through the portal. Provides a context aware list of values for the user to choose from.
+             */
+            strongType?: string;
+        }
+
+        /**
+         * The value of a parameter.
+         */
+        export interface ParameterValuesValueResponse {
+            /**
+             * The value of the parameter.
+             */
+            value?: any;
+        }
+
+        /**
+         * The policy definition group.
+         */
+        export interface PolicyDefinitionGroupResponse {
+            /**
+             * A resource ID of a resource that contains additional metadata about the group.
+             */
+            additionalMetadataId?: string;
+            /**
+             * The group's category.
+             */
+            category?: string;
+            /**
+             * The group's description.
+             */
+            description?: string;
+            /**
+             * The group's display name.
+             */
+            displayName?: string;
+            /**
+             * The name of the group.
+             */
+            name: string;
+        }
+
+        /**
+         * The policy definition reference.
+         */
+        export interface PolicyDefinitionReferenceResponse {
+            /**
+             * The name of the groups that this policy definition reference belongs to.
+             */
+            groupNames?: string[];
+            /**
+             * The parameter values for the referenced policy rule. The keys are the parameter names.
+             */
+            parameters?: {[key: string]: outputs.management.v20200901.ParameterValuesValueResponse};
+            /**
+             * The ID of the policy definition or policy set definition.
+             */
+            policyDefinitionId: string;
+            /**
+             * A unique id (within the policy set definition) for this policy definition reference.
+             */
+            policyDefinitionReferenceId?: string;
+        }
+    }
+
     export namespace v20201001 {
         export interface AliasPathMetadataResponse {
             /**
@@ -208692,6 +212044,24 @@ export namespace management {
         }
 
         /**
+         * The provider extended location. 
+         */
+        export interface ProviderExtendedLocationResponse {
+            /**
+             * The extended locations for the azure location.
+             */
+            extendedLocations?: string[];
+            /**
+             * The azure location.
+             */
+            location?: string;
+            /**
+             * The extended location type.
+             */
+            type?: string;
+        }
+
+        /**
          * Resource type managed by the resource provider.
          */
         export interface ProviderResourceTypeResponse {
@@ -208715,6 +212085,10 @@ export namespace management {
              * The default API version.
              */
             defaultApiVersion: string;
+            /**
+             * The location mappings that are supported by this resource type.
+             */
+            locationMappings?: outputs.management.v20201001.ProviderExtendedLocationResponse[];
             /**
              * The collection of locations where this resource type can be created.
              */
@@ -214995,7 +218369,7 @@ export namespace media {
              */
             inputTrackSelection?: outputs.media.v20190501preview.LiveEventInputTrackSelectionResponse[];
             /**
-             * Specifies the language (locale) used for speech-to-text transcription � it should match the spoken language in the audio track. The value should be in BCP-47 format of 'language tag-region' (e.g: 'en-US'). The list of supported languages are 'en-US' and 'en-GB'.
+             * Specifies the language (locale) used for speech-to-text transcription - it should match the spoken language in the audio track. The value should be in BCP-47 format of 'language tag-region' (e.g: 'en-US'). The list of supported languages are 'en-US' and 'en-GB'.
              */
             language?: string;
             /**
@@ -217777,6 +221151,10 @@ export namespace migrate {
          */
         export interface MoveCollectionPropertiesResponse {
             /**
+             * Defines the move collection errors.
+             */
+            errors: outputs.migrate.v20191001preview.MoveCollectionPropertiesResponseErrors;
+            /**
              * Defines the provisioning states.
              */
             provisioningState: string;
@@ -217788,6 +221166,16 @@ export namespace migrate {
              * Gets or sets the target region.
              */
             targetRegion: string;
+        }
+
+        /**
+         * Defines the move collection errors.
+         */
+        export interface MoveCollectionPropertiesResponseErrors {
+            /**
+             * The move resource error body.
+             */
+            properties?: outputs.migrate.v20191001preview.MoveResourceErrorBodyResponse;
         }
 
         /**
@@ -217891,6 +221279,10 @@ export namespace migrate {
              * Gets or sets the existing target ARM Id of the resource.
              */
             existingTargetId?: string;
+            /**
+             * Gets a value indicating whether the resolve action is required over the move collection.
+             */
+            isResolveRequired: boolean;
             /**
              * Defines the move resource status.
              */
@@ -393266,6 +396658,24 @@ export namespace resources {
         }
 
         /**
+         * The provider extended location. 
+         */
+        export interface ProviderExtendedLocationResponse {
+            /**
+             * The extended locations for the azure location.
+             */
+            extendedLocations?: string[];
+            /**
+             * The azure location.
+             */
+            location?: string;
+            /**
+             * The extended location type.
+             */
+            type?: string;
+        }
+
+        /**
          * Resource type managed by the resource provider.
          */
         export interface ProviderResourceTypeResponse {
@@ -393289,6 +396699,10 @@ export namespace resources {
              * The default API version.
              */
             defaultApiVersion: string;
+            /**
+             * The location mappings that are supported by this resource type.
+             */
+            locationMappings?: outputs.resources.latest.ProviderExtendedLocationResponse[];
             /**
              * The collection of locations where this resource type can be created.
              */
@@ -398148,6 +401562,520 @@ export namespace resources {
         }
     }
 
+    export namespace v20200801 {
+        export interface AliasPathMetadataResponse {
+            /**
+             * The attributes of the token that the alias path is referring to.
+             */
+            attributes: string;
+            /**
+             * The type of the token that the alias path is referring to.
+             */
+            type: string;
+        }
+
+        /**
+         * The type of the paths for alias.
+         */
+        export interface AliasPathResponse {
+            /**
+             * The API versions.
+             */
+            apiVersions?: string[];
+            /**
+             * The metadata of the alias path. If missing, fall back to the default metadata of the alias.
+             */
+            metadata: outputs.resources.v20200801.AliasPathMetadataResponse;
+            /**
+             * The path of an alias.
+             */
+            path?: string;
+            /**
+             * The pattern for an alias path.
+             */
+            pattern?: outputs.resources.v20200801.AliasPatternResponse;
+        }
+
+        /**
+         * The type of the pattern for an alias path.
+         */
+        export interface AliasPatternResponse {
+            /**
+             * The alias pattern phrase.
+             */
+            phrase?: string;
+            /**
+             * The type of alias pattern
+             */
+            type?: string;
+            /**
+             * The alias pattern variable.
+             */
+            variable?: string;
+        }
+
+        /**
+         * The alias type. 
+         */
+        export interface AliasResponse {
+            /**
+             * The default alias path metadata. Applies to the default path and to any alias path that doesn't have metadata
+             */
+            defaultMetadata: outputs.resources.v20200801.AliasPathMetadataResponse;
+            /**
+             * The default path for an alias.
+             */
+            defaultPath?: string;
+            /**
+             * The default pattern for an alias.
+             */
+            defaultPattern?: outputs.resources.v20200801.AliasPatternResponse;
+            /**
+             * The alias name.
+             */
+            name?: string;
+            /**
+             * The paths for an alias.
+             */
+            paths?: outputs.resources.v20200801.AliasPathResponse[];
+            /**
+             * The type of the alias.
+             */
+            type?: string;
+        }
+
+        export interface ApiProfileResponse {
+            /**
+             * The API version.
+             */
+            apiVersion: string;
+            /**
+             * The profile version.
+             */
+            profileVersion: string;
+        }
+
+        /**
+         * Deployment dependency information.
+         */
+        export interface BasicDependencyResponse {
+            /**
+             * The ID of the dependency.
+             */
+            id?: string;
+            /**
+             * The dependency resource name.
+             */
+            resourceName?: string;
+            /**
+             * The dependency resource type.
+             */
+            resourceType?: string;
+        }
+
+        /**
+         * The debug setting.
+         */
+        export interface DebugSettingResponse {
+            /**
+             * Specifies the type of information to log for debugging. The permitted values are none, requestContent, responseContent, or both requestContent and responseContent separated by a comma. The default is none. When setting this value, carefully consider the type of information you are passing in during deployment. By logging information about the request or response, you could potentially expose sensitive data that is retrieved through the deployment operations.
+             */
+            detailLevel?: string;
+        }
+
+        /**
+         * Deployment dependency information.
+         */
+        export interface DependencyResponse {
+            /**
+             * The list of dependencies.
+             */
+            dependsOn?: outputs.resources.v20200801.BasicDependencyResponse[];
+            /**
+             * The ID of the dependency.
+             */
+            id?: string;
+            /**
+             * The dependency resource name.
+             */
+            resourceName?: string;
+            /**
+             * The dependency resource type.
+             */
+            resourceType?: string;
+        }
+
+        /**
+         * Deployment properties with additional details.
+         */
+        export interface DeploymentPropertiesExtendedResponse {
+            /**
+             * The correlation ID of the deployment.
+             */
+            correlationId: string;
+            /**
+             * The debug setting of the deployment.
+             */
+            debugSetting: outputs.resources.v20200801.DebugSettingResponse;
+            /**
+             * The list of deployment dependencies.
+             */
+            dependencies: outputs.resources.v20200801.DependencyResponse[];
+            /**
+             * The duration of the template deployment.
+             */
+            duration: string;
+            /**
+             * The deployment error.
+             */
+            error: outputs.resources.v20200801.ErrorResponseResponse;
+            /**
+             * The deployment mode. Possible values are Incremental and Complete.
+             */
+            mode: string;
+            /**
+             * The deployment on error behavior.
+             */
+            onErrorDeployment: outputs.resources.v20200801.OnErrorDeploymentExtendedResponse;
+            /**
+             * Array of provisioned resources.
+             */
+            outputResources: outputs.resources.v20200801.ResourceReferenceResponse[];
+            /**
+             * Key/value pairs that represent deployment output.
+             */
+            outputs: any;
+            /**
+             * Deployment parameters. 
+             */
+            parameters: any;
+            /**
+             * The URI referencing the parameters. 
+             */
+            parametersLink: outputs.resources.v20200801.ParametersLinkResponse;
+            /**
+             * The list of resource providers needed for the deployment.
+             */
+            providers: outputs.resources.v20200801.ProviderResponse[];
+            /**
+             * Denotes the state of provisioning.
+             */
+            provisioningState: string;
+            /**
+             * The hash produced for the template.
+             */
+            templateHash: string;
+            /**
+             * The URI referencing the template.
+             */
+            templateLink: outputs.resources.v20200801.TemplateLinkResponse;
+            /**
+             * The timestamp of the template deployment.
+             */
+            timestamp: string;
+            /**
+             * Array of validated resources.
+             */
+            validatedResources: outputs.resources.v20200801.ResourceReferenceResponse[];
+        }
+
+        /**
+         * The resource management error additional info.
+         */
+        export interface ErrorAdditionalInfoResponse {
+            /**
+             * The additional info.
+             */
+            info: any;
+            /**
+             * The additional info type.
+             */
+            type: string;
+        }
+
+        /**
+         * Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.)
+         */
+        export interface ErrorResponseResponse {
+            /**
+             * The error additional info.
+             */
+            additionalInfo: outputs.resources.v20200801.ErrorAdditionalInfoResponse[];
+            /**
+             * The error code.
+             */
+            code: string;
+            /**
+             * The error details.
+             */
+            details: outputs.resources.v20200801.ErrorResponseResponse[];
+            /**
+             * The error message.
+             */
+            message: string;
+            /**
+             * The error target.
+             */
+            target: string;
+        }
+
+        /**
+         * Identity for the resource.
+         */
+        export interface IdentityResponse {
+            /**
+             * The principal ID of resource identity.
+             */
+            principalId: string;
+            /**
+             * The tenant ID of resource.
+             */
+            tenantId: string;
+            /**
+             * The identity type.
+             */
+            type?: string;
+            /**
+             * The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+             */
+            userAssignedIdentities?: {[key: string]: outputs.resources.v20200801.IdentityResponseUserAssignedIdentities};
+        }
+
+        export interface IdentityResponseUserAssignedIdentities {
+            /**
+             * The client id of user assigned identity.
+             */
+            clientId: string;
+            /**
+             * The principal id of user assigned identity.
+             */
+            principalId: string;
+        }
+
+        /**
+         * Deployment on error behavior with additional details.
+         */
+        export interface OnErrorDeploymentExtendedResponse {
+            /**
+             * The deployment to be used on error case.
+             */
+            deploymentName?: string;
+            /**
+             * The state of the provisioning for the on error deployment.
+             */
+            provisioningState: string;
+            /**
+             * The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment.
+             */
+            type?: string;
+        }
+
+        /**
+         * Entity representing the reference to the deployment parameters.
+         */
+        export interface ParametersLinkResponse {
+            /**
+             * If included, must match the ContentVersion in the template.
+             */
+            contentVersion?: string;
+            /**
+             * The URI of the parameters file.
+             */
+            uri: string;
+        }
+
+        /**
+         * Plan for the resource.
+         */
+        export interface PlanResponse {
+            /**
+             * The plan ID.
+             */
+            name?: string;
+            /**
+             * The offer ID.
+             */
+            product?: string;
+            /**
+             * The promotion code.
+             */
+            promotionCode?: string;
+            /**
+             * The publisher ID.
+             */
+            publisher?: string;
+            /**
+             * The plan's version.
+             */
+            version?: string;
+        }
+
+        /**
+         * The provider extended location. 
+         */
+        export interface ProviderExtendedLocationResponse {
+            /**
+             * The extended locations for the azure location.
+             */
+            extendedLocations?: string[];
+            /**
+             * The azure location.
+             */
+            location?: string;
+            /**
+             * The extended location type.
+             */
+            type?: string;
+        }
+
+        /**
+         * Resource type managed by the resource provider.
+         */
+        export interface ProviderResourceTypeResponse {
+            /**
+             * The aliases that are supported by this resource type.
+             */
+            aliases?: outputs.resources.v20200801.AliasResponse[];
+            /**
+             * The API profiles for the resource provider.
+             */
+            apiProfiles: outputs.resources.v20200801.ApiProfileResponse[];
+            /**
+             * The API version.
+             */
+            apiVersions?: string[];
+            /**
+             * The additional capabilities offered by this resource type.
+             */
+            capabilities?: string;
+            /**
+             * The default API version.
+             */
+            defaultApiVersion: string;
+            /**
+             * The location mappings that are supported by this resource type.
+             */
+            locationMappings?: outputs.resources.v20200801.ProviderExtendedLocationResponse[];
+            /**
+             * The collection of locations where this resource type can be created.
+             */
+            locations?: string[];
+            /**
+             * The properties.
+             */
+            properties?: {[key: string]: string};
+            /**
+             * The resource type.
+             */
+            resourceType?: string;
+        }
+
+        /**
+         * Resource provider information.
+         */
+        export interface ProviderResponse {
+            /**
+             * The provider ID.
+             */
+            id: string;
+            /**
+             * The namespace of the resource provider.
+             */
+            namespace?: string;
+            /**
+             * The registration policy of the resource provider.
+             */
+            registrationPolicy: string;
+            /**
+             * The registration state of the resource provider.
+             */
+            registrationState: string;
+            /**
+             * The collection of provider resource types.
+             */
+            resourceTypes: outputs.resources.v20200801.ProviderResourceTypeResponse[];
+        }
+
+        /**
+         * The resource group properties.
+         */
+        export interface ResourceGroupPropertiesResponse {
+            /**
+             * The provisioning state. 
+             */
+            provisioningState: string;
+        }
+
+        /**
+         * The resource Id model.
+         */
+        export interface ResourceReferenceResponse {
+            /**
+             * The fully qualified resource Id.
+             */
+            id: string;
+        }
+
+        /**
+         * SKU for the resource.
+         */
+        export interface SkuResponse {
+            /**
+             * The SKU capacity.
+             */
+            capacity?: number;
+            /**
+             * The SKU family.
+             */
+            family?: string;
+            /**
+             * The SKU model.
+             */
+            model?: string;
+            /**
+             * The SKU name.
+             */
+            name?: string;
+            /**
+             * The SKU size.
+             */
+            size?: string;
+            /**
+             * The SKU tier.
+             */
+            tier?: string;
+        }
+
+        /**
+         * A dictionary of name and value pairs.
+         */
+        export interface TagsResponse {
+            tags?: {[key: string]: string};
+        }
+
+        /**
+         * Entity representing the reference to the template.
+         */
+        export interface TemplateLinkResponse {
+            /**
+             * If included, must match the ContentVersion in the template.
+             */
+            contentVersion?: string;
+            /**
+             * The resource id of a Template Spec. Use either the id or uri property, but not both.
+             */
+            id?: string;
+            /**
+             * Applicable only if this template link references a Template Spec. This relativePath property can optionally be used to reference a Template Spec artifact by path.
+             */
+            relativePath?: string;
+            /**
+             * The URI of the template to deploy. Use either the uri or id property, but not both.
+             */
+            uri?: string;
+        }
+    }
+
     export namespace v20201001 {
         export interface AliasPathMetadataResponse {
             /**
@@ -398511,6 +402439,24 @@ export namespace resources {
         }
 
         /**
+         * The provider extended location. 
+         */
+        export interface ProviderExtendedLocationResponse {
+            /**
+             * The extended locations for the azure location.
+             */
+            extendedLocations?: string[];
+            /**
+             * The azure location.
+             */
+            location?: string;
+            /**
+             * The extended location type.
+             */
+            type?: string;
+        }
+
+        /**
          * Resource type managed by the resource provider.
          */
         export interface ProviderResourceTypeResponse {
@@ -398534,6 +402480,10 @@ export namespace resources {
              * The default API version.
              */
             defaultApiVersion: string;
+            /**
+             * The location mappings that are supported by this resource type.
+             */
+            locationMappings?: outputs.resources.v20201001.ProviderExtendedLocationResponse[];
             /**
              * The collection of locations where this resource type can be created.
              */
@@ -431242,6 +435192,10 @@ export namespace web {
              */
             storageAccountUrl: string;
             /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.latest.SystemDataResponse;
+            /**
              * Resource type.
              */
             type: string;
@@ -431716,6 +435670,10 @@ export namespace web {
              */
             name: string;
             /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.latest.SystemDataResponse;
+            /**
              * Resource type.
              */
             type: string;
@@ -431889,6 +435847,10 @@ export namespace web {
              * Resource Name.
              */
             name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.latest.SystemDataResponse;
             /**
              * Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
              */
@@ -432433,6 +436395,10 @@ export namespace web {
              */
             roles?: string;
             /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.latest.SystemDataResponse;
+            /**
              * Resource type.
              */
             type: string;
@@ -432466,6 +436432,36 @@ export namespace web {
              * Win32 error code.
              */
             win32Status?: number;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
         }
 
         /**
@@ -432581,6 +436577,10 @@ export namespace web {
              * The starting address for this route. This may also include a CIDR notation, in which case the end address must not be specified.
              */
             startAddress?: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.latest.SystemDataResponse;
             /**
              * Resource type.
              */
@@ -440589,6 +444589,1445 @@ export namespace web {
              * The starting address for this route. This may also include a CIDR notation, in which case the end address must not be specified.
              */
             startAddress?: string;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        /**
+         * Worker pool of an App Service Environment.
+         */
+        export interface WorkerPoolResponse {
+            /**
+             * Shared or dedicated app hosting.
+             */
+            computeMode?: string;
+            /**
+             * Names of all instances in the worker pool (read only).
+             */
+            instanceNames: string[];
+            /**
+             * Number of instances in the worker pool.
+             */
+            workerCount?: number;
+            /**
+             * VM size of the worker pool instances.
+             */
+            workerSize?: string;
+            /**
+             * Worker size ID for referencing this worker pool.
+             */
+            workerSizeId?: number;
+        }
+    }
+
+    export namespace v20200901 {
+        /**
+         * Information about the formal API definition for the app.
+         */
+        export interface ApiDefinitionInfoResponse {
+            /**
+             * The URL of the API definition.
+             */
+            url?: string;
+        }
+
+        /**
+         * Azure API management (APIM) configuration linked to the app.
+         */
+        export interface ApiManagementConfigResponse {
+            /**
+             * APIM-Api Identifier.
+             */
+            id?: string;
+        }
+
+        /**
+         * A wrapper for an ARM resource id
+         */
+        export interface ArmIdWrapperResponse {
+            id: string;
+        }
+
+        /**
+         * Actions which to take by the auto-heal module when a rule is triggered.
+         */
+        export interface AutoHealActionsResponse {
+            /**
+             * Predefined action to be taken.
+             */
+            actionType?: string;
+            /**
+             * Custom action to be taken.
+             */
+            customAction?: outputs.web.v20200901.AutoHealCustomActionResponse;
+            /**
+             * Minimum time the process must execute
+             * before taking the action
+             */
+            minProcessExecutionTime?: string;
+        }
+
+        /**
+         * Custom action to be executed
+         * when an auto heal rule is triggered.
+         */
+        export interface AutoHealCustomActionResponse {
+            /**
+             * Executable to be run.
+             */
+            exe?: string;
+            /**
+             * Parameters for the executable.
+             */
+            parameters?: string;
+        }
+
+        /**
+         * Rules that can be defined for auto-heal.
+         */
+        export interface AutoHealRulesResponse {
+            /**
+             * Actions to be executed when a rule is triggered.
+             */
+            actions?: outputs.web.v20200901.AutoHealActionsResponse;
+            /**
+             * Conditions that describe when to execute the auto-heal actions.
+             */
+            triggers?: outputs.web.v20200901.AutoHealTriggersResponse;
+        }
+
+        /**
+         * Triggers for auto-heal.
+         */
+        export interface AutoHealTriggersResponse {
+            /**
+             * A rule based on private bytes.
+             */
+            privateBytesInKB?: number;
+            /**
+             * A rule based on total requests.
+             */
+            requests?: outputs.web.v20200901.RequestsBasedTriggerResponse;
+            /**
+             * A rule based on request execution time.
+             */
+            slowRequests?: outputs.web.v20200901.SlowRequestsBasedTriggerResponse;
+            /**
+             * A rule based on status codes.
+             */
+            statusCodes?: outputs.web.v20200901.StatusCodesBasedTriggerResponse[];
+        }
+
+        /**
+         * Azure Files or Blob Storage access information value for dictionary storage.
+         */
+        export interface AzureStorageInfoValueResponse {
+            /**
+             * Access key for the storage account.
+             */
+            accessKey?: string;
+            /**
+             * Name of the storage account.
+             */
+            accountName?: string;
+            /**
+             * Path to mount the storage within the site's runtime environment.
+             */
+            mountPath?: string;
+            /**
+             * Name of the file share (container name, for Blob storage).
+             */
+            shareName?: string;
+            /**
+             * State of the storage account.
+             */
+            state: string;
+            /**
+             * Type of storage.
+             */
+            type?: string;
+        }
+
+        /**
+         * Backup description.
+         */
+        export interface BackupItemResponse {
+            /**
+             * Id of the backup.
+             */
+            backupId: number;
+            /**
+             * Name of the blob which contains data for this backup.
+             */
+            blobName: string;
+            /**
+             * Unique correlation identifier. Please use this along with the timestamp while communicating with Azure support.
+             */
+            correlationId: string;
+            /**
+             * Timestamp of the backup creation.
+             */
+            created: string;
+            /**
+             * List of databases included in the backup.
+             */
+            databases: outputs.web.v20200901.DatabaseBackupSettingResponse[];
+            /**
+             * Timestamp when this backup finished.
+             */
+            finishedTimeStamp: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Timestamp of a last restore operation which used this backup.
+             */
+            lastRestoreTimeStamp: string;
+            /**
+             * Details regarding this backup. Might contain an error message.
+             */
+            log: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * True if this backup has been created due to a schedule being triggered.
+             */
+            scheduled: boolean;
+            /**
+             * Size of the backup in bytes.
+             */
+            sizeInBytes: number;
+            /**
+             * Backup status.
+             */
+            status: string;
+            /**
+             * SAS URL for the storage account container which contains this backup.
+             */
+            storageAccountUrl: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20200901.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+            /**
+             * Size of the original web app which has been backed up.
+             */
+            websiteSizeInBytes: number;
+        }
+
+        /**
+         * Description of a backup schedule. Describes how often should be the backup performed and what should be the retention policy.
+         */
+        export interface BackupScheduleResponse {
+            /**
+             * How often the backup should be executed (e.g. for weekly backup, this should be set to 7 and FrequencyUnit should be set to Day)
+             */
+            frequencyInterval: number;
+            /**
+             * The unit of time for how often the backup should be executed (e.g. for weekly backup, this should be set to Day and FrequencyInterval should be set to 7)
+             */
+            frequencyUnit: string;
+            /**
+             * True if the retention policy should always keep at least one backup in the storage account, regardless how old it is; false otherwise.
+             */
+            keepAtLeastOneBackup: boolean;
+            /**
+             * Last time when this schedule was triggered.
+             */
+            lastExecutionTime: string;
+            /**
+             * After how many days backups should be deleted.
+             */
+            retentionPeriodInDays: number;
+            /**
+             * When the schedule should start working.
+             */
+            startTime?: string;
+        }
+
+        /**
+         * Describes the capabilities/features allowed for a specific SKU.
+         */
+        export interface CapabilityResponse {
+            /**
+             * Name of the SKU capability.
+             */
+            name?: string;
+            /**
+             * Reason of the SKU capability.
+             */
+            reason?: string;
+            /**
+             * Value of the SKU capability.
+             */
+            value?: string;
+        }
+
+        /**
+         * Information needed for cloning operation.
+         */
+        export interface CloningInfoResponse {
+            /**
+             * Application setting overrides for cloned app. If specified, these settings override the settings cloned 
+             * from source app. Otherwise, application settings from source app are retained.
+             */
+            appSettingsOverrides?: {[key: string]: string};
+            /**
+             * <code>true</code> to clone custom hostnames from source app; otherwise, <code>false</code>.
+             */
+            cloneCustomHostNames?: boolean;
+            /**
+             * <code>true</code> to clone source control from source app; otherwise, <code>false</code>.
+             */
+            cloneSourceControl?: boolean;
+            /**
+             * <code>true</code> to configure load balancing for source and destination app.
+             */
+            configureLoadBalancing?: boolean;
+            /**
+             * Correlation ID of cloning operation. This ID ties multiple cloning operations
+             * together to use the same snapshot.
+             */
+            correlationId?: string;
+            /**
+             * App Service Environment.
+             */
+            hostingEnvironment?: string;
+            /**
+             * <code>true</code> to overwrite destination app; otherwise, <code>false</code>.
+             */
+            overwrite?: boolean;
+            /**
+             * ARM resource ID of the source app. App resource ID is of the form 
+             * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and 
+             * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName} for other slots.
+             */
+            sourceWebAppId: string;
+            /**
+             * Location of source app ex: West US or North Europe
+             */
+            sourceWebAppLocation?: string;
+            /**
+             * ARM resource ID of the Traffic Manager profile to use, if it exists. Traffic Manager resource ID is of the form 
+             * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
+             */
+            trafficManagerProfileId?: string;
+            /**
+             * Name of Traffic Manager profile to create. This is only needed if Traffic Manager profile does not already exist.
+             */
+            trafficManagerProfileName?: string;
+        }
+
+        /**
+         * Database connection string information.
+         */
+        export interface ConnStringInfoResponse {
+            /**
+             * Connection string value.
+             */
+            connectionString?: string;
+            /**
+             * Name of connection string.
+             */
+            name?: string;
+            /**
+             * Type of database.
+             */
+            type?: string;
+        }
+
+        /**
+         * Database connection string value to type pair.
+         */
+        export interface ConnStringValueTypePairResponse {
+            /**
+             * Type of database.
+             */
+            type: string;
+            /**
+             * Value of pair.
+             */
+            value: string;
+        }
+
+        /**
+         * Cross-Origin Resource Sharing (CORS) settings for the app.
+         */
+        export interface CorsSettingsResponse {
+            /**
+             * Gets or sets the list of origins that should be allowed to make cross-origin
+             * calls (for example: http://example.com:12345). Use "*" to allow all.
+             */
+            allowedOrigins?: string[];
+            /**
+             * Gets or sets whether CORS requests with credentials are allowed. See 
+             * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+             * for more details.
+             */
+            supportCredentials?: boolean;
+        }
+
+        /**
+         * Database backup settings.
+         */
+        export interface DatabaseBackupSettingResponse {
+            /**
+             * Contains a connection string to a database which is being backed up or restored. If the restore should happen to a new database, the database name inside is the new one.
+             */
+            connectionString?: string;
+            /**
+             * Contains a connection string name that is linked to the SiteConfig.ConnectionStrings.
+             * This is used during restore with overwrite connection strings options.
+             */
+            connectionStringName?: string;
+            /**
+             * Database type (e.g. SqlAzure / MySql).
+             */
+            databaseType: string;
+            name?: string;
+        }
+
+        /**
+         * Routing rules in production experiments.
+         */
+        export interface ExperimentsResponse {
+            /**
+             * List of ramp-up rules.
+             */
+            rampUpRules?: outputs.web.v20200901.RampUpRuleResponse[];
+        }
+
+        /**
+         * The IIS handler mappings used to define which handler processes HTTP requests with certain extension. 
+         * For example, it is used to configure php-cgi.exe process to handle all HTTP requests with *.php extension.
+         */
+        export interface HandlerMappingResponse {
+            /**
+             * Command-line arguments to be passed to the script processor.
+             */
+            arguments?: string;
+            /**
+             * Requests with this extension will be handled using the specified FastCGI application.
+             */
+            extension?: string;
+            /**
+             * The absolute path to the FastCGI application.
+             */
+            scriptProcessor?: string;
+        }
+
+        /**
+         * SSL-enabled hostname.
+         */
+        export interface HostNameSslStateResponse {
+            /**
+             * Indicates whether the hostname is a standard or repository hostname.
+             */
+            hostType?: string;
+            /**
+             * Hostname.
+             */
+            name?: string;
+            /**
+             * SSL type.
+             */
+            sslState?: string;
+            /**
+             * SSL certificate thumbprint.
+             */
+            thumbprint?: string;
+            /**
+             * Set to <code>true</code> to update existing hostname.
+             */
+            toUpdate?: boolean;
+            /**
+             * Virtual IP address assigned to the hostname if IP based SSL is enabled.
+             */
+            virtualIP?: string;
+        }
+
+        /**
+         * Specification for an App Service Environment to use for this resource.
+         */
+        export interface HostingEnvironmentProfileResponse {
+            /**
+             * Resource ID of the App Service Environment.
+             */
+            id?: string;
+            /**
+             * Name of the App Service Environment.
+             */
+            name: string;
+            /**
+             * Resource type of the App Service Environment.
+             */
+            type: string;
+        }
+
+        /**
+         * A domain specific resource identifier.
+         */
+        export interface IdentifierResponse {
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20200901.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+            /**
+             * String representation of the identity.
+             */
+            value?: string;
+        }
+
+        /**
+         * IP security restriction on an app.
+         */
+        export interface IpSecurityRestrictionResponse {
+            /**
+             * Allow or Deny access for this IP range.
+             */
+            action?: string;
+            /**
+             * IP restriction rule description.
+             */
+            description?: string;
+            /**
+             * IP restriction rule headers.
+             * X-Forwarded-Host (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host#Examples). 
+             * The matching logic is ..
+             * - If the property is null or empty (default), all hosts(or lack of) are allowed.
+             * - A value is compared using ordinal-ignore-case (excluding port number).
+             * - Subdomain wildcards are permitted but don't match the root domain. For example, *.contoso.com matches the subdomain foo.contoso.com
+             *  but not the root domain contoso.com or multi-level foo.bar.contoso.com
+             * - Unicode host names are allowed but are converted to Punycode for matching.
+             *
+             * X-Forwarded-For (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For#Examples).
+             * The matching logic is ..
+             * - If the property is null or empty (default), any forwarded-for chains (or lack of) are allowed.
+             * - If any address (excluding port number) in the chain (comma separated) matches the CIDR defined by the property.
+             *
+             * X-Azure-FDID and X-FD-HealthProbe.
+             * The matching logic is exact match.
+             */
+            headers?: {[key: string]: string[]};
+            /**
+             * IP address the security restriction is valid for.
+             * It can be in form of pure ipv4 address (required SubnetMask property) or
+             * CIDR notation such as ipv4/mask (leading bit match). For CIDR,
+             * SubnetMask property must not be specified.
+             */
+            ipAddress?: string;
+            /**
+             * IP restriction rule name.
+             */
+            name?: string;
+            /**
+             * Priority of IP restriction rule.
+             */
+            priority?: number;
+            /**
+             * Subnet mask for the range of IP addresses the restriction is valid for.
+             */
+            subnetMask?: string;
+            /**
+             * (internal) Subnet traffic tag
+             */
+            subnetTrafficTag?: number;
+            /**
+             * Defines what this IP filter will be used for. This is to support IP filtering on proxies.
+             */
+            tag?: string;
+            /**
+             * Virtual network resource id
+             */
+            vnetSubnetResourceId?: string;
+            /**
+             * (internal) Vnet traffic tag
+             */
+            vnetTrafficTag?: number;
+        }
+
+        /**
+         * Managed service identity.
+         */
+        export interface ManagedServiceIdentityResponse {
+            /**
+             * Principal Id of managed service identity.
+             */
+            principalId: string;
+            /**
+             * Tenant of managed service identity.
+             */
+            tenantId: string;
+            /**
+             * Type of managed service identity.
+             */
+            type?: string;
+            /**
+             * The list of user assigned identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}
+             */
+            userAssignedIdentities?: {[key: string]: outputs.web.v20200901.ManagedServiceIdentityResponseUserAssignedIdentities};
+        }
+
+        export interface ManagedServiceIdentityResponseUserAssignedIdentities {
+            /**
+             * Client Id of user assigned identity
+             */
+            clientId: string;
+            /**
+             * Principal Id of user assigned identity
+             */
+            principalId: string;
+        }
+
+        /**
+         * Name value pair.
+         */
+        export interface NameValuePairResponse {
+            /**
+             * Pair name.
+             */
+            name?: string;
+            /**
+             * Pair value.
+             */
+            value?: string;
+        }
+
+        /**
+         * Network access control entry.
+         */
+        export interface NetworkAccessControlEntryResponse {
+            /**
+             * Action object.
+             */
+            action?: string;
+            /**
+             * Description of network access control entry.
+             */
+            description?: string;
+            /**
+             * Order of precedence.
+             */
+            order?: number;
+            /**
+             * Remote subnet.
+             */
+            remoteSubnet?: string;
+        }
+
+        /**
+         * The state of a private link connection
+         */
+        export interface PrivateLinkConnectionStateResponse {
+            /**
+             * ActionsRequired for a private link connection
+             */
+            actionsRequired?: string;
+            /**
+             * Description of a private link connection
+             */
+            description?: string;
+            /**
+             * Status of a private link connection
+             */
+            status?: string;
+        }
+
+        /**
+         * Push settings for the App.
+         */
+        export interface PushSettingsResponse {
+            /**
+             * Gets or sets a JSON string containing a list of dynamic tags that will be evaluated from user claims in the push registration endpoint.
+             */
+            dynamicTagsJson?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Gets or sets a flag indicating whether the Push endpoint is enabled.
+             */
+            isPushEnabled: boolean;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20200901.SystemDataResponse;
+            /**
+             * Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
+             */
+            tagWhitelistJson?: string;
+            /**
+             * Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.
+             * Tags can consist of alphanumeric characters and the following:
+             * '_', '@', '#', '.', ':', '-'. 
+             * Validation should be performed at the PushRequestHandler.
+             */
+            tagsRequiringAuth?: string;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        /**
+         * Routing rules for ramp up testing. This rule allows to redirect static traffic % to a slot or to gradually change routing % based on performance.
+         */
+        export interface RampUpRuleResponse {
+            /**
+             * Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
+             */
+            actionHostName?: string;
+            /**
+             * Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.
+             * https://www.siteextensions.net/packages/TiPCallback/
+             */
+            changeDecisionCallbackUrl?: string;
+            /**
+             * Specifies interval in minutes to reevaluate ReroutePercentage.
+             */
+            changeIntervalInMinutes?: number;
+            /**
+             * In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or 
+             * <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm 
+             * can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
+             */
+            changeStep?: number;
+            /**
+             * Specifies upper boundary below which ReroutePercentage will stay.
+             */
+            maxReroutePercentage?: number;
+            /**
+             * Specifies lower boundary above which ReroutePercentage will stay.
+             */
+            minReroutePercentage?: number;
+            /**
+             * Name of the routing rule. The recommended name would be to point to the slot which will receive the traffic in the experiment.
+             */
+            name?: string;
+            /**
+             * Percentage of the traffic which will be redirected to <code>ActionHostName</code>.
+             */
+            reroutePercentage?: number;
+        }
+
+        /**
+         * Trigger based on total requests.
+         */
+        export interface RequestsBasedTriggerResponse {
+            /**
+             * Request Count.
+             */
+            count?: number;
+            /**
+             * Time interval.
+             */
+            timeInterval?: string;
+        }
+
+        /**
+         * Configuration of an App Service app.
+         */
+        export interface SiteConfigResponse {
+            /**
+             * <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
+             */
+            alwaysOn?: boolean;
+            /**
+             * Information about the formal API definition for the app.
+             */
+            apiDefinition?: outputs.web.v20200901.ApiDefinitionInfoResponse;
+            /**
+             * Azure API management settings linked to the app.
+             */
+            apiManagementConfig?: outputs.web.v20200901.ApiManagementConfigResponse;
+            /**
+             * App command line to launch.
+             */
+            appCommandLine?: string;
+            /**
+             * Application settings.
+             */
+            appSettings?: outputs.web.v20200901.NameValuePairResponse[];
+            /**
+             * <code>true</code> if Auto Heal is enabled; otherwise, <code>false</code>.
+             */
+            autoHealEnabled?: boolean;
+            /**
+             * Auto Heal rules.
+             */
+            autoHealRules?: outputs.web.v20200901.AutoHealRulesResponse;
+            /**
+             * Auto-swap slot name.
+             */
+            autoSwapSlotName?: string;
+            /**
+             * Connection strings.
+             */
+            connectionStrings?: outputs.web.v20200901.ConnStringInfoResponse[];
+            /**
+             * Cross-Origin Resource Sharing (CORS) settings.
+             */
+            cors?: outputs.web.v20200901.CorsSettingsResponse;
+            /**
+             * Default documents.
+             */
+            defaultDocuments?: string[];
+            /**
+             * <code>true</code> if detailed error logging is enabled; otherwise, <code>false</code>.
+             */
+            detailedErrorLoggingEnabled?: boolean;
+            /**
+             * Document root.
+             */
+            documentRoot?: string;
+            /**
+             * This is work around for polymorphic types.
+             */
+            experiments?: outputs.web.v20200901.ExperimentsResponse;
+            /**
+             * State of FTP / FTPS service
+             */
+            ftpsState?: string;
+            /**
+             * Handler mappings.
+             */
+            handlerMappings?: outputs.web.v20200901.HandlerMappingResponse[];
+            /**
+             * Health check path
+             */
+            healthCheckPath?: string;
+            /**
+             * Http20Enabled: configures a web site to allow clients to connect over http2.0
+             */
+            http20Enabled?: boolean;
+            /**
+             * <code>true</code> if HTTP logging is enabled; otherwise, <code>false</code>.
+             */
+            httpLoggingEnabled?: boolean;
+            /**
+             * IP security restrictions for main.
+             */
+            ipSecurityRestrictions?: outputs.web.v20200901.IpSecurityRestrictionResponse[];
+            /**
+             * Java container.
+             */
+            javaContainer?: string;
+            /**
+             * Java container version.
+             */
+            javaContainerVersion?: string;
+            /**
+             * Java version.
+             */
+            javaVersion?: string;
+            /**
+             * Site limits.
+             */
+            limits?: outputs.web.v20200901.SiteLimitsResponse;
+            /**
+             * Linux App Framework and version
+             */
+            linuxFxVersion?: string;
+            /**
+             * Site load balancing.
+             */
+            loadBalancing?: string;
+            /**
+             * <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
+             */
+            localMySqlEnabled?: boolean;
+            /**
+             * HTTP logs directory size limit.
+             */
+            logsDirectorySizeLimit?: number;
+            /**
+             * Site MachineKey.
+             */
+            machineKey: outputs.web.v20200901.SiteMachineKeyResponse;
+            /**
+             * Managed pipeline mode.
+             */
+            managedPipelineMode?: string;
+            /**
+             * Managed Service Identity Id
+             */
+            managedServiceIdentityId?: number;
+            /**
+             * MinTlsVersion: configures the minimum version of TLS required for SSL requests
+             */
+            minTlsVersion?: string;
+            /**
+             * .NET Framework version.
+             */
+            netFrameworkVersion?: string;
+            /**
+             * Version of Node.js.
+             */
+            nodeVersion?: string;
+            /**
+             * Number of workers.
+             */
+            numberOfWorkers?: number;
+            /**
+             * Version of PHP.
+             */
+            phpVersion?: string;
+            /**
+             * Version of PowerShell.
+             */
+            powerShellVersion?: string;
+            /**
+             * Number of preWarmed instances.
+             * This setting only applies to the Consumption and Elastic Plans
+             */
+            preWarmedInstanceCount?: number;
+            /**
+             * Publishing user name.
+             */
+            publishingUsername?: string;
+            /**
+             * Push endpoint settings.
+             */
+            push?: outputs.web.v20200901.PushSettingsResponse;
+            /**
+             * Version of Python.
+             */
+            pythonVersion?: string;
+            /**
+             * <code>true</code> if remote debugging is enabled; otherwise, <code>false</code>.
+             */
+            remoteDebuggingEnabled?: boolean;
+            /**
+             * Remote debugging version.
+             */
+            remoteDebuggingVersion?: string;
+            /**
+             * <code>true</code> if request tracing is enabled; otherwise, <code>false</code>.
+             */
+            requestTracingEnabled?: boolean;
+            /**
+             * Request tracing expiration time.
+             */
+            requestTracingExpirationTime?: string;
+            /**
+             * IP security restrictions for scm.
+             */
+            scmIpSecurityRestrictions?: outputs.web.v20200901.IpSecurityRestrictionResponse[];
+            /**
+             * IP security restrictions for scm to use main.
+             */
+            scmIpSecurityRestrictionsUseMain?: boolean;
+            /**
+             * ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
+             */
+            scmMinTlsVersion?: string;
+            /**
+             * SCM type.
+             */
+            scmType?: string;
+            /**
+             * Tracing options.
+             */
+            tracingOptions?: string;
+            /**
+             * <code>true</code> to use 32-bit worker process; otherwise, <code>false</code>.
+             */
+            use32BitWorkerProcess?: boolean;
+            /**
+             * Virtual applications.
+             */
+            virtualApplications?: outputs.web.v20200901.VirtualApplicationResponse[];
+            /**
+             * Virtual Network name.
+             */
+            vnetName?: string;
+            /**
+             * The number of private ports assigned to this app. These will be assigned dynamically on runtime.
+             */
+            vnetPrivatePortsCount?: number;
+            /**
+             * Virtual Network Route All enabled. This causes all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied.
+             */
+            vnetRouteAllEnabled?: boolean;
+            /**
+             * <code>true</code> if WebSocket is enabled; otherwise, <code>false</code>.
+             */
+            webSocketsEnabled?: boolean;
+            /**
+             * Xenon App Framework and version
+             */
+            windowsFxVersion?: string;
+            /**
+             * Explicit Managed Service Identity Id
+             */
+            xManagedServiceIdentityId?: number;
+        }
+
+        /**
+         * Metric limits set on an app.
+         */
+        export interface SiteLimitsResponse {
+            /**
+             * Maximum allowed disk size usage in MB.
+             */
+            maxDiskSizeInMb?: number;
+            /**
+             * Maximum allowed memory usage in MB.
+             */
+            maxMemoryInMb?: number;
+            /**
+             * Maximum allowed CPU usage percentage.
+             */
+            maxPercentageCpu?: number;
+        }
+
+        /**
+         * MachineKey of an app.
+         */
+        export interface SiteMachineKeyResponse {
+            /**
+             * Algorithm used for decryption.
+             */
+            decryption?: string;
+            /**
+             * Decryption key.
+             */
+            decryptionKey?: string;
+            /**
+             * MachineKey validation.
+             */
+            validation?: string;
+            /**
+             * Validation key.
+             */
+            validationKey?: string;
+        }
+
+        /**
+         * Description of the App Service plan scale options.
+         */
+        export interface SkuCapacityResponse {
+            /**
+             * Default number of workers for this App Service plan SKU.
+             */
+            default?: number;
+            /**
+             * Maximum number of workers for this App Service plan SKU.
+             */
+            maximum?: number;
+            /**
+             * Minimum number of workers for this App Service plan SKU.
+             */
+            minimum?: number;
+            /**
+             * Available scale configurations for an App Service plan.
+             */
+            scaleType?: string;
+        }
+
+        /**
+         * Description of a SKU for a scalable resource.
+         */
+        export interface SkuDescriptionResponse {
+            /**
+             * Capabilities of the SKU, e.g., is traffic manager enabled?
+             */
+            capabilities?: outputs.web.v20200901.CapabilityResponse[];
+            /**
+             * Current number of instances assigned to the resource.
+             */
+            capacity?: number;
+            /**
+             * Family code of the resource SKU.
+             */
+            family?: string;
+            /**
+             * Locations of the SKU.
+             */
+            locations?: string[];
+            /**
+             * Name of the resource SKU.
+             */
+            name?: string;
+            /**
+             * Size specifier of the resource SKU.
+             */
+            size?: string;
+            /**
+             * Min, max, and default scale values of the SKU.
+             */
+            skuCapacity?: outputs.web.v20200901.SkuCapacityResponse;
+            /**
+             * Service tier of the resource SKU.
+             */
+            tier?: string;
+        }
+
+        /**
+         * The status of the last successful slot swap operation.
+         */
+        export interface SlotSwapStatusResponse {
+            /**
+             * The destination slot of the last swap operation.
+             */
+            destinationSlotName: string;
+            /**
+             * The source slot of the last swap operation.
+             */
+            sourceSlotName: string;
+            /**
+             * The time the last successful slot swap completed.
+             */
+            timestampUtc: string;
+        }
+
+        /**
+         * Trigger based on request execution time.
+         */
+        export interface SlowRequestsBasedTriggerResponse {
+            /**
+             * Request Count.
+             */
+            count?: number;
+            /**
+             * Time interval.
+             */
+            timeInterval?: string;
+            /**
+             * Time taken.
+             */
+            timeTaken?: string;
+        }
+
+        /**
+         * Stamp capacity information.
+         */
+        export interface StampCapacityResponse {
+            /**
+             * Available capacity (# of machines, bytes of storage etc...).
+             */
+            availableCapacity?: number;
+            /**
+             * Shared/dedicated workers.
+             */
+            computeMode?: string;
+            /**
+             * If <code>true</code>, it includes basic apps.
+             * Basic apps are not used for capacity allocation.
+             */
+            excludeFromCapacityAllocation?: boolean;
+            /**
+             * <code>true</code> if capacity is applicable for all apps; otherwise, <code>false</code>.
+             */
+            isApplicableForAllComputeModes?: boolean;
+            /**
+             * Is this a linux stamp capacity
+             */
+            isLinux?: boolean;
+            /**
+             * Name of the stamp.
+             */
+            name?: string;
+            /**
+             * Shared or Dedicated.
+             */
+            siteMode?: string;
+            /**
+             * Total capacity (# of machines, bytes of storage etc...).
+             */
+            totalCapacity?: number;
+            /**
+             * Name of the unit.
+             */
+            unit?: string;
+            /**
+             * Size of the machines.
+             */
+            workerSize?: string;
+            /**
+             * Size ID of machines: 
+             * 0 - Small
+             * 1 - Medium
+             * 2 - Large
+             */
+            workerSizeId?: number;
+        }
+
+        /**
+         * Build properties for the static site.
+         */
+        export interface StaticSiteBuildPropertiesResponse {
+            /**
+             * The path to the api code within the repository.
+             */
+            apiLocation?: string;
+            /**
+             * The path of the app artifacts after building.
+             */
+            appArtifactLocation?: string;
+            /**
+             * The path to the app code within the repository.
+             */
+            appLocation?: string;
+        }
+
+        /**
+         * Static Site User ARM resource.
+         */
+        export interface StaticSiteUserARMResourceResponse {
+            /**
+             * The display name for the static site user.
+             */
+            displayName: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The identity provider for the static site user.
+             */
+            provider: string;
+            /**
+             * The roles for the static site user, in free-form string format
+             */
+            roles?: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20200901.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+            /**
+             * The user id for the static site user.
+             */
+            userId: string;
+        }
+
+        /**
+         * Trigger based on status code.
+         */
+        export interface StatusCodesBasedTriggerResponse {
+            /**
+             * Request Count.
+             */
+            count?: number;
+            /**
+             * HTTP status code.
+             */
+            status?: number;
+            /**
+             * Request Sub Status.
+             */
+            subStatus?: number;
+            /**
+             * Time interval.
+             */
+            timeInterval?: string;
+            /**
+             * Win32 error code.
+             */
+            win32Status?: number;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
+        }
+
+        /**
+         * Virtual application in an app.
+         */
+        export interface VirtualApplicationResponse {
+            /**
+             * Physical path.
+             */
+            physicalPath?: string;
+            /**
+             * <code>true</code> if preloading is enabled; otherwise, <code>false</code>.
+             */
+            preloadEnabled?: boolean;
+            /**
+             * Virtual directories for virtual application.
+             */
+            virtualDirectories?: outputs.web.v20200901.VirtualDirectoryResponse[];
+            /**
+             * Virtual path.
+             */
+            virtualPath?: string;
+        }
+
+        /**
+         * Directory for virtual application.
+         */
+        export interface VirtualDirectoryResponse {
+            /**
+             * Physical path.
+             */
+            physicalPath?: string;
+            /**
+             * Path to virtual application.
+             */
+            virtualPath?: string;
+        }
+
+        /**
+         * Virtual IP mapping.
+         */
+        export interface VirtualIPMappingResponse {
+            /**
+             * Is virtual IP mapping in use.
+             */
+            inUse?: boolean;
+            /**
+             * Internal HTTP port.
+             */
+            internalHttpPort?: number;
+            /**
+             * Internal HTTPS port.
+             */
+            internalHttpsPort?: number;
+            /**
+             * name of the service that virtual IP is assigned to
+             */
+            serviceName?: string;
+            /**
+             * Virtual IP address.
+             */
+            virtualIP?: string;
+        }
+
+        /**
+         * Specification for using a Virtual Network.
+         */
+        export interface VirtualNetworkProfileResponse {
+            /**
+             * Resource id of the Virtual Network.
+             */
+            id?: string;
+            /**
+             * Name of the Virtual Network (read-only).
+             */
+            name: string;
+            /**
+             * Subnet within the Virtual Network.
+             */
+            subnet?: string;
+            /**
+             * Resource type of the Virtual Network (read-only).
+             */
+            type: string;
+        }
+
+        /**
+         * Virtual Network route contract used to pass routing information for a Virtual Network.
+         */
+        export interface VnetRouteResponse {
+            /**
+             * The ending address for this route. If the start address is specified in CIDR notation, this must be omitted.
+             */
+            endAddress?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The type of route this is:
+             * DEFAULT - By default, every app has routes to the local address ranges specified by RFC1918
+             * INHERITED - Routes inherited from the real Virtual Network routes
+             * STATIC - Static route set on the app only
+             *
+             * These values will be used for syncing an app's routes with those from a Virtual Network.
+             */
+            routeType?: string;
+            /**
+             * The starting address for this route. This may also include a CIDR notation, in which case the end address must not be specified.
+             */
+            startAddress?: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20200901.SystemDataResponse;
             /**
              * Resource type.
              */

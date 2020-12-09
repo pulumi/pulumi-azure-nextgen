@@ -2,8 +2,16 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 // Export members:
+export * from "./afdcustomDomain";
+export * from "./afdendpoint";
+export * from "./afdorigin";
+export * from "./afdoriginGroup";
 export * from "./customDomain";
 export * from "./endpoint";
+export * from "./getAFDCustomDomain";
+export * from "./getAFDEndpoint";
+export * from "./getAFDOrigin";
+export * from "./getAFDOriginGroup";
 export * from "./getCustomDomain";
 export * from "./getEndpoint";
 export * from "./getOrigin";
@@ -11,7 +19,17 @@ export * from "./getOriginGroup";
 export * from "./getPolicy";
 export * from "./getProfile";
 export * from "./getProfileSupportedOptimizationTypes";
+export * from "./getRoute";
+export * from "./getRule";
+export * from "./getRuleSet";
+export * from "./getSecret";
+export * from "./getSecurityPolicy";
 export * from "./origin";
 export * from "./originGroup";
 export * from "./policy";
 export * from "./profile";
+export * from "./route";
+export * from "./rule";
+export * from "./ruleSet";
+export * from "./secret";
+export * from "./securityPolicy";
