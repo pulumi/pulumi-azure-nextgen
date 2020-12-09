@@ -5,7 +5,7 @@ CHANGELOG
 
 New resources:
 
-- Azure KeyVault Secrets ([#54](https://github.com/pulumi/pulumi-azure-nextgen/issues/54))
+- Azure KeyVault Secrets and Keys ([#54](https://github.com/pulumi/pulumi-azure-nextgen/issues/54))
 
 ---
 
