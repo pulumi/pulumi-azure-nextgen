@@ -3,6 +3,10 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
+New features:
+
+- Enum support ([#106)(https://github.com/pulumi/pulumi-azure-nextgen/issues/106))
+
 New resources:
 
 - Azure KeyVault Secrets and Keys ([#54](https://github.com/pulumi/pulumi-azure-nextgen/issues/54))
