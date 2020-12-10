@@ -5,7 +5,7 @@ CHANGELOG
 
 New features:
 
-- Enum support ([#106)(https://github.com/pulumi/pulumi-azure-nextgen/issues/106))
+- Enum support ([#106](https://github.com/pulumi/pulumi-azure-nextgen/issues/106))
 
 New resources:
 
