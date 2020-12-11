@@ -71,7 +71,6 @@ jobs:
           branch: "publish/${{ github.run_id }}-${{ github.run_number }}"
           author_name: pulumi-bot
           author_email: "bot@pulumi.com"
-          cwd: ${{ github.workspace }}/sdk-repo
-          push: true
+          cwd: './sdk-repo'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
