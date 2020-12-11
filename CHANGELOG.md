@@ -3,6 +3,10 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
+---
+
+## 0.3.0 (2020-12-11)
+
 New features:
 
 - Enum support ([#106](https://github.com/pulumi/pulumi-azure-nextgen/issues/106))
@@ -14,7 +18,9 @@ New resources:
 - App Insights ComponentCurrentBillingFeature ([#158](https://github.com/pulumi/pulumi-azure-nextgen/issues/158))
 - SQL GeoBackupPolicy ([#143](https://github.com/pulumi/pulumi-azure-nextgen/issues/143))
 
----
+Fixes:
+
+- Retrieve ID in get* invokes ([#48](https://github.com/pulumi/pulumi-azure-nextgen/issues/48))
 
 ## 0.2.8 (2020-11-23)
 
