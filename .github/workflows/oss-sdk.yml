@@ -72,5 +72,6 @@ jobs:
           author_name: pulumi-bot
           author_email: "bot@pulumi.com"
           cwd: './sdk-repo'
+          pull_strategy: ''
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
