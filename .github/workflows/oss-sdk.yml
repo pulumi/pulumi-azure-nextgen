@@ -66,12 +66,9 @@ jobs:
         run: git status
         working-directory: sdk-repo
       - name: commit changes
-        uses: EndBug/add-and-commit@v5
+        uses: EndBug/add-and-commit@v4
         with:
-          branch: "publish/${{ github.run_id }}-${{ github.run_number }}"
+          ref: "publish/${{ github.run_id }}-${{ github.run_number }}"
           author_name: pulumi-bot
           author_email: "bot@pulumi.com"
-          cwd: './sdk-repo'
-          pull_strategy: ''
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          cwd: ${{ github.workspace }}/sdk-repo
