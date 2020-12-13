@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getAlertsSuppressionRule(args: GetAlertsSuppressionRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetAlertsSuppressionRuleResult> {
@@ -41,6 +41,10 @@ export interface GetAlertsSuppressionRuleResult {
      * Expiration date of the rule, if value is not provided or provided as null this field will default to the maximum allowed expiration date.
      */
     readonly expirationDateUtc?: string;
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * The last time this rule was modified
      */

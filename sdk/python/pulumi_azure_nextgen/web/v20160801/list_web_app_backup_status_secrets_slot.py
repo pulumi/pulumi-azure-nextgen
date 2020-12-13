@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = [
@@ -21,7 +22,7 @@ class ListWebAppBackupStatusSecretsSlotResult:
     """
     Backup description.
     """
-    def __init__(__self__, backup_id=None, blob_name=None, correlation_id=None, created=None, databases=None, finished_time_stamp=None, kind=None, last_restore_time_stamp=None, log=None, name=None, scheduled=None, size_in_bytes=None, status=None, storage_account_url=None, type=None, website_size_in_bytes=None):
+    def __init__(__self__, backup_id=None, blob_name=None, correlation_id=None, created=None, databases=None, finished_time_stamp=None, id=None, kind=None, last_restore_time_stamp=None, log=None, name=None, scheduled=None, size_in_bytes=None, status=None, storage_account_url=None, type=None, website_size_in_bytes=None):
         if backup_id and not isinstance(backup_id, int):
             raise TypeError("Expected argument 'backup_id' to be a int")
         pulumi.set(__self__, "backup_id", backup_id)
@@ -40,6 +41,9 @@ class ListWebAppBackupStatusSecretsSlotResult:
         if finished_time_stamp and not isinstance(finished_time_stamp, str):
             raise TypeError("Expected argument 'finished_time_stamp' to be a str")
         pulumi.set(__self__, "finished_time_stamp", finished_time_stamp)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -118,6 +122,14 @@ class ListWebAppBackupStatusSecretsSlotResult:
         Timestamp when this backup finished.
         """
         return pulumi.get(self, "finished_time_stamp")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Resource Id.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -212,6 +224,7 @@ class AwaitableListWebAppBackupStatusSecretsSlotResult(ListWebAppBackupStatusSec
             created=self.created,
             databases=self.databases,
             finished_time_stamp=self.finished_time_stamp,
+            id=self.id,
             kind=self.kind,
             last_restore_time_stamp=self.last_restore_time_stamp,
             log=self.log,
@@ -234,7 +247,7 @@ def list_web_app_backup_status_secrets_slot(backup_id: Optional[str] = None,
                                             resource_group_name: Optional[str] = None,
                                             slot: Optional[str] = None,
                                             storage_account_url: Optional[str] = None,
-                                            type: Optional[str] = None,
+                                            type: Optional['BackupRestoreOperationType'] = None,
                                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableListWebAppBackupStatusSecretsSlotResult:
     """
     Use this data source to access information about an existing resource.
@@ -249,7 +262,7 @@ def list_web_app_backup_status_secrets_slot(backup_id: Optional[str] = None,
     :param str resource_group_name: Name of the resource group to which the resource belongs.
     :param str slot: Name of web app slot. If not specified then will default to production slot.
     :param str storage_account_url: SAS URL to the container.
-    :param str type: Type of the backup.
+    :param 'BackupRestoreOperationType' type: Type of the backup.
     """
     __args__ = dict()
     __args__['backupId'] = backup_id
@@ -276,6 +289,7 @@ def list_web_app_backup_status_secrets_slot(backup_id: Optional[str] = None,
         created=__ret__.created,
         databases=__ret__.databases,
         finished_time_stamp=__ret__.finished_time_stamp,
+        id=__ret__.id,
         kind=__ret__.kind,
         last_restore_time_stamp=__ret__.last_restore_time_stamp,
         log=__ret__.log,

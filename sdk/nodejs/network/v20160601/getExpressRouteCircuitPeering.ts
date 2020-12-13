@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getExpressRouteCircuitPeering(args: GetExpressRouteCircuitPeeringArgs, opts?: pulumi.InvokeOptions): Promise<GetExpressRouteCircuitPeeringResult> {
@@ -51,6 +51,10 @@ export interface GetExpressRouteCircuitPeeringResult {
      * Gets or sets the GatewayManager Etag
      */
     readonly gatewayManagerEtag?: string;
+    /**
+     * Resource Id
+     */
+    readonly id?: string;
     /**
      * Gets whether the provider or the customer last modified the peering
      */

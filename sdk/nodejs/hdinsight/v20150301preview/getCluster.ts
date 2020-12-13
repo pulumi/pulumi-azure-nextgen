@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterResult> {
@@ -38,6 +38,10 @@ export interface GetClusterResult {
      * The ETag for the resource
      */
     readonly etag?: string;
+    /**
+     * Fully qualified resource Id for the resource.
+     */
+    readonly id: string;
     /**
      * The identity of the cluster, if configured.
      */

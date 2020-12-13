@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getEndpoint(args: GetEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointResult> {
@@ -51,6 +51,10 @@ export interface GetEndpointResult {
      * The host name of the endpoint structured as {endpointName}.{DNSZone}, e.g. contoso.azureedge.net
      */
     readonly hostName: string;
+    /**
+     * Resource ID.
+     */
+    readonly id: string;
     /**
      * Indicates whether content compression is enabled on CDN. Default value is false. If compression is enabled, content will be served as compressed if user requests for a compressed version. Content won't be compressed on CDN when requested content is smaller than 1 byte or larger than 1 MB.
      */

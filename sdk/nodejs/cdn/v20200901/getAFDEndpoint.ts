@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getAFDEndpoint(args: GetAFDEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetAFDEndpointResult> {
@@ -48,6 +48,10 @@ export interface GetAFDEndpointResult {
      * The host name of the endpoint structured as {endpointName}.{DNSZone}, e.g. contoso.azureedge.net
      */
     readonly hostName: string;
+    /**
+     * Resource ID.
+     */
+    readonly id: string;
     /**
      * Resource location.
      */

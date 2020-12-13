@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getIotSensor(args: GetIotSensorArgs, opts?: pulumi.InvokeOptions): Promise<GetIotSensorResult> {
@@ -46,6 +46,10 @@ export interface GetIotSensorResult {
      * Dynamic mode status of the IoT sensor
      */
     readonly dynamicLearning: boolean;
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * Learning mode status of the IoT sensor
      */

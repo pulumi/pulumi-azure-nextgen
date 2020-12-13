@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getWorkspaceConnection(args: GetWorkspaceConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkspaceConnectionResult> {
@@ -47,6 +47,10 @@ export interface GetWorkspaceConnectionResult {
      * Category of the workspace connection.
      */
     readonly category?: string;
+    /**
+     * ResourceId of the workspace connection.
+     */
+    readonly id: string;
     /**
      * Friendly name of the workspace connection.
      */

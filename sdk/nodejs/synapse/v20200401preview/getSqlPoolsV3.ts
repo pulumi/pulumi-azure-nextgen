@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getSqlPoolsV3(args: GetSqlPoolsV3Args, opts?: pulumi.InvokeOptions): Promise<GetSqlPoolsV3Result> {
@@ -43,6 +43,10 @@ export interface GetSqlPoolsV3Result {
      * The current service level objective name of the sql pool.
      */
     readonly currentServiceObjectiveName: string;
+    /**
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     */
+    readonly id: string;
     /**
      * Kind of SqlPool.
      */

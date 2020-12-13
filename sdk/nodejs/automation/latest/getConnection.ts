@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getConnection(args: GetConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionResult> {
@@ -55,6 +55,10 @@ export interface GetConnectionResult {
      * Gets the field definition values of the connection.
      */
     readonly fieldDefinitionValues: {[key: string]: string};
+    /**
+     * Fully qualified resource Id for the resource
+     */
+    readonly id: string;
     /**
      * Gets the last modified time.
      */

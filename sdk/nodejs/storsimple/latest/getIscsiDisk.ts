@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getIscsiDisk(args: GetIscsiDiskArgs, opts?: pulumi.InvokeOptions): Promise<GetIscsiDiskResult> {
@@ -65,6 +65,10 @@ export interface GetIscsiDiskResult {
      * The disk status.
      */
     readonly diskStatus: string;
+    /**
+     * The identifier.
+     */
+    readonly id: string;
     /**
      * The local used capacity in bytes.
      */

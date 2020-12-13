@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function listWebApplicationSettingsSlot(args: ListWebApplicationSettingsSlotArgs, opts?: pulumi.InvokeOptions): Promise<ListWebApplicationSettingsSlotResult> {
@@ -39,6 +39,10 @@ export interface ListWebApplicationSettingsSlotArgs {
  * String dictionary resource.
  */
 export interface ListWebApplicationSettingsSlotResult {
+    /**
+     * Resource Id.
+     */
+    readonly id: string;
     /**
      * Kind of resource.
      */

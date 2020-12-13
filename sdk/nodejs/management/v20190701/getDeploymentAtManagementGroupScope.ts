@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getDeploymentAtManagementGroupScope(args: GetDeploymentAtManagementGroupScopeArgs, opts?: pulumi.InvokeOptions): Promise<GetDeploymentAtManagementGroupScopeResult> {
@@ -34,6 +34,10 @@ export interface GetDeploymentAtManagementGroupScopeArgs {
  * Deployment information.
  */
 export interface GetDeploymentAtManagementGroupScopeResult {
+    /**
+     * The ID of the deployment.
+     */
+    readonly id: string;
     /**
      * the location of the deployment.
      */

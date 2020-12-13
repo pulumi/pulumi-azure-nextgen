@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getAccount(args: GetAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
@@ -34,6 +34,10 @@ export interface GetAccountArgs {
  * The response to an account resource GET request.
  */
 export interface GetAccountResult {
+    /**
+     * Unique identifier of the resource.
+     */
+    readonly id: string;
     /**
      * Resource location.
      */

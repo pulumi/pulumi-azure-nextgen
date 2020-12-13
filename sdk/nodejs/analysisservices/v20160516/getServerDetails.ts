@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getServerDetails(args: GetServerDetailsArgs, opts?: pulumi.InvokeOptions): Promise<GetServerDetailsResult> {
@@ -42,6 +42,10 @@ export interface GetServerDetailsResult {
      * The container URI of backup blob.
      */
     readonly backupBlobContainerUri?: string;
+    /**
+     * An identifier that represents the Analysis Services resource.
+     */
+    readonly id: string;
     /**
      * Location of the Analysis Services resource.
      */

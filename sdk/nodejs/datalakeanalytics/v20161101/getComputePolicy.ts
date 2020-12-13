@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getComputePolicy(args: GetComputePolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetComputePolicyResult> {
@@ -39,6 +39,10 @@ export interface GetComputePolicyArgs {
  * Data Lake Analytics compute policy information.
  */
 export interface GetComputePolicyResult {
+    /**
+     * The resource identifier.
+     */
+    readonly id: string;
     /**
      * The maximum degree of parallelism per job this user can use to submit jobs.
      */

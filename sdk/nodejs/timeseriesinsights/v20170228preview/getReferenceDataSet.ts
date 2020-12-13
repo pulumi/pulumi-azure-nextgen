@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getReferenceDataSet(args: GetReferenceDataSetArgs, opts?: pulumi.InvokeOptions): Promise<GetReferenceDataSetResult> {
@@ -43,6 +43,10 @@ export interface GetReferenceDataSetResult {
      * The time the resource was created.
      */
     readonly creationTime: string;
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * The list of key properties for the reference data set.
      */

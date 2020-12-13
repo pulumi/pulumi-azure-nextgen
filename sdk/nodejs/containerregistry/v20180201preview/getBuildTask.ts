@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getBuildTask(args: GetBuildTaskArgs, opts?: pulumi.InvokeOptions): Promise<GetBuildTaskResult> {
@@ -47,6 +47,10 @@ export interface GetBuildTaskResult {
      * The creation date of build task.
      */
     readonly creationDate: string;
+    /**
+     * The resource ID.
+     */
+    readonly id: string;
     /**
      * The location of the resource. This cannot be changed after the resource is created.
      */

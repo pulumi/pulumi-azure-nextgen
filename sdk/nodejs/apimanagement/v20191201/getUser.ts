@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
@@ -51,6 +51,10 @@ export interface GetUserResult {
      * Collection of groups user is part of.
      */
     readonly groups: outputs.apimanagement.v20191201.GroupContractPropertiesResponse[];
+    /**
+     * Resource ID.
+     */
+    readonly id: string;
     /**
      * Collection of user identities.
      */

@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getProfile(args: GetProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetProfileResult> {
@@ -42,6 +42,10 @@ export interface GetProfileResult {
      * The list of endpoints in the Traffic Manager profile.
      */
     readonly endpoints?: outputs.network.v20170501.EndpointResponse[];
+    /**
+     * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}
+     */
+    readonly id: string;
     /**
      * The Azure Region where the resource lives
      */

@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getAppServiceEnvironment(args: GetAppServiceEnvironmentArgs, opts?: pulumi.InvokeOptions): Promise<GetAppServiceEnvironmentResult> {
@@ -91,6 +91,10 @@ export interface GetAppServiceEnvironmentResult {
      * Flag that displays whether an ASE has linux workers or not
      */
     readonly hasLinuxWorkers?: boolean;
+    /**
+     * Resource Id.
+     */
+    readonly id: string;
     /**
      * Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment.
      */

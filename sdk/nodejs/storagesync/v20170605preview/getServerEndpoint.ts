@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getServerEndpoint(args: GetServerEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetServerEndpointResult> {
@@ -64,6 +64,10 @@ export interface GetServerEndpointResult {
      * Friendly Name
      */
     readonly friendlyName?: string;
+    /**
+     * The id of the resource.
+     */
+    readonly id: string;
     /**
      * Item download error count.
      */

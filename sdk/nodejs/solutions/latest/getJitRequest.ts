@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getJitRequest(args: GetJitRequestArgs, opts?: pulumi.InvokeOptions): Promise<GetJitRequestResult> {
@@ -42,6 +42,10 @@ export interface GetJitRequestResult {
      * The client entity that created the JIT request.
      */
     readonly createdBy: outputs.solutions.latest.ApplicationClientDetailsResponse;
+    /**
+     * Resource ID
+     */
+    readonly id: string;
     /**
      * The JIT authorization policies.
      */

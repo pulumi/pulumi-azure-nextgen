@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getHostingEnvironment(args: GetHostingEnvironmentArgs, opts?: pulumi.InvokeOptions): Promise<GetHostingEnvironmentResult> {
@@ -74,6 +74,10 @@ export interface GetHostingEnvironmentResult {
      * Detailed message about with results of the last check of the hostingEnvironment (App Service Environment)
      */
     readonly environmentStatus?: string;
+    /**
+     * Resource Id
+     */
+    readonly id?: string;
     /**
      * Specifies which endpoints to serve internally in the hostingEnvironment's (App Service Environment) VNET
      */

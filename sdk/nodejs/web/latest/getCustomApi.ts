@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getCustomApi(args: GetCustomApiArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomApiResult> {
@@ -38,6 +38,10 @@ export interface GetCustomApiResult {
      * Resource ETag
      */
     readonly etag?: string;
+    /**
+     * Resource id
+     */
+    readonly id: string;
     /**
      * Resource location
      */

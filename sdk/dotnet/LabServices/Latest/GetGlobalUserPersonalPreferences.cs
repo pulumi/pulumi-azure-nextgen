@@ -22,7 +22,7 @@ namespace Pulumi.AzureNextGen.LabServices.Latest
         /// Enum indicating if user is adding or removing a favorite lab
         /// </summary>
         [Input("addRemove")]
-        public string? AddRemove { get; set; }
+        public Union<string, Pulumi.AzureNextGen.LabServices.Latest.AddRemove>? AddRemove { get; set; }
 
         /// <summary>
         /// Resource Id of the lab account
@@ -55,11 +55,19 @@ namespace Pulumi.AzureNextGen.LabServices.Latest
         /// Array of favorite lab resource ids
         /// </summary>
         public readonly ImmutableArray<string> FavoriteLabResourceIds;
+        /// <summary>
+        /// Id to be used by the cache orchestrator
+        /// </summary>
+        public readonly string? Id;
 
         [OutputConstructor]
-        private GetGlobalUserPersonalPreferencesResult(ImmutableArray<string> favoriteLabResourceIds)
+        private GetGlobalUserPersonalPreferencesResult(
+            ImmutableArray<string> favoriteLabResourceIds,
+
+            string? id)
         {
             FavoriteLabResourceIds = favoriteLabResourceIds;
+            Id = id;
         }
     }
 }

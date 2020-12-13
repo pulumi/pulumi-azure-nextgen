@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getWatcher(args: GetWatcherArgs, opts?: pulumi.InvokeOptions): Promise<GetWatcherResult> {
@@ -55,6 +55,10 @@ export interface GetWatcherResult {
      * Gets or sets the frequency at which the watcher is invoked.
      */
     readonly executionFrequencyInSeconds?: number;
+    /**
+     * Fully qualified resource Id for the resource
+     */
+    readonly id: string;
     /**
      * Details of the user who last modified the watcher.
      */

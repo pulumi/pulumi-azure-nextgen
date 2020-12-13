@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getAccessControlRecord(args: GetAccessControlRecordArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessControlRecordResult> {
@@ -39,6 +39,10 @@ export interface GetAccessControlRecordArgs {
  * The access control record
  */
 export interface GetAccessControlRecordResult {
+    /**
+     * The identifier.
+     */
+    readonly id: string;
     /**
      * The Iscsi initiator name (IQN)
      */

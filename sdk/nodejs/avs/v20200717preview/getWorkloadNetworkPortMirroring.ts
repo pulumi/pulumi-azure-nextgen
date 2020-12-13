@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getWorkloadNetworkPortMirroring(args: GetWorkloadNetworkPortMirroringArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkloadNetworkPortMirroringResult> {
@@ -51,6 +51,10 @@ export interface GetWorkloadNetworkPortMirroringResult {
      * Display name of the port mirroring profile.
      */
     readonly displayName?: string;
+    /**
+     * Resource ID.
+     */
+    readonly id: string;
     /**
      * Resource name.
      */

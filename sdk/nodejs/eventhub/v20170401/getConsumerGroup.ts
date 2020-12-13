@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getConsumerGroup(args: GetConsumerGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetConsumerGroupResult> {
@@ -48,6 +48,10 @@ export interface GetConsumerGroupResult {
      * Exact time the message was created.
      */
     readonly createdAt: string;
+    /**
+     * Resource ID.
+     */
+    readonly id: string;
     /**
      * Resource name.
      */

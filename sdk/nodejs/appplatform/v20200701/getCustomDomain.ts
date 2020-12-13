@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getCustomDomain(args: GetCustomDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomDomainResult> {
@@ -44,6 +44,10 @@ export interface GetCustomDomainArgs {
  * Custom domain resource payload.
  */
 export interface GetCustomDomainResult {
+    /**
+     * Fully qualified resource Id for the resource.
+     */
+    readonly id: string;
     /**
      * The name of the resource.
      */

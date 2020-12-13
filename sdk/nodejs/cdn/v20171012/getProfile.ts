@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getProfile(args: GetProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetProfileResult> {
@@ -34,6 +34,10 @@ export interface GetProfileArgs {
  * CDN profile is a logical grouping of endpoints that share the same settings, such as CDN provider and pricing tier.
  */
 export interface GetProfileResult {
+    /**
+     * Resource ID.
+     */
+    readonly id: string;
     /**
      * Resource location.
      */

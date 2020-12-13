@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getTemplateSpecVersion(args: GetTemplateSpecVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetTemplateSpecVersionResult> {
@@ -47,6 +47,10 @@ export interface GetTemplateSpecVersionResult {
      * Template Spec version description.
      */
     readonly description?: string;
+    /**
+     * String Id used to locate any resource on Azure.
+     */
+    readonly id: string;
     /**
      * The location of the Template Spec Version. It must match the location of the parent Template Spec.
      */

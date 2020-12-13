@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getSystemTopicEventSubscription(args: GetSystemTopicEventSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetSystemTopicEventSubscriptionResult> {
@@ -71,6 +71,10 @@ export interface GetSystemTopicEventSubscriptionResult {
      * Information about the filter for the event subscription.
      */
     readonly filter?: outputs.eventgrid.v20200401preview.EventSubscriptionFilterResponse;
+    /**
+     * Fully qualified identifier of the resource.
+     */
+    readonly id: string;
     /**
      * List of user defined labels.
      */

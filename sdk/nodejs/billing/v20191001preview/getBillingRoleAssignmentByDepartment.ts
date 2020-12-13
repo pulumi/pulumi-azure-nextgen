@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getBillingRoleAssignmentByDepartment(args: GetBillingRoleAssignmentByDepartmentArgs, opts?: pulumi.InvokeOptions): Promise<GetBillingRoleAssignmentByDepartmentResult> {
@@ -55,6 +55,10 @@ export interface GetBillingRoleAssignmentByDepartmentResult {
      * The date the role assignment was created.
      */
     readonly createdOn: string;
+    /**
+     * Resource Id.
+     */
+    readonly id: string;
     /**
      * Resource name.
      */

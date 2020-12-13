@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getFunction(args: GetFunctionArgs, opts?: pulumi.InvokeOptions): Promise<GetFunctionResult> {
@@ -39,6 +39,10 @@ export interface GetFunctionArgs {
  * A function object, containing all information associated with the named function. All functions are contained under a streaming job.
  */
 export interface GetFunctionResult {
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * Resource name
      */

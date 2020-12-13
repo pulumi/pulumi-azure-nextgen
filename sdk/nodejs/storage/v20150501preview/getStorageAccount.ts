@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getStorageAccount(args: GetStorageAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetStorageAccountResult> {
@@ -46,6 +46,10 @@ export interface GetStorageAccountResult {
      * Gets the user assigned custom domain assigned to this storage account.
      */
     readonly customDomain?: outputs.storage.v20150501preview.CustomDomainResponse;
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * Gets the timestamp of the most recent instance of a failover to the secondary location. Only the most recent timestamp is retained. This element is not returned if there has never been a failover instance. Only available if the accountType is StandardGRS or StandardRAGRS.
      */

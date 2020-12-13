@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getConnectedRegistry(args: GetConnectedRegistryArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectedRegistryResult> {
@@ -51,6 +51,10 @@ export interface GetConnectedRegistryResult {
      * The current connection state of the connected registry.
      */
     readonly connectionState: string;
+    /**
+     * The resource ID.
+     */
+    readonly id: string;
     /**
      * The last activity time of the connected registry.
      */

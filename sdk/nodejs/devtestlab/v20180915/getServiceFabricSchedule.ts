@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getServiceFabricSchedule(args: GetServiceFabricScheduleArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceFabricScheduleResult> {
@@ -66,6 +66,10 @@ export interface GetServiceFabricScheduleResult {
      * If the schedule will occur multiple times a day, specify the hourly recurrence.
      */
     readonly hourlyRecurrence?: outputs.devtestlab.v20180915.HourDetailsResponse;
+    /**
+     * The identifier of the resource.
+     */
+    readonly id: string;
     /**
      * The location of the resource.
      */

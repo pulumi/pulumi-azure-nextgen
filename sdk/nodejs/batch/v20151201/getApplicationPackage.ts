@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getApplicationPackage(args: GetApplicationPackageArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationPackageResult> {
@@ -48,6 +48,10 @@ export interface GetApplicationPackageResult {
      * The format of the application package, if the package is active.
      */
     readonly format?: string;
+    /**
+     * The ID of the application.
+     */
+    readonly id?: string;
     /**
      * The time at which the package was last activated, if the package is active.
      */

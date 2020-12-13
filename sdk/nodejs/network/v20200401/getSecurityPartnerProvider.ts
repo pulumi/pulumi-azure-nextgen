@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getSecurityPartnerProvider(args: GetSecurityPartnerProviderArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityPartnerProviderResult> {
@@ -42,6 +42,10 @@ export interface GetSecurityPartnerProviderResult {
      * A unique read-only string that changes whenever the resource is updated.
      */
     readonly etag: string;
+    /**
+     * Resource ID.
+     */
+    readonly id?: string;
     /**
      * Resource location.
      */

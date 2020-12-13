@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getQueue(args: GetQueueArgs, opts?: pulumi.InvokeOptions): Promise<GetQueueResult> {
@@ -83,6 +83,10 @@ export interface GetQueueResult {
      * Entity availability status for the queue.
      */
     readonly entityAvailabilityStatus?: string;
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * A value that indicates whether the message is accessible anonymously.
      */

@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getConnector(args: GetConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectorResult> {
@@ -54,6 +54,10 @@ export interface GetConnectorResult {
      * Connector DisplayName (defaults to Name)
      */
     readonly displayName?: string;
+    /**
+     * Connector id
+     */
+    readonly id: string;
     /**
      * Connector kind (eg aws)
      */

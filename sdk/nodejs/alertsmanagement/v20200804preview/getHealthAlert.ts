@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getHealthAlert(args: GetHealthAlertArgs, opts?: pulumi.InvokeOptions): Promise<GetHealthAlertResult> {
@@ -50,6 +50,10 @@ export interface GetHealthAlertResult {
      * the flag that indicates whether the health alert is enabled.
      */
     readonly enabled: boolean;
+    /**
+     * Azure resource Id
+     */
+    readonly id: string;
     /**
      * Last time the rule was updated in ISO8601 format.
      */

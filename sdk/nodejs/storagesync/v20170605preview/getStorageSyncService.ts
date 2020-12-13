@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getStorageSyncService(args: GetStorageSyncServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetStorageSyncServiceResult> {
@@ -34,6 +34,10 @@ export interface GetStorageSyncServiceArgs {
  * Storage Sync Service object.
  */
 export interface GetStorageSyncServiceResult {
+    /**
+     * The id of the resource.
+     */
+    readonly id: string;
     /**
      * The location of the resource.
      */

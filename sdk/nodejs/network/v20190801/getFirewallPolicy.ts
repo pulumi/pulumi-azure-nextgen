@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getFirewallPolicy(args: GetFirewallPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetFirewallPolicyResult> {
@@ -55,6 +55,10 @@ export interface GetFirewallPolicyResult {
      * List of references to Azure Firewalls that this Firewall Policy is associated with.
      */
     readonly firewalls: outputs.network.v20190801.SubResourceResponse[];
+    /**
+     * Resource ID.
+     */
+    readonly id?: string;
     /**
      * Resource location.
      */

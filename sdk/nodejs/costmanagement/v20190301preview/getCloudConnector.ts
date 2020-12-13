@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getCloudConnector(args: GetCloudConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudConnectorResult> {
@@ -70,6 +70,10 @@ export interface GetCloudConnectorResult {
      * Associated ExternalBillingAccountId
      */
     readonly externalBillingAccountId: string;
+    /**
+     * Connector id
+     */
+    readonly id: string;
     /**
      * Connector kind (eg aws)
      */

@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getEventChannel(args: GetEventChannelArgs, opts?: pulumi.InvokeOptions): Promise<GetEventChannelResult> {
@@ -52,6 +52,10 @@ export interface GetEventChannelResult {
      * Information about the filter for the event channel.
      */
     readonly filter?: outputs.eventgrid.v20200401preview.EventChannelFilterResponse;
+    /**
+     * Fully qualified identifier of the resource.
+     */
+    readonly id: string;
     /**
      * Name of the resource
      */

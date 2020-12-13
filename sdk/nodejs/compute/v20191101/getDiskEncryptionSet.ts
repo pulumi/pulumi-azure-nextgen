@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getDiskEncryptionSet(args: GetDiskEncryptionSetArgs, opts?: pulumi.InvokeOptions): Promise<GetDiskEncryptionSetResult> {
@@ -38,6 +38,10 @@ export interface GetDiskEncryptionSetResult {
      * The key vault key which is currently used by this disk encryption set.
      */
     readonly activeKey?: outputs.compute.v20191101.KeyVaultAndKeyReferenceResponse;
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * The managed identity for the disk encryption set. It should be given permission on the key vault before it can be used to encrypt disks.
      */

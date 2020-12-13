@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getNodeType(args: GetNodeTypeArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeTypeResult> {
@@ -55,6 +55,10 @@ export interface GetNodeTypeResult {
      * The range of ephemeral ports that nodes in this node type should be configured with.
      */
     readonly ephemeralPorts?: outputs.servicefabric.v20200101preview.EndpointRangeDescriptionResponse;
+    /**
+     * Azure resource identifier.
+     */
+    readonly id: string;
     /**
      * The node type on which system services will run. Only one node type should be marked as primary. Primary node type cannot be deleted or changed for existing clusters.
      */

@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getWorkbookTemplate(args: GetWorkbookTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkbookTemplateResult> {
@@ -42,6 +42,10 @@ export interface GetWorkbookTemplateResult {
      * Workbook galleries supported by the template.
      */
     readonly galleries: outputs.insights.v20191017preview.WorkbookTemplateGalleryResponse[];
+    /**
+     * Azure resource Id
+     */
+    readonly id: string;
     /**
      * Key value pair of localized gallery. Each key is the locale code of languages supported by the Azure portal.
      */

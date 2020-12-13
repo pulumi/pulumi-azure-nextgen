@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getConnector(args: GetConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectorResult> {
@@ -37,6 +37,10 @@ export interface GetConnectorResult {
      * Settings for hybrid compute management. These settings are relevant only for Arc autoProvision (Hybrid Compute).
      */
     readonly hybridComputeSettings?: outputs.security.v20200101preview.HybridComputeSettingsPropertiesResponse;
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * Resource name
      */

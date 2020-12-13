@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getEnvironment(args: GetEnvironmentArgs, opts?: pulumi.InvokeOptions): Promise<GetEnvironmentResult> {
@@ -55,6 +55,10 @@ export interface GetEnvironmentResult {
      * ISO8601 timespan specifying the minimum number of days the environment's events will be available for query.
      */
     readonly dataRetentionTime: string;
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * Resource location
      */

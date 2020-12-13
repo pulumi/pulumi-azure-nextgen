@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getAvailabilityGroupListener(args: GetAvailabilityGroupListenerArgs, opts?: pulumi.InvokeOptions): Promise<GetAvailabilityGroupListenerResult> {
@@ -47,6 +47,10 @@ export interface GetAvailabilityGroupListenerResult {
      * Create a default availability group if it does not exist.
      */
     readonly createDefaultAvailabilityGroupIfNotExist?: boolean;
+    /**
+     * Resource ID.
+     */
+    readonly id: string;
     /**
      * List of load balancer configurations for an availability group listener.
      */

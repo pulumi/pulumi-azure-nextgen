@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getLiveEvent(args: GetLiveEventArgs, opts?: pulumi.InvokeOptions): Promise<GetLiveEventResult> {
@@ -55,6 +55,10 @@ export interface GetLiveEventResult {
      * The Live Event encoding.
      */
     readonly encoding?: outputs.media.v20180330preview.LiveEventEncodingResponse;
+    /**
+     * Fully qualified resource ID for the resource.
+     */
+    readonly id: string;
     /**
      * The Live Event input.
      */

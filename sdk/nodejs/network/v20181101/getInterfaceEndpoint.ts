@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getInterfaceEndpoint(args: GetInterfaceEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetInterfaceEndpointResult> {
@@ -51,6 +51,10 @@ export interface GetInterfaceEndpointResult {
      * A first-party service's FQDN that is mapped to the private IP allocated via this interface endpoint.
      */
     readonly fqdn?: string;
+    /**
+     * Resource ID.
+     */
+    readonly id?: string;
     /**
      * Resource location.
      */

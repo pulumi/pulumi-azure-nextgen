@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getPartner(args: GetPartnerArgs, opts?: pulumi.InvokeOptions): Promise<GetPartnerResult> {
@@ -51,6 +51,10 @@ export interface GetPartnerResult {
      * The created time.
      */
     readonly createdTime: string;
+    /**
+     * The resource id.
+     */
+    readonly id: string;
     /**
      * The resource location.
      */

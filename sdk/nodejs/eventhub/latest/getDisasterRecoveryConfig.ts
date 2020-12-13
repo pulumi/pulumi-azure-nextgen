@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getDisasterRecoveryConfig(args: GetDisasterRecoveryConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetDisasterRecoveryConfigResult> {
@@ -43,6 +43,10 @@ export interface GetDisasterRecoveryConfigResult {
      * Alternate name specified when alias and namespace names are same.
      */
     readonly alternateName?: string;
+    /**
+     * Resource ID.
+     */
+    readonly id: string;
     /**
      * Resource name.
      */

@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getShareSubscription(args: GetShareSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetShareSubscriptionResult> {
@@ -43,6 +43,10 @@ export interface GetShareSubscriptionResult {
      * Time at which the share subscription was created.
      */
     readonly createdAt: string;
+    /**
+     * The resource id of the azure resource
+     */
+    readonly id: string;
     /**
      * The invitation id.
      */

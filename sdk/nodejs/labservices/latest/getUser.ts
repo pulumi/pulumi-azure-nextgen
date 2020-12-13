@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
@@ -61,6 +61,10 @@ export interface GetUserResult {
      * The user given name, as it was specified during registration.
      */
     readonly givenName: string;
+    /**
+     * The identifier of the resource.
+     */
+    readonly id: string;
     /**
      * The details of the latest operation. ex: status, error
      */

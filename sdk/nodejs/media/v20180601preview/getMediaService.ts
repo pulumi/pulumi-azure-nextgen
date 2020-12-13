@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getMediaService(args: GetMediaServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetMediaServiceResult> {
@@ -34,6 +34,10 @@ export interface GetMediaServiceArgs {
  * A Media Services account.
  */
 export interface GetMediaServiceResult {
+    /**
+     * Fully qualified resource ID for the resource.
+     */
+    readonly id: string;
     /**
      * The Azure Region of the resource.
      */

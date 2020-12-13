@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function listTenantAccessSecrets(args: ListTenantAccessSecretsArgs, opts?: pulumi.InvokeOptions): Promise<ListTenantAccessSecretsResult> {
@@ -43,6 +43,10 @@ export interface ListTenantAccessSecretsResult {
      * Determines whether direct access is enabled.
      */
     readonly enabled?: boolean;
+    /**
+     * Identifier.
+     */
+    readonly id?: string;
     /**
      * Primary access key. This property will not be filled on 'GET' operations! Use '/listSecrets' POST request to get the value.
      */

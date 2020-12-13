@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function listWebAppAzureStorageAccountsSlot(args: ListWebAppAzureStorageAccountsSlotArgs, opts?: pulumi.InvokeOptions): Promise<ListWebAppAzureStorageAccountsSlotResult> {
@@ -39,6 +39,10 @@ export interface ListWebAppAzureStorageAccountsSlotArgs {
  * AzureStorageInfo dictionary resource.
  */
 export interface ListWebAppAzureStorageAccountsSlotResult {
+    /**
+     * Resource Id.
+     */
+    readonly id: string;
     /**
      * Kind of resource.
      */

@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getPatchSchedule(args: GetPatchScheduleArgs, opts?: pulumi.InvokeOptions): Promise<GetPatchScheduleResult> {
@@ -39,6 +39,10 @@ export interface GetPatchScheduleArgs {
  * Response to put/get patch schedules for Redis cache.
  */
 export interface GetPatchScheduleResult {
+    /**
+     * Resource ID.
+     */
+    readonly id: string;
     /**
      * Resource name.
      */

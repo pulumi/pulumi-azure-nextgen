@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getSiteRelayServiceConnection(args: GetSiteRelayServiceConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetSiteRelayServiceConnectionResult> {
@@ -43,6 +43,10 @@ export interface GetSiteRelayServiceConnectionResult {
     readonly entityConnectionString?: string;
     readonly entityName?: string;
     readonly hostname?: string;
+    /**
+     * Resource Id
+     */
+    readonly id?: string;
     /**
      * Kind of resource
      */

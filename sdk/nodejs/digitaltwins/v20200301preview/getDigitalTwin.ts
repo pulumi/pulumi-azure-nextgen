@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getDigitalTwin(args: GetDigitalTwinArgs, opts?: pulumi.InvokeOptions): Promise<GetDigitalTwinResult> {
@@ -42,6 +42,10 @@ export interface GetDigitalTwinResult {
      * Api endpoint to work with DigitalTwinsInstance.
      */
     readonly hostName: string;
+    /**
+     * The resource identifier.
+     */
+    readonly id: string;
     /**
      * Time when DigitalTwinsInstance was created.
      */

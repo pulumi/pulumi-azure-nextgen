@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getSuppression(args: GetSuppressionArgs, opts?: pulumi.InvokeOptions): Promise<GetSuppressionResult> {
@@ -39,6 +39,10 @@ export interface GetSuppressionArgs {
  * The details of the snoozed or dismissed rule; for example, the duration, name, and GUID associated with the rule.
  */
 export interface GetSuppressionResult {
+    /**
+     * The resource ID.
+     */
+    readonly id: string;
     /**
      * The location of the resource. This cannot be changed after the resource is created.
      */

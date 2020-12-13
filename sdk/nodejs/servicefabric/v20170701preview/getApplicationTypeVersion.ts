@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getApplicationTypeVersion(args: GetApplicationTypeVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationTypeVersionResult> {
@@ -52,6 +52,10 @@ export interface GetApplicationTypeVersionResult {
      * List of application type parameters that can be overridden when creating or updating the application.
      */
     readonly defaultParameterList: {[key: string]: string};
+    /**
+     * Azure resource identifier.
+     */
+    readonly id: string;
     /**
      * Azure resource location.
      */

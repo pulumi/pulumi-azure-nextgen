@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getTask(args: GetTaskArgs, opts?: pulumi.InvokeOptions): Promise<GetTaskResult> {
@@ -52,6 +52,10 @@ export interface GetTaskResult {
      * The properties that describes a set of credentials that will be used when this run is invoked.
      */
     readonly credentials?: outputs.containerregistry.latest.CredentialsResponse;
+    /**
+     * The resource ID.
+     */
+    readonly id: string;
     /**
      * Identity for the resource.
      */

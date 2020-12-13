@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getActionGroup(args: GetActionGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetActionGroupResult> {
@@ -58,6 +58,10 @@ export interface GetActionGroupResult {
      * The short name of the action group. This will be used in SMS messages.
      */
     readonly groupShortName: string;
+    /**
+     * Azure resource Id
+     */
+    readonly id: string;
     /**
      * The list of ITSM receivers that are part of this action group.
      */

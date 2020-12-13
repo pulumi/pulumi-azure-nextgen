@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getGremlinResourceGremlinGraph(args: GetGremlinResourceGremlinGraphArgs, opts?: pulumi.InvokeOptions): Promise<GetGremlinResourceGremlinGraphResult> {
@@ -44,6 +44,10 @@ export interface GetGremlinResourceGremlinGraphArgs {
  * An Azure Cosmos DB Gremlin graph.
  */
 export interface GetGremlinResourceGremlinGraphResult {
+    /**
+     * The unique resource identifier of the ARM resource.
+     */
+    readonly id: string;
     /**
      * The location of the resource group to which the resource belongs.
      */

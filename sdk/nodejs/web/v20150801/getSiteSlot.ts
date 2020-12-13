@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getSiteSlot(args: GetSiteSlotArgs, opts?: pulumi.InvokeOptions): Promise<GetSiteSlotResult> {
@@ -101,6 +101,10 @@ export interface GetSiteSlotResult {
      * Specification for the hosting environment (App Service Environment) to use for the web app
      */
     readonly hostingEnvironmentProfile?: outputs.web.v20150801.HostingEnvironmentProfileResponse;
+    /**
+     * Resource Id
+     */
+    readonly id?: string;
     /**
      * Site is a default container
      */

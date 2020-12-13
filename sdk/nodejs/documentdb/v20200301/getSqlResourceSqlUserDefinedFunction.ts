@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getSqlResourceSqlUserDefinedFunction(args: GetSqlResourceSqlUserDefinedFunctionArgs, opts?: pulumi.InvokeOptions): Promise<GetSqlResourceSqlUserDefinedFunctionResult> {
@@ -49,6 +49,10 @@ export interface GetSqlResourceSqlUserDefinedFunctionArgs {
  * An Azure Cosmos DB userDefinedFunction.
  */
 export interface GetSqlResourceSqlUserDefinedFunctionResult {
+    /**
+     * The unique resource identifier of the ARM resource.
+     */
+    readonly id: string;
     /**
      * The location of the resource group to which the resource belongs.
      */

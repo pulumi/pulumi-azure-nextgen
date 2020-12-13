@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getDatabase(args: GetDatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseResult> {
@@ -114,6 +114,10 @@ export interface GetDatabaseResult {
      * The resource identifier of the failover group containing this database.
      */
     readonly failoverGroupId: string;
+    /**
+     * Resource ID.
+     */
+    readonly id: string;
     /**
      * Kind of database.  This is metadata used for the Azure portal experience.
      */

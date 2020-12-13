@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getNetworkInterface(args: GetNetworkInterfaceArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkInterfaceResult> {
@@ -59,6 +59,10 @@ export interface GetNetworkInterfaceResult {
      * A list of references to linked BareMetal resources
      */
     readonly hostedWorkloads: string[];
+    /**
+     * Resource ID.
+     */
+    readonly id?: string;
     /**
      * A reference to the interface endpoint to which the network interface is linked.
      */

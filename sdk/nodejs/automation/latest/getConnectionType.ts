@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getConnectionType(args: GetConnectionTypeArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionTypeResult> {
@@ -51,6 +51,10 @@ export interface GetConnectionTypeResult {
      * Gets the field definitions of the connection type.
      */
     readonly fieldDefinitions: {[key: string]: outputs.automation.latest.FieldDefinitionResponse};
+    /**
+     * Gets the id of the resource.
+     */
+    readonly id: string;
     /**
      * Gets or sets a Boolean value to indicate if the connection type is global.
      */

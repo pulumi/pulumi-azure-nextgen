@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getRoute(args: GetRouteArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteResult> {
@@ -65,6 +65,10 @@ export interface GetRouteResult {
      * Whether to automatically redirect HTTP traffic to HTTPS traffic. Note that this is a easy way to set up this rule and it will be the first rule that gets executed.
      */
     readonly httpsRedirect?: string;
+    /**
+     * Resource ID.
+     */
+    readonly id: string;
     /**
      * whether this route will be linked to the default endpoint domain.
      */

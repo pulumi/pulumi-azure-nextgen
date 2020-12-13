@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getApiOperation(args: GetApiOperationArgs, opts?: pulumi.InvokeOptions): Promise<GetApiOperationResult> {
@@ -52,6 +52,10 @@ export interface GetApiOperationResult {
      * Operation Name.
      */
     readonly displayName: string;
+    /**
+     * Resource ID.
+     */
+    readonly id: string;
     /**
      * A Valid HTTP Operation Method. Typical Http Methods like GET, PUT, POST but not limited by only them.
      */

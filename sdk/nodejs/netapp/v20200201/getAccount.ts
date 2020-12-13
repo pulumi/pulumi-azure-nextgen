@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getAccount(args: GetAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
@@ -38,6 +38,10 @@ export interface GetAccountResult {
      * Active Directories
      */
     readonly activeDirectories?: outputs.netapp.v20200201.ActiveDirectoryResponse[];
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * Resource location
      */

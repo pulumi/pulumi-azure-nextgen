@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getMachine(args: GetMachineArgs, opts?: pulumi.InvokeOptions): Promise<GetMachineResult> {
@@ -71,6 +71,10 @@ export interface GetMachineResult {
      * Machine Extensions information
      */
     readonly extensions: outputs.hybridcompute.v20200802.MachineExtensionInstanceViewResponse[];
+    /**
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     */
+    readonly id: string;
     readonly identity?: outputs.hybridcompute.v20200802.MachineResponseIdentity;
     /**
      * The time of the last status change.

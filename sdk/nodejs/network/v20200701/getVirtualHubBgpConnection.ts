@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getVirtualHubBgpConnection(args: GetVirtualHubBgpConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualHubBgpConnectionResult> {
@@ -47,6 +47,10 @@ export interface GetVirtualHubBgpConnectionResult {
      * A unique read-only string that changes whenever the resource is updated.
      */
     readonly etag: string;
+    /**
+     * Resource ID.
+     */
+    readonly id?: string;
     /**
      * Name of the connection.
      */

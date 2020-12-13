@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getSshPublicKey(args: GetSshPublicKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetSshPublicKeyResult> {
@@ -34,6 +34,10 @@ export interface GetSshPublicKeyArgs {
  * Specifies information about the SSH public key.
  */
 export interface GetSshPublicKeyResult {
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * Resource location
      */

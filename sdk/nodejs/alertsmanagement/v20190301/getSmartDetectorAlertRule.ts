@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getSmartDetectorAlertRule(args: GetSmartDetectorAlertRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetSmartDetectorAlertRuleResult> {
@@ -55,6 +55,10 @@ export interface GetSmartDetectorAlertRuleResult {
      * The alert rule frequency in ISO8601 format. The time granularity must be in minutes and minimum value is 5 minutes.
      */
     readonly frequency: string;
+    /**
+     * The resource ID.
+     */
+    readonly id: string;
     /**
      * The resource name.
      */

@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getFileShare(args: GetFileShareArgs, opts?: pulumi.InvokeOptions): Promise<GetFileShareResult> {
@@ -61,6 +61,10 @@ export interface GetFileShareResult {
      * Description for file share
      */
     readonly description?: string;
+    /**
+     * The identifier.
+     */
+    readonly id: string;
     /**
      * The local used capacity in Bytes.
      */

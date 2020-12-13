@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getVirtualMachineImageTemplate(args: GetVirtualMachineImageTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualMachineImageTemplateResult> {
@@ -46,6 +46,10 @@ export interface GetVirtualMachineImageTemplateResult {
      * The distribution targets where the image output needs to go to.
      */
     readonly distribute: outputs.virtualmachineimages.v20200214.ImageTemplateManagedImageDistributorResponse | outputs.virtualmachineimages.v20200214.ImageTemplateSharedImageDistributorResponse | outputs.virtualmachineimages.v20200214.ImageTemplateVhdDistributorResponse[];
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * The identity of the image template, if configured.
      */

@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getPrediction(args: GetPredictionArgs, opts?: pulumi.InvokeOptions): Promise<GetPredictionResult> {
@@ -55,6 +55,10 @@ export interface GetPredictionResult {
      * The prediction grades.
      */
     readonly grades?: outputs.customerinsights.latest.PredictionResponseGrades[];
+    /**
+     * Resource ID.
+     */
+    readonly id: string;
     /**
      * Interaction types involved in the prediction.
      */

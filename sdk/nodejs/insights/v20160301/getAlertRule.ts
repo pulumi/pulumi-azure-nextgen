@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getAlertRule(args: GetAlertRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetAlertRuleResult> {
@@ -46,6 +46,10 @@ export interface GetAlertRuleResult {
      * the description of the alert rule that will be included in the alert email.
      */
     readonly description?: string;
+    /**
+     * Azure resource Id
+     */
+    readonly id: string;
     /**
      * the flag that indicates whether the alert rule is enabled.
      */

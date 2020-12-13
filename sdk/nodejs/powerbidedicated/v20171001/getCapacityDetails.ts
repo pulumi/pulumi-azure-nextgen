@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getCapacityDetails(args: GetCapacityDetailsArgs, opts?: pulumi.InvokeOptions): Promise<GetCapacityDetailsResult> {
@@ -38,6 +38,10 @@ export interface GetCapacityDetailsResult {
      * A collection of Dedicated capacity administrators
      */
     readonly administration?: outputs.powerbidedicated.v20171001.DedicatedCapacityAdministratorsResponse;
+    /**
+     * An identifier that represents the PowerBI Dedicated resource.
+     */
+    readonly id: string;
     /**
      * Location of the PowerBI Dedicated resource.
      */

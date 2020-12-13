@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getMachineLearningDataset(args: GetMachineLearningDatasetArgs, opts?: pulumi.InvokeOptions): Promise<GetMachineLearningDatasetResult> {
@@ -39,6 +39,10 @@ export interface GetMachineLearningDatasetArgs {
  * Machine Learning dataset object wrapped into ARM resource envelope.
  */
 export interface GetMachineLearningDatasetResult {
+    /**
+     * Specifies the resource ID.
+     */
+    readonly id: string;
     /**
      * The identity of the resource.
      */

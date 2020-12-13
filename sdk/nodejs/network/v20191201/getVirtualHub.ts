@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getVirtualHub(args: GetVirtualHubArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualHubResult> {
@@ -50,6 +50,10 @@ export interface GetVirtualHubResult {
      * The expressRouteGateway associated with this VirtualHub.
      */
     readonly expressRouteGateway?: outputs.network.v20191201.SubResourceResponse;
+    /**
+     * Resource ID.
+     */
+    readonly id?: string;
     /**
      * Resource location.
      */

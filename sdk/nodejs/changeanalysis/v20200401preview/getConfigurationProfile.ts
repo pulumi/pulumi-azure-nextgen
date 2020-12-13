@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getConfigurationProfile(args: GetConfigurationProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetConfigurationProfileResult> {
@@ -29,6 +29,10 @@ export interface GetConfigurationProfileArgs {
  * A profile object that contains change analysis configuration, such as notification settings, for this subscription
  */
 export interface GetConfigurationProfileResult {
+    /**
+     * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}.
+     */
+    readonly id: string;
     /**
      * The identity block returned by ARM resource that supports managed identity.
      */

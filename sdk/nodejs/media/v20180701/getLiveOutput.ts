@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getLiveOutput(args: GetLiveOutputArgs, opts?: pulumi.InvokeOptions): Promise<GetLiveOutputResult> {
@@ -64,6 +64,10 @@ export interface GetLiveOutputResult {
      * The HLS configuration.
      */
     readonly hls?: outputs.media.v20180701.HlsResponse;
+    /**
+     * Fully qualified resource ID for the resource.
+     */
+    readonly id: string;
     /**
      * The exact time the Live Output was last modified.
      */

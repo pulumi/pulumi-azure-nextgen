@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getManagerExtendedInfo(args: GetManagerExtendedInfoArgs, opts?: pulumi.InvokeOptions): Promise<GetManagerExtendedInfoResult> {
@@ -50,6 +50,10 @@ export interface GetManagerExtendedInfoResult {
      * The etag of the resource.
      */
     readonly etag?: string;
+    /**
+     * The path ID that uniquely identifies the object.
+     */
+    readonly id: string;
     /**
      * Represents the CIK of the resource.
      */

@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getVirtualNetworkGateway(args: GetVirtualNetworkGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualNetworkGatewayResult> {
@@ -74,6 +74,10 @@ export interface GetVirtualNetworkGatewayResult {
      * The type of this virtual network gateway.
      */
     readonly gatewayType?: string;
+    /**
+     * Resource ID.
+     */
+    readonly id?: string;
     /**
      * The IP address allocated by the gateway to which dns requests can be sent.
      */

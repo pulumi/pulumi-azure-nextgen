@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getVirtualMachineResource(args: GetVirtualMachineResourceArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualMachineResourceResult> {
@@ -75,6 +75,10 @@ export interface GetVirtualMachineResourceResult {
      * The Microsoft Azure Marketplace image reference of the virtual machine.
      */
     readonly galleryImageReference?: outputs.devtestlab.v20150521preview.GalleryImageReferenceResponse;
+    /**
+     * The identifier of the resource.
+     */
+    readonly id?: string;
     /**
      * A value indicating whether this virtual machine uses an SSH key for authentication.
      */

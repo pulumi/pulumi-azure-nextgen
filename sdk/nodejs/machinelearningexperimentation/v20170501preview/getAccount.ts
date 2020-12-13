@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getAccount(args: GetAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
@@ -54,6 +54,10 @@ export interface GetAccountResult {
      * The friendly name for this workspace. This will be the workspace name in the arm id when the workspace object gets created
      */
     readonly friendlyName?: string;
+    /**
+     * The resource ID.
+     */
+    readonly id: string;
     /**
      * The fully qualified arm id of the user key vault.
      */

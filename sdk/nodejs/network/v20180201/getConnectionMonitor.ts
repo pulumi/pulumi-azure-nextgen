@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getConnectionMonitor(args: GetConnectionMonitorArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionMonitorResult> {
@@ -48,6 +48,10 @@ export interface GetConnectionMonitorResult {
      */
     readonly destination: outputs.network.v20180201.ConnectionMonitorDestinationResponse;
     readonly etag?: string;
+    /**
+     * ID of the connection monitor.
+     */
+    readonly id: string;
     /**
      * Connection monitor location.
      */

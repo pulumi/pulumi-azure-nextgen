@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getViewByScope(args: GetViewByScopeArgs, opts?: pulumi.InvokeOptions): Promise<GetViewByScopeResult> {
@@ -58,6 +58,10 @@ export interface GetViewByScopeResult {
      * eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
      */
     readonly eTag?: string;
+    /**
+     * Resource Id.
+     */
+    readonly id: string;
     /**
      * List of KPIs to show in Cost Analysis UI.
      */

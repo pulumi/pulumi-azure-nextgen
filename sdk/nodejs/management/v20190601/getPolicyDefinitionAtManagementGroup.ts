@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getPolicyDefinitionAtManagementGroup(args: GetPolicyDefinitionAtManagementGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyDefinitionAtManagementGroupResult> {
@@ -42,6 +42,10 @@ export interface GetPolicyDefinitionAtManagementGroupResult {
      * The display name of the policy definition.
      */
     readonly displayName?: string;
+    /**
+     * The ID of the policy definition.
+     */
+    readonly id: string;
     /**
      * The policy definition metadata.
      */

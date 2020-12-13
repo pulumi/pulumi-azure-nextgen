@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getPython2Package(args: GetPython2PackageArgs, opts?: pulumi.InvokeOptions): Promise<GetPython2PackageResult> {
@@ -63,6 +63,10 @@ export interface GetPython2PackageResult {
      * Gets or sets the etag of the resource.
      */
     readonly etag?: string;
+    /**
+     * Fully qualified resource Id for the resource
+     */
+    readonly id: string;
     /**
      * Gets or sets type of module, if its composite or not.
      */

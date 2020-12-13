@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getBatchAccount(args: GetBatchAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetBatchAccountResult> {
@@ -56,6 +56,10 @@ export interface GetBatchAccountResult {
      */
     readonly dedicatedCoreQuotaPerVMFamilyEnforced: boolean;
     readonly encryption: outputs.batch.v20200301.EncryptionPropertiesResponse;
+    /**
+     * The ID of the resource.
+     */
+    readonly id: string;
     /**
      * Identifies the Azure key vault associated with a Batch account.
      */

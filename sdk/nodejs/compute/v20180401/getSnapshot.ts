@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getSnapshot(args: GetSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetSnapshotResult> {
@@ -46,6 +46,10 @@ export interface GetSnapshotResult {
      * Encryption settings for disk or snapshot
      */
     readonly encryptionSettings?: outputs.compute.v20180401.EncryptionSettingsResponse;
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * Resource location
      */

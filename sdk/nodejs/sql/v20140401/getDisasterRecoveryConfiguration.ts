@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getDisasterRecoveryConfiguration(args: GetDisasterRecoveryConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetDisasterRecoveryConfigurationResult> {
@@ -47,6 +47,10 @@ export interface GetDisasterRecoveryConfigurationResult {
      * How aggressive the automatic failover should be.
      */
     readonly failoverPolicy: string;
+    /**
+     * Resource ID.
+     */
+    readonly id: string;
     /**
      * Location of the server that contains this disaster recovery configuration.
      */

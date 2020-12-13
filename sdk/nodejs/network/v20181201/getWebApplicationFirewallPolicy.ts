@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getWebApplicationFirewallPolicy(args: GetWebApplicationFirewallPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetWebApplicationFirewallPolicyResult> {
@@ -46,6 +46,10 @@ export interface GetWebApplicationFirewallPolicyResult {
      * Gets a unique read-only string that changes whenever the resource is updated.
      */
     readonly etag?: string;
+    /**
+     * Resource ID.
+     */
+    readonly id?: string;
     /**
      * Resource location.
      */

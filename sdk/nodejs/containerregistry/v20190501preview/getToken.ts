@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getToken(args: GetTokenArgs, opts?: pulumi.InvokeOptions): Promise<GetTokenResult> {
@@ -47,6 +47,10 @@ export interface GetTokenResult {
      * The credentials that can be used for authenticating the token.
      */
     readonly credentials?: outputs.containerregistry.v20190501preview.TokenCredentialsPropertiesResponse;
+    /**
+     * The resource ID.
+     */
+    readonly id: string;
     /**
      * The name of the resource.
      */

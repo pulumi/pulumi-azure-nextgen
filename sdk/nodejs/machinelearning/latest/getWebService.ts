@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getWebService(args: GetWebServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetWebServiceResult> {
@@ -39,6 +39,10 @@ export interface GetWebServiceArgs {
  * Instance of an Azure ML web service resource.
  */
 export interface GetWebServiceResult {
+    /**
+     * Specifies the resource ID.
+     */
+    readonly id: string;
     /**
      * Specifies the location of the resource.
      */

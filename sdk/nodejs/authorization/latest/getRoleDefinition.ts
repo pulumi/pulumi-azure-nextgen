@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getRoleDefinition(args: GetRoleDefinitionArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleDefinitionResult> {
@@ -42,6 +42,10 @@ export interface GetRoleDefinitionResult {
      * The role definition description.
      */
     readonly description?: string;
+    /**
+     * The role definition ID.
+     */
+    readonly id: string;
     /**
      * The role definition name.
      */

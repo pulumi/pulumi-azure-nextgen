@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getFirewallRule(args: GetFirewallRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetFirewallRuleResult> {
@@ -43,6 +43,10 @@ export interface GetFirewallRuleResult {
      * The end IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol.
      */
     readonly endIpAddress: string;
+    /**
+     * The resource identifier.
+     */
+    readonly id: string;
     /**
      * The resource name.
      */

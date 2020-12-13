@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getCertificate(args: GetCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificateResult> {
@@ -58,6 +58,10 @@ export interface GetCertificateResult {
      * Specification for the App Service Environment to use for the certificate.
      */
     readonly hostingEnvironmentProfile: outputs.web.latest.HostingEnvironmentProfileResponse;
+    /**
+     * Resource Id.
+     */
+    readonly id: string;
     /**
      * Certificate issue Date.
      */

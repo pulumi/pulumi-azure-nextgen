@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getMyWorkbook(args: GetMyWorkbookArgs, opts?: pulumi.InvokeOptions): Promise<GetMyWorkbookResult> {
@@ -42,6 +42,10 @@ export interface GetMyWorkbookResult {
      * The user-defined name of the private workbook.
      */
     readonly displayName: string;
+    /**
+     * Azure resource Id
+     */
+    readonly id?: string;
     /**
      * The kind of workbook. Choices are user and shared.
      */

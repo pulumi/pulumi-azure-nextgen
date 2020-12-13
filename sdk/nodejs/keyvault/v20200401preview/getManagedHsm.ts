@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getManagedHsm(args: GetManagedHsmArgs, opts?: pulumi.InvokeOptions): Promise<GetManagedHsmResult> {
@@ -34,6 +34,10 @@ export interface GetManagedHsmArgs {
  * Resource information with extended details.
  */
 export interface GetManagedHsmResult {
+    /**
+     * The Azure Resource Manager resource ID for the managed HSM Pool.
+     */
+    readonly id: string;
     /**
      * The supported Azure location where the managed HSM Pool should be created.
      */

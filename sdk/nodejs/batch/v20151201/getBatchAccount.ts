@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getBatchAccount(args: GetBatchAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetBatchAccountResult> {
@@ -50,6 +50,10 @@ export interface GetBatchAccountResult {
      * The core quota for this Batch account.
      */
     readonly coreQuota: number;
+    /**
+     * The ID of the resource
+     */
+    readonly id: string;
     /**
      * The location of the resource
      */

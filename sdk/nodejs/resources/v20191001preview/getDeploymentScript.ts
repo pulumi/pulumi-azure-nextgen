@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getDeploymentScript(args: GetDeploymentScriptArgs, opts?: pulumi.InvokeOptions): Promise<GetDeploymentScriptResult> {
@@ -34,6 +34,10 @@ export interface GetDeploymentScriptArgs {
  * Deployment script object.
  */
 export interface GetDeploymentScriptResult {
+    /**
+     * String Id used to locate any resource on Azure.
+     */
+    readonly id: string;
     /**
      * Managed identity to be used for this deployment script. Currently, only user-assigned MSI is supported.
      */

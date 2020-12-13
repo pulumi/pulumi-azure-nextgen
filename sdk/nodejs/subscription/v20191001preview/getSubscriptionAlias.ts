@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getSubscriptionAlias(args: GetSubscriptionAliasArgs, opts?: pulumi.InvokeOptions): Promise<GetSubscriptionAliasResult> {
@@ -29,6 +29,10 @@ export interface GetSubscriptionAliasArgs {
  * Subscription Information with the alias.
  */
 export interface GetSubscriptionAliasResult {
+    /**
+     * Fully qualified ID for the alias resource.
+     */
+    readonly id: string;
     /**
      * Alias ID.
      */

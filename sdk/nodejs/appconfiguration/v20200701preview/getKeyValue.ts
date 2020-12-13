@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getKeyValue(args: GetKeyValueArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyValueResult> {
@@ -48,6 +48,10 @@ export interface GetKeyValueResult {
      * An ETag indicating the state of a key-value within a configuration store.
      */
     readonly eTag: string;
+    /**
+     * The resource ID.
+     */
+    readonly id: string;
     /**
      * The primary identifier of a key-value.
      * The key is used in unison with the label to uniquely identify a key-value.

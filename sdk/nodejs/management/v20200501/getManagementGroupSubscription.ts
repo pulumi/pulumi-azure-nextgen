@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getManagementGroupSubscription(args: GetManagementGroupSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetManagementGroupSubscriptionResult> {
@@ -33,6 +33,10 @@ export interface GetManagementGroupSubscriptionResult {
      * The friendly name of the subscription.
      */
     readonly displayName?: string;
+    /**
+     * The fully qualified ID for the subscription.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000/subscriptions/0000000-0000-0000-0000-000000000001
+     */
+    readonly id: string;
     /**
      * The stringified id of the subscription. For example, 00000000-0000-0000-0000-000000000000
      */

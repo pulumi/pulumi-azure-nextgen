@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getAutomation(args: GetAutomationArgs, opts?: pulumi.InvokeOptions): Promise<GetAutomationResult> {
@@ -46,6 +46,10 @@ export interface GetAutomationResult {
      * Entity tag is used for comparing two or more entities from the same requested resource.
      */
     readonly etag?: string;
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * Indicates whether the security automation is enabled.
      */

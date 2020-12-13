@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getInstanceFailoverGroup(args: GetInstanceFailoverGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceFailoverGroupResult> {
@@ -39,6 +39,10 @@ export interface GetInstanceFailoverGroupArgs {
  * An instance failover group.
  */
 export interface GetInstanceFailoverGroupResult {
+    /**
+     * Resource ID.
+     */
+    readonly id: string;
     /**
      * List of managed instance pairs in the failover group.
      */

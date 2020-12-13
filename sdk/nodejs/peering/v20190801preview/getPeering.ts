@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getPeering(args: GetPeeringArgs, opts?: pulumi.InvokeOptions): Promise<GetPeeringResult> {
@@ -42,6 +42,10 @@ export interface GetPeeringResult {
      * The properties that define an exchange peering.
      */
     readonly exchange?: outputs.peering.v20190801preview.PeeringPropertiesExchangeResponse;
+    /**
+     * The ID of the resource.
+     */
+    readonly id: string;
     /**
      * The kind of the peering.
      */

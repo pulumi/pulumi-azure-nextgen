@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getVirtualMachineScaleSet(args: GetVirtualMachineScaleSetArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualMachineScaleSetResult> {
@@ -34,6 +34,10 @@ export interface GetVirtualMachineScaleSetArgs {
  * Describes a Virtual Machine Scale Set.
  */
 export interface GetVirtualMachineScaleSetResult {
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * The identity of the virtual machine scale set, if configured.
      */

@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getSapMonitor(args: GetSapMonitorArgs, opts?: pulumi.InvokeOptions): Promise<GetSapMonitorResult> {
@@ -70,6 +70,10 @@ export interface GetSapMonitorResult {
      * Specifies the SAP monitor unique ID.
      */
     readonly hanaSubnet?: string;
+    /**
+     * Resource ID
+     */
+    readonly id: string;
     /**
      * Key Vault ID containing customer's HANA credentials.
      */

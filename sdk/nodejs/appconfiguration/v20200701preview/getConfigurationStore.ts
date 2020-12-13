@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getConfigurationStore(args: GetConfigurationStoreArgs, opts?: pulumi.InvokeOptions): Promise<GetConfigurationStoreResult> {
@@ -46,6 +46,10 @@ export interface GetConfigurationStoreResult {
      * The DNS endpoint where the configuration store API will be available.
      */
     readonly endpoint: string;
+    /**
+     * The resource ID.
+     */
+    readonly id: string;
     /**
      * The managed identity information, if configured.
      */

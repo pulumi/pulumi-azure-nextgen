@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getAdaptiveApplicationControl(args: GetAdaptiveApplicationControlArgs, opts?: pulumi.InvokeOptions): Promise<GetAdaptiveApplicationControlResult> {
@@ -39,6 +39,10 @@ export interface GetAdaptiveApplicationControlResult {
      * The application control policy enforcement/protection mode of the VM/server group
      */
     readonly enforcementMode?: string;
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     readonly issues?: outputs.security.v20150601preview.AppWhitelistingIssueSummaryResponse[];
     /**
      * Location where the resource is stored

@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getWebAppVnetConnectionSlot(args: GetWebAppVnetConnectionSlotArgs, opts?: pulumi.InvokeOptions): Promise<GetWebAppVnetConnectionSlotResult> {
@@ -57,6 +57,10 @@ export interface GetWebAppVnetConnectionSlotResult {
      * DNS servers to be used by this Virtual Network. This should be a comma-separated list of IP addresses.
      */
     readonly dnsServers?: string;
+    /**
+     * Resource Id.
+     */
+    readonly id: string;
     /**
      * Flag that is used to denote if this is VNET injection
      */

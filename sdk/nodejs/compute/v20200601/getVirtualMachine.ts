@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getVirtualMachine(args: GetVirtualMachineArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualMachineResult> {
@@ -75,6 +75,10 @@ export interface GetVirtualMachineResult {
      * Specifies information about the dedicated host group that the virtual machine resides in. <br><br>Minimum api-version: 2020-06-01. <br><br>NOTE: User cannot specify both host and hostGroup properties.
      */
     readonly hostGroup?: outputs.compute.v20200601.SubResourceResponse;
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * The identity of the virtual machine, if configured.
      */

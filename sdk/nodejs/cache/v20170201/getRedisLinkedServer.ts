@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getRedisLinkedServer(args: GetRedisLinkedServerArgs, opts?: pulumi.InvokeOptions): Promise<GetRedisLinkedServerResult> {
@@ -39,6 +39,10 @@ export interface GetRedisLinkedServerArgs {
  * Response to put/get linked server (with properties) for Redis cache.
  */
 export interface GetRedisLinkedServerResult {
+    /**
+     * Resource ID.
+     */
+    readonly id: string;
     /**
      * Fully qualified resourceId of the linked redis cache.
      */

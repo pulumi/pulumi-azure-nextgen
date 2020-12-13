@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getApplicationDefinition(args: GetApplicationDefinitionArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationDefinitionResult> {
@@ -58,6 +58,10 @@ export interface GetApplicationDefinitionResult {
      * The managed application definition display name.
      */
     readonly displayName?: string;
+    /**
+     * Resource ID
+     */
+    readonly id: string;
     /**
      * A value indicating whether the package is enabled or not.
      */

@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getEnvironment(args: GetEnvironmentArgs, opts?: pulumi.InvokeOptions): Promise<GetEnvironmentResult> {
@@ -39,6 +39,10 @@ export interface GetEnvironmentArgs {
  * An environment is a set of time-series data available for query, and is the top level Azure Time Series Insights resource.
  */
 export interface GetEnvironmentResult {
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * The kind of the environment.
      */

@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getVirtualRouterPeering(args: GetVirtualRouterPeeringArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualRouterPeeringResult> {
@@ -43,6 +43,10 @@ export interface GetVirtualRouterPeeringResult {
      * Gets a unique read-only string that changes whenever the resource is updated.
      */
     readonly etag: string;
+    /**
+     * Resource ID.
+     */
+    readonly id?: string;
     /**
      * Gets name of the peering unique to VirtualRouter. This name can be used to access the resource.
      */

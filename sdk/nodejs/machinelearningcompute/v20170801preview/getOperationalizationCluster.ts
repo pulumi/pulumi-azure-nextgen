@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getOperationalizationCluster(args: GetOperationalizationClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetOperationalizationClusterResult> {
@@ -62,6 +62,10 @@ export interface GetOperationalizationClusterResult {
      * Contains global configuration for the web services in the cluster.
      */
     readonly globalServiceConfiguration?: outputs.machinelearningcompute.v20170801preview.GlobalServiceConfigurationResponse;
+    /**
+     * Specifies the resource ID.
+     */
+    readonly id: string;
     /**
      * Specifies the location of the resource.
      */

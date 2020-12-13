@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getGalleryImageVersion(args: GetGalleryImageVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetGalleryImageVersionResult> {
@@ -49,6 +49,10 @@ export interface GetGalleryImageVersionArgs {
  * Specifies information about the gallery image version that you want to create or update.
  */
 export interface GetGalleryImageVersionResult {
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * Resource location
      */

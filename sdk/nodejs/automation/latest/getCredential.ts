@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getCredential(args: GetCredentialArgs, opts?: pulumi.InvokeOptions): Promise<GetCredentialResult> {
@@ -47,6 +47,10 @@ export interface GetCredentialResult {
      * Gets or sets the description.
      */
     readonly description?: string;
+    /**
+     * Fully qualified resource Id for the resource
+     */
+    readonly id: string;
     /**
      * Gets the last modified time.
      */

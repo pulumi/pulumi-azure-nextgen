@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function listAppServicePlanHybridConnectionKeys(args: ListAppServicePlanHybridConnectionKeysArgs, opts?: pulumi.InvokeOptions): Promise<ListAppServicePlanHybridConnectionKeysResult> {
@@ -44,6 +44,10 @@ export interface ListAppServicePlanHybridConnectionKeysArgs {
  * Hybrid Connection key contract. This has the send key name and value for a Hybrid Connection.
  */
 export interface ListAppServicePlanHybridConnectionKeysResult {
+    /**
+     * Resource Id.
+     */
+    readonly id: string;
     /**
      * Kind of resource.
      */

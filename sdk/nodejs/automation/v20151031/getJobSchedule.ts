@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getJobSchedule(args: GetJobScheduleArgs, opts?: pulumi.InvokeOptions): Promise<GetJobScheduleResult> {
@@ -39,6 +39,10 @@ export interface GetJobScheduleArgs {
  * Definition of the job schedule.
  */
 export interface GetJobScheduleResult {
+    /**
+     * Gets the id of the resource.
+     */
+    readonly id: string;
     /**
      * Gets or sets the id of job schedule.
      */

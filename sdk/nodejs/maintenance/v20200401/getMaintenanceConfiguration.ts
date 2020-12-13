@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getMaintenanceConfiguration(args: GetMaintenanceConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetMaintenanceConfigurationResult> {
@@ -38,6 +38,10 @@ export interface GetMaintenanceConfigurationResult {
      * Gets or sets extensionProperties of the maintenanceConfiguration. This is for future use only and would be a set of key value pairs for additional information e.g. whether to follow SDP etc.
      */
     readonly extensionProperties?: {[key: string]: string};
+    /**
+     * Fully qualified identifier of the resource
+     */
+    readonly id: string;
     /**
      * Gets or sets location of the resource
      */

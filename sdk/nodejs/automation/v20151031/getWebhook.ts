@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getWebhook(args: GetWebhookArgs, opts?: pulumi.InvokeOptions): Promise<GetWebhookResult> {
@@ -51,6 +51,10 @@ export interface GetWebhookResult {
      * Gets or sets the expiry time.
      */
     readonly expiryTime?: string;
+    /**
+     * Fully qualified resource Id for the resource
+     */
+    readonly id: string;
     /**
      * Gets or sets the value of the enabled flag of the webhook.
      */

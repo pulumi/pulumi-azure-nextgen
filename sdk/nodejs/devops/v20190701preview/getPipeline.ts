@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getPipeline(args: GetPipelineArgs, opts?: pulumi.InvokeOptions): Promise<GetPipelineResult> {
@@ -38,6 +38,10 @@ export interface GetPipelineResult {
      * Configuration used to bootstrap the Pipeline.
      */
     readonly bootstrapConfiguration: outputs.devops.v20190701preview.BootstrapConfigurationResponse;
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * Resource Location
      */

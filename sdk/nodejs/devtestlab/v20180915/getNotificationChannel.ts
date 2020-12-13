@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getNotificationChannel(args: GetNotificationChannelArgs, opts?: pulumi.InvokeOptions): Promise<GetNotificationChannelResult> {
@@ -60,6 +60,10 @@ export interface GetNotificationChannelResult {
      * The list of event for which this notification is enabled.
      */
     readonly events?: outputs.devtestlab.v20180915.EventResponse[];
+    /**
+     * The identifier of the resource.
+     */
+    readonly id: string;
     /**
      * The location of the resource.
      */

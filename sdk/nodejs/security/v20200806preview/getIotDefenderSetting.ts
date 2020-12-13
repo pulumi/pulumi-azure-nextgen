@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getIotDefenderSetting(args?: GetIotDefenderSettingArgs, opts?: pulumi.InvokeOptions): Promise<GetIotDefenderSettingResult> {
@@ -29,6 +29,10 @@ export interface GetIotDefenderSettingResult {
      * Size of the device quota (as a opposed to a Pay as You Go billing model). Value is required to be in multiples of 1000.
      */
     readonly deviceQuota: number;
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * Resource name
      */

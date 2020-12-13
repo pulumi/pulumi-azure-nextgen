@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getServerTrustGroup(args: GetServerTrustGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetServerTrustGroupResult> {
@@ -43,6 +43,10 @@ export interface GetServerTrustGroupResult {
      * Group members information for the server trust group.
      */
     readonly groupMembers: outputs.sql.v20200202preview.ServerInfoResponse[];
+    /**
+     * Resource ID.
+     */
+    readonly id: string;
     /**
      * Resource name.
      */

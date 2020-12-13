@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function listServiceFabricApplicableSchedules(args: ListServiceFabricApplicableSchedulesArgs, opts?: pulumi.InvokeOptions): Promise<ListServiceFabricApplicableSchedulesResult> {
@@ -44,6 +44,10 @@ export interface ListServiceFabricApplicableSchedulesArgs {
  * Schedules applicable to a virtual machine. The schedules may have been defined on a VM or on lab level.
  */
 export interface ListServiceFabricApplicableSchedulesResult {
+    /**
+     * The identifier of the resource.
+     */
+    readonly id: string;
     /**
      * The auto-shutdown schedule, if one has been set at the lab or lab resource level.
      */

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
 from . import outputs
+from ._enums import *
 
 __all__ = [
     'ManagedServiceIdentityResponse',
@@ -157,21 +158,19 @@ class UserAssignedIdentityResponse(dict):
     User-assigned managed identity.
     """
     def __init__(__self__, *,
-                 client_id: Optional[str] = None,
-                 principal_id: Optional[str] = None):
+                 client_id: str,
+                 principal_id: str):
         """
         User-assigned managed identity.
         :param str client_id: Client App Id associated with this identity.
         :param str principal_id: Azure Active Directory principal ID associated with this identity.
         """
-        if client_id is not None:
-            pulumi.set(__self__, "client_id", client_id)
-        if principal_id is not None:
-            pulumi.set(__self__, "principal_id", principal_id)
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "principal_id", principal_id)
 
     @property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[str]:
+    def client_id(self) -> str:
         """
         Client App Id associated with this identity.
         """
@@ -179,7 +178,7 @@ class UserAssignedIdentityResponse(dict):
 
     @property
     @pulumi.getter(name="principalId")
-    def principal_id(self) -> Optional[str]:
+    def principal_id(self) -> str:
         """
         Azure Active Directory principal ID associated with this identity.
         """

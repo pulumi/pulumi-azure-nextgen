@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getDatabaseAccountGremlinGraph(args: GetDatabaseAccountGremlinGraphArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseAccountGremlinGraphResult> {
@@ -56,6 +56,10 @@ export interface GetDatabaseAccountGremlinGraphResult {
      * A system generated property representing the resource etag required for optimistic concurrency control.
      */
     readonly etag?: string;
+    /**
+     * The unique resource identifier of the database account.
+     */
+    readonly id: string;
     /**
      * The configuration of the indexing policy. By default, the indexing is automatic for all document paths within the graph
      */

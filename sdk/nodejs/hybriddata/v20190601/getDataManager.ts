@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getDataManager(args: GetDataManagerArgs, opts?: pulumi.InvokeOptions): Promise<GetDataManagerResult> {
@@ -38,6 +38,10 @@ export interface GetDataManagerResult {
      * Etag of the Resource.
      */
     readonly etag?: string;
+    /**
+     * The Resource Id.
+     */
+    readonly id: string;
     /**
      * The location of the resource. This will be one of the supported and registered Azure Geo Regions (e.g. West US, East
      * US, Southeast Asia, etc.). The geo region of a resource cannot be changed once it is created, but if an identical geo

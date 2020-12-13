@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getAssessment(args: GetAssessmentArgs, opts?: pulumi.InvokeOptions): Promise<GetAssessmentResult> {
@@ -80,6 +80,10 @@ export interface GetAssessmentResult {
      * For optimistic concurrency control.
      */
     readonly eTag?: string;
+    /**
+     * Path reference to this assessment. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}/groups/{groupName}/assessment/{assessmentName}
+     */
+    readonly id: string;
     /**
      * Monthly network cost estimate for the machines that are part of this assessment as a group, for a 31-day month.
      */

@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getSignalR(args: GetSignalRArgs, opts?: pulumi.InvokeOptions): Promise<GetSignalRResult> {
@@ -55,6 +55,10 @@ export interface GetSignalRResult {
      * FQDN of the SignalR service instance. Format: xxx.service.signalr.net
      */
     readonly hostName: string;
+    /**
+     * Fully qualified resource Id for the resource.
+     */
+    readonly id: string;
     /**
      * The managed identity response
      */

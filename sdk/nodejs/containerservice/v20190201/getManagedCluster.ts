@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getManagedCluster(args: GetManagedClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetManagedClusterResult> {
@@ -66,6 +66,10 @@ export interface GetManagedClusterResult {
      * FQDN for the master pool.
      */
     readonly fqdn: string;
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * Version of Kubernetes specified when creating the managed cluster.
      */

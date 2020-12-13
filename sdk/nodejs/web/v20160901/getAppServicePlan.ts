@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getAppServicePlan(args: GetAppServicePlanArgs, opts?: pulumi.InvokeOptions): Promise<GetAppServicePlanResult> {
@@ -46,6 +46,10 @@ export interface GetAppServicePlanResult {
      * Specification for the App Service Environment to use for the App Service plan.
      */
     readonly hostingEnvironmentProfile?: outputs.web.v20160901.HostingEnvironmentProfileResponse;
+    /**
+     * Resource Id.
+     */
+    readonly id: string;
     /**
      * If <code>true</code>, this App Service Plan owns spot instances.
      */

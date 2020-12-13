@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getGuestConfigurationHCRPAssignment(args: GetGuestConfigurationHCRPAssignmentArgs, opts?: pulumi.InvokeOptions): Promise<GetGuestConfigurationHCRPAssignmentResult> {
@@ -39,6 +39,10 @@ export interface GetGuestConfigurationHCRPAssignmentArgs {
  * Guest configuration assignment is an association between a machine and guest configuration.
  */
 export interface GetGuestConfigurationHCRPAssignmentResult {
+    /**
+     * ARM resource id of the guest configuration assignment.
+     */
+    readonly id: string;
     /**
      * Region where the VM is located.
      */

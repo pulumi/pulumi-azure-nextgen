@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getEnvironmentSetting(args: GetEnvironmentSettingArgs, opts?: pulumi.InvokeOptions): Promise<GetEnvironmentSettingResult> {
@@ -57,6 +57,10 @@ export interface GetEnvironmentSettingResult {
      * Describes the environment and its resource settings
      */
     readonly description?: string;
+    /**
+     * The identifier of the resource.
+     */
+    readonly id: string;
     /**
      * Time when the template VM was last changed.
      */

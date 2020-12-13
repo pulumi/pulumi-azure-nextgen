@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getQueueServiceProperties(args: GetQueueServicePropertiesArgs, opts?: pulumi.InvokeOptions): Promise<GetQueueServicePropertiesResult> {
@@ -43,6 +43,10 @@ export interface GetQueueServicePropertiesResult {
      * Specifies CORS rules for the Queue service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Queue service.
      */
     readonly cors?: outputs.storage.v20200801preview.CorsRulesResponse;
+    /**
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     */
+    readonly id: string;
     /**
      * The name of the resource
      */

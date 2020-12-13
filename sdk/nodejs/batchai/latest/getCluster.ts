@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterResult> {
@@ -59,6 +59,10 @@ export interface GetClusterResult {
      * Collection of errors encountered by various compute nodes during node setup.
      */
     readonly errors: outputs.batchai.latest.BatchAIErrorResponse[];
+    /**
+     * The ID of the resource.
+     */
+    readonly id: string;
     /**
      * The name of the resource.
      */

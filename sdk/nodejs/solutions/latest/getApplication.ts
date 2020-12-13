@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getApplication(args: GetApplicationArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationResult> {
@@ -58,6 +58,10 @@ export interface GetApplicationResult {
      * The read-only customer support property that is retrieved from the application package.
      */
     readonly customerSupport: outputs.solutions.latest.ApplicationPackageContactResponse;
+    /**
+     * Resource ID
+     */
+    readonly id: string;
     /**
      * The identity of the resource.
      */

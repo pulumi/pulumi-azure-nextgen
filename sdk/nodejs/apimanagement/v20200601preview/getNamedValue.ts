@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getNamedValue(args: GetNamedValueArgs, opts?: pulumi.InvokeOptions): Promise<GetNamedValueResult> {
@@ -43,6 +43,10 @@ export interface GetNamedValueResult {
      * Unique name of NamedValue. It may contain only letters, digits, period, dash, and underscore characters.
      */
     readonly displayName: string;
+    /**
+     * Resource ID.
+     */
+    readonly id: string;
     /**
      * KeyVault location details of the namedValue.
      */

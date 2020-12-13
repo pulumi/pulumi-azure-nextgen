@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getP2sVpnGatewayP2sVpnConnectionHealth(args: GetP2sVpnGatewayP2sVpnConnectionHealthArgs, opts?: pulumi.InvokeOptions): Promise<GetP2sVpnGatewayP2sVpnConnectionHealthResult> {
@@ -42,6 +42,10 @@ export interface GetP2sVpnGatewayP2sVpnConnectionHealthResult {
      * A unique read-only string that changes whenever the resource is updated.
      */
     readonly etag: string;
+    /**
+     * Resource ID.
+     */
+    readonly id?: string;
     /**
      * Enable Routing Preference property for the Public IP Interface of the P2SVpnGateway.
      */

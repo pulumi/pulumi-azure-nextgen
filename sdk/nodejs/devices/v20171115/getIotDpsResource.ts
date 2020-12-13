@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getIotDpsResource(args: GetIotDpsResourceArgs, opts?: pulumi.InvokeOptions): Promise<GetIotDpsResourceResult> {
@@ -38,6 +38,10 @@ export interface GetIotDpsResourceResult {
      * The Etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal ETag convention.
      */
     readonly etag?: string;
+    /**
+     * The resource identifier.
+     */
+    readonly id: string;
     /**
      * The resource location.
      */

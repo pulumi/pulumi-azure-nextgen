@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getJob(args: GetJobArgs, opts?: pulumi.InvokeOptions): Promise<GetJobResult> {
@@ -104,6 +104,10 @@ export interface GetJobResult {
      * Specifies the settings for Horovod job.
      */
     readonly horovodSettings?: outputs.batchai.latest.HorovodSettingsResponse;
+    /**
+     * The ID of the resource.
+     */
+    readonly id: string;
     /**
      * A list of input directories for the job.
      */

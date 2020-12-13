@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getMonitor(args: GetMonitorArgs, opts?: pulumi.InvokeOptions): Promise<GetMonitorResult> {
@@ -31,6 +31,10 @@ export interface GetMonitorArgs {
 }
 
 export interface GetMonitorResult {
+    /**
+     * ARM id of the monitor resource.
+     */
+    readonly id: string;
     readonly identity?: outputs.datadog.v20200201preview.IdentityPropertiesResponse;
     readonly location: string;
     /**

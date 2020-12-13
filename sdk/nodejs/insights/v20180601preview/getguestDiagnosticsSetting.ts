@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getguestDiagnosticsSetting(args: GetguestDiagnosticsSettingArgs, opts?: pulumi.InvokeOptions): Promise<GetguestDiagnosticsSettingResult> {
@@ -38,6 +38,10 @@ export interface GetguestDiagnosticsSettingResult {
      * the array of data source object which are configured to collect and send data
      */
     readonly dataSources?: outputs.insights.v20180601preview.DataSourceResponse[];
+    /**
+     * Azure resource Id
+     */
+    readonly id: string;
     /**
      * Resource location
      */

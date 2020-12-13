@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getManagementLock(args: GetManagementLockArgs, opts?: pulumi.InvokeOptions): Promise<GetManagementLockResult> {
@@ -29,6 +29,10 @@ export interface GetManagementLockArgs {
  * Management lock information.
  */
 export interface GetManagementLockResult {
+    /**
+     * The Id of the lock.
+     */
+    readonly id: string;
     /**
      * The lock level of the management lock.
      */

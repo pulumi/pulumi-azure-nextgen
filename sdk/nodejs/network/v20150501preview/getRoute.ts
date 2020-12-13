@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getRoute(args: GetRouteArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteResult> {
@@ -47,6 +47,10 @@ export interface GetRouteResult {
      * A unique read-only string that changes whenever the resource is updated
      */
     readonly etag?: string;
+    /**
+     * Resource Id
+     */
+    readonly id?: string;
     /**
      * Gets name of the resource that is unique within a resource group. This name can be used to access the resource
      */

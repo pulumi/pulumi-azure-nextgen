@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getSnapshot(args: GetSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetSnapshotResult> {
@@ -58,6 +58,10 @@ export interface GetSnapshotResult {
      * The hypervisor generation of the Virtual Machine. Applicable to OS disks only.
      */
     readonly hyperVGeneration?: string;
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * Whether a snapshot is incremental. Incremental snapshots on the same disk occupy less space than full snapshots and can be diffed.
      */

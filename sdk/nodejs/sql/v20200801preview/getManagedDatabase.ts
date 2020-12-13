@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getManagedDatabase(args: GetManagedDatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetManagedDatabaseResult> {
@@ -71,6 +71,10 @@ export interface GetManagedDatabaseResult {
      * Instance Failover Group resource identifier that this managed database belongs to.
      */
     readonly failoverGroupId: string;
+    /**
+     * Resource ID.
+     */
+    readonly id: string;
     /**
      * Last backup file name for restore of this managed database.
      */

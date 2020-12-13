@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function listSiteBackupConfigurationSlot(args: ListSiteBackupConfigurationSlotArgs, opts?: pulumi.InvokeOptions): Promise<ListSiteBackupConfigurationSlotResult> {
@@ -51,6 +51,10 @@ export interface ListSiteBackupConfigurationSlotResult {
      * True if the backup schedule is enabled (must be included in that case), false if the backup schedule should be disabled
      */
     readonly enabled?: boolean;
+    /**
+     * Resource Id
+     */
+    readonly id?: string;
     /**
      * Kind of resource
      */

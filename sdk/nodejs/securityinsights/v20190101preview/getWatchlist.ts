@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getWatchlist(args: GetWatchlistArgs, opts?: pulumi.InvokeOptions): Promise<GetWatchlistResult> {
@@ -72,6 +72,10 @@ export interface GetWatchlistResult {
      * Etag of the azure resource
      */
     readonly etag?: string;
+    /**
+     * Azure resource Id
+     */
+    readonly id: string;
     /**
      * A flag that indicates if the watchlist is deleted or not
      */

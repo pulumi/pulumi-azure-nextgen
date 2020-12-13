@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getKey(args: GetKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyResult> {
@@ -47,6 +47,10 @@ export interface GetKeyResult {
      * The elliptic curve name. For valid values, see JsonWebKeyCurveName.
      */
     readonly curveName?: string;
+    /**
+     * Fully qualified identifier of the key vault resource.
+     */
+    readonly id: string;
     readonly keyOps?: string[];
     /**
      * The key size in bits. For example: 2048, 3072, or 4096 for RSA.

@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getApi(args: GetApiArgs, opts?: pulumi.InvokeOptions): Promise<GetApiResult> {
@@ -79,6 +79,10 @@ export interface GetApiResult {
      * API name.
      */
     readonly displayName?: string;
+    /**
+     * Resource ID.
+     */
+    readonly id: string;
     /**
      * Indicates if API revision is current api revision.
      */

@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getDisk(args: GetDiskArgs, opts?: pulumi.InvokeOptions): Promise<GetDiskResult> {
@@ -73,6 +73,10 @@ export interface GetDiskResult {
      * The host caching policy of the disk (i.e. None, ReadOnly, ReadWrite).
      */
     readonly hostCaching?: string;
+    /**
+     * The identifier of the resource.
+     */
+    readonly id: string;
     /**
      * The resource ID of the VM to which this disk is leased.
      */

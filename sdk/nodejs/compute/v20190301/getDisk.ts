@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getDisk(args: GetDiskArgs, opts?: pulumi.InvokeOptions): Promise<GetDiskResult> {
@@ -66,6 +66,10 @@ export interface GetDiskResult {
      * The hypervisor generation of the Virtual Machine. Applicable to OS disks only.
      */
     readonly hyperVGeneration?: string;
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * Resource location
      */

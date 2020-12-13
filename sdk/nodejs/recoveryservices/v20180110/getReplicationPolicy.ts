@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getReplicationPolicy(args: GetReplicationPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetReplicationPolicyResult> {
@@ -39,6 +39,10 @@ export interface GetReplicationPolicyArgs {
  * Protection profile details.
  */
 export interface GetReplicationPolicyResult {
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * Resource Location
      */

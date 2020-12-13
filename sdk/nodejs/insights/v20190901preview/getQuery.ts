@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getQuery(args: GetQueryArgs, opts?: pulumi.InvokeOptions): Promise<GetQueryResult> {
@@ -55,6 +55,10 @@ export interface GetQueryResult {
      * Unique display name for your query within the Query Pack.
      */
     readonly displayName: string;
+    /**
+     * Azure resource Id
+     */
+    readonly id: string;
     /**
      * Azure resource name
      */

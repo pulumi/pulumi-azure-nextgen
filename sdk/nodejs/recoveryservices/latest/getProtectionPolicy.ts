@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getProtectionPolicy(args: GetProtectionPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetProtectionPolicyResult> {
@@ -43,6 +43,10 @@ export interface GetProtectionPolicyResult {
      * Optional ETag.
      */
     readonly eTag?: string;
+    /**
+     * Resource Id represents the complete path to the resource.
+     */
+    readonly id: string;
     /**
      * Resource location.
      */

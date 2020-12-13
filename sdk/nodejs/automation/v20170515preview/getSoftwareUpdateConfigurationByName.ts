@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getSoftwareUpdateConfigurationByName(args: GetSoftwareUpdateConfigurationByNameArgs, opts?: pulumi.InvokeOptions): Promise<GetSoftwareUpdateConfigurationByNameResult> {
@@ -51,6 +51,10 @@ export interface GetSoftwareUpdateConfigurationByNameResult {
      * Details of provisioning error
      */
     readonly error?: outputs.automation.v20170515preview.ErrorResponseResponse;
+    /**
+     * Resource Id.
+     */
+    readonly id: string;
     /**
      * LastModifiedBy property, which only appears in the response.
      */

@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getJobDefinition(args: GetJobDefinitionArgs, opts?: pulumi.InvokeOptions): Promise<GetJobDefinitionResult> {
@@ -60,6 +60,10 @@ export interface GetJobDefinitionResult {
      * Data Source Id associated to the job definition.
      */
     readonly dataSourceId: string;
+    /**
+     * Id of the object.
+     */
+    readonly id: string;
     /**
      * Last modified time of the job definition.
      */

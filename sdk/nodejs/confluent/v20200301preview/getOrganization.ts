@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getOrganization(args: GetOrganizationArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationResult> {
@@ -38,6 +38,10 @@ export interface GetOrganizationResult {
      * The creation time of the resource.
      */
     readonly createdTime: string;
+    /**
+     * The ARM id of the resource.
+     */
+    readonly id: string;
     /**
      * Location of Organization resource
      */

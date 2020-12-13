@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getRule(args: GetRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetRuleResult> {
@@ -53,6 +53,10 @@ export interface GetRuleResult {
      */
     readonly conditions?: outputs.cdn.latest.DeliveryRuleCookiesConditionResponse | outputs.cdn.latest.DeliveryRuleHttpVersionConditionResponse | outputs.cdn.latest.DeliveryRuleIsDeviceConditionResponse | outputs.cdn.latest.DeliveryRulePostArgsConditionResponse | outputs.cdn.latest.DeliveryRuleQueryStringConditionResponse | outputs.cdn.latest.DeliveryRuleRemoteAddressConditionResponse | outputs.cdn.latest.DeliveryRuleRequestBodyConditionResponse | outputs.cdn.latest.DeliveryRuleRequestHeaderConditionResponse | outputs.cdn.latest.DeliveryRuleRequestMethodConditionResponse | outputs.cdn.latest.DeliveryRuleRequestSchemeConditionResponse | outputs.cdn.latest.DeliveryRuleRequestUriConditionResponse | outputs.cdn.latest.DeliveryRuleUrlFileExtensionConditionResponse | outputs.cdn.latest.DeliveryRuleUrlFileNameConditionResponse | outputs.cdn.latest.DeliveryRuleUrlPathConditionResponse[];
     readonly deploymentStatus: string;
+    /**
+     * Resource ID.
+     */
+    readonly id: string;
     /**
      * If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue.
      */

@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getPolicyAssignment(args: GetPolicyAssignmentArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyAssignmentResult> {
@@ -46,6 +46,10 @@ export interface GetPolicyAssignmentResult {
      * The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.
      */
     readonly enforcementMode?: string;
+    /**
+     * The ID of the policy assignment.
+     */
+    readonly id: string;
     /**
      * The managed identity associated with the policy assignment.
      */

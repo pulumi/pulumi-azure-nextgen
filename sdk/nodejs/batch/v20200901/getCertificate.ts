@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getCertificate(args: GetCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificateResult> {
@@ -51,6 +51,10 @@ export interface GetCertificateResult {
      * The format of the certificate - either Pfx or Cer. If omitted, the default is Pfx.
      */
     readonly format?: string;
+    /**
+     * The ID of the resource.
+     */
+    readonly id: string;
     /**
      * The name of the resource.
      */

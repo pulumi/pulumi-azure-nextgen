@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getApplicationGateway(args: GetApplicationGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationGatewayResult> {
@@ -82,6 +82,10 @@ export interface GetApplicationGatewayResult {
      * Http listeners of the application gateway resource.
      */
     readonly httpListeners?: outputs.network.v20181101.ApplicationGatewayHttpListenerResponse[];
+    /**
+     * Resource ID.
+     */
+    readonly id?: string;
     /**
      * The identity of the application gateway, if configured.
      */

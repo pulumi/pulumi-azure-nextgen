@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getManagedCluster(args: GetManagedClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetManagedClusterResult> {
@@ -112,6 +112,10 @@ export interface GetManagedClusterResult {
      * The port used for http connections to the cluster.
      */
     readonly httpGatewayConnectionPort?: number;
+    /**
+     * Azure resource identifier.
+     */
+    readonly id: string;
     /**
      * Describes load balancing rules.
      */

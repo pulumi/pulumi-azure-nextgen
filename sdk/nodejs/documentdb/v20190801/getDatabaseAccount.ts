@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getDatabaseAccount(args: GetDatabaseAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseAccountResult> {
@@ -74,6 +74,10 @@ export interface GetDatabaseAccountResult {
      * An array that contains the regions ordered by their failover priorities.
      */
     readonly failoverPolicies: outputs.documentdb.v20190801.FailoverPolicyResponse[];
+    /**
+     * The unique resource identifier of the ARM resource.
+     */
+    readonly id: string;
     /**
      * Cosmos DB Firewall Support: This value specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IPs for a given database account. IP addresses/ranges must be comma separated and must not contain any spaces.
      */

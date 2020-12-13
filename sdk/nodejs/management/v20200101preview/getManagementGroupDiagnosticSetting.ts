@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getManagementGroupDiagnosticSetting(args: GetManagementGroupDiagnosticSettingArgs, opts?: pulumi.InvokeOptions): Promise<GetManagementGroupDiagnosticSettingResult> {
@@ -42,6 +42,10 @@ export interface GetManagementGroupDiagnosticSettingResult {
      * The name of the event hub. If none is specified, the default event hub will be selected.
      */
     readonly eventHubName?: string;
+    /**
+     * Azure resource Id
+     */
+    readonly id: string;
     /**
      * Location of the resource
      */

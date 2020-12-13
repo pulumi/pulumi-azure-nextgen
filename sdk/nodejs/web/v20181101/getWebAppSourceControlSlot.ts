@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getWebAppSourceControlSlot(args: GetWebAppSourceControlSlotArgs, opts?: pulumi.InvokeOptions): Promise<GetWebAppSourceControlSlotResult> {
@@ -47,6 +47,10 @@ export interface GetWebAppSourceControlSlotResult {
      * <code>true</code> to enable deployment rollback; otherwise, <code>false</code>.
      */
     readonly deploymentRollbackEnabled?: boolean;
+    /**
+     * Resource Id.
+     */
+    readonly id: string;
     /**
      * <code>true</code> to limit to manual integration; <code>false</code> to enable continuous integration (which configures webhooks into online repos like GitHub).
      */

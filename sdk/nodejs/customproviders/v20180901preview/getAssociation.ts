@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getAssociation(args: GetAssociationArgs, opts?: pulumi.InvokeOptions): Promise<GetAssociationResult> {
@@ -34,6 +34,10 @@ export interface GetAssociationArgs {
  * The resource definition of this association.
  */
 export interface GetAssociationResult {
+    /**
+     * The association id.
+     */
+    readonly id: string;
     /**
      * The association name.
      */

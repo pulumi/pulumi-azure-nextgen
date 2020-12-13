@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getSubnet(args: GetSubnetArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetResult> {
@@ -47,6 +47,10 @@ export interface GetSubnetResult {
      * A unique read-only string that changes whenever the resource is updated
      */
     readonly etag?: string;
+    /**
+     * Resource Id
+     */
+    readonly id?: string;
     /**
      * Gets array of references to the network interface IP configurations using subnet
      */

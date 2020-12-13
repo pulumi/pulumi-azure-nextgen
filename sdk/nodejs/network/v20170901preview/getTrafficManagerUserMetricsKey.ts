@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getTrafficManagerUserMetricsKey(args?: GetTrafficManagerUserMetricsKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetTrafficManagerUserMetricsKeyResult> {
@@ -25,6 +25,10 @@ export interface GetTrafficManagerUserMetricsKeyArgs {
  * Class representing a Traffic Manager Real User Metrics key response.
  */
 export interface GetTrafficManagerUserMetricsKeyResult {
+    /**
+     * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}
+     */
+    readonly id: string;
     /**
      * The key returned by the Real User Metrics operation.
      */

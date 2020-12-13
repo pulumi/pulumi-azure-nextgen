@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getAccount(args: GetAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
@@ -78,6 +78,10 @@ export interface GetAccountResult {
      * The current state of the IP address firewall for this Data Lake Store account.
      */
     readonly firewallState: string;
+    /**
+     * The resource identifier.
+     */
+    readonly id: string;
     /**
      * The Key Vault encryption identity, if any.
      */

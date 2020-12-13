@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getRule(args: GetRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetRuleResult> {
@@ -61,6 +61,10 @@ export interface GetRuleResult {
      * Filter type that is evaluated against a BrokeredMessage.
      */
     readonly filterType?: string;
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * Resource name
      */

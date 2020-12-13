@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getMigrateProject(args: GetMigrateProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetMigrateProjectResult> {
@@ -38,6 +38,10 @@ export interface GetMigrateProjectResult {
      * Gets or sets the eTag for concurrency control.
      */
     readonly eTag?: string;
+    /**
+     * Gets the relative URL to get this migrate project.
+     */
+    readonly id: string;
     /**
      * Gets or sets the Azure location in which migrate project is created.
      */

@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getCustomImage(args: GetCustomImageArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomImageResult> {
@@ -64,6 +64,10 @@ export interface GetCustomImageResult {
      * The description of the custom image.
      */
     readonly description?: string;
+    /**
+     * The identifier of the resource.
+     */
+    readonly id: string;
     /**
      * Whether or not the custom images underlying offer/plan has been enabled for programmatic deployment
      */

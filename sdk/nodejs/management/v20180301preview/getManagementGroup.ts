@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getManagementGroup(args: GetManagementGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetManagementGroupResult> {
@@ -56,6 +56,10 @@ export interface GetManagementGroupResult {
      * The friendly name of the management group.
      */
     readonly displayName?: string;
+    /**
+     * The fully qualified ID for the management group.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+     */
+    readonly id: string;
     /**
      * The name of the management group. For example, 00000000-0000-0000-0000-000000000000
      */

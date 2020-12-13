@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function listWebAppAuthSettingsSlot(args: ListWebAppAuthSettingsSlotArgs, opts?: pulumi.InvokeOptions): Promise<ListWebAppAuthSettingsSlotResult> {
@@ -163,6 +163,10 @@ export interface ListWebAppAuthSettingsSlotResult {
      * Google Sign-In documentation: https://developers.google.com/identity/sign-in/web/
      */
     readonly googleOAuthScopes?: string[];
+    /**
+     * Resource Id.
+     */
+    readonly id: string;
     /**
      * "true" if the auth config settings should be read from a file,
      * "false" otherwise

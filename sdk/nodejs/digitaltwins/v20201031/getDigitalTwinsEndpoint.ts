@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getDigitalTwinsEndpoint(args: GetDigitalTwinsEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetDigitalTwinsEndpointResult> {
@@ -39,6 +39,10 @@ export interface GetDigitalTwinsEndpointArgs {
  * DigitalTwinsInstance endpoint resource.
  */
 export interface GetDigitalTwinsEndpointResult {
+    /**
+     * The resource identifier.
+     */
+    readonly id: string;
     /**
      * Extension resource name.
      */

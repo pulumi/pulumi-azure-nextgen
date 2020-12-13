@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getRegistry(args: GetRegistryArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryResult> {
@@ -42,6 +42,10 @@ export interface GetRegistryResult {
      * The creation date of the container registry in ISO8601 format.
      */
     readonly creationDate: string;
+    /**
+     * The resource ID.
+     */
+    readonly id: string;
     /**
      * The location of the resource. This cannot be changed after the resource is created.
      */

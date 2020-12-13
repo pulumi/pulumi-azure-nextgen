@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getRedisFirewallRule(args: GetRedisFirewallRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetRedisFirewallRuleResult> {
@@ -43,6 +43,10 @@ export interface GetRedisFirewallRuleResult {
      * highest IP address included in the range
      */
     readonly endIP: string;
+    /**
+     * resource ID (of the firewall rule)
+     */
+    readonly id: string;
     /**
      * name of the firewall rule
      */

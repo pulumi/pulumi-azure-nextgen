@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from ._enums import *
 
 __all__ = [
     'GetGlobalUserPersonalPreferencesResult',
@@ -19,10 +20,13 @@ class GetGlobalUserPersonalPreferencesResult:
     """
     Represents the PersonalPreferences for the user
     """
-    def __init__(__self__, favorite_lab_resource_ids=None):
+    def __init__(__self__, favorite_lab_resource_ids=None, id=None):
         if favorite_lab_resource_ids and not isinstance(favorite_lab_resource_ids, list):
             raise TypeError("Expected argument 'favorite_lab_resource_ids' to be a list")
         pulumi.set(__self__, "favorite_lab_resource_ids", favorite_lab_resource_ids)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter(name="favoriteLabResourceIds")
@@ -32,6 +36,14 @@ class GetGlobalUserPersonalPreferencesResult:
         """
         return pulumi.get(self, "favorite_lab_resource_ids")
 
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        Id to be used by the cache orchestrator
+        """
+        return pulumi.get(self, "id")
+
 
 class AwaitableGetGlobalUserPersonalPreferencesResult(GetGlobalUserPersonalPreferencesResult):
     # pylint: disable=using-constant-test
@@ -39,10 +51,11 @@ class AwaitableGetGlobalUserPersonalPreferencesResult(GetGlobalUserPersonalPrefe
         if False:
             yield self
         return GetGlobalUserPersonalPreferencesResult(
-            favorite_lab_resource_ids=self.favorite_lab_resource_ids)
+            favorite_lab_resource_ids=self.favorite_lab_resource_ids,
+            id=self.id)
 
 
-def get_global_user_personal_preferences(add_remove: Optional[str] = None,
+def get_global_user_personal_preferences(add_remove: Optional[Union[str, 'AddRemove']] = None,
                                          lab_account_resource_id: Optional[str] = None,
                                          lab_resource_id: Optional[str] = None,
                                          user_name: Optional[str] = None,
@@ -50,7 +63,7 @@ def get_global_user_personal_preferences(add_remove: Optional[str] = None,
     """
     Use this data source to access information about an existing resource.
 
-    :param str add_remove: Enum indicating if user is adding or removing a favorite lab
+    :param Union[str, 'AddRemove'] add_remove: Enum indicating if user is adding or removing a favorite lab
     :param str lab_account_resource_id: Resource Id of the lab account
     :param str lab_resource_id: Resource Id of the lab to add/remove from the favorites list
     :param str user_name: The name of the user.
@@ -67,4 +80,5 @@ def get_global_user_personal_preferences(add_remove: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('azure-nextgen:labservices/latest:getGlobalUserPersonalPreferences', __args__, opts=opts, typ=GetGlobalUserPersonalPreferencesResult).value
 
     return AwaitableGetGlobalUserPersonalPreferencesResult(
-        favorite_lab_resource_ids=__ret__.favorite_lab_resource_ids)
+        favorite_lab_resource_ids=__ret__.favorite_lab_resource_ids,
+        id=__ret__.id)

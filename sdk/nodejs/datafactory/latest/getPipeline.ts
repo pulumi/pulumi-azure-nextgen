@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getPipeline(args: GetPipelineArgs, opts?: pulumi.InvokeOptions): Promise<GetPipelineResult> {
@@ -63,6 +63,10 @@ export interface GetPipelineResult {
      * The folder that this Pipeline is in. If not specified, Pipeline will appear at the root level.
      */
     readonly folder?: outputs.datafactory.latest.PipelineResponseFolder;
+    /**
+     * The resource identifier.
+     */
+    readonly id: string;
     /**
      * The resource name.
      */

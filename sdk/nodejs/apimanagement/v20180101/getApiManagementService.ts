@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getApiManagementService(args: GetApiManagementServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetApiManagementServiceResult> {
@@ -66,6 +66,10 @@ export interface GetApiManagementServiceResult {
      * Custom hostname configuration of the API Management service.
      */
     readonly hostnameConfigurations?: outputs.apimanagement.v20180101.HostnameConfigurationResponse[];
+    /**
+     * Resource ID.
+     */
+    readonly id: string;
     /**
      * Managed service identity of the Api Management service.
      */

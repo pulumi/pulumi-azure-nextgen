@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getNotificationHub(args: GetNotificationHubArgs, opts?: pulumi.InvokeOptions): Promise<GetNotificationHubResult> {
@@ -39,6 +39,10 @@ export interface GetNotificationHubArgs {
  * Description of a NotificationHub Resource.
  */
 export interface GetNotificationHubResult {
+    /**
+     * Gets or sets the id of the created NotificationHub.
+     */
+    readonly id?: string;
     /**
      * Gets or sets datacenter location of the NotificationHub.
      */

@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getAssessmentsMetadataSubscription(args: GetAssessmentsMetadataSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetAssessmentsMetadataSubscriptionResult> {
@@ -42,6 +42,10 @@ export interface GetAssessmentsMetadataSubscriptionResult {
      * User friendly display name of the assessment
      */
     readonly displayName: string;
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * The implementation effort required to remediate this assessment
      */

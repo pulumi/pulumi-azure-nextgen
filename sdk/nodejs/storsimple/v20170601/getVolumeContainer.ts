@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getVolumeContainer(args: GetVolumeContainerArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumeContainerResult> {
@@ -60,6 +60,10 @@ export interface GetVolumeContainerResult {
      * The flag to denote whether encryption is enabled or not.
      */
     readonly encryptionStatus: string;
+    /**
+     * The path ID that uniquely identifies the object.
+     */
+    readonly id: string;
     /**
      * The Kind of the object. Currently only Series8000 is supported
      */

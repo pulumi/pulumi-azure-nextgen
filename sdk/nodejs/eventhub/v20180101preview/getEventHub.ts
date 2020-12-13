@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getEventHub(args: GetEventHubArgs, opts?: pulumi.InvokeOptions): Promise<GetEventHubResult> {
@@ -47,6 +47,10 @@ export interface GetEventHubResult {
      * Exact time the Event Hub was created.
      */
     readonly createdAt: string;
+    /**
+     * Resource ID.
+     */
+    readonly id: string;
     /**
      * Number of days to retain the events for this Event Hub, value should be 1 to 7 days
      */

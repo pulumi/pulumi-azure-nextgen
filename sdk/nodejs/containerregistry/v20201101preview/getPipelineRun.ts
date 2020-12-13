@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getPipelineRun(args: GetPipelineRunArgs, opts?: pulumi.InvokeOptions): Promise<GetPipelineRunResult> {
@@ -43,6 +43,10 @@ export interface GetPipelineRunResult {
      * How the pipeline run should be forced to recreate even if the pipeline run configuration has not changed.
      */
     readonly forceUpdateTag?: string;
+    /**
+     * The resource ID.
+     */
+    readonly id: string;
     /**
      * The name of the resource.
      */

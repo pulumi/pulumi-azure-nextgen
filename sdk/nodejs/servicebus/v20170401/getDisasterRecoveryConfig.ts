@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getDisasterRecoveryConfig(args: GetDisasterRecoveryConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetDisasterRecoveryConfigResult> {
@@ -43,6 +43,10 @@ export interface GetDisasterRecoveryConfigResult {
      * Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
      */
     readonly alternateName?: string;
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * Resource name
      */

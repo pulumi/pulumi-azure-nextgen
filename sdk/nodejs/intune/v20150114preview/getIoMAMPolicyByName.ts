@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getIoMAMPolicyByName(args: GetIoMAMPolicyByNameArgs, opts?: pulumi.InvokeOptions): Promise<GetIoMAMPolicyByNameResult> {
@@ -52,6 +52,10 @@ export interface GetIoMAMPolicyByNameResult {
     readonly fileSharingSaveAs?: string;
     readonly friendlyName: string;
     readonly groupStatus: string;
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     readonly lastModifiedTime: string;
     /**
      * Resource Location

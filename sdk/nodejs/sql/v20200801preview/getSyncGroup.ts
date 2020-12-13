@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getSyncGroup(args: GetSyncGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetSyncGroupResult> {
@@ -64,6 +64,10 @@ export interface GetSyncGroupResult {
      * User name for the sync group hub database credential.
      */
     readonly hubDatabaseUserName?: string;
+    /**
+     * Resource ID.
+     */
+    readonly id: string;
     /**
      * Sync interval of the sync group.
      */

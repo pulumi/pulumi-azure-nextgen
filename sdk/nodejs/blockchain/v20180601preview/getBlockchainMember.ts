@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getBlockchainMember(args: GetBlockchainMemberArgs, opts?: pulumi.InvokeOptions): Promise<GetBlockchainMemberResult> {
@@ -62,6 +62,10 @@ export interface GetBlockchainMemberResult {
      * Gets or sets firewall rules
      */
     readonly firewallRules?: outputs.blockchain.v20180601preview.FirewallRuleResponse[];
+    /**
+     * Fully qualified resource Id of the resource.
+     */
+    readonly id: string;
     /**
      * The GEO location of the blockchain service.
      */

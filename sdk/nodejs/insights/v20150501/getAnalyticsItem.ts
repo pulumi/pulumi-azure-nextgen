@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getAnalyticsItem(args: GetAnalyticsItemArgs, opts?: pulumi.InvokeOptions): Promise<GetAnalyticsItemResult> {
@@ -53,6 +53,10 @@ export interface GetAnalyticsItemResult {
      * The content of this item
      */
     readonly content?: string;
+    /**
+     * Internally assigned unique id of the item definition.
+     */
+    readonly id?: string;
     /**
      * The user-defined name of the item.
      */

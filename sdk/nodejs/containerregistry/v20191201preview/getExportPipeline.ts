@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getExportPipeline(args: GetExportPipelineArgs, opts?: pulumi.InvokeOptions): Promise<GetExportPipelineResult> {
@@ -39,6 +39,10 @@ export interface GetExportPipelineArgs {
  * An object that represents an export pipeline for a container registry.
  */
 export interface GetExportPipelineResult {
+    /**
+     * The resource ID.
+     */
+    readonly id: string;
     /**
      * The identity of the export pipeline.
      */

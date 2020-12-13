@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getGraphQuery(args: GetGraphQueryArgs, opts?: pulumi.InvokeOptions): Promise<GetGraphQueryResult> {
@@ -42,6 +42,10 @@ export interface GetGraphQueryResult {
      * This will be used to handle Optimistic Concurrency.
      */
     readonly eTag?: string;
+    /**
+     * Azure resource Id
+     */
+    readonly id: string;
     /**
      * The location of the resource
      */

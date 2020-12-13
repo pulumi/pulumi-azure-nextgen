@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getReplication(args: GetReplicationArgs, opts?: pulumi.InvokeOptions): Promise<GetReplicationResult> {
@@ -39,6 +39,10 @@ export interface GetReplicationArgs {
  * An object that represents a replication for a container registry.
  */
 export interface GetReplicationResult {
+    /**
+     * The resource ID.
+     */
+    readonly id: string;
     /**
      * The location of the resource. This cannot be changed after the resource is created.
      */

@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getPrivateLinkService(args: GetPrivateLinkServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateLinkServiceResult> {
@@ -55,6 +55,10 @@ export interface GetPrivateLinkServiceResult {
      * The list of Fqdn.
      */
     readonly fqdns?: string[];
+    /**
+     * Resource ID.
+     */
+    readonly id?: string;
     /**
      * An array of references to the private link service IP configuration.
      */

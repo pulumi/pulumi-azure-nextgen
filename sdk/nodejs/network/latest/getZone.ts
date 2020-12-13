@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getZone(args: GetZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneResult> {
@@ -38,6 +38,10 @@ export interface GetZoneResult {
      * The etag of the zone.
      */
     readonly etag?: string;
+    /**
+     * Resource ID.
+     */
+    readonly id: string;
     /**
      * Resource location.
      */

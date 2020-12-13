@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getDedicatedCloudNode(args: GetDedicatedCloudNodeArgs, opts?: pulumi.InvokeOptions): Promise<GetDedicatedCloudNodeResult> {
@@ -50,6 +50,10 @@ export interface GetDedicatedCloudNodeResult {
      * date time the resource was created
      */
     readonly created: any;
+    /**
+     * SKU's id
+     */
+    readonly id: string;
     /**
      * Azure region
      */

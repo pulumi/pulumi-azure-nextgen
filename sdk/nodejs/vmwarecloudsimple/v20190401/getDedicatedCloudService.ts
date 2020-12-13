@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getDedicatedCloudService(args: GetDedicatedCloudServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetDedicatedCloudServiceResult> {
@@ -38,6 +38,10 @@ export interface GetDedicatedCloudServiceResult {
      * gateway Subnet for the account. It will collect the subnet address and always treat it as /28
      */
     readonly gatewaySubnet: string;
+    /**
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/dedicatedCloudServices/{dedicatedCloudServiceName}
+     */
+    readonly id: string;
     /**
      * indicates whether account onboarded or not in a given region
      */

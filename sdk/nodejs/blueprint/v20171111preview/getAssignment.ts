@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getAssignment(args: GetAssignmentArgs, opts?: pulumi.InvokeOptions): Promise<GetAssignmentResult> {
@@ -41,6 +41,10 @@ export interface GetAssignmentResult {
      * One-liner string explain this resource.
      */
     readonly displayName?: string;
+    /**
+     * String Id used to locate any resource on Azure.
+     */
+    readonly id: string;
     /**
      * Managed Service Identity for this Blueprint assignment
      */

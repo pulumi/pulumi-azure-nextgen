@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getSqlVirtualMachine(args: GetSqlVirtualMachineArgs, opts?: pulumi.InvokeOptions): Promise<GetSqlVirtualMachineResult> {
@@ -47,6 +47,10 @@ export interface GetSqlVirtualMachineResult {
      * Auto patching settings for applying critical security updates to SQL virtual machine.
      */
     readonly autoPatchingSettings?: outputs.sqlvirtualmachine.v20170301preview.AutoPatchingSettingsResponse;
+    /**
+     * Resource ID.
+     */
+    readonly id: string;
     /**
      * Azure Active Directory identity of the server.
      */

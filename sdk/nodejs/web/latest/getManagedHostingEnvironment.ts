@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getManagedHostingEnvironment(args: GetManagedHostingEnvironmentArgs, opts?: pulumi.InvokeOptions): Promise<GetManagedHostingEnvironmentResult> {
@@ -50,6 +50,10 @@ export interface GetManagedHostingEnvironmentResult {
      * Detailed message about with results of the last check of the managed hosting environment
      */
     readonly environmentStatus?: string;
+    /**
+     * Resource Id
+     */
+    readonly id?: string;
     /**
      * Number of ip ssl addresses reserved for the managed hosting environment
      */

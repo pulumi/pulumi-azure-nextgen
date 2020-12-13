@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getDiagnostic(args: GetDiagnosticArgs, opts?: pulumi.InvokeOptions): Promise<GetDiagnosticResult> {
@@ -55,6 +55,10 @@ export interface GetDiagnosticResult {
      * Sets correlation protocol to use for Application Insights diagnostics.
      */
     readonly httpCorrelationProtocol?: string;
+    /**
+     * Resource ID.
+     */
+    readonly id: string;
     /**
      * Log the ClientIP. Default is false.
      */

@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getVirtualMachineScaleSetVMExtension(args: GetVirtualMachineScaleSetVMExtensionArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualMachineScaleSetVMExtensionResult> {
@@ -57,6 +57,10 @@ export interface GetVirtualMachineScaleSetVMExtensionResult {
      * How the extension handler should be forced to update even if the extension configuration has not changed.
      */
     readonly forceUpdateTag?: string;
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * The virtual machine extension instance view.
      */

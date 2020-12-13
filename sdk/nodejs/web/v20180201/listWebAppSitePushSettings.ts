@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function listWebAppSitePushSettings(args: ListWebAppSitePushSettingsArgs, opts?: pulumi.InvokeOptions): Promise<ListWebAppSitePushSettingsResult> {
@@ -38,6 +38,10 @@ export interface ListWebAppSitePushSettingsResult {
      * Gets or sets a JSON string containing a list of dynamic tags that will be evaluated from user claims in the push registration endpoint.
      */
     readonly dynamicTagsJson?: string;
+    /**
+     * Resource Id.
+     */
+    readonly id: string;
     /**
      * Gets or sets a flag indicating whether the Push endpoint is enabled.
      */

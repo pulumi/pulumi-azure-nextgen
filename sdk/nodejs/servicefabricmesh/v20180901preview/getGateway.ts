@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getGateway(args: GetGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewayResult> {
@@ -46,6 +46,10 @@ export interface GetGatewayResult {
      * Configuration for http connectivity for this gateway.
      */
     readonly http?: outputs.servicefabricmesh.v20180901preview.HttpConfigResponse[];
+    /**
+     * Fully qualified identifier for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     */
+    readonly id: string;
     /**
      * IP address of the gateway. This is populated in the response and is ignored for incoming requests.
      */

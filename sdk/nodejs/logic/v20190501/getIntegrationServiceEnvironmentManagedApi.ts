@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getIntegrationServiceEnvironmentManagedApi(args: GetIntegrationServiceEnvironmentManagedApiArgs, opts?: pulumi.InvokeOptions): Promise<GetIntegrationServiceEnvironmentManagedApiResult> {
@@ -39,6 +39,10 @@ export interface GetIntegrationServiceEnvironmentManagedApiArgs {
  * The managed api definition.
  */
 export interface GetIntegrationServiceEnvironmentManagedApiResult {
+    /**
+     * The resource id.
+     */
+    readonly id: string;
     /**
      * The resource location.
      */

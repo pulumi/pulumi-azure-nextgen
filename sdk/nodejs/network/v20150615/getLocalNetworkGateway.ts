@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getLocalNetworkGateway(args: GetLocalNetworkGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetLocalNetworkGatewayResult> {
@@ -46,6 +46,10 @@ export interface GetLocalNetworkGatewayResult {
      * IP address of local network gateway.
      */
     readonly gatewayIpAddress?: string;
+    /**
+     * Resource Identifier.
+     */
+    readonly id?: string;
     /**
      * Local network site address space.
      */

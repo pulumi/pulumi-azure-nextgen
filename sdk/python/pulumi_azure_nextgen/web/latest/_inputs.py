@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from ._enums import *
 
 __all__ = [
     'ApiConnectionDefinitionPropertiesArgs',
@@ -18,10 +19,14 @@ __all__ = [
     'ApiReferenceArgs',
     'ApiResourceBackendServiceArgs',
     'ApiResourceDefinitionsArgs',
+    'ApplicationLogsConfigArgs',
     'AutoHealActionsArgs',
     'AutoHealCustomActionArgs',
     'AutoHealRulesArgs',
     'AutoHealTriggersArgs',
+    'AzureBlobStorageApplicationLogsConfigArgs',
+    'AzureBlobStorageHttpLogsConfigArgs',
+    'AzureTableStorageApplicationLogsConfigArgs',
     'BackupScheduleArgs',
     'CapabilityArgs',
     'CloningInfoArgs',
@@ -35,10 +40,14 @@ __all__ = [
     'CorsSettingsArgs',
     'CustomApiPropertiesDefinitionArgs',
     'DatabaseBackupSettingArgs',
+    'EnabledConfigArgs',
     'ExperimentsArgs',
+    'FileSystemApplicationLogsConfigArgs',
+    'FileSystemHttpLogsConfigArgs',
     'HandlerMappingArgs',
     'HostNameSslStateArgs',
     'HostingEnvironmentProfileArgs',
+    'HttpLogsConfigArgs',
     'IpSecurityRestrictionArgs',
     'ManagedServiceIdentityArgs',
     'NameValuePairArgs',
@@ -675,14 +684,70 @@ class ApiResourceDefinitionsArgs:
 
 
 @pulumi.input_type
+class ApplicationLogsConfigArgs:
+    def __init__(__self__, *,
+                 azure_blob_storage: Optional[pulumi.Input['AzureBlobStorageApplicationLogsConfigArgs']] = None,
+                 azure_table_storage: Optional[pulumi.Input['AzureTableStorageApplicationLogsConfigArgs']] = None,
+                 file_system: Optional[pulumi.Input['FileSystemApplicationLogsConfigArgs']] = None):
+        """
+        Application logs configuration.
+        :param pulumi.Input['AzureBlobStorageApplicationLogsConfigArgs'] azure_blob_storage: Application logs to blob storage configuration.
+        :param pulumi.Input['AzureTableStorageApplicationLogsConfigArgs'] azure_table_storage: Application logs to azure table storage configuration.
+        :param pulumi.Input['FileSystemApplicationLogsConfigArgs'] file_system: Application logs to file system configuration.
+        """
+        if azure_blob_storage is not None:
+            pulumi.set(__self__, "azure_blob_storage", azure_blob_storage)
+        if azure_table_storage is not None:
+            pulumi.set(__self__, "azure_table_storage", azure_table_storage)
+        if file_system is not None:
+            pulumi.set(__self__, "file_system", file_system)
+
+    @property
+    @pulumi.getter(name="azureBlobStorage")
+    def azure_blob_storage(self) -> Optional[pulumi.Input['AzureBlobStorageApplicationLogsConfigArgs']]:
+        """
+        Application logs to blob storage configuration.
+        """
+        return pulumi.get(self, "azure_blob_storage")
+
+    @azure_blob_storage.setter
+    def azure_blob_storage(self, value: Optional[pulumi.Input['AzureBlobStorageApplicationLogsConfigArgs']]):
+        pulumi.set(self, "azure_blob_storage", value)
+
+    @property
+    @pulumi.getter(name="azureTableStorage")
+    def azure_table_storage(self) -> Optional[pulumi.Input['AzureTableStorageApplicationLogsConfigArgs']]:
+        """
+        Application logs to azure table storage configuration.
+        """
+        return pulumi.get(self, "azure_table_storage")
+
+    @azure_table_storage.setter
+    def azure_table_storage(self, value: Optional[pulumi.Input['AzureTableStorageApplicationLogsConfigArgs']]):
+        pulumi.set(self, "azure_table_storage", value)
+
+    @property
+    @pulumi.getter(name="fileSystem")
+    def file_system(self) -> Optional[pulumi.Input['FileSystemApplicationLogsConfigArgs']]:
+        """
+        Application logs to file system configuration.
+        """
+        return pulumi.get(self, "file_system")
+
+    @file_system.setter
+    def file_system(self, value: Optional[pulumi.Input['FileSystemApplicationLogsConfigArgs']]):
+        pulumi.set(self, "file_system", value)
+
+
+@pulumi.input_type
 class AutoHealActionsArgs:
     def __init__(__self__, *,
-                 action_type: Optional[pulumi.Input[str]] = None,
+                 action_type: Optional[pulumi.Input['AutoHealActionType']] = None,
                  custom_action: Optional[pulumi.Input['AutoHealCustomActionArgs']] = None,
                  min_process_execution_time: Optional[pulumi.Input[str]] = None):
         """
         Actions which to take by the auto-heal module when a rule is triggered.
-        :param pulumi.Input[str] action_type: Predefined action to be taken.
+        :param pulumi.Input['AutoHealActionType'] action_type: Predefined action to be taken.
         :param pulumi.Input['AutoHealCustomActionArgs'] custom_action: Custom action to be taken.
         :param pulumi.Input[str] min_process_execution_time: Minimum time the process must execute
                before taking the action
@@ -696,14 +761,14 @@ class AutoHealActionsArgs:
 
     @property
     @pulumi.getter(name="actionType")
-    def action_type(self) -> Optional[pulumi.Input[str]]:
+    def action_type(self) -> Optional[pulumi.Input['AutoHealActionType']]:
         """
         Predefined action to be taken.
         """
         return pulumi.get(self, "action_type")
 
     @action_type.setter
-    def action_type(self, value: Optional[pulumi.Input[str]]):
+    def action_type(self, value: Optional[pulumi.Input['AutoHealActionType']]):
         pulumi.set(self, "action_type", value)
 
     @property
@@ -886,17 +951,176 @@ class AutoHealTriggersArgs:
 
 
 @pulumi.input_type
+class AzureBlobStorageApplicationLogsConfigArgs:
+    def __init__(__self__, *,
+                 level: Optional[pulumi.Input['LogLevel']] = None,
+                 retention_in_days: Optional[pulumi.Input[int]] = None,
+                 sas_url: Optional[pulumi.Input[str]] = None):
+        """
+        Application logs azure blob storage configuration.
+        :param pulumi.Input['LogLevel'] level: Log level.
+        :param pulumi.Input[int] retention_in_days: Retention in days.
+               Remove blobs older than X days.
+               0 or lower means no retention.
+        :param pulumi.Input[str] sas_url: SAS url to a azure blob container with read/write/list/delete permissions.
+        """
+        if level is not None:
+            pulumi.set(__self__, "level", level)
+        if retention_in_days is not None:
+            pulumi.set(__self__, "retention_in_days", retention_in_days)
+        if sas_url is not None:
+            pulumi.set(__self__, "sas_url", sas_url)
+
+    @property
+    @pulumi.getter
+    def level(self) -> Optional[pulumi.Input['LogLevel']]:
+        """
+        Log level.
+        """
+        return pulumi.get(self, "level")
+
+    @level.setter
+    def level(self, value: Optional[pulumi.Input['LogLevel']]):
+        pulumi.set(self, "level", value)
+
+    @property
+    @pulumi.getter(name="retentionInDays")
+    def retention_in_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        Retention in days.
+        Remove blobs older than X days.
+        0 or lower means no retention.
+        """
+        return pulumi.get(self, "retention_in_days")
+
+    @retention_in_days.setter
+    def retention_in_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "retention_in_days", value)
+
+    @property
+    @pulumi.getter(name="sasUrl")
+    def sas_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        SAS url to a azure blob container with read/write/list/delete permissions.
+        """
+        return pulumi.get(self, "sas_url")
+
+    @sas_url.setter
+    def sas_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sas_url", value)
+
+
+@pulumi.input_type
+class AzureBlobStorageHttpLogsConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 retention_in_days: Optional[pulumi.Input[int]] = None,
+                 sas_url: Optional[pulumi.Input[str]] = None):
+        """
+        Http logs to azure blob storage configuration.
+        :param pulumi.Input[bool] enabled: True if configuration is enabled, false if it is disabled and null if configuration is not set.
+        :param pulumi.Input[int] retention_in_days: Retention in days.
+               Remove blobs older than X days.
+               0 or lower means no retention.
+        :param pulumi.Input[str] sas_url: SAS url to a azure blob container with read/write/list/delete permissions.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if retention_in_days is not None:
+            pulumi.set(__self__, "retention_in_days", retention_in_days)
+        if sas_url is not None:
+            pulumi.set(__self__, "sas_url", sas_url)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        True if configuration is enabled, false if it is disabled and null if configuration is not set.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="retentionInDays")
+    def retention_in_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        Retention in days.
+        Remove blobs older than X days.
+        0 or lower means no retention.
+        """
+        return pulumi.get(self, "retention_in_days")
+
+    @retention_in_days.setter
+    def retention_in_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "retention_in_days", value)
+
+    @property
+    @pulumi.getter(name="sasUrl")
+    def sas_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        SAS url to a azure blob container with read/write/list/delete permissions.
+        """
+        return pulumi.get(self, "sas_url")
+
+    @sas_url.setter
+    def sas_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sas_url", value)
+
+
+@pulumi.input_type
+class AzureTableStorageApplicationLogsConfigArgs:
+    def __init__(__self__, *,
+                 sas_url: pulumi.Input[str],
+                 level: Optional[pulumi.Input['LogLevel']] = None):
+        """
+        Application logs to Azure table storage configuration.
+        :param pulumi.Input[str] sas_url: SAS URL to an Azure table with add/query/delete permissions.
+        :param pulumi.Input['LogLevel'] level: Log level.
+        """
+        pulumi.set(__self__, "sas_url", sas_url)
+        if level is not None:
+            pulumi.set(__self__, "level", level)
+
+    @property
+    @pulumi.getter(name="sasUrl")
+    def sas_url(self) -> pulumi.Input[str]:
+        """
+        SAS URL to an Azure table with add/query/delete permissions.
+        """
+        return pulumi.get(self, "sas_url")
+
+    @sas_url.setter
+    def sas_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "sas_url", value)
+
+    @property
+    @pulumi.getter
+    def level(self) -> Optional[pulumi.Input['LogLevel']]:
+        """
+        Log level.
+        """
+        return pulumi.get(self, "level")
+
+    @level.setter
+    def level(self, value: Optional[pulumi.Input['LogLevel']]):
+        pulumi.set(self, "level", value)
+
+
+@pulumi.input_type
 class BackupScheduleArgs:
     def __init__(__self__, *,
                  frequency_interval: int,
-                 frequency_unit: str,
+                 frequency_unit: 'FrequencyUnit',
                  keep_at_least_one_backup: bool,
                  retention_period_in_days: int,
                  start_time: Optional[str] = None):
         """
         Description of a backup schedule. Describes how often should be the backup performed and what should be the retention policy.
         :param int frequency_interval: How often the backup should be executed (e.g. for weekly backup, this should be set to 7 and FrequencyUnit should be set to Day)
-        :param str frequency_unit: The unit of time for how often the backup should be executed (e.g. for weekly backup, this should be set to Day and FrequencyInterval should be set to 7)
+        :param 'FrequencyUnit' frequency_unit: The unit of time for how often the backup should be executed (e.g. for weekly backup, this should be set to Day and FrequencyInterval should be set to 7)
         :param bool keep_at_least_one_backup: True if the retention policy should always keep at least one backup in the storage account, regardless how old it is; false otherwise.
         :param int retention_period_in_days: After how many days backups should be deleted.
         :param str start_time: When the schedule should start working.
@@ -922,14 +1146,14 @@ class BackupScheduleArgs:
 
     @property
     @pulumi.getter(name="frequencyUnit")
-    def frequency_unit(self) -> str:
+    def frequency_unit(self) -> 'FrequencyUnit':
         """
         The unit of time for how often the backup should be executed (e.g. for weekly backup, this should be set to Day and FrequencyInterval should be set to 7)
         """
         return pulumi.get(self, "frequency_unit")
 
     @frequency_unit.setter
-    def frequency_unit(self, value: str):
+    def frequency_unit(self, value: 'FrequencyUnit'):
         pulumi.set(self, "frequency_unit", value)
 
     @property
@@ -1223,12 +1447,12 @@ class ConnStringInfoArgs:
     def __init__(__self__, *,
                  connection_string: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input['ConnectionStringType']] = None):
         """
         Database connection string information.
         :param pulumi.Input[str] connection_string: Connection string value.
         :param pulumi.Input[str] name: Name of connection string.
-        :param pulumi.Input[str] type: Type of database.
+        :param pulumi.Input['ConnectionStringType'] type: Type of database.
         """
         if connection_string is not None:
             pulumi.set(__self__, "connection_string", connection_string)
@@ -1263,14 +1487,14 @@ class ConnStringInfoArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['ConnectionStringType']]:
         """
         Type of database.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['ConnectionStringType']]):
         pulumi.set(self, "type", value)
 
 
@@ -1557,11 +1781,11 @@ class ConnectionGatewayReferenceArgs:
 class ConnectionParameterArgs:
     def __init__(__self__, *,
                  o_auth_settings: Optional[pulumi.Input['ApiOAuthSettingsArgs']] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input['ConnectionParameterType']] = None):
         """
         Connection provider parameters
         :param pulumi.Input['ApiOAuthSettingsArgs'] o_auth_settings: OAuth settings for the connection provider
-        :param pulumi.Input[str] type: Type of the parameter
+        :param pulumi.Input['ConnectionParameterType'] type: Type of the parameter
         """
         if o_auth_settings is not None:
             pulumi.set(__self__, "o_auth_settings", o_auth_settings)
@@ -1582,14 +1806,14 @@ class ConnectionParameterArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['ConnectionParameterType']]:
         """
         Type of the parameter
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['ConnectionParameterType']]):
         pulumi.set(self, "type", value)
 
 
@@ -1771,7 +1995,7 @@ class CorsSettingsArgs:
 class CustomApiPropertiesDefinitionArgs:
     def __init__(__self__, *,
                  api_definitions: Optional[pulumi.Input['ApiResourceDefinitionsArgs']] = None,
-                 api_type: Optional[pulumi.Input[str]] = None,
+                 api_type: Optional[pulumi.Input[Union[str, 'ApiType']]] = None,
                  backend_service: Optional[pulumi.Input['ApiResourceBackendServiceArgs']] = None,
                  brand_color: Optional[pulumi.Input[str]] = None,
                  capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1785,7 +2009,7 @@ class CustomApiPropertiesDefinitionArgs:
         """
         Custom API properties
         :param pulumi.Input['ApiResourceDefinitionsArgs'] api_definitions: API Definitions
-        :param pulumi.Input[str] api_type: The API type
+        :param pulumi.Input[Union[str, 'ApiType']] api_type: The API type
         :param pulumi.Input['ApiResourceBackendServiceArgs'] backend_service: The API backend service
         :param pulumi.Input[str] brand_color: Brand color
         :param pulumi.Input[Sequence[pulumi.Input[str]]] capabilities: The custom API capabilities
@@ -1836,14 +2060,14 @@ class CustomApiPropertiesDefinitionArgs:
 
     @property
     @pulumi.getter(name="apiType")
-    def api_type(self) -> Optional[pulumi.Input[str]]:
+    def api_type(self) -> Optional[pulumi.Input[Union[str, 'ApiType']]]:
         """
         The API type
         """
         return pulumi.get(self, "api_type")
 
     @api_type.setter
-    def api_type(self, value: Optional[pulumi.Input[str]]):
+    def api_type(self, value: Optional[pulumi.Input[Union[str, 'ApiType']]]):
         pulumi.set(self, "api_type", value)
 
     @property
@@ -1970,13 +2194,13 @@ class CustomApiPropertiesDefinitionArgs:
 @pulumi.input_type
 class DatabaseBackupSettingArgs:
     def __init__(__self__, *,
-                 database_type: str,
+                 database_type: Union[str, 'DatabaseType'],
                  connection_string: Optional[str] = None,
                  connection_string_name: Optional[str] = None,
                  name: Optional[str] = None):
         """
         Database backup settings.
-        :param str database_type: Database type (e.g. SqlAzure / MySql).
+        :param Union[str, 'DatabaseType'] database_type: Database type (e.g. SqlAzure / MySql).
         :param str connection_string: Contains a connection string to a database which is being backed up or restored. If the restore should happen to a new database, the database name inside is the new one.
         :param str connection_string_name: Contains a connection string name that is linked to the SiteConfig.ConnectionStrings.
                This is used during restore with overwrite connection strings options.
@@ -1991,14 +2215,14 @@ class DatabaseBackupSettingArgs:
 
     @property
     @pulumi.getter(name="databaseType")
-    def database_type(self) -> str:
+    def database_type(self) -> Union[str, 'DatabaseType']:
         """
         Database type (e.g. SqlAzure / MySql).
         """
         return pulumi.get(self, "database_type")
 
     @database_type.setter
-    def database_type(self, value: str):
+    def database_type(self, value: Union[str, 'DatabaseType']):
         pulumi.set(self, "database_type", value)
 
     @property
@@ -2037,6 +2261,30 @@ class DatabaseBackupSettingArgs:
 
 
 @pulumi.input_type
+class EnabledConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        Enabled configuration.
+        :param pulumi.Input[bool] enabled: True if configuration is enabled, false if it is disabled and null if configuration is not set.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        True if configuration is enabled, false if it is disabled and null if configuration is not set.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
 class ExperimentsArgs:
     def __init__(__self__, *,
                  ramp_up_rules: Optional[pulumi.Input[Sequence[pulumi.Input['RampUpRuleArgs']]]] = None):
@@ -2058,6 +2306,94 @@ class ExperimentsArgs:
     @ramp_up_rules.setter
     def ramp_up_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RampUpRuleArgs']]]]):
         pulumi.set(self, "ramp_up_rules", value)
+
+
+@pulumi.input_type
+class FileSystemApplicationLogsConfigArgs:
+    def __init__(__self__, *,
+                 level: Optional[pulumi.Input['LogLevel']] = None):
+        """
+        Application logs to file system configuration.
+        :param pulumi.Input['LogLevel'] level: Log level.
+        """
+        if level is not None:
+            pulumi.set(__self__, "level", level)
+
+    @property
+    @pulumi.getter
+    def level(self) -> Optional[pulumi.Input['LogLevel']]:
+        """
+        Log level.
+        """
+        return pulumi.get(self, "level")
+
+    @level.setter
+    def level(self, value: Optional[pulumi.Input['LogLevel']]):
+        pulumi.set(self, "level", value)
+
+
+@pulumi.input_type
+class FileSystemHttpLogsConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 retention_in_days: Optional[pulumi.Input[int]] = None,
+                 retention_in_mb: Optional[pulumi.Input[int]] = None):
+        """
+        Http logs to file system configuration.
+        :param pulumi.Input[bool] enabled: True if configuration is enabled, false if it is disabled and null if configuration is not set.
+        :param pulumi.Input[int] retention_in_days: Retention in days.
+               Remove files older than X days.
+               0 or lower means no retention.
+        :param pulumi.Input[int] retention_in_mb: Maximum size in megabytes that http log files can use.
+               When reached old log files will be removed to make space for new ones.
+               Value can range between 25 and 100.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if retention_in_days is not None:
+            pulumi.set(__self__, "retention_in_days", retention_in_days)
+        if retention_in_mb is not None:
+            pulumi.set(__self__, "retention_in_mb", retention_in_mb)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        True if configuration is enabled, false if it is disabled and null if configuration is not set.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="retentionInDays")
+    def retention_in_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        Retention in days.
+        Remove files older than X days.
+        0 or lower means no retention.
+        """
+        return pulumi.get(self, "retention_in_days")
+
+    @retention_in_days.setter
+    def retention_in_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "retention_in_days", value)
+
+    @property
+    @pulumi.getter(name="retentionInMb")
+    def retention_in_mb(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum size in megabytes that http log files can use.
+        When reached old log files will be removed to make space for new ones.
+        Value can range between 25 and 100.
+        """
+        return pulumi.get(self, "retention_in_mb")
+
+    @retention_in_mb.setter
+    def retention_in_mb(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "retention_in_mb", value)
 
 
 @pulumi.input_type
@@ -2120,17 +2456,17 @@ class HandlerMappingArgs:
 @pulumi.input_type
 class HostNameSslStateArgs:
     def __init__(__self__, *,
-                 host_type: Optional[pulumi.Input[str]] = None,
+                 host_type: Optional[pulumi.Input['HostType']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 ssl_state: Optional[pulumi.Input[str]] = None,
+                 ssl_state: Optional[pulumi.Input['SslState']] = None,
                  thumbprint: Optional[pulumi.Input[str]] = None,
                  to_update: Optional[pulumi.Input[bool]] = None,
                  virtual_ip: Optional[pulumi.Input[str]] = None):
         """
         SSL-enabled hostname.
-        :param pulumi.Input[str] host_type: Indicates whether the hostname is a standard or repository hostname.
+        :param pulumi.Input['HostType'] host_type: Indicates whether the hostname is a standard or repository hostname.
         :param pulumi.Input[str] name: Hostname.
-        :param pulumi.Input[str] ssl_state: SSL type.
+        :param pulumi.Input['SslState'] ssl_state: SSL type.
         :param pulumi.Input[str] thumbprint: SSL certificate thumbprint.
         :param pulumi.Input[bool] to_update: Set to <code>true</code> to update existing hostname.
         :param pulumi.Input[str] virtual_ip: Virtual IP address assigned to the hostname if IP based SSL is enabled.
@@ -2150,14 +2486,14 @@ class HostNameSslStateArgs:
 
     @property
     @pulumi.getter(name="hostType")
-    def host_type(self) -> Optional[pulumi.Input[str]]:
+    def host_type(self) -> Optional[pulumi.Input['HostType']]:
         """
         Indicates whether the hostname is a standard or repository hostname.
         """
         return pulumi.get(self, "host_type")
 
     @host_type.setter
-    def host_type(self, value: Optional[pulumi.Input[str]]):
+    def host_type(self, value: Optional[pulumi.Input['HostType']]):
         pulumi.set(self, "host_type", value)
 
     @property
@@ -2174,14 +2510,14 @@ class HostNameSslStateArgs:
 
     @property
     @pulumi.getter(name="sslState")
-    def ssl_state(self) -> Optional[pulumi.Input[str]]:
+    def ssl_state(self) -> Optional[pulumi.Input['SslState']]:
         """
         SSL type.
         """
         return pulumi.get(self, "ssl_state")
 
     @ssl_state.setter
-    def ssl_state(self, value: Optional[pulumi.Input[str]]):
+    def ssl_state(self, value: Optional[pulumi.Input['SslState']]):
         pulumi.set(self, "ssl_state", value)
 
     @property
@@ -2246,6 +2582,46 @@ class HostingEnvironmentProfileArgs:
 
 
 @pulumi.input_type
+class HttpLogsConfigArgs:
+    def __init__(__self__, *,
+                 azure_blob_storage: Optional[pulumi.Input['AzureBlobStorageHttpLogsConfigArgs']] = None,
+                 file_system: Optional[pulumi.Input['FileSystemHttpLogsConfigArgs']] = None):
+        """
+        Http logs configuration.
+        :param pulumi.Input['AzureBlobStorageHttpLogsConfigArgs'] azure_blob_storage: Http logs to azure blob storage configuration.
+        :param pulumi.Input['FileSystemHttpLogsConfigArgs'] file_system: Http logs to file system configuration.
+        """
+        if azure_blob_storage is not None:
+            pulumi.set(__self__, "azure_blob_storage", azure_blob_storage)
+        if file_system is not None:
+            pulumi.set(__self__, "file_system", file_system)
+
+    @property
+    @pulumi.getter(name="azureBlobStorage")
+    def azure_blob_storage(self) -> Optional[pulumi.Input['AzureBlobStorageHttpLogsConfigArgs']]:
+        """
+        Http logs to azure blob storage configuration.
+        """
+        return pulumi.get(self, "azure_blob_storage")
+
+    @azure_blob_storage.setter
+    def azure_blob_storage(self, value: Optional[pulumi.Input['AzureBlobStorageHttpLogsConfigArgs']]):
+        pulumi.set(self, "azure_blob_storage", value)
+
+    @property
+    @pulumi.getter(name="fileSystem")
+    def file_system(self) -> Optional[pulumi.Input['FileSystemHttpLogsConfigArgs']]:
+        """
+        Http logs to file system configuration.
+        """
+        return pulumi.get(self, "file_system")
+
+    @file_system.setter
+    def file_system(self, value: Optional[pulumi.Input['FileSystemHttpLogsConfigArgs']]):
+        pulumi.set(self, "file_system", value)
+
+
+@pulumi.input_type
 class IpSecurityRestrictionArgs:
     def __init__(__self__, *,
                  action: Optional[pulumi.Input[str]] = None,
@@ -2256,7 +2632,7 @@ class IpSecurityRestrictionArgs:
                  priority: Optional[pulumi.Input[int]] = None,
                  subnet_mask: Optional[pulumi.Input[str]] = None,
                  subnet_traffic_tag: Optional[pulumi.Input[int]] = None,
-                 tag: Optional[pulumi.Input[str]] = None,
+                 tag: Optional[pulumi.Input[Union[str, 'IpFilterTag']]] = None,
                  vnet_subnet_resource_id: Optional[pulumi.Input[str]] = None,
                  vnet_traffic_tag: Optional[pulumi.Input[int]] = None):
         """
@@ -2287,7 +2663,7 @@ class IpSecurityRestrictionArgs:
         :param pulumi.Input[int] priority: Priority of IP restriction rule.
         :param pulumi.Input[str] subnet_mask: Subnet mask for the range of IP addresses the restriction is valid for.
         :param pulumi.Input[int] subnet_traffic_tag: (internal) Subnet traffic tag
-        :param pulumi.Input[str] tag: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
+        :param pulumi.Input[Union[str, 'IpFilterTag']] tag: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
         :param pulumi.Input[str] vnet_subnet_resource_id: Virtual network resource id
         :param pulumi.Input[int] vnet_traffic_tag: (internal) Vnet traffic tag
         """
@@ -2430,14 +2806,14 @@ class IpSecurityRestrictionArgs:
 
     @property
     @pulumi.getter
-    def tag(self) -> Optional[pulumi.Input[str]]:
+    def tag(self) -> Optional[pulumi.Input[Union[str, 'IpFilterTag']]]:
         """
         Defines what this IP filter will be used for. This is to support IP filtering on proxies.
         """
         return pulumi.get(self, "tag")
 
     @tag.setter
-    def tag(self, value: Optional[pulumi.Input[str]]):
+    def tag(self, value: Optional[pulumi.Input[Union[str, 'IpFilterTag']]]):
         pulumi.set(self, "tag", value)
 
     @property
@@ -2468,11 +2844,11 @@ class IpSecurityRestrictionArgs:
 @pulumi.input_type
 class ManagedServiceIdentityArgs:
     def __init__(__self__, *,
-                 type: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input['ManagedServiceIdentityType']] = None,
                  user_assigned_identities: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         Managed service identity.
-        :param pulumi.Input[str] type: Type of managed service identity.
+        :param pulumi.Input['ManagedServiceIdentityType'] type: Type of managed service identity.
         :param pulumi.Input[Mapping[str, Any]] user_assigned_identities: The list of user assigned identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}
         """
         if type is not None:
@@ -2482,14 +2858,14 @@ class ManagedServiceIdentityArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['ManagedServiceIdentityType']]:
         """
         Type of managed service identity.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['ManagedServiceIdentityType']]):
         pulumi.set(self, "type", value)
 
     @property
@@ -2548,7 +2924,7 @@ class NameValuePairArgs:
 @pulumi.input_type
 class NetworkAccessControlEntryArgs:
     def __init__(__self__, *,
-                 action: Optional[pulumi.Input[str]] = None,
+                 action: Optional[pulumi.Input['AccessControlEntryAction']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  order: Optional[pulumi.Input[int]] = None,
                  remote_subnet: Optional[pulumi.Input[str]] = None):
@@ -2563,11 +2939,11 @@ class NetworkAccessControlEntryArgs:
 
     @property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input[str]]:
+    def action(self) -> Optional[pulumi.Input['AccessControlEntryAction']]:
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input[str]]):
+    def action(self, value: Optional[pulumi.Input['AccessControlEntryAction']]):
         pulumi.set(self, "action", value)
 
     @property
@@ -2946,7 +3322,7 @@ class SiteConfigArgs:
                  detailed_error_logging_enabled: Optional[pulumi.Input[bool]] = None,
                  document_root: Optional[pulumi.Input[str]] = None,
                  experiments: Optional[pulumi.Input['ExperimentsArgs']] = None,
-                 ftps_state: Optional[pulumi.Input[str]] = None,
+                 ftps_state: Optional[pulumi.Input[Union[str, 'FtpsState']]] = None,
                  handler_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['HandlerMappingArgs']]]] = None,
                  health_check_path: Optional[pulumi.Input[str]] = None,
                  http20_enabled: Optional[pulumi.Input[bool]] = None,
@@ -2957,12 +3333,12 @@ class SiteConfigArgs:
                  java_version: Optional[pulumi.Input[str]] = None,
                  limits: Optional[pulumi.Input['SiteLimitsArgs']] = None,
                  linux_fx_version: Optional[pulumi.Input[str]] = None,
-                 load_balancing: Optional[pulumi.Input[str]] = None,
+                 load_balancing: Optional[pulumi.Input['SiteLoadBalancing']] = None,
                  local_my_sql_enabled: Optional[pulumi.Input[bool]] = None,
                  logs_directory_size_limit: Optional[pulumi.Input[int]] = None,
-                 managed_pipeline_mode: Optional[pulumi.Input[str]] = None,
+                 managed_pipeline_mode: Optional[pulumi.Input['ManagedPipelineMode']] = None,
                  managed_service_identity_id: Optional[pulumi.Input[int]] = None,
-                 min_tls_version: Optional[pulumi.Input[str]] = None,
+                 min_tls_version: Optional[pulumi.Input[Union[str, 'SupportedTlsVersions']]] = None,
                  net_framework_version: Optional[pulumi.Input[str]] = None,
                  node_version: Optional[pulumi.Input[str]] = None,
                  number_of_workers: Optional[pulumi.Input[int]] = None,
@@ -2978,8 +3354,8 @@ class SiteConfigArgs:
                  request_tracing_expiration_time: Optional[pulumi.Input[str]] = None,
                  scm_ip_security_restrictions: Optional[pulumi.Input[Sequence[pulumi.Input['IpSecurityRestrictionArgs']]]] = None,
                  scm_ip_security_restrictions_use_main: Optional[pulumi.Input[bool]] = None,
-                 scm_min_tls_version: Optional[pulumi.Input[str]] = None,
-                 scm_type: Optional[pulumi.Input[str]] = None,
+                 scm_min_tls_version: Optional[pulumi.Input[Union[str, 'SupportedTlsVersions']]] = None,
+                 scm_type: Optional[pulumi.Input[Union[str, 'ScmType']]] = None,
                  tracing_options: Optional[pulumi.Input[str]] = None,
                  use32_bit_worker_process: Optional[pulumi.Input[bool]] = None,
                  virtual_applications: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualApplicationArgs']]]] = None,
@@ -3005,7 +3381,7 @@ class SiteConfigArgs:
         :param pulumi.Input[bool] detailed_error_logging_enabled: <code>true</code> if detailed error logging is enabled; otherwise, <code>false</code>.
         :param pulumi.Input[str] document_root: Document root.
         :param pulumi.Input['ExperimentsArgs'] experiments: This is work around for polymorphic types.
-        :param pulumi.Input[str] ftps_state: State of FTP / FTPS service
+        :param pulumi.Input[Union[str, 'FtpsState']] ftps_state: State of FTP / FTPS service
         :param pulumi.Input[Sequence[pulumi.Input['HandlerMappingArgs']]] handler_mappings: Handler mappings.
         :param pulumi.Input[str] health_check_path: Health check path
         :param pulumi.Input[bool] http20_enabled: Http20Enabled: configures a web site to allow clients to connect over http2.0
@@ -3016,12 +3392,12 @@ class SiteConfigArgs:
         :param pulumi.Input[str] java_version: Java version.
         :param pulumi.Input['SiteLimitsArgs'] limits: Site limits.
         :param pulumi.Input[str] linux_fx_version: Linux App Framework and version
-        :param pulumi.Input[str] load_balancing: Site load balancing.
+        :param pulumi.Input['SiteLoadBalancing'] load_balancing: Site load balancing.
         :param pulumi.Input[bool] local_my_sql_enabled: <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
         :param pulumi.Input[int] logs_directory_size_limit: HTTP logs directory size limit.
-        :param pulumi.Input[str] managed_pipeline_mode: Managed pipeline mode.
+        :param pulumi.Input['ManagedPipelineMode'] managed_pipeline_mode: Managed pipeline mode.
         :param pulumi.Input[int] managed_service_identity_id: Managed Service Identity Id
-        :param pulumi.Input[str] min_tls_version: MinTlsVersion: configures the minimum version of TLS required for SSL requests
+        :param pulumi.Input[Union[str, 'SupportedTlsVersions']] min_tls_version: MinTlsVersion: configures the minimum version of TLS required for SSL requests
         :param pulumi.Input[str] net_framework_version: .NET Framework version.
         :param pulumi.Input[str] node_version: Version of Node.js.
         :param pulumi.Input[int] number_of_workers: Number of workers.
@@ -3038,8 +3414,8 @@ class SiteConfigArgs:
         :param pulumi.Input[str] request_tracing_expiration_time: Request tracing expiration time.
         :param pulumi.Input[Sequence[pulumi.Input['IpSecurityRestrictionArgs']]] scm_ip_security_restrictions: IP security restrictions for scm.
         :param pulumi.Input[bool] scm_ip_security_restrictions_use_main: IP security restrictions for scm to use main.
-        :param pulumi.Input[str] scm_min_tls_version: ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
-        :param pulumi.Input[str] scm_type: SCM type.
+        :param pulumi.Input[Union[str, 'SupportedTlsVersions']] scm_min_tls_version: ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
+        :param pulumi.Input[Union[str, 'ScmType']] scm_type: SCM type.
         :param pulumi.Input[str] tracing_options: Tracing options.
         :param pulumi.Input[bool] use32_bit_worker_process: <code>true</code> to use 32-bit worker process; otherwise, <code>false</code>.
         :param pulumi.Input[Sequence[pulumi.Input['VirtualApplicationArgs']]] virtual_applications: Virtual applications.
@@ -3335,14 +3711,14 @@ class SiteConfigArgs:
 
     @property
     @pulumi.getter(name="ftpsState")
-    def ftps_state(self) -> Optional[pulumi.Input[str]]:
+    def ftps_state(self) -> Optional[pulumi.Input[Union[str, 'FtpsState']]]:
         """
         State of FTP / FTPS service
         """
         return pulumi.get(self, "ftps_state")
 
     @ftps_state.setter
-    def ftps_state(self, value: Optional[pulumi.Input[str]]):
+    def ftps_state(self, value: Optional[pulumi.Input[Union[str, 'FtpsState']]]):
         pulumi.set(self, "ftps_state", value)
 
     @property
@@ -3467,14 +3843,14 @@ class SiteConfigArgs:
 
     @property
     @pulumi.getter(name="loadBalancing")
-    def load_balancing(self) -> Optional[pulumi.Input[str]]:
+    def load_balancing(self) -> Optional[pulumi.Input['SiteLoadBalancing']]:
         """
         Site load balancing.
         """
         return pulumi.get(self, "load_balancing")
 
     @load_balancing.setter
-    def load_balancing(self, value: Optional[pulumi.Input[str]]):
+    def load_balancing(self, value: Optional[pulumi.Input['SiteLoadBalancing']]):
         pulumi.set(self, "load_balancing", value)
 
     @property
@@ -3503,14 +3879,14 @@ class SiteConfigArgs:
 
     @property
     @pulumi.getter(name="managedPipelineMode")
-    def managed_pipeline_mode(self) -> Optional[pulumi.Input[str]]:
+    def managed_pipeline_mode(self) -> Optional[pulumi.Input['ManagedPipelineMode']]:
         """
         Managed pipeline mode.
         """
         return pulumi.get(self, "managed_pipeline_mode")
 
     @managed_pipeline_mode.setter
-    def managed_pipeline_mode(self, value: Optional[pulumi.Input[str]]):
+    def managed_pipeline_mode(self, value: Optional[pulumi.Input['ManagedPipelineMode']]):
         pulumi.set(self, "managed_pipeline_mode", value)
 
     @property
@@ -3527,14 +3903,14 @@ class SiteConfigArgs:
 
     @property
     @pulumi.getter(name="minTlsVersion")
-    def min_tls_version(self) -> Optional[pulumi.Input[str]]:
+    def min_tls_version(self) -> Optional[pulumi.Input[Union[str, 'SupportedTlsVersions']]]:
         """
         MinTlsVersion: configures the minimum version of TLS required for SSL requests
         """
         return pulumi.get(self, "min_tls_version")
 
     @min_tls_version.setter
-    def min_tls_version(self, value: Optional[pulumi.Input[str]]):
+    def min_tls_version(self, value: Optional[pulumi.Input[Union[str, 'SupportedTlsVersions']]]):
         pulumi.set(self, "min_tls_version", value)
 
     @property
@@ -3720,26 +4096,26 @@ class SiteConfigArgs:
 
     @property
     @pulumi.getter(name="scmMinTlsVersion")
-    def scm_min_tls_version(self) -> Optional[pulumi.Input[str]]:
+    def scm_min_tls_version(self) -> Optional[pulumi.Input[Union[str, 'SupportedTlsVersions']]]:
         """
         ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
         """
         return pulumi.get(self, "scm_min_tls_version")
 
     @scm_min_tls_version.setter
-    def scm_min_tls_version(self, value: Optional[pulumi.Input[str]]):
+    def scm_min_tls_version(self, value: Optional[pulumi.Input[Union[str, 'SupportedTlsVersions']]]):
         pulumi.set(self, "scm_min_tls_version", value)
 
     @property
     @pulumi.getter(name="scmType")
-    def scm_type(self) -> Optional[pulumi.Input[str]]:
+    def scm_type(self) -> Optional[pulumi.Input[Union[str, 'ScmType']]]:
         """
         SCM type.
         """
         return pulumi.get(self, "scm_type")
 
     @scm_type.setter
-    def scm_type(self, value: Optional[pulumi.Input[str]]):
+    def scm_type(self, value: Optional[pulumi.Input[Union[str, 'ScmType']]]):
         pulumi.set(self, "scm_type", value)
 
     @property
@@ -4175,19 +4551,19 @@ class SlowRequestsBasedTriggerArgs:
 class StampCapacityArgs:
     def __init__(__self__, *,
                  available_capacity: Optional[pulumi.Input[int]] = None,
-                 compute_mode: Optional[pulumi.Input[str]] = None,
+                 compute_mode: Optional[pulumi.Input['ComputeModeOptions']] = None,
                  exclude_from_capacity_allocation: Optional[pulumi.Input[bool]] = None,
                  is_applicable_for_all_compute_modes: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  site_mode: Optional[pulumi.Input[str]] = None,
                  total_capacity: Optional[pulumi.Input[int]] = None,
                  unit: Optional[pulumi.Input[str]] = None,
-                 worker_size: Optional[pulumi.Input[str]] = None,
+                 worker_size: Optional[pulumi.Input['WorkerSizeOptions']] = None,
                  worker_size_id: Optional[pulumi.Input[int]] = None):
         """
         Class containing stamp capacity information
         :param pulumi.Input[int] available_capacity: Available capacity (# of machines, bytes of storage etc...)
-        :param pulumi.Input[str] compute_mode: Shared/Dedicated workers
+        :param pulumi.Input['ComputeModeOptions'] compute_mode: Shared/Dedicated workers
         :param pulumi.Input[bool] exclude_from_capacity_allocation: If true it includes basic sites
                            Basic sites are not used for capacity allocation.
         :param pulumi.Input[bool] is_applicable_for_all_compute_modes: Is capacity applicable for all sites?
@@ -4195,7 +4571,7 @@ class StampCapacityArgs:
         :param pulumi.Input[str] site_mode: Shared or Dedicated
         :param pulumi.Input[int] total_capacity: Total capacity (# of machines, bytes of storage etc...)
         :param pulumi.Input[str] unit: Name of the unit
-        :param pulumi.Input[str] worker_size: Size of the machines
+        :param pulumi.Input['WorkerSizeOptions'] worker_size: Size of the machines
         :param pulumi.Input[int] worker_size_id: Size Id of machines: 
                            0 - Small
                            1 - Medium
@@ -4236,14 +4612,14 @@ class StampCapacityArgs:
 
     @property
     @pulumi.getter(name="computeMode")
-    def compute_mode(self) -> Optional[pulumi.Input[str]]:
+    def compute_mode(self) -> Optional[pulumi.Input['ComputeModeOptions']]:
         """
         Shared/Dedicated workers
         """
         return pulumi.get(self, "compute_mode")
 
     @compute_mode.setter
-    def compute_mode(self, value: Optional[pulumi.Input[str]]):
+    def compute_mode(self, value: Optional[pulumi.Input['ComputeModeOptions']]):
         pulumi.set(self, "compute_mode", value)
 
     @property
@@ -4321,14 +4697,14 @@ class StampCapacityArgs:
 
     @property
     @pulumi.getter(name="workerSize")
-    def worker_size(self) -> Optional[pulumi.Input[str]]:
+    def worker_size(self) -> Optional[pulumi.Input['WorkerSizeOptions']]:
         """
         Size of the machines
         """
         return pulumi.get(self, "worker_size")
 
     @worker_size.setter
-    def worker_size(self, value: Optional[pulumi.Input[str]]):
+    def worker_size(self, value: Optional[pulumi.Input['WorkerSizeOptions']]):
         pulumi.set(self, "worker_size", value)
 
     @property
@@ -4751,7 +5127,7 @@ class VirtualNetworkProfileArgs:
 class WorkerPoolArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 compute_mode: Optional[pulumi.Input[str]] = None,
+                 compute_mode: Optional[pulumi.Input['ComputeModeOptions']] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  instance_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -4765,7 +5141,7 @@ class WorkerPoolArgs:
         """
         Worker pool of a hostingEnvironment (App Service Environment)
         :param pulumi.Input[str] location: Resource Location
-        :param pulumi.Input[str] compute_mode: Shared or dedicated web app hosting
+        :param pulumi.Input['ComputeModeOptions'] compute_mode: Shared or dedicated web app hosting
         :param pulumi.Input[str] id: Resource Id
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_names: Names of all instances in the worker pool (read only)
         :param pulumi.Input[str] kind: Kind of resource
@@ -4815,14 +5191,14 @@ class WorkerPoolArgs:
 
     @property
     @pulumi.getter(name="computeMode")
-    def compute_mode(self) -> Optional[pulumi.Input[str]]:
+    def compute_mode(self) -> Optional[pulumi.Input['ComputeModeOptions']]:
         """
         Shared or dedicated web app hosting
         """
         return pulumi.get(self, "compute_mode")
 
     @compute_mode.setter
-    def compute_mode(self, value: Optional[pulumi.Input[str]]):
+    def compute_mode(self, value: Optional[pulumi.Input['ComputeModeOptions']]):
         pulumi.set(self, "compute_mode", value)
 
     @property
@@ -4950,13 +5326,13 @@ class WorkerPoolArgs:
 class WsdlDefinitionArgs:
     def __init__(__self__, *,
                  content: Optional[pulumi.Input[str]] = None,
-                 import_method: Optional[pulumi.Input[str]] = None,
+                 import_method: Optional[pulumi.Input[Union[str, 'WsdlImportMethod']]] = None,
                  service: Optional[pulumi.Input['WsdlServiceArgs']] = None,
                  url: Optional[pulumi.Input[str]] = None):
         """
         The WSDL definition
         :param pulumi.Input[str] content: The WSDL content
-        :param pulumi.Input[str] import_method: The WSDL import method
+        :param pulumi.Input[Union[str, 'WsdlImportMethod']] import_method: The WSDL import method
         :param pulumi.Input['WsdlServiceArgs'] service: The service with name and endpoint names
         :param pulumi.Input[str] url: The WSDL URL
         """
@@ -4983,14 +5359,14 @@ class WsdlDefinitionArgs:
 
     @property
     @pulumi.getter(name="importMethod")
-    def import_method(self) -> Optional[pulumi.Input[str]]:
+    def import_method(self) -> Optional[pulumi.Input[Union[str, 'WsdlImportMethod']]]:
         """
         The WSDL import method
         """
         return pulumi.get(self, "import_method")
 
     @import_method.setter
-    def import_method(self, value: Optional[pulumi.Input[str]]):
+    def import_method(self, value: Optional[pulumi.Input[Union[str, 'WsdlImportMethod']]]):
         pulumi.set(self, "import_method", value)
 
     @property

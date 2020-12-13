@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getIotHubResourceEventHubConsumerGroup(args: GetIotHubResourceEventHubConsumerGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetIotHubResourceEventHubConsumerGroupResult> {
@@ -44,6 +44,10 @@ export interface GetIotHubResourceEventHubConsumerGroupArgs {
  * The properties of the EventHubConsumerGroupInfo object.
  */
 export interface GetIotHubResourceEventHubConsumerGroupResult {
+    /**
+     * The Event Hub-compatible consumer group identifier.
+     */
+    readonly id?: string;
     /**
      * The Event Hub-compatible consumer group name.
      */

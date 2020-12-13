@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getWorkflowAccessKey(args: GetWorkflowAccessKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkflowAccessKeyResult> {
@@ -36,6 +36,10 @@ export interface GetWorkflowAccessKeyArgs {
 }
 
 export interface GetWorkflowAccessKeyResult {
+    /**
+     * Gets or sets the resource id.
+     */
+    readonly id?: string;
     /**
      * Gets the workflow access key name.
      */

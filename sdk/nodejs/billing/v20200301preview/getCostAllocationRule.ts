@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getCostAllocationRule(args: GetCostAllocationRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetCostAllocationRuleResult> {
@@ -34,6 +34,10 @@ export interface GetCostAllocationRuleArgs {
  * The cost allocation rule model definition
  */
 export interface GetCostAllocationRuleResult {
+    /**
+     * Azure Resource Manager Id for the rule. This is a read ony value.
+     */
+    readonly id: string;
     /**
      * Name of the rule. This is a read only value.
      */

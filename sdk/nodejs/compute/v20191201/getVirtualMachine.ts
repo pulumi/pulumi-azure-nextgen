@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getVirtualMachine(args: GetVirtualMachineArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualMachineResult> {
@@ -67,6 +67,10 @@ export interface GetVirtualMachineResult {
      * Specifies information about the dedicated host that the virtual machine resides in. <br><br>Minimum api-version: 2018-10-01.
      */
     readonly host?: outputs.compute.v20191201.SubResourceResponse;
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * The identity of the virtual machine, if configured.
      */

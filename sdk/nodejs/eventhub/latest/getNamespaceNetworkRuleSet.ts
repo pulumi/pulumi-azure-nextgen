@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getNamespaceNetworkRuleSet(args: GetNamespaceNetworkRuleSetArgs, opts?: pulumi.InvokeOptions): Promise<GetNamespaceNetworkRuleSetResult> {
@@ -38,6 +38,10 @@ export interface GetNamespaceNetworkRuleSetResult {
      * Default Action for Network Rule Set
      */
     readonly defaultAction?: string;
+    /**
+     * Resource ID.
+     */
+    readonly id: string;
     /**
      * List of IpRules
      */

@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getController(args: GetControllerArgs, opts?: pulumi.InvokeOptions): Promise<GetControllerResult> {
@@ -39,6 +39,10 @@ export interface GetControllerResult {
      * DNS suffix for public endpoints running in the Azure Dev Spaces Controller.
      */
     readonly hostSuffix: string;
+    /**
+     * Fully qualified resource Id for the resource.
+     */
+    readonly id: string;
     /**
      * Region where the Azure resource is located.
      */

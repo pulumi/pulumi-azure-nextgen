@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getContainerGroup(args: GetContainerGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerGroupResult> {
@@ -38,6 +38,10 @@ export interface GetContainerGroupResult {
      * The containers within the container group.
      */
     readonly containers: outputs.containerinstance.v20171001preview.ContainerResponse[];
+    /**
+     * The resource id.
+     */
+    readonly id: string;
     /**
      * The image registry credentials by which the container group is created from.
      */

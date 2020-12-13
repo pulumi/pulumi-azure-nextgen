@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getSupportPlanType(args: GetSupportPlanTypeArgs, opts?: pulumi.InvokeOptions): Promise<GetSupportPlanTypeResult> {
@@ -34,6 +34,10 @@ export interface GetSupportPlanTypeArgs {
  * The status of the Canonical support plan.
  */
 export interface GetSupportPlanTypeResult {
+    /**
+     * The id of the ARM resource, e.g. "/subscriptions/{id}/providers/Microsoft.Addons/supportProvider/{supportProviderName}/supportPlanTypes/{planTypeName}".
+     */
+    readonly id: string;
     /**
      * The name of the Canonical support plan, i.e. "essential", "standard" or "advanced".
      */

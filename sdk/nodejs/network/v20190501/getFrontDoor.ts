@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getFrontDoor(args: GetFrontDoorArgs, opts?: pulumi.InvokeOptions): Promise<GetFrontDoorResult> {
@@ -62,6 +62,10 @@ export interface GetFrontDoorResult {
      * Health probe settings associated with this Front Door instance.
      */
     readonly healthProbeSettings?: outputs.network.v20190501.HealthProbeSettingsModelResponse[];
+    /**
+     * Resource ID.
+     */
+    readonly id: string;
     /**
      * Load balancing settings associated with this Front Door instance.
      */

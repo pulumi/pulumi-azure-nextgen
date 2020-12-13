@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getvNetPeering(args: GetvNetPeeringArgs, opts?: pulumi.InvokeOptions): Promise<GetvNetPeeringResult> {
@@ -59,6 +59,10 @@ export interface GetvNetPeeringResult {
      *  The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
      */
     readonly databricksVirtualNetwork?: outputs.databricks.latest.VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetwork;
+    /**
+     * Resource ID.
+     */
+    readonly id: string;
     /**
      * Name of the virtual network peering resource
      */

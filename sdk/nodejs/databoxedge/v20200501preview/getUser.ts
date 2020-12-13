@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
@@ -43,6 +43,10 @@ export interface GetUserResult {
      * The password details.
      */
     readonly encryptedPassword?: outputs.databoxedge.v20200501preview.AsymmetricEncryptedSecretResponse;
+    /**
+     * The path ID that uniquely identifies the object.
+     */
+    readonly id: string;
     /**
      * The object name.
      */

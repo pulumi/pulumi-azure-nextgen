@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getTagAtScope(args: GetTagAtScopeArgs, opts?: pulumi.InvokeOptions): Promise<GetTagAtScopeResult> {
@@ -29,6 +29,10 @@ export interface GetTagAtScopeArgs {
  * Wrapper resource for tags API requests and responses.
  */
 export interface GetTagAtScopeResult {
+    /**
+     * The ID of the tags wrapper resource.
+     */
+    readonly id: string;
     /**
      * The name of the tags wrapper resource.
      */

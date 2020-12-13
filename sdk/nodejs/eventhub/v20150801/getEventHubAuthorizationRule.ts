@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getEventHubAuthorizationRule(args: GetEventHubAuthorizationRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetEventHubAuthorizationRuleResult> {
@@ -44,6 +44,10 @@ export interface GetEventHubAuthorizationRuleArgs {
  * Single item in a List or Get AuthorizationRule operation
  */
 export interface GetEventHubAuthorizationRuleResult {
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * Resource location
      */

@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getCommunicationService(args: GetCommunicationServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetCommunicationServiceResult> {
@@ -42,6 +42,10 @@ export interface GetCommunicationServiceResult {
      * FQDN of the CommunicationService instance.
      */
     readonly hostName: string;
+    /**
+     * Fully qualified resource ID for the resource.
+     */
+    readonly id: string;
     /**
      * The immutable resource Id of the communication service.
      */

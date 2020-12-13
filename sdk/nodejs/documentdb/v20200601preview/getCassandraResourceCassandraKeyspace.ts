@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getCassandraResourceCassandraKeyspace(args: GetCassandraResourceCassandraKeyspaceArgs, opts?: pulumi.InvokeOptions): Promise<GetCassandraResourceCassandraKeyspaceResult> {
@@ -39,6 +39,10 @@ export interface GetCassandraResourceCassandraKeyspaceArgs {
  * An Azure Cosmos DB Cassandra keyspace.
  */
 export interface GetCassandraResourceCassandraKeyspaceResult {
+    /**
+     * The unique resource identifier of the ARM resource.
+     */
+    readonly id: string;
     /**
      * Identity for the resource.
      */

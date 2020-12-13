@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getSyncAgent(args: GetSyncAgentArgs, opts?: pulumi.InvokeOptions): Promise<GetSyncAgentResult> {
@@ -43,6 +43,10 @@ export interface GetSyncAgentResult {
      * Expiration time of the sync agent version.
      */
     readonly expiryTime: string;
+    /**
+     * Resource ID.
+     */
+    readonly id: string;
     /**
      * If the sync agent version is up to date.
      */

@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getApiDiagnostic(args: GetApiDiagnosticArgs, opts?: pulumi.InvokeOptions): Promise<GetApiDiagnosticResult> {
@@ -60,6 +60,10 @@ export interface GetApiDiagnosticResult {
      * Diagnostic settings for incoming/outgoing HTTP messages to the Gateway.
      */
     readonly frontend?: outputs.apimanagement.v20180601preview.PipelineDiagnosticSettingsResponse;
+    /**
+     * Resource ID.
+     */
+    readonly id: string;
     /**
      * Resource Id of a target logger.
      */

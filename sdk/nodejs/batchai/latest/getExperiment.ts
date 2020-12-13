@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getExperiment(args: GetExperimentArgs, opts?: pulumi.InvokeOptions): Promise<GetExperimentResult> {
@@ -43,6 +43,10 @@ export interface GetExperimentResult {
      * Time when the Experiment was created.
      */
     readonly creationTime: string;
+    /**
+     * The ID of the resource.
+     */
+    readonly id: string;
     /**
      * The name of the resource.
      */

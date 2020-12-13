@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getMetricAlert(args: GetMetricAlertArgs, opts?: pulumi.InvokeOptions): Promise<GetMetricAlertResult> {
@@ -58,6 +58,10 @@ export interface GetMetricAlertResult {
      * how often the metric alert is evaluated represented in ISO 8601 duration format.
      */
     readonly evaluationFrequency: string;
+    /**
+     * Azure resource Id
+     */
+    readonly id: string;
     /**
      * Last time the rule was updated in ISO8601 format.
      */

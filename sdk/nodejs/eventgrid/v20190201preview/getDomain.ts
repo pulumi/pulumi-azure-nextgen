@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getDomain(args: GetDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainResult> {
@@ -38,6 +38,10 @@ export interface GetDomainResult {
      * Endpoint for the domain.
      */
     readonly endpoint: string;
+    /**
+     * Fully qualified identifier of the resource
+     */
+    readonly id: string;
     /**
      * This determines the format that Event Grid should expect for incoming events published to the domain.
      */

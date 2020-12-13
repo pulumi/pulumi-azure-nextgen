@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getSqlResourceSqlRoleAssignment(args: GetSqlResourceSqlRoleAssignmentArgs, opts?: pulumi.InvokeOptions): Promise<GetSqlResourceSqlRoleAssignmentResult> {
@@ -39,6 +39,10 @@ export interface GetSqlResourceSqlRoleAssignmentArgs {
  * An Azure Cosmos DB Role Assignment
  */
 export interface GetSqlResourceSqlRoleAssignmentResult {
+    /**
+     * The unique resource identifier of the database account.
+     */
+    readonly id: string;
     /**
      * The name of the database account.
      */

@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getAlertRuleAction(args: GetAlertRuleActionArgs, opts?: pulumi.InvokeOptions): Promise<GetAlertRuleActionResult> {
@@ -48,6 +48,10 @@ export interface GetAlertRuleActionResult {
      * Etag of the action.
      */
     readonly etag?: string;
+    /**
+     * Azure resource Id
+     */
+    readonly id: string;
     /**
      * Logic App Resource Id, /subscriptions/{my-subscription}/resourceGroups/{my-resource-group}/providers/Microsoft.Logic/workflows/{my-workflow-id}.
      */

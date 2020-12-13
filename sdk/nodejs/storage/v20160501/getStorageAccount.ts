@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getStorageAccount(args: GetStorageAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetStorageAccountResult> {
@@ -50,6 +50,10 @@ export interface GetStorageAccountResult {
      * Gets the encryption settings on the account. If unspecified, the account is unencrypted.
      */
     readonly encryption: outputs.storage.v20160501.EncryptionResponse;
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * Gets the Kind.
      */

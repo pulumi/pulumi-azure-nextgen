@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getIntegrationAccountBatchConfiguration(args: GetIntegrationAccountBatchConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetIntegrationAccountBatchConfigurationResult> {
@@ -39,6 +39,10 @@ export interface GetIntegrationAccountBatchConfigurationArgs {
  * The batch configuration resource definition.
  */
 export interface GetIntegrationAccountBatchConfigurationResult {
+    /**
+     * The resource id.
+     */
+    readonly id: string;
     /**
      * The resource location.
      */

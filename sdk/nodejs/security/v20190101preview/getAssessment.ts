@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getAssessment(args: GetAssessmentArgs, opts?: pulumi.InvokeOptions): Promise<GetAssessmentResult> {
@@ -47,6 +47,10 @@ export interface GetAssessmentResult {
      * User friendly display name of the assessment
      */
     readonly displayName: string;
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * Links relevant to the assessment
      */

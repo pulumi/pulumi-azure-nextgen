@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getBackupPolicy(args: GetBackupPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetBackupPolicyResult> {
@@ -47,6 +47,10 @@ export interface GetBackupPolicyResult {
      * The property to decide policy is enabled or not
      */
     readonly enabled?: boolean;
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * Resource location
      */

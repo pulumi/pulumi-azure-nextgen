@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getCertificateOrderCertificate(args: GetCertificateOrderCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificateOrderCertificateResult> {
@@ -39,6 +39,10 @@ export interface GetCertificateOrderCertificateArgs {
  * Class representing the Key Vault container for certificate purchased through Azure
  */
 export interface GetCertificateOrderCertificateResult {
+    /**
+     * Resource Id
+     */
+    readonly id?: string;
     /**
      * Key Vault Csm resource Id
      */

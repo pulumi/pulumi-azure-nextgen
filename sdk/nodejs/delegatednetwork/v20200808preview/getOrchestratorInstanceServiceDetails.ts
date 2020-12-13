@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getOrchestratorInstanceServiceDetails(args: GetOrchestratorInstanceServiceDetailsArgs, opts?: pulumi.InvokeOptions): Promise<GetOrchestratorInstanceServiceDetailsResult> {
@@ -46,6 +46,10 @@ export interface GetOrchestratorInstanceServiceDetailsResult {
      * controller details
      */
     readonly controllerDetails: outputs.delegatednetwork.v20200808preview.ControllerDetailsResponse;
+    /**
+     * An identifier that represents the resource.
+     */
+    readonly id: string;
     /**
      * The identity of the orchestrator
      */

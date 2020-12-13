@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from ._enums import *
 from .app_service_environment import *
 from .app_service_plan import *
 from .app_service_plan_route_for_vnet import *
@@ -14,6 +15,7 @@ from .get_static_site import *
 from .get_web_app import *
 from .get_web_app_deployment import *
 from .get_web_app_deployment_slot import *
+from .get_web_app_diagnostic_logs_configuration import *
 from .get_web_app_domain_ownership_identifier import *
 from .get_web_app_domain_ownership_identifier_slot import *
 from .get_web_app_function import *
@@ -77,6 +79,7 @@ from .static_site import *
 from .web_app import *
 from .web_app_deployment import *
 from .web_app_deployment_slot import *
+from .web_app_diagnostic_logs_configuration import *
 from .web_app_domain_ownership_identifier import *
 from .web_app_domain_ownership_identifier_slot import *
 from .web_app_function import *
@@ -104,3 +107,92 @@ from .web_app_vnet_connection import *
 from .web_app_vnet_connection_slot import *
 from ._inputs import *
 from . import outputs
+
+def _register_module():
+    import pulumi
+    from ... import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "azure-nextgen:web/v20200901:AppServiceEnvironment":
+                return AppServiceEnvironment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure-nextgen:web/v20200901:AppServicePlan":
+                return AppServicePlan(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure-nextgen:web/v20200901:AppServicePlanRouteForVnet":
+                return AppServicePlanRouteForVnet(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure-nextgen:web/v20200901:Certificate":
+                return Certificate(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure-nextgen:web/v20200901:StaticSite":
+                return StaticSite(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure-nextgen:web/v20200901:WebApp":
+                return WebApp(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure-nextgen:web/v20200901:WebAppDeployment":
+                return WebAppDeployment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure-nextgen:web/v20200901:WebAppDeploymentSlot":
+                return WebAppDeploymentSlot(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure-nextgen:web/v20200901:WebAppDiagnosticLogsConfiguration":
+                return WebAppDiagnosticLogsConfiguration(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure-nextgen:web/v20200901:WebAppDomainOwnershipIdentifier":
+                return WebAppDomainOwnershipIdentifier(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure-nextgen:web/v20200901:WebAppDomainOwnershipIdentifierSlot":
+                return WebAppDomainOwnershipIdentifierSlot(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure-nextgen:web/v20200901:WebAppFunction":
+                return WebAppFunction(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure-nextgen:web/v20200901:WebAppHostNameBinding":
+                return WebAppHostNameBinding(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure-nextgen:web/v20200901:WebAppHostNameBindingSlot":
+                return WebAppHostNameBindingSlot(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure-nextgen:web/v20200901:WebAppHybridConnection":
+                return WebAppHybridConnection(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure-nextgen:web/v20200901:WebAppHybridConnectionSlot":
+                return WebAppHybridConnectionSlot(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure-nextgen:web/v20200901:WebAppInstanceFunctionSlot":
+                return WebAppInstanceFunctionSlot(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure-nextgen:web/v20200901:WebAppPremierAddOn":
+                return WebAppPremierAddOn(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure-nextgen:web/v20200901:WebAppPremierAddOnSlot":
+                return WebAppPremierAddOnSlot(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure-nextgen:web/v20200901:WebAppPrivateEndpointConnection":
+                return WebAppPrivateEndpointConnection(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure-nextgen:web/v20200901:WebAppPublicCertificate":
+                return WebAppPublicCertificate(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure-nextgen:web/v20200901:WebAppPublicCertificateSlot":
+                return WebAppPublicCertificateSlot(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure-nextgen:web/v20200901:WebAppRelayServiceConnection":
+                return WebAppRelayServiceConnection(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure-nextgen:web/v20200901:WebAppRelayServiceConnectionSlot":
+                return WebAppRelayServiceConnectionSlot(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure-nextgen:web/v20200901:WebAppSiteExtension":
+                return WebAppSiteExtension(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure-nextgen:web/v20200901:WebAppSiteExtensionSlot":
+                return WebAppSiteExtensionSlot(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure-nextgen:web/v20200901:WebAppSlot":
+                return WebAppSlot(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure-nextgen:web/v20200901:WebAppSlotConfigurationNames":
+                return WebAppSlotConfigurationNames(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure-nextgen:web/v20200901:WebAppSourceControl":
+                return WebAppSourceControl(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure-nextgen:web/v20200901:WebAppSourceControlSlot":
+                return WebAppSourceControlSlot(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure-nextgen:web/v20200901:WebAppSwiftVirtualNetworkConnection":
+                return WebAppSwiftVirtualNetworkConnection(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure-nextgen:web/v20200901:WebAppSwiftVirtualNetworkConnectionSlot":
+                return WebAppSwiftVirtualNetworkConnectionSlot(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure-nextgen:web/v20200901:WebAppVnetConnection":
+                return WebAppVnetConnection(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure-nextgen:web/v20200901:WebAppVnetConnectionSlot":
+                return WebAppVnetConnectionSlot(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("azure-nextgen", "web/v20200901", _module_instance)
+
+_register_module()

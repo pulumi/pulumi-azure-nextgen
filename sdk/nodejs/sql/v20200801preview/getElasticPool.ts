@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getElasticPool(args: GetElasticPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetElasticPoolResult> {
@@ -43,6 +43,10 @@ export interface GetElasticPoolResult {
      * The creation date of the elastic pool (ISO8601 format).
      */
     readonly creationDate: string;
+    /**
+     * Resource ID.
+     */
+    readonly id: string;
     /**
      * Kind of elastic pool. This is metadata used for the Azure portal experience.
      */

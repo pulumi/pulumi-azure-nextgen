@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getVMwareCollector(args: GetVMwareCollectorArgs, opts?: pulumi.InvokeOptions): Promise<GetVMwareCollectorResult> {
@@ -37,6 +37,7 @@ export interface GetVMwareCollectorArgs {
 
 export interface GetVMwareCollectorResult {
     readonly eTag?: string;
+    readonly id: string;
     readonly name: string;
     readonly properties: outputs.migrate.v20191001.CollectorPropertiesResponse;
     readonly type: string;

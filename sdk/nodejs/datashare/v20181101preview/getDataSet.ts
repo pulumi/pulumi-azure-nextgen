@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getDataSet(args: GetDataSetArgs, opts?: pulumi.InvokeOptions): Promise<GetDataSetResult> {
@@ -44,6 +44,10 @@ export interface GetDataSetArgs {
  * A DataSet data transfer object.
  */
 export interface GetDataSetResult {
+    /**
+     * The resource id of the azure resource
+     */
+    readonly id: string;
     /**
      * Kind of data set.
      */

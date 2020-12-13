@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getIpGroup(args: GetIpGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetIpGroupResult> {
@@ -51,6 +51,10 @@ export interface GetIpGroupResult {
      * List of references to Firewall resources that this IpGroups is associated with.
      */
     readonly firewalls: outputs.network.latest.SubResourceResponse[];
+    /**
+     * Resource ID.
+     */
+    readonly id?: string;
     /**
      * IpAddresses/IpAddressPrefixes in the IpGroups resource.
      */

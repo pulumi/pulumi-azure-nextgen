@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getScopeMap(args: GetScopeMapArgs, opts?: pulumi.InvokeOptions): Promise<GetScopeMapResult> {
@@ -53,6 +53,10 @@ export interface GetScopeMapResult {
      * The user friendly description of the scope map.
      */
     readonly description?: string;
+    /**
+     * The resource ID.
+     */
+    readonly id: string;
     /**
      * The name of the resource.
      */

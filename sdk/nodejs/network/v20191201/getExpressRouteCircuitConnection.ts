@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getExpressRouteCircuitConnection(args: GetExpressRouteCircuitConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetExpressRouteCircuitConnectionResult> {
@@ -64,6 +64,10 @@ export interface GetExpressRouteCircuitConnectionResult {
      * Reference to Express Route Circuit Private Peering Resource of the circuit initiating connection.
      */
     readonly expressRouteCircuitPeering?: outputs.network.v20191201.SubResourceResponse;
+    /**
+     * Resource ID.
+     */
+    readonly id?: string;
     /**
      * IPv6 Address PrefixProperties of the express route circuit connection.
      */

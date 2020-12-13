@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getDataPool(args: GetDataPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetDataPoolResult> {
@@ -43,6 +43,10 @@ export interface GetDataPoolResult {
      * The Data Pool's data-plane ID
      */
     readonly dataPoolId: string;
+    /**
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     */
+    readonly id: string;
     /**
      * Gets or sets the collection of locations where Data Pool resources should be created.
      */

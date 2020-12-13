@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getDisk(args: GetDiskArgs, opts?: pulumi.InvokeOptions): Promise<GetDiskResult> {
@@ -54,6 +54,10 @@ export interface GetDiskResult {
      * Encryption settings for disk or snapshot
      */
     readonly encryptionSettings?: outputs.compute.v20180601.EncryptionSettingsResponse;
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * Resource location
      */

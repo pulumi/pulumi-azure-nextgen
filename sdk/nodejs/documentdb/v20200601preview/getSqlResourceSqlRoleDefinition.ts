@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getSqlResourceSqlRoleDefinition(args: GetSqlResourceSqlRoleDefinitionArgs, opts?: pulumi.InvokeOptions): Promise<GetSqlResourceSqlRoleDefinitionResult> {
@@ -43,6 +43,10 @@ export interface GetSqlResourceSqlRoleDefinitionResult {
      * A set of fully qualified Scopes at or below which Role Assignments may be created using this Role Definition. This will allow application of this Role Definition on the entire database account or any underlying Database / Collection. Must have at least one element. Scopes higher than Database account are not enforceable as assignable Scopes. Note that resources referenced in assignable Scopes need not exist.
      */
     readonly assignableScopes?: string[];
+    /**
+     * The unique resource identifier of the database account.
+     */
+    readonly id: string;
     /**
      * The name of the database account.
      */

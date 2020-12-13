@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getProximityPlacementGroup(args: GetProximityPlacementGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetProximityPlacementGroupResult> {
@@ -47,6 +47,10 @@ export interface GetProximityPlacementGroupResult {
      * Describes colocation status of the Proximity Placement Group.
      */
     readonly colocationStatus?: outputs.compute.latest.InstanceViewStatusResponse;
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * Resource location
      */

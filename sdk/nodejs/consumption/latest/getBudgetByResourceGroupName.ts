@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getBudgetByResourceGroupName(args: GetBudgetByResourceGroupNameArgs, opts?: pulumi.InvokeOptions): Promise<GetBudgetByResourceGroupNameResult> {
@@ -54,6 +54,10 @@ export interface GetBudgetByResourceGroupNameResult {
      * May be used to filter budgets by resource group, resource, or meter.
      */
     readonly filters?: outputs.consumption.latest.FiltersResponse;
+    /**
+     * Resource Id.
+     */
+    readonly id: string;
     /**
      * Resource name.
      */

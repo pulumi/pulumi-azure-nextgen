@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getExpressRouteCircuitPeering(args: GetExpressRouteCircuitPeeringArgs, opts?: pulumi.InvokeOptions): Promise<GetExpressRouteCircuitPeeringResult> {
@@ -47,6 +47,10 @@ export interface GetExpressRouteCircuitPeeringResult {
      * A unique read-only string that changes whenever the resource is updated
      */
     readonly etag?: string;
+    /**
+     * Resource Id
+     */
+    readonly id?: string;
     /**
      * Gets or sets the Microsoft peering config
      */

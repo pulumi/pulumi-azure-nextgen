@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getWebhook(args: GetWebhookArgs, opts?: pulumi.InvokeOptions): Promise<GetWebhookResult> {
@@ -43,6 +43,10 @@ export interface GetWebhookResult {
      * The list of actions that trigger the webhook to post notifications.
      */
     readonly actions: string[];
+    /**
+     * The resource ID.
+     */
+    readonly id: string;
     /**
      * The location of the resource. This cannot be changed after the resource is created.
      */

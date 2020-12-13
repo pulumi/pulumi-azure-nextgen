@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getPacketCapture(args: GetPacketCaptureArgs, opts?: pulumi.InvokeOptions): Promise<GetPacketCaptureResult> {
@@ -51,6 +51,10 @@ export interface GetPacketCaptureResult {
      * A list of packet capture filters.
      */
     readonly filters?: outputs.network.v20190901.PacketCaptureFilterResponse[];
+    /**
+     * ID of the packet capture operation.
+     */
+    readonly id: string;
     /**
      * Name of the packet capture session.
      */

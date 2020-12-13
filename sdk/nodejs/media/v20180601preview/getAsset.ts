@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getAsset(args: GetAssetArgs, opts?: pulumi.InvokeOptions): Promise<GetAssetResult> {
@@ -59,6 +59,10 @@ export interface GetAssetResult {
      * The Asset description.
      */
     readonly description?: string;
+    /**
+     * Fully qualified resource ID for the resource.
+     */
+    readonly id: string;
     /**
      * The last modified date of the Asset.
      */

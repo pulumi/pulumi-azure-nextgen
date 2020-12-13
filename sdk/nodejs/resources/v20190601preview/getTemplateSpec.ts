@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getTemplateSpec(args: GetTemplateSpecArgs, opts?: pulumi.InvokeOptions): Promise<GetTemplateSpecResult> {
@@ -47,6 +47,10 @@ export interface GetTemplateSpecResult {
      * Template Spec display name.
      */
     readonly displayName?: string;
+    /**
+     * String Id used to locate any resource on Azure.
+     */
+    readonly id: string;
     /**
      * The location of the Template Spec. It cannot be changed after Template Spec creation. It must be one of the supported Azure locations.
      */

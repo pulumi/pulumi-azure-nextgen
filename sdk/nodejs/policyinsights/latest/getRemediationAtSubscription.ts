@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getRemediationAtSubscription(args: GetRemediationAtSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetRemediationAtSubscriptionResult> {
@@ -41,6 +41,10 @@ export interface GetRemediationAtSubscriptionResult {
      * The filters that will be applied to determine which resources to remediate.
      */
     readonly filters?: outputs.policyinsights.latest.RemediationFiltersResponse;
+    /**
+     * The ID of the remediation.
+     */
+    readonly id: string;
     /**
      * The time at which the remediation was last updated.
      */

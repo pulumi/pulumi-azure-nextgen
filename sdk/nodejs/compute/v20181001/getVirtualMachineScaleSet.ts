@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getVirtualMachineScaleSet(args: GetVirtualMachineScaleSetArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualMachineScaleSetResult> {
@@ -42,6 +42,10 @@ export interface GetVirtualMachineScaleSetResult {
      * When Overprovision is enabled, extensions are launched only on the requested number of VMs which are finally kept. This property will hence ensure that the extensions do not run on the extra overprovisioned VMs.
      */
     readonly doNotRunExtensionsOnOverprovisionedVMs?: boolean;
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * The identity of the virtual machine scale set, if configured.
      */

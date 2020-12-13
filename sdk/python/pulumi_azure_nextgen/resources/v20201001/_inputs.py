@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from ._enums import *
 
 __all__ = [
     'DebugSettingArgs',
@@ -20,7 +21,6 @@ __all__ = [
     'SkuArgs',
     'TagsArgs',
     'TemplateLinkArgs',
-    'UserAssignedIdentityArgs',
 ]
 
 @pulumi.input_type
@@ -50,7 +50,7 @@ class DebugSettingArgs:
 @pulumi.input_type
 class DeploymentPropertiesArgs:
     def __init__(__self__, *,
-                 mode: pulumi.Input[str],
+                 mode: pulumi.Input['DeploymentMode'],
                  debug_setting: Optional[pulumi.Input['DebugSettingArgs']] = None,
                  expression_evaluation_options: Optional[pulumi.Input['ExpressionEvaluationOptionsArgs']] = None,
                  on_error_deployment: Optional[pulumi.Input['OnErrorDeploymentArgs']] = None,
@@ -60,7 +60,7 @@ class DeploymentPropertiesArgs:
                  template_link: Optional[pulumi.Input['TemplateLinkArgs']] = None):
         """
         Deployment properties.
-        :param pulumi.Input[str] mode: The mode that is used to deploy resources. This value can be either Incremental or Complete. In Incremental mode, resources are deployed without deleting existing resources that are not included in the template. In Complete mode, resources are deployed and existing resources in the resource group that are not included in the template are deleted. Be careful when using Complete mode as you may unintentionally delete resources.
+        :param pulumi.Input['DeploymentMode'] mode: The mode that is used to deploy resources. This value can be either Incremental or Complete. In Incremental mode, resources are deployed without deleting existing resources that are not included in the template. In Complete mode, resources are deployed and existing resources in the resource group that are not included in the template are deleted. Be careful when using Complete mode as you may unintentionally delete resources.
         :param pulumi.Input['DebugSettingArgs'] debug_setting: The debug setting of the deployment.
         :param pulumi.Input['ExpressionEvaluationOptionsArgs'] expression_evaluation_options: Specifies whether template expressions are evaluated within the scope of the parent template or nested template. Only applicable to nested templates. If not specified, default value is outer.
         :param pulumi.Input['OnErrorDeploymentArgs'] on_error_deployment: The deployment on error behavior.
@@ -87,14 +87,14 @@ class DeploymentPropertiesArgs:
 
     @property
     @pulumi.getter
-    def mode(self) -> pulumi.Input[str]:
+    def mode(self) -> pulumi.Input['DeploymentMode']:
         """
         The mode that is used to deploy resources. This value can be either Incremental or Complete. In Incremental mode, resources are deployed without deleting existing resources that are not included in the template. In Complete mode, resources are deployed and existing resources in the resource group that are not included in the template are deleted. Be careful when using Complete mode as you may unintentionally delete resources.
         """
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: pulumi.Input[str]):
+    def mode(self, value: pulumi.Input['DeploymentMode']):
         pulumi.set(self, "mode", value)
 
     @property
@@ -185,35 +185,35 @@ class DeploymentPropertiesArgs:
 @pulumi.input_type
 class ExpressionEvaluationOptionsArgs:
     def __init__(__self__, *,
-                 scope: Optional[pulumi.Input[str]] = None):
+                 scope: Optional[pulumi.Input[Union[str, 'ExpressionEvaluationOptionsScopeType']]] = None):
         """
         Specifies whether template expressions are evaluated within the scope of the parent template or nested template.
-        :param pulumi.Input[str] scope: The scope to be used for evaluation of parameters, variables and functions in a nested template.
+        :param pulumi.Input[Union[str, 'ExpressionEvaluationOptionsScopeType']] scope: The scope to be used for evaluation of parameters, variables and functions in a nested template.
         """
         if scope is not None:
             pulumi.set(__self__, "scope", scope)
 
     @property
     @pulumi.getter
-    def scope(self) -> Optional[pulumi.Input[str]]:
+    def scope(self) -> Optional[pulumi.Input[Union[str, 'ExpressionEvaluationOptionsScopeType']]]:
         """
         The scope to be used for evaluation of parameters, variables and functions in a nested template.
         """
         return pulumi.get(self, "scope")
 
     @scope.setter
-    def scope(self, value: Optional[pulumi.Input[str]]):
+    def scope(self, value: Optional[pulumi.Input[Union[str, 'ExpressionEvaluationOptionsScopeType']]]):
         pulumi.set(self, "scope", value)
 
 
 @pulumi.input_type
 class IdentityArgs:
     def __init__(__self__, *,
-                 type: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input['ResourceIdentityType']] = None,
                  user_assigned_identities: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         Identity for the resource.
-        :param pulumi.Input[str] type: The identity type.
+        :param pulumi.Input['ResourceIdentityType'] type: The identity type.
         :param pulumi.Input[Mapping[str, Any]] user_assigned_identities: The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
         """
         if type is not None:
@@ -223,14 +223,14 @@ class IdentityArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['ResourceIdentityType']]:
         """
         The identity type.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['ResourceIdentityType']]):
         pulumi.set(self, "type", value)
 
     @property
@@ -249,12 +249,12 @@ class IdentityArgs:
 @pulumi.input_type
 class ManagedServiceIdentityArgs:
     def __init__(__self__, *,
-                 type: Optional[pulumi.Input[str]] = None,
-                 user_assigned_identities: Optional[pulumi.Input[Mapping[str, pulumi.Input['UserAssignedIdentityArgs']]]] = None):
+                 type: Optional[pulumi.Input[Union[str, 'ManagedServiceIdentityType']]] = None,
+                 user_assigned_identities: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         Managed identity generic object.
-        :param pulumi.Input[str] type: Type of the managed identity.
-        :param pulumi.Input[Mapping[str, pulumi.Input['UserAssignedIdentityArgs']]] user_assigned_identities: The list of user-assigned managed identities associated with the resource. Key is the Azure resource Id of the managed identity.
+        :param pulumi.Input[Union[str, 'ManagedServiceIdentityType']] type: Type of the managed identity.
+        :param pulumi.Input[Mapping[str, Any]] user_assigned_identities: The list of user-assigned managed identities associated with the resource. Key is the Azure resource Id of the managed identity.
         """
         if type is not None:
             pulumi.set(__self__, "type", type)
@@ -263,26 +263,26 @@ class ManagedServiceIdentityArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input[Union[str, 'ManagedServiceIdentityType']]]:
         """
         Type of the managed identity.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input[Union[str, 'ManagedServiceIdentityType']]]):
         pulumi.set(self, "type", value)
 
     @property
     @pulumi.getter(name="userAssignedIdentities")
-    def user_assigned_identities(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['UserAssignedIdentityArgs']]]]:
+    def user_assigned_identities(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         The list of user-assigned managed identities associated with the resource. Key is the Azure resource Id of the managed identity.
         """
         return pulumi.get(self, "user_assigned_identities")
 
     @user_assigned_identities.setter
-    def user_assigned_identities(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['UserAssignedIdentityArgs']]]]):
+    def user_assigned_identities(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "user_assigned_identities", value)
 
 
@@ -290,11 +290,11 @@ class ManagedServiceIdentityArgs:
 class OnErrorDeploymentArgs:
     def __init__(__self__, *,
                  deployment_name: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input['OnErrorDeploymentType']] = None):
         """
         Deployment on error behavior.
         :param pulumi.Input[str] deployment_name: The deployment to be used on error case.
-        :param pulumi.Input[str] type: The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment.
+        :param pulumi.Input['OnErrorDeploymentType'] type: The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment.
         """
         if deployment_name is not None:
             pulumi.set(__self__, "deployment_name", deployment_name)
@@ -315,14 +315,14 @@ class OnErrorDeploymentArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['OnErrorDeploymentType']]:
         """
         The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['OnErrorDeploymentType']]):
         pulumi.set(self, "type", value)
 
 
@@ -663,45 +663,5 @@ class TemplateLinkArgs:
     @uri.setter
     def uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uri", value)
-
-
-@pulumi.input_type
-class UserAssignedIdentityArgs:
-    def __init__(__self__, *,
-                 client_id: Optional[pulumi.Input[str]] = None,
-                 principal_id: Optional[pulumi.Input[str]] = None):
-        """
-        User-assigned managed identity.
-        :param pulumi.Input[str] client_id: Client App Id associated with this identity.
-        :param pulumi.Input[str] principal_id: Azure Active Directory principal ID associated with this identity.
-        """
-        if client_id is not None:
-            pulumi.set(__self__, "client_id", client_id)
-        if principal_id is not None:
-            pulumi.set(__self__, "principal_id", principal_id)
-
-    @property
-    @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Client App Id associated with this identity.
-        """
-        return pulumi.get(self, "client_id")
-
-    @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_id", value)
-
-    @property
-    @pulumi.getter(name="principalId")
-    def principal_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Azure Active Directory principal ID associated with this identity.
-        """
-        return pulumi.get(self, "principal_id")
-
-    @principal_id.setter
-    def principal_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "principal_id", value)
 
 

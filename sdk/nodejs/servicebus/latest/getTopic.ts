@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getTopic(args: GetTopicArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicResult> {
@@ -75,6 +75,10 @@ export interface GetTopicResult {
      * Value that indicates whether the topic to be partitioned across multiple message brokers is enabled.
      */
     readonly enablePartitioning?: boolean;
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * Maximum size of the topic in megabytes, which is the size of the memory allocated for the topic. Default is 1024.
      */

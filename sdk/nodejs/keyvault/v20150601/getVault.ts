@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getVault(args: GetVaultArgs, opts?: pulumi.InvokeOptions): Promise<GetVaultResult> {
@@ -34,6 +34,10 @@ export interface GetVaultArgs {
  * Resource information with extended details.
  */
 export interface GetVaultResult {
+    /**
+     * The Azure Resource Manager resource ID for the key vault.
+     */
+    readonly id: string;
     /**
      * The supported Azure location where the key vault should be created.
      */

@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getDomainService(args: GetDomainServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainServiceResult> {
@@ -70,6 +70,10 @@ export interface GetDomainServiceResult {
      * List of Domain Health Monitors
      */
     readonly healthMonitors: outputs.aad.v20170101.HealthMonitorResponse[];
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * Secure LDAP Settings
      */

@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getVirtualMachineScaleSetVM(args: GetVirtualMachineScaleSetVMArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualMachineScaleSetVMResult> {
@@ -55,6 +55,10 @@ export interface GetVirtualMachineScaleSetVMResult {
      * Specifies the hardware settings for the virtual machine.
      */
     readonly hardwareProfile?: outputs.compute.v20180601.HardwareProfileResponse;
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * The virtual machine instance ID.
      */

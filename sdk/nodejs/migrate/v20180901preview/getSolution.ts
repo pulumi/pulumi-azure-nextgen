@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getSolution(args: GetSolutionArgs, opts?: pulumi.InvokeOptions): Promise<GetSolutionResult> {
@@ -43,6 +43,10 @@ export interface GetSolutionResult {
      * Gets or sets the ETAG for optimistic concurrency control.
      */
     readonly etag?: string;
+    /**
+     * Gets the relative URL to get to this REST resource.
+     */
+    readonly id: string;
     /**
      * Gets the name of this REST resource.
      */

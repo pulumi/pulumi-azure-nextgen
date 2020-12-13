@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getDedicatedHostGroup(args: GetDedicatedHostGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetDedicatedHostGroupResult> {
@@ -43,6 +43,10 @@ export interface GetDedicatedHostGroupResult {
      * A list of references to all dedicated hosts in the dedicated host group.
      */
     readonly hosts: outputs.compute.v20200601.SubResourceReadOnlyResponse[];
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * The dedicated host group instance view, which has the list of instance view of the dedicated hosts under the dedicated host group.
      */

@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getFileServer(args: GetFileServerArgs, opts?: pulumi.InvokeOptions): Promise<GetFileServerResult> {
@@ -47,6 +47,10 @@ export interface GetFileServerResult {
      * Information about disks attached to File Server VM.
      */
     readonly dataDisks?: outputs.batchai.latest.DataDisksResponse;
+    /**
+     * The ID of the resource.
+     */
+    readonly id: string;
     /**
      * File Server mount settings.
      */

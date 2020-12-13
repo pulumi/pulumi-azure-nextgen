@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getRegistration(args: GetRegistrationArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistrationResult> {
@@ -46,6 +46,10 @@ export interface GetRegistrationResult {
      * The entity tag used for optimistic concurrency when modifying the resource.
      */
     readonly etag?: string;
+    /**
+     * ID of the resource.
+     */
+    readonly id: string;
     /**
      * Location of the resource.
      */

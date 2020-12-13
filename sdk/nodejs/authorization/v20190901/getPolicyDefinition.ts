@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getPolicyDefinition(args: GetPolicyDefinitionArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyDefinitionResult> {
@@ -37,6 +37,10 @@ export interface GetPolicyDefinitionResult {
      * The display name of the policy definition.
      */
     readonly displayName?: string;
+    /**
+     * The ID of the policy definition.
+     */
+    readonly id: string;
     /**
      * The policy definition metadata.  Metadata is an open ended object and is typically a collection of key value pairs.
      */

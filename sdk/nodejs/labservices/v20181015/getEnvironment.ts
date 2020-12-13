@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getEnvironment(args: GetEnvironmentArgs, opts?: pulumi.InvokeOptions): Promise<GetEnvironmentResult> {
@@ -66,6 +66,10 @@ export interface GetEnvironmentResult {
      * The user principal Id of the user who has claimed the environment
      */
     readonly claimedByUserPrincipalId: string;
+    /**
+     * The identifier of the resource.
+     */
+    readonly id: string;
     /**
      * Is the environment claimed or not
      */

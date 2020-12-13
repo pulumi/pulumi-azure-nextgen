@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getSecurityContact(args: GetSecurityContactArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityContactResult> {
@@ -37,6 +37,10 @@ export interface GetSecurityContactResult {
      * List of email addresses which will get notifications from Azure Security Center by the configurations defined in this security contact.
      */
     readonly emails?: string;
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * Resource name
      */

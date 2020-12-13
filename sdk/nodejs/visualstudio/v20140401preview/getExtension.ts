@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getExtension(args: GetExtensionArgs, opts?: pulumi.InvokeOptions): Promise<GetExtensionResult> {
@@ -39,6 +39,10 @@ export interface GetExtensionArgs {
  * The response to an extension resource GET request.
  */
 export interface GetExtensionResult {
+    /**
+     * Unique identifier of the resource.
+     */
+    readonly id: string;
     /**
      * Resource location.
      */

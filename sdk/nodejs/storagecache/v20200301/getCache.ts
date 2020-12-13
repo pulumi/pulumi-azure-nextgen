@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getCache(args: GetCacheArgs, opts?: pulumi.InvokeOptions): Promise<GetCacheResult> {
@@ -46,6 +46,10 @@ export interface GetCacheResult {
      * Health of the Cache.
      */
     readonly health: outputs.storagecache.v20200301.CacheHealthResponse;
+    /**
+     * Resource ID of the Cache.
+     */
+    readonly id: string;
     /**
      * The identity of the cache, if configured.
      */

@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getLab(args: GetLabArgs, opts?: pulumi.InvokeOptions): Promise<GetLabResult> {
@@ -55,6 +55,10 @@ export interface GetLabResult {
      * The lab's default storage account.
      */
     readonly defaultStorageAccount: string;
+    /**
+     * The identifier of the resource.
+     */
+    readonly id: string;
     /**
      * Type of storage used by the lab. It can be either Premium or Standard. Default is Premium.
      */

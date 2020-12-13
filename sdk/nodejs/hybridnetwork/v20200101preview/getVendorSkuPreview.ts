@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getVendorSkuPreview(args: GetVendorSkuPreviewArgs, opts?: pulumi.InvokeOptions): Promise<GetVendorSkuPreviewResult> {
@@ -39,6 +39,10 @@ export interface GetVendorSkuPreviewArgs {
  * Customer subscription which can use a sku.
  */
 export interface GetVendorSkuPreviewResult {
+    /**
+     * The ARM ID of the resource.
+     */
+    readonly id: string;
     /**
      * The preview subscription ID.
      */

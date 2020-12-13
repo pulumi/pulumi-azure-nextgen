@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getPolicyExemption(args: GetPolicyExemptionArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyExemptionResult> {
@@ -50,6 +50,10 @@ export interface GetPolicyExemptionResult {
      * The expiration date and time (in UTC ISO 8601 format yyyy-MM-ddTHH:mm:ssZ) of the policy exemption.
      */
     readonly expiresOn?: string;
+    /**
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     */
+    readonly id: string;
     /**
      * The policy exemption metadata. Metadata is an open ended object and is typically a collection of key value pairs.
      */

@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getDatabaseAccountMongoDBCollection(args: GetDatabaseAccountMongoDBCollectionArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseAccountMongoDBCollectionResult> {
@@ -44,6 +44,10 @@ export interface GetDatabaseAccountMongoDBCollectionArgs {
  * An Azure Cosmos DB MongoDB collection.
  */
 export interface GetDatabaseAccountMongoDBCollectionResult {
+    /**
+     * The unique resource identifier of the database account.
+     */
+    readonly id: string;
     /**
      * List of index keys
      */

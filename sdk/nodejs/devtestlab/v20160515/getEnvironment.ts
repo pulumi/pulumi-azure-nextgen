@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getEnvironment(args: GetEnvironmentArgs, opts?: pulumi.InvokeOptions): Promise<GetEnvironmentResult> {
@@ -61,6 +61,10 @@ export interface GetEnvironmentResult {
      * The deployment properties of the environment.
      */
     readonly deploymentProperties?: outputs.devtestlab.v20160515.EnvironmentDeploymentPropertiesResponse;
+    /**
+     * The identifier of the resource.
+     */
+    readonly id: string;
     /**
      * The location of the resource.
      */

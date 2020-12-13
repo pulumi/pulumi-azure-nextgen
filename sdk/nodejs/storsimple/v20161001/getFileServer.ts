@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getFileServer(args: GetFileServerArgs, opts?: pulumi.InvokeOptions): Promise<GetFileServerResult> {
@@ -56,6 +56,10 @@ export interface GetFileServerResult {
      * Domain of the file server
      */
     readonly domainName: string;
+    /**
+     * The identifier.
+     */
+    readonly id: string;
     /**
      * The name.
      */

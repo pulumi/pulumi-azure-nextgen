@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getPrefix(args: GetPrefixArgs, opts?: pulumi.InvokeOptions): Promise<GetPrefixResult> {
@@ -52,6 +52,10 @@ export interface GetPrefixResult {
      * The list of events for peering service prefix
      */
     readonly events: outputs.peering.latest.PeeringServicePrefixEventResponse[];
+    /**
+     * The ID of the resource.
+     */
+    readonly id: string;
     /**
      * The prefix learned type
      */

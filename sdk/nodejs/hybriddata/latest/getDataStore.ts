@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getDataStore(args: GetDataStoreArgs, opts?: pulumi.InvokeOptions): Promise<GetDataStoreResult> {
@@ -51,6 +51,10 @@ export interface GetDataStoreResult {
      * A generic json used differently by each data source type.
      */
     readonly extendedProperties?: any;
+    /**
+     * Id of the object.
+     */
+    readonly id: string;
     /**
      * Name of the object.
      */

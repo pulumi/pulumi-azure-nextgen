@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getStorageAccountCredential(args: GetStorageAccountCredentialArgs, opts?: pulumi.InvokeOptions): Promise<GetStorageAccountCredentialResult> {
@@ -55,6 +55,10 @@ export interface GetStorageAccountCredentialResult {
      * The storage endpoint
      */
     readonly endPoint: string;
+    /**
+     * The identifier.
+     */
+    readonly id: string;
     /**
      * The storage account's geo location
      */

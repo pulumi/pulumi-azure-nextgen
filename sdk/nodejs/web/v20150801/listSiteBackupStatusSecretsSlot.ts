@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function listSiteBackupStatusSecretsSlot(args: ListSiteBackupStatusSecretsSlotArgs, opts?: pulumi.InvokeOptions): Promise<ListSiteBackupStatusSecretsSlotResult> {
@@ -109,6 +109,10 @@ export interface ListSiteBackupStatusSecretsSlotResult {
      * Timestamp when this backup finished.
      */
     readonly finishedTimeStamp?: string;
+    /**
+     * Resource Id
+     */
+    readonly id?: string;
     /**
      * Kind of resource
      */

@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getLabResource(args: GetLabResourceArgs, opts?: pulumi.InvokeOptions): Promise<GetLabResourceResult> {
@@ -50,6 +50,10 @@ export interface GetLabResourceResult {
      * The default virtual network identifier of the lab.
      */
     readonly defaultVirtualNetworkId?: string;
+    /**
+     * The identifier of the resource.
+     */
+    readonly id?: string;
     /**
      * The type of the lab storage.
      */

@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getWebTest(args: GetWebTestArgs, opts?: pulumi.InvokeOptions): Promise<GetWebTestResult> {
@@ -50,6 +50,10 @@ export interface GetWebTestResult {
      * Interval in seconds between test runs for this WebTest. Default value is 300.
      */
     readonly frequency?: number;
+    /**
+     * Azure resource Id
+     */
+    readonly id: string;
     /**
      * The kind of web test that this web test watches. Choices are ping and multistep.
      */

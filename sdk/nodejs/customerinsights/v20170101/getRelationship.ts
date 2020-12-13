@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getRelationship(args: GetRelationshipArgs, opts?: pulumi.InvokeOptions): Promise<GetRelationshipResult> {
@@ -59,6 +59,10 @@ export interface GetRelationshipResult {
      * The properties of the Relationship.
      */
     readonly fields?: outputs.customerinsights.v20170101.PropertyDefinitionResponse[];
+    /**
+     * Resource ID.
+     */
+    readonly id: string;
     /**
      * Optional property to be used to map fields in profile to their strong ids in related profile.
      */

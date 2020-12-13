@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getCustomResourceProvider(args: GetCustomResourceProviderArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomResourceProviderResult> {
@@ -38,6 +38,10 @@ export interface GetCustomResourceProviderResult {
      * A list of actions that the custom resource provider implements.
      */
     readonly actions?: outputs.customproviders.v20180901preview.CustomRPActionRouteDefinitionResponse[];
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * Resource location
      */

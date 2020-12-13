@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getNamespace(args: GetNamespaceArgs, opts?: pulumi.InvokeOptions): Promise<GetNamespaceResult> {
@@ -46,6 +46,10 @@ export interface GetNamespaceResult {
      * Whether or not the namespace is currently enabled.
      */
     readonly enabled?: boolean;
+    /**
+     * Resource Id
+     */
+    readonly id: string;
     /**
      * Resource location
      */

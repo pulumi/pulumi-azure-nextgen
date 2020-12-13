@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function getLinkedService(args: GetLinkedServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetLinkedServiceResult> {
@@ -43,6 +43,10 @@ export interface GetLinkedServiceResult {
      * Etag identifies change in the resource.
      */
     readonly etag: string;
+    /**
+     * The resource identifier.
+     */
+    readonly id: string;
     /**
      * The resource name.
      */

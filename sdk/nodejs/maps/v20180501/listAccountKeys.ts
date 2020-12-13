@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 export function listAccountKeys(args: ListAccountKeysArgs, opts?: pulumi.InvokeOptions): Promise<ListAccountKeysResult> {
@@ -34,6 +34,10 @@ export interface ListAccountKeysArgs {
  * The set of keys which can be used to access the Maps REST APIs. Two keys are provided for key rotation without interruption.
  */
 export interface ListAccountKeysResult {
+    /**
+     * The full Azure resource identifier of the Maps Account.
+     */
+    readonly id: string;
     /**
      * The primary key for accessing the Maps REST APIs.
      */
