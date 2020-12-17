@@ -3,6 +3,14 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
+New resources:
+
+- API Management ProductApi, ProductGroup, GroupUser and other "link" resources ([#92](https://github.com/pulumi/pulumi-azure-nextgen/issues/92))
+
+Fixes:
+
+- Improved experience with enum collections ([#173](https://github.com/pulumi/pulumi-azure-nextgen/issues/173))
+
 ---
 
 ## 0.3.0 (2020-12-11)
