@@ -3,15 +3,26 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
+Fixes:
+
+- Improved experience with enum collections ([#173](https://github.com/pulumi/pulumi-azure-nextgen/issues/173))
+
+---
+
+## 0.3.1 (2020-12-18)
+
+New Features:
+
+- Descriptions for resources on "latest" include a reference to the actual API version
+
 New resources:
 
 - API Management ProductApi, ProductGroup, GroupUser and other "link" resources ([#92](https://github.com/pulumi/pulumi-azure-nextgen/issues/92))
 
 Fixes:
 
-- Improved experience with enum collections ([#173](https://github.com/pulumi/pulumi-azure-nextgen/issues/173))
-
----
+- Secrets leak in state ([#185](https://github.com/pulumi/pulumi-azure-nextgen/issues/185))
+- Propogate expected value for constant properties in description ([#180](https://github.com/pulumi/pulumi-azure-nextgen/issues/180))
 
 ## 0.3.0 (2020-12-11)
 
