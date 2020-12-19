@@ -12,6 +12,7 @@ import (
 )
 
 // Policy Contract details.
+// Latest API Version: 2019-12-01.
 type ApiPolicy struct {
 	pulumi.CustomResourceState
 
@@ -160,15 +161,15 @@ type ApiPolicyInput interface {
 	ToApiPolicyOutputWithContext(ctx context.Context) ApiPolicyOutput
 }
 
-func (ApiPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApiPolicy)(nil)).Elem()
+func (*ApiPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiPolicy)(nil))
 }
 
-func (i ApiPolicy) ToApiPolicyOutput() ApiPolicyOutput {
+func (i *ApiPolicy) ToApiPolicyOutput() ApiPolicyOutput {
 	return i.ToApiPolicyOutputWithContext(context.Background())
 }
 
-func (i ApiPolicy) ToApiPolicyOutputWithContext(ctx context.Context) ApiPolicyOutput {
+func (i *ApiPolicy) ToApiPolicyOutputWithContext(ctx context.Context) ApiPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApiPolicyOutput)
 }
 
@@ -177,7 +178,7 @@ type ApiPolicyOutput struct {
 }
 
 func (ApiPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApiPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*ApiPolicy)(nil))
 }
 
 func (o ApiPolicyOutput) ToApiPolicyOutput() ApiPolicyOutput {

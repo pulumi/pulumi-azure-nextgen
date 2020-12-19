@@ -12,6 +12,7 @@ import (
 )
 
 // Description of the WCF relay resource.
+// Latest API Version: 2017-04-01.
 type WCFRelay struct {
 	pulumi.CustomResourceState
 
@@ -179,15 +180,15 @@ type WCFRelayInput interface {
 	ToWCFRelayOutputWithContext(ctx context.Context) WCFRelayOutput
 }
 
-func (WCFRelay) ElementType() reflect.Type {
-	return reflect.TypeOf((*WCFRelay)(nil)).Elem()
+func (*WCFRelay) ElementType() reflect.Type {
+	return reflect.TypeOf((*WCFRelay)(nil))
 }
 
-func (i WCFRelay) ToWCFRelayOutput() WCFRelayOutput {
+func (i *WCFRelay) ToWCFRelayOutput() WCFRelayOutput {
 	return i.ToWCFRelayOutputWithContext(context.Background())
 }
 
-func (i WCFRelay) ToWCFRelayOutputWithContext(ctx context.Context) WCFRelayOutput {
+func (i *WCFRelay) ToWCFRelayOutputWithContext(ctx context.Context) WCFRelayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WCFRelayOutput)
 }
 
@@ -196,7 +197,7 @@ type WCFRelayOutput struct {
 }
 
 func (WCFRelayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WCFRelayOutput)(nil)).Elem()
+	return reflect.TypeOf((*WCFRelay)(nil))
 }
 
 func (o WCFRelayOutput) ToWCFRelayOutput() WCFRelayOutput {

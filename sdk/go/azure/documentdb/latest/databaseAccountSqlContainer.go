@@ -12,6 +12,7 @@ import (
 )
 
 // An Azure Cosmos DB container.
+// Latest API Version: 2016-03-31.
 type DatabaseAccountSqlContainer struct {
 	pulumi.CustomResourceState
 
@@ -205,15 +206,15 @@ type DatabaseAccountSqlContainerInput interface {
 	ToDatabaseAccountSqlContainerOutputWithContext(ctx context.Context) DatabaseAccountSqlContainerOutput
 }
 
-func (DatabaseAccountSqlContainer) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseAccountSqlContainer)(nil)).Elem()
+func (*DatabaseAccountSqlContainer) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseAccountSqlContainer)(nil))
 }
 
-func (i DatabaseAccountSqlContainer) ToDatabaseAccountSqlContainerOutput() DatabaseAccountSqlContainerOutput {
+func (i *DatabaseAccountSqlContainer) ToDatabaseAccountSqlContainerOutput() DatabaseAccountSqlContainerOutput {
 	return i.ToDatabaseAccountSqlContainerOutputWithContext(context.Background())
 }
 
-func (i DatabaseAccountSqlContainer) ToDatabaseAccountSqlContainerOutputWithContext(ctx context.Context) DatabaseAccountSqlContainerOutput {
+func (i *DatabaseAccountSqlContainer) ToDatabaseAccountSqlContainerOutputWithContext(ctx context.Context) DatabaseAccountSqlContainerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseAccountSqlContainerOutput)
 }
 
@@ -222,7 +223,7 @@ type DatabaseAccountSqlContainerOutput struct {
 }
 
 func (DatabaseAccountSqlContainerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseAccountSqlContainerOutput)(nil)).Elem()
+	return reflect.TypeOf((*DatabaseAccountSqlContainer)(nil))
 }
 
 func (o DatabaseAccountSqlContainerOutput) ToDatabaseAccountSqlContainerOutput() DatabaseAccountSqlContainerOutput {

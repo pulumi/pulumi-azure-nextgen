@@ -12,6 +12,7 @@ import (
 )
 
 // Represents a share on the  Data Box Edge/Gateway device.
+// Latest API Version: 2019-08-01.
 type Share struct {
 	pulumi.CustomResourceState
 
@@ -226,15 +227,15 @@ type ShareInput interface {
 	ToShareOutputWithContext(ctx context.Context) ShareOutput
 }
 
-func (Share) ElementType() reflect.Type {
-	return reflect.TypeOf((*Share)(nil)).Elem()
+func (*Share) ElementType() reflect.Type {
+	return reflect.TypeOf((*Share)(nil))
 }
 
-func (i Share) ToShareOutput() ShareOutput {
+func (i *Share) ToShareOutput() ShareOutput {
 	return i.ToShareOutputWithContext(context.Background())
 }
 
-func (i Share) ToShareOutputWithContext(ctx context.Context) ShareOutput {
+func (i *Share) ToShareOutputWithContext(ctx context.Context) ShareOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ShareOutput)
 }
 
@@ -243,7 +244,7 @@ type ShareOutput struct {
 }
 
 func (ShareOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ShareOutput)(nil)).Elem()
+	return reflect.TypeOf((*Share)(nil))
 }
 
 func (o ShareOutput) ToShareOutput() ShareOutput {

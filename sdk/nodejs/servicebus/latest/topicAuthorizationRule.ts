@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Description of a namespace authorization rule.
+ * Latest API Version: 2017-04-01.
  */
 export class TopicAuthorizationRule extends pulumi.CustomResource {
     /**
@@ -92,7 +93,7 @@ export class TopicAuthorizationRule extends pulumi.CustomResource {
         if (!opts.version) {
             opts.version = utilities.getVersion();
         }
-        const aliasOpts = { aliases: [{ type: "azure-nextgen:servicebus/v20140901:TopicAuthorizationRule" }, { type: "azure-nextgen:servicebus/v20150801:TopicAuthorizationRule" }, { type: "azure-nextgen:servicebus/v20170401:TopicAuthorizationRule" }] };
+        const aliasOpts = { aliases: [{ type: "azure-nextgen:servicebus/v20140901:TopicAuthorizationRule" }, { type: "azure-nextgen:servicebus/v20150801:TopicAuthorizationRule" }, { type: "azure-nextgen:servicebus/v20170401:TopicAuthorizationRule" }, { type: "azure-nextgen:servicebus/v20180101preview:TopicAuthorizationRule" }] };
         opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
         super(TopicAuthorizationRule.__pulumiType, name, inputs, opts);
     }

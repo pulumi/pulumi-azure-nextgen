@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Automation.Latest
 {
     /// <summary>
     /// Definition of the certificate.
+    /// Latest API Version: 2015-10-31.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:automation/latest:Certificate")]
     public partial class Certificate : Pulumi.CustomResource
     {
         /// <summary>

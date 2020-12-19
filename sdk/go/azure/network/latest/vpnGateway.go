@@ -12,6 +12,7 @@ import (
 )
 
 // VpnGateway Resource.
+// Latest API Version: 2020-07-01.
 type VpnGateway struct {
 	pulumi.CustomResourceState
 
@@ -257,15 +258,15 @@ type VpnGatewayInput interface {
 	ToVpnGatewayOutputWithContext(ctx context.Context) VpnGatewayOutput
 }
 
-func (VpnGateway) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpnGateway)(nil)).Elem()
+func (*VpnGateway) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnGateway)(nil))
 }
 
-func (i VpnGateway) ToVpnGatewayOutput() VpnGatewayOutput {
+func (i *VpnGateway) ToVpnGatewayOutput() VpnGatewayOutput {
 	return i.ToVpnGatewayOutputWithContext(context.Background())
 }
 
-func (i VpnGateway) ToVpnGatewayOutputWithContext(ctx context.Context) VpnGatewayOutput {
+func (i *VpnGateway) ToVpnGatewayOutputWithContext(ctx context.Context) VpnGatewayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpnGatewayOutput)
 }
 
@@ -274,7 +275,7 @@ type VpnGatewayOutput struct {
 }
 
 func (VpnGatewayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpnGatewayOutput)(nil)).Elem()
+	return reflect.TypeOf((*VpnGateway)(nil))
 }
 
 func (o VpnGatewayOutput) ToVpnGatewayOutput() VpnGatewayOutput {

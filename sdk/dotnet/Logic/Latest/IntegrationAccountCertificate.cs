@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Logic.Latest
 {
     /// <summary>
     /// The integration account certificate.
+    /// Latest API Version: 2019-05-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:logic/latest:IntegrationAccountCertificate")]
     public partial class IntegrationAccountCertificate : Pulumi.CustomResource
     {
         /// <summary>

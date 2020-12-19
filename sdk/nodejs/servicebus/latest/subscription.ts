@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Description of subscription resource.
+ * Latest API Version: 2017-04-01.
  */
 export class Subscription extends pulumi.CustomResource {
     /**
@@ -185,7 +186,7 @@ export class Subscription extends pulumi.CustomResource {
         if (!opts.version) {
             opts.version = utilities.getVersion();
         }
-        const aliasOpts = { aliases: [{ type: "azure-nextgen:servicebus/v20140901:Subscription" }, { type: "azure-nextgen:servicebus/v20150801:Subscription" }, { type: "azure-nextgen:servicebus/v20170401:Subscription" }] };
+        const aliasOpts = { aliases: [{ type: "azure-nextgen:servicebus/v20140901:Subscription" }, { type: "azure-nextgen:servicebus/v20150801:Subscription" }, { type: "azure-nextgen:servicebus/v20170401:Subscription" }, { type: "azure-nextgen:servicebus/v20180101preview:Subscription" }] };
         opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
         super(Subscription.__pulumiType, name, inputs, opts);
     }

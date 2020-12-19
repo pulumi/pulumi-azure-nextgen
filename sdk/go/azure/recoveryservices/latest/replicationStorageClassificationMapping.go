@@ -12,6 +12,7 @@ import (
 )
 
 // Storage mapping object.
+// Latest API Version: 2018-07-10.
 type ReplicationStorageClassificationMapping struct {
 	pulumi.CustomResourceState
 
@@ -148,15 +149,15 @@ type ReplicationStorageClassificationMappingInput interface {
 	ToReplicationStorageClassificationMappingOutputWithContext(ctx context.Context) ReplicationStorageClassificationMappingOutput
 }
 
-func (ReplicationStorageClassificationMapping) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReplicationStorageClassificationMapping)(nil)).Elem()
+func (*ReplicationStorageClassificationMapping) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicationStorageClassificationMapping)(nil))
 }
 
-func (i ReplicationStorageClassificationMapping) ToReplicationStorageClassificationMappingOutput() ReplicationStorageClassificationMappingOutput {
+func (i *ReplicationStorageClassificationMapping) ToReplicationStorageClassificationMappingOutput() ReplicationStorageClassificationMappingOutput {
 	return i.ToReplicationStorageClassificationMappingOutputWithContext(context.Background())
 }
 
-func (i ReplicationStorageClassificationMapping) ToReplicationStorageClassificationMappingOutputWithContext(ctx context.Context) ReplicationStorageClassificationMappingOutput {
+func (i *ReplicationStorageClassificationMapping) ToReplicationStorageClassificationMappingOutputWithContext(ctx context.Context) ReplicationStorageClassificationMappingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicationStorageClassificationMappingOutput)
 }
 
@@ -165,7 +166,7 @@ type ReplicationStorageClassificationMappingOutput struct {
 }
 
 func (ReplicationStorageClassificationMappingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReplicationStorageClassificationMappingOutput)(nil)).Elem()
+	return reflect.TypeOf((*ReplicationStorageClassificationMapping)(nil))
 }
 
 func (o ReplicationStorageClassificationMappingOutput) ToReplicationStorageClassificationMappingOutput() ReplicationStorageClassificationMappingOutput {

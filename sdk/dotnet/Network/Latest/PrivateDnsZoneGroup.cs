@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Network.Latest
 {
     /// <summary>
     /// Private dns zone group resource.
+    /// Latest API Version: 2020-07-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:network/latest:PrivateDnsZoneGroup")]
     public partial class PrivateDnsZoneGroup : Pulumi.CustomResource
     {
         /// <summary>

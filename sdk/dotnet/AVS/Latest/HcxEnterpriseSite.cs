@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.AVS.Latest
 {
     /// <summary>
     /// An HCX Enterprise Site resource
+    /// Latest API Version: 2020-03-20.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:avs/latest:HcxEnterpriseSite")]
     public partial class HcxEnterpriseSite : Pulumi.CustomResource
     {
         /// <summary>

@@ -12,6 +12,7 @@ import (
 )
 
 // Description of NetworkRuleSet resource.
+// Latest API Version: 2017-04-01.
 type NamespaceNetworkRuleSet struct {
 	pulumi.CustomResourceState
 
@@ -138,15 +139,15 @@ type NamespaceNetworkRuleSetInput interface {
 	ToNamespaceNetworkRuleSetOutputWithContext(ctx context.Context) NamespaceNetworkRuleSetOutput
 }
 
-func (NamespaceNetworkRuleSet) ElementType() reflect.Type {
-	return reflect.TypeOf((*NamespaceNetworkRuleSet)(nil)).Elem()
+func (*NamespaceNetworkRuleSet) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceNetworkRuleSet)(nil))
 }
 
-func (i NamespaceNetworkRuleSet) ToNamespaceNetworkRuleSetOutput() NamespaceNetworkRuleSetOutput {
+func (i *NamespaceNetworkRuleSet) ToNamespaceNetworkRuleSetOutput() NamespaceNetworkRuleSetOutput {
 	return i.ToNamespaceNetworkRuleSetOutputWithContext(context.Background())
 }
 
-func (i NamespaceNetworkRuleSet) ToNamespaceNetworkRuleSetOutputWithContext(ctx context.Context) NamespaceNetworkRuleSetOutput {
+func (i *NamespaceNetworkRuleSet) ToNamespaceNetworkRuleSetOutputWithContext(ctx context.Context) NamespaceNetworkRuleSetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceNetworkRuleSetOutput)
 }
 
@@ -155,7 +156,7 @@ type NamespaceNetworkRuleSetOutput struct {
 }
 
 func (NamespaceNetworkRuleSetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NamespaceNetworkRuleSetOutput)(nil)).Elem()
+	return reflect.TypeOf((*NamespaceNetworkRuleSet)(nil))
 }
 
 func (o NamespaceNetworkRuleSetOutput) ToNamespaceNetworkRuleSetOutput() NamespaceNetworkRuleSetOutput {

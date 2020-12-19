@@ -12,6 +12,7 @@ import (
 )
 
 // The volume container.
+// Latest API Version: 2017-06-01.
 type VolumeContainer struct {
 	pulumi.CustomResourceState
 
@@ -196,15 +197,15 @@ type VolumeContainerInput interface {
 	ToVolumeContainerOutputWithContext(ctx context.Context) VolumeContainerOutput
 }
 
-func (VolumeContainer) ElementType() reflect.Type {
-	return reflect.TypeOf((*VolumeContainer)(nil)).Elem()
+func (*VolumeContainer) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeContainer)(nil))
 }
 
-func (i VolumeContainer) ToVolumeContainerOutput() VolumeContainerOutput {
+func (i *VolumeContainer) ToVolumeContainerOutput() VolumeContainerOutput {
 	return i.ToVolumeContainerOutputWithContext(context.Background())
 }
 
-func (i VolumeContainer) ToVolumeContainerOutputWithContext(ctx context.Context) VolumeContainerOutput {
+func (i *VolumeContainer) ToVolumeContainerOutputWithContext(ctx context.Context) VolumeContainerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeContainerOutput)
 }
 
@@ -213,7 +214,7 @@ type VolumeContainerOutput struct {
 }
 
 func (VolumeContainerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VolumeContainerOutput)(nil)).Elem()
+	return reflect.TypeOf((*VolumeContainer)(nil))
 }
 
 func (o VolumeContainerOutput) ToVolumeContainerOutput() VolumeContainerOutput {

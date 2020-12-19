@@ -12,6 +12,7 @@ import (
 )
 
 // Information about packet capture session.
+// Latest API Version: 2020-07-01.
 type PacketCapture struct {
 	pulumi.CustomResourceState
 
@@ -271,15 +272,15 @@ type PacketCaptureInput interface {
 	ToPacketCaptureOutputWithContext(ctx context.Context) PacketCaptureOutput
 }
 
-func (PacketCapture) ElementType() reflect.Type {
-	return reflect.TypeOf((*PacketCapture)(nil)).Elem()
+func (*PacketCapture) ElementType() reflect.Type {
+	return reflect.TypeOf((*PacketCapture)(nil))
 }
 
-func (i PacketCapture) ToPacketCaptureOutput() PacketCaptureOutput {
+func (i *PacketCapture) ToPacketCaptureOutput() PacketCaptureOutput {
 	return i.ToPacketCaptureOutputWithContext(context.Background())
 }
 
-func (i PacketCapture) ToPacketCaptureOutputWithContext(ctx context.Context) PacketCaptureOutput {
+func (i *PacketCapture) ToPacketCaptureOutputWithContext(ctx context.Context) PacketCaptureOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PacketCaptureOutput)
 }
 
@@ -288,7 +289,7 @@ type PacketCaptureOutput struct {
 }
 
 func (PacketCaptureOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PacketCaptureOutput)(nil)).Elem()
+	return reflect.TypeOf((*PacketCapture)(nil))
 }
 
 func (o PacketCaptureOutput) ToPacketCaptureOutput() PacketCaptureOutput {

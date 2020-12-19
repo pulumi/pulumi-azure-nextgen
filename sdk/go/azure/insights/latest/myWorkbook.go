@@ -12,6 +12,7 @@ import (
 )
 
 // An Application Insights private workbook definition.
+// Latest API Version: 2020-10-20.
 type MyWorkbook struct {
 	pulumi.CustomResourceState
 
@@ -241,15 +242,15 @@ type MyWorkbookInput interface {
 	ToMyWorkbookOutputWithContext(ctx context.Context) MyWorkbookOutput
 }
 
-func (MyWorkbook) ElementType() reflect.Type {
-	return reflect.TypeOf((*MyWorkbook)(nil)).Elem()
+func (*MyWorkbook) ElementType() reflect.Type {
+	return reflect.TypeOf((*MyWorkbook)(nil))
 }
 
-func (i MyWorkbook) ToMyWorkbookOutput() MyWorkbookOutput {
+func (i *MyWorkbook) ToMyWorkbookOutput() MyWorkbookOutput {
 	return i.ToMyWorkbookOutputWithContext(context.Background())
 }
 
-func (i MyWorkbook) ToMyWorkbookOutputWithContext(ctx context.Context) MyWorkbookOutput {
+func (i *MyWorkbook) ToMyWorkbookOutputWithContext(ctx context.Context) MyWorkbookOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MyWorkbookOutput)
 }
 
@@ -258,7 +259,7 @@ type MyWorkbookOutput struct {
 }
 
 func (MyWorkbookOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MyWorkbookOutput)(nil)).Elem()
+	return reflect.TypeOf((*MyWorkbook)(nil))
 }
 
 func (o MyWorkbookOutput) ToMyWorkbookOutput() MyWorkbookOutput {

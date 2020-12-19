@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Latest API Version: 2016-01-29.
 type WorkspaceCollection struct {
 	pulumi.CustomResourceState
 
@@ -130,15 +131,15 @@ type WorkspaceCollectionInput interface {
 	ToWorkspaceCollectionOutputWithContext(ctx context.Context) WorkspaceCollectionOutput
 }
 
-func (WorkspaceCollection) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkspaceCollection)(nil)).Elem()
+func (*WorkspaceCollection) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceCollection)(nil))
 }
 
-func (i WorkspaceCollection) ToWorkspaceCollectionOutput() WorkspaceCollectionOutput {
+func (i *WorkspaceCollection) ToWorkspaceCollectionOutput() WorkspaceCollectionOutput {
 	return i.ToWorkspaceCollectionOutputWithContext(context.Background())
 }
 
-func (i WorkspaceCollection) ToWorkspaceCollectionOutputWithContext(ctx context.Context) WorkspaceCollectionOutput {
+func (i *WorkspaceCollection) ToWorkspaceCollectionOutputWithContext(ctx context.Context) WorkspaceCollectionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceCollectionOutput)
 }
 
@@ -147,7 +148,7 @@ type WorkspaceCollectionOutput struct {
 }
 
 func (WorkspaceCollectionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkspaceCollectionOutput)(nil)).Elem()
+	return reflect.TypeOf((*WorkspaceCollection)(nil))
 }
 
 func (o WorkspaceCollectionOutput) ToWorkspaceCollectionOutput() WorkspaceCollectionOutput {

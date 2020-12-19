@@ -12,6 +12,7 @@ namespace Pulumi.AzureNextGen.Sql.V20200801Preview
     /// <summary>
     /// A private endpoint connection
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:sql/v20200801preview:ManagedInstancePrivateEndpointConnection")]
     public partial class ManagedInstancePrivateEndpointConnection : Pulumi.CustomResource
     {
         /// <summary>
@@ -67,6 +68,10 @@ namespace Pulumi.AzureNextGen.Sql.V20200801Preview
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new Pulumi.Alias { Type = "azure-nextgen:sql/v20200202preview:ManagedInstancePrivateEndpointConnection"},
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

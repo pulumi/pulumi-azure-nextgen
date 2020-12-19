@@ -12,6 +12,7 @@ import (
 )
 
 // CDN endpoint is the entity within a CDN profile containing configuration information such as origin, protocol, content caching and delivery behavior. The CDN endpoint uses the URL format <endpointname>.azureedge.net.
+// Latest API Version: 2020-09-01.
 type Endpoint struct {
 	pulumi.CustomResourceState
 
@@ -355,15 +356,15 @@ type EndpointInput interface {
 	ToEndpointOutputWithContext(ctx context.Context) EndpointOutput
 }
 
-func (Endpoint) ElementType() reflect.Type {
-	return reflect.TypeOf((*Endpoint)(nil)).Elem()
+func (*Endpoint) ElementType() reflect.Type {
+	return reflect.TypeOf((*Endpoint)(nil))
 }
 
-func (i Endpoint) ToEndpointOutput() EndpointOutput {
+func (i *Endpoint) ToEndpointOutput() EndpointOutput {
 	return i.ToEndpointOutputWithContext(context.Background())
 }
 
-func (i Endpoint) ToEndpointOutputWithContext(ctx context.Context) EndpointOutput {
+func (i *Endpoint) ToEndpointOutputWithContext(ctx context.Context) EndpointOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointOutput)
 }
 
@@ -372,7 +373,7 @@ type EndpointOutput struct {
 }
 
 func (EndpointOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EndpointOutput)(nil)).Elem()
+	return reflect.TypeOf((*Endpoint)(nil))
 }
 
 func (o EndpointOutput) ToEndpointOutput() EndpointOutput {

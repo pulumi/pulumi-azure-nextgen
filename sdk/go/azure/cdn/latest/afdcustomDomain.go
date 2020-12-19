@@ -12,6 +12,7 @@ import (
 )
 
 // Friendly domain name mapping to the endpoint hostname that the customer provides for branding purposes, e.g. www.contoso.com.
+// Latest API Version: 2020-09-01.
 type AFDCustomDomain struct {
 	pulumi.CustomResourceState
 
@@ -172,15 +173,15 @@ type AFDCustomDomainInput interface {
 	ToAFDCustomDomainOutputWithContext(ctx context.Context) AFDCustomDomainOutput
 }
 
-func (AFDCustomDomain) ElementType() reflect.Type {
-	return reflect.TypeOf((*AFDCustomDomain)(nil)).Elem()
+func (*AFDCustomDomain) ElementType() reflect.Type {
+	return reflect.TypeOf((*AFDCustomDomain)(nil))
 }
 
-func (i AFDCustomDomain) ToAFDCustomDomainOutput() AFDCustomDomainOutput {
+func (i *AFDCustomDomain) ToAFDCustomDomainOutput() AFDCustomDomainOutput {
 	return i.ToAFDCustomDomainOutputWithContext(context.Background())
 }
 
-func (i AFDCustomDomain) ToAFDCustomDomainOutputWithContext(ctx context.Context) AFDCustomDomainOutput {
+func (i *AFDCustomDomain) ToAFDCustomDomainOutputWithContext(ctx context.Context) AFDCustomDomainOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AFDCustomDomainOutput)
 }
 
@@ -189,7 +190,7 @@ type AFDCustomDomainOutput struct {
 }
 
 func (AFDCustomDomainOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AFDCustomDomainOutput)(nil)).Elem()
+	return reflect.TypeOf((*AFDCustomDomain)(nil))
 }
 
 func (o AFDCustomDomainOutput) ToAFDCustomDomainOutput() AFDCustomDomainOutput {

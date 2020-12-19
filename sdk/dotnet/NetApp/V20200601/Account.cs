@@ -12,6 +12,7 @@ namespace Pulumi.AzureNextGen.NetApp.V20200601
     /// <summary>
     /// NetApp account resource
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:netapp/v20200601:Account")]
     public partial class Account : Pulumi.CustomResource
     {
         /// <summary>
@@ -88,6 +89,7 @@ namespace Pulumi.AzureNextGen.NetApp.V20200601
                     new Pulumi.Alias { Type = "azure-nextgen:netapp/v20200501:Account"},
                     new Pulumi.Alias { Type = "azure-nextgen:netapp/v20200701:Account"},
                     new Pulumi.Alias { Type = "azure-nextgen:netapp/v20200801:Account"},
+                    new Pulumi.Alias { Type = "azure-nextgen:netapp/v20200901:Account"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Automation.Latest
 {
     /// <summary>
     /// Definition of the automation account type.
+    /// Latest API Version: 2015-10-31.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:automation/latest:AutomationAccount")]
     public partial class AutomationAccount : Pulumi.CustomResource
     {
         /// <summary>

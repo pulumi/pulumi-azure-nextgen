@@ -12,6 +12,7 @@ import (
 )
 
 // A database geo backup policy.
+// Latest API Version: 2014-04-01.
 type GeoBackupPolicy struct {
 	pulumi.CustomResourceState
 
@@ -147,15 +148,15 @@ type GeoBackupPolicyInput interface {
 	ToGeoBackupPolicyOutputWithContext(ctx context.Context) GeoBackupPolicyOutput
 }
 
-func (GeoBackupPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*GeoBackupPolicy)(nil)).Elem()
+func (*GeoBackupPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeoBackupPolicy)(nil))
 }
 
-func (i GeoBackupPolicy) ToGeoBackupPolicyOutput() GeoBackupPolicyOutput {
+func (i *GeoBackupPolicy) ToGeoBackupPolicyOutput() GeoBackupPolicyOutput {
 	return i.ToGeoBackupPolicyOutputWithContext(context.Background())
 }
 
-func (i GeoBackupPolicy) ToGeoBackupPolicyOutputWithContext(ctx context.Context) GeoBackupPolicyOutput {
+func (i *GeoBackupPolicy) ToGeoBackupPolicyOutputWithContext(ctx context.Context) GeoBackupPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GeoBackupPolicyOutput)
 }
 
@@ -164,7 +165,7 @@ type GeoBackupPolicyOutput struct {
 }
 
 func (GeoBackupPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GeoBackupPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*GeoBackupPolicy)(nil))
 }
 
 func (o GeoBackupPolicyOutput) ToGeoBackupPolicyOutput() GeoBackupPolicyOutput {

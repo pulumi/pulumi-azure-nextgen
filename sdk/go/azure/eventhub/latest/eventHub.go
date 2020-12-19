@@ -12,6 +12,7 @@ import (
 )
 
 // Single item in List or Get Event Hub operation
+// Latest API Version: 2017-04-01.
 type EventHub struct {
 	pulumi.CustomResourceState
 
@@ -179,15 +180,15 @@ type EventHubInput interface {
 	ToEventHubOutputWithContext(ctx context.Context) EventHubOutput
 }
 
-func (EventHub) ElementType() reflect.Type {
-	return reflect.TypeOf((*EventHub)(nil)).Elem()
+func (*EventHub) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventHub)(nil))
 }
 
-func (i EventHub) ToEventHubOutput() EventHubOutput {
+func (i *EventHub) ToEventHubOutput() EventHubOutput {
 	return i.ToEventHubOutputWithContext(context.Background())
 }
 
-func (i EventHub) ToEventHubOutputWithContext(ctx context.Context) EventHubOutput {
+func (i *EventHub) ToEventHubOutputWithContext(ctx context.Context) EventHubOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EventHubOutput)
 }
 
@@ -196,7 +197,7 @@ type EventHubOutput struct {
 }
 
 func (EventHubOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EventHubOutput)(nil)).Elem()
+	return reflect.TypeOf((*EventHub)(nil))
 }
 
 func (o EventHubOutput) ToEventHubOutput() EventHubOutput {

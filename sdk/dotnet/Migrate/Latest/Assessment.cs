@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Migrate.Latest
 {
     /// <summary>
     /// An assessment created for a group in the Migration project.
+    /// Latest API Version: 2019-10-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:migrate/latest:Assessment")]
     public partial class Assessment : Pulumi.CustomResource
     {
         /// <summary>

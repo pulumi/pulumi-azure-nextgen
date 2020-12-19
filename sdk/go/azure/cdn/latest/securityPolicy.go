@@ -12,6 +12,7 @@ import (
 )
 
 // SecurityPolicy association for AzureFrontDoor profile
+// Latest API Version: 2020-09-01.
 type SecurityPolicy struct {
 	pulumi.CustomResourceState
 
@@ -137,15 +138,15 @@ type SecurityPolicyInput interface {
 	ToSecurityPolicyOutputWithContext(ctx context.Context) SecurityPolicyOutput
 }
 
-func (SecurityPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicy)(nil)).Elem()
+func (*SecurityPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicy)(nil))
 }
 
-func (i SecurityPolicy) ToSecurityPolicyOutput() SecurityPolicyOutput {
+func (i *SecurityPolicy) ToSecurityPolicyOutput() SecurityPolicyOutput {
 	return i.ToSecurityPolicyOutputWithContext(context.Background())
 }
 
-func (i SecurityPolicy) ToSecurityPolicyOutputWithContext(ctx context.Context) SecurityPolicyOutput {
+func (i *SecurityPolicy) ToSecurityPolicyOutputWithContext(ctx context.Context) SecurityPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyOutput)
 }
 
@@ -154,7 +155,7 @@ type SecurityPolicyOutput struct {
 }
 
 func (SecurityPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*SecurityPolicy)(nil))
 }
 
 func (o SecurityPolicyOutput) ToSecurityPolicyOutput() SecurityPolicyOutput {

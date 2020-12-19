@@ -12,6 +12,7 @@ import (
 )
 
 // The description of the provisioning service.
+// Latest API Version: 2020-03-01.
 type IotDpsResource struct {
 	pulumi.CustomResourceState
 
@@ -179,15 +180,15 @@ type IotDpsResourceInput interface {
 	ToIotDpsResourceOutputWithContext(ctx context.Context) IotDpsResourceOutput
 }
 
-func (IotDpsResource) ElementType() reflect.Type {
-	return reflect.TypeOf((*IotDpsResource)(nil)).Elem()
+func (*IotDpsResource) ElementType() reflect.Type {
+	return reflect.TypeOf((*IotDpsResource)(nil))
 }
 
-func (i IotDpsResource) ToIotDpsResourceOutput() IotDpsResourceOutput {
+func (i *IotDpsResource) ToIotDpsResourceOutput() IotDpsResourceOutput {
 	return i.ToIotDpsResourceOutputWithContext(context.Background())
 }
 
-func (i IotDpsResource) ToIotDpsResourceOutputWithContext(ctx context.Context) IotDpsResourceOutput {
+func (i *IotDpsResource) ToIotDpsResourceOutputWithContext(ctx context.Context) IotDpsResourceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IotDpsResourceOutput)
 }
 
@@ -196,7 +197,7 @@ type IotDpsResourceOutput struct {
 }
 
 func (IotDpsResourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IotDpsResourceOutput)(nil)).Elem()
+	return reflect.TypeOf((*IotDpsResource)(nil))
 }
 
 func (o IotDpsResourceOutput) ToIotDpsResourceOutput() IotDpsResourceOutput {

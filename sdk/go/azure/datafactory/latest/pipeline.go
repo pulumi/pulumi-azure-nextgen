@@ -12,6 +12,7 @@ import (
 )
 
 // Pipeline resource type.
+// Latest API Version: 2018-06-01.
 type Pipeline struct {
 	pulumi.CustomResourceState
 
@@ -201,15 +202,15 @@ type PipelineInput interface {
 	ToPipelineOutputWithContext(ctx context.Context) PipelineOutput
 }
 
-func (Pipeline) ElementType() reflect.Type {
-	return reflect.TypeOf((*Pipeline)(nil)).Elem()
+func (*Pipeline) ElementType() reflect.Type {
+	return reflect.TypeOf((*Pipeline)(nil))
 }
 
-func (i Pipeline) ToPipelineOutput() PipelineOutput {
+func (i *Pipeline) ToPipelineOutput() PipelineOutput {
 	return i.ToPipelineOutputWithContext(context.Background())
 }
 
-func (i Pipeline) ToPipelineOutputWithContext(ctx context.Context) PipelineOutput {
+func (i *Pipeline) ToPipelineOutputWithContext(ctx context.Context) PipelineOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineOutput)
 }
 
@@ -218,7 +219,7 @@ type PipelineOutput struct {
 }
 
 func (PipelineOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PipelineOutput)(nil)).Elem()
+	return reflect.TypeOf((*Pipeline)(nil))
 }
 
 func (o PipelineOutput) ToPipelineOutput() PipelineOutput {

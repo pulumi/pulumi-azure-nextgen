@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.EventHub.Latest
 {
     /// <summary>
     /// Single item in a List or Get AuthorizationRule operation
+    /// Latest API Version: 2017-04-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:eventhub/latest:NamespaceAuthorizationRule")]
     public partial class NamespaceAuthorizationRule : Pulumi.CustomResource
     {
         /// <summary>

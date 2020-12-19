@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.DataBox.Latest
 {
     /// <summary>
     /// Job Resource.
+    /// Latest API Version: 2020-11-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:databox/latest:Job")]
     public partial class Job : Pulumi.CustomResource
     {
         /// <summary>

@@ -12,6 +12,7 @@ import (
 )
 
 // Properties of the table, including Id, resource name, resource type.
+// Latest API Version: 2019-06-01.
 type Table struct {
 	pulumi.CustomResourceState
 
@@ -121,15 +122,15 @@ type TableInput interface {
 	ToTableOutputWithContext(ctx context.Context) TableOutput
 }
 
-func (Table) ElementType() reflect.Type {
-	return reflect.TypeOf((*Table)(nil)).Elem()
+func (*Table) ElementType() reflect.Type {
+	return reflect.TypeOf((*Table)(nil))
 }
 
-func (i Table) ToTableOutput() TableOutput {
+func (i *Table) ToTableOutput() TableOutput {
 	return i.ToTableOutputWithContext(context.Background())
 }
 
-func (i Table) ToTableOutputWithContext(ctx context.Context) TableOutput {
+func (i *Table) ToTableOutputWithContext(ctx context.Context) TableOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TableOutput)
 }
 
@@ -138,7 +139,7 @@ type TableOutput struct {
 }
 
 func (TableOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TableOutput)(nil)).Elem()
+	return reflect.TypeOf((*Table)(nil))
 }
 
 func (o TableOutput) ToTableOutput() TableOutput {

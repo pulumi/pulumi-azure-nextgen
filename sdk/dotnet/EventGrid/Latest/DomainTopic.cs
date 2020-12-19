@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.EventGrid.Latest
 {
     /// <summary>
     /// Domain Topic.
+    /// Latest API Version: 2020-06-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:eventgrid/latest:DomainTopic")]
     public partial class DomainTopic : Pulumi.CustomResource
     {
         /// <summary>

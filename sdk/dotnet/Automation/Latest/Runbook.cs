@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Automation.Latest
 {
     /// <summary>
     /// Definition of the runbook type.
+    /// Latest API Version: 2018-06-30.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:automation/latest:Runbook")]
     public partial class Runbook : Pulumi.CustomResource
     {
         /// <summary>

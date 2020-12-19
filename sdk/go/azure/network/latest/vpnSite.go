@@ -12,6 +12,7 @@ import (
 )
 
 // VpnSite Resource.
+// Latest API Version: 2020-07-01.
 type VpnSite struct {
 	pulumi.CustomResourceState
 
@@ -291,15 +292,15 @@ type VpnSiteInput interface {
 	ToVpnSiteOutputWithContext(ctx context.Context) VpnSiteOutput
 }
 
-func (VpnSite) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpnSite)(nil)).Elem()
+func (*VpnSite) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnSite)(nil))
 }
 
-func (i VpnSite) ToVpnSiteOutput() VpnSiteOutput {
+func (i *VpnSite) ToVpnSiteOutput() VpnSiteOutput {
 	return i.ToVpnSiteOutputWithContext(context.Background())
 }
 
-func (i VpnSite) ToVpnSiteOutputWithContext(ctx context.Context) VpnSiteOutput {
+func (i *VpnSite) ToVpnSiteOutputWithContext(ctx context.Context) VpnSiteOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpnSiteOutput)
 }
 
@@ -308,7 +309,7 @@ type VpnSiteOutput struct {
 }
 
 func (VpnSiteOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpnSiteOutput)(nil)).Elem()
+	return reflect.TypeOf((*VpnSite)(nil))
 }
 
 func (o VpnSiteOutput) ToVpnSiteOutput() VpnSiteOutput {

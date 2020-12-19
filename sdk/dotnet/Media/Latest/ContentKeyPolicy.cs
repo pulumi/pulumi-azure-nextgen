@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Media.Latest
 {
     /// <summary>
     /// A Content Key Policy resource.
+    /// Latest API Version: 2020-05-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:media/latest:ContentKeyPolicy")]
     public partial class ContentKeyPolicy : Pulumi.CustomResource
     {
         /// <summary>

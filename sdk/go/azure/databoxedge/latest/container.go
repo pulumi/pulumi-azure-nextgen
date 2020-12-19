@@ -12,6 +12,7 @@ import (
 )
 
 // Represents a container on the  Data Box Edge/Gateway device.
+// Latest API Version: 2019-08-01.
 type Container struct {
 	pulumi.CustomResourceState
 
@@ -153,15 +154,15 @@ type ContainerInput interface {
 	ToContainerOutputWithContext(ctx context.Context) ContainerOutput
 }
 
-func (Container) ElementType() reflect.Type {
-	return reflect.TypeOf((*Container)(nil)).Elem()
+func (*Container) ElementType() reflect.Type {
+	return reflect.TypeOf((*Container)(nil))
 }
 
-func (i Container) ToContainerOutput() ContainerOutput {
+func (i *Container) ToContainerOutput() ContainerOutput {
 	return i.ToContainerOutputWithContext(context.Background())
 }
 
-func (i Container) ToContainerOutputWithContext(ctx context.Context) ContainerOutput {
+func (i *Container) ToContainerOutputWithContext(ctx context.Context) ContainerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerOutput)
 }
 
@@ -170,7 +171,7 @@ type ContainerOutput struct {
 }
 
 func (ContainerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContainerOutput)(nil)).Elem()
+	return reflect.TypeOf((*Container)(nil))
 }
 
 func (o ContainerOutput) ToContainerOutput() ContainerOutput {

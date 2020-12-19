@@ -12,6 +12,7 @@ namespace Pulumi.AzureNextGen.Sql.V20200801Preview
     /// <summary>
     /// An Azure SQL managed instance administrator.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:sql/v20200801preview:ManagedInstanceAdministrator")]
     public partial class ManagedInstanceAdministrator : Pulumi.CustomResource
     {
         /// <summary>
@@ -76,6 +77,7 @@ namespace Pulumi.AzureNextGen.Sql.V20200801Preview
                 Aliases =
                 {
                     new Pulumi.Alias { Type = "azure-nextgen:sql/v20170301preview:ManagedInstanceAdministrator"},
+                    new Pulumi.Alias { Type = "azure-nextgen:sql/v20200202preview:ManagedInstanceAdministrator"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

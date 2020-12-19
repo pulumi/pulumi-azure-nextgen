@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Cdn.Latest
 {
     /// <summary>
     /// Friendly Secret name mapping to the any Secret or secret related information.
+    /// Latest API Version: 2020-09-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:cdn/latest:Secret")]
     public partial class Secret : Pulumi.CustomResource
     {
         [Output("deploymentStatus")]

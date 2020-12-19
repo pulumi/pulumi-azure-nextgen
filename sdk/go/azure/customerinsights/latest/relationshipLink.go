@@ -12,6 +12,7 @@ import (
 )
 
 // The relationship link resource format.
+// Latest API Version: 2017-04-26.
 type RelationshipLink struct {
 	pulumi.CustomResourceState
 
@@ -221,15 +222,15 @@ type RelationshipLinkInput interface {
 	ToRelationshipLinkOutputWithContext(ctx context.Context) RelationshipLinkOutput
 }
 
-func (RelationshipLink) ElementType() reflect.Type {
-	return reflect.TypeOf((*RelationshipLink)(nil)).Elem()
+func (*RelationshipLink) ElementType() reflect.Type {
+	return reflect.TypeOf((*RelationshipLink)(nil))
 }
 
-func (i RelationshipLink) ToRelationshipLinkOutput() RelationshipLinkOutput {
+func (i *RelationshipLink) ToRelationshipLinkOutput() RelationshipLinkOutput {
 	return i.ToRelationshipLinkOutputWithContext(context.Background())
 }
 
-func (i RelationshipLink) ToRelationshipLinkOutputWithContext(ctx context.Context) RelationshipLinkOutput {
+func (i *RelationshipLink) ToRelationshipLinkOutputWithContext(ctx context.Context) RelationshipLinkOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RelationshipLinkOutput)
 }
 
@@ -238,7 +239,7 @@ type RelationshipLinkOutput struct {
 }
 
 func (RelationshipLinkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RelationshipLinkOutput)(nil)).Elem()
+	return reflect.TypeOf((*RelationshipLink)(nil))
 }
 
 func (o RelationshipLinkOutput) ToRelationshipLinkOutput() RelationshipLinkOutput {

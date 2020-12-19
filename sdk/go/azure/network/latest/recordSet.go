@@ -12,6 +12,7 @@ import (
 )
 
 // Describes a DNS record set (a collection of DNS records with the same name and type) in a Private DNS zone.
+// Latest API Version: 2020-06-01.
 type RecordSet struct {
 	pulumi.CustomResourceState
 
@@ -247,15 +248,15 @@ type RecordSetInput interface {
 	ToRecordSetOutputWithContext(ctx context.Context) RecordSetOutput
 }
 
-func (RecordSet) ElementType() reflect.Type {
-	return reflect.TypeOf((*RecordSet)(nil)).Elem()
+func (*RecordSet) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordSet)(nil))
 }
 
-func (i RecordSet) ToRecordSetOutput() RecordSetOutput {
+func (i *RecordSet) ToRecordSetOutput() RecordSetOutput {
 	return i.ToRecordSetOutputWithContext(context.Background())
 }
 
-func (i RecordSet) ToRecordSetOutputWithContext(ctx context.Context) RecordSetOutput {
+func (i *RecordSet) ToRecordSetOutputWithContext(ctx context.Context) RecordSetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RecordSetOutput)
 }
 
@@ -264,7 +265,7 @@ type RecordSetOutput struct {
 }
 
 func (RecordSetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RecordSetOutput)(nil)).Elem()
+	return reflect.TypeOf((*RecordSet)(nil))
 }
 
 func (o RecordSetOutput) ToRecordSetOutput() RecordSetOutput {

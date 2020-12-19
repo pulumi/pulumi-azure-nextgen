@@ -12,6 +12,7 @@ namespace Pulumi.AzureNextGen.DigitalTwins.V20201031
     /// <summary>
     /// DigitalTwinsInstance endpoint resource.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:digitaltwins/v20201031:DigitalTwinsEndpoint")]
     public partial class DigitalTwinsEndpoint : Pulumi.CustomResource
     {
         /// <summary>
@@ -59,6 +60,7 @@ namespace Pulumi.AzureNextGen.DigitalTwins.V20201031
                 {
                     new Pulumi.Alias { Type = "azure-nextgen:digitaltwins/latest:DigitalTwinsEndpoint"},
                     new Pulumi.Alias { Type = "azure-nextgen:digitaltwins/v20200301preview:DigitalTwinsEndpoint"},
+                    new Pulumi.Alias { Type = "azure-nextgen:digitaltwins/v20201201:DigitalTwinsEndpoint"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

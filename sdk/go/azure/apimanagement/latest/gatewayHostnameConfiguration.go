@@ -12,6 +12,7 @@ import (
 )
 
 // Gateway hostname configuration details.
+// Latest API Version: 2019-12-01.
 type GatewayHostnameConfiguration struct {
 	pulumi.CustomResourceState
 
@@ -155,15 +156,15 @@ type GatewayHostnameConfigurationInput interface {
 	ToGatewayHostnameConfigurationOutputWithContext(ctx context.Context) GatewayHostnameConfigurationOutput
 }
 
-func (GatewayHostnameConfiguration) ElementType() reflect.Type {
-	return reflect.TypeOf((*GatewayHostnameConfiguration)(nil)).Elem()
+func (*GatewayHostnameConfiguration) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayHostnameConfiguration)(nil))
 }
 
-func (i GatewayHostnameConfiguration) ToGatewayHostnameConfigurationOutput() GatewayHostnameConfigurationOutput {
+func (i *GatewayHostnameConfiguration) ToGatewayHostnameConfigurationOutput() GatewayHostnameConfigurationOutput {
 	return i.ToGatewayHostnameConfigurationOutputWithContext(context.Background())
 }
 
-func (i GatewayHostnameConfiguration) ToGatewayHostnameConfigurationOutputWithContext(ctx context.Context) GatewayHostnameConfigurationOutput {
+func (i *GatewayHostnameConfiguration) ToGatewayHostnameConfigurationOutputWithContext(ctx context.Context) GatewayHostnameConfigurationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayHostnameConfigurationOutput)
 }
 
@@ -172,7 +173,7 @@ type GatewayHostnameConfigurationOutput struct {
 }
 
 func (GatewayHostnameConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GatewayHostnameConfigurationOutput)(nil)).Elem()
+	return reflect.TypeOf((*GatewayHostnameConfiguration)(nil))
 }
 
 func (o GatewayHostnameConfigurationOutput) ToGatewayHostnameConfigurationOutput() GatewayHostnameConfigurationOutput {

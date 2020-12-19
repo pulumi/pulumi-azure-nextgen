@@ -12,6 +12,7 @@ import (
 )
 
 // The customer's prefix that is registered by the peering service provider.
+// Latest API Version: 2020-10-01.
 type RegisteredPrefix struct {
 	pulumi.CustomResourceState
 
@@ -152,15 +153,15 @@ type RegisteredPrefixInput interface {
 	ToRegisteredPrefixOutputWithContext(ctx context.Context) RegisteredPrefixOutput
 }
 
-func (RegisteredPrefix) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegisteredPrefix)(nil)).Elem()
+func (*RegisteredPrefix) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegisteredPrefix)(nil))
 }
 
-func (i RegisteredPrefix) ToRegisteredPrefixOutput() RegisteredPrefixOutput {
+func (i *RegisteredPrefix) ToRegisteredPrefixOutput() RegisteredPrefixOutput {
 	return i.ToRegisteredPrefixOutputWithContext(context.Background())
 }
 
-func (i RegisteredPrefix) ToRegisteredPrefixOutputWithContext(ctx context.Context) RegisteredPrefixOutput {
+func (i *RegisteredPrefix) ToRegisteredPrefixOutputWithContext(ctx context.Context) RegisteredPrefixOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegisteredPrefixOutput)
 }
 
@@ -169,7 +170,7 @@ type RegisteredPrefixOutput struct {
 }
 
 func (RegisteredPrefixOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegisteredPrefixOutput)(nil)).Elem()
+	return reflect.TypeOf((*RegisteredPrefix)(nil))
 }
 
 func (o RegisteredPrefixOutput) ToRegisteredPrefixOutput() RegisteredPrefixOutput {

@@ -12,6 +12,7 @@ import (
 )
 
 // Gateway details.
+// Latest API Version: 2019-12-01.
 type Gateway struct {
 	pulumi.CustomResourceState
 
@@ -138,15 +139,15 @@ type GatewayInput interface {
 	ToGatewayOutputWithContext(ctx context.Context) GatewayOutput
 }
 
-func (Gateway) ElementType() reflect.Type {
-	return reflect.TypeOf((*Gateway)(nil)).Elem()
+func (*Gateway) ElementType() reflect.Type {
+	return reflect.TypeOf((*Gateway)(nil))
 }
 
-func (i Gateway) ToGatewayOutput() GatewayOutput {
+func (i *Gateway) ToGatewayOutput() GatewayOutput {
 	return i.ToGatewayOutputWithContext(context.Background())
 }
 
-func (i Gateway) ToGatewayOutputWithContext(ctx context.Context) GatewayOutput {
+func (i *Gateway) ToGatewayOutputWithContext(ctx context.Context) GatewayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayOutput)
 }
 
@@ -155,7 +156,7 @@ type GatewayOutput struct {
 }
 
 func (GatewayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GatewayOutput)(nil)).Elem()
+	return reflect.TypeOf((*Gateway)(nil))
 }
 
 func (o GatewayOutput) ToGatewayOutput() GatewayOutput {

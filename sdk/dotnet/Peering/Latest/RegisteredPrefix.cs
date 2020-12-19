@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Peering.Latest
 {
     /// <summary>
     /// The customer's prefix that is registered by the peering service provider.
+    /// Latest API Version: 2020-10-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:peering/latest:RegisteredPrefix")]
     public partial class RegisteredPrefix : Pulumi.CustomResource
     {
         /// <summary>

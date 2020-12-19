@@ -12,6 +12,7 @@ import (
 )
 
 // The Backup Schedule Group
+// Latest API Version: 2016-10-01.
 type BackupScheduleGroup struct {
 	pulumi.CustomResourceState
 
@@ -132,15 +133,15 @@ type BackupScheduleGroupInput interface {
 	ToBackupScheduleGroupOutputWithContext(ctx context.Context) BackupScheduleGroupOutput
 }
 
-func (BackupScheduleGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*BackupScheduleGroup)(nil)).Elem()
+func (*BackupScheduleGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupScheduleGroup)(nil))
 }
 
-func (i BackupScheduleGroup) ToBackupScheduleGroupOutput() BackupScheduleGroupOutput {
+func (i *BackupScheduleGroup) ToBackupScheduleGroupOutput() BackupScheduleGroupOutput {
 	return i.ToBackupScheduleGroupOutputWithContext(context.Background())
 }
 
-func (i BackupScheduleGroup) ToBackupScheduleGroupOutputWithContext(ctx context.Context) BackupScheduleGroupOutput {
+func (i *BackupScheduleGroup) ToBackupScheduleGroupOutputWithContext(ctx context.Context) BackupScheduleGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BackupScheduleGroupOutput)
 }
 
@@ -149,7 +150,7 @@ type BackupScheduleGroupOutput struct {
 }
 
 func (BackupScheduleGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BackupScheduleGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*BackupScheduleGroup)(nil))
 }
 
 func (o BackupScheduleGroupOutput) ToBackupScheduleGroupOutput() BackupScheduleGroupOutput {

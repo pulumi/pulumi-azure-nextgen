@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.StorSimple.Latest
 {
     /// <summary>
     /// The StorSimple Manager.
+    /// Latest API Version: 2017-06-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:storsimple/latest:Manager")]
     public partial class Manager : Pulumi.CustomResource
     {
         /// <summary>

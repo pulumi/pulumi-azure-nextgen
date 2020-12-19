@@ -12,6 +12,7 @@ namespace Pulumi.AzureNextGen.Sql.V20170301Preview
     /// <summary>
     /// An Azure SQL job agent.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:sql/v20170301preview:JobAgent")]
     public partial class JobAgent : Pulumi.CustomResource
     {
         /// <summary>
@@ -81,6 +82,7 @@ namespace Pulumi.AzureNextGen.Sql.V20170301Preview
                 Version = Utilities.Version,
                 Aliases =
                 {
+                    new Pulumi.Alias { Type = "azure-nextgen:sql/v20200202preview:JobAgent"},
                     new Pulumi.Alias { Type = "azure-nextgen:sql/v20200801preview:JobAgent"},
                 },
             };

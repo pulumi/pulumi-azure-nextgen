@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Compute.Latest
 {
     /// <summary>
     /// Specifies information about the Shared Image Gallery that you want to create or update.
+    /// Latest API Version: 2020-09-30.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:compute/latest:Gallery")]
     public partial class Gallery : Pulumi.CustomResource
     {
         /// <summary>

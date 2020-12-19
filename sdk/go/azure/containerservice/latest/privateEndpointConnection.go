@@ -12,6 +12,7 @@ import (
 )
 
 // A private endpoint connection
+// Latest API Version: 2020-11-01.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
@@ -150,15 +151,15 @@ type PrivateEndpointConnectionInput interface {
 	ToPrivateEndpointConnectionOutputWithContext(ctx context.Context) PrivateEndpointConnectionOutput
 }
 
-func (PrivateEndpointConnection) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointConnection)(nil)).Elem()
+func (*PrivateEndpointConnection) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointConnection)(nil))
 }
 
-func (i PrivateEndpointConnection) ToPrivateEndpointConnectionOutput() PrivateEndpointConnectionOutput {
+func (i *PrivateEndpointConnection) ToPrivateEndpointConnectionOutput() PrivateEndpointConnectionOutput {
 	return i.ToPrivateEndpointConnectionOutputWithContext(context.Background())
 }
 
-func (i PrivateEndpointConnection) ToPrivateEndpointConnectionOutputWithContext(ctx context.Context) PrivateEndpointConnectionOutput {
+func (i *PrivateEndpointConnection) ToPrivateEndpointConnectionOutputWithContext(ctx context.Context) PrivateEndpointConnectionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionOutput)
 }
 
@@ -167,7 +168,7 @@ type PrivateEndpointConnectionOutput struct {
 }
 
 func (PrivateEndpointConnectionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointConnectionOutput)(nil)).Elem()
+	return reflect.TypeOf((*PrivateEndpointConnection)(nil))
 }
 
 func (o PrivateEndpointConnectionOutput) ToPrivateEndpointConnectionOutput() PrivateEndpointConnectionOutput {

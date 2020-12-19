@@ -50,6 +50,9 @@ func NewJob(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-nextgen:sql/v20170301preview:Job"),
 		},
+		{
+			Type: pulumi.String("azure-nextgen:sql/v20200202preview:Job"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Job
@@ -145,15 +148,15 @@ type JobInput interface {
 	ToJobOutputWithContext(ctx context.Context) JobOutput
 }
 
-func (Job) ElementType() reflect.Type {
-	return reflect.TypeOf((*Job)(nil)).Elem()
+func (*Job) ElementType() reflect.Type {
+	return reflect.TypeOf((*Job)(nil))
 }
 
-func (i Job) ToJobOutput() JobOutput {
+func (i *Job) ToJobOutput() JobOutput {
 	return i.ToJobOutputWithContext(context.Background())
 }
 
-func (i Job) ToJobOutputWithContext(ctx context.Context) JobOutput {
+func (i *Job) ToJobOutputWithContext(ctx context.Context) JobOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(JobOutput)
 }
 
@@ -162,7 +165,7 @@ type JobOutput struct {
 }
 
 func (JobOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobOutput)(nil)).Elem()
+	return reflect.TypeOf((*Job)(nil))
 }
 
 func (o JobOutput) ToJobOutput() JobOutput {

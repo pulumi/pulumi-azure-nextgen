@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.DataLakeStore.Latest
 {
     /// <summary>
     /// Data Lake Store account information.
+    /// Latest API Version: 2016-11-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:datalakestore/latest:Account")]
     public partial class Account : Pulumi.CustomResource
     {
         /// <summary>

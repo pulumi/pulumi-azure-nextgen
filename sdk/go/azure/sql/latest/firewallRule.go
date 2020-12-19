@@ -12,6 +12,7 @@ import (
 )
 
 // Represents a server firewall rule.
+// Latest API Version: 2014-04-01.
 type FirewallRule struct {
 	pulumi.CustomResourceState
 
@@ -57,6 +58,9 @@ func NewFirewallRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-nextgen:sql/v20150501preview:FirewallRule"),
+		},
+		{
+			Type: pulumi.String("azure-nextgen:sql/v20200202preview:FirewallRule"),
 		},
 		{
 			Type: pulumi.String("azure-nextgen:sql/v20200801preview:FirewallRule"),
@@ -156,15 +160,15 @@ type FirewallRuleInput interface {
 	ToFirewallRuleOutputWithContext(ctx context.Context) FirewallRuleOutput
 }
 
-func (FirewallRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*FirewallRule)(nil)).Elem()
+func (*FirewallRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallRule)(nil))
 }
 
-func (i FirewallRule) ToFirewallRuleOutput() FirewallRuleOutput {
+func (i *FirewallRule) ToFirewallRuleOutput() FirewallRuleOutput {
 	return i.ToFirewallRuleOutputWithContext(context.Background())
 }
 
-func (i FirewallRule) ToFirewallRuleOutputWithContext(ctx context.Context) FirewallRuleOutput {
+func (i *FirewallRule) ToFirewallRuleOutputWithContext(ctx context.Context) FirewallRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallRuleOutput)
 }
 
@@ -173,7 +177,7 @@ type FirewallRuleOutput struct {
 }
 
 func (FirewallRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FirewallRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*FirewallRule)(nil))
 }
 
 func (o FirewallRuleOutput) ToFirewallRuleOutput() FirewallRuleOutput {

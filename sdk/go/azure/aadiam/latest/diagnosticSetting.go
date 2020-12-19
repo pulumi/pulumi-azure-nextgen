@@ -12,6 +12,7 @@ import (
 )
 
 // The diagnostic setting resource.
+// Latest API Version: 2017-04-01.
 type DiagnosticSetting struct {
 	pulumi.CustomResourceState
 
@@ -158,15 +159,15 @@ type DiagnosticSettingInput interface {
 	ToDiagnosticSettingOutputWithContext(ctx context.Context) DiagnosticSettingOutput
 }
 
-func (DiagnosticSetting) ElementType() reflect.Type {
-	return reflect.TypeOf((*DiagnosticSetting)(nil)).Elem()
+func (*DiagnosticSetting) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiagnosticSetting)(nil))
 }
 
-func (i DiagnosticSetting) ToDiagnosticSettingOutput() DiagnosticSettingOutput {
+func (i *DiagnosticSetting) ToDiagnosticSettingOutput() DiagnosticSettingOutput {
 	return i.ToDiagnosticSettingOutputWithContext(context.Background())
 }
 
-func (i DiagnosticSetting) ToDiagnosticSettingOutputWithContext(ctx context.Context) DiagnosticSettingOutput {
+func (i *DiagnosticSetting) ToDiagnosticSettingOutputWithContext(ctx context.Context) DiagnosticSettingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DiagnosticSettingOutput)
 }
 
@@ -175,7 +176,7 @@ type DiagnosticSettingOutput struct {
 }
 
 func (DiagnosticSettingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DiagnosticSettingOutput)(nil)).Elem()
+	return reflect.TypeOf((*DiagnosticSetting)(nil))
 }
 
 func (o DiagnosticSettingOutput) ToDiagnosticSettingOutput() DiagnosticSettingOutput {

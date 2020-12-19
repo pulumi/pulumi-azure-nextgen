@@ -50,6 +50,9 @@ func NewVirtualNetworkRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-nextgen:sql/v20150501preview:VirtualNetworkRule"),
 		},
+		{
+			Type: pulumi.String("azure-nextgen:sql/v20200202preview:VirtualNetworkRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource VirtualNetworkRule
@@ -141,15 +144,15 @@ type VirtualNetworkRuleInput interface {
 	ToVirtualNetworkRuleOutputWithContext(ctx context.Context) VirtualNetworkRuleOutput
 }
 
-func (VirtualNetworkRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualNetworkRule)(nil)).Elem()
+func (*VirtualNetworkRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetworkRule)(nil))
 }
 
-func (i VirtualNetworkRule) ToVirtualNetworkRuleOutput() VirtualNetworkRuleOutput {
+func (i *VirtualNetworkRule) ToVirtualNetworkRuleOutput() VirtualNetworkRuleOutput {
 	return i.ToVirtualNetworkRuleOutputWithContext(context.Background())
 }
 
-func (i VirtualNetworkRule) ToVirtualNetworkRuleOutputWithContext(ctx context.Context) VirtualNetworkRuleOutput {
+func (i *VirtualNetworkRule) ToVirtualNetworkRuleOutputWithContext(ctx context.Context) VirtualNetworkRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkRuleOutput)
 }
 
@@ -158,7 +161,7 @@ type VirtualNetworkRuleOutput struct {
 }
 
 func (VirtualNetworkRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualNetworkRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*VirtualNetworkRule)(nil))
 }
 
 func (o VirtualNetworkRuleOutput) ToVirtualNetworkRuleOutput() VirtualNetworkRuleOutput {

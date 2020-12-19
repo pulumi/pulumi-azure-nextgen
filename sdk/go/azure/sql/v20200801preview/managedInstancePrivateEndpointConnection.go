@@ -43,6 +43,12 @@ func NewManagedInstancePrivateEndpointConnection(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-nextgen:sql/v20200202preview:ManagedInstancePrivateEndpointConnection"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource ManagedInstancePrivateEndpointConnection
 	err := ctx.RegisterResource("azure-nextgen:sql/v20200801preview:ManagedInstancePrivateEndpointConnection", name, args, &resource, opts...)
 	if err != nil {
@@ -130,15 +136,15 @@ type ManagedInstancePrivateEndpointConnectionInput interface {
 	ToManagedInstancePrivateEndpointConnectionOutputWithContext(ctx context.Context) ManagedInstancePrivateEndpointConnectionOutput
 }
 
-func (ManagedInstancePrivateEndpointConnection) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedInstancePrivateEndpointConnection)(nil)).Elem()
+func (*ManagedInstancePrivateEndpointConnection) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedInstancePrivateEndpointConnection)(nil))
 }
 
-func (i ManagedInstancePrivateEndpointConnection) ToManagedInstancePrivateEndpointConnectionOutput() ManagedInstancePrivateEndpointConnectionOutput {
+func (i *ManagedInstancePrivateEndpointConnection) ToManagedInstancePrivateEndpointConnectionOutput() ManagedInstancePrivateEndpointConnectionOutput {
 	return i.ToManagedInstancePrivateEndpointConnectionOutputWithContext(context.Background())
 }
 
-func (i ManagedInstancePrivateEndpointConnection) ToManagedInstancePrivateEndpointConnectionOutputWithContext(ctx context.Context) ManagedInstancePrivateEndpointConnectionOutput {
+func (i *ManagedInstancePrivateEndpointConnection) ToManagedInstancePrivateEndpointConnectionOutputWithContext(ctx context.Context) ManagedInstancePrivateEndpointConnectionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstancePrivateEndpointConnectionOutput)
 }
 
@@ -147,7 +153,7 @@ type ManagedInstancePrivateEndpointConnectionOutput struct {
 }
 
 func (ManagedInstancePrivateEndpointConnectionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedInstancePrivateEndpointConnectionOutput)(nil)).Elem()
+	return reflect.TypeOf((*ManagedInstancePrivateEndpointConnection)(nil))
 }
 
 func (o ManagedInstancePrivateEndpointConnectionOutput) ToManagedInstancePrivateEndpointConnectionOutput() ManagedInstancePrivateEndpointConnectionOutput {

@@ -12,6 +12,7 @@ import (
 )
 
 // Definition of the connection type.
+// Latest API Version: 2015-10-31.
 type ConnectionType struct {
 	pulumi.CustomResourceState
 
@@ -160,15 +161,15 @@ type ConnectionTypeInput interface {
 	ToConnectionTypeOutputWithContext(ctx context.Context) ConnectionTypeOutput
 }
 
-func (ConnectionType) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectionType)(nil)).Elem()
+func (*ConnectionType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionType)(nil))
 }
 
-func (i ConnectionType) ToConnectionTypeOutput() ConnectionTypeOutput {
+func (i *ConnectionType) ToConnectionTypeOutput() ConnectionTypeOutput {
 	return i.ToConnectionTypeOutputWithContext(context.Background())
 }
 
-func (i ConnectionType) ToConnectionTypeOutputWithContext(ctx context.Context) ConnectionTypeOutput {
+func (i *ConnectionType) ToConnectionTypeOutputWithContext(ctx context.Context) ConnectionTypeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionTypeOutput)
 }
 
@@ -177,7 +178,7 @@ type ConnectionTypeOutput struct {
 }
 
 func (ConnectionTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectionTypeOutput)(nil)).Elem()
+	return reflect.TypeOf((*ConnectionType)(nil))
 }
 
 func (o ConnectionTypeOutput) ToConnectionTypeOutput() ConnectionTypeOutput {

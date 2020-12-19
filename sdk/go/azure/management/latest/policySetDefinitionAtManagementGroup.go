@@ -12,6 +12,7 @@ import (
 )
 
 // The policy set definition.
+// Latest API Version: 2020-09-01.
 type PolicySetDefinitionAtManagementGroup struct {
 	pulumi.CustomResourceState
 
@@ -199,15 +200,15 @@ type PolicySetDefinitionAtManagementGroupInput interface {
 	ToPolicySetDefinitionAtManagementGroupOutputWithContext(ctx context.Context) PolicySetDefinitionAtManagementGroupOutput
 }
 
-func (PolicySetDefinitionAtManagementGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicySetDefinitionAtManagementGroup)(nil)).Elem()
+func (*PolicySetDefinitionAtManagementGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicySetDefinitionAtManagementGroup)(nil))
 }
 
-func (i PolicySetDefinitionAtManagementGroup) ToPolicySetDefinitionAtManagementGroupOutput() PolicySetDefinitionAtManagementGroupOutput {
+func (i *PolicySetDefinitionAtManagementGroup) ToPolicySetDefinitionAtManagementGroupOutput() PolicySetDefinitionAtManagementGroupOutput {
 	return i.ToPolicySetDefinitionAtManagementGroupOutputWithContext(context.Background())
 }
 
-func (i PolicySetDefinitionAtManagementGroup) ToPolicySetDefinitionAtManagementGroupOutputWithContext(ctx context.Context) PolicySetDefinitionAtManagementGroupOutput {
+func (i *PolicySetDefinitionAtManagementGroup) ToPolicySetDefinitionAtManagementGroupOutputWithContext(ctx context.Context) PolicySetDefinitionAtManagementGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PolicySetDefinitionAtManagementGroupOutput)
 }
 
@@ -216,7 +217,7 @@ type PolicySetDefinitionAtManagementGroupOutput struct {
 }
 
 func (PolicySetDefinitionAtManagementGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicySetDefinitionAtManagementGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*PolicySetDefinitionAtManagementGroup)(nil))
 }
 
 func (o PolicySetDefinitionAtManagementGroupOutput) ToPolicySetDefinitionAtManagementGroupOutput() PolicySetDefinitionAtManagementGroupOutput {

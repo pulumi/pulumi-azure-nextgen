@@ -12,6 +12,7 @@ import (
 )
 
 // The management group details.
+// Latest API Version: 2020-05-01.
 type ManagementGroup struct {
 	pulumi.CustomResourceState
 
@@ -155,15 +156,15 @@ type ManagementGroupInput interface {
 	ToManagementGroupOutputWithContext(ctx context.Context) ManagementGroupOutput
 }
 
-func (ManagementGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagementGroup)(nil)).Elem()
+func (*ManagementGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagementGroup)(nil))
 }
 
-func (i ManagementGroup) ToManagementGroupOutput() ManagementGroupOutput {
+func (i *ManagementGroup) ToManagementGroupOutput() ManagementGroupOutput {
 	return i.ToManagementGroupOutputWithContext(context.Background())
 }
 
-func (i ManagementGroup) ToManagementGroupOutputWithContext(ctx context.Context) ManagementGroupOutput {
+func (i *ManagementGroup) ToManagementGroupOutputWithContext(ctx context.Context) ManagementGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementGroupOutput)
 }
 
@@ -172,7 +173,7 @@ type ManagementGroupOutput struct {
 }
 
 func (ManagementGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagementGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*ManagementGroup)(nil))
 }
 
 func (o ManagementGroupOutput) ToManagementGroupOutput() ManagementGroupOutput {

@@ -12,6 +12,7 @@ import (
 )
 
 // Description of a Namespace AuthorizationRules.
+// Latest API Version: 2017-04-01.
 type NotificationHubAuthorizationRule struct {
 	pulumi.CustomResourceState
 
@@ -201,15 +202,15 @@ type NotificationHubAuthorizationRuleInput interface {
 	ToNotificationHubAuthorizationRuleOutputWithContext(ctx context.Context) NotificationHubAuthorizationRuleOutput
 }
 
-func (NotificationHubAuthorizationRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*NotificationHubAuthorizationRule)(nil)).Elem()
+func (*NotificationHubAuthorizationRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationHubAuthorizationRule)(nil))
 }
 
-func (i NotificationHubAuthorizationRule) ToNotificationHubAuthorizationRuleOutput() NotificationHubAuthorizationRuleOutput {
+func (i *NotificationHubAuthorizationRule) ToNotificationHubAuthorizationRuleOutput() NotificationHubAuthorizationRuleOutput {
 	return i.ToNotificationHubAuthorizationRuleOutputWithContext(context.Background())
 }
 
-func (i NotificationHubAuthorizationRule) ToNotificationHubAuthorizationRuleOutputWithContext(ctx context.Context) NotificationHubAuthorizationRuleOutput {
+func (i *NotificationHubAuthorizationRule) ToNotificationHubAuthorizationRuleOutputWithContext(ctx context.Context) NotificationHubAuthorizationRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationHubAuthorizationRuleOutput)
 }
 
@@ -218,7 +219,7 @@ type NotificationHubAuthorizationRuleOutput struct {
 }
 
 func (NotificationHubAuthorizationRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NotificationHubAuthorizationRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*NotificationHubAuthorizationRule)(nil))
 }
 
 func (o NotificationHubAuthorizationRuleOutput) ToNotificationHubAuthorizationRuleOutput() NotificationHubAuthorizationRuleOutput {

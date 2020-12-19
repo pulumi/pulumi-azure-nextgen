@@ -12,6 +12,7 @@ import (
 )
 
 // Azure Migrate Project.
+// Latest API Version: 2019-10-01.
 type Project struct {
 	pulumi.CustomResourceState
 
@@ -145,15 +146,15 @@ type ProjectInput interface {
 	ToProjectOutputWithContext(ctx context.Context) ProjectOutput
 }
 
-func (Project) ElementType() reflect.Type {
-	return reflect.TypeOf((*Project)(nil)).Elem()
+func (*Project) ElementType() reflect.Type {
+	return reflect.TypeOf((*Project)(nil))
 }
 
-func (i Project) ToProjectOutput() ProjectOutput {
+func (i *Project) ToProjectOutput() ProjectOutput {
 	return i.ToProjectOutputWithContext(context.Background())
 }
 
-func (i Project) ToProjectOutputWithContext(ctx context.Context) ProjectOutput {
+func (i *Project) ToProjectOutputWithContext(ctx context.Context) ProjectOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectOutput)
 }
 
@@ -162,7 +163,7 @@ type ProjectOutput struct {
 }
 
 func (ProjectOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectOutput)(nil)).Elem()
+	return reflect.TypeOf((*Project)(nil))
 }
 
 func (o ProjectOutput) ToProjectOutput() ProjectOutput {

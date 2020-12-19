@@ -47,6 +47,9 @@ func NewJobTargetGroup(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-nextgen:sql/v20200202preview:JobTargetGroup"),
+		},
+		{
 			Type: pulumi.String("azure-nextgen:sql/v20200801preview:JobTargetGroup"),
 		},
 	})
@@ -132,15 +135,15 @@ type JobTargetGroupInput interface {
 	ToJobTargetGroupOutputWithContext(ctx context.Context) JobTargetGroupOutput
 }
 
-func (JobTargetGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobTargetGroup)(nil)).Elem()
+func (*JobTargetGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTargetGroup)(nil))
 }
 
-func (i JobTargetGroup) ToJobTargetGroupOutput() JobTargetGroupOutput {
+func (i *JobTargetGroup) ToJobTargetGroupOutput() JobTargetGroupOutput {
 	return i.ToJobTargetGroupOutputWithContext(context.Background())
 }
 
-func (i JobTargetGroup) ToJobTargetGroupOutputWithContext(ctx context.Context) JobTargetGroupOutput {
+func (i *JobTargetGroup) ToJobTargetGroupOutputWithContext(ctx context.Context) JobTargetGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(JobTargetGroupOutput)
 }
 
@@ -149,7 +152,7 @@ type JobTargetGroupOutput struct {
 }
 
 func (JobTargetGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobTargetGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*JobTargetGroup)(nil))
 }
 
 func (o JobTargetGroupOutput) ToJobTargetGroupOutput() JobTargetGroupOutput {

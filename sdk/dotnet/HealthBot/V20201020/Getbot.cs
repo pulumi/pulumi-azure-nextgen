@@ -12,6 +12,7 @@ namespace Pulumi.AzureNextGen.HealthBot.V20201020
     /// <summary>
     /// Bot resource definition
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:healthbot/v20201020:getbot")]
     public partial class Getbot : Pulumi.CustomResource
     {
         /// <summary>
@@ -83,6 +84,8 @@ namespace Pulumi.AzureNextGen.HealthBot.V20201020
                 {
                     new Pulumi.Alias { Type = "azure-nextgen:healthbot/latest:getbot"},
                     new Pulumi.Alias { Type = "azure-nextgen:healthbot/v20201020preview:getbot"},
+                    new Pulumi.Alias { Type = "azure-nextgen:healthbot/v20201208:getbot"},
+                    new Pulumi.Alias { Type = "azure-nextgen:healthbot/v20201208preview:getbot"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

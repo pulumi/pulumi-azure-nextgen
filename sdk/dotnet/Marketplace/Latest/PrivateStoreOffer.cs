@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Marketplace.Latest
 {
     /// <summary>
     /// The privateStore offer data structure.
+    /// Latest API Version: 2020-01-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:marketplace/latest:PrivateStoreOffer")]
     public partial class PrivateStoreOffer : Pulumi.CustomResource
     {
         /// <summary>

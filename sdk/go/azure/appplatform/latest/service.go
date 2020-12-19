@@ -12,6 +12,7 @@ import (
 )
 
 // Service resource
+// Latest API Version: 2020-07-01.
 type Service struct {
 	pulumi.CustomResourceState
 
@@ -148,15 +149,15 @@ type ServiceInput interface {
 	ToServiceOutputWithContext(ctx context.Context) ServiceOutput
 }
 
-func (Service) ElementType() reflect.Type {
-	return reflect.TypeOf((*Service)(nil)).Elem()
+func (*Service) ElementType() reflect.Type {
+	return reflect.TypeOf((*Service)(nil))
 }
 
-func (i Service) ToServiceOutput() ServiceOutput {
+func (i *Service) ToServiceOutput() ServiceOutput {
 	return i.ToServiceOutputWithContext(context.Background())
 }
 
-func (i Service) ToServiceOutputWithContext(ctx context.Context) ServiceOutput {
+func (i *Service) ToServiceOutputWithContext(ctx context.Context) ServiceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceOutput)
 }
 
@@ -165,7 +166,7 @@ type ServiceOutput struct {
 }
 
 func (ServiceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceOutput)(nil)).Elem()
+	return reflect.TypeOf((*Service)(nil))
 }
 
 func (o ServiceOutput) ToServiceOutput() ServiceOutput {

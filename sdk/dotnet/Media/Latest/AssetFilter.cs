@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Media.Latest
 {
     /// <summary>
     /// An Asset Filter.
+    /// Latest API Version: 2020-05-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:media/latest:AssetFilter")]
     public partial class AssetFilter : Pulumi.CustomResource
     {
         /// <summary>

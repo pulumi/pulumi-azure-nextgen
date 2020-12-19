@@ -12,6 +12,7 @@ import (
 )
 
 // The assembly definition.
+// Latest API Version: 2019-05-01.
 type IntegrationAccountAssembly struct {
 	pulumi.CustomResourceState
 
@@ -151,15 +152,15 @@ type IntegrationAccountAssemblyInput interface {
 	ToIntegrationAccountAssemblyOutputWithContext(ctx context.Context) IntegrationAccountAssemblyOutput
 }
 
-func (IntegrationAccountAssembly) ElementType() reflect.Type {
-	return reflect.TypeOf((*IntegrationAccountAssembly)(nil)).Elem()
+func (*IntegrationAccountAssembly) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationAccountAssembly)(nil))
 }
 
-func (i IntegrationAccountAssembly) ToIntegrationAccountAssemblyOutput() IntegrationAccountAssemblyOutput {
+func (i *IntegrationAccountAssembly) ToIntegrationAccountAssemblyOutput() IntegrationAccountAssemblyOutput {
 	return i.ToIntegrationAccountAssemblyOutputWithContext(context.Background())
 }
 
-func (i IntegrationAccountAssembly) ToIntegrationAccountAssemblyOutputWithContext(ctx context.Context) IntegrationAccountAssemblyOutput {
+func (i *IntegrationAccountAssembly) ToIntegrationAccountAssemblyOutputWithContext(ctx context.Context) IntegrationAccountAssemblyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationAccountAssemblyOutput)
 }
 
@@ -168,7 +169,7 @@ type IntegrationAccountAssemblyOutput struct {
 }
 
 func (IntegrationAccountAssemblyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IntegrationAccountAssemblyOutput)(nil)).Elem()
+	return reflect.TypeOf((*IntegrationAccountAssembly)(nil))
 }
 
 func (o IntegrationAccountAssemblyOutput) ToIntegrationAccountAssemblyOutput() IntegrationAccountAssemblyOutput {

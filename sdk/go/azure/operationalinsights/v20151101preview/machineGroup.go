@@ -24,6 +24,7 @@ type MachineGroup struct {
 	// Type of the machine group
 	GroupType pulumi.StringPtrOutput `pulumi:"groupType"`
 	// Additional resource type qualifier.
+	// Expected value is 'machineGroup'.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// References of the machines in this group. The hints within each reference do not represent the current value of the corresponding fields. They are a snapshot created during the last time the machine group was updated.
 	Machines MachineReferenceWithHintsResponseArrayOutput `pulumi:"machines"`
@@ -87,6 +88,7 @@ type machineGroupState struct {
 	// Type of the machine group
 	GroupType *string `pulumi:"groupType"`
 	// Additional resource type qualifier.
+	// Expected value is 'machineGroup'.
 	Kind *string `pulumi:"kind"`
 	// References of the machines in this group. The hints within each reference do not represent the current value of the corresponding fields. They are a snapshot created during the last time the machine group was updated.
 	Machines []MachineReferenceWithHintsResponse `pulumi:"machines"`
@@ -106,6 +108,7 @@ type MachineGroupState struct {
 	// Type of the machine group
 	GroupType pulumi.StringPtrInput
 	// Additional resource type qualifier.
+	// Expected value is 'machineGroup'.
 	Kind pulumi.StringPtrInput
 	// References of the machines in this group. The hints within each reference do not represent the current value of the corresponding fields. They are a snapshot created during the last time the machine group was updated.
 	Machines MachineReferenceWithHintsResponseArrayInput
@@ -129,6 +132,7 @@ type machineGroupArgs struct {
 	// Type of the machine group
 	GroupType *string `pulumi:"groupType"`
 	// Additional resource type qualifier.
+	// Expected value is 'machineGroup'.
 	Kind string `pulumi:"kind"`
 	// Machine Group resource name.
 	MachineGroupName string `pulumi:"machineGroupName"`
@@ -151,6 +155,7 @@ type MachineGroupArgs struct {
 	// Type of the machine group
 	GroupType pulumi.StringPtrInput
 	// Additional resource type qualifier.
+	// Expected value is 'machineGroup'.
 	Kind pulumi.StringInput
 	// Machine Group resource name.
 	MachineGroupName pulumi.StringInput
@@ -173,15 +178,15 @@ type MachineGroupInput interface {
 	ToMachineGroupOutputWithContext(ctx context.Context) MachineGroupOutput
 }
 
-func (MachineGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*MachineGroup)(nil)).Elem()
+func (*MachineGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*MachineGroup)(nil))
 }
 
-func (i MachineGroup) ToMachineGroupOutput() MachineGroupOutput {
+func (i *MachineGroup) ToMachineGroupOutput() MachineGroupOutput {
 	return i.ToMachineGroupOutputWithContext(context.Background())
 }
 
-func (i MachineGroup) ToMachineGroupOutputWithContext(ctx context.Context) MachineGroupOutput {
+func (i *MachineGroup) ToMachineGroupOutputWithContext(ctx context.Context) MachineGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MachineGroupOutput)
 }
 
@@ -190,7 +195,7 @@ type MachineGroupOutput struct {
 }
 
 func (MachineGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MachineGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*MachineGroup)(nil))
 }
 
 func (o MachineGroupOutput) ToMachineGroupOutput() MachineGroupOutput {

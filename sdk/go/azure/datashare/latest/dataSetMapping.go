@@ -12,6 +12,7 @@ import (
 )
 
 // A data set mapping data transfer object.
+// Latest API Version: 2019-11-01.
 type DataSetMapping struct {
 	pulumi.CustomResourceState
 
@@ -135,15 +136,15 @@ type DataSetMappingInput interface {
 	ToDataSetMappingOutputWithContext(ctx context.Context) DataSetMappingOutput
 }
 
-func (DataSetMapping) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataSetMapping)(nil)).Elem()
+func (*DataSetMapping) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSetMapping)(nil))
 }
 
-func (i DataSetMapping) ToDataSetMappingOutput() DataSetMappingOutput {
+func (i *DataSetMapping) ToDataSetMappingOutput() DataSetMappingOutput {
 	return i.ToDataSetMappingOutputWithContext(context.Background())
 }
 
-func (i DataSetMapping) ToDataSetMappingOutputWithContext(ctx context.Context) DataSetMappingOutput {
+func (i *DataSetMapping) ToDataSetMappingOutputWithContext(ctx context.Context) DataSetMappingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DataSetMappingOutput)
 }
 
@@ -152,7 +153,7 @@ type DataSetMappingOutput struct {
 }
 
 func (DataSetMappingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataSetMappingOutput)(nil)).Elem()
+	return reflect.TypeOf((*DataSetMapping)(nil))
 }
 
 func (o DataSetMappingOutput) ToDataSetMappingOutput() DataSetMappingOutput {

@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.DBforMySQL.Latest
 {
     /// <summary>
     /// A MySQL Server key.
+    /// Latest API Version: 2020-01-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:dbformysql/latest:ServerKey")]
     public partial class ServerKey : Pulumi.CustomResource
     {
         /// <summary>

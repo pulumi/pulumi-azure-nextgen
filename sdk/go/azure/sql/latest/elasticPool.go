@@ -12,6 +12,7 @@ import (
 )
 
 // Represents a database elastic pool.
+// Latest API Version: 2014-04-01.
 type ElasticPool struct {
 	pulumi.CustomResourceState
 
@@ -68,6 +69,9 @@ func NewElasticPool(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-nextgen:sql/v20171001preview:ElasticPool"),
+		},
+		{
+			Type: pulumi.String("azure-nextgen:sql/v20200202preview:ElasticPool"),
 		},
 		{
 			Type: pulumi.String("azure-nextgen:sql/v20200801preview:ElasticPool"),
@@ -219,15 +223,15 @@ type ElasticPoolInput interface {
 	ToElasticPoolOutputWithContext(ctx context.Context) ElasticPoolOutput
 }
 
-func (ElasticPool) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElasticPool)(nil)).Elem()
+func (*ElasticPool) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticPool)(nil))
 }
 
-func (i ElasticPool) ToElasticPoolOutput() ElasticPoolOutput {
+func (i *ElasticPool) ToElasticPoolOutput() ElasticPoolOutput {
 	return i.ToElasticPoolOutputWithContext(context.Background())
 }
 
-func (i ElasticPool) ToElasticPoolOutputWithContext(ctx context.Context) ElasticPoolOutput {
+func (i *ElasticPool) ToElasticPoolOutputWithContext(ctx context.Context) ElasticPoolOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ElasticPoolOutput)
 }
 
@@ -236,7 +240,7 @@ type ElasticPoolOutput struct {
 }
 
 func (ElasticPoolOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElasticPoolOutput)(nil)).Elem()
+	return reflect.TypeOf((*ElasticPool)(nil))
 }
 
 func (o ElasticPoolOutput) ToElasticPoolOutput() ElasticPoolOutput {

@@ -9,141 +9,95 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AzureNextGen.HealthBot.Latest
 {
-    /// <summary>
-    /// Bot resource definition
-    /// </summary>
-    public partial class Getbot : Pulumi.CustomResource
+    public static class GetBot
     {
-        /// <summary>
-        /// The geo-location where the resource lives
-        /// </summary>
-        [Output("location")]
-        public Output<string> Location { get; private set; } = null!;
-
-        /// <summary>
-        /// The name of the resource
-        /// </summary>
-        [Output("name")]
-        public Output<string> Name { get; private set; } = null!;
-
-        /// <summary>
-        /// The set of properties specific to healthcare bot resource.
-        /// </summary>
-        [Output("properties")]
-        public Output<Outputs.HealthBotPropertiesResponse> Properties { get; private set; } = null!;
-
-        /// <summary>
-        /// SKU of the HealthBot.
-        /// </summary>
-        [Output("sku")]
-        public Output<Outputs.SkuResponse?> Sku { get; private set; } = null!;
-
-        /// <summary>
-        /// Metadata pertaining to creation and last modification of the resource
-        /// </summary>
-        [Output("systemData")]
-        public Output<Outputs.SystemDataResponse> SystemData { get; private set; } = null!;
-
-        /// <summary>
-        /// Resource tags.
-        /// </summary>
-        [Output("tags")]
-        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
-
-        /// <summary>
-        /// The type of the resource.
-        /// </summary>
-        [Output("type")]
-        public Output<string> Type { get; private set; } = null!;
-
-
-        /// <summary>
-        /// Create a Getbot resource with the given unique name, arguments, and options.
-        /// </summary>
-        ///
-        /// <param name="name">The unique name of the resource</param>
-        /// <param name="args">The arguments used to populate this resource's properties</param>
-        /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Getbot(string name, GetbotArgs args, CustomResourceOptions? options = null)
-            : base("azure-nextgen:healthbot/latest:getbot", name, args ?? new GetbotArgs(), MakeResourceOptions(options, ""))
-        {
-        }
-
-        private Getbot(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("azure-nextgen:healthbot/latest:getbot", name, null, MakeResourceOptions(options, id))
-        {
-        }
-
-        private static CustomResourceOptions MakeResourceOptions(CustomResourceOptions? options, Input<string>? id)
-        {
-            var defaultOptions = new CustomResourceOptions
-            {
-                Version = Utilities.Version,
-                Aliases =
-                {
-                    new Pulumi.Alias { Type = "azure-nextgen:healthbot/v20201020:getbot"},
-                    new Pulumi.Alias { Type = "azure-nextgen:healthbot/v20201020preview:getbot"},
-                },
-            };
-            var merged = CustomResourceOptions.Merge(defaultOptions, options);
-            // Override the ID if one was specified for consistency with other language SDKs.
-            merged.Id = id ?? merged.Id;
-            return merged;
-        }
-        /// <summary>
-        /// Get an existing Getbot resource's state with the given name, ID, and optional extra
-        /// properties used to qualify the lookup.
-        /// </summary>
-        ///
-        /// <param name="name">The unique name of the resulting resource.</param>
-        /// <param name="id">The unique provider ID of the resource to lookup.</param>
-        /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static Getbot Get(string name, Input<string> id, CustomResourceOptions? options = null)
-        {
-            return new Getbot(name, id, options);
-        }
+        public static Task<GetBotResult> InvokeAsync(GetBotArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBotResult>("azure-nextgen:healthbot/latest:getBot", args ?? new GetBotArgs(), options.WithVersion());
     }
 
-    public sealed class GetbotArgs : Pulumi.ResourceArgs
+
+    public sealed class GetBotArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The geo-location where the resource lives
+        /// The name of the Bot resource.
         /// </summary>
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("botName", required: true)]
+        public string BotName { get; set; } = null!;
 
         /// <summary>
         /// The name of the Bot resource group in the user subscription.
         /// </summary>
         [Input("resourceGroupName", required: true)]
-        public Input<string> ResourceGroupName { get; set; } = null!;
+        public string ResourceGroupName { get; set; } = null!;
 
+        public GetBotArgs()
+        {
+        }
+    }
+
+
+    [OutputType]
+    public sealed class GetBotResult
+    {
         /// <summary>
-        /// The name of the Bot resource.
+        /// Fully qualified resource Id for the resource.
         /// </summary>
-        [Input("resourceName", required: true)]
-        public Input<string> ResourceName { get; set; } = null!;
-
+        public readonly string Id;
+        /// <summary>
+        /// The geo-location where the resource lives
+        /// </summary>
+        public readonly string Location;
+        /// <summary>
+        /// The name of the resource
+        /// </summary>
+        public readonly string Name;
+        /// <summary>
+        /// The set of properties specific to healthcare bot resource.
+        /// </summary>
+        public readonly Outputs.HealthBotPropertiesResponse Properties;
         /// <summary>
         /// SKU of the HealthBot.
         /// </summary>
-        [Input("sku")]
-        public Input<Inputs.SkuArgs>? Sku { get; set; }
-
-        [Input("tags")]
-        private InputMap<string>? _tags;
-
+        public readonly Outputs.SkuResponse? Sku;
+        /// <summary>
+        /// Metadata pertaining to creation and last modification of the resource
+        /// </summary>
+        public readonly Outputs.SystemDataResponse SystemData;
         /// <summary>
         /// Resource tags.
         /// </summary>
-        public InputMap<string> Tags
-        {
-            get => _tags ?? (_tags = new InputMap<string>());
-            set => _tags = value;
-        }
+        public readonly ImmutableDictionary<string, string>? Tags;
+        /// <summary>
+        /// The type of the resource.
+        /// </summary>
+        public readonly string Type;
 
-        public GetbotArgs()
+        [OutputConstructor]
+        private GetBotResult(
+            string id,
+
+            string location,
+
+            string name,
+
+            Outputs.HealthBotPropertiesResponse properties,
+
+            Outputs.SkuResponse? sku,
+
+            Outputs.SystemDataResponse systemData,
+
+            ImmutableDictionary<string, string>? tags,
+
+            string type)
         {
+            Id = id;
+            Location = location;
+            Name = name;
+            Properties = properties;
+            Sku = sku;
+            SystemData = systemData;
+            Tags = tags;
+            Type = type;
         }
     }
 }

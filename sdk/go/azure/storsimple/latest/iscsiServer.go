@@ -12,6 +12,7 @@ import (
 )
 
 // The iSCSI server.
+// Latest API Version: 2016-10-01.
 type IscsiServer struct {
 	pulumi.CustomResourceState
 
@@ -175,15 +176,15 @@ type IscsiServerInput interface {
 	ToIscsiServerOutputWithContext(ctx context.Context) IscsiServerOutput
 }
 
-func (IscsiServer) ElementType() reflect.Type {
-	return reflect.TypeOf((*IscsiServer)(nil)).Elem()
+func (*IscsiServer) ElementType() reflect.Type {
+	return reflect.TypeOf((*IscsiServer)(nil))
 }
 
-func (i IscsiServer) ToIscsiServerOutput() IscsiServerOutput {
+func (i *IscsiServer) ToIscsiServerOutput() IscsiServerOutput {
 	return i.ToIscsiServerOutputWithContext(context.Background())
 }
 
-func (i IscsiServer) ToIscsiServerOutputWithContext(ctx context.Context) IscsiServerOutput {
+func (i *IscsiServer) ToIscsiServerOutputWithContext(ctx context.Context) IscsiServerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IscsiServerOutput)
 }
 
@@ -192,7 +193,7 @@ type IscsiServerOutput struct {
 }
 
 func (IscsiServerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IscsiServerOutput)(nil)).Elem()
+	return reflect.TypeOf((*IscsiServer)(nil))
 }
 
 func (o IscsiServerOutput) ToIscsiServerOutput() IscsiServerOutput {

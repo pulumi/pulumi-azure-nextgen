@@ -12,6 +12,7 @@ import (
 )
 
 // Properties that define an Analytics item that is associated to an Application Insights component.
+// Latest API Version: 2015-05-01.
 type AnalyticsItem struct {
 	pulumi.CustomResourceState
 
@@ -176,15 +177,15 @@ type AnalyticsItemInput interface {
 	ToAnalyticsItemOutputWithContext(ctx context.Context) AnalyticsItemOutput
 }
 
-func (AnalyticsItem) ElementType() reflect.Type {
-	return reflect.TypeOf((*AnalyticsItem)(nil)).Elem()
+func (*AnalyticsItem) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnalyticsItem)(nil))
 }
 
-func (i AnalyticsItem) ToAnalyticsItemOutput() AnalyticsItemOutput {
+func (i *AnalyticsItem) ToAnalyticsItemOutput() AnalyticsItemOutput {
 	return i.ToAnalyticsItemOutputWithContext(context.Background())
 }
 
-func (i AnalyticsItem) ToAnalyticsItemOutputWithContext(ctx context.Context) AnalyticsItemOutput {
+func (i *AnalyticsItem) ToAnalyticsItemOutputWithContext(ctx context.Context) AnalyticsItemOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsItemOutput)
 }
 
@@ -193,7 +194,7 @@ type AnalyticsItemOutput struct {
 }
 
 func (AnalyticsItemOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AnalyticsItemOutput)(nil)).Elem()
+	return reflect.TypeOf((*AnalyticsItem)(nil))
 }
 
 func (o AnalyticsItemOutput) ToAnalyticsItemOutput() AnalyticsItemOutput {

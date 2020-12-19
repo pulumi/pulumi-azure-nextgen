@@ -12,6 +12,7 @@ import (
 )
 
 // Backup policy information
+// Latest API Version: 2020-09-01.
 type BackupPolicy struct {
 	pulumi.CustomResourceState
 
@@ -72,6 +73,9 @@ func NewBackupPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-nextgen:netapp/v20200801:BackupPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-nextgen:netapp/v20200901:BackupPolicy"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -220,15 +224,15 @@ type BackupPolicyInput interface {
 	ToBackupPolicyOutputWithContext(ctx context.Context) BackupPolicyOutput
 }
 
-func (BackupPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*BackupPolicy)(nil)).Elem()
+func (*BackupPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPolicy)(nil))
 }
 
-func (i BackupPolicy) ToBackupPolicyOutput() BackupPolicyOutput {
+func (i *BackupPolicy) ToBackupPolicyOutput() BackupPolicyOutput {
 	return i.ToBackupPolicyOutputWithContext(context.Background())
 }
 
-func (i BackupPolicy) ToBackupPolicyOutputWithContext(ctx context.Context) BackupPolicyOutput {
+func (i *BackupPolicy) ToBackupPolicyOutputWithContext(ctx context.Context) BackupPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPolicyOutput)
 }
 
@@ -237,7 +241,7 @@ type BackupPolicyOutput struct {
 }
 
 func (BackupPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BackupPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*BackupPolicy)(nil))
 }
 
 func (o BackupPolicyOutput) ToBackupPolicyOutput() BackupPolicyOutput {

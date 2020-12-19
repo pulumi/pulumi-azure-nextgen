@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.NotificationHubs.Latest
 {
     /// <summary>
     /// Description of a Namespace resource.
+    /// Latest API Version: 2017-04-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:notificationhubs/latest:Namespace")]
     public partial class Namespace : Pulumi.CustomResource
     {
         /// <summary>

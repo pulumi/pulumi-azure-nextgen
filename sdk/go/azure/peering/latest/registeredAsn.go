@@ -12,6 +12,7 @@ import (
 )
 
 // The customer's ASN that is registered by the peering service provider.
+// Latest API Version: 2020-10-01.
 type RegisteredAsn struct {
 	pulumi.CustomResourceState
 
@@ -140,15 +141,15 @@ type RegisteredAsnInput interface {
 	ToRegisteredAsnOutputWithContext(ctx context.Context) RegisteredAsnOutput
 }
 
-func (RegisteredAsn) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegisteredAsn)(nil)).Elem()
+func (*RegisteredAsn) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegisteredAsn)(nil))
 }
 
-func (i RegisteredAsn) ToRegisteredAsnOutput() RegisteredAsnOutput {
+func (i *RegisteredAsn) ToRegisteredAsnOutput() RegisteredAsnOutput {
 	return i.ToRegisteredAsnOutputWithContext(context.Background())
 }
 
-func (i RegisteredAsn) ToRegisteredAsnOutputWithContext(ctx context.Context) RegisteredAsnOutput {
+func (i *RegisteredAsn) ToRegisteredAsnOutputWithContext(ctx context.Context) RegisteredAsnOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegisteredAsnOutput)
 }
 
@@ -157,7 +158,7 @@ type RegisteredAsnOutput struct {
 }
 
 func (RegisteredAsnOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegisteredAsnOutput)(nil)).Elem()
+	return reflect.TypeOf((*RegisteredAsn)(nil))
 }
 
 func (o RegisteredAsnOutput) ToRegisteredAsnOutput() RegisteredAsnOutput {

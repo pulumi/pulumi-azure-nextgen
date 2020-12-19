@@ -12,6 +12,7 @@ namespace Pulumi.AzureNextGen.Sql.V20200801Preview
     /// <summary>
     /// An Azure SQL Database sync agent.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:sql/v20200801preview:SyncAgent")]
     public partial class SyncAgent : Pulumi.CustomResource
     {
         /// <summary>
@@ -88,6 +89,7 @@ namespace Pulumi.AzureNextGen.Sql.V20200801Preview
                 Aliases =
                 {
                     new Pulumi.Alias { Type = "azure-nextgen:sql/v20150501preview:SyncAgent"},
+                    new Pulumi.Alias { Type = "azure-nextgen:sql/v20200202preview:SyncAgent"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

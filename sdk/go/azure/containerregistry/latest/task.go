@@ -13,6 +13,7 @@ import (
 
 // The task that has the ARM resource and task properties.
 // The task will have all information to schedule a run against it.
+// Latest API Version: 2019-04-01.
 type Task struct {
 	pulumi.CustomResourceState
 
@@ -240,15 +241,15 @@ type TaskInput interface {
 	ToTaskOutputWithContext(ctx context.Context) TaskOutput
 }
 
-func (Task) ElementType() reflect.Type {
-	return reflect.TypeOf((*Task)(nil)).Elem()
+func (*Task) ElementType() reflect.Type {
+	return reflect.TypeOf((*Task)(nil))
 }
 
-func (i Task) ToTaskOutput() TaskOutput {
+func (i *Task) ToTaskOutput() TaskOutput {
 	return i.ToTaskOutputWithContext(context.Background())
 }
 
-func (i Task) ToTaskOutputWithContext(ctx context.Context) TaskOutput {
+func (i *Task) ToTaskOutputWithContext(ctx context.Context) TaskOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TaskOutput)
 }
 
@@ -257,7 +258,7 @@ type TaskOutput struct {
 }
 
 func (TaskOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TaskOutput)(nil)).Elem()
+	return reflect.TypeOf((*Task)(nil))
 }
 
 func (o TaskOutput) ToTaskOutput() TaskOutput {

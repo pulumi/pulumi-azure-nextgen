@@ -12,6 +12,7 @@ import (
 )
 
 // The bandwidth setting.
+// Latest API Version: 2017-06-01.
 type BandwidthSetting struct {
 	pulumi.CustomResourceState
 
@@ -141,15 +142,15 @@ type BandwidthSettingInput interface {
 	ToBandwidthSettingOutputWithContext(ctx context.Context) BandwidthSettingOutput
 }
 
-func (BandwidthSetting) ElementType() reflect.Type {
-	return reflect.TypeOf((*BandwidthSetting)(nil)).Elem()
+func (*BandwidthSetting) ElementType() reflect.Type {
+	return reflect.TypeOf((*BandwidthSetting)(nil))
 }
 
-func (i BandwidthSetting) ToBandwidthSettingOutput() BandwidthSettingOutput {
+func (i *BandwidthSetting) ToBandwidthSettingOutput() BandwidthSettingOutput {
 	return i.ToBandwidthSettingOutputWithContext(context.Background())
 }
 
-func (i BandwidthSetting) ToBandwidthSettingOutputWithContext(ctx context.Context) BandwidthSettingOutput {
+func (i *BandwidthSetting) ToBandwidthSettingOutputWithContext(ctx context.Context) BandwidthSettingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BandwidthSettingOutput)
 }
 
@@ -158,7 +159,7 @@ type BandwidthSettingOutput struct {
 }
 
 func (BandwidthSettingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BandwidthSettingOutput)(nil)).Elem()
+	return reflect.TypeOf((*BandwidthSetting)(nil))
 }
 
 func (o BandwidthSettingOutput) ToBandwidthSettingOutput() BandwidthSettingOutput {

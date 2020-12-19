@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Web.Latest
 {
     /// <summary>
     /// The gateway definition
+    /// Latest API Version: 2016-06-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:web/latest:ConnectionGateway")]
     public partial class ConnectionGateway : Pulumi.CustomResource
     {
         /// <summary>

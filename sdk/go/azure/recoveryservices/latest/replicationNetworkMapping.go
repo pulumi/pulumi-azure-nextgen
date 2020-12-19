@@ -12,6 +12,7 @@ import (
 )
 
 // Network Mapping model. Ideally it should have been possible to inherit this class from prev version in InheritedModels as long as there is no difference in structure or method signature. Since there were no base Models for certain fields and methods viz NetworkMappingProperties and Load with required return type, the class has been introduced in its entirety with references to base models to facilitate extensions in subsequent versions.
+// Latest API Version: 2018-07-10.
 type ReplicationNetworkMapping struct {
 	pulumi.CustomResourceState
 
@@ -148,15 +149,15 @@ type ReplicationNetworkMappingInput interface {
 	ToReplicationNetworkMappingOutputWithContext(ctx context.Context) ReplicationNetworkMappingOutput
 }
 
-func (ReplicationNetworkMapping) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReplicationNetworkMapping)(nil)).Elem()
+func (*ReplicationNetworkMapping) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicationNetworkMapping)(nil))
 }
 
-func (i ReplicationNetworkMapping) ToReplicationNetworkMappingOutput() ReplicationNetworkMappingOutput {
+func (i *ReplicationNetworkMapping) ToReplicationNetworkMappingOutput() ReplicationNetworkMappingOutput {
 	return i.ToReplicationNetworkMappingOutputWithContext(context.Background())
 }
 
-func (i ReplicationNetworkMapping) ToReplicationNetworkMappingOutputWithContext(ctx context.Context) ReplicationNetworkMappingOutput {
+func (i *ReplicationNetworkMapping) ToReplicationNetworkMappingOutputWithContext(ctx context.Context) ReplicationNetworkMappingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicationNetworkMappingOutput)
 }
 
@@ -165,7 +166,7 @@ type ReplicationNetworkMappingOutput struct {
 }
 
 func (ReplicationNetworkMappingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReplicationNetworkMappingOutput)(nil)).Elem()
+	return reflect.TypeOf((*ReplicationNetworkMapping)(nil))
 }
 
 func (o ReplicationNetworkMappingOutput) ToReplicationNetworkMappingOutput() ReplicationNetworkMappingOutput {

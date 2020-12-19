@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.DataFactory.Latest
 {
     /// <summary>
     /// Trigger resource type.
+    /// Latest API Version: 2018-06-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:datafactory/latest:Trigger")]
     public partial class Trigger : Pulumi.CustomResource
     {
         /// <summary>

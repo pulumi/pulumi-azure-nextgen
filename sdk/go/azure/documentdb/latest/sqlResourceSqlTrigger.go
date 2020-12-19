@@ -12,6 +12,7 @@ import (
 )
 
 // An Azure Cosmos DB trigger.
+// Latest API Version: 2020-09-01.
 type SqlResourceSqlTrigger struct {
 	pulumi.CustomResourceState
 
@@ -175,15 +176,15 @@ type SqlResourceSqlTriggerInput interface {
 	ToSqlResourceSqlTriggerOutputWithContext(ctx context.Context) SqlResourceSqlTriggerOutput
 }
 
-func (SqlResourceSqlTrigger) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlResourceSqlTrigger)(nil)).Elem()
+func (*SqlResourceSqlTrigger) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlResourceSqlTrigger)(nil))
 }
 
-func (i SqlResourceSqlTrigger) ToSqlResourceSqlTriggerOutput() SqlResourceSqlTriggerOutput {
+func (i *SqlResourceSqlTrigger) ToSqlResourceSqlTriggerOutput() SqlResourceSqlTriggerOutput {
 	return i.ToSqlResourceSqlTriggerOutputWithContext(context.Background())
 }
 
-func (i SqlResourceSqlTrigger) ToSqlResourceSqlTriggerOutputWithContext(ctx context.Context) SqlResourceSqlTriggerOutput {
+func (i *SqlResourceSqlTrigger) ToSqlResourceSqlTriggerOutputWithContext(ctx context.Context) SqlResourceSqlTriggerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SqlResourceSqlTriggerOutput)
 }
 
@@ -192,7 +193,7 @@ type SqlResourceSqlTriggerOutput struct {
 }
 
 func (SqlResourceSqlTriggerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlResourceSqlTriggerOutput)(nil)).Elem()
+	return reflect.TypeOf((*SqlResourceSqlTrigger)(nil))
 }
 
 func (o SqlResourceSqlTriggerOutput) ToSqlResourceSqlTriggerOutput() SqlResourceSqlTriggerOutput {

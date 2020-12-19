@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.CognitiveServices.Latest
 {
     /// <summary>
     /// The Private Endpoint Connection resource.
+    /// Latest API Version: 2017-04-18.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:cognitiveservices/latest:PrivateEndpointConnection")]
     public partial class PrivateEndpointConnection : Pulumi.CustomResource
     {
         /// <summary>

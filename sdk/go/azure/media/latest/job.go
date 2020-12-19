@@ -12,6 +12,7 @@ import (
 )
 
 // A Job resource type. The progress and state can be obtained by polling a Job or subscribing to events using EventGrid.
+// Latest API Version: 2020-05-01.
 type Job struct {
 	pulumi.CustomResourceState
 
@@ -214,15 +215,15 @@ type JobInput interface {
 	ToJobOutputWithContext(ctx context.Context) JobOutput
 }
 
-func (Job) ElementType() reflect.Type {
-	return reflect.TypeOf((*Job)(nil)).Elem()
+func (*Job) ElementType() reflect.Type {
+	return reflect.TypeOf((*Job)(nil))
 }
 
-func (i Job) ToJobOutput() JobOutput {
+func (i *Job) ToJobOutput() JobOutput {
 	return i.ToJobOutputWithContext(context.Background())
 }
 
-func (i Job) ToJobOutputWithContext(ctx context.Context) JobOutput {
+func (i *Job) ToJobOutputWithContext(ctx context.Context) JobOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(JobOutput)
 }
 
@@ -231,7 +232,7 @@ type JobOutput struct {
 }
 
 func (JobOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobOutput)(nil)).Elem()
+	return reflect.TypeOf((*Job)(nil))
 }
 
 func (o JobOutput) ToJobOutput() JobOutput {

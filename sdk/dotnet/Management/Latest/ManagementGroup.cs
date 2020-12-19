@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Management.Latest
 {
     /// <summary>
     /// The management group details.
+    /// Latest API Version: 2020-05-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:management/latest:ManagementGroup")]
     public partial class ManagementGroup : Pulumi.CustomResource
     {
         /// <summary>

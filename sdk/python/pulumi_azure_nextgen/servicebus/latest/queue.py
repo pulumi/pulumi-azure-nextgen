@@ -40,6 +40,7 @@ class Queue(pulumi.CustomResource):
                  __opts__=None):
         """
         Description of queue Resource.
+        Latest API Version: 2017-04-01.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -111,7 +112,7 @@ class Queue(pulumi.CustomResource):
             __props__['size_in_bytes'] = None
             __props__['type'] = None
             __props__['updated_at'] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:servicebus/v20140901:Queue"), pulumi.Alias(type_="azure-nextgen:servicebus/v20150801:Queue"), pulumi.Alias(type_="azure-nextgen:servicebus/v20170401:Queue")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:servicebus/v20140901:Queue"), pulumi.Alias(type_="azure-nextgen:servicebus/v20150801:Queue"), pulumi.Alias(type_="azure-nextgen:servicebus/v20170401:Queue"), pulumi.Alias(type_="azure-nextgen:servicebus/v20180101preview:Queue")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Queue, __self__).__init__(
             'azure-nextgen:servicebus/latest:Queue',

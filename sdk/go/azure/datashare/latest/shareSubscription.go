@@ -12,6 +12,7 @@ import (
 )
 
 // A share subscription data transfer object.
+// Latest API Version: 2019-11-01.
 type ShareSubscription struct {
 	pulumi.CustomResourceState
 
@@ -213,15 +214,15 @@ type ShareSubscriptionInput interface {
 	ToShareSubscriptionOutputWithContext(ctx context.Context) ShareSubscriptionOutput
 }
 
-func (ShareSubscription) ElementType() reflect.Type {
-	return reflect.TypeOf((*ShareSubscription)(nil)).Elem()
+func (*ShareSubscription) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShareSubscription)(nil))
 }
 
-func (i ShareSubscription) ToShareSubscriptionOutput() ShareSubscriptionOutput {
+func (i *ShareSubscription) ToShareSubscriptionOutput() ShareSubscriptionOutput {
 	return i.ToShareSubscriptionOutputWithContext(context.Background())
 }
 
-func (i ShareSubscription) ToShareSubscriptionOutputWithContext(ctx context.Context) ShareSubscriptionOutput {
+func (i *ShareSubscription) ToShareSubscriptionOutputWithContext(ctx context.Context) ShareSubscriptionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ShareSubscriptionOutput)
 }
 
@@ -230,7 +231,7 @@ type ShareSubscriptionOutput struct {
 }
 
 func (ShareSubscriptionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ShareSubscriptionOutput)(nil)).Elem()
+	return reflect.TypeOf((*ShareSubscription)(nil))
 }
 
 func (o ShareSubscriptionOutput) ToShareSubscriptionOutput() ShareSubscriptionOutput {

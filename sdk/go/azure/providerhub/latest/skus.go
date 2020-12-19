@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Latest API Version: 2020-11-20.
 type Skus struct {
 	pulumi.CustomResourceState
 
@@ -114,15 +115,15 @@ type SkusInput interface {
 	ToSkusOutputWithContext(ctx context.Context) SkusOutput
 }
 
-func (Skus) ElementType() reflect.Type {
-	return reflect.TypeOf((*Skus)(nil)).Elem()
+func (*Skus) ElementType() reflect.Type {
+	return reflect.TypeOf((*Skus)(nil))
 }
 
-func (i Skus) ToSkusOutput() SkusOutput {
+func (i *Skus) ToSkusOutput() SkusOutput {
 	return i.ToSkusOutputWithContext(context.Background())
 }
 
-func (i Skus) ToSkusOutputWithContext(ctx context.Context) SkusOutput {
+func (i *Skus) ToSkusOutputWithContext(ctx context.Context) SkusOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkusOutput)
 }
 
@@ -131,7 +132,7 @@ type SkusOutput struct {
 }
 
 func (SkusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SkusOutput)(nil)).Elem()
+	return reflect.TypeOf((*Skus)(nil))
 }
 
 func (o SkusOutput) ToSkusOutput() SkusOutput {

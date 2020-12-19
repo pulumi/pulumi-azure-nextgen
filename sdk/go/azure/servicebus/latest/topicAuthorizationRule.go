@@ -12,6 +12,7 @@ import (
 )
 
 // Description of a namespace authorization rule.
+// Latest API Version: 2017-04-01.
 type TopicAuthorizationRule struct {
 	pulumi.CustomResourceState
 
@@ -54,6 +55,9 @@ func NewTopicAuthorizationRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-nextgen:servicebus/v20170401:TopicAuthorizationRule"),
+		},
+		{
+			Type: pulumi.String("azure-nextgen:servicebus/v20180101preview:TopicAuthorizationRule"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -138,15 +142,15 @@ type TopicAuthorizationRuleInput interface {
 	ToTopicAuthorizationRuleOutputWithContext(ctx context.Context) TopicAuthorizationRuleOutput
 }
 
-func (TopicAuthorizationRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*TopicAuthorizationRule)(nil)).Elem()
+func (*TopicAuthorizationRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicAuthorizationRule)(nil))
 }
 
-func (i TopicAuthorizationRule) ToTopicAuthorizationRuleOutput() TopicAuthorizationRuleOutput {
+func (i *TopicAuthorizationRule) ToTopicAuthorizationRuleOutput() TopicAuthorizationRuleOutput {
 	return i.ToTopicAuthorizationRuleOutputWithContext(context.Background())
 }
 
-func (i TopicAuthorizationRule) ToTopicAuthorizationRuleOutputWithContext(ctx context.Context) TopicAuthorizationRuleOutput {
+func (i *TopicAuthorizationRule) ToTopicAuthorizationRuleOutputWithContext(ctx context.Context) TopicAuthorizationRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TopicAuthorizationRuleOutput)
 }
 
@@ -155,7 +159,7 @@ type TopicAuthorizationRuleOutput struct {
 }
 
 func (TopicAuthorizationRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TopicAuthorizationRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*TopicAuthorizationRule)(nil))
 }
 
 func (o TopicAuthorizationRuleOutput) ToTopicAuthorizationRuleOutput() TopicAuthorizationRuleOutput {

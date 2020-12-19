@@ -12,6 +12,7 @@ import (
 )
 
 // Friendly Secret name mapping to the any Secret or secret related information.
+// Latest API Version: 2020-09-01.
 type Secret struct {
 	pulumi.CustomResourceState
 
@@ -137,15 +138,15 @@ type SecretInput interface {
 	ToSecretOutputWithContext(ctx context.Context) SecretOutput
 }
 
-func (Secret) ElementType() reflect.Type {
-	return reflect.TypeOf((*Secret)(nil)).Elem()
+func (*Secret) ElementType() reflect.Type {
+	return reflect.TypeOf((*Secret)(nil))
 }
 
-func (i Secret) ToSecretOutput() SecretOutput {
+func (i *Secret) ToSecretOutput() SecretOutput {
 	return i.ToSecretOutputWithContext(context.Background())
 }
 
-func (i Secret) ToSecretOutputWithContext(ctx context.Context) SecretOutput {
+func (i *Secret) ToSecretOutputWithContext(ctx context.Context) SecretOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecretOutput)
 }
 
@@ -154,7 +155,7 @@ type SecretOutput struct {
 }
 
 func (SecretOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecretOutput)(nil)).Elem()
+	return reflect.TypeOf((*Secret)(nil))
 }
 
 func (o SecretOutput) ToSecretOutput() SecretOutput {

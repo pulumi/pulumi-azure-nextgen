@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Relay.Latest
 {
     /// <summary>
     /// Description of a namespace authorization rule.
+    /// Latest API Version: 2017-04-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:relay/latest:HybridConnectionAuthorizationRule")]
     public partial class HybridConnectionAuthorizationRule : Pulumi.CustomResource
     {
         /// <summary>

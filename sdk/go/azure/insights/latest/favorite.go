@@ -12,6 +12,7 @@ import (
 )
 
 // Properties that define a favorite that is associated to an Application Insights component.
+// Latest API Version: 2015-05-01.
 type Favorite struct {
 	pulumi.CustomResourceState
 
@@ -198,15 +199,15 @@ type FavoriteInput interface {
 	ToFavoriteOutputWithContext(ctx context.Context) FavoriteOutput
 }
 
-func (Favorite) ElementType() reflect.Type {
-	return reflect.TypeOf((*Favorite)(nil)).Elem()
+func (*Favorite) ElementType() reflect.Type {
+	return reflect.TypeOf((*Favorite)(nil))
 }
 
-func (i Favorite) ToFavoriteOutput() FavoriteOutput {
+func (i *Favorite) ToFavoriteOutput() FavoriteOutput {
 	return i.ToFavoriteOutputWithContext(context.Background())
 }
 
-func (i Favorite) ToFavoriteOutputWithContext(ctx context.Context) FavoriteOutput {
+func (i *Favorite) ToFavoriteOutputWithContext(ctx context.Context) FavoriteOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FavoriteOutput)
 }
 
@@ -215,7 +216,7 @@ type FavoriteOutput struct {
 }
 
 func (FavoriteOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FavoriteOutput)(nil)).Elem()
+	return reflect.TypeOf((*Favorite)(nil))
 }
 
 func (o FavoriteOutput) ToFavoriteOutput() FavoriteOutput {

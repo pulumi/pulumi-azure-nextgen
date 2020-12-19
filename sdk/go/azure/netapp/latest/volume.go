@@ -12,6 +12,7 @@ import (
 )
 
 // Volume resource
+// Latest API Version: 2020-09-01.
 type Volume struct {
 	pulumi.CustomResourceState
 
@@ -45,6 +46,10 @@ type Volume struct {
 	SecurityStyle pulumi.StringPtrOutput `pulumi:"securityStyle"`
 	// The service level of the file system
 	ServiceLevel pulumi.StringPtrOutput `pulumi:"serviceLevel"`
+	// Enables continuously available share property for smb volume. Only applicable for SMB volume
+	SmbContinuouslyAvailable pulumi.BoolPtrOutput `pulumi:"smbContinuouslyAvailable"`
+	// Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol volume. To be used with swagger version 2020-08-01 or later
+	SmbEncryption pulumi.BoolPtrOutput `pulumi:"smbEncryption"`
 	// If enabled (true) the volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots (default to true).
 	SnapshotDirectoryVisible pulumi.BoolPtrOutput `pulumi:"snapshotDirectoryVisible"`
 	// UUID v4 or resource identifier used to identify the Snapshot.
@@ -133,6 +138,9 @@ func NewVolume(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-nextgen:netapp/v20200801:Volume"),
 		},
+		{
+			Type: pulumi.String("azure-nextgen:netapp/v20200901:Volume"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Volume
@@ -187,6 +195,10 @@ type volumeState struct {
 	SecurityStyle *string `pulumi:"securityStyle"`
 	// The service level of the file system
 	ServiceLevel *string `pulumi:"serviceLevel"`
+	// Enables continuously available share property for smb volume. Only applicable for SMB volume
+	SmbContinuouslyAvailable *bool `pulumi:"smbContinuouslyAvailable"`
+	// Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol volume. To be used with swagger version 2020-08-01 or later
+	SmbEncryption *bool `pulumi:"smbEncryption"`
 	// If enabled (true) the volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots (default to true).
 	SnapshotDirectoryVisible *bool `pulumi:"snapshotDirectoryVisible"`
 	// UUID v4 or resource identifier used to identify the Snapshot.
@@ -235,6 +247,10 @@ type VolumeState struct {
 	SecurityStyle pulumi.StringPtrInput
 	// The service level of the file system
 	ServiceLevel pulumi.StringPtrInput
+	// Enables continuously available share property for smb volume. Only applicable for SMB volume
+	SmbContinuouslyAvailable pulumi.BoolPtrInput
+	// Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol volume. To be used with swagger version 2020-08-01 or later
+	SmbEncryption pulumi.BoolPtrInput
 	// If enabled (true) the volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots (default to true).
 	SnapshotDirectoryVisible pulumi.BoolPtrInput
 	// UUID v4 or resource identifier used to identify the Snapshot.
@@ -285,6 +301,10 @@ type volumeArgs struct {
 	SecurityStyle *string `pulumi:"securityStyle"`
 	// The service level of the file system
 	ServiceLevel *string `pulumi:"serviceLevel"`
+	// Enables continuously available share property for smb volume. Only applicable for SMB volume
+	SmbContinuouslyAvailable *bool `pulumi:"smbContinuouslyAvailable"`
+	// Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol volume. To be used with swagger version 2020-08-01 or later
+	SmbEncryption *bool `pulumi:"smbEncryption"`
 	// If enabled (true) the volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots (default to true).
 	SnapshotDirectoryVisible *bool `pulumi:"snapshotDirectoryVisible"`
 	// UUID v4 or resource identifier used to identify the Snapshot.
@@ -332,6 +352,10 @@ type VolumeArgs struct {
 	SecurityStyle pulumi.StringPtrInput
 	// The service level of the file system
 	ServiceLevel pulumi.StringPtrInput
+	// Enables continuously available share property for smb volume. Only applicable for SMB volume
+	SmbContinuouslyAvailable pulumi.BoolPtrInput
+	// Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol volume. To be used with swagger version 2020-08-01 or later
+	SmbEncryption pulumi.BoolPtrInput
 	// If enabled (true) the volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots (default to true).
 	SnapshotDirectoryVisible pulumi.BoolPtrInput
 	// UUID v4 or resource identifier used to identify the Snapshot.
@@ -360,15 +384,15 @@ type VolumeInput interface {
 	ToVolumeOutputWithContext(ctx context.Context) VolumeOutput
 }
 
-func (Volume) ElementType() reflect.Type {
-	return reflect.TypeOf((*Volume)(nil)).Elem()
+func (*Volume) ElementType() reflect.Type {
+	return reflect.TypeOf((*Volume)(nil))
 }
 
-func (i Volume) ToVolumeOutput() VolumeOutput {
+func (i *Volume) ToVolumeOutput() VolumeOutput {
 	return i.ToVolumeOutputWithContext(context.Background())
 }
 
-func (i Volume) ToVolumeOutputWithContext(ctx context.Context) VolumeOutput {
+func (i *Volume) ToVolumeOutputWithContext(ctx context.Context) VolumeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeOutput)
 }
 
@@ -377,7 +401,7 @@ type VolumeOutput struct {
 }
 
 func (VolumeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VolumeOutput)(nil)).Elem()
+	return reflect.TypeOf((*Volume)(nil))
 }
 
 func (o VolumeOutput) ToVolumeOutput() VolumeOutput {

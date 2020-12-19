@@ -12,6 +12,7 @@ import (
 )
 
 // Describes a Virtual Machine Scale Set Extension.
+// Latest API Version: 2020-06-01.
 type VirtualMachineScaleSetExtension struct {
 	pulumi.CustomResourceState
 
@@ -230,15 +231,15 @@ type VirtualMachineScaleSetExtensionInput interface {
 	ToVirtualMachineScaleSetExtensionOutputWithContext(ctx context.Context) VirtualMachineScaleSetExtensionOutput
 }
 
-func (VirtualMachineScaleSetExtension) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualMachineScaleSetExtension)(nil)).Elem()
+func (*VirtualMachineScaleSetExtension) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineScaleSetExtension)(nil))
 }
 
-func (i VirtualMachineScaleSetExtension) ToVirtualMachineScaleSetExtensionOutput() VirtualMachineScaleSetExtensionOutput {
+func (i *VirtualMachineScaleSetExtension) ToVirtualMachineScaleSetExtensionOutput() VirtualMachineScaleSetExtensionOutput {
 	return i.ToVirtualMachineScaleSetExtensionOutputWithContext(context.Background())
 }
 
-func (i VirtualMachineScaleSetExtension) ToVirtualMachineScaleSetExtensionOutputWithContext(ctx context.Context) VirtualMachineScaleSetExtensionOutput {
+func (i *VirtualMachineScaleSetExtension) ToVirtualMachineScaleSetExtensionOutputWithContext(ctx context.Context) VirtualMachineScaleSetExtensionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineScaleSetExtensionOutput)
 }
 
@@ -247,7 +248,7 @@ type VirtualMachineScaleSetExtensionOutput struct {
 }
 
 func (VirtualMachineScaleSetExtensionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualMachineScaleSetExtensionOutput)(nil)).Elem()
+	return reflect.TypeOf((*VirtualMachineScaleSetExtension)(nil))
 }
 
 func (o VirtualMachineScaleSetExtensionOutput) ToVirtualMachineScaleSetExtensionOutput() VirtualMachineScaleSetExtensionOutput {

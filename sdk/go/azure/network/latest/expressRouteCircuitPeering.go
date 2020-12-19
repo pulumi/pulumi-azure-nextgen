@@ -12,6 +12,7 @@ import (
 )
 
 // Peering in an ExpressRouteCircuit resource.
+// Latest API Version: 2020-07-01.
 type ExpressRouteCircuitPeering struct {
 	pulumi.CustomResourceState
 
@@ -409,15 +410,15 @@ type ExpressRouteCircuitPeeringInput interface {
 	ToExpressRouteCircuitPeeringOutputWithContext(ctx context.Context) ExpressRouteCircuitPeeringOutput
 }
 
-func (ExpressRouteCircuitPeering) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExpressRouteCircuitPeering)(nil)).Elem()
+func (*ExpressRouteCircuitPeering) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExpressRouteCircuitPeering)(nil))
 }
 
-func (i ExpressRouteCircuitPeering) ToExpressRouteCircuitPeeringOutput() ExpressRouteCircuitPeeringOutput {
+func (i *ExpressRouteCircuitPeering) ToExpressRouteCircuitPeeringOutput() ExpressRouteCircuitPeeringOutput {
 	return i.ToExpressRouteCircuitPeeringOutputWithContext(context.Background())
 }
 
-func (i ExpressRouteCircuitPeering) ToExpressRouteCircuitPeeringOutputWithContext(ctx context.Context) ExpressRouteCircuitPeeringOutput {
+func (i *ExpressRouteCircuitPeering) ToExpressRouteCircuitPeeringOutputWithContext(ctx context.Context) ExpressRouteCircuitPeeringOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitPeeringOutput)
 }
 
@@ -426,7 +427,7 @@ type ExpressRouteCircuitPeeringOutput struct {
 }
 
 func (ExpressRouteCircuitPeeringOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExpressRouteCircuitPeeringOutput)(nil)).Elem()
+	return reflect.TypeOf((*ExpressRouteCircuitPeering)(nil))
 }
 
 func (o ExpressRouteCircuitPeeringOutput) ToExpressRouteCircuitPeeringOutput() ExpressRouteCircuitPeeringOutput {

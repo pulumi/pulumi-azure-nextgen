@@ -12,6 +12,7 @@ import (
 )
 
 // The X509 Certificate.
+// Latest API Version: 2020-03-01.
 type DpsCertificate struct {
 	pulumi.CustomResourceState
 
@@ -143,15 +144,15 @@ type DpsCertificateInput interface {
 	ToDpsCertificateOutputWithContext(ctx context.Context) DpsCertificateOutput
 }
 
-func (DpsCertificate) ElementType() reflect.Type {
-	return reflect.TypeOf((*DpsCertificate)(nil)).Elem()
+func (*DpsCertificate) ElementType() reflect.Type {
+	return reflect.TypeOf((*DpsCertificate)(nil))
 }
 
-func (i DpsCertificate) ToDpsCertificateOutput() DpsCertificateOutput {
+func (i *DpsCertificate) ToDpsCertificateOutput() DpsCertificateOutput {
 	return i.ToDpsCertificateOutputWithContext(context.Background())
 }
 
-func (i DpsCertificate) ToDpsCertificateOutputWithContext(ctx context.Context) DpsCertificateOutput {
+func (i *DpsCertificate) ToDpsCertificateOutputWithContext(ctx context.Context) DpsCertificateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DpsCertificateOutput)
 }
 
@@ -160,7 +161,7 @@ type DpsCertificateOutput struct {
 }
 
 func (DpsCertificateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DpsCertificateOutput)(nil)).Elem()
+	return reflect.TypeOf((*DpsCertificate)(nil))
 }
 
 func (o DpsCertificateOutput) ToDpsCertificateOutput() DpsCertificateOutput {

@@ -12,6 +12,7 @@ import (
 )
 
 // The batch configuration resource definition.
+// Latest API Version: 2019-05-01.
 type IntegrationAccountBatchConfiguration struct {
 	pulumi.CustomResourceState
 
@@ -151,15 +152,15 @@ type IntegrationAccountBatchConfigurationInput interface {
 	ToIntegrationAccountBatchConfigurationOutputWithContext(ctx context.Context) IntegrationAccountBatchConfigurationOutput
 }
 
-func (IntegrationAccountBatchConfiguration) ElementType() reflect.Type {
-	return reflect.TypeOf((*IntegrationAccountBatchConfiguration)(nil)).Elem()
+func (*IntegrationAccountBatchConfiguration) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationAccountBatchConfiguration)(nil))
 }
 
-func (i IntegrationAccountBatchConfiguration) ToIntegrationAccountBatchConfigurationOutput() IntegrationAccountBatchConfigurationOutput {
+func (i *IntegrationAccountBatchConfiguration) ToIntegrationAccountBatchConfigurationOutput() IntegrationAccountBatchConfigurationOutput {
 	return i.ToIntegrationAccountBatchConfigurationOutputWithContext(context.Background())
 }
 
-func (i IntegrationAccountBatchConfiguration) ToIntegrationAccountBatchConfigurationOutputWithContext(ctx context.Context) IntegrationAccountBatchConfigurationOutput {
+func (i *IntegrationAccountBatchConfiguration) ToIntegrationAccountBatchConfigurationOutputWithContext(ctx context.Context) IntegrationAccountBatchConfigurationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationAccountBatchConfigurationOutput)
 }
 
@@ -168,7 +169,7 @@ type IntegrationAccountBatchConfigurationOutput struct {
 }
 
 func (IntegrationAccountBatchConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IntegrationAccountBatchConfigurationOutput)(nil)).Elem()
+	return reflect.TypeOf((*IntegrationAccountBatchConfiguration)(nil))
 }
 
 func (o IntegrationAccountBatchConfigurationOutput) ToIntegrationAccountBatchConfigurationOutput() IntegrationAccountBatchConfigurationOutput {

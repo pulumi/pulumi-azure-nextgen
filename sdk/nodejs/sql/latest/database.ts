@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Represents a database.
+ * Latest API Version: 2014-04-01.
  */
 export class Database extends pulumi.CustomResource {
     /**
@@ -294,7 +295,7 @@ export class Database extends pulumi.CustomResource {
         if (!opts.version) {
             opts.version = utilities.getVersion();
         }
-        const aliasOpts = { aliases: [{ type: "azure-nextgen:sql/v20140401:Database" }, { type: "azure-nextgen:sql/v20170301preview:Database" }, { type: "azure-nextgen:sql/v20171001preview:Database" }, { type: "azure-nextgen:sql/v20190601preview:Database" }, { type: "azure-nextgen:sql/v20200801preview:Database" }] };
+        const aliasOpts = { aliases: [{ type: "azure-nextgen:sql/v20140401:Database" }, { type: "azure-nextgen:sql/v20170301preview:Database" }, { type: "azure-nextgen:sql/v20171001preview:Database" }, { type: "azure-nextgen:sql/v20190601preview:Database" }, { type: "azure-nextgen:sql/v20200202preview:Database" }, { type: "azure-nextgen:sql/v20200801preview:Database" }] };
         opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
         super(Database.__pulumiType, name, inputs, opts);
     }

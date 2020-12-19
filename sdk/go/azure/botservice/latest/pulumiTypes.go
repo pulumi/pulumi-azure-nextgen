@@ -13,6 +13,7 @@ import (
 // Alexa channel definition
 type AlexaChannel struct {
 	// The channel name
+	// Expected value is 'AlexaChannel'.
 	ChannelName string `pulumi:"channelName"`
 	// The set of properties specific to Alexa channel resource
 	Properties *AlexaChannelProperties `pulumi:"properties"`
@@ -32,6 +33,7 @@ type AlexaChannelInput interface {
 // Alexa channel definition
 type AlexaChannelArgs struct {
 	// The channel name
+	// Expected value is 'AlexaChannel'.
 	ChannelName pulumi.StringInput `pulumi:"channelName"`
 	// The set of properties specific to Alexa channel resource
 	Properties AlexaChannelPropertiesPtrInput `pulumi:"properties"`
@@ -65,6 +67,7 @@ func (o AlexaChannelOutput) ToAlexaChannelOutputWithContext(ctx context.Context)
 }
 
 // The channel name
+// Expected value is 'AlexaChannel'.
 func (o AlexaChannelOutput) ChannelName() pulumi.StringOutput {
 	return o.ApplyT(func(v AlexaChannel) string { return v.ChannelName }).(pulumi.StringOutput)
 }
@@ -421,6 +424,7 @@ func (o AlexaChannelPropertiesResponsePtrOutput) UrlFragment() pulumi.StringPtrO
 // Alexa channel definition
 type AlexaChannelResponse struct {
 	// The channel name
+	// Expected value is 'AlexaChannel'.
 	ChannelName string `pulumi:"channelName"`
 	// The set of properties specific to Alexa channel resource
 	Properties *AlexaChannelPropertiesResponse `pulumi:"properties"`
@@ -440,6 +444,7 @@ type AlexaChannelResponseInput interface {
 // Alexa channel definition
 type AlexaChannelResponseArgs struct {
 	// The channel name
+	// Expected value is 'AlexaChannel'.
 	ChannelName pulumi.StringInput `pulumi:"channelName"`
 	// The set of properties specific to Alexa channel resource
 	Properties AlexaChannelPropertiesResponsePtrInput `pulumi:"properties"`
@@ -473,6 +478,7 @@ func (o AlexaChannelResponseOutput) ToAlexaChannelResponseOutputWithContext(ctx 
 }
 
 // The channel name
+// Expected value is 'AlexaChannel'.
 func (o AlexaChannelResponseOutput) ChannelName() pulumi.StringOutput {
 	return o.ApplyT(func(v AlexaChannelResponse) string { return v.ChannelName }).(pulumi.StringOutput)
 }
@@ -484,6 +490,8 @@ func (o AlexaChannelResponseOutput) Properties() AlexaChannelPropertiesResponseP
 
 // The parameters to provide for the Bot.
 type BotProperties struct {
+	// The CMK Url
+	CmekKeyVaultUrl *string `pulumi:"cmekKeyVaultUrl"`
 	// The description of the bot
 	Description *string `pulumi:"description"`
 	// The Application Insights key
@@ -498,6 +506,8 @@ type BotProperties struct {
 	Endpoint string `pulumi:"endpoint"`
 	// The Icon Url of the bot
 	IconUrl *string `pulumi:"iconUrl"`
+	// Whether Cmek is enabled
+	IsCmekEnabled *bool `pulumi:"isCmekEnabled"`
 	// Collection of LUIS App Ids
 	LuisAppIds []string `pulumi:"luisAppIds"`
 	// The LUIS Key
@@ -519,6 +529,8 @@ type BotPropertiesInput interface {
 
 // The parameters to provide for the Bot.
 type BotPropertiesArgs struct {
+	// The CMK Url
+	CmekKeyVaultUrl pulumi.StringPtrInput `pulumi:"cmekKeyVaultUrl"`
 	// The description of the bot
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The Application Insights key
@@ -533,6 +545,8 @@ type BotPropertiesArgs struct {
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
 	// The Icon Url of the bot
 	IconUrl pulumi.StringPtrInput `pulumi:"iconUrl"`
+	// Whether Cmek is enabled
+	IsCmekEnabled pulumi.BoolPtrInput `pulumi:"isCmekEnabled"`
 	// Collection of LUIS App Ids
 	LuisAppIds pulumi.StringArrayInput `pulumi:"luisAppIds"`
 	// The LUIS Key
@@ -619,6 +633,11 @@ func (o BotPropertiesOutput) ToBotPropertiesPtrOutputWithContext(ctx context.Con
 	}).(BotPropertiesPtrOutput)
 }
 
+// The CMK Url
+func (o BotPropertiesOutput) CmekKeyVaultUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BotProperties) *string { return v.CmekKeyVaultUrl }).(pulumi.StringPtrOutput)
+}
+
 // The description of the bot
 func (o BotPropertiesOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BotProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -654,6 +673,11 @@ func (o BotPropertiesOutput) IconUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BotProperties) *string { return v.IconUrl }).(pulumi.StringPtrOutput)
 }
 
+// Whether Cmek is enabled
+func (o BotPropertiesOutput) IsCmekEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BotProperties) *bool { return v.IsCmekEnabled }).(pulumi.BoolPtrOutput)
+}
+
 // Collection of LUIS App Ids
 func (o BotPropertiesOutput) LuisAppIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BotProperties) []string { return v.LuisAppIds }).(pulumi.StringArrayOutput)
@@ -685,6 +709,16 @@ func (o BotPropertiesPtrOutput) ToBotPropertiesPtrOutputWithContext(ctx context.
 
 func (o BotPropertiesPtrOutput) Elem() BotPropertiesOutput {
 	return o.ApplyT(func(v *BotProperties) BotProperties { return *v }).(BotPropertiesOutput)
+}
+
+// The CMK Url
+func (o BotPropertiesPtrOutput) CmekKeyVaultUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BotProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CmekKeyVaultUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 // The description of the bot
@@ -757,6 +791,16 @@ func (o BotPropertiesPtrOutput) IconUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether Cmek is enabled
+func (o BotPropertiesPtrOutput) IsCmekEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BotProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsCmekEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Collection of LUIS App Ids
 func (o BotPropertiesPtrOutput) LuisAppIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BotProperties) []string {
@@ -789,6 +833,8 @@ func (o BotPropertiesPtrOutput) MsaAppId() pulumi.StringPtrOutput {
 
 // The parameters to provide for the Bot.
 type BotPropertiesResponse struct {
+	// The CMK Url
+	CmekKeyVaultUrl *string `pulumi:"cmekKeyVaultUrl"`
 	// Collection of channels for which the bot is configured
 	ConfiguredChannels []string `pulumi:"configuredChannels"`
 	// The description of the bot
@@ -809,6 +855,8 @@ type BotPropertiesResponse struct {
 	EndpointVersion string `pulumi:"endpointVersion"`
 	// The Icon Url of the bot
 	IconUrl *string `pulumi:"iconUrl"`
+	// Whether Cmek is enabled
+	IsCmekEnabled *bool `pulumi:"isCmekEnabled"`
 	// Collection of LUIS App Ids
 	LuisAppIds []string `pulumi:"luisAppIds"`
 	// The LUIS Key
@@ -830,6 +878,8 @@ type BotPropertiesResponseInput interface {
 
 // The parameters to provide for the Bot.
 type BotPropertiesResponseArgs struct {
+	// The CMK Url
+	CmekKeyVaultUrl pulumi.StringPtrInput `pulumi:"cmekKeyVaultUrl"`
 	// Collection of channels for which the bot is configured
 	ConfiguredChannels pulumi.StringArrayInput `pulumi:"configuredChannels"`
 	// The description of the bot
@@ -850,6 +900,8 @@ type BotPropertiesResponseArgs struct {
 	EndpointVersion pulumi.StringInput `pulumi:"endpointVersion"`
 	// The Icon Url of the bot
 	IconUrl pulumi.StringPtrInput `pulumi:"iconUrl"`
+	// Whether Cmek is enabled
+	IsCmekEnabled pulumi.BoolPtrInput `pulumi:"isCmekEnabled"`
 	// Collection of LUIS App Ids
 	LuisAppIds pulumi.StringArrayInput `pulumi:"luisAppIds"`
 	// The LUIS Key
@@ -936,6 +988,11 @@ func (o BotPropertiesResponseOutput) ToBotPropertiesResponsePtrOutputWithContext
 	}).(BotPropertiesResponsePtrOutput)
 }
 
+// The CMK Url
+func (o BotPropertiesResponseOutput) CmekKeyVaultUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BotPropertiesResponse) *string { return v.CmekKeyVaultUrl }).(pulumi.StringPtrOutput)
+}
+
 // Collection of channels for which the bot is configured
 func (o BotPropertiesResponseOutput) ConfiguredChannels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BotPropertiesResponse) []string { return v.ConfiguredChannels }).(pulumi.StringArrayOutput)
@@ -986,6 +1043,11 @@ func (o BotPropertiesResponseOutput) IconUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BotPropertiesResponse) *string { return v.IconUrl }).(pulumi.StringPtrOutput)
 }
 
+// Whether Cmek is enabled
+func (o BotPropertiesResponseOutput) IsCmekEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BotPropertiesResponse) *bool { return v.IsCmekEnabled }).(pulumi.BoolPtrOutput)
+}
+
 // Collection of LUIS App Ids
 func (o BotPropertiesResponseOutput) LuisAppIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BotPropertiesResponse) []string { return v.LuisAppIds }).(pulumi.StringArrayOutput)
@@ -1017,6 +1079,16 @@ func (o BotPropertiesResponsePtrOutput) ToBotPropertiesResponsePtrOutputWithCont
 
 func (o BotPropertiesResponsePtrOutput) Elem() BotPropertiesResponseOutput {
 	return o.ApplyT(func(v *BotPropertiesResponse) BotPropertiesResponse { return *v }).(BotPropertiesResponseOutput)
+}
+
+// The CMK Url
+func (o BotPropertiesResponsePtrOutput) CmekKeyVaultUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BotPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CmekKeyVaultUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 // Collection of channels for which the bot is configured
@@ -1117,6 +1189,16 @@ func (o BotPropertiesResponsePtrOutput) IconUrl() pulumi.StringPtrOutput {
 		}
 		return v.IconUrl
 	}).(pulumi.StringPtrOutput)
+}
+
+// Whether Cmek is enabled
+func (o BotPropertiesResponsePtrOutput) IsCmekEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BotPropertiesResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsCmekEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Collection of LUIS App Ids
@@ -1847,6 +1929,7 @@ func (o ConnectionSettingPropertiesResponsePtrOutput) SettingId() pulumi.StringP
 // Direct Line channel definition
 type DirectLineChannel struct {
 	// The channel name
+	// Expected value is 'DirectLineChannel'.
 	ChannelName string `pulumi:"channelName"`
 	// The set of properties specific to Direct Line channel resource
 	Properties *DirectLineChannelProperties `pulumi:"properties"`
@@ -1866,6 +1949,7 @@ type DirectLineChannelInput interface {
 // Direct Line channel definition
 type DirectLineChannelArgs struct {
 	// The channel name
+	// Expected value is 'DirectLineChannel'.
 	ChannelName pulumi.StringInput `pulumi:"channelName"`
 	// The set of properties specific to Direct Line channel resource
 	Properties DirectLineChannelPropertiesPtrInput `pulumi:"properties"`
@@ -1899,6 +1983,7 @@ func (o DirectLineChannelOutput) ToDirectLineChannelOutputWithContext(ctx contex
 }
 
 // The channel name
+// Expected value is 'DirectLineChannel'.
 func (o DirectLineChannelOutput) ChannelName() pulumi.StringOutput {
 	return o.ApplyT(func(v DirectLineChannel) string { return v.ChannelName }).(pulumi.StringOutput)
 }
@@ -2179,6 +2264,7 @@ func (o DirectLineChannelPropertiesResponsePtrOutput) Sites() DirectLineSiteResp
 // Direct Line channel definition
 type DirectLineChannelResponse struct {
 	// The channel name
+	// Expected value is 'DirectLineChannel'.
 	ChannelName string `pulumi:"channelName"`
 	// The set of properties specific to Direct Line channel resource
 	Properties *DirectLineChannelPropertiesResponse `pulumi:"properties"`
@@ -2198,6 +2284,7 @@ type DirectLineChannelResponseInput interface {
 // Direct Line channel definition
 type DirectLineChannelResponseArgs struct {
 	// The channel name
+	// Expected value is 'DirectLineChannel'.
 	ChannelName pulumi.StringInput `pulumi:"channelName"`
 	// The set of properties specific to Direct Line channel resource
 	Properties DirectLineChannelPropertiesResponsePtrInput `pulumi:"properties"`
@@ -2231,6 +2318,7 @@ func (o DirectLineChannelResponseOutput) ToDirectLineChannelResponseOutputWithCo
 }
 
 // The channel name
+// Expected value is 'DirectLineChannel'.
 func (o DirectLineChannelResponseOutput) ChannelName() pulumi.StringOutput {
 	return o.ApplyT(func(v DirectLineChannelResponse) string { return v.ChannelName }).(pulumi.StringOutput)
 }
@@ -2560,6 +2648,7 @@ func (o DirectLineSiteResponseArrayOutput) Index(i pulumi.IntInput) DirectLineSi
 // DirectLine Speech channel definition
 type DirectLineSpeechChannel struct {
 	// The channel name
+	// Expected value is 'DirectLineSpeechChannel'.
 	ChannelName string `pulumi:"channelName"`
 	// The set of properties specific to DirectLine Speech channel resource
 	Properties *DirectLineSpeechChannelProperties `pulumi:"properties"`
@@ -2579,6 +2668,7 @@ type DirectLineSpeechChannelInput interface {
 // DirectLine Speech channel definition
 type DirectLineSpeechChannelArgs struct {
 	// The channel name
+	// Expected value is 'DirectLineSpeechChannel'.
 	ChannelName pulumi.StringInput `pulumi:"channelName"`
 	// The set of properties specific to DirectLine Speech channel resource
 	Properties DirectLineSpeechChannelPropertiesPtrInput `pulumi:"properties"`
@@ -2612,6 +2702,7 @@ func (o DirectLineSpeechChannelOutput) ToDirectLineSpeechChannelOutputWithContex
 }
 
 // The channel name
+// Expected value is 'DirectLineSpeechChannel'.
 func (o DirectLineSpeechChannelOutput) ChannelName() pulumi.StringOutput {
 	return o.ApplyT(func(v DirectLineSpeechChannel) string { return v.ChannelName }).(pulumi.StringOutput)
 }
@@ -3046,6 +3137,7 @@ func (o DirectLineSpeechChannelPropertiesResponsePtrOutput) IsEnabled() pulumi.B
 // DirectLine Speech channel definition
 type DirectLineSpeechChannelResponse struct {
 	// The channel name
+	// Expected value is 'DirectLineSpeechChannel'.
 	ChannelName string `pulumi:"channelName"`
 	// The set of properties specific to DirectLine Speech channel resource
 	Properties *DirectLineSpeechChannelPropertiesResponse `pulumi:"properties"`
@@ -3065,6 +3157,7 @@ type DirectLineSpeechChannelResponseInput interface {
 // DirectLine Speech channel definition
 type DirectLineSpeechChannelResponseArgs struct {
 	// The channel name
+	// Expected value is 'DirectLineSpeechChannel'.
 	ChannelName pulumi.StringInput `pulumi:"channelName"`
 	// The set of properties specific to DirectLine Speech channel resource
 	Properties DirectLineSpeechChannelPropertiesResponsePtrInput `pulumi:"properties"`
@@ -3098,6 +3191,7 @@ func (o DirectLineSpeechChannelResponseOutput) ToDirectLineSpeechChannelResponse
 }
 
 // The channel name
+// Expected value is 'DirectLineSpeechChannel'.
 func (o DirectLineSpeechChannelResponseOutput) ChannelName() pulumi.StringOutput {
 	return o.ApplyT(func(v DirectLineSpeechChannelResponse) string { return v.ChannelName }).(pulumi.StringOutput)
 }
@@ -3112,6 +3206,7 @@ func (o DirectLineSpeechChannelResponseOutput) Properties() DirectLineSpeechChan
 // Email channel definition
 type EmailChannel struct {
 	// The channel name
+	// Expected value is 'EmailChannel'.
 	ChannelName string `pulumi:"channelName"`
 	// The set of properties specific to email channel resource
 	Properties *EmailChannelProperties `pulumi:"properties"`
@@ -3131,6 +3226,7 @@ type EmailChannelInput interface {
 // Email channel definition
 type EmailChannelArgs struct {
 	// The channel name
+	// Expected value is 'EmailChannel'.
 	ChannelName pulumi.StringInput `pulumi:"channelName"`
 	// The set of properties specific to email channel resource
 	Properties EmailChannelPropertiesPtrInput `pulumi:"properties"`
@@ -3164,6 +3260,7 @@ func (o EmailChannelOutput) ToEmailChannelOutputWithContext(ctx context.Context)
 }
 
 // The channel name
+// Expected value is 'EmailChannel'.
 func (o EmailChannelOutput) ChannelName() pulumi.StringOutput {
 	return o.ApplyT(func(v EmailChannel) string { return v.ChannelName }).(pulumi.StringOutput)
 }
@@ -3180,7 +3277,7 @@ type EmailChannelProperties struct {
 	// Whether this channel is enabled for the bot
 	IsEnabled bool `pulumi:"isEnabled"`
 	// The password for the email address. Value only returned through POST to the action Channel List API, otherwise empty.
-	Password string `pulumi:"password"`
+	Password *string `pulumi:"password"`
 }
 
 // EmailChannelPropertiesInput is an input type that accepts EmailChannelPropertiesArgs and EmailChannelPropertiesOutput values.
@@ -3201,7 +3298,7 @@ type EmailChannelPropertiesArgs struct {
 	// Whether this channel is enabled for the bot
 	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
 	// The password for the email address. Value only returned through POST to the action Channel List API, otherwise empty.
-	Password pulumi.StringInput `pulumi:"password"`
+	Password pulumi.StringPtrInput `pulumi:"password"`
 }
 
 func (EmailChannelPropertiesArgs) ElementType() reflect.Type {
@@ -3293,8 +3390,8 @@ func (o EmailChannelPropertiesOutput) IsEnabled() pulumi.BoolOutput {
 }
 
 // The password for the email address. Value only returned through POST to the action Channel List API, otherwise empty.
-func (o EmailChannelPropertiesOutput) Password() pulumi.StringOutput {
-	return o.ApplyT(func(v EmailChannelProperties) string { return v.Password }).(pulumi.StringOutput)
+func (o EmailChannelPropertiesOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EmailChannelProperties) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
 type EmailChannelPropertiesPtrOutput struct{ *pulumi.OutputState }
@@ -3341,7 +3438,7 @@ func (o EmailChannelPropertiesPtrOutput) Password() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Password
+		return v.Password
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3352,7 +3449,7 @@ type EmailChannelPropertiesResponse struct {
 	// Whether this channel is enabled for the bot
 	IsEnabled bool `pulumi:"isEnabled"`
 	// The password for the email address. Value only returned through POST to the action Channel List API, otherwise empty.
-	Password string `pulumi:"password"`
+	Password *string `pulumi:"password"`
 }
 
 // EmailChannelPropertiesResponseInput is an input type that accepts EmailChannelPropertiesResponseArgs and EmailChannelPropertiesResponseOutput values.
@@ -3373,7 +3470,7 @@ type EmailChannelPropertiesResponseArgs struct {
 	// Whether this channel is enabled for the bot
 	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
 	// The password for the email address. Value only returned through POST to the action Channel List API, otherwise empty.
-	Password pulumi.StringInput `pulumi:"password"`
+	Password pulumi.StringPtrInput `pulumi:"password"`
 }
 
 func (EmailChannelPropertiesResponseArgs) ElementType() reflect.Type {
@@ -3465,8 +3562,8 @@ func (o EmailChannelPropertiesResponseOutput) IsEnabled() pulumi.BoolOutput {
 }
 
 // The password for the email address. Value only returned through POST to the action Channel List API, otherwise empty.
-func (o EmailChannelPropertiesResponseOutput) Password() pulumi.StringOutput {
-	return o.ApplyT(func(v EmailChannelPropertiesResponse) string { return v.Password }).(pulumi.StringOutput)
+func (o EmailChannelPropertiesResponseOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EmailChannelPropertiesResponse) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
 type EmailChannelPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
@@ -3513,13 +3610,14 @@ func (o EmailChannelPropertiesResponsePtrOutput) Password() pulumi.StringPtrOutp
 		if v == nil {
 			return nil
 		}
-		return &v.Password
+		return v.Password
 	}).(pulumi.StringPtrOutput)
 }
 
 // Email channel definition
 type EmailChannelResponse struct {
 	// The channel name
+	// Expected value is 'EmailChannel'.
 	ChannelName string `pulumi:"channelName"`
 	// The set of properties specific to email channel resource
 	Properties *EmailChannelPropertiesResponse `pulumi:"properties"`
@@ -3539,6 +3637,7 @@ type EmailChannelResponseInput interface {
 // Email channel definition
 type EmailChannelResponseArgs struct {
 	// The channel name
+	// Expected value is 'EmailChannel'.
 	ChannelName pulumi.StringInput `pulumi:"channelName"`
 	// The set of properties specific to email channel resource
 	Properties EmailChannelPropertiesResponsePtrInput `pulumi:"properties"`
@@ -3572,6 +3671,7 @@ func (o EmailChannelResponseOutput) ToEmailChannelResponseOutputWithContext(ctx 
 }
 
 // The channel name
+// Expected value is 'EmailChannel'.
 func (o EmailChannelResponseOutput) ChannelName() pulumi.StringOutput {
 	return o.ApplyT(func(v EmailChannelResponse) string { return v.ChannelName }).(pulumi.StringOutput)
 }
@@ -4153,6 +4253,7 @@ func (o EnterpriseChannelPropertiesResponsePtrOutput) State() pulumi.StringPtrOu
 // Facebook channel definition
 type FacebookChannel struct {
 	// The channel name
+	// Expected value is 'FacebookChannel'.
 	ChannelName string `pulumi:"channelName"`
 	// The set of properties specific to bot facebook channel
 	Properties *FacebookChannelProperties `pulumi:"properties"`
@@ -4172,6 +4273,7 @@ type FacebookChannelInput interface {
 // Facebook channel definition
 type FacebookChannelArgs struct {
 	// The channel name
+	// Expected value is 'FacebookChannel'.
 	ChannelName pulumi.StringInput `pulumi:"channelName"`
 	// The set of properties specific to bot facebook channel
 	Properties FacebookChannelPropertiesPtrInput `pulumi:"properties"`
@@ -4205,6 +4307,7 @@ func (o FacebookChannelOutput) ToFacebookChannelOutputWithContext(ctx context.Co
 }
 
 // The channel name
+// Expected value is 'FacebookChannel'.
 func (o FacebookChannelOutput) ChannelName() pulumi.StringOutput {
 	return o.ApplyT(func(v FacebookChannel) string { return v.ChannelName }).(pulumi.StringOutput)
 }
@@ -4219,7 +4322,7 @@ type FacebookChannelProperties struct {
 	// Facebook application id
 	AppId string `pulumi:"appId"`
 	// Facebook application secret. Value only returned through POST to the action Channel List API, otherwise empty.
-	AppSecret string `pulumi:"appSecret"`
+	AppSecret *string `pulumi:"appSecret"`
 	// Whether this channel is enabled for the bot
 	IsEnabled bool `pulumi:"isEnabled"`
 	// The list of Facebook pages
@@ -4242,7 +4345,7 @@ type FacebookChannelPropertiesArgs struct {
 	// Facebook application id
 	AppId pulumi.StringInput `pulumi:"appId"`
 	// Facebook application secret. Value only returned through POST to the action Channel List API, otherwise empty.
-	AppSecret pulumi.StringInput `pulumi:"appSecret"`
+	AppSecret pulumi.StringPtrInput `pulumi:"appSecret"`
 	// Whether this channel is enabled for the bot
 	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
 	// The list of Facebook pages
@@ -4333,8 +4436,8 @@ func (o FacebookChannelPropertiesOutput) AppId() pulumi.StringOutput {
 }
 
 // Facebook application secret. Value only returned through POST to the action Channel List API, otherwise empty.
-func (o FacebookChannelPropertiesOutput) AppSecret() pulumi.StringOutput {
-	return o.ApplyT(func(v FacebookChannelProperties) string { return v.AppSecret }).(pulumi.StringOutput)
+func (o FacebookChannelPropertiesOutput) AppSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FacebookChannelProperties) *string { return v.AppSecret }).(pulumi.StringPtrOutput)
 }
 
 // Whether this channel is enabled for the bot
@@ -4381,7 +4484,7 @@ func (o FacebookChannelPropertiesPtrOutput) AppSecret() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.AppSecret
+		return v.AppSecret
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4410,7 +4513,7 @@ type FacebookChannelPropertiesResponse struct {
 	// Facebook application id
 	AppId string `pulumi:"appId"`
 	// Facebook application secret. Value only returned through POST to the action Channel List API, otherwise empty.
-	AppSecret string `pulumi:"appSecret"`
+	AppSecret *string `pulumi:"appSecret"`
 	// Callback Url
 	CallbackUrl string `pulumi:"callbackUrl"`
 	// Whether this channel is enabled for the bot
@@ -4437,7 +4540,7 @@ type FacebookChannelPropertiesResponseArgs struct {
 	// Facebook application id
 	AppId pulumi.StringInput `pulumi:"appId"`
 	// Facebook application secret. Value only returned through POST to the action Channel List API, otherwise empty.
-	AppSecret pulumi.StringInput `pulumi:"appSecret"`
+	AppSecret pulumi.StringPtrInput `pulumi:"appSecret"`
 	// Callback Url
 	CallbackUrl pulumi.StringInput `pulumi:"callbackUrl"`
 	// Whether this channel is enabled for the bot
@@ -4532,8 +4635,8 @@ func (o FacebookChannelPropertiesResponseOutput) AppId() pulumi.StringOutput {
 }
 
 // Facebook application secret. Value only returned through POST to the action Channel List API, otherwise empty.
-func (o FacebookChannelPropertiesResponseOutput) AppSecret() pulumi.StringOutput {
-	return o.ApplyT(func(v FacebookChannelPropertiesResponse) string { return v.AppSecret }).(pulumi.StringOutput)
+func (o FacebookChannelPropertiesResponseOutput) AppSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FacebookChannelPropertiesResponse) *string { return v.AppSecret }).(pulumi.StringPtrOutput)
 }
 
 // Callback Url
@@ -4590,7 +4693,7 @@ func (o FacebookChannelPropertiesResponsePtrOutput) AppSecret() pulumi.StringPtr
 		if v == nil {
 			return nil
 		}
-		return &v.AppSecret
+		return v.AppSecret
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4637,6 +4740,7 @@ func (o FacebookChannelPropertiesResponsePtrOutput) VerifyToken() pulumi.StringP
 // Facebook channel definition
 type FacebookChannelResponse struct {
 	// The channel name
+	// Expected value is 'FacebookChannel'.
 	ChannelName string `pulumi:"channelName"`
 	// The set of properties specific to bot facebook channel
 	Properties *FacebookChannelPropertiesResponse `pulumi:"properties"`
@@ -4656,6 +4760,7 @@ type FacebookChannelResponseInput interface {
 // Facebook channel definition
 type FacebookChannelResponseArgs struct {
 	// The channel name
+	// Expected value is 'FacebookChannel'.
 	ChannelName pulumi.StringInput `pulumi:"channelName"`
 	// The set of properties specific to bot facebook channel
 	Properties FacebookChannelPropertiesResponsePtrInput `pulumi:"properties"`
@@ -4689,6 +4794,7 @@ func (o FacebookChannelResponseOutput) ToFacebookChannelResponseOutputWithContex
 }
 
 // The channel name
+// Expected value is 'FacebookChannel'.
 func (o FacebookChannelResponseOutput) ChannelName() pulumi.StringOutput {
 	return o.ApplyT(func(v FacebookChannelResponse) string { return v.ChannelName }).(pulumi.StringOutput)
 }
@@ -4701,7 +4807,7 @@ func (o FacebookChannelResponseOutput) Properties() FacebookChannelPropertiesRes
 // A Facebook page for Facebook channel registration
 type FacebookPage struct {
 	// Facebook application access token. Value only returned through POST to the action Channel List API, otherwise empty.
-	AccessToken string `pulumi:"accessToken"`
+	AccessToken *string `pulumi:"accessToken"`
 	// Page id
 	Id string `pulumi:"id"`
 }
@@ -4720,7 +4826,7 @@ type FacebookPageInput interface {
 // A Facebook page for Facebook channel registration
 type FacebookPageArgs struct {
 	// Facebook application access token. Value only returned through POST to the action Channel List API, otherwise empty.
-	AccessToken pulumi.StringInput `pulumi:"accessToken"`
+	AccessToken pulumi.StringPtrInput `pulumi:"accessToken"`
 	// Page id
 	Id pulumi.StringInput `pulumi:"id"`
 }
@@ -4778,8 +4884,8 @@ func (o FacebookPageOutput) ToFacebookPageOutputWithContext(ctx context.Context)
 }
 
 // Facebook application access token. Value only returned through POST to the action Channel List API, otherwise empty.
-func (o FacebookPageOutput) AccessToken() pulumi.StringOutput {
-	return o.ApplyT(func(v FacebookPage) string { return v.AccessToken }).(pulumi.StringOutput)
+func (o FacebookPageOutput) AccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FacebookPage) *string { return v.AccessToken }).(pulumi.StringPtrOutput)
 }
 
 // Page id
@@ -4810,7 +4916,7 @@ func (o FacebookPageArrayOutput) Index(i pulumi.IntInput) FacebookPageOutput {
 // A Facebook page for Facebook channel registration
 type FacebookPageResponse struct {
 	// Facebook application access token. Value only returned through POST to the action Channel List API, otherwise empty.
-	AccessToken string `pulumi:"accessToken"`
+	AccessToken *string `pulumi:"accessToken"`
 	// Page id
 	Id string `pulumi:"id"`
 }
@@ -4829,7 +4935,7 @@ type FacebookPageResponseInput interface {
 // A Facebook page for Facebook channel registration
 type FacebookPageResponseArgs struct {
 	// Facebook application access token. Value only returned through POST to the action Channel List API, otherwise empty.
-	AccessToken pulumi.StringInput `pulumi:"accessToken"`
+	AccessToken pulumi.StringPtrInput `pulumi:"accessToken"`
 	// Page id
 	Id pulumi.StringInput `pulumi:"id"`
 }
@@ -4887,8 +4993,8 @@ func (o FacebookPageResponseOutput) ToFacebookPageResponseOutputWithContext(ctx 
 }
 
 // Facebook application access token. Value only returned through POST to the action Channel List API, otherwise empty.
-func (o FacebookPageResponseOutput) AccessToken() pulumi.StringOutput {
-	return o.ApplyT(func(v FacebookPageResponse) string { return v.AccessToken }).(pulumi.StringOutput)
+func (o FacebookPageResponseOutput) AccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FacebookPageResponse) *string { return v.AccessToken }).(pulumi.StringPtrOutput)
 }
 
 // Page id
@@ -4919,6 +5025,7 @@ func (o FacebookPageResponseArrayOutput) Index(i pulumi.IntInput) FacebookPageRe
 // Kik channel definition
 type KikChannel struct {
 	// The channel name
+	// Expected value is 'KikChannel'.
 	ChannelName string `pulumi:"channelName"`
 	// The set of properties specific to Kik channel resource
 	Properties *KikChannelProperties `pulumi:"properties"`
@@ -4938,6 +5045,7 @@ type KikChannelInput interface {
 // Kik channel definition
 type KikChannelArgs struct {
 	// The channel name
+	// Expected value is 'KikChannel'.
 	ChannelName pulumi.StringInput `pulumi:"channelName"`
 	// The set of properties specific to Kik channel resource
 	Properties KikChannelPropertiesPtrInput `pulumi:"properties"`
@@ -4971,6 +5079,7 @@ func (o KikChannelOutput) ToKikChannelOutputWithContext(ctx context.Context) Kik
 }
 
 // The channel name
+// Expected value is 'KikChannel'.
 func (o KikChannelOutput) ChannelName() pulumi.StringOutput {
 	return o.ApplyT(func(v KikChannel) string { return v.ChannelName }).(pulumi.StringOutput)
 }
@@ -4983,7 +5092,7 @@ func (o KikChannelOutput) Properties() KikChannelPropertiesPtrOutput {
 // The parameters to provide for the Kik channel.
 type KikChannelProperties struct {
 	// Kik API key. Value only returned through POST to the action Channel List API, otherwise empty.
-	ApiKey string `pulumi:"apiKey"`
+	ApiKey *string `pulumi:"apiKey"`
 	// Whether this channel is enabled for the bot
 	IsEnabled bool `pulumi:"isEnabled"`
 	// Whether this channel is validated for the bot
@@ -5006,7 +5115,7 @@ type KikChannelPropertiesInput interface {
 // The parameters to provide for the Kik channel.
 type KikChannelPropertiesArgs struct {
 	// Kik API key. Value only returned through POST to the action Channel List API, otherwise empty.
-	ApiKey pulumi.StringInput `pulumi:"apiKey"`
+	ApiKey pulumi.StringPtrInput `pulumi:"apiKey"`
 	// Whether this channel is enabled for the bot
 	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
 	// Whether this channel is validated for the bot
@@ -5094,8 +5203,8 @@ func (o KikChannelPropertiesOutput) ToKikChannelPropertiesPtrOutputWithContext(c
 }
 
 // Kik API key. Value only returned through POST to the action Channel List API, otherwise empty.
-func (o KikChannelPropertiesOutput) ApiKey() pulumi.StringOutput {
-	return o.ApplyT(func(v KikChannelProperties) string { return v.ApiKey }).(pulumi.StringOutput)
+func (o KikChannelPropertiesOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KikChannelProperties) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
 }
 
 // Whether this channel is enabled for the bot
@@ -5137,7 +5246,7 @@ func (o KikChannelPropertiesPtrOutput) ApiKey() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.ApiKey
+		return v.ApiKey
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5174,7 +5283,7 @@ func (o KikChannelPropertiesPtrOutput) UserName() pulumi.StringPtrOutput {
 // The parameters to provide for the Kik channel.
 type KikChannelPropertiesResponse struct {
 	// Kik API key. Value only returned through POST to the action Channel List API, otherwise empty.
-	ApiKey string `pulumi:"apiKey"`
+	ApiKey *string `pulumi:"apiKey"`
 	// Whether this channel is enabled for the bot
 	IsEnabled bool `pulumi:"isEnabled"`
 	// Whether this channel is validated for the bot
@@ -5197,7 +5306,7 @@ type KikChannelPropertiesResponseInput interface {
 // The parameters to provide for the Kik channel.
 type KikChannelPropertiesResponseArgs struct {
 	// Kik API key. Value only returned through POST to the action Channel List API, otherwise empty.
-	ApiKey pulumi.StringInput `pulumi:"apiKey"`
+	ApiKey pulumi.StringPtrInput `pulumi:"apiKey"`
 	// Whether this channel is enabled for the bot
 	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
 	// Whether this channel is validated for the bot
@@ -5285,8 +5394,8 @@ func (o KikChannelPropertiesResponseOutput) ToKikChannelPropertiesResponsePtrOut
 }
 
 // Kik API key. Value only returned through POST to the action Channel List API, otherwise empty.
-func (o KikChannelPropertiesResponseOutput) ApiKey() pulumi.StringOutput {
-	return o.ApplyT(func(v KikChannelPropertiesResponse) string { return v.ApiKey }).(pulumi.StringOutput)
+func (o KikChannelPropertiesResponseOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KikChannelPropertiesResponse) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
 }
 
 // Whether this channel is enabled for the bot
@@ -5328,7 +5437,7 @@ func (o KikChannelPropertiesResponsePtrOutput) ApiKey() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.ApiKey
+		return v.ApiKey
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5365,6 +5474,7 @@ func (o KikChannelPropertiesResponsePtrOutput) UserName() pulumi.StringPtrOutput
 // Kik channel definition
 type KikChannelResponse struct {
 	// The channel name
+	// Expected value is 'KikChannel'.
 	ChannelName string `pulumi:"channelName"`
 	// The set of properties specific to Kik channel resource
 	Properties *KikChannelPropertiesResponse `pulumi:"properties"`
@@ -5384,6 +5494,7 @@ type KikChannelResponseInput interface {
 // Kik channel definition
 type KikChannelResponseArgs struct {
 	// The channel name
+	// Expected value is 'KikChannel'.
 	ChannelName pulumi.StringInput `pulumi:"channelName"`
 	// The set of properties specific to Kik channel resource
 	Properties KikChannelPropertiesResponsePtrInput `pulumi:"properties"`
@@ -5417,6 +5528,7 @@ func (o KikChannelResponseOutput) ToKikChannelResponseOutputWithContext(ctx cont
 }
 
 // The channel name
+// Expected value is 'KikChannel'.
 func (o KikChannelResponseOutput) ChannelName() pulumi.StringOutput {
 	return o.ApplyT(func(v KikChannelResponse) string { return v.ChannelName }).(pulumi.StringOutput)
 }
@@ -5429,6 +5541,7 @@ func (o KikChannelResponseOutput) Properties() KikChannelPropertiesResponsePtrOu
 // Line channel definition
 type LineChannel struct {
 	// The channel name
+	// Expected value is 'LineChannel'.
 	ChannelName string `pulumi:"channelName"`
 	// The set of properties specific to line channel resource
 	Properties *LineChannelProperties `pulumi:"properties"`
@@ -5448,6 +5561,7 @@ type LineChannelInput interface {
 // Line channel definition
 type LineChannelArgs struct {
 	// The channel name
+	// Expected value is 'LineChannel'.
 	ChannelName pulumi.StringInput `pulumi:"channelName"`
 	// The set of properties specific to line channel resource
 	Properties LineChannelPropertiesPtrInput `pulumi:"properties"`
@@ -5481,6 +5595,7 @@ func (o LineChannelOutput) ToLineChannelOutputWithContext(ctx context.Context) L
 }
 
 // The channel name
+// Expected value is 'LineChannel'.
 func (o LineChannelOutput) ChannelName() pulumi.StringOutput {
 	return o.ApplyT(func(v LineChannel) string { return v.ChannelName }).(pulumi.StringOutput)
 }
@@ -5799,6 +5914,7 @@ func (o LineChannelPropertiesResponsePtrOutput) LineRegistrations() LineRegistra
 // Line channel definition
 type LineChannelResponse struct {
 	// The channel name
+	// Expected value is 'LineChannel'.
 	ChannelName string `pulumi:"channelName"`
 	// The set of properties specific to line channel resource
 	Properties *LineChannelPropertiesResponse `pulumi:"properties"`
@@ -5818,6 +5934,7 @@ type LineChannelResponseInput interface {
 // Line channel definition
 type LineChannelResponseArgs struct {
 	// The channel name
+	// Expected value is 'LineChannel'.
 	ChannelName pulumi.StringInput `pulumi:"channelName"`
 	// The set of properties specific to line channel resource
 	Properties LineChannelPropertiesResponsePtrInput `pulumi:"properties"`
@@ -5851,6 +5968,7 @@ func (o LineChannelResponseOutput) ToLineChannelResponseOutputWithContext(ctx co
 }
 
 // The channel name
+// Expected value is 'LineChannel'.
 func (o LineChannelResponseOutput) ChannelName() pulumi.StringOutput {
 	return o.ApplyT(func(v LineChannelResponse) string { return v.ChannelName }).(pulumi.StringOutput)
 }
@@ -6090,6 +6208,7 @@ func (o LineRegistrationResponseArrayOutput) Index(i pulumi.IntInput) LineRegist
 // Microsoft Teams channel definition
 type MsTeamsChannel struct {
 	// The channel name
+	// Expected value is 'MsTeamsChannel'.
 	ChannelName string `pulumi:"channelName"`
 	// The set of properties specific to Microsoft Teams channel resource
 	Properties *MsTeamsChannelProperties `pulumi:"properties"`
@@ -6109,6 +6228,7 @@ type MsTeamsChannelInput interface {
 // Microsoft Teams channel definition
 type MsTeamsChannelArgs struct {
 	// The channel name
+	// Expected value is 'MsTeamsChannel'.
 	ChannelName pulumi.StringInput `pulumi:"channelName"`
 	// The set of properties specific to Microsoft Teams channel resource
 	Properties MsTeamsChannelPropertiesPtrInput `pulumi:"properties"`
@@ -6142,6 +6262,7 @@ func (o MsTeamsChannelOutput) ToMsTeamsChannelOutputWithContext(ctx context.Cont
 }
 
 // The channel name
+// Expected value is 'MsTeamsChannel'.
 func (o MsTeamsChannelOutput) ChannelName() pulumi.StringOutput {
 	return o.ApplyT(func(v MsTeamsChannel) string { return v.ChannelName }).(pulumi.StringOutput)
 }
@@ -6498,6 +6619,7 @@ func (o MsTeamsChannelPropertiesResponsePtrOutput) IsEnabled() pulumi.BoolPtrOut
 // Microsoft Teams channel definition
 type MsTeamsChannelResponse struct {
 	// The channel name
+	// Expected value is 'MsTeamsChannel'.
 	ChannelName string `pulumi:"channelName"`
 	// The set of properties specific to Microsoft Teams channel resource
 	Properties *MsTeamsChannelPropertiesResponse `pulumi:"properties"`
@@ -6517,6 +6639,7 @@ type MsTeamsChannelResponseInput interface {
 // Microsoft Teams channel definition
 type MsTeamsChannelResponseArgs struct {
 	// The channel name
+	// Expected value is 'MsTeamsChannel'.
 	ChannelName pulumi.StringInput `pulumi:"channelName"`
 	// The set of properties specific to Microsoft Teams channel resource
 	Properties MsTeamsChannelPropertiesResponsePtrInput `pulumi:"properties"`
@@ -6550,6 +6673,7 @@ func (o MsTeamsChannelResponseOutput) ToMsTeamsChannelResponseOutputWithContext(
 }
 
 // The channel name
+// Expected value is 'MsTeamsChannel'.
 func (o MsTeamsChannelResponseOutput) ChannelName() pulumi.StringOutput {
 	return o.ApplyT(func(v MsTeamsChannelResponse) string { return v.ChannelName }).(pulumi.StringOutput)
 }
@@ -7323,6 +7447,7 @@ func (o SkuResponsePtrOutput) Tier() pulumi.StringPtrOutput {
 // Skype channel definition
 type SkypeChannel struct {
 	// The channel name
+	// Expected value is 'SkypeChannel'.
 	ChannelName string `pulumi:"channelName"`
 	// The set of properties specific to Skype channel resource
 	Properties *SkypeChannelProperties `pulumi:"properties"`
@@ -7342,6 +7467,7 @@ type SkypeChannelInput interface {
 // Skype channel definition
 type SkypeChannelArgs struct {
 	// The channel name
+	// Expected value is 'SkypeChannel'.
 	ChannelName pulumi.StringInput `pulumi:"channelName"`
 	// The set of properties specific to Skype channel resource
 	Properties SkypeChannelPropertiesPtrInput `pulumi:"properties"`
@@ -7375,6 +7501,7 @@ func (o SkypeChannelOutput) ToSkypeChannelOutputWithContext(ctx context.Context)
 }
 
 // The channel name
+// Expected value is 'SkypeChannel'.
 func (o SkypeChannelOutput) ChannelName() pulumi.StringOutput {
 	return o.ApplyT(func(v SkypeChannel) string { return v.ChannelName }).(pulumi.StringOutput)
 }
@@ -7959,6 +8086,7 @@ func (o SkypeChannelPropertiesResponsePtrOutput) IsEnabled() pulumi.BoolPtrOutpu
 // Skype channel definition
 type SkypeChannelResponse struct {
 	// The channel name
+	// Expected value is 'SkypeChannel'.
 	ChannelName string `pulumi:"channelName"`
 	// The set of properties specific to Skype channel resource
 	Properties *SkypeChannelPropertiesResponse `pulumi:"properties"`
@@ -7978,6 +8106,7 @@ type SkypeChannelResponseInput interface {
 // Skype channel definition
 type SkypeChannelResponseArgs struct {
 	// The channel name
+	// Expected value is 'SkypeChannel'.
 	ChannelName pulumi.StringInput `pulumi:"channelName"`
 	// The set of properties specific to Skype channel resource
 	Properties SkypeChannelPropertiesResponsePtrInput `pulumi:"properties"`
@@ -8011,6 +8140,7 @@ func (o SkypeChannelResponseOutput) ToSkypeChannelResponseOutputWithContext(ctx 
 }
 
 // The channel name
+// Expected value is 'SkypeChannel'.
 func (o SkypeChannelResponseOutput) ChannelName() pulumi.StringOutput {
 	return o.ApplyT(func(v SkypeChannelResponse) string { return v.ChannelName }).(pulumi.StringOutput)
 }
@@ -8023,6 +8153,7 @@ func (o SkypeChannelResponseOutput) Properties() SkypeChannelPropertiesResponseP
 // Slack channel definition
 type SlackChannel struct {
 	// The channel name
+	// Expected value is 'SlackChannel'.
 	ChannelName string `pulumi:"channelName"`
 	// The set of properties specific to Slack channel resource
 	Properties *SlackChannelProperties `pulumi:"properties"`
@@ -8042,6 +8173,7 @@ type SlackChannelInput interface {
 // Slack channel definition
 type SlackChannelArgs struct {
 	// The channel name
+	// Expected value is 'SlackChannel'.
 	ChannelName pulumi.StringInput `pulumi:"channelName"`
 	// The set of properties specific to Slack channel resource
 	Properties SlackChannelPropertiesPtrInput `pulumi:"properties"`
@@ -8075,6 +8207,7 @@ func (o SlackChannelOutput) ToSlackChannelOutputWithContext(ctx context.Context)
 }
 
 // The channel name
+// Expected value is 'SlackChannel'.
 func (o SlackChannelOutput) ChannelName() pulumi.StringOutput {
 	return o.ApplyT(func(v SlackChannel) string { return v.ChannelName }).(pulumi.StringOutput)
 }
@@ -8087,9 +8220,9 @@ func (o SlackChannelOutput) Properties() SlackChannelPropertiesPtrOutput {
 // The parameters to provide for the Slack channel.
 type SlackChannelProperties struct {
 	// The Slack client id
-	ClientId string `pulumi:"clientId"`
+	ClientId *string `pulumi:"clientId"`
 	// The Slack client secret. Value only returned through POST to the action Channel List API, otherwise empty.
-	ClientSecret string `pulumi:"clientSecret"`
+	ClientSecret *string `pulumi:"clientSecret"`
 	// Whether this channel is enabled for the bot
 	IsEnabled bool `pulumi:"isEnabled"`
 	// The Slack landing page Url
@@ -8097,7 +8230,7 @@ type SlackChannelProperties struct {
 	// The Slack signing secret.
 	SigningSecret *string `pulumi:"signingSecret"`
 	// The Slack verification token. Value only returned through POST to the action Channel List API, otherwise empty.
-	VerificationToken string `pulumi:"verificationToken"`
+	VerificationToken *string `pulumi:"verificationToken"`
 }
 
 // SlackChannelPropertiesInput is an input type that accepts SlackChannelPropertiesArgs and SlackChannelPropertiesOutput values.
@@ -8114,9 +8247,9 @@ type SlackChannelPropertiesInput interface {
 // The parameters to provide for the Slack channel.
 type SlackChannelPropertiesArgs struct {
 	// The Slack client id
-	ClientId pulumi.StringInput `pulumi:"clientId"`
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
 	// The Slack client secret. Value only returned through POST to the action Channel List API, otherwise empty.
-	ClientSecret pulumi.StringInput `pulumi:"clientSecret"`
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
 	// Whether this channel is enabled for the bot
 	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
 	// The Slack landing page Url
@@ -8124,7 +8257,7 @@ type SlackChannelPropertiesArgs struct {
 	// The Slack signing secret.
 	SigningSecret pulumi.StringPtrInput `pulumi:"signingSecret"`
 	// The Slack verification token. Value only returned through POST to the action Channel List API, otherwise empty.
-	VerificationToken pulumi.StringInput `pulumi:"verificationToken"`
+	VerificationToken pulumi.StringPtrInput `pulumi:"verificationToken"`
 }
 
 func (SlackChannelPropertiesArgs) ElementType() reflect.Type {
@@ -8206,13 +8339,13 @@ func (o SlackChannelPropertiesOutput) ToSlackChannelPropertiesPtrOutputWithConte
 }
 
 // The Slack client id
-func (o SlackChannelPropertiesOutput) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v SlackChannelProperties) string { return v.ClientId }).(pulumi.StringOutput)
+func (o SlackChannelPropertiesOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SlackChannelProperties) *string { return v.ClientId }).(pulumi.StringPtrOutput)
 }
 
 // The Slack client secret. Value only returned through POST to the action Channel List API, otherwise empty.
-func (o SlackChannelPropertiesOutput) ClientSecret() pulumi.StringOutput {
-	return o.ApplyT(func(v SlackChannelProperties) string { return v.ClientSecret }).(pulumi.StringOutput)
+func (o SlackChannelPropertiesOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SlackChannelProperties) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
 
 // Whether this channel is enabled for the bot
@@ -8231,8 +8364,8 @@ func (o SlackChannelPropertiesOutput) SigningSecret() pulumi.StringPtrOutput {
 }
 
 // The Slack verification token. Value only returned through POST to the action Channel List API, otherwise empty.
-func (o SlackChannelPropertiesOutput) VerificationToken() pulumi.StringOutput {
-	return o.ApplyT(func(v SlackChannelProperties) string { return v.VerificationToken }).(pulumi.StringOutput)
+func (o SlackChannelPropertiesOutput) VerificationToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SlackChannelProperties) *string { return v.VerificationToken }).(pulumi.StringPtrOutput)
 }
 
 type SlackChannelPropertiesPtrOutput struct{ *pulumi.OutputState }
@@ -8259,7 +8392,7 @@ func (o SlackChannelPropertiesPtrOutput) ClientId() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.ClientId
+		return v.ClientId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -8269,7 +8402,7 @@ func (o SlackChannelPropertiesPtrOutput) ClientSecret() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.ClientSecret
+		return v.ClientSecret
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -8309,16 +8442,16 @@ func (o SlackChannelPropertiesPtrOutput) VerificationToken() pulumi.StringPtrOut
 		if v == nil {
 			return nil
 		}
-		return &v.VerificationToken
+		return v.VerificationToken
 	}).(pulumi.StringPtrOutput)
 }
 
 // The parameters to provide for the Slack channel.
 type SlackChannelPropertiesResponse struct {
 	// The Slack client id
-	ClientId string `pulumi:"clientId"`
+	ClientId *string `pulumi:"clientId"`
 	// The Slack client secret. Value only returned through POST to the action Channel List API, otherwise empty.
-	ClientSecret string `pulumi:"clientSecret"`
+	ClientSecret *string `pulumi:"clientSecret"`
 	// Whether this channel is enabled for the bot
 	IsEnabled bool `pulumi:"isEnabled"`
 	// Whether this channel is validated for the bot
@@ -8334,7 +8467,7 @@ type SlackChannelPropertiesResponse struct {
 	// The Slack signing secret.
 	SigningSecret *string `pulumi:"signingSecret"`
 	// The Slack verification token. Value only returned through POST to the action Channel List API, otherwise empty.
-	VerificationToken string `pulumi:"verificationToken"`
+	VerificationToken *string `pulumi:"verificationToken"`
 }
 
 // SlackChannelPropertiesResponseInput is an input type that accepts SlackChannelPropertiesResponseArgs and SlackChannelPropertiesResponseOutput values.
@@ -8351,9 +8484,9 @@ type SlackChannelPropertiesResponseInput interface {
 // The parameters to provide for the Slack channel.
 type SlackChannelPropertiesResponseArgs struct {
 	// The Slack client id
-	ClientId pulumi.StringInput `pulumi:"clientId"`
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
 	// The Slack client secret. Value only returned through POST to the action Channel List API, otherwise empty.
-	ClientSecret pulumi.StringInput `pulumi:"clientSecret"`
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
 	// Whether this channel is enabled for the bot
 	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
 	// Whether this channel is validated for the bot
@@ -8369,7 +8502,7 @@ type SlackChannelPropertiesResponseArgs struct {
 	// The Slack signing secret.
 	SigningSecret pulumi.StringPtrInput `pulumi:"signingSecret"`
 	// The Slack verification token. Value only returned through POST to the action Channel List API, otherwise empty.
-	VerificationToken pulumi.StringInput `pulumi:"verificationToken"`
+	VerificationToken pulumi.StringPtrInput `pulumi:"verificationToken"`
 }
 
 func (SlackChannelPropertiesResponseArgs) ElementType() reflect.Type {
@@ -8451,13 +8584,13 @@ func (o SlackChannelPropertiesResponseOutput) ToSlackChannelPropertiesResponsePt
 }
 
 // The Slack client id
-func (o SlackChannelPropertiesResponseOutput) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v SlackChannelPropertiesResponse) string { return v.ClientId }).(pulumi.StringOutput)
+func (o SlackChannelPropertiesResponseOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SlackChannelPropertiesResponse) *string { return v.ClientId }).(pulumi.StringPtrOutput)
 }
 
 // The Slack client secret. Value only returned through POST to the action Channel List API, otherwise empty.
-func (o SlackChannelPropertiesResponseOutput) ClientSecret() pulumi.StringOutput {
-	return o.ApplyT(func(v SlackChannelPropertiesResponse) string { return v.ClientSecret }).(pulumi.StringOutput)
+func (o SlackChannelPropertiesResponseOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SlackChannelPropertiesResponse) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
 
 // Whether this channel is enabled for the bot
@@ -8496,8 +8629,8 @@ func (o SlackChannelPropertiesResponseOutput) SigningSecret() pulumi.StringPtrOu
 }
 
 // The Slack verification token. Value only returned through POST to the action Channel List API, otherwise empty.
-func (o SlackChannelPropertiesResponseOutput) VerificationToken() pulumi.StringOutput {
-	return o.ApplyT(func(v SlackChannelPropertiesResponse) string { return v.VerificationToken }).(pulumi.StringOutput)
+func (o SlackChannelPropertiesResponseOutput) VerificationToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SlackChannelPropertiesResponse) *string { return v.VerificationToken }).(pulumi.StringPtrOutput)
 }
 
 type SlackChannelPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
@@ -8524,7 +8657,7 @@ func (o SlackChannelPropertiesResponsePtrOutput) ClientId() pulumi.StringPtrOutp
 		if v == nil {
 			return nil
 		}
-		return &v.ClientId
+		return v.ClientId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -8534,7 +8667,7 @@ func (o SlackChannelPropertiesResponsePtrOutput) ClientSecret() pulumi.StringPtr
 		if v == nil {
 			return nil
 		}
-		return &v.ClientSecret
+		return v.ClientSecret
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -8614,13 +8747,14 @@ func (o SlackChannelPropertiesResponsePtrOutput) VerificationToken() pulumi.Stri
 		if v == nil {
 			return nil
 		}
-		return &v.VerificationToken
+		return v.VerificationToken
 	}).(pulumi.StringPtrOutput)
 }
 
 // Slack channel definition
 type SlackChannelResponse struct {
 	// The channel name
+	// Expected value is 'SlackChannel'.
 	ChannelName string `pulumi:"channelName"`
 	// The set of properties specific to Slack channel resource
 	Properties *SlackChannelPropertiesResponse `pulumi:"properties"`
@@ -8640,6 +8774,7 @@ type SlackChannelResponseInput interface {
 // Slack channel definition
 type SlackChannelResponseArgs struct {
 	// The channel name
+	// Expected value is 'SlackChannel'.
 	ChannelName pulumi.StringInput `pulumi:"channelName"`
 	// The set of properties specific to Slack channel resource
 	Properties SlackChannelPropertiesResponsePtrInput `pulumi:"properties"`
@@ -8673,6 +8808,7 @@ func (o SlackChannelResponseOutput) ToSlackChannelResponseOutputWithContext(ctx 
 }
 
 // The channel name
+// Expected value is 'SlackChannel'.
 func (o SlackChannelResponseOutput) ChannelName() pulumi.StringOutput {
 	return o.ApplyT(func(v SlackChannelResponse) string { return v.ChannelName }).(pulumi.StringOutput)
 }
@@ -8685,6 +8821,7 @@ func (o SlackChannelResponseOutput) Properties() SlackChannelPropertiesResponseP
 // Sms channel definition
 type SmsChannel struct {
 	// The channel name
+	// Expected value is 'SmsChannel'.
 	ChannelName string `pulumi:"channelName"`
 	// The set of properties specific to Sms channel resource
 	Properties *SmsChannelProperties `pulumi:"properties"`
@@ -8704,6 +8841,7 @@ type SmsChannelInput interface {
 // Sms channel definition
 type SmsChannelArgs struct {
 	// The channel name
+	// Expected value is 'SmsChannel'.
 	ChannelName pulumi.StringInput `pulumi:"channelName"`
 	// The set of properties specific to Sms channel resource
 	Properties SmsChannelPropertiesPtrInput `pulumi:"properties"`
@@ -8737,6 +8875,7 @@ func (o SmsChannelOutput) ToSmsChannelOutputWithContext(ctx context.Context) Sms
 }
 
 // The channel name
+// Expected value is 'SmsChannel'.
 func (o SmsChannelOutput) ChannelName() pulumi.StringOutput {
 	return o.ApplyT(func(v SmsChannel) string { return v.ChannelName }).(pulumi.StringOutput)
 }
@@ -8751,7 +8890,7 @@ type SmsChannelProperties struct {
 	// The Sms account SID. Value only returned through POST to the action Channel List API, otherwise empty.
 	AccountSID string `pulumi:"accountSID"`
 	// The Sms auth token. Value only returned through POST to the action Channel List API, otherwise empty.
-	AuthToken string `pulumi:"authToken"`
+	AuthToken *string `pulumi:"authToken"`
 	// Whether this channel is enabled for the bot
 	IsEnabled bool `pulumi:"isEnabled"`
 	// Whether this channel is validated for the bot
@@ -8776,7 +8915,7 @@ type SmsChannelPropertiesArgs struct {
 	// The Sms account SID. Value only returned through POST to the action Channel List API, otherwise empty.
 	AccountSID pulumi.StringInput `pulumi:"accountSID"`
 	// The Sms auth token. Value only returned through POST to the action Channel List API, otherwise empty.
-	AuthToken pulumi.StringInput `pulumi:"authToken"`
+	AuthToken pulumi.StringPtrInput `pulumi:"authToken"`
 	// Whether this channel is enabled for the bot
 	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
 	// Whether this channel is validated for the bot
@@ -8869,8 +9008,8 @@ func (o SmsChannelPropertiesOutput) AccountSID() pulumi.StringOutput {
 }
 
 // The Sms auth token. Value only returned through POST to the action Channel List API, otherwise empty.
-func (o SmsChannelPropertiesOutput) AuthToken() pulumi.StringOutput {
-	return o.ApplyT(func(v SmsChannelProperties) string { return v.AuthToken }).(pulumi.StringOutput)
+func (o SmsChannelPropertiesOutput) AuthToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SmsChannelProperties) *string { return v.AuthToken }).(pulumi.StringPtrOutput)
 }
 
 // Whether this channel is enabled for the bot
@@ -8922,7 +9061,7 @@ func (o SmsChannelPropertiesPtrOutput) AuthToken() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.AuthToken
+		return v.AuthToken
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -8961,7 +9100,7 @@ type SmsChannelPropertiesResponse struct {
 	// The Sms account SID. Value only returned through POST to the action Channel List API, otherwise empty.
 	AccountSID string `pulumi:"accountSID"`
 	// The Sms auth token. Value only returned through POST to the action Channel List API, otherwise empty.
-	AuthToken string `pulumi:"authToken"`
+	AuthToken *string `pulumi:"authToken"`
 	// Whether this channel is enabled for the bot
 	IsEnabled bool `pulumi:"isEnabled"`
 	// Whether this channel is validated for the bot
@@ -8986,7 +9125,7 @@ type SmsChannelPropertiesResponseArgs struct {
 	// The Sms account SID. Value only returned through POST to the action Channel List API, otherwise empty.
 	AccountSID pulumi.StringInput `pulumi:"accountSID"`
 	// The Sms auth token. Value only returned through POST to the action Channel List API, otherwise empty.
-	AuthToken pulumi.StringInput `pulumi:"authToken"`
+	AuthToken pulumi.StringPtrInput `pulumi:"authToken"`
 	// Whether this channel is enabled for the bot
 	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
 	// Whether this channel is validated for the bot
@@ -9079,8 +9218,8 @@ func (o SmsChannelPropertiesResponseOutput) AccountSID() pulumi.StringOutput {
 }
 
 // The Sms auth token. Value only returned through POST to the action Channel List API, otherwise empty.
-func (o SmsChannelPropertiesResponseOutput) AuthToken() pulumi.StringOutput {
-	return o.ApplyT(func(v SmsChannelPropertiesResponse) string { return v.AuthToken }).(pulumi.StringOutput)
+func (o SmsChannelPropertiesResponseOutput) AuthToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SmsChannelPropertiesResponse) *string { return v.AuthToken }).(pulumi.StringPtrOutput)
 }
 
 // Whether this channel is enabled for the bot
@@ -9132,7 +9271,7 @@ func (o SmsChannelPropertiesResponsePtrOutput) AuthToken() pulumi.StringPtrOutpu
 		if v == nil {
 			return nil
 		}
-		return &v.AuthToken
+		return v.AuthToken
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -9169,6 +9308,7 @@ func (o SmsChannelPropertiesResponsePtrOutput) Phone() pulumi.StringPtrOutput {
 // Sms channel definition
 type SmsChannelResponse struct {
 	// The channel name
+	// Expected value is 'SmsChannel'.
 	ChannelName string `pulumi:"channelName"`
 	// The set of properties specific to Sms channel resource
 	Properties *SmsChannelPropertiesResponse `pulumi:"properties"`
@@ -9188,6 +9328,7 @@ type SmsChannelResponseInput interface {
 // Sms channel definition
 type SmsChannelResponseArgs struct {
 	// The channel name
+	// Expected value is 'SmsChannel'.
 	ChannelName pulumi.StringInput `pulumi:"channelName"`
 	// The set of properties specific to Sms channel resource
 	Properties SmsChannelPropertiesResponsePtrInput `pulumi:"properties"`
@@ -9221,6 +9362,7 @@ func (o SmsChannelResponseOutput) ToSmsChannelResponseOutputWithContext(ctx cont
 }
 
 // The channel name
+// Expected value is 'SmsChannel'.
 func (o SmsChannelResponseOutput) ChannelName() pulumi.StringOutput {
 	return o.ApplyT(func(v SmsChannelResponse) string { return v.ChannelName }).(pulumi.StringOutput)
 }
@@ -9233,6 +9375,7 @@ func (o SmsChannelResponseOutput) Properties() SmsChannelPropertiesResponsePtrOu
 // Telegram channel definition
 type TelegramChannel struct {
 	// The channel name
+	// Expected value is 'TelegramChannel'.
 	ChannelName string `pulumi:"channelName"`
 	// The set of properties specific to Telegram channel resource
 	Properties *TelegramChannelProperties `pulumi:"properties"`
@@ -9252,6 +9395,7 @@ type TelegramChannelInput interface {
 // Telegram channel definition
 type TelegramChannelArgs struct {
 	// The channel name
+	// Expected value is 'TelegramChannel'.
 	ChannelName pulumi.StringInput `pulumi:"channelName"`
 	// The set of properties specific to Telegram channel resource
 	Properties TelegramChannelPropertiesPtrInput `pulumi:"properties"`
@@ -9285,6 +9429,7 @@ func (o TelegramChannelOutput) ToTelegramChannelOutputWithContext(ctx context.Co
 }
 
 // The channel name
+// Expected value is 'TelegramChannel'.
 func (o TelegramChannelOutput) ChannelName() pulumi.StringOutput {
 	return o.ApplyT(func(v TelegramChannel) string { return v.ChannelName }).(pulumi.StringOutput)
 }
@@ -9297,7 +9442,7 @@ func (o TelegramChannelOutput) Properties() TelegramChannelPropertiesPtrOutput {
 // The parameters to provide for the Telegram channel.
 type TelegramChannelProperties struct {
 	// The Telegram access token. Value only returned through POST to the action Channel List API, otherwise empty.
-	AccessToken string `pulumi:"accessToken"`
+	AccessToken *string `pulumi:"accessToken"`
 	// Whether this channel is enabled for the bot
 	IsEnabled bool `pulumi:"isEnabled"`
 	// Whether this channel is validated for the bot
@@ -9318,7 +9463,7 @@ type TelegramChannelPropertiesInput interface {
 // The parameters to provide for the Telegram channel.
 type TelegramChannelPropertiesArgs struct {
 	// The Telegram access token. Value only returned through POST to the action Channel List API, otherwise empty.
-	AccessToken pulumi.StringInput `pulumi:"accessToken"`
+	AccessToken pulumi.StringPtrInput `pulumi:"accessToken"`
 	// Whether this channel is enabled for the bot
 	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
 	// Whether this channel is validated for the bot
@@ -9404,8 +9549,8 @@ func (o TelegramChannelPropertiesOutput) ToTelegramChannelPropertiesPtrOutputWit
 }
 
 // The Telegram access token. Value only returned through POST to the action Channel List API, otherwise empty.
-func (o TelegramChannelPropertiesOutput) AccessToken() pulumi.StringOutput {
-	return o.ApplyT(func(v TelegramChannelProperties) string { return v.AccessToken }).(pulumi.StringOutput)
+func (o TelegramChannelPropertiesOutput) AccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TelegramChannelProperties) *string { return v.AccessToken }).(pulumi.StringPtrOutput)
 }
 
 // Whether this channel is enabled for the bot
@@ -9442,7 +9587,7 @@ func (o TelegramChannelPropertiesPtrOutput) AccessToken() pulumi.StringPtrOutput
 		if v == nil {
 			return nil
 		}
-		return &v.AccessToken
+		return v.AccessToken
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -9469,7 +9614,7 @@ func (o TelegramChannelPropertiesPtrOutput) IsValidated() pulumi.BoolPtrOutput {
 // The parameters to provide for the Telegram channel.
 type TelegramChannelPropertiesResponse struct {
 	// The Telegram access token. Value only returned through POST to the action Channel List API, otherwise empty.
-	AccessToken string `pulumi:"accessToken"`
+	AccessToken *string `pulumi:"accessToken"`
 	// Whether this channel is enabled for the bot
 	IsEnabled bool `pulumi:"isEnabled"`
 	// Whether this channel is validated for the bot
@@ -9490,7 +9635,7 @@ type TelegramChannelPropertiesResponseInput interface {
 // The parameters to provide for the Telegram channel.
 type TelegramChannelPropertiesResponseArgs struct {
 	// The Telegram access token. Value only returned through POST to the action Channel List API, otherwise empty.
-	AccessToken pulumi.StringInput `pulumi:"accessToken"`
+	AccessToken pulumi.StringPtrInput `pulumi:"accessToken"`
 	// Whether this channel is enabled for the bot
 	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
 	// Whether this channel is validated for the bot
@@ -9576,8 +9721,8 @@ func (o TelegramChannelPropertiesResponseOutput) ToTelegramChannelPropertiesResp
 }
 
 // The Telegram access token. Value only returned through POST to the action Channel List API, otherwise empty.
-func (o TelegramChannelPropertiesResponseOutput) AccessToken() pulumi.StringOutput {
-	return o.ApplyT(func(v TelegramChannelPropertiesResponse) string { return v.AccessToken }).(pulumi.StringOutput)
+func (o TelegramChannelPropertiesResponseOutput) AccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TelegramChannelPropertiesResponse) *string { return v.AccessToken }).(pulumi.StringPtrOutput)
 }
 
 // Whether this channel is enabled for the bot
@@ -9614,7 +9759,7 @@ func (o TelegramChannelPropertiesResponsePtrOutput) AccessToken() pulumi.StringP
 		if v == nil {
 			return nil
 		}
-		return &v.AccessToken
+		return v.AccessToken
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -9641,6 +9786,7 @@ func (o TelegramChannelPropertiesResponsePtrOutput) IsValidated() pulumi.BoolPtr
 // Telegram channel definition
 type TelegramChannelResponse struct {
 	// The channel name
+	// Expected value is 'TelegramChannel'.
 	ChannelName string `pulumi:"channelName"`
 	// The set of properties specific to Telegram channel resource
 	Properties *TelegramChannelPropertiesResponse `pulumi:"properties"`
@@ -9660,6 +9806,7 @@ type TelegramChannelResponseInput interface {
 // Telegram channel definition
 type TelegramChannelResponseArgs struct {
 	// The channel name
+	// Expected value is 'TelegramChannel'.
 	ChannelName pulumi.StringInput `pulumi:"channelName"`
 	// The set of properties specific to Telegram channel resource
 	Properties TelegramChannelPropertiesResponsePtrInput `pulumi:"properties"`
@@ -9693,6 +9840,7 @@ func (o TelegramChannelResponseOutput) ToTelegramChannelResponseOutputWithContex
 }
 
 // The channel name
+// Expected value is 'TelegramChannel'.
 func (o TelegramChannelResponseOutput) ChannelName() pulumi.StringOutput {
 	return o.ApplyT(func(v TelegramChannelResponse) string { return v.ChannelName }).(pulumi.StringOutput)
 }
@@ -9705,6 +9853,7 @@ func (o TelegramChannelResponseOutput) Properties() TelegramChannelPropertiesRes
 // Web Chat channel definition
 type WebChatChannel struct {
 	// The channel name
+	// Expected value is 'WebChatChannel'.
 	ChannelName string `pulumi:"channelName"`
 	// The set of properties specific to Web Chat channel resource
 	Properties *WebChatChannelProperties `pulumi:"properties"`
@@ -9724,6 +9873,7 @@ type WebChatChannelInput interface {
 // Web Chat channel definition
 type WebChatChannelArgs struct {
 	// The channel name
+	// Expected value is 'WebChatChannel'.
 	ChannelName pulumi.StringInput `pulumi:"channelName"`
 	// The set of properties specific to Web Chat channel resource
 	Properties WebChatChannelPropertiesPtrInput `pulumi:"properties"`
@@ -9757,6 +9907,7 @@ func (o WebChatChannelOutput) ToWebChatChannelOutputWithContext(ctx context.Cont
 }
 
 // The channel name
+// Expected value is 'WebChatChannel'.
 func (o WebChatChannelOutput) ChannelName() pulumi.StringOutput {
 	return o.ApplyT(func(v WebChatChannel) string { return v.ChannelName }).(pulumi.StringOutput)
 }
@@ -10056,6 +10207,7 @@ func (o WebChatChannelPropertiesResponsePtrOutput) WebChatEmbedCode() pulumi.Str
 // Web Chat channel definition
 type WebChatChannelResponse struct {
 	// The channel name
+	// Expected value is 'WebChatChannel'.
 	ChannelName string `pulumi:"channelName"`
 	// The set of properties specific to Web Chat channel resource
 	Properties *WebChatChannelPropertiesResponse `pulumi:"properties"`
@@ -10075,6 +10227,7 @@ type WebChatChannelResponseInput interface {
 // Web Chat channel definition
 type WebChatChannelResponseArgs struct {
 	// The channel name
+	// Expected value is 'WebChatChannel'.
 	ChannelName pulumi.StringInput `pulumi:"channelName"`
 	// The set of properties specific to Web Chat channel resource
 	Properties WebChatChannelPropertiesResponsePtrInput `pulumi:"properties"`
@@ -10108,6 +10261,7 @@ func (o WebChatChannelResponseOutput) ToWebChatChannelResponseOutputWithContext(
 }
 
 // The channel name
+// Expected value is 'WebChatChannel'.
 func (o WebChatChannelResponseOutput) ChannelName() pulumi.StringOutput {
 	return o.ApplyT(func(v WebChatChannelResponse) string { return v.ChannelName }).(pulumi.StringOutput)
 }

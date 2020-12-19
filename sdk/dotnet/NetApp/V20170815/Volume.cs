@@ -12,6 +12,7 @@ namespace Pulumi.AzureNextGen.NetApp.V20170815
     /// <summary>
     /// Volume resource
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:netapp/v20170815:Volume")]
     public partial class Volume : Pulumi.CustomResource
     {
         /// <summary>
@@ -118,6 +119,7 @@ namespace Pulumi.AzureNextGen.NetApp.V20170815
                     new Pulumi.Alias { Type = "azure-nextgen:netapp/v20200601:Volume"},
                     new Pulumi.Alias { Type = "azure-nextgen:netapp/v20200701:Volume"},
                     new Pulumi.Alias { Type = "azure-nextgen:netapp/v20200801:Volume"},
+                    new Pulumi.Alias { Type = "azure-nextgen:netapp/v20200901:Volume"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

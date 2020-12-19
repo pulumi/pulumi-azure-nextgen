@@ -12,6 +12,7 @@ import (
 )
 
 // Server communication link.
+// Latest API Version: 2014-04-01.
 type ServerCommunicationLink struct {
 	pulumi.CustomResourceState
 
@@ -143,15 +144,15 @@ type ServerCommunicationLinkInput interface {
 	ToServerCommunicationLinkOutputWithContext(ctx context.Context) ServerCommunicationLinkOutput
 }
 
-func (ServerCommunicationLink) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerCommunicationLink)(nil)).Elem()
+func (*ServerCommunicationLink) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerCommunicationLink)(nil))
 }
 
-func (i ServerCommunicationLink) ToServerCommunicationLinkOutput() ServerCommunicationLinkOutput {
+func (i *ServerCommunicationLink) ToServerCommunicationLinkOutput() ServerCommunicationLinkOutput {
 	return i.ToServerCommunicationLinkOutputWithContext(context.Background())
 }
 
-func (i ServerCommunicationLink) ToServerCommunicationLinkOutputWithContext(ctx context.Context) ServerCommunicationLinkOutput {
+func (i *ServerCommunicationLink) ToServerCommunicationLinkOutputWithContext(ctx context.Context) ServerCommunicationLinkOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServerCommunicationLinkOutput)
 }
 
@@ -160,7 +161,7 @@ type ServerCommunicationLinkOutput struct {
 }
 
 func (ServerCommunicationLinkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerCommunicationLinkOutput)(nil)).Elem()
+	return reflect.TypeOf((*ServerCommunicationLink)(nil))
 }
 
 func (o ServerCommunicationLinkOutput) ToServerCommunicationLinkOutput() ServerCommunicationLinkOutput {

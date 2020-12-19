@@ -12,6 +12,7 @@ import (
 )
 
 // Cloud shell console
+// Latest API Version: 2018-10-01.
 type Console struct {
 	pulumi.CustomResourceState
 
@@ -99,15 +100,15 @@ type ConsoleInput interface {
 	ToConsoleOutputWithContext(ctx context.Context) ConsoleOutput
 }
 
-func (Console) ElementType() reflect.Type {
-	return reflect.TypeOf((*Console)(nil)).Elem()
+func (*Console) ElementType() reflect.Type {
+	return reflect.TypeOf((*Console)(nil))
 }
 
-func (i Console) ToConsoleOutput() ConsoleOutput {
+func (i *Console) ToConsoleOutput() ConsoleOutput {
 	return i.ToConsoleOutputWithContext(context.Background())
 }
 
-func (i Console) ToConsoleOutputWithContext(ctx context.Context) ConsoleOutput {
+func (i *Console) ToConsoleOutputWithContext(ctx context.Context) ConsoleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConsoleOutput)
 }
 
@@ -116,7 +117,7 @@ type ConsoleOutput struct {
 }
 
 func (ConsoleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConsoleOutput)(nil)).Elem()
+	return reflect.TypeOf((*Console)(nil))
 }
 
 func (o ConsoleOutput) ToConsoleOutput() ConsoleOutput {

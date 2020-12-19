@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.CustomerInsights.Latest
 {
     /// <summary>
     /// The link resource format.
+    /// Latest API Version: 2017-04-26.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:customerinsights/latest:Link")]
     public partial class Link : Pulumi.CustomResource
     {
         /// <summary>

@@ -12,6 +12,7 @@ import (
 )
 
 // The properties of File services in storage account.
+// Latest API Version: 2019-06-01.
 type FileServiceProperties struct {
 	pulumi.CustomResourceState
 
@@ -144,15 +145,15 @@ type FileServicePropertiesInput interface {
 	ToFileServicePropertiesOutputWithContext(ctx context.Context) FileServicePropertiesOutput
 }
 
-func (FileServiceProperties) ElementType() reflect.Type {
-	return reflect.TypeOf((*FileServiceProperties)(nil)).Elem()
+func (*FileServiceProperties) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileServiceProperties)(nil))
 }
 
-func (i FileServiceProperties) ToFileServicePropertiesOutput() FileServicePropertiesOutput {
+func (i *FileServiceProperties) ToFileServicePropertiesOutput() FileServicePropertiesOutput {
 	return i.ToFileServicePropertiesOutputWithContext(context.Background())
 }
 
-func (i FileServiceProperties) ToFileServicePropertiesOutputWithContext(ctx context.Context) FileServicePropertiesOutput {
+func (i *FileServiceProperties) ToFileServicePropertiesOutputWithContext(ctx context.Context) FileServicePropertiesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FileServicePropertiesOutput)
 }
 
@@ -161,7 +162,7 @@ type FileServicePropertiesOutput struct {
 }
 
 func (FileServicePropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FileServicePropertiesOutput)(nil)).Elem()
+	return reflect.TypeOf((*FileServiceProperties)(nil))
 }
 
 func (o FileServicePropertiesOutput) ToFileServicePropertiesOutput() FileServicePropertiesOutput {

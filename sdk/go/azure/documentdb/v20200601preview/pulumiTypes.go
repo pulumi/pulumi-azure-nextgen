@@ -4031,6 +4031,7 @@ func (o ContainerPartitionKeyResponsePtrOutput) Version() pulumi.IntPtrOutput {
 // The object representing continuous mode backup policy.
 type ContinuousModeBackupPolicy struct {
 	// Describes the mode of backups.
+	// Expected value is 'Continuous'.
 	Type string `pulumi:"type"`
 }
 
@@ -4048,6 +4049,7 @@ type ContinuousModeBackupPolicyInput interface {
 // The object representing continuous mode backup policy.
 type ContinuousModeBackupPolicyArgs struct {
 	// Describes the mode of backups.
+	// Expected value is 'Continuous'.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -4079,6 +4081,7 @@ func (o ContinuousModeBackupPolicyOutput) ToContinuousModeBackupPolicyOutputWith
 }
 
 // Describes the mode of backups.
+// Expected value is 'Continuous'.
 func (o ContinuousModeBackupPolicyOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ContinuousModeBackupPolicy) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -4086,6 +4089,7 @@ func (o ContinuousModeBackupPolicyOutput) Type() pulumi.StringOutput {
 // The object representing continuous mode backup policy.
 type ContinuousModeBackupPolicyResponse struct {
 	// Describes the mode of backups.
+	// Expected value is 'Continuous'.
 	Type string `pulumi:"type"`
 }
 
@@ -4103,6 +4107,7 @@ type ContinuousModeBackupPolicyResponseInput interface {
 // The object representing continuous mode backup policy.
 type ContinuousModeBackupPolicyResponseArgs struct {
 	// Describes the mode of backups.
+	// Expected value is 'Continuous'.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -4134,6 +4139,7 @@ func (o ContinuousModeBackupPolicyResponseOutput) ToContinuousModeBackupPolicyRe
 }
 
 // Describes the mode of backups.
+// Expected value is 'Continuous'.
 func (o ContinuousModeBackupPolicyResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ContinuousModeBackupPolicyResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -4674,9 +4680,9 @@ func (o DatabaseAccountConnectionStringResponseArrayOutput) Index(i pulumi.IntIn
 
 // Specific Databases to restore.
 type DatabaseRestoreResource struct {
-	// The names of the collections to restore.
+	// The names of the collections available for restore.
 	CollectionNames []string `pulumi:"collectionNames"`
-	// The name of the database to restore.
+	// The name of the database available for restore.
 	DatabaseName *string `pulumi:"databaseName"`
 }
 
@@ -4693,9 +4699,9 @@ type DatabaseRestoreResourceInput interface {
 
 // Specific Databases to restore.
 type DatabaseRestoreResourceArgs struct {
-	// The names of the collections to restore.
+	// The names of the collections available for restore.
 	CollectionNames pulumi.StringArrayInput `pulumi:"collectionNames"`
-	// The name of the database to restore.
+	// The name of the database available for restore.
 	DatabaseName pulumi.StringPtrInput `pulumi:"databaseName"`
 }
 
@@ -4751,12 +4757,12 @@ func (o DatabaseRestoreResourceOutput) ToDatabaseRestoreResourceOutputWithContex
 	return o
 }
 
-// The names of the collections to restore.
+// The names of the collections available for restore.
 func (o DatabaseRestoreResourceOutput) CollectionNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DatabaseRestoreResource) []string { return v.CollectionNames }).(pulumi.StringArrayOutput)
 }
 
-// The name of the database to restore.
+// The name of the database available for restore.
 func (o DatabaseRestoreResourceOutput) DatabaseName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseRestoreResource) *string { return v.DatabaseName }).(pulumi.StringPtrOutput)
 }
@@ -4783,9 +4789,9 @@ func (o DatabaseRestoreResourceArrayOutput) Index(i pulumi.IntInput) DatabaseRes
 
 // Specific Databases to restore.
 type DatabaseRestoreResourceResponse struct {
-	// The names of the collections to restore.
+	// The names of the collections available for restore.
 	CollectionNames []string `pulumi:"collectionNames"`
-	// The name of the database to restore.
+	// The name of the database available for restore.
 	DatabaseName *string `pulumi:"databaseName"`
 }
 
@@ -4802,9 +4808,9 @@ type DatabaseRestoreResourceResponseInput interface {
 
 // Specific Databases to restore.
 type DatabaseRestoreResourceResponseArgs struct {
-	// The names of the collections to restore.
+	// The names of the collections available for restore.
 	CollectionNames pulumi.StringArrayInput `pulumi:"collectionNames"`
-	// The name of the database to restore.
+	// The name of the database available for restore.
 	DatabaseName pulumi.StringPtrInput `pulumi:"databaseName"`
 }
 
@@ -4860,12 +4866,12 @@ func (o DatabaseRestoreResourceResponseOutput) ToDatabaseRestoreResourceResponse
 	return o
 }
 
-// The names of the collections to restore.
+// The names of the collections available for restore.
 func (o DatabaseRestoreResourceResponseOutput) CollectionNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DatabaseRestoreResourceResponse) []string { return v.CollectionNames }).(pulumi.StringArrayOutput)
 }
 
-// The name of the database to restore.
+// The name of the database available for restore.
 func (o DatabaseRestoreResourceResponseOutput) DatabaseName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseRestoreResourceResponse) *string { return v.DatabaseName }).(pulumi.StringPtrOutput)
 }
@@ -4905,6 +4911,7 @@ type DefaultRequestDatabaseAccountCreateUpdateProperties struct {
 	// The CORS policy for the Cosmos DB database account.
 	Cors []CorsPolicy `pulumi:"cors"`
 	// Enum to indicate the mode of account creation.
+	// Expected value is 'Default'.
 	CreateMode string `pulumi:"createMode"`
 	// The offer type for the database
 	DatabaseAccountOfferType string `pulumi:"databaseAccountOfferType"`
@@ -4958,6 +4965,7 @@ type DefaultRequestDatabaseAccountCreateUpdatePropertiesArgs struct {
 	// The CORS policy for the Cosmos DB database account.
 	Cors CorsPolicyArrayInput `pulumi:"cors"`
 	// Enum to indicate the mode of account creation.
+	// Expected value is 'Default'.
 	CreateMode pulumi.StringInput `pulumi:"createMode"`
 	// The offer type for the database
 	DatabaseAccountOfferType DatabaseAccountOfferType `pulumi:"databaseAccountOfferType"`
@@ -5045,6 +5053,7 @@ func (o DefaultRequestDatabaseAccountCreateUpdatePropertiesOutput) Cors() CorsPo
 }
 
 // Enum to indicate the mode of account creation.
+// Expected value is 'Default'.
 func (o DefaultRequestDatabaseAccountCreateUpdatePropertiesOutput) CreateMode() pulumi.StringOutput {
 	return o.ApplyT(func(v DefaultRequestDatabaseAccountCreateUpdateProperties) string { return v.CreateMode }).(pulumi.StringOutput)
 }
@@ -10271,6 +10280,7 @@ type PeriodicModeBackupPolicy struct {
 	// Configuration values for periodic mode backup
 	PeriodicModeProperties *PeriodicModeProperties `pulumi:"periodicModeProperties"`
 	// Describes the mode of backups.
+	// Expected value is 'Periodic'.
 	Type string `pulumi:"type"`
 }
 
@@ -10290,6 +10300,7 @@ type PeriodicModeBackupPolicyArgs struct {
 	// Configuration values for periodic mode backup
 	PeriodicModeProperties PeriodicModePropertiesPtrInput `pulumi:"periodicModeProperties"`
 	// Describes the mode of backups.
+	// Expected value is 'Periodic'.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -10326,6 +10337,7 @@ func (o PeriodicModeBackupPolicyOutput) PeriodicModeProperties() PeriodicModePro
 }
 
 // Describes the mode of backups.
+// Expected value is 'Periodic'.
 func (o PeriodicModeBackupPolicyOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v PeriodicModeBackupPolicy) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -10335,6 +10347,7 @@ type PeriodicModeBackupPolicyResponse struct {
 	// Configuration values for periodic mode backup
 	PeriodicModeProperties *PeriodicModePropertiesResponse `pulumi:"periodicModeProperties"`
 	// Describes the mode of backups.
+	// Expected value is 'Periodic'.
 	Type string `pulumi:"type"`
 }
 
@@ -10354,6 +10367,7 @@ type PeriodicModeBackupPolicyResponseArgs struct {
 	// Configuration values for periodic mode backup
 	PeriodicModeProperties PeriodicModePropertiesResponsePtrInput `pulumi:"periodicModeProperties"`
 	// Describes the mode of backups.
+	// Expected value is 'Periodic'.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -10392,6 +10406,7 @@ func (o PeriodicModeBackupPolicyResponseOutput) PeriodicModeProperties() Periodi
 }
 
 // Describes the mode of backups.
+// Expected value is 'Periodic'.
 func (o PeriodicModeBackupPolicyResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v PeriodicModeBackupPolicyResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -11349,7 +11364,7 @@ func (o PrivateLinkServiceConnectionStatePropertyResponsePtrOutput) Status() pul
 
 // Parameters to indicate the information about the restore.
 type RestoreParameters struct {
-	// List of specific databases to restore.
+	// List of specific databases available for restore.
 	DatabasesToRestore []DatabaseRestoreResource `pulumi:"databasesToRestore"`
 	// Describes the mode of the restore.
 	RestoreMode *string `pulumi:"restoreMode"`
@@ -11372,7 +11387,7 @@ type RestoreParametersInput interface {
 
 // Parameters to indicate the information about the restore.
 type RestoreParametersArgs struct {
-	// List of specific databases to restore.
+	// List of specific databases available for restore.
 	DatabasesToRestore DatabaseRestoreResourceArrayInput `pulumi:"databasesToRestore"`
 	// Describes the mode of the restore.
 	RestoreMode pulumi.StringPtrInput `pulumi:"restoreMode"`
@@ -11460,7 +11475,7 @@ func (o RestoreParametersOutput) ToRestoreParametersPtrOutputWithContext(ctx con
 	}).(RestoreParametersPtrOutput)
 }
 
-// List of specific databases to restore.
+// List of specific databases available for restore.
 func (o RestoreParametersOutput) DatabasesToRestore() DatabaseRestoreResourceArrayOutput {
 	return o.ApplyT(func(v RestoreParameters) []DatabaseRestoreResource { return v.DatabasesToRestore }).(DatabaseRestoreResourceArrayOutput)
 }
@@ -11498,7 +11513,7 @@ func (o RestoreParametersPtrOutput) Elem() RestoreParametersOutput {
 	return o.ApplyT(func(v *RestoreParameters) RestoreParameters { return *v }).(RestoreParametersOutput)
 }
 
-// List of specific databases to restore.
+// List of specific databases available for restore.
 func (o RestoreParametersPtrOutput) DatabasesToRestore() DatabaseRestoreResourceArrayOutput {
 	return o.ApplyT(func(v *RestoreParameters) []DatabaseRestoreResource {
 		if v == nil {
@@ -11540,7 +11555,7 @@ func (o RestoreParametersPtrOutput) RestoreTimestampInUtc() pulumi.StringPtrOutp
 
 // Parameters to indicate the information about the restore.
 type RestoreParametersResponse struct {
-	// List of specific databases to restore.
+	// List of specific databases available for restore.
 	DatabasesToRestore []DatabaseRestoreResourceResponse `pulumi:"databasesToRestore"`
 	// Describes the mode of the restore.
 	RestoreMode *string `pulumi:"restoreMode"`
@@ -11563,7 +11578,7 @@ type RestoreParametersResponseInput interface {
 
 // Parameters to indicate the information about the restore.
 type RestoreParametersResponseArgs struct {
-	// List of specific databases to restore.
+	// List of specific databases available for restore.
 	DatabasesToRestore DatabaseRestoreResourceResponseArrayInput `pulumi:"databasesToRestore"`
 	// Describes the mode of the restore.
 	RestoreMode pulumi.StringPtrInput `pulumi:"restoreMode"`
@@ -11651,7 +11666,7 @@ func (o RestoreParametersResponseOutput) ToRestoreParametersResponsePtrOutputWit
 	}).(RestoreParametersResponsePtrOutput)
 }
 
-// List of specific databases to restore.
+// List of specific databases available for restore.
 func (o RestoreParametersResponseOutput) DatabasesToRestore() DatabaseRestoreResourceResponseArrayOutput {
 	return o.ApplyT(func(v RestoreParametersResponse) []DatabaseRestoreResourceResponse { return v.DatabasesToRestore }).(DatabaseRestoreResourceResponseArrayOutput)
 }
@@ -11689,7 +11704,7 @@ func (o RestoreParametersResponsePtrOutput) Elem() RestoreParametersResponseOutp
 	return o.ApplyT(func(v *RestoreParametersResponse) RestoreParametersResponse { return *v }).(RestoreParametersResponseOutput)
 }
 
-// List of specific databases to restore.
+// List of specific databases available for restore.
 func (o RestoreParametersResponsePtrOutput) DatabasesToRestore() DatabaseRestoreResourceResponseArrayOutput {
 	return o.ApplyT(func(v *RestoreParametersResponse) []DatabaseRestoreResourceResponse {
 		if v == nil {
@@ -11744,6 +11759,7 @@ type RestoreReqeustDatabaseAccountCreateUpdateProperties struct {
 	// The CORS policy for the Cosmos DB database account.
 	Cors []CorsPolicy `pulumi:"cors"`
 	// Enum to indicate the mode of account creation.
+	// Expected value is 'Restore'.
 	CreateMode string `pulumi:"createMode"`
 	// The offer type for the database
 	DatabaseAccountOfferType string `pulumi:"databaseAccountOfferType"`
@@ -11799,6 +11815,7 @@ type RestoreReqeustDatabaseAccountCreateUpdatePropertiesArgs struct {
 	// The CORS policy for the Cosmos DB database account.
 	Cors CorsPolicyArrayInput `pulumi:"cors"`
 	// Enum to indicate the mode of account creation.
+	// Expected value is 'Restore'.
 	CreateMode pulumi.StringInput `pulumi:"createMode"`
 	// The offer type for the database
 	DatabaseAccountOfferType DatabaseAccountOfferType `pulumi:"databaseAccountOfferType"`
@@ -11888,6 +11905,7 @@ func (o RestoreReqeustDatabaseAccountCreateUpdatePropertiesOutput) Cors() CorsPo
 }
 
 // Enum to indicate the mode of account creation.
+// Expected value is 'Restore'.
 func (o RestoreReqeustDatabaseAccountCreateUpdatePropertiesOutput) CreateMode() pulumi.StringOutput {
 	return o.ApplyT(func(v RestoreReqeustDatabaseAccountCreateUpdateProperties) string { return v.CreateMode }).(pulumi.StringOutput)
 }

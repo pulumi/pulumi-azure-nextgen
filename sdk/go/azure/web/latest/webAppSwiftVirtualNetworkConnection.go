@@ -12,6 +12,7 @@ import (
 )
 
 // Swift Virtual Network Contract. This is used to enable the new Swift way of doing virtual network integration.
+// Latest API Version: 2020-09-01.
 type WebAppSwiftVirtualNetworkConnection struct {
 	pulumi.CustomResourceState
 
@@ -153,15 +154,15 @@ type WebAppSwiftVirtualNetworkConnectionInput interface {
 	ToWebAppSwiftVirtualNetworkConnectionOutputWithContext(ctx context.Context) WebAppSwiftVirtualNetworkConnectionOutput
 }
 
-func (WebAppSwiftVirtualNetworkConnection) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebAppSwiftVirtualNetworkConnection)(nil)).Elem()
+func (*WebAppSwiftVirtualNetworkConnection) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAppSwiftVirtualNetworkConnection)(nil))
 }
 
-func (i WebAppSwiftVirtualNetworkConnection) ToWebAppSwiftVirtualNetworkConnectionOutput() WebAppSwiftVirtualNetworkConnectionOutput {
+func (i *WebAppSwiftVirtualNetworkConnection) ToWebAppSwiftVirtualNetworkConnectionOutput() WebAppSwiftVirtualNetworkConnectionOutput {
 	return i.ToWebAppSwiftVirtualNetworkConnectionOutputWithContext(context.Background())
 }
 
-func (i WebAppSwiftVirtualNetworkConnection) ToWebAppSwiftVirtualNetworkConnectionOutputWithContext(ctx context.Context) WebAppSwiftVirtualNetworkConnectionOutput {
+func (i *WebAppSwiftVirtualNetworkConnection) ToWebAppSwiftVirtualNetworkConnectionOutputWithContext(ctx context.Context) WebAppSwiftVirtualNetworkConnectionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppSwiftVirtualNetworkConnectionOutput)
 }
 
@@ -170,7 +171,7 @@ type WebAppSwiftVirtualNetworkConnectionOutput struct {
 }
 
 func (WebAppSwiftVirtualNetworkConnectionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebAppSwiftVirtualNetworkConnectionOutput)(nil)).Elem()
+	return reflect.TypeOf((*WebAppSwiftVirtualNetworkConnection)(nil))
 }
 
 func (o WebAppSwiftVirtualNetworkConnectionOutput) ToWebAppSwiftVirtualNetworkConnectionOutput() WebAppSwiftVirtualNetworkConnectionOutput {

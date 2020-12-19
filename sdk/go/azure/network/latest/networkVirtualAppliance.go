@@ -12,6 +12,7 @@ import (
 )
 
 // NetworkVirtualAppliance Resource.
+// Latest API Version: 2020-07-01.
 type NetworkVirtualAppliance struct {
 	pulumi.CustomResourceState
 
@@ -250,15 +251,15 @@ type NetworkVirtualApplianceInput interface {
 	ToNetworkVirtualApplianceOutputWithContext(ctx context.Context) NetworkVirtualApplianceOutput
 }
 
-func (NetworkVirtualAppliance) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkVirtualAppliance)(nil)).Elem()
+func (*NetworkVirtualAppliance) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkVirtualAppliance)(nil))
 }
 
-func (i NetworkVirtualAppliance) ToNetworkVirtualApplianceOutput() NetworkVirtualApplianceOutput {
+func (i *NetworkVirtualAppliance) ToNetworkVirtualApplianceOutput() NetworkVirtualApplianceOutput {
 	return i.ToNetworkVirtualApplianceOutputWithContext(context.Background())
 }
 
-func (i NetworkVirtualAppliance) ToNetworkVirtualApplianceOutputWithContext(ctx context.Context) NetworkVirtualApplianceOutput {
+func (i *NetworkVirtualAppliance) ToNetworkVirtualApplianceOutputWithContext(ctx context.Context) NetworkVirtualApplianceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkVirtualApplianceOutput)
 }
 
@@ -267,7 +268,7 @@ type NetworkVirtualApplianceOutput struct {
 }
 
 func (NetworkVirtualApplianceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkVirtualApplianceOutput)(nil)).Elem()
+	return reflect.TypeOf((*NetworkVirtualAppliance)(nil))
 }
 
 func (o NetworkVirtualApplianceOutput) ToNetworkVirtualApplianceOutput() NetworkVirtualApplianceOutput {

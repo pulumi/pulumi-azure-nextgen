@@ -12,6 +12,7 @@ import (
 )
 
 // Profile of a lab user.
+// Latest API Version: 2018-09-15.
 type User struct {
 	pulumi.CustomResourceState
 
@@ -173,15 +174,15 @@ type UserInput interface {
 	ToUserOutputWithContext(ctx context.Context) UserOutput
 }
 
-func (User) ElementType() reflect.Type {
-	return reflect.TypeOf((*User)(nil)).Elem()
+func (*User) ElementType() reflect.Type {
+	return reflect.TypeOf((*User)(nil))
 }
 
-func (i User) ToUserOutput() UserOutput {
+func (i *User) ToUserOutput() UserOutput {
 	return i.ToUserOutputWithContext(context.Background())
 }
 
-func (i User) ToUserOutputWithContext(ctx context.Context) UserOutput {
+func (i *User) ToUserOutputWithContext(ctx context.Context) UserOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UserOutput)
 }
 
@@ -190,7 +191,7 @@ type UserOutput struct {
 }
 
 func (UserOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserOutput)(nil)).Elem()
+	return reflect.TypeOf((*User)(nil))
 }
 
 func (o UserOutput) ToUserOutput() UserOutput {

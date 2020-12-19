@@ -12,6 +12,7 @@ import (
 )
 
 // Description of Rule Resource.
+// Latest API Version: 2017-04-01.
 type Rule struct {
 	pulumi.CustomResourceState
 
@@ -54,6 +55,9 @@ func NewRule(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-nextgen:servicebus/v20170401:Rule"),
+		},
+		{
+			Type: pulumi.String("azure-nextgen:servicebus/v20180101preview:Rule"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -166,15 +170,15 @@ type RuleInput interface {
 	ToRuleOutputWithContext(ctx context.Context) RuleOutput
 }
 
-func (Rule) ElementType() reflect.Type {
-	return reflect.TypeOf((*Rule)(nil)).Elem()
+func (*Rule) ElementType() reflect.Type {
+	return reflect.TypeOf((*Rule)(nil))
 }
 
-func (i Rule) ToRuleOutput() RuleOutput {
+func (i *Rule) ToRuleOutput() RuleOutput {
 	return i.ToRuleOutputWithContext(context.Background())
 }
 
-func (i Rule) ToRuleOutputWithContext(ctx context.Context) RuleOutput {
+func (i *Rule) ToRuleOutputWithContext(ctx context.Context) RuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RuleOutput)
 }
 
@@ -183,7 +187,7 @@ type RuleOutput struct {
 }
 
 func (RuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*Rule)(nil))
 }
 
 func (o RuleOutput) ToRuleOutput() RuleOutput {

@@ -62,6 +62,9 @@ func NewSensitivityLabel(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-nextgen:sql/v20200202preview:SensitivityLabel"),
+		},
+		{
 			Type: pulumi.String("azure-nextgen:sql/v20200801preview:SensitivityLabel"),
 		},
 	})
@@ -191,15 +194,15 @@ type SensitivityLabelInput interface {
 	ToSensitivityLabelOutputWithContext(ctx context.Context) SensitivityLabelOutput
 }
 
-func (SensitivityLabel) ElementType() reflect.Type {
-	return reflect.TypeOf((*SensitivityLabel)(nil)).Elem()
+func (*SensitivityLabel) ElementType() reflect.Type {
+	return reflect.TypeOf((*SensitivityLabel)(nil))
 }
 
-func (i SensitivityLabel) ToSensitivityLabelOutput() SensitivityLabelOutput {
+func (i *SensitivityLabel) ToSensitivityLabelOutput() SensitivityLabelOutput {
 	return i.ToSensitivityLabelOutputWithContext(context.Background())
 }
 
-func (i SensitivityLabel) ToSensitivityLabelOutputWithContext(ctx context.Context) SensitivityLabelOutput {
+func (i *SensitivityLabel) ToSensitivityLabelOutputWithContext(ctx context.Context) SensitivityLabelOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SensitivityLabelOutput)
 }
 
@@ -208,7 +211,7 @@ type SensitivityLabelOutput struct {
 }
 
 func (SensitivityLabelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SensitivityLabelOutput)(nil)).Elem()
+	return reflect.TypeOf((*SensitivityLabel)(nil))
 }
 
 func (o SensitivityLabelOutput) ToSensitivityLabelOutput() SensitivityLabelOutput {

@@ -12,6 +12,7 @@ import (
 )
 
 // Properties that define a Continuous Export configuration.
+// Latest API Version: 2015-05-01.
 type ExportConfiguration struct {
 	pulumi.CustomResourceState
 
@@ -250,15 +251,15 @@ type ExportConfigurationInput interface {
 	ToExportConfigurationOutputWithContext(ctx context.Context) ExportConfigurationOutput
 }
 
-func (ExportConfiguration) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExportConfiguration)(nil)).Elem()
+func (*ExportConfiguration) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExportConfiguration)(nil))
 }
 
-func (i ExportConfiguration) ToExportConfigurationOutput() ExportConfigurationOutput {
+func (i *ExportConfiguration) ToExportConfigurationOutput() ExportConfigurationOutput {
 	return i.ToExportConfigurationOutputWithContext(context.Background())
 }
 
-func (i ExportConfiguration) ToExportConfigurationOutputWithContext(ctx context.Context) ExportConfigurationOutput {
+func (i *ExportConfiguration) ToExportConfigurationOutputWithContext(ctx context.Context) ExportConfigurationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExportConfigurationOutput)
 }
 
@@ -267,7 +268,7 @@ type ExportConfigurationOutput struct {
 }
 
 func (ExportConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExportConfigurationOutput)(nil)).Elem()
+	return reflect.TypeOf((*ExportConfiguration)(nil))
 }
 
 func (o ExportConfigurationOutput) ToExportConfigurationOutput() ExportConfigurationOutput {

@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.DataFactory.Latest
 {
     /// <summary>
     /// Managed private endpoint resource type.
+    /// Latest API Version: 2018-06-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:datafactory/latest:ManagedPrivateEndpoint")]
     public partial class ManagedPrivateEndpoint : Pulumi.CustomResource
     {
         /// <summary>

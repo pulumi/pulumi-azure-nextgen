@@ -12,6 +12,7 @@ namespace Pulumi.AzureNextGen.Sql.V20140401
     /// <summary>
     /// Represents a database elastic pool.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:sql/v20140401:ElasticPool")]
     public partial class ElasticPool : Pulumi.CustomResource
     {
         /// <summary>
@@ -119,6 +120,7 @@ namespace Pulumi.AzureNextGen.Sql.V20140401
                 {
                     new Pulumi.Alias { Type = "azure-nextgen:sql/latest:ElasticPool"},
                     new Pulumi.Alias { Type = "azure-nextgen:sql/v20171001preview:ElasticPool"},
+                    new Pulumi.Alias { Type = "azure-nextgen:sql/v20200202preview:ElasticPool"},
                     new Pulumi.Alias { Type = "azure-nextgen:sql/v20200801preview:ElasticPool"},
                 },
             };

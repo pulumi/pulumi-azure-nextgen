@@ -12,6 +12,7 @@ import (
 )
 
 // A flow log resource.
+// Latest API Version: 2020-07-01.
 type FlowLog struct {
 	pulumi.CustomResourceState
 
@@ -238,15 +239,15 @@ type FlowLogInput interface {
 	ToFlowLogOutputWithContext(ctx context.Context) FlowLogOutput
 }
 
-func (FlowLog) ElementType() reflect.Type {
-	return reflect.TypeOf((*FlowLog)(nil)).Elem()
+func (*FlowLog) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlowLog)(nil))
 }
 
-func (i FlowLog) ToFlowLogOutput() FlowLogOutput {
+func (i *FlowLog) ToFlowLogOutput() FlowLogOutput {
 	return i.ToFlowLogOutputWithContext(context.Background())
 }
 
-func (i FlowLog) ToFlowLogOutputWithContext(ctx context.Context) FlowLogOutput {
+func (i *FlowLog) ToFlowLogOutputWithContext(ctx context.Context) FlowLogOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FlowLogOutput)
 }
 
@@ -255,7 +256,7 @@ type FlowLogOutput struct {
 }
 
 func (FlowLogOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FlowLogOutput)(nil)).Elem()
+	return reflect.TypeOf((*FlowLog)(nil))
 }
 
 func (o FlowLogOutput) ToFlowLogOutput() FlowLogOutput {

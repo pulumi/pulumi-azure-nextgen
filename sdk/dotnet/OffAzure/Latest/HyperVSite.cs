@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.OffAzure.Latest
 {
     /// <summary>
     /// Site REST Resource.
+    /// Latest API Version: 2020-07-07.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:offazure/latest:HyperVSite")]
     public partial class HyperVSite : Pulumi.CustomResource
     {
         /// <summary>

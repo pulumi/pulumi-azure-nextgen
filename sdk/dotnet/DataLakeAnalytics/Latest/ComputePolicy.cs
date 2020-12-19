@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.DataLakeAnalytics.Latest
 {
     /// <summary>
     /// Data Lake Analytics compute policy information.
+    /// Latest API Version: 2016-11-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:datalakeanalytics/latest:ComputePolicy")]
     public partial class ComputePolicy : Pulumi.CustomResource
     {
         /// <summary>

@@ -53,6 +53,12 @@ func NewHybridLink(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-nextgen:sql/v20200202preview:HybridLink"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource HybridLink
 	err := ctx.RegisterResource("azure-nextgen:sql/v20200801preview:HybridLink", name, args, &resource, opts...)
 	if err != nil {
@@ -174,15 +180,15 @@ type HybridLinkInput interface {
 	ToHybridLinkOutputWithContext(ctx context.Context) HybridLinkOutput
 }
 
-func (HybridLink) ElementType() reflect.Type {
-	return reflect.TypeOf((*HybridLink)(nil)).Elem()
+func (*HybridLink) ElementType() reflect.Type {
+	return reflect.TypeOf((*HybridLink)(nil))
 }
 
-func (i HybridLink) ToHybridLinkOutput() HybridLinkOutput {
+func (i *HybridLink) ToHybridLinkOutput() HybridLinkOutput {
 	return i.ToHybridLinkOutputWithContext(context.Background())
 }
 
-func (i HybridLink) ToHybridLinkOutputWithContext(ctx context.Context) HybridLinkOutput {
+func (i *HybridLink) ToHybridLinkOutputWithContext(ctx context.Context) HybridLinkOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HybridLinkOutput)
 }
 
@@ -191,7 +197,7 @@ type HybridLinkOutput struct {
 }
 
 func (HybridLinkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HybridLinkOutput)(nil)).Elem()
+	return reflect.TypeOf((*HybridLink)(nil))
 }
 
 func (o HybridLinkOutput) ToHybridLinkOutput() HybridLinkOutput {

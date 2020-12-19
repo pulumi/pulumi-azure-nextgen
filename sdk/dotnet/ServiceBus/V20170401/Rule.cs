@@ -12,6 +12,7 @@ namespace Pulumi.AzureNextGen.ServiceBus.V20170401
     /// <summary>
     /// Description of Rule Resource.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:servicebus/v20170401:Rule")]
     public partial class Rule : Pulumi.CustomResource
     {
         /// <summary>
@@ -76,6 +77,7 @@ namespace Pulumi.AzureNextGen.ServiceBus.V20170401
                 Aliases =
                 {
                     new Pulumi.Alias { Type = "azure-nextgen:servicebus/latest:Rule"},
+                    new Pulumi.Alias { Type = "azure-nextgen:servicebus/v20180101preview:Rule"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

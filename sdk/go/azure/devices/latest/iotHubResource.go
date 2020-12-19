@@ -12,6 +12,7 @@ import (
 )
 
 // The description of the IoT hub.
+// Latest API Version: 2020-08-01.
 type IotHubResource struct {
 	pulumi.CustomResourceState
 
@@ -203,15 +204,15 @@ type IotHubResourceInput interface {
 	ToIotHubResourceOutputWithContext(ctx context.Context) IotHubResourceOutput
 }
 
-func (IotHubResource) ElementType() reflect.Type {
-	return reflect.TypeOf((*IotHubResource)(nil)).Elem()
+func (*IotHubResource) ElementType() reflect.Type {
+	return reflect.TypeOf((*IotHubResource)(nil))
 }
 
-func (i IotHubResource) ToIotHubResourceOutput() IotHubResourceOutput {
+func (i *IotHubResource) ToIotHubResourceOutput() IotHubResourceOutput {
 	return i.ToIotHubResourceOutputWithContext(context.Background())
 }
 
-func (i IotHubResource) ToIotHubResourceOutputWithContext(ctx context.Context) IotHubResourceOutput {
+func (i *IotHubResource) ToIotHubResourceOutputWithContext(ctx context.Context) IotHubResourceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IotHubResourceOutput)
 }
 
@@ -220,7 +221,7 @@ type IotHubResourceOutput struct {
 }
 
 func (IotHubResourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IotHubResourceOutput)(nil)).Elem()
+	return reflect.TypeOf((*IotHubResource)(nil))
 }
 
 func (o IotHubResourceOutput) ToIotHubResourceOutput() IotHubResourceOutput {

@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Network.Latest
 {
     /// <summary>
     /// HubVirtualNetworkConnection Resource.
+    /// Latest API Version: 2020-07-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:network/latest:HubVirtualNetworkConnection")]
     public partial class HubVirtualNetworkConnection : Pulumi.CustomResource
     {
         /// <summary>

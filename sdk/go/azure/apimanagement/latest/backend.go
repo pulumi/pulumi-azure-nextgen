@@ -12,6 +12,7 @@ import (
 )
 
 // Backend details.
+// Latest API Version: 2019-12-01.
 type Backend struct {
 	pulumi.CustomResourceState
 
@@ -232,15 +233,15 @@ type BackendInput interface {
 	ToBackendOutputWithContext(ctx context.Context) BackendOutput
 }
 
-func (Backend) ElementType() reflect.Type {
-	return reflect.TypeOf((*Backend)(nil)).Elem()
+func (*Backend) ElementType() reflect.Type {
+	return reflect.TypeOf((*Backend)(nil))
 }
 
-func (i Backend) ToBackendOutput() BackendOutput {
+func (i *Backend) ToBackendOutput() BackendOutput {
 	return i.ToBackendOutputWithContext(context.Background())
 }
 
-func (i Backend) ToBackendOutputWithContext(ctx context.Context) BackendOutput {
+func (i *Backend) ToBackendOutputWithContext(ctx context.Context) BackendOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BackendOutput)
 }
 
@@ -249,7 +250,7 @@ type BackendOutput struct {
 }
 
 func (BackendOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BackendOutput)(nil)).Elem()
+	return reflect.TypeOf((*Backend)(nil))
 }
 
 func (o BackendOutput) ToBackendOutput() BackendOutput {

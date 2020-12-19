@@ -12,6 +12,7 @@ namespace Pulumi.AzureNextGen.Sql.V20200801Preview
     /// <summary>
     /// A managed instance key.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:sql/v20200801preview:ManagedInstanceKey")]
     public partial class ManagedInstanceKey : Pulumi.CustomResource
     {
         /// <summary>
@@ -82,6 +83,7 @@ namespace Pulumi.AzureNextGen.Sql.V20200801Preview
                 Aliases =
                 {
                     new Pulumi.Alias { Type = "azure-nextgen:sql/v20171001preview:ManagedInstanceKey"},
+                    new Pulumi.Alias { Type = "azure-nextgen:sql/v20200202preview:ManagedInstanceKey"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

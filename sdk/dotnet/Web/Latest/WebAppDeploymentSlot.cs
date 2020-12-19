@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Web.Latest
 {
     /// <summary>
     /// User credentials used for publishing activity.
+    /// Latest API Version: 2020-09-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:web/latest:WebAppDeploymentSlot")]
     public partial class WebAppDeploymentSlot : Pulumi.CustomResource
     {
         /// <summary>

@@ -12,6 +12,7 @@ import (
 )
 
 // Definition of the automation account type.
+// Latest API Version: 2015-10-31.
 type AutomationAccount struct {
 	pulumi.CustomResourceState
 
@@ -175,15 +176,15 @@ type AutomationAccountInput interface {
 	ToAutomationAccountOutputWithContext(ctx context.Context) AutomationAccountOutput
 }
 
-func (AutomationAccount) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutomationAccount)(nil)).Elem()
+func (*AutomationAccount) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationAccount)(nil))
 }
 
-func (i AutomationAccount) ToAutomationAccountOutput() AutomationAccountOutput {
+func (i *AutomationAccount) ToAutomationAccountOutput() AutomationAccountOutput {
 	return i.ToAutomationAccountOutputWithContext(context.Background())
 }
 
-func (i AutomationAccount) ToAutomationAccountOutputWithContext(ctx context.Context) AutomationAccountOutput {
+func (i *AutomationAccount) ToAutomationAccountOutputWithContext(ctx context.Context) AutomationAccountOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AutomationAccountOutput)
 }
 
@@ -192,7 +193,7 @@ type AutomationAccountOutput struct {
 }
 
 func (AutomationAccountOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutomationAccountOutput)(nil)).Elem()
+	return reflect.TypeOf((*AutomationAccount)(nil))
 }
 
 func (o AutomationAccountOutput) ToAutomationAccountOutput() AutomationAccountOutput {

@@ -12,6 +12,7 @@ namespace Pulumi.AzureNextGen.Sql.V20200801Preview
     /// <summary>
     /// A server DNS alias.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:sql/v20200801preview:ServerDnsAlias")]
     public partial class ServerDnsAlias : Pulumi.CustomResource
     {
         /// <summary>
@@ -58,6 +59,7 @@ namespace Pulumi.AzureNextGen.Sql.V20200801Preview
                 Aliases =
                 {
                     new Pulumi.Alias { Type = "azure-nextgen:sql/v20170301preview:ServerDnsAlias"},
+                    new Pulumi.Alias { Type = "azure-nextgen:sql/v20200202preview:ServerDnsAlias"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

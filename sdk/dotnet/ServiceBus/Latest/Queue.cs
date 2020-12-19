@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.ServiceBus.Latest
 {
     /// <summary>
     /// Description of queue Resource.
+    /// Latest API Version: 2017-04-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:servicebus/latest:Queue")]
     public partial class Queue : Pulumi.CustomResource
     {
         /// <summary>
@@ -180,6 +182,7 @@ namespace Pulumi.AzureNextGen.ServiceBus.Latest
                     new Pulumi.Alias { Type = "azure-nextgen:servicebus/v20140901:Queue"},
                     new Pulumi.Alias { Type = "azure-nextgen:servicebus/v20150801:Queue"},
                     new Pulumi.Alias { Type = "azure-nextgen:servicebus/v20170401:Queue"},
+                    new Pulumi.Alias { Type = "azure-nextgen:servicebus/v20180101preview:Queue"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

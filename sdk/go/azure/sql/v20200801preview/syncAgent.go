@@ -53,6 +53,9 @@ func NewSyncAgent(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-nextgen:sql/v20150501preview:SyncAgent"),
 		},
+		{
+			Type: pulumi.String("azure-nextgen:sql/v20200202preview:SyncAgent"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource SyncAgent
@@ -152,15 +155,15 @@ type SyncAgentInput interface {
 	ToSyncAgentOutputWithContext(ctx context.Context) SyncAgentOutput
 }
 
-func (SyncAgent) ElementType() reflect.Type {
-	return reflect.TypeOf((*SyncAgent)(nil)).Elem()
+func (*SyncAgent) ElementType() reflect.Type {
+	return reflect.TypeOf((*SyncAgent)(nil))
 }
 
-func (i SyncAgent) ToSyncAgentOutput() SyncAgentOutput {
+func (i *SyncAgent) ToSyncAgentOutput() SyncAgentOutput {
 	return i.ToSyncAgentOutputWithContext(context.Background())
 }
 
-func (i SyncAgent) ToSyncAgentOutputWithContext(ctx context.Context) SyncAgentOutput {
+func (i *SyncAgent) ToSyncAgentOutputWithContext(ctx context.Context) SyncAgentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SyncAgentOutput)
 }
 
@@ -169,7 +172,7 @@ type SyncAgentOutput struct {
 }
 
 func (SyncAgentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SyncAgentOutput)(nil)).Elem()
+	return reflect.TypeOf((*SyncAgent)(nil))
 }
 
 func (o SyncAgentOutput) ToSyncAgentOutput() SyncAgentOutput {

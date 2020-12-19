@@ -12,6 +12,7 @@ import (
 )
 
 // Managed cluster.
+// Latest API Version: 2020-11-01.
 type ManagedCluster struct {
 	pulumi.CustomResourceState
 
@@ -406,15 +407,15 @@ type ManagedClusterInput interface {
 	ToManagedClusterOutputWithContext(ctx context.Context) ManagedClusterOutput
 }
 
-func (ManagedCluster) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedCluster)(nil)).Elem()
+func (*ManagedCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedCluster)(nil))
 }
 
-func (i ManagedCluster) ToManagedClusterOutput() ManagedClusterOutput {
+func (i *ManagedCluster) ToManagedClusterOutput() ManagedClusterOutput {
 	return i.ToManagedClusterOutputWithContext(context.Background())
 }
 
-func (i ManagedCluster) ToManagedClusterOutputWithContext(ctx context.Context) ManagedClusterOutput {
+func (i *ManagedCluster) ToManagedClusterOutputWithContext(ctx context.Context) ManagedClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterOutput)
 }
 
@@ -423,7 +424,7 @@ type ManagedClusterOutput struct {
 }
 
 func (ManagedClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedClusterOutput)(nil)).Elem()
+	return reflect.TypeOf((*ManagedCluster)(nil))
 }
 
 func (o ManagedClusterOutput) ToManagedClusterOutput() ManagedClusterOutput {

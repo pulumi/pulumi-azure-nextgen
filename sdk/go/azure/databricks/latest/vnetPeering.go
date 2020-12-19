@@ -12,6 +12,7 @@ import (
 )
 
 // Peerings in a VirtualNetwork resource
+// Latest API Version: 2018-04-01.
 type VNetPeering struct {
 	pulumi.CustomResourceState
 
@@ -207,15 +208,15 @@ type VNetPeeringInput interface {
 	ToVNetPeeringOutputWithContext(ctx context.Context) VNetPeeringOutput
 }
 
-func (VNetPeering) ElementType() reflect.Type {
-	return reflect.TypeOf((*VNetPeering)(nil)).Elem()
+func (*VNetPeering) ElementType() reflect.Type {
+	return reflect.TypeOf((*VNetPeering)(nil))
 }
 
-func (i VNetPeering) ToVNetPeeringOutput() VNetPeeringOutput {
+func (i *VNetPeering) ToVNetPeeringOutput() VNetPeeringOutput {
 	return i.ToVNetPeeringOutputWithContext(context.Background())
 }
 
-func (i VNetPeering) ToVNetPeeringOutputWithContext(ctx context.Context) VNetPeeringOutput {
+func (i *VNetPeering) ToVNetPeeringOutputWithContext(ctx context.Context) VNetPeeringOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VNetPeeringOutput)
 }
 
@@ -224,7 +225,7 @@ type VNetPeeringOutput struct {
 }
 
 func (VNetPeeringOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VNetPeeringOutput)(nil)).Elem()
+	return reflect.TypeOf((*VNetPeering)(nil))
 }
 
 func (o VNetPeeringOutput) ToVNetPeeringOutput() VNetPeeringOutput {

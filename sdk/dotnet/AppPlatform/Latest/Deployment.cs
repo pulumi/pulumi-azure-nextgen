@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.AppPlatform.Latest
 {
     /// <summary>
     /// Deployment resource payload
+    /// Latest API Version: 2020-07-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:appplatform/latest:Deployment")]
     public partial class Deployment : Pulumi.CustomResource
     {
         /// <summary>

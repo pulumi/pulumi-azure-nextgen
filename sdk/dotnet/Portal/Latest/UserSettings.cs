@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Portal.Latest
 {
     /// <summary>
     /// Response to get user settings
+    /// Latest API Version: 2018-10-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:portal/latest:UserSettings")]
     public partial class UserSettings : Pulumi.CustomResource
     {
         /// <summary>

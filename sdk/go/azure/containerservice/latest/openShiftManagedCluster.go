@@ -12,6 +12,7 @@ import (
 )
 
 // OpenShift Managed cluster.
+// Latest API Version: 2019-04-30.
 type OpenShiftManagedCluster struct {
 	pulumi.CustomResourceState
 
@@ -234,15 +235,15 @@ type OpenShiftManagedClusterInput interface {
 	ToOpenShiftManagedClusterOutputWithContext(ctx context.Context) OpenShiftManagedClusterOutput
 }
 
-func (OpenShiftManagedCluster) ElementType() reflect.Type {
-	return reflect.TypeOf((*OpenShiftManagedCluster)(nil)).Elem()
+func (*OpenShiftManagedCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenShiftManagedCluster)(nil))
 }
 
-func (i OpenShiftManagedCluster) ToOpenShiftManagedClusterOutput() OpenShiftManagedClusterOutput {
+func (i *OpenShiftManagedCluster) ToOpenShiftManagedClusterOutput() OpenShiftManagedClusterOutput {
 	return i.ToOpenShiftManagedClusterOutputWithContext(context.Background())
 }
 
-func (i OpenShiftManagedCluster) ToOpenShiftManagedClusterOutputWithContext(ctx context.Context) OpenShiftManagedClusterOutput {
+func (i *OpenShiftManagedCluster) ToOpenShiftManagedClusterOutputWithContext(ctx context.Context) OpenShiftManagedClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftManagedClusterOutput)
 }
 
@@ -251,7 +252,7 @@ type OpenShiftManagedClusterOutput struct {
 }
 
 func (OpenShiftManagedClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OpenShiftManagedClusterOutput)(nil)).Elem()
+	return reflect.TypeOf((*OpenShiftManagedCluster)(nil))
 }
 
 func (o OpenShiftManagedClusterOutput) ToOpenShiftManagedClusterOutput() OpenShiftManagedClusterOutput {

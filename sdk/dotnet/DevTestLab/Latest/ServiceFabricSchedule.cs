@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.DevTestLab.Latest
 {
     /// <summary>
     /// A schedule.
+    /// Latest API Version: 2018-09-15.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:devtestlab/latest:ServiceFabricSchedule")]
     public partial class ServiceFabricSchedule : Pulumi.CustomResource
     {
         /// <summary>

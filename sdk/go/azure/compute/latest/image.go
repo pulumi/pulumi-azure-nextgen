@@ -12,6 +12,7 @@ import (
 )
 
 // The source user image virtual hard disk. The virtual hard disk will be copied before being attached to the virtual machine. If SourceImage is provided, the destination virtual hard drive must not exist.
+// Latest API Version: 2020-06-01.
 type Image struct {
 	pulumi.CustomResourceState
 
@@ -191,15 +192,15 @@ type ImageInput interface {
 	ToImageOutputWithContext(ctx context.Context) ImageOutput
 }
 
-func (Image) ElementType() reflect.Type {
-	return reflect.TypeOf((*Image)(nil)).Elem()
+func (*Image) ElementType() reflect.Type {
+	return reflect.TypeOf((*Image)(nil))
 }
 
-func (i Image) ToImageOutput() ImageOutput {
+func (i *Image) ToImageOutput() ImageOutput {
 	return i.ToImageOutputWithContext(context.Background())
 }
 
-func (i Image) ToImageOutputWithContext(ctx context.Context) ImageOutput {
+func (i *Image) ToImageOutputWithContext(ctx context.Context) ImageOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ImageOutput)
 }
 
@@ -208,7 +209,7 @@ type ImageOutput struct {
 }
 
 func (ImageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageOutput)(nil)).Elem()
+	return reflect.TypeOf((*Image)(nil))
 }
 
 func (o ImageOutput) ToImageOutput() ImageOutput {

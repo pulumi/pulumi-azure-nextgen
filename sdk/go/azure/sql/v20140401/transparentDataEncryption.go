@@ -49,6 +49,9 @@ func NewTransparentDataEncryption(ctx *pulumi.Context,
 			Type: pulumi.String("azure-nextgen:sql/latest:TransparentDataEncryption"),
 		},
 		{
+			Type: pulumi.String("azure-nextgen:sql/v20200202preview:TransparentDataEncryption"),
+		},
+		{
 			Type: pulumi.String("azure-nextgen:sql/v20200801preview:TransparentDataEncryption"),
 		},
 	})
@@ -138,15 +141,15 @@ type TransparentDataEncryptionInput interface {
 	ToTransparentDataEncryptionOutputWithContext(ctx context.Context) TransparentDataEncryptionOutput
 }
 
-func (TransparentDataEncryption) ElementType() reflect.Type {
-	return reflect.TypeOf((*TransparentDataEncryption)(nil)).Elem()
+func (*TransparentDataEncryption) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransparentDataEncryption)(nil))
 }
 
-func (i TransparentDataEncryption) ToTransparentDataEncryptionOutput() TransparentDataEncryptionOutput {
+func (i *TransparentDataEncryption) ToTransparentDataEncryptionOutput() TransparentDataEncryptionOutput {
 	return i.ToTransparentDataEncryptionOutputWithContext(context.Background())
 }
 
-func (i TransparentDataEncryption) ToTransparentDataEncryptionOutputWithContext(ctx context.Context) TransparentDataEncryptionOutput {
+func (i *TransparentDataEncryption) ToTransparentDataEncryptionOutputWithContext(ctx context.Context) TransparentDataEncryptionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TransparentDataEncryptionOutput)
 }
 
@@ -155,7 +158,7 @@ type TransparentDataEncryptionOutput struct {
 }
 
 func (TransparentDataEncryptionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TransparentDataEncryptionOutput)(nil)).Elem()
+	return reflect.TypeOf((*TransparentDataEncryption)(nil))
 }
 
 func (o TransparentDataEncryptionOutput) ToTransparentDataEncryptionOutput() TransparentDataEncryptionOutput {

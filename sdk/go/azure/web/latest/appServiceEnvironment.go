@@ -12,6 +12,7 @@ import (
 )
 
 // App Service Environment ARM resource.
+// Latest API Version: 2020-09-01.
 type AppServiceEnvironment struct {
 	pulumi.CustomResourceState
 
@@ -477,15 +478,15 @@ type AppServiceEnvironmentInput interface {
 	ToAppServiceEnvironmentOutputWithContext(ctx context.Context) AppServiceEnvironmentOutput
 }
 
-func (AppServiceEnvironment) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppServiceEnvironment)(nil)).Elem()
+func (*AppServiceEnvironment) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppServiceEnvironment)(nil))
 }
 
-func (i AppServiceEnvironment) ToAppServiceEnvironmentOutput() AppServiceEnvironmentOutput {
+func (i *AppServiceEnvironment) ToAppServiceEnvironmentOutput() AppServiceEnvironmentOutput {
 	return i.ToAppServiceEnvironmentOutputWithContext(context.Background())
 }
 
-func (i AppServiceEnvironment) ToAppServiceEnvironmentOutputWithContext(ctx context.Context) AppServiceEnvironmentOutput {
+func (i *AppServiceEnvironment) ToAppServiceEnvironmentOutputWithContext(ctx context.Context) AppServiceEnvironmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppServiceEnvironmentOutput)
 }
 
@@ -494,7 +495,7 @@ type AppServiceEnvironmentOutput struct {
 }
 
 func (AppServiceEnvironmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppServiceEnvironmentOutput)(nil)).Elem()
+	return reflect.TypeOf((*AppServiceEnvironment)(nil))
 }
 
 func (o AppServiceEnvironmentOutput) ToAppServiceEnvironmentOutput() AppServiceEnvironmentOutput {

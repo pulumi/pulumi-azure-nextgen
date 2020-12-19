@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Latest API Version: 2019-06-01.
 type Queue struct {
 	pulumi.CustomResourceState
 
@@ -130,15 +131,15 @@ type QueueInput interface {
 	ToQueueOutputWithContext(ctx context.Context) QueueOutput
 }
 
-func (Queue) ElementType() reflect.Type {
-	return reflect.TypeOf((*Queue)(nil)).Elem()
+func (*Queue) ElementType() reflect.Type {
+	return reflect.TypeOf((*Queue)(nil))
 }
 
-func (i Queue) ToQueueOutput() QueueOutput {
+func (i *Queue) ToQueueOutput() QueueOutput {
 	return i.ToQueueOutputWithContext(context.Background())
 }
 
-func (i Queue) ToQueueOutputWithContext(ctx context.Context) QueueOutput {
+func (i *Queue) ToQueueOutputWithContext(ctx context.Context) QueueOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QueueOutput)
 }
 
@@ -147,7 +148,7 @@ type QueueOutput struct {
 }
 
 func (QueueOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*QueueOutput)(nil)).Elem()
+	return reflect.TypeOf((*Queue)(nil))
 }
 
 func (o QueueOutput) ToQueueOutput() QueueOutput {

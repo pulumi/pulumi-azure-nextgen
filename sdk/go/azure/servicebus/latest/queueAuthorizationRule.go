@@ -12,6 +12,7 @@ import (
 )
 
 // Description of a namespace authorization rule.
+// Latest API Version: 2017-04-01.
 type QueueAuthorizationRule struct {
 	pulumi.CustomResourceState
 
@@ -54,6 +55,9 @@ func NewQueueAuthorizationRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-nextgen:servicebus/v20170401:QueueAuthorizationRule"),
+		},
+		{
+			Type: pulumi.String("azure-nextgen:servicebus/v20180101preview:QueueAuthorizationRule"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -138,15 +142,15 @@ type QueueAuthorizationRuleInput interface {
 	ToQueueAuthorizationRuleOutputWithContext(ctx context.Context) QueueAuthorizationRuleOutput
 }
 
-func (QueueAuthorizationRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*QueueAuthorizationRule)(nil)).Elem()
+func (*QueueAuthorizationRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueueAuthorizationRule)(nil))
 }
 
-func (i QueueAuthorizationRule) ToQueueAuthorizationRuleOutput() QueueAuthorizationRuleOutput {
+func (i *QueueAuthorizationRule) ToQueueAuthorizationRuleOutput() QueueAuthorizationRuleOutput {
 	return i.ToQueueAuthorizationRuleOutputWithContext(context.Background())
 }
 
-func (i QueueAuthorizationRule) ToQueueAuthorizationRuleOutputWithContext(ctx context.Context) QueueAuthorizationRuleOutput {
+func (i *QueueAuthorizationRule) ToQueueAuthorizationRuleOutputWithContext(ctx context.Context) QueueAuthorizationRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QueueAuthorizationRuleOutput)
 }
 
@@ -155,7 +159,7 @@ type QueueAuthorizationRuleOutput struct {
 }
 
 func (QueueAuthorizationRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*QueueAuthorizationRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*QueueAuthorizationRule)(nil))
 }
 
 func (o QueueAuthorizationRuleOutput) ToQueueAuthorizationRuleOutput() QueueAuthorizationRuleOutput {

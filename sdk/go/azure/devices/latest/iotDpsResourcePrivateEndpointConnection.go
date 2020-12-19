@@ -12,6 +12,7 @@ import (
 )
 
 // The private endpoint connection of a provisioning service
+// Latest API Version: 2020-03-01.
 type IotDpsResourcePrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
@@ -128,15 +129,15 @@ type IotDpsResourcePrivateEndpointConnectionInput interface {
 	ToIotDpsResourcePrivateEndpointConnectionOutputWithContext(ctx context.Context) IotDpsResourcePrivateEndpointConnectionOutput
 }
 
-func (IotDpsResourcePrivateEndpointConnection) ElementType() reflect.Type {
-	return reflect.TypeOf((*IotDpsResourcePrivateEndpointConnection)(nil)).Elem()
+func (*IotDpsResourcePrivateEndpointConnection) ElementType() reflect.Type {
+	return reflect.TypeOf((*IotDpsResourcePrivateEndpointConnection)(nil))
 }
 
-func (i IotDpsResourcePrivateEndpointConnection) ToIotDpsResourcePrivateEndpointConnectionOutput() IotDpsResourcePrivateEndpointConnectionOutput {
+func (i *IotDpsResourcePrivateEndpointConnection) ToIotDpsResourcePrivateEndpointConnectionOutput() IotDpsResourcePrivateEndpointConnectionOutput {
 	return i.ToIotDpsResourcePrivateEndpointConnectionOutputWithContext(context.Background())
 }
 
-func (i IotDpsResourcePrivateEndpointConnection) ToIotDpsResourcePrivateEndpointConnectionOutputWithContext(ctx context.Context) IotDpsResourcePrivateEndpointConnectionOutput {
+func (i *IotDpsResourcePrivateEndpointConnection) ToIotDpsResourcePrivateEndpointConnectionOutputWithContext(ctx context.Context) IotDpsResourcePrivateEndpointConnectionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IotDpsResourcePrivateEndpointConnectionOutput)
 }
 
@@ -145,7 +146,7 @@ type IotDpsResourcePrivateEndpointConnectionOutput struct {
 }
 
 func (IotDpsResourcePrivateEndpointConnectionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IotDpsResourcePrivateEndpointConnectionOutput)(nil)).Elem()
+	return reflect.TypeOf((*IotDpsResourcePrivateEndpointConnection)(nil))
 }
 
 func (o IotDpsResourcePrivateEndpointConnectionOutput) ToIotDpsResourcePrivateEndpointConnectionOutput() IotDpsResourcePrivateEndpointConnectionOutput {

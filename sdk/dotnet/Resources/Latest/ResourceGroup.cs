@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Resources.Latest
 {
     /// <summary>
     /// Resource group information.
+    /// Latest API Version: 2020-08-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:resources/latest:ResourceGroup")]
     public partial class ResourceGroup : Pulumi.CustomResource
     {
         /// <summary>

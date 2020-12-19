@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Media.Latest
 {
     /// <summary>
     /// An Account Filter.
+    /// Latest API Version: 2020-05-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:media/latest:AccountFilter")]
     public partial class AccountFilter : Pulumi.CustomResource
     {
         /// <summary>

@@ -12,6 +12,7 @@ import (
 )
 
 // Datasources under OMS Workspace.
+// Latest API Version: 2020-08-01.
 type DataSource struct {
 	pulumi.CustomResourceState
 
@@ -164,15 +165,15 @@ type DataSourceInput interface {
 	ToDataSourceOutputWithContext(ctx context.Context) DataSourceOutput
 }
 
-func (DataSource) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataSource)(nil)).Elem()
+func (*DataSource) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSource)(nil))
 }
 
-func (i DataSource) ToDataSourceOutput() DataSourceOutput {
+func (i *DataSource) ToDataSourceOutput() DataSourceOutput {
 	return i.ToDataSourceOutputWithContext(context.Background())
 }
 
-func (i DataSource) ToDataSourceOutputWithContext(ctx context.Context) DataSourceOutput {
+func (i *DataSource) ToDataSourceOutputWithContext(ctx context.Context) DataSourceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DataSourceOutput)
 }
 
@@ -181,7 +182,7 @@ type DataSourceOutput struct {
 }
 
 func (DataSourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataSourceOutput)(nil)).Elem()
+	return reflect.TypeOf((*DataSource)(nil))
 }
 
 func (o DataSourceOutput) ToDataSourceOutput() DataSourceOutput {

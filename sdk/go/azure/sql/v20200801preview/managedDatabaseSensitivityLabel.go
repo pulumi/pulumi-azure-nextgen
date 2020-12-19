@@ -72,6 +72,9 @@ func NewManagedDatabaseSensitivityLabel(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-nextgen:sql/v20180601preview:ManagedDatabaseSensitivityLabel"),
 		},
+		{
+			Type: pulumi.String("azure-nextgen:sql/v20200202preview:ManagedDatabaseSensitivityLabel"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ManagedDatabaseSensitivityLabel
@@ -215,15 +218,15 @@ type ManagedDatabaseSensitivityLabelInput interface {
 	ToManagedDatabaseSensitivityLabelOutputWithContext(ctx context.Context) ManagedDatabaseSensitivityLabelOutput
 }
 
-func (ManagedDatabaseSensitivityLabel) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedDatabaseSensitivityLabel)(nil)).Elem()
+func (*ManagedDatabaseSensitivityLabel) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedDatabaseSensitivityLabel)(nil))
 }
 
-func (i ManagedDatabaseSensitivityLabel) ToManagedDatabaseSensitivityLabelOutput() ManagedDatabaseSensitivityLabelOutput {
+func (i *ManagedDatabaseSensitivityLabel) ToManagedDatabaseSensitivityLabelOutput() ManagedDatabaseSensitivityLabelOutput {
 	return i.ToManagedDatabaseSensitivityLabelOutputWithContext(context.Background())
 }
 
-func (i ManagedDatabaseSensitivityLabel) ToManagedDatabaseSensitivityLabelOutputWithContext(ctx context.Context) ManagedDatabaseSensitivityLabelOutput {
+func (i *ManagedDatabaseSensitivityLabel) ToManagedDatabaseSensitivityLabelOutputWithContext(ctx context.Context) ManagedDatabaseSensitivityLabelOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedDatabaseSensitivityLabelOutput)
 }
 
@@ -232,7 +235,7 @@ type ManagedDatabaseSensitivityLabelOutput struct {
 }
 
 func (ManagedDatabaseSensitivityLabelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedDatabaseSensitivityLabelOutput)(nil)).Elem()
+	return reflect.TypeOf((*ManagedDatabaseSensitivityLabel)(nil))
 }
 
 func (o ManagedDatabaseSensitivityLabelOutput) ToManagedDatabaseSensitivityLabelOutput() ManagedDatabaseSensitivityLabelOutput {

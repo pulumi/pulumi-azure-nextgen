@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.StorSimple.Latest
 {
     /// <summary>
     /// The Backup Schedule Group
+    /// Latest API Version: 2016-10-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:storsimple/latest:BackupScheduleGroup")]
     public partial class BackupScheduleGroup : Pulumi.CustomResource
     {
         /// <summary>
