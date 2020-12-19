@@ -12,6 +12,7 @@ import (
 )
 
 // A Service Fabric.
+// Latest API Version: 2018-09-15.
 type ServiceFabric struct {
 	pulumi.CustomResourceState
 
@@ -177,15 +178,15 @@ type ServiceFabricInput interface {
 	ToServiceFabricOutputWithContext(ctx context.Context) ServiceFabricOutput
 }
 
-func (ServiceFabric) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceFabric)(nil)).Elem()
+func (*ServiceFabric) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceFabric)(nil))
 }
 
-func (i ServiceFabric) ToServiceFabricOutput() ServiceFabricOutput {
+func (i *ServiceFabric) ToServiceFabricOutput() ServiceFabricOutput {
 	return i.ToServiceFabricOutputWithContext(context.Background())
 }
 
-func (i ServiceFabric) ToServiceFabricOutputWithContext(ctx context.Context) ServiceFabricOutput {
+func (i *ServiceFabric) ToServiceFabricOutputWithContext(ctx context.Context) ServiceFabricOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceFabricOutput)
 }
 
@@ -194,7 +195,7 @@ type ServiceFabricOutput struct {
 }
 
 func (ServiceFabricOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceFabricOutput)(nil)).Elem()
+	return reflect.TypeOf((*ServiceFabric)(nil))
 }
 
 func (o ServiceFabricOutput) ToServiceFabricOutput() ServiceFabricOutput {

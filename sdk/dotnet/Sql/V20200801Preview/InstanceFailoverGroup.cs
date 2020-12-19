@@ -12,6 +12,7 @@ namespace Pulumi.AzureNextGen.Sql.V20200801Preview
     /// <summary>
     /// An instance failover group.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:sql/v20200801preview:InstanceFailoverGroup")]
     public partial class InstanceFailoverGroup : Pulumi.CustomResource
     {
         /// <summary>
@@ -88,6 +89,7 @@ namespace Pulumi.AzureNextGen.Sql.V20200801Preview
                 Aliases =
                 {
                     new Pulumi.Alias { Type = "azure-nextgen:sql/v20171001preview:InstanceFailoverGroup"},
+                    new Pulumi.Alias { Type = "azure-nextgen:sql/v20200202preview:InstanceFailoverGroup"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

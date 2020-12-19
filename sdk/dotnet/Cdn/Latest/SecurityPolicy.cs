@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Cdn.Latest
 {
     /// <summary>
     /// SecurityPolicy association for AzureFrontDoor profile
+    /// Latest API Version: 2020-09-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:cdn/latest:SecurityPolicy")]
     public partial class SecurityPolicy : Pulumi.CustomResource
     {
         [Output("deploymentStatus")]

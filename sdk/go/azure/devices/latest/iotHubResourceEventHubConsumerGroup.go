@@ -12,6 +12,7 @@ import (
 )
 
 // The properties of the EventHubConsumerGroupInfo object.
+// Latest API Version: 2020-08-01.
 type IotHubResourceEventHubConsumerGroup struct {
 	pulumi.CustomResourceState
 
@@ -177,15 +178,15 @@ type IotHubResourceEventHubConsumerGroupInput interface {
 	ToIotHubResourceEventHubConsumerGroupOutputWithContext(ctx context.Context) IotHubResourceEventHubConsumerGroupOutput
 }
 
-func (IotHubResourceEventHubConsumerGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*IotHubResourceEventHubConsumerGroup)(nil)).Elem()
+func (*IotHubResourceEventHubConsumerGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*IotHubResourceEventHubConsumerGroup)(nil))
 }
 
-func (i IotHubResourceEventHubConsumerGroup) ToIotHubResourceEventHubConsumerGroupOutput() IotHubResourceEventHubConsumerGroupOutput {
+func (i *IotHubResourceEventHubConsumerGroup) ToIotHubResourceEventHubConsumerGroupOutput() IotHubResourceEventHubConsumerGroupOutput {
 	return i.ToIotHubResourceEventHubConsumerGroupOutputWithContext(context.Background())
 }
 
-func (i IotHubResourceEventHubConsumerGroup) ToIotHubResourceEventHubConsumerGroupOutputWithContext(ctx context.Context) IotHubResourceEventHubConsumerGroupOutput {
+func (i *IotHubResourceEventHubConsumerGroup) ToIotHubResourceEventHubConsumerGroupOutputWithContext(ctx context.Context) IotHubResourceEventHubConsumerGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IotHubResourceEventHubConsumerGroupOutput)
 }
 
@@ -194,7 +195,7 @@ type IotHubResourceEventHubConsumerGroupOutput struct {
 }
 
 func (IotHubResourceEventHubConsumerGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IotHubResourceEventHubConsumerGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*IotHubResourceEventHubConsumerGroup)(nil))
 }
 
 func (o IotHubResourceEventHubConsumerGroupOutput) ToIotHubResourceEventHubConsumerGroupOutput() IotHubResourceEventHubConsumerGroupOutput {

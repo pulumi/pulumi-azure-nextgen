@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.MachineLearning.Latest
 {
     /// <summary>
     /// Instance of an Azure ML web service resource.
+    /// Latest API Version: 2017-01-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:machinelearning/latest:WebService")]
     public partial class WebService : Pulumi.CustomResource
     {
         /// <summary>

@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.DevTestLab.Latest
 {
     /// <summary>
     /// A Disk.
+    /// Latest API Version: 2018-09-15.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:devtestlab/latest:Disk")]
     public partial class Disk : Pulumi.CustomResource
     {
         /// <summary>

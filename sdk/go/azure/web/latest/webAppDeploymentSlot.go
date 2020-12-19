@@ -12,6 +12,7 @@ import (
 )
 
 // User credentials used for publishing activity.
+// Latest API Version: 2020-09-01.
 type WebAppDeploymentSlot struct {
 	pulumi.CustomResourceState
 
@@ -243,15 +244,15 @@ type WebAppDeploymentSlotInput interface {
 	ToWebAppDeploymentSlotOutputWithContext(ctx context.Context) WebAppDeploymentSlotOutput
 }
 
-func (WebAppDeploymentSlot) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebAppDeploymentSlot)(nil)).Elem()
+func (*WebAppDeploymentSlot) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAppDeploymentSlot)(nil))
 }
 
-func (i WebAppDeploymentSlot) ToWebAppDeploymentSlotOutput() WebAppDeploymentSlotOutput {
+func (i *WebAppDeploymentSlot) ToWebAppDeploymentSlotOutput() WebAppDeploymentSlotOutput {
 	return i.ToWebAppDeploymentSlotOutputWithContext(context.Background())
 }
 
-func (i WebAppDeploymentSlot) ToWebAppDeploymentSlotOutputWithContext(ctx context.Context) WebAppDeploymentSlotOutput {
+func (i *WebAppDeploymentSlot) ToWebAppDeploymentSlotOutputWithContext(ctx context.Context) WebAppDeploymentSlotOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppDeploymentSlotOutput)
 }
 
@@ -260,7 +261,7 @@ type WebAppDeploymentSlotOutput struct {
 }
 
 func (WebAppDeploymentSlotOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebAppDeploymentSlotOutput)(nil)).Elem()
+	return reflect.TypeOf((*WebAppDeploymentSlot)(nil))
 }
 
 func (o WebAppDeploymentSlotOutput) ToWebAppDeploymentSlotOutput() WebAppDeploymentSlotOutput {

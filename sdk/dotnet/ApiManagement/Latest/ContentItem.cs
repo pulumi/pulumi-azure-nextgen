@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.ApiManagement.Latest
 {
     /// <summary>
     /// Content type contract details.
+    /// Latest API Version: 2019-12-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:apimanagement/latest:ContentItem")]
     public partial class ContentItem : Pulumi.CustomResource
     {
         /// <summary>

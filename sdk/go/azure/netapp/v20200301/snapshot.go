@@ -94,6 +94,9 @@ func NewSnapshot(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-nextgen:netapp/v20200801:Snapshot"),
 		},
+		{
+			Type: pulumi.String("azure-nextgen:netapp/v20200901:Snapshot"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Snapshot
@@ -193,15 +196,15 @@ type SnapshotInput interface {
 	ToSnapshotOutputWithContext(ctx context.Context) SnapshotOutput
 }
 
-func (Snapshot) ElementType() reflect.Type {
-	return reflect.TypeOf((*Snapshot)(nil)).Elem()
+func (*Snapshot) ElementType() reflect.Type {
+	return reflect.TypeOf((*Snapshot)(nil))
 }
 
-func (i Snapshot) ToSnapshotOutput() SnapshotOutput {
+func (i *Snapshot) ToSnapshotOutput() SnapshotOutput {
 	return i.ToSnapshotOutputWithContext(context.Background())
 }
 
-func (i Snapshot) ToSnapshotOutputWithContext(ctx context.Context) SnapshotOutput {
+func (i *Snapshot) ToSnapshotOutputWithContext(ctx context.Context) SnapshotOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SnapshotOutput)
 }
 
@@ -210,7 +213,7 @@ type SnapshotOutput struct {
 }
 
 func (SnapshotOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SnapshotOutput)(nil)).Elem()
+	return reflect.TypeOf((*Snapshot)(nil))
 }
 
 func (o SnapshotOutput) ToSnapshotOutput() SnapshotOutput {

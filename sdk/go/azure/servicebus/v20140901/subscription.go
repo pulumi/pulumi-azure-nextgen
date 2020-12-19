@@ -87,6 +87,9 @@ func NewSubscription(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-nextgen:servicebus/v20170401:Subscription"),
 		},
+		{
+			Type: pulumi.String("azure-nextgen:servicebus/v20180101preview:Subscription"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Subscription
@@ -282,15 +285,15 @@ type SubscriptionInput interface {
 	ToSubscriptionOutputWithContext(ctx context.Context) SubscriptionOutput
 }
 
-func (Subscription) ElementType() reflect.Type {
-	return reflect.TypeOf((*Subscription)(nil)).Elem()
+func (*Subscription) ElementType() reflect.Type {
+	return reflect.TypeOf((*Subscription)(nil))
 }
 
-func (i Subscription) ToSubscriptionOutput() SubscriptionOutput {
+func (i *Subscription) ToSubscriptionOutput() SubscriptionOutput {
 	return i.ToSubscriptionOutputWithContext(context.Background())
 }
 
-func (i Subscription) ToSubscriptionOutputWithContext(ctx context.Context) SubscriptionOutput {
+func (i *Subscription) ToSubscriptionOutputWithContext(ctx context.Context) SubscriptionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionOutput)
 }
 
@@ -299,7 +302,7 @@ type SubscriptionOutput struct {
 }
 
 func (SubscriptionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubscriptionOutput)(nil)).Elem()
+	return reflect.TypeOf((*Subscription)(nil))
 }
 
 func (o SubscriptionOutput) ToSubscriptionOutput() SubscriptionOutput {

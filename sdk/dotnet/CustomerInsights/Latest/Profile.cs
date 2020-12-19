@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.CustomerInsights.Latest
 {
     /// <summary>
     /// The profile resource format.
+    /// Latest API Version: 2017-04-26.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:customerinsights/latest:Profile")]
     public partial class Profile : Pulumi.CustomResource
     {
         /// <summary>

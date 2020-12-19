@@ -58,6 +58,9 @@ func NewManagedInstanceAdministrator(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-nextgen:sql/v20170301preview:ManagedInstanceAdministrator"),
 		},
+		{
+			Type: pulumi.String("azure-nextgen:sql/v20200202preview:ManagedInstanceAdministrator"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource ManagedInstanceAdministrator
@@ -159,15 +162,15 @@ type ManagedInstanceAdministratorInput interface {
 	ToManagedInstanceAdministratorOutputWithContext(ctx context.Context) ManagedInstanceAdministratorOutput
 }
 
-func (ManagedInstanceAdministrator) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedInstanceAdministrator)(nil)).Elem()
+func (*ManagedInstanceAdministrator) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedInstanceAdministrator)(nil))
 }
 
-func (i ManagedInstanceAdministrator) ToManagedInstanceAdministratorOutput() ManagedInstanceAdministratorOutput {
+func (i *ManagedInstanceAdministrator) ToManagedInstanceAdministratorOutput() ManagedInstanceAdministratorOutput {
 	return i.ToManagedInstanceAdministratorOutputWithContext(context.Background())
 }
 
-func (i ManagedInstanceAdministrator) ToManagedInstanceAdministratorOutputWithContext(ctx context.Context) ManagedInstanceAdministratorOutput {
+func (i *ManagedInstanceAdministrator) ToManagedInstanceAdministratorOutputWithContext(ctx context.Context) ManagedInstanceAdministratorOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstanceAdministratorOutput)
 }
 
@@ -176,7 +179,7 @@ type ManagedInstanceAdministratorOutput struct {
 }
 
 func (ManagedInstanceAdministratorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedInstanceAdministratorOutput)(nil)).Elem()
+	return reflect.TypeOf((*ManagedInstanceAdministrator)(nil))
 }
 
 func (o ManagedInstanceAdministratorOutput) ToManagedInstanceAdministratorOutput() ManagedInstanceAdministratorOutput {

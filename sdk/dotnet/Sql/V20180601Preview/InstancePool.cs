@@ -12,6 +12,7 @@ namespace Pulumi.AzureNextGen.Sql.V20180601Preview
     /// <summary>
     /// An Azure SQL instance pool.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:sql/v20180601preview:InstancePool")]
     public partial class InstancePool : Pulumi.CustomResource
     {
         /// <summary>
@@ -87,6 +88,7 @@ namespace Pulumi.AzureNextGen.Sql.V20180601Preview
                 Version = Utilities.Version,
                 Aliases =
                 {
+                    new Pulumi.Alias { Type = "azure-nextgen:sql/v20200202preview:InstancePool"},
                     new Pulumi.Alias { Type = "azure-nextgen:sql/v20200801preview:InstancePool"},
                 },
             };

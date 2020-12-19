@@ -12,6 +12,7 @@ import (
 )
 
 // Domain ownership Identifier.
+// Latest API Version: 2020-09-01.
 type DomainOwnershipIdentifier struct {
 	pulumi.CustomResourceState
 
@@ -150,15 +151,15 @@ type DomainOwnershipIdentifierInput interface {
 	ToDomainOwnershipIdentifierOutputWithContext(ctx context.Context) DomainOwnershipIdentifierOutput
 }
 
-func (DomainOwnershipIdentifier) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainOwnershipIdentifier)(nil)).Elem()
+func (*DomainOwnershipIdentifier) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainOwnershipIdentifier)(nil))
 }
 
-func (i DomainOwnershipIdentifier) ToDomainOwnershipIdentifierOutput() DomainOwnershipIdentifierOutput {
+func (i *DomainOwnershipIdentifier) ToDomainOwnershipIdentifierOutput() DomainOwnershipIdentifierOutput {
 	return i.ToDomainOwnershipIdentifierOutputWithContext(context.Background())
 }
 
-func (i DomainOwnershipIdentifier) ToDomainOwnershipIdentifierOutputWithContext(ctx context.Context) DomainOwnershipIdentifierOutput {
+func (i *DomainOwnershipIdentifier) ToDomainOwnershipIdentifierOutputWithContext(ctx context.Context) DomainOwnershipIdentifierOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DomainOwnershipIdentifierOutput)
 }
 
@@ -167,7 +168,7 @@ type DomainOwnershipIdentifierOutput struct {
 }
 
 func (DomainOwnershipIdentifierOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainOwnershipIdentifierOutput)(nil)).Elem()
+	return reflect.TypeOf((*DomainOwnershipIdentifier)(nil))
 }
 
 func (o DomainOwnershipIdentifierOutput) ToDomainOwnershipIdentifierOutput() DomainOwnershipIdentifierOutput {

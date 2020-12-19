@@ -12,6 +12,7 @@ namespace Pulumi.AzureNextGen.DigitalTwins.V20200301Preview
     /// <summary>
     /// The description of the DigitalTwins service.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:digitaltwins/v20200301preview:DigitalTwin")]
     public partial class DigitalTwin : Pulumi.CustomResource
     {
         /// <summary>
@@ -95,6 +96,7 @@ namespace Pulumi.AzureNextGen.DigitalTwins.V20200301Preview
                 {
                     new Pulumi.Alias { Type = "azure-nextgen:digitaltwins/latest:DigitalTwin"},
                     new Pulumi.Alias { Type = "azure-nextgen:digitaltwins/v20201031:DigitalTwin"},
+                    new Pulumi.Alias { Type = "azure-nextgen:digitaltwins/v20201201:DigitalTwin"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

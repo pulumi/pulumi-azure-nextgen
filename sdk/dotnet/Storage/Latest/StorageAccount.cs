@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Storage.Latest
 {
     /// <summary>
     /// The storage account.
+    /// Latest API Version: 2019-06-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:storage/latest:StorageAccount")]
     public partial class StorageAccount : Pulumi.CustomResource
     {
         /// <summary>

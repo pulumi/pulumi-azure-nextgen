@@ -12,6 +12,7 @@ import (
 )
 
 // Tag Contract details.
+// Latest API Version: 2019-12-01.
 type TagByProduct struct {
 	pulumi.CustomResourceState
 
@@ -143,15 +144,15 @@ type TagByProductInput interface {
 	ToTagByProductOutputWithContext(ctx context.Context) TagByProductOutput
 }
 
-func (TagByProduct) ElementType() reflect.Type {
-	return reflect.TypeOf((*TagByProduct)(nil)).Elem()
+func (*TagByProduct) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagByProduct)(nil))
 }
 
-func (i TagByProduct) ToTagByProductOutput() TagByProductOutput {
+func (i *TagByProduct) ToTagByProductOutput() TagByProductOutput {
 	return i.ToTagByProductOutputWithContext(context.Background())
 }
 
-func (i TagByProduct) ToTagByProductOutputWithContext(ctx context.Context) TagByProductOutput {
+func (i *TagByProduct) ToTagByProductOutputWithContext(ctx context.Context) TagByProductOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TagByProductOutput)
 }
 
@@ -160,7 +161,7 @@ type TagByProductOutput struct {
 }
 
 func (TagByProductOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TagByProductOutput)(nil)).Elem()
+	return reflect.TypeOf((*TagByProduct)(nil))
 }
 
 func (o TagByProductOutput) ToTagByProductOutput() TagByProductOutput {

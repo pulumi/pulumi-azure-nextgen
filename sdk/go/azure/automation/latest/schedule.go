@@ -12,6 +12,7 @@ import (
 )
 
 // Definition of the schedule.
+// Latest API Version: 2015-10-31.
 type Schedule struct {
 	pulumi.CustomResourceState
 
@@ -237,15 +238,15 @@ type ScheduleInput interface {
 	ToScheduleOutputWithContext(ctx context.Context) ScheduleOutput
 }
 
-func (Schedule) ElementType() reflect.Type {
-	return reflect.TypeOf((*Schedule)(nil)).Elem()
+func (*Schedule) ElementType() reflect.Type {
+	return reflect.TypeOf((*Schedule)(nil))
 }
 
-func (i Schedule) ToScheduleOutput() ScheduleOutput {
+func (i *Schedule) ToScheduleOutput() ScheduleOutput {
 	return i.ToScheduleOutputWithContext(context.Background())
 }
 
-func (i Schedule) ToScheduleOutputWithContext(ctx context.Context) ScheduleOutput {
+func (i *Schedule) ToScheduleOutputWithContext(ctx context.Context) ScheduleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduleOutput)
 }
 
@@ -254,7 +255,7 @@ type ScheduleOutput struct {
 }
 
 func (ScheduleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScheduleOutput)(nil)).Elem()
+	return reflect.TypeOf((*Schedule)(nil))
 }
 
 func (o ScheduleOutput) ToScheduleOutput() ScheduleOutput {

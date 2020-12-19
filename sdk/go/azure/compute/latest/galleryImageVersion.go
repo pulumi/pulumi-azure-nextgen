@@ -12,6 +12,7 @@ import (
 )
 
 // Specifies information about the gallery image version that you want to create or update.
+// Latest API Version: 2020-09-30.
 type GalleryImageVersion struct {
 	pulumi.CustomResourceState
 
@@ -189,15 +190,15 @@ type GalleryImageVersionInput interface {
 	ToGalleryImageVersionOutputWithContext(ctx context.Context) GalleryImageVersionOutput
 }
 
-func (GalleryImageVersion) ElementType() reflect.Type {
-	return reflect.TypeOf((*GalleryImageVersion)(nil)).Elem()
+func (*GalleryImageVersion) ElementType() reflect.Type {
+	return reflect.TypeOf((*GalleryImageVersion)(nil))
 }
 
-func (i GalleryImageVersion) ToGalleryImageVersionOutput() GalleryImageVersionOutput {
+func (i *GalleryImageVersion) ToGalleryImageVersionOutput() GalleryImageVersionOutput {
 	return i.ToGalleryImageVersionOutputWithContext(context.Background())
 }
 
-func (i GalleryImageVersion) ToGalleryImageVersionOutputWithContext(ctx context.Context) GalleryImageVersionOutput {
+func (i *GalleryImageVersion) ToGalleryImageVersionOutputWithContext(ctx context.Context) GalleryImageVersionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GalleryImageVersionOutput)
 }
 
@@ -206,7 +207,7 @@ type GalleryImageVersionOutput struct {
 }
 
 func (GalleryImageVersionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GalleryImageVersionOutput)(nil)).Elem()
+	return reflect.TypeOf((*GalleryImageVersion)(nil))
 }
 
 func (o GalleryImageVersionOutput) ToGalleryImageVersionOutput() GalleryImageVersionOutput {

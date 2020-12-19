@@ -12,6 +12,7 @@ import (
 )
 
 // The view resource format.
+// Latest API Version: 2017-04-26.
 type View struct {
 	pulumi.CustomResourceState
 
@@ -172,15 +173,15 @@ type ViewInput interface {
 	ToViewOutputWithContext(ctx context.Context) ViewOutput
 }
 
-func (View) ElementType() reflect.Type {
-	return reflect.TypeOf((*View)(nil)).Elem()
+func (*View) ElementType() reflect.Type {
+	return reflect.TypeOf((*View)(nil))
 }
 
-func (i View) ToViewOutput() ViewOutput {
+func (i *View) ToViewOutput() ViewOutput {
 	return i.ToViewOutputWithContext(context.Background())
 }
 
-func (i View) ToViewOutputWithContext(ctx context.Context) ViewOutput {
+func (i *View) ToViewOutputWithContext(ctx context.Context) ViewOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ViewOutput)
 }
 
@@ -189,7 +190,7 @@ type ViewOutput struct {
 }
 
 func (ViewOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ViewOutput)(nil)).Elem()
+	return reflect.TypeOf((*View)(nil))
 }
 
 func (o ViewOutput) ToViewOutput() ViewOutput {

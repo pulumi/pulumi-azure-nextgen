@@ -12,6 +12,7 @@ import (
 )
 
 // Configuration of App Service site logs.
+// Latest API Version: 2020-09-01.
 type WebAppDiagnosticLogsConfiguration struct {
 	pulumi.CustomResourceState
 
@@ -179,15 +180,15 @@ type WebAppDiagnosticLogsConfigurationInput interface {
 	ToWebAppDiagnosticLogsConfigurationOutputWithContext(ctx context.Context) WebAppDiagnosticLogsConfigurationOutput
 }
 
-func (WebAppDiagnosticLogsConfiguration) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebAppDiagnosticLogsConfiguration)(nil)).Elem()
+func (*WebAppDiagnosticLogsConfiguration) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAppDiagnosticLogsConfiguration)(nil))
 }
 
-func (i WebAppDiagnosticLogsConfiguration) ToWebAppDiagnosticLogsConfigurationOutput() WebAppDiagnosticLogsConfigurationOutput {
+func (i *WebAppDiagnosticLogsConfiguration) ToWebAppDiagnosticLogsConfigurationOutput() WebAppDiagnosticLogsConfigurationOutput {
 	return i.ToWebAppDiagnosticLogsConfigurationOutputWithContext(context.Background())
 }
 
-func (i WebAppDiagnosticLogsConfiguration) ToWebAppDiagnosticLogsConfigurationOutputWithContext(ctx context.Context) WebAppDiagnosticLogsConfigurationOutput {
+func (i *WebAppDiagnosticLogsConfiguration) ToWebAppDiagnosticLogsConfigurationOutputWithContext(ctx context.Context) WebAppDiagnosticLogsConfigurationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppDiagnosticLogsConfigurationOutput)
 }
 
@@ -196,7 +197,7 @@ type WebAppDiagnosticLogsConfigurationOutput struct {
 }
 
 func (WebAppDiagnosticLogsConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebAppDiagnosticLogsConfigurationOutput)(nil)).Elem()
+	return reflect.TypeOf((*WebAppDiagnosticLogsConfiguration)(nil))
 }
 
 func (o WebAppDiagnosticLogsConfigurationOutput) ToWebAppDiagnosticLogsConfigurationOutput() WebAppDiagnosticLogsConfigurationOutput {

@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.ContainerRegistry.Latest
 {
     /// <summary>
     /// An object that represents a container registry.
+    /// Latest API Version: 2019-05-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:containerregistry/latest:Registry")]
     public partial class Registry : Pulumi.CustomResource
     {
         /// <summary>

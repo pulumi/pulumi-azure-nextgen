@@ -79,6 +79,9 @@ func NewTopic(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-nextgen:servicebus/v20150801:Topic"),
 		},
+		{
+			Type: pulumi.String("azure-nextgen:servicebus/v20180101preview:Topic"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Topic
@@ -254,15 +257,15 @@ type TopicInput interface {
 	ToTopicOutputWithContext(ctx context.Context) TopicOutput
 }
 
-func (Topic) ElementType() reflect.Type {
-	return reflect.TypeOf((*Topic)(nil)).Elem()
+func (*Topic) ElementType() reflect.Type {
+	return reflect.TypeOf((*Topic)(nil))
 }
 
-func (i Topic) ToTopicOutput() TopicOutput {
+func (i *Topic) ToTopicOutput() TopicOutput {
 	return i.ToTopicOutputWithContext(context.Background())
 }
 
-func (i Topic) ToTopicOutputWithContext(ctx context.Context) TopicOutput {
+func (i *Topic) ToTopicOutputWithContext(ctx context.Context) TopicOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TopicOutput)
 }
 
@@ -271,7 +274,7 @@ type TopicOutput struct {
 }
 
 func (TopicOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TopicOutput)(nil)).Elem()
+	return reflect.TypeOf((*Topic)(nil))
 }
 
 func (o TopicOutput) ToTopicOutput() TopicOutput {

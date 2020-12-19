@@ -12,6 +12,7 @@ import (
 )
 
 // An access policy is used to grant users and applications access to the environment. Roles are assigned to service principals in Azure Active Directory. These roles define the actions the principal can perform through the Time Series Insights data plane APIs.
+// Latest API Version: 2020-05-15.
 type AccessPolicy struct {
 	pulumi.CustomResourceState
 
@@ -151,15 +152,15 @@ type AccessPolicyInput interface {
 	ToAccessPolicyOutputWithContext(ctx context.Context) AccessPolicyOutput
 }
 
-func (AccessPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessPolicy)(nil)).Elem()
+func (*AccessPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicy)(nil))
 }
 
-func (i AccessPolicy) ToAccessPolicyOutput() AccessPolicyOutput {
+func (i *AccessPolicy) ToAccessPolicyOutput() AccessPolicyOutput {
 	return i.ToAccessPolicyOutputWithContext(context.Background())
 }
 
-func (i AccessPolicy) ToAccessPolicyOutputWithContext(ctx context.Context) AccessPolicyOutput {
+func (i *AccessPolicy) ToAccessPolicyOutputWithContext(ctx context.Context) AccessPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyOutput)
 }
 
@@ -168,7 +169,7 @@ type AccessPolicyOutput struct {
 }
 
 func (AccessPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*AccessPolicy)(nil))
 }
 
 func (o AccessPolicyOutput) ToAccessPolicyOutput() AccessPolicyOutput {

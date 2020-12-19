@@ -12,6 +12,7 @@ namespace Pulumi.AzureNextGen.ServiceBus.V20170401
     /// <summary>
     /// Description of a namespace authorization rule.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:servicebus/v20170401:TopicAuthorizationRule")]
     public partial class TopicAuthorizationRule : Pulumi.CustomResource
     {
         /// <summary>
@@ -60,6 +61,7 @@ namespace Pulumi.AzureNextGen.ServiceBus.V20170401
                     new Pulumi.Alias { Type = "azure-nextgen:servicebus/latest:TopicAuthorizationRule"},
                     new Pulumi.Alias { Type = "azure-nextgen:servicebus/v20140901:TopicAuthorizationRule"},
                     new Pulumi.Alias { Type = "azure-nextgen:servicebus/v20150801:TopicAuthorizationRule"},
+                    new Pulumi.Alias { Type = "azure-nextgen:servicebus/v20180101preview:TopicAuthorizationRule"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

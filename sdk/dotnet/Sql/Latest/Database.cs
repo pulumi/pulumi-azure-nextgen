@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Sql.Latest
 {
     /// <summary>
     /// Represents a database.
+    /// Latest API Version: 2014-04-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:sql/latest:Database")]
     public partial class Database : Pulumi.CustomResource
     {
         /// <summary>
@@ -267,6 +269,7 @@ namespace Pulumi.AzureNextGen.Sql.Latest
                     new Pulumi.Alias { Type = "azure-nextgen:sql/v20170301preview:Database"},
                     new Pulumi.Alias { Type = "azure-nextgen:sql/v20171001preview:Database"},
                     new Pulumi.Alias { Type = "azure-nextgen:sql/v20190601preview:Database"},
+                    new Pulumi.Alias { Type = "azure-nextgen:sql/v20200202preview:Database"},
                     new Pulumi.Alias { Type = "azure-nextgen:sql/v20200801preview:Database"},
                 },
             };

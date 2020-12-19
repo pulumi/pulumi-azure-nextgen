@@ -12,6 +12,7 @@ import (
 )
 
 // The integration account certificate.
+// Latest API Version: 2019-05-01.
 type IntegrationAccountCertificate struct {
 	pulumi.CustomResourceState
 
@@ -183,15 +184,15 @@ type IntegrationAccountCertificateInput interface {
 	ToIntegrationAccountCertificateOutputWithContext(ctx context.Context) IntegrationAccountCertificateOutput
 }
 
-func (IntegrationAccountCertificate) ElementType() reflect.Type {
-	return reflect.TypeOf((*IntegrationAccountCertificate)(nil)).Elem()
+func (*IntegrationAccountCertificate) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationAccountCertificate)(nil))
 }
 
-func (i IntegrationAccountCertificate) ToIntegrationAccountCertificateOutput() IntegrationAccountCertificateOutput {
+func (i *IntegrationAccountCertificate) ToIntegrationAccountCertificateOutput() IntegrationAccountCertificateOutput {
 	return i.ToIntegrationAccountCertificateOutputWithContext(context.Background())
 }
 
-func (i IntegrationAccountCertificate) ToIntegrationAccountCertificateOutputWithContext(ctx context.Context) IntegrationAccountCertificateOutput {
+func (i *IntegrationAccountCertificate) ToIntegrationAccountCertificateOutputWithContext(ctx context.Context) IntegrationAccountCertificateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationAccountCertificateOutput)
 }
 
@@ -200,7 +201,7 @@ type IntegrationAccountCertificateOutput struct {
 }
 
 func (IntegrationAccountCertificateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IntegrationAccountCertificateOutput)(nil)).Elem()
+	return reflect.TypeOf((*IntegrationAccountCertificate)(nil))
 }
 
 func (o IntegrationAccountCertificateOutput) ToIntegrationAccountCertificateOutput() IntegrationAccountCertificateOutput {

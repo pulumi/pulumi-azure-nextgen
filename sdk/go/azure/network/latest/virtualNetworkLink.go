@@ -12,6 +12,7 @@ import (
 )
 
 // Describes a link to virtual network for a Private DNS zone.
+// Latest API Version: 2020-06-01.
 type VirtualNetworkLink struct {
 	pulumi.CustomResourceState
 
@@ -180,15 +181,15 @@ type VirtualNetworkLinkInput interface {
 	ToVirtualNetworkLinkOutputWithContext(ctx context.Context) VirtualNetworkLinkOutput
 }
 
-func (VirtualNetworkLink) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualNetworkLink)(nil)).Elem()
+func (*VirtualNetworkLink) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetworkLink)(nil))
 }
 
-func (i VirtualNetworkLink) ToVirtualNetworkLinkOutput() VirtualNetworkLinkOutput {
+func (i *VirtualNetworkLink) ToVirtualNetworkLinkOutput() VirtualNetworkLinkOutput {
 	return i.ToVirtualNetworkLinkOutputWithContext(context.Background())
 }
 
-func (i VirtualNetworkLink) ToVirtualNetworkLinkOutputWithContext(ctx context.Context) VirtualNetworkLinkOutput {
+func (i *VirtualNetworkLink) ToVirtualNetworkLinkOutputWithContext(ctx context.Context) VirtualNetworkLinkOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkLinkOutput)
 }
 
@@ -197,7 +198,7 @@ type VirtualNetworkLinkOutput struct {
 }
 
 func (VirtualNetworkLinkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualNetworkLinkOutput)(nil)).Elem()
+	return reflect.TypeOf((*VirtualNetworkLink)(nil))
 }
 
 func (o VirtualNetworkLinkOutput) ToVirtualNetworkLinkOutput() VirtualNetworkLinkOutput {

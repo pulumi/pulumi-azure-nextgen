@@ -12,6 +12,7 @@ import (
 )
 
 // The ImmutabilityPolicy property of a blob container, including Id, resource name, resource type, Etag.
+// Latest API Version: 2019-06-01.
 type BlobContainerImmutabilityPolicy struct {
 	pulumi.CustomResourceState
 
@@ -169,15 +170,15 @@ type BlobContainerImmutabilityPolicyInput interface {
 	ToBlobContainerImmutabilityPolicyOutputWithContext(ctx context.Context) BlobContainerImmutabilityPolicyOutput
 }
 
-func (BlobContainerImmutabilityPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*BlobContainerImmutabilityPolicy)(nil)).Elem()
+func (*BlobContainerImmutabilityPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlobContainerImmutabilityPolicy)(nil))
 }
 
-func (i BlobContainerImmutabilityPolicy) ToBlobContainerImmutabilityPolicyOutput() BlobContainerImmutabilityPolicyOutput {
+func (i *BlobContainerImmutabilityPolicy) ToBlobContainerImmutabilityPolicyOutput() BlobContainerImmutabilityPolicyOutput {
 	return i.ToBlobContainerImmutabilityPolicyOutputWithContext(context.Background())
 }
 
-func (i BlobContainerImmutabilityPolicy) ToBlobContainerImmutabilityPolicyOutputWithContext(ctx context.Context) BlobContainerImmutabilityPolicyOutput {
+func (i *BlobContainerImmutabilityPolicy) ToBlobContainerImmutabilityPolicyOutputWithContext(ctx context.Context) BlobContainerImmutabilityPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BlobContainerImmutabilityPolicyOutput)
 }
 
@@ -186,7 +187,7 @@ type BlobContainerImmutabilityPolicyOutput struct {
 }
 
 func (BlobContainerImmutabilityPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BlobContainerImmutabilityPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*BlobContainerImmutabilityPolicy)(nil))
 }
 
 func (o BlobContainerImmutabilityPolicyOutput) ToBlobContainerImmutabilityPolicyOutput() BlobContainerImmutabilityPolicyOutput {

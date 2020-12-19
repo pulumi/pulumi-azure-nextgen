@@ -12,6 +12,7 @@ namespace Pulumi.AzureNextGen.ServiceBus.V20170401
     /// <summary>
     /// Description of a namespace authorization rule.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:servicebus/v20170401:QueueAuthorizationRule")]
     public partial class QueueAuthorizationRule : Pulumi.CustomResource
     {
         /// <summary>
@@ -60,6 +61,7 @@ namespace Pulumi.AzureNextGen.ServiceBus.V20170401
                     new Pulumi.Alias { Type = "azure-nextgen:servicebus/latest:QueueAuthorizationRule"},
                     new Pulumi.Alias { Type = "azure-nextgen:servicebus/v20140901:QueueAuthorizationRule"},
                     new Pulumi.Alias { Type = "azure-nextgen:servicebus/v20150801:QueueAuthorizationRule"},
+                    new Pulumi.Alias { Type = "azure-nextgen:servicebus/v20180101preview:QueueAuthorizationRule"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

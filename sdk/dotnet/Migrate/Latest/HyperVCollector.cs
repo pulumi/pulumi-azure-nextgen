@@ -9,6 +9,10 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AzureNextGen.Migrate.Latest
 {
+    /// <summary>
+    /// Latest API Version: 2019-10-01.
+    /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:migrate/latest:HyperVCollector")]
     public partial class HyperVCollector : Pulumi.CustomResource
     {
         [Output("eTag")]

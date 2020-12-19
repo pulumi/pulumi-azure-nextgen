@@ -229,7 +229,7 @@ type managedDatabaseArgs struct {
 	ManagedInstanceName string `pulumi:"managedInstanceName"`
 	// The resource identifier of the recoverable database associated with create operation of this database.
 	RecoverableDatabaseId *string `pulumi:"recoverableDatabaseId"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The restorable dropped database resource id to restore when creating this database.
 	RestorableDroppedDatabaseId *string `pulumi:"restorableDroppedDatabaseId"`
@@ -267,7 +267,7 @@ type ManagedDatabaseArgs struct {
 	ManagedInstanceName pulumi.StringInput
 	// The resource identifier of the recoverable database associated with create operation of this database.
 	RecoverableDatabaseId pulumi.StringPtrInput
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput
 	// The restorable dropped database resource id to restore when creating this database.
 	RestorableDroppedDatabaseId pulumi.StringPtrInput
@@ -294,15 +294,15 @@ type ManagedDatabaseInput interface {
 	ToManagedDatabaseOutputWithContext(ctx context.Context) ManagedDatabaseOutput
 }
 
-func (ManagedDatabase) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedDatabase)(nil)).Elem()
+func (*ManagedDatabase) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedDatabase)(nil))
 }
 
-func (i ManagedDatabase) ToManagedDatabaseOutput() ManagedDatabaseOutput {
+func (i *ManagedDatabase) ToManagedDatabaseOutput() ManagedDatabaseOutput {
 	return i.ToManagedDatabaseOutputWithContext(context.Background())
 }
 
-func (i ManagedDatabase) ToManagedDatabaseOutputWithContext(ctx context.Context) ManagedDatabaseOutput {
+func (i *ManagedDatabase) ToManagedDatabaseOutputWithContext(ctx context.Context) ManagedDatabaseOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedDatabaseOutput)
 }
 
@@ -311,7 +311,7 @@ type ManagedDatabaseOutput struct {
 }
 
 func (ManagedDatabaseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedDatabaseOutput)(nil)).Elem()
+	return reflect.TypeOf((*ManagedDatabase)(nil))
 }
 
 func (o ManagedDatabaseOutput) ToManagedDatabaseOutput() ManagedDatabaseOutput {

@@ -12,6 +12,7 @@ import (
 )
 
 // VirtualWAN Resource.
+// Latest API Version: 2020-07-01.
 type VirtualWan struct {
 	pulumi.CustomResourceState
 
@@ -253,15 +254,15 @@ type VirtualWanInput interface {
 	ToVirtualWanOutputWithContext(ctx context.Context) VirtualWanOutput
 }
 
-func (VirtualWan) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualWan)(nil)).Elem()
+func (*VirtualWan) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualWan)(nil))
 }
 
-func (i VirtualWan) ToVirtualWanOutput() VirtualWanOutput {
+func (i *VirtualWan) ToVirtualWanOutput() VirtualWanOutput {
 	return i.ToVirtualWanOutputWithContext(context.Background())
 }
 
-func (i VirtualWan) ToVirtualWanOutputWithContext(ctx context.Context) VirtualWanOutput {
+func (i *VirtualWan) ToVirtualWanOutputWithContext(ctx context.Context) VirtualWanOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualWanOutput)
 }
 
@@ -270,7 +271,7 @@ type VirtualWanOutput struct {
 }
 
 func (VirtualWanOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualWanOutput)(nil)).Elem()
+	return reflect.TypeOf((*VirtualWan)(nil))
 }
 
 func (o VirtualWanOutput) ToVirtualWanOutput() VirtualWanOutput {

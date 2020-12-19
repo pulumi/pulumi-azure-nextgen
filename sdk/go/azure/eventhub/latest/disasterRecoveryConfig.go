@@ -12,6 +12,7 @@ import (
 )
 
 // Single item in List or Get Alias(Disaster Recovery configuration) operation
+// Latest API Version: 2017-04-01.
 type DisasterRecoveryConfig struct {
 	pulumi.CustomResourceState
 
@@ -153,15 +154,15 @@ type DisasterRecoveryConfigInput interface {
 	ToDisasterRecoveryConfigOutputWithContext(ctx context.Context) DisasterRecoveryConfigOutput
 }
 
-func (DisasterRecoveryConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*DisasterRecoveryConfig)(nil)).Elem()
+func (*DisasterRecoveryConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisasterRecoveryConfig)(nil))
 }
 
-func (i DisasterRecoveryConfig) ToDisasterRecoveryConfigOutput() DisasterRecoveryConfigOutput {
+func (i *DisasterRecoveryConfig) ToDisasterRecoveryConfigOutput() DisasterRecoveryConfigOutput {
 	return i.ToDisasterRecoveryConfigOutputWithContext(context.Background())
 }
 
-func (i DisasterRecoveryConfig) ToDisasterRecoveryConfigOutputWithContext(ctx context.Context) DisasterRecoveryConfigOutput {
+func (i *DisasterRecoveryConfig) ToDisasterRecoveryConfigOutputWithContext(ctx context.Context) DisasterRecoveryConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DisasterRecoveryConfigOutput)
 }
 
@@ -170,7 +171,7 @@ type DisasterRecoveryConfigOutput struct {
 }
 
 func (DisasterRecoveryConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DisasterRecoveryConfigOutput)(nil)).Elem()
+	return reflect.TypeOf((*DisasterRecoveryConfig)(nil))
 }
 
 func (o DisasterRecoveryConfigOutput) ToDisasterRecoveryConfigOutput() DisasterRecoveryConfigOutput {

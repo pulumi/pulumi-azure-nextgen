@@ -12,6 +12,7 @@ namespace Pulumi.AzureNextGen.NetApp.V20200501
     /// <summary>
     /// Snapshot policy information
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:netapp/v20200501:SnapshotPolicy")]
     public partial class SnapshotPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -103,6 +104,7 @@ namespace Pulumi.AzureNextGen.NetApp.V20200501
                     new Pulumi.Alias { Type = "azure-nextgen:netapp/v20200601:SnapshotPolicy"},
                     new Pulumi.Alias { Type = "azure-nextgen:netapp/v20200701:SnapshotPolicy"},
                     new Pulumi.Alias { Type = "azure-nextgen:netapp/v20200801:SnapshotPolicy"},
+                    new Pulumi.Alias { Type = "azure-nextgen:netapp/v20200901:SnapshotPolicy"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

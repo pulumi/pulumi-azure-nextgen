@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Migrate.Latest
 {
     /// <summary>
     /// A group created in a Migration project.
+    /// Latest API Version: 2019-10-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:migrate/latest:Group")]
     public partial class Group : Pulumi.CustomResource
     {
         /// <summary>

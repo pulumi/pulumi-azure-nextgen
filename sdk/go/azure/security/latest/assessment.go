@@ -12,6 +12,7 @@ import (
 )
 
 // Security assessment on a resource
+// Latest API Version: 2020-01-01.
 type Assessment struct {
 	pulumi.CustomResourceState
 
@@ -176,15 +177,15 @@ type AssessmentInput interface {
 	ToAssessmentOutputWithContext(ctx context.Context) AssessmentOutput
 }
 
-func (Assessment) ElementType() reflect.Type {
-	return reflect.TypeOf((*Assessment)(nil)).Elem()
+func (*Assessment) ElementType() reflect.Type {
+	return reflect.TypeOf((*Assessment)(nil))
 }
 
-func (i Assessment) ToAssessmentOutput() AssessmentOutput {
+func (i *Assessment) ToAssessmentOutput() AssessmentOutput {
 	return i.ToAssessmentOutputWithContext(context.Background())
 }
 
-func (i Assessment) ToAssessmentOutputWithContext(ctx context.Context) AssessmentOutput {
+func (i *Assessment) ToAssessmentOutputWithContext(ctx context.Context) AssessmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AssessmentOutput)
 }
 
@@ -193,7 +194,7 @@ type AssessmentOutput struct {
 }
 
 func (AssessmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssessmentOutput)(nil)).Elem()
+	return reflect.TypeOf((*Assessment)(nil))
 }
 
 func (o AssessmentOutput) ToAssessmentOutput() AssessmentOutput {

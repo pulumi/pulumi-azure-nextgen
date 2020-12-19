@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.DBforPostgreSQL.Latest
 {
     /// <summary>
     /// Represents a server firewall rule.
+    /// Latest API Version: 2017-12-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:dbforpostgresql/latest:FirewallRule")]
     public partial class FirewallRule : Pulumi.CustomResource
     {
         /// <summary>

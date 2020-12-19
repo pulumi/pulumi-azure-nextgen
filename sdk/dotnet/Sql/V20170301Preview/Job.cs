@@ -12,6 +12,7 @@ namespace Pulumi.AzureNextGen.Sql.V20170301Preview
     /// <summary>
     /// A job.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:sql/v20170301preview:Job")]
     public partial class Job : Pulumi.CustomResource
     {
         /// <summary>
@@ -69,6 +70,7 @@ namespace Pulumi.AzureNextGen.Sql.V20170301Preview
                 Version = Utilities.Version,
                 Aliases =
                 {
+                    new Pulumi.Alias { Type = "azure-nextgen:sql/v20200202preview:Job"},
                     new Pulumi.Alias { Type = "azure-nextgen:sql/v20200801preview:Job"},
                 },
             };

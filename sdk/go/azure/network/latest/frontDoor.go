@@ -12,6 +12,7 @@ import (
 )
 
 // Front Door represents a collection of backend endpoints to route traffic to along with rules that specify how traffic is sent there.
+// Latest API Version: 2020-05-01.
 type FrontDoor struct {
 	pulumi.CustomResourceState
 
@@ -250,15 +251,15 @@ type FrontDoorInput interface {
 	ToFrontDoorOutputWithContext(ctx context.Context) FrontDoorOutput
 }
 
-func (FrontDoor) ElementType() reflect.Type {
-	return reflect.TypeOf((*FrontDoor)(nil)).Elem()
+func (*FrontDoor) ElementType() reflect.Type {
+	return reflect.TypeOf((*FrontDoor)(nil))
 }
 
-func (i FrontDoor) ToFrontDoorOutput() FrontDoorOutput {
+func (i *FrontDoor) ToFrontDoorOutput() FrontDoorOutput {
 	return i.ToFrontDoorOutputWithContext(context.Background())
 }
 
-func (i FrontDoor) ToFrontDoorOutputWithContext(ctx context.Context) FrontDoorOutput {
+func (i *FrontDoor) ToFrontDoorOutputWithContext(ctx context.Context) FrontDoorOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FrontDoorOutput)
 }
 
@@ -267,7 +268,7 @@ type FrontDoorOutput struct {
 }
 
 func (FrontDoorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FrontDoorOutput)(nil)).Elem()
+	return reflect.TypeOf((*FrontDoor)(nil))
 }
 
 func (o FrontDoorOutput) ToFrontDoorOutput() FrontDoorOutput {

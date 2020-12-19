@@ -62,6 +62,9 @@ func NewInstanceFailoverGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-nextgen:sql/v20171001preview:InstanceFailoverGroup"),
 		},
+		{
+			Type: pulumi.String("azure-nextgen:sql/v20200202preview:InstanceFailoverGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource InstanceFailoverGroup
@@ -173,15 +176,15 @@ type InstanceFailoverGroupInput interface {
 	ToInstanceFailoverGroupOutputWithContext(ctx context.Context) InstanceFailoverGroupOutput
 }
 
-func (InstanceFailoverGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceFailoverGroup)(nil)).Elem()
+func (*InstanceFailoverGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFailoverGroup)(nil))
 }
 
-func (i InstanceFailoverGroup) ToInstanceFailoverGroupOutput() InstanceFailoverGroupOutput {
+func (i *InstanceFailoverGroup) ToInstanceFailoverGroupOutput() InstanceFailoverGroupOutput {
 	return i.ToInstanceFailoverGroupOutputWithContext(context.Background())
 }
 
-func (i InstanceFailoverGroup) ToInstanceFailoverGroupOutputWithContext(ctx context.Context) InstanceFailoverGroupOutput {
+func (i *InstanceFailoverGroup) ToInstanceFailoverGroupOutputWithContext(ctx context.Context) InstanceFailoverGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceFailoverGroupOutput)
 }
 
@@ -190,7 +193,7 @@ type InstanceFailoverGroupOutput struct {
 }
 
 func (InstanceFailoverGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceFailoverGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*InstanceFailoverGroup)(nil))
 }
 
 func (o InstanceFailoverGroupOutput) ToInstanceFailoverGroupOutput() InstanceFailoverGroupOutput {

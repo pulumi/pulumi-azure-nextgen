@@ -12,6 +12,7 @@ import (
 )
 
 // Snapshot resource.
+// Latest API Version: 2020-06-30.
 type Snapshot struct {
 	pulumi.CustomResourceState
 
@@ -294,15 +295,15 @@ type SnapshotInput interface {
 	ToSnapshotOutputWithContext(ctx context.Context) SnapshotOutput
 }
 
-func (Snapshot) ElementType() reflect.Type {
-	return reflect.TypeOf((*Snapshot)(nil)).Elem()
+func (*Snapshot) ElementType() reflect.Type {
+	return reflect.TypeOf((*Snapshot)(nil))
 }
 
-func (i Snapshot) ToSnapshotOutput() SnapshotOutput {
+func (i *Snapshot) ToSnapshotOutput() SnapshotOutput {
 	return i.ToSnapshotOutputWithContext(context.Background())
 }
 
-func (i Snapshot) ToSnapshotOutputWithContext(ctx context.Context) SnapshotOutput {
+func (i *Snapshot) ToSnapshotOutputWithContext(ctx context.Context) SnapshotOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SnapshotOutput)
 }
 
@@ -311,7 +312,7 @@ type SnapshotOutput struct {
 }
 
 func (SnapshotOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SnapshotOutput)(nil)).Elem()
+	return reflect.TypeOf((*Snapshot)(nil))
 }
 
 func (o SnapshotOutput) ToSnapshotOutput() SnapshotOutput {

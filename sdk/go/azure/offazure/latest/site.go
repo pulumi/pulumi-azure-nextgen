@@ -12,6 +12,7 @@ import (
 )
 
 // Site REST Resource.
+// Latest API Version: 2020-07-07.
 type Site struct {
 	pulumi.CustomResourceState
 
@@ -147,15 +148,15 @@ type SiteInput interface {
 	ToSiteOutputWithContext(ctx context.Context) SiteOutput
 }
 
-func (Site) ElementType() reflect.Type {
-	return reflect.TypeOf((*Site)(nil)).Elem()
+func (*Site) ElementType() reflect.Type {
+	return reflect.TypeOf((*Site)(nil))
 }
 
-func (i Site) ToSiteOutput() SiteOutput {
+func (i *Site) ToSiteOutput() SiteOutput {
 	return i.ToSiteOutputWithContext(context.Background())
 }
 
-func (i Site) ToSiteOutputWithContext(ctx context.Context) SiteOutput {
+func (i *Site) ToSiteOutputWithContext(ctx context.Context) SiteOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SiteOutput)
 }
 
@@ -164,7 +165,7 @@ type SiteOutput struct {
 }
 
 func (SiteOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SiteOutput)(nil)).Elem()
+	return reflect.TypeOf((*Site)(nil))
 }
 
 func (o SiteOutput) ToSiteOutput() SiteOutput {

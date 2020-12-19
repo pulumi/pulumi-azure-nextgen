@@ -12,6 +12,7 @@ import (
 )
 
 // A Streaming Policy resource
+// Latest API Version: 2020-05-01.
 type StreamingPolicy struct {
 	pulumi.CustomResourceState
 
@@ -177,15 +178,15 @@ type StreamingPolicyInput interface {
 	ToStreamingPolicyOutputWithContext(ctx context.Context) StreamingPolicyOutput
 }
 
-func (StreamingPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*StreamingPolicy)(nil)).Elem()
+func (*StreamingPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamingPolicy)(nil))
 }
 
-func (i StreamingPolicy) ToStreamingPolicyOutput() StreamingPolicyOutput {
+func (i *StreamingPolicy) ToStreamingPolicyOutput() StreamingPolicyOutput {
 	return i.ToStreamingPolicyOutputWithContext(context.Background())
 }
 
-func (i StreamingPolicy) ToStreamingPolicyOutputWithContext(ctx context.Context) StreamingPolicyOutput {
+func (i *StreamingPolicy) ToStreamingPolicyOutputWithContext(ctx context.Context) StreamingPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StreamingPolicyOutput)
 }
 
@@ -194,7 +195,7 @@ type StreamingPolicyOutput struct {
 }
 
 func (StreamingPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StreamingPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*StreamingPolicy)(nil))
 }
 
 func (o StreamingPolicyOutput) ToStreamingPolicyOutput() StreamingPolicyOutput {

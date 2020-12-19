@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Storage.Latest
 {
     /// <summary>
     /// Properties of the blob container, including Id, resource name, resource type, Etag.
+    /// Latest API Version: 2019-06-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:storage/latest:BlobContainer")]
     public partial class BlobContainer : Pulumi.CustomResource
     {
         /// <summary>

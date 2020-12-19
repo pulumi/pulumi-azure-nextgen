@@ -12,6 +12,7 @@ import (
 )
 
 // Class representing an data connection.
+// Latest API Version: 2020-09-18.
 type DataConnection struct {
 	pulumi.CustomResourceState
 
@@ -160,15 +161,15 @@ type DataConnectionInput interface {
 	ToDataConnectionOutputWithContext(ctx context.Context) DataConnectionOutput
 }
 
-func (DataConnection) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataConnection)(nil)).Elem()
+func (*DataConnection) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataConnection)(nil))
 }
 
-func (i DataConnection) ToDataConnectionOutput() DataConnectionOutput {
+func (i *DataConnection) ToDataConnectionOutput() DataConnectionOutput {
 	return i.ToDataConnectionOutputWithContext(context.Background())
 }
 
-func (i DataConnection) ToDataConnectionOutputWithContext(ctx context.Context) DataConnectionOutput {
+func (i *DataConnection) ToDataConnectionOutputWithContext(ctx context.Context) DataConnectionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DataConnectionOutput)
 }
 
@@ -177,7 +178,7 @@ type DataConnectionOutput struct {
 }
 
 func (DataConnectionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataConnectionOutput)(nil)).Elem()
+	return reflect.TypeOf((*DataConnection)(nil))
 }
 
 func (o DataConnectionOutput) ToDataConnectionOutput() DataConnectionOutput {

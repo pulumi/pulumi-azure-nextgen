@@ -12,6 +12,7 @@ import (
 )
 
 // Content type contract details.
+// Latest API Version: 2019-12-01.
 type ContentType struct {
 	pulumi.CustomResourceState
 
@@ -133,15 +134,15 @@ type ContentTypeInput interface {
 	ToContentTypeOutputWithContext(ctx context.Context) ContentTypeOutput
 }
 
-func (ContentType) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContentType)(nil)).Elem()
+func (*ContentType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContentType)(nil))
 }
 
-func (i ContentType) ToContentTypeOutput() ContentTypeOutput {
+func (i *ContentType) ToContentTypeOutput() ContentTypeOutput {
 	return i.ToContentTypeOutputWithContext(context.Background())
 }
 
-func (i ContentType) ToContentTypeOutputWithContext(ctx context.Context) ContentTypeOutput {
+func (i *ContentType) ToContentTypeOutputWithContext(ctx context.Context) ContentTypeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ContentTypeOutput)
 }
 
@@ -150,7 +151,7 @@ type ContentTypeOutput struct {
 }
 
 func (ContentTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContentTypeOutput)(nil)).Elem()
+	return reflect.TypeOf((*ContentType)(nil))
 }
 
 func (o ContentTypeOutput) ToContentTypeOutput() ContentTypeOutput {

@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Sql.Latest
 {
     /// <summary>
     /// A database geo backup policy.
+    /// Latest API Version: 2014-04-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:sql/latest:GeoBackupPolicy")]
     public partial class GeoBackupPolicy : Pulumi.CustomResource
     {
         /// <summary>

@@ -12,6 +12,7 @@ import (
 )
 
 // Issue Attachment Contract details.
+// Latest API Version: 2019-12-01.
 type ApiIssueAttachment struct {
 	pulumi.CustomResourceState
 
@@ -183,15 +184,15 @@ type ApiIssueAttachmentInput interface {
 	ToApiIssueAttachmentOutputWithContext(ctx context.Context) ApiIssueAttachmentOutput
 }
 
-func (ApiIssueAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApiIssueAttachment)(nil)).Elem()
+func (*ApiIssueAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiIssueAttachment)(nil))
 }
 
-func (i ApiIssueAttachment) ToApiIssueAttachmentOutput() ApiIssueAttachmentOutput {
+func (i *ApiIssueAttachment) ToApiIssueAttachmentOutput() ApiIssueAttachmentOutput {
 	return i.ToApiIssueAttachmentOutputWithContext(context.Background())
 }
 
-func (i ApiIssueAttachment) ToApiIssueAttachmentOutputWithContext(ctx context.Context) ApiIssueAttachmentOutput {
+func (i *ApiIssueAttachment) ToApiIssueAttachmentOutputWithContext(ctx context.Context) ApiIssueAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApiIssueAttachmentOutput)
 }
 
@@ -200,7 +201,7 @@ type ApiIssueAttachmentOutput struct {
 }
 
 func (ApiIssueAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApiIssueAttachmentOutput)(nil)).Elem()
+	return reflect.TypeOf((*ApiIssueAttachment)(nil))
 }
 
 func (o ApiIssueAttachmentOutput) ToApiIssueAttachmentOutput() ApiIssueAttachmentOutput {

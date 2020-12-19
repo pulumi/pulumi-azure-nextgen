@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Sql.Latest
 {
     /// <summary>
     /// An server Active Directory Administrator.
+    /// Latest API Version: 2014-04-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:sql/latest:ServerAzureADAdministrator")]
     public partial class ServerAzureADAdministrator : Pulumi.CustomResource
     {
         /// <summary>
@@ -78,6 +80,7 @@ namespace Pulumi.AzureNextGen.Sql.Latest
                     new Pulumi.Alias { Type = "azure-nextgen:sql/v20140401:ServerAzureADAdministrator"},
                     new Pulumi.Alias { Type = "azure-nextgen:sql/v20180601preview:ServerAzureADAdministrator"},
                     new Pulumi.Alias { Type = "azure-nextgen:sql/v20190601preview:ServerAzureADAdministrator"},
+                    new Pulumi.Alias { Type = "azure-nextgen:sql/v20200202preview:ServerAzureADAdministrator"},
                     new Pulumi.Alias { Type = "azure-nextgen:sql/v20200801preview:ServerAzureADAdministrator"},
                 },
             };

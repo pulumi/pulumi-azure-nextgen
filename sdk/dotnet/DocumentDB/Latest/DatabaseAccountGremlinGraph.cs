@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.DocumentDB.Latest
 {
     /// <summary>
     /// An Azure Cosmos DB Gremlin graph.
+    /// Latest API Version: 2016-03-31.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:documentdb/latest:DatabaseAccountGremlinGraph")]
     public partial class DatabaseAccountGremlinGraph : Pulumi.CustomResource
     {
         /// <summary>

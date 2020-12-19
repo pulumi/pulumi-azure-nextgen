@@ -60,6 +60,9 @@ func NewInstancePool(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-nextgen:sql/v20200202preview:InstancePool"),
+		},
+		{
 			Type: pulumi.String("azure-nextgen:sql/v20200801preview:InstancePool"),
 		},
 	})
@@ -177,15 +180,15 @@ type InstancePoolInput interface {
 	ToInstancePoolOutputWithContext(ctx context.Context) InstancePoolOutput
 }
 
-func (InstancePool) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstancePool)(nil)).Elem()
+func (*InstancePool) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePool)(nil))
 }
 
-func (i InstancePool) ToInstancePoolOutput() InstancePoolOutput {
+func (i *InstancePool) ToInstancePoolOutput() InstancePoolOutput {
 	return i.ToInstancePoolOutputWithContext(context.Background())
 }
 
-func (i InstancePool) ToInstancePoolOutputWithContext(ctx context.Context) InstancePoolOutput {
+func (i *InstancePool) ToInstancePoolOutputWithContext(ctx context.Context) InstancePoolOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstancePoolOutput)
 }
 
@@ -194,7 +197,7 @@ type InstancePoolOutput struct {
 }
 
 func (InstancePoolOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstancePoolOutput)(nil)).Elem()
+	return reflect.TypeOf((*InstancePool)(nil))
 }
 
 func (o InstancePoolOutput) ToInstancePoolOutput() InstancePoolOutput {

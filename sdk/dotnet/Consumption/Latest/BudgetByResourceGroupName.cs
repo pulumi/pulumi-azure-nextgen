@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Consumption.Latest
 {
     /// <summary>
     /// A budget resource.
+    /// Latest API Version: 2018-10-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:consumption/latest:BudgetByResourceGroupName")]
     public partial class BudgetByResourceGroupName : Pulumi.CustomResource
     {
         /// <summary>

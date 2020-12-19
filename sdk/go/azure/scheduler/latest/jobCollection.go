@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Latest API Version: 2016-03-01.
 type JobCollection struct {
 	pulumi.CustomResourceState
 
@@ -144,15 +145,15 @@ type JobCollectionInput interface {
 	ToJobCollectionOutputWithContext(ctx context.Context) JobCollectionOutput
 }
 
-func (JobCollection) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobCollection)(nil)).Elem()
+func (*JobCollection) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobCollection)(nil))
 }
 
-func (i JobCollection) ToJobCollectionOutput() JobCollectionOutput {
+func (i *JobCollection) ToJobCollectionOutput() JobCollectionOutput {
 	return i.ToJobCollectionOutputWithContext(context.Background())
 }
 
-func (i JobCollection) ToJobCollectionOutputWithContext(ctx context.Context) JobCollectionOutput {
+func (i *JobCollection) ToJobCollectionOutputWithContext(ctx context.Context) JobCollectionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(JobCollectionOutput)
 }
 
@@ -161,7 +162,7 @@ type JobCollectionOutput struct {
 }
 
 func (JobCollectionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobCollectionOutput)(nil)).Elem()
+	return reflect.TypeOf((*JobCollection)(nil))
 }
 
 func (o JobCollectionOutput) ToJobCollectionOutput() JobCollectionOutput {

@@ -12,6 +12,7 @@ import (
 )
 
 // Subnet in a virtual network resource.
+// Latest API Version: 2020-07-01.
 type Subnet struct {
 	pulumi.CustomResourceState
 
@@ -371,15 +372,15 @@ type SubnetInput interface {
 	ToSubnetOutputWithContext(ctx context.Context) SubnetOutput
 }
 
-func (Subnet) ElementType() reflect.Type {
-	return reflect.TypeOf((*Subnet)(nil)).Elem()
+func (*Subnet) ElementType() reflect.Type {
+	return reflect.TypeOf((*Subnet)(nil))
 }
 
-func (i Subnet) ToSubnetOutput() SubnetOutput {
+func (i *Subnet) ToSubnetOutput() SubnetOutput {
 	return i.ToSubnetOutputWithContext(context.Background())
 }
 
-func (i Subnet) ToSubnetOutputWithContext(ctx context.Context) SubnetOutput {
+func (i *Subnet) ToSubnetOutputWithContext(ctx context.Context) SubnetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetOutput)
 }
 
@@ -388,7 +389,7 @@ type SubnetOutput struct {
 }
 
 func (SubnetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubnetOutput)(nil)).Elem()
+	return reflect.TypeOf((*Subnet)(nil))
 }
 
 func (o SubnetOutput) ToSubnetOutput() SubnetOutput {

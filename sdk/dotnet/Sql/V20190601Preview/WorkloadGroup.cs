@@ -12,6 +12,7 @@ namespace Pulumi.AzureNextGen.Sql.V20190601Preview
     /// <summary>
     /// Workload group operations for a data warehouse
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:sql/v20190601preview:WorkloadGroup")]
     public partial class WorkloadGroup : Pulumi.CustomResource
     {
         /// <summary>
@@ -87,6 +88,7 @@ namespace Pulumi.AzureNextGen.Sql.V20190601Preview
                 Version = Utilities.Version,
                 Aliases =
                 {
+                    new Pulumi.Alias { Type = "azure-nextgen:sql/v20200202preview:WorkloadGroup"},
                     new Pulumi.Alias { Type = "azure-nextgen:sql/v20200801preview:WorkloadGroup"},
                 },
             };

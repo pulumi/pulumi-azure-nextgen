@@ -12,6 +12,7 @@ import (
 )
 
 // disk access resource.
+// Latest API Version: 2020-06-30.
 type DiskAccess struct {
 	pulumi.CustomResourceState
 
@@ -149,15 +150,15 @@ type DiskAccessInput interface {
 	ToDiskAccessOutputWithContext(ctx context.Context) DiskAccessOutput
 }
 
-func (DiskAccess) ElementType() reflect.Type {
-	return reflect.TypeOf((*DiskAccess)(nil)).Elem()
+func (*DiskAccess) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskAccess)(nil))
 }
 
-func (i DiskAccess) ToDiskAccessOutput() DiskAccessOutput {
+func (i *DiskAccess) ToDiskAccessOutput() DiskAccessOutput {
 	return i.ToDiskAccessOutputWithContext(context.Background())
 }
 
-func (i DiskAccess) ToDiskAccessOutputWithContext(ctx context.Context) DiskAccessOutput {
+func (i *DiskAccess) ToDiskAccessOutputWithContext(ctx context.Context) DiskAccessOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DiskAccessOutput)
 }
 
@@ -166,7 +167,7 @@ type DiskAccessOutput struct {
 }
 
 func (DiskAccessOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DiskAccessOutput)(nil)).Elem()
+	return reflect.TypeOf((*DiskAccess)(nil))
 }
 
 func (o DiskAccessOutput) ToDiskAccessOutput() DiskAccessOutput {

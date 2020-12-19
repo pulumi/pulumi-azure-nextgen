@@ -12,6 +12,7 @@ import (
 )
 
 // A reference data set provides metadata about the events in an environment. Metadata in the reference data set will be joined with events as they are read from event sources. The metadata that makes up the reference data set is uploaded or modified through the Time Series Insights data plane APIs.
+// Latest API Version: 2020-05-15.
 type ReferenceDataSet struct {
 	pulumi.CustomResourceState
 
@@ -179,15 +180,15 @@ type ReferenceDataSetInput interface {
 	ToReferenceDataSetOutputWithContext(ctx context.Context) ReferenceDataSetOutput
 }
 
-func (ReferenceDataSet) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReferenceDataSet)(nil)).Elem()
+func (*ReferenceDataSet) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReferenceDataSet)(nil))
 }
 
-func (i ReferenceDataSet) ToReferenceDataSetOutput() ReferenceDataSetOutput {
+func (i *ReferenceDataSet) ToReferenceDataSetOutput() ReferenceDataSetOutput {
 	return i.ToReferenceDataSetOutputWithContext(context.Background())
 }
 
-func (i ReferenceDataSet) ToReferenceDataSetOutputWithContext(ctx context.Context) ReferenceDataSetOutput {
+func (i *ReferenceDataSet) ToReferenceDataSetOutputWithContext(ctx context.Context) ReferenceDataSetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReferenceDataSetOutput)
 }
 
@@ -196,7 +197,7 @@ type ReferenceDataSetOutput struct {
 }
 
 func (ReferenceDataSetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReferenceDataSetOutput)(nil)).Elem()
+	return reflect.TypeOf((*ReferenceDataSet)(nil))
 }
 
 func (o ReferenceDataSetOutput) ToReferenceDataSetOutput() ReferenceDataSetOutput {

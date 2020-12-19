@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.WindowsIoT.Latest
 {
     /// <summary>
     /// The description of the Windows IoT Device Service.
+    /// Latest API Version: 2019-06-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:windowsiot/latest:Service")]
     public partial class Service : Pulumi.CustomResource
     {
         /// <summary>

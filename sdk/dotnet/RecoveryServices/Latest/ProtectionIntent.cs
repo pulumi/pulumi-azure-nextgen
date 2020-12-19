@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.RecoveryServices.Latest
 {
     /// <summary>
     /// Base class for backup ProtectionIntent.
+    /// Latest API Version: 2017-07-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:recoveryservices/latest:ProtectionIntent")]
     public partial class ProtectionIntent : Pulumi.CustomResource
     {
         /// <summary>

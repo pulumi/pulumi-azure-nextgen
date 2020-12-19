@@ -12,6 +12,7 @@ import (
 )
 
 // A class represent a SignalR service resource.
+// Latest API Version: 2020-05-01.
 type SignalR struct {
 	pulumi.CustomResourceState
 
@@ -276,15 +277,15 @@ type SignalRInput interface {
 	ToSignalROutputWithContext(ctx context.Context) SignalROutput
 }
 
-func (SignalR) ElementType() reflect.Type {
-	return reflect.TypeOf((*SignalR)(nil)).Elem()
+func (*SignalR) ElementType() reflect.Type {
+	return reflect.TypeOf((*SignalR)(nil))
 }
 
-func (i SignalR) ToSignalROutput() SignalROutput {
+func (i *SignalR) ToSignalROutput() SignalROutput {
 	return i.ToSignalROutputWithContext(context.Background())
 }
 
-func (i SignalR) ToSignalROutputWithContext(ctx context.Context) SignalROutput {
+func (i *SignalR) ToSignalROutputWithContext(ctx context.Context) SignalROutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SignalROutput)
 }
 
@@ -293,7 +294,7 @@ type SignalROutput struct {
 }
 
 func (SignalROutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SignalROutput)(nil)).Elem()
+	return reflect.TypeOf((*SignalR)(nil))
 }
 
 func (o SignalROutput) ToSignalROutput() SignalROutput {

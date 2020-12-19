@@ -596,6 +596,7 @@ class ContinuousModeBackupPolicyArgs:
         """
         The object representing continuous mode backup policy.
         :param pulumi.Input[str] type: Describes the mode of backups.
+               Expected value is 'Continuous'.
         """
         pulumi.set(__self__, "type", 'Continuous')
 
@@ -604,6 +605,7 @@ class ContinuousModeBackupPolicyArgs:
     def type(self) -> pulumi.Input[str]:
         """
         Describes the mode of backups.
+        Expected value is 'Continuous'.
         """
         return pulumi.get(self, "type")
 
@@ -746,8 +748,8 @@ class DatabaseRestoreResourceArgs:
                  database_name: Optional[pulumi.Input[str]] = None):
         """
         Specific Databases to restore.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] collection_names: The names of the collections to restore.
-        :param pulumi.Input[str] database_name: The name of the database to restore.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] collection_names: The names of the collections available for restore.
+        :param pulumi.Input[str] database_name: The name of the database available for restore.
         """
         if collection_names is not None:
             pulumi.set(__self__, "collection_names", collection_names)
@@ -758,7 +760,7 @@ class DatabaseRestoreResourceArgs:
     @pulumi.getter(name="collectionNames")
     def collection_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The names of the collections to restore.
+        The names of the collections available for restore.
         """
         return pulumi.get(self, "collection_names")
 
@@ -770,7 +772,7 @@ class DatabaseRestoreResourceArgs:
     @pulumi.getter(name="databaseName")
     def database_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the database to restore.
+        The name of the database available for restore.
         """
         return pulumi.get(self, "database_name")
 
@@ -804,6 +806,7 @@ class DefaultRequestDatabaseAccountCreateUpdatePropertiesArgs:
         """
         Properties for non-restore Azure Cosmos DB database account requests.
         :param pulumi.Input[str] create_mode: Enum to indicate the mode of account creation.
+               Expected value is 'Default'.
         :param pulumi.Input['DatabaseAccountOfferType'] database_account_offer_type: The offer type for the database
         :param pulumi.Input[Sequence[pulumi.Input['LocationArgs']]] locations: An array that contains the georeplication locations enabled for the Cosmos DB account.
         :param pulumi.Input['ApiPropertiesArgs'] api_properties: API specific properties. Currently, supported only for MongoDB API.
@@ -864,6 +867,7 @@ class DefaultRequestDatabaseAccountCreateUpdatePropertiesArgs:
     def create_mode(self) -> pulumi.Input[str]:
         """
         Enum to indicate the mode of account creation.
+        Expected value is 'Default'.
         """
         return pulumi.get(self, "create_mode")
 
@@ -1763,6 +1767,7 @@ class PeriodicModeBackupPolicyArgs:
         """
         The object representing periodic mode backup policy.
         :param pulumi.Input[str] type: Describes the mode of backups.
+               Expected value is 'Periodic'.
         :param pulumi.Input['PeriodicModePropertiesArgs'] periodic_mode_properties: Configuration values for periodic mode backup
         """
         pulumi.set(__self__, "type", 'Periodic')
@@ -1774,6 +1779,7 @@ class PeriodicModeBackupPolicyArgs:
     def type(self) -> pulumi.Input[str]:
         """
         Describes the mode of backups.
+        Expected value is 'Periodic'.
         """
         return pulumi.get(self, "type")
 
@@ -1883,7 +1889,7 @@ class RestoreParametersArgs:
                  restore_timestamp_in_utc: Optional[pulumi.Input[str]] = None):
         """
         Parameters to indicate the information about the restore.
-        :param pulumi.Input[Sequence[pulumi.Input['DatabaseRestoreResourceArgs']]] databases_to_restore: List of specific databases to restore.
+        :param pulumi.Input[Sequence[pulumi.Input['DatabaseRestoreResourceArgs']]] databases_to_restore: List of specific databases available for restore.
         :param pulumi.Input[Union[str, 'RestoreMode']] restore_mode: Describes the mode of the restore.
         :param pulumi.Input[str] restore_source: The id of the restorable database account from which the restore has to be initiated. For example: /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{restorableDatabaseAccountName}
         :param pulumi.Input[str] restore_timestamp_in_utc: Time to which the account has to be restored (ISO-8601 format).
@@ -1901,7 +1907,7 @@ class RestoreParametersArgs:
     @pulumi.getter(name="databasesToRestore")
     def databases_to_restore(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseRestoreResourceArgs']]]]:
         """
-        List of specific databases to restore.
+        List of specific databases available for restore.
         """
         return pulumi.get(self, "databases_to_restore")
 
@@ -1972,6 +1978,7 @@ class RestoreReqeustDatabaseAccountCreateUpdatePropertiesArgs:
         """
         Properties to restore Azure Cosmos DB database account.
         :param pulumi.Input[str] create_mode: Enum to indicate the mode of account creation.
+               Expected value is 'Restore'.
         :param pulumi.Input['DatabaseAccountOfferType'] database_account_offer_type: The offer type for the database
         :param pulumi.Input[Sequence[pulumi.Input['LocationArgs']]] locations: An array that contains the georeplication locations enabled for the Cosmos DB account.
         :param pulumi.Input['ApiPropertiesArgs'] api_properties: API specific properties. Currently, supported only for MongoDB API.
@@ -2035,6 +2042,7 @@ class RestoreReqeustDatabaseAccountCreateUpdatePropertiesArgs:
     def create_mode(self) -> pulumi.Input[str]:
         """
         Enum to indicate the mode of account creation.
+        Expected value is 'Restore'.
         """
         return pulumi.get(self, "create_mode")
 

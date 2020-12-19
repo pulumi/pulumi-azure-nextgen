@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.DevTestLab.Latest
 {
     /// <summary>
     /// A container for a managed identity to execute DevTest lab services.
+    /// Latest API Version: 2018-09-15.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:devtestlab/latest:ServiceRunner")]
     public partial class ServiceRunner : Pulumi.CustomResource
     {
         /// <summary>

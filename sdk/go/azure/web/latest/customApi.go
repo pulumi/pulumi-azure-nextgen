@@ -12,6 +12,7 @@ import (
 )
 
 // A custom API
+// Latest API Version: 2016-06-01.
 type CustomApi struct {
 	pulumi.CustomResourceState
 
@@ -145,15 +146,15 @@ type CustomApiInput interface {
 	ToCustomApiOutputWithContext(ctx context.Context) CustomApiOutput
 }
 
-func (CustomApi) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomApi)(nil)).Elem()
+func (*CustomApi) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomApi)(nil))
 }
 
-func (i CustomApi) ToCustomApiOutput() CustomApiOutput {
+func (i *CustomApi) ToCustomApiOutput() CustomApiOutput {
 	return i.ToCustomApiOutputWithContext(context.Background())
 }
 
-func (i CustomApi) ToCustomApiOutputWithContext(ctx context.Context) CustomApiOutput {
+func (i *CustomApi) ToCustomApiOutputWithContext(ctx context.Context) CustomApiOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomApiOutput)
 }
 
@@ -162,7 +163,7 @@ type CustomApiOutput struct {
 }
 
 func (CustomApiOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomApiOutput)(nil)).Elem()
+	return reflect.TypeOf((*CustomApi)(nil))
 }
 
 func (o CustomApiOutput) ToCustomApiOutput() CustomApiOutput {

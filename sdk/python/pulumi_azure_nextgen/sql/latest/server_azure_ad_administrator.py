@@ -28,6 +28,7 @@ class ServerAzureADAdministrator(pulumi.CustomResource):
                  __opts__=None):
         """
         An server Active Directory Administrator.
+        Latest API Version: 2014-04-01.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -79,7 +80,7 @@ class ServerAzureADAdministrator(pulumi.CustomResource):
             __props__['tenant_id'] = tenant_id
             __props__['name'] = None
             __props__['type'] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:sql/v20140401:ServerAzureADAdministrator"), pulumi.Alias(type_="azure-nextgen:sql/v20180601preview:ServerAzureADAdministrator"), pulumi.Alias(type_="azure-nextgen:sql/v20190601preview:ServerAzureADAdministrator"), pulumi.Alias(type_="azure-nextgen:sql/v20200801preview:ServerAzureADAdministrator")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:sql/v20140401:ServerAzureADAdministrator"), pulumi.Alias(type_="azure-nextgen:sql/v20180601preview:ServerAzureADAdministrator"), pulumi.Alias(type_="azure-nextgen:sql/v20190601preview:ServerAzureADAdministrator"), pulumi.Alias(type_="azure-nextgen:sql/v20200202preview:ServerAzureADAdministrator"), pulumi.Alias(type_="azure-nextgen:sql/v20200801preview:ServerAzureADAdministrator")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ServerAzureADAdministrator, __self__).__init__(
             'azure-nextgen:sql/latest:ServerAzureADAdministrator',

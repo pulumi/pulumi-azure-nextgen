@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.KeyVault.Latest
 {
     /// <summary>
     /// Private endpoint connection resource.
+    /// Latest API Version: 2019-09-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:keyvault/latest:PrivateEndpointConnection")]
     public partial class PrivateEndpointConnection : Pulumi.CustomResource
     {
         /// <summary>

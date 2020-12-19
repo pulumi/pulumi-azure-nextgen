@@ -12,6 +12,7 @@ import (
 )
 
 // The policy assignment.
+// Latest API Version: 2020-09-01.
 type PolicyAssignment struct {
 	pulumi.CustomResourceState
 
@@ -244,15 +245,15 @@ type PolicyAssignmentInput interface {
 	ToPolicyAssignmentOutputWithContext(ctx context.Context) PolicyAssignmentOutput
 }
 
-func (PolicyAssignment) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyAssignment)(nil)).Elem()
+func (*PolicyAssignment) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyAssignment)(nil))
 }
 
-func (i PolicyAssignment) ToPolicyAssignmentOutput() PolicyAssignmentOutput {
+func (i *PolicyAssignment) ToPolicyAssignmentOutput() PolicyAssignmentOutput {
 	return i.ToPolicyAssignmentOutputWithContext(context.Background())
 }
 
-func (i PolicyAssignment) ToPolicyAssignmentOutputWithContext(ctx context.Context) PolicyAssignmentOutput {
+func (i *PolicyAssignment) ToPolicyAssignmentOutputWithContext(ctx context.Context) PolicyAssignmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyAssignmentOutput)
 }
 
@@ -261,7 +262,7 @@ type PolicyAssignmentOutput struct {
 }
 
 func (PolicyAssignmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyAssignmentOutput)(nil)).Elem()
+	return reflect.TypeOf((*PolicyAssignment)(nil))
 }
 
 func (o PolicyAssignmentOutput) ToPolicyAssignmentOutput() PolicyAssignmentOutput {

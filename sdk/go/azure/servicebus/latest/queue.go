@@ -12,6 +12,7 @@ import (
 )
 
 // Description of queue Resource.
+// Latest API Version: 2017-04-01.
 type Queue struct {
 	pulumi.CustomResourceState
 
@@ -88,6 +89,9 @@ func NewQueue(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-nextgen:servicebus/v20170401:Queue"),
+		},
+		{
+			Type: pulumi.String("azure-nextgen:servicebus/v20180101preview:Queue"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -304,15 +308,15 @@ type QueueInput interface {
 	ToQueueOutputWithContext(ctx context.Context) QueueOutput
 }
 
-func (Queue) ElementType() reflect.Type {
-	return reflect.TypeOf((*Queue)(nil)).Elem()
+func (*Queue) ElementType() reflect.Type {
+	return reflect.TypeOf((*Queue)(nil))
 }
 
-func (i Queue) ToQueueOutput() QueueOutput {
+func (i *Queue) ToQueueOutput() QueueOutput {
 	return i.ToQueueOutputWithContext(context.Background())
 }
 
-func (i Queue) ToQueueOutputWithContext(ctx context.Context) QueueOutput {
+func (i *Queue) ToQueueOutputWithContext(ctx context.Context) QueueOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QueueOutput)
 }
 
@@ -321,7 +325,7 @@ type QueueOutput struct {
 }
 
 func (QueueOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*QueueOutput)(nil)).Elem()
+	return reflect.TypeOf((*Queue)(nil))
 }
 
 func (o QueueOutput) ToQueueOutput() QueueOutput {

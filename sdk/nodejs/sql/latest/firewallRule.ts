@@ -6,6 +6,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Represents a server firewall rule.
+ * Latest API Version: 2014-04-01.
  */
 export class FirewallRule extends pulumi.CustomResource {
     /**
@@ -108,7 +109,7 @@ export class FirewallRule extends pulumi.CustomResource {
         if (!opts.version) {
             opts.version = utilities.getVersion();
         }
-        const aliasOpts = { aliases: [{ type: "azure-nextgen:sql/v20140401:FirewallRule" }, { type: "azure-nextgen:sql/v20150501preview:FirewallRule" }, { type: "azure-nextgen:sql/v20200801preview:FirewallRule" }] };
+        const aliasOpts = { aliases: [{ type: "azure-nextgen:sql/v20140401:FirewallRule" }, { type: "azure-nextgen:sql/v20150501preview:FirewallRule" }, { type: "azure-nextgen:sql/v20200202preview:FirewallRule" }, { type: "azure-nextgen:sql/v20200801preview:FirewallRule" }] };
         opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
         super(FirewallRule.__pulumiType, name, inputs, opts);
     }

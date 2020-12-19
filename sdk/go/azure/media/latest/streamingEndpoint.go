@@ -12,6 +12,7 @@ import (
 )
 
 // The streaming endpoint.
+// Latest API Version: 2020-05-01.
 type StreamingEndpoint struct {
 	pulumi.CustomResourceState
 
@@ -290,15 +291,15 @@ type StreamingEndpointInput interface {
 	ToStreamingEndpointOutputWithContext(ctx context.Context) StreamingEndpointOutput
 }
 
-func (StreamingEndpoint) ElementType() reflect.Type {
-	return reflect.TypeOf((*StreamingEndpoint)(nil)).Elem()
+func (*StreamingEndpoint) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamingEndpoint)(nil))
 }
 
-func (i StreamingEndpoint) ToStreamingEndpointOutput() StreamingEndpointOutput {
+func (i *StreamingEndpoint) ToStreamingEndpointOutput() StreamingEndpointOutput {
 	return i.ToStreamingEndpointOutputWithContext(context.Background())
 }
 
-func (i StreamingEndpoint) ToStreamingEndpointOutputWithContext(ctx context.Context) StreamingEndpointOutput {
+func (i *StreamingEndpoint) ToStreamingEndpointOutputWithContext(ctx context.Context) StreamingEndpointOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StreamingEndpointOutput)
 }
 
@@ -307,7 +308,7 @@ type StreamingEndpointOutput struct {
 }
 
 func (StreamingEndpointOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StreamingEndpointOutput)(nil)).Elem()
+	return reflect.TypeOf((*StreamingEndpoint)(nil))
 }
 
 func (o StreamingEndpointOutput) ToStreamingEndpointOutput() StreamingEndpointOutput {

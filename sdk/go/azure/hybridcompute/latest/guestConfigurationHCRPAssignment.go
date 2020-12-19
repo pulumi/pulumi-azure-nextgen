@@ -12,6 +12,7 @@ import (
 )
 
 // Guest configuration assignment is an association between a machine and guest configuration.
+// Latest API Version: 2020-06-25.
 type GuestConfigurationHCRPAssignment struct {
 	pulumi.CustomResourceState
 
@@ -139,15 +140,15 @@ type GuestConfigurationHCRPAssignmentInput interface {
 	ToGuestConfigurationHCRPAssignmentOutputWithContext(ctx context.Context) GuestConfigurationHCRPAssignmentOutput
 }
 
-func (GuestConfigurationHCRPAssignment) ElementType() reflect.Type {
-	return reflect.TypeOf((*GuestConfigurationHCRPAssignment)(nil)).Elem()
+func (*GuestConfigurationHCRPAssignment) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestConfigurationHCRPAssignment)(nil))
 }
 
-func (i GuestConfigurationHCRPAssignment) ToGuestConfigurationHCRPAssignmentOutput() GuestConfigurationHCRPAssignmentOutput {
+func (i *GuestConfigurationHCRPAssignment) ToGuestConfigurationHCRPAssignmentOutput() GuestConfigurationHCRPAssignmentOutput {
 	return i.ToGuestConfigurationHCRPAssignmentOutputWithContext(context.Background())
 }
 
-func (i GuestConfigurationHCRPAssignment) ToGuestConfigurationHCRPAssignmentOutputWithContext(ctx context.Context) GuestConfigurationHCRPAssignmentOutput {
+func (i *GuestConfigurationHCRPAssignment) ToGuestConfigurationHCRPAssignmentOutputWithContext(ctx context.Context) GuestConfigurationHCRPAssignmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GuestConfigurationHCRPAssignmentOutput)
 }
 
@@ -156,7 +157,7 @@ type GuestConfigurationHCRPAssignmentOutput struct {
 }
 
 func (GuestConfigurationHCRPAssignmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GuestConfigurationHCRPAssignmentOutput)(nil)).Elem()
+	return reflect.TypeOf((*GuestConfigurationHCRPAssignment)(nil))
 }
 
 func (o GuestConfigurationHCRPAssignmentOutput) ToGuestConfigurationHCRPAssignmentOutput() GuestConfigurationHCRPAssignmentOutput {

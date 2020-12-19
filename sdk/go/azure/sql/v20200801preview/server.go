@@ -76,6 +76,9 @@ func NewServer(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-nextgen:sql/v20190601preview:Server"),
 		},
+		{
+			Type: pulumi.String("azure-nextgen:sql/v20200202preview:Server"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource Server
@@ -227,15 +230,15 @@ type ServerInput interface {
 	ToServerOutputWithContext(ctx context.Context) ServerOutput
 }
 
-func (Server) ElementType() reflect.Type {
-	return reflect.TypeOf((*Server)(nil)).Elem()
+func (*Server) ElementType() reflect.Type {
+	return reflect.TypeOf((*Server)(nil))
 }
 
-func (i Server) ToServerOutput() ServerOutput {
+func (i *Server) ToServerOutput() ServerOutput {
 	return i.ToServerOutputWithContext(context.Background())
 }
 
-func (i Server) ToServerOutputWithContext(ctx context.Context) ServerOutput {
+func (i *Server) ToServerOutputWithContext(ctx context.Context) ServerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServerOutput)
 }
 
@@ -244,7 +247,7 @@ type ServerOutput struct {
 }
 
 func (ServerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerOutput)(nil)).Elem()
+	return reflect.TypeOf((*Server)(nil))
 }
 
 func (o ServerOutput) ToServerOutput() ServerOutput {

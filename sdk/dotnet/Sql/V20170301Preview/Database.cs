@@ -12,6 +12,7 @@ namespace Pulumi.AzureNextGen.Sql.V20170301Preview
     /// <summary>
     /// A database resource.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:sql/v20170301preview:Database")]
     public partial class Database : Pulumi.CustomResource
     {
         /// <summary>
@@ -215,6 +216,7 @@ namespace Pulumi.AzureNextGen.Sql.V20170301Preview
                     new Pulumi.Alias { Type = "azure-nextgen:sql/v20140401:Database"},
                     new Pulumi.Alias { Type = "azure-nextgen:sql/v20171001preview:Database"},
                     new Pulumi.Alias { Type = "azure-nextgen:sql/v20190601preview:Database"},
+                    new Pulumi.Alias { Type = "azure-nextgen:sql/v20200202preview:Database"},
                     new Pulumi.Alias { Type = "azure-nextgen:sql/v20200801preview:Database"},
                 },
             };

@@ -12,6 +12,7 @@ import (
 )
 
 // An Azure Cosmos DB SQL database.
+// Latest API Version: 2016-03-31.
 type DatabaseAccountSqlDatabase struct {
 	pulumi.CustomResourceState
 
@@ -180,15 +181,15 @@ type DatabaseAccountSqlDatabaseInput interface {
 	ToDatabaseAccountSqlDatabaseOutputWithContext(ctx context.Context) DatabaseAccountSqlDatabaseOutput
 }
 
-func (DatabaseAccountSqlDatabase) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseAccountSqlDatabase)(nil)).Elem()
+func (*DatabaseAccountSqlDatabase) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseAccountSqlDatabase)(nil))
 }
 
-func (i DatabaseAccountSqlDatabase) ToDatabaseAccountSqlDatabaseOutput() DatabaseAccountSqlDatabaseOutput {
+func (i *DatabaseAccountSqlDatabase) ToDatabaseAccountSqlDatabaseOutput() DatabaseAccountSqlDatabaseOutput {
 	return i.ToDatabaseAccountSqlDatabaseOutputWithContext(context.Background())
 }
 
-func (i DatabaseAccountSqlDatabase) ToDatabaseAccountSqlDatabaseOutputWithContext(ctx context.Context) DatabaseAccountSqlDatabaseOutput {
+func (i *DatabaseAccountSqlDatabase) ToDatabaseAccountSqlDatabaseOutputWithContext(ctx context.Context) DatabaseAccountSqlDatabaseOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseAccountSqlDatabaseOutput)
 }
 
@@ -197,7 +198,7 @@ type DatabaseAccountSqlDatabaseOutput struct {
 }
 
 func (DatabaseAccountSqlDatabaseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseAccountSqlDatabaseOutput)(nil)).Elem()
+	return reflect.TypeOf((*DatabaseAccountSqlDatabase)(nil))
 }
 
 func (o DatabaseAccountSqlDatabaseOutput) ToDatabaseAccountSqlDatabaseOutput() DatabaseAccountSqlDatabaseOutput {

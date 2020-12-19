@@ -52,6 +52,9 @@ func NewManagedInstanceKey(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-nextgen:sql/v20200202preview:ManagedInstanceKey"),
+		},
+		{
 			Type: pulumi.String("azure-nextgen:sql/v20200801preview:ManagedInstanceKey"),
 		},
 	})
@@ -153,15 +156,15 @@ type ManagedInstanceKeyInput interface {
 	ToManagedInstanceKeyOutputWithContext(ctx context.Context) ManagedInstanceKeyOutput
 }
 
-func (ManagedInstanceKey) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedInstanceKey)(nil)).Elem()
+func (*ManagedInstanceKey) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedInstanceKey)(nil))
 }
 
-func (i ManagedInstanceKey) ToManagedInstanceKeyOutput() ManagedInstanceKeyOutput {
+func (i *ManagedInstanceKey) ToManagedInstanceKeyOutput() ManagedInstanceKeyOutput {
 	return i.ToManagedInstanceKeyOutputWithContext(context.Background())
 }
 
-func (i ManagedInstanceKey) ToManagedInstanceKeyOutputWithContext(ctx context.Context) ManagedInstanceKeyOutput {
+func (i *ManagedInstanceKey) ToManagedInstanceKeyOutputWithContext(ctx context.Context) ManagedInstanceKeyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstanceKeyOutput)
 }
 
@@ -170,7 +173,7 @@ type ManagedInstanceKeyOutput struct {
 }
 
 func (ManagedInstanceKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedInstanceKeyOutput)(nil)).Elem()
+	return reflect.TypeOf((*ManagedInstanceKey)(nil))
 }
 
 func (o ManagedInstanceKeyOutput) ToManagedInstanceKeyOutput() ManagedInstanceKeyOutput {

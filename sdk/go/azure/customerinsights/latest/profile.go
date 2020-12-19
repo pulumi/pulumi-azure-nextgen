@@ -12,6 +12,7 @@ import (
 )
 
 // The profile resource format.
+// Latest API Version: 2017-04-26.
 type Profile struct {
 	pulumi.CustomResourceState
 
@@ -283,15 +284,15 @@ type ProfileInput interface {
 	ToProfileOutputWithContext(ctx context.Context) ProfileOutput
 }
 
-func (Profile) ElementType() reflect.Type {
-	return reflect.TypeOf((*Profile)(nil)).Elem()
+func (*Profile) ElementType() reflect.Type {
+	return reflect.TypeOf((*Profile)(nil))
 }
 
-func (i Profile) ToProfileOutput() ProfileOutput {
+func (i *Profile) ToProfileOutput() ProfileOutput {
 	return i.ToProfileOutputWithContext(context.Background())
 }
 
-func (i Profile) ToProfileOutputWithContext(ctx context.Context) ProfileOutput {
+func (i *Profile) ToProfileOutputWithContext(ctx context.Context) ProfileOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProfileOutput)
 }
 
@@ -300,7 +301,7 @@ type ProfileOutput struct {
 }
 
 func (ProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProfileOutput)(nil)).Elem()
+	return reflect.TypeOf((*Profile)(nil))
 }
 
 func (o ProfileOutput) ToProfileOutput() ProfileOutput {

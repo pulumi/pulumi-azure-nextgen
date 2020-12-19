@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Represents a database transparent data encryption configuration.
+ * Latest API Version: 2014-04-01.
  */
 export class TransparentDataEncryption extends pulumi.CustomResource {
     /**
@@ -95,7 +96,7 @@ export class TransparentDataEncryption extends pulumi.CustomResource {
         if (!opts.version) {
             opts.version = utilities.getVersion();
         }
-        const aliasOpts = { aliases: [{ type: "azure-nextgen:sql/v20140401:TransparentDataEncryption" }, { type: "azure-nextgen:sql/v20200801preview:TransparentDataEncryption" }] };
+        const aliasOpts = { aliases: [{ type: "azure-nextgen:sql/v20140401:TransparentDataEncryption" }, { type: "azure-nextgen:sql/v20200202preview:TransparentDataEncryption" }, { type: "azure-nextgen:sql/v20200801preview:TransparentDataEncryption" }] };
         opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
         super(TransparentDataEncryption.__pulumiType, name, inputs, opts);
     }

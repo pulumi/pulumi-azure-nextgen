@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.DataShare.Latest
 {
     /// <summary>
     /// A Synchronization Setting data transfer object.
+    /// Latest API Version: 2019-11-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:datashare/latest:SynchronizationSetting")]
     public partial class SynchronizationSetting : Pulumi.CustomResource
     {
         /// <summary>

@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Insights.Latest
 {
     /// <summary>
     /// An action group resource.
+    /// Latest API Version: 2019-06-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:insights/latest:ActionGroup")]
     public partial class ActionGroup : Pulumi.CustomResource
     {
         /// <summary>

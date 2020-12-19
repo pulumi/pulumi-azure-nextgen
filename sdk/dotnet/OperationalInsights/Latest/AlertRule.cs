@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.OperationalInsights.Latest
 {
     /// <summary>
     /// Alert rule.
+    /// Latest API Version: 2020-01-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:operationalinsights/latest:AlertRule")]
     public partial class AlertRule : Pulumi.CustomResource
     {
         /// <summary>

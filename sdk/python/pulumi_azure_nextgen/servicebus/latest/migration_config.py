@@ -25,6 +25,7 @@ class MigrationConfig(pulumi.CustomResource):
                  __opts__=None):
         """
         Single item in List or Get Migration Config operation
+        Latest API Version: 2017-04-01.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -71,7 +72,7 @@ class MigrationConfig(pulumi.CustomResource):
             __props__['pending_replication_operations_count'] = None
             __props__['provisioning_state'] = None
             __props__['type'] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:servicebus/v20170401:MigrationConfig")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:servicebus/v20170401:MigrationConfig"), pulumi.Alias(type_="azure-nextgen:servicebus/v20180101preview:MigrationConfig")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(MigrationConfig, __self__).__init__(
             'azure-nextgen:servicebus/latest:MigrationConfig',

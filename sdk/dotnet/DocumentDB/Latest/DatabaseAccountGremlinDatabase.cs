@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.DocumentDB.Latest
 {
     /// <summary>
     /// An Azure Cosmos DB Gremlin database.
+    /// Latest API Version: 2016-03-31.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:documentdb/latest:DatabaseAccountGremlinDatabase")]
     public partial class DatabaseAccountGremlinDatabase : Pulumi.CustomResource
     {
         /// <summary>

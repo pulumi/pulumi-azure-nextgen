@@ -12,6 +12,7 @@ import (
 )
 
 // Describes a Shared Private Link Resource managed by the Azure Cognitive Search service.
+// Latest API Version: 2020-08-01.
 type SharedPrivateLinkResource struct {
 	pulumi.CustomResourceState
 
@@ -125,15 +126,15 @@ type SharedPrivateLinkResourceInput interface {
 	ToSharedPrivateLinkResourceOutputWithContext(ctx context.Context) SharedPrivateLinkResourceOutput
 }
 
-func (SharedPrivateLinkResource) ElementType() reflect.Type {
-	return reflect.TypeOf((*SharedPrivateLinkResource)(nil)).Elem()
+func (*SharedPrivateLinkResource) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharedPrivateLinkResource)(nil))
 }
 
-func (i SharedPrivateLinkResource) ToSharedPrivateLinkResourceOutput() SharedPrivateLinkResourceOutput {
+func (i *SharedPrivateLinkResource) ToSharedPrivateLinkResourceOutput() SharedPrivateLinkResourceOutput {
 	return i.ToSharedPrivateLinkResourceOutputWithContext(context.Background())
 }
 
-func (i SharedPrivateLinkResource) ToSharedPrivateLinkResourceOutputWithContext(ctx context.Context) SharedPrivateLinkResourceOutput {
+func (i *SharedPrivateLinkResource) ToSharedPrivateLinkResourceOutputWithContext(ctx context.Context) SharedPrivateLinkResourceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SharedPrivateLinkResourceOutput)
 }
 
@@ -142,7 +143,7 @@ type SharedPrivateLinkResourceOutput struct {
 }
 
 func (SharedPrivateLinkResourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SharedPrivateLinkResourceOutput)(nil)).Elem()
+	return reflect.TypeOf((*SharedPrivateLinkResource)(nil))
 }
 
 func (o SharedPrivateLinkResourceOutput) ToSharedPrivateLinkResourceOutput() SharedPrivateLinkResourceOutput {

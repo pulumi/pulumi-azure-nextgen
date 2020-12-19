@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Security.Latest
 {
     /// <summary>
     /// Security assessment metadata
+    /// Latest API Version: 2020-01-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:security/latest:AssessmentMetadataInSubscription")]
     public partial class AssessmentMetadataInSubscription : Pulumi.CustomResource
     {
         /// <summary>

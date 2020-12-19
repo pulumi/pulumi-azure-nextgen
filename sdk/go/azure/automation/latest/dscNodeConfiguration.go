@@ -12,6 +12,7 @@ import (
 )
 
 // Definition of the dsc node configuration.
+// Latest API Version: 2018-01-15.
 type DscNodeConfiguration struct {
 	pulumi.CustomResourceState
 
@@ -177,15 +178,15 @@ type DscNodeConfigurationInput interface {
 	ToDscNodeConfigurationOutputWithContext(ctx context.Context) DscNodeConfigurationOutput
 }
 
-func (DscNodeConfiguration) ElementType() reflect.Type {
-	return reflect.TypeOf((*DscNodeConfiguration)(nil)).Elem()
+func (*DscNodeConfiguration) ElementType() reflect.Type {
+	return reflect.TypeOf((*DscNodeConfiguration)(nil))
 }
 
-func (i DscNodeConfiguration) ToDscNodeConfigurationOutput() DscNodeConfigurationOutput {
+func (i *DscNodeConfiguration) ToDscNodeConfigurationOutput() DscNodeConfigurationOutput {
 	return i.ToDscNodeConfigurationOutputWithContext(context.Background())
 }
 
-func (i DscNodeConfiguration) ToDscNodeConfigurationOutputWithContext(ctx context.Context) DscNodeConfigurationOutput {
+func (i *DscNodeConfiguration) ToDscNodeConfigurationOutputWithContext(ctx context.Context) DscNodeConfigurationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DscNodeConfigurationOutput)
 }
 
@@ -194,7 +195,7 @@ type DscNodeConfigurationOutput struct {
 }
 
 func (DscNodeConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DscNodeConfigurationOutput)(nil)).Elem()
+	return reflect.TypeOf((*DscNodeConfiguration)(nil))
 }
 
 func (o DscNodeConfigurationOutput) ToDscNodeConfigurationOutput() DscNodeConfigurationOutput {

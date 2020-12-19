@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Media.Latest
 {
     /// <summary>
     /// The Private Endpoint Connection resource.
+    /// Latest API Version: 2020-05-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:media/latest:PrivateEndpointConnection")]
     public partial class PrivateEndpointConnection : Pulumi.CustomResource
     {
         /// <summary>

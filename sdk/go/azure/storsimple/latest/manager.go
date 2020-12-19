@@ -12,6 +12,7 @@ import (
 )
 
 // The StorSimple Manager.
+// Latest API Version: 2017-06-01.
 type Manager struct {
 	pulumi.CustomResourceState
 
@@ -171,15 +172,15 @@ type ManagerInput interface {
 	ToManagerOutputWithContext(ctx context.Context) ManagerOutput
 }
 
-func (Manager) ElementType() reflect.Type {
-	return reflect.TypeOf((*Manager)(nil)).Elem()
+func (*Manager) ElementType() reflect.Type {
+	return reflect.TypeOf((*Manager)(nil))
 }
 
-func (i Manager) ToManagerOutput() ManagerOutput {
+func (i *Manager) ToManagerOutput() ManagerOutput {
 	return i.ToManagerOutputWithContext(context.Background())
 }
 
-func (i Manager) ToManagerOutputWithContext(ctx context.Context) ManagerOutput {
+func (i *Manager) ToManagerOutputWithContext(ctx context.Context) ManagerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ManagerOutput)
 }
 
@@ -188,7 +189,7 @@ type ManagerOutput struct {
 }
 
 func (ManagerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagerOutput)(nil)).Elem()
+	return reflect.TypeOf((*Manager)(nil))
 }
 
 func (o ManagerOutput) ToManagerOutput() ManagerOutput {

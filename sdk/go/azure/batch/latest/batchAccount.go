@@ -12,6 +12,7 @@ import (
 )
 
 // Contains information about an Azure Batch account.
+// Latest API Version: 2020-09-01.
 type BatchAccount struct {
 	pulumi.CustomResourceState
 
@@ -263,15 +264,15 @@ type BatchAccountInput interface {
 	ToBatchAccountOutputWithContext(ctx context.Context) BatchAccountOutput
 }
 
-func (BatchAccount) ElementType() reflect.Type {
-	return reflect.TypeOf((*BatchAccount)(nil)).Elem()
+func (*BatchAccount) ElementType() reflect.Type {
+	return reflect.TypeOf((*BatchAccount)(nil))
 }
 
-func (i BatchAccount) ToBatchAccountOutput() BatchAccountOutput {
+func (i *BatchAccount) ToBatchAccountOutput() BatchAccountOutput {
 	return i.ToBatchAccountOutputWithContext(context.Background())
 }
 
-func (i BatchAccount) ToBatchAccountOutputWithContext(ctx context.Context) BatchAccountOutput {
+func (i *BatchAccount) ToBatchAccountOutputWithContext(ctx context.Context) BatchAccountOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BatchAccountOutput)
 }
 
@@ -280,7 +281,7 @@ type BatchAccountOutput struct {
 }
 
 func (BatchAccountOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BatchAccountOutput)(nil)).Elem()
+	return reflect.TypeOf((*BatchAccount)(nil))
 }
 
 func (o BatchAccountOutput) ToBatchAccountOutput() BatchAccountOutput {

@@ -38,6 +38,7 @@ class Subscription(pulumi.CustomResource):
                  __opts__=None):
         """
         Description of subscription resource.
+        Latest API Version: 2017-04-01.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -106,7 +107,7 @@ class Subscription(pulumi.CustomResource):
             __props__['name'] = None
             __props__['type'] = None
             __props__['updated_at'] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:servicebus/v20140901:Subscription"), pulumi.Alias(type_="azure-nextgen:servicebus/v20150801:Subscription"), pulumi.Alias(type_="azure-nextgen:servicebus/v20170401:Subscription")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:servicebus/v20140901:Subscription"), pulumi.Alias(type_="azure-nextgen:servicebus/v20150801:Subscription"), pulumi.Alias(type_="azure-nextgen:servicebus/v20170401:Subscription"), pulumi.Alias(type_="azure-nextgen:servicebus/v20180101preview:Subscription")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Subscription, __self__).__init__(
             'azure-nextgen:servicebus/latest:Subscription',

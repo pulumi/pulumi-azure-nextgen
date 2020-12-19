@@ -12,6 +12,7 @@ import (
 )
 
 // A function object, containing all information associated with the named function. All functions are contained under a streaming job.
+// Latest API Version: 2016-03-01.
 type Function struct {
 	pulumi.CustomResourceState
 
@@ -129,15 +130,15 @@ type FunctionInput interface {
 	ToFunctionOutputWithContext(ctx context.Context) FunctionOutput
 }
 
-func (Function) ElementType() reflect.Type {
-	return reflect.TypeOf((*Function)(nil)).Elem()
+func (*Function) ElementType() reflect.Type {
+	return reflect.TypeOf((*Function)(nil))
 }
 
-func (i Function) ToFunctionOutput() FunctionOutput {
+func (i *Function) ToFunctionOutput() FunctionOutput {
 	return i.ToFunctionOutputWithContext(context.Background())
 }
 
-func (i Function) ToFunctionOutputWithContext(ctx context.Context) FunctionOutput {
+func (i *Function) ToFunctionOutputWithContext(ctx context.Context) FunctionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionOutput)
 }
 
@@ -146,7 +147,7 @@ type FunctionOutput struct {
 }
 
 func (FunctionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FunctionOutput)(nil)).Elem()
+	return reflect.TypeOf((*Function)(nil))
 }
 
 func (o FunctionOutput) ToFunctionOutput() FunctionOutput {

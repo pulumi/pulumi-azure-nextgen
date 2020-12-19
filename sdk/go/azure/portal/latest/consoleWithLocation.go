@@ -12,6 +12,7 @@ import (
 )
 
 // Cloud shell console
+// Latest API Version: 2018-10-01.
 type ConsoleWithLocation struct {
 	pulumi.CustomResourceState
 
@@ -99,15 +100,15 @@ type ConsoleWithLocationInput interface {
 	ToConsoleWithLocationOutputWithContext(ctx context.Context) ConsoleWithLocationOutput
 }
 
-func (ConsoleWithLocation) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConsoleWithLocation)(nil)).Elem()
+func (*ConsoleWithLocation) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsoleWithLocation)(nil))
 }
 
-func (i ConsoleWithLocation) ToConsoleWithLocationOutput() ConsoleWithLocationOutput {
+func (i *ConsoleWithLocation) ToConsoleWithLocationOutput() ConsoleWithLocationOutput {
 	return i.ToConsoleWithLocationOutputWithContext(context.Background())
 }
 
-func (i ConsoleWithLocation) ToConsoleWithLocationOutputWithContext(ctx context.Context) ConsoleWithLocationOutput {
+func (i *ConsoleWithLocation) ToConsoleWithLocationOutputWithContext(ctx context.Context) ConsoleWithLocationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConsoleWithLocationOutput)
 }
 
@@ -116,7 +117,7 @@ type ConsoleWithLocationOutput struct {
 }
 
 func (ConsoleWithLocationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConsoleWithLocationOutput)(nil)).Elem()
+	return reflect.TypeOf((*ConsoleWithLocation)(nil))
 }
 
 func (o ConsoleWithLocationOutput) ToConsoleWithLocationOutput() ConsoleWithLocationOutput {

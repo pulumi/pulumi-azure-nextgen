@@ -12,6 +12,7 @@ import (
 )
 
 // Defines an Network Experiment Profile and lists of Experiments
+// Latest API Version: 2019-11-01.
 type NetworkExperimentProfile struct {
 	pulumi.CustomResourceState
 
@@ -155,15 +156,15 @@ type NetworkExperimentProfileInput interface {
 	ToNetworkExperimentProfileOutputWithContext(ctx context.Context) NetworkExperimentProfileOutput
 }
 
-func (NetworkExperimentProfile) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkExperimentProfile)(nil)).Elem()
+func (*NetworkExperimentProfile) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkExperimentProfile)(nil))
 }
 
-func (i NetworkExperimentProfile) ToNetworkExperimentProfileOutput() NetworkExperimentProfileOutput {
+func (i *NetworkExperimentProfile) ToNetworkExperimentProfileOutput() NetworkExperimentProfileOutput {
 	return i.ToNetworkExperimentProfileOutputWithContext(context.Background())
 }
 
-func (i NetworkExperimentProfile) ToNetworkExperimentProfileOutputWithContext(ctx context.Context) NetworkExperimentProfileOutput {
+func (i *NetworkExperimentProfile) ToNetworkExperimentProfileOutputWithContext(ctx context.Context) NetworkExperimentProfileOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkExperimentProfileOutput)
 }
 
@@ -172,7 +173,7 @@ type NetworkExperimentProfileOutput struct {
 }
 
 func (NetworkExperimentProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkExperimentProfileOutput)(nil)).Elem()
+	return reflect.TypeOf((*NetworkExperimentProfile)(nil))
 }
 
 func (o NetworkExperimentProfileOutput) ToNetworkExperimentProfileOutput() NetworkExperimentProfileOutput {

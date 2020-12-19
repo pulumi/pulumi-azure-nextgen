@@ -12,6 +12,7 @@ import (
 )
 
 // Virtual Network information contract.
+// Latest API Version: 2020-09-01.
 type WebAppVnetConnection struct {
 	pulumi.CustomResourceState
 
@@ -209,15 +210,15 @@ type WebAppVnetConnectionInput interface {
 	ToWebAppVnetConnectionOutputWithContext(ctx context.Context) WebAppVnetConnectionOutput
 }
 
-func (WebAppVnetConnection) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebAppVnetConnection)(nil)).Elem()
+func (*WebAppVnetConnection) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAppVnetConnection)(nil))
 }
 
-func (i WebAppVnetConnection) ToWebAppVnetConnectionOutput() WebAppVnetConnectionOutput {
+func (i *WebAppVnetConnection) ToWebAppVnetConnectionOutput() WebAppVnetConnectionOutput {
 	return i.ToWebAppVnetConnectionOutputWithContext(context.Background())
 }
 
-func (i WebAppVnetConnection) ToWebAppVnetConnectionOutputWithContext(ctx context.Context) WebAppVnetConnectionOutput {
+func (i *WebAppVnetConnection) ToWebAppVnetConnectionOutputWithContext(ctx context.Context) WebAppVnetConnectionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppVnetConnectionOutput)
 }
 
@@ -226,7 +227,7 @@ type WebAppVnetConnectionOutput struct {
 }
 
 func (WebAppVnetConnectionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebAppVnetConnectionOutput)(nil)).Elem()
+	return reflect.TypeOf((*WebAppVnetConnection)(nil))
 }
 
 func (o WebAppVnetConnectionOutput) ToWebAppVnetConnectionOutput() WebAppVnetConnectionOutput {

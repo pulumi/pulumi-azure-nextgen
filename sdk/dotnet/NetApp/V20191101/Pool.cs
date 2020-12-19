@@ -12,6 +12,7 @@ namespace Pulumi.AzureNextGen.NetApp.V20191101
     /// <summary>
     /// Capacity pool resource
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:netapp/v20191101:Pool")]
     public partial class Pool : Pulumi.CustomResource
     {
         /// <summary>
@@ -100,6 +101,7 @@ namespace Pulumi.AzureNextGen.NetApp.V20191101
                     new Pulumi.Alias { Type = "azure-nextgen:netapp/v20200601:Pool"},
                     new Pulumi.Alias { Type = "azure-nextgen:netapp/v20200701:Pool"},
                     new Pulumi.Alias { Type = "azure-nextgen:netapp/v20200801:Pool"},
+                    new Pulumi.Alias { Type = "azure-nextgen:netapp/v20200901:Pool"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

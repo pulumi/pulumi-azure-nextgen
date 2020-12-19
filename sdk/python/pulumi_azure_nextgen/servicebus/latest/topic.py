@@ -35,6 +35,7 @@ class Topic(pulumi.CustomResource):
                  __opts__=None):
         """
         Description of topic resource.
+        Latest API Version: 2017-04-01.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -96,7 +97,7 @@ class Topic(pulumi.CustomResource):
             __props__['subscription_count'] = None
             __props__['type'] = None
             __props__['updated_at'] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:servicebus/v20140901:Topic"), pulumi.Alias(type_="azure-nextgen:servicebus/v20150801:Topic"), pulumi.Alias(type_="azure-nextgen:servicebus/v20170401:Topic")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:servicebus/v20140901:Topic"), pulumi.Alias(type_="azure-nextgen:servicebus/v20150801:Topic"), pulumi.Alias(type_="azure-nextgen:servicebus/v20170401:Topic"), pulumi.Alias(type_="azure-nextgen:servicebus/v20180101preview:Topic")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Topic, __self__).__init__(
             'azure-nextgen:servicebus/latest:Topic',

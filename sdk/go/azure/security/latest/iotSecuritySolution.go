@@ -12,6 +12,7 @@ import (
 )
 
 // IoT Security solution configuration and resource information.
+// Latest API Version: 2019-08-01.
 type IotSecuritySolution struct {
 	pulumi.CustomResourceState
 
@@ -230,15 +231,15 @@ type IotSecuritySolutionInput interface {
 	ToIotSecuritySolutionOutputWithContext(ctx context.Context) IotSecuritySolutionOutput
 }
 
-func (IotSecuritySolution) ElementType() reflect.Type {
-	return reflect.TypeOf((*IotSecuritySolution)(nil)).Elem()
+func (*IotSecuritySolution) ElementType() reflect.Type {
+	return reflect.TypeOf((*IotSecuritySolution)(nil))
 }
 
-func (i IotSecuritySolution) ToIotSecuritySolutionOutput() IotSecuritySolutionOutput {
+func (i *IotSecuritySolution) ToIotSecuritySolutionOutput() IotSecuritySolutionOutput {
 	return i.ToIotSecuritySolutionOutputWithContext(context.Background())
 }
 
-func (i IotSecuritySolution) ToIotSecuritySolutionOutputWithContext(ctx context.Context) IotSecuritySolutionOutput {
+func (i *IotSecuritySolution) ToIotSecuritySolutionOutputWithContext(ctx context.Context) IotSecuritySolutionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IotSecuritySolutionOutput)
 }
 
@@ -247,7 +248,7 @@ type IotSecuritySolutionOutput struct {
 }
 
 func (IotSecuritySolutionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IotSecuritySolutionOutput)(nil)).Elem()
+	return reflect.TypeOf((*IotSecuritySolution)(nil))
 }
 
 func (o IotSecuritySolutionOutput) ToIotSecuritySolutionOutput() IotSecuritySolutionOutput {

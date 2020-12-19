@@ -12,6 +12,7 @@ import (
 )
 
 // The file server.
+// Latest API Version: 2016-10-01.
 type FileServer struct {
 	pulumi.CustomResourceState
 
@@ -168,15 +169,15 @@ type FileServerInput interface {
 	ToFileServerOutputWithContext(ctx context.Context) FileServerOutput
 }
 
-func (FileServer) ElementType() reflect.Type {
-	return reflect.TypeOf((*FileServer)(nil)).Elem()
+func (*FileServer) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileServer)(nil))
 }
 
-func (i FileServer) ToFileServerOutput() FileServerOutput {
+func (i *FileServer) ToFileServerOutput() FileServerOutput {
 	return i.ToFileServerOutputWithContext(context.Background())
 }
 
-func (i FileServer) ToFileServerOutputWithContext(ctx context.Context) FileServerOutput {
+func (i *FileServer) ToFileServerOutputWithContext(ctx context.Context) FileServerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FileServerOutput)
 }
 
@@ -185,7 +186,7 @@ type FileServerOutput struct {
 }
 
 func (FileServerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FileServerOutput)(nil)).Elem()
+	return reflect.TypeOf((*FileServer)(nil))
 }
 
 func (o FileServerOutput) ToFileServerOutput() FileServerOutput {

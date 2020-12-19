@@ -12,6 +12,7 @@ namespace Pulumi.AzureNextGen.ServiceBus.V20170401
     /// <summary>
     /// Description of subscription resource.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:servicebus/v20170401:Subscription")]
     public partial class Subscription : Pulumi.CustomResource
     {
         /// <summary>
@@ -156,6 +157,7 @@ namespace Pulumi.AzureNextGen.ServiceBus.V20170401
                     new Pulumi.Alias { Type = "azure-nextgen:servicebus/latest:Subscription"},
                     new Pulumi.Alias { Type = "azure-nextgen:servicebus/v20140901:Subscription"},
                     new Pulumi.Alias { Type = "azure-nextgen:servicebus/v20150801:Subscription"},
+                    new Pulumi.Alias { Type = "azure-nextgen:servicebus/v20180101preview:Subscription"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

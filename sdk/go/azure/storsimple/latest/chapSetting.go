@@ -12,6 +12,7 @@ import (
 )
 
 // Challenge-Handshake Authentication Protocol (CHAP) setting
+// Latest API Version: 2016-10-01.
 type ChapSetting struct {
 	pulumi.CustomResourceState
 
@@ -132,15 +133,15 @@ type ChapSettingInput interface {
 	ToChapSettingOutputWithContext(ctx context.Context) ChapSettingOutput
 }
 
-func (ChapSetting) ElementType() reflect.Type {
-	return reflect.TypeOf((*ChapSetting)(nil)).Elem()
+func (*ChapSetting) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChapSetting)(nil))
 }
 
-func (i ChapSetting) ToChapSettingOutput() ChapSettingOutput {
+func (i *ChapSetting) ToChapSettingOutput() ChapSettingOutput {
 	return i.ToChapSettingOutputWithContext(context.Background())
 }
 
-func (i ChapSetting) ToChapSettingOutputWithContext(ctx context.Context) ChapSettingOutput {
+func (i *ChapSetting) ToChapSettingOutputWithContext(ctx context.Context) ChapSettingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ChapSettingOutput)
 }
 
@@ -149,7 +150,7 @@ type ChapSettingOutput struct {
 }
 
 func (ChapSettingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ChapSettingOutput)(nil)).Elem()
+	return reflect.TypeOf((*ChapSetting)(nil))
 }
 
 func (o ChapSettingOutput) ToChapSettingOutput() ChapSettingOutput {

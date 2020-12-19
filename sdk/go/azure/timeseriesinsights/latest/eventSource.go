@@ -12,6 +12,7 @@ import (
 )
 
 // An environment receives data from one or more event sources. Each event source has associated connection info that allows the Time Series Insights ingress pipeline to connect to and pull data from the event source
+// Latest API Version: 2020-05-15.
 type EventSource struct {
 	pulumi.CustomResourceState
 
@@ -161,15 +162,15 @@ type EventSourceInput interface {
 	ToEventSourceOutputWithContext(ctx context.Context) EventSourceOutput
 }
 
-func (EventSource) ElementType() reflect.Type {
-	return reflect.TypeOf((*EventSource)(nil)).Elem()
+func (*EventSource) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventSource)(nil))
 }
 
-func (i EventSource) ToEventSourceOutput() EventSourceOutput {
+func (i *EventSource) ToEventSourceOutput() EventSourceOutput {
 	return i.ToEventSourceOutputWithContext(context.Background())
 }
 
-func (i EventSource) ToEventSourceOutputWithContext(ctx context.Context) EventSourceOutput {
+func (i *EventSource) ToEventSourceOutputWithContext(ctx context.Context) EventSourceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EventSourceOutput)
 }
 
@@ -178,7 +179,7 @@ type EventSourceOutput struct {
 }
 
 func (EventSourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EventSourceOutput)(nil)).Elem()
+	return reflect.TypeOf((*EventSource)(nil))
 }
 
 func (o EventSourceOutput) ToEventSourceOutput() EventSourceOutput {

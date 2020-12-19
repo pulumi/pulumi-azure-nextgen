@@ -32,6 +32,7 @@ class ElasticPool(pulumi.CustomResource):
                  __opts__=None):
         """
         Represents a database elastic pool.
+        Latest API Version: 2014-04-01.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -88,7 +89,7 @@ class ElasticPool(pulumi.CustomResource):
             __props__['name'] = None
             __props__['state'] = None
             __props__['type'] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:sql/v20140401:ElasticPool"), pulumi.Alias(type_="azure-nextgen:sql/v20171001preview:ElasticPool"), pulumi.Alias(type_="azure-nextgen:sql/v20200801preview:ElasticPool")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:sql/v20140401:ElasticPool"), pulumi.Alias(type_="azure-nextgen:sql/v20171001preview:ElasticPool"), pulumi.Alias(type_="azure-nextgen:sql/v20200202preview:ElasticPool"), pulumi.Alias(type_="azure-nextgen:sql/v20200801preview:ElasticPool")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ElasticPool, __self__).__init__(
             'azure-nextgen:sql/latest:ElasticPool',

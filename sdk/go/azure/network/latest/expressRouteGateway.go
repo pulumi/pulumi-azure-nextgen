@@ -12,6 +12,7 @@ import (
 )
 
 // ExpressRoute gateway resource.
+// Latest API Version: 2020-07-01.
 type ExpressRouteGateway struct {
 	pulumi.CustomResourceState
 
@@ -218,15 +219,15 @@ type ExpressRouteGatewayInput interface {
 	ToExpressRouteGatewayOutputWithContext(ctx context.Context) ExpressRouteGatewayOutput
 }
 
-func (ExpressRouteGateway) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExpressRouteGateway)(nil)).Elem()
+func (*ExpressRouteGateway) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExpressRouteGateway)(nil))
 }
 
-func (i ExpressRouteGateway) ToExpressRouteGatewayOutput() ExpressRouteGatewayOutput {
+func (i *ExpressRouteGateway) ToExpressRouteGatewayOutput() ExpressRouteGatewayOutput {
 	return i.ToExpressRouteGatewayOutputWithContext(context.Background())
 }
 
-func (i ExpressRouteGateway) ToExpressRouteGatewayOutputWithContext(ctx context.Context) ExpressRouteGatewayOutput {
+func (i *ExpressRouteGateway) ToExpressRouteGatewayOutputWithContext(ctx context.Context) ExpressRouteGatewayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteGatewayOutput)
 }
 
@@ -235,7 +236,7 @@ type ExpressRouteGatewayOutput struct {
 }
 
 func (ExpressRouteGatewayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExpressRouteGatewayOutput)(nil)).Elem()
+	return reflect.TypeOf((*ExpressRouteGateway)(nil))
 }
 
 func (o ExpressRouteGatewayOutput) ToExpressRouteGatewayOutput() ExpressRouteGatewayOutput {

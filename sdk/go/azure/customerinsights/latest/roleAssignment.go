@@ -12,6 +12,7 @@ import (
 )
 
 // The Role Assignment resource format.
+// Latest API Version: 2017-04-26.
 type RoleAssignment struct {
 	pulumi.CustomResourceState
 
@@ -306,15 +307,15 @@ type RoleAssignmentInput interface {
 	ToRoleAssignmentOutputWithContext(ctx context.Context) RoleAssignmentOutput
 }
 
-func (RoleAssignment) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoleAssignment)(nil)).Elem()
+func (*RoleAssignment) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleAssignment)(nil))
 }
 
-func (i RoleAssignment) ToRoleAssignmentOutput() RoleAssignmentOutput {
+func (i *RoleAssignment) ToRoleAssignmentOutput() RoleAssignmentOutput {
 	return i.ToRoleAssignmentOutputWithContext(context.Background())
 }
 
-func (i RoleAssignment) ToRoleAssignmentOutputWithContext(ctx context.Context) RoleAssignmentOutput {
+func (i *RoleAssignment) ToRoleAssignmentOutputWithContext(ctx context.Context) RoleAssignmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RoleAssignmentOutput)
 }
 
@@ -323,7 +324,7 @@ type RoleAssignmentOutput struct {
 }
 
 func (RoleAssignmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoleAssignmentOutput)(nil)).Elem()
+	return reflect.TypeOf((*RoleAssignment)(nil))
 }
 
 func (o RoleAssignmentOutput) ToRoleAssignmentOutput() RoleAssignmentOutput {

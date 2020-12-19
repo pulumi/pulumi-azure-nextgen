@@ -12,6 +12,7 @@ import (
 )
 
 // An Application Insights component definition.
+// Latest API Version: 2015-05-01.
 type Component struct {
 	pulumi.CustomResourceState
 
@@ -294,15 +295,15 @@ type ComponentInput interface {
 	ToComponentOutputWithContext(ctx context.Context) ComponentOutput
 }
 
-func (Component) ElementType() reflect.Type {
-	return reflect.TypeOf((*Component)(nil)).Elem()
+func (*Component) ElementType() reflect.Type {
+	return reflect.TypeOf((*Component)(nil))
 }
 
-func (i Component) ToComponentOutput() ComponentOutput {
+func (i *Component) ToComponentOutput() ComponentOutput {
 	return i.ToComponentOutputWithContext(context.Background())
 }
 
-func (i Component) ToComponentOutputWithContext(ctx context.Context) ComponentOutput {
+func (i *Component) ToComponentOutputWithContext(ctx context.Context) ComponentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ComponentOutput)
 }
 
@@ -311,7 +312,7 @@ type ComponentOutput struct {
 }
 
 func (ComponentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ComponentOutput)(nil)).Elem()
+	return reflect.TypeOf((*Component)(nil))
 }
 
 func (o ComponentOutput) ToComponentOutput() ComponentOutput {

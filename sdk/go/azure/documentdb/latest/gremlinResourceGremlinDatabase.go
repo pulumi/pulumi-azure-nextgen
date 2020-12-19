@@ -12,6 +12,7 @@ import (
 )
 
 // An Azure Cosmos DB Gremlin database.
+// Latest API Version: 2020-09-01.
 type GremlinResourceGremlinDatabase struct {
 	pulumi.CustomResourceState
 
@@ -164,15 +165,15 @@ type GremlinResourceGremlinDatabaseInput interface {
 	ToGremlinResourceGremlinDatabaseOutputWithContext(ctx context.Context) GremlinResourceGremlinDatabaseOutput
 }
 
-func (GremlinResourceGremlinDatabase) ElementType() reflect.Type {
-	return reflect.TypeOf((*GremlinResourceGremlinDatabase)(nil)).Elem()
+func (*GremlinResourceGremlinDatabase) ElementType() reflect.Type {
+	return reflect.TypeOf((*GremlinResourceGremlinDatabase)(nil))
 }
 
-func (i GremlinResourceGremlinDatabase) ToGremlinResourceGremlinDatabaseOutput() GremlinResourceGremlinDatabaseOutput {
+func (i *GremlinResourceGremlinDatabase) ToGremlinResourceGremlinDatabaseOutput() GremlinResourceGremlinDatabaseOutput {
 	return i.ToGremlinResourceGremlinDatabaseOutputWithContext(context.Background())
 }
 
-func (i GremlinResourceGremlinDatabase) ToGremlinResourceGremlinDatabaseOutputWithContext(ctx context.Context) GremlinResourceGremlinDatabaseOutput {
+func (i *GremlinResourceGremlinDatabase) ToGremlinResourceGremlinDatabaseOutputWithContext(ctx context.Context) GremlinResourceGremlinDatabaseOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GremlinResourceGremlinDatabaseOutput)
 }
 
@@ -181,7 +182,7 @@ type GremlinResourceGremlinDatabaseOutput struct {
 }
 
 func (GremlinResourceGremlinDatabaseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GremlinResourceGremlinDatabaseOutput)(nil)).Elem()
+	return reflect.TypeOf((*GremlinResourceGremlinDatabase)(nil))
 }
 
 func (o GremlinResourceGremlinDatabaseOutput) ToGremlinResourceGremlinDatabaseOutput() GremlinResourceGremlinDatabaseOutput {

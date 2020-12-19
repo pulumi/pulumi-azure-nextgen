@@ -12,6 +12,7 @@ import (
 )
 
 // The IoT Central application.
+// Latest API Version: 2018-09-01.
 type App struct {
 	pulumi.CustomResourceState
 
@@ -180,15 +181,15 @@ type AppInput interface {
 	ToAppOutputWithContext(ctx context.Context) AppOutput
 }
 
-func (App) ElementType() reflect.Type {
-	return reflect.TypeOf((*App)(nil)).Elem()
+func (*App) ElementType() reflect.Type {
+	return reflect.TypeOf((*App)(nil))
 }
 
-func (i App) ToAppOutput() AppOutput {
+func (i *App) ToAppOutput() AppOutput {
 	return i.ToAppOutputWithContext(context.Background())
 }
 
-func (i App) ToAppOutputWithContext(ctx context.Context) AppOutput {
+func (i *App) ToAppOutputWithContext(ctx context.Context) AppOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppOutput)
 }
 
@@ -197,7 +198,7 @@ type AppOutput struct {
 }
 
 func (AppOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppOutput)(nil)).Elem()
+	return reflect.TypeOf((*App)(nil))
 }
 
 func (o AppOutput) ToAppOutput() AppOutput {

@@ -12,6 +12,7 @@ import (
 )
 
 // Hybrid Connection for an App Service app.
+// Latest API Version: 2020-09-01.
 type WebAppRelayServiceConnection struct {
 	pulumi.CustomResourceState
 
@@ -177,15 +178,15 @@ type WebAppRelayServiceConnectionInput interface {
 	ToWebAppRelayServiceConnectionOutputWithContext(ctx context.Context) WebAppRelayServiceConnectionOutput
 }
 
-func (WebAppRelayServiceConnection) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebAppRelayServiceConnection)(nil)).Elem()
+func (*WebAppRelayServiceConnection) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAppRelayServiceConnection)(nil))
 }
 
-func (i WebAppRelayServiceConnection) ToWebAppRelayServiceConnectionOutput() WebAppRelayServiceConnectionOutput {
+func (i *WebAppRelayServiceConnection) ToWebAppRelayServiceConnectionOutput() WebAppRelayServiceConnectionOutput {
 	return i.ToWebAppRelayServiceConnectionOutputWithContext(context.Background())
 }
 
-func (i WebAppRelayServiceConnection) ToWebAppRelayServiceConnectionOutputWithContext(ctx context.Context) WebAppRelayServiceConnectionOutput {
+func (i *WebAppRelayServiceConnection) ToWebAppRelayServiceConnectionOutputWithContext(ctx context.Context) WebAppRelayServiceConnectionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppRelayServiceConnectionOutput)
 }
 
@@ -194,7 +195,7 @@ type WebAppRelayServiceConnectionOutput struct {
 }
 
 func (WebAppRelayServiceConnectionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebAppRelayServiceConnectionOutput)(nil)).Elem()
+	return reflect.TypeOf((*WebAppRelayServiceConnection)(nil))
 }
 
 func (o WebAppRelayServiceConnectionOutput) ToWebAppRelayServiceConnectionOutput() WebAppRelayServiceConnectionOutput {

@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.ImportExport.Latest
 {
     /// <summary>
     /// Contains the job information.
+    /// Latest API Version: 2020-08-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:importexport/latest:Job")]
     public partial class Job : Pulumi.CustomResource
     {
         /// <summary>

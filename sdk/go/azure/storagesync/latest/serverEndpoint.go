@@ -12,6 +12,7 @@ import (
 )
 
 // Server Endpoint object.
+// Latest API Version: 2020-09-01.
 type ServerEndpoint struct {
 	pulumi.CustomResourceState
 
@@ -300,15 +301,15 @@ type ServerEndpointInput interface {
 	ToServerEndpointOutputWithContext(ctx context.Context) ServerEndpointOutput
 }
 
-func (ServerEndpoint) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerEndpoint)(nil)).Elem()
+func (*ServerEndpoint) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerEndpoint)(nil))
 }
 
-func (i ServerEndpoint) ToServerEndpointOutput() ServerEndpointOutput {
+func (i *ServerEndpoint) ToServerEndpointOutput() ServerEndpointOutput {
 	return i.ToServerEndpointOutputWithContext(context.Background())
 }
 
-func (i ServerEndpoint) ToServerEndpointOutputWithContext(ctx context.Context) ServerEndpointOutput {
+func (i *ServerEndpoint) ToServerEndpointOutputWithContext(ctx context.Context) ServerEndpointOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServerEndpointOutput)
 }
 
@@ -317,7 +318,7 @@ type ServerEndpointOutput struct {
 }
 
 func (ServerEndpointOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerEndpointOutput)(nil)).Elem()
+	return reflect.TypeOf((*ServerEndpoint)(nil))
 }
 
 func (o ServerEndpointOutput) ToServerEndpointOutput() ServerEndpointOutput {

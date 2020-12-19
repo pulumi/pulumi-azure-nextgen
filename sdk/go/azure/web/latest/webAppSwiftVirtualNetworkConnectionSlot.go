@@ -12,6 +12,7 @@ import (
 )
 
 // Swift Virtual Network Contract. This is used to enable the new Swift way of doing virtual network integration.
+// Latest API Version: 2020-09-01.
 type WebAppSwiftVirtualNetworkConnectionSlot struct {
 	pulumi.CustomResourceState
 
@@ -160,15 +161,15 @@ type WebAppSwiftVirtualNetworkConnectionSlotInput interface {
 	ToWebAppSwiftVirtualNetworkConnectionSlotOutputWithContext(ctx context.Context) WebAppSwiftVirtualNetworkConnectionSlotOutput
 }
 
-func (WebAppSwiftVirtualNetworkConnectionSlot) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebAppSwiftVirtualNetworkConnectionSlot)(nil)).Elem()
+func (*WebAppSwiftVirtualNetworkConnectionSlot) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAppSwiftVirtualNetworkConnectionSlot)(nil))
 }
 
-func (i WebAppSwiftVirtualNetworkConnectionSlot) ToWebAppSwiftVirtualNetworkConnectionSlotOutput() WebAppSwiftVirtualNetworkConnectionSlotOutput {
+func (i *WebAppSwiftVirtualNetworkConnectionSlot) ToWebAppSwiftVirtualNetworkConnectionSlotOutput() WebAppSwiftVirtualNetworkConnectionSlotOutput {
 	return i.ToWebAppSwiftVirtualNetworkConnectionSlotOutputWithContext(context.Background())
 }
 
-func (i WebAppSwiftVirtualNetworkConnectionSlot) ToWebAppSwiftVirtualNetworkConnectionSlotOutputWithContext(ctx context.Context) WebAppSwiftVirtualNetworkConnectionSlotOutput {
+func (i *WebAppSwiftVirtualNetworkConnectionSlot) ToWebAppSwiftVirtualNetworkConnectionSlotOutputWithContext(ctx context.Context) WebAppSwiftVirtualNetworkConnectionSlotOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppSwiftVirtualNetworkConnectionSlotOutput)
 }
 
@@ -177,7 +178,7 @@ type WebAppSwiftVirtualNetworkConnectionSlotOutput struct {
 }
 
 func (WebAppSwiftVirtualNetworkConnectionSlotOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebAppSwiftVirtualNetworkConnectionSlotOutput)(nil)).Elem()
+	return reflect.TypeOf((*WebAppSwiftVirtualNetworkConnectionSlot)(nil))
 }
 
 func (o WebAppSwiftVirtualNetworkConnectionSlotOutput) ToWebAppSwiftVirtualNetworkConnectionSlotOutput() WebAppSwiftVirtualNetworkConnectionSlotOutput {

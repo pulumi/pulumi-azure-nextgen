@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Latest API Version: 2020-11-20.
 type SkusNestedResourceTypeSecond struct {
 	pulumi.CustomResourceState
 
@@ -128,15 +129,15 @@ type SkusNestedResourceTypeSecondInput interface {
 	ToSkusNestedResourceTypeSecondOutputWithContext(ctx context.Context) SkusNestedResourceTypeSecondOutput
 }
 
-func (SkusNestedResourceTypeSecond) ElementType() reflect.Type {
-	return reflect.TypeOf((*SkusNestedResourceTypeSecond)(nil)).Elem()
+func (*SkusNestedResourceTypeSecond) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkusNestedResourceTypeSecond)(nil))
 }
 
-func (i SkusNestedResourceTypeSecond) ToSkusNestedResourceTypeSecondOutput() SkusNestedResourceTypeSecondOutput {
+func (i *SkusNestedResourceTypeSecond) ToSkusNestedResourceTypeSecondOutput() SkusNestedResourceTypeSecondOutput {
 	return i.ToSkusNestedResourceTypeSecondOutputWithContext(context.Background())
 }
 
-func (i SkusNestedResourceTypeSecond) ToSkusNestedResourceTypeSecondOutputWithContext(ctx context.Context) SkusNestedResourceTypeSecondOutput {
+func (i *SkusNestedResourceTypeSecond) ToSkusNestedResourceTypeSecondOutputWithContext(ctx context.Context) SkusNestedResourceTypeSecondOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkusNestedResourceTypeSecondOutput)
 }
 
@@ -145,7 +146,7 @@ type SkusNestedResourceTypeSecondOutput struct {
 }
 
 func (SkusNestedResourceTypeSecondOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SkusNestedResourceTypeSecondOutput)(nil)).Elem()
+	return reflect.TypeOf((*SkusNestedResourceTypeSecond)(nil))
 }
 
 func (o SkusNestedResourceTypeSecondOutput) ToSkusNestedResourceTypeSecondOutput() SkusNestedResourceTypeSecondOutput {

@@ -41,6 +41,7 @@ class Database(pulumi.CustomResource):
                  __opts__=None):
         """
         Represents a database.
+        Latest API Version: 2014-04-01.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -161,7 +162,7 @@ class Database(pulumi.CustomResource):
             __props__['status'] = None
             __props__['transparent_data_encryption'] = None
             __props__['type'] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:sql/v20140401:Database"), pulumi.Alias(type_="azure-nextgen:sql/v20170301preview:Database"), pulumi.Alias(type_="azure-nextgen:sql/v20171001preview:Database"), pulumi.Alias(type_="azure-nextgen:sql/v20190601preview:Database"), pulumi.Alias(type_="azure-nextgen:sql/v20200801preview:Database")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:sql/v20140401:Database"), pulumi.Alias(type_="azure-nextgen:sql/v20170301preview:Database"), pulumi.Alias(type_="azure-nextgen:sql/v20171001preview:Database"), pulumi.Alias(type_="azure-nextgen:sql/v20190601preview:Database"), pulumi.Alias(type_="azure-nextgen:sql/v20200202preview:Database"), pulumi.Alias(type_="azure-nextgen:sql/v20200801preview:Database")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Database, __self__).__init__(
             'azure-nextgen:sql/latest:Database',

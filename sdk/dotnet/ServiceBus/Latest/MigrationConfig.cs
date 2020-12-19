@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.ServiceBus.Latest
 {
     /// <summary>
     /// Single item in List or Get Migration Config operation
+    /// Latest API Version: 2017-04-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:servicebus/latest:MigrationConfig")]
     public partial class MigrationConfig : Pulumi.CustomResource
     {
         /// <summary>
@@ -82,6 +84,7 @@ namespace Pulumi.AzureNextGen.ServiceBus.Latest
                 Aliases =
                 {
                     new Pulumi.Alias { Type = "azure-nextgen:servicebus/v20170401:MigrationConfig"},
+                    new Pulumi.Alias { Type = "azure-nextgen:servicebus/v20180101preview:MigrationConfig"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

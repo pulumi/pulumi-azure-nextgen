@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.OperationalInsights.Latest
 {
     /// <summary>
     /// The top level data export resource container.
+    /// Latest API Version: 2020-08-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:operationalinsights/latest:DataExport")]
     public partial class DataExport : Pulumi.CustomResource
     {
         /// <summary>

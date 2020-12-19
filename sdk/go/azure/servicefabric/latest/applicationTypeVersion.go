@@ -12,6 +12,7 @@ import (
 )
 
 // An application type version resource for the specified application type name resource.
+// Latest API Version: 2020-03-01.
 type ApplicationTypeVersion struct {
 	pulumi.CustomResourceState
 
@@ -185,15 +186,15 @@ type ApplicationTypeVersionInput interface {
 	ToApplicationTypeVersionOutputWithContext(ctx context.Context) ApplicationTypeVersionOutput
 }
 
-func (ApplicationTypeVersion) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationTypeVersion)(nil)).Elem()
+func (*ApplicationTypeVersion) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationTypeVersion)(nil))
 }
 
-func (i ApplicationTypeVersion) ToApplicationTypeVersionOutput() ApplicationTypeVersionOutput {
+func (i *ApplicationTypeVersion) ToApplicationTypeVersionOutput() ApplicationTypeVersionOutput {
 	return i.ToApplicationTypeVersionOutputWithContext(context.Background())
 }
 
-func (i ApplicationTypeVersion) ToApplicationTypeVersionOutputWithContext(ctx context.Context) ApplicationTypeVersionOutput {
+func (i *ApplicationTypeVersion) ToApplicationTypeVersionOutputWithContext(ctx context.Context) ApplicationTypeVersionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationTypeVersionOutput)
 }
 
@@ -202,7 +203,7 @@ type ApplicationTypeVersionOutput struct {
 }
 
 func (ApplicationTypeVersionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationTypeVersionOutput)(nil)).Elem()
+	return reflect.TypeOf((*ApplicationTypeVersion)(nil))
 }
 
 func (o ApplicationTypeVersionOutput) ToApplicationTypeVersionOutput() ApplicationTypeVersionOutput {

@@ -12,6 +12,7 @@ import (
 )
 
 // Image template is an ARM resource managed by Microsoft.VirtualMachineImages provider
+// Latest API Version: 2020-02-14.
 type VirtualMachineImageTemplate struct {
 	pulumi.CustomResourceState
 
@@ -224,15 +225,15 @@ type VirtualMachineImageTemplateInput interface {
 	ToVirtualMachineImageTemplateOutputWithContext(ctx context.Context) VirtualMachineImageTemplateOutput
 }
 
-func (VirtualMachineImageTemplate) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualMachineImageTemplate)(nil)).Elem()
+func (*VirtualMachineImageTemplate) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineImageTemplate)(nil))
 }
 
-func (i VirtualMachineImageTemplate) ToVirtualMachineImageTemplateOutput() VirtualMachineImageTemplateOutput {
+func (i *VirtualMachineImageTemplate) ToVirtualMachineImageTemplateOutput() VirtualMachineImageTemplateOutput {
 	return i.ToVirtualMachineImageTemplateOutputWithContext(context.Background())
 }
 
-func (i VirtualMachineImageTemplate) ToVirtualMachineImageTemplateOutputWithContext(ctx context.Context) VirtualMachineImageTemplateOutput {
+func (i *VirtualMachineImageTemplate) ToVirtualMachineImageTemplateOutputWithContext(ctx context.Context) VirtualMachineImageTemplateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineImageTemplateOutput)
 }
 
@@ -241,7 +242,7 @@ type VirtualMachineImageTemplateOutput struct {
 }
 
 func (VirtualMachineImageTemplateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualMachineImageTemplateOutput)(nil)).Elem()
+	return reflect.TypeOf((*VirtualMachineImageTemplate)(nil))
 }
 
 func (o VirtualMachineImageTemplateOutput) ToVirtualMachineImageTemplateOutput() VirtualMachineImageTemplateOutput {

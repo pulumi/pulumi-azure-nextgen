@@ -12,6 +12,7 @@ import (
 )
 
 // The details of the snoozed or dismissed rule; for example, the duration, name, and GUID associated with the rule.
+// Latest API Version: 2020-01-01.
 type Suppression struct {
 	pulumi.CustomResourceState
 
@@ -147,15 +148,15 @@ type SuppressionInput interface {
 	ToSuppressionOutputWithContext(ctx context.Context) SuppressionOutput
 }
 
-func (Suppression) ElementType() reflect.Type {
-	return reflect.TypeOf((*Suppression)(nil)).Elem()
+func (*Suppression) ElementType() reflect.Type {
+	return reflect.TypeOf((*Suppression)(nil))
 }
 
-func (i Suppression) ToSuppressionOutput() SuppressionOutput {
+func (i *Suppression) ToSuppressionOutput() SuppressionOutput {
 	return i.ToSuppressionOutputWithContext(context.Background())
 }
 
-func (i Suppression) ToSuppressionOutputWithContext(ctx context.Context) SuppressionOutput {
+func (i *Suppression) ToSuppressionOutputWithContext(ctx context.Context) SuppressionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SuppressionOutput)
 }
 
@@ -164,7 +165,7 @@ type SuppressionOutput struct {
 }
 
 func (SuppressionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SuppressionOutput)(nil)).Elem()
+	return reflect.TypeOf((*Suppression)(nil))
 }
 
 func (o SuppressionOutput) ToSuppressionOutput() SuppressionOutput {

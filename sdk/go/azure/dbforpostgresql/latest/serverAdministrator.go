@@ -12,6 +12,7 @@ import (
 )
 
 // Represents a and external administrator to be created.
+// Latest API Version: 2017-12-01.
 type ServerAdministrator struct {
 	pulumi.CustomResourceState
 
@@ -160,15 +161,15 @@ type ServerAdministratorInput interface {
 	ToServerAdministratorOutputWithContext(ctx context.Context) ServerAdministratorOutput
 }
 
-func (ServerAdministrator) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerAdministrator)(nil)).Elem()
+func (*ServerAdministrator) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerAdministrator)(nil))
 }
 
-func (i ServerAdministrator) ToServerAdministratorOutput() ServerAdministratorOutput {
+func (i *ServerAdministrator) ToServerAdministratorOutput() ServerAdministratorOutput {
 	return i.ToServerAdministratorOutputWithContext(context.Background())
 }
 
-func (i ServerAdministrator) ToServerAdministratorOutputWithContext(ctx context.Context) ServerAdministratorOutput {
+func (i *ServerAdministrator) ToServerAdministratorOutputWithContext(ctx context.Context) ServerAdministratorOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServerAdministratorOutput)
 }
 
@@ -177,7 +178,7 @@ type ServerAdministratorOutput struct {
 }
 
 func (ServerAdministratorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerAdministratorOutput)(nil)).Elem()
+	return reflect.TypeOf((*ServerAdministrator)(nil))
 }
 
 func (o ServerAdministratorOutput) ToServerAdministratorOutput() ServerAdministratorOutput {

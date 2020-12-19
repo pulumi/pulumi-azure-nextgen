@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Addons.Latest
 {
     /// <summary>
     /// The status of the Canonical support plan.
+    /// Latest API Version: 2018-03-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:addons/latest:SupportPlanType")]
     public partial class SupportPlanType : Pulumi.CustomResource
     {
         /// <summary>

@@ -12,6 +12,7 @@ import (
 )
 
 // Class representing a Kusto cluster.
+// Latest API Version: 2020-09-18.
 type Cluster struct {
 	pulumi.CustomResourceState
 
@@ -311,15 +312,15 @@ type ClusterInput interface {
 	ToClusterOutputWithContext(ctx context.Context) ClusterOutput
 }
 
-func (Cluster) ElementType() reflect.Type {
-	return reflect.TypeOf((*Cluster)(nil)).Elem()
+func (*Cluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*Cluster)(nil))
 }
 
-func (i Cluster) ToClusterOutput() ClusterOutput {
+func (i *Cluster) ToClusterOutput() ClusterOutput {
 	return i.ToClusterOutputWithContext(context.Background())
 }
 
-func (i Cluster) ToClusterOutputWithContext(ctx context.Context) ClusterOutput {
+func (i *Cluster) ToClusterOutputWithContext(ctx context.Context) ClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterOutput)
 }
 
@@ -328,7 +329,7 @@ type ClusterOutput struct {
 }
 
 func (ClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterOutput)(nil)).Elem()
+	return reflect.TypeOf((*Cluster)(nil))
 }
 
 func (o ClusterOutput) ToClusterOutput() ClusterOutput {

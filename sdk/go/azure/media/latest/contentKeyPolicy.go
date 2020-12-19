@@ -12,6 +12,7 @@ import (
 )
 
 // A Content Key Policy resource.
+// Latest API Version: 2020-05-01.
 type ContentKeyPolicy struct {
 	pulumi.CustomResourceState
 
@@ -162,15 +163,15 @@ type ContentKeyPolicyInput interface {
 	ToContentKeyPolicyOutputWithContext(ctx context.Context) ContentKeyPolicyOutput
 }
 
-func (ContentKeyPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContentKeyPolicy)(nil)).Elem()
+func (*ContentKeyPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContentKeyPolicy)(nil))
 }
 
-func (i ContentKeyPolicy) ToContentKeyPolicyOutput() ContentKeyPolicyOutput {
+func (i *ContentKeyPolicy) ToContentKeyPolicyOutput() ContentKeyPolicyOutput {
 	return i.ToContentKeyPolicyOutputWithContext(context.Background())
 }
 
-func (i ContentKeyPolicy) ToContentKeyPolicyOutputWithContext(ctx context.Context) ContentKeyPolicyOutput {
+func (i *ContentKeyPolicy) ToContentKeyPolicyOutputWithContext(ctx context.Context) ContentKeyPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ContentKeyPolicyOutput)
 }
 
@@ -179,7 +180,7 @@ type ContentKeyPolicyOutput struct {
 }
 
 func (ContentKeyPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContentKeyPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*ContentKeyPolicy)(nil))
 }
 
 func (o ContentKeyPolicyOutput) ToContentKeyPolicyOutput() ContentKeyPolicyOutput {

@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Web.Latest
 {
     /// <summary>
     /// Hybrid Connection for an App Service app.
+    /// Latest API Version: 2020-09-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:web/latest:WebAppRelayServiceConnectionSlot")]
     public partial class WebAppRelayServiceConnectionSlot : Pulumi.CustomResource
     {
         [Output("biztalkUri")]

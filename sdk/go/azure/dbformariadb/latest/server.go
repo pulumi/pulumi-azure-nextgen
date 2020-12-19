@@ -12,6 +12,7 @@ import (
 )
 
 // Represents a server.
+// Latest API Version: 2018-06-01.
 type Server struct {
 	pulumi.CustomResourceState
 
@@ -220,15 +221,15 @@ type ServerInput interface {
 	ToServerOutputWithContext(ctx context.Context) ServerOutput
 }
 
-func (Server) ElementType() reflect.Type {
-	return reflect.TypeOf((*Server)(nil)).Elem()
+func (*Server) ElementType() reflect.Type {
+	return reflect.TypeOf((*Server)(nil))
 }
 
-func (i Server) ToServerOutput() ServerOutput {
+func (i *Server) ToServerOutput() ServerOutput {
 	return i.ToServerOutputWithContext(context.Background())
 }
 
-func (i Server) ToServerOutputWithContext(ctx context.Context) ServerOutput {
+func (i *Server) ToServerOutputWithContext(ctx context.Context) ServerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServerOutput)
 }
 
@@ -237,7 +238,7 @@ type ServerOutput struct {
 }
 
 func (ServerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerOutput)(nil)).Elem()
+	return reflect.TypeOf((*Server)(nil))
 }
 
 func (o ServerOutput) ToServerOutput() ServerOutput {

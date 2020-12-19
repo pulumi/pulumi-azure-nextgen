@@ -26,6 +26,7 @@ class TransparentDataEncryption(pulumi.CustomResource):
                  __opts__=None):
         """
         Represents a database transparent data encryption configuration.
+        Latest API Version: 2014-04-01.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -68,7 +69,7 @@ class TransparentDataEncryption(pulumi.CustomResource):
             __props__['location'] = None
             __props__['name'] = None
             __props__['type'] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:sql/v20140401:TransparentDataEncryption"), pulumi.Alias(type_="azure-nextgen:sql/v20200801preview:TransparentDataEncryption")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:sql/v20140401:TransparentDataEncryption"), pulumi.Alias(type_="azure-nextgen:sql/v20200202preview:TransparentDataEncryption"), pulumi.Alias(type_="azure-nextgen:sql/v20200801preview:TransparentDataEncryption")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(TransparentDataEncryption, __self__).__init__(
             'azure-nextgen:sql/latest:TransparentDataEncryption',

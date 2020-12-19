@@ -57,6 +57,9 @@ func NewJobAgent(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-nextgen:sql/v20170301preview:JobAgent"),
 		},
+		{
+			Type: pulumi.String("azure-nextgen:sql/v20200202preview:JobAgent"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource JobAgent
@@ -164,15 +167,15 @@ type JobAgentInput interface {
 	ToJobAgentOutputWithContext(ctx context.Context) JobAgentOutput
 }
 
-func (JobAgent) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobAgent)(nil)).Elem()
+func (*JobAgent) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobAgent)(nil))
 }
 
-func (i JobAgent) ToJobAgentOutput() JobAgentOutput {
+func (i *JobAgent) ToJobAgentOutput() JobAgentOutput {
 	return i.ToJobAgentOutputWithContext(context.Background())
 }
 
-func (i JobAgent) ToJobAgentOutputWithContext(ctx context.Context) JobAgentOutput {
+func (i *JobAgent) ToJobAgentOutputWithContext(ctx context.Context) JobAgentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(JobAgentOutput)
 }
 
@@ -181,7 +184,7 @@ type JobAgentOutput struct {
 }
 
 func (JobAgentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobAgentOutput)(nil)).Elem()
+	return reflect.TypeOf((*JobAgent)(nil))
 }
 
 func (o JobAgentOutput) ToJobAgentOutput() JobAgentOutput {

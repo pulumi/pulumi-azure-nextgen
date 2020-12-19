@@ -26,6 +26,7 @@ class TopicAuthorizationRule(pulumi.CustomResource):
                  __opts__=None):
         """
         Description of a namespace authorization rule.
+        Latest API Version: 2017-04-01.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -69,7 +70,7 @@ class TopicAuthorizationRule(pulumi.CustomResource):
             __props__['topic_name'] = topic_name
             __props__['name'] = None
             __props__['type'] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:servicebus/v20140901:TopicAuthorizationRule"), pulumi.Alias(type_="azure-nextgen:servicebus/v20150801:TopicAuthorizationRule"), pulumi.Alias(type_="azure-nextgen:servicebus/v20170401:TopicAuthorizationRule")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:servicebus/v20140901:TopicAuthorizationRule"), pulumi.Alias(type_="azure-nextgen:servicebus/v20150801:TopicAuthorizationRule"), pulumi.Alias(type_="azure-nextgen:servicebus/v20170401:TopicAuthorizationRule"), pulumi.Alias(type_="azure-nextgen:servicebus/v20180101preview:TopicAuthorizationRule")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(TopicAuthorizationRule, __self__).__init__(
             'azure-nextgen:servicebus/latest:TopicAuthorizationRule',

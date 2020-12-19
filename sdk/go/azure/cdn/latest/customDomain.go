@@ -12,6 +12,7 @@ import (
 )
 
 // Friendly domain name mapping to the endpoint hostname that the customer provides for branding purposes, e.g. www.contoso.com.
+// Latest API Version: 2020-09-01.
 type CustomDomain struct {
 	pulumi.CustomResourceState
 
@@ -201,15 +202,15 @@ type CustomDomainInput interface {
 	ToCustomDomainOutputWithContext(ctx context.Context) CustomDomainOutput
 }
 
-func (CustomDomain) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomDomain)(nil)).Elem()
+func (*CustomDomain) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomDomain)(nil))
 }
 
-func (i CustomDomain) ToCustomDomainOutput() CustomDomainOutput {
+func (i *CustomDomain) ToCustomDomainOutput() CustomDomainOutput {
 	return i.ToCustomDomainOutputWithContext(context.Background())
 }
 
-func (i CustomDomain) ToCustomDomainOutputWithContext(ctx context.Context) CustomDomainOutput {
+func (i *CustomDomain) ToCustomDomainOutputWithContext(ctx context.Context) CustomDomainOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainOutput)
 }
 
@@ -218,7 +219,7 @@ type CustomDomainOutput struct {
 }
 
 func (CustomDomainOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomDomainOutput)(nil)).Elem()
+	return reflect.TypeOf((*CustomDomain)(nil))
 }
 
 func (o CustomDomainOutput) ToCustomDomainOutput() CustomDomainOutput {

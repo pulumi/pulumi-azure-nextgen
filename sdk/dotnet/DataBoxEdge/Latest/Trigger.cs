@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.DataBoxEdge.Latest
 {
     /// <summary>
     /// Trigger details.
+    /// Latest API Version: 2019-08-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:databoxedge/latest:Trigger")]
     public partial class Trigger : Pulumi.CustomResource
     {
         /// <summary>

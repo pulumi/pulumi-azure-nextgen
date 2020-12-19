@@ -12,6 +12,7 @@ import (
 )
 
 // CDN origin is the source of the content being delivered via CDN. When the edge nodes represented by an endpoint do not have the requested content cached, they attempt to fetch it from one or more of the configured origins.
+// Latest API Version: 2020-09-01.
 type Origin struct {
 	pulumi.CustomResourceState
 
@@ -271,15 +272,15 @@ type OriginInput interface {
 	ToOriginOutputWithContext(ctx context.Context) OriginOutput
 }
 
-func (Origin) ElementType() reflect.Type {
-	return reflect.TypeOf((*Origin)(nil)).Elem()
+func (*Origin) ElementType() reflect.Type {
+	return reflect.TypeOf((*Origin)(nil))
 }
 
-func (i Origin) ToOriginOutput() OriginOutput {
+func (i *Origin) ToOriginOutput() OriginOutput {
 	return i.ToOriginOutputWithContext(context.Background())
 }
 
-func (i Origin) ToOriginOutputWithContext(ctx context.Context) OriginOutput {
+func (i *Origin) ToOriginOutputWithContext(ctx context.Context) OriginOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OriginOutput)
 }
 
@@ -288,7 +289,7 @@ type OriginOutput struct {
 }
 
 func (OriginOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OriginOutput)(nil)).Elem()
+	return reflect.TypeOf((*Origin)(nil))
 }
 
 func (o OriginOutput) ToOriginOutput() OriginOutput {

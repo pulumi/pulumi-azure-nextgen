@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Resources.Latest
 {
     /// <summary>
     /// Resource information.
+    /// Latest API Version: 2020-08-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:resources/latest:Resource")]
     public partial class Resource : Pulumi.CustomResource
     {
         /// <summary>

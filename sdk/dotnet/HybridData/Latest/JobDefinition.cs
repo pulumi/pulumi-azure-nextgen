@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.HybridData.Latest
 {
     /// <summary>
     /// Job Definition.
+    /// Latest API Version: 2019-06-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:hybriddata/latest:JobDefinition")]
     public partial class JobDefinition : Pulumi.CustomResource
     {
         /// <summary>

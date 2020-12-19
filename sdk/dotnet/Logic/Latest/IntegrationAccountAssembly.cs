@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Logic.Latest
 {
     /// <summary>
     /// The assembly definition.
+    /// Latest API Version: 2019-05-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:logic/latest:IntegrationAccountAssembly")]
     public partial class IntegrationAccountAssembly : Pulumi.CustomResource
     {
         /// <summary>

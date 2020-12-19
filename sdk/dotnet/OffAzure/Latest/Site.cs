@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.OffAzure.Latest
 {
     /// <summary>
     /// Site REST Resource.
+    /// Latest API Version: 2020-07-07.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:offazure/latest:Site")]
     public partial class Site : Pulumi.CustomResource
     {
         /// <summary>

@@ -12,6 +12,7 @@ import (
 )
 
 // A container for a managed identity to execute DevTest lab services.
+// Latest API Version: 2018-09-15.
 type ServiceRunner struct {
 	pulumi.CustomResourceState
 
@@ -145,15 +146,15 @@ type ServiceRunnerInput interface {
 	ToServiceRunnerOutputWithContext(ctx context.Context) ServiceRunnerOutput
 }
 
-func (ServiceRunner) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceRunner)(nil)).Elem()
+func (*ServiceRunner) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceRunner)(nil))
 }
 
-func (i ServiceRunner) ToServiceRunnerOutput() ServiceRunnerOutput {
+func (i *ServiceRunner) ToServiceRunnerOutput() ServiceRunnerOutput {
 	return i.ToServiceRunnerOutputWithContext(context.Background())
 }
 
-func (i ServiceRunner) ToServiceRunnerOutputWithContext(ctx context.Context) ServiceRunnerOutput {
+func (i *ServiceRunner) ToServiceRunnerOutputWithContext(ctx context.Context) ServiceRunnerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceRunnerOutput)
 }
 
@@ -162,7 +163,7 @@ type ServiceRunnerOutput struct {
 }
 
 func (ServiceRunnerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceRunnerOutput)(nil)).Elem()
+	return reflect.TypeOf((*ServiceRunner)(nil))
 }
 
 func (o ServiceRunnerOutput) ToServiceRunnerOutput() ServiceRunnerOutput {

@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.HealthcareApis.Latest
 {
     /// <summary>
     /// The description of the service.
+    /// Latest API Version: 2020-03-30.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:healthcareapis/latest:Service")]
     public partial class Service : Pulumi.CustomResource
     {
         /// <summary>

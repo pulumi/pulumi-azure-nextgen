@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Insights.Latest
 {
     /// <summary>
     /// An Application Insights web test definition.
+    /// Latest API Version: 2015-05-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:insights/latest:WebTest")]
     public partial class WebTest : Pulumi.CustomResource
     {
         /// <summary>

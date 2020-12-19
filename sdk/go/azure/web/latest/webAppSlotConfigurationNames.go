@@ -12,6 +12,7 @@ import (
 )
 
 // Slot Config names azure resource.
+// Latest API Version: 2020-09-01.
 type WebAppSlotConfigurationNames struct {
 	pulumi.CustomResourceState
 
@@ -169,15 +170,15 @@ type WebAppSlotConfigurationNamesInput interface {
 	ToWebAppSlotConfigurationNamesOutputWithContext(ctx context.Context) WebAppSlotConfigurationNamesOutput
 }
 
-func (WebAppSlotConfigurationNames) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebAppSlotConfigurationNames)(nil)).Elem()
+func (*WebAppSlotConfigurationNames) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAppSlotConfigurationNames)(nil))
 }
 
-func (i WebAppSlotConfigurationNames) ToWebAppSlotConfigurationNamesOutput() WebAppSlotConfigurationNamesOutput {
+func (i *WebAppSlotConfigurationNames) ToWebAppSlotConfigurationNamesOutput() WebAppSlotConfigurationNamesOutput {
 	return i.ToWebAppSlotConfigurationNamesOutputWithContext(context.Background())
 }
 
-func (i WebAppSlotConfigurationNames) ToWebAppSlotConfigurationNamesOutputWithContext(ctx context.Context) WebAppSlotConfigurationNamesOutput {
+func (i *WebAppSlotConfigurationNames) ToWebAppSlotConfigurationNamesOutputWithContext(ctx context.Context) WebAppSlotConfigurationNamesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppSlotConfigurationNamesOutput)
 }
 
@@ -186,7 +187,7 @@ type WebAppSlotConfigurationNamesOutput struct {
 }
 
 func (WebAppSlotConfigurationNamesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebAppSlotConfigurationNamesOutput)(nil)).Elem()
+	return reflect.TypeOf((*WebAppSlotConfigurationNames)(nil))
 }
 
 func (o WebAppSlotConfigurationNamesOutput) ToWebAppSlotConfigurationNamesOutput() WebAppSlotConfigurationNamesOutput {

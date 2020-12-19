@@ -12,6 +12,7 @@ import (
 )
 
 // Resource information with extended details.
+// Latest API Version: 2019-09-01.
 type Vault struct {
 	pulumi.CustomResourceState
 
@@ -156,15 +157,15 @@ type VaultInput interface {
 	ToVaultOutputWithContext(ctx context.Context) VaultOutput
 }
 
-func (Vault) ElementType() reflect.Type {
-	return reflect.TypeOf((*Vault)(nil)).Elem()
+func (*Vault) ElementType() reflect.Type {
+	return reflect.TypeOf((*Vault)(nil))
 }
 
-func (i Vault) ToVaultOutput() VaultOutput {
+func (i *Vault) ToVaultOutput() VaultOutput {
 	return i.ToVaultOutputWithContext(context.Background())
 }
 
-func (i Vault) ToVaultOutputWithContext(ctx context.Context) VaultOutput {
+func (i *Vault) ToVaultOutputWithContext(ctx context.Context) VaultOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VaultOutput)
 }
 
@@ -173,7 +174,7 @@ type VaultOutput struct {
 }
 
 func (VaultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VaultOutput)(nil)).Elem()
+	return reflect.TypeOf((*Vault)(nil))
 }
 
 func (o VaultOutput) ToVaultOutput() VaultOutput {

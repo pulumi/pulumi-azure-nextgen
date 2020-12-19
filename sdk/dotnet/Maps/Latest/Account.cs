@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Maps.Latest
 {
     /// <summary>
     /// An Azure resource which represents access to a suite of Maps REST APIs.
+    /// Latest API Version: 2018-05-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:maps/latest:Account")]
     public partial class Account : Pulumi.CustomResource
     {
         /// <summary>

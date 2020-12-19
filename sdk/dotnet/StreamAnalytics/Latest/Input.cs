@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.StreamAnalytics.Latest
 {
     /// <summary>
     /// An input object, containing all information associated with the named input. All inputs are contained under a streaming job.
+    /// Latest API Version: 2016-03-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:streamanalytics/latest:Input")]
     public partial class Input : Pulumi.CustomResource
     {
         /// <summary>

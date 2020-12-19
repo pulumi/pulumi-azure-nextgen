@@ -12,6 +12,7 @@ import (
 )
 
 // Dataset resource type.
+// Latest API Version: 2018-06-01.
 type Dataset struct {
 	pulumi.CustomResourceState
 
@@ -134,15 +135,15 @@ type DatasetInput interface {
 	ToDatasetOutputWithContext(ctx context.Context) DatasetOutput
 }
 
-func (Dataset) ElementType() reflect.Type {
-	return reflect.TypeOf((*Dataset)(nil)).Elem()
+func (*Dataset) ElementType() reflect.Type {
+	return reflect.TypeOf((*Dataset)(nil))
 }
 
-func (i Dataset) ToDatasetOutput() DatasetOutput {
+func (i *Dataset) ToDatasetOutput() DatasetOutput {
 	return i.ToDatasetOutputWithContext(context.Background())
 }
 
-func (i Dataset) ToDatasetOutputWithContext(ctx context.Context) DatasetOutput {
+func (i *Dataset) ToDatasetOutputWithContext(ctx context.Context) DatasetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetOutput)
 }
 
@@ -151,7 +152,7 @@ type DatasetOutput struct {
 }
 
 func (DatasetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetOutput)(nil)).Elem()
+	return reflect.TypeOf((*Dataset)(nil))
 }
 
 func (o DatasetOutput) ToDatasetOutput() DatasetOutput {

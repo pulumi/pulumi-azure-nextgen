@@ -12,6 +12,7 @@ import (
 )
 
 // vCenter definition.
+// Latest API Version: 2018-07-10.
 type ReplicationvCenter struct {
 	pulumi.CustomResourceState
 
@@ -141,15 +142,15 @@ type ReplicationvCenterInput interface {
 	ToReplicationvCenterOutputWithContext(ctx context.Context) ReplicationvCenterOutput
 }
 
-func (ReplicationvCenter) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReplicationvCenter)(nil)).Elem()
+func (*ReplicationvCenter) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicationvCenter)(nil))
 }
 
-func (i ReplicationvCenter) ToReplicationvCenterOutput() ReplicationvCenterOutput {
+func (i *ReplicationvCenter) ToReplicationvCenterOutput() ReplicationvCenterOutput {
 	return i.ToReplicationvCenterOutputWithContext(context.Background())
 }
 
-func (i ReplicationvCenter) ToReplicationvCenterOutputWithContext(ctx context.Context) ReplicationvCenterOutput {
+func (i *ReplicationvCenter) ToReplicationvCenterOutputWithContext(ctx context.Context) ReplicationvCenterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicationvCenterOutput)
 }
 
@@ -158,7 +159,7 @@ type ReplicationvCenterOutput struct {
 }
 
 func (ReplicationvCenterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReplicationvCenterOutput)(nil)).Elem()
+	return reflect.TypeOf((*ReplicationvCenter)(nil))
 }
 
 func (o ReplicationvCenterOutput) ToReplicationvCenterOutput() ReplicationvCenterOutput {

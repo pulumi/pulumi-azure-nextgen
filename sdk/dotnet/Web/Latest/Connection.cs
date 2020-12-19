@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Web.Latest
 {
     /// <summary>
     /// API connection
+    /// Latest API Version: 2016-06-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:web/latest:Connection")]
     public partial class Connection : Pulumi.CustomResource
     {
         /// <summary>

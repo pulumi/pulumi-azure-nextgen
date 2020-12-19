@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.ServiceBus.Latest
 {
     /// <summary>
     /// Description of topic resource.
+    /// Latest API Version: 2017-04-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:servicebus/latest:Topic")]
     public partial class Topic : Pulumi.CustomResource
     {
         /// <summary>
@@ -150,6 +152,7 @@ namespace Pulumi.AzureNextGen.ServiceBus.Latest
                     new Pulumi.Alias { Type = "azure-nextgen:servicebus/v20140901:Topic"},
                     new Pulumi.Alias { Type = "azure-nextgen:servicebus/v20150801:Topic"},
                     new Pulumi.Alias { Type = "azure-nextgen:servicebus/v20170401:Topic"},
+                    new Pulumi.Alias { Type = "azure-nextgen:servicebus/v20180101preview:Topic"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

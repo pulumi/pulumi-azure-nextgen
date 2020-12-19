@@ -12,6 +12,7 @@ import (
 )
 
 // States and configurations of Cost Analysis.
+// Latest API Version: 2020-06-01.
 type ViewByScope struct {
 	pulumi.CustomResourceState
 
@@ -239,15 +240,15 @@ type ViewByScopeInput interface {
 	ToViewByScopeOutputWithContext(ctx context.Context) ViewByScopeOutput
 }
 
-func (ViewByScope) ElementType() reflect.Type {
-	return reflect.TypeOf((*ViewByScope)(nil)).Elem()
+func (*ViewByScope) ElementType() reflect.Type {
+	return reflect.TypeOf((*ViewByScope)(nil))
 }
 
-func (i ViewByScope) ToViewByScopeOutput() ViewByScopeOutput {
+func (i *ViewByScope) ToViewByScopeOutput() ViewByScopeOutput {
 	return i.ToViewByScopeOutputWithContext(context.Background())
 }
 
-func (i ViewByScope) ToViewByScopeOutputWithContext(ctx context.Context) ViewByScopeOutput {
+func (i *ViewByScope) ToViewByScopeOutputWithContext(ctx context.Context) ViewByScopeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ViewByScopeOutput)
 }
 
@@ -256,7 +257,7 @@ type ViewByScopeOutput struct {
 }
 
 func (ViewByScopeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ViewByScopeOutput)(nil)).Elem()
+	return reflect.TypeOf((*ViewByScope)(nil))
 }
 
 func (o ViewByScopeOutput) ToViewByScopeOutput() ViewByScopeOutput {

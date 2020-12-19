@@ -12,6 +12,7 @@ import (
 )
 
 // Peering is a logical representation of a set of connections to the Microsoft Cloud Edge at a location.
+// Latest API Version: 2020-10-01.
 type Peering struct {
 	pulumi.CustomResourceState
 
@@ -202,15 +203,15 @@ type PeeringInput interface {
 	ToPeeringOutputWithContext(ctx context.Context) PeeringOutput
 }
 
-func (Peering) ElementType() reflect.Type {
-	return reflect.TypeOf((*Peering)(nil)).Elem()
+func (*Peering) ElementType() reflect.Type {
+	return reflect.TypeOf((*Peering)(nil))
 }
 
-func (i Peering) ToPeeringOutput() PeeringOutput {
+func (i *Peering) ToPeeringOutput() PeeringOutput {
 	return i.ToPeeringOutputWithContext(context.Background())
 }
 
-func (i Peering) ToPeeringOutputWithContext(ctx context.Context) PeeringOutput {
+func (i *Peering) ToPeeringOutputWithContext(ctx context.Context) PeeringOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PeeringOutput)
 }
 
@@ -219,7 +220,7 @@ type PeeringOutput struct {
 }
 
 func (PeeringOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PeeringOutput)(nil)).Elem()
+	return reflect.TypeOf((*Peering)(nil))
 }
 
 func (o PeeringOutput) ToPeeringOutput() PeeringOutput {

@@ -12,6 +12,7 @@ import (
 )
 
 // Service End point policy resource.
+// Latest API Version: 2020-07-01.
 type ServiceEndpointPolicy struct {
 	pulumi.CustomResourceState
 
@@ -214,15 +215,15 @@ type ServiceEndpointPolicyInput interface {
 	ToServiceEndpointPolicyOutputWithContext(ctx context.Context) ServiceEndpointPolicyOutput
 }
 
-func (ServiceEndpointPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceEndpointPolicy)(nil)).Elem()
+func (*ServiceEndpointPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceEndpointPolicy)(nil))
 }
 
-func (i ServiceEndpointPolicy) ToServiceEndpointPolicyOutput() ServiceEndpointPolicyOutput {
+func (i *ServiceEndpointPolicy) ToServiceEndpointPolicyOutput() ServiceEndpointPolicyOutput {
 	return i.ToServiceEndpointPolicyOutputWithContext(context.Background())
 }
 
-func (i ServiceEndpointPolicy) ToServiceEndpointPolicyOutputWithContext(ctx context.Context) ServiceEndpointPolicyOutput {
+func (i *ServiceEndpointPolicy) ToServiceEndpointPolicyOutputWithContext(ctx context.Context) ServiceEndpointPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceEndpointPolicyOutput)
 }
 
@@ -231,7 +232,7 @@ type ServiceEndpointPolicyOutput struct {
 }
 
 func (ServiceEndpointPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceEndpointPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*ServiceEndpointPolicy)(nil))
 }
 
 func (o ServiceEndpointPolicyOutput) ToServiceEndpointPolicyOutput() ServiceEndpointPolicyOutput {

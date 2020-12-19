@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Media.Latest
 {
     /// <summary>
     /// A Streaming Locator resource
+    /// Latest API Version: 2020-05-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:media/latest:StreamingLocator")]
     public partial class StreamingLocator : Pulumi.CustomResource
     {
         /// <summary>

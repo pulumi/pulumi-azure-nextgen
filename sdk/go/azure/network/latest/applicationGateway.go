@@ -12,6 +12,7 @@ import (
 )
 
 // Application gateway resource.
+// Latest API Version: 2020-07-01.
 type ApplicationGateway struct {
 	pulumi.CustomResourceState
 
@@ -538,15 +539,15 @@ type ApplicationGatewayInput interface {
 	ToApplicationGatewayOutputWithContext(ctx context.Context) ApplicationGatewayOutput
 }
 
-func (ApplicationGateway) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationGateway)(nil)).Elem()
+func (*ApplicationGateway) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationGateway)(nil))
 }
 
-func (i ApplicationGateway) ToApplicationGatewayOutput() ApplicationGatewayOutput {
+func (i *ApplicationGateway) ToApplicationGatewayOutput() ApplicationGatewayOutput {
 	return i.ToApplicationGatewayOutputWithContext(context.Background())
 }
 
-func (i ApplicationGateway) ToApplicationGatewayOutputWithContext(ctx context.Context) ApplicationGatewayOutput {
+func (i *ApplicationGateway) ToApplicationGatewayOutputWithContext(ctx context.Context) ApplicationGatewayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationGatewayOutput)
 }
 
@@ -555,7 +556,7 @@ type ApplicationGatewayOutput struct {
 }
 
 func (ApplicationGatewayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationGatewayOutput)(nil)).Elem()
+	return reflect.TypeOf((*ApplicationGateway)(nil))
 }
 
 func (o ApplicationGatewayOutput) ToApplicationGatewayOutput() ApplicationGatewayOutput {

@@ -12,6 +12,7 @@ import (
 )
 
 // DigitalTwinsInstance endpoint resource.
+// Latest API Version: 2020-12-01.
 type DigitalTwinsEndpoint struct {
 	pulumi.CustomResourceState
 
@@ -48,6 +49,9 @@ func NewDigitalTwinsEndpoint(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-nextgen:digitaltwins/v20201031:DigitalTwinsEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-nextgen:digitaltwins/v20201201:DigitalTwinsEndpoint"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -128,15 +132,15 @@ type DigitalTwinsEndpointInput interface {
 	ToDigitalTwinsEndpointOutputWithContext(ctx context.Context) DigitalTwinsEndpointOutput
 }
 
-func (DigitalTwinsEndpoint) ElementType() reflect.Type {
-	return reflect.TypeOf((*DigitalTwinsEndpoint)(nil)).Elem()
+func (*DigitalTwinsEndpoint) ElementType() reflect.Type {
+	return reflect.TypeOf((*DigitalTwinsEndpoint)(nil))
 }
 
-func (i DigitalTwinsEndpoint) ToDigitalTwinsEndpointOutput() DigitalTwinsEndpointOutput {
+func (i *DigitalTwinsEndpoint) ToDigitalTwinsEndpointOutput() DigitalTwinsEndpointOutput {
 	return i.ToDigitalTwinsEndpointOutputWithContext(context.Background())
 }
 
-func (i DigitalTwinsEndpoint) ToDigitalTwinsEndpointOutputWithContext(ctx context.Context) DigitalTwinsEndpointOutput {
+func (i *DigitalTwinsEndpoint) ToDigitalTwinsEndpointOutputWithContext(ctx context.Context) DigitalTwinsEndpointOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DigitalTwinsEndpointOutput)
 }
 
@@ -145,7 +149,7 @@ type DigitalTwinsEndpointOutput struct {
 }
 
 func (DigitalTwinsEndpointOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DigitalTwinsEndpointOutput)(nil)).Elem()
+	return reflect.TypeOf((*DigitalTwinsEndpoint)(nil))
 }
 
 func (o DigitalTwinsEndpointOutput) ToDigitalTwinsEndpointOutput() DigitalTwinsEndpointOutput {

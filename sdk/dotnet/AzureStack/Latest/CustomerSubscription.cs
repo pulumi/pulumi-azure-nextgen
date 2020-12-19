@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.AzureStack.Latest
 {
     /// <summary>
     /// Customer subscription.
+    /// Latest API Version: 2017-06-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:azurestack/latest:CustomerSubscription")]
     public partial class CustomerSubscription : Pulumi.CustomResource
     {
         /// <summary>

@@ -12,6 +12,7 @@ namespace Pulumi.AzureNextGen.OperationalInsights.V20151101Preview
     /// <summary>
     /// A user-defined logical grouping of machines.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:operationalinsights/v20151101preview:MachineGroup")]
     public partial class MachineGroup : Pulumi.CustomResource
     {
         /// <summary>
@@ -40,6 +41,7 @@ namespace Pulumi.AzureNextGen.OperationalInsights.V20151101Preview
 
         /// <summary>
         /// Additional resource type qualifier.
+        /// Expected value is 'machineGroup'.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -140,6 +142,7 @@ namespace Pulumi.AzureNextGen.OperationalInsights.V20151101Preview
 
         /// <summary>
         /// Additional resource type qualifier.
+        /// Expected value is 'machineGroup'.
         /// </summary>
         [Input("kind", required: true)]
         public Input<string> Kind { get; set; } = null!;

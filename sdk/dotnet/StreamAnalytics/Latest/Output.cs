@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.StreamAnalytics.Latest
 {
     /// <summary>
     /// An output object, containing all information associated with the named output. All outputs are contained under a streaming job.
+    /// Latest API Version: 2016-03-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:streamanalytics/latest:Output")]
     public partial class Output : Pulumi.CustomResource
     {
         /// <summary>

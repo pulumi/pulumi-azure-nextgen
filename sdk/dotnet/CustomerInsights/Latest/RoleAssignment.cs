@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.CustomerInsights.Latest
 {
     /// <summary>
     /// The Role Assignment resource format.
+    /// Latest API Version: 2017-04-26.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:customerinsights/latest:RoleAssignment")]
     public partial class RoleAssignment : Pulumi.CustomResource
     {
         /// <summary>

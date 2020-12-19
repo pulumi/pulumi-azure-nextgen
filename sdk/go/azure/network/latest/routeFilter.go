@@ -12,6 +12,7 @@ import (
 )
 
 // Route Filter Resource.
+// Latest API Version: 2020-07-01.
 type RouteFilter struct {
 	pulumi.CustomResourceState
 
@@ -250,15 +251,15 @@ type RouteFilterInput interface {
 	ToRouteFilterOutputWithContext(ctx context.Context) RouteFilterOutput
 }
 
-func (RouteFilter) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouteFilter)(nil)).Elem()
+func (*RouteFilter) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteFilter)(nil))
 }
 
-func (i RouteFilter) ToRouteFilterOutput() RouteFilterOutput {
+func (i *RouteFilter) ToRouteFilterOutput() RouteFilterOutput {
 	return i.ToRouteFilterOutputWithContext(context.Background())
 }
 
-func (i RouteFilter) ToRouteFilterOutputWithContext(ctx context.Context) RouteFilterOutput {
+func (i *RouteFilter) ToRouteFilterOutputWithContext(ctx context.Context) RouteFilterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RouteFilterOutput)
 }
 
@@ -267,7 +268,7 @@ type RouteFilterOutput struct {
 }
 
 func (RouteFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouteFilterOutput)(nil)).Elem()
+	return reflect.TypeOf((*RouteFilter)(nil))
 }
 
 func (o RouteFilterOutput) ToRouteFilterOutput() RouteFilterOutput {

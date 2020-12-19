@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Sql.Latest
 {
     /// <summary>
     /// Represents a server firewall rule.
+    /// Latest API Version: 2014-04-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:sql/latest:FirewallRule")]
     public partial class FirewallRule : Pulumi.CustomResource
     {
         /// <summary>
@@ -77,6 +79,7 @@ namespace Pulumi.AzureNextGen.Sql.Latest
                 {
                     new Pulumi.Alias { Type = "azure-nextgen:sql/v20140401:FirewallRule"},
                     new Pulumi.Alias { Type = "azure-nextgen:sql/v20150501preview:FirewallRule"},
+                    new Pulumi.Alias { Type = "azure-nextgen:sql/v20200202preview:FirewallRule"},
                     new Pulumi.Alias { Type = "azure-nextgen:sql/v20200801preview:FirewallRule"},
                 },
             };

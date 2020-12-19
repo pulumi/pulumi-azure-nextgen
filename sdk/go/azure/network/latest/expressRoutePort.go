@@ -12,6 +12,7 @@ import (
 )
 
 // ExpressRoutePort resource definition.
+// Latest API Version: 2020-07-01.
 type ExpressRoutePort struct {
 	pulumi.CustomResourceState
 
@@ -275,15 +276,15 @@ type ExpressRoutePortInput interface {
 	ToExpressRoutePortOutputWithContext(ctx context.Context) ExpressRoutePortOutput
 }
 
-func (ExpressRoutePort) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExpressRoutePort)(nil)).Elem()
+func (*ExpressRoutePort) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExpressRoutePort)(nil))
 }
 
-func (i ExpressRoutePort) ToExpressRoutePortOutput() ExpressRoutePortOutput {
+func (i *ExpressRoutePort) ToExpressRoutePortOutput() ExpressRoutePortOutput {
 	return i.ToExpressRoutePortOutputWithContext(context.Background())
 }
 
-func (i ExpressRoutePort) ToExpressRoutePortOutputWithContext(ctx context.Context) ExpressRoutePortOutput {
+func (i *ExpressRoutePort) ToExpressRoutePortOutputWithContext(ctx context.Context) ExpressRoutePortOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExpressRoutePortOutput)
 }
 
@@ -292,7 +293,7 @@ type ExpressRoutePortOutput struct {
 }
 
 func (ExpressRoutePortOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExpressRoutePortOutput)(nil)).Elem()
+	return reflect.TypeOf((*ExpressRoutePort)(nil))
 }
 
 func (o ExpressRoutePortOutput) ToExpressRoutePortOutput() ExpressRoutePortOutput {

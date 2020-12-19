@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Represents a database elastic pool.
+ * Latest API Version: 2014-04-01.
  */
 export class ElasticPool extends pulumi.CustomResource {
     /**
@@ -148,7 +149,7 @@ export class ElasticPool extends pulumi.CustomResource {
         if (!opts.version) {
             opts.version = utilities.getVersion();
         }
-        const aliasOpts = { aliases: [{ type: "azure-nextgen:sql/v20140401:ElasticPool" }, { type: "azure-nextgen:sql/v20171001preview:ElasticPool" }, { type: "azure-nextgen:sql/v20200801preview:ElasticPool" }] };
+        const aliasOpts = { aliases: [{ type: "azure-nextgen:sql/v20140401:ElasticPool" }, { type: "azure-nextgen:sql/v20171001preview:ElasticPool" }, { type: "azure-nextgen:sql/v20200202preview:ElasticPool" }, { type: "azure-nextgen:sql/v20200801preview:ElasticPool" }] };
         opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
         super(ElasticPool.__pulumiType, name, inputs, opts);
     }

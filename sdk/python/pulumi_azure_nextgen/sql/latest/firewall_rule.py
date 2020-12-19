@@ -25,6 +25,7 @@ class FirewallRule(pulumi.CustomResource):
                  __opts__=None):
         """
         Represents a server firewall rule.
+        Latest API Version: 2014-04-01.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -70,7 +71,7 @@ class FirewallRule(pulumi.CustomResource):
             __props__['location'] = None
             __props__['name'] = None
             __props__['type'] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:sql/v20140401:FirewallRule"), pulumi.Alias(type_="azure-nextgen:sql/v20150501preview:FirewallRule"), pulumi.Alias(type_="azure-nextgen:sql/v20200801preview:FirewallRule")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:sql/v20140401:FirewallRule"), pulumi.Alias(type_="azure-nextgen:sql/v20150501preview:FirewallRule"), pulumi.Alias(type_="azure-nextgen:sql/v20200202preview:FirewallRule"), pulumi.Alias(type_="azure-nextgen:sql/v20200801preview:FirewallRule")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(FirewallRule, __self__).__init__(
             'azure-nextgen:sql/latest:FirewallRule',

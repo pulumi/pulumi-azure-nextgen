@@ -12,6 +12,7 @@ import (
 )
 
 // External OAuth authorization server settings.
+// Latest API Version: 2019-12-01.
 type AuthorizationServer struct {
 	pulumi.CustomResourceState
 
@@ -311,15 +312,15 @@ type AuthorizationServerInput interface {
 	ToAuthorizationServerOutputWithContext(ctx context.Context) AuthorizationServerOutput
 }
 
-func (AuthorizationServer) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthorizationServer)(nil)).Elem()
+func (*AuthorizationServer) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizationServer)(nil))
 }
 
-func (i AuthorizationServer) ToAuthorizationServerOutput() AuthorizationServerOutput {
+func (i *AuthorizationServer) ToAuthorizationServerOutput() AuthorizationServerOutput {
 	return i.ToAuthorizationServerOutputWithContext(context.Background())
 }
 
-func (i AuthorizationServer) ToAuthorizationServerOutputWithContext(ctx context.Context) AuthorizationServerOutput {
+func (i *AuthorizationServer) ToAuthorizationServerOutputWithContext(ctx context.Context) AuthorizationServerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationServerOutput)
 }
 
@@ -328,7 +329,7 @@ type AuthorizationServerOutput struct {
 }
 
 func (AuthorizationServerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthorizationServerOutput)(nil)).Elem()
+	return reflect.TypeOf((*AuthorizationServer)(nil))
 }
 
 func (o AuthorizationServerOutput) ToAuthorizationServerOutput() AuthorizationServerOutput {

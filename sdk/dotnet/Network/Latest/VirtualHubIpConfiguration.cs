@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Network.Latest
 {
     /// <summary>
     /// IpConfigurations.
+    /// Latest API Version: 2020-07-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:network/latest:VirtualHubIpConfiguration")]
     public partial class VirtualHubIpConfiguration : Pulumi.CustomResource
     {
         /// <summary>

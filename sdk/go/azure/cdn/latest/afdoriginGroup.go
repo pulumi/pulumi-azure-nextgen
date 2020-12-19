@@ -12,6 +12,7 @@ import (
 )
 
 // AFDOrigin group comprising of origins is used for load balancing to origins when the content cannot be served from CDN.
+// Latest API Version: 2020-09-01.
 type AFDOriginGroup struct {
 	pulumi.CustomResourceState
 
@@ -177,15 +178,15 @@ type AFDOriginGroupInput interface {
 	ToAFDOriginGroupOutputWithContext(ctx context.Context) AFDOriginGroupOutput
 }
 
-func (AFDOriginGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*AFDOriginGroup)(nil)).Elem()
+func (*AFDOriginGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*AFDOriginGroup)(nil))
 }
 
-func (i AFDOriginGroup) ToAFDOriginGroupOutput() AFDOriginGroupOutput {
+func (i *AFDOriginGroup) ToAFDOriginGroupOutput() AFDOriginGroupOutput {
 	return i.ToAFDOriginGroupOutputWithContext(context.Background())
 }
 
-func (i AFDOriginGroup) ToAFDOriginGroupOutputWithContext(ctx context.Context) AFDOriginGroupOutput {
+func (i *AFDOriginGroup) ToAFDOriginGroupOutputWithContext(ctx context.Context) AFDOriginGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AFDOriginGroupOutput)
 }
 
@@ -194,7 +195,7 @@ type AFDOriginGroupOutput struct {
 }
 
 func (AFDOriginGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AFDOriginGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*AFDOriginGroup)(nil))
 }
 
 func (o AFDOriginGroupOutput) ToAFDOriginGroupOutput() AFDOriginGroupOutput {

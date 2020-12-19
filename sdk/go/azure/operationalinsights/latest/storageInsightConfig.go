@@ -12,6 +12,7 @@ import (
 )
 
 // The top level storage insight resource container.
+// Latest API Version: 2020-08-01.
 type StorageInsightConfig struct {
 	pulumi.CustomResourceState
 
@@ -177,15 +178,15 @@ type StorageInsightConfigInput interface {
 	ToStorageInsightConfigOutputWithContext(ctx context.Context) StorageInsightConfigOutput
 }
 
-func (StorageInsightConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageInsightConfig)(nil)).Elem()
+func (*StorageInsightConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageInsightConfig)(nil))
 }
 
-func (i StorageInsightConfig) ToStorageInsightConfigOutput() StorageInsightConfigOutput {
+func (i *StorageInsightConfig) ToStorageInsightConfigOutput() StorageInsightConfigOutput {
 	return i.ToStorageInsightConfigOutputWithContext(context.Background())
 }
 
-func (i StorageInsightConfig) ToStorageInsightConfigOutputWithContext(ctx context.Context) StorageInsightConfigOutput {
+func (i *StorageInsightConfig) ToStorageInsightConfigOutputWithContext(ctx context.Context) StorageInsightConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StorageInsightConfigOutput)
 }
 
@@ -194,7 +195,7 @@ type StorageInsightConfigOutput struct {
 }
 
 func (StorageInsightConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageInsightConfigOutput)(nil)).Elem()
+	return reflect.TypeOf((*StorageInsightConfig)(nil))
 }
 
 func (o StorageInsightConfigOutput) ToStorageInsightConfigOutput() StorageInsightConfigOutput {

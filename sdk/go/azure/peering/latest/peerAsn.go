@@ -12,6 +12,7 @@ import (
 )
 
 // The essential information related to the peer's ASN.
+// Latest API Version: 2020-10-01.
 type PeerAsn struct {
 	pulumi.CustomResourceState
 
@@ -156,15 +157,15 @@ type PeerAsnInput interface {
 	ToPeerAsnOutputWithContext(ctx context.Context) PeerAsnOutput
 }
 
-func (PeerAsn) ElementType() reflect.Type {
-	return reflect.TypeOf((*PeerAsn)(nil)).Elem()
+func (*PeerAsn) ElementType() reflect.Type {
+	return reflect.TypeOf((*PeerAsn)(nil))
 }
 
-func (i PeerAsn) ToPeerAsnOutput() PeerAsnOutput {
+func (i *PeerAsn) ToPeerAsnOutput() PeerAsnOutput {
 	return i.ToPeerAsnOutputWithContext(context.Background())
 }
 
-func (i PeerAsn) ToPeerAsnOutputWithContext(ctx context.Context) PeerAsnOutput {
+func (i *PeerAsn) ToPeerAsnOutputWithContext(ctx context.Context) PeerAsnOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PeerAsnOutput)
 }
 
@@ -173,7 +174,7 @@ type PeerAsnOutput struct {
 }
 
 func (PeerAsnOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PeerAsnOutput)(nil)).Elem()
+	return reflect.TypeOf((*PeerAsn)(nil))
 }
 
 func (o PeerAsnOutput) ToPeerAsnOutput() PeerAsnOutput {

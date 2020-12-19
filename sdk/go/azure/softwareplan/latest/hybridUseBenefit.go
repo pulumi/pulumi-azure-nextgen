@@ -12,6 +12,7 @@ import (
 )
 
 // Response on GET of a hybrid use benefit
+// Latest API Version: 2019-12-01.
 type HybridUseBenefit struct {
 	pulumi.CustomResourceState
 
@@ -145,15 +146,15 @@ type HybridUseBenefitInput interface {
 	ToHybridUseBenefitOutputWithContext(ctx context.Context) HybridUseBenefitOutput
 }
 
-func (HybridUseBenefit) ElementType() reflect.Type {
-	return reflect.TypeOf((*HybridUseBenefit)(nil)).Elem()
+func (*HybridUseBenefit) ElementType() reflect.Type {
+	return reflect.TypeOf((*HybridUseBenefit)(nil))
 }
 
-func (i HybridUseBenefit) ToHybridUseBenefitOutput() HybridUseBenefitOutput {
+func (i *HybridUseBenefit) ToHybridUseBenefitOutput() HybridUseBenefitOutput {
 	return i.ToHybridUseBenefitOutputWithContext(context.Background())
 }
 
-func (i HybridUseBenefit) ToHybridUseBenefitOutputWithContext(ctx context.Context) HybridUseBenefitOutput {
+func (i *HybridUseBenefit) ToHybridUseBenefitOutputWithContext(ctx context.Context) HybridUseBenefitOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HybridUseBenefitOutput)
 }
 
@@ -162,7 +163,7 @@ type HybridUseBenefitOutput struct {
 }
 
 func (HybridUseBenefitOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HybridUseBenefitOutput)(nil)).Elem()
+	return reflect.TypeOf((*HybridUseBenefit)(nil))
 }
 
 func (o HybridUseBenefitOutput) ToHybridUseBenefitOutput() HybridUseBenefitOutput {

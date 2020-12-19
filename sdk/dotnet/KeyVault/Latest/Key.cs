@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.KeyVault.Latest
 {
     /// <summary>
     /// The key resource.
+    /// Latest API Version: 2019-09-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:keyvault/latest:Key")]
     public partial class Key : Pulumi.CustomResource
     {
         /// <summary>

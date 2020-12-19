@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.DataLakeStore.Latest
 {
     /// <summary>
     /// Data Lake Store trusted identity provider information.
+    /// Latest API Version: 2016-11-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:datalakestore/latest:TrustedIdProvider")]
     public partial class TrustedIdProvider : Pulumi.CustomResource
     {
         /// <summary>

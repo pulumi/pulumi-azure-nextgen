@@ -12,6 +12,7 @@ import (
 )
 
 // Definition of the credential.
+// Latest API Version: 2015-10-31.
 type Credential struct {
 	pulumi.CustomResourceState
 
@@ -161,15 +162,15 @@ type CredentialInput interface {
 	ToCredentialOutputWithContext(ctx context.Context) CredentialOutput
 }
 
-func (Credential) ElementType() reflect.Type {
-	return reflect.TypeOf((*Credential)(nil)).Elem()
+func (*Credential) ElementType() reflect.Type {
+	return reflect.TypeOf((*Credential)(nil))
 }
 
-func (i Credential) ToCredentialOutput() CredentialOutput {
+func (i *Credential) ToCredentialOutput() CredentialOutput {
 	return i.ToCredentialOutputWithContext(context.Background())
 }
 
-func (i Credential) ToCredentialOutputWithContext(ctx context.Context) CredentialOutput {
+func (i *Credential) ToCredentialOutputWithContext(ctx context.Context) CredentialOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CredentialOutput)
 }
 
@@ -178,7 +179,7 @@ type CredentialOutput struct {
 }
 
 func (CredentialOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CredentialOutput)(nil)).Elem()
+	return reflect.TypeOf((*Credential)(nil))
 }
 
 func (o CredentialOutput) ToCredentialOutput() CredentialOutput {

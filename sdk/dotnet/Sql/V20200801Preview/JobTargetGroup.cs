@@ -12,6 +12,7 @@ namespace Pulumi.AzureNextGen.Sql.V20200801Preview
     /// <summary>
     /// A group of job targets.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:sql/v20200801preview:JobTargetGroup")]
     public partial class JobTargetGroup : Pulumi.CustomResource
     {
         /// <summary>
@@ -58,6 +59,7 @@ namespace Pulumi.AzureNextGen.Sql.V20200801Preview
                 Aliases =
                 {
                     new Pulumi.Alias { Type = "azure-nextgen:sql/v20170301preview:JobTargetGroup"},
+                    new Pulumi.Alias { Type = "azure-nextgen:sql/v20200202preview:JobTargetGroup"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

@@ -12,6 +12,7 @@ import (
 )
 
 // The File Share.
+// Latest API Version: 2016-10-01.
 type FileShare struct {
 	pulumi.CustomResourceState
 
@@ -204,15 +205,15 @@ type FileShareInput interface {
 	ToFileShareOutputWithContext(ctx context.Context) FileShareOutput
 }
 
-func (FileShare) ElementType() reflect.Type {
-	return reflect.TypeOf((*FileShare)(nil)).Elem()
+func (*FileShare) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileShare)(nil))
 }
 
-func (i FileShare) ToFileShareOutput() FileShareOutput {
+func (i *FileShare) ToFileShareOutput() FileShareOutput {
 	return i.ToFileShareOutputWithContext(context.Background())
 }
 
-func (i FileShare) ToFileShareOutputWithContext(ctx context.Context) FileShareOutput {
+func (i *FileShare) ToFileShareOutputWithContext(ctx context.Context) FileShareOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FileShareOutput)
 }
 
@@ -221,7 +222,7 @@ type FileShareOutput struct {
 }
 
 func (FileShareOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FileShareOutput)(nil)).Elem()
+	return reflect.TypeOf((*FileShare)(nil))
 }
 
 func (o FileShareOutput) ToFileShareOutput() FileShareOutput {

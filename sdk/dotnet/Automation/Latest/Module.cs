@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.Automation.Latest
 {
     /// <summary>
     /// Definition of the module type.
+    /// Latest API Version: 2015-10-31.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:automation/latest:Module")]
     public partial class Module : Pulumi.CustomResource
     {
         /// <summary>

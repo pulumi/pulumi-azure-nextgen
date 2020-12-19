@@ -12,6 +12,7 @@ import (
 )
 
 // Rule Collection Group resource.
+// Latest API Version: 2020-07-01.
 type FirewallPolicyRuleCollectionGroup struct {
 	pulumi.CustomResourceState
 
@@ -158,15 +159,15 @@ type FirewallPolicyRuleCollectionGroupInput interface {
 	ToFirewallPolicyRuleCollectionGroupOutputWithContext(ctx context.Context) FirewallPolicyRuleCollectionGroupOutput
 }
 
-func (FirewallPolicyRuleCollectionGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*FirewallPolicyRuleCollectionGroup)(nil)).Elem()
+func (*FirewallPolicyRuleCollectionGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallPolicyRuleCollectionGroup)(nil))
 }
 
-func (i FirewallPolicyRuleCollectionGroup) ToFirewallPolicyRuleCollectionGroupOutput() FirewallPolicyRuleCollectionGroupOutput {
+func (i *FirewallPolicyRuleCollectionGroup) ToFirewallPolicyRuleCollectionGroupOutput() FirewallPolicyRuleCollectionGroupOutput {
 	return i.ToFirewallPolicyRuleCollectionGroupOutputWithContext(context.Background())
 }
 
-func (i FirewallPolicyRuleCollectionGroup) ToFirewallPolicyRuleCollectionGroupOutputWithContext(ctx context.Context) FirewallPolicyRuleCollectionGroupOutput {
+func (i *FirewallPolicyRuleCollectionGroup) ToFirewallPolicyRuleCollectionGroupOutputWithContext(ctx context.Context) FirewallPolicyRuleCollectionGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyRuleCollectionGroupOutput)
 }
 
@@ -175,7 +176,7 @@ type FirewallPolicyRuleCollectionGroupOutput struct {
 }
 
 func (FirewallPolicyRuleCollectionGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FirewallPolicyRuleCollectionGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*FirewallPolicyRuleCollectionGroup)(nil))
 }
 
 func (o FirewallPolicyRuleCollectionGroupOutput) ToFirewallPolicyRuleCollectionGroupOutput() FirewallPolicyRuleCollectionGroupOutput {

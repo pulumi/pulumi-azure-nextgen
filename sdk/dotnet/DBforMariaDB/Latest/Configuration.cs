@@ -11,7 +11,9 @@ namespace Pulumi.AzureNextGen.DBforMariaDB.Latest
 {
     /// <summary>
     /// Represents a Configuration.
+    /// Latest API Version: 2018-06-01.
     /// </summary>
+    [AzureNextGenResourceType("azure-nextgen:dbformariadb/latest:Configuration")]
     public partial class Configuration : Pulumi.CustomResource
     {
         /// <summary>
