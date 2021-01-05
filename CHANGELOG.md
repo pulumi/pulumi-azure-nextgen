@@ -3,6 +3,10 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
+Breaking changes:
+
+- `int64` types are now represented as numbers (e.g., `double` in .NET) instead of `int`
+
 New invokes:
 
 - `getClientConfig` to retrieve current authorization context parameters ([#107](https://github.com/pulumi/pulumi-azure-nextgen/issues/107))
