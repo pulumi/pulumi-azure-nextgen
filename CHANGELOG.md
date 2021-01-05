@@ -6,6 +6,7 @@ CHANGELOG
 Breaking changes:
 
 - `int64` types are now represented as numbers (e.g., `double` in .NET) instead of `int`
+- Nested union types replaced with `object` in C# ([#19](https://github.com/pulumi/pulumi-azure-nextgen/issues/19))
 
 New invokes:
 
