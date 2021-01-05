@@ -11,6 +11,9 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'CacheActiveDirectorySettingsResponse',
+    'CacheActiveDirectorySettingsResponseCredentials',
+    'CacheDirectorySettingsResponse',
     'CacheEncryptionSettingsResponse',
     'CacheHealthResponse',
     'CacheIdentityResponse',
@@ -18,14 +21,185 @@ __all__ = [
     'CacheResponseSku',
     'CacheSecuritySettingsResponse',
     'CacheUpgradeStatusResponse',
+    'CacheUsernameDownloadSettingsResponse',
+    'CacheUsernameDownloadSettingsResponseCredentials',
     'ClfsTargetResponse',
     'KeyVaultKeyReferenceResponse',
     'KeyVaultKeyReferenceResponseSourceVault',
     'NamespaceJunctionResponse',
     'Nfs3TargetResponse',
+    'NfsAccessPolicyResponse',
+    'NfsAccessRuleResponse',
     'SystemDataResponse',
     'UnknownTargetResponse',
 ]
+
+@pulumi.output_type
+class CacheActiveDirectorySettingsResponse(dict):
+    """
+    Active Directory settings used to join a cache to a domain.
+    """
+    def __init__(__self__, *,
+                 cache_net_bios_name: str,
+                 domain_joined: str,
+                 domain_name: str,
+                 domain_net_bios_name: str,
+                 primary_dns_ip_address: str,
+                 credentials: Optional['outputs.CacheActiveDirectorySettingsResponseCredentials'] = None,
+                 secondary_dns_ip_address: Optional[str] = None):
+        """
+        Active Directory settings used to join a cache to a domain.
+        :param str cache_net_bios_name: The NetBIOS name to assign to the HPC Cache when it joins the Active Directory domain as a server. Length must 1-15 characters from the class [-0-9a-zA-Z].
+        :param str domain_joined: True if the HPC Cache is joined to the Active Directory domain.
+        :param str domain_name: The fully qualified domain name of the Active Directory domain controller.
+        :param str domain_net_bios_name: The Active Directory domain's NetBIOS name.
+        :param str primary_dns_ip_address: Primary DNS IP address used to resolve the Active Directory domain controller's fully qualified domain name.
+        :param 'CacheActiveDirectorySettingsResponseCredentialsArgs' credentials: Active Directory admin credentials used to join the HPC Cache to a domain.
+        :param str secondary_dns_ip_address: Secondary DNS IP address used to resolve the Active Directory domain controller's fully qualified domain name.
+        """
+        pulumi.set(__self__, "cache_net_bios_name", cache_net_bios_name)
+        pulumi.set(__self__, "domain_joined", domain_joined)
+        pulumi.set(__self__, "domain_name", domain_name)
+        pulumi.set(__self__, "domain_net_bios_name", domain_net_bios_name)
+        pulumi.set(__self__, "primary_dns_ip_address", primary_dns_ip_address)
+        if credentials is not None:
+            pulumi.set(__self__, "credentials", credentials)
+        if secondary_dns_ip_address is not None:
+            pulumi.set(__self__, "secondary_dns_ip_address", secondary_dns_ip_address)
+
+    @property
+    @pulumi.getter(name="cacheNetBiosName")
+    def cache_net_bios_name(self) -> str:
+        """
+        The NetBIOS name to assign to the HPC Cache when it joins the Active Directory domain as a server. Length must 1-15 characters from the class [-0-9a-zA-Z].
+        """
+        return pulumi.get(self, "cache_net_bios_name")
+
+    @property
+    @pulumi.getter(name="domainJoined")
+    def domain_joined(self) -> str:
+        """
+        True if the HPC Cache is joined to the Active Directory domain.
+        """
+        return pulumi.get(self, "domain_joined")
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> str:
+        """
+        The fully qualified domain name of the Active Directory domain controller.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @property
+    @pulumi.getter(name="domainNetBiosName")
+    def domain_net_bios_name(self) -> str:
+        """
+        The Active Directory domain's NetBIOS name.
+        """
+        return pulumi.get(self, "domain_net_bios_name")
+
+    @property
+    @pulumi.getter(name="primaryDnsIpAddress")
+    def primary_dns_ip_address(self) -> str:
+        """
+        Primary DNS IP address used to resolve the Active Directory domain controller's fully qualified domain name.
+        """
+        return pulumi.get(self, "primary_dns_ip_address")
+
+    @property
+    @pulumi.getter
+    def credentials(self) -> Optional['outputs.CacheActiveDirectorySettingsResponseCredentials']:
+        """
+        Active Directory admin credentials used to join the HPC Cache to a domain.
+        """
+        return pulumi.get(self, "credentials")
+
+    @property
+    @pulumi.getter(name="secondaryDnsIpAddress")
+    def secondary_dns_ip_address(self) -> Optional[str]:
+        """
+        Secondary DNS IP address used to resolve the Active Directory domain controller's fully qualified domain name.
+        """
+        return pulumi.get(self, "secondary_dns_ip_address")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class CacheActiveDirectorySettingsResponseCredentials(dict):
+    """
+    Active Directory admin credentials used to join the HPC Cache to a domain.
+    """
+    def __init__(__self__, *,
+                 password: str,
+                 username: str):
+        """
+        Active Directory admin credentials used to join the HPC Cache to a domain.
+        :param str password: Plain text password of the Active Directory domain administrator. This value is stored encrypted and not returned on response.
+        :param str username: Username of the Active Directory domain administrator. This value is stored encrypted and not returned on response.
+        """
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        """
+        Plain text password of the Active Directory domain administrator. This value is stored encrypted and not returned on response.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        Username of the Active Directory domain administrator. This value is stored encrypted and not returned on response.
+        """
+        return pulumi.get(self, "username")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class CacheDirectorySettingsResponse(dict):
+    """
+    Cache Directory Services settings.
+    """
+    def __init__(__self__, *,
+                 active_directory: Optional['outputs.CacheActiveDirectorySettingsResponse'] = None,
+                 username_download: Optional['outputs.CacheUsernameDownloadSettingsResponse'] = None):
+        """
+        Cache Directory Services settings.
+        :param 'CacheActiveDirectorySettingsResponseArgs' active_directory: Specifies settings for joining the HPC Cache to an Active Directory domain.
+        :param 'CacheUsernameDownloadSettingsResponseArgs' username_download: Specifies settings for Extended Groups. Extended Groups allows users to be members of more than 16 groups.
+        """
+        if active_directory is not None:
+            pulumi.set(__self__, "active_directory", active_directory)
+        if username_download is not None:
+            pulumi.set(__self__, "username_download", username_download)
+
+    @property
+    @pulumi.getter(name="activeDirectory")
+    def active_directory(self) -> Optional['outputs.CacheActiveDirectorySettingsResponse']:
+        """
+        Specifies settings for joining the HPC Cache to an Active Directory domain.
+        """
+        return pulumi.get(self, "active_directory")
+
+    @property
+    @pulumi.getter(name="usernameDownload")
+    def username_download(self) -> Optional['outputs.CacheUsernameDownloadSettingsResponse']:
+        """
+        Specifies settings for Extended Groups. Extended Groups allows users to be members of more than 16 groups.
+        """
+        return pulumi.get(self, "username_download")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
 
 @pulumi.output_type
 class CacheEncryptionSettingsResponse(dict):
@@ -208,21 +382,21 @@ class CacheSecuritySettingsResponse(dict):
     Cache security settings.
     """
     def __init__(__self__, *,
-                 root_squash: Optional[bool] = None):
+                 access_policies: Optional[Sequence['outputs.NfsAccessPolicyResponse']] = None):
         """
         Cache security settings.
-        :param bool root_squash: root squash of cache property.
+        :param Sequence['NfsAccessPolicyResponseArgs'] access_policies: NFS access policies defined for this cache.
         """
-        if root_squash is not None:
-            pulumi.set(__self__, "root_squash", root_squash)
+        if access_policies is not None:
+            pulumi.set(__self__, "access_policies", access_policies)
 
     @property
-    @pulumi.getter(name="rootSquash")
-    def root_squash(self) -> Optional[bool]:
+    @pulumi.getter(name="accessPolicies")
+    def access_policies(self) -> Optional[Sequence['outputs.NfsAccessPolicyResponse']]:
         """
-        root squash of cache property.
+        NFS access policies defined for this cache.
         """
-        return pulumi.get(self, "root_squash")
+        return pulumi.get(self, "access_policies")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -298,14 +472,209 @@ class CacheUpgradeStatusResponse(dict):
 
 
 @pulumi.output_type
+class CacheUsernameDownloadSettingsResponse(dict):
+    """
+    Settings for Extended Groups username and group download.
+    """
+    def __init__(__self__, *,
+                 username_downloaded: str,
+                 auto_download_certificate: Optional[bool] = None,
+                 ca_certificate_uri: Optional[str] = None,
+                 credentials: Optional['outputs.CacheUsernameDownloadSettingsResponseCredentials'] = None,
+                 encrypt_ldap_connection: Optional[bool] = None,
+                 extended_groups_enabled: Optional[bool] = None,
+                 group_file_uri: Optional[str] = None,
+                 ldap_base_dn: Optional[str] = None,
+                 ldap_server: Optional[str] = None,
+                 require_valid_certificate: Optional[bool] = None,
+                 user_file_uri: Optional[str] = None,
+                 username_source: Optional[str] = None):
+        """
+        Settings for Extended Groups username and group download.
+        :param str username_downloaded: Indicates whether or not the HPC Cache has performed the username download successfully.
+        :param bool auto_download_certificate: Determines if the certificate should be automatically downloaded. This applies to 'caCertificateURI' only if 'requireValidCertificate' is true.
+        :param str ca_certificate_uri: The URI of the CA certificate to validate the LDAP secure connection. This field must be populated when 'requireValidCertificate' is set to true.
+        :param 'CacheUsernameDownloadSettingsResponseCredentialsArgs' credentials: When present, these are the credentials for the secure LDAP connection.
+        :param bool encrypt_ldap_connection: Whether or not the LDAP connection should be encrypted.
+        :param bool extended_groups_enabled: Whether or not Extended Groups is enabled.
+        :param str group_file_uri: The URI of the file containing group information (in /etc/group file format). This field must be populated when 'usernameSource' is set to 'File'.
+        :param str ldap_base_dn: The base distinguished name for the LDAP domain.
+        :param str ldap_server: The fully qualified domain name or IP address of the LDAP server to use.
+        :param bool require_valid_certificate: Determines if the certificates must be validated by a certificate authority. When true, caCertificateURI must be provided.
+        :param str user_file_uri: The URI of the file containing user information (in /etc/passwd file format). This field must be populated when 'usernameSource' is set to 'File'.
+        :param str username_source: This setting determines how the cache gets username and group names for clients.
+        """
+        pulumi.set(__self__, "username_downloaded", username_downloaded)
+        if auto_download_certificate is not None:
+            pulumi.set(__self__, "auto_download_certificate", auto_download_certificate)
+        if ca_certificate_uri is not None:
+            pulumi.set(__self__, "ca_certificate_uri", ca_certificate_uri)
+        if credentials is not None:
+            pulumi.set(__self__, "credentials", credentials)
+        if encrypt_ldap_connection is not None:
+            pulumi.set(__self__, "encrypt_ldap_connection", encrypt_ldap_connection)
+        if extended_groups_enabled is not None:
+            pulumi.set(__self__, "extended_groups_enabled", extended_groups_enabled)
+        if group_file_uri is not None:
+            pulumi.set(__self__, "group_file_uri", group_file_uri)
+        if ldap_base_dn is not None:
+            pulumi.set(__self__, "ldap_base_dn", ldap_base_dn)
+        if ldap_server is not None:
+            pulumi.set(__self__, "ldap_server", ldap_server)
+        if require_valid_certificate is not None:
+            pulumi.set(__self__, "require_valid_certificate", require_valid_certificate)
+        if user_file_uri is not None:
+            pulumi.set(__self__, "user_file_uri", user_file_uri)
+        if username_source is not None:
+            pulumi.set(__self__, "username_source", username_source)
+
+    @property
+    @pulumi.getter(name="usernameDownloaded")
+    def username_downloaded(self) -> str:
+        """
+        Indicates whether or not the HPC Cache has performed the username download successfully.
+        """
+        return pulumi.get(self, "username_downloaded")
+
+    @property
+    @pulumi.getter(name="autoDownloadCertificate")
+    def auto_download_certificate(self) -> Optional[bool]:
+        """
+        Determines if the certificate should be automatically downloaded. This applies to 'caCertificateURI' only if 'requireValidCertificate' is true.
+        """
+        return pulumi.get(self, "auto_download_certificate")
+
+    @property
+    @pulumi.getter(name="caCertificateURI")
+    def ca_certificate_uri(self) -> Optional[str]:
+        """
+        The URI of the CA certificate to validate the LDAP secure connection. This field must be populated when 'requireValidCertificate' is set to true.
+        """
+        return pulumi.get(self, "ca_certificate_uri")
+
+    @property
+    @pulumi.getter
+    def credentials(self) -> Optional['outputs.CacheUsernameDownloadSettingsResponseCredentials']:
+        """
+        When present, these are the credentials for the secure LDAP connection.
+        """
+        return pulumi.get(self, "credentials")
+
+    @property
+    @pulumi.getter(name="encryptLdapConnection")
+    def encrypt_ldap_connection(self) -> Optional[bool]:
+        """
+        Whether or not the LDAP connection should be encrypted.
+        """
+        return pulumi.get(self, "encrypt_ldap_connection")
+
+    @property
+    @pulumi.getter(name="extendedGroupsEnabled")
+    def extended_groups_enabled(self) -> Optional[bool]:
+        """
+        Whether or not Extended Groups is enabled.
+        """
+        return pulumi.get(self, "extended_groups_enabled")
+
+    @property
+    @pulumi.getter(name="groupFileURI")
+    def group_file_uri(self) -> Optional[str]:
+        """
+        The URI of the file containing group information (in /etc/group file format). This field must be populated when 'usernameSource' is set to 'File'.
+        """
+        return pulumi.get(self, "group_file_uri")
+
+    @property
+    @pulumi.getter(name="ldapBaseDn")
+    def ldap_base_dn(self) -> Optional[str]:
+        """
+        The base distinguished name for the LDAP domain.
+        """
+        return pulumi.get(self, "ldap_base_dn")
+
+    @property
+    @pulumi.getter(name="ldapServer")
+    def ldap_server(self) -> Optional[str]:
+        """
+        The fully qualified domain name or IP address of the LDAP server to use.
+        """
+        return pulumi.get(self, "ldap_server")
+
+    @property
+    @pulumi.getter(name="requireValidCertificate")
+    def require_valid_certificate(self) -> Optional[bool]:
+        """
+        Determines if the certificates must be validated by a certificate authority. When true, caCertificateURI must be provided.
+        """
+        return pulumi.get(self, "require_valid_certificate")
+
+    @property
+    @pulumi.getter(name="userFileURI")
+    def user_file_uri(self) -> Optional[str]:
+        """
+        The URI of the file containing user information (in /etc/passwd file format). This field must be populated when 'usernameSource' is set to 'File'.
+        """
+        return pulumi.get(self, "user_file_uri")
+
+    @property
+    @pulumi.getter(name="usernameSource")
+    def username_source(self) -> Optional[str]:
+        """
+        This setting determines how the cache gets username and group names for clients.
+        """
+        return pulumi.get(self, "username_source")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class CacheUsernameDownloadSettingsResponseCredentials(dict):
+    """
+    When present, these are the credentials for the secure LDAP connection.
+    """
+    def __init__(__self__, *,
+                 bind_dn: Optional[str] = None,
+                 bind_password: Optional[str] = None):
+        """
+        When present, these are the credentials for the secure LDAP connection.
+        :param str bind_dn: The Bind Distinguished Name identity to be used in the secure LDAP connection. This value is stored encrypted and not returned on response.
+        :param str bind_password: The Bind password to be used in the secure LDAP connection. This value is stored encrypted and not returned on response.
+        """
+        if bind_dn is not None:
+            pulumi.set(__self__, "bind_dn", bind_dn)
+        if bind_password is not None:
+            pulumi.set(__self__, "bind_password", bind_password)
+
+    @property
+    @pulumi.getter(name="bindDn")
+    def bind_dn(self) -> Optional[str]:
+        """
+        The Bind Distinguished Name identity to be used in the secure LDAP connection. This value is stored encrypted and not returned on response.
+        """
+        return pulumi.get(self, "bind_dn")
+
+    @property
+    @pulumi.getter(name="bindPassword")
+    def bind_password(self) -> Optional[str]:
+        """
+        The Bind password to be used in the secure LDAP connection. This value is stored encrypted and not returned on response.
+        """
+        return pulumi.get(self, "bind_password")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
 class ClfsTargetResponse(dict):
     """
-    Properties pertained to ClfsTarget
+    Properties pertaining to the ClfsTarget
     """
     def __init__(__self__, *,
                  target: Optional[str] = None):
         """
-        Properties pertained to ClfsTarget
+        Properties pertaining to the ClfsTarget
         :param str target: Resource ID of storage container.
         """
         if target is not None:
@@ -392,16 +761,20 @@ class NamespaceJunctionResponse(dict):
     """
     def __init__(__self__, *,
                  namespace_path: Optional[str] = None,
+                 nfs_access_policy: Optional[str] = None,
                  nfs_export: Optional[str] = None,
                  target_path: Optional[str] = None):
         """
         A namespace junction.
         :param str namespace_path: Namespace path on a Cache for a Storage Target.
+        :param str nfs_access_policy: Name of the access policy applied to this junction.
         :param str nfs_export: NFS export where targetPath exists.
         :param str target_path: Path in Storage Target to which namespacePath points.
         """
         if namespace_path is not None:
             pulumi.set(__self__, "namespace_path", namespace_path)
+        if nfs_access_policy is not None:
+            pulumi.set(__self__, "nfs_access_policy", nfs_access_policy)
         if nfs_export is not None:
             pulumi.set(__self__, "nfs_export", nfs_export)
         if target_path is not None:
@@ -414,6 +787,14 @@ class NamespaceJunctionResponse(dict):
         Namespace path on a Cache for a Storage Target.
         """
         return pulumi.get(self, "namespace_path")
+
+    @property
+    @pulumi.getter(name="nfsAccessPolicy")
+    def nfs_access_policy(self) -> Optional[str]:
+        """
+        Name of the access policy applied to this junction.
+        """
+        return pulumi.get(self, "nfs_access_policy")
 
     @property
     @pulumi.getter(name="nfsExport")
@@ -438,15 +819,15 @@ class NamespaceJunctionResponse(dict):
 @pulumi.output_type
 class Nfs3TargetResponse(dict):
     """
-    Properties pertained to Nfs3Target
+    Properties pertaining to the Nfs3Target
     """
     def __init__(__self__, *,
                  target: Optional[str] = None,
                  usage_model: Optional[str] = None):
         """
-        Properties pertained to Nfs3Target
+        Properties pertaining to the Nfs3Target
         :param str target: IP address or host name of an NFSv3 host (e.g., 10.0.44.44).
-        :param str usage_model: Identifies the primary usage model to be used for this Storage Target. Get choices from .../usageModels
+        :param str usage_model: Identifies the usage model to be used for this Storage Target. Get choices from .../usageModels
         """
         if target is not None:
             pulumi.set(__self__, "target", target)
@@ -465,9 +846,153 @@ class Nfs3TargetResponse(dict):
     @pulumi.getter(name="usageModel")
     def usage_model(self) -> Optional[str]:
         """
-        Identifies the primary usage model to be used for this Storage Target. Get choices from .../usageModels
+        Identifies the usage model to be used for this Storage Target. Get choices from .../usageModels
         """
         return pulumi.get(self, "usage_model")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class NfsAccessPolicyResponse(dict):
+    """
+    A set of rules describing access policies applied to NFSv3 clients of the cache.
+    """
+    def __init__(__self__, *,
+                 access_rules: Sequence['outputs.NfsAccessRuleResponse'],
+                 name: str):
+        """
+        A set of rules describing access policies applied to NFSv3 clients of the cache.
+        :param Sequence['NfsAccessRuleResponseArgs'] access_rules: The set of rules describing client accesses allowed under this policy.
+        :param str name: Name identifying this policy. Access Policy names are not case sensitive.
+        """
+        pulumi.set(__self__, "access_rules", access_rules)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="accessRules")
+    def access_rules(self) -> Sequence['outputs.NfsAccessRuleResponse']:
+        """
+        The set of rules describing client accesses allowed under this policy.
+        """
+        return pulumi.get(self, "access_rules")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name identifying this policy. Access Policy names are not case sensitive.
+        """
+        return pulumi.get(self, "name")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class NfsAccessRuleResponse(dict):
+    """
+    Rule to place restrictions on portions of the cache namespace being presented to clients.
+    """
+    def __init__(__self__, *,
+                 access: str,
+                 scope: str,
+                 anonymous_gid: Optional[str] = None,
+                 anonymous_uid: Optional[str] = None,
+                 filter: Optional[str] = None,
+                 root_squash: Optional[bool] = None,
+                 submount_access: Optional[bool] = None,
+                 suid: Optional[bool] = None):
+        """
+        Rule to place restrictions on portions of the cache namespace being presented to clients.
+        :param str access: Access allowed by this rule.
+        :param str scope: Scope for this rule. The scope and filter determine which clients match the rule.
+        :param str anonymous_gid: GID value that replaces 0 when rootSquash is true.
+        :param str anonymous_uid: UID value that replaces 0 when rootSquash is true.
+        :param str filter: Filter applied to the scope for this rule. The filter's format depends on its scope. 'default' scope matches all clients and has no filter value. 'network' scope takes a filter in CIDR format (for example, 10.99.1.0/24). 'host' takes an IP address or fully qualified domain name as filter. If a client does not match any filter rule and there is no default rule, access is denied.
+        :param bool root_squash: Map root accesses to anonymousUID and anonymousGID.
+        :param bool submount_access: For the default policy, allow access to subdirectories under the root export. If this is set to no, clients can only mount the path '/'. If set to yes, clients can mount a deeper path, like '/a/b'.
+        :param bool suid: Allow SUID semantics.
+        """
+        pulumi.set(__self__, "access", access)
+        pulumi.set(__self__, "scope", scope)
+        if anonymous_gid is not None:
+            pulumi.set(__self__, "anonymous_gid", anonymous_gid)
+        if anonymous_uid is not None:
+            pulumi.set(__self__, "anonymous_uid", anonymous_uid)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+        if root_squash is not None:
+            pulumi.set(__self__, "root_squash", root_squash)
+        if submount_access is not None:
+            pulumi.set(__self__, "submount_access", submount_access)
+        if suid is not None:
+            pulumi.set(__self__, "suid", suid)
+
+    @property
+    @pulumi.getter
+    def access(self) -> str:
+        """
+        Access allowed by this rule.
+        """
+        return pulumi.get(self, "access")
+
+    @property
+    @pulumi.getter
+    def scope(self) -> str:
+        """
+        Scope for this rule. The scope and filter determine which clients match the rule.
+        """
+        return pulumi.get(self, "scope")
+
+    @property
+    @pulumi.getter(name="anonymousGID")
+    def anonymous_gid(self) -> Optional[str]:
+        """
+        GID value that replaces 0 when rootSquash is true.
+        """
+        return pulumi.get(self, "anonymous_gid")
+
+    @property
+    @pulumi.getter(name="anonymousUID")
+    def anonymous_uid(self) -> Optional[str]:
+        """
+        UID value that replaces 0 when rootSquash is true.
+        """
+        return pulumi.get(self, "anonymous_uid")
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[str]:
+        """
+        Filter applied to the scope for this rule. The filter's format depends on its scope. 'default' scope matches all clients and has no filter value. 'network' scope takes a filter in CIDR format (for example, 10.99.1.0/24). 'host' takes an IP address or fully qualified domain name as filter. If a client does not match any filter rule and there is no default rule, access is denied.
+        """
+        return pulumi.get(self, "filter")
+
+    @property
+    @pulumi.getter(name="rootSquash")
+    def root_squash(self) -> Optional[bool]:
+        """
+        Map root accesses to anonymousUID and anonymousGID.
+        """
+        return pulumi.get(self, "root_squash")
+
+    @property
+    @pulumi.getter(name="submountAccess")
+    def submount_access(self) -> Optional[bool]:
+        """
+        For the default policy, allow access to subdirectories under the root export. If this is set to no, clients can only mount the path '/'. If set to yes, clients can mount a deeper path, like '/a/b'.
+        """
+        return pulumi.get(self, "submount_access")
+
+    @property
+    @pulumi.getter
+    def suid(self) -> Optional[bool]:
+        """
+        Allow SUID semantics.
+        """
+        return pulumi.get(self, "suid")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -562,12 +1087,12 @@ class SystemDataResponse(dict):
 @pulumi.output_type
 class UnknownTargetResponse(dict):
     """
-    Properties pertained to UnknownTarget
+    Properties pertaining to the UnknownTarget
     """
     def __init__(__self__, *,
                  unknown_map: Optional[Mapping[str, str]] = None):
         """
-        Properties pertained to UnknownTarget
+        Properties pertaining to the UnknownTarget
         :param Mapping[str, str] unknown_map: Dictionary of string->string pairs containing information about the Storage Target.
         """
         if unknown_map is not None:

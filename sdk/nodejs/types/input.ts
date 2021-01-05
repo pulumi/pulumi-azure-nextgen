@@ -81,38 +81,6 @@ export namespace aad {
         }
 
         /**
-         * Migration Progress
-         */
-        export interface MigrationProgress {
-            /**
-             * Completion Percentage
-             */
-            completionPercentage?: pulumi.Input<number>;
-            /**
-             * Progress Message
-             */
-            progressMessage?: pulumi.Input<string>;
-        }
-
-        /**
-         * Migration Properties
-         */
-        export interface MigrationProperties {
-            /**
-             * Migration Progress
-             */
-            migrationProgress?: pulumi.Input<inputs.aad.latest.MigrationProgress>;
-            /**
-             * Old Subnet Id
-             */
-            oldSubnetId?: pulumi.Input<string>;
-            /**
-             * Old Vnet Site Id
-             */
-            oldVnetSiteId?: pulumi.Input<string>;
-        }
-
-        /**
          * Settings for notification
          */
         export interface NotificationSettings {
@@ -297,38 +265,6 @@ export namespace aad {
         }
 
         /**
-         * Migration Progress
-         */
-        export interface MigrationProgress {
-            /**
-             * Completion Percentage
-             */
-            completionPercentage?: pulumi.Input<number>;
-            /**
-             * Progress Message
-             */
-            progressMessage?: pulumi.Input<string>;
-        }
-
-        /**
-         * Migration Properties
-         */
-        export interface MigrationProperties {
-            /**
-             * Migration Progress
-             */
-            migrationProgress?: pulumi.Input<inputs.aad.v20170601.MigrationProgress>;
-            /**
-             * Old Subnet Id
-             */
-            oldSubnetId?: pulumi.Input<string>;
-            /**
-             * Old Vnet Site Id
-             */
-            oldVnetSiteId?: pulumi.Input<string>;
-        }
-
-        /**
          * Settings for notification
          */
         export interface NotificationSettings {
@@ -435,38 +371,6 @@ export namespace aad {
              * The password to decrypt the provided Secure LDAP certificate pfx file.
              */
             pfxCertificatePassword?: pulumi.Input<string>;
-        }
-
-        /**
-         * Migration Progress
-         */
-        export interface MigrationProgress {
-            /**
-             * Completion Percentage
-             */
-            completionPercentage?: pulumi.Input<number>;
-            /**
-             * Progress Message
-             */
-            progressMessage?: pulumi.Input<string>;
-        }
-
-        /**
-         * Migration Properties
-         */
-        export interface MigrationProperties {
-            /**
-             * Migration Progress
-             */
-            migrationProgress?: pulumi.Input<inputs.aad.v20200101.MigrationProgress>;
-            /**
-             * Old Subnet Id
-             */
-            oldSubnetId?: pulumi.Input<string>;
-            /**
-             * Old Vnet Site Id
-             */
-            oldVnetSiteId?: pulumi.Input<string>;
         }
 
         /**
@@ -1262,6 +1166,10 @@ export namespace analysisservices {
          * Represents the SKU name and Azure pricing tier for Analysis Services resource.
          */
         export interface ResourceSku {
+            /**
+             * The number of instances in the read only query pool.
+             */
+            capacity?: pulumi.Input<number>;
             /**
              * Name of the SKU level.
              */
@@ -7415,6 +7323,256 @@ export namespace appplatform {
         }
 
     }
+
+    export namespace v20201101preview {
+        /**
+         * App resource properties payload
+         */
+        export interface AppResourceProperties {
+            /**
+             * Name of the active deployment of the App
+             */
+            activeDeploymentName?: pulumi.Input<string>;
+            /**
+             * Fully qualified dns Name.
+             */
+            fqdn?: pulumi.Input<string>;
+            /**
+             * Indicate if only https is allowed.
+             */
+            httpsOnly?: pulumi.Input<boolean>;
+            /**
+             * Persistent disk settings
+             */
+            persistentDisk?: pulumi.Input<inputs.appplatform.v20201101preview.PersistentDisk>;
+            /**
+             * Indicates whether the App exposes public endpoint
+             */
+            public?: pulumi.Input<boolean>;
+            /**
+             * Temporary disk settings
+             */
+            temporaryDisk?: pulumi.Input<inputs.appplatform.v20201101preview.TemporaryDisk>;
+        }
+
+        /**
+         * Binding resource properties payload
+         */
+        export interface BindingResourceProperties {
+            /**
+             * Binding parameters of the Binding resource
+             */
+            bindingParameters?: pulumi.Input<{[key: string]: any}>;
+            /**
+             * The key of the bound resource
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * The Azure resource id of the bound resource
+             */
+            resourceId?: pulumi.Input<string>;
+        }
+
+        /**
+         * Certificate resource payload.
+         */
+        export interface CertificateProperties {
+            /**
+             * The certificate version of key vault.
+             */
+            certVersion?: pulumi.Input<string>;
+            /**
+             * The certificate name of key vault.
+             */
+            keyVaultCertName: pulumi.Input<string>;
+            /**
+             * The vault uri of user key vault.
+             */
+            vaultUri: pulumi.Input<string>;
+        }
+
+        /**
+         * Service properties payload
+         */
+        export interface ClusterResourceProperties {
+            /**
+             * Network profile of the Service
+             */
+            networkProfile?: pulumi.Input<inputs.appplatform.v20201101preview.NetworkProfile>;
+        }
+
+        /**
+         * Custom domain of app resource payload.
+         */
+        export interface CustomDomainProperties {
+            /**
+             * The bound certificate name of domain.
+             */
+            certName?: pulumi.Input<string>;
+            /**
+             * The thumbprint of bound certificate.
+             */
+            thumbprint?: pulumi.Input<string>;
+        }
+
+        /**
+         * Deployment resource properties payload
+         */
+        export interface DeploymentResourceProperties {
+            /**
+             * Deployment settings of the Deployment
+             */
+            deploymentSettings?: pulumi.Input<inputs.appplatform.v20201101preview.DeploymentSettings>;
+            /**
+             * Uploaded source information of the deployment.
+             */
+            source?: pulumi.Input<inputs.appplatform.v20201101preview.UserSourceInfo>;
+        }
+
+        /**
+         * Deployment settings payload
+         */
+        export interface DeploymentSettings {
+            /**
+             * Required CPU, basic tier should be 1, standard tier should be in range (1, 4)
+             */
+            cpu?: pulumi.Input<number>;
+            /**
+             * Collection of environment variables
+             */
+            environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * JVM parameter
+             */
+            jvmOptions?: pulumi.Input<string>;
+            /**
+             * Required Memory size in GB, basic tier should be in range (1, 2), standard tier should be in range (1, 8)
+             */
+            memoryInGB?: pulumi.Input<number>;
+            /**
+             * The path to the .NET executable relative to zip root
+             */
+            netCoreMainEntryPath?: pulumi.Input<string>;
+            /**
+             * Runtime version
+             */
+            runtimeVersion?: pulumi.Input<string | enums.appplatform.v20201101preview.RuntimeVersion>;
+        }
+
+        /**
+         * Managed identity properties retrieved from ARM request headers.
+         */
+        export interface ManagedIdentityProperties {
+            /**
+             * Principal Id
+             */
+            principalId?: pulumi.Input<string>;
+            /**
+             * Tenant Id
+             */
+            tenantId?: pulumi.Input<string>;
+            /**
+             * Type of the managed identity
+             */
+            type?: pulumi.Input<string | enums.appplatform.v20201101preview.ManagedIdentityType>;
+        }
+
+        /**
+         * Service network profile payload
+         */
+        export interface NetworkProfile {
+            /**
+             * Name of the resource group containing network resources of Azure Spring Cloud Apps
+             */
+            appNetworkResourceGroup?: pulumi.Input<string>;
+            /**
+             * Fully qualified resource Id of the subnet to host Azure Spring Cloud Apps
+             */
+            appSubnetId?: pulumi.Input<string>;
+            /**
+             * Azure Spring Cloud service reserved CIDR
+             */
+            serviceCidr?: pulumi.Input<string>;
+            /**
+             * Name of the resource group containing network resources of Azure Spring Cloud Service Runtime
+             */
+            serviceRuntimeNetworkResourceGroup?: pulumi.Input<string>;
+            /**
+             * Fully qualified resource Id of the subnet to host Azure Spring Cloud Service Runtime
+             */
+            serviceRuntimeSubnetId?: pulumi.Input<string>;
+        }
+
+        /**
+         * Persistent disk payload
+         */
+        export interface PersistentDisk {
+            /**
+             * Mount path of the persistent disk
+             */
+            mountPath?: pulumi.Input<string>;
+            /**
+             * Size of the persistent disk in GB
+             */
+            sizeInGB?: pulumi.Input<number>;
+        }
+
+        /**
+         * Sku of Azure Spring Cloud
+         */
+        export interface Sku {
+            /**
+             * Current capacity of the target resource
+             */
+            capacity?: pulumi.Input<number>;
+            /**
+             * Name of the Sku
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Tier of the Sku
+             */
+            tier?: pulumi.Input<string>;
+        }
+
+        /**
+         * Temporary disk payload
+         */
+        export interface TemporaryDisk {
+            /**
+             * Mount path of the temporary disk
+             */
+            mountPath?: pulumi.Input<string>;
+            /**
+             * Size of the temporary disk in GB
+             */
+            sizeInGB?: pulumi.Input<number>;
+        }
+
+        /**
+         * Source information for a deployment
+         */
+        export interface UserSourceInfo {
+            /**
+             * Selector for the artifact to be used for the deployment for multi-module projects. This should be
+             * the relative path to the target module/project.
+             */
+            artifactSelector?: pulumi.Input<string>;
+            /**
+             * Relative path of the storage which stores the source
+             */
+            relativePath?: pulumi.Input<string>;
+            /**
+             * Type of the source uploaded
+             */
+            type?: pulumi.Input<string | enums.appplatform.v20201101preview.UserSourceType>;
+            /**
+             * Version of the source
+             */
+            version?: pulumi.Input<string>;
+        }
+
+    }
 }
 
 export namespace attestation {
@@ -9719,139 +9877,6 @@ export namespace avs {
              * The cluster size
              */
             clusterSize: pulumi.Input<number>;
-        }
-
-        /**
-         * The resource model definition representing SKU
-         */
-        export interface Sku {
-            /**
-             * The name of the SKU.
-             */
-            name: pulumi.Input<string>;
-        }
-
-    }
-
-    export namespace v20190809preview {
-        /**
-         * An ExpressRoute Circuit
-         */
-        export interface Circuit {
-            /**
-             * Authorizations for the ExpressRoute (Microsoft Colo only)
-             */
-            authorizations?: pulumi.Input<pulumi.Input<inputs.avs.v20190809preview.ExpressRouteAuthorization>[]>;
-        }
-
-        /**
-         * The properties of a cluster
-         */
-        export interface ClusterProperties {
-            /**
-             * The cluster size
-             */
-            clusterSize?: pulumi.Input<number>;
-        }
-
-        /**
-         * The properties of a default cluster
-         */
-        export interface DefaultClusterProperties {
-            /**
-             * The cluster size
-             */
-            clusterSize?: pulumi.Input<number>;
-        }
-
-        /**
-         * Authorization for an ExpressRoute
-         */
-        export interface ExpressRouteAuthorization {
-            /**
-             * The name of the ExpressRoute
-             */
-            name?: pulumi.Input<string>;
-        }
-
-        /**
-         * vCenter Single Sign On Identity Source
-         */
-        export interface IdentitySource {
-            /**
-             * The domain's NetBIOS name
-             */
-            alias?: pulumi.Input<string>;
-            /**
-             * The base distinguished name for groups
-             */
-            baseGroupDN?: pulumi.Input<string>;
-            /**
-             * The base distinguished name for users
-             */
-            baseUserDN?: pulumi.Input<string>;
-            /**
-             * The domain's dns name
-             */
-            domain?: pulumi.Input<string>;
-            /**
-             * The name of the identity source
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * The password of the Active Directory user with a minimum of read-only access to Base DN for users and groups.
-             */
-            password?: pulumi.Input<string>;
-            /**
-             * Primary server URL
-             */
-            primaryServer?: pulumi.Input<string>;
-            /**
-             * Secondary server URL
-             */
-            secondaryServer?: pulumi.Input<string>;
-            /**
-             * Protect LDAP communication using SSL certificate (LDAPS)
-             */
-            ssl?: pulumi.Input<string | enums.avs.v20190809preview.SslEnum>;
-            /**
-             * The ID of an Active Directory user with a minimum of read-only access to Base DN for users and group
-             */
-            username?: pulumi.Input<string>;
-        }
-
-        /**
-         * The properties of a private cloud resource
-         */
-        export interface PrivateCloudProperties {
-            /**
-             * An ExpressRoute Circuit
-             */
-            circuit?: pulumi.Input<inputs.avs.v20190809preview.Circuit>;
-            /**
-             * The default cluster used for management
-             */
-            cluster?: pulumi.Input<inputs.avs.v20190809preview.DefaultClusterProperties>;
-            /**
-             * vCenter Single Sign On Identity Sources
-             */
-            identitySources?: pulumi.Input<pulumi.Input<inputs.avs.v20190809preview.IdentitySource>[]>;
-            /**
-             * Connectivity to internet is enabled or disabled
-             */
-            internet?: pulumi.Input<string | enums.avs.v20190809preview.InternetEnum>;
-            /**
-             * The block of addresses should be unique across VNet in your subscription as well as on-premise. Make sure the CIDR format is conformed to (A.B.C.D/X) where A,B,C,D are between 0 and 255, and X is between 0 and 22
-             */
-            networkBlock?: pulumi.Input<string>;
-            /**
-             * Optionally, set the NSX-T Manager password when the private cloud is created
-             */
-            nsxtPassword?: pulumi.Input<string>;
-            /**
-             * Optionally, set the vCenter admin password when the private cloud is created
-             */
-            vcenterPassword?: pulumi.Input<string>;
         }
 
         /**
@@ -55653,6 +55678,14 @@ export namespace containerservice {
              */
             allowedUnsafeSysctls?: pulumi.Input<pulumi.Input<string>[]>;
             /**
+             * The maximum number of container log files that can be present for a container. The number must be ≥ 2.
+             */
+            containerLogMaxFiles?: pulumi.Input<number>;
+            /**
+             * The maximum size (e.g. 10Mi) of container log file before it is rotated.
+             */
+            containerLogMaxSizeMB?: pulumi.Input<number>;
+            /**
              * Enable CPU CFS quota enforcement for containers that specify CPU limits.
              */
             cpuCfsQuota?: pulumi.Input<boolean>;
@@ -55676,6 +55709,10 @@ export namespace containerservice {
              * The percent of disk usage before which image garbage collection is never run.
              */
             imageGcLowThreshold?: pulumi.Input<number>;
+            /**
+             * The maximum number of processes per pod.
+             */
+            podMaxPids?: pulumi.Input<number>;
             /**
              * Topology Manager policy to use.
              */
@@ -55787,6 +55824,10 @@ export namespace containerservice {
              */
             enableAutoScaling?: pulumi.Input<boolean>;
             /**
+             * Whether to enable EncryptionAtHost
+             */
+            enableEncryptionAtHost?: pulumi.Input<boolean>;
+            /**
              * Enable public IP for nodes
              */
             enableNodePublicIP?: pulumi.Input<boolean>;
@@ -55794,6 +55835,10 @@ export namespace containerservice {
              * KubeletConfig specifies the configuration of kubelet on agent nodes.
              */
             kubeletConfig?: pulumi.Input<inputs.containerservice.latest.KubeletConfig>;
+            /**
+             * KubeletDiskType determines the placement of emptyDir volumes, container runtime data root, and Kubelet ephemeral storage. Currently allows one value, OS, resulting in Kubelet using the OS disk for data.
+             */
+            kubeletDiskType?: pulumi.Input<string | enums.containerservice.latest.KubeletDiskType>;
             /**
              * LinuxOSConfig specifies the OS configuration of linux agent nodes.
              */
@@ -56021,6 +56066,7 @@ export namespace containerservice {
             expander?: pulumi.Input<string | enums.containerservice.latest.Expander>;
             maxEmptyBulkDelete?: pulumi.Input<string>;
             maxGracefulTerminationSec?: pulumi.Input<string>;
+            maxNodeProvisionTime?: pulumi.Input<string>;
             maxTotalUnreadyPercentage?: pulumi.Input<string>;
             newPodScaleUpDelay?: pulumi.Input<string>;
             okTotalUnreadyCount?: pulumi.Input<string>;
@@ -56317,6 +56363,10 @@ export namespace containerservice {
              */
             netCoreOptmemMax?: pulumi.Input<number>;
             /**
+             * Sysctl setting net.core.rmem_default.
+             */
+            netCoreRmemDefault?: pulumi.Input<number>;
+            /**
              * Sysctl setting net.core.rmem_max.
              */
             netCoreRmemMax?: pulumi.Input<number>;
@@ -56324,6 +56374,10 @@ export namespace containerservice {
              * Sysctl setting net.core.somaxconn.
              */
             netCoreSomaxconn?: pulumi.Input<number>;
+            /**
+             * Sysctl setting net.core.wmem_default.
+             */
+            netCoreWmemDefault?: pulumi.Input<number>;
             /**
              * Sysctl setting net.core.wmem_max.
              */
@@ -56365,17 +56419,9 @@ export namespace containerservice {
              */
             netIpv4TcpMaxTwBuckets?: pulumi.Input<number>;
             /**
-             * Sysctl setting net.ipv4.tcp_rmem.
-             */
-            netIpv4TcpRmem?: pulumi.Input<number>;
-            /**
              * Sysctl setting net.ipv4.tcp_tw_reuse.
              */
             netIpv4TcpTwReuse?: pulumi.Input<boolean>;
-            /**
-             * Sysctl setting net.ipv4.tcp_wmem.
-             */
-            netIpv4TcpWmem?: pulumi.Input<number>;
             /**
              * Sysctl setting net.ipv4.tcp_keepalive_intvl.
              */
@@ -56400,6 +56446,34 @@ export namespace containerservice {
              * Sysctl setting vm.vfs_cache_pressure.
              */
             vmVfsCachePressure?: pulumi.Input<number>;
+        }
+
+        /**
+         * Time in a week.
+         */
+        export interface TimeInWeek {
+            /**
+             * A day in a week.
+             */
+            day?: pulumi.Input<string | enums.containerservice.latest.WeekDay>;
+            /**
+             * hour slots in a day.
+             */
+            hourSlots?: pulumi.Input<pulumi.Input<number>[]>;
+        }
+
+        /**
+         * The time span with start and end properties.
+         */
+        export interface TimeSpan {
+            /**
+             * The end of a time span
+             */
+            end?: pulumi.Input<string>;
+            /**
+             * The start of a time span
+             */
+            start?: pulumi.Input<string>;
         }
 
         export interface UserAssignedIdentity {
@@ -63048,6 +63122,764 @@ export namespace containerservice {
         }
 
     }
+
+    export namespace v20201201 {
+        /**
+         * Settings for upgrading an agentpool
+         */
+        export interface AgentPoolUpgradeSettings {
+            /**
+             * Count or percentage of additional nodes to be added during upgrade. If empty uses AKS default
+             */
+            maxSurge?: pulumi.Input<string>;
+        }
+
+        /**
+         * Profile for Linux VMs in the container service cluster.
+         */
+        export interface ContainerServiceLinuxProfile {
+            /**
+             * The administrator username to use for Linux VMs.
+             */
+            adminUsername: pulumi.Input<string>;
+            /**
+             * SSH configuration for Linux-based VMs running on Azure.
+             */
+            ssh: pulumi.Input<inputs.containerservice.v20201201.ContainerServiceSshConfiguration>;
+        }
+
+        /**
+         * Profile of network configuration.
+         */
+        export interface ContainerServiceNetworkProfile {
+            /**
+             * An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr.
+             */
+            dnsServiceIP?: pulumi.Input<string>;
+            /**
+             * A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes service address range.
+             */
+            dockerBridgeCidr?: pulumi.Input<string>;
+            /**
+             * Profile of the cluster load balancer.
+             */
+            loadBalancerProfile?: pulumi.Input<inputs.containerservice.v20201201.ManagedClusterLoadBalancerProfile>;
+            /**
+             * The load balancer sku for the managed cluster.
+             */
+            loadBalancerSku?: pulumi.Input<string | enums.containerservice.v20201201.LoadBalancerSku>;
+            /**
+             * Network mode used for building Kubernetes network.
+             */
+            networkMode?: pulumi.Input<string | enums.containerservice.v20201201.NetworkMode>;
+            /**
+             * Network plugin used for building Kubernetes network.
+             */
+            networkPlugin?: pulumi.Input<string | enums.containerservice.v20201201.NetworkPlugin>;
+            /**
+             * Network policy used for building Kubernetes network.
+             */
+            networkPolicy?: pulumi.Input<string | enums.containerservice.v20201201.NetworkPolicy>;
+            /**
+             * The outbound (egress) routing method.
+             */
+            outboundType?: pulumi.Input<string | enums.containerservice.v20201201.OutboundType>;
+            /**
+             * A CIDR notation IP range from which to assign pod IPs when kubenet is used.
+             */
+            podCidr?: pulumi.Input<string>;
+            /**
+             * A CIDR notation IP range from which to assign service cluster IPs. It must not overlap with any Subnet IP ranges.
+             */
+            serviceCidr?: pulumi.Input<string>;
+        }
+
+        /**
+         * SSH configuration for Linux-based VMs running on Azure.
+         */
+        export interface ContainerServiceSshConfiguration {
+            /**
+             * The list of SSH public keys used to authenticate with Linux-based VMs. Only expect one key specified.
+             */
+            publicKeys: pulumi.Input<pulumi.Input<inputs.containerservice.v20201201.ContainerServiceSshPublicKey>[]>;
+        }
+
+        /**
+         * Contains information about SSH certificate public key data.
+         */
+        export interface ContainerServiceSshPublicKey {
+            /**
+             * Certificate public key used to authenticate with VMs through SSH. The certificate must be in PEM format with or without headers.
+             */
+            keyData: pulumi.Input<string>;
+        }
+
+        /**
+         * Kubelet configurations of agent nodes.
+         */
+        export interface KubeletConfig {
+            /**
+             * Allowlist of unsafe sysctls or unsafe sysctl patterns (ending in `*`).
+             */
+            allowedUnsafeSysctls?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The maximum number of container log files that can be present for a container. The number must be ≥ 2.
+             */
+            containerLogMaxFiles?: pulumi.Input<number>;
+            /**
+             * The maximum size (e.g. 10Mi) of container log file before it is rotated.
+             */
+            containerLogMaxSizeMB?: pulumi.Input<number>;
+            /**
+             * Enable CPU CFS quota enforcement for containers that specify CPU limits.
+             */
+            cpuCfsQuota?: pulumi.Input<boolean>;
+            /**
+             * Sets CPU CFS quota period value.
+             */
+            cpuCfsQuotaPeriod?: pulumi.Input<string>;
+            /**
+             * CPU Manager policy to use.
+             */
+            cpuManagerPolicy?: pulumi.Input<string>;
+            /**
+             * If set to true it will make the Kubelet fail to start if swap is enabled on the node.
+             */
+            failSwapOn?: pulumi.Input<boolean>;
+            /**
+             * The percent of disk usage after which image garbage collection is always run.
+             */
+            imageGcHighThreshold?: pulumi.Input<number>;
+            /**
+             * The percent of disk usage before which image garbage collection is never run.
+             */
+            imageGcLowThreshold?: pulumi.Input<number>;
+            /**
+             * The maximum number of processes per pod.
+             */
+            podMaxPids?: pulumi.Input<number>;
+            /**
+             * Topology Manager policy to use.
+             */
+            topologyManagerPolicy?: pulumi.Input<string>;
+        }
+
+        /**
+         * OS configurations of Linux agent nodes.
+         */
+        export interface LinuxOSConfig {
+            /**
+             * SwapFileSizeMB specifies size in MB of a swap file will be created on each node.
+             */
+            swapFileSizeMB?: pulumi.Input<number>;
+            /**
+             * Sysctl settings for Linux agent nodes.
+             */
+            sysctls?: pulumi.Input<inputs.containerservice.v20201201.SysctlConfig>;
+            /**
+             * Transparent Huge Page defrag configuration.
+             */
+            transparentHugePageDefrag?: pulumi.Input<string>;
+            /**
+             * Transparent Huge Page enabled configuration.
+             */
+            transparentHugePageEnabled?: pulumi.Input<string>;
+        }
+
+        /**
+         * AADProfile specifies attributes for Azure Active Directory integration.
+         */
+        export interface ManagedClusterAADProfile {
+            /**
+             * AAD group object IDs that will have admin role of the cluster.
+             */
+            adminGroupObjectIDs?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The client AAD application ID.
+             */
+            clientAppID?: pulumi.Input<string>;
+            /**
+             * Whether to enable Azure RBAC for Kubernetes authorization.
+             */
+            enableAzureRBAC?: pulumi.Input<boolean>;
+            /**
+             * Whether to enable managed AAD.
+             */
+            managed?: pulumi.Input<boolean>;
+            /**
+             * The server AAD application ID.
+             */
+            serverAppID?: pulumi.Input<string>;
+            /**
+             * The server AAD application secret.
+             */
+            serverAppSecret?: pulumi.Input<string>;
+            /**
+             * The AAD tenant ID to use for authentication. If not specified, will use the tenant of the deployment subscription.
+             */
+            tenantID?: pulumi.Input<string>;
+        }
+
+        /**
+         * Access profile for managed cluster API server.
+         */
+        export interface ManagedClusterAPIServerAccessProfile {
+            /**
+             * Authorized IP Ranges to kubernetes API server.
+             */
+            authorizedIPRanges?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Whether to create the cluster as a private cluster or not.
+             */
+            enablePrivateCluster?: pulumi.Input<boolean>;
+            /**
+             * Private dns zone mode for private cluster. 
+             */
+            privateDNSZone?: pulumi.Input<string>;
+        }
+
+        /**
+         * A Kubernetes add-on profile for a managed cluster.
+         */
+        export interface ManagedClusterAddonProfile {
+            /**
+             * Key-value pairs for configuring an add-on.
+             */
+            config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * Whether the add-on is enabled or not.
+             */
+            enabled: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Profile for the container service agent pool.
+         */
+        export interface ManagedClusterAgentPoolProfile {
+            /**
+             * Availability zones for nodes. Must use VirtualMachineScaleSets AgentPoolType.
+             */
+            availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Number of agents (VMs) to host docker containers. Allowed values must be in the range of 0 to 100 (inclusive) for user pools and in the range of 1 to 100 (inclusive) for system pools. The default value is 1.
+             */
+            count?: pulumi.Input<number>;
+            /**
+             * Whether to enable auto-scaler
+             */
+            enableAutoScaling?: pulumi.Input<boolean>;
+            /**
+             * Whether to enable EncryptionAtHost
+             */
+            enableEncryptionAtHost?: pulumi.Input<boolean>;
+            /**
+             * Enable public IP for nodes
+             */
+            enableNodePublicIP?: pulumi.Input<boolean>;
+            /**
+             * KubeletConfig specifies the configuration of kubelet on agent nodes.
+             */
+            kubeletConfig?: pulumi.Input<inputs.containerservice.v20201201.KubeletConfig>;
+            /**
+             * KubeletDiskType determines the placement of emptyDir volumes, container runtime data root, and Kubelet ephemeral storage. Currently allows one value, OS, resulting in Kubelet using the OS disk for data.
+             */
+            kubeletDiskType?: pulumi.Input<string | enums.containerservice.v20201201.KubeletDiskType>;
+            /**
+             * LinuxOSConfig specifies the OS configuration of linux agent nodes.
+             */
+            linuxOSConfig?: pulumi.Input<inputs.containerservice.v20201201.LinuxOSConfig>;
+            /**
+             * Maximum number of nodes for auto-scaling
+             */
+            maxCount?: pulumi.Input<number>;
+            /**
+             * Maximum number of pods that can run on a node.
+             */
+            maxPods?: pulumi.Input<number>;
+            /**
+             * Minimum number of nodes for auto-scaling
+             */
+            minCount?: pulumi.Input<number>;
+            /**
+             * AgentPoolMode represents mode of an agent pool
+             */
+            mode?: pulumi.Input<string | enums.containerservice.v20201201.AgentPoolMode>;
+            /**
+             * Unique name of the agent pool profile in the context of the subscription and resource group.
+             */
+            name: pulumi.Input<string>;
+            /**
+             * Agent pool node labels to be persisted across all nodes in agent pool.
+             */
+            nodeLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule.
+             */
+            nodeTaints?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Version of orchestrator specified when creating the managed cluster.
+             */
+            orchestratorVersion?: pulumi.Input<string>;
+            /**
+             * OS Disk Size in GB to be used to specify the disk size for every machine in this master/agent pool. If you specify 0, it will apply the default osDisk size according to the vmSize specified.
+             */
+            osDiskSizeGB?: pulumi.Input<number>;
+            /**
+             * OS disk type to be used for machines in a given agent pool. Allowed values are 'Ephemeral' and 'Managed'. Defaults to 'Managed'. May not be changed after creation.
+             */
+            osDiskType?: pulumi.Input<string | enums.containerservice.v20201201.OSDiskType>;
+            /**
+             * OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux.
+             */
+            osType?: pulumi.Input<string | enums.containerservice.v20201201.OSType>;
+            /**
+             * Pod SubnetID specifies the VNet's subnet identifier for pods.
+             */
+            podSubnetID?: pulumi.Input<string>;
+            /**
+             * The ID for Proximity Placement Group.
+             */
+            proximityPlacementGroupID?: pulumi.Input<string>;
+            /**
+             * ScaleSetEvictionPolicy to be used to specify eviction policy for Spot virtual machine scale set. Default to Delete.
+             */
+            scaleSetEvictionPolicy?: pulumi.Input<string | enums.containerservice.v20201201.ScaleSetEvictionPolicy>;
+            /**
+             * ScaleSetPriority to be used to specify virtual machine scale set priority. Default to regular.
+             */
+            scaleSetPriority?: pulumi.Input<string | enums.containerservice.v20201201.ScaleSetPriority>;
+            /**
+             * SpotMaxPrice to be used to specify the maximum price you are willing to pay in US Dollars. Possible values are any decimal value greater than zero or -1 which indicates default price to be up-to on-demand.
+             */
+            spotMaxPrice?: pulumi.Input<number>;
+            /**
+             * Agent pool tags to be persisted on the agent pool virtual machine scale set.
+             */
+            tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * AgentPoolType represents types of an agent pool
+             */
+            type?: pulumi.Input<string | enums.containerservice.v20201201.AgentPoolType>;
+            /**
+             * Settings for upgrading the agentpool
+             */
+            upgradeSettings?: pulumi.Input<inputs.containerservice.v20201201.AgentPoolUpgradeSettings>;
+            /**
+             * Size of agent VMs.
+             */
+            vmSize?: pulumi.Input<string | enums.containerservice.v20201201.ContainerServiceVMSizeTypes>;
+            /**
+             * VNet SubnetID specifies the VNet's subnet identifier for nodes and maybe pods
+             */
+            vnetSubnetID?: pulumi.Input<string>;
+        }
+
+        /**
+         * Auto upgrade profile for a managed cluster.
+         */
+        export interface ManagedClusterAutoUpgradeProfile {
+            /**
+             * upgrade channel for auto upgrade.
+             */
+            upgradeChannel?: pulumi.Input<string | enums.containerservice.v20201201.UpgradeChannel>;
+        }
+
+        /**
+         * Identity for the managed cluster.
+         */
+        export interface ManagedClusterIdentity {
+            /**
+             * The type of identity used for the managed cluster. Type 'SystemAssigned' will use an implicitly created identity in master components and an auto-created user assigned identity in MC_ resource group in agent nodes. Type 'None' will not use MSI for the managed cluster, service principal will be used instead.
+             */
+            type?: pulumi.Input<enums.containerservice.v20201201.ResourceIdentityType>;
+            /**
+             * The user identity associated with the managed cluster. This identity will be used in control plane and only one user assigned identity is allowed. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+             */
+            userAssignedIdentities?: pulumi.Input<{[key: string]: any}>;
+        }
+
+        /**
+         * Profile of the managed cluster load balancer.
+         */
+        export interface ManagedClusterLoadBalancerProfile {
+            /**
+             * Desired number of allocated SNAT ports per VM. Allowed values must be in the range of 0 to 64000 (inclusive). The default value is 0 which results in Azure dynamically allocating ports.
+             */
+            allocatedOutboundPorts?: pulumi.Input<number>;
+            /**
+             * The effective outbound IP resources of the cluster load balancer.
+             */
+            effectiveOutboundIPs?: pulumi.Input<pulumi.Input<inputs.containerservice.v20201201.ResourceReference>[]>;
+            /**
+             * Desired outbound flow idle timeout in minutes. Allowed values must be in the range of 4 to 120 (inclusive). The default value is 30 minutes.
+             */
+            idleTimeoutInMinutes?: pulumi.Input<number>;
+            /**
+             * Desired managed outbound IPs for the cluster load balancer.
+             */
+            managedOutboundIPs?: pulumi.Input<inputs.containerservice.v20201201.ManagedClusterLoadBalancerProfileManagedOutboundIPs>;
+            /**
+             * Desired outbound IP Prefix resources for the cluster load balancer.
+             */
+            outboundIPPrefixes?: pulumi.Input<inputs.containerservice.v20201201.ManagedClusterLoadBalancerProfileOutboundIPPrefixes>;
+            /**
+             * Desired outbound IP resources for the cluster load balancer.
+             */
+            outboundIPs?: pulumi.Input<inputs.containerservice.v20201201.ManagedClusterLoadBalancerProfileOutboundIPs>;
+        }
+
+        /**
+         * Desired managed outbound IPs for the cluster load balancer.
+         */
+        export interface ManagedClusterLoadBalancerProfileManagedOutboundIPs {
+            /**
+             * Desired number of outbound IP created/managed by Azure for the cluster load balancer. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 1. 
+             */
+            count?: pulumi.Input<number>;
+        }
+
+        /**
+         * Desired outbound IP Prefix resources for the cluster load balancer.
+         */
+        export interface ManagedClusterLoadBalancerProfileOutboundIPPrefixes {
+            /**
+             * A list of public IP prefix resources.
+             */
+            publicIPPrefixes?: pulumi.Input<pulumi.Input<inputs.containerservice.v20201201.ResourceReference>[]>;
+        }
+
+        /**
+         * Desired outbound IP resources for the cluster load balancer.
+         */
+        export interface ManagedClusterLoadBalancerProfileOutboundIPs {
+            /**
+             * A list of public IP resources.
+             */
+            publicIPs?: pulumi.Input<pulumi.Input<inputs.containerservice.v20201201.ResourceReference>[]>;
+        }
+
+        export interface ManagedClusterPodIdentity {
+            /**
+             * Information of the user assigned identity.
+             */
+            identity: pulumi.Input<inputs.containerservice.v20201201.UserAssignedIdentity>;
+            /**
+             * Name of the pod identity.
+             */
+            name: pulumi.Input<string>;
+            /**
+             * Namespace of the pod identity.
+             */
+            namespace: pulumi.Input<string>;
+        }
+
+        export interface ManagedClusterPodIdentityException {
+            /**
+             * Name of the pod identity exception.
+             */
+            name: pulumi.Input<string>;
+            /**
+             * Namespace of the pod identity exception.
+             */
+            namespace: pulumi.Input<string>;
+            /**
+             * Pod labels to match.
+             */
+            podLabels: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        }
+
+        export interface ManagedClusterPodIdentityProfile {
+            /**
+             * Whether the pod identity addon is enabled.
+             */
+            enabled?: pulumi.Input<boolean>;
+            /**
+             * User assigned pod identity settings.
+             */
+            userAssignedIdentities?: pulumi.Input<pulumi.Input<inputs.containerservice.v20201201.ManagedClusterPodIdentity>[]>;
+            /**
+             * User assigned pod identity exception settings.
+             */
+            userAssignedIdentityExceptions?: pulumi.Input<pulumi.Input<inputs.containerservice.v20201201.ManagedClusterPodIdentityException>[]>;
+        }
+
+        /**
+         * Parameters to be applied to the cluster-autoscaler when enabled
+         */
+        export interface ManagedClusterPropertiesAutoScalerProfile {
+            balanceSimilarNodeGroups?: pulumi.Input<string>;
+            expander?: pulumi.Input<string | enums.containerservice.v20201201.Expander>;
+            maxEmptyBulkDelete?: pulumi.Input<string>;
+            maxGracefulTerminationSec?: pulumi.Input<string>;
+            maxNodeProvisionTime?: pulumi.Input<string>;
+            maxTotalUnreadyPercentage?: pulumi.Input<string>;
+            newPodScaleUpDelay?: pulumi.Input<string>;
+            okTotalUnreadyCount?: pulumi.Input<string>;
+            scaleDownDelayAfterAdd?: pulumi.Input<string>;
+            scaleDownDelayAfterDelete?: pulumi.Input<string>;
+            scaleDownDelayAfterFailure?: pulumi.Input<string>;
+            scaleDownUnneededTime?: pulumi.Input<string>;
+            scaleDownUnreadyTime?: pulumi.Input<string>;
+            scaleDownUtilizationThreshold?: pulumi.Input<string>;
+            scanInterval?: pulumi.Input<string>;
+            skipNodesWithLocalStorage?: pulumi.Input<string>;
+            skipNodesWithSystemPods?: pulumi.Input<string>;
+        }
+
+        export interface ManagedClusterPropertiesIdentityProfile {
+            /**
+             * The client id of the user assigned identity.
+             */
+            clientId?: pulumi.Input<string>;
+            /**
+             * The object id of the user assigned identity.
+             */
+            objectId?: pulumi.Input<string>;
+            /**
+             * The resource id of the user assigned identity.
+             */
+            resourceId?: pulumi.Input<string>;
+        }
+
+        export interface ManagedClusterSKU {
+            /**
+             * Name of a managed cluster SKU.
+             */
+            name?: pulumi.Input<string | enums.containerservice.v20201201.ManagedClusterSKUName>;
+            /**
+             * Tier of a managed cluster SKU.
+             */
+            tier?: pulumi.Input<string | enums.containerservice.v20201201.ManagedClusterSKUTier>;
+        }
+
+        /**
+         * Information about a service principal identity for the cluster to use for manipulating Azure APIs.
+         */
+        export interface ManagedClusterServicePrincipalProfile {
+            /**
+             * The ID for the service principal.
+             */
+            clientId: pulumi.Input<string>;
+            /**
+             * The secret password associated with the service principal in plain text.
+             */
+            secret?: pulumi.Input<string>;
+        }
+
+        /**
+         * Profile for Windows VMs in the container service cluster.
+         */
+        export interface ManagedClusterWindowsProfile {
+            /**
+             * Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:** 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!"
+             */
+            adminPassword?: pulumi.Input<string>;
+            /**
+             * Specifies the name of the administrator account. <br><br> **restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length:** 1 character <br><br> **Max-length:** 20 characters
+             */
+            adminUsername: pulumi.Input<string>;
+            /**
+             * The licenseType to use for Windows VMs. Windows_Server is used to enable Azure Hybrid User Benefits for Windows VMs.
+             */
+            licenseType?: pulumi.Input<string | enums.containerservice.v20201201.LicenseType>;
+        }
+
+        /**
+         * Private endpoint which a connection belongs to.
+         */
+        export interface PrivateEndpoint {
+            /**
+             * The resource Id for private endpoint
+             */
+            id?: pulumi.Input<string>;
+        }
+
+        /**
+         * The state of a private link service connection.
+         */
+        export interface PrivateLinkServiceConnectionState {
+            /**
+             * The private link service connection description.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * The private link service connection status.
+             */
+            status?: pulumi.Input<string | enums.containerservice.v20201201.ConnectionStatus>;
+        }
+
+        /**
+         * A reference to an Azure resource.
+         */
+        export interface ResourceReference {
+            /**
+             * The fully qualified Azure resource id.
+             */
+            id?: pulumi.Input<string>;
+        }
+
+        /**
+         * Sysctl settings for Linux agent nodes.
+         */
+        export interface SysctlConfig {
+            /**
+             * Sysctl setting fs.aio-max-nr.
+             */
+            fsAioMaxNr?: pulumi.Input<number>;
+            /**
+             * Sysctl setting fs.file-max.
+             */
+            fsFileMax?: pulumi.Input<number>;
+            /**
+             * Sysctl setting fs.inotify.max_user_watches.
+             */
+            fsInotifyMaxUserWatches?: pulumi.Input<number>;
+            /**
+             * Sysctl setting fs.nr_open.
+             */
+            fsNrOpen?: pulumi.Input<number>;
+            /**
+             * Sysctl setting kernel.threads-max.
+             */
+            kernelThreadsMax?: pulumi.Input<number>;
+            /**
+             * Sysctl setting net.core.netdev_max_backlog.
+             */
+            netCoreNetdevMaxBacklog?: pulumi.Input<number>;
+            /**
+             * Sysctl setting net.core.optmem_max.
+             */
+            netCoreOptmemMax?: pulumi.Input<number>;
+            /**
+             * Sysctl setting net.core.rmem_default.
+             */
+            netCoreRmemDefault?: pulumi.Input<number>;
+            /**
+             * Sysctl setting net.core.rmem_max.
+             */
+            netCoreRmemMax?: pulumi.Input<number>;
+            /**
+             * Sysctl setting net.core.somaxconn.
+             */
+            netCoreSomaxconn?: pulumi.Input<number>;
+            /**
+             * Sysctl setting net.core.wmem_default.
+             */
+            netCoreWmemDefault?: pulumi.Input<number>;
+            /**
+             * Sysctl setting net.core.wmem_max.
+             */
+            netCoreWmemMax?: pulumi.Input<number>;
+            /**
+             * Sysctl setting net.ipv4.ip_local_port_range.
+             */
+            netIpv4IpLocalPortRange?: pulumi.Input<string>;
+            /**
+             * Sysctl setting net.ipv4.neigh.default.gc_thresh1.
+             */
+            netIpv4NeighDefaultGcThresh1?: pulumi.Input<number>;
+            /**
+             * Sysctl setting net.ipv4.neigh.default.gc_thresh2.
+             */
+            netIpv4NeighDefaultGcThresh2?: pulumi.Input<number>;
+            /**
+             * Sysctl setting net.ipv4.neigh.default.gc_thresh3.
+             */
+            netIpv4NeighDefaultGcThresh3?: pulumi.Input<number>;
+            /**
+             * Sysctl setting net.ipv4.tcp_fin_timeout.
+             */
+            netIpv4TcpFinTimeout?: pulumi.Input<number>;
+            /**
+             * Sysctl setting net.ipv4.tcp_keepalive_probes.
+             */
+            netIpv4TcpKeepaliveProbes?: pulumi.Input<number>;
+            /**
+             * Sysctl setting net.ipv4.tcp_keepalive_time.
+             */
+            netIpv4TcpKeepaliveTime?: pulumi.Input<number>;
+            /**
+             * Sysctl setting net.ipv4.tcp_max_syn_backlog.
+             */
+            netIpv4TcpMaxSynBacklog?: pulumi.Input<number>;
+            /**
+             * Sysctl setting net.ipv4.tcp_max_tw_buckets.
+             */
+            netIpv4TcpMaxTwBuckets?: pulumi.Input<number>;
+            /**
+             * Sysctl setting net.ipv4.tcp_tw_reuse.
+             */
+            netIpv4TcpTwReuse?: pulumi.Input<boolean>;
+            /**
+             * Sysctl setting net.ipv4.tcp_keepalive_intvl.
+             */
+            netIpv4TcpkeepaliveIntvl?: pulumi.Input<number>;
+            /**
+             * Sysctl setting net.netfilter.nf_conntrack_buckets.
+             */
+            netNetfilterNfConntrackBuckets?: pulumi.Input<number>;
+            /**
+             * Sysctl setting net.netfilter.nf_conntrack_max.
+             */
+            netNetfilterNfConntrackMax?: pulumi.Input<number>;
+            /**
+             * Sysctl setting vm.max_map_count.
+             */
+            vmMaxMapCount?: pulumi.Input<number>;
+            /**
+             * Sysctl setting vm.swappiness.
+             */
+            vmSwappiness?: pulumi.Input<number>;
+            /**
+             * Sysctl setting vm.vfs_cache_pressure.
+             */
+            vmVfsCachePressure?: pulumi.Input<number>;
+        }
+
+        /**
+         * Time in a week.
+         */
+        export interface TimeInWeek {
+            /**
+             * A day in a week.
+             */
+            day?: pulumi.Input<string | enums.containerservice.v20201201.WeekDay>;
+            /**
+             * hour slots in a day.
+             */
+            hourSlots?: pulumi.Input<pulumi.Input<number>[]>;
+        }
+
+        /**
+         * The time span with start and end properties.
+         */
+        export interface TimeSpan {
+            /**
+             * The end of a time span
+             */
+            end?: pulumi.Input<string>;
+            /**
+             * The start of a time span
+             */
+            start?: pulumi.Input<string>;
+        }
+
+        export interface UserAssignedIdentity {
+            /**
+             * The client id of the user assigned identity.
+             */
+            clientId?: pulumi.Input<string>;
+            /**
+             * The object id of the user assigned identity.
+             */
+            objectId?: pulumi.Input<string>;
+            /**
+             * The resource id of the user assigned identity.
+             */
+            resourceId?: pulumi.Input<string>;
+        }
+
+    }
 }
 
 export namespace costmanagement {
@@ -66890,6 +67722,10 @@ export namespace databox {
              */
             jobDetailsType: pulumi.Input<"DataBoxDisk">;
             /**
+             * Details about which key encryption type is being used.
+             */
+            keyEncryptionKey?: pulumi.Input<inputs.databox.latest.KeyEncryptionKey>;
+            /**
              * User entered passkey for DataBox Disk job.
              */
             passkey?: pulumi.Input<string>;
@@ -66937,6 +67773,10 @@ export namespace databox {
              */
             jobDetailsType: pulumi.Input<"DataBoxHeavy">;
             /**
+             * Details about which key encryption type is being used.
+             */
+            keyEncryptionKey?: pulumi.Input<inputs.databox.latest.KeyEncryptionKey>;
+            /**
              * Preferences for the order.
              */
             preferences?: pulumi.Input<inputs.databox.latest.Preferences>;
@@ -66975,6 +67815,10 @@ export namespace databox {
              * Expected value is 'DataBox'.
              */
             jobDetailsType: pulumi.Input<"DataBox">;
+            /**
+             * Details about which key encryption type is being used.
+             */
+            keyEncryptionKey?: pulumi.Input<inputs.databox.latest.KeyEncryptionKey>;
             /**
              * Preferences for the order.
              */
@@ -67038,6 +67882,20 @@ export namespace databox {
         }
 
         /**
+         * Managed identity properties.
+         */
+        export interface IdentityProperties {
+            /**
+             * Managed service identity type.
+             */
+            type?: pulumi.Input<string>;
+            /**
+             * User assigned identity properties.
+             */
+            userAssigned?: pulumi.Input<inputs.databox.latest.UserAssignedProperties>;
+        }
+
+        /**
          * Additional delivery info.
          */
         export interface JobDeliveryInfo {
@@ -67045,6 +67903,28 @@ export namespace databox {
              * Scheduled date time.
              */
             scheduledDateTime?: pulumi.Input<string>;
+        }
+
+        /**
+         * Encryption key containing details about key to encrypt different keys.
+         */
+        export interface KeyEncryptionKey {
+            /**
+             * Managed identity properties used for key encryption.
+             */
+            identityProperties?: pulumi.Input<inputs.databox.latest.IdentityProperties>;
+            /**
+             * Type of encryption key used for key encryption.
+             */
+            kekType: pulumi.Input<string | enums.databox.latest.KekType>;
+            /**
+             * Key encryption key. It is required in case of Customer managed KekType.
+             */
+            kekUrl?: pulumi.Input<string>;
+            /**
+             * Kek vault resource id. It is required in case of Customer managed KekType.
+             */
+            kekVaultResourceID?: pulumi.Input<string>;
         }
 
         /**
@@ -67285,6 +68165,16 @@ export namespace databox {
              * Indicates Shipment Logistics type that the customer preferred.
              */
             preferredShipmentType: pulumi.Input<string | enums.databox.latest.TransportShipmentTypes>;
+        }
+
+        /**
+         * User assigned identity properties.
+         */
+        export interface UserAssignedProperties {
+            /**
+             * Arm resource id for user assigned identity to be used to fetch MSI token.
+             */
+            resourceId?: pulumi.Input<string>;
         }
 
     }
@@ -68421,6 +69311,10 @@ export namespace databox {
              */
             jobDetailsType: pulumi.Input<"DataBoxDisk">;
             /**
+             * Details about which key encryption type is being used.
+             */
+            keyEncryptionKey?: pulumi.Input<inputs.databox.v20201101.KeyEncryptionKey>;
+            /**
              * User entered passkey for DataBox Disk job.
              */
             passkey?: pulumi.Input<string>;
@@ -68468,6 +69362,10 @@ export namespace databox {
              */
             jobDetailsType: pulumi.Input<"DataBoxHeavy">;
             /**
+             * Details about which key encryption type is being used.
+             */
+            keyEncryptionKey?: pulumi.Input<inputs.databox.v20201101.KeyEncryptionKey>;
+            /**
              * Preferences for the order.
              */
             preferences?: pulumi.Input<inputs.databox.v20201101.Preferences>;
@@ -68506,6 +69404,10 @@ export namespace databox {
              * Expected value is 'DataBox'.
              */
             jobDetailsType: pulumi.Input<"DataBox">;
+            /**
+             * Details about which key encryption type is being used.
+             */
+            keyEncryptionKey?: pulumi.Input<inputs.databox.v20201101.KeyEncryptionKey>;
             /**
              * Preferences for the order.
              */
@@ -68569,6 +69471,20 @@ export namespace databox {
         }
 
         /**
+         * Managed identity properties.
+         */
+        export interface IdentityProperties {
+            /**
+             * Managed service identity type.
+             */
+            type?: pulumi.Input<string>;
+            /**
+             * User assigned identity properties.
+             */
+            userAssigned?: pulumi.Input<inputs.databox.v20201101.UserAssignedProperties>;
+        }
+
+        /**
          * Additional delivery info.
          */
         export interface JobDeliveryInfo {
@@ -68576,6 +69492,28 @@ export namespace databox {
              * Scheduled date time.
              */
             scheduledDateTime?: pulumi.Input<string>;
+        }
+
+        /**
+         * Encryption key containing details about key to encrypt different keys.
+         */
+        export interface KeyEncryptionKey {
+            /**
+             * Managed identity properties used for key encryption.
+             */
+            identityProperties?: pulumi.Input<inputs.databox.v20201101.IdentityProperties>;
+            /**
+             * Type of encryption key used for key encryption.
+             */
+            kekType: pulumi.Input<string | enums.databox.v20201101.KekType>;
+            /**
+             * Key encryption key. It is required in case of Customer managed KekType.
+             */
+            kekUrl?: pulumi.Input<string>;
+            /**
+             * Kek vault resource id. It is required in case of Customer managed KekType.
+             */
+            kekVaultResourceID?: pulumi.Input<string>;
         }
 
         /**
@@ -68816,6 +69754,16 @@ export namespace databox {
              * Indicates Shipment Logistics type that the customer preferred.
              */
             preferredShipmentType: pulumi.Input<string | enums.databox.v20201101.TransportShipmentTypes>;
+        }
+
+        /**
+         * User assigned identity properties.
+         */
+        export interface UserAssignedProperties {
+            /**
+             * Arm resource id for user assigned identity to be used to fetch MSI token.
+             */
+            resourceId?: pulumi.Input<string>;
         }
 
     }
@@ -115796,6 +116744,77 @@ export namespace devops {
         }
 
     }
+
+    export namespace v20200713preview {
+        /**
+         * Authorization info used to access a resource (like code repository).
+         */
+        export interface Authorization {
+            /**
+             * Type of authorization.
+             */
+            authorizationType: pulumi.Input<string | enums.devops.v20200713preview.AuthorizationType>;
+            /**
+             * Authorization parameters corresponding to the authorization type.
+             */
+            parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        }
+
+        /**
+         * Configuration used to bootstrap a Pipeline.
+         */
+        export interface BootstrapConfiguration {
+            /**
+             * Repository containing the source code for the pipeline. Currently only 'azurePipeline' pipeline type supports this.
+             */
+            sourceRepository?: pulumi.Input<inputs.devops.v20200713preview.CodeRepository>;
+            /**
+             * Template used to bootstrap the pipeline.
+             */
+            template: pulumi.Input<inputs.devops.v20200713preview.PipelineTemplate>;
+        }
+
+        /**
+         * Repository containing the source code for a pipeline.
+         */
+        export interface CodeRepository {
+            /**
+             * Authorization info to access the code repository.
+             */
+            authorization?: pulumi.Input<inputs.devops.v20200713preview.Authorization>;
+            /**
+             * Default branch used to configure Continuous Integration (CI) in the pipeline.
+             */
+            defaultBranch: pulumi.Input<string>;
+            /**
+             * Unique immutable identifier of the code repository.
+             */
+            id: pulumi.Input<string>;
+            /**
+             * Repository-specific properties.
+             */
+            properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * Type of code repository.
+             */
+            repositoryType: pulumi.Input<string | enums.devops.v20200713preview.CodeRepositoryType>;
+        }
+
+        /**
+         * Template used to bootstrap the pipeline.
+         */
+        export interface PipelineTemplate {
+            /**
+             * Unique identifier of the pipeline template.
+             */
+            id: pulumi.Input<string>;
+            /**
+             * Dictionary of input parameters used in the pipeline template.
+             */
+            parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        }
+
+    }
 }
 
 export namespace devspaces {
@@ -131702,25 +132721,9 @@ export namespace healthbot {
          */
         export interface Sku {
             /**
-             * If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-             */
-            capacity?: pulumi.Input<number>;
-            /**
-             * If the service has different generations of hardware, for the same SKU, then that can be captured here.
-             */
-            family?: pulumi.Input<string>;
-            /**
              * The name of the HealthBot SKU
              */
             name: pulumi.Input<enums.healthbot.latest.SkuName>;
-            /**
-             * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
-             */
-            size?: pulumi.Input<string>;
-            /**
-             * This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-             */
-            tier?: pulumi.Input<enums.healthbot.latest.SkuTier>;
         }
 
     }
@@ -131789,25 +132792,9 @@ export namespace healthbot {
          */
         export interface Sku {
             /**
-             * If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-             */
-            capacity?: pulumi.Input<number>;
-            /**
-             * If the service has different generations of hardware, for the same SKU, then that can be captured here.
-             */
-            family?: pulumi.Input<string>;
-            /**
              * The name of the HealthBot SKU
              */
             name: pulumi.Input<enums.healthbot.v20201208.SkuName>;
-            /**
-             * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
-             */
-            size?: pulumi.Input<string>;
-            /**
-             * This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-             */
-            tier?: pulumi.Input<enums.healthbot.v20201208.SkuTier>;
         }
 
     }
@@ -170607,6 +171594,19 @@ export namespace migrate {
 }
 
 export namespace mixedreality {
+    export namespace latest {
+        /**
+         * Identity for the resource.
+         */
+        export interface Identity {
+            /**
+             * The identity type.
+             */
+            type?: pulumi.Input<enums.mixedreality.latest.ResourceIdentityType>;
+        }
+
+    }
+
     export namespace v20190228preview {
         /**
          * Identity for the resource.
@@ -170620,12 +171620,38 @@ export namespace mixedreality {
 
     }
 
+    export namespace v20191202preview {
+        /**
+         * Identity for the resource.
+         */
+        export interface Identity {
+            /**
+             * The identity type.
+             */
+            type?: pulumi.Input<enums.mixedreality.v20191202preview.ResourceIdentityType>;
+        }
+
+    }
+
     export namespace v20200406preview {
         export interface RemoteRenderingAccountIdentity {
             /**
              * The identity type.
              */
             type?: pulumi.Input<enums.mixedreality.v20200406preview.ResourceIdentityType>;
+        }
+
+    }
+
+    export namespace v20200501 {
+        /**
+         * Identity for the resource.
+         */
+        export interface Identity {
+            /**
+             * The identity type.
+             */
+            type?: pulumi.Input<enums.mixedreality.v20200501.ResourceIdentityType>;
         }
 
     }
@@ -303872,6 +304898,24 @@ export namespace search {
 export namespace security {
     export namespace latest {
         /**
+         * Properties of the additional workspaces.
+         */
+        export interface AdditionalWorkspacesProperties {
+            /**
+             * List of data types sent to workspace
+             */
+            dataTypes?: pulumi.Input<pulumi.Input<string | enums.security.latest.AdditionalWorkspaceDataType>[]>;
+            /**
+             * Workspace type.
+             */
+            type?: pulumi.Input<string | enums.security.latest.AdditionalWorkspaceType>;
+            /**
+             * Workspace resource id
+             */
+            workspace?: pulumi.Input<string>;
+        }
+
+        /**
          * A custom alert rule that checks if a value (depends on the custom alert type) is allowed.
          */
         export interface AllowlistCustomAlertRule {
@@ -304836,6 +305880,24 @@ export namespace security {
     }
 
     export namespace v20190801 {
+        /**
+         * Properties of the additional workspaces.
+         */
+        export interface AdditionalWorkspacesProperties {
+            /**
+             * List of data types sent to workspace
+             */
+            dataTypes?: pulumi.Input<pulumi.Input<string | enums.security.v20190801.AdditionalWorkspaceDataType>[]>;
+            /**
+             * Workspace type.
+             */
+            type?: pulumi.Input<string | enums.security.v20190801.AdditionalWorkspaceType>;
+            /**
+             * Workspace resource id
+             */
+            workspace?: pulumi.Input<string>;
+        }
+
         /**
          * A custom alert rule that checks if a value (depends on the custom alert type) is allowed.
          */
@@ -319377,6 +320439,64 @@ export namespace storage {
 export namespace storagecache {
     export namespace latest {
         /**
+         * Active Directory settings used to join a cache to a domain.
+         */
+        export interface CacheActiveDirectorySettings {
+            /**
+             * The NetBIOS name to assign to the HPC Cache when it joins the Active Directory domain as a server. Length must 1-15 characters from the class [-0-9a-zA-Z].
+             */
+            cacheNetBiosName: pulumi.Input<string>;
+            /**
+             * Active Directory admin credentials used to join the HPC Cache to a domain.
+             */
+            credentials?: pulumi.Input<inputs.storagecache.latest.CacheActiveDirectorySettingsCredentials>;
+            /**
+             * The fully qualified domain name of the Active Directory domain controller.
+             */
+            domainName: pulumi.Input<string>;
+            /**
+             * The Active Directory domain's NetBIOS name.
+             */
+            domainNetBiosName: pulumi.Input<string>;
+            /**
+             * Primary DNS IP address used to resolve the Active Directory domain controller's fully qualified domain name.
+             */
+            primaryDnsIpAddress: pulumi.Input<string>;
+            /**
+             * Secondary DNS IP address used to resolve the Active Directory domain controller's fully qualified domain name.
+             */
+            secondaryDnsIpAddress?: pulumi.Input<string>;
+        }
+
+        /**
+         * Active Directory admin credentials used to join the HPC Cache to a domain.
+         */
+        export interface CacheActiveDirectorySettingsCredentials {
+            /**
+             * Plain text password of the Active Directory domain administrator. This value is stored encrypted and not returned on response.
+             */
+            password: pulumi.Input<string>;
+            /**
+             * Username of the Active Directory domain administrator. This value is stored encrypted and not returned on response.
+             */
+            username: pulumi.Input<string>;
+        }
+
+        /**
+         * Cache Directory Services settings.
+         */
+        export interface CacheDirectorySettings {
+            /**
+             * Specifies settings for joining the HPC Cache to an Active Directory domain.
+             */
+            activeDirectory?: pulumi.Input<inputs.storagecache.latest.CacheActiveDirectorySettings>;
+            /**
+             * Specifies settings for Extended Groups. Extended Groups allows users to be members of more than 16 groups.
+             */
+            usernameDownload?: pulumi.Input<inputs.storagecache.latest.CacheUsernameDownloadSettings>;
+        }
+
+        /**
          * Cache encryption settings.
          */
         export interface CacheEncryptionSettings {
@@ -319411,9 +320531,9 @@ export namespace storagecache {
          */
         export interface CacheSecuritySettings {
             /**
-             * root squash of cache property.
+             * NFS access policies defined for this cache.
              */
-            rootSquash?: pulumi.Input<boolean>;
+            accessPolicies?: pulumi.Input<pulumi.Input<inputs.storagecache.latest.NfsAccessPolicy>[]>;
         }
 
         /**
@@ -319427,7 +320547,71 @@ export namespace storagecache {
         }
 
         /**
-         * Properties pertained to ClfsTarget
+         * Settings for Extended Groups username and group download.
+         */
+        export interface CacheUsernameDownloadSettings {
+            /**
+             * Determines if the certificate should be automatically downloaded. This applies to 'caCertificateURI' only if 'requireValidCertificate' is true.
+             */
+            autoDownloadCertificate?: pulumi.Input<boolean>;
+            /**
+             * The URI of the CA certificate to validate the LDAP secure connection. This field must be populated when 'requireValidCertificate' is set to true.
+             */
+            caCertificateURI?: pulumi.Input<string>;
+            /**
+             * When present, these are the credentials for the secure LDAP connection.
+             */
+            credentials?: pulumi.Input<inputs.storagecache.latest.CacheUsernameDownloadSettingsCredentials>;
+            /**
+             * Whether or not the LDAP connection should be encrypted.
+             */
+            encryptLdapConnection?: pulumi.Input<boolean>;
+            /**
+             * Whether or not Extended Groups is enabled.
+             */
+            extendedGroupsEnabled?: pulumi.Input<boolean>;
+            /**
+             * The URI of the file containing group information (in /etc/group file format). This field must be populated when 'usernameSource' is set to 'File'.
+             */
+            groupFileURI?: pulumi.Input<string>;
+            /**
+             * The base distinguished name for the LDAP domain.
+             */
+            ldapBaseDn?: pulumi.Input<string>;
+            /**
+             * The fully qualified domain name or IP address of the LDAP server to use.
+             */
+            ldapServer?: pulumi.Input<string>;
+            /**
+             * Determines if the certificates must be validated by a certificate authority. When true, caCertificateURI must be provided.
+             */
+            requireValidCertificate?: pulumi.Input<boolean>;
+            /**
+             * The URI of the file containing user information (in /etc/passwd file format). This field must be populated when 'usernameSource' is set to 'File'.
+             */
+            userFileURI?: pulumi.Input<string>;
+            /**
+             * This setting determines how the cache gets username and group names for clients.
+             */
+            usernameSource?: pulumi.Input<string | enums.storagecache.latest.UsernameSource>;
+        }
+
+        /**
+         * When present, these are the credentials for the secure LDAP connection.
+         */
+        export interface CacheUsernameDownloadSettingsCredentials {
+            /**
+             * The Bind Distinguished Name identity to be used in the secure LDAP connection. This value is stored encrypted and not returned on response.
+             */
+            bindDn?: pulumi.Input<string>;
+            /**
+             * The Bind password to be used in the secure LDAP connection. This value is stored encrypted and not returned on response.
+             */
+            bindPassword?: pulumi.Input<string>;
+        }
+
+        /**
+         * Properties pertaining to the ClfsTarget
          */
         export interface ClfsTarget {
             /**
@@ -319469,6 +320653,10 @@ export namespace storagecache {
              */
             namespacePath?: pulumi.Input<string>;
             /**
+             * Name of the access policy applied to this junction.
+             */
+            nfsAccessPolicy?: pulumi.Input<string>;
+            /**
              * NFS export where targetPath exists.
              */
             nfsExport?: pulumi.Input<string>;
@@ -319479,7 +320667,7 @@ export namespace storagecache {
         }
 
         /**
-         * Properties pertained to Nfs3Target
+         * Properties pertaining to the Nfs3Target
          */
         export interface Nfs3Target {
             /**
@@ -319487,13 +320675,65 @@ export namespace storagecache {
              */
             target?: pulumi.Input<string>;
             /**
-             * Identifies the primary usage model to be used for this Storage Target. Get choices from .../usageModels
+             * Identifies the usage model to be used for this Storage Target. Get choices from .../usageModels
              */
             usageModel?: pulumi.Input<string>;
         }
 
         /**
-         * Properties pertained to UnknownTarget
+         * A set of rules describing access policies applied to NFSv3 clients of the cache.
+         */
+        export interface NfsAccessPolicy {
+            /**
+             * The set of rules describing client accesses allowed under this policy.
+             */
+            accessRules: pulumi.Input<pulumi.Input<inputs.storagecache.latest.NfsAccessRule>[]>;
+            /**
+             * Name identifying this policy. Access Policy names are not case sensitive.
+             */
+            name: pulumi.Input<string>;
+        }
+
+        /**
+         * Rule to place restrictions on portions of the cache namespace being presented to clients.
+         */
+        export interface NfsAccessRule {
+            /**
+             * Access allowed by this rule.
+             */
+            access: pulumi.Input<string | enums.storagecache.latest.NfsAccessRuleAccess>;
+            /**
+             * GID value that replaces 0 when rootSquash is true.
+             */
+            anonymousGID?: pulumi.Input<string>;
+            /**
+             * UID value that replaces 0 when rootSquash is true.
+             */
+            anonymousUID?: pulumi.Input<string>;
+            /**
+             * Filter applied to the scope for this rule. The filter's format depends on its scope. 'default' scope matches all clients and has no filter value. 'network' scope takes a filter in CIDR format (for example, 10.99.1.0/24). 'host' takes an IP address or fully qualified domain name as filter. If a client does not match any filter rule and there is no default rule, access is denied.
+             */
+            filter?: pulumi.Input<string>;
+            /**
+             * Map root accesses to anonymousUID and anonymousGID.
+             */
+            rootSquash?: pulumi.Input<boolean>;
+            /**
+             * Scope for this rule. The scope and filter determine which clients match the rule.
+             */
+            scope: pulumi.Input<string | enums.storagecache.latest.NfsAccessRuleScope>;
+            /**
+             * For the default policy, allow access to subdirectories under the root export. If this is set to no, clients can only mount the path '/'. If set to yes, clients can mount a deeper path, like '/a/b'.
+             */
+            submountAccess?: pulumi.Input<boolean>;
+            /**
+             * Allow SUID semantics.
+             */
+            suid?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Properties pertaining to the UnknownTarget
          */
         export interface UnknownTarget {
             /**
@@ -319753,6 +320993,313 @@ export namespace storagecache {
 
         /**
          * Properties pertained to UnknownTarget
+         */
+        export interface UnknownTarget {
+            /**
+             * Dictionary of string->string pairs containing information about the Storage Target.
+             */
+            unknownMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        }
+
+    }
+
+    export namespace v20201001 {
+        /**
+         * Active Directory settings used to join a cache to a domain.
+         */
+        export interface CacheActiveDirectorySettings {
+            /**
+             * The NetBIOS name to assign to the HPC Cache when it joins the Active Directory domain as a server. Length must 1-15 characters from the class [-0-9a-zA-Z].
+             */
+            cacheNetBiosName: pulumi.Input<string>;
+            /**
+             * Active Directory admin credentials used to join the HPC Cache to a domain.
+             */
+            credentials?: pulumi.Input<inputs.storagecache.v20201001.CacheActiveDirectorySettingsCredentials>;
+            /**
+             * The fully qualified domain name of the Active Directory domain controller.
+             */
+            domainName: pulumi.Input<string>;
+            /**
+             * The Active Directory domain's NetBIOS name.
+             */
+            domainNetBiosName: pulumi.Input<string>;
+            /**
+             * Primary DNS IP address used to resolve the Active Directory domain controller's fully qualified domain name.
+             */
+            primaryDnsIpAddress: pulumi.Input<string>;
+            /**
+             * Secondary DNS IP address used to resolve the Active Directory domain controller's fully qualified domain name.
+             */
+            secondaryDnsIpAddress?: pulumi.Input<string>;
+        }
+
+        /**
+         * Active Directory admin credentials used to join the HPC Cache to a domain.
+         */
+        export interface CacheActiveDirectorySettingsCredentials {
+            /**
+             * Plain text password of the Active Directory domain administrator. This value is stored encrypted and not returned on response.
+             */
+            password: pulumi.Input<string>;
+            /**
+             * Username of the Active Directory domain administrator. This value is stored encrypted and not returned on response.
+             */
+            username: pulumi.Input<string>;
+        }
+
+        /**
+         * Cache Directory Services settings.
+         */
+        export interface CacheDirectorySettings {
+            /**
+             * Specifies settings for joining the HPC Cache to an Active Directory domain.
+             */
+            activeDirectory?: pulumi.Input<inputs.storagecache.v20201001.CacheActiveDirectorySettings>;
+            /**
+             * Specifies settings for Extended Groups. Extended Groups allows users to be members of more than 16 groups.
+             */
+            usernameDownload?: pulumi.Input<inputs.storagecache.v20201001.CacheUsernameDownloadSettings>;
+        }
+
+        /**
+         * Cache encryption settings.
+         */
+        export interface CacheEncryptionSettings {
+            /**
+             * Specifies the location of the key encryption key in Key Vault.
+             */
+            keyEncryptionKey?: pulumi.Input<inputs.storagecache.v20201001.KeyVaultKeyReference>;
+        }
+
+        /**
+         * Cache identity properties.
+         */
+        export interface CacheIdentity {
+            /**
+             * The type of identity used for the cache
+             */
+            type?: pulumi.Input<enums.storagecache.v20201001.CacheIdentityType>;
+        }
+
+        /**
+         * Cache network settings.
+         */
+        export interface CacheNetworkSettings {
+            /**
+             * The IPv4 maximum transmission unit configured for the subnet.
+             */
+            mtu?: pulumi.Input<number>;
+        }
+
+        /**
+         * Cache security settings.
+         */
+        export interface CacheSecuritySettings {
+            /**
+             * NFS access policies defined for this cache.
+             */
+            accessPolicies?: pulumi.Input<pulumi.Input<inputs.storagecache.v20201001.NfsAccessPolicy>[]>;
+        }
+
+        /**
+         * SKU for the Cache.
+         */
+        export interface CacheSku {
+            /**
+             * SKU name for this Cache.
+             */
+            name?: pulumi.Input<string>;
+        }
+
+        /**
+         * Settings for Extended Groups username and group download.
+         */
+        export interface CacheUsernameDownloadSettings {
+            /**
+             * Determines if the certificate should be automatically downloaded. This applies to 'caCertificateURI' only if 'requireValidCertificate' is true.
+             */
+            autoDownloadCertificate?: pulumi.Input<boolean>;
+            /**
+             * The URI of the CA certificate to validate the LDAP secure connection. This field must be populated when 'requireValidCertificate' is set to true.
+             */
+            caCertificateURI?: pulumi.Input<string>;
+            /**
+             * When present, these are the credentials for the secure LDAP connection.
+             */
+            credentials?: pulumi.Input<inputs.storagecache.v20201001.CacheUsernameDownloadSettingsCredentials>;
+            /**
+             * Whether or not the LDAP connection should be encrypted.
+             */
+            encryptLdapConnection?: pulumi.Input<boolean>;
+            /**
+             * Whether or not Extended Groups is enabled.
+             */
+            extendedGroupsEnabled?: pulumi.Input<boolean>;
+            /**
+             * The URI of the file containing group information (in /etc/group file format). This field must be populated when 'usernameSource' is set to 'File'.
+             */
+            groupFileURI?: pulumi.Input<string>;
+            /**
+             * The base distinguished name for the LDAP domain.
+             */
+            ldapBaseDn?: pulumi.Input<string>;
+            /**
+             * The fully qualified domain name or IP address of the LDAP server to use.
+             */
+            ldapServer?: pulumi.Input<string>;
+            /**
+             * Determines if the certificates must be validated by a certificate authority. When true, caCertificateURI must be provided.
+             */
+            requireValidCertificate?: pulumi.Input<boolean>;
+            /**
+             * The URI of the file containing user information (in /etc/passwd file format). This field must be populated when 'usernameSource' is set to 'File'.
+             */
+            userFileURI?: pulumi.Input<string>;
+            /**
+             * This setting determines how the cache gets username and group names for clients.
+             */
+            usernameSource?: pulumi.Input<string | enums.storagecache.v20201001.UsernameSource>;
+        }
+
+        /**
+         * When present, these are the credentials for the secure LDAP connection.
+         */
+        export interface CacheUsernameDownloadSettingsCredentials {
+            /**
+             * The Bind Distinguished Name identity to be used in the secure LDAP connection. This value is stored encrypted and not returned on response.
+             */
+            bindDn?: pulumi.Input<string>;
+            /**
+             * The Bind password to be used in the secure LDAP connection. This value is stored encrypted and not returned on response.
+             */
+            bindPassword?: pulumi.Input<string>;
+        }
+
+        /**
+         * Properties pertaining to the ClfsTarget
+         */
+        export interface ClfsTarget {
+            /**
+             * Resource ID of storage container.
+             */
+            target?: pulumi.Input<string>;
+        }
+
+        /**
+         * Describes a reference to Key Vault Key.
+         */
+        export interface KeyVaultKeyReference {
+            /**
+             * The URL referencing a key encryption key in Key Vault.
+             */
+            keyUrl: pulumi.Input<string>;
+            /**
+             * Describes a resource Id to source Key Vault.
+             */
+            sourceVault: pulumi.Input<inputs.storagecache.v20201001.KeyVaultKeyReferenceSourceVault>;
+        }
+
+        /**
+         * Describes a resource Id to source Key Vault.
+         */
+        export interface KeyVaultKeyReferenceSourceVault {
+            /**
+             * Resource Id.
+             */
+            id?: pulumi.Input<string>;
+        }
+
+        /**
+         * A namespace junction.
+         */
+        export interface NamespaceJunction {
+            /**
+             * Namespace path on a Cache for a Storage Target.
+             */
+            namespacePath?: pulumi.Input<string>;
+            /**
+             * Name of the access policy applied to this junction.
+             */
+            nfsAccessPolicy?: pulumi.Input<string>;
+            /**
+             * NFS export where targetPath exists.
+             */
+            nfsExport?: pulumi.Input<string>;
+            /**
+             * Path in Storage Target to which namespacePath points.
+             */
+            targetPath?: pulumi.Input<string>;
+        }
+
+        /**
+         * Properties pertaining to the Nfs3Target
+         */
+        export interface Nfs3Target {
+            /**
+             * IP address or host name of an NFSv3 host (e.g., 10.0.44.44).
+             */
+            target?: pulumi.Input<string>;
+            /**
+             * Identifies the usage model to be used for this Storage Target. Get choices from .../usageModels
+             */
+            usageModel?: pulumi.Input<string>;
+        }
+
+        /**
+         * A set of rules describing access policies applied to NFSv3 clients of the cache.
+         */
+        export interface NfsAccessPolicy {
+            /**
+             * The set of rules describing client accesses allowed under this policy.
+             */
+            accessRules: pulumi.Input<pulumi.Input<inputs.storagecache.v20201001.NfsAccessRule>[]>;
+            /**
+             * Name identifying this policy. Access Policy names are not case sensitive.
+             */
+            name: pulumi.Input<string>;
+        }
+
+        /**
+         * Rule to place restrictions on portions of the cache namespace being presented to clients.
+         */
+        export interface NfsAccessRule {
+            /**
+             * Access allowed by this rule.
+             */
+            access: pulumi.Input<string | enums.storagecache.v20201001.NfsAccessRuleAccess>;
+            /**
+             * GID value that replaces 0 when rootSquash is true.
+             */
+            anonymousGID?: pulumi.Input<string>;
+            /**
+             * UID value that replaces 0 when rootSquash is true.
+             */
+            anonymousUID?: pulumi.Input<string>;
+            /**
+             * Filter applied to the scope for this rule. The filter's format depends on its scope. 'default' scope matches all clients and has no filter value. 'network' scope takes a filter in CIDR format (for example, 10.99.1.0/24). 'host' takes an IP address or fully qualified domain name as filter. If a client does not match any filter rule and there is no default rule, access is denied.
+             */
+            filter?: pulumi.Input<string>;
+            /**
+             * Map root accesses to anonymousUID and anonymousGID.
+             */
+            rootSquash?: pulumi.Input<boolean>;
+            /**
+             * Scope for this rule. The scope and filter determine which clients match the rule.
+             */
+            scope: pulumi.Input<string | enums.storagecache.v20201001.NfsAccessRuleScope>;
+            /**
+             * For the default policy, allow access to subdirectories under the root export. If this is set to no, clients can only mount the path '/'. If set to yes, clients can mount a deeper path, like '/a/b'.
+             */
+            submountAccess?: pulumi.Input<boolean>;
+            /**
+             * Allow SUID semantics.
+             */
+            suid?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Properties pertaining to the UnknownTarget
          */
         export interface UnknownTarget {
             /**

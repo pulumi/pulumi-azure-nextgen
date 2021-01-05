@@ -12,6 +12,28 @@ export const CacheIdentityType = {
  */
 export type CacheIdentityType = (typeof CacheIdentityType)[keyof typeof CacheIdentityType];
 
+export const NfsAccessRuleAccess = {
+    No: "no",
+    Ro: "ro",
+    Rw: "rw",
+} as const;
+
+/**
+ * Access allowed by this rule.
+ */
+export type NfsAccessRuleAccess = (typeof NfsAccessRuleAccess)[keyof typeof NfsAccessRuleAccess];
+
+export const NfsAccessRuleScope = {
+    Default: "default",
+    Network: "network",
+    Host: "host",
+} as const;
+
+/**
+ * Scope for this rule. The scope and filter determine which clients match the rule.
+ */
+export type NfsAccessRuleScope = (typeof NfsAccessRuleScope)[keyof typeof NfsAccessRuleScope];
+
 export const ProvisioningStateType = {
     Succeeded: "Succeeded",
     Failed: "Failed",
@@ -36,3 +58,15 @@ export const StorageTargetType = {
  * Type of the Storage Target.
  */
 export type StorageTargetType = (typeof StorageTargetType)[keyof typeof StorageTargetType];
+
+export const UsernameSource = {
+    AD: "AD",
+    LDAP: "LDAP",
+    File: "File",
+    None: "None",
+} as const;
+
+/**
+ * This setting determines how the cache gets username and group names for clients.
+ */
+export type UsernameSource = (typeof UsernameSource)[keyof typeof UsernameSource];

@@ -183,15 +183,15 @@ export namespace aad {
             /**
              * Migration Progress
              */
-            migrationProgress?: outputs.aad.latest.MigrationProgressResponse;
+            migrationProgress: outputs.aad.latest.MigrationProgressResponse;
             /**
              * Old Subnet Id
              */
-            oldSubnetId?: string;
+            oldSubnetId: string;
             /**
              * Old Vnet Site Id
              */
-            oldVnetSiteId?: string;
+            oldVnetSiteId: string;
         }
 
         /**
@@ -583,15 +583,15 @@ export namespace aad {
             /**
              * Migration Progress
              */
-            migrationProgress?: outputs.aad.v20170601.MigrationProgressResponse;
+            migrationProgress: outputs.aad.v20170601.MigrationProgressResponse;
             /**
              * Old Subnet Id
              */
-            oldSubnetId?: string;
+            oldSubnetId: string;
             /**
              * Old Vnet Site Id
              */
-            oldVnetSiteId?: string;
+            oldVnetSiteId: string;
         }
 
         /**
@@ -805,15 +805,15 @@ export namespace aad {
             /**
              * Migration Progress
              */
-            migrationProgress?: outputs.aad.v20200101.MigrationProgressResponse;
+            migrationProgress: outputs.aad.v20200101.MigrationProgressResponse;
             /**
              * Old Subnet Id
              */
-            oldSubnetId?: string;
+            oldSubnetId: string;
             /**
              * Old Vnet Site Id
              */
-            oldVnetSiteId?: string;
+            oldVnetSiteId: string;
         }
 
         /**
@@ -1713,6 +1713,10 @@ export namespace analysisservices {
          * Represents the SKU name and Azure pricing tier for Analysis Services resource.
          */
         export interface ResourceSkuResponse {
+            /**
+             * The number of instances in the read only query pool.
+             */
+            capacity?: number;
             /**
              * Name of the SKU level.
              */
@@ -9003,6 +9007,429 @@ export namespace appplatform {
             version?: string;
         }
     }
+
+    export namespace v20201101preview {
+        /**
+         * App resource properties payload
+         */
+        export interface AppResourcePropertiesResponse {
+            /**
+             * Name of the active deployment of the App
+             */
+            activeDeploymentName?: string;
+            /**
+             * Date time when the resource is created
+             */
+            createdTime: string;
+            /**
+             * Fully qualified dns Name.
+             */
+            fqdn?: string;
+            /**
+             * Indicate if only https is allowed.
+             */
+            httpsOnly?: boolean;
+            /**
+             * Persistent disk settings
+             */
+            persistentDisk?: outputs.appplatform.v20201101preview.PersistentDiskResponse;
+            /**
+             * Provisioning state of the App
+             */
+            provisioningState: string;
+            /**
+             * Indicates whether the App exposes public endpoint
+             */
+            public?: boolean;
+            /**
+             * Temporary disk settings
+             */
+            temporaryDisk?: outputs.appplatform.v20201101preview.TemporaryDiskResponse;
+            /**
+             * URL of the App
+             */
+            url: string;
+        }
+
+        /**
+         * Binding resource properties payload
+         */
+        export interface BindingResourcePropertiesResponse {
+            /**
+             * Binding parameters of the Binding resource
+             */
+            bindingParameters?: {[key: string]: any};
+            /**
+             * Creation time of the Binding resource
+             */
+            createdAt: string;
+            /**
+             * The generated Spring Boot property file for this binding. The secret will be deducted.
+             */
+            generatedProperties: string;
+            /**
+             * The key of the bound resource
+             */
+            key?: string;
+            /**
+             * The Azure resource id of the bound resource
+             */
+            resourceId?: string;
+            /**
+             * The name of the bound resource
+             */
+            resourceName: string;
+            /**
+             * The standard Azure resource type of the bound resource
+             */
+            resourceType: string;
+            /**
+             * Update time of the Binding resource
+             */
+            updatedAt: string;
+        }
+
+        /**
+         * Certificate resource payload.
+         */
+        export interface CertificatePropertiesResponse {
+            /**
+             * The activate date of certificate.
+             */
+            activateDate: string;
+            /**
+             * The certificate version of key vault.
+             */
+            certVersion?: string;
+            /**
+             * The domain list of certificate.
+             */
+            dnsNames: string[];
+            /**
+             * The expiration date of certificate.
+             */
+            expirationDate: string;
+            /**
+             * The issue date of certificate.
+             */
+            issuedDate: string;
+            /**
+             * The issuer of certificate.
+             */
+            issuer: string;
+            /**
+             * The certificate name of key vault.
+             */
+            keyVaultCertName: string;
+            /**
+             * The subject name of certificate.
+             */
+            subjectName: string;
+            /**
+             * The thumbprint of certificate.
+             */
+            thumbprint: string;
+            /**
+             * The vault uri of user key vault.
+             */
+            vaultUri: string;
+        }
+
+        /**
+         * Service properties payload
+         */
+        export interface ClusterResourcePropertiesResponse {
+            /**
+             * Network profile of the Service
+             */
+            networkProfile?: outputs.appplatform.v20201101preview.NetworkProfileResponse;
+            /**
+             * Provisioning state of the Service
+             */
+            provisioningState: string;
+            /**
+             * ServiceInstanceEntity GUID which uniquely identifies a created resource
+             */
+            serviceId: string;
+            /**
+             * Version of the Service
+             */
+            version: number;
+        }
+
+        /**
+         * Custom domain of app resource payload.
+         */
+        export interface CustomDomainPropertiesResponse {
+            /**
+             * The app name of domain.
+             */
+            appName: string;
+            /**
+             * The bound certificate name of domain.
+             */
+            certName?: string;
+            /**
+             * The thumbprint of bound certificate.
+             */
+            thumbprint?: string;
+        }
+
+        /**
+         * Deployment instance payload
+         */
+        export interface DeploymentInstanceResponse {
+            /**
+             * Discovery status of the deployment instance
+             */
+            discoveryStatus: string;
+            /**
+             * Name of the deployment instance
+             */
+            name: string;
+            /**
+             * Failed reason of the deployment instance
+             */
+            reason: string;
+            /**
+             * Start time of the deployment instance
+             */
+            startTime: string;
+            /**
+             * Status of the deployment instance
+             */
+            status: string;
+        }
+
+        /**
+         * Deployment resource properties payload
+         */
+        export interface DeploymentResourcePropertiesResponse {
+            /**
+             * Indicates whether the Deployment is active
+             */
+            active: boolean;
+            /**
+             * App name of the deployment
+             */
+            appName: string;
+            /**
+             * Date time when the resource is created
+             */
+            createdTime: string;
+            /**
+             * Deployment settings of the Deployment
+             */
+            deploymentSettings?: outputs.appplatform.v20201101preview.DeploymentSettingsResponse;
+            /**
+             * Collection of instances belong to the Deployment
+             */
+            instances: outputs.appplatform.v20201101preview.DeploymentInstanceResponse[];
+            /**
+             * Provisioning state of the Deployment
+             */
+            provisioningState: string;
+            /**
+             * Uploaded source information of the deployment.
+             */
+            source?: outputs.appplatform.v20201101preview.UserSourceInfoResponse;
+            /**
+             * Status of the Deployment
+             */
+            status: string;
+        }
+
+        /**
+         * Deployment settings payload
+         */
+        export interface DeploymentSettingsResponse {
+            /**
+             * Required CPU, basic tier should be 1, standard tier should be in range (1, 4)
+             */
+            cpu?: number;
+            /**
+             * Collection of environment variables
+             */
+            environmentVariables?: {[key: string]: string};
+            /**
+             * JVM parameter
+             */
+            jvmOptions?: string;
+            /**
+             * Required Memory size in GB, basic tier should be in range (1, 2), standard tier should be in range (1, 8)
+             */
+            memoryInGB?: number;
+            /**
+             * The path to the .NET executable relative to zip root
+             */
+            netCoreMainEntryPath?: string;
+            /**
+             * Runtime version
+             */
+            runtimeVersion?: string;
+        }
+
+        /**
+         * Managed identity properties retrieved from ARM request headers.
+         */
+        export interface ManagedIdentityPropertiesResponse {
+            /**
+             * Principal Id
+             */
+            principalId?: string;
+            /**
+             * Tenant Id
+             */
+            tenantId?: string;
+            /**
+             * Type of the managed identity
+             */
+            type?: string;
+        }
+
+        /**
+         * Service network profile payload
+         */
+        export interface NetworkProfileResponse {
+            /**
+             * Name of the resource group containing network resources of Azure Spring Cloud Apps
+             */
+            appNetworkResourceGroup?: string;
+            /**
+             * Fully qualified resource Id of the subnet to host Azure Spring Cloud Apps
+             */
+            appSubnetId?: string;
+            /**
+             * Desired outbound IP resources for Azure Spring Cloud instance.
+             */
+            outboundIPs: outputs.appplatform.v20201101preview.NetworkProfileResponseOutboundIPs;
+            /**
+             * Required inbound or outbound traffics for Azure Spring Cloud instance.
+             */
+            requiredTraffics: outputs.appplatform.v20201101preview.RequiredTrafficResponse[];
+            /**
+             * Azure Spring Cloud service reserved CIDR
+             */
+            serviceCidr?: string;
+            /**
+             * Name of the resource group containing network resources of Azure Spring Cloud Service Runtime
+             */
+            serviceRuntimeNetworkResourceGroup?: string;
+            /**
+             * Fully qualified resource Id of the subnet to host Azure Spring Cloud Service Runtime
+             */
+            serviceRuntimeSubnetId?: string;
+        }
+
+        /**
+         * Desired outbound IP resources for Azure Spring Cloud instance.
+         */
+        export interface NetworkProfileResponseOutboundIPs {
+            /**
+             * A list of public IP addresses.
+             */
+            publicIPs: string[];
+        }
+
+        /**
+         * Persistent disk payload
+         */
+        export interface PersistentDiskResponse {
+            /**
+             * Mount path of the persistent disk
+             */
+            mountPath?: string;
+            /**
+             * Size of the persistent disk in GB
+             */
+            sizeInGB?: number;
+            /**
+             * Size of the used persistent disk in GB
+             */
+            usedInGB: number;
+        }
+
+        /**
+         * Required inbound or outbound traffic for Azure Spring Cloud instance.
+         */
+        export interface RequiredTrafficResponse {
+            /**
+             * The direction of required traffic
+             */
+            direction: string;
+            /**
+             * The FQDN list of required traffic
+             */
+            fqdns: string[];
+            /**
+             * The ip list of required traffic
+             */
+            ips: string[];
+            /**
+             * The port of required traffic
+             */
+            port: number;
+            /**
+             * The protocol of required traffic
+             */
+            protocol: string;
+        }
+
+        /**
+         * Sku of Azure Spring Cloud
+         */
+        export interface SkuResponse {
+            /**
+             * Current capacity of the target resource
+             */
+            capacity?: number;
+            /**
+             * Name of the Sku
+             */
+            name?: string;
+            /**
+             * Tier of the Sku
+             */
+            tier?: string;
+        }
+
+        /**
+         * Temporary disk payload
+         */
+        export interface TemporaryDiskResponse {
+            /**
+             * Mount path of the temporary disk
+             */
+            mountPath?: string;
+            /**
+             * Size of the temporary disk in GB
+             */
+            sizeInGB?: number;
+        }
+
+        /**
+         * Source information for a deployment
+         */
+        export interface UserSourceInfoResponse {
+            /**
+             * Selector for the artifact to be used for the deployment for multi-module projects. This should be
+             * the relative path to the target module/project.
+             */
+            artifactSelector?: string;
+            /**
+             * Relative path of the storage which stores the source
+             */
+            relativePath?: string;
+            /**
+             * Type of the source uploaded
+             */
+            type?: string;
+            /**
+             * Version of the source
+             */
+            version?: string;
+        }
+    }
 }
 
 export namespace attestation {
@@ -11227,228 +11654,6 @@ export namespace avs {
              * The state of the cluster provisioning
              */
             provisioningState: string;
-        }
-
-        /**
-         * The resource model definition representing SKU
-         */
-        export interface SkuResponse {
-            /**
-             * The name of the SKU.
-             */
-            name: string;
-        }
-    }
-
-    export namespace v20190809preview {
-        /**
-         * An ExpressRoute Circuit
-         */
-        export interface CircuitResponse {
-            /**
-             * Authorizations for the ExpressRoute (Microsoft Colo only)
-             */
-            authorizations?: outputs.avs.v20190809preview.ExpressRouteAuthorizationResponse[];
-            /**
-             * Identifier of the ExpressRoute (Microsoft Colo only)
-             */
-            expressRouteID: string;
-            /**
-             * ExpressRoute private peering identifier
-             */
-            expressRoutePrivatePeeringID: string;
-            /**
-             * CIDR of primary subnet
-             */
-            primarySubnet: string;
-            /**
-             * CIDR of secondary subnet
-             */
-            secondarySubnet: string;
-        }
-
-        /**
-         * The properties of a cluster
-         */
-        export interface ClusterPropertiesResponse {
-            /**
-             * The identity
-             */
-            clusterId: number;
-            /**
-             * The cluster size
-             */
-            clusterSize?: number;
-            /**
-             * The hosts
-             */
-            hosts: string[];
-            /**
-             * The state of the cluster provisioning
-             */
-            provisioningState: string;
-        }
-
-        /**
-         * The properties of a default cluster
-         */
-        export interface DefaultClusterPropertiesResponse {
-            /**
-             * The identity
-             */
-            clusterId: number;
-            /**
-             * The cluster size
-             */
-            clusterSize?: number;
-            /**
-             * The hosts
-             */
-            hosts: string[];
-        }
-
-        /**
-         * Endpoint addresses
-         */
-        export interface EndpointsResponse {
-            /**
-             * Endpoint for the NSX-T Data Center manager
-             */
-            nsxtManager: string;
-            /**
-             * Endpoint for Virtual Center Server Appliance
-             */
-            vcsa: string;
-        }
-
-        /**
-         * Authorization for an ExpressRoute
-         */
-        export interface ExpressRouteAuthorizationResponse {
-            /**
-             * The ID of the ExpressRoute
-             */
-            id: string;
-            /**
-             * The key of the ExpressRoute
-             */
-            key: string;
-            /**
-             * The name of the ExpressRoute
-             */
-            name?: string;
-        }
-
-        /**
-         * vCenter Single Sign On Identity Source
-         */
-        export interface IdentitySourceResponse {
-            /**
-             * The domain's NetBIOS name
-             */
-            alias?: string;
-            /**
-             * The base distinguished name for groups
-             */
-            baseGroupDN?: string;
-            /**
-             * The base distinguished name for users
-             */
-            baseUserDN?: string;
-            /**
-             * The domain's dns name
-             */
-            domain?: string;
-            /**
-             * The name of the identity source
-             */
-            name?: string;
-            /**
-             * The password of the Active Directory user with a minimum of read-only access to Base DN for users and groups.
-             */
-            password?: string;
-            /**
-             * Primary server URL
-             */
-            primaryServer?: string;
-            /**
-             * Secondary server URL
-             */
-            secondaryServer?: string;
-            /**
-             * Protect LDAP communication using SSL certificate (LDAPS)
-             */
-            ssl?: string;
-            /**
-             * The ID of an Active Directory user with a minimum of read-only access to Base DN for users and group
-             */
-            username?: string;
-        }
-
-        /**
-         * The properties of a private cloud resource
-         */
-        export interface PrivateCloudPropertiesResponse {
-            /**
-             * An ExpressRoute Circuit
-             */
-            circuit?: outputs.avs.v20190809preview.CircuitResponse;
-            /**
-             * The default cluster used for management
-             */
-            cluster?: outputs.avs.v20190809preview.DefaultClusterPropertiesResponse;
-            /**
-             * The clusters
-             */
-            clusters: string[];
-            /**
-             * The endpoints
-             */
-            endpoints: outputs.avs.v20190809preview.EndpointsResponse;
-            /**
-             * vCenter Single Sign On Identity Sources
-             */
-            identitySources?: outputs.avs.v20190809preview.IdentitySourceResponse[];
-            /**
-             * Connectivity to internet is enabled or disabled
-             */
-            internet?: string;
-            /**
-             * Network used to access vCenter Server and NSX-T Manager
-             */
-            managementNetwork: string;
-            /**
-             * The block of addresses should be unique across VNet in your subscription as well as on-premise. Make sure the CIDR format is conformed to (A.B.C.D/X) where A,B,C,D are between 0 and 255, and X is between 0 and 22
-             */
-            networkBlock?: string;
-            /**
-             * Thumbprint of the NSX-T Manager SSL certificate
-             */
-            nsxtCertificateThumbprint: string;
-            /**
-             * Optionally, set the NSX-T Manager password when the private cloud is created
-             */
-            nsxtPassword?: string;
-            /**
-             * Used for virtual machine cold migration, cloning, and snapshot migration
-             */
-            provisioningNetwork: string;
-            /**
-             * The provisioning state
-             */
-            provisioningState: string;
-            /**
-             * Thumbprint of the vCenter Server SSL certificate
-             */
-            vcenterCertificateThumbprint: string;
-            /**
-             * Optionally, set the vCenter admin password when the private cloud is created
-             */
-            vcenterPassword?: string;
-            /**
-             * Used for live migration of virtual machines
-             */
-            vmotionNetwork: string;
         }
 
         /**
@@ -71322,6 +71527,14 @@ export namespace containerservice {
              */
             allowedUnsafeSysctls?: string[];
             /**
+             * The maximum number of container log files that can be present for a container. The number must be ≥ 2.
+             */
+            containerLogMaxFiles?: number;
+            /**
+             * The maximum size (e.g. 10Mi) of container log file before it is rotated.
+             */
+            containerLogMaxSizeMB?: number;
+            /**
              * Enable CPU CFS quota enforcement for containers that specify CPU limits.
              */
             cpuCfsQuota?: boolean;
@@ -71345,6 +71558,10 @@ export namespace containerservice {
              * The percent of disk usage before which image garbage collection is never run.
              */
             imageGcLowThreshold?: number;
+            /**
+             * The maximum number of processes per pod.
+             */
+            podMaxPids?: number;
             /**
              * Topology Manager policy to use.
              */
@@ -71478,6 +71695,10 @@ export namespace containerservice {
              */
             enableAutoScaling?: boolean;
             /**
+             * Whether to enable EncryptionAtHost
+             */
+            enableEncryptionAtHost?: boolean;
+            /**
              * Enable public IP for nodes
              */
             enableNodePublicIP?: boolean;
@@ -71485,6 +71706,10 @@ export namespace containerservice {
              * KubeletConfig specifies the configuration of kubelet on agent nodes.
              */
             kubeletConfig?: outputs.containerservice.latest.KubeletConfigResponse;
+            /**
+             * KubeletDiskType determines the placement of emptyDir volumes, container runtime data root, and Kubelet ephemeral storage. Currently allows one value, OS, resulting in Kubelet using the OS disk for data.
+             */
+            kubeletDiskType?: string;
             /**
              * LinuxOSConfig specifies the OS configuration of linux agent nodes.
              */
@@ -71755,6 +71980,7 @@ export namespace containerservice {
             expander?: string;
             maxEmptyBulkDelete?: string;
             maxGracefulTerminationSec?: string;
+            maxNodeProvisionTime?: string;
             maxTotalUnreadyPercentage?: string;
             newPodScaleUpDelay?: string;
             okTotalUnreadyCount?: string;
@@ -72069,6 +72295,10 @@ export namespace containerservice {
              */
             netCoreOptmemMax?: number;
             /**
+             * Sysctl setting net.core.rmem_default.
+             */
+            netCoreRmemDefault?: number;
+            /**
              * Sysctl setting net.core.rmem_max.
              */
             netCoreRmemMax?: number;
@@ -72076,6 +72306,10 @@ export namespace containerservice {
              * Sysctl setting net.core.somaxconn.
              */
             netCoreSomaxconn?: number;
+            /**
+             * Sysctl setting net.core.wmem_default.
+             */
+            netCoreWmemDefault?: number;
             /**
              * Sysctl setting net.core.wmem_max.
              */
@@ -72117,17 +72351,9 @@ export namespace containerservice {
              */
             netIpv4TcpMaxTwBuckets?: number;
             /**
-             * Sysctl setting net.ipv4.tcp_rmem.
-             */
-            netIpv4TcpRmem?: number;
-            /**
              * Sysctl setting net.ipv4.tcp_tw_reuse.
              */
             netIpv4TcpTwReuse?: boolean;
-            /**
-             * Sysctl setting net.ipv4.tcp_wmem.
-             */
-            netIpv4TcpWmem?: number;
             /**
              * Sysctl setting net.ipv4.tcp_keepalive_intvl.
              */
@@ -72152,6 +72378,64 @@ export namespace containerservice {
              * Sysctl setting vm.vfs_cache_pressure.
              */
             vmVfsCachePressure?: number;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
+        }
+
+        /**
+         * Time in a week.
+         */
+        export interface TimeInWeekResponse {
+            /**
+             * A day in a week.
+             */
+            day?: string;
+            /**
+             * hour slots in a day.
+             */
+            hourSlots?: number[];
+        }
+
+        /**
+         * The time span with start and end properties.
+         */
+        export interface TimeSpanResponse {
+            /**
+             * The end of a time span
+             */
+            end?: string;
+            /**
+             * The start of a time span
+             */
+            start?: string;
         }
 
         export interface UserAssignedIdentityResponse {
@@ -79568,6 +79852,914 @@ export namespace containerservice {
             resourceId?: string;
         }
     }
+
+    export namespace v20201201 {
+        /**
+         * Settings for upgrading an agentpool
+         */
+        export interface AgentPoolUpgradeSettingsResponse {
+            /**
+             * Count or percentage of additional nodes to be added during upgrade. If empty uses AKS default
+             */
+            maxSurge?: string;
+        }
+
+        /**
+         * An error response from the Container service.
+         */
+        export interface CloudErrorBodyResponse {
+            /**
+             * An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
+             */
+            code?: string;
+            /**
+             * A list of additional details about the error.
+             */
+            details?: outputs.containerservice.v20201201.CloudErrorBodyResponse[];
+            /**
+             * A message describing the error, intended to be suitable for display in a user interface.
+             */
+            message?: string;
+            /**
+             * The target of the particular error. For example, the name of the property in error.
+             */
+            target?: string;
+        }
+
+        /**
+         * An error response from the Container service.
+         */
+        export interface CloudErrorResponse {
+            /**
+             * Details about the error.
+             */
+            error?: outputs.containerservice.v20201201.CloudErrorBodyResponse;
+        }
+
+        /**
+         * Profile for Linux VMs in the container service cluster.
+         */
+        export interface ContainerServiceLinuxProfileResponse {
+            /**
+             * The administrator username to use for Linux VMs.
+             */
+            adminUsername: string;
+            /**
+             * SSH configuration for Linux-based VMs running on Azure.
+             */
+            ssh: outputs.containerservice.v20201201.ContainerServiceSshConfigurationResponse;
+        }
+
+        /**
+         * Profile of network configuration.
+         */
+        export interface ContainerServiceNetworkProfileResponse {
+            /**
+             * An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr.
+             */
+            dnsServiceIP?: string;
+            /**
+             * A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes service address range.
+             */
+            dockerBridgeCidr?: string;
+            /**
+             * Profile of the cluster load balancer.
+             */
+            loadBalancerProfile?: outputs.containerservice.v20201201.ManagedClusterLoadBalancerProfileResponse;
+            /**
+             * The load balancer sku for the managed cluster.
+             */
+            loadBalancerSku?: string;
+            /**
+             * Network mode used for building Kubernetes network.
+             */
+            networkMode?: string;
+            /**
+             * Network plugin used for building Kubernetes network.
+             */
+            networkPlugin?: string;
+            /**
+             * Network policy used for building Kubernetes network.
+             */
+            networkPolicy?: string;
+            /**
+             * The outbound (egress) routing method.
+             */
+            outboundType?: string;
+            /**
+             * A CIDR notation IP range from which to assign pod IPs when kubenet is used.
+             */
+            podCidr?: string;
+            /**
+             * A CIDR notation IP range from which to assign service cluster IPs. It must not overlap with any Subnet IP ranges.
+             */
+            serviceCidr?: string;
+        }
+
+        /**
+         * SSH configuration for Linux-based VMs running on Azure.
+         */
+        export interface ContainerServiceSshConfigurationResponse {
+            /**
+             * The list of SSH public keys used to authenticate with Linux-based VMs. Only expect one key specified.
+             */
+            publicKeys: outputs.containerservice.v20201201.ContainerServiceSshPublicKeyResponse[];
+        }
+
+        /**
+         * Contains information about SSH certificate public key data.
+         */
+        export interface ContainerServiceSshPublicKeyResponse {
+            /**
+             * Certificate public key used to authenticate with VMs through SSH. The certificate must be in PEM format with or without headers.
+             */
+            keyData: string;
+        }
+
+        /**
+         * The credential result response.
+         */
+        export interface CredentialResultResponse {
+            /**
+             * The name of the credential.
+             */
+            name: string;
+            /**
+             * Base64-encoded Kubernetes configuration file.
+             */
+            value: string;
+        }
+
+        /**
+         * Kubelet configurations of agent nodes.
+         */
+        export interface KubeletConfigResponse {
+            /**
+             * Allowlist of unsafe sysctls or unsafe sysctl patterns (ending in `*`).
+             */
+            allowedUnsafeSysctls?: string[];
+            /**
+             * The maximum number of container log files that can be present for a container. The number must be ≥ 2.
+             */
+            containerLogMaxFiles?: number;
+            /**
+             * The maximum size (e.g. 10Mi) of container log file before it is rotated.
+             */
+            containerLogMaxSizeMB?: number;
+            /**
+             * Enable CPU CFS quota enforcement for containers that specify CPU limits.
+             */
+            cpuCfsQuota?: boolean;
+            /**
+             * Sets CPU CFS quota period value.
+             */
+            cpuCfsQuotaPeriod?: string;
+            /**
+             * CPU Manager policy to use.
+             */
+            cpuManagerPolicy?: string;
+            /**
+             * If set to true it will make the Kubelet fail to start if swap is enabled on the node.
+             */
+            failSwapOn?: boolean;
+            /**
+             * The percent of disk usage after which image garbage collection is always run.
+             */
+            imageGcHighThreshold?: number;
+            /**
+             * The percent of disk usage before which image garbage collection is never run.
+             */
+            imageGcLowThreshold?: number;
+            /**
+             * The maximum number of processes per pod.
+             */
+            podMaxPids?: number;
+            /**
+             * Topology Manager policy to use.
+             */
+            topologyManagerPolicy?: string;
+        }
+
+        /**
+         * OS configurations of Linux agent nodes.
+         */
+        export interface LinuxOSConfigResponse {
+            /**
+             * SwapFileSizeMB specifies size in MB of a swap file will be created on each node.
+             */
+            swapFileSizeMB?: number;
+            /**
+             * Sysctl settings for Linux agent nodes.
+             */
+            sysctls?: outputs.containerservice.v20201201.SysctlConfigResponse;
+            /**
+             * Transparent Huge Page defrag configuration.
+             */
+            transparentHugePageDefrag?: string;
+            /**
+             * Transparent Huge Page enabled configuration.
+             */
+            transparentHugePageEnabled?: string;
+        }
+
+        /**
+         * AADProfile specifies attributes for Azure Active Directory integration.
+         */
+        export interface ManagedClusterAADProfileResponse {
+            /**
+             * AAD group object IDs that will have admin role of the cluster.
+             */
+            adminGroupObjectIDs?: string[];
+            /**
+             * The client AAD application ID.
+             */
+            clientAppID?: string;
+            /**
+             * Whether to enable Azure RBAC for Kubernetes authorization.
+             */
+            enableAzureRBAC?: boolean;
+            /**
+             * Whether to enable managed AAD.
+             */
+            managed?: boolean;
+            /**
+             * The server AAD application ID.
+             */
+            serverAppID?: string;
+            /**
+             * The server AAD application secret.
+             */
+            serverAppSecret?: string;
+            /**
+             * The AAD tenant ID to use for authentication. If not specified, will use the tenant of the deployment subscription.
+             */
+            tenantID?: string;
+        }
+
+        /**
+         * Access profile for managed cluster API server.
+         */
+        export interface ManagedClusterAPIServerAccessProfileResponse {
+            /**
+             * Authorized IP Ranges to kubernetes API server.
+             */
+            authorizedIPRanges?: string[];
+            /**
+             * Whether to create the cluster as a private cluster or not.
+             */
+            enablePrivateCluster?: boolean;
+            /**
+             * Private dns zone mode for private cluster. 
+             */
+            privateDNSZone?: string;
+        }
+
+        /**
+         * A Kubernetes add-on profile for a managed cluster.
+         */
+        export interface ManagedClusterAddonProfileResponse {
+            /**
+             * Key-value pairs for configuring an add-on.
+             */
+            config?: {[key: string]: string};
+            /**
+             * Whether the add-on is enabled or not.
+             */
+            enabled: boolean;
+            /**
+             * Information of user assigned identity used by this add-on.
+             */
+            identity: outputs.containerservice.v20201201.ManagedClusterAddonProfileResponseIdentity;
+        }
+
+        /**
+         * Information of user assigned identity used by this add-on.
+         */
+        export interface ManagedClusterAddonProfileResponseIdentity {
+            /**
+             * The client id of the user assigned identity.
+             */
+            clientId?: string;
+            /**
+             * The object id of the user assigned identity.
+             */
+            objectId?: string;
+            /**
+             * The resource id of the user assigned identity.
+             */
+            resourceId?: string;
+        }
+
+        /**
+         * Profile for the container service agent pool.
+         */
+        export interface ManagedClusterAgentPoolProfileResponse {
+            /**
+             * Availability zones for nodes. Must use VirtualMachineScaleSets AgentPoolType.
+             */
+            availabilityZones?: string[];
+            /**
+             * Number of agents (VMs) to host docker containers. Allowed values must be in the range of 0 to 100 (inclusive) for user pools and in the range of 1 to 100 (inclusive) for system pools. The default value is 1.
+             */
+            count?: number;
+            /**
+             * Whether to enable auto-scaler
+             */
+            enableAutoScaling?: boolean;
+            /**
+             * Whether to enable EncryptionAtHost
+             */
+            enableEncryptionAtHost?: boolean;
+            /**
+             * Enable public IP for nodes
+             */
+            enableNodePublicIP?: boolean;
+            /**
+             * KubeletConfig specifies the configuration of kubelet on agent nodes.
+             */
+            kubeletConfig?: outputs.containerservice.v20201201.KubeletConfigResponse;
+            /**
+             * KubeletDiskType determines the placement of emptyDir volumes, container runtime data root, and Kubelet ephemeral storage. Currently allows one value, OS, resulting in Kubelet using the OS disk for data.
+             */
+            kubeletDiskType?: string;
+            /**
+             * LinuxOSConfig specifies the OS configuration of linux agent nodes.
+             */
+            linuxOSConfig?: outputs.containerservice.v20201201.LinuxOSConfigResponse;
+            /**
+             * Maximum number of nodes for auto-scaling
+             */
+            maxCount?: number;
+            /**
+             * Maximum number of pods that can run on a node.
+             */
+            maxPods?: number;
+            /**
+             * Minimum number of nodes for auto-scaling
+             */
+            minCount?: number;
+            /**
+             * AgentPoolMode represents mode of an agent pool
+             */
+            mode?: string;
+            /**
+             * Unique name of the agent pool profile in the context of the subscription and resource group.
+             */
+            name: string;
+            /**
+             * Version of node image
+             */
+            nodeImageVersion: string;
+            /**
+             * Agent pool node labels to be persisted across all nodes in agent pool.
+             */
+            nodeLabels?: {[key: string]: string};
+            /**
+             * Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule.
+             */
+            nodeTaints?: string[];
+            /**
+             * Version of orchestrator specified when creating the managed cluster.
+             */
+            orchestratorVersion?: string;
+            /**
+             * OS Disk Size in GB to be used to specify the disk size for every machine in this master/agent pool. If you specify 0, it will apply the default osDisk size according to the vmSize specified.
+             */
+            osDiskSizeGB?: number;
+            /**
+             * OS disk type to be used for machines in a given agent pool. Allowed values are 'Ephemeral' and 'Managed'. Defaults to 'Managed'. May not be changed after creation.
+             */
+            osDiskType?: string;
+            /**
+             * OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux.
+             */
+            osType?: string;
+            /**
+             * Pod SubnetID specifies the VNet's subnet identifier for pods.
+             */
+            podSubnetID?: string;
+            /**
+             * Describes whether the Agent Pool is Running or Stopped
+             */
+            powerState: outputs.containerservice.v20201201.PowerStateResponse;
+            /**
+             * The current deployment or provisioning state, which only appears in the response.
+             */
+            provisioningState: string;
+            /**
+             * The ID for Proximity Placement Group.
+             */
+            proximityPlacementGroupID?: string;
+            /**
+             * ScaleSetEvictionPolicy to be used to specify eviction policy for Spot virtual machine scale set. Default to Delete.
+             */
+            scaleSetEvictionPolicy?: string;
+            /**
+             * ScaleSetPriority to be used to specify virtual machine scale set priority. Default to regular.
+             */
+            scaleSetPriority?: string;
+            /**
+             * SpotMaxPrice to be used to specify the maximum price you are willing to pay in US Dollars. Possible values are any decimal value greater than zero or -1 which indicates default price to be up-to on-demand.
+             */
+            spotMaxPrice?: number;
+            /**
+             * Agent pool tags to be persisted on the agent pool virtual machine scale set.
+             */
+            tags?: {[key: string]: string};
+            /**
+             * AgentPoolType represents types of an agent pool
+             */
+            type?: string;
+            /**
+             * Settings for upgrading the agentpool
+             */
+            upgradeSettings?: outputs.containerservice.v20201201.AgentPoolUpgradeSettingsResponse;
+            /**
+             * Size of agent VMs.
+             */
+            vmSize?: string;
+            /**
+             * VNet SubnetID specifies the VNet's subnet identifier for nodes and maybe pods
+             */
+            vnetSubnetID?: string;
+        }
+
+        /**
+         * Auto upgrade profile for a managed cluster.
+         */
+        export interface ManagedClusterAutoUpgradeProfileResponse {
+            /**
+             * upgrade channel for auto upgrade.
+             */
+            upgradeChannel?: string;
+        }
+
+        /**
+         * Identity for the managed cluster.
+         */
+        export interface ManagedClusterIdentityResponse {
+            /**
+             * The principal id of the system assigned identity which is used by master components.
+             */
+            principalId: string;
+            /**
+             * The tenant id of the system assigned identity which is used by master components.
+             */
+            tenantId: string;
+            /**
+             * The type of identity used for the managed cluster. Type 'SystemAssigned' will use an implicitly created identity in master components and an auto-created user assigned identity in MC_ resource group in agent nodes. Type 'None' will not use MSI for the managed cluster, service principal will be used instead.
+             */
+            type?: string;
+            /**
+             * The user identity associated with the managed cluster. This identity will be used in control plane and only one user assigned identity is allowed. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+             */
+            userAssignedIdentities?: {[key: string]: outputs.containerservice.v20201201.ManagedClusterIdentityResponseUserAssignedIdentities};
+        }
+
+        export interface ManagedClusterIdentityResponseUserAssignedIdentities {
+            /**
+             * The client id of user assigned identity.
+             */
+            clientId: string;
+            /**
+             * The principal id of user assigned identity.
+             */
+            principalId: string;
+        }
+
+        /**
+         * Profile of the managed cluster load balancer.
+         */
+        export interface ManagedClusterLoadBalancerProfileResponse {
+            /**
+             * Desired number of allocated SNAT ports per VM. Allowed values must be in the range of 0 to 64000 (inclusive). The default value is 0 which results in Azure dynamically allocating ports.
+             */
+            allocatedOutboundPorts?: number;
+            /**
+             * The effective outbound IP resources of the cluster load balancer.
+             */
+            effectiveOutboundIPs?: outputs.containerservice.v20201201.ResourceReferenceResponse[];
+            /**
+             * Desired outbound flow idle timeout in minutes. Allowed values must be in the range of 4 to 120 (inclusive). The default value is 30 minutes.
+             */
+            idleTimeoutInMinutes?: number;
+            /**
+             * Desired managed outbound IPs for the cluster load balancer.
+             */
+            managedOutboundIPs?: outputs.containerservice.v20201201.ManagedClusterLoadBalancerProfileResponseManagedOutboundIPs;
+            /**
+             * Desired outbound IP Prefix resources for the cluster load balancer.
+             */
+            outboundIPPrefixes?: outputs.containerservice.v20201201.ManagedClusterLoadBalancerProfileResponseOutboundIPPrefixes;
+            /**
+             * Desired outbound IP resources for the cluster load balancer.
+             */
+            outboundIPs?: outputs.containerservice.v20201201.ManagedClusterLoadBalancerProfileResponseOutboundIPs;
+        }
+
+        /**
+         * Desired managed outbound IPs for the cluster load balancer.
+         */
+        export interface ManagedClusterLoadBalancerProfileResponseManagedOutboundIPs {
+            /**
+             * Desired number of outbound IP created/managed by Azure for the cluster load balancer. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 1. 
+             */
+            count?: number;
+        }
+
+        /**
+         * Desired outbound IP Prefix resources for the cluster load balancer.
+         */
+        export interface ManagedClusterLoadBalancerProfileResponseOutboundIPPrefixes {
+            /**
+             * A list of public IP prefix resources.
+             */
+            publicIPPrefixes?: outputs.containerservice.v20201201.ResourceReferenceResponse[];
+        }
+
+        /**
+         * Desired outbound IP resources for the cluster load balancer.
+         */
+        export interface ManagedClusterLoadBalancerProfileResponseOutboundIPs {
+            /**
+             * A list of public IP resources.
+             */
+            publicIPs?: outputs.containerservice.v20201201.ResourceReferenceResponse[];
+        }
+
+        export interface ManagedClusterPodIdentityExceptionResponse {
+            /**
+             * Name of the pod identity exception.
+             */
+            name: string;
+            /**
+             * Namespace of the pod identity exception.
+             */
+            namespace: string;
+            /**
+             * Pod labels to match.
+             */
+            podLabels: {[key: string]: string};
+        }
+
+        export interface ManagedClusterPodIdentityProfileResponse {
+            /**
+             * Whether the pod identity addon is enabled.
+             */
+            enabled?: boolean;
+            /**
+             * User assigned pod identity settings.
+             */
+            userAssignedIdentities?: outputs.containerservice.v20201201.ManagedClusterPodIdentityResponse[];
+            /**
+             * User assigned pod identity exception settings.
+             */
+            userAssignedIdentityExceptions?: outputs.containerservice.v20201201.ManagedClusterPodIdentityExceptionResponse[];
+        }
+
+        export interface ManagedClusterPodIdentityResponse {
+            /**
+             * Information of the user assigned identity.
+             */
+            identity: outputs.containerservice.v20201201.UserAssignedIdentityResponse;
+            /**
+             * Name of the pod identity.
+             */
+            name: string;
+            /**
+             * Namespace of the pod identity.
+             */
+            namespace: string;
+            provisioningInfo: outputs.containerservice.v20201201.ManagedClusterPodIdentityResponseProvisioningInfo;
+            /**
+             * The current provisioning state of the pod identity.
+             */
+            provisioningState: string;
+        }
+
+        export interface ManagedClusterPodIdentityResponseProvisioningInfo {
+            /**
+             * Pod identity assignment error (if any).
+             */
+            error?: outputs.containerservice.v20201201.CloudErrorResponse;
+        }
+
+        /**
+         * Parameters to be applied to the cluster-autoscaler when enabled
+         */
+        export interface ManagedClusterPropertiesResponseAutoScalerProfile {
+            balanceSimilarNodeGroups?: string;
+            expander?: string;
+            maxEmptyBulkDelete?: string;
+            maxGracefulTerminationSec?: string;
+            maxNodeProvisionTime?: string;
+            maxTotalUnreadyPercentage?: string;
+            newPodScaleUpDelay?: string;
+            okTotalUnreadyCount?: string;
+            scaleDownDelayAfterAdd?: string;
+            scaleDownDelayAfterDelete?: string;
+            scaleDownDelayAfterFailure?: string;
+            scaleDownUnneededTime?: string;
+            scaleDownUnreadyTime?: string;
+            scaleDownUtilizationThreshold?: string;
+            scanInterval?: string;
+            skipNodesWithLocalStorage?: string;
+            skipNodesWithSystemPods?: string;
+        }
+
+        export interface ManagedClusterPropertiesResponseIdentityProfile {
+            /**
+             * The client id of the user assigned identity.
+             */
+            clientId?: string;
+            /**
+             * The object id of the user assigned identity.
+             */
+            objectId?: string;
+            /**
+             * The resource id of the user assigned identity.
+             */
+            resourceId?: string;
+        }
+
+        export interface ManagedClusterSKUResponse {
+            /**
+             * Name of a managed cluster SKU.
+             */
+            name?: string;
+            /**
+             * Tier of a managed cluster SKU.
+             */
+            tier?: string;
+        }
+
+        /**
+         * Information about a service principal identity for the cluster to use for manipulating Azure APIs.
+         */
+        export interface ManagedClusterServicePrincipalProfileResponse {
+            /**
+             * The ID for the service principal.
+             */
+            clientId: string;
+            /**
+             * The secret password associated with the service principal in plain text.
+             */
+            secret?: string;
+        }
+
+        /**
+         * Profile for Windows VMs in the container service cluster.
+         */
+        export interface ManagedClusterWindowsProfileResponse {
+            /**
+             * Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:** 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!"
+             */
+            adminPassword?: string;
+            /**
+             * Specifies the name of the administrator account. <br><br> **restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length:** 1 character <br><br> **Max-length:** 20 characters
+             */
+            adminUsername: string;
+            /**
+             * The licenseType to use for Windows VMs. Windows_Server is used to enable Azure Hybrid User Benefits for Windows VMs.
+             */
+            licenseType?: string;
+        }
+
+        /**
+         * Describes the Power State of the cluster
+         */
+        export interface PowerStateResponse {
+            /**
+             * Tells whether the cluster is Running or Stopped
+             */
+            code?: string;
+        }
+
+        /**
+         * Private endpoint which a connection belongs to.
+         */
+        export interface PrivateEndpointResponse {
+            /**
+             * The resource Id for private endpoint
+             */
+            id?: string;
+        }
+
+        /**
+         * The state of a private link service connection.
+         */
+        export interface PrivateLinkServiceConnectionStateResponse {
+            /**
+             * The private link service connection description.
+             */
+            description?: string;
+            /**
+             * The private link service connection status.
+             */
+            status?: string;
+        }
+
+        /**
+         * A reference to an Azure resource.
+         */
+        export interface ResourceReferenceResponse {
+            /**
+             * The fully qualified Azure resource id.
+             */
+            id?: string;
+        }
+
+        /**
+         * Sysctl settings for Linux agent nodes.
+         */
+        export interface SysctlConfigResponse {
+            /**
+             * Sysctl setting fs.aio-max-nr.
+             */
+            fsAioMaxNr?: number;
+            /**
+             * Sysctl setting fs.file-max.
+             */
+            fsFileMax?: number;
+            /**
+             * Sysctl setting fs.inotify.max_user_watches.
+             */
+            fsInotifyMaxUserWatches?: number;
+            /**
+             * Sysctl setting fs.nr_open.
+             */
+            fsNrOpen?: number;
+            /**
+             * Sysctl setting kernel.threads-max.
+             */
+            kernelThreadsMax?: number;
+            /**
+             * Sysctl setting net.core.netdev_max_backlog.
+             */
+            netCoreNetdevMaxBacklog?: number;
+            /**
+             * Sysctl setting net.core.optmem_max.
+             */
+            netCoreOptmemMax?: number;
+            /**
+             * Sysctl setting net.core.rmem_default.
+             */
+            netCoreRmemDefault?: number;
+            /**
+             * Sysctl setting net.core.rmem_max.
+             */
+            netCoreRmemMax?: number;
+            /**
+             * Sysctl setting net.core.somaxconn.
+             */
+            netCoreSomaxconn?: number;
+            /**
+             * Sysctl setting net.core.wmem_default.
+             */
+            netCoreWmemDefault?: number;
+            /**
+             * Sysctl setting net.core.wmem_max.
+             */
+            netCoreWmemMax?: number;
+            /**
+             * Sysctl setting net.ipv4.ip_local_port_range.
+             */
+            netIpv4IpLocalPortRange?: string;
+            /**
+             * Sysctl setting net.ipv4.neigh.default.gc_thresh1.
+             */
+            netIpv4NeighDefaultGcThresh1?: number;
+            /**
+             * Sysctl setting net.ipv4.neigh.default.gc_thresh2.
+             */
+            netIpv4NeighDefaultGcThresh2?: number;
+            /**
+             * Sysctl setting net.ipv4.neigh.default.gc_thresh3.
+             */
+            netIpv4NeighDefaultGcThresh3?: number;
+            /**
+             * Sysctl setting net.ipv4.tcp_fin_timeout.
+             */
+            netIpv4TcpFinTimeout?: number;
+            /**
+             * Sysctl setting net.ipv4.tcp_keepalive_probes.
+             */
+            netIpv4TcpKeepaliveProbes?: number;
+            /**
+             * Sysctl setting net.ipv4.tcp_keepalive_time.
+             */
+            netIpv4TcpKeepaliveTime?: number;
+            /**
+             * Sysctl setting net.ipv4.tcp_max_syn_backlog.
+             */
+            netIpv4TcpMaxSynBacklog?: number;
+            /**
+             * Sysctl setting net.ipv4.tcp_max_tw_buckets.
+             */
+            netIpv4TcpMaxTwBuckets?: number;
+            /**
+             * Sysctl setting net.ipv4.tcp_tw_reuse.
+             */
+            netIpv4TcpTwReuse?: boolean;
+            /**
+             * Sysctl setting net.ipv4.tcp_keepalive_intvl.
+             */
+            netIpv4TcpkeepaliveIntvl?: number;
+            /**
+             * Sysctl setting net.netfilter.nf_conntrack_buckets.
+             */
+            netNetfilterNfConntrackBuckets?: number;
+            /**
+             * Sysctl setting net.netfilter.nf_conntrack_max.
+             */
+            netNetfilterNfConntrackMax?: number;
+            /**
+             * Sysctl setting vm.max_map_count.
+             */
+            vmMaxMapCount?: number;
+            /**
+             * Sysctl setting vm.swappiness.
+             */
+            vmSwappiness?: number;
+            /**
+             * Sysctl setting vm.vfs_cache_pressure.
+             */
+            vmVfsCachePressure?: number;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
+        }
+
+        /**
+         * Time in a week.
+         */
+        export interface TimeInWeekResponse {
+            /**
+             * A day in a week.
+             */
+            day?: string;
+            /**
+             * hour slots in a day.
+             */
+            hourSlots?: number[];
+        }
+
+        /**
+         * The time span with start and end properties.
+         */
+        export interface TimeSpanResponse {
+            /**
+             * The end of a time span
+             */
+            end?: string;
+            /**
+             * The start of a time span
+             */
+            start?: string;
+        }
+
+        export interface UserAssignedIdentityResponse {
+            /**
+             * The client id of the user assigned identity.
+             */
+            clientId?: string;
+            /**
+             * The object id of the user assigned identity.
+             */
+            objectId?: string;
+            /**
+             * The resource id of the user assigned identity.
+             */
+            resourceId?: string;
+        }
+    }
 }
 
 export namespace costmanagement {
@@ -84337,7 +85529,7 @@ export namespace databox {
             /**
              * Details about which key encryption type is being used.
              */
-            keyEncryptionKey: outputs.databox.latest.KeyEncryptionKeyResponse;
+            keyEncryptionKey?: outputs.databox.latest.KeyEncryptionKeyResponse;
             /**
              * User entered passkey for DataBox Disk job.
              */
@@ -84470,7 +85662,7 @@ export namespace databox {
             /**
              * Details about which key encryption type is being used.
              */
-            keyEncryptionKey: outputs.databox.latest.KeyEncryptionKeyResponse;
+            keyEncryptionKey?: outputs.databox.latest.KeyEncryptionKeyResponse;
             /**
              * Preferences for the order.
              */
@@ -84590,7 +85782,7 @@ export namespace databox {
             /**
              * Details about which key encryption type is being used.
              */
-            keyEncryptionKey: outputs.databox.latest.KeyEncryptionKeyResponse;
+            keyEncryptionKey?: outputs.databox.latest.KeyEncryptionKeyResponse;
             /**
              * Preferences for the order.
              */
@@ -88134,7 +89326,7 @@ export namespace databox {
             /**
              * Details about which key encryption type is being used.
              */
-            keyEncryptionKey: outputs.databox.v20201101.KeyEncryptionKeyResponse;
+            keyEncryptionKey?: outputs.databox.v20201101.KeyEncryptionKeyResponse;
             /**
              * User entered passkey for DataBox Disk job.
              */
@@ -88267,7 +89459,7 @@ export namespace databox {
             /**
              * Details about which key encryption type is being used.
              */
-            keyEncryptionKey: outputs.databox.v20201101.KeyEncryptionKeyResponse;
+            keyEncryptionKey?: outputs.databox.v20201101.KeyEncryptionKeyResponse;
             /**
              * Preferences for the order.
              */
@@ -88387,7 +89579,7 @@ export namespace databox {
             /**
              * Details about which key encryption type is being used.
              */
-            keyEncryptionKey: outputs.databox.v20201101.KeyEncryptionKeyResponse;
+            keyEncryptionKey?: outputs.databox.v20201101.KeyEncryptionKeyResponse;
             /**
              * Preferences for the order.
              */
@@ -150865,6 +152057,106 @@ export namespace devops {
             name: string;
         }
     }
+
+    export namespace v20200713preview {
+        /**
+         * Authorization info used to access a resource (like code repository).
+         */
+        export interface AuthorizationResponse {
+            /**
+             * Type of authorization.
+             */
+            authorizationType: string;
+            /**
+             * Authorization parameters corresponding to the authorization type.
+             */
+            parameters?: {[key: string]: string};
+        }
+
+        /**
+         * Configuration used to bootstrap a Pipeline.
+         */
+        export interface BootstrapConfigurationResponse {
+            /**
+             * Repository containing the source code for the pipeline. Currently only 'azurePipeline' pipeline type supports this.
+             */
+            sourceRepository?: outputs.devops.v20200713preview.CodeRepositoryResponse;
+            /**
+             * Template used to bootstrap the pipeline.
+             */
+            template: outputs.devops.v20200713preview.PipelineTemplateResponse;
+        }
+
+        /**
+         * Repository containing the source code for a pipeline.
+         */
+        export interface CodeRepositoryResponse {
+            /**
+             * Authorization info to access the code repository.
+             */
+            authorization?: outputs.devops.v20200713preview.AuthorizationResponse;
+            /**
+             * Default branch used to configure Continuous Integration (CI) in the pipeline.
+             */
+            defaultBranch: string;
+            /**
+             * Unique immutable identifier of the code repository.
+             */
+            id: string;
+            /**
+             * Repository-specific properties.
+             */
+            properties?: {[key: string]: string};
+            /**
+             * Type of code repository.
+             */
+            repositoryType: string;
+        }
+
+        /**
+         * Template used to bootstrap the pipeline.
+         */
+        export interface PipelineTemplateResponse {
+            /**
+             * Unique identifier of the pipeline template.
+             */
+            id: string;
+            /**
+             * Dictionary of input parameters used in the pipeline template.
+             */
+            parameters?: {[key: string]: string};
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
+        }
+    }
 }
 
 export namespace devspaces {
@@ -169263,7 +170555,7 @@ export namespace healthbot {
              */
             botManagementPortalLink: string;
             /**
-             * The provisioning state of the Healthcare bot resource.
+             * The provisioning state of the Healthbot resource.
              */
             provisioningState: string;
         }
@@ -169273,25 +170565,9 @@ export namespace healthbot {
          */
         export interface SkuResponse {
             /**
-             * If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-             */
-            capacity?: number;
-            /**
-             * If the service has different generations of hardware, for the same SKU, then that can be captured here.
-             */
-            family?: string;
-            /**
              * The name of the HealthBot SKU
              */
             name: string;
-            /**
-             * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
-             */
-            size?: string;
-            /**
-             * This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-             */
-            tier?: string;
         }
 
         /**
@@ -169479,7 +170755,7 @@ export namespace healthbot {
              */
             botManagementPortalLink: string;
             /**
-             * The provisioning state of the Healthcare bot resource.
+             * The provisioning state of the Healthbot resource.
              */
             provisioningState: string;
         }
@@ -169489,25 +170765,9 @@ export namespace healthbot {
          */
         export interface SkuResponse {
             /**
-             * If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-             */
-            capacity?: number;
-            /**
-             * If the service has different generations of hardware, for the same SKU, then that can be captured here.
-             */
-            family?: string;
-            /**
              * The name of the HealthBot SKU
              */
             name: string;
-            /**
-             * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
-             */
-            size?: string;
-            /**
-             * This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-             */
-            tier?: string;
         }
 
         /**
@@ -224113,7 +225373,47 @@ export namespace migrate {
 }
 
 export namespace mixedreality {
+    export namespace latest {
+        /**
+         * Identity for the resource.
+         */
+        export interface IdentityResponse {
+            /**
+             * The principal ID of resource identity.
+             */
+            principalId: string;
+            /**
+             * The tenant ID of resource.
+             */
+            tenantId: string;
+            /**
+             * The identity type.
+             */
+            type?: string;
+        }
+    }
+
     export namespace v20190228preview {
+        /**
+         * Identity for the resource.
+         */
+        export interface IdentityResponse {
+            /**
+             * The principal ID of resource identity.
+             */
+            principalId: string;
+            /**
+             * The tenant ID of resource.
+             */
+            tenantId: string;
+            /**
+             * The identity type.
+             */
+            type?: string;
+        }
+    }
+
+    export namespace v20191202preview {
         /**
          * Identity for the resource.
          */
@@ -224135,6 +225435,26 @@ export namespace mixedreality {
 
     export namespace v20200406preview {
         export interface RemoteRenderingAccountResponseIdentity {
+            /**
+             * The principal ID of resource identity.
+             */
+            principalId: string;
+            /**
+             * The tenant ID of resource.
+             */
+            tenantId: string;
+            /**
+             * The identity type.
+             */
+            type?: string;
+        }
+    }
+
+    export namespace v20200501 {
+        /**
+         * Identity for the resource.
+         */
+        export interface IdentityResponse {
             /**
              * The principal ID of resource identity.
              */
@@ -408598,6 +409918,24 @@ export namespace security {
         }
 
         /**
+         * Properties of the additional workspaces.
+         */
+        export interface AdditionalWorkspacesPropertiesResponse {
+            /**
+             * List of data types sent to workspace
+             */
+            dataTypes?: string[];
+            /**
+             * Workspace type.
+             */
+            type?: string;
+            /**
+             * Workspace resource id
+             */
+            workspace?: string;
+        }
+
+        /**
          * A custom alert rule that checks if a value (depends on the custom alert type) is allowed.
          */
         export interface AllowlistCustomAlertRuleResponse {
@@ -408989,6 +410327,36 @@ export namespace security {
              * secret to authenticate the partner - write only
              */
             secret: string;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
         }
 
         /**
@@ -409691,6 +411059,24 @@ export namespace security {
 
     export namespace v20190801 {
         /**
+         * Properties of the additional workspaces.
+         */
+        export interface AdditionalWorkspacesPropertiesResponse {
+            /**
+             * List of data types sent to workspace
+             */
+            dataTypes?: string[];
+            /**
+             * Workspace type.
+             */
+            type?: string;
+            /**
+             * Workspace resource id
+             */
+            workspace?: string;
+        }
+
+        /**
          * A custom alert rule that checks if a value (depends on the custom alert type) is allowed.
          */
         export interface AllowlistCustomAlertRuleResponse {
@@ -409765,6 +411151,36 @@ export namespace security {
              * Recommendation status. When the recommendation status is disabled recommendations are not generated.
              */
             status: string;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
         }
 
         /**
@@ -410550,6 +411966,74 @@ export namespace securityinsights {
         }
 
         /**
+         * Entity insight Item.
+         */
+        export interface EntityInsightItemResponse {
+            /**
+             * Query results for table insights query.
+             */
+            chartQueryResults?: outputs.securityinsights.v20190101preview.InsightsTableResultResponse[];
+            /**
+             * The query id of the insight
+             */
+            queryId?: string;
+            /**
+             * The Time interval that the query actually executed on.
+             */
+            queryTimeInterval?: outputs.securityinsights.v20190101preview.EntityInsightItemResponseQueryTimeInterval;
+            /**
+             * Query results for table insights query.
+             */
+            tableQueryResults?: outputs.securityinsights.v20190101preview.InsightsTableResultResponse;
+        }
+
+        /**
+         * The Time interval that the query actually executed on.
+         */
+        export interface EntityInsightItemResponseQueryTimeInterval {
+            /**
+             * Insight query end time
+             */
+            endTime?: string;
+            /**
+             * Insight query start time
+             */
+            startTime?: string;
+        }
+
+        /**
+         * GetInsights Query Errors.
+         */
+        export interface GetInsightsErrorResponse {
+            /**
+             * the error message
+             */
+            errorMessage: string;
+            /**
+             * the query kind
+             */
+            kind: string;
+            /**
+             * the query id
+             */
+            queryId?: string;
+        }
+
+        /**
+         * Get Insights result metadata.
+         */
+        export interface GetInsightsResultsMetadataResponse {
+            /**
+             * information about the failed queries
+             */
+            errors?: outputs.securityinsights.v20190101preview.GetInsightsErrorResponse[];
+            /**
+             * the total items found for the insights request
+             */
+            totalCount: number;
+        }
+
+        /**
          * Incident additional data property bag.
          */
         export interface IncidentAdditionalDataResponse {
@@ -410631,6 +412115,31 @@ export namespace securityinsights {
              * The user principal name of the user the incident is assigned to.
              */
             userPrincipalName?: string;
+        }
+
+        /**
+         * Query results for table insights query.
+         */
+        export interface InsightsTableResultResponse {
+            /**
+             * Columns Metadata of the table
+             */
+            columns?: outputs.securityinsights.v20190101preview.InsightsTableResultResponseColumns[];
+            /**
+             * Rows data of the table
+             */
+            rows?: string[][];
+        }
+
+        export interface InsightsTableResultResponseColumns {
+            /**
+             * the name of the colum
+             */
+            name?: string;
+            /**
+             * the type of the colum
+             */
+            type?: string;
         }
 
         /**
@@ -428811,6 +430320,68 @@ export namespace storage {
 export namespace storagecache {
     export namespace latest {
         /**
+         * Active Directory settings used to join a cache to a domain.
+         */
+        export interface CacheActiveDirectorySettingsResponse {
+            /**
+             * The NetBIOS name to assign to the HPC Cache when it joins the Active Directory domain as a server. Length must 1-15 characters from the class [-0-9a-zA-Z].
+             */
+            cacheNetBiosName: string;
+            /**
+             * Active Directory admin credentials used to join the HPC Cache to a domain.
+             */
+            credentials?: outputs.storagecache.latest.CacheActiveDirectorySettingsResponseCredentials;
+            /**
+             * True if the HPC Cache is joined to the Active Directory domain.
+             */
+            domainJoined: string;
+            /**
+             * The fully qualified domain name of the Active Directory domain controller.
+             */
+            domainName: string;
+            /**
+             * The Active Directory domain's NetBIOS name.
+             */
+            domainNetBiosName: string;
+            /**
+             * Primary DNS IP address used to resolve the Active Directory domain controller's fully qualified domain name.
+             */
+            primaryDnsIpAddress: string;
+            /**
+             * Secondary DNS IP address used to resolve the Active Directory domain controller's fully qualified domain name.
+             */
+            secondaryDnsIpAddress?: string;
+        }
+
+        /**
+         * Active Directory admin credentials used to join the HPC Cache to a domain.
+         */
+        export interface CacheActiveDirectorySettingsResponseCredentials {
+            /**
+             * Plain text password of the Active Directory domain administrator. This value is stored encrypted and not returned on response.
+             */
+            password: string;
+            /**
+             * Username of the Active Directory domain administrator. This value is stored encrypted and not returned on response.
+             */
+            username: string;
+        }
+
+        /**
+         * Cache Directory Services settings.
+         */
+        export interface CacheDirectorySettingsResponse {
+            /**
+             * Specifies settings for joining the HPC Cache to an Active Directory domain.
+             */
+            activeDirectory?: outputs.storagecache.latest.CacheActiveDirectorySettingsResponse;
+            /**
+             * Specifies settings for Extended Groups. Extended Groups allows users to be members of more than 16 groups.
+             */
+            usernameDownload?: outputs.storagecache.latest.CacheUsernameDownloadSettingsResponse;
+        }
+
+        /**
          * Cache encryption settings.
          */
         export interface CacheEncryptionSettingsResponse {
@@ -428881,9 +430452,9 @@ export namespace storagecache {
          */
         export interface CacheSecuritySettingsResponse {
             /**
-             * root squash of cache property.
+             * NFS access policies defined for this cache.
              */
-            rootSquash?: boolean;
+            accessPolicies?: outputs.storagecache.latest.NfsAccessPolicyResponse[];
         }
 
         /**
@@ -428913,7 +430484,75 @@ export namespace storagecache {
         }
 
         /**
-         * Properties pertained to ClfsTarget
+         * Settings for Extended Groups username and group download.
+         */
+        export interface CacheUsernameDownloadSettingsResponse {
+            /**
+             * Determines if the certificate should be automatically downloaded. This applies to 'caCertificateURI' only if 'requireValidCertificate' is true.
+             */
+            autoDownloadCertificate?: boolean;
+            /**
+             * The URI of the CA certificate to validate the LDAP secure connection. This field must be populated when 'requireValidCertificate' is set to true.
+             */
+            caCertificateURI?: string;
+            /**
+             * When present, these are the credentials for the secure LDAP connection.
+             */
+            credentials?: outputs.storagecache.latest.CacheUsernameDownloadSettingsResponseCredentials;
+            /**
+             * Whether or not the LDAP connection should be encrypted.
+             */
+            encryptLdapConnection?: boolean;
+            /**
+             * Whether or not Extended Groups is enabled.
+             */
+            extendedGroupsEnabled?: boolean;
+            /**
+             * The URI of the file containing group information (in /etc/group file format). This field must be populated when 'usernameSource' is set to 'File'.
+             */
+            groupFileURI?: string;
+            /**
+             * The base distinguished name for the LDAP domain.
+             */
+            ldapBaseDn?: string;
+            /**
+             * The fully qualified domain name or IP address of the LDAP server to use.
+             */
+            ldapServer?: string;
+            /**
+             * Determines if the certificates must be validated by a certificate authority. When true, caCertificateURI must be provided.
+             */
+            requireValidCertificate?: boolean;
+            /**
+             * The URI of the file containing user information (in /etc/passwd file format). This field must be populated when 'usernameSource' is set to 'File'.
+             */
+            userFileURI?: string;
+            /**
+             * Indicates whether or not the HPC Cache has performed the username download successfully.
+             */
+            usernameDownloaded: string;
+            /**
+             * This setting determines how the cache gets username and group names for clients.
+             */
+            usernameSource?: string;
+        }
+
+        /**
+         * When present, these are the credentials for the secure LDAP connection.
+         */
+        export interface CacheUsernameDownloadSettingsResponseCredentials {
+            /**
+             * The Bind Distinguished Name identity to be used in the secure LDAP connection. This value is stored encrypted and not returned on response.
+             */
+            bindDn?: string;
+            /**
+             * The Bind password to be used in the secure LDAP connection. This value is stored encrypted and not returned on response.
+             */
+            bindPassword?: string;
+        }
+
+        /**
+         * Properties pertaining to the ClfsTarget
          */
         export interface ClfsTargetResponse {
             /**
@@ -428955,6 +430594,10 @@ export namespace storagecache {
              */
             namespacePath?: string;
             /**
+             * Name of the access policy applied to this junction.
+             */
+            nfsAccessPolicy?: string;
+            /**
              * NFS export where targetPath exists.
              */
             nfsExport?: string;
@@ -428965,7 +430608,7 @@ export namespace storagecache {
         }
 
         /**
-         * Properties pertained to Nfs3Target
+         * Properties pertaining to the Nfs3Target
          */
         export interface Nfs3TargetResponse {
             /**
@@ -428973,9 +430616,61 @@ export namespace storagecache {
              */
             target?: string;
             /**
-             * Identifies the primary usage model to be used for this Storage Target. Get choices from .../usageModels
+             * Identifies the usage model to be used for this Storage Target. Get choices from .../usageModels
              */
             usageModel?: string;
+        }
+
+        /**
+         * A set of rules describing access policies applied to NFSv3 clients of the cache.
+         */
+        export interface NfsAccessPolicyResponse {
+            /**
+             * The set of rules describing client accesses allowed under this policy.
+             */
+            accessRules: outputs.storagecache.latest.NfsAccessRuleResponse[];
+            /**
+             * Name identifying this policy. Access Policy names are not case sensitive.
+             */
+            name: string;
+        }
+
+        /**
+         * Rule to place restrictions on portions of the cache namespace being presented to clients.
+         */
+        export interface NfsAccessRuleResponse {
+            /**
+             * Access allowed by this rule.
+             */
+            access: string;
+            /**
+             * GID value that replaces 0 when rootSquash is true.
+             */
+            anonymousGID?: string;
+            /**
+             * UID value that replaces 0 when rootSquash is true.
+             */
+            anonymousUID?: string;
+            /**
+             * Filter applied to the scope for this rule. The filter's format depends on its scope. 'default' scope matches all clients and has no filter value. 'network' scope takes a filter in CIDR format (for example, 10.99.1.0/24). 'host' takes an IP address or fully qualified domain name as filter. If a client does not match any filter rule and there is no default rule, access is denied.
+             */
+            filter?: string;
+            /**
+             * Map root accesses to anonymousUID and anonymousGID.
+             */
+            rootSquash?: boolean;
+            /**
+             * Scope for this rule. The scope and filter determine which clients match the rule.
+             */
+            scope: string;
+            /**
+             * For the default policy, allow access to subdirectories under the root export. If this is set to no, clients can only mount the path '/'. If set to yes, clients can mount a deeper path, like '/a/b'.
+             */
+            submountAccess?: boolean;
+            /**
+             * Allow SUID semantics.
+             */
+            suid?: boolean;
         }
 
         /**
@@ -429009,7 +430704,7 @@ export namespace storagecache {
         }
 
         /**
-         * Properties pertained to UnknownTarget
+         * Properties pertaining to the UnknownTarget
          */
         export interface UnknownTargetResponse {
             /**
@@ -429428,6 +431123,402 @@ export namespace storagecache {
 
         /**
          * Properties pertained to UnknownTarget
+         */
+        export interface UnknownTargetResponse {
+            /**
+             * Dictionary of string->string pairs containing information about the Storage Target.
+             */
+            unknownMap?: {[key: string]: string};
+        }
+    }
+
+    export namespace v20201001 {
+        /**
+         * Active Directory settings used to join a cache to a domain.
+         */
+        export interface CacheActiveDirectorySettingsResponse {
+            /**
+             * The NetBIOS name to assign to the HPC Cache when it joins the Active Directory domain as a server. Length must 1-15 characters from the class [-0-9a-zA-Z].
+             */
+            cacheNetBiosName: string;
+            /**
+             * Active Directory admin credentials used to join the HPC Cache to a domain.
+             */
+            credentials?: outputs.storagecache.v20201001.CacheActiveDirectorySettingsResponseCredentials;
+            /**
+             * True if the HPC Cache is joined to the Active Directory domain.
+             */
+            domainJoined: string;
+            /**
+             * The fully qualified domain name of the Active Directory domain controller.
+             */
+            domainName: string;
+            /**
+             * The Active Directory domain's NetBIOS name.
+             */
+            domainNetBiosName: string;
+            /**
+             * Primary DNS IP address used to resolve the Active Directory domain controller's fully qualified domain name.
+             */
+            primaryDnsIpAddress: string;
+            /**
+             * Secondary DNS IP address used to resolve the Active Directory domain controller's fully qualified domain name.
+             */
+            secondaryDnsIpAddress?: string;
+        }
+
+        /**
+         * Active Directory admin credentials used to join the HPC Cache to a domain.
+         */
+        export interface CacheActiveDirectorySettingsResponseCredentials {
+            /**
+             * Plain text password of the Active Directory domain administrator. This value is stored encrypted and not returned on response.
+             */
+            password: string;
+            /**
+             * Username of the Active Directory domain administrator. This value is stored encrypted and not returned on response.
+             */
+            username: string;
+        }
+
+        /**
+         * Cache Directory Services settings.
+         */
+        export interface CacheDirectorySettingsResponse {
+            /**
+             * Specifies settings for joining the HPC Cache to an Active Directory domain.
+             */
+            activeDirectory?: outputs.storagecache.v20201001.CacheActiveDirectorySettingsResponse;
+            /**
+             * Specifies settings for Extended Groups. Extended Groups allows users to be members of more than 16 groups.
+             */
+            usernameDownload?: outputs.storagecache.v20201001.CacheUsernameDownloadSettingsResponse;
+        }
+
+        /**
+         * Cache encryption settings.
+         */
+        export interface CacheEncryptionSettingsResponse {
+            /**
+             * Specifies the location of the key encryption key in Key Vault.
+             */
+            keyEncryptionKey?: outputs.storagecache.v20201001.KeyVaultKeyReferenceResponse;
+        }
+
+        /**
+         * An indication of Cache health. Gives more information about health than just that related to provisioning.
+         */
+        export interface CacheHealthResponse {
+            /**
+             * List of Cache health states.
+             */
+            state?: string;
+            /**
+             * Describes explanation of state.
+             */
+            statusDescription?: string;
+        }
+
+        /**
+         * Cache identity properties.
+         */
+        export interface CacheIdentityResponse {
+            /**
+             * The principal id of the cache.
+             */
+            principalId: string;
+            /**
+             * The tenant id associated with the cache.
+             */
+            tenantId: string;
+            /**
+             * The type of identity used for the cache
+             */
+            type?: string;
+        }
+
+        /**
+         * Cache network settings.
+         */
+        export interface CacheNetworkSettingsResponse {
+            /**
+             * The IPv4 maximum transmission unit configured for the subnet.
+             */
+            mtu?: number;
+            /**
+             * Array of additional IP addresses used by this Cache.
+             */
+            utilityAddresses: string[];
+        }
+
+        /**
+         * SKU for the Cache.
+         */
+        export interface CacheResponseSku {
+            /**
+             * SKU name for this Cache.
+             */
+            name?: string;
+        }
+
+        /**
+         * Cache security settings.
+         */
+        export interface CacheSecuritySettingsResponse {
+            /**
+             * NFS access policies defined for this cache.
+             */
+            accessPolicies?: outputs.storagecache.v20201001.NfsAccessPolicyResponse[];
+        }
+
+        /**
+         * Properties describing the software upgrade state of the Cache.
+         */
+        export interface CacheUpgradeStatusResponse {
+            /**
+             * Version string of the firmware currently installed on this Cache.
+             */
+            currentFirmwareVersion: string;
+            /**
+             * Time at which the pending firmware update will automatically be installed on the Cache.
+             */
+            firmwareUpdateDeadline: string;
+            /**
+             * True if there is a firmware update ready to install on this Cache. The firmware will automatically be installed after firmwareUpdateDeadline if not triggered earlier via the upgrade operation.
+             */
+            firmwareUpdateStatus: string;
+            /**
+             * Time of the last successful firmware update.
+             */
+            lastFirmwareUpdate: string;
+            /**
+             * When firmwareUpdateAvailable is true, this field holds the version string for the update.
+             */
+            pendingFirmwareVersion: string;
+        }
+
+        /**
+         * Settings for Extended Groups username and group download.
+         */
+        export interface CacheUsernameDownloadSettingsResponse {
+            /**
+             * Determines if the certificate should be automatically downloaded. This applies to 'caCertificateURI' only if 'requireValidCertificate' is true.
+             */
+            autoDownloadCertificate?: boolean;
+            /**
+             * The URI of the CA certificate to validate the LDAP secure connection. This field must be populated when 'requireValidCertificate' is set to true.
+             */
+            caCertificateURI?: string;
+            /**
+             * When present, these are the credentials for the secure LDAP connection.
+             */
+            credentials?: outputs.storagecache.v20201001.CacheUsernameDownloadSettingsResponseCredentials;
+            /**
+             * Whether or not the LDAP connection should be encrypted.
+             */
+            encryptLdapConnection?: boolean;
+            /**
+             * Whether or not Extended Groups is enabled.
+             */
+            extendedGroupsEnabled?: boolean;
+            /**
+             * The URI of the file containing group information (in /etc/group file format). This field must be populated when 'usernameSource' is set to 'File'.
+             */
+            groupFileURI?: string;
+            /**
+             * The base distinguished name for the LDAP domain.
+             */
+            ldapBaseDn?: string;
+            /**
+             * The fully qualified domain name or IP address of the LDAP server to use.
+             */
+            ldapServer?: string;
+            /**
+             * Determines if the certificates must be validated by a certificate authority. When true, caCertificateURI must be provided.
+             */
+            requireValidCertificate?: boolean;
+            /**
+             * The URI of the file containing user information (in /etc/passwd file format). This field must be populated when 'usernameSource' is set to 'File'.
+             */
+            userFileURI?: string;
+            /**
+             * Indicates whether or not the HPC Cache has performed the username download successfully.
+             */
+            usernameDownloaded: string;
+            /**
+             * This setting determines how the cache gets username and group names for clients.
+             */
+            usernameSource?: string;
+        }
+
+        /**
+         * When present, these are the credentials for the secure LDAP connection.
+         */
+        export interface CacheUsernameDownloadSettingsResponseCredentials {
+            /**
+             * The Bind Distinguished Name identity to be used in the secure LDAP connection. This value is stored encrypted and not returned on response.
+             */
+            bindDn?: string;
+            /**
+             * The Bind password to be used in the secure LDAP connection. This value is stored encrypted and not returned on response.
+             */
+            bindPassword?: string;
+        }
+
+        /**
+         * Properties pertaining to the ClfsTarget
+         */
+        export interface ClfsTargetResponse {
+            /**
+             * Resource ID of storage container.
+             */
+            target?: string;
+        }
+
+        /**
+         * Describes a reference to Key Vault Key.
+         */
+        export interface KeyVaultKeyReferenceResponse {
+            /**
+             * The URL referencing a key encryption key in Key Vault.
+             */
+            keyUrl: string;
+            /**
+             * Describes a resource Id to source Key Vault.
+             */
+            sourceVault: outputs.storagecache.v20201001.KeyVaultKeyReferenceResponseSourceVault;
+        }
+
+        /**
+         * Describes a resource Id to source Key Vault.
+         */
+        export interface KeyVaultKeyReferenceResponseSourceVault {
+            /**
+             * Resource Id.
+             */
+            id?: string;
+        }
+
+        /**
+         * A namespace junction.
+         */
+        export interface NamespaceJunctionResponse {
+            /**
+             * Namespace path on a Cache for a Storage Target.
+             */
+            namespacePath?: string;
+            /**
+             * Name of the access policy applied to this junction.
+             */
+            nfsAccessPolicy?: string;
+            /**
+             * NFS export where targetPath exists.
+             */
+            nfsExport?: string;
+            /**
+             * Path in Storage Target to which namespacePath points.
+             */
+            targetPath?: string;
+        }
+
+        /**
+         * Properties pertaining to the Nfs3Target
+         */
+        export interface Nfs3TargetResponse {
+            /**
+             * IP address or host name of an NFSv3 host (e.g., 10.0.44.44).
+             */
+            target?: string;
+            /**
+             * Identifies the usage model to be used for this Storage Target. Get choices from .../usageModels
+             */
+            usageModel?: string;
+        }
+
+        /**
+         * A set of rules describing access policies applied to NFSv3 clients of the cache.
+         */
+        export interface NfsAccessPolicyResponse {
+            /**
+             * The set of rules describing client accesses allowed under this policy.
+             */
+            accessRules: outputs.storagecache.v20201001.NfsAccessRuleResponse[];
+            /**
+             * Name identifying this policy. Access Policy names are not case sensitive.
+             */
+            name: string;
+        }
+
+        /**
+         * Rule to place restrictions on portions of the cache namespace being presented to clients.
+         */
+        export interface NfsAccessRuleResponse {
+            /**
+             * Access allowed by this rule.
+             */
+            access: string;
+            /**
+             * GID value that replaces 0 when rootSquash is true.
+             */
+            anonymousGID?: string;
+            /**
+             * UID value that replaces 0 when rootSquash is true.
+             */
+            anonymousUID?: string;
+            /**
+             * Filter applied to the scope for this rule. The filter's format depends on its scope. 'default' scope matches all clients and has no filter value. 'network' scope takes a filter in CIDR format (for example, 10.99.1.0/24). 'host' takes an IP address or fully qualified domain name as filter. If a client does not match any filter rule and there is no default rule, access is denied.
+             */
+            filter?: string;
+            /**
+             * Map root accesses to anonymousUID and anonymousGID.
+             */
+            rootSquash?: boolean;
+            /**
+             * Scope for this rule. The scope and filter determine which clients match the rule.
+             */
+            scope: string;
+            /**
+             * For the default policy, allow access to subdirectories under the root export. If this is set to no, clients can only mount the path '/'. If set to yes, clients can mount a deeper path, like '/a/b'.
+             */
+            submountAccess?: boolean;
+            /**
+             * Allow SUID semantics.
+             */
+            suid?: boolean;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
+        }
+
+        /**
+         * Properties pertaining to the UnknownTarget
          */
         export interface UnknownTargetResponse {
             /**

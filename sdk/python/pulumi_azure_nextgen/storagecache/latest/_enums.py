@@ -6,8 +6,11 @@ from enum import Enum
 
 __all__ = [
     'CacheIdentityType',
+    'NfsAccessRuleAccess',
+    'NfsAccessRuleScope',
     'ProvisioningStateType',
     'StorageTargetType',
+    'UsernameSource',
 ]
 
 
@@ -17,6 +20,24 @@ class CacheIdentityType(str, Enum):
     """
     SYSTEM_ASSIGNED = "SystemAssigned"
     NONE = "None"
+
+
+class NfsAccessRuleAccess(str, Enum):
+    """
+    Access allowed by this rule.
+    """
+    NO = "no"
+    RO = "ro"
+    RW = "rw"
+
+
+class NfsAccessRuleScope(str, Enum):
+    """
+    Scope for this rule. The scope and filter determine which clients match the rule.
+    """
+    DEFAULT = "default"
+    NETWORK = "network"
+    HOST = "host"
 
 
 class ProvisioningStateType(str, Enum):
@@ -38,3 +59,13 @@ class StorageTargetType(str, Enum):
     NFS3 = "nfs3"
     CLFS = "clfs"
     UNKNOWN = "unknown"
+
+
+class UsernameSource(str, Enum):
+    """
+    This setting determines how the cache gets username and group names for clients.
+    """
+    AD = "AD"
+    LDAP = "LDAP"
+    FILE = "File"
+    NONE = "None"
