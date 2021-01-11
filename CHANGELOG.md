@@ -3,7 +3,9 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
-(none)
+Features:
+
+- Respect default values as Azure API specs define ([#183])(https://github.com/pulumi/pulumi-azure-nextgen/issues/183)
 
 ---
 
