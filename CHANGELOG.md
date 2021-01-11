@@ -5,7 +5,7 @@ CHANGELOG
 
 Features:
 
-- Respect default values as Azure API specs define ([#183])(https://github.com/pulumi/pulumi-azure-nextgen/issues/183)
+- Respect default values as Azure API specs define ([#183](https://github.com/pulumi/pulumi-azure-nextgen/issues/183)
 
 ---
 
