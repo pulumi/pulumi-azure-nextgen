@@ -3,6 +3,8 @@ env:
 
 name: OSS SDK Files
 on:
+  schedule:
+    - cron: '0 4 * * *'
   repository_dispatch:
     types:
       - oss-sdk
