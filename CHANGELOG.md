@@ -6,6 +6,7 @@ CHANGELOG
 Features:
 
 - Respect default values as Azure API specs define ([#183](https://github.com/pulumi/pulumi-azure-nextgen/issues/183))
+- GetClientToken invoke to retrieve an OAuth token for the current auth context ([#207](https://github.com/pulumi/pulumi-azure-nextgen/issues/207))
 
 ---
 
