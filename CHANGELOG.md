@@ -8,6 +8,10 @@ Features:
 - Respect default values as Azure API specs define ([#183](https://github.com/pulumi/pulumi-azure-nextgen/issues/183))
 - GetClientToken invoke to retrieve an OAuth token for the current auth context ([#207](https://github.com/pulumi/pulumi-azure-nextgen/issues/207))
 
+Fixes:
+
+- Generate all types along inheritance hierachy, not just one level ([#186](https://github.com/pulumi/pulumi-azure-nextgen/issues/186))
+
 ---
 
 ## 0.4.0 (2021-01-05)
