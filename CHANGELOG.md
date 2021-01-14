@@ -11,6 +11,7 @@ Features:
 Fixes:
 
 - Generate all types along inheritance hierachy, not just one level ([#186](https://github.com/pulumi/pulumi-azure-nextgen/issues/186))
+- Correct Resource ID ([#211](https://github.com/pulumi/pulumi-azure-nextgen/issues/211))
 
 ---
 
