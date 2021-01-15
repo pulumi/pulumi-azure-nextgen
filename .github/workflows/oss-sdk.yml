@@ -69,6 +69,7 @@ jobs:
           git config --local user.email "bot@pulumi.com"
           git config --local user.name "pulumi-bot"
           git checkout -b publish/${{ github.run_id }}-${{ github.run_number }}
-          git commit -a -m "Automated SDK publish"
+          git add .
+          git commit -m "Automated SDK publish"
           git push origin publish/${{ github.run_id }}-${{ github.run_number }}
         working-directory: ${{ github.workspace }}/sdk-repo
