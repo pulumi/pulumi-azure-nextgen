@@ -13,6 +13,8 @@ Fixes:
 - Generate all types along inheritance hierachy, not just one level ([#186](https://github.com/pulumi/pulumi-azure-nextgen/issues/186))
 - Correct Resource ID ([#211](https://github.com/pulumi/pulumi-azure-nextgen/issues/211))
 - Reduce the memory footprint ([#203](https://github.com/pulumi/pulumi-azure-nextgen/issues/203))
+- Improved error messaging ([#213](https://github.com/pulumi/pulumi-azure-nextgen/issues/213))
+- Fix failure when creating Certificate resource ([#212](https://github.com/pulumi/pulumi-azure-nextgen/issues/212))
 
 ---
 
