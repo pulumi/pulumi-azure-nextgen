@@ -64,13 +64,11 @@ jobs:
           touch ${{ github.workspace }}/sdk-repo/sdk/python/go.mod
           touch ${{ github.workspace }}/sdk-repo/sdk/dotnet/go.mod
         working-directory: provider
-      - name: git status
-        run: git status
-        working-directory: sdk-repo
-      - name: commit changes
-        uses: EndBug/add-and-commit@v4.3.0
-        with:
-          ref: "publish/${{ github.run_id }}-${{ github.run_number }}"
-          author_name: pulumi-bot
-          author_email: "bot@pulumi.com"
-          cwd: ${{ github.workspace }}/sdk-repo
+      - name: Git Commit + Push to Branch
+        run: |
+          git config --local user.email "bot@pulumi.com"
+          git config --local user.name "pulumi-bot"
+          git checkout -b publish/${{ github.run_id }}-${{ github.run_number }}
+          git commit -a -m "Automated SDK publish"
+          git push origin publish/${{ github.run_id }}-${{ github.run_number }}
+        working-directory: ${{ github.workspace }}/sdk-repo
