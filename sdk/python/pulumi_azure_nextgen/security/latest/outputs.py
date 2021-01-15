@@ -24,6 +24,7 @@ __all__ = [
     'JitNetworkAccessRequestResponse',
     'JitNetworkAccessRequestVirtualMachineResponse',
     'OnPremiseResourceDetailsResponse',
+    'OnPremiseSqlResourceDetailsResponse',
     'PathRecommendationResponse',
     'ProtectionModeResponse',
     'PublisherInfoResponse',
@@ -94,6 +95,8 @@ class AdditionalWorkspacesPropertiesResponse(dict):
         """
         if data_types is not None:
             pulumi.set(__self__, "data_types", data_types)
+        if type is None:
+            type = 'Sentinel'
         if type is not None:
             pulumi.set(__self__, "type", type)
         if workspace is not None:
@@ -747,6 +750,99 @@ class OnPremiseResourceDetailsResponse(dict):
 
 
 @pulumi.output_type
+class OnPremiseSqlResourceDetailsResponse(dict):
+    """
+    Details of the On Premise Sql resource that was assessed
+    """
+    def __init__(__self__, *,
+                 database_name: str,
+                 machine_name: str,
+                 server_name: str,
+                 source: str,
+                 source_computer_id: str,
+                 vmuuid: str,
+                 workspace_id: str):
+        """
+        Details of the On Premise Sql resource that was assessed
+        :param str database_name: The Sql database name installed on the machine
+        :param str machine_name: The name of the machine
+        :param str server_name: The Sql server name installed on the machine
+        :param str source: The platform where the assessed resource resides
+               Expected value is 'OnPremise'.
+        :param str source_computer_id: The oms agent Id installed on the machine
+        :param str vmuuid: The unique Id of the machine
+        :param str workspace_id: Azure resource Id of the workspace the machine is attached to
+        """
+        pulumi.set(__self__, "database_name", database_name)
+        pulumi.set(__self__, "machine_name", machine_name)
+        pulumi.set(__self__, "server_name", server_name)
+        pulumi.set(__self__, "source", 'OnPremise')
+        pulumi.set(__self__, "source_computer_id", source_computer_id)
+        pulumi.set(__self__, "vmuuid", vmuuid)
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @property
+    @pulumi.getter(name="databaseName")
+    def database_name(self) -> str:
+        """
+        The Sql database name installed on the machine
+        """
+        return pulumi.get(self, "database_name")
+
+    @property
+    @pulumi.getter(name="machineName")
+    def machine_name(self) -> str:
+        """
+        The name of the machine
+        """
+        return pulumi.get(self, "machine_name")
+
+    @property
+    @pulumi.getter(name="serverName")
+    def server_name(self) -> str:
+        """
+        The Sql server name installed on the machine
+        """
+        return pulumi.get(self, "server_name")
+
+    @property
+    @pulumi.getter
+    def source(self) -> str:
+        """
+        The platform where the assessed resource resides
+        Expected value is 'OnPremise'.
+        """
+        return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter(name="sourceComputerId")
+    def source_computer_id(self) -> str:
+        """
+        The oms agent Id installed on the machine
+        """
+        return pulumi.get(self, "source_computer_id")
+
+    @property
+    @pulumi.getter
+    def vmuuid(self) -> str:
+        """
+        The unique Id of the machine
+        """
+        return pulumi.get(self, "vmuuid")
+
+    @property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> str:
+        """
+        Azure resource Id of the workspace the machine is attached to
+        """
+        return pulumi.get(self, "workspace_id")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
 class PathRecommendationResponse(dict):
     """
     Represents a path that is recommended to be allowed and its properties
@@ -1000,6 +1096,8 @@ class RecommendationConfigurationPropertiesResponse(dict):
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "recommendation_type", recommendation_type)
+        if status is None:
+            status = 'Enabled'
         pulumi.set(__self__, "status", status)
 
     @property

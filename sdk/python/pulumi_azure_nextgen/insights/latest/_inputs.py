@@ -963,7 +963,7 @@ class DynamicMetricCriteriaArgs:
                  metric_name: pulumi.Input[str],
                  name: pulumi.Input[str],
                  operator: pulumi.Input[Union[str, 'DynamicThresholdOperator']],
-                 time_aggregation: pulumi.Input[Union[str, 'AggregationType']],
+                 time_aggregation: pulumi.Input[Union[str, 'AggregationTypeEnum']],
                  dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['MetricDimensionArgs']]]] = None,
                  ignore_data_before: Optional[pulumi.Input[str]] = None,
                  metric_namespace: Optional[pulumi.Input[str]] = None,
@@ -977,7 +977,7 @@ class DynamicMetricCriteriaArgs:
         :param pulumi.Input[str] metric_name: Name of the metric.
         :param pulumi.Input[str] name: Name of the criteria.
         :param pulumi.Input[Union[str, 'DynamicThresholdOperator']] operator: The operator used to compare the metric value against the threshold.
-        :param pulumi.Input[Union[str, 'AggregationType']] time_aggregation: the criteria time aggregation types.
+        :param pulumi.Input[Union[str, 'AggregationTypeEnum']] time_aggregation: the criteria time aggregation types.
         :param pulumi.Input[Sequence[pulumi.Input['MetricDimensionArgs']]] dimensions: List of dimension conditions.
         :param pulumi.Input[str] ignore_data_before: Use this option to set the date from which to start learning the metric historical data and calculate the dynamic thresholds (in ISO8601 format)
         :param pulumi.Input[str] metric_namespace: Namespace of the metric.
@@ -1074,14 +1074,14 @@ class DynamicMetricCriteriaArgs:
 
     @property
     @pulumi.getter(name="timeAggregation")
-    def time_aggregation(self) -> pulumi.Input[Union[str, 'AggregationType']]:
+    def time_aggregation(self) -> pulumi.Input[Union[str, 'AggregationTypeEnum']]:
         """
         the criteria time aggregation types.
         """
         return pulumi.get(self, "time_aggregation")
 
     @time_aggregation.setter
-    def time_aggregation(self, value: pulumi.Input[Union[str, 'AggregationType']]):
+    def time_aggregation(self, value: pulumi.Input[Union[str, 'AggregationTypeEnum']]):
         pulumi.set(self, "time_aggregation", value)
 
     @property
@@ -1882,7 +1882,7 @@ class MetricCriteriaArgs:
                  name: pulumi.Input[str],
                  operator: pulumi.Input[Union[str, 'Operator']],
                  threshold: pulumi.Input[float],
-                 time_aggregation: pulumi.Input[Union[str, 'AggregationType']],
+                 time_aggregation: pulumi.Input[Union[str, 'AggregationTypeEnum']],
                  dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['MetricDimensionArgs']]]] = None,
                  metric_namespace: Optional[pulumi.Input[str]] = None,
                  skip_metric_validation: Optional[pulumi.Input[bool]] = None):
@@ -1894,7 +1894,7 @@ class MetricCriteriaArgs:
         :param pulumi.Input[str] name: Name of the criteria.
         :param pulumi.Input[Union[str, 'Operator']] operator: the criteria operator.
         :param pulumi.Input[float] threshold: the criteria threshold value that activates the alert.
-        :param pulumi.Input[Union[str, 'AggregationType']] time_aggregation: the criteria time aggregation types.
+        :param pulumi.Input[Union[str, 'AggregationTypeEnum']] time_aggregation: the criteria time aggregation types.
         :param pulumi.Input[Sequence[pulumi.Input['MetricDimensionArgs']]] dimensions: List of dimension conditions.
         :param pulumi.Input[str] metric_namespace: Namespace of the metric.
         :param pulumi.Input[bool] skip_metric_validation: Allows creating an alert rule on a custom metric that isn't yet emitted, by causing the metric validation to be skipped.
@@ -1975,14 +1975,14 @@ class MetricCriteriaArgs:
 
     @property
     @pulumi.getter(name="timeAggregation")
-    def time_aggregation(self) -> pulumi.Input[Union[str, 'AggregationType']]:
+    def time_aggregation(self) -> pulumi.Input[Union[str, 'AggregationTypeEnum']]:
         """
         the criteria time aggregation types.
         """
         return pulumi.get(self, "time_aggregation")
 
     @time_aggregation.setter
-    def time_aggregation(self, value: pulumi.Input[Union[str, 'AggregationType']]):
+    def time_aggregation(self, value: pulumi.Input[Union[str, 'AggregationTypeEnum']]):
         pulumi.set(self, "time_aggregation", value)
 
     @property
@@ -2776,6 +2776,8 @@ class ScaleActionArgs:
         pulumi.set(__self__, "cooldown", cooldown)
         pulumi.set(__self__, "direction", direction)
         pulumi.set(__self__, "type", type)
+        if value is None:
+            value = '1'
         if value is not None:
             pulumi.set(__self__, "value", value)
 
@@ -3515,6 +3517,8 @@ class WebhookReceiverArgs:
             pulumi.set(__self__, "object_id", object_id)
         if tenant_id is not None:
             pulumi.set(__self__, "tenant_id", tenant_id)
+        if use_aad_auth is None:
+            use_aad_auth = False
         if use_aad_auth is not None:
             pulumi.set(__self__, "use_aad_auth", use_aad_auth)
 

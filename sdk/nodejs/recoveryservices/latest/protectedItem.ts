@@ -7,7 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Base class for backup items.
- * Latest API Version: 2020-10-01.
+ * Latest API Version: 2020-12-01.
  */
 export class ProtectedItem extends pulumi.CustomResource {
     /**
@@ -51,7 +51,7 @@ export class ProtectedItem extends pulumi.CustomResource {
     /**
      * ProtectedItemResource properties
      */
-    public readonly properties!: pulumi.Output<outputs.recoveryservices.latest.AzureFileshareProtectedItemResponse | outputs.recoveryservices.latest.AzureIaaSVMProtectedItemResponse | outputs.recoveryservices.latest.AzureSqlProtectedItemResponse | outputs.recoveryservices.latest.AzureVmWorkloadProtectedItemResponse | outputs.recoveryservices.latest.DPMProtectedItemResponse | outputs.recoveryservices.latest.GenericProtectedItemResponse | outputs.recoveryservices.latest.MabFileFolderProtectedItemResponse>;
+    public readonly properties!: pulumi.Output<outputs.recoveryservices.latest.AzureFileshareProtectedItemResponse | outputs.recoveryservices.latest.AzureIaaSClassicComputeVMProtectedItemResponse | outputs.recoveryservices.latest.AzureIaaSComputeVMProtectedItemResponse | outputs.recoveryservices.latest.AzureIaaSVMProtectedItemResponse | outputs.recoveryservices.latest.AzureSqlProtectedItemResponse | outputs.recoveryservices.latest.AzureVmWorkloadProtectedItemResponse | outputs.recoveryservices.latest.AzureVmWorkloadSAPAseDatabaseProtectedItemResponse | outputs.recoveryservices.latest.AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse | outputs.recoveryservices.latest.AzureVmWorkloadSQLDatabaseProtectedItemResponse | outputs.recoveryservices.latest.DPMProtectedItemResponse | outputs.recoveryservices.latest.GenericProtectedItemResponse | outputs.recoveryservices.latest.MabFileFolderProtectedItemResponse>;
     /**
      * Resource tags.
      */
@@ -112,7 +112,7 @@ export class ProtectedItem extends pulumi.CustomResource {
         if (!opts.version) {
             opts.version = utilities.getVersion();
         }
-        const aliasOpts = { aliases: [{ type: "azure-nextgen:recoveryservices/v20160601:ProtectedItem" }, { type: "azure-nextgen:recoveryservices/v20190513:ProtectedItem" }, { type: "azure-nextgen:recoveryservices/v20190615:ProtectedItem" }, { type: "azure-nextgen:recoveryservices/v20201001:ProtectedItem" }] };
+        const aliasOpts = { aliases: [{ type: "azure-nextgen:recoveryservices/v20160601:ProtectedItem" }, { type: "azure-nextgen:recoveryservices/v20190513:ProtectedItem" }, { type: "azure-nextgen:recoveryservices/v20190615:ProtectedItem" }, { type: "azure-nextgen:recoveryservices/v20201001:ProtectedItem" }, { type: "azure-nextgen:recoveryservices/v20201201:ProtectedItem" }] };
         opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
         super(ProtectedItem.__pulumiType, name, inputs, opts);
     }
@@ -141,7 +141,7 @@ export interface ProtectedItemArgs {
     /**
      * ProtectedItemResource properties
      */
-    readonly properties?: pulumi.Input<inputs.recoveryservices.latest.AzureFileshareProtectedItem | inputs.recoveryservices.latest.AzureIaaSVMProtectedItem | inputs.recoveryservices.latest.AzureSqlProtectedItem | inputs.recoveryservices.latest.AzureVmWorkloadProtectedItem | inputs.recoveryservices.latest.DPMProtectedItem | inputs.recoveryservices.latest.GenericProtectedItem | inputs.recoveryservices.latest.MabFileFolderProtectedItem>;
+    readonly properties?: pulumi.Input<inputs.recoveryservices.latest.AzureFileshareProtectedItem | inputs.recoveryservices.latest.AzureIaaSClassicComputeVMProtectedItem | inputs.recoveryservices.latest.AzureIaaSComputeVMProtectedItem | inputs.recoveryservices.latest.AzureIaaSVMProtectedItem | inputs.recoveryservices.latest.AzureSqlProtectedItem | inputs.recoveryservices.latest.AzureVmWorkloadProtectedItem | inputs.recoveryservices.latest.AzureVmWorkloadSAPAseDatabaseProtectedItem | inputs.recoveryservices.latest.AzureVmWorkloadSAPHanaDatabaseProtectedItem | inputs.recoveryservices.latest.AzureVmWorkloadSQLDatabaseProtectedItem | inputs.recoveryservices.latest.DPMProtectedItem | inputs.recoveryservices.latest.GenericProtectedItem | inputs.recoveryservices.latest.MabFileFolderProtectedItem>;
     /**
      * Item name to be backed up.
      */

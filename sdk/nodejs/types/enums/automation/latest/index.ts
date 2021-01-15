@@ -12,6 +12,28 @@ export const ContentSourceType = {
  */
 export type ContentSourceType = (typeof ContentSourceType)[keyof typeof ContentSourceType];
 
+export const LinuxUpdateClasses = {
+    Unclassified: "Unclassified",
+    Critical: "Critical",
+    Security: "Security",
+    Other: "Other",
+} as const;
+
+/**
+ * Update classifications included in the software update configuration.
+ */
+export type LinuxUpdateClasses = (typeof LinuxUpdateClasses)[keyof typeof LinuxUpdateClasses];
+
+export const OperatingSystemType = {
+    Windows: "Windows",
+    Linux: "Linux",
+} as const;
+
+/**
+ * operating system of target machines
+ */
+export type OperatingSystemType = (typeof OperatingSystemType)[keyof typeof OperatingSystemType];
+
 export const RunbookTypeEnum = {
     Script: "Script",
     Graph: "Graph",
@@ -67,3 +89,51 @@ export const SkuNameEnum = {
  * Gets or sets the SKU name of the account.
  */
 export type SkuNameEnum = (typeof SkuNameEnum)[keyof typeof SkuNameEnum];
+
+export const SourceType = {
+    VsoGit: "VsoGit",
+    VsoTfvc: "VsoTfvc",
+    GitHub: "GitHub",
+} as const;
+
+/**
+ * The source type. Must be one of VsoGit, VsoTfvc, GitHub, case sensitive.
+ */
+export type SourceType = (typeof SourceType)[keyof typeof SourceType];
+
+export const TagOperators = {
+    All: "All",
+    Any: "Any",
+} as const;
+
+/**
+ * Filter VMs by Any or All specified tags.
+ */
+export type TagOperators = (typeof TagOperators)[keyof typeof TagOperators];
+
+export const TokenType = {
+    PersonalAccessToken: "PersonalAccessToken",
+    Oauth: "Oauth",
+} as const;
+
+/**
+ * The token type. Must be either PersonalAccessToken or Oauth.
+ */
+export type TokenType = (typeof TokenType)[keyof typeof TokenType];
+
+export const WindowsUpdateClasses = {
+    Unclassified: "Unclassified",
+    Critical: "Critical",
+    Security: "Security",
+    UpdateRollup: "UpdateRollup",
+    FeaturePack: "FeaturePack",
+    ServicePack: "ServicePack",
+    Definition: "Definition",
+    Tools: "Tools",
+    Updates: "Updates",
+} as const;
+
+/**
+ * Update classification included in the software update configuration. A comma separated string with required values
+ */
+export type WindowsUpdateClasses = (typeof WindowsUpdateClasses)[keyof typeof WindowsUpdateClasses];

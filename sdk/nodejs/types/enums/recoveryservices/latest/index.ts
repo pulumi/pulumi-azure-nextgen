@@ -158,6 +158,16 @@ export const HealthStatus = {
  */
 export type HealthStatus = (typeof HealthStatus)[keyof typeof HealthStatus];
 
+export const InfrastructureEncryptionState = {
+    Enabled: "Enabled",
+    Disabled: "Disabled",
+} as const;
+
+/**
+ * Enabling/Disabling the Double Encryption state
+ */
+export type InfrastructureEncryptionState = (typeof InfrastructureEncryptionState)[keyof typeof InfrastructureEncryptionState];
+
 export const LastBackupStatus = {
     Invalid: "Invalid",
     Healthy: "Healthy",
@@ -355,10 +365,12 @@ export type ResourceHealthStatus = (typeof ResourceHealthStatus)[keyof typeof Re
 export const ResourceIdentityType = {
     SystemAssigned: "SystemAssigned",
     None: "None",
+    UserAssigned: "UserAssigned",
+    SystemAssigned_UserAssigned: "SystemAssigned, UserAssigned",
 } as const;
 
 /**
- * The identity type.
+ * The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities.
  */
 export type ResourceIdentityType = (typeof ResourceIdentityType)[keyof typeof ResourceIdentityType];
 
@@ -427,6 +439,21 @@ export const WeekOfMonth = {
 } as const;
 
 export type WeekOfMonth = (typeof WeekOfMonth)[keyof typeof WeekOfMonth];
+
+export const WorkloadItemType = {
+    Invalid: "Invalid",
+    SQLInstance: "SQLInstance",
+    SQLDataBase: "SQLDataBase",
+    SAPHanaSystem: "SAPHanaSystem",
+    SAPHanaDatabase: "SAPHanaDatabase",
+    SAPAseSystem: "SAPAseSystem",
+    SAPAseDatabase: "SAPAseDatabase",
+} as const;
+
+/**
+ * Workload item type of the item for which intent is to be set
+ */
+export type WorkloadItemType = (typeof WorkloadItemType)[keyof typeof WorkloadItemType];
 
 export const WorkloadType = {
     Invalid: "Invalid",

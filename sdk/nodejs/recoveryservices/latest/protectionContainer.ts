@@ -7,7 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Base class for container with backup items. Containers with specific workloads are derived from this class.
- * Latest API Version: 2020-10-01.
+ * Latest API Version: 2020-12-01.
  */
 export class ProtectionContainer extends pulumi.CustomResource {
     /**
@@ -51,7 +51,7 @@ export class ProtectionContainer extends pulumi.CustomResource {
     /**
      * ProtectionContainerResource properties
      */
-    public readonly properties!: pulumi.Output<outputs.recoveryservices.latest.AzureSqlContainerResponse | outputs.recoveryservices.latest.AzureStorageContainerResponse | outputs.recoveryservices.latest.AzureWorkloadContainerResponse | outputs.recoveryservices.latest.DpmContainerResponse | outputs.recoveryservices.latest.GenericContainerResponse | outputs.recoveryservices.latest.IaaSVMContainerResponse | outputs.recoveryservices.latest.MabContainerResponse>;
+    public readonly properties!: pulumi.Output<outputs.recoveryservices.latest.AzureBackupServerContainerResponse | outputs.recoveryservices.latest.AzureIaaSClassicComputeVMContainerResponse | outputs.recoveryservices.latest.AzureIaaSComputeVMContainerResponse | outputs.recoveryservices.latest.AzureSQLAGWorkloadContainerProtectionContainerResponse | outputs.recoveryservices.latest.AzureSqlContainerResponse | outputs.recoveryservices.latest.AzureStorageContainerResponse | outputs.recoveryservices.latest.AzureVMAppContainerProtectionContainerResponse | outputs.recoveryservices.latest.AzureWorkloadContainerResponse | outputs.recoveryservices.latest.DpmContainerResponse | outputs.recoveryservices.latest.GenericContainerResponse | outputs.recoveryservices.latest.IaaSVMContainerResponse | outputs.recoveryservices.latest.MabContainerResponse>;
     /**
      * Resource tags.
      */
@@ -108,7 +108,7 @@ export class ProtectionContainer extends pulumi.CustomResource {
         if (!opts.version) {
             opts.version = utilities.getVersion();
         }
-        const aliasOpts = { aliases: [{ type: "azure-nextgen:recoveryservices/v20161201:ProtectionContainer" }, { type: "azure-nextgen:recoveryservices/v20201001:ProtectionContainer" }] };
+        const aliasOpts = { aliases: [{ type: "azure-nextgen:recoveryservices/v20161201:ProtectionContainer" }, { type: "azure-nextgen:recoveryservices/v20201001:ProtectionContainer" }, { type: "azure-nextgen:recoveryservices/v20201201:ProtectionContainer" }] };
         opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
         super(ProtectionContainer.__pulumiType, name, inputs, opts);
     }
@@ -137,7 +137,7 @@ export interface ProtectionContainerArgs {
     /**
      * ProtectionContainerResource properties
      */
-    readonly properties?: pulumi.Input<inputs.recoveryservices.latest.AzureSqlContainer | inputs.recoveryservices.latest.AzureStorageContainer | inputs.recoveryservices.latest.AzureWorkloadContainer | inputs.recoveryservices.latest.DpmContainer | inputs.recoveryservices.latest.GenericContainer | inputs.recoveryservices.latest.IaaSVMContainer | inputs.recoveryservices.latest.MabContainer>;
+    readonly properties?: pulumi.Input<inputs.recoveryservices.latest.AzureBackupServerContainer | inputs.recoveryservices.latest.AzureIaaSClassicComputeVMContainer | inputs.recoveryservices.latest.AzureIaaSComputeVMContainer | inputs.recoveryservices.latest.AzureSQLAGWorkloadContainerProtectionContainer | inputs.recoveryservices.latest.AzureSqlContainer | inputs.recoveryservices.latest.AzureStorageContainer | inputs.recoveryservices.latest.AzureVMAppContainerProtectionContainer | inputs.recoveryservices.latest.AzureWorkloadContainer | inputs.recoveryservices.latest.DpmContainer | inputs.recoveryservices.latest.GenericContainer | inputs.recoveryservices.latest.IaaSVMContainer | inputs.recoveryservices.latest.MabContainer>;
     /**
      * The name of the resource group where the recovery services vault is present.
      */

@@ -6,7 +6,6 @@ from enum import Enum
 
 __all__ = [
     'ConnectionMode',
-    'ManagedMode',
     'SkuTier',
 ]
 
@@ -17,14 +16,6 @@ class ConnectionMode(str, Enum):
     """
     ALL = "All"
     READ_ONLY = "ReadOnly"
-
-
-class ManagedMode(str, Enum):
-    """
-    The managed mode of the server (0 = not managed, 1 = managed).
-    """
-    ZERO = "0"
-    ONE = "1"
 
 
 class SkuTier(str, Enum):

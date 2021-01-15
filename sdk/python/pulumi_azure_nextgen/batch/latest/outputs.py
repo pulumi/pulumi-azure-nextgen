@@ -20,6 +20,9 @@ __all__ = [
     'AzureBlobFileSystemConfigurationResponse',
     'AzureFileShareConfigurationResponse',
     'BatchAccountIdentityResponse',
+    'BatchAccountIdentityResponseUserAssignedIdentities',
+    'BatchPoolIdentityResponse',
+    'BatchPoolIdentityResponseUserAssignedIdentities',
     'CIFSMountConfigurationResponse',
     'CertificateReferenceResponse',
     'CloudServiceConfigurationResponse',
@@ -42,6 +45,7 @@ __all__ = [
     'NFSMountConfigurationResponse',
     'NetworkConfigurationResponse',
     'NetworkSecurityGroupRuleResponse',
+    'NodePlacementConfigurationResponse',
     'PoolEndpointConfigurationResponse',
     'PrivateEndpointConnectionResponse',
     'PrivateEndpointResponse',
@@ -56,6 +60,7 @@ __all__ = [
     'TaskSchedulingPolicyResponse',
     'UserAccountResponse',
     'UserIdentityResponse',
+    'VMExtensionResponse',
     'VirtualMachineConfigurationResponse',
     'VirtualMachineFamilyCoreQuotaResponse',
     'WindowsConfigurationResponse',
@@ -404,16 +409,20 @@ class BatchAccountIdentityResponse(dict):
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
-                 type: str):
+                 type: str,
+                 user_assigned_identities: Optional[Mapping[str, 'outputs.BatchAccountIdentityResponseUserAssignedIdentities']] = None):
         """
         The identity of the Batch account, if configured. This is only used when the user specifies 'Microsoft.KeyVault' as their Batch account encryption configuration.
         :param str principal_id: The principal id of the Batch account. This property will only be provided for a system assigned identity.
         :param str tenant_id: The tenant id associated with the Batch account. This property will only be provided for a system assigned identity.
         :param str type: The type of identity used for the Batch account.
+        :param Mapping[str, 'BatchAccountIdentityResponseUserAssignedIdentitiesArgs'] user_assigned_identities: The list of user identities associated with the Batch account. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
         """
         pulumi.set(__self__, "principal_id", principal_id)
         pulumi.set(__self__, "tenant_id", tenant_id)
         pulumi.set(__self__, "type", type)
+        if user_assigned_identities is not None:
+            pulumi.set(__self__, "user_assigned_identities", user_assigned_identities)
 
     @property
     @pulumi.getter(name="principalId")
@@ -438,6 +447,115 @@ class BatchAccountIdentityResponse(dict):
         The type of identity used for the Batch account.
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="userAssignedIdentities")
+    def user_assigned_identities(self) -> Optional[Mapping[str, 'outputs.BatchAccountIdentityResponseUserAssignedIdentities']]:
+        """
+        The list of user identities associated with the Batch account. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+        """
+        return pulumi.get(self, "user_assigned_identities")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class BatchAccountIdentityResponseUserAssignedIdentities(dict):
+    def __init__(__self__, *,
+                 client_id: str,
+                 principal_id: str):
+        """
+        :param str client_id: The client id of user assigned identity.
+        :param str principal_id: The principal id of user assigned identity.
+        """
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "principal_id", principal_id)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> str:
+        """
+        The client id of user assigned identity.
+        """
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="principalId")
+    def principal_id(self) -> str:
+        """
+        The principal id of user assigned identity.
+        """
+        return pulumi.get(self, "principal_id")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class BatchPoolIdentityResponse(dict):
+    """
+    The identity of the Batch pool, if configured. If the pool identity is updated during update an existing pool, only the new vms which are created after the pool shrinks to 0 will have the updated identities
+    """
+    def __init__(__self__, *,
+                 type: str,
+                 user_assigned_identities: Optional[Mapping[str, 'outputs.BatchPoolIdentityResponseUserAssignedIdentities']] = None):
+        """
+        The identity of the Batch pool, if configured. If the pool identity is updated during update an existing pool, only the new vms which are created after the pool shrinks to 0 will have the updated identities
+        :param str type: The type of identity used for the Batch Pool.
+        :param Mapping[str, 'BatchPoolIdentityResponseUserAssignedIdentitiesArgs'] user_assigned_identities: The list of user identities associated with the Batch pool. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+        """
+        pulumi.set(__self__, "type", type)
+        if user_assigned_identities is not None:
+            pulumi.set(__self__, "user_assigned_identities", user_assigned_identities)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of identity used for the Batch Pool.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="userAssignedIdentities")
+    def user_assigned_identities(self) -> Optional[Mapping[str, 'outputs.BatchPoolIdentityResponseUserAssignedIdentities']]:
+        """
+        The list of user identities associated with the Batch pool. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+        """
+        return pulumi.get(self, "user_assigned_identities")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class BatchPoolIdentityResponseUserAssignedIdentities(dict):
+    def __init__(__self__, *,
+                 client_id: str,
+                 principal_id: str):
+        """
+        :param str client_id: The client id of user assigned identity.
+        :param str principal_id: The principal id of user assigned identity.
+        """
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "principal_id", principal_id)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> str:
+        """
+        The client id of user assigned identity.
+        """
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="principalId")
+    def principal_id(self) -> str:
+        """
+        The principal id of user assigned identity.
+        """
+        return pulumi.get(self, "principal_id")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -1456,6 +1574,32 @@ class NetworkSecurityGroupRuleResponse(dict):
 
 
 @pulumi.output_type
+class NodePlacementConfigurationResponse(dict):
+    """
+    Allocation configuration used by Batch Service to provision the nodes.
+    """
+    def __init__(__self__, *,
+                 policy: Optional[str] = None):
+        """
+        Allocation configuration used by Batch Service to provision the nodes.
+        :param str policy: Allocation policy used by Batch Service to provision the nodes. If not specified, Batch will use the regional policy.
+        """
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[str]:
+        """
+        Allocation policy used by Batch Service to provision the nodes. If not specified, Batch will use the regional policy.
+        """
+        return pulumi.get(self, "policy")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
 class PoolEndpointConfigurationResponse(dict):
     def __init__(__self__, *,
                  inbound_nat_pools: Sequence['outputs.InboundNatPoolResponse']):
@@ -2151,6 +2295,89 @@ class UserIdentityResponse(dict):
 
 
 @pulumi.output_type
+class VMExtensionResponse(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 publisher: str,
+                 type: str,
+                 auto_upgrade_minor_version: Optional[bool] = None,
+                 protected_settings: Optional[Any] = None,
+                 provision_after_extensions: Optional[Sequence[str]] = None,
+                 settings: Optional[Any] = None,
+                 type_handler_version: Optional[str] = None):
+        """
+        :param bool auto_upgrade_minor_version: Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
+        :param Any protected_settings: The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all. 
+        :param Sequence[str] provision_after_extensions: Collection of extension names after which this extension needs to be provisioned.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "publisher", publisher)
+        pulumi.set(__self__, "type", type)
+        if auto_upgrade_minor_version is not None:
+            pulumi.set(__self__, "auto_upgrade_minor_version", auto_upgrade_minor_version)
+        if protected_settings is not None:
+            pulumi.set(__self__, "protected_settings", protected_settings)
+        if provision_after_extensions is not None:
+            pulumi.set(__self__, "provision_after_extensions", provision_after_extensions)
+        if settings is not None:
+            pulumi.set(__self__, "settings", settings)
+        if type_handler_version is not None:
+            pulumi.set(__self__, "type_handler_version", type_handler_version)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def publisher(self) -> str:
+        return pulumi.get(self, "publisher")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="autoUpgradeMinorVersion")
+    def auto_upgrade_minor_version(self) -> Optional[bool]:
+        """
+        Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
+        """
+        return pulumi.get(self, "auto_upgrade_minor_version")
+
+    @property
+    @pulumi.getter(name="protectedSettings")
+    def protected_settings(self) -> Optional[Any]:
+        """
+        The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all. 
+        """
+        return pulumi.get(self, "protected_settings")
+
+    @property
+    @pulumi.getter(name="provisionAfterExtensions")
+    def provision_after_extensions(self) -> Optional[Sequence[str]]:
+        """
+        Collection of extension names after which this extension needs to be provisioned.
+        """
+        return pulumi.get(self, "provision_after_extensions")
+
+    @property
+    @pulumi.getter
+    def settings(self) -> Optional[Any]:
+        return pulumi.get(self, "settings")
+
+    @property
+    @pulumi.getter(name="typeHandlerVersion")
+    def type_handler_version(self) -> Optional[str]:
+        return pulumi.get(self, "type_handler_version")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
 class VirtualMachineConfigurationResponse(dict):
     def __init__(__self__, *,
                  image_reference: 'outputs.ImageReferenceResponse',
@@ -2158,17 +2385,21 @@ class VirtualMachineConfigurationResponse(dict):
                  container_configuration: Optional['outputs.ContainerConfigurationResponse'] = None,
                  data_disks: Optional[Sequence['outputs.DataDiskResponse']] = None,
                  disk_encryption_configuration: Optional['outputs.DiskEncryptionConfigurationResponse'] = None,
+                 extensions: Optional[Sequence['outputs.VMExtensionResponse']] = None,
                  license_type: Optional[str] = None,
+                 node_placement_configuration: Optional['outputs.NodePlacementConfigurationResponse'] = None,
                  windows_configuration: Optional['outputs.WindowsConfigurationResponse'] = None):
         """
         :param str node_agent_sku_id: The Batch node agent is a program that runs on each node in the pool, and provides the command-and-control interface between the node and the Batch service. There are different implementations of the node agent, known as SKUs, for different operating systems. You must specify a node agent SKU which matches the selected image reference. To get the list of supported node agent SKUs along with their list of verified image references, see the 'List supported node agent SKUs' operation.
         :param 'ContainerConfigurationResponseArgs' container_configuration: If specified, setup is performed on each node in the pool to allow tasks to run in containers. All regular tasks and job manager tasks run on this pool must specify the containerSettings property, and all other tasks may specify it.
         :param Sequence['DataDiskResponseArgs'] data_disks: This property must be specified if the compute nodes in the pool need to have empty data disks attached to them.
         :param 'DiskEncryptionConfigurationResponseArgs' disk_encryption_configuration: If specified, encryption is performed on each node in the pool during node provisioning.
+        :param Sequence['VMExtensionResponseArgs'] extensions: If specified, the extensions mentioned in this configuration will be installed on each node.
         :param str license_type: This only applies to images that contain the Windows operating system, and should only be used when you hold valid on-premises licenses for the nodes which will be deployed. If omitted, no on-premises licensing discount is applied. Values are:
                
                 Windows_Server - The on-premises license is for Windows Server.
                 Windows_Client - The on-premises license is for Windows Client.
+        :param 'NodePlacementConfigurationResponseArgs' node_placement_configuration: This configuration will specify rules on how nodes in the pool will be physically allocated.
         :param 'WindowsConfigurationResponseArgs' windows_configuration: This property must not be specified if the imageReference specifies a Linux OS image.
         """
         pulumi.set(__self__, "image_reference", image_reference)
@@ -2179,8 +2410,12 @@ class VirtualMachineConfigurationResponse(dict):
             pulumi.set(__self__, "data_disks", data_disks)
         if disk_encryption_configuration is not None:
             pulumi.set(__self__, "disk_encryption_configuration", disk_encryption_configuration)
+        if extensions is not None:
+            pulumi.set(__self__, "extensions", extensions)
         if license_type is not None:
             pulumi.set(__self__, "license_type", license_type)
+        if node_placement_configuration is not None:
+            pulumi.set(__self__, "node_placement_configuration", node_placement_configuration)
         if windows_configuration is not None:
             pulumi.set(__self__, "windows_configuration", windows_configuration)
 
@@ -2222,6 +2457,14 @@ class VirtualMachineConfigurationResponse(dict):
         return pulumi.get(self, "disk_encryption_configuration")
 
     @property
+    @pulumi.getter
+    def extensions(self) -> Optional[Sequence['outputs.VMExtensionResponse']]:
+        """
+        If specified, the extensions mentioned in this configuration will be installed on each node.
+        """
+        return pulumi.get(self, "extensions")
+
+    @property
     @pulumi.getter(name="licenseType")
     def license_type(self) -> Optional[str]:
         """
@@ -2231,6 +2474,14 @@ class VirtualMachineConfigurationResponse(dict):
          Windows_Client - The on-premises license is for Windows Client.
         """
         return pulumi.get(self, "license_type")
+
+    @property
+    @pulumi.getter(name="nodePlacementConfiguration")
+    def node_placement_configuration(self) -> Optional['outputs.NodePlacementConfigurationResponse']:
+        """
+        This configuration will specify rules on how nodes in the pool will be physically allocated.
+        """
+        return pulumi.get(self, "node_placement_configuration")
 
     @property
     @pulumi.getter(name="windowsConfiguration")

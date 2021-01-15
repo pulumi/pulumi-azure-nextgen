@@ -73,6 +73,8 @@ class IpAllocation(pulumi.CustomResource):
             __props__['ipam_allocation_id'] = ipam_allocation_id
             __props__['location'] = location
             __props__['prefix'] = prefix
+            if prefix_length is None:
+                prefix_length = 0
             __props__['prefix_length'] = prefix_length
             __props__['prefix_type'] = prefix_type
             if resource_group_name is None and not opts.urn:
@@ -84,7 +86,7 @@ class IpAllocation(pulumi.CustomResource):
             __props__['name'] = None
             __props__['subnet'] = None
             __props__['virtual_network'] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:network/latest:IpAllocation"), pulumi.Alias(type_="azure-nextgen:network/v20200301:IpAllocation"), pulumi.Alias(type_="azure-nextgen:network/v20200401:IpAllocation"), pulumi.Alias(type_="azure-nextgen:network/v20200601:IpAllocation"), pulumi.Alias(type_="azure-nextgen:network/v20200701:IpAllocation")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:network/latest:IpAllocation"), pulumi.Alias(type_="azure-nextgen:network/v20200301:IpAllocation"), pulumi.Alias(type_="azure-nextgen:network/v20200401:IpAllocation"), pulumi.Alias(type_="azure-nextgen:network/v20200601:IpAllocation"), pulumi.Alias(type_="azure-nextgen:network/v20200701:IpAllocation"), pulumi.Alias(type_="azure-nextgen:network/v20200801:IpAllocation")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(IpAllocation, __self__).__init__(
             'azure-nextgen:network/v20200501:IpAllocation',

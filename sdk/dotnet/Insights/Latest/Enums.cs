@@ -11,29 +11,29 @@ namespace Pulumi.AzureNextGen.Insights.Latest
     /// the criteria time aggregation types.
     /// </summary>
     [EnumType]
-    public readonly struct AggregationType : IEquatable<AggregationType>
+    public readonly struct AggregationTypeEnum : IEquatable<AggregationTypeEnum>
     {
         private readonly string _value;
 
-        private AggregationType(string value)
+        private AggregationTypeEnum(string value)
         {
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
-        public static AggregationType Average { get; } = new AggregationType("Average");
-        public static AggregationType Count { get; } = new AggregationType("Count");
-        public static AggregationType Minimum { get; } = new AggregationType("Minimum");
-        public static AggregationType Maximum { get; } = new AggregationType("Maximum");
-        public static AggregationType Total { get; } = new AggregationType("Total");
+        public static AggregationTypeEnum Average { get; } = new AggregationTypeEnum("Average");
+        public static AggregationTypeEnum Count { get; } = new AggregationTypeEnum("Count");
+        public static AggregationTypeEnum Minimum { get; } = new AggregationTypeEnum("Minimum");
+        public static AggregationTypeEnum Maximum { get; } = new AggregationTypeEnum("Maximum");
+        public static AggregationTypeEnum Total { get; } = new AggregationTypeEnum("Total");
 
-        public static bool operator ==(AggregationType left, AggregationType right) => left.Equals(right);
-        public static bool operator !=(AggregationType left, AggregationType right) => !left.Equals(right);
+        public static bool operator ==(AggregationTypeEnum left, AggregationTypeEnum right) => left.Equals(right);
+        public static bool operator !=(AggregationTypeEnum left, AggregationTypeEnum right) => !left.Equals(right);
 
-        public static explicit operator string(AggregationType value) => value._value;
+        public static explicit operator string(AggregationTypeEnum value) => value._value;
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is AggregationType other && Equals(other);
-        public bool Equals(AggregationType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+        public override bool Equals(object? obj) => obj is AggregationTypeEnum other && Equals(other);
+        public bool Equals(AggregationTypeEnum other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -490,6 +490,37 @@ namespace Pulumi.AzureNextGen.Insights.Latest
     }
 
     /// <summary>
+    /// The kind of workbook. Choices are user and shared.
+    /// </summary>
+    [EnumType]
+    public readonly struct Kind : IEquatable<Kind>
+    {
+        private readonly string _value;
+
+        private Kind(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static Kind User { get; } = new Kind("user");
+        public static Kind Shared { get; } = new Kind("shared");
+
+        public static bool operator ==(Kind left, Kind right) => left.Equals(right);
+        public static bool operator !=(Kind left, Kind right) => !left.Equals(right);
+
+        public static explicit operator string(Kind value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is Kind other && Equals(other);
+        public bool Equals(Kind other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// the metric statistic type. How the metrics from multiple instances are combined.
     /// </summary>
     [EnumType]
@@ -830,37 +861,6 @@ namespace Pulumi.AzureNextGen.Insights.Latest
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is ScaleType other && Equals(other);
         public bool Equals(ScaleType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// The kind of workbook. Choices are user and shared.
-    /// </summary>
-    [EnumType]
-    public readonly struct SharedTypeKind : IEquatable<SharedTypeKind>
-    {
-        private readonly string _value;
-
-        private SharedTypeKind(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static SharedTypeKind User { get; } = new SharedTypeKind("user");
-        public static SharedTypeKind Shared { get; } = new SharedTypeKind("shared");
-
-        public static bool operator ==(SharedTypeKind left, SharedTypeKind right) => left.Equals(right);
-        public static bool operator !=(SharedTypeKind left, SharedTypeKind right) => !left.Equals(right);
-
-        public static explicit operator string(SharedTypeKind value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is SharedTypeKind other && Equals(other);
-        public bool Equals(SharedTypeKind other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

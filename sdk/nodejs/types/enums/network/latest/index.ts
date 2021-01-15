@@ -991,6 +991,17 @@ export const ManagedRuleExclusionSelectorMatchOperator = {
  */
 export type ManagedRuleExclusionSelectorMatchOperator = (typeof ManagedRuleExclusionSelectorMatchOperator)[keyof typeof ManagedRuleExclusionSelectorMatchOperator];
 
+export const ManagedRuleSetActionType = {
+    Block: "Block",
+    Log: "Log",
+    Redirect: "Redirect",
+} as const;
+
+/**
+ * Defines the action to take when a managed rule set score threshold is met.
+ */
+export type ManagedRuleSetActionType = (typeof ManagedRuleSetActionType)[keyof typeof ManagedRuleSetActionType];
+
 export const MatchProcessingBehavior = {
     Continue: "Continue",
     Stop: "Stop",
@@ -1121,6 +1132,16 @@ export const PolicyMode = {
  * Describes if it is in detection mode or prevention mode at policy level.
  */
 export type PolicyMode = (typeof PolicyMode)[keyof typeof PolicyMode];
+
+export const PolicyRequestBodyCheck = {
+    Disabled: "Disabled",
+    Enabled: "Enabled",
+} as const;
+
+/**
+ * Describes if policy managed rules will inspect the request body content.
+ */
+export type PolicyRequestBodyCheck = (typeof PolicyRequestBodyCheck)[keyof typeof PolicyRequestBodyCheck];
 
 export const PreferredIPVersion = {
     IPv4: "IPv4",
@@ -1382,6 +1403,17 @@ export const SessionAffinityEnabledState = {
  */
 export type SessionAffinityEnabledState = (typeof SessionAffinityEnabledState)[keyof typeof SessionAffinityEnabledState];
 
+export const SkuName = {
+    Classic_AzureFrontDoor: "Classic_AzureFrontDoor",
+    Standard_AzureFrontDoor: "Standard_AzureFrontDoor",
+    Premium_AzureFrontDoor: "Premium_AzureFrontDoor",
+} as const;
+
+/**
+ * Name of the pricing tier.
+ */
+export type SkuName = (typeof SkuName)[keyof typeof SkuName];
+
 export const State = {
     Enabled: "Enabled",
     Disabled: "Disabled",
@@ -1602,6 +1634,37 @@ export const VpnGatewayTunnelingProtocol = {
  * VPN protocol enabled for the VpnServerConfiguration.
  */
 export type VpnGatewayTunnelingProtocol = (typeof VpnGatewayTunnelingProtocol)[keyof typeof VpnGatewayTunnelingProtocol];
+
+export const VpnLinkConnectionMode = {
+    Default: "Default",
+    ResponderOnly: "ResponderOnly",
+    InitiatorOnly: "InitiatorOnly",
+} as const;
+
+/**
+ * Vpn link connection mode.
+ */
+export type VpnLinkConnectionMode = (typeof VpnLinkConnectionMode)[keyof typeof VpnLinkConnectionMode];
+
+export const VpnNatRuleMode = {
+    EgressSnat: "EgressSnat",
+    IngressSnat: "IngressSnat",
+} as const;
+
+/**
+ * The Source NAT direction of a VPN NAT.
+ */
+export type VpnNatRuleMode = (typeof VpnNatRuleMode)[keyof typeof VpnNatRuleMode];
+
+export const VpnNatRuleType = {
+    Static: "Static",
+    Dynamic: "Dynamic",
+} as const;
+
+/**
+ * The type of NAT rule for VPN NAT.
+ */
+export type VpnNatRuleType = (typeof VpnNatRuleType)[keyof typeof VpnNatRuleType];
 
 export const VpnType = {
     PolicyBased: "PolicyBased",

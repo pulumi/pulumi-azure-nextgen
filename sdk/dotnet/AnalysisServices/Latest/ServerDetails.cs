@@ -77,6 +77,12 @@ namespace Pulumi.AzureNextGen.AnalysisServices.Latest
         public Output<string> ServerFullName { get; private set; } = null!;
 
         /// <summary>
+        /// The server monitor mode for AS server
+        /// </summary>
+        [Output("serverMonitorMode")]
+        public Output<int?> ServerMonitorMode { get; private set; } = null!;
+
+        /// <summary>
         /// The SKU of the Analysis Services resource.
         /// </summary>
         [Output("sku")]
@@ -186,7 +192,7 @@ namespace Pulumi.AzureNextGen.AnalysisServices.Latest
         /// The managed mode of the server (0 = not managed, 1 = managed).
         /// </summary>
         [Input("managedMode")]
-        public Input<Pulumi.AzureNextGen.AnalysisServices.Latest.ManagedMode>? ManagedMode { get; set; }
+        public Input<int>? ManagedMode { get; set; }
 
         /// <summary>
         /// How the read-write server's participation in the query pool is controlled.&lt;br/&gt;It can have the following values: &lt;ul&gt;&lt;li&gt;readOnly - indicates that the read-write server is intended not to participate in query operations&lt;/li&gt;&lt;li&gt;all - indicates that the read-write server can participate in query operations&lt;/li&gt;&lt;/ul&gt;Specifying readOnly when capacity is 1 results in error.
@@ -199,6 +205,12 @@ namespace Pulumi.AzureNextGen.AnalysisServices.Latest
         /// </summary>
         [Input("resourceGroupName", required: true)]
         public Input<string> ResourceGroupName { get; set; } = null!;
+
+        /// <summary>
+        /// The server monitor mode for AS server
+        /// </summary>
+        [Input("serverMonitorMode")]
+        public Input<int>? ServerMonitorMode { get; set; }
 
         /// <summary>
         /// The name of the Analysis Services server. It must be a minimum of 3 characters, and a maximum of 63.
@@ -226,6 +238,9 @@ namespace Pulumi.AzureNextGen.AnalysisServices.Latest
 
         public ServerDetailsArgs()
         {
+            ManagedMode = 1;
+            QuerypoolConnectionMode = Pulumi.AzureNextGen.AnalysisServices.Latest.ConnectionMode.All;
+            ServerMonitorMode = 1;
         }
     }
 }

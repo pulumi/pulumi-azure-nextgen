@@ -278,6 +278,22 @@ export const NetworkSecurityGroupRuleAccess = {
 
 export type NetworkSecurityGroupRuleAccess = (typeof NetworkSecurityGroupRuleAccess)[keyof typeof NetworkSecurityGroupRuleAccess];
 
+export const NodePlacementPolicyType = {
+    /**
+     * All nodes in the pool will be allocated in the same region.
+     */
+    Regional: "Regional",
+    /**
+     * Nodes in the pool will be spread across different zones with best effort balancing.
+     */
+    Zonal: "Zonal",
+} as const;
+
+/**
+ * Allocation policy used by Batch Service to provision the nodes. If not specified, Batch will use the regional policy.
+ */
+export type NodePlacementPolicyType = (typeof NodePlacementPolicyType)[keyof typeof NodePlacementPolicyType];
+
 export const PoolAllocationMode = {
     /**
      * Pools will be allocated in subscriptions owned by the Batch service.
@@ -293,6 +309,22 @@ export const PoolAllocationMode = {
  * The pool allocation mode also affects how clients may authenticate to the Batch Service API. If the mode is BatchService, clients may authenticate using access keys or Azure Active Directory. If the mode is UserSubscription, clients must use Azure Active Directory. The default is BatchService.
  */
 export type PoolAllocationMode = (typeof PoolAllocationMode)[keyof typeof PoolAllocationMode];
+
+export const PoolIdentityType = {
+    /**
+     * Batch pool has user assigned identities with it.
+     */
+    UserAssigned: "UserAssigned",
+    /**
+     * Batch pool has no identity associated with it. Setting `None` in update pool will remove existing identities.
+     */
+    None: "None",
+} as const;
+
+/**
+ * The type of identity used for the Batch Pool.
+ */
+export type PoolIdentityType = (typeof PoolIdentityType)[keyof typeof PoolIdentityType];
 
 export const PublicNetworkAccessType = {
     /**
@@ -315,6 +347,10 @@ export const ResourceIdentityType = {
      * Batch account has a system assigned identity with it.
      */
     SystemAssigned: "SystemAssigned",
+    /**
+     * Batch account has user assigned identities with it.
+     */
+    UserAssigned: "UserAssigned",
     /**
      * Batch account has no identity associated with it. Setting `None` in update account will remove existing identities.
      */

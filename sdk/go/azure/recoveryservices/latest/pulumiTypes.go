@@ -2671,6 +2671,356 @@ func (o AgentDiskDetailsResponseArrayOutput) Index(i pulumi.IntInput) AgentDiskD
 	}).(AgentDiskDetailsResponseOutput)
 }
 
+// AzureBackupServer (DPMVenus) workload-specific protection container.
+type AzureBackupServerContainer struct {
+	// Type of backup management for the container.
+	BackupManagementType *string `pulumi:"backupManagementType"`
+	// Specifies whether the container is re-registrable.
+	CanReRegister *bool `pulumi:"canReRegister"`
+	// ID of container.
+	ContainerId *string `pulumi:"containerId"`
+	// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+	// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+	// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+	// Backup is VMAppContainer
+	// Expected value is 'DPMContainer'.
+	ContainerType string `pulumi:"containerType"`
+	// Backup engine Agent version
+	DpmAgentVersion *string `pulumi:"dpmAgentVersion"`
+	// List of BackupEngines protecting the container
+	DpmServers []string `pulumi:"dpmServers"`
+	// Extended Info of the container.
+	ExtendedInfo *DPMContainerExtendedInfo `pulumi:"extendedInfo"`
+	// Friendly name of the container.
+	FriendlyName *string `pulumi:"friendlyName"`
+	// Status of health of the container.
+	HealthStatus *string `pulumi:"healthStatus"`
+	// Number of protected items in the BackupEngine
+	ProtectedItemCount *float64 `pulumi:"protectedItemCount"`
+	// Protection status of the container.
+	ProtectionStatus *string `pulumi:"protectionStatus"`
+	// Status of registration of the container with the Recovery Services Vault.
+	RegistrationStatus *string `pulumi:"registrationStatus"`
+	// To check if upgrade available
+	UpgradeAvailable *bool `pulumi:"upgradeAvailable"`
+}
+
+// AzureBackupServerContainerInput is an input type that accepts AzureBackupServerContainerArgs and AzureBackupServerContainerOutput values.
+// You can construct a concrete instance of `AzureBackupServerContainerInput` via:
+//
+//          AzureBackupServerContainerArgs{...}
+type AzureBackupServerContainerInput interface {
+	pulumi.Input
+
+	ToAzureBackupServerContainerOutput() AzureBackupServerContainerOutput
+	ToAzureBackupServerContainerOutputWithContext(context.Context) AzureBackupServerContainerOutput
+}
+
+// AzureBackupServer (DPMVenus) workload-specific protection container.
+type AzureBackupServerContainerArgs struct {
+	// Type of backup management for the container.
+	BackupManagementType pulumi.StringPtrInput `pulumi:"backupManagementType"`
+	// Specifies whether the container is re-registrable.
+	CanReRegister pulumi.BoolPtrInput `pulumi:"canReRegister"`
+	// ID of container.
+	ContainerId pulumi.StringPtrInput `pulumi:"containerId"`
+	// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+	// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+	// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+	// Backup is VMAppContainer
+	// Expected value is 'DPMContainer'.
+	ContainerType pulumi.StringInput `pulumi:"containerType"`
+	// Backup engine Agent version
+	DpmAgentVersion pulumi.StringPtrInput `pulumi:"dpmAgentVersion"`
+	// List of BackupEngines protecting the container
+	DpmServers pulumi.StringArrayInput `pulumi:"dpmServers"`
+	// Extended Info of the container.
+	ExtendedInfo DPMContainerExtendedInfoPtrInput `pulumi:"extendedInfo"`
+	// Friendly name of the container.
+	FriendlyName pulumi.StringPtrInput `pulumi:"friendlyName"`
+	// Status of health of the container.
+	HealthStatus pulumi.StringPtrInput `pulumi:"healthStatus"`
+	// Number of protected items in the BackupEngine
+	ProtectedItemCount pulumi.Float64PtrInput `pulumi:"protectedItemCount"`
+	// Protection status of the container.
+	ProtectionStatus pulumi.StringPtrInput `pulumi:"protectionStatus"`
+	// Status of registration of the container with the Recovery Services Vault.
+	RegistrationStatus pulumi.StringPtrInput `pulumi:"registrationStatus"`
+	// To check if upgrade available
+	UpgradeAvailable pulumi.BoolPtrInput `pulumi:"upgradeAvailable"`
+}
+
+func (AzureBackupServerContainerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureBackupServerContainer)(nil)).Elem()
+}
+
+func (i AzureBackupServerContainerArgs) ToAzureBackupServerContainerOutput() AzureBackupServerContainerOutput {
+	return i.ToAzureBackupServerContainerOutputWithContext(context.Background())
+}
+
+func (i AzureBackupServerContainerArgs) ToAzureBackupServerContainerOutputWithContext(ctx context.Context) AzureBackupServerContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureBackupServerContainerOutput)
+}
+
+// AzureBackupServer (DPMVenus) workload-specific protection container.
+type AzureBackupServerContainerOutput struct{ *pulumi.OutputState }
+
+func (AzureBackupServerContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureBackupServerContainer)(nil)).Elem()
+}
+
+func (o AzureBackupServerContainerOutput) ToAzureBackupServerContainerOutput() AzureBackupServerContainerOutput {
+	return o
+}
+
+func (o AzureBackupServerContainerOutput) ToAzureBackupServerContainerOutputWithContext(ctx context.Context) AzureBackupServerContainerOutput {
+	return o
+}
+
+// Type of backup management for the container.
+func (o AzureBackupServerContainerOutput) BackupManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureBackupServerContainer) *string { return v.BackupManagementType }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the container is re-registrable.
+func (o AzureBackupServerContainerOutput) CanReRegister() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureBackupServerContainer) *bool { return v.CanReRegister }).(pulumi.BoolPtrOutput)
+}
+
+// ID of container.
+func (o AzureBackupServerContainerOutput) ContainerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureBackupServerContainer) *string { return v.ContainerId }).(pulumi.StringPtrOutput)
+}
+
+// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+// Backup is VMAppContainer
+// Expected value is 'DPMContainer'.
+func (o AzureBackupServerContainerOutput) ContainerType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureBackupServerContainer) string { return v.ContainerType }).(pulumi.StringOutput)
+}
+
+// Backup engine Agent version
+func (o AzureBackupServerContainerOutput) DpmAgentVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureBackupServerContainer) *string { return v.DpmAgentVersion }).(pulumi.StringPtrOutput)
+}
+
+// List of BackupEngines protecting the container
+func (o AzureBackupServerContainerOutput) DpmServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AzureBackupServerContainer) []string { return v.DpmServers }).(pulumi.StringArrayOutput)
+}
+
+// Extended Info of the container.
+func (o AzureBackupServerContainerOutput) ExtendedInfo() DPMContainerExtendedInfoPtrOutput {
+	return o.ApplyT(func(v AzureBackupServerContainer) *DPMContainerExtendedInfo { return v.ExtendedInfo }).(DPMContainerExtendedInfoPtrOutput)
+}
+
+// Friendly name of the container.
+func (o AzureBackupServerContainerOutput) FriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureBackupServerContainer) *string { return v.FriendlyName }).(pulumi.StringPtrOutput)
+}
+
+// Status of health of the container.
+func (o AzureBackupServerContainerOutput) HealthStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureBackupServerContainer) *string { return v.HealthStatus }).(pulumi.StringPtrOutput)
+}
+
+// Number of protected items in the BackupEngine
+func (o AzureBackupServerContainerOutput) ProtectedItemCount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AzureBackupServerContainer) *float64 { return v.ProtectedItemCount }).(pulumi.Float64PtrOutput)
+}
+
+// Protection status of the container.
+func (o AzureBackupServerContainerOutput) ProtectionStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureBackupServerContainer) *string { return v.ProtectionStatus }).(pulumi.StringPtrOutput)
+}
+
+// Status of registration of the container with the Recovery Services Vault.
+func (o AzureBackupServerContainerOutput) RegistrationStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureBackupServerContainer) *string { return v.RegistrationStatus }).(pulumi.StringPtrOutput)
+}
+
+// To check if upgrade available
+func (o AzureBackupServerContainerOutput) UpgradeAvailable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureBackupServerContainer) *bool { return v.UpgradeAvailable }).(pulumi.BoolPtrOutput)
+}
+
+// AzureBackupServer (DPMVenus) workload-specific protection container.
+type AzureBackupServerContainerResponse struct {
+	// Type of backup management for the container.
+	BackupManagementType *string `pulumi:"backupManagementType"`
+	// Specifies whether the container is re-registrable.
+	CanReRegister *bool `pulumi:"canReRegister"`
+	// ID of container.
+	ContainerId *string `pulumi:"containerId"`
+	// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+	// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+	// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+	// Backup is VMAppContainer
+	// Expected value is 'DPMContainer'.
+	ContainerType string `pulumi:"containerType"`
+	// Backup engine Agent version
+	DpmAgentVersion *string `pulumi:"dpmAgentVersion"`
+	// List of BackupEngines protecting the container
+	DpmServers []string `pulumi:"dpmServers"`
+	// Extended Info of the container.
+	ExtendedInfo *DPMContainerExtendedInfoResponse `pulumi:"extendedInfo"`
+	// Friendly name of the container.
+	FriendlyName *string `pulumi:"friendlyName"`
+	// Status of health of the container.
+	HealthStatus *string `pulumi:"healthStatus"`
+	// Number of protected items in the BackupEngine
+	ProtectedItemCount *float64 `pulumi:"protectedItemCount"`
+	// Protection status of the container.
+	ProtectionStatus *string `pulumi:"protectionStatus"`
+	// Status of registration of the container with the Recovery Services Vault.
+	RegistrationStatus *string `pulumi:"registrationStatus"`
+	// To check if upgrade available
+	UpgradeAvailable *bool `pulumi:"upgradeAvailable"`
+}
+
+// AzureBackupServerContainerResponseInput is an input type that accepts AzureBackupServerContainerResponseArgs and AzureBackupServerContainerResponseOutput values.
+// You can construct a concrete instance of `AzureBackupServerContainerResponseInput` via:
+//
+//          AzureBackupServerContainerResponseArgs{...}
+type AzureBackupServerContainerResponseInput interface {
+	pulumi.Input
+
+	ToAzureBackupServerContainerResponseOutput() AzureBackupServerContainerResponseOutput
+	ToAzureBackupServerContainerResponseOutputWithContext(context.Context) AzureBackupServerContainerResponseOutput
+}
+
+// AzureBackupServer (DPMVenus) workload-specific protection container.
+type AzureBackupServerContainerResponseArgs struct {
+	// Type of backup management for the container.
+	BackupManagementType pulumi.StringPtrInput `pulumi:"backupManagementType"`
+	// Specifies whether the container is re-registrable.
+	CanReRegister pulumi.BoolPtrInput `pulumi:"canReRegister"`
+	// ID of container.
+	ContainerId pulumi.StringPtrInput `pulumi:"containerId"`
+	// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+	// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+	// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+	// Backup is VMAppContainer
+	// Expected value is 'DPMContainer'.
+	ContainerType pulumi.StringInput `pulumi:"containerType"`
+	// Backup engine Agent version
+	DpmAgentVersion pulumi.StringPtrInput `pulumi:"dpmAgentVersion"`
+	// List of BackupEngines protecting the container
+	DpmServers pulumi.StringArrayInput `pulumi:"dpmServers"`
+	// Extended Info of the container.
+	ExtendedInfo DPMContainerExtendedInfoResponsePtrInput `pulumi:"extendedInfo"`
+	// Friendly name of the container.
+	FriendlyName pulumi.StringPtrInput `pulumi:"friendlyName"`
+	// Status of health of the container.
+	HealthStatus pulumi.StringPtrInput `pulumi:"healthStatus"`
+	// Number of protected items in the BackupEngine
+	ProtectedItemCount pulumi.Float64PtrInput `pulumi:"protectedItemCount"`
+	// Protection status of the container.
+	ProtectionStatus pulumi.StringPtrInput `pulumi:"protectionStatus"`
+	// Status of registration of the container with the Recovery Services Vault.
+	RegistrationStatus pulumi.StringPtrInput `pulumi:"registrationStatus"`
+	// To check if upgrade available
+	UpgradeAvailable pulumi.BoolPtrInput `pulumi:"upgradeAvailable"`
+}
+
+func (AzureBackupServerContainerResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureBackupServerContainerResponse)(nil)).Elem()
+}
+
+func (i AzureBackupServerContainerResponseArgs) ToAzureBackupServerContainerResponseOutput() AzureBackupServerContainerResponseOutput {
+	return i.ToAzureBackupServerContainerResponseOutputWithContext(context.Background())
+}
+
+func (i AzureBackupServerContainerResponseArgs) ToAzureBackupServerContainerResponseOutputWithContext(ctx context.Context) AzureBackupServerContainerResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureBackupServerContainerResponseOutput)
+}
+
+// AzureBackupServer (DPMVenus) workload-specific protection container.
+type AzureBackupServerContainerResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureBackupServerContainerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureBackupServerContainerResponse)(nil)).Elem()
+}
+
+func (o AzureBackupServerContainerResponseOutput) ToAzureBackupServerContainerResponseOutput() AzureBackupServerContainerResponseOutput {
+	return o
+}
+
+func (o AzureBackupServerContainerResponseOutput) ToAzureBackupServerContainerResponseOutputWithContext(ctx context.Context) AzureBackupServerContainerResponseOutput {
+	return o
+}
+
+// Type of backup management for the container.
+func (o AzureBackupServerContainerResponseOutput) BackupManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureBackupServerContainerResponse) *string { return v.BackupManagementType }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the container is re-registrable.
+func (o AzureBackupServerContainerResponseOutput) CanReRegister() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureBackupServerContainerResponse) *bool { return v.CanReRegister }).(pulumi.BoolPtrOutput)
+}
+
+// ID of container.
+func (o AzureBackupServerContainerResponseOutput) ContainerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureBackupServerContainerResponse) *string { return v.ContainerId }).(pulumi.StringPtrOutput)
+}
+
+// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+// Backup is VMAppContainer
+// Expected value is 'DPMContainer'.
+func (o AzureBackupServerContainerResponseOutput) ContainerType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureBackupServerContainerResponse) string { return v.ContainerType }).(pulumi.StringOutput)
+}
+
+// Backup engine Agent version
+func (o AzureBackupServerContainerResponseOutput) DpmAgentVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureBackupServerContainerResponse) *string { return v.DpmAgentVersion }).(pulumi.StringPtrOutput)
+}
+
+// List of BackupEngines protecting the container
+func (o AzureBackupServerContainerResponseOutput) DpmServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AzureBackupServerContainerResponse) []string { return v.DpmServers }).(pulumi.StringArrayOutput)
+}
+
+// Extended Info of the container.
+func (o AzureBackupServerContainerResponseOutput) ExtendedInfo() DPMContainerExtendedInfoResponsePtrOutput {
+	return o.ApplyT(func(v AzureBackupServerContainerResponse) *DPMContainerExtendedInfoResponse { return v.ExtendedInfo }).(DPMContainerExtendedInfoResponsePtrOutput)
+}
+
+// Friendly name of the container.
+func (o AzureBackupServerContainerResponseOutput) FriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureBackupServerContainerResponse) *string { return v.FriendlyName }).(pulumi.StringPtrOutput)
+}
+
+// Status of health of the container.
+func (o AzureBackupServerContainerResponseOutput) HealthStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureBackupServerContainerResponse) *string { return v.HealthStatus }).(pulumi.StringPtrOutput)
+}
+
+// Number of protected items in the BackupEngine
+func (o AzureBackupServerContainerResponseOutput) ProtectedItemCount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AzureBackupServerContainerResponse) *float64 { return v.ProtectedItemCount }).(pulumi.Float64PtrOutput)
+}
+
+// Protection status of the container.
+func (o AzureBackupServerContainerResponseOutput) ProtectionStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureBackupServerContainerResponse) *string { return v.ProtectionStatus }).(pulumi.StringPtrOutput)
+}
+
+// Status of registration of the container with the Recovery Services Vault.
+func (o AzureBackupServerContainerResponseOutput) RegistrationStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureBackupServerContainerResponse) *string { return v.RegistrationStatus }).(pulumi.StringPtrOutput)
+}
+
+// To check if upgrade available
+func (o AzureBackupServerContainerResponseOutput) UpgradeAvailable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureBackupServerContainerResponse) *bool { return v.UpgradeAvailable }).(pulumi.BoolPtrOutput)
+}
+
 // Fabric provider specific settings.
 type AzureFabricCreationInput struct {
 	// Gets the class type.
@@ -3882,6 +4232,1662 @@ func (o AzureFileshareProtectedItemResponseOutput) SourceResourceId() pulumi.Str
 // Type of workload this item represents.
 func (o AzureFileshareProtectedItemResponseOutput) WorkloadType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureFileshareProtectedItemResponse) *string { return v.WorkloadType }).(pulumi.StringPtrOutput)
+}
+
+// IaaS VM workload-specific backup item representing a classic virtual machine.
+type AzureIaaSClassicComputeVMContainer struct {
+	// Type of backup management for the container.
+	BackupManagementType *string `pulumi:"backupManagementType"`
+	// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+	// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+	// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+	// Backup is VMAppContainer
+	// Expected value is 'IaaSVMContainer'.
+	ContainerType string `pulumi:"containerType"`
+	// Friendly name of the container.
+	FriendlyName *string `pulumi:"friendlyName"`
+	// Status of health of the container.
+	HealthStatus *string `pulumi:"healthStatus"`
+	// Status of registration of the container with the Recovery Services Vault.
+	RegistrationStatus *string `pulumi:"registrationStatus"`
+	// Resource group name of Recovery Services Vault.
+	ResourceGroup *string `pulumi:"resourceGroup"`
+	// Fully qualified ARM url of the virtual machine represented by this Azure IaaS VM container.
+	VirtualMachineId *string `pulumi:"virtualMachineId"`
+	// Specifies whether the container represents a Classic or an Azure Resource Manager VM.
+	VirtualMachineVersion *string `pulumi:"virtualMachineVersion"`
+}
+
+// AzureIaaSClassicComputeVMContainerInput is an input type that accepts AzureIaaSClassicComputeVMContainerArgs and AzureIaaSClassicComputeVMContainerOutput values.
+// You can construct a concrete instance of `AzureIaaSClassicComputeVMContainerInput` via:
+//
+//          AzureIaaSClassicComputeVMContainerArgs{...}
+type AzureIaaSClassicComputeVMContainerInput interface {
+	pulumi.Input
+
+	ToAzureIaaSClassicComputeVMContainerOutput() AzureIaaSClassicComputeVMContainerOutput
+	ToAzureIaaSClassicComputeVMContainerOutputWithContext(context.Context) AzureIaaSClassicComputeVMContainerOutput
+}
+
+// IaaS VM workload-specific backup item representing a classic virtual machine.
+type AzureIaaSClassicComputeVMContainerArgs struct {
+	// Type of backup management for the container.
+	BackupManagementType pulumi.StringPtrInput `pulumi:"backupManagementType"`
+	// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+	// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+	// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+	// Backup is VMAppContainer
+	// Expected value is 'IaaSVMContainer'.
+	ContainerType pulumi.StringInput `pulumi:"containerType"`
+	// Friendly name of the container.
+	FriendlyName pulumi.StringPtrInput `pulumi:"friendlyName"`
+	// Status of health of the container.
+	HealthStatus pulumi.StringPtrInput `pulumi:"healthStatus"`
+	// Status of registration of the container with the Recovery Services Vault.
+	RegistrationStatus pulumi.StringPtrInput `pulumi:"registrationStatus"`
+	// Resource group name of Recovery Services Vault.
+	ResourceGroup pulumi.StringPtrInput `pulumi:"resourceGroup"`
+	// Fully qualified ARM url of the virtual machine represented by this Azure IaaS VM container.
+	VirtualMachineId pulumi.StringPtrInput `pulumi:"virtualMachineId"`
+	// Specifies whether the container represents a Classic or an Azure Resource Manager VM.
+	VirtualMachineVersion pulumi.StringPtrInput `pulumi:"virtualMachineVersion"`
+}
+
+func (AzureIaaSClassicComputeVMContainerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureIaaSClassicComputeVMContainer)(nil)).Elem()
+}
+
+func (i AzureIaaSClassicComputeVMContainerArgs) ToAzureIaaSClassicComputeVMContainerOutput() AzureIaaSClassicComputeVMContainerOutput {
+	return i.ToAzureIaaSClassicComputeVMContainerOutputWithContext(context.Background())
+}
+
+func (i AzureIaaSClassicComputeVMContainerArgs) ToAzureIaaSClassicComputeVMContainerOutputWithContext(ctx context.Context) AzureIaaSClassicComputeVMContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureIaaSClassicComputeVMContainerOutput)
+}
+
+// IaaS VM workload-specific backup item representing a classic virtual machine.
+type AzureIaaSClassicComputeVMContainerOutput struct{ *pulumi.OutputState }
+
+func (AzureIaaSClassicComputeVMContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureIaaSClassicComputeVMContainer)(nil)).Elem()
+}
+
+func (o AzureIaaSClassicComputeVMContainerOutput) ToAzureIaaSClassicComputeVMContainerOutput() AzureIaaSClassicComputeVMContainerOutput {
+	return o
+}
+
+func (o AzureIaaSClassicComputeVMContainerOutput) ToAzureIaaSClassicComputeVMContainerOutputWithContext(ctx context.Context) AzureIaaSClassicComputeVMContainerOutput {
+	return o
+}
+
+// Type of backup management for the container.
+func (o AzureIaaSClassicComputeVMContainerOutput) BackupManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMContainer) *string { return v.BackupManagementType }).(pulumi.StringPtrOutput)
+}
+
+// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+// Backup is VMAppContainer
+// Expected value is 'IaaSVMContainer'.
+func (o AzureIaaSClassicComputeVMContainerOutput) ContainerType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMContainer) string { return v.ContainerType }).(pulumi.StringOutput)
+}
+
+// Friendly name of the container.
+func (o AzureIaaSClassicComputeVMContainerOutput) FriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMContainer) *string { return v.FriendlyName }).(pulumi.StringPtrOutput)
+}
+
+// Status of health of the container.
+func (o AzureIaaSClassicComputeVMContainerOutput) HealthStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMContainer) *string { return v.HealthStatus }).(pulumi.StringPtrOutput)
+}
+
+// Status of registration of the container with the Recovery Services Vault.
+func (o AzureIaaSClassicComputeVMContainerOutput) RegistrationStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMContainer) *string { return v.RegistrationStatus }).(pulumi.StringPtrOutput)
+}
+
+// Resource group name of Recovery Services Vault.
+func (o AzureIaaSClassicComputeVMContainerOutput) ResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMContainer) *string { return v.ResourceGroup }).(pulumi.StringPtrOutput)
+}
+
+// Fully qualified ARM url of the virtual machine represented by this Azure IaaS VM container.
+func (o AzureIaaSClassicComputeVMContainerOutput) VirtualMachineId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMContainer) *string { return v.VirtualMachineId }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the container represents a Classic or an Azure Resource Manager VM.
+func (o AzureIaaSClassicComputeVMContainerOutput) VirtualMachineVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMContainer) *string { return v.VirtualMachineVersion }).(pulumi.StringPtrOutput)
+}
+
+// IaaS VM workload-specific backup item representing a classic virtual machine.
+type AzureIaaSClassicComputeVMContainerResponse struct {
+	// Type of backup management for the container.
+	BackupManagementType *string `pulumi:"backupManagementType"`
+	// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+	// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+	// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+	// Backup is VMAppContainer
+	// Expected value is 'IaaSVMContainer'.
+	ContainerType string `pulumi:"containerType"`
+	// Friendly name of the container.
+	FriendlyName *string `pulumi:"friendlyName"`
+	// Status of health of the container.
+	HealthStatus *string `pulumi:"healthStatus"`
+	// Status of registration of the container with the Recovery Services Vault.
+	RegistrationStatus *string `pulumi:"registrationStatus"`
+	// Resource group name of Recovery Services Vault.
+	ResourceGroup *string `pulumi:"resourceGroup"`
+	// Fully qualified ARM url of the virtual machine represented by this Azure IaaS VM container.
+	VirtualMachineId *string `pulumi:"virtualMachineId"`
+	// Specifies whether the container represents a Classic or an Azure Resource Manager VM.
+	VirtualMachineVersion *string `pulumi:"virtualMachineVersion"`
+}
+
+// AzureIaaSClassicComputeVMContainerResponseInput is an input type that accepts AzureIaaSClassicComputeVMContainerResponseArgs and AzureIaaSClassicComputeVMContainerResponseOutput values.
+// You can construct a concrete instance of `AzureIaaSClassicComputeVMContainerResponseInput` via:
+//
+//          AzureIaaSClassicComputeVMContainerResponseArgs{...}
+type AzureIaaSClassicComputeVMContainerResponseInput interface {
+	pulumi.Input
+
+	ToAzureIaaSClassicComputeVMContainerResponseOutput() AzureIaaSClassicComputeVMContainerResponseOutput
+	ToAzureIaaSClassicComputeVMContainerResponseOutputWithContext(context.Context) AzureIaaSClassicComputeVMContainerResponseOutput
+}
+
+// IaaS VM workload-specific backup item representing a classic virtual machine.
+type AzureIaaSClassicComputeVMContainerResponseArgs struct {
+	// Type of backup management for the container.
+	BackupManagementType pulumi.StringPtrInput `pulumi:"backupManagementType"`
+	// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+	// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+	// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+	// Backup is VMAppContainer
+	// Expected value is 'IaaSVMContainer'.
+	ContainerType pulumi.StringInput `pulumi:"containerType"`
+	// Friendly name of the container.
+	FriendlyName pulumi.StringPtrInput `pulumi:"friendlyName"`
+	// Status of health of the container.
+	HealthStatus pulumi.StringPtrInput `pulumi:"healthStatus"`
+	// Status of registration of the container with the Recovery Services Vault.
+	RegistrationStatus pulumi.StringPtrInput `pulumi:"registrationStatus"`
+	// Resource group name of Recovery Services Vault.
+	ResourceGroup pulumi.StringPtrInput `pulumi:"resourceGroup"`
+	// Fully qualified ARM url of the virtual machine represented by this Azure IaaS VM container.
+	VirtualMachineId pulumi.StringPtrInput `pulumi:"virtualMachineId"`
+	// Specifies whether the container represents a Classic or an Azure Resource Manager VM.
+	VirtualMachineVersion pulumi.StringPtrInput `pulumi:"virtualMachineVersion"`
+}
+
+func (AzureIaaSClassicComputeVMContainerResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureIaaSClassicComputeVMContainerResponse)(nil)).Elem()
+}
+
+func (i AzureIaaSClassicComputeVMContainerResponseArgs) ToAzureIaaSClassicComputeVMContainerResponseOutput() AzureIaaSClassicComputeVMContainerResponseOutput {
+	return i.ToAzureIaaSClassicComputeVMContainerResponseOutputWithContext(context.Background())
+}
+
+func (i AzureIaaSClassicComputeVMContainerResponseArgs) ToAzureIaaSClassicComputeVMContainerResponseOutputWithContext(ctx context.Context) AzureIaaSClassicComputeVMContainerResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureIaaSClassicComputeVMContainerResponseOutput)
+}
+
+// IaaS VM workload-specific backup item representing a classic virtual machine.
+type AzureIaaSClassicComputeVMContainerResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureIaaSClassicComputeVMContainerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureIaaSClassicComputeVMContainerResponse)(nil)).Elem()
+}
+
+func (o AzureIaaSClassicComputeVMContainerResponseOutput) ToAzureIaaSClassicComputeVMContainerResponseOutput() AzureIaaSClassicComputeVMContainerResponseOutput {
+	return o
+}
+
+func (o AzureIaaSClassicComputeVMContainerResponseOutput) ToAzureIaaSClassicComputeVMContainerResponseOutputWithContext(ctx context.Context) AzureIaaSClassicComputeVMContainerResponseOutput {
+	return o
+}
+
+// Type of backup management for the container.
+func (o AzureIaaSClassicComputeVMContainerResponseOutput) BackupManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMContainerResponse) *string { return v.BackupManagementType }).(pulumi.StringPtrOutput)
+}
+
+// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+// Backup is VMAppContainer
+// Expected value is 'IaaSVMContainer'.
+func (o AzureIaaSClassicComputeVMContainerResponseOutput) ContainerType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMContainerResponse) string { return v.ContainerType }).(pulumi.StringOutput)
+}
+
+// Friendly name of the container.
+func (o AzureIaaSClassicComputeVMContainerResponseOutput) FriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMContainerResponse) *string { return v.FriendlyName }).(pulumi.StringPtrOutput)
+}
+
+// Status of health of the container.
+func (o AzureIaaSClassicComputeVMContainerResponseOutput) HealthStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMContainerResponse) *string { return v.HealthStatus }).(pulumi.StringPtrOutput)
+}
+
+// Status of registration of the container with the Recovery Services Vault.
+func (o AzureIaaSClassicComputeVMContainerResponseOutput) RegistrationStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMContainerResponse) *string { return v.RegistrationStatus }).(pulumi.StringPtrOutput)
+}
+
+// Resource group name of Recovery Services Vault.
+func (o AzureIaaSClassicComputeVMContainerResponseOutput) ResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMContainerResponse) *string { return v.ResourceGroup }).(pulumi.StringPtrOutput)
+}
+
+// Fully qualified ARM url of the virtual machine represented by this Azure IaaS VM container.
+func (o AzureIaaSClassicComputeVMContainerResponseOutput) VirtualMachineId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMContainerResponse) *string { return v.VirtualMachineId }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the container represents a Classic or an Azure Resource Manager VM.
+func (o AzureIaaSClassicComputeVMContainerResponseOutput) VirtualMachineVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMContainerResponse) *string { return v.VirtualMachineVersion }).(pulumi.StringPtrOutput)
+}
+
+// IaaS VM workload-specific backup item representing the Classic Compute VM.
+type AzureIaaSClassicComputeVMProtectedItem struct {
+	// Type of backup management for the backed up item.
+	BackupManagementType *string `pulumi:"backupManagementType"`
+	// Name of the backup set the backup item belongs to
+	BackupSetName *string `pulumi:"backupSetName"`
+	// Unique name of container
+	ContainerName *string `pulumi:"containerName"`
+	// Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+	CreateMode *string `pulumi:"createMode"`
+	// Time for deferred deletion in UTC
+	DeferredDeleteTimeInUTC *string `pulumi:"deferredDeleteTimeInUTC"`
+	// Time remaining before the DS marked for deferred delete is permanently deleted
+	DeferredDeleteTimeRemaining *string `pulumi:"deferredDeleteTimeRemaining"`
+	// Additional information for this backup item.
+	ExtendedInfo *AzureIaaSVMProtectedItemExtendedInfo `pulumi:"extendedInfo"`
+	// Extended Properties for Azure IaasVM Backup.
+	ExtendedProperties *ExtendedProperties `pulumi:"extendedProperties"`
+	// Friendly name of the VM represented by this backup item.
+	FriendlyName *string `pulumi:"friendlyName"`
+	// Health status of protected item.
+	HealthStatus *string `pulumi:"healthStatus"`
+	// Flag to identify whether the deferred deleted DS is to be purged soon
+	IsDeferredDeleteScheduleUpcoming *bool `pulumi:"isDeferredDeleteScheduleUpcoming"`
+	// Flag to identify that deferred deleted DS is to be moved into Pause state
+	IsRehydrate *bool `pulumi:"isRehydrate"`
+	// Flag to identify whether the DS is scheduled for deferred delete
+	IsScheduledForDeferredDelete *bool `pulumi:"isScheduledForDeferredDelete"`
+	// Health details of different KPIs
+	KpisHealths map[string]KPIResourceHealthDetails `pulumi:"kpisHealths"`
+	// Last backup operation status.
+	LastBackupStatus *string `pulumi:"lastBackupStatus"`
+	// Timestamp of the last backup operation on this backup item.
+	LastBackupTime *string `pulumi:"lastBackupTime"`
+	// Timestamp when the last (latest) backup copy was created for this backup item.
+	LastRecoveryPoint *string `pulumi:"lastRecoveryPoint"`
+	// ID of the backup policy with which this item is backed up.
+	PolicyId *string `pulumi:"policyId"`
+	// Data ID of the protected item.
+	ProtectedItemDataId *string `pulumi:"protectedItemDataId"`
+	// backup item type.
+	// Expected value is 'AzureIaaSVMProtectedItem'.
+	ProtectedItemType string `pulumi:"protectedItemType"`
+	// Backup state of this backup item.
+	ProtectionState *string `pulumi:"protectionState"`
+	// Backup status of this backup item.
+	ProtectionStatus *string `pulumi:"protectionStatus"`
+	// ARM ID of the resource to be backed up.
+	SourceResourceId *string `pulumi:"sourceResourceId"`
+	// Fully qualified ARM ID of the virtual machine represented by this item.
+	VirtualMachineId *string `pulumi:"virtualMachineId"`
+	// Type of workload this item represents.
+	WorkloadType *string `pulumi:"workloadType"`
+}
+
+// AzureIaaSClassicComputeVMProtectedItemInput is an input type that accepts AzureIaaSClassicComputeVMProtectedItemArgs and AzureIaaSClassicComputeVMProtectedItemOutput values.
+// You can construct a concrete instance of `AzureIaaSClassicComputeVMProtectedItemInput` via:
+//
+//          AzureIaaSClassicComputeVMProtectedItemArgs{...}
+type AzureIaaSClassicComputeVMProtectedItemInput interface {
+	pulumi.Input
+
+	ToAzureIaaSClassicComputeVMProtectedItemOutput() AzureIaaSClassicComputeVMProtectedItemOutput
+	ToAzureIaaSClassicComputeVMProtectedItemOutputWithContext(context.Context) AzureIaaSClassicComputeVMProtectedItemOutput
+}
+
+// IaaS VM workload-specific backup item representing the Classic Compute VM.
+type AzureIaaSClassicComputeVMProtectedItemArgs struct {
+	// Type of backup management for the backed up item.
+	BackupManagementType pulumi.StringPtrInput `pulumi:"backupManagementType"`
+	// Name of the backup set the backup item belongs to
+	BackupSetName pulumi.StringPtrInput `pulumi:"backupSetName"`
+	// Unique name of container
+	ContainerName pulumi.StringPtrInput `pulumi:"containerName"`
+	// Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+	CreateMode pulumi.StringPtrInput `pulumi:"createMode"`
+	// Time for deferred deletion in UTC
+	DeferredDeleteTimeInUTC pulumi.StringPtrInput `pulumi:"deferredDeleteTimeInUTC"`
+	// Time remaining before the DS marked for deferred delete is permanently deleted
+	DeferredDeleteTimeRemaining pulumi.StringPtrInput `pulumi:"deferredDeleteTimeRemaining"`
+	// Additional information for this backup item.
+	ExtendedInfo AzureIaaSVMProtectedItemExtendedInfoPtrInput `pulumi:"extendedInfo"`
+	// Extended Properties for Azure IaasVM Backup.
+	ExtendedProperties ExtendedPropertiesPtrInput `pulumi:"extendedProperties"`
+	// Friendly name of the VM represented by this backup item.
+	FriendlyName pulumi.StringPtrInput `pulumi:"friendlyName"`
+	// Health status of protected item.
+	HealthStatus pulumi.StringPtrInput `pulumi:"healthStatus"`
+	// Flag to identify whether the deferred deleted DS is to be purged soon
+	IsDeferredDeleteScheduleUpcoming pulumi.BoolPtrInput `pulumi:"isDeferredDeleteScheduleUpcoming"`
+	// Flag to identify that deferred deleted DS is to be moved into Pause state
+	IsRehydrate pulumi.BoolPtrInput `pulumi:"isRehydrate"`
+	// Flag to identify whether the DS is scheduled for deferred delete
+	IsScheduledForDeferredDelete pulumi.BoolPtrInput `pulumi:"isScheduledForDeferredDelete"`
+	// Health details of different KPIs
+	KpisHealths KPIResourceHealthDetailsMapInput `pulumi:"kpisHealths"`
+	// Last backup operation status.
+	LastBackupStatus pulumi.StringPtrInput `pulumi:"lastBackupStatus"`
+	// Timestamp of the last backup operation on this backup item.
+	LastBackupTime pulumi.StringPtrInput `pulumi:"lastBackupTime"`
+	// Timestamp when the last (latest) backup copy was created for this backup item.
+	LastRecoveryPoint pulumi.StringPtrInput `pulumi:"lastRecoveryPoint"`
+	// ID of the backup policy with which this item is backed up.
+	PolicyId pulumi.StringPtrInput `pulumi:"policyId"`
+	// Data ID of the protected item.
+	ProtectedItemDataId pulumi.StringPtrInput `pulumi:"protectedItemDataId"`
+	// backup item type.
+	// Expected value is 'AzureIaaSVMProtectedItem'.
+	ProtectedItemType pulumi.StringInput `pulumi:"protectedItemType"`
+	// Backup state of this backup item.
+	ProtectionState pulumi.StringPtrInput `pulumi:"protectionState"`
+	// Backup status of this backup item.
+	ProtectionStatus pulumi.StringPtrInput `pulumi:"protectionStatus"`
+	// ARM ID of the resource to be backed up.
+	SourceResourceId pulumi.StringPtrInput `pulumi:"sourceResourceId"`
+	// Fully qualified ARM ID of the virtual machine represented by this item.
+	VirtualMachineId pulumi.StringPtrInput `pulumi:"virtualMachineId"`
+	// Type of workload this item represents.
+	WorkloadType pulumi.StringPtrInput `pulumi:"workloadType"`
+}
+
+func (AzureIaaSClassicComputeVMProtectedItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureIaaSClassicComputeVMProtectedItem)(nil)).Elem()
+}
+
+func (i AzureIaaSClassicComputeVMProtectedItemArgs) ToAzureIaaSClassicComputeVMProtectedItemOutput() AzureIaaSClassicComputeVMProtectedItemOutput {
+	return i.ToAzureIaaSClassicComputeVMProtectedItemOutputWithContext(context.Background())
+}
+
+func (i AzureIaaSClassicComputeVMProtectedItemArgs) ToAzureIaaSClassicComputeVMProtectedItemOutputWithContext(ctx context.Context) AzureIaaSClassicComputeVMProtectedItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureIaaSClassicComputeVMProtectedItemOutput)
+}
+
+// IaaS VM workload-specific backup item representing the Classic Compute VM.
+type AzureIaaSClassicComputeVMProtectedItemOutput struct{ *pulumi.OutputState }
+
+func (AzureIaaSClassicComputeVMProtectedItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureIaaSClassicComputeVMProtectedItem)(nil)).Elem()
+}
+
+func (o AzureIaaSClassicComputeVMProtectedItemOutput) ToAzureIaaSClassicComputeVMProtectedItemOutput() AzureIaaSClassicComputeVMProtectedItemOutput {
+	return o
+}
+
+func (o AzureIaaSClassicComputeVMProtectedItemOutput) ToAzureIaaSClassicComputeVMProtectedItemOutputWithContext(ctx context.Context) AzureIaaSClassicComputeVMProtectedItemOutput {
+	return o
+}
+
+// Type of backup management for the backed up item.
+func (o AzureIaaSClassicComputeVMProtectedItemOutput) BackupManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItem) *string { return v.BackupManagementType }).(pulumi.StringPtrOutput)
+}
+
+// Name of the backup set the backup item belongs to
+func (o AzureIaaSClassicComputeVMProtectedItemOutput) BackupSetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItem) *string { return v.BackupSetName }).(pulumi.StringPtrOutput)
+}
+
+// Unique name of container
+func (o AzureIaaSClassicComputeVMProtectedItemOutput) ContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItem) *string { return v.ContainerName }).(pulumi.StringPtrOutput)
+}
+
+// Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+func (o AzureIaaSClassicComputeVMProtectedItemOutput) CreateMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItem) *string { return v.CreateMode }).(pulumi.StringPtrOutput)
+}
+
+// Time for deferred deletion in UTC
+func (o AzureIaaSClassicComputeVMProtectedItemOutput) DeferredDeleteTimeInUTC() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItem) *string { return v.DeferredDeleteTimeInUTC }).(pulumi.StringPtrOutput)
+}
+
+// Time remaining before the DS marked for deferred delete is permanently deleted
+func (o AzureIaaSClassicComputeVMProtectedItemOutput) DeferredDeleteTimeRemaining() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItem) *string { return v.DeferredDeleteTimeRemaining }).(pulumi.StringPtrOutput)
+}
+
+// Additional information for this backup item.
+func (o AzureIaaSClassicComputeVMProtectedItemOutput) ExtendedInfo() AzureIaaSVMProtectedItemExtendedInfoPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItem) *AzureIaaSVMProtectedItemExtendedInfo {
+		return v.ExtendedInfo
+	}).(AzureIaaSVMProtectedItemExtendedInfoPtrOutput)
+}
+
+// Extended Properties for Azure IaasVM Backup.
+func (o AzureIaaSClassicComputeVMProtectedItemOutput) ExtendedProperties() ExtendedPropertiesPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItem) *ExtendedProperties { return v.ExtendedProperties }).(ExtendedPropertiesPtrOutput)
+}
+
+// Friendly name of the VM represented by this backup item.
+func (o AzureIaaSClassicComputeVMProtectedItemOutput) FriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItem) *string { return v.FriendlyName }).(pulumi.StringPtrOutput)
+}
+
+// Health status of protected item.
+func (o AzureIaaSClassicComputeVMProtectedItemOutput) HealthStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItem) *string { return v.HealthStatus }).(pulumi.StringPtrOutput)
+}
+
+// Flag to identify whether the deferred deleted DS is to be purged soon
+func (o AzureIaaSClassicComputeVMProtectedItemOutput) IsDeferredDeleteScheduleUpcoming() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItem) *bool { return v.IsDeferredDeleteScheduleUpcoming }).(pulumi.BoolPtrOutput)
+}
+
+// Flag to identify that deferred deleted DS is to be moved into Pause state
+func (o AzureIaaSClassicComputeVMProtectedItemOutput) IsRehydrate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItem) *bool { return v.IsRehydrate }).(pulumi.BoolPtrOutput)
+}
+
+// Flag to identify whether the DS is scheduled for deferred delete
+func (o AzureIaaSClassicComputeVMProtectedItemOutput) IsScheduledForDeferredDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItem) *bool { return v.IsScheduledForDeferredDelete }).(pulumi.BoolPtrOutput)
+}
+
+// Health details of different KPIs
+func (o AzureIaaSClassicComputeVMProtectedItemOutput) KpisHealths() KPIResourceHealthDetailsMapOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItem) map[string]KPIResourceHealthDetails {
+		return v.KpisHealths
+	}).(KPIResourceHealthDetailsMapOutput)
+}
+
+// Last backup operation status.
+func (o AzureIaaSClassicComputeVMProtectedItemOutput) LastBackupStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItem) *string { return v.LastBackupStatus }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp of the last backup operation on this backup item.
+func (o AzureIaaSClassicComputeVMProtectedItemOutput) LastBackupTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItem) *string { return v.LastBackupTime }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp when the last (latest) backup copy was created for this backup item.
+func (o AzureIaaSClassicComputeVMProtectedItemOutput) LastRecoveryPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItem) *string { return v.LastRecoveryPoint }).(pulumi.StringPtrOutput)
+}
+
+// ID of the backup policy with which this item is backed up.
+func (o AzureIaaSClassicComputeVMProtectedItemOutput) PolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItem) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
+}
+
+// Data ID of the protected item.
+func (o AzureIaaSClassicComputeVMProtectedItemOutput) ProtectedItemDataId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItem) *string { return v.ProtectedItemDataId }).(pulumi.StringPtrOutput)
+}
+
+// backup item type.
+// Expected value is 'AzureIaaSVMProtectedItem'.
+func (o AzureIaaSClassicComputeVMProtectedItemOutput) ProtectedItemType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItem) string { return v.ProtectedItemType }).(pulumi.StringOutput)
+}
+
+// Backup state of this backup item.
+func (o AzureIaaSClassicComputeVMProtectedItemOutput) ProtectionState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItem) *string { return v.ProtectionState }).(pulumi.StringPtrOutput)
+}
+
+// Backup status of this backup item.
+func (o AzureIaaSClassicComputeVMProtectedItemOutput) ProtectionStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItem) *string { return v.ProtectionStatus }).(pulumi.StringPtrOutput)
+}
+
+// ARM ID of the resource to be backed up.
+func (o AzureIaaSClassicComputeVMProtectedItemOutput) SourceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItem) *string { return v.SourceResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Fully qualified ARM ID of the virtual machine represented by this item.
+func (o AzureIaaSClassicComputeVMProtectedItemOutput) VirtualMachineId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItem) *string { return v.VirtualMachineId }).(pulumi.StringPtrOutput)
+}
+
+// Type of workload this item represents.
+func (o AzureIaaSClassicComputeVMProtectedItemOutput) WorkloadType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItem) *string { return v.WorkloadType }).(pulumi.StringPtrOutput)
+}
+
+// IaaS VM workload-specific backup item representing the Classic Compute VM.
+type AzureIaaSClassicComputeVMProtectedItemResponse struct {
+	// Type of backup management for the backed up item.
+	BackupManagementType *string `pulumi:"backupManagementType"`
+	// Name of the backup set the backup item belongs to
+	BackupSetName *string `pulumi:"backupSetName"`
+	// Unique name of container
+	ContainerName *string `pulumi:"containerName"`
+	// Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+	CreateMode *string `pulumi:"createMode"`
+	// Time for deferred deletion in UTC
+	DeferredDeleteTimeInUTC *string `pulumi:"deferredDeleteTimeInUTC"`
+	// Time remaining before the DS marked for deferred delete is permanently deleted
+	DeferredDeleteTimeRemaining *string `pulumi:"deferredDeleteTimeRemaining"`
+	// Additional information for this backup item.
+	ExtendedInfo *AzureIaaSVMProtectedItemExtendedInfoResponse `pulumi:"extendedInfo"`
+	// Extended Properties for Azure IaasVM Backup.
+	ExtendedProperties *ExtendedPropertiesResponse `pulumi:"extendedProperties"`
+	// Friendly name of the VM represented by this backup item.
+	FriendlyName *string `pulumi:"friendlyName"`
+	// Health details on this backup item.
+	HealthDetails []AzureIaaSVMHealthDetailsResponse `pulumi:"healthDetails"`
+	// Health status of protected item.
+	HealthStatus *string `pulumi:"healthStatus"`
+	// Flag to identify whether the deferred deleted DS is to be purged soon
+	IsDeferredDeleteScheduleUpcoming *bool `pulumi:"isDeferredDeleteScheduleUpcoming"`
+	// Flag to identify that deferred deleted DS is to be moved into Pause state
+	IsRehydrate *bool `pulumi:"isRehydrate"`
+	// Flag to identify whether the DS is scheduled for deferred delete
+	IsScheduledForDeferredDelete *bool `pulumi:"isScheduledForDeferredDelete"`
+	// Health details of different KPIs
+	KpisHealths map[string]KPIResourceHealthDetailsResponse `pulumi:"kpisHealths"`
+	// Last backup operation status.
+	LastBackupStatus *string `pulumi:"lastBackupStatus"`
+	// Timestamp of the last backup operation on this backup item.
+	LastBackupTime *string `pulumi:"lastBackupTime"`
+	// Timestamp when the last (latest) backup copy was created for this backup item.
+	LastRecoveryPoint *string `pulumi:"lastRecoveryPoint"`
+	// ID of the backup policy with which this item is backed up.
+	PolicyId *string `pulumi:"policyId"`
+	// Data ID of the protected item.
+	ProtectedItemDataId *string `pulumi:"protectedItemDataId"`
+	// backup item type.
+	// Expected value is 'AzureIaaSVMProtectedItem'.
+	ProtectedItemType string `pulumi:"protectedItemType"`
+	// Backup state of this backup item.
+	ProtectionState *string `pulumi:"protectionState"`
+	// Backup status of this backup item.
+	ProtectionStatus *string `pulumi:"protectionStatus"`
+	// ARM ID of the resource to be backed up.
+	SourceResourceId *string `pulumi:"sourceResourceId"`
+	// Fully qualified ARM ID of the virtual machine represented by this item.
+	VirtualMachineId *string `pulumi:"virtualMachineId"`
+	// Type of workload this item represents.
+	WorkloadType *string `pulumi:"workloadType"`
+}
+
+// AzureIaaSClassicComputeVMProtectedItemResponseInput is an input type that accepts AzureIaaSClassicComputeVMProtectedItemResponseArgs and AzureIaaSClassicComputeVMProtectedItemResponseOutput values.
+// You can construct a concrete instance of `AzureIaaSClassicComputeVMProtectedItemResponseInput` via:
+//
+//          AzureIaaSClassicComputeVMProtectedItemResponseArgs{...}
+type AzureIaaSClassicComputeVMProtectedItemResponseInput interface {
+	pulumi.Input
+
+	ToAzureIaaSClassicComputeVMProtectedItemResponseOutput() AzureIaaSClassicComputeVMProtectedItemResponseOutput
+	ToAzureIaaSClassicComputeVMProtectedItemResponseOutputWithContext(context.Context) AzureIaaSClassicComputeVMProtectedItemResponseOutput
+}
+
+// IaaS VM workload-specific backup item representing the Classic Compute VM.
+type AzureIaaSClassicComputeVMProtectedItemResponseArgs struct {
+	// Type of backup management for the backed up item.
+	BackupManagementType pulumi.StringPtrInput `pulumi:"backupManagementType"`
+	// Name of the backup set the backup item belongs to
+	BackupSetName pulumi.StringPtrInput `pulumi:"backupSetName"`
+	// Unique name of container
+	ContainerName pulumi.StringPtrInput `pulumi:"containerName"`
+	// Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+	CreateMode pulumi.StringPtrInput `pulumi:"createMode"`
+	// Time for deferred deletion in UTC
+	DeferredDeleteTimeInUTC pulumi.StringPtrInput `pulumi:"deferredDeleteTimeInUTC"`
+	// Time remaining before the DS marked for deferred delete is permanently deleted
+	DeferredDeleteTimeRemaining pulumi.StringPtrInput `pulumi:"deferredDeleteTimeRemaining"`
+	// Additional information for this backup item.
+	ExtendedInfo AzureIaaSVMProtectedItemExtendedInfoResponsePtrInput `pulumi:"extendedInfo"`
+	// Extended Properties for Azure IaasVM Backup.
+	ExtendedProperties ExtendedPropertiesResponsePtrInput `pulumi:"extendedProperties"`
+	// Friendly name of the VM represented by this backup item.
+	FriendlyName pulumi.StringPtrInput `pulumi:"friendlyName"`
+	// Health details on this backup item.
+	HealthDetails AzureIaaSVMHealthDetailsResponseArrayInput `pulumi:"healthDetails"`
+	// Health status of protected item.
+	HealthStatus pulumi.StringPtrInput `pulumi:"healthStatus"`
+	// Flag to identify whether the deferred deleted DS is to be purged soon
+	IsDeferredDeleteScheduleUpcoming pulumi.BoolPtrInput `pulumi:"isDeferredDeleteScheduleUpcoming"`
+	// Flag to identify that deferred deleted DS is to be moved into Pause state
+	IsRehydrate pulumi.BoolPtrInput `pulumi:"isRehydrate"`
+	// Flag to identify whether the DS is scheduled for deferred delete
+	IsScheduledForDeferredDelete pulumi.BoolPtrInput `pulumi:"isScheduledForDeferredDelete"`
+	// Health details of different KPIs
+	KpisHealths KPIResourceHealthDetailsResponseMapInput `pulumi:"kpisHealths"`
+	// Last backup operation status.
+	LastBackupStatus pulumi.StringPtrInput `pulumi:"lastBackupStatus"`
+	// Timestamp of the last backup operation on this backup item.
+	LastBackupTime pulumi.StringPtrInput `pulumi:"lastBackupTime"`
+	// Timestamp when the last (latest) backup copy was created for this backup item.
+	LastRecoveryPoint pulumi.StringPtrInput `pulumi:"lastRecoveryPoint"`
+	// ID of the backup policy with which this item is backed up.
+	PolicyId pulumi.StringPtrInput `pulumi:"policyId"`
+	// Data ID of the protected item.
+	ProtectedItemDataId pulumi.StringPtrInput `pulumi:"protectedItemDataId"`
+	// backup item type.
+	// Expected value is 'AzureIaaSVMProtectedItem'.
+	ProtectedItemType pulumi.StringInput `pulumi:"protectedItemType"`
+	// Backup state of this backup item.
+	ProtectionState pulumi.StringPtrInput `pulumi:"protectionState"`
+	// Backup status of this backup item.
+	ProtectionStatus pulumi.StringPtrInput `pulumi:"protectionStatus"`
+	// ARM ID of the resource to be backed up.
+	SourceResourceId pulumi.StringPtrInput `pulumi:"sourceResourceId"`
+	// Fully qualified ARM ID of the virtual machine represented by this item.
+	VirtualMachineId pulumi.StringPtrInput `pulumi:"virtualMachineId"`
+	// Type of workload this item represents.
+	WorkloadType pulumi.StringPtrInput `pulumi:"workloadType"`
+}
+
+func (AzureIaaSClassicComputeVMProtectedItemResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureIaaSClassicComputeVMProtectedItemResponse)(nil)).Elem()
+}
+
+func (i AzureIaaSClassicComputeVMProtectedItemResponseArgs) ToAzureIaaSClassicComputeVMProtectedItemResponseOutput() AzureIaaSClassicComputeVMProtectedItemResponseOutput {
+	return i.ToAzureIaaSClassicComputeVMProtectedItemResponseOutputWithContext(context.Background())
+}
+
+func (i AzureIaaSClassicComputeVMProtectedItemResponseArgs) ToAzureIaaSClassicComputeVMProtectedItemResponseOutputWithContext(ctx context.Context) AzureIaaSClassicComputeVMProtectedItemResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureIaaSClassicComputeVMProtectedItemResponseOutput)
+}
+
+// IaaS VM workload-specific backup item representing the Classic Compute VM.
+type AzureIaaSClassicComputeVMProtectedItemResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureIaaSClassicComputeVMProtectedItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureIaaSClassicComputeVMProtectedItemResponse)(nil)).Elem()
+}
+
+func (o AzureIaaSClassicComputeVMProtectedItemResponseOutput) ToAzureIaaSClassicComputeVMProtectedItemResponseOutput() AzureIaaSClassicComputeVMProtectedItemResponseOutput {
+	return o
+}
+
+func (o AzureIaaSClassicComputeVMProtectedItemResponseOutput) ToAzureIaaSClassicComputeVMProtectedItemResponseOutputWithContext(ctx context.Context) AzureIaaSClassicComputeVMProtectedItemResponseOutput {
+	return o
+}
+
+// Type of backup management for the backed up item.
+func (o AzureIaaSClassicComputeVMProtectedItemResponseOutput) BackupManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItemResponse) *string { return v.BackupManagementType }).(pulumi.StringPtrOutput)
+}
+
+// Name of the backup set the backup item belongs to
+func (o AzureIaaSClassicComputeVMProtectedItemResponseOutput) BackupSetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItemResponse) *string { return v.BackupSetName }).(pulumi.StringPtrOutput)
+}
+
+// Unique name of container
+func (o AzureIaaSClassicComputeVMProtectedItemResponseOutput) ContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItemResponse) *string { return v.ContainerName }).(pulumi.StringPtrOutput)
+}
+
+// Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+func (o AzureIaaSClassicComputeVMProtectedItemResponseOutput) CreateMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItemResponse) *string { return v.CreateMode }).(pulumi.StringPtrOutput)
+}
+
+// Time for deferred deletion in UTC
+func (o AzureIaaSClassicComputeVMProtectedItemResponseOutput) DeferredDeleteTimeInUTC() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItemResponse) *string { return v.DeferredDeleteTimeInUTC }).(pulumi.StringPtrOutput)
+}
+
+// Time remaining before the DS marked for deferred delete is permanently deleted
+func (o AzureIaaSClassicComputeVMProtectedItemResponseOutput) DeferredDeleteTimeRemaining() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItemResponse) *string { return v.DeferredDeleteTimeRemaining }).(pulumi.StringPtrOutput)
+}
+
+// Additional information for this backup item.
+func (o AzureIaaSClassicComputeVMProtectedItemResponseOutput) ExtendedInfo() AzureIaaSVMProtectedItemExtendedInfoResponsePtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItemResponse) *AzureIaaSVMProtectedItemExtendedInfoResponse {
+		return v.ExtendedInfo
+	}).(AzureIaaSVMProtectedItemExtendedInfoResponsePtrOutput)
+}
+
+// Extended Properties for Azure IaasVM Backup.
+func (o AzureIaaSClassicComputeVMProtectedItemResponseOutput) ExtendedProperties() ExtendedPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItemResponse) *ExtendedPropertiesResponse {
+		return v.ExtendedProperties
+	}).(ExtendedPropertiesResponsePtrOutput)
+}
+
+// Friendly name of the VM represented by this backup item.
+func (o AzureIaaSClassicComputeVMProtectedItemResponseOutput) FriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItemResponse) *string { return v.FriendlyName }).(pulumi.StringPtrOutput)
+}
+
+// Health details on this backup item.
+func (o AzureIaaSClassicComputeVMProtectedItemResponseOutput) HealthDetails() AzureIaaSVMHealthDetailsResponseArrayOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItemResponse) []AzureIaaSVMHealthDetailsResponse {
+		return v.HealthDetails
+	}).(AzureIaaSVMHealthDetailsResponseArrayOutput)
+}
+
+// Health status of protected item.
+func (o AzureIaaSClassicComputeVMProtectedItemResponseOutput) HealthStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItemResponse) *string { return v.HealthStatus }).(pulumi.StringPtrOutput)
+}
+
+// Flag to identify whether the deferred deleted DS is to be purged soon
+func (o AzureIaaSClassicComputeVMProtectedItemResponseOutput) IsDeferredDeleteScheduleUpcoming() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItemResponse) *bool {
+		return v.IsDeferredDeleteScheduleUpcoming
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Flag to identify that deferred deleted DS is to be moved into Pause state
+func (o AzureIaaSClassicComputeVMProtectedItemResponseOutput) IsRehydrate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItemResponse) *bool { return v.IsRehydrate }).(pulumi.BoolPtrOutput)
+}
+
+// Flag to identify whether the DS is scheduled for deferred delete
+func (o AzureIaaSClassicComputeVMProtectedItemResponseOutput) IsScheduledForDeferredDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItemResponse) *bool { return v.IsScheduledForDeferredDelete }).(pulumi.BoolPtrOutput)
+}
+
+// Health details of different KPIs
+func (o AzureIaaSClassicComputeVMProtectedItemResponseOutput) KpisHealths() KPIResourceHealthDetailsResponseMapOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItemResponse) map[string]KPIResourceHealthDetailsResponse {
+		return v.KpisHealths
+	}).(KPIResourceHealthDetailsResponseMapOutput)
+}
+
+// Last backup operation status.
+func (o AzureIaaSClassicComputeVMProtectedItemResponseOutput) LastBackupStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItemResponse) *string { return v.LastBackupStatus }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp of the last backup operation on this backup item.
+func (o AzureIaaSClassicComputeVMProtectedItemResponseOutput) LastBackupTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItemResponse) *string { return v.LastBackupTime }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp when the last (latest) backup copy was created for this backup item.
+func (o AzureIaaSClassicComputeVMProtectedItemResponseOutput) LastRecoveryPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItemResponse) *string { return v.LastRecoveryPoint }).(pulumi.StringPtrOutput)
+}
+
+// ID of the backup policy with which this item is backed up.
+func (o AzureIaaSClassicComputeVMProtectedItemResponseOutput) PolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItemResponse) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
+}
+
+// Data ID of the protected item.
+func (o AzureIaaSClassicComputeVMProtectedItemResponseOutput) ProtectedItemDataId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItemResponse) *string { return v.ProtectedItemDataId }).(pulumi.StringPtrOutput)
+}
+
+// backup item type.
+// Expected value is 'AzureIaaSVMProtectedItem'.
+func (o AzureIaaSClassicComputeVMProtectedItemResponseOutput) ProtectedItemType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItemResponse) string { return v.ProtectedItemType }).(pulumi.StringOutput)
+}
+
+// Backup state of this backup item.
+func (o AzureIaaSClassicComputeVMProtectedItemResponseOutput) ProtectionState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItemResponse) *string { return v.ProtectionState }).(pulumi.StringPtrOutput)
+}
+
+// Backup status of this backup item.
+func (o AzureIaaSClassicComputeVMProtectedItemResponseOutput) ProtectionStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItemResponse) *string { return v.ProtectionStatus }).(pulumi.StringPtrOutput)
+}
+
+// ARM ID of the resource to be backed up.
+func (o AzureIaaSClassicComputeVMProtectedItemResponseOutput) SourceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItemResponse) *string { return v.SourceResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Fully qualified ARM ID of the virtual machine represented by this item.
+func (o AzureIaaSClassicComputeVMProtectedItemResponseOutput) VirtualMachineId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItemResponse) *string { return v.VirtualMachineId }).(pulumi.StringPtrOutput)
+}
+
+// Type of workload this item represents.
+func (o AzureIaaSClassicComputeVMProtectedItemResponseOutput) WorkloadType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSClassicComputeVMProtectedItemResponse) *string { return v.WorkloadType }).(pulumi.StringPtrOutput)
+}
+
+// IaaS VM workload-specific backup item representing an Azure Resource Manager virtual machine.
+type AzureIaaSComputeVMContainer struct {
+	// Type of backup management for the container.
+	BackupManagementType *string `pulumi:"backupManagementType"`
+	// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+	// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+	// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+	// Backup is VMAppContainer
+	// Expected value is 'IaaSVMContainer'.
+	ContainerType string `pulumi:"containerType"`
+	// Friendly name of the container.
+	FriendlyName *string `pulumi:"friendlyName"`
+	// Status of health of the container.
+	HealthStatus *string `pulumi:"healthStatus"`
+	// Status of registration of the container with the Recovery Services Vault.
+	RegistrationStatus *string `pulumi:"registrationStatus"`
+	// Resource group name of Recovery Services Vault.
+	ResourceGroup *string `pulumi:"resourceGroup"`
+	// Fully qualified ARM url of the virtual machine represented by this Azure IaaS VM container.
+	VirtualMachineId *string `pulumi:"virtualMachineId"`
+	// Specifies whether the container represents a Classic or an Azure Resource Manager VM.
+	VirtualMachineVersion *string `pulumi:"virtualMachineVersion"`
+}
+
+// AzureIaaSComputeVMContainerInput is an input type that accepts AzureIaaSComputeVMContainerArgs and AzureIaaSComputeVMContainerOutput values.
+// You can construct a concrete instance of `AzureIaaSComputeVMContainerInput` via:
+//
+//          AzureIaaSComputeVMContainerArgs{...}
+type AzureIaaSComputeVMContainerInput interface {
+	pulumi.Input
+
+	ToAzureIaaSComputeVMContainerOutput() AzureIaaSComputeVMContainerOutput
+	ToAzureIaaSComputeVMContainerOutputWithContext(context.Context) AzureIaaSComputeVMContainerOutput
+}
+
+// IaaS VM workload-specific backup item representing an Azure Resource Manager virtual machine.
+type AzureIaaSComputeVMContainerArgs struct {
+	// Type of backup management for the container.
+	BackupManagementType pulumi.StringPtrInput `pulumi:"backupManagementType"`
+	// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+	// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+	// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+	// Backup is VMAppContainer
+	// Expected value is 'IaaSVMContainer'.
+	ContainerType pulumi.StringInput `pulumi:"containerType"`
+	// Friendly name of the container.
+	FriendlyName pulumi.StringPtrInput `pulumi:"friendlyName"`
+	// Status of health of the container.
+	HealthStatus pulumi.StringPtrInput `pulumi:"healthStatus"`
+	// Status of registration of the container with the Recovery Services Vault.
+	RegistrationStatus pulumi.StringPtrInput `pulumi:"registrationStatus"`
+	// Resource group name of Recovery Services Vault.
+	ResourceGroup pulumi.StringPtrInput `pulumi:"resourceGroup"`
+	// Fully qualified ARM url of the virtual machine represented by this Azure IaaS VM container.
+	VirtualMachineId pulumi.StringPtrInput `pulumi:"virtualMachineId"`
+	// Specifies whether the container represents a Classic or an Azure Resource Manager VM.
+	VirtualMachineVersion pulumi.StringPtrInput `pulumi:"virtualMachineVersion"`
+}
+
+func (AzureIaaSComputeVMContainerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureIaaSComputeVMContainer)(nil)).Elem()
+}
+
+func (i AzureIaaSComputeVMContainerArgs) ToAzureIaaSComputeVMContainerOutput() AzureIaaSComputeVMContainerOutput {
+	return i.ToAzureIaaSComputeVMContainerOutputWithContext(context.Background())
+}
+
+func (i AzureIaaSComputeVMContainerArgs) ToAzureIaaSComputeVMContainerOutputWithContext(ctx context.Context) AzureIaaSComputeVMContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureIaaSComputeVMContainerOutput)
+}
+
+// IaaS VM workload-specific backup item representing an Azure Resource Manager virtual machine.
+type AzureIaaSComputeVMContainerOutput struct{ *pulumi.OutputState }
+
+func (AzureIaaSComputeVMContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureIaaSComputeVMContainer)(nil)).Elem()
+}
+
+func (o AzureIaaSComputeVMContainerOutput) ToAzureIaaSComputeVMContainerOutput() AzureIaaSComputeVMContainerOutput {
+	return o
+}
+
+func (o AzureIaaSComputeVMContainerOutput) ToAzureIaaSComputeVMContainerOutputWithContext(ctx context.Context) AzureIaaSComputeVMContainerOutput {
+	return o
+}
+
+// Type of backup management for the container.
+func (o AzureIaaSComputeVMContainerOutput) BackupManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMContainer) *string { return v.BackupManagementType }).(pulumi.StringPtrOutput)
+}
+
+// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+// Backup is VMAppContainer
+// Expected value is 'IaaSVMContainer'.
+func (o AzureIaaSComputeVMContainerOutput) ContainerType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMContainer) string { return v.ContainerType }).(pulumi.StringOutput)
+}
+
+// Friendly name of the container.
+func (o AzureIaaSComputeVMContainerOutput) FriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMContainer) *string { return v.FriendlyName }).(pulumi.StringPtrOutput)
+}
+
+// Status of health of the container.
+func (o AzureIaaSComputeVMContainerOutput) HealthStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMContainer) *string { return v.HealthStatus }).(pulumi.StringPtrOutput)
+}
+
+// Status of registration of the container with the Recovery Services Vault.
+func (o AzureIaaSComputeVMContainerOutput) RegistrationStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMContainer) *string { return v.RegistrationStatus }).(pulumi.StringPtrOutput)
+}
+
+// Resource group name of Recovery Services Vault.
+func (o AzureIaaSComputeVMContainerOutput) ResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMContainer) *string { return v.ResourceGroup }).(pulumi.StringPtrOutput)
+}
+
+// Fully qualified ARM url of the virtual machine represented by this Azure IaaS VM container.
+func (o AzureIaaSComputeVMContainerOutput) VirtualMachineId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMContainer) *string { return v.VirtualMachineId }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the container represents a Classic or an Azure Resource Manager VM.
+func (o AzureIaaSComputeVMContainerOutput) VirtualMachineVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMContainer) *string { return v.VirtualMachineVersion }).(pulumi.StringPtrOutput)
+}
+
+// IaaS VM workload-specific backup item representing an Azure Resource Manager virtual machine.
+type AzureIaaSComputeVMContainerResponse struct {
+	// Type of backup management for the container.
+	BackupManagementType *string `pulumi:"backupManagementType"`
+	// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+	// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+	// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+	// Backup is VMAppContainer
+	// Expected value is 'IaaSVMContainer'.
+	ContainerType string `pulumi:"containerType"`
+	// Friendly name of the container.
+	FriendlyName *string `pulumi:"friendlyName"`
+	// Status of health of the container.
+	HealthStatus *string `pulumi:"healthStatus"`
+	// Status of registration of the container with the Recovery Services Vault.
+	RegistrationStatus *string `pulumi:"registrationStatus"`
+	// Resource group name of Recovery Services Vault.
+	ResourceGroup *string `pulumi:"resourceGroup"`
+	// Fully qualified ARM url of the virtual machine represented by this Azure IaaS VM container.
+	VirtualMachineId *string `pulumi:"virtualMachineId"`
+	// Specifies whether the container represents a Classic or an Azure Resource Manager VM.
+	VirtualMachineVersion *string `pulumi:"virtualMachineVersion"`
+}
+
+// AzureIaaSComputeVMContainerResponseInput is an input type that accepts AzureIaaSComputeVMContainerResponseArgs and AzureIaaSComputeVMContainerResponseOutput values.
+// You can construct a concrete instance of `AzureIaaSComputeVMContainerResponseInput` via:
+//
+//          AzureIaaSComputeVMContainerResponseArgs{...}
+type AzureIaaSComputeVMContainerResponseInput interface {
+	pulumi.Input
+
+	ToAzureIaaSComputeVMContainerResponseOutput() AzureIaaSComputeVMContainerResponseOutput
+	ToAzureIaaSComputeVMContainerResponseOutputWithContext(context.Context) AzureIaaSComputeVMContainerResponseOutput
+}
+
+// IaaS VM workload-specific backup item representing an Azure Resource Manager virtual machine.
+type AzureIaaSComputeVMContainerResponseArgs struct {
+	// Type of backup management for the container.
+	BackupManagementType pulumi.StringPtrInput `pulumi:"backupManagementType"`
+	// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+	// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+	// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+	// Backup is VMAppContainer
+	// Expected value is 'IaaSVMContainer'.
+	ContainerType pulumi.StringInput `pulumi:"containerType"`
+	// Friendly name of the container.
+	FriendlyName pulumi.StringPtrInput `pulumi:"friendlyName"`
+	// Status of health of the container.
+	HealthStatus pulumi.StringPtrInput `pulumi:"healthStatus"`
+	// Status of registration of the container with the Recovery Services Vault.
+	RegistrationStatus pulumi.StringPtrInput `pulumi:"registrationStatus"`
+	// Resource group name of Recovery Services Vault.
+	ResourceGroup pulumi.StringPtrInput `pulumi:"resourceGroup"`
+	// Fully qualified ARM url of the virtual machine represented by this Azure IaaS VM container.
+	VirtualMachineId pulumi.StringPtrInput `pulumi:"virtualMachineId"`
+	// Specifies whether the container represents a Classic or an Azure Resource Manager VM.
+	VirtualMachineVersion pulumi.StringPtrInput `pulumi:"virtualMachineVersion"`
+}
+
+func (AzureIaaSComputeVMContainerResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureIaaSComputeVMContainerResponse)(nil)).Elem()
+}
+
+func (i AzureIaaSComputeVMContainerResponseArgs) ToAzureIaaSComputeVMContainerResponseOutput() AzureIaaSComputeVMContainerResponseOutput {
+	return i.ToAzureIaaSComputeVMContainerResponseOutputWithContext(context.Background())
+}
+
+func (i AzureIaaSComputeVMContainerResponseArgs) ToAzureIaaSComputeVMContainerResponseOutputWithContext(ctx context.Context) AzureIaaSComputeVMContainerResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureIaaSComputeVMContainerResponseOutput)
+}
+
+// IaaS VM workload-specific backup item representing an Azure Resource Manager virtual machine.
+type AzureIaaSComputeVMContainerResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureIaaSComputeVMContainerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureIaaSComputeVMContainerResponse)(nil)).Elem()
+}
+
+func (o AzureIaaSComputeVMContainerResponseOutput) ToAzureIaaSComputeVMContainerResponseOutput() AzureIaaSComputeVMContainerResponseOutput {
+	return o
+}
+
+func (o AzureIaaSComputeVMContainerResponseOutput) ToAzureIaaSComputeVMContainerResponseOutputWithContext(ctx context.Context) AzureIaaSComputeVMContainerResponseOutput {
+	return o
+}
+
+// Type of backup management for the container.
+func (o AzureIaaSComputeVMContainerResponseOutput) BackupManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMContainerResponse) *string { return v.BackupManagementType }).(pulumi.StringPtrOutput)
+}
+
+// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+// Backup is VMAppContainer
+// Expected value is 'IaaSVMContainer'.
+func (o AzureIaaSComputeVMContainerResponseOutput) ContainerType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMContainerResponse) string { return v.ContainerType }).(pulumi.StringOutput)
+}
+
+// Friendly name of the container.
+func (o AzureIaaSComputeVMContainerResponseOutput) FriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMContainerResponse) *string { return v.FriendlyName }).(pulumi.StringPtrOutput)
+}
+
+// Status of health of the container.
+func (o AzureIaaSComputeVMContainerResponseOutput) HealthStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMContainerResponse) *string { return v.HealthStatus }).(pulumi.StringPtrOutput)
+}
+
+// Status of registration of the container with the Recovery Services Vault.
+func (o AzureIaaSComputeVMContainerResponseOutput) RegistrationStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMContainerResponse) *string { return v.RegistrationStatus }).(pulumi.StringPtrOutput)
+}
+
+// Resource group name of Recovery Services Vault.
+func (o AzureIaaSComputeVMContainerResponseOutput) ResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMContainerResponse) *string { return v.ResourceGroup }).(pulumi.StringPtrOutput)
+}
+
+// Fully qualified ARM url of the virtual machine represented by this Azure IaaS VM container.
+func (o AzureIaaSComputeVMContainerResponseOutput) VirtualMachineId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMContainerResponse) *string { return v.VirtualMachineId }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the container represents a Classic or an Azure Resource Manager VM.
+func (o AzureIaaSComputeVMContainerResponseOutput) VirtualMachineVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMContainerResponse) *string { return v.VirtualMachineVersion }).(pulumi.StringPtrOutput)
+}
+
+// IaaS VM workload-specific backup item representing the Azure Resource Manager VM.
+type AzureIaaSComputeVMProtectedItem struct {
+	// Type of backup management for the backed up item.
+	BackupManagementType *string `pulumi:"backupManagementType"`
+	// Name of the backup set the backup item belongs to
+	BackupSetName *string `pulumi:"backupSetName"`
+	// Unique name of container
+	ContainerName *string `pulumi:"containerName"`
+	// Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+	CreateMode *string `pulumi:"createMode"`
+	// Time for deferred deletion in UTC
+	DeferredDeleteTimeInUTC *string `pulumi:"deferredDeleteTimeInUTC"`
+	// Time remaining before the DS marked for deferred delete is permanently deleted
+	DeferredDeleteTimeRemaining *string `pulumi:"deferredDeleteTimeRemaining"`
+	// Additional information for this backup item.
+	ExtendedInfo *AzureIaaSVMProtectedItemExtendedInfo `pulumi:"extendedInfo"`
+	// Extended Properties for Azure IaasVM Backup.
+	ExtendedProperties *ExtendedProperties `pulumi:"extendedProperties"`
+	// Friendly name of the VM represented by this backup item.
+	FriendlyName *string `pulumi:"friendlyName"`
+	// Health status of protected item.
+	HealthStatus *string `pulumi:"healthStatus"`
+	// Flag to identify whether the deferred deleted DS is to be purged soon
+	IsDeferredDeleteScheduleUpcoming *bool `pulumi:"isDeferredDeleteScheduleUpcoming"`
+	// Flag to identify that deferred deleted DS is to be moved into Pause state
+	IsRehydrate *bool `pulumi:"isRehydrate"`
+	// Flag to identify whether the DS is scheduled for deferred delete
+	IsScheduledForDeferredDelete *bool `pulumi:"isScheduledForDeferredDelete"`
+	// Health details of different KPIs
+	KpisHealths map[string]KPIResourceHealthDetails `pulumi:"kpisHealths"`
+	// Last backup operation status.
+	LastBackupStatus *string `pulumi:"lastBackupStatus"`
+	// Timestamp of the last backup operation on this backup item.
+	LastBackupTime *string `pulumi:"lastBackupTime"`
+	// Timestamp when the last (latest) backup copy was created for this backup item.
+	LastRecoveryPoint *string `pulumi:"lastRecoveryPoint"`
+	// ID of the backup policy with which this item is backed up.
+	PolicyId *string `pulumi:"policyId"`
+	// Data ID of the protected item.
+	ProtectedItemDataId *string `pulumi:"protectedItemDataId"`
+	// backup item type.
+	// Expected value is 'AzureIaaSVMProtectedItem'.
+	ProtectedItemType string `pulumi:"protectedItemType"`
+	// Backup state of this backup item.
+	ProtectionState *string `pulumi:"protectionState"`
+	// Backup status of this backup item.
+	ProtectionStatus *string `pulumi:"protectionStatus"`
+	// ARM ID of the resource to be backed up.
+	SourceResourceId *string `pulumi:"sourceResourceId"`
+	// Fully qualified ARM ID of the virtual machine represented by this item.
+	VirtualMachineId *string `pulumi:"virtualMachineId"`
+	// Type of workload this item represents.
+	WorkloadType *string `pulumi:"workloadType"`
+}
+
+// AzureIaaSComputeVMProtectedItemInput is an input type that accepts AzureIaaSComputeVMProtectedItemArgs and AzureIaaSComputeVMProtectedItemOutput values.
+// You can construct a concrete instance of `AzureIaaSComputeVMProtectedItemInput` via:
+//
+//          AzureIaaSComputeVMProtectedItemArgs{...}
+type AzureIaaSComputeVMProtectedItemInput interface {
+	pulumi.Input
+
+	ToAzureIaaSComputeVMProtectedItemOutput() AzureIaaSComputeVMProtectedItemOutput
+	ToAzureIaaSComputeVMProtectedItemOutputWithContext(context.Context) AzureIaaSComputeVMProtectedItemOutput
+}
+
+// IaaS VM workload-specific backup item representing the Azure Resource Manager VM.
+type AzureIaaSComputeVMProtectedItemArgs struct {
+	// Type of backup management for the backed up item.
+	BackupManagementType pulumi.StringPtrInput `pulumi:"backupManagementType"`
+	// Name of the backup set the backup item belongs to
+	BackupSetName pulumi.StringPtrInput `pulumi:"backupSetName"`
+	// Unique name of container
+	ContainerName pulumi.StringPtrInput `pulumi:"containerName"`
+	// Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+	CreateMode pulumi.StringPtrInput `pulumi:"createMode"`
+	// Time for deferred deletion in UTC
+	DeferredDeleteTimeInUTC pulumi.StringPtrInput `pulumi:"deferredDeleteTimeInUTC"`
+	// Time remaining before the DS marked for deferred delete is permanently deleted
+	DeferredDeleteTimeRemaining pulumi.StringPtrInput `pulumi:"deferredDeleteTimeRemaining"`
+	// Additional information for this backup item.
+	ExtendedInfo AzureIaaSVMProtectedItemExtendedInfoPtrInput `pulumi:"extendedInfo"`
+	// Extended Properties for Azure IaasVM Backup.
+	ExtendedProperties ExtendedPropertiesPtrInput `pulumi:"extendedProperties"`
+	// Friendly name of the VM represented by this backup item.
+	FriendlyName pulumi.StringPtrInput `pulumi:"friendlyName"`
+	// Health status of protected item.
+	HealthStatus pulumi.StringPtrInput `pulumi:"healthStatus"`
+	// Flag to identify whether the deferred deleted DS is to be purged soon
+	IsDeferredDeleteScheduleUpcoming pulumi.BoolPtrInput `pulumi:"isDeferredDeleteScheduleUpcoming"`
+	// Flag to identify that deferred deleted DS is to be moved into Pause state
+	IsRehydrate pulumi.BoolPtrInput `pulumi:"isRehydrate"`
+	// Flag to identify whether the DS is scheduled for deferred delete
+	IsScheduledForDeferredDelete pulumi.BoolPtrInput `pulumi:"isScheduledForDeferredDelete"`
+	// Health details of different KPIs
+	KpisHealths KPIResourceHealthDetailsMapInput `pulumi:"kpisHealths"`
+	// Last backup operation status.
+	LastBackupStatus pulumi.StringPtrInput `pulumi:"lastBackupStatus"`
+	// Timestamp of the last backup operation on this backup item.
+	LastBackupTime pulumi.StringPtrInput `pulumi:"lastBackupTime"`
+	// Timestamp when the last (latest) backup copy was created for this backup item.
+	LastRecoveryPoint pulumi.StringPtrInput `pulumi:"lastRecoveryPoint"`
+	// ID of the backup policy with which this item is backed up.
+	PolicyId pulumi.StringPtrInput `pulumi:"policyId"`
+	// Data ID of the protected item.
+	ProtectedItemDataId pulumi.StringPtrInput `pulumi:"protectedItemDataId"`
+	// backup item type.
+	// Expected value is 'AzureIaaSVMProtectedItem'.
+	ProtectedItemType pulumi.StringInput `pulumi:"protectedItemType"`
+	// Backup state of this backup item.
+	ProtectionState pulumi.StringPtrInput `pulumi:"protectionState"`
+	// Backup status of this backup item.
+	ProtectionStatus pulumi.StringPtrInput `pulumi:"protectionStatus"`
+	// ARM ID of the resource to be backed up.
+	SourceResourceId pulumi.StringPtrInput `pulumi:"sourceResourceId"`
+	// Fully qualified ARM ID of the virtual machine represented by this item.
+	VirtualMachineId pulumi.StringPtrInput `pulumi:"virtualMachineId"`
+	// Type of workload this item represents.
+	WorkloadType pulumi.StringPtrInput `pulumi:"workloadType"`
+}
+
+func (AzureIaaSComputeVMProtectedItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureIaaSComputeVMProtectedItem)(nil)).Elem()
+}
+
+func (i AzureIaaSComputeVMProtectedItemArgs) ToAzureIaaSComputeVMProtectedItemOutput() AzureIaaSComputeVMProtectedItemOutput {
+	return i.ToAzureIaaSComputeVMProtectedItemOutputWithContext(context.Background())
+}
+
+func (i AzureIaaSComputeVMProtectedItemArgs) ToAzureIaaSComputeVMProtectedItemOutputWithContext(ctx context.Context) AzureIaaSComputeVMProtectedItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureIaaSComputeVMProtectedItemOutput)
+}
+
+// IaaS VM workload-specific backup item representing the Azure Resource Manager VM.
+type AzureIaaSComputeVMProtectedItemOutput struct{ *pulumi.OutputState }
+
+func (AzureIaaSComputeVMProtectedItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureIaaSComputeVMProtectedItem)(nil)).Elem()
+}
+
+func (o AzureIaaSComputeVMProtectedItemOutput) ToAzureIaaSComputeVMProtectedItemOutput() AzureIaaSComputeVMProtectedItemOutput {
+	return o
+}
+
+func (o AzureIaaSComputeVMProtectedItemOutput) ToAzureIaaSComputeVMProtectedItemOutputWithContext(ctx context.Context) AzureIaaSComputeVMProtectedItemOutput {
+	return o
+}
+
+// Type of backup management for the backed up item.
+func (o AzureIaaSComputeVMProtectedItemOutput) BackupManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItem) *string { return v.BackupManagementType }).(pulumi.StringPtrOutput)
+}
+
+// Name of the backup set the backup item belongs to
+func (o AzureIaaSComputeVMProtectedItemOutput) BackupSetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItem) *string { return v.BackupSetName }).(pulumi.StringPtrOutput)
+}
+
+// Unique name of container
+func (o AzureIaaSComputeVMProtectedItemOutput) ContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItem) *string { return v.ContainerName }).(pulumi.StringPtrOutput)
+}
+
+// Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+func (o AzureIaaSComputeVMProtectedItemOutput) CreateMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItem) *string { return v.CreateMode }).(pulumi.StringPtrOutput)
+}
+
+// Time for deferred deletion in UTC
+func (o AzureIaaSComputeVMProtectedItemOutput) DeferredDeleteTimeInUTC() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItem) *string { return v.DeferredDeleteTimeInUTC }).(pulumi.StringPtrOutput)
+}
+
+// Time remaining before the DS marked for deferred delete is permanently deleted
+func (o AzureIaaSComputeVMProtectedItemOutput) DeferredDeleteTimeRemaining() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItem) *string { return v.DeferredDeleteTimeRemaining }).(pulumi.StringPtrOutput)
+}
+
+// Additional information for this backup item.
+func (o AzureIaaSComputeVMProtectedItemOutput) ExtendedInfo() AzureIaaSVMProtectedItemExtendedInfoPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItem) *AzureIaaSVMProtectedItemExtendedInfo { return v.ExtendedInfo }).(AzureIaaSVMProtectedItemExtendedInfoPtrOutput)
+}
+
+// Extended Properties for Azure IaasVM Backup.
+func (o AzureIaaSComputeVMProtectedItemOutput) ExtendedProperties() ExtendedPropertiesPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItem) *ExtendedProperties { return v.ExtendedProperties }).(ExtendedPropertiesPtrOutput)
+}
+
+// Friendly name of the VM represented by this backup item.
+func (o AzureIaaSComputeVMProtectedItemOutput) FriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItem) *string { return v.FriendlyName }).(pulumi.StringPtrOutput)
+}
+
+// Health status of protected item.
+func (o AzureIaaSComputeVMProtectedItemOutput) HealthStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItem) *string { return v.HealthStatus }).(pulumi.StringPtrOutput)
+}
+
+// Flag to identify whether the deferred deleted DS is to be purged soon
+func (o AzureIaaSComputeVMProtectedItemOutput) IsDeferredDeleteScheduleUpcoming() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItem) *bool { return v.IsDeferredDeleteScheduleUpcoming }).(pulumi.BoolPtrOutput)
+}
+
+// Flag to identify that deferred deleted DS is to be moved into Pause state
+func (o AzureIaaSComputeVMProtectedItemOutput) IsRehydrate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItem) *bool { return v.IsRehydrate }).(pulumi.BoolPtrOutput)
+}
+
+// Flag to identify whether the DS is scheduled for deferred delete
+func (o AzureIaaSComputeVMProtectedItemOutput) IsScheduledForDeferredDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItem) *bool { return v.IsScheduledForDeferredDelete }).(pulumi.BoolPtrOutput)
+}
+
+// Health details of different KPIs
+func (o AzureIaaSComputeVMProtectedItemOutput) KpisHealths() KPIResourceHealthDetailsMapOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItem) map[string]KPIResourceHealthDetails { return v.KpisHealths }).(KPIResourceHealthDetailsMapOutput)
+}
+
+// Last backup operation status.
+func (o AzureIaaSComputeVMProtectedItemOutput) LastBackupStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItem) *string { return v.LastBackupStatus }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp of the last backup operation on this backup item.
+func (o AzureIaaSComputeVMProtectedItemOutput) LastBackupTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItem) *string { return v.LastBackupTime }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp when the last (latest) backup copy was created for this backup item.
+func (o AzureIaaSComputeVMProtectedItemOutput) LastRecoveryPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItem) *string { return v.LastRecoveryPoint }).(pulumi.StringPtrOutput)
+}
+
+// ID of the backup policy with which this item is backed up.
+func (o AzureIaaSComputeVMProtectedItemOutput) PolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItem) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
+}
+
+// Data ID of the protected item.
+func (o AzureIaaSComputeVMProtectedItemOutput) ProtectedItemDataId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItem) *string { return v.ProtectedItemDataId }).(pulumi.StringPtrOutput)
+}
+
+// backup item type.
+// Expected value is 'AzureIaaSVMProtectedItem'.
+func (o AzureIaaSComputeVMProtectedItemOutput) ProtectedItemType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItem) string { return v.ProtectedItemType }).(pulumi.StringOutput)
+}
+
+// Backup state of this backup item.
+func (o AzureIaaSComputeVMProtectedItemOutput) ProtectionState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItem) *string { return v.ProtectionState }).(pulumi.StringPtrOutput)
+}
+
+// Backup status of this backup item.
+func (o AzureIaaSComputeVMProtectedItemOutput) ProtectionStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItem) *string { return v.ProtectionStatus }).(pulumi.StringPtrOutput)
+}
+
+// ARM ID of the resource to be backed up.
+func (o AzureIaaSComputeVMProtectedItemOutput) SourceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItem) *string { return v.SourceResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Fully qualified ARM ID of the virtual machine represented by this item.
+func (o AzureIaaSComputeVMProtectedItemOutput) VirtualMachineId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItem) *string { return v.VirtualMachineId }).(pulumi.StringPtrOutput)
+}
+
+// Type of workload this item represents.
+func (o AzureIaaSComputeVMProtectedItemOutput) WorkloadType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItem) *string { return v.WorkloadType }).(pulumi.StringPtrOutput)
+}
+
+// IaaS VM workload-specific backup item representing the Azure Resource Manager VM.
+type AzureIaaSComputeVMProtectedItemResponse struct {
+	// Type of backup management for the backed up item.
+	BackupManagementType *string `pulumi:"backupManagementType"`
+	// Name of the backup set the backup item belongs to
+	BackupSetName *string `pulumi:"backupSetName"`
+	// Unique name of container
+	ContainerName *string `pulumi:"containerName"`
+	// Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+	CreateMode *string `pulumi:"createMode"`
+	// Time for deferred deletion in UTC
+	DeferredDeleteTimeInUTC *string `pulumi:"deferredDeleteTimeInUTC"`
+	// Time remaining before the DS marked for deferred delete is permanently deleted
+	DeferredDeleteTimeRemaining *string `pulumi:"deferredDeleteTimeRemaining"`
+	// Additional information for this backup item.
+	ExtendedInfo *AzureIaaSVMProtectedItemExtendedInfoResponse `pulumi:"extendedInfo"`
+	// Extended Properties for Azure IaasVM Backup.
+	ExtendedProperties *ExtendedPropertiesResponse `pulumi:"extendedProperties"`
+	// Friendly name of the VM represented by this backup item.
+	FriendlyName *string `pulumi:"friendlyName"`
+	// Health details on this backup item.
+	HealthDetails []AzureIaaSVMHealthDetailsResponse `pulumi:"healthDetails"`
+	// Health status of protected item.
+	HealthStatus *string `pulumi:"healthStatus"`
+	// Flag to identify whether the deferred deleted DS is to be purged soon
+	IsDeferredDeleteScheduleUpcoming *bool `pulumi:"isDeferredDeleteScheduleUpcoming"`
+	// Flag to identify that deferred deleted DS is to be moved into Pause state
+	IsRehydrate *bool `pulumi:"isRehydrate"`
+	// Flag to identify whether the DS is scheduled for deferred delete
+	IsScheduledForDeferredDelete *bool `pulumi:"isScheduledForDeferredDelete"`
+	// Health details of different KPIs
+	KpisHealths map[string]KPIResourceHealthDetailsResponse `pulumi:"kpisHealths"`
+	// Last backup operation status.
+	LastBackupStatus *string `pulumi:"lastBackupStatus"`
+	// Timestamp of the last backup operation on this backup item.
+	LastBackupTime *string `pulumi:"lastBackupTime"`
+	// Timestamp when the last (latest) backup copy was created for this backup item.
+	LastRecoveryPoint *string `pulumi:"lastRecoveryPoint"`
+	// ID of the backup policy with which this item is backed up.
+	PolicyId *string `pulumi:"policyId"`
+	// Data ID of the protected item.
+	ProtectedItemDataId *string `pulumi:"protectedItemDataId"`
+	// backup item type.
+	// Expected value is 'AzureIaaSVMProtectedItem'.
+	ProtectedItemType string `pulumi:"protectedItemType"`
+	// Backup state of this backup item.
+	ProtectionState *string `pulumi:"protectionState"`
+	// Backup status of this backup item.
+	ProtectionStatus *string `pulumi:"protectionStatus"`
+	// ARM ID of the resource to be backed up.
+	SourceResourceId *string `pulumi:"sourceResourceId"`
+	// Fully qualified ARM ID of the virtual machine represented by this item.
+	VirtualMachineId *string `pulumi:"virtualMachineId"`
+	// Type of workload this item represents.
+	WorkloadType *string `pulumi:"workloadType"`
+}
+
+// AzureIaaSComputeVMProtectedItemResponseInput is an input type that accepts AzureIaaSComputeVMProtectedItemResponseArgs and AzureIaaSComputeVMProtectedItemResponseOutput values.
+// You can construct a concrete instance of `AzureIaaSComputeVMProtectedItemResponseInput` via:
+//
+//          AzureIaaSComputeVMProtectedItemResponseArgs{...}
+type AzureIaaSComputeVMProtectedItemResponseInput interface {
+	pulumi.Input
+
+	ToAzureIaaSComputeVMProtectedItemResponseOutput() AzureIaaSComputeVMProtectedItemResponseOutput
+	ToAzureIaaSComputeVMProtectedItemResponseOutputWithContext(context.Context) AzureIaaSComputeVMProtectedItemResponseOutput
+}
+
+// IaaS VM workload-specific backup item representing the Azure Resource Manager VM.
+type AzureIaaSComputeVMProtectedItemResponseArgs struct {
+	// Type of backup management for the backed up item.
+	BackupManagementType pulumi.StringPtrInput `pulumi:"backupManagementType"`
+	// Name of the backup set the backup item belongs to
+	BackupSetName pulumi.StringPtrInput `pulumi:"backupSetName"`
+	// Unique name of container
+	ContainerName pulumi.StringPtrInput `pulumi:"containerName"`
+	// Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+	CreateMode pulumi.StringPtrInput `pulumi:"createMode"`
+	// Time for deferred deletion in UTC
+	DeferredDeleteTimeInUTC pulumi.StringPtrInput `pulumi:"deferredDeleteTimeInUTC"`
+	// Time remaining before the DS marked for deferred delete is permanently deleted
+	DeferredDeleteTimeRemaining pulumi.StringPtrInput `pulumi:"deferredDeleteTimeRemaining"`
+	// Additional information for this backup item.
+	ExtendedInfo AzureIaaSVMProtectedItemExtendedInfoResponsePtrInput `pulumi:"extendedInfo"`
+	// Extended Properties for Azure IaasVM Backup.
+	ExtendedProperties ExtendedPropertiesResponsePtrInput `pulumi:"extendedProperties"`
+	// Friendly name of the VM represented by this backup item.
+	FriendlyName pulumi.StringPtrInput `pulumi:"friendlyName"`
+	// Health details on this backup item.
+	HealthDetails AzureIaaSVMHealthDetailsResponseArrayInput `pulumi:"healthDetails"`
+	// Health status of protected item.
+	HealthStatus pulumi.StringPtrInput `pulumi:"healthStatus"`
+	// Flag to identify whether the deferred deleted DS is to be purged soon
+	IsDeferredDeleteScheduleUpcoming pulumi.BoolPtrInput `pulumi:"isDeferredDeleteScheduleUpcoming"`
+	// Flag to identify that deferred deleted DS is to be moved into Pause state
+	IsRehydrate pulumi.BoolPtrInput `pulumi:"isRehydrate"`
+	// Flag to identify whether the DS is scheduled for deferred delete
+	IsScheduledForDeferredDelete pulumi.BoolPtrInput `pulumi:"isScheduledForDeferredDelete"`
+	// Health details of different KPIs
+	KpisHealths KPIResourceHealthDetailsResponseMapInput `pulumi:"kpisHealths"`
+	// Last backup operation status.
+	LastBackupStatus pulumi.StringPtrInput `pulumi:"lastBackupStatus"`
+	// Timestamp of the last backup operation on this backup item.
+	LastBackupTime pulumi.StringPtrInput `pulumi:"lastBackupTime"`
+	// Timestamp when the last (latest) backup copy was created for this backup item.
+	LastRecoveryPoint pulumi.StringPtrInput `pulumi:"lastRecoveryPoint"`
+	// ID of the backup policy with which this item is backed up.
+	PolicyId pulumi.StringPtrInput `pulumi:"policyId"`
+	// Data ID of the protected item.
+	ProtectedItemDataId pulumi.StringPtrInput `pulumi:"protectedItemDataId"`
+	// backup item type.
+	// Expected value is 'AzureIaaSVMProtectedItem'.
+	ProtectedItemType pulumi.StringInput `pulumi:"protectedItemType"`
+	// Backup state of this backup item.
+	ProtectionState pulumi.StringPtrInput `pulumi:"protectionState"`
+	// Backup status of this backup item.
+	ProtectionStatus pulumi.StringPtrInput `pulumi:"protectionStatus"`
+	// ARM ID of the resource to be backed up.
+	SourceResourceId pulumi.StringPtrInput `pulumi:"sourceResourceId"`
+	// Fully qualified ARM ID of the virtual machine represented by this item.
+	VirtualMachineId pulumi.StringPtrInput `pulumi:"virtualMachineId"`
+	// Type of workload this item represents.
+	WorkloadType pulumi.StringPtrInput `pulumi:"workloadType"`
+}
+
+func (AzureIaaSComputeVMProtectedItemResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureIaaSComputeVMProtectedItemResponse)(nil)).Elem()
+}
+
+func (i AzureIaaSComputeVMProtectedItemResponseArgs) ToAzureIaaSComputeVMProtectedItemResponseOutput() AzureIaaSComputeVMProtectedItemResponseOutput {
+	return i.ToAzureIaaSComputeVMProtectedItemResponseOutputWithContext(context.Background())
+}
+
+func (i AzureIaaSComputeVMProtectedItemResponseArgs) ToAzureIaaSComputeVMProtectedItemResponseOutputWithContext(ctx context.Context) AzureIaaSComputeVMProtectedItemResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureIaaSComputeVMProtectedItemResponseOutput)
+}
+
+// IaaS VM workload-specific backup item representing the Azure Resource Manager VM.
+type AzureIaaSComputeVMProtectedItemResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureIaaSComputeVMProtectedItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureIaaSComputeVMProtectedItemResponse)(nil)).Elem()
+}
+
+func (o AzureIaaSComputeVMProtectedItemResponseOutput) ToAzureIaaSComputeVMProtectedItemResponseOutput() AzureIaaSComputeVMProtectedItemResponseOutput {
+	return o
+}
+
+func (o AzureIaaSComputeVMProtectedItemResponseOutput) ToAzureIaaSComputeVMProtectedItemResponseOutputWithContext(ctx context.Context) AzureIaaSComputeVMProtectedItemResponseOutput {
+	return o
+}
+
+// Type of backup management for the backed up item.
+func (o AzureIaaSComputeVMProtectedItemResponseOutput) BackupManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItemResponse) *string { return v.BackupManagementType }).(pulumi.StringPtrOutput)
+}
+
+// Name of the backup set the backup item belongs to
+func (o AzureIaaSComputeVMProtectedItemResponseOutput) BackupSetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItemResponse) *string { return v.BackupSetName }).(pulumi.StringPtrOutput)
+}
+
+// Unique name of container
+func (o AzureIaaSComputeVMProtectedItemResponseOutput) ContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItemResponse) *string { return v.ContainerName }).(pulumi.StringPtrOutput)
+}
+
+// Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+func (o AzureIaaSComputeVMProtectedItemResponseOutput) CreateMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItemResponse) *string { return v.CreateMode }).(pulumi.StringPtrOutput)
+}
+
+// Time for deferred deletion in UTC
+func (o AzureIaaSComputeVMProtectedItemResponseOutput) DeferredDeleteTimeInUTC() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItemResponse) *string { return v.DeferredDeleteTimeInUTC }).(pulumi.StringPtrOutput)
+}
+
+// Time remaining before the DS marked for deferred delete is permanently deleted
+func (o AzureIaaSComputeVMProtectedItemResponseOutput) DeferredDeleteTimeRemaining() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItemResponse) *string { return v.DeferredDeleteTimeRemaining }).(pulumi.StringPtrOutput)
+}
+
+// Additional information for this backup item.
+func (o AzureIaaSComputeVMProtectedItemResponseOutput) ExtendedInfo() AzureIaaSVMProtectedItemExtendedInfoResponsePtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItemResponse) *AzureIaaSVMProtectedItemExtendedInfoResponse {
+		return v.ExtendedInfo
+	}).(AzureIaaSVMProtectedItemExtendedInfoResponsePtrOutput)
+}
+
+// Extended Properties for Azure IaasVM Backup.
+func (o AzureIaaSComputeVMProtectedItemResponseOutput) ExtendedProperties() ExtendedPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItemResponse) *ExtendedPropertiesResponse {
+		return v.ExtendedProperties
+	}).(ExtendedPropertiesResponsePtrOutput)
+}
+
+// Friendly name of the VM represented by this backup item.
+func (o AzureIaaSComputeVMProtectedItemResponseOutput) FriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItemResponse) *string { return v.FriendlyName }).(pulumi.StringPtrOutput)
+}
+
+// Health details on this backup item.
+func (o AzureIaaSComputeVMProtectedItemResponseOutput) HealthDetails() AzureIaaSVMHealthDetailsResponseArrayOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItemResponse) []AzureIaaSVMHealthDetailsResponse {
+		return v.HealthDetails
+	}).(AzureIaaSVMHealthDetailsResponseArrayOutput)
+}
+
+// Health status of protected item.
+func (o AzureIaaSComputeVMProtectedItemResponseOutput) HealthStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItemResponse) *string { return v.HealthStatus }).(pulumi.StringPtrOutput)
+}
+
+// Flag to identify whether the deferred deleted DS is to be purged soon
+func (o AzureIaaSComputeVMProtectedItemResponseOutput) IsDeferredDeleteScheduleUpcoming() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItemResponse) *bool { return v.IsDeferredDeleteScheduleUpcoming }).(pulumi.BoolPtrOutput)
+}
+
+// Flag to identify that deferred deleted DS is to be moved into Pause state
+func (o AzureIaaSComputeVMProtectedItemResponseOutput) IsRehydrate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItemResponse) *bool { return v.IsRehydrate }).(pulumi.BoolPtrOutput)
+}
+
+// Flag to identify whether the DS is scheduled for deferred delete
+func (o AzureIaaSComputeVMProtectedItemResponseOutput) IsScheduledForDeferredDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItemResponse) *bool { return v.IsScheduledForDeferredDelete }).(pulumi.BoolPtrOutput)
+}
+
+// Health details of different KPIs
+func (o AzureIaaSComputeVMProtectedItemResponseOutput) KpisHealths() KPIResourceHealthDetailsResponseMapOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItemResponse) map[string]KPIResourceHealthDetailsResponse {
+		return v.KpisHealths
+	}).(KPIResourceHealthDetailsResponseMapOutput)
+}
+
+// Last backup operation status.
+func (o AzureIaaSComputeVMProtectedItemResponseOutput) LastBackupStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItemResponse) *string { return v.LastBackupStatus }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp of the last backup operation on this backup item.
+func (o AzureIaaSComputeVMProtectedItemResponseOutput) LastBackupTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItemResponse) *string { return v.LastBackupTime }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp when the last (latest) backup copy was created for this backup item.
+func (o AzureIaaSComputeVMProtectedItemResponseOutput) LastRecoveryPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItemResponse) *string { return v.LastRecoveryPoint }).(pulumi.StringPtrOutput)
+}
+
+// ID of the backup policy with which this item is backed up.
+func (o AzureIaaSComputeVMProtectedItemResponseOutput) PolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItemResponse) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
+}
+
+// Data ID of the protected item.
+func (o AzureIaaSComputeVMProtectedItemResponseOutput) ProtectedItemDataId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItemResponse) *string { return v.ProtectedItemDataId }).(pulumi.StringPtrOutput)
+}
+
+// backup item type.
+// Expected value is 'AzureIaaSVMProtectedItem'.
+func (o AzureIaaSComputeVMProtectedItemResponseOutput) ProtectedItemType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItemResponse) string { return v.ProtectedItemType }).(pulumi.StringOutput)
+}
+
+// Backup state of this backup item.
+func (o AzureIaaSComputeVMProtectedItemResponseOutput) ProtectionState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItemResponse) *string { return v.ProtectionState }).(pulumi.StringPtrOutput)
+}
+
+// Backup status of this backup item.
+func (o AzureIaaSComputeVMProtectedItemResponseOutput) ProtectionStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItemResponse) *string { return v.ProtectionStatus }).(pulumi.StringPtrOutput)
+}
+
+// ARM ID of the resource to be backed up.
+func (o AzureIaaSComputeVMProtectedItemResponseOutput) SourceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItemResponse) *string { return v.SourceResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Fully qualified ARM ID of the virtual machine represented by this item.
+func (o AzureIaaSComputeVMProtectedItemResponseOutput) VirtualMachineId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItemResponse) *string { return v.VirtualMachineId }).(pulumi.StringPtrOutput)
+}
+
+// Type of workload this item represents.
+func (o AzureIaaSComputeVMProtectedItemResponseOutput) WorkloadType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureIaaSComputeVMProtectedItemResponse) *string { return v.WorkloadType }).(pulumi.StringPtrOutput)
 }
 
 // Azure IaaS VM workload-specific Health Details.
@@ -5566,6 +7572,306 @@ func (o AzureResourceProtectionIntentResponseOutput) ProtectionState() pulumi.St
 // ARM ID of the resource to be backed up.
 func (o AzureResourceProtectionIntentResponseOutput) SourceResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureResourceProtectionIntentResponse) *string { return v.SourceResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Container for SQL workloads under SQL Availability Group.
+type AzureSQLAGWorkloadContainerProtectionContainer struct {
+	// Type of backup management for the container.
+	BackupManagementType *string `pulumi:"backupManagementType"`
+	// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+	// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+	// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+	// Backup is VMAppContainer
+	// Expected value is 'AzureWorkloadContainer'.
+	ContainerType string `pulumi:"containerType"`
+	// Additional details of a workload container.
+	ExtendedInfo *AzureWorkloadContainerExtendedInfo `pulumi:"extendedInfo"`
+	// Friendly name of the container.
+	FriendlyName *string `pulumi:"friendlyName"`
+	// Status of health of the container.
+	HealthStatus *string `pulumi:"healthStatus"`
+	// Time stamp when this container was updated.
+	LastUpdatedTime *string `pulumi:"lastUpdatedTime"`
+	// Re-Do Operation
+	OperationType *string `pulumi:"operationType"`
+	// Status of registration of the container with the Recovery Services Vault.
+	RegistrationStatus *string `pulumi:"registrationStatus"`
+	// ARM ID of the virtual machine represented by this Azure Workload Container
+	SourceResourceId *string `pulumi:"sourceResourceId"`
+	// Workload type for which registration was sent.
+	WorkloadType *string `pulumi:"workloadType"`
+}
+
+// AzureSQLAGWorkloadContainerProtectionContainerInput is an input type that accepts AzureSQLAGWorkloadContainerProtectionContainerArgs and AzureSQLAGWorkloadContainerProtectionContainerOutput values.
+// You can construct a concrete instance of `AzureSQLAGWorkloadContainerProtectionContainerInput` via:
+//
+//          AzureSQLAGWorkloadContainerProtectionContainerArgs{...}
+type AzureSQLAGWorkloadContainerProtectionContainerInput interface {
+	pulumi.Input
+
+	ToAzureSQLAGWorkloadContainerProtectionContainerOutput() AzureSQLAGWorkloadContainerProtectionContainerOutput
+	ToAzureSQLAGWorkloadContainerProtectionContainerOutputWithContext(context.Context) AzureSQLAGWorkloadContainerProtectionContainerOutput
+}
+
+// Container for SQL workloads under SQL Availability Group.
+type AzureSQLAGWorkloadContainerProtectionContainerArgs struct {
+	// Type of backup management for the container.
+	BackupManagementType pulumi.StringPtrInput `pulumi:"backupManagementType"`
+	// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+	// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+	// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+	// Backup is VMAppContainer
+	// Expected value is 'AzureWorkloadContainer'.
+	ContainerType pulumi.StringInput `pulumi:"containerType"`
+	// Additional details of a workload container.
+	ExtendedInfo AzureWorkloadContainerExtendedInfoPtrInput `pulumi:"extendedInfo"`
+	// Friendly name of the container.
+	FriendlyName pulumi.StringPtrInput `pulumi:"friendlyName"`
+	// Status of health of the container.
+	HealthStatus pulumi.StringPtrInput `pulumi:"healthStatus"`
+	// Time stamp when this container was updated.
+	LastUpdatedTime pulumi.StringPtrInput `pulumi:"lastUpdatedTime"`
+	// Re-Do Operation
+	OperationType pulumi.StringPtrInput `pulumi:"operationType"`
+	// Status of registration of the container with the Recovery Services Vault.
+	RegistrationStatus pulumi.StringPtrInput `pulumi:"registrationStatus"`
+	// ARM ID of the virtual machine represented by this Azure Workload Container
+	SourceResourceId pulumi.StringPtrInput `pulumi:"sourceResourceId"`
+	// Workload type for which registration was sent.
+	WorkloadType pulumi.StringPtrInput `pulumi:"workloadType"`
+}
+
+func (AzureSQLAGWorkloadContainerProtectionContainerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureSQLAGWorkloadContainerProtectionContainer)(nil)).Elem()
+}
+
+func (i AzureSQLAGWorkloadContainerProtectionContainerArgs) ToAzureSQLAGWorkloadContainerProtectionContainerOutput() AzureSQLAGWorkloadContainerProtectionContainerOutput {
+	return i.ToAzureSQLAGWorkloadContainerProtectionContainerOutputWithContext(context.Background())
+}
+
+func (i AzureSQLAGWorkloadContainerProtectionContainerArgs) ToAzureSQLAGWorkloadContainerProtectionContainerOutputWithContext(ctx context.Context) AzureSQLAGWorkloadContainerProtectionContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureSQLAGWorkloadContainerProtectionContainerOutput)
+}
+
+// Container for SQL workloads under SQL Availability Group.
+type AzureSQLAGWorkloadContainerProtectionContainerOutput struct{ *pulumi.OutputState }
+
+func (AzureSQLAGWorkloadContainerProtectionContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureSQLAGWorkloadContainerProtectionContainer)(nil)).Elem()
+}
+
+func (o AzureSQLAGWorkloadContainerProtectionContainerOutput) ToAzureSQLAGWorkloadContainerProtectionContainerOutput() AzureSQLAGWorkloadContainerProtectionContainerOutput {
+	return o
+}
+
+func (o AzureSQLAGWorkloadContainerProtectionContainerOutput) ToAzureSQLAGWorkloadContainerProtectionContainerOutputWithContext(ctx context.Context) AzureSQLAGWorkloadContainerProtectionContainerOutput {
+	return o
+}
+
+// Type of backup management for the container.
+func (o AzureSQLAGWorkloadContainerProtectionContainerOutput) BackupManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureSQLAGWorkloadContainerProtectionContainer) *string { return v.BackupManagementType }).(pulumi.StringPtrOutput)
+}
+
+// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+// Backup is VMAppContainer
+// Expected value is 'AzureWorkloadContainer'.
+func (o AzureSQLAGWorkloadContainerProtectionContainerOutput) ContainerType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureSQLAGWorkloadContainerProtectionContainer) string { return v.ContainerType }).(pulumi.StringOutput)
+}
+
+// Additional details of a workload container.
+func (o AzureSQLAGWorkloadContainerProtectionContainerOutput) ExtendedInfo() AzureWorkloadContainerExtendedInfoPtrOutput {
+	return o.ApplyT(func(v AzureSQLAGWorkloadContainerProtectionContainer) *AzureWorkloadContainerExtendedInfo {
+		return v.ExtendedInfo
+	}).(AzureWorkloadContainerExtendedInfoPtrOutput)
+}
+
+// Friendly name of the container.
+func (o AzureSQLAGWorkloadContainerProtectionContainerOutput) FriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureSQLAGWorkloadContainerProtectionContainer) *string { return v.FriendlyName }).(pulumi.StringPtrOutput)
+}
+
+// Status of health of the container.
+func (o AzureSQLAGWorkloadContainerProtectionContainerOutput) HealthStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureSQLAGWorkloadContainerProtectionContainer) *string { return v.HealthStatus }).(pulumi.StringPtrOutput)
+}
+
+// Time stamp when this container was updated.
+func (o AzureSQLAGWorkloadContainerProtectionContainerOutput) LastUpdatedTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureSQLAGWorkloadContainerProtectionContainer) *string { return v.LastUpdatedTime }).(pulumi.StringPtrOutput)
+}
+
+// Re-Do Operation
+func (o AzureSQLAGWorkloadContainerProtectionContainerOutput) OperationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureSQLAGWorkloadContainerProtectionContainer) *string { return v.OperationType }).(pulumi.StringPtrOutput)
+}
+
+// Status of registration of the container with the Recovery Services Vault.
+func (o AzureSQLAGWorkloadContainerProtectionContainerOutput) RegistrationStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureSQLAGWorkloadContainerProtectionContainer) *string { return v.RegistrationStatus }).(pulumi.StringPtrOutput)
+}
+
+// ARM ID of the virtual machine represented by this Azure Workload Container
+func (o AzureSQLAGWorkloadContainerProtectionContainerOutput) SourceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureSQLAGWorkloadContainerProtectionContainer) *string { return v.SourceResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Workload type for which registration was sent.
+func (o AzureSQLAGWorkloadContainerProtectionContainerOutput) WorkloadType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureSQLAGWorkloadContainerProtectionContainer) *string { return v.WorkloadType }).(pulumi.StringPtrOutput)
+}
+
+// Container for SQL workloads under SQL Availability Group.
+type AzureSQLAGWorkloadContainerProtectionContainerResponse struct {
+	// Type of backup management for the container.
+	BackupManagementType *string `pulumi:"backupManagementType"`
+	// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+	// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+	// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+	// Backup is VMAppContainer
+	// Expected value is 'AzureWorkloadContainer'.
+	ContainerType string `pulumi:"containerType"`
+	// Additional details of a workload container.
+	ExtendedInfo *AzureWorkloadContainerExtendedInfoResponse `pulumi:"extendedInfo"`
+	// Friendly name of the container.
+	FriendlyName *string `pulumi:"friendlyName"`
+	// Status of health of the container.
+	HealthStatus *string `pulumi:"healthStatus"`
+	// Time stamp when this container was updated.
+	LastUpdatedTime *string `pulumi:"lastUpdatedTime"`
+	// Re-Do Operation
+	OperationType *string `pulumi:"operationType"`
+	// Status of registration of the container with the Recovery Services Vault.
+	RegistrationStatus *string `pulumi:"registrationStatus"`
+	// ARM ID of the virtual machine represented by this Azure Workload Container
+	SourceResourceId *string `pulumi:"sourceResourceId"`
+	// Workload type for which registration was sent.
+	WorkloadType *string `pulumi:"workloadType"`
+}
+
+// AzureSQLAGWorkloadContainerProtectionContainerResponseInput is an input type that accepts AzureSQLAGWorkloadContainerProtectionContainerResponseArgs and AzureSQLAGWorkloadContainerProtectionContainerResponseOutput values.
+// You can construct a concrete instance of `AzureSQLAGWorkloadContainerProtectionContainerResponseInput` via:
+//
+//          AzureSQLAGWorkloadContainerProtectionContainerResponseArgs{...}
+type AzureSQLAGWorkloadContainerProtectionContainerResponseInput interface {
+	pulumi.Input
+
+	ToAzureSQLAGWorkloadContainerProtectionContainerResponseOutput() AzureSQLAGWorkloadContainerProtectionContainerResponseOutput
+	ToAzureSQLAGWorkloadContainerProtectionContainerResponseOutputWithContext(context.Context) AzureSQLAGWorkloadContainerProtectionContainerResponseOutput
+}
+
+// Container for SQL workloads under SQL Availability Group.
+type AzureSQLAGWorkloadContainerProtectionContainerResponseArgs struct {
+	// Type of backup management for the container.
+	BackupManagementType pulumi.StringPtrInput `pulumi:"backupManagementType"`
+	// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+	// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+	// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+	// Backup is VMAppContainer
+	// Expected value is 'AzureWorkloadContainer'.
+	ContainerType pulumi.StringInput `pulumi:"containerType"`
+	// Additional details of a workload container.
+	ExtendedInfo AzureWorkloadContainerExtendedInfoResponsePtrInput `pulumi:"extendedInfo"`
+	// Friendly name of the container.
+	FriendlyName pulumi.StringPtrInput `pulumi:"friendlyName"`
+	// Status of health of the container.
+	HealthStatus pulumi.StringPtrInput `pulumi:"healthStatus"`
+	// Time stamp when this container was updated.
+	LastUpdatedTime pulumi.StringPtrInput `pulumi:"lastUpdatedTime"`
+	// Re-Do Operation
+	OperationType pulumi.StringPtrInput `pulumi:"operationType"`
+	// Status of registration of the container with the Recovery Services Vault.
+	RegistrationStatus pulumi.StringPtrInput `pulumi:"registrationStatus"`
+	// ARM ID of the virtual machine represented by this Azure Workload Container
+	SourceResourceId pulumi.StringPtrInput `pulumi:"sourceResourceId"`
+	// Workload type for which registration was sent.
+	WorkloadType pulumi.StringPtrInput `pulumi:"workloadType"`
+}
+
+func (AzureSQLAGWorkloadContainerProtectionContainerResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureSQLAGWorkloadContainerProtectionContainerResponse)(nil)).Elem()
+}
+
+func (i AzureSQLAGWorkloadContainerProtectionContainerResponseArgs) ToAzureSQLAGWorkloadContainerProtectionContainerResponseOutput() AzureSQLAGWorkloadContainerProtectionContainerResponseOutput {
+	return i.ToAzureSQLAGWorkloadContainerProtectionContainerResponseOutputWithContext(context.Background())
+}
+
+func (i AzureSQLAGWorkloadContainerProtectionContainerResponseArgs) ToAzureSQLAGWorkloadContainerProtectionContainerResponseOutputWithContext(ctx context.Context) AzureSQLAGWorkloadContainerProtectionContainerResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureSQLAGWorkloadContainerProtectionContainerResponseOutput)
+}
+
+// Container for SQL workloads under SQL Availability Group.
+type AzureSQLAGWorkloadContainerProtectionContainerResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureSQLAGWorkloadContainerProtectionContainerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureSQLAGWorkloadContainerProtectionContainerResponse)(nil)).Elem()
+}
+
+func (o AzureSQLAGWorkloadContainerProtectionContainerResponseOutput) ToAzureSQLAGWorkloadContainerProtectionContainerResponseOutput() AzureSQLAGWorkloadContainerProtectionContainerResponseOutput {
+	return o
+}
+
+func (o AzureSQLAGWorkloadContainerProtectionContainerResponseOutput) ToAzureSQLAGWorkloadContainerProtectionContainerResponseOutputWithContext(ctx context.Context) AzureSQLAGWorkloadContainerProtectionContainerResponseOutput {
+	return o
+}
+
+// Type of backup management for the container.
+func (o AzureSQLAGWorkloadContainerProtectionContainerResponseOutput) BackupManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureSQLAGWorkloadContainerProtectionContainerResponse) *string { return v.BackupManagementType }).(pulumi.StringPtrOutput)
+}
+
+// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+// Backup is VMAppContainer
+// Expected value is 'AzureWorkloadContainer'.
+func (o AzureSQLAGWorkloadContainerProtectionContainerResponseOutput) ContainerType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureSQLAGWorkloadContainerProtectionContainerResponse) string { return v.ContainerType }).(pulumi.StringOutput)
+}
+
+// Additional details of a workload container.
+func (o AzureSQLAGWorkloadContainerProtectionContainerResponseOutput) ExtendedInfo() AzureWorkloadContainerExtendedInfoResponsePtrOutput {
+	return o.ApplyT(func(v AzureSQLAGWorkloadContainerProtectionContainerResponse) *AzureWorkloadContainerExtendedInfoResponse {
+		return v.ExtendedInfo
+	}).(AzureWorkloadContainerExtendedInfoResponsePtrOutput)
+}
+
+// Friendly name of the container.
+func (o AzureSQLAGWorkloadContainerProtectionContainerResponseOutput) FriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureSQLAGWorkloadContainerProtectionContainerResponse) *string { return v.FriendlyName }).(pulumi.StringPtrOutput)
+}
+
+// Status of health of the container.
+func (o AzureSQLAGWorkloadContainerProtectionContainerResponseOutput) HealthStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureSQLAGWorkloadContainerProtectionContainerResponse) *string { return v.HealthStatus }).(pulumi.StringPtrOutput)
+}
+
+// Time stamp when this container was updated.
+func (o AzureSQLAGWorkloadContainerProtectionContainerResponseOutput) LastUpdatedTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureSQLAGWorkloadContainerProtectionContainerResponse) *string { return v.LastUpdatedTime }).(pulumi.StringPtrOutput)
+}
+
+// Re-Do Operation
+func (o AzureSQLAGWorkloadContainerProtectionContainerResponseOutput) OperationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureSQLAGWorkloadContainerProtectionContainerResponse) *string { return v.OperationType }).(pulumi.StringPtrOutput)
+}
+
+// Status of registration of the container with the Recovery Services Vault.
+func (o AzureSQLAGWorkloadContainerProtectionContainerResponseOutput) RegistrationStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureSQLAGWorkloadContainerProtectionContainerResponse) *string { return v.RegistrationStatus }).(pulumi.StringPtrOutput)
+}
+
+// ARM ID of the virtual machine represented by this Azure Workload Container
+func (o AzureSQLAGWorkloadContainerProtectionContainerResponseOutput) SourceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureSQLAGWorkloadContainerProtectionContainerResponse) *string { return v.SourceResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Workload type for which registration was sent.
+func (o AzureSQLAGWorkloadContainerProtectionContainerResponseOutput) WorkloadType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureSQLAGWorkloadContainerProtectionContainerResponse) *string { return v.WorkloadType }).(pulumi.StringPtrOutput)
 }
 
 // Azure Sql workload-specific container.
@@ -7254,6 +9560,306 @@ func (o AzureToAzureVmSyncedConfigDetailsResponsePtrOutput) Tags() pulumi.String
 	}).(pulumi.StringMapOutput)
 }
 
+// Container for SQL workloads under Azure Virtual Machines.
+type AzureVMAppContainerProtectionContainer struct {
+	// Type of backup management for the container.
+	BackupManagementType *string `pulumi:"backupManagementType"`
+	// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+	// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+	// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+	// Backup is VMAppContainer
+	// Expected value is 'AzureWorkloadContainer'.
+	ContainerType string `pulumi:"containerType"`
+	// Additional details of a workload container.
+	ExtendedInfo *AzureWorkloadContainerExtendedInfo `pulumi:"extendedInfo"`
+	// Friendly name of the container.
+	FriendlyName *string `pulumi:"friendlyName"`
+	// Status of health of the container.
+	HealthStatus *string `pulumi:"healthStatus"`
+	// Time stamp when this container was updated.
+	LastUpdatedTime *string `pulumi:"lastUpdatedTime"`
+	// Re-Do Operation
+	OperationType *string `pulumi:"operationType"`
+	// Status of registration of the container with the Recovery Services Vault.
+	RegistrationStatus *string `pulumi:"registrationStatus"`
+	// ARM ID of the virtual machine represented by this Azure Workload Container
+	SourceResourceId *string `pulumi:"sourceResourceId"`
+	// Workload type for which registration was sent.
+	WorkloadType *string `pulumi:"workloadType"`
+}
+
+// AzureVMAppContainerProtectionContainerInput is an input type that accepts AzureVMAppContainerProtectionContainerArgs and AzureVMAppContainerProtectionContainerOutput values.
+// You can construct a concrete instance of `AzureVMAppContainerProtectionContainerInput` via:
+//
+//          AzureVMAppContainerProtectionContainerArgs{...}
+type AzureVMAppContainerProtectionContainerInput interface {
+	pulumi.Input
+
+	ToAzureVMAppContainerProtectionContainerOutput() AzureVMAppContainerProtectionContainerOutput
+	ToAzureVMAppContainerProtectionContainerOutputWithContext(context.Context) AzureVMAppContainerProtectionContainerOutput
+}
+
+// Container for SQL workloads under Azure Virtual Machines.
+type AzureVMAppContainerProtectionContainerArgs struct {
+	// Type of backup management for the container.
+	BackupManagementType pulumi.StringPtrInput `pulumi:"backupManagementType"`
+	// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+	// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+	// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+	// Backup is VMAppContainer
+	// Expected value is 'AzureWorkloadContainer'.
+	ContainerType pulumi.StringInput `pulumi:"containerType"`
+	// Additional details of a workload container.
+	ExtendedInfo AzureWorkloadContainerExtendedInfoPtrInput `pulumi:"extendedInfo"`
+	// Friendly name of the container.
+	FriendlyName pulumi.StringPtrInput `pulumi:"friendlyName"`
+	// Status of health of the container.
+	HealthStatus pulumi.StringPtrInput `pulumi:"healthStatus"`
+	// Time stamp when this container was updated.
+	LastUpdatedTime pulumi.StringPtrInput `pulumi:"lastUpdatedTime"`
+	// Re-Do Operation
+	OperationType pulumi.StringPtrInput `pulumi:"operationType"`
+	// Status of registration of the container with the Recovery Services Vault.
+	RegistrationStatus pulumi.StringPtrInput `pulumi:"registrationStatus"`
+	// ARM ID of the virtual machine represented by this Azure Workload Container
+	SourceResourceId pulumi.StringPtrInput `pulumi:"sourceResourceId"`
+	// Workload type for which registration was sent.
+	WorkloadType pulumi.StringPtrInput `pulumi:"workloadType"`
+}
+
+func (AzureVMAppContainerProtectionContainerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureVMAppContainerProtectionContainer)(nil)).Elem()
+}
+
+func (i AzureVMAppContainerProtectionContainerArgs) ToAzureVMAppContainerProtectionContainerOutput() AzureVMAppContainerProtectionContainerOutput {
+	return i.ToAzureVMAppContainerProtectionContainerOutputWithContext(context.Background())
+}
+
+func (i AzureVMAppContainerProtectionContainerArgs) ToAzureVMAppContainerProtectionContainerOutputWithContext(ctx context.Context) AzureVMAppContainerProtectionContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureVMAppContainerProtectionContainerOutput)
+}
+
+// Container for SQL workloads under Azure Virtual Machines.
+type AzureVMAppContainerProtectionContainerOutput struct{ *pulumi.OutputState }
+
+func (AzureVMAppContainerProtectionContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureVMAppContainerProtectionContainer)(nil)).Elem()
+}
+
+func (o AzureVMAppContainerProtectionContainerOutput) ToAzureVMAppContainerProtectionContainerOutput() AzureVMAppContainerProtectionContainerOutput {
+	return o
+}
+
+func (o AzureVMAppContainerProtectionContainerOutput) ToAzureVMAppContainerProtectionContainerOutputWithContext(ctx context.Context) AzureVMAppContainerProtectionContainerOutput {
+	return o
+}
+
+// Type of backup management for the container.
+func (o AzureVMAppContainerProtectionContainerOutput) BackupManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVMAppContainerProtectionContainer) *string { return v.BackupManagementType }).(pulumi.StringPtrOutput)
+}
+
+// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+// Backup is VMAppContainer
+// Expected value is 'AzureWorkloadContainer'.
+func (o AzureVMAppContainerProtectionContainerOutput) ContainerType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureVMAppContainerProtectionContainer) string { return v.ContainerType }).(pulumi.StringOutput)
+}
+
+// Additional details of a workload container.
+func (o AzureVMAppContainerProtectionContainerOutput) ExtendedInfo() AzureWorkloadContainerExtendedInfoPtrOutput {
+	return o.ApplyT(func(v AzureVMAppContainerProtectionContainer) *AzureWorkloadContainerExtendedInfo {
+		return v.ExtendedInfo
+	}).(AzureWorkloadContainerExtendedInfoPtrOutput)
+}
+
+// Friendly name of the container.
+func (o AzureVMAppContainerProtectionContainerOutput) FriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVMAppContainerProtectionContainer) *string { return v.FriendlyName }).(pulumi.StringPtrOutput)
+}
+
+// Status of health of the container.
+func (o AzureVMAppContainerProtectionContainerOutput) HealthStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVMAppContainerProtectionContainer) *string { return v.HealthStatus }).(pulumi.StringPtrOutput)
+}
+
+// Time stamp when this container was updated.
+func (o AzureVMAppContainerProtectionContainerOutput) LastUpdatedTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVMAppContainerProtectionContainer) *string { return v.LastUpdatedTime }).(pulumi.StringPtrOutput)
+}
+
+// Re-Do Operation
+func (o AzureVMAppContainerProtectionContainerOutput) OperationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVMAppContainerProtectionContainer) *string { return v.OperationType }).(pulumi.StringPtrOutput)
+}
+
+// Status of registration of the container with the Recovery Services Vault.
+func (o AzureVMAppContainerProtectionContainerOutput) RegistrationStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVMAppContainerProtectionContainer) *string { return v.RegistrationStatus }).(pulumi.StringPtrOutput)
+}
+
+// ARM ID of the virtual machine represented by this Azure Workload Container
+func (o AzureVMAppContainerProtectionContainerOutput) SourceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVMAppContainerProtectionContainer) *string { return v.SourceResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Workload type for which registration was sent.
+func (o AzureVMAppContainerProtectionContainerOutput) WorkloadType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVMAppContainerProtectionContainer) *string { return v.WorkloadType }).(pulumi.StringPtrOutput)
+}
+
+// Container for SQL workloads under Azure Virtual Machines.
+type AzureVMAppContainerProtectionContainerResponse struct {
+	// Type of backup management for the container.
+	BackupManagementType *string `pulumi:"backupManagementType"`
+	// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+	// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+	// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+	// Backup is VMAppContainer
+	// Expected value is 'AzureWorkloadContainer'.
+	ContainerType string `pulumi:"containerType"`
+	// Additional details of a workload container.
+	ExtendedInfo *AzureWorkloadContainerExtendedInfoResponse `pulumi:"extendedInfo"`
+	// Friendly name of the container.
+	FriendlyName *string `pulumi:"friendlyName"`
+	// Status of health of the container.
+	HealthStatus *string `pulumi:"healthStatus"`
+	// Time stamp when this container was updated.
+	LastUpdatedTime *string `pulumi:"lastUpdatedTime"`
+	// Re-Do Operation
+	OperationType *string `pulumi:"operationType"`
+	// Status of registration of the container with the Recovery Services Vault.
+	RegistrationStatus *string `pulumi:"registrationStatus"`
+	// ARM ID of the virtual machine represented by this Azure Workload Container
+	SourceResourceId *string `pulumi:"sourceResourceId"`
+	// Workload type for which registration was sent.
+	WorkloadType *string `pulumi:"workloadType"`
+}
+
+// AzureVMAppContainerProtectionContainerResponseInput is an input type that accepts AzureVMAppContainerProtectionContainerResponseArgs and AzureVMAppContainerProtectionContainerResponseOutput values.
+// You can construct a concrete instance of `AzureVMAppContainerProtectionContainerResponseInput` via:
+//
+//          AzureVMAppContainerProtectionContainerResponseArgs{...}
+type AzureVMAppContainerProtectionContainerResponseInput interface {
+	pulumi.Input
+
+	ToAzureVMAppContainerProtectionContainerResponseOutput() AzureVMAppContainerProtectionContainerResponseOutput
+	ToAzureVMAppContainerProtectionContainerResponseOutputWithContext(context.Context) AzureVMAppContainerProtectionContainerResponseOutput
+}
+
+// Container for SQL workloads under Azure Virtual Machines.
+type AzureVMAppContainerProtectionContainerResponseArgs struct {
+	// Type of backup management for the container.
+	BackupManagementType pulumi.StringPtrInput `pulumi:"backupManagementType"`
+	// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+	// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+	// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+	// Backup is VMAppContainer
+	// Expected value is 'AzureWorkloadContainer'.
+	ContainerType pulumi.StringInput `pulumi:"containerType"`
+	// Additional details of a workload container.
+	ExtendedInfo AzureWorkloadContainerExtendedInfoResponsePtrInput `pulumi:"extendedInfo"`
+	// Friendly name of the container.
+	FriendlyName pulumi.StringPtrInput `pulumi:"friendlyName"`
+	// Status of health of the container.
+	HealthStatus pulumi.StringPtrInput `pulumi:"healthStatus"`
+	// Time stamp when this container was updated.
+	LastUpdatedTime pulumi.StringPtrInput `pulumi:"lastUpdatedTime"`
+	// Re-Do Operation
+	OperationType pulumi.StringPtrInput `pulumi:"operationType"`
+	// Status of registration of the container with the Recovery Services Vault.
+	RegistrationStatus pulumi.StringPtrInput `pulumi:"registrationStatus"`
+	// ARM ID of the virtual machine represented by this Azure Workload Container
+	SourceResourceId pulumi.StringPtrInput `pulumi:"sourceResourceId"`
+	// Workload type for which registration was sent.
+	WorkloadType pulumi.StringPtrInput `pulumi:"workloadType"`
+}
+
+func (AzureVMAppContainerProtectionContainerResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureVMAppContainerProtectionContainerResponse)(nil)).Elem()
+}
+
+func (i AzureVMAppContainerProtectionContainerResponseArgs) ToAzureVMAppContainerProtectionContainerResponseOutput() AzureVMAppContainerProtectionContainerResponseOutput {
+	return i.ToAzureVMAppContainerProtectionContainerResponseOutputWithContext(context.Background())
+}
+
+func (i AzureVMAppContainerProtectionContainerResponseArgs) ToAzureVMAppContainerProtectionContainerResponseOutputWithContext(ctx context.Context) AzureVMAppContainerProtectionContainerResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureVMAppContainerProtectionContainerResponseOutput)
+}
+
+// Container for SQL workloads under Azure Virtual Machines.
+type AzureVMAppContainerProtectionContainerResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureVMAppContainerProtectionContainerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureVMAppContainerProtectionContainerResponse)(nil)).Elem()
+}
+
+func (o AzureVMAppContainerProtectionContainerResponseOutput) ToAzureVMAppContainerProtectionContainerResponseOutput() AzureVMAppContainerProtectionContainerResponseOutput {
+	return o
+}
+
+func (o AzureVMAppContainerProtectionContainerResponseOutput) ToAzureVMAppContainerProtectionContainerResponseOutputWithContext(ctx context.Context) AzureVMAppContainerProtectionContainerResponseOutput {
+	return o
+}
+
+// Type of backup management for the container.
+func (o AzureVMAppContainerProtectionContainerResponseOutput) BackupManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVMAppContainerProtectionContainerResponse) *string { return v.BackupManagementType }).(pulumi.StringPtrOutput)
+}
+
+// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+// Backup is VMAppContainer
+// Expected value is 'AzureWorkloadContainer'.
+func (o AzureVMAppContainerProtectionContainerResponseOutput) ContainerType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureVMAppContainerProtectionContainerResponse) string { return v.ContainerType }).(pulumi.StringOutput)
+}
+
+// Additional details of a workload container.
+func (o AzureVMAppContainerProtectionContainerResponseOutput) ExtendedInfo() AzureWorkloadContainerExtendedInfoResponsePtrOutput {
+	return o.ApplyT(func(v AzureVMAppContainerProtectionContainerResponse) *AzureWorkloadContainerExtendedInfoResponse {
+		return v.ExtendedInfo
+	}).(AzureWorkloadContainerExtendedInfoResponsePtrOutput)
+}
+
+// Friendly name of the container.
+func (o AzureVMAppContainerProtectionContainerResponseOutput) FriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVMAppContainerProtectionContainerResponse) *string { return v.FriendlyName }).(pulumi.StringPtrOutput)
+}
+
+// Status of health of the container.
+func (o AzureVMAppContainerProtectionContainerResponseOutput) HealthStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVMAppContainerProtectionContainerResponse) *string { return v.HealthStatus }).(pulumi.StringPtrOutput)
+}
+
+// Time stamp when this container was updated.
+func (o AzureVMAppContainerProtectionContainerResponseOutput) LastUpdatedTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVMAppContainerProtectionContainerResponse) *string { return v.LastUpdatedTime }).(pulumi.StringPtrOutput)
+}
+
+// Re-Do Operation
+func (o AzureVMAppContainerProtectionContainerResponseOutput) OperationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVMAppContainerProtectionContainerResponse) *string { return v.OperationType }).(pulumi.StringPtrOutput)
+}
+
+// Status of registration of the container with the Recovery Services Vault.
+func (o AzureVMAppContainerProtectionContainerResponseOutput) RegistrationStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVMAppContainerProtectionContainerResponse) *string { return v.RegistrationStatus }).(pulumi.StringPtrOutput)
+}
+
+// ARM ID of the virtual machine represented by this Azure Workload Container
+func (o AzureVMAppContainerProtectionContainerResponseOutput) SourceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVMAppContainerProtectionContainerResponse) *string { return v.SourceResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Workload type for which registration was sent.
+func (o AzureVMAppContainerProtectionContainerResponseOutput) WorkloadType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVMAppContainerProtectionContainerResponse) *string { return v.WorkloadType }).(pulumi.StringPtrOutput)
+}
+
 // Disk details for E2A provider.
 type AzureVmDiskDetailsResponse struct {
 	// The DiskEncryptionSet ARM ID.
@@ -8559,6 +11165,1985 @@ func (o AzureVmWorkloadProtectionPolicyResponseOutput) WorkLoadType() pulumi.Str
 	return o.ApplyT(func(v AzureVmWorkloadProtectionPolicyResponse) *string { return v.WorkLoadType }).(pulumi.StringPtrOutput)
 }
 
+// Azure VM workload-specific protected item representing SAP ASE Database.
+type AzureVmWorkloadSAPAseDatabaseProtectedItem struct {
+	// Type of backup management for the backed up item.
+	BackupManagementType *string `pulumi:"backupManagementType"`
+	// Name of the backup set the backup item belongs to
+	BackupSetName *string `pulumi:"backupSetName"`
+	// Unique name of container
+	ContainerName *string `pulumi:"containerName"`
+	// Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+	CreateMode *string `pulumi:"createMode"`
+	// Time for deferred deletion in UTC
+	DeferredDeleteTimeInUTC *string `pulumi:"deferredDeleteTimeInUTC"`
+	// Time remaining before the DS marked for deferred delete is permanently deleted
+	DeferredDeleteTimeRemaining *string `pulumi:"deferredDeleteTimeRemaining"`
+	// Additional information for this backup item.
+	ExtendedInfo *AzureVmWorkloadProtectedItemExtendedInfo `pulumi:"extendedInfo"`
+	// Friendly name of the DB represented by this backup item.
+	FriendlyName *string `pulumi:"friendlyName"`
+	// Flag to identify whether the deferred deleted DS is to be purged soon
+	IsDeferredDeleteScheduleUpcoming *bool `pulumi:"isDeferredDeleteScheduleUpcoming"`
+	// Flag to identify that deferred deleted DS is to be moved into Pause state
+	IsRehydrate *bool `pulumi:"isRehydrate"`
+	// Flag to identify whether the DS is scheduled for deferred delete
+	IsScheduledForDeferredDelete *bool `pulumi:"isScheduledForDeferredDelete"`
+	// Health details of different KPIs
+	KpisHealths map[string]KPIResourceHealthDetails `pulumi:"kpisHealths"`
+	// Last backup operation status. Possible values: Healthy, Unhealthy.
+	LastBackupStatus *string `pulumi:"lastBackupStatus"`
+	// Timestamp of the last backup operation on this backup item.
+	LastBackupTime *string `pulumi:"lastBackupTime"`
+	// Timestamp when the last (latest) backup copy was created for this backup item.
+	LastRecoveryPoint *string `pulumi:"lastRecoveryPoint"`
+	// Parent name of the DB such as Instance or Availability Group.
+	ParentName *string `pulumi:"parentName"`
+	// Parent type of protected item, example: for a DB, standalone server or distributed
+	ParentType *string `pulumi:"parentType"`
+	// ID of the backup policy with which this item is backed up.
+	PolicyId *string `pulumi:"policyId"`
+	// Data ID of the protected item.
+	ProtectedItemDataSourceId *string `pulumi:"protectedItemDataSourceId"`
+	// Health status of the backup item, evaluated based on last heartbeat received
+	ProtectedItemHealthStatus *string `pulumi:"protectedItemHealthStatus"`
+	// backup item type.
+	// Expected value is 'AzureVmWorkloadProtectedItem'.
+	ProtectedItemType string `pulumi:"protectedItemType"`
+	// Backup state of this backup item.
+	ProtectionState *string `pulumi:"protectionState"`
+	// Backup status of this backup item.
+	ProtectionStatus *string `pulumi:"protectionStatus"`
+	// Host/Cluster Name for instance or AG
+	ServerName *string `pulumi:"serverName"`
+	// ARM ID of the resource to be backed up.
+	SourceResourceId *string `pulumi:"sourceResourceId"`
+	// Type of workload this item represents.
+	WorkloadType *string `pulumi:"workloadType"`
+}
+
+// AzureVmWorkloadSAPAseDatabaseProtectedItemInput is an input type that accepts AzureVmWorkloadSAPAseDatabaseProtectedItemArgs and AzureVmWorkloadSAPAseDatabaseProtectedItemOutput values.
+// You can construct a concrete instance of `AzureVmWorkloadSAPAseDatabaseProtectedItemInput` via:
+//
+//          AzureVmWorkloadSAPAseDatabaseProtectedItemArgs{...}
+type AzureVmWorkloadSAPAseDatabaseProtectedItemInput interface {
+	pulumi.Input
+
+	ToAzureVmWorkloadSAPAseDatabaseProtectedItemOutput() AzureVmWorkloadSAPAseDatabaseProtectedItemOutput
+	ToAzureVmWorkloadSAPAseDatabaseProtectedItemOutputWithContext(context.Context) AzureVmWorkloadSAPAseDatabaseProtectedItemOutput
+}
+
+// Azure VM workload-specific protected item representing SAP ASE Database.
+type AzureVmWorkloadSAPAseDatabaseProtectedItemArgs struct {
+	// Type of backup management for the backed up item.
+	BackupManagementType pulumi.StringPtrInput `pulumi:"backupManagementType"`
+	// Name of the backup set the backup item belongs to
+	BackupSetName pulumi.StringPtrInput `pulumi:"backupSetName"`
+	// Unique name of container
+	ContainerName pulumi.StringPtrInput `pulumi:"containerName"`
+	// Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+	CreateMode pulumi.StringPtrInput `pulumi:"createMode"`
+	// Time for deferred deletion in UTC
+	DeferredDeleteTimeInUTC pulumi.StringPtrInput `pulumi:"deferredDeleteTimeInUTC"`
+	// Time remaining before the DS marked for deferred delete is permanently deleted
+	DeferredDeleteTimeRemaining pulumi.StringPtrInput `pulumi:"deferredDeleteTimeRemaining"`
+	// Additional information for this backup item.
+	ExtendedInfo AzureVmWorkloadProtectedItemExtendedInfoPtrInput `pulumi:"extendedInfo"`
+	// Friendly name of the DB represented by this backup item.
+	FriendlyName pulumi.StringPtrInput `pulumi:"friendlyName"`
+	// Flag to identify whether the deferred deleted DS is to be purged soon
+	IsDeferredDeleteScheduleUpcoming pulumi.BoolPtrInput `pulumi:"isDeferredDeleteScheduleUpcoming"`
+	// Flag to identify that deferred deleted DS is to be moved into Pause state
+	IsRehydrate pulumi.BoolPtrInput `pulumi:"isRehydrate"`
+	// Flag to identify whether the DS is scheduled for deferred delete
+	IsScheduledForDeferredDelete pulumi.BoolPtrInput `pulumi:"isScheduledForDeferredDelete"`
+	// Health details of different KPIs
+	KpisHealths KPIResourceHealthDetailsMapInput `pulumi:"kpisHealths"`
+	// Last backup operation status. Possible values: Healthy, Unhealthy.
+	LastBackupStatus pulumi.StringPtrInput `pulumi:"lastBackupStatus"`
+	// Timestamp of the last backup operation on this backup item.
+	LastBackupTime pulumi.StringPtrInput `pulumi:"lastBackupTime"`
+	// Timestamp when the last (latest) backup copy was created for this backup item.
+	LastRecoveryPoint pulumi.StringPtrInput `pulumi:"lastRecoveryPoint"`
+	// Parent name of the DB such as Instance or Availability Group.
+	ParentName pulumi.StringPtrInput `pulumi:"parentName"`
+	// Parent type of protected item, example: for a DB, standalone server or distributed
+	ParentType pulumi.StringPtrInput `pulumi:"parentType"`
+	// ID of the backup policy with which this item is backed up.
+	PolicyId pulumi.StringPtrInput `pulumi:"policyId"`
+	// Data ID of the protected item.
+	ProtectedItemDataSourceId pulumi.StringPtrInput `pulumi:"protectedItemDataSourceId"`
+	// Health status of the backup item, evaluated based on last heartbeat received
+	ProtectedItemHealthStatus pulumi.StringPtrInput `pulumi:"protectedItemHealthStatus"`
+	// backup item type.
+	// Expected value is 'AzureVmWorkloadProtectedItem'.
+	ProtectedItemType pulumi.StringInput `pulumi:"protectedItemType"`
+	// Backup state of this backup item.
+	ProtectionState pulumi.StringPtrInput `pulumi:"protectionState"`
+	// Backup status of this backup item.
+	ProtectionStatus pulumi.StringPtrInput `pulumi:"protectionStatus"`
+	// Host/Cluster Name for instance or AG
+	ServerName pulumi.StringPtrInput `pulumi:"serverName"`
+	// ARM ID of the resource to be backed up.
+	SourceResourceId pulumi.StringPtrInput `pulumi:"sourceResourceId"`
+	// Type of workload this item represents.
+	WorkloadType pulumi.StringPtrInput `pulumi:"workloadType"`
+}
+
+func (AzureVmWorkloadSAPAseDatabaseProtectedItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureVmWorkloadSAPAseDatabaseProtectedItem)(nil)).Elem()
+}
+
+func (i AzureVmWorkloadSAPAseDatabaseProtectedItemArgs) ToAzureVmWorkloadSAPAseDatabaseProtectedItemOutput() AzureVmWorkloadSAPAseDatabaseProtectedItemOutput {
+	return i.ToAzureVmWorkloadSAPAseDatabaseProtectedItemOutputWithContext(context.Background())
+}
+
+func (i AzureVmWorkloadSAPAseDatabaseProtectedItemArgs) ToAzureVmWorkloadSAPAseDatabaseProtectedItemOutputWithContext(ctx context.Context) AzureVmWorkloadSAPAseDatabaseProtectedItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureVmWorkloadSAPAseDatabaseProtectedItemOutput)
+}
+
+// Azure VM workload-specific protected item representing SAP ASE Database.
+type AzureVmWorkloadSAPAseDatabaseProtectedItemOutput struct{ *pulumi.OutputState }
+
+func (AzureVmWorkloadSAPAseDatabaseProtectedItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureVmWorkloadSAPAseDatabaseProtectedItem)(nil)).Elem()
+}
+
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemOutput) ToAzureVmWorkloadSAPAseDatabaseProtectedItemOutput() AzureVmWorkloadSAPAseDatabaseProtectedItemOutput {
+	return o
+}
+
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemOutput) ToAzureVmWorkloadSAPAseDatabaseProtectedItemOutputWithContext(ctx context.Context) AzureVmWorkloadSAPAseDatabaseProtectedItemOutput {
+	return o
+}
+
+// Type of backup management for the backed up item.
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemOutput) BackupManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItem) *string { return v.BackupManagementType }).(pulumi.StringPtrOutput)
+}
+
+// Name of the backup set the backup item belongs to
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemOutput) BackupSetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItem) *string { return v.BackupSetName }).(pulumi.StringPtrOutput)
+}
+
+// Unique name of container
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemOutput) ContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItem) *string { return v.ContainerName }).(pulumi.StringPtrOutput)
+}
+
+// Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemOutput) CreateMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItem) *string { return v.CreateMode }).(pulumi.StringPtrOutput)
+}
+
+// Time for deferred deletion in UTC
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemOutput) DeferredDeleteTimeInUTC() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItem) *string { return v.DeferredDeleteTimeInUTC }).(pulumi.StringPtrOutput)
+}
+
+// Time remaining before the DS marked for deferred delete is permanently deleted
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemOutput) DeferredDeleteTimeRemaining() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItem) *string { return v.DeferredDeleteTimeRemaining }).(pulumi.StringPtrOutput)
+}
+
+// Additional information for this backup item.
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemOutput) ExtendedInfo() AzureVmWorkloadProtectedItemExtendedInfoPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItem) *AzureVmWorkloadProtectedItemExtendedInfo {
+		return v.ExtendedInfo
+	}).(AzureVmWorkloadProtectedItemExtendedInfoPtrOutput)
+}
+
+// Friendly name of the DB represented by this backup item.
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemOutput) FriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItem) *string { return v.FriendlyName }).(pulumi.StringPtrOutput)
+}
+
+// Flag to identify whether the deferred deleted DS is to be purged soon
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemOutput) IsDeferredDeleteScheduleUpcoming() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItem) *bool { return v.IsDeferredDeleteScheduleUpcoming }).(pulumi.BoolPtrOutput)
+}
+
+// Flag to identify that deferred deleted DS is to be moved into Pause state
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemOutput) IsRehydrate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItem) *bool { return v.IsRehydrate }).(pulumi.BoolPtrOutput)
+}
+
+// Flag to identify whether the DS is scheduled for deferred delete
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemOutput) IsScheduledForDeferredDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItem) *bool { return v.IsScheduledForDeferredDelete }).(pulumi.BoolPtrOutput)
+}
+
+// Health details of different KPIs
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemOutput) KpisHealths() KPIResourceHealthDetailsMapOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItem) map[string]KPIResourceHealthDetails {
+		return v.KpisHealths
+	}).(KPIResourceHealthDetailsMapOutput)
+}
+
+// Last backup operation status. Possible values: Healthy, Unhealthy.
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemOutput) LastBackupStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItem) *string { return v.LastBackupStatus }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp of the last backup operation on this backup item.
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemOutput) LastBackupTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItem) *string { return v.LastBackupTime }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp when the last (latest) backup copy was created for this backup item.
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemOutput) LastRecoveryPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItem) *string { return v.LastRecoveryPoint }).(pulumi.StringPtrOutput)
+}
+
+// Parent name of the DB such as Instance or Availability Group.
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemOutput) ParentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItem) *string { return v.ParentName }).(pulumi.StringPtrOutput)
+}
+
+// Parent type of protected item, example: for a DB, standalone server or distributed
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemOutput) ParentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItem) *string { return v.ParentType }).(pulumi.StringPtrOutput)
+}
+
+// ID of the backup policy with which this item is backed up.
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemOutput) PolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItem) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
+}
+
+// Data ID of the protected item.
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemOutput) ProtectedItemDataSourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItem) *string { return v.ProtectedItemDataSourceId }).(pulumi.StringPtrOutput)
+}
+
+// Health status of the backup item, evaluated based on last heartbeat received
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemOutput) ProtectedItemHealthStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItem) *string { return v.ProtectedItemHealthStatus }).(pulumi.StringPtrOutput)
+}
+
+// backup item type.
+// Expected value is 'AzureVmWorkloadProtectedItem'.
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemOutput) ProtectedItemType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItem) string { return v.ProtectedItemType }).(pulumi.StringOutput)
+}
+
+// Backup state of this backup item.
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemOutput) ProtectionState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItem) *string { return v.ProtectionState }).(pulumi.StringPtrOutput)
+}
+
+// Backup status of this backup item.
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemOutput) ProtectionStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItem) *string { return v.ProtectionStatus }).(pulumi.StringPtrOutput)
+}
+
+// Host/Cluster Name for instance or AG
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemOutput) ServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItem) *string { return v.ServerName }).(pulumi.StringPtrOutput)
+}
+
+// ARM ID of the resource to be backed up.
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemOutput) SourceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItem) *string { return v.SourceResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Type of workload this item represents.
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemOutput) WorkloadType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItem) *string { return v.WorkloadType }).(pulumi.StringPtrOutput)
+}
+
+// Azure VM workload-specific protected item representing SAP ASE Database.
+type AzureVmWorkloadSAPAseDatabaseProtectedItemResponse struct {
+	// Type of backup management for the backed up item.
+	BackupManagementType *string `pulumi:"backupManagementType"`
+	// Name of the backup set the backup item belongs to
+	BackupSetName *string `pulumi:"backupSetName"`
+	// Unique name of container
+	ContainerName *string `pulumi:"containerName"`
+	// Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+	CreateMode *string `pulumi:"createMode"`
+	// Time for deferred deletion in UTC
+	DeferredDeleteTimeInUTC *string `pulumi:"deferredDeleteTimeInUTC"`
+	// Time remaining before the DS marked for deferred delete is permanently deleted
+	DeferredDeleteTimeRemaining *string `pulumi:"deferredDeleteTimeRemaining"`
+	// Additional information for this backup item.
+	ExtendedInfo *AzureVmWorkloadProtectedItemExtendedInfoResponse `pulumi:"extendedInfo"`
+	// Friendly name of the DB represented by this backup item.
+	FriendlyName *string `pulumi:"friendlyName"`
+	// Flag to identify whether the deferred deleted DS is to be purged soon
+	IsDeferredDeleteScheduleUpcoming *bool `pulumi:"isDeferredDeleteScheduleUpcoming"`
+	// Flag to identify that deferred deleted DS is to be moved into Pause state
+	IsRehydrate *bool `pulumi:"isRehydrate"`
+	// Flag to identify whether the DS is scheduled for deferred delete
+	IsScheduledForDeferredDelete *bool `pulumi:"isScheduledForDeferredDelete"`
+	// Health details of different KPIs
+	KpisHealths map[string]KPIResourceHealthDetailsResponse `pulumi:"kpisHealths"`
+	// Error details in last backup
+	LastBackupErrorDetail *ErrorDetailResponse `pulumi:"lastBackupErrorDetail"`
+	// Last backup operation status. Possible values: Healthy, Unhealthy.
+	LastBackupStatus *string `pulumi:"lastBackupStatus"`
+	// Timestamp of the last backup operation on this backup item.
+	LastBackupTime *string `pulumi:"lastBackupTime"`
+	// Timestamp when the last (latest) backup copy was created for this backup item.
+	LastRecoveryPoint *string `pulumi:"lastRecoveryPoint"`
+	// Parent name of the DB such as Instance or Availability Group.
+	ParentName *string `pulumi:"parentName"`
+	// Parent type of protected item, example: for a DB, standalone server or distributed
+	ParentType *string `pulumi:"parentType"`
+	// ID of the backup policy with which this item is backed up.
+	PolicyId *string `pulumi:"policyId"`
+	// Data ID of the protected item.
+	ProtectedItemDataSourceId *string `pulumi:"protectedItemDataSourceId"`
+	// Health status of the backup item, evaluated based on last heartbeat received
+	ProtectedItemHealthStatus *string `pulumi:"protectedItemHealthStatus"`
+	// backup item type.
+	// Expected value is 'AzureVmWorkloadProtectedItem'.
+	ProtectedItemType string `pulumi:"protectedItemType"`
+	// Backup state of this backup item.
+	ProtectionState *string `pulumi:"protectionState"`
+	// Backup status of this backup item.
+	ProtectionStatus *string `pulumi:"protectionStatus"`
+	// Host/Cluster Name for instance or AG
+	ServerName *string `pulumi:"serverName"`
+	// ARM ID of the resource to be backed up.
+	SourceResourceId *string `pulumi:"sourceResourceId"`
+	// Type of workload this item represents.
+	WorkloadType *string `pulumi:"workloadType"`
+}
+
+// AzureVmWorkloadSAPAseDatabaseProtectedItemResponseInput is an input type that accepts AzureVmWorkloadSAPAseDatabaseProtectedItemResponseArgs and AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput values.
+// You can construct a concrete instance of `AzureVmWorkloadSAPAseDatabaseProtectedItemResponseInput` via:
+//
+//          AzureVmWorkloadSAPAseDatabaseProtectedItemResponseArgs{...}
+type AzureVmWorkloadSAPAseDatabaseProtectedItemResponseInput interface {
+	pulumi.Input
+
+	ToAzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput() AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput
+	ToAzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutputWithContext(context.Context) AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput
+}
+
+// Azure VM workload-specific protected item representing SAP ASE Database.
+type AzureVmWorkloadSAPAseDatabaseProtectedItemResponseArgs struct {
+	// Type of backup management for the backed up item.
+	BackupManagementType pulumi.StringPtrInput `pulumi:"backupManagementType"`
+	// Name of the backup set the backup item belongs to
+	BackupSetName pulumi.StringPtrInput `pulumi:"backupSetName"`
+	// Unique name of container
+	ContainerName pulumi.StringPtrInput `pulumi:"containerName"`
+	// Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+	CreateMode pulumi.StringPtrInput `pulumi:"createMode"`
+	// Time for deferred deletion in UTC
+	DeferredDeleteTimeInUTC pulumi.StringPtrInput `pulumi:"deferredDeleteTimeInUTC"`
+	// Time remaining before the DS marked for deferred delete is permanently deleted
+	DeferredDeleteTimeRemaining pulumi.StringPtrInput `pulumi:"deferredDeleteTimeRemaining"`
+	// Additional information for this backup item.
+	ExtendedInfo AzureVmWorkloadProtectedItemExtendedInfoResponsePtrInput `pulumi:"extendedInfo"`
+	// Friendly name of the DB represented by this backup item.
+	FriendlyName pulumi.StringPtrInput `pulumi:"friendlyName"`
+	// Flag to identify whether the deferred deleted DS is to be purged soon
+	IsDeferredDeleteScheduleUpcoming pulumi.BoolPtrInput `pulumi:"isDeferredDeleteScheduleUpcoming"`
+	// Flag to identify that deferred deleted DS is to be moved into Pause state
+	IsRehydrate pulumi.BoolPtrInput `pulumi:"isRehydrate"`
+	// Flag to identify whether the DS is scheduled for deferred delete
+	IsScheduledForDeferredDelete pulumi.BoolPtrInput `pulumi:"isScheduledForDeferredDelete"`
+	// Health details of different KPIs
+	KpisHealths KPIResourceHealthDetailsResponseMapInput `pulumi:"kpisHealths"`
+	// Error details in last backup
+	LastBackupErrorDetail ErrorDetailResponsePtrInput `pulumi:"lastBackupErrorDetail"`
+	// Last backup operation status. Possible values: Healthy, Unhealthy.
+	LastBackupStatus pulumi.StringPtrInput `pulumi:"lastBackupStatus"`
+	// Timestamp of the last backup operation on this backup item.
+	LastBackupTime pulumi.StringPtrInput `pulumi:"lastBackupTime"`
+	// Timestamp when the last (latest) backup copy was created for this backup item.
+	LastRecoveryPoint pulumi.StringPtrInput `pulumi:"lastRecoveryPoint"`
+	// Parent name of the DB such as Instance or Availability Group.
+	ParentName pulumi.StringPtrInput `pulumi:"parentName"`
+	// Parent type of protected item, example: for a DB, standalone server or distributed
+	ParentType pulumi.StringPtrInput `pulumi:"parentType"`
+	// ID of the backup policy with which this item is backed up.
+	PolicyId pulumi.StringPtrInput `pulumi:"policyId"`
+	// Data ID of the protected item.
+	ProtectedItemDataSourceId pulumi.StringPtrInput `pulumi:"protectedItemDataSourceId"`
+	// Health status of the backup item, evaluated based on last heartbeat received
+	ProtectedItemHealthStatus pulumi.StringPtrInput `pulumi:"protectedItemHealthStatus"`
+	// backup item type.
+	// Expected value is 'AzureVmWorkloadProtectedItem'.
+	ProtectedItemType pulumi.StringInput `pulumi:"protectedItemType"`
+	// Backup state of this backup item.
+	ProtectionState pulumi.StringPtrInput `pulumi:"protectionState"`
+	// Backup status of this backup item.
+	ProtectionStatus pulumi.StringPtrInput `pulumi:"protectionStatus"`
+	// Host/Cluster Name for instance or AG
+	ServerName pulumi.StringPtrInput `pulumi:"serverName"`
+	// ARM ID of the resource to be backed up.
+	SourceResourceId pulumi.StringPtrInput `pulumi:"sourceResourceId"`
+	// Type of workload this item represents.
+	WorkloadType pulumi.StringPtrInput `pulumi:"workloadType"`
+}
+
+func (AzureVmWorkloadSAPAseDatabaseProtectedItemResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureVmWorkloadSAPAseDatabaseProtectedItemResponse)(nil)).Elem()
+}
+
+func (i AzureVmWorkloadSAPAseDatabaseProtectedItemResponseArgs) ToAzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput() AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput {
+	return i.ToAzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutputWithContext(context.Background())
+}
+
+func (i AzureVmWorkloadSAPAseDatabaseProtectedItemResponseArgs) ToAzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutputWithContext(ctx context.Context) AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput)
+}
+
+// Azure VM workload-specific protected item representing SAP ASE Database.
+type AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureVmWorkloadSAPAseDatabaseProtectedItemResponse)(nil)).Elem()
+}
+
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput) ToAzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput() AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput {
+	return o
+}
+
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput) ToAzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutputWithContext(ctx context.Context) AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput {
+	return o
+}
+
+// Type of backup management for the backed up item.
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput) BackupManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItemResponse) *string { return v.BackupManagementType }).(pulumi.StringPtrOutput)
+}
+
+// Name of the backup set the backup item belongs to
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput) BackupSetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItemResponse) *string { return v.BackupSetName }).(pulumi.StringPtrOutput)
+}
+
+// Unique name of container
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput) ContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItemResponse) *string { return v.ContainerName }).(pulumi.StringPtrOutput)
+}
+
+// Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput) CreateMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItemResponse) *string { return v.CreateMode }).(pulumi.StringPtrOutput)
+}
+
+// Time for deferred deletion in UTC
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput) DeferredDeleteTimeInUTC() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItemResponse) *string { return v.DeferredDeleteTimeInUTC }).(pulumi.StringPtrOutput)
+}
+
+// Time remaining before the DS marked for deferred delete is permanently deleted
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput) DeferredDeleteTimeRemaining() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItemResponse) *string {
+		return v.DeferredDeleteTimeRemaining
+	}).(pulumi.StringPtrOutput)
+}
+
+// Additional information for this backup item.
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput) ExtendedInfo() AzureVmWorkloadProtectedItemExtendedInfoResponsePtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItemResponse) *AzureVmWorkloadProtectedItemExtendedInfoResponse {
+		return v.ExtendedInfo
+	}).(AzureVmWorkloadProtectedItemExtendedInfoResponsePtrOutput)
+}
+
+// Friendly name of the DB represented by this backup item.
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput) FriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItemResponse) *string { return v.FriendlyName }).(pulumi.StringPtrOutput)
+}
+
+// Flag to identify whether the deferred deleted DS is to be purged soon
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput) IsDeferredDeleteScheduleUpcoming() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItemResponse) *bool {
+		return v.IsDeferredDeleteScheduleUpcoming
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Flag to identify that deferred deleted DS is to be moved into Pause state
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput) IsRehydrate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItemResponse) *bool { return v.IsRehydrate }).(pulumi.BoolPtrOutput)
+}
+
+// Flag to identify whether the DS is scheduled for deferred delete
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput) IsScheduledForDeferredDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItemResponse) *bool {
+		return v.IsScheduledForDeferredDelete
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Health details of different KPIs
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput) KpisHealths() KPIResourceHealthDetailsResponseMapOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItemResponse) map[string]KPIResourceHealthDetailsResponse {
+		return v.KpisHealths
+	}).(KPIResourceHealthDetailsResponseMapOutput)
+}
+
+// Error details in last backup
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput) LastBackupErrorDetail() ErrorDetailResponsePtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItemResponse) *ErrorDetailResponse {
+		return v.LastBackupErrorDetail
+	}).(ErrorDetailResponsePtrOutput)
+}
+
+// Last backup operation status. Possible values: Healthy, Unhealthy.
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput) LastBackupStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItemResponse) *string { return v.LastBackupStatus }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp of the last backup operation on this backup item.
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput) LastBackupTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItemResponse) *string { return v.LastBackupTime }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp when the last (latest) backup copy was created for this backup item.
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput) LastRecoveryPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItemResponse) *string { return v.LastRecoveryPoint }).(pulumi.StringPtrOutput)
+}
+
+// Parent name of the DB such as Instance or Availability Group.
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput) ParentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItemResponse) *string { return v.ParentName }).(pulumi.StringPtrOutput)
+}
+
+// Parent type of protected item, example: for a DB, standalone server or distributed
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput) ParentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItemResponse) *string { return v.ParentType }).(pulumi.StringPtrOutput)
+}
+
+// ID of the backup policy with which this item is backed up.
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput) PolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItemResponse) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
+}
+
+// Data ID of the protected item.
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput) ProtectedItemDataSourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItemResponse) *string { return v.ProtectedItemDataSourceId }).(pulumi.StringPtrOutput)
+}
+
+// Health status of the backup item, evaluated based on last heartbeat received
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput) ProtectedItemHealthStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItemResponse) *string { return v.ProtectedItemHealthStatus }).(pulumi.StringPtrOutput)
+}
+
+// backup item type.
+// Expected value is 'AzureVmWorkloadProtectedItem'.
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput) ProtectedItemType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItemResponse) string { return v.ProtectedItemType }).(pulumi.StringOutput)
+}
+
+// Backup state of this backup item.
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput) ProtectionState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItemResponse) *string { return v.ProtectionState }).(pulumi.StringPtrOutput)
+}
+
+// Backup status of this backup item.
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput) ProtectionStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItemResponse) *string { return v.ProtectionStatus }).(pulumi.StringPtrOutput)
+}
+
+// Host/Cluster Name for instance or AG
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput) ServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItemResponse) *string { return v.ServerName }).(pulumi.StringPtrOutput)
+}
+
+// ARM ID of the resource to be backed up.
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput) SourceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItemResponse) *string { return v.SourceResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Type of workload this item represents.
+func (o AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput) WorkloadType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPAseDatabaseProtectedItemResponse) *string { return v.WorkloadType }).(pulumi.StringPtrOutput)
+}
+
+// Azure VM workload-specific protected item representing SAP HANA Database.
+type AzureVmWorkloadSAPHanaDatabaseProtectedItem struct {
+	// Type of backup management for the backed up item.
+	BackupManagementType *string `pulumi:"backupManagementType"`
+	// Name of the backup set the backup item belongs to
+	BackupSetName *string `pulumi:"backupSetName"`
+	// Unique name of container
+	ContainerName *string `pulumi:"containerName"`
+	// Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+	CreateMode *string `pulumi:"createMode"`
+	// Time for deferred deletion in UTC
+	DeferredDeleteTimeInUTC *string `pulumi:"deferredDeleteTimeInUTC"`
+	// Time remaining before the DS marked for deferred delete is permanently deleted
+	DeferredDeleteTimeRemaining *string `pulumi:"deferredDeleteTimeRemaining"`
+	// Additional information for this backup item.
+	ExtendedInfo *AzureVmWorkloadProtectedItemExtendedInfo `pulumi:"extendedInfo"`
+	// Friendly name of the DB represented by this backup item.
+	FriendlyName *string `pulumi:"friendlyName"`
+	// Flag to identify whether the deferred deleted DS is to be purged soon
+	IsDeferredDeleteScheduleUpcoming *bool `pulumi:"isDeferredDeleteScheduleUpcoming"`
+	// Flag to identify that deferred deleted DS is to be moved into Pause state
+	IsRehydrate *bool `pulumi:"isRehydrate"`
+	// Flag to identify whether the DS is scheduled for deferred delete
+	IsScheduledForDeferredDelete *bool `pulumi:"isScheduledForDeferredDelete"`
+	// Health details of different KPIs
+	KpisHealths map[string]KPIResourceHealthDetails `pulumi:"kpisHealths"`
+	// Last backup operation status. Possible values: Healthy, Unhealthy.
+	LastBackupStatus *string `pulumi:"lastBackupStatus"`
+	// Timestamp of the last backup operation on this backup item.
+	LastBackupTime *string `pulumi:"lastBackupTime"`
+	// Timestamp when the last (latest) backup copy was created for this backup item.
+	LastRecoveryPoint *string `pulumi:"lastRecoveryPoint"`
+	// Parent name of the DB such as Instance or Availability Group.
+	ParentName *string `pulumi:"parentName"`
+	// Parent type of protected item, example: for a DB, standalone server or distributed
+	ParentType *string `pulumi:"parentType"`
+	// ID of the backup policy with which this item is backed up.
+	PolicyId *string `pulumi:"policyId"`
+	// Data ID of the protected item.
+	ProtectedItemDataSourceId *string `pulumi:"protectedItemDataSourceId"`
+	// Health status of the backup item, evaluated based on last heartbeat received
+	ProtectedItemHealthStatus *string `pulumi:"protectedItemHealthStatus"`
+	// backup item type.
+	// Expected value is 'AzureVmWorkloadProtectedItem'.
+	ProtectedItemType string `pulumi:"protectedItemType"`
+	// Backup state of this backup item.
+	ProtectionState *string `pulumi:"protectionState"`
+	// Backup status of this backup item.
+	ProtectionStatus *string `pulumi:"protectionStatus"`
+	// Host/Cluster Name for instance or AG
+	ServerName *string `pulumi:"serverName"`
+	// ARM ID of the resource to be backed up.
+	SourceResourceId *string `pulumi:"sourceResourceId"`
+	// Type of workload this item represents.
+	WorkloadType *string `pulumi:"workloadType"`
+}
+
+// AzureVmWorkloadSAPHanaDatabaseProtectedItemInput is an input type that accepts AzureVmWorkloadSAPHanaDatabaseProtectedItemArgs and AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput values.
+// You can construct a concrete instance of `AzureVmWorkloadSAPHanaDatabaseProtectedItemInput` via:
+//
+//          AzureVmWorkloadSAPHanaDatabaseProtectedItemArgs{...}
+type AzureVmWorkloadSAPHanaDatabaseProtectedItemInput interface {
+	pulumi.Input
+
+	ToAzureVmWorkloadSAPHanaDatabaseProtectedItemOutput() AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput
+	ToAzureVmWorkloadSAPHanaDatabaseProtectedItemOutputWithContext(context.Context) AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput
+}
+
+// Azure VM workload-specific protected item representing SAP HANA Database.
+type AzureVmWorkloadSAPHanaDatabaseProtectedItemArgs struct {
+	// Type of backup management for the backed up item.
+	BackupManagementType pulumi.StringPtrInput `pulumi:"backupManagementType"`
+	// Name of the backup set the backup item belongs to
+	BackupSetName pulumi.StringPtrInput `pulumi:"backupSetName"`
+	// Unique name of container
+	ContainerName pulumi.StringPtrInput `pulumi:"containerName"`
+	// Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+	CreateMode pulumi.StringPtrInput `pulumi:"createMode"`
+	// Time for deferred deletion in UTC
+	DeferredDeleteTimeInUTC pulumi.StringPtrInput `pulumi:"deferredDeleteTimeInUTC"`
+	// Time remaining before the DS marked for deferred delete is permanently deleted
+	DeferredDeleteTimeRemaining pulumi.StringPtrInput `pulumi:"deferredDeleteTimeRemaining"`
+	// Additional information for this backup item.
+	ExtendedInfo AzureVmWorkloadProtectedItemExtendedInfoPtrInput `pulumi:"extendedInfo"`
+	// Friendly name of the DB represented by this backup item.
+	FriendlyName pulumi.StringPtrInput `pulumi:"friendlyName"`
+	// Flag to identify whether the deferred deleted DS is to be purged soon
+	IsDeferredDeleteScheduleUpcoming pulumi.BoolPtrInput `pulumi:"isDeferredDeleteScheduleUpcoming"`
+	// Flag to identify that deferred deleted DS is to be moved into Pause state
+	IsRehydrate pulumi.BoolPtrInput `pulumi:"isRehydrate"`
+	// Flag to identify whether the DS is scheduled for deferred delete
+	IsScheduledForDeferredDelete pulumi.BoolPtrInput `pulumi:"isScheduledForDeferredDelete"`
+	// Health details of different KPIs
+	KpisHealths KPIResourceHealthDetailsMapInput `pulumi:"kpisHealths"`
+	// Last backup operation status. Possible values: Healthy, Unhealthy.
+	LastBackupStatus pulumi.StringPtrInput `pulumi:"lastBackupStatus"`
+	// Timestamp of the last backup operation on this backup item.
+	LastBackupTime pulumi.StringPtrInput `pulumi:"lastBackupTime"`
+	// Timestamp when the last (latest) backup copy was created for this backup item.
+	LastRecoveryPoint pulumi.StringPtrInput `pulumi:"lastRecoveryPoint"`
+	// Parent name of the DB such as Instance or Availability Group.
+	ParentName pulumi.StringPtrInput `pulumi:"parentName"`
+	// Parent type of protected item, example: for a DB, standalone server or distributed
+	ParentType pulumi.StringPtrInput `pulumi:"parentType"`
+	// ID of the backup policy with which this item is backed up.
+	PolicyId pulumi.StringPtrInput `pulumi:"policyId"`
+	// Data ID of the protected item.
+	ProtectedItemDataSourceId pulumi.StringPtrInput `pulumi:"protectedItemDataSourceId"`
+	// Health status of the backup item, evaluated based on last heartbeat received
+	ProtectedItemHealthStatus pulumi.StringPtrInput `pulumi:"protectedItemHealthStatus"`
+	// backup item type.
+	// Expected value is 'AzureVmWorkloadProtectedItem'.
+	ProtectedItemType pulumi.StringInput `pulumi:"protectedItemType"`
+	// Backup state of this backup item.
+	ProtectionState pulumi.StringPtrInput `pulumi:"protectionState"`
+	// Backup status of this backup item.
+	ProtectionStatus pulumi.StringPtrInput `pulumi:"protectionStatus"`
+	// Host/Cluster Name for instance or AG
+	ServerName pulumi.StringPtrInput `pulumi:"serverName"`
+	// ARM ID of the resource to be backed up.
+	SourceResourceId pulumi.StringPtrInput `pulumi:"sourceResourceId"`
+	// Type of workload this item represents.
+	WorkloadType pulumi.StringPtrInput `pulumi:"workloadType"`
+}
+
+func (AzureVmWorkloadSAPHanaDatabaseProtectedItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureVmWorkloadSAPHanaDatabaseProtectedItem)(nil)).Elem()
+}
+
+func (i AzureVmWorkloadSAPHanaDatabaseProtectedItemArgs) ToAzureVmWorkloadSAPHanaDatabaseProtectedItemOutput() AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput {
+	return i.ToAzureVmWorkloadSAPHanaDatabaseProtectedItemOutputWithContext(context.Background())
+}
+
+func (i AzureVmWorkloadSAPHanaDatabaseProtectedItemArgs) ToAzureVmWorkloadSAPHanaDatabaseProtectedItemOutputWithContext(ctx context.Context) AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput)
+}
+
+// Azure VM workload-specific protected item representing SAP HANA Database.
+type AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput struct{ *pulumi.OutputState }
+
+func (AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureVmWorkloadSAPHanaDatabaseProtectedItem)(nil)).Elem()
+}
+
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput) ToAzureVmWorkloadSAPHanaDatabaseProtectedItemOutput() AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput {
+	return o
+}
+
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput) ToAzureVmWorkloadSAPHanaDatabaseProtectedItemOutputWithContext(ctx context.Context) AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput {
+	return o
+}
+
+// Type of backup management for the backed up item.
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput) BackupManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItem) *string { return v.BackupManagementType }).(pulumi.StringPtrOutput)
+}
+
+// Name of the backup set the backup item belongs to
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput) BackupSetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItem) *string { return v.BackupSetName }).(pulumi.StringPtrOutput)
+}
+
+// Unique name of container
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput) ContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItem) *string { return v.ContainerName }).(pulumi.StringPtrOutput)
+}
+
+// Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput) CreateMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItem) *string { return v.CreateMode }).(pulumi.StringPtrOutput)
+}
+
+// Time for deferred deletion in UTC
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput) DeferredDeleteTimeInUTC() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItem) *string { return v.DeferredDeleteTimeInUTC }).(pulumi.StringPtrOutput)
+}
+
+// Time remaining before the DS marked for deferred delete is permanently deleted
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput) DeferredDeleteTimeRemaining() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItem) *string { return v.DeferredDeleteTimeRemaining }).(pulumi.StringPtrOutput)
+}
+
+// Additional information for this backup item.
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput) ExtendedInfo() AzureVmWorkloadProtectedItemExtendedInfoPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItem) *AzureVmWorkloadProtectedItemExtendedInfo {
+		return v.ExtendedInfo
+	}).(AzureVmWorkloadProtectedItemExtendedInfoPtrOutput)
+}
+
+// Friendly name of the DB represented by this backup item.
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput) FriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItem) *string { return v.FriendlyName }).(pulumi.StringPtrOutput)
+}
+
+// Flag to identify whether the deferred deleted DS is to be purged soon
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput) IsDeferredDeleteScheduleUpcoming() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItem) *bool { return v.IsDeferredDeleteScheduleUpcoming }).(pulumi.BoolPtrOutput)
+}
+
+// Flag to identify that deferred deleted DS is to be moved into Pause state
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput) IsRehydrate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItem) *bool { return v.IsRehydrate }).(pulumi.BoolPtrOutput)
+}
+
+// Flag to identify whether the DS is scheduled for deferred delete
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput) IsScheduledForDeferredDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItem) *bool { return v.IsScheduledForDeferredDelete }).(pulumi.BoolPtrOutput)
+}
+
+// Health details of different KPIs
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput) KpisHealths() KPIResourceHealthDetailsMapOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItem) map[string]KPIResourceHealthDetails {
+		return v.KpisHealths
+	}).(KPIResourceHealthDetailsMapOutput)
+}
+
+// Last backup operation status. Possible values: Healthy, Unhealthy.
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput) LastBackupStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItem) *string { return v.LastBackupStatus }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp of the last backup operation on this backup item.
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput) LastBackupTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItem) *string { return v.LastBackupTime }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp when the last (latest) backup copy was created for this backup item.
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput) LastRecoveryPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItem) *string { return v.LastRecoveryPoint }).(pulumi.StringPtrOutput)
+}
+
+// Parent name of the DB such as Instance or Availability Group.
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput) ParentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItem) *string { return v.ParentName }).(pulumi.StringPtrOutput)
+}
+
+// Parent type of protected item, example: for a DB, standalone server or distributed
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput) ParentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItem) *string { return v.ParentType }).(pulumi.StringPtrOutput)
+}
+
+// ID of the backup policy with which this item is backed up.
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput) PolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItem) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
+}
+
+// Data ID of the protected item.
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput) ProtectedItemDataSourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItem) *string { return v.ProtectedItemDataSourceId }).(pulumi.StringPtrOutput)
+}
+
+// Health status of the backup item, evaluated based on last heartbeat received
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput) ProtectedItemHealthStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItem) *string { return v.ProtectedItemHealthStatus }).(pulumi.StringPtrOutput)
+}
+
+// backup item type.
+// Expected value is 'AzureVmWorkloadProtectedItem'.
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput) ProtectedItemType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItem) string { return v.ProtectedItemType }).(pulumi.StringOutput)
+}
+
+// Backup state of this backup item.
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput) ProtectionState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItem) *string { return v.ProtectionState }).(pulumi.StringPtrOutput)
+}
+
+// Backup status of this backup item.
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput) ProtectionStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItem) *string { return v.ProtectionStatus }).(pulumi.StringPtrOutput)
+}
+
+// Host/Cluster Name for instance or AG
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput) ServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItem) *string { return v.ServerName }).(pulumi.StringPtrOutput)
+}
+
+// ARM ID of the resource to be backed up.
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput) SourceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItem) *string { return v.SourceResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Type of workload this item represents.
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput) WorkloadType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItem) *string { return v.WorkloadType }).(pulumi.StringPtrOutput)
+}
+
+// Azure VM workload-specific protected item representing SAP HANA Database.
+type AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse struct {
+	// Type of backup management for the backed up item.
+	BackupManagementType *string `pulumi:"backupManagementType"`
+	// Name of the backup set the backup item belongs to
+	BackupSetName *string `pulumi:"backupSetName"`
+	// Unique name of container
+	ContainerName *string `pulumi:"containerName"`
+	// Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+	CreateMode *string `pulumi:"createMode"`
+	// Time for deferred deletion in UTC
+	DeferredDeleteTimeInUTC *string `pulumi:"deferredDeleteTimeInUTC"`
+	// Time remaining before the DS marked for deferred delete is permanently deleted
+	DeferredDeleteTimeRemaining *string `pulumi:"deferredDeleteTimeRemaining"`
+	// Additional information for this backup item.
+	ExtendedInfo *AzureVmWorkloadProtectedItemExtendedInfoResponse `pulumi:"extendedInfo"`
+	// Friendly name of the DB represented by this backup item.
+	FriendlyName *string `pulumi:"friendlyName"`
+	// Flag to identify whether the deferred deleted DS is to be purged soon
+	IsDeferredDeleteScheduleUpcoming *bool `pulumi:"isDeferredDeleteScheduleUpcoming"`
+	// Flag to identify that deferred deleted DS is to be moved into Pause state
+	IsRehydrate *bool `pulumi:"isRehydrate"`
+	// Flag to identify whether the DS is scheduled for deferred delete
+	IsScheduledForDeferredDelete *bool `pulumi:"isScheduledForDeferredDelete"`
+	// Health details of different KPIs
+	KpisHealths map[string]KPIResourceHealthDetailsResponse `pulumi:"kpisHealths"`
+	// Error details in last backup
+	LastBackupErrorDetail *ErrorDetailResponse `pulumi:"lastBackupErrorDetail"`
+	// Last backup operation status. Possible values: Healthy, Unhealthy.
+	LastBackupStatus *string `pulumi:"lastBackupStatus"`
+	// Timestamp of the last backup operation on this backup item.
+	LastBackupTime *string `pulumi:"lastBackupTime"`
+	// Timestamp when the last (latest) backup copy was created for this backup item.
+	LastRecoveryPoint *string `pulumi:"lastRecoveryPoint"`
+	// Parent name of the DB such as Instance or Availability Group.
+	ParentName *string `pulumi:"parentName"`
+	// Parent type of protected item, example: for a DB, standalone server or distributed
+	ParentType *string `pulumi:"parentType"`
+	// ID of the backup policy with which this item is backed up.
+	PolicyId *string `pulumi:"policyId"`
+	// Data ID of the protected item.
+	ProtectedItemDataSourceId *string `pulumi:"protectedItemDataSourceId"`
+	// Health status of the backup item, evaluated based on last heartbeat received
+	ProtectedItemHealthStatus *string `pulumi:"protectedItemHealthStatus"`
+	// backup item type.
+	// Expected value is 'AzureVmWorkloadProtectedItem'.
+	ProtectedItemType string `pulumi:"protectedItemType"`
+	// Backup state of this backup item.
+	ProtectionState *string `pulumi:"protectionState"`
+	// Backup status of this backup item.
+	ProtectionStatus *string `pulumi:"protectionStatus"`
+	// Host/Cluster Name for instance or AG
+	ServerName *string `pulumi:"serverName"`
+	// ARM ID of the resource to be backed up.
+	SourceResourceId *string `pulumi:"sourceResourceId"`
+	// Type of workload this item represents.
+	WorkloadType *string `pulumi:"workloadType"`
+}
+
+// AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseInput is an input type that accepts AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseArgs and AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput values.
+// You can construct a concrete instance of `AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseInput` via:
+//
+//          AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseArgs{...}
+type AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseInput interface {
+	pulumi.Input
+
+	ToAzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput() AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput
+	ToAzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutputWithContext(context.Context) AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput
+}
+
+// Azure VM workload-specific protected item representing SAP HANA Database.
+type AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseArgs struct {
+	// Type of backup management for the backed up item.
+	BackupManagementType pulumi.StringPtrInput `pulumi:"backupManagementType"`
+	// Name of the backup set the backup item belongs to
+	BackupSetName pulumi.StringPtrInput `pulumi:"backupSetName"`
+	// Unique name of container
+	ContainerName pulumi.StringPtrInput `pulumi:"containerName"`
+	// Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+	CreateMode pulumi.StringPtrInput `pulumi:"createMode"`
+	// Time for deferred deletion in UTC
+	DeferredDeleteTimeInUTC pulumi.StringPtrInput `pulumi:"deferredDeleteTimeInUTC"`
+	// Time remaining before the DS marked for deferred delete is permanently deleted
+	DeferredDeleteTimeRemaining pulumi.StringPtrInput `pulumi:"deferredDeleteTimeRemaining"`
+	// Additional information for this backup item.
+	ExtendedInfo AzureVmWorkloadProtectedItemExtendedInfoResponsePtrInput `pulumi:"extendedInfo"`
+	// Friendly name of the DB represented by this backup item.
+	FriendlyName pulumi.StringPtrInput `pulumi:"friendlyName"`
+	// Flag to identify whether the deferred deleted DS is to be purged soon
+	IsDeferredDeleteScheduleUpcoming pulumi.BoolPtrInput `pulumi:"isDeferredDeleteScheduleUpcoming"`
+	// Flag to identify that deferred deleted DS is to be moved into Pause state
+	IsRehydrate pulumi.BoolPtrInput `pulumi:"isRehydrate"`
+	// Flag to identify whether the DS is scheduled for deferred delete
+	IsScheduledForDeferredDelete pulumi.BoolPtrInput `pulumi:"isScheduledForDeferredDelete"`
+	// Health details of different KPIs
+	KpisHealths KPIResourceHealthDetailsResponseMapInput `pulumi:"kpisHealths"`
+	// Error details in last backup
+	LastBackupErrorDetail ErrorDetailResponsePtrInput `pulumi:"lastBackupErrorDetail"`
+	// Last backup operation status. Possible values: Healthy, Unhealthy.
+	LastBackupStatus pulumi.StringPtrInput `pulumi:"lastBackupStatus"`
+	// Timestamp of the last backup operation on this backup item.
+	LastBackupTime pulumi.StringPtrInput `pulumi:"lastBackupTime"`
+	// Timestamp when the last (latest) backup copy was created for this backup item.
+	LastRecoveryPoint pulumi.StringPtrInput `pulumi:"lastRecoveryPoint"`
+	// Parent name of the DB such as Instance or Availability Group.
+	ParentName pulumi.StringPtrInput `pulumi:"parentName"`
+	// Parent type of protected item, example: for a DB, standalone server or distributed
+	ParentType pulumi.StringPtrInput `pulumi:"parentType"`
+	// ID of the backup policy with which this item is backed up.
+	PolicyId pulumi.StringPtrInput `pulumi:"policyId"`
+	// Data ID of the protected item.
+	ProtectedItemDataSourceId pulumi.StringPtrInput `pulumi:"protectedItemDataSourceId"`
+	// Health status of the backup item, evaluated based on last heartbeat received
+	ProtectedItemHealthStatus pulumi.StringPtrInput `pulumi:"protectedItemHealthStatus"`
+	// backup item type.
+	// Expected value is 'AzureVmWorkloadProtectedItem'.
+	ProtectedItemType pulumi.StringInput `pulumi:"protectedItemType"`
+	// Backup state of this backup item.
+	ProtectionState pulumi.StringPtrInput `pulumi:"protectionState"`
+	// Backup status of this backup item.
+	ProtectionStatus pulumi.StringPtrInput `pulumi:"protectionStatus"`
+	// Host/Cluster Name for instance or AG
+	ServerName pulumi.StringPtrInput `pulumi:"serverName"`
+	// ARM ID of the resource to be backed up.
+	SourceResourceId pulumi.StringPtrInput `pulumi:"sourceResourceId"`
+	// Type of workload this item represents.
+	WorkloadType pulumi.StringPtrInput `pulumi:"workloadType"`
+}
+
+func (AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse)(nil)).Elem()
+}
+
+func (i AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseArgs) ToAzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput() AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput {
+	return i.ToAzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutputWithContext(context.Background())
+}
+
+func (i AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseArgs) ToAzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutputWithContext(ctx context.Context) AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput)
+}
+
+// Azure VM workload-specific protected item representing SAP HANA Database.
+type AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse)(nil)).Elem()
+}
+
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput) ToAzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput() AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput {
+	return o
+}
+
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput) ToAzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutputWithContext(ctx context.Context) AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput {
+	return o
+}
+
+// Type of backup management for the backed up item.
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput) BackupManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse) *string { return v.BackupManagementType }).(pulumi.StringPtrOutput)
+}
+
+// Name of the backup set the backup item belongs to
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput) BackupSetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse) *string { return v.BackupSetName }).(pulumi.StringPtrOutput)
+}
+
+// Unique name of container
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput) ContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse) *string { return v.ContainerName }).(pulumi.StringPtrOutput)
+}
+
+// Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput) CreateMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse) *string { return v.CreateMode }).(pulumi.StringPtrOutput)
+}
+
+// Time for deferred deletion in UTC
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput) DeferredDeleteTimeInUTC() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse) *string { return v.DeferredDeleteTimeInUTC }).(pulumi.StringPtrOutput)
+}
+
+// Time remaining before the DS marked for deferred delete is permanently deleted
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput) DeferredDeleteTimeRemaining() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse) *string {
+		return v.DeferredDeleteTimeRemaining
+	}).(pulumi.StringPtrOutput)
+}
+
+// Additional information for this backup item.
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput) ExtendedInfo() AzureVmWorkloadProtectedItemExtendedInfoResponsePtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse) *AzureVmWorkloadProtectedItemExtendedInfoResponse {
+		return v.ExtendedInfo
+	}).(AzureVmWorkloadProtectedItemExtendedInfoResponsePtrOutput)
+}
+
+// Friendly name of the DB represented by this backup item.
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput) FriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse) *string { return v.FriendlyName }).(pulumi.StringPtrOutput)
+}
+
+// Flag to identify whether the deferred deleted DS is to be purged soon
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput) IsDeferredDeleteScheduleUpcoming() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse) *bool {
+		return v.IsDeferredDeleteScheduleUpcoming
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Flag to identify that deferred deleted DS is to be moved into Pause state
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput) IsRehydrate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse) *bool { return v.IsRehydrate }).(pulumi.BoolPtrOutput)
+}
+
+// Flag to identify whether the DS is scheduled for deferred delete
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput) IsScheduledForDeferredDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse) *bool {
+		return v.IsScheduledForDeferredDelete
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Health details of different KPIs
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput) KpisHealths() KPIResourceHealthDetailsResponseMapOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse) map[string]KPIResourceHealthDetailsResponse {
+		return v.KpisHealths
+	}).(KPIResourceHealthDetailsResponseMapOutput)
+}
+
+// Error details in last backup
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput) LastBackupErrorDetail() ErrorDetailResponsePtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse) *ErrorDetailResponse {
+		return v.LastBackupErrorDetail
+	}).(ErrorDetailResponsePtrOutput)
+}
+
+// Last backup operation status. Possible values: Healthy, Unhealthy.
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput) LastBackupStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse) *string { return v.LastBackupStatus }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp of the last backup operation on this backup item.
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput) LastBackupTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse) *string { return v.LastBackupTime }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp when the last (latest) backup copy was created for this backup item.
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput) LastRecoveryPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse) *string { return v.LastRecoveryPoint }).(pulumi.StringPtrOutput)
+}
+
+// Parent name of the DB such as Instance or Availability Group.
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput) ParentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse) *string { return v.ParentName }).(pulumi.StringPtrOutput)
+}
+
+// Parent type of protected item, example: for a DB, standalone server or distributed
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput) ParentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse) *string { return v.ParentType }).(pulumi.StringPtrOutput)
+}
+
+// ID of the backup policy with which this item is backed up.
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput) PolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
+}
+
+// Data ID of the protected item.
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput) ProtectedItemDataSourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse) *string {
+		return v.ProtectedItemDataSourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Health status of the backup item, evaluated based on last heartbeat received
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput) ProtectedItemHealthStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse) *string {
+		return v.ProtectedItemHealthStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// backup item type.
+// Expected value is 'AzureVmWorkloadProtectedItem'.
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput) ProtectedItemType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse) string { return v.ProtectedItemType }).(pulumi.StringOutput)
+}
+
+// Backup state of this backup item.
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput) ProtectionState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse) *string { return v.ProtectionState }).(pulumi.StringPtrOutput)
+}
+
+// Backup status of this backup item.
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput) ProtectionStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse) *string { return v.ProtectionStatus }).(pulumi.StringPtrOutput)
+}
+
+// Host/Cluster Name for instance or AG
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput) ServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse) *string { return v.ServerName }).(pulumi.StringPtrOutput)
+}
+
+// ARM ID of the resource to be backed up.
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput) SourceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse) *string { return v.SourceResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Type of workload this item represents.
+func (o AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput) WorkloadType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse) *string { return v.WorkloadType }).(pulumi.StringPtrOutput)
+}
+
+// Azure VM workload-specific protected item representing SQL Database.
+type AzureVmWorkloadSQLDatabaseProtectedItem struct {
+	// Type of backup management for the backed up item.
+	BackupManagementType *string `pulumi:"backupManagementType"`
+	// Name of the backup set the backup item belongs to
+	BackupSetName *string `pulumi:"backupSetName"`
+	// Unique name of container
+	ContainerName *string `pulumi:"containerName"`
+	// Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+	CreateMode *string `pulumi:"createMode"`
+	// Time for deferred deletion in UTC
+	DeferredDeleteTimeInUTC *string `pulumi:"deferredDeleteTimeInUTC"`
+	// Time remaining before the DS marked for deferred delete is permanently deleted
+	DeferredDeleteTimeRemaining *string `pulumi:"deferredDeleteTimeRemaining"`
+	// Additional information for this backup item.
+	ExtendedInfo *AzureVmWorkloadProtectedItemExtendedInfo `pulumi:"extendedInfo"`
+	// Friendly name of the DB represented by this backup item.
+	FriendlyName *string `pulumi:"friendlyName"`
+	// Flag to identify whether the deferred deleted DS is to be purged soon
+	IsDeferredDeleteScheduleUpcoming *bool `pulumi:"isDeferredDeleteScheduleUpcoming"`
+	// Flag to identify that deferred deleted DS is to be moved into Pause state
+	IsRehydrate *bool `pulumi:"isRehydrate"`
+	// Flag to identify whether the DS is scheduled for deferred delete
+	IsScheduledForDeferredDelete *bool `pulumi:"isScheduledForDeferredDelete"`
+	// Health details of different KPIs
+	KpisHealths map[string]KPIResourceHealthDetails `pulumi:"kpisHealths"`
+	// Last backup operation status. Possible values: Healthy, Unhealthy.
+	LastBackupStatus *string `pulumi:"lastBackupStatus"`
+	// Timestamp of the last backup operation on this backup item.
+	LastBackupTime *string `pulumi:"lastBackupTime"`
+	// Timestamp when the last (latest) backup copy was created for this backup item.
+	LastRecoveryPoint *string `pulumi:"lastRecoveryPoint"`
+	// Parent name of the DB such as Instance or Availability Group.
+	ParentName *string `pulumi:"parentName"`
+	// Parent type of protected item, example: for a DB, standalone server or distributed
+	ParentType *string `pulumi:"parentType"`
+	// ID of the backup policy with which this item is backed up.
+	PolicyId *string `pulumi:"policyId"`
+	// Data ID of the protected item.
+	ProtectedItemDataSourceId *string `pulumi:"protectedItemDataSourceId"`
+	// Health status of the backup item, evaluated based on last heartbeat received
+	ProtectedItemHealthStatus *string `pulumi:"protectedItemHealthStatus"`
+	// backup item type.
+	// Expected value is 'AzureVmWorkloadProtectedItem'.
+	ProtectedItemType string `pulumi:"protectedItemType"`
+	// Backup state of this backup item.
+	ProtectionState *string `pulumi:"protectionState"`
+	// Backup status of this backup item.
+	ProtectionStatus *string `pulumi:"protectionStatus"`
+	// Host/Cluster Name for instance or AG
+	ServerName *string `pulumi:"serverName"`
+	// ARM ID of the resource to be backed up.
+	SourceResourceId *string `pulumi:"sourceResourceId"`
+	// Type of workload this item represents.
+	WorkloadType *string `pulumi:"workloadType"`
+}
+
+// AzureVmWorkloadSQLDatabaseProtectedItemInput is an input type that accepts AzureVmWorkloadSQLDatabaseProtectedItemArgs and AzureVmWorkloadSQLDatabaseProtectedItemOutput values.
+// You can construct a concrete instance of `AzureVmWorkloadSQLDatabaseProtectedItemInput` via:
+//
+//          AzureVmWorkloadSQLDatabaseProtectedItemArgs{...}
+type AzureVmWorkloadSQLDatabaseProtectedItemInput interface {
+	pulumi.Input
+
+	ToAzureVmWorkloadSQLDatabaseProtectedItemOutput() AzureVmWorkloadSQLDatabaseProtectedItemOutput
+	ToAzureVmWorkloadSQLDatabaseProtectedItemOutputWithContext(context.Context) AzureVmWorkloadSQLDatabaseProtectedItemOutput
+}
+
+// Azure VM workload-specific protected item representing SQL Database.
+type AzureVmWorkloadSQLDatabaseProtectedItemArgs struct {
+	// Type of backup management for the backed up item.
+	BackupManagementType pulumi.StringPtrInput `pulumi:"backupManagementType"`
+	// Name of the backup set the backup item belongs to
+	BackupSetName pulumi.StringPtrInput `pulumi:"backupSetName"`
+	// Unique name of container
+	ContainerName pulumi.StringPtrInput `pulumi:"containerName"`
+	// Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+	CreateMode pulumi.StringPtrInput `pulumi:"createMode"`
+	// Time for deferred deletion in UTC
+	DeferredDeleteTimeInUTC pulumi.StringPtrInput `pulumi:"deferredDeleteTimeInUTC"`
+	// Time remaining before the DS marked for deferred delete is permanently deleted
+	DeferredDeleteTimeRemaining pulumi.StringPtrInput `pulumi:"deferredDeleteTimeRemaining"`
+	// Additional information for this backup item.
+	ExtendedInfo AzureVmWorkloadProtectedItemExtendedInfoPtrInput `pulumi:"extendedInfo"`
+	// Friendly name of the DB represented by this backup item.
+	FriendlyName pulumi.StringPtrInput `pulumi:"friendlyName"`
+	// Flag to identify whether the deferred deleted DS is to be purged soon
+	IsDeferredDeleteScheduleUpcoming pulumi.BoolPtrInput `pulumi:"isDeferredDeleteScheduleUpcoming"`
+	// Flag to identify that deferred deleted DS is to be moved into Pause state
+	IsRehydrate pulumi.BoolPtrInput `pulumi:"isRehydrate"`
+	// Flag to identify whether the DS is scheduled for deferred delete
+	IsScheduledForDeferredDelete pulumi.BoolPtrInput `pulumi:"isScheduledForDeferredDelete"`
+	// Health details of different KPIs
+	KpisHealths KPIResourceHealthDetailsMapInput `pulumi:"kpisHealths"`
+	// Last backup operation status. Possible values: Healthy, Unhealthy.
+	LastBackupStatus pulumi.StringPtrInput `pulumi:"lastBackupStatus"`
+	// Timestamp of the last backup operation on this backup item.
+	LastBackupTime pulumi.StringPtrInput `pulumi:"lastBackupTime"`
+	// Timestamp when the last (latest) backup copy was created for this backup item.
+	LastRecoveryPoint pulumi.StringPtrInput `pulumi:"lastRecoveryPoint"`
+	// Parent name of the DB such as Instance or Availability Group.
+	ParentName pulumi.StringPtrInput `pulumi:"parentName"`
+	// Parent type of protected item, example: for a DB, standalone server or distributed
+	ParentType pulumi.StringPtrInput `pulumi:"parentType"`
+	// ID of the backup policy with which this item is backed up.
+	PolicyId pulumi.StringPtrInput `pulumi:"policyId"`
+	// Data ID of the protected item.
+	ProtectedItemDataSourceId pulumi.StringPtrInput `pulumi:"protectedItemDataSourceId"`
+	// Health status of the backup item, evaluated based on last heartbeat received
+	ProtectedItemHealthStatus pulumi.StringPtrInput `pulumi:"protectedItemHealthStatus"`
+	// backup item type.
+	// Expected value is 'AzureVmWorkloadProtectedItem'.
+	ProtectedItemType pulumi.StringInput `pulumi:"protectedItemType"`
+	// Backup state of this backup item.
+	ProtectionState pulumi.StringPtrInput `pulumi:"protectionState"`
+	// Backup status of this backup item.
+	ProtectionStatus pulumi.StringPtrInput `pulumi:"protectionStatus"`
+	// Host/Cluster Name for instance or AG
+	ServerName pulumi.StringPtrInput `pulumi:"serverName"`
+	// ARM ID of the resource to be backed up.
+	SourceResourceId pulumi.StringPtrInput `pulumi:"sourceResourceId"`
+	// Type of workload this item represents.
+	WorkloadType pulumi.StringPtrInput `pulumi:"workloadType"`
+}
+
+func (AzureVmWorkloadSQLDatabaseProtectedItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureVmWorkloadSQLDatabaseProtectedItem)(nil)).Elem()
+}
+
+func (i AzureVmWorkloadSQLDatabaseProtectedItemArgs) ToAzureVmWorkloadSQLDatabaseProtectedItemOutput() AzureVmWorkloadSQLDatabaseProtectedItemOutput {
+	return i.ToAzureVmWorkloadSQLDatabaseProtectedItemOutputWithContext(context.Background())
+}
+
+func (i AzureVmWorkloadSQLDatabaseProtectedItemArgs) ToAzureVmWorkloadSQLDatabaseProtectedItemOutputWithContext(ctx context.Context) AzureVmWorkloadSQLDatabaseProtectedItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureVmWorkloadSQLDatabaseProtectedItemOutput)
+}
+
+// Azure VM workload-specific protected item representing SQL Database.
+type AzureVmWorkloadSQLDatabaseProtectedItemOutput struct{ *pulumi.OutputState }
+
+func (AzureVmWorkloadSQLDatabaseProtectedItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureVmWorkloadSQLDatabaseProtectedItem)(nil)).Elem()
+}
+
+func (o AzureVmWorkloadSQLDatabaseProtectedItemOutput) ToAzureVmWorkloadSQLDatabaseProtectedItemOutput() AzureVmWorkloadSQLDatabaseProtectedItemOutput {
+	return o
+}
+
+func (o AzureVmWorkloadSQLDatabaseProtectedItemOutput) ToAzureVmWorkloadSQLDatabaseProtectedItemOutputWithContext(ctx context.Context) AzureVmWorkloadSQLDatabaseProtectedItemOutput {
+	return o
+}
+
+// Type of backup management for the backed up item.
+func (o AzureVmWorkloadSQLDatabaseProtectedItemOutput) BackupManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItem) *string { return v.BackupManagementType }).(pulumi.StringPtrOutput)
+}
+
+// Name of the backup set the backup item belongs to
+func (o AzureVmWorkloadSQLDatabaseProtectedItemOutput) BackupSetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItem) *string { return v.BackupSetName }).(pulumi.StringPtrOutput)
+}
+
+// Unique name of container
+func (o AzureVmWorkloadSQLDatabaseProtectedItemOutput) ContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItem) *string { return v.ContainerName }).(pulumi.StringPtrOutput)
+}
+
+// Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+func (o AzureVmWorkloadSQLDatabaseProtectedItemOutput) CreateMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItem) *string { return v.CreateMode }).(pulumi.StringPtrOutput)
+}
+
+// Time for deferred deletion in UTC
+func (o AzureVmWorkloadSQLDatabaseProtectedItemOutput) DeferredDeleteTimeInUTC() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItem) *string { return v.DeferredDeleteTimeInUTC }).(pulumi.StringPtrOutput)
+}
+
+// Time remaining before the DS marked for deferred delete is permanently deleted
+func (o AzureVmWorkloadSQLDatabaseProtectedItemOutput) DeferredDeleteTimeRemaining() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItem) *string { return v.DeferredDeleteTimeRemaining }).(pulumi.StringPtrOutput)
+}
+
+// Additional information for this backup item.
+func (o AzureVmWorkloadSQLDatabaseProtectedItemOutput) ExtendedInfo() AzureVmWorkloadProtectedItemExtendedInfoPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItem) *AzureVmWorkloadProtectedItemExtendedInfo {
+		return v.ExtendedInfo
+	}).(AzureVmWorkloadProtectedItemExtendedInfoPtrOutput)
+}
+
+// Friendly name of the DB represented by this backup item.
+func (o AzureVmWorkloadSQLDatabaseProtectedItemOutput) FriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItem) *string { return v.FriendlyName }).(pulumi.StringPtrOutput)
+}
+
+// Flag to identify whether the deferred deleted DS is to be purged soon
+func (o AzureVmWorkloadSQLDatabaseProtectedItemOutput) IsDeferredDeleteScheduleUpcoming() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItem) *bool { return v.IsDeferredDeleteScheduleUpcoming }).(pulumi.BoolPtrOutput)
+}
+
+// Flag to identify that deferred deleted DS is to be moved into Pause state
+func (o AzureVmWorkloadSQLDatabaseProtectedItemOutput) IsRehydrate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItem) *bool { return v.IsRehydrate }).(pulumi.BoolPtrOutput)
+}
+
+// Flag to identify whether the DS is scheduled for deferred delete
+func (o AzureVmWorkloadSQLDatabaseProtectedItemOutput) IsScheduledForDeferredDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItem) *bool { return v.IsScheduledForDeferredDelete }).(pulumi.BoolPtrOutput)
+}
+
+// Health details of different KPIs
+func (o AzureVmWorkloadSQLDatabaseProtectedItemOutput) KpisHealths() KPIResourceHealthDetailsMapOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItem) map[string]KPIResourceHealthDetails {
+		return v.KpisHealths
+	}).(KPIResourceHealthDetailsMapOutput)
+}
+
+// Last backup operation status. Possible values: Healthy, Unhealthy.
+func (o AzureVmWorkloadSQLDatabaseProtectedItemOutput) LastBackupStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItem) *string { return v.LastBackupStatus }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp of the last backup operation on this backup item.
+func (o AzureVmWorkloadSQLDatabaseProtectedItemOutput) LastBackupTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItem) *string { return v.LastBackupTime }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp when the last (latest) backup copy was created for this backup item.
+func (o AzureVmWorkloadSQLDatabaseProtectedItemOutput) LastRecoveryPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItem) *string { return v.LastRecoveryPoint }).(pulumi.StringPtrOutput)
+}
+
+// Parent name of the DB such as Instance or Availability Group.
+func (o AzureVmWorkloadSQLDatabaseProtectedItemOutput) ParentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItem) *string { return v.ParentName }).(pulumi.StringPtrOutput)
+}
+
+// Parent type of protected item, example: for a DB, standalone server or distributed
+func (o AzureVmWorkloadSQLDatabaseProtectedItemOutput) ParentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItem) *string { return v.ParentType }).(pulumi.StringPtrOutput)
+}
+
+// ID of the backup policy with which this item is backed up.
+func (o AzureVmWorkloadSQLDatabaseProtectedItemOutput) PolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItem) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
+}
+
+// Data ID of the protected item.
+func (o AzureVmWorkloadSQLDatabaseProtectedItemOutput) ProtectedItemDataSourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItem) *string { return v.ProtectedItemDataSourceId }).(pulumi.StringPtrOutput)
+}
+
+// Health status of the backup item, evaluated based on last heartbeat received
+func (o AzureVmWorkloadSQLDatabaseProtectedItemOutput) ProtectedItemHealthStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItem) *string { return v.ProtectedItemHealthStatus }).(pulumi.StringPtrOutput)
+}
+
+// backup item type.
+// Expected value is 'AzureVmWorkloadProtectedItem'.
+func (o AzureVmWorkloadSQLDatabaseProtectedItemOutput) ProtectedItemType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItem) string { return v.ProtectedItemType }).(pulumi.StringOutput)
+}
+
+// Backup state of this backup item.
+func (o AzureVmWorkloadSQLDatabaseProtectedItemOutput) ProtectionState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItem) *string { return v.ProtectionState }).(pulumi.StringPtrOutput)
+}
+
+// Backup status of this backup item.
+func (o AzureVmWorkloadSQLDatabaseProtectedItemOutput) ProtectionStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItem) *string { return v.ProtectionStatus }).(pulumi.StringPtrOutput)
+}
+
+// Host/Cluster Name for instance or AG
+func (o AzureVmWorkloadSQLDatabaseProtectedItemOutput) ServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItem) *string { return v.ServerName }).(pulumi.StringPtrOutput)
+}
+
+// ARM ID of the resource to be backed up.
+func (o AzureVmWorkloadSQLDatabaseProtectedItemOutput) SourceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItem) *string { return v.SourceResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Type of workload this item represents.
+func (o AzureVmWorkloadSQLDatabaseProtectedItemOutput) WorkloadType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItem) *string { return v.WorkloadType }).(pulumi.StringPtrOutput)
+}
+
+// Azure VM workload-specific protected item representing SQL Database.
+type AzureVmWorkloadSQLDatabaseProtectedItemResponse struct {
+	// Type of backup management for the backed up item.
+	BackupManagementType *string `pulumi:"backupManagementType"`
+	// Name of the backup set the backup item belongs to
+	BackupSetName *string `pulumi:"backupSetName"`
+	// Unique name of container
+	ContainerName *string `pulumi:"containerName"`
+	// Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+	CreateMode *string `pulumi:"createMode"`
+	// Time for deferred deletion in UTC
+	DeferredDeleteTimeInUTC *string `pulumi:"deferredDeleteTimeInUTC"`
+	// Time remaining before the DS marked for deferred delete is permanently deleted
+	DeferredDeleteTimeRemaining *string `pulumi:"deferredDeleteTimeRemaining"`
+	// Additional information for this backup item.
+	ExtendedInfo *AzureVmWorkloadProtectedItemExtendedInfoResponse `pulumi:"extendedInfo"`
+	// Friendly name of the DB represented by this backup item.
+	FriendlyName *string `pulumi:"friendlyName"`
+	// Flag to identify whether the deferred deleted DS is to be purged soon
+	IsDeferredDeleteScheduleUpcoming *bool `pulumi:"isDeferredDeleteScheduleUpcoming"`
+	// Flag to identify that deferred deleted DS is to be moved into Pause state
+	IsRehydrate *bool `pulumi:"isRehydrate"`
+	// Flag to identify whether the DS is scheduled for deferred delete
+	IsScheduledForDeferredDelete *bool `pulumi:"isScheduledForDeferredDelete"`
+	// Health details of different KPIs
+	KpisHealths map[string]KPIResourceHealthDetailsResponse `pulumi:"kpisHealths"`
+	// Error details in last backup
+	LastBackupErrorDetail *ErrorDetailResponse `pulumi:"lastBackupErrorDetail"`
+	// Last backup operation status. Possible values: Healthy, Unhealthy.
+	LastBackupStatus *string `pulumi:"lastBackupStatus"`
+	// Timestamp of the last backup operation on this backup item.
+	LastBackupTime *string `pulumi:"lastBackupTime"`
+	// Timestamp when the last (latest) backup copy was created for this backup item.
+	LastRecoveryPoint *string `pulumi:"lastRecoveryPoint"`
+	// Parent name of the DB such as Instance or Availability Group.
+	ParentName *string `pulumi:"parentName"`
+	// Parent type of protected item, example: for a DB, standalone server or distributed
+	ParentType *string `pulumi:"parentType"`
+	// ID of the backup policy with which this item is backed up.
+	PolicyId *string `pulumi:"policyId"`
+	// Data ID of the protected item.
+	ProtectedItemDataSourceId *string `pulumi:"protectedItemDataSourceId"`
+	// Health status of the backup item, evaluated based on last heartbeat received
+	ProtectedItemHealthStatus *string `pulumi:"protectedItemHealthStatus"`
+	// backup item type.
+	// Expected value is 'AzureVmWorkloadProtectedItem'.
+	ProtectedItemType string `pulumi:"protectedItemType"`
+	// Backup state of this backup item.
+	ProtectionState *string `pulumi:"protectionState"`
+	// Backup status of this backup item.
+	ProtectionStatus *string `pulumi:"protectionStatus"`
+	// Host/Cluster Name for instance or AG
+	ServerName *string `pulumi:"serverName"`
+	// ARM ID of the resource to be backed up.
+	SourceResourceId *string `pulumi:"sourceResourceId"`
+	// Type of workload this item represents.
+	WorkloadType *string `pulumi:"workloadType"`
+}
+
+// AzureVmWorkloadSQLDatabaseProtectedItemResponseInput is an input type that accepts AzureVmWorkloadSQLDatabaseProtectedItemResponseArgs and AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput values.
+// You can construct a concrete instance of `AzureVmWorkloadSQLDatabaseProtectedItemResponseInput` via:
+//
+//          AzureVmWorkloadSQLDatabaseProtectedItemResponseArgs{...}
+type AzureVmWorkloadSQLDatabaseProtectedItemResponseInput interface {
+	pulumi.Input
+
+	ToAzureVmWorkloadSQLDatabaseProtectedItemResponseOutput() AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput
+	ToAzureVmWorkloadSQLDatabaseProtectedItemResponseOutputWithContext(context.Context) AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput
+}
+
+// Azure VM workload-specific protected item representing SQL Database.
+type AzureVmWorkloadSQLDatabaseProtectedItemResponseArgs struct {
+	// Type of backup management for the backed up item.
+	BackupManagementType pulumi.StringPtrInput `pulumi:"backupManagementType"`
+	// Name of the backup set the backup item belongs to
+	BackupSetName pulumi.StringPtrInput `pulumi:"backupSetName"`
+	// Unique name of container
+	ContainerName pulumi.StringPtrInput `pulumi:"containerName"`
+	// Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+	CreateMode pulumi.StringPtrInput `pulumi:"createMode"`
+	// Time for deferred deletion in UTC
+	DeferredDeleteTimeInUTC pulumi.StringPtrInput `pulumi:"deferredDeleteTimeInUTC"`
+	// Time remaining before the DS marked for deferred delete is permanently deleted
+	DeferredDeleteTimeRemaining pulumi.StringPtrInput `pulumi:"deferredDeleteTimeRemaining"`
+	// Additional information for this backup item.
+	ExtendedInfo AzureVmWorkloadProtectedItemExtendedInfoResponsePtrInput `pulumi:"extendedInfo"`
+	// Friendly name of the DB represented by this backup item.
+	FriendlyName pulumi.StringPtrInput `pulumi:"friendlyName"`
+	// Flag to identify whether the deferred deleted DS is to be purged soon
+	IsDeferredDeleteScheduleUpcoming pulumi.BoolPtrInput `pulumi:"isDeferredDeleteScheduleUpcoming"`
+	// Flag to identify that deferred deleted DS is to be moved into Pause state
+	IsRehydrate pulumi.BoolPtrInput `pulumi:"isRehydrate"`
+	// Flag to identify whether the DS is scheduled for deferred delete
+	IsScheduledForDeferredDelete pulumi.BoolPtrInput `pulumi:"isScheduledForDeferredDelete"`
+	// Health details of different KPIs
+	KpisHealths KPIResourceHealthDetailsResponseMapInput `pulumi:"kpisHealths"`
+	// Error details in last backup
+	LastBackupErrorDetail ErrorDetailResponsePtrInput `pulumi:"lastBackupErrorDetail"`
+	// Last backup operation status. Possible values: Healthy, Unhealthy.
+	LastBackupStatus pulumi.StringPtrInput `pulumi:"lastBackupStatus"`
+	// Timestamp of the last backup operation on this backup item.
+	LastBackupTime pulumi.StringPtrInput `pulumi:"lastBackupTime"`
+	// Timestamp when the last (latest) backup copy was created for this backup item.
+	LastRecoveryPoint pulumi.StringPtrInput `pulumi:"lastRecoveryPoint"`
+	// Parent name of the DB such as Instance or Availability Group.
+	ParentName pulumi.StringPtrInput `pulumi:"parentName"`
+	// Parent type of protected item, example: for a DB, standalone server or distributed
+	ParentType pulumi.StringPtrInput `pulumi:"parentType"`
+	// ID of the backup policy with which this item is backed up.
+	PolicyId pulumi.StringPtrInput `pulumi:"policyId"`
+	// Data ID of the protected item.
+	ProtectedItemDataSourceId pulumi.StringPtrInput `pulumi:"protectedItemDataSourceId"`
+	// Health status of the backup item, evaluated based on last heartbeat received
+	ProtectedItemHealthStatus pulumi.StringPtrInput `pulumi:"protectedItemHealthStatus"`
+	// backup item type.
+	// Expected value is 'AzureVmWorkloadProtectedItem'.
+	ProtectedItemType pulumi.StringInput `pulumi:"protectedItemType"`
+	// Backup state of this backup item.
+	ProtectionState pulumi.StringPtrInput `pulumi:"protectionState"`
+	// Backup status of this backup item.
+	ProtectionStatus pulumi.StringPtrInput `pulumi:"protectionStatus"`
+	// Host/Cluster Name for instance or AG
+	ServerName pulumi.StringPtrInput `pulumi:"serverName"`
+	// ARM ID of the resource to be backed up.
+	SourceResourceId pulumi.StringPtrInput `pulumi:"sourceResourceId"`
+	// Type of workload this item represents.
+	WorkloadType pulumi.StringPtrInput `pulumi:"workloadType"`
+}
+
+func (AzureVmWorkloadSQLDatabaseProtectedItemResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureVmWorkloadSQLDatabaseProtectedItemResponse)(nil)).Elem()
+}
+
+func (i AzureVmWorkloadSQLDatabaseProtectedItemResponseArgs) ToAzureVmWorkloadSQLDatabaseProtectedItemResponseOutput() AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput {
+	return i.ToAzureVmWorkloadSQLDatabaseProtectedItemResponseOutputWithContext(context.Background())
+}
+
+func (i AzureVmWorkloadSQLDatabaseProtectedItemResponseArgs) ToAzureVmWorkloadSQLDatabaseProtectedItemResponseOutputWithContext(ctx context.Context) AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput)
+}
+
+// Azure VM workload-specific protected item representing SQL Database.
+type AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureVmWorkloadSQLDatabaseProtectedItemResponse)(nil)).Elem()
+}
+
+func (o AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput) ToAzureVmWorkloadSQLDatabaseProtectedItemResponseOutput() AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput {
+	return o
+}
+
+func (o AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput) ToAzureVmWorkloadSQLDatabaseProtectedItemResponseOutputWithContext(ctx context.Context) AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput {
+	return o
+}
+
+// Type of backup management for the backed up item.
+func (o AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput) BackupManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItemResponse) *string { return v.BackupManagementType }).(pulumi.StringPtrOutput)
+}
+
+// Name of the backup set the backup item belongs to
+func (o AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput) BackupSetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItemResponse) *string { return v.BackupSetName }).(pulumi.StringPtrOutput)
+}
+
+// Unique name of container
+func (o AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput) ContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItemResponse) *string { return v.ContainerName }).(pulumi.StringPtrOutput)
+}
+
+// Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+func (o AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput) CreateMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItemResponse) *string { return v.CreateMode }).(pulumi.StringPtrOutput)
+}
+
+// Time for deferred deletion in UTC
+func (o AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput) DeferredDeleteTimeInUTC() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItemResponse) *string { return v.DeferredDeleteTimeInUTC }).(pulumi.StringPtrOutput)
+}
+
+// Time remaining before the DS marked for deferred delete is permanently deleted
+func (o AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput) DeferredDeleteTimeRemaining() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItemResponse) *string { return v.DeferredDeleteTimeRemaining }).(pulumi.StringPtrOutput)
+}
+
+// Additional information for this backup item.
+func (o AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput) ExtendedInfo() AzureVmWorkloadProtectedItemExtendedInfoResponsePtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItemResponse) *AzureVmWorkloadProtectedItemExtendedInfoResponse {
+		return v.ExtendedInfo
+	}).(AzureVmWorkloadProtectedItemExtendedInfoResponsePtrOutput)
+}
+
+// Friendly name of the DB represented by this backup item.
+func (o AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput) FriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItemResponse) *string { return v.FriendlyName }).(pulumi.StringPtrOutput)
+}
+
+// Flag to identify whether the deferred deleted DS is to be purged soon
+func (o AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput) IsDeferredDeleteScheduleUpcoming() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItemResponse) *bool {
+		return v.IsDeferredDeleteScheduleUpcoming
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Flag to identify that deferred deleted DS is to be moved into Pause state
+func (o AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput) IsRehydrate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItemResponse) *bool { return v.IsRehydrate }).(pulumi.BoolPtrOutput)
+}
+
+// Flag to identify whether the DS is scheduled for deferred delete
+func (o AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput) IsScheduledForDeferredDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItemResponse) *bool { return v.IsScheduledForDeferredDelete }).(pulumi.BoolPtrOutput)
+}
+
+// Health details of different KPIs
+func (o AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput) KpisHealths() KPIResourceHealthDetailsResponseMapOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItemResponse) map[string]KPIResourceHealthDetailsResponse {
+		return v.KpisHealths
+	}).(KPIResourceHealthDetailsResponseMapOutput)
+}
+
+// Error details in last backup
+func (o AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput) LastBackupErrorDetail() ErrorDetailResponsePtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItemResponse) *ErrorDetailResponse {
+		return v.LastBackupErrorDetail
+	}).(ErrorDetailResponsePtrOutput)
+}
+
+// Last backup operation status. Possible values: Healthy, Unhealthy.
+func (o AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput) LastBackupStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItemResponse) *string { return v.LastBackupStatus }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp of the last backup operation on this backup item.
+func (o AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput) LastBackupTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItemResponse) *string { return v.LastBackupTime }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp when the last (latest) backup copy was created for this backup item.
+func (o AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput) LastRecoveryPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItemResponse) *string { return v.LastRecoveryPoint }).(pulumi.StringPtrOutput)
+}
+
+// Parent name of the DB such as Instance or Availability Group.
+func (o AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput) ParentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItemResponse) *string { return v.ParentName }).(pulumi.StringPtrOutput)
+}
+
+// Parent type of protected item, example: for a DB, standalone server or distributed
+func (o AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput) ParentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItemResponse) *string { return v.ParentType }).(pulumi.StringPtrOutput)
+}
+
+// ID of the backup policy with which this item is backed up.
+func (o AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput) PolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItemResponse) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
+}
+
+// Data ID of the protected item.
+func (o AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput) ProtectedItemDataSourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItemResponse) *string { return v.ProtectedItemDataSourceId }).(pulumi.StringPtrOutput)
+}
+
+// Health status of the backup item, evaluated based on last heartbeat received
+func (o AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput) ProtectedItemHealthStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItemResponse) *string { return v.ProtectedItemHealthStatus }).(pulumi.StringPtrOutput)
+}
+
+// backup item type.
+// Expected value is 'AzureVmWorkloadProtectedItem'.
+func (o AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput) ProtectedItemType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItemResponse) string { return v.ProtectedItemType }).(pulumi.StringOutput)
+}
+
+// Backup state of this backup item.
+func (o AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput) ProtectionState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItemResponse) *string { return v.ProtectionState }).(pulumi.StringPtrOutput)
+}
+
+// Backup status of this backup item.
+func (o AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput) ProtectionStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItemResponse) *string { return v.ProtectionStatus }).(pulumi.StringPtrOutput)
+}
+
+// Host/Cluster Name for instance or AG
+func (o AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput) ServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItemResponse) *string { return v.ServerName }).(pulumi.StringPtrOutput)
+}
+
+// ARM ID of the resource to be backed up.
+func (o AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput) SourceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItemResponse) *string { return v.SourceResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Type of workload this item represents.
+func (o AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput) WorkloadType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureVmWorkloadSQLDatabaseProtectedItemResponse) *string { return v.WorkloadType }).(pulumi.StringPtrOutput)
+}
+
+// Azure Recovery Services Vault specific protection intent item.
+type AzureWorkloadAutoProtectionIntent struct {
+	// Type of backup management for the backed up item.
+	BackupManagementType *string `pulumi:"backupManagementType"`
+	// ID of the item which is getting protected, In case of Azure Vm , it is ProtectedItemId
+	ItemId *string `pulumi:"itemId"`
+	// ID of the backup policy with which this item is backed up.
+	PolicyId *string `pulumi:"policyId"`
+	// backup protectionIntent type.
+	// Expected value is 'RecoveryServiceVaultItem'.
+	ProtectionIntentItemType *string `pulumi:"protectionIntentItemType"`
+	// Backup state of this backup item.
+	ProtectionState *string `pulumi:"protectionState"`
+	// ARM ID of the resource to be backed up.
+	SourceResourceId *string `pulumi:"sourceResourceId"`
+}
+
+// AzureWorkloadAutoProtectionIntentInput is an input type that accepts AzureWorkloadAutoProtectionIntentArgs and AzureWorkloadAutoProtectionIntentOutput values.
+// You can construct a concrete instance of `AzureWorkloadAutoProtectionIntentInput` via:
+//
+//          AzureWorkloadAutoProtectionIntentArgs{...}
+type AzureWorkloadAutoProtectionIntentInput interface {
+	pulumi.Input
+
+	ToAzureWorkloadAutoProtectionIntentOutput() AzureWorkloadAutoProtectionIntentOutput
+	ToAzureWorkloadAutoProtectionIntentOutputWithContext(context.Context) AzureWorkloadAutoProtectionIntentOutput
+}
+
+// Azure Recovery Services Vault specific protection intent item.
+type AzureWorkloadAutoProtectionIntentArgs struct {
+	// Type of backup management for the backed up item.
+	BackupManagementType pulumi.StringPtrInput `pulumi:"backupManagementType"`
+	// ID of the item which is getting protected, In case of Azure Vm , it is ProtectedItemId
+	ItemId pulumi.StringPtrInput `pulumi:"itemId"`
+	// ID of the backup policy with which this item is backed up.
+	PolicyId pulumi.StringPtrInput `pulumi:"policyId"`
+	// backup protectionIntent type.
+	// Expected value is 'RecoveryServiceVaultItem'.
+	ProtectionIntentItemType pulumi.StringPtrInput `pulumi:"protectionIntentItemType"`
+	// Backup state of this backup item.
+	ProtectionState pulumi.StringPtrInput `pulumi:"protectionState"`
+	// ARM ID of the resource to be backed up.
+	SourceResourceId pulumi.StringPtrInput `pulumi:"sourceResourceId"`
+}
+
+func (AzureWorkloadAutoProtectionIntentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureWorkloadAutoProtectionIntent)(nil)).Elem()
+}
+
+func (i AzureWorkloadAutoProtectionIntentArgs) ToAzureWorkloadAutoProtectionIntentOutput() AzureWorkloadAutoProtectionIntentOutput {
+	return i.ToAzureWorkloadAutoProtectionIntentOutputWithContext(context.Background())
+}
+
+func (i AzureWorkloadAutoProtectionIntentArgs) ToAzureWorkloadAutoProtectionIntentOutputWithContext(ctx context.Context) AzureWorkloadAutoProtectionIntentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureWorkloadAutoProtectionIntentOutput)
+}
+
+// Azure Recovery Services Vault specific protection intent item.
+type AzureWorkloadAutoProtectionIntentOutput struct{ *pulumi.OutputState }
+
+func (AzureWorkloadAutoProtectionIntentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureWorkloadAutoProtectionIntent)(nil)).Elem()
+}
+
+func (o AzureWorkloadAutoProtectionIntentOutput) ToAzureWorkloadAutoProtectionIntentOutput() AzureWorkloadAutoProtectionIntentOutput {
+	return o
+}
+
+func (o AzureWorkloadAutoProtectionIntentOutput) ToAzureWorkloadAutoProtectionIntentOutputWithContext(ctx context.Context) AzureWorkloadAutoProtectionIntentOutput {
+	return o
+}
+
+// Type of backup management for the backed up item.
+func (o AzureWorkloadAutoProtectionIntentOutput) BackupManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureWorkloadAutoProtectionIntent) *string { return v.BackupManagementType }).(pulumi.StringPtrOutput)
+}
+
+// ID of the item which is getting protected, In case of Azure Vm , it is ProtectedItemId
+func (o AzureWorkloadAutoProtectionIntentOutput) ItemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureWorkloadAutoProtectionIntent) *string { return v.ItemId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the backup policy with which this item is backed up.
+func (o AzureWorkloadAutoProtectionIntentOutput) PolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureWorkloadAutoProtectionIntent) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
+}
+
+// backup protectionIntent type.
+// Expected value is 'RecoveryServiceVaultItem'.
+func (o AzureWorkloadAutoProtectionIntentOutput) ProtectionIntentItemType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureWorkloadAutoProtectionIntent) *string { return v.ProtectionIntentItemType }).(pulumi.StringPtrOutput)
+}
+
+// Backup state of this backup item.
+func (o AzureWorkloadAutoProtectionIntentOutput) ProtectionState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureWorkloadAutoProtectionIntent) *string { return v.ProtectionState }).(pulumi.StringPtrOutput)
+}
+
+// ARM ID of the resource to be backed up.
+func (o AzureWorkloadAutoProtectionIntentOutput) SourceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureWorkloadAutoProtectionIntent) *string { return v.SourceResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Azure Recovery Services Vault specific protection intent item.
+type AzureWorkloadAutoProtectionIntentResponse struct {
+	// Type of backup management for the backed up item.
+	BackupManagementType *string `pulumi:"backupManagementType"`
+	// ID of the item which is getting protected, In case of Azure Vm , it is ProtectedItemId
+	ItemId *string `pulumi:"itemId"`
+	// ID of the backup policy with which this item is backed up.
+	PolicyId *string `pulumi:"policyId"`
+	// backup protectionIntent type.
+	// Expected value is 'RecoveryServiceVaultItem'.
+	ProtectionIntentItemType *string `pulumi:"protectionIntentItemType"`
+	// Backup state of this backup item.
+	ProtectionState *string `pulumi:"protectionState"`
+	// ARM ID of the resource to be backed up.
+	SourceResourceId *string `pulumi:"sourceResourceId"`
+}
+
+// AzureWorkloadAutoProtectionIntentResponseInput is an input type that accepts AzureWorkloadAutoProtectionIntentResponseArgs and AzureWorkloadAutoProtectionIntentResponseOutput values.
+// You can construct a concrete instance of `AzureWorkloadAutoProtectionIntentResponseInput` via:
+//
+//          AzureWorkloadAutoProtectionIntentResponseArgs{...}
+type AzureWorkloadAutoProtectionIntentResponseInput interface {
+	pulumi.Input
+
+	ToAzureWorkloadAutoProtectionIntentResponseOutput() AzureWorkloadAutoProtectionIntentResponseOutput
+	ToAzureWorkloadAutoProtectionIntentResponseOutputWithContext(context.Context) AzureWorkloadAutoProtectionIntentResponseOutput
+}
+
+// Azure Recovery Services Vault specific protection intent item.
+type AzureWorkloadAutoProtectionIntentResponseArgs struct {
+	// Type of backup management for the backed up item.
+	BackupManagementType pulumi.StringPtrInput `pulumi:"backupManagementType"`
+	// ID of the item which is getting protected, In case of Azure Vm , it is ProtectedItemId
+	ItemId pulumi.StringPtrInput `pulumi:"itemId"`
+	// ID of the backup policy with which this item is backed up.
+	PolicyId pulumi.StringPtrInput `pulumi:"policyId"`
+	// backup protectionIntent type.
+	// Expected value is 'RecoveryServiceVaultItem'.
+	ProtectionIntentItemType pulumi.StringPtrInput `pulumi:"protectionIntentItemType"`
+	// Backup state of this backup item.
+	ProtectionState pulumi.StringPtrInput `pulumi:"protectionState"`
+	// ARM ID of the resource to be backed up.
+	SourceResourceId pulumi.StringPtrInput `pulumi:"sourceResourceId"`
+}
+
+func (AzureWorkloadAutoProtectionIntentResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureWorkloadAutoProtectionIntentResponse)(nil)).Elem()
+}
+
+func (i AzureWorkloadAutoProtectionIntentResponseArgs) ToAzureWorkloadAutoProtectionIntentResponseOutput() AzureWorkloadAutoProtectionIntentResponseOutput {
+	return i.ToAzureWorkloadAutoProtectionIntentResponseOutputWithContext(context.Background())
+}
+
+func (i AzureWorkloadAutoProtectionIntentResponseArgs) ToAzureWorkloadAutoProtectionIntentResponseOutputWithContext(ctx context.Context) AzureWorkloadAutoProtectionIntentResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureWorkloadAutoProtectionIntentResponseOutput)
+}
+
+// Azure Recovery Services Vault specific protection intent item.
+type AzureWorkloadAutoProtectionIntentResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureWorkloadAutoProtectionIntentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureWorkloadAutoProtectionIntentResponse)(nil)).Elem()
+}
+
+func (o AzureWorkloadAutoProtectionIntentResponseOutput) ToAzureWorkloadAutoProtectionIntentResponseOutput() AzureWorkloadAutoProtectionIntentResponseOutput {
+	return o
+}
+
+func (o AzureWorkloadAutoProtectionIntentResponseOutput) ToAzureWorkloadAutoProtectionIntentResponseOutputWithContext(ctx context.Context) AzureWorkloadAutoProtectionIntentResponseOutput {
+	return o
+}
+
+// Type of backup management for the backed up item.
+func (o AzureWorkloadAutoProtectionIntentResponseOutput) BackupManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureWorkloadAutoProtectionIntentResponse) *string { return v.BackupManagementType }).(pulumi.StringPtrOutput)
+}
+
+// ID of the item which is getting protected, In case of Azure Vm , it is ProtectedItemId
+func (o AzureWorkloadAutoProtectionIntentResponseOutput) ItemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureWorkloadAutoProtectionIntentResponse) *string { return v.ItemId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the backup policy with which this item is backed up.
+func (o AzureWorkloadAutoProtectionIntentResponseOutput) PolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureWorkloadAutoProtectionIntentResponse) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
+}
+
+// backup protectionIntent type.
+// Expected value is 'RecoveryServiceVaultItem'.
+func (o AzureWorkloadAutoProtectionIntentResponseOutput) ProtectionIntentItemType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureWorkloadAutoProtectionIntentResponse) *string { return v.ProtectionIntentItemType }).(pulumi.StringPtrOutput)
+}
+
+// Backup state of this backup item.
+func (o AzureWorkloadAutoProtectionIntentResponseOutput) ProtectionState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureWorkloadAutoProtectionIntentResponse) *string { return v.ProtectionState }).(pulumi.StringPtrOutput)
+}
+
+// ARM ID of the resource to be backed up.
+func (o AzureWorkloadAutoProtectionIntentResponseOutput) SourceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureWorkloadAutoProtectionIntentResponse) *string { return v.SourceResourceId }).(pulumi.StringPtrOutput)
+}
+
 // Container for the workloads running inside Azure Compute or Classic Compute.
 type AzureWorkloadContainer struct {
 	// Type of backup management for the container.
@@ -9201,6 +13786,804 @@ func (o AzureWorkloadContainerResponseOutput) SourceResourceId() pulumi.StringPt
 // Workload type for which registration was sent.
 func (o AzureWorkloadContainerResponseOutput) WorkloadType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureWorkloadContainerResponse) *string { return v.WorkloadType }).(pulumi.StringPtrOutput)
+}
+
+// Azure Workload SQL Auto Protection intent item.
+type AzureWorkloadSQLAutoProtectionIntent struct {
+	// Type of backup management for the backed up item.
+	BackupManagementType *string `pulumi:"backupManagementType"`
+	// ID of the item which is getting protected, In case of Azure Vm , it is ProtectedItemId
+	ItemId *string `pulumi:"itemId"`
+	// ID of the backup policy with which this item is backed up.
+	PolicyId *string `pulumi:"policyId"`
+	// backup protectionIntent type.
+	// Expected value is 'RecoveryServiceVaultItem'.
+	ProtectionIntentItemType *string `pulumi:"protectionIntentItemType"`
+	// Backup state of this backup item.
+	ProtectionState *string `pulumi:"protectionState"`
+	// ARM ID of the resource to be backed up.
+	SourceResourceId *string `pulumi:"sourceResourceId"`
+	// Workload item type of the item for which intent is to be set
+	WorkloadItemType *string `pulumi:"workloadItemType"`
+}
+
+// AzureWorkloadSQLAutoProtectionIntentInput is an input type that accepts AzureWorkloadSQLAutoProtectionIntentArgs and AzureWorkloadSQLAutoProtectionIntentOutput values.
+// You can construct a concrete instance of `AzureWorkloadSQLAutoProtectionIntentInput` via:
+//
+//          AzureWorkloadSQLAutoProtectionIntentArgs{...}
+type AzureWorkloadSQLAutoProtectionIntentInput interface {
+	pulumi.Input
+
+	ToAzureWorkloadSQLAutoProtectionIntentOutput() AzureWorkloadSQLAutoProtectionIntentOutput
+	ToAzureWorkloadSQLAutoProtectionIntentOutputWithContext(context.Context) AzureWorkloadSQLAutoProtectionIntentOutput
+}
+
+// Azure Workload SQL Auto Protection intent item.
+type AzureWorkloadSQLAutoProtectionIntentArgs struct {
+	// Type of backup management for the backed up item.
+	BackupManagementType pulumi.StringPtrInput `pulumi:"backupManagementType"`
+	// ID of the item which is getting protected, In case of Azure Vm , it is ProtectedItemId
+	ItemId pulumi.StringPtrInput `pulumi:"itemId"`
+	// ID of the backup policy with which this item is backed up.
+	PolicyId pulumi.StringPtrInput `pulumi:"policyId"`
+	// backup protectionIntent type.
+	// Expected value is 'RecoveryServiceVaultItem'.
+	ProtectionIntentItemType pulumi.StringPtrInput `pulumi:"protectionIntentItemType"`
+	// Backup state of this backup item.
+	ProtectionState pulumi.StringPtrInput `pulumi:"protectionState"`
+	// ARM ID of the resource to be backed up.
+	SourceResourceId pulumi.StringPtrInput `pulumi:"sourceResourceId"`
+	// Workload item type of the item for which intent is to be set
+	WorkloadItemType pulumi.StringPtrInput `pulumi:"workloadItemType"`
+}
+
+func (AzureWorkloadSQLAutoProtectionIntentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureWorkloadSQLAutoProtectionIntent)(nil)).Elem()
+}
+
+func (i AzureWorkloadSQLAutoProtectionIntentArgs) ToAzureWorkloadSQLAutoProtectionIntentOutput() AzureWorkloadSQLAutoProtectionIntentOutput {
+	return i.ToAzureWorkloadSQLAutoProtectionIntentOutputWithContext(context.Background())
+}
+
+func (i AzureWorkloadSQLAutoProtectionIntentArgs) ToAzureWorkloadSQLAutoProtectionIntentOutputWithContext(ctx context.Context) AzureWorkloadSQLAutoProtectionIntentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureWorkloadSQLAutoProtectionIntentOutput)
+}
+
+// Azure Workload SQL Auto Protection intent item.
+type AzureWorkloadSQLAutoProtectionIntentOutput struct{ *pulumi.OutputState }
+
+func (AzureWorkloadSQLAutoProtectionIntentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureWorkloadSQLAutoProtectionIntent)(nil)).Elem()
+}
+
+func (o AzureWorkloadSQLAutoProtectionIntentOutput) ToAzureWorkloadSQLAutoProtectionIntentOutput() AzureWorkloadSQLAutoProtectionIntentOutput {
+	return o
+}
+
+func (o AzureWorkloadSQLAutoProtectionIntentOutput) ToAzureWorkloadSQLAutoProtectionIntentOutputWithContext(ctx context.Context) AzureWorkloadSQLAutoProtectionIntentOutput {
+	return o
+}
+
+// Type of backup management for the backed up item.
+func (o AzureWorkloadSQLAutoProtectionIntentOutput) BackupManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureWorkloadSQLAutoProtectionIntent) *string { return v.BackupManagementType }).(pulumi.StringPtrOutput)
+}
+
+// ID of the item which is getting protected, In case of Azure Vm , it is ProtectedItemId
+func (o AzureWorkloadSQLAutoProtectionIntentOutput) ItemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureWorkloadSQLAutoProtectionIntent) *string { return v.ItemId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the backup policy with which this item is backed up.
+func (o AzureWorkloadSQLAutoProtectionIntentOutput) PolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureWorkloadSQLAutoProtectionIntent) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
+}
+
+// backup protectionIntent type.
+// Expected value is 'RecoveryServiceVaultItem'.
+func (o AzureWorkloadSQLAutoProtectionIntentOutput) ProtectionIntentItemType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureWorkloadSQLAutoProtectionIntent) *string { return v.ProtectionIntentItemType }).(pulumi.StringPtrOutput)
+}
+
+// Backup state of this backup item.
+func (o AzureWorkloadSQLAutoProtectionIntentOutput) ProtectionState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureWorkloadSQLAutoProtectionIntent) *string { return v.ProtectionState }).(pulumi.StringPtrOutput)
+}
+
+// ARM ID of the resource to be backed up.
+func (o AzureWorkloadSQLAutoProtectionIntentOutput) SourceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureWorkloadSQLAutoProtectionIntent) *string { return v.SourceResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Workload item type of the item for which intent is to be set
+func (o AzureWorkloadSQLAutoProtectionIntentOutput) WorkloadItemType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureWorkloadSQLAutoProtectionIntent) *string { return v.WorkloadItemType }).(pulumi.StringPtrOutput)
+}
+
+// Azure Workload SQL Auto Protection intent item.
+type AzureWorkloadSQLAutoProtectionIntentResponse struct {
+	// Type of backup management for the backed up item.
+	BackupManagementType *string `pulumi:"backupManagementType"`
+	// ID of the item which is getting protected, In case of Azure Vm , it is ProtectedItemId
+	ItemId *string `pulumi:"itemId"`
+	// ID of the backup policy with which this item is backed up.
+	PolicyId *string `pulumi:"policyId"`
+	// backup protectionIntent type.
+	// Expected value is 'RecoveryServiceVaultItem'.
+	ProtectionIntentItemType *string `pulumi:"protectionIntentItemType"`
+	// Backup state of this backup item.
+	ProtectionState *string `pulumi:"protectionState"`
+	// ARM ID of the resource to be backed up.
+	SourceResourceId *string `pulumi:"sourceResourceId"`
+	// Workload item type of the item for which intent is to be set
+	WorkloadItemType *string `pulumi:"workloadItemType"`
+}
+
+// AzureWorkloadSQLAutoProtectionIntentResponseInput is an input type that accepts AzureWorkloadSQLAutoProtectionIntentResponseArgs and AzureWorkloadSQLAutoProtectionIntentResponseOutput values.
+// You can construct a concrete instance of `AzureWorkloadSQLAutoProtectionIntentResponseInput` via:
+//
+//          AzureWorkloadSQLAutoProtectionIntentResponseArgs{...}
+type AzureWorkloadSQLAutoProtectionIntentResponseInput interface {
+	pulumi.Input
+
+	ToAzureWorkloadSQLAutoProtectionIntentResponseOutput() AzureWorkloadSQLAutoProtectionIntentResponseOutput
+	ToAzureWorkloadSQLAutoProtectionIntentResponseOutputWithContext(context.Context) AzureWorkloadSQLAutoProtectionIntentResponseOutput
+}
+
+// Azure Workload SQL Auto Protection intent item.
+type AzureWorkloadSQLAutoProtectionIntentResponseArgs struct {
+	// Type of backup management for the backed up item.
+	BackupManagementType pulumi.StringPtrInput `pulumi:"backupManagementType"`
+	// ID of the item which is getting protected, In case of Azure Vm , it is ProtectedItemId
+	ItemId pulumi.StringPtrInput `pulumi:"itemId"`
+	// ID of the backup policy with which this item is backed up.
+	PolicyId pulumi.StringPtrInput `pulumi:"policyId"`
+	// backup protectionIntent type.
+	// Expected value is 'RecoveryServiceVaultItem'.
+	ProtectionIntentItemType pulumi.StringPtrInput `pulumi:"protectionIntentItemType"`
+	// Backup state of this backup item.
+	ProtectionState pulumi.StringPtrInput `pulumi:"protectionState"`
+	// ARM ID of the resource to be backed up.
+	SourceResourceId pulumi.StringPtrInput `pulumi:"sourceResourceId"`
+	// Workload item type of the item for which intent is to be set
+	WorkloadItemType pulumi.StringPtrInput `pulumi:"workloadItemType"`
+}
+
+func (AzureWorkloadSQLAutoProtectionIntentResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureWorkloadSQLAutoProtectionIntentResponse)(nil)).Elem()
+}
+
+func (i AzureWorkloadSQLAutoProtectionIntentResponseArgs) ToAzureWorkloadSQLAutoProtectionIntentResponseOutput() AzureWorkloadSQLAutoProtectionIntentResponseOutput {
+	return i.ToAzureWorkloadSQLAutoProtectionIntentResponseOutputWithContext(context.Background())
+}
+
+func (i AzureWorkloadSQLAutoProtectionIntentResponseArgs) ToAzureWorkloadSQLAutoProtectionIntentResponseOutputWithContext(ctx context.Context) AzureWorkloadSQLAutoProtectionIntentResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureWorkloadSQLAutoProtectionIntentResponseOutput)
+}
+
+// Azure Workload SQL Auto Protection intent item.
+type AzureWorkloadSQLAutoProtectionIntentResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureWorkloadSQLAutoProtectionIntentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureWorkloadSQLAutoProtectionIntentResponse)(nil)).Elem()
+}
+
+func (o AzureWorkloadSQLAutoProtectionIntentResponseOutput) ToAzureWorkloadSQLAutoProtectionIntentResponseOutput() AzureWorkloadSQLAutoProtectionIntentResponseOutput {
+	return o
+}
+
+func (o AzureWorkloadSQLAutoProtectionIntentResponseOutput) ToAzureWorkloadSQLAutoProtectionIntentResponseOutputWithContext(ctx context.Context) AzureWorkloadSQLAutoProtectionIntentResponseOutput {
+	return o
+}
+
+// Type of backup management for the backed up item.
+func (o AzureWorkloadSQLAutoProtectionIntentResponseOutput) BackupManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureWorkloadSQLAutoProtectionIntentResponse) *string { return v.BackupManagementType }).(pulumi.StringPtrOutput)
+}
+
+// ID of the item which is getting protected, In case of Azure Vm , it is ProtectedItemId
+func (o AzureWorkloadSQLAutoProtectionIntentResponseOutput) ItemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureWorkloadSQLAutoProtectionIntentResponse) *string { return v.ItemId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the backup policy with which this item is backed up.
+func (o AzureWorkloadSQLAutoProtectionIntentResponseOutput) PolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureWorkloadSQLAutoProtectionIntentResponse) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
+}
+
+// backup protectionIntent type.
+// Expected value is 'RecoveryServiceVaultItem'.
+func (o AzureWorkloadSQLAutoProtectionIntentResponseOutput) ProtectionIntentItemType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureWorkloadSQLAutoProtectionIntentResponse) *string { return v.ProtectionIntentItemType }).(pulumi.StringPtrOutput)
+}
+
+// Backup state of this backup item.
+func (o AzureWorkloadSQLAutoProtectionIntentResponseOutput) ProtectionState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureWorkloadSQLAutoProtectionIntentResponse) *string { return v.ProtectionState }).(pulumi.StringPtrOutput)
+}
+
+// ARM ID of the resource to be backed up.
+func (o AzureWorkloadSQLAutoProtectionIntentResponseOutput) SourceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureWorkloadSQLAutoProtectionIntentResponse) *string { return v.SourceResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Workload item type of the item for which intent is to be set
+func (o AzureWorkloadSQLAutoProtectionIntentResponseOutput) WorkloadItemType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureWorkloadSQLAutoProtectionIntentResponse) *string { return v.WorkloadItemType }).(pulumi.StringPtrOutput)
+}
+
+// The details of the identity used for CMK
+type CmkKekIdentity struct {
+	// Indicate that system assigned identity should be used. Mutually exclusive with 'userAssignedIdentity' field
+	UseSystemAssignedIdentity *bool `pulumi:"useSystemAssignedIdentity"`
+	// The user assigned identity to be used to grant permissions in case the type of identity used is UserAssigned
+	UserAssignedIdentity *string `pulumi:"userAssignedIdentity"`
+}
+
+// CmkKekIdentityInput is an input type that accepts CmkKekIdentityArgs and CmkKekIdentityOutput values.
+// You can construct a concrete instance of `CmkKekIdentityInput` via:
+//
+//          CmkKekIdentityArgs{...}
+type CmkKekIdentityInput interface {
+	pulumi.Input
+
+	ToCmkKekIdentityOutput() CmkKekIdentityOutput
+	ToCmkKekIdentityOutputWithContext(context.Context) CmkKekIdentityOutput
+}
+
+// The details of the identity used for CMK
+type CmkKekIdentityArgs struct {
+	// Indicate that system assigned identity should be used. Mutually exclusive with 'userAssignedIdentity' field
+	UseSystemAssignedIdentity pulumi.BoolPtrInput `pulumi:"useSystemAssignedIdentity"`
+	// The user assigned identity to be used to grant permissions in case the type of identity used is UserAssigned
+	UserAssignedIdentity pulumi.StringPtrInput `pulumi:"userAssignedIdentity"`
+}
+
+func (CmkKekIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CmkKekIdentity)(nil)).Elem()
+}
+
+func (i CmkKekIdentityArgs) ToCmkKekIdentityOutput() CmkKekIdentityOutput {
+	return i.ToCmkKekIdentityOutputWithContext(context.Background())
+}
+
+func (i CmkKekIdentityArgs) ToCmkKekIdentityOutputWithContext(ctx context.Context) CmkKekIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CmkKekIdentityOutput)
+}
+
+func (i CmkKekIdentityArgs) ToCmkKekIdentityPtrOutput() CmkKekIdentityPtrOutput {
+	return i.ToCmkKekIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i CmkKekIdentityArgs) ToCmkKekIdentityPtrOutputWithContext(ctx context.Context) CmkKekIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CmkKekIdentityOutput).ToCmkKekIdentityPtrOutputWithContext(ctx)
+}
+
+// CmkKekIdentityPtrInput is an input type that accepts CmkKekIdentityArgs, CmkKekIdentityPtr and CmkKekIdentityPtrOutput values.
+// You can construct a concrete instance of `CmkKekIdentityPtrInput` via:
+//
+//          CmkKekIdentityArgs{...}
+//
+//  or:
+//
+//          nil
+type CmkKekIdentityPtrInput interface {
+	pulumi.Input
+
+	ToCmkKekIdentityPtrOutput() CmkKekIdentityPtrOutput
+	ToCmkKekIdentityPtrOutputWithContext(context.Context) CmkKekIdentityPtrOutput
+}
+
+type cmkKekIdentityPtrType CmkKekIdentityArgs
+
+func CmkKekIdentityPtr(v *CmkKekIdentityArgs) CmkKekIdentityPtrInput {
+	return (*cmkKekIdentityPtrType)(v)
+}
+
+func (*cmkKekIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CmkKekIdentity)(nil)).Elem()
+}
+
+func (i *cmkKekIdentityPtrType) ToCmkKekIdentityPtrOutput() CmkKekIdentityPtrOutput {
+	return i.ToCmkKekIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *cmkKekIdentityPtrType) ToCmkKekIdentityPtrOutputWithContext(ctx context.Context) CmkKekIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CmkKekIdentityPtrOutput)
+}
+
+// The details of the identity used for CMK
+type CmkKekIdentityOutput struct{ *pulumi.OutputState }
+
+func (CmkKekIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CmkKekIdentity)(nil)).Elem()
+}
+
+func (o CmkKekIdentityOutput) ToCmkKekIdentityOutput() CmkKekIdentityOutput {
+	return o
+}
+
+func (o CmkKekIdentityOutput) ToCmkKekIdentityOutputWithContext(ctx context.Context) CmkKekIdentityOutput {
+	return o
+}
+
+func (o CmkKekIdentityOutput) ToCmkKekIdentityPtrOutput() CmkKekIdentityPtrOutput {
+	return o.ToCmkKekIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o CmkKekIdentityOutput) ToCmkKekIdentityPtrOutputWithContext(ctx context.Context) CmkKekIdentityPtrOutput {
+	return o.ApplyT(func(v CmkKekIdentity) *CmkKekIdentity {
+		return &v
+	}).(CmkKekIdentityPtrOutput)
+}
+
+// Indicate that system assigned identity should be used. Mutually exclusive with 'userAssignedIdentity' field
+func (o CmkKekIdentityOutput) UseSystemAssignedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CmkKekIdentity) *bool { return v.UseSystemAssignedIdentity }).(pulumi.BoolPtrOutput)
+}
+
+// The user assigned identity to be used to grant permissions in case the type of identity used is UserAssigned
+func (o CmkKekIdentityOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CmkKekIdentity) *string { return v.UserAssignedIdentity }).(pulumi.StringPtrOutput)
+}
+
+type CmkKekIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (CmkKekIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CmkKekIdentity)(nil)).Elem()
+}
+
+func (o CmkKekIdentityPtrOutput) ToCmkKekIdentityPtrOutput() CmkKekIdentityPtrOutput {
+	return o
+}
+
+func (o CmkKekIdentityPtrOutput) ToCmkKekIdentityPtrOutputWithContext(ctx context.Context) CmkKekIdentityPtrOutput {
+	return o
+}
+
+func (o CmkKekIdentityPtrOutput) Elem() CmkKekIdentityOutput {
+	return o.ApplyT(func(v *CmkKekIdentity) CmkKekIdentity { return *v }).(CmkKekIdentityOutput)
+}
+
+// Indicate that system assigned identity should be used. Mutually exclusive with 'userAssignedIdentity' field
+func (o CmkKekIdentityPtrOutput) UseSystemAssignedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CmkKekIdentity) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseSystemAssignedIdentity
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The user assigned identity to be used to grant permissions in case the type of identity used is UserAssigned
+func (o CmkKekIdentityPtrOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CmkKekIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentity
+	}).(pulumi.StringPtrOutput)
+}
+
+// The details of the identity used for CMK
+type CmkKekIdentityResponse struct {
+	// Indicate that system assigned identity should be used. Mutually exclusive with 'userAssignedIdentity' field
+	UseSystemAssignedIdentity *bool `pulumi:"useSystemAssignedIdentity"`
+	// The user assigned identity to be used to grant permissions in case the type of identity used is UserAssigned
+	UserAssignedIdentity *string `pulumi:"userAssignedIdentity"`
+}
+
+// CmkKekIdentityResponseInput is an input type that accepts CmkKekIdentityResponseArgs and CmkKekIdentityResponseOutput values.
+// You can construct a concrete instance of `CmkKekIdentityResponseInput` via:
+//
+//          CmkKekIdentityResponseArgs{...}
+type CmkKekIdentityResponseInput interface {
+	pulumi.Input
+
+	ToCmkKekIdentityResponseOutput() CmkKekIdentityResponseOutput
+	ToCmkKekIdentityResponseOutputWithContext(context.Context) CmkKekIdentityResponseOutput
+}
+
+// The details of the identity used for CMK
+type CmkKekIdentityResponseArgs struct {
+	// Indicate that system assigned identity should be used. Mutually exclusive with 'userAssignedIdentity' field
+	UseSystemAssignedIdentity pulumi.BoolPtrInput `pulumi:"useSystemAssignedIdentity"`
+	// The user assigned identity to be used to grant permissions in case the type of identity used is UserAssigned
+	UserAssignedIdentity pulumi.StringPtrInput `pulumi:"userAssignedIdentity"`
+}
+
+func (CmkKekIdentityResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CmkKekIdentityResponse)(nil)).Elem()
+}
+
+func (i CmkKekIdentityResponseArgs) ToCmkKekIdentityResponseOutput() CmkKekIdentityResponseOutput {
+	return i.ToCmkKekIdentityResponseOutputWithContext(context.Background())
+}
+
+func (i CmkKekIdentityResponseArgs) ToCmkKekIdentityResponseOutputWithContext(ctx context.Context) CmkKekIdentityResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CmkKekIdentityResponseOutput)
+}
+
+func (i CmkKekIdentityResponseArgs) ToCmkKekIdentityResponsePtrOutput() CmkKekIdentityResponsePtrOutput {
+	return i.ToCmkKekIdentityResponsePtrOutputWithContext(context.Background())
+}
+
+func (i CmkKekIdentityResponseArgs) ToCmkKekIdentityResponsePtrOutputWithContext(ctx context.Context) CmkKekIdentityResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CmkKekIdentityResponseOutput).ToCmkKekIdentityResponsePtrOutputWithContext(ctx)
+}
+
+// CmkKekIdentityResponsePtrInput is an input type that accepts CmkKekIdentityResponseArgs, CmkKekIdentityResponsePtr and CmkKekIdentityResponsePtrOutput values.
+// You can construct a concrete instance of `CmkKekIdentityResponsePtrInput` via:
+//
+//          CmkKekIdentityResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type CmkKekIdentityResponsePtrInput interface {
+	pulumi.Input
+
+	ToCmkKekIdentityResponsePtrOutput() CmkKekIdentityResponsePtrOutput
+	ToCmkKekIdentityResponsePtrOutputWithContext(context.Context) CmkKekIdentityResponsePtrOutput
+}
+
+type cmkKekIdentityResponsePtrType CmkKekIdentityResponseArgs
+
+func CmkKekIdentityResponsePtr(v *CmkKekIdentityResponseArgs) CmkKekIdentityResponsePtrInput {
+	return (*cmkKekIdentityResponsePtrType)(v)
+}
+
+func (*cmkKekIdentityResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CmkKekIdentityResponse)(nil)).Elem()
+}
+
+func (i *cmkKekIdentityResponsePtrType) ToCmkKekIdentityResponsePtrOutput() CmkKekIdentityResponsePtrOutput {
+	return i.ToCmkKekIdentityResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *cmkKekIdentityResponsePtrType) ToCmkKekIdentityResponsePtrOutputWithContext(ctx context.Context) CmkKekIdentityResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CmkKekIdentityResponsePtrOutput)
+}
+
+// The details of the identity used for CMK
+type CmkKekIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (CmkKekIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CmkKekIdentityResponse)(nil)).Elem()
+}
+
+func (o CmkKekIdentityResponseOutput) ToCmkKekIdentityResponseOutput() CmkKekIdentityResponseOutput {
+	return o
+}
+
+func (o CmkKekIdentityResponseOutput) ToCmkKekIdentityResponseOutputWithContext(ctx context.Context) CmkKekIdentityResponseOutput {
+	return o
+}
+
+func (o CmkKekIdentityResponseOutput) ToCmkKekIdentityResponsePtrOutput() CmkKekIdentityResponsePtrOutput {
+	return o.ToCmkKekIdentityResponsePtrOutputWithContext(context.Background())
+}
+
+func (o CmkKekIdentityResponseOutput) ToCmkKekIdentityResponsePtrOutputWithContext(ctx context.Context) CmkKekIdentityResponsePtrOutput {
+	return o.ApplyT(func(v CmkKekIdentityResponse) *CmkKekIdentityResponse {
+		return &v
+	}).(CmkKekIdentityResponsePtrOutput)
+}
+
+// Indicate that system assigned identity should be used. Mutually exclusive with 'userAssignedIdentity' field
+func (o CmkKekIdentityResponseOutput) UseSystemAssignedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CmkKekIdentityResponse) *bool { return v.UseSystemAssignedIdentity }).(pulumi.BoolPtrOutput)
+}
+
+// The user assigned identity to be used to grant permissions in case the type of identity used is UserAssigned
+func (o CmkKekIdentityResponseOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CmkKekIdentityResponse) *string { return v.UserAssignedIdentity }).(pulumi.StringPtrOutput)
+}
+
+type CmkKekIdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CmkKekIdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CmkKekIdentityResponse)(nil)).Elem()
+}
+
+func (o CmkKekIdentityResponsePtrOutput) ToCmkKekIdentityResponsePtrOutput() CmkKekIdentityResponsePtrOutput {
+	return o
+}
+
+func (o CmkKekIdentityResponsePtrOutput) ToCmkKekIdentityResponsePtrOutputWithContext(ctx context.Context) CmkKekIdentityResponsePtrOutput {
+	return o
+}
+
+func (o CmkKekIdentityResponsePtrOutput) Elem() CmkKekIdentityResponseOutput {
+	return o.ApplyT(func(v *CmkKekIdentityResponse) CmkKekIdentityResponse { return *v }).(CmkKekIdentityResponseOutput)
+}
+
+// Indicate that system assigned identity should be used. Mutually exclusive with 'userAssignedIdentity' field
+func (o CmkKekIdentityResponsePtrOutput) UseSystemAssignedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CmkKekIdentityResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseSystemAssignedIdentity
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The user assigned identity to be used to grant permissions in case the type of identity used is UserAssigned
+func (o CmkKekIdentityResponsePtrOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CmkKekIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentity
+	}).(pulumi.StringPtrOutput)
+}
+
+// The properties of the Key Vault which hosts CMK
+type CmkKeyVaultProperties struct {
+	// The key uri of the Customer Managed Key
+	KeyUri *string `pulumi:"keyUri"`
+}
+
+// CmkKeyVaultPropertiesInput is an input type that accepts CmkKeyVaultPropertiesArgs and CmkKeyVaultPropertiesOutput values.
+// You can construct a concrete instance of `CmkKeyVaultPropertiesInput` via:
+//
+//          CmkKeyVaultPropertiesArgs{...}
+type CmkKeyVaultPropertiesInput interface {
+	pulumi.Input
+
+	ToCmkKeyVaultPropertiesOutput() CmkKeyVaultPropertiesOutput
+	ToCmkKeyVaultPropertiesOutputWithContext(context.Context) CmkKeyVaultPropertiesOutput
+}
+
+// The properties of the Key Vault which hosts CMK
+type CmkKeyVaultPropertiesArgs struct {
+	// The key uri of the Customer Managed Key
+	KeyUri pulumi.StringPtrInput `pulumi:"keyUri"`
+}
+
+func (CmkKeyVaultPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CmkKeyVaultProperties)(nil)).Elem()
+}
+
+func (i CmkKeyVaultPropertiesArgs) ToCmkKeyVaultPropertiesOutput() CmkKeyVaultPropertiesOutput {
+	return i.ToCmkKeyVaultPropertiesOutputWithContext(context.Background())
+}
+
+func (i CmkKeyVaultPropertiesArgs) ToCmkKeyVaultPropertiesOutputWithContext(ctx context.Context) CmkKeyVaultPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CmkKeyVaultPropertiesOutput)
+}
+
+func (i CmkKeyVaultPropertiesArgs) ToCmkKeyVaultPropertiesPtrOutput() CmkKeyVaultPropertiesPtrOutput {
+	return i.ToCmkKeyVaultPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i CmkKeyVaultPropertiesArgs) ToCmkKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) CmkKeyVaultPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CmkKeyVaultPropertiesOutput).ToCmkKeyVaultPropertiesPtrOutputWithContext(ctx)
+}
+
+// CmkKeyVaultPropertiesPtrInput is an input type that accepts CmkKeyVaultPropertiesArgs, CmkKeyVaultPropertiesPtr and CmkKeyVaultPropertiesPtrOutput values.
+// You can construct a concrete instance of `CmkKeyVaultPropertiesPtrInput` via:
+//
+//          CmkKeyVaultPropertiesArgs{...}
+//
+//  or:
+//
+//          nil
+type CmkKeyVaultPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToCmkKeyVaultPropertiesPtrOutput() CmkKeyVaultPropertiesPtrOutput
+	ToCmkKeyVaultPropertiesPtrOutputWithContext(context.Context) CmkKeyVaultPropertiesPtrOutput
+}
+
+type cmkKeyVaultPropertiesPtrType CmkKeyVaultPropertiesArgs
+
+func CmkKeyVaultPropertiesPtr(v *CmkKeyVaultPropertiesArgs) CmkKeyVaultPropertiesPtrInput {
+	return (*cmkKeyVaultPropertiesPtrType)(v)
+}
+
+func (*cmkKeyVaultPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CmkKeyVaultProperties)(nil)).Elem()
+}
+
+func (i *cmkKeyVaultPropertiesPtrType) ToCmkKeyVaultPropertiesPtrOutput() CmkKeyVaultPropertiesPtrOutput {
+	return i.ToCmkKeyVaultPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *cmkKeyVaultPropertiesPtrType) ToCmkKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) CmkKeyVaultPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CmkKeyVaultPropertiesPtrOutput)
+}
+
+// The properties of the Key Vault which hosts CMK
+type CmkKeyVaultPropertiesOutput struct{ *pulumi.OutputState }
+
+func (CmkKeyVaultPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CmkKeyVaultProperties)(nil)).Elem()
+}
+
+func (o CmkKeyVaultPropertiesOutput) ToCmkKeyVaultPropertiesOutput() CmkKeyVaultPropertiesOutput {
+	return o
+}
+
+func (o CmkKeyVaultPropertiesOutput) ToCmkKeyVaultPropertiesOutputWithContext(ctx context.Context) CmkKeyVaultPropertiesOutput {
+	return o
+}
+
+func (o CmkKeyVaultPropertiesOutput) ToCmkKeyVaultPropertiesPtrOutput() CmkKeyVaultPropertiesPtrOutput {
+	return o.ToCmkKeyVaultPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o CmkKeyVaultPropertiesOutput) ToCmkKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) CmkKeyVaultPropertiesPtrOutput {
+	return o.ApplyT(func(v CmkKeyVaultProperties) *CmkKeyVaultProperties {
+		return &v
+	}).(CmkKeyVaultPropertiesPtrOutput)
+}
+
+// The key uri of the Customer Managed Key
+func (o CmkKeyVaultPropertiesOutput) KeyUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CmkKeyVaultProperties) *string { return v.KeyUri }).(pulumi.StringPtrOutput)
+}
+
+type CmkKeyVaultPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (CmkKeyVaultPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CmkKeyVaultProperties)(nil)).Elem()
+}
+
+func (o CmkKeyVaultPropertiesPtrOutput) ToCmkKeyVaultPropertiesPtrOutput() CmkKeyVaultPropertiesPtrOutput {
+	return o
+}
+
+func (o CmkKeyVaultPropertiesPtrOutput) ToCmkKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) CmkKeyVaultPropertiesPtrOutput {
+	return o
+}
+
+func (o CmkKeyVaultPropertiesPtrOutput) Elem() CmkKeyVaultPropertiesOutput {
+	return o.ApplyT(func(v *CmkKeyVaultProperties) CmkKeyVaultProperties { return *v }).(CmkKeyVaultPropertiesOutput)
+}
+
+// The key uri of the Customer Managed Key
+func (o CmkKeyVaultPropertiesPtrOutput) KeyUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CmkKeyVaultProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The properties of the Key Vault which hosts CMK
+type CmkKeyVaultPropertiesResponse struct {
+	// The key uri of the Customer Managed Key
+	KeyUri *string `pulumi:"keyUri"`
+}
+
+// CmkKeyVaultPropertiesResponseInput is an input type that accepts CmkKeyVaultPropertiesResponseArgs and CmkKeyVaultPropertiesResponseOutput values.
+// You can construct a concrete instance of `CmkKeyVaultPropertiesResponseInput` via:
+//
+//          CmkKeyVaultPropertiesResponseArgs{...}
+type CmkKeyVaultPropertiesResponseInput interface {
+	pulumi.Input
+
+	ToCmkKeyVaultPropertiesResponseOutput() CmkKeyVaultPropertiesResponseOutput
+	ToCmkKeyVaultPropertiesResponseOutputWithContext(context.Context) CmkKeyVaultPropertiesResponseOutput
+}
+
+// The properties of the Key Vault which hosts CMK
+type CmkKeyVaultPropertiesResponseArgs struct {
+	// The key uri of the Customer Managed Key
+	KeyUri pulumi.StringPtrInput `pulumi:"keyUri"`
+}
+
+func (CmkKeyVaultPropertiesResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CmkKeyVaultPropertiesResponse)(nil)).Elem()
+}
+
+func (i CmkKeyVaultPropertiesResponseArgs) ToCmkKeyVaultPropertiesResponseOutput() CmkKeyVaultPropertiesResponseOutput {
+	return i.ToCmkKeyVaultPropertiesResponseOutputWithContext(context.Background())
+}
+
+func (i CmkKeyVaultPropertiesResponseArgs) ToCmkKeyVaultPropertiesResponseOutputWithContext(ctx context.Context) CmkKeyVaultPropertiesResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CmkKeyVaultPropertiesResponseOutput)
+}
+
+func (i CmkKeyVaultPropertiesResponseArgs) ToCmkKeyVaultPropertiesResponsePtrOutput() CmkKeyVaultPropertiesResponsePtrOutput {
+	return i.ToCmkKeyVaultPropertiesResponsePtrOutputWithContext(context.Background())
+}
+
+func (i CmkKeyVaultPropertiesResponseArgs) ToCmkKeyVaultPropertiesResponsePtrOutputWithContext(ctx context.Context) CmkKeyVaultPropertiesResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CmkKeyVaultPropertiesResponseOutput).ToCmkKeyVaultPropertiesResponsePtrOutputWithContext(ctx)
+}
+
+// CmkKeyVaultPropertiesResponsePtrInput is an input type that accepts CmkKeyVaultPropertiesResponseArgs, CmkKeyVaultPropertiesResponsePtr and CmkKeyVaultPropertiesResponsePtrOutput values.
+// You can construct a concrete instance of `CmkKeyVaultPropertiesResponsePtrInput` via:
+//
+//          CmkKeyVaultPropertiesResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type CmkKeyVaultPropertiesResponsePtrInput interface {
+	pulumi.Input
+
+	ToCmkKeyVaultPropertiesResponsePtrOutput() CmkKeyVaultPropertiesResponsePtrOutput
+	ToCmkKeyVaultPropertiesResponsePtrOutputWithContext(context.Context) CmkKeyVaultPropertiesResponsePtrOutput
+}
+
+type cmkKeyVaultPropertiesResponsePtrType CmkKeyVaultPropertiesResponseArgs
+
+func CmkKeyVaultPropertiesResponsePtr(v *CmkKeyVaultPropertiesResponseArgs) CmkKeyVaultPropertiesResponsePtrInput {
+	return (*cmkKeyVaultPropertiesResponsePtrType)(v)
+}
+
+func (*cmkKeyVaultPropertiesResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CmkKeyVaultPropertiesResponse)(nil)).Elem()
+}
+
+func (i *cmkKeyVaultPropertiesResponsePtrType) ToCmkKeyVaultPropertiesResponsePtrOutput() CmkKeyVaultPropertiesResponsePtrOutput {
+	return i.ToCmkKeyVaultPropertiesResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *cmkKeyVaultPropertiesResponsePtrType) ToCmkKeyVaultPropertiesResponsePtrOutputWithContext(ctx context.Context) CmkKeyVaultPropertiesResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CmkKeyVaultPropertiesResponsePtrOutput)
+}
+
+// The properties of the Key Vault which hosts CMK
+type CmkKeyVaultPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (CmkKeyVaultPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CmkKeyVaultPropertiesResponse)(nil)).Elem()
+}
+
+func (o CmkKeyVaultPropertiesResponseOutput) ToCmkKeyVaultPropertiesResponseOutput() CmkKeyVaultPropertiesResponseOutput {
+	return o
+}
+
+func (o CmkKeyVaultPropertiesResponseOutput) ToCmkKeyVaultPropertiesResponseOutputWithContext(ctx context.Context) CmkKeyVaultPropertiesResponseOutput {
+	return o
+}
+
+func (o CmkKeyVaultPropertiesResponseOutput) ToCmkKeyVaultPropertiesResponsePtrOutput() CmkKeyVaultPropertiesResponsePtrOutput {
+	return o.ToCmkKeyVaultPropertiesResponsePtrOutputWithContext(context.Background())
+}
+
+func (o CmkKeyVaultPropertiesResponseOutput) ToCmkKeyVaultPropertiesResponsePtrOutputWithContext(ctx context.Context) CmkKeyVaultPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v CmkKeyVaultPropertiesResponse) *CmkKeyVaultPropertiesResponse {
+		return &v
+	}).(CmkKeyVaultPropertiesResponsePtrOutput)
+}
+
+// The key uri of the Customer Managed Key
+func (o CmkKeyVaultPropertiesResponseOutput) KeyUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CmkKeyVaultPropertiesResponse) *string { return v.KeyUri }).(pulumi.StringPtrOutput)
+}
+
+type CmkKeyVaultPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CmkKeyVaultPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CmkKeyVaultPropertiesResponse)(nil)).Elem()
+}
+
+func (o CmkKeyVaultPropertiesResponsePtrOutput) ToCmkKeyVaultPropertiesResponsePtrOutput() CmkKeyVaultPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o CmkKeyVaultPropertiesResponsePtrOutput) ToCmkKeyVaultPropertiesResponsePtrOutputWithContext(ctx context.Context) CmkKeyVaultPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o CmkKeyVaultPropertiesResponsePtrOutput) Elem() CmkKeyVaultPropertiesResponseOutput {
+	return o.ApplyT(func(v *CmkKeyVaultPropertiesResponse) CmkKeyVaultPropertiesResponse { return *v }).(CmkKeyVaultPropertiesResponseOutput)
+}
+
+// The key uri of the Customer Managed Key
+func (o CmkKeyVaultPropertiesResponsePtrOutput) KeyUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CmkKeyVaultPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyUri
+	}).(pulumi.StringPtrOutput)
 }
 
 // Container identity information
@@ -17273,6 +22656,8 @@ type HyperVReplicaAzureEnableProtectionInput struct {
 	LogStorageAccountId *string `pulumi:"logStorageAccountId"`
 	// The OS type associated with vm.
 	OsType *string `pulumi:"osType"`
+	// The availability set ARM Id.
+	TargetAvailabilitySetId *string `pulumi:"targetAvailabilitySetId"`
 	// The target availability zone.
 	TargetAvailabilityZone *string `pulumi:"targetAvailabilityZone"`
 	// The selected target Azure network Id.
@@ -17323,6 +22708,8 @@ type HyperVReplicaAzureEnableProtectionInputArgs struct {
 	LogStorageAccountId pulumi.StringPtrInput `pulumi:"logStorageAccountId"`
 	// The OS type associated with vm.
 	OsType pulumi.StringPtrInput `pulumi:"osType"`
+	// The availability set ARM Id.
+	TargetAvailabilitySetId pulumi.StringPtrInput `pulumi:"targetAvailabilitySetId"`
 	// The target availability zone.
 	TargetAvailabilityZone pulumi.StringPtrInput `pulumi:"targetAvailabilityZone"`
 	// The selected target Azure network Id.
@@ -17403,6 +22790,11 @@ func (o HyperVReplicaAzureEnableProtectionInputOutput) LogStorageAccountId() pul
 // The OS type associated with vm.
 func (o HyperVReplicaAzureEnableProtectionInputOutput) OsType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HyperVReplicaAzureEnableProtectionInput) *string { return v.OsType }).(pulumi.StringPtrOutput)
+}
+
+// The availability set ARM Id.
+func (o HyperVReplicaAzureEnableProtectionInputOutput) TargetAvailabilitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HyperVReplicaAzureEnableProtectionInput) *string { return v.TargetAvailabilitySetId }).(pulumi.StringPtrOutput)
 }
 
 // The target availability zone.
@@ -19546,8 +24938,10 @@ func (o IaaSVMContainerResponseOutput) VirtualMachineVersion() pulumi.StringPtrO
 
 // Identity for the resource.
 type IdentityData struct {
-	// The identity type.
+	// The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities.
 	Type string `pulumi:"type"`
+	// The list of user-assigned identities associated with the resource. The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
 }
 
 // IdentityDataInput is an input type that accepts IdentityDataArgs and IdentityDataOutput values.
@@ -19563,8 +24957,10 @@ type IdentityDataInput interface {
 
 // Identity for the resource.
 type IdentityDataArgs struct {
-	// The identity type.
+	// The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities.
 	Type pulumi.StringInput `pulumi:"type"`
+	// The list of user-assigned identities associated with the resource. The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
 }
 
 func (IdentityDataArgs) ElementType() reflect.Type {
@@ -19645,9 +25041,14 @@ func (o IdentityDataOutput) ToIdentityDataPtrOutputWithContext(ctx context.Conte
 	}).(IdentityDataPtrOutput)
 }
 
-// The identity type.
+// The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities.
 func (o IdentityDataOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityData) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The list of user-assigned identities associated with the resource. The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+func (o IdentityDataOutput) UserAssignedIdentities() pulumi.MapOutput {
+	return o.ApplyT(func(v IdentityData) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
 }
 
 type IdentityDataPtrOutput struct{ *pulumi.OutputState }
@@ -19668,7 +25069,7 @@ func (o IdentityDataPtrOutput) Elem() IdentityDataOutput {
 	return o.ApplyT(func(v *IdentityData) IdentityData { return *v }).(IdentityDataOutput)
 }
 
-// The identity type.
+// The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities.
 func (o IdentityDataPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IdentityData) *string {
 		if v == nil {
@@ -19678,14 +25079,26 @@ func (o IdentityDataPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The list of user-assigned identities associated with the resource. The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+func (o IdentityDataPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
+	return o.ApplyT(func(v *IdentityData) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(pulumi.MapOutput)
+}
+
 // Identity for the resource.
 type IdentityDataResponse struct {
 	// The principal ID of resource identity.
 	PrincipalId string `pulumi:"principalId"`
 	// The tenant ID of resource.
 	TenantId string `pulumi:"tenantId"`
-	// The identity type.
+	// The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities.
 	Type string `pulumi:"type"`
+	// The list of user-assigned identities associated with the resource. The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+	UserAssignedIdentities map[string]UserIdentityResponse `pulumi:"userAssignedIdentities"`
 }
 
 // IdentityDataResponseInput is an input type that accepts IdentityDataResponseArgs and IdentityDataResponseOutput values.
@@ -19705,8 +25118,10 @@ type IdentityDataResponseArgs struct {
 	PrincipalId pulumi.StringInput `pulumi:"principalId"`
 	// The tenant ID of resource.
 	TenantId pulumi.StringInput `pulumi:"tenantId"`
-	// The identity type.
+	// The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities.
 	Type pulumi.StringInput `pulumi:"type"`
+	// The list of user-assigned identities associated with the resource. The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+	UserAssignedIdentities UserIdentityResponseMapInput `pulumi:"userAssignedIdentities"`
 }
 
 func (IdentityDataResponseArgs) ElementType() reflect.Type {
@@ -19797,9 +25212,14 @@ func (o IdentityDataResponseOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityDataResponse) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
-// The identity type.
+// The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities.
 func (o IdentityDataResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityDataResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The list of user-assigned identities associated with the resource. The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+func (o IdentityDataResponseOutput) UserAssignedIdentities() UserIdentityResponseMapOutput {
+	return o.ApplyT(func(v IdentityDataResponse) map[string]UserIdentityResponse { return v.UserAssignedIdentities }).(UserIdentityResponseMapOutput)
 }
 
 type IdentityDataResponsePtrOutput struct{ *pulumi.OutputState }
@@ -19840,7 +25260,7 @@ func (o IdentityDataResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The identity type.
+// The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities.
 func (o IdentityDataResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IdentityDataResponse) *string {
 		if v == nil {
@@ -19848,6 +25268,16 @@ func (o IdentityDataResponsePtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return &v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+// The list of user-assigned identities associated with the resource. The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+func (o IdentityDataResponsePtrOutput) UserAssignedIdentities() UserIdentityResponseMapOutput {
+	return o.ApplyT(func(v *IdentityDataResponse) map[string]UserIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(UserIdentityResponseMapOutput)
 }
 
 // Identity provider details.
@@ -20615,6 +26045,8 @@ type InMageAzureV2EnableProtectionInput struct {
 	RunAsAccountId *string `pulumi:"runAsAccountId"`
 	// The storage account name.
 	StorageAccountId *string `pulumi:"storageAccountId"`
+	// The availability set ARM Id.
+	TargetAvailabilitySetId *string `pulumi:"targetAvailabilitySetId"`
 	// The target availability zone.
 	TargetAvailabilityZone *string `pulumi:"targetAvailabilityZone"`
 	// The selected target Azure network Id.
@@ -20669,6 +26101,8 @@ type InMageAzureV2EnableProtectionInputArgs struct {
 	RunAsAccountId pulumi.StringPtrInput `pulumi:"runAsAccountId"`
 	// The storage account name.
 	StorageAccountId pulumi.StringPtrInput `pulumi:"storageAccountId"`
+	// The availability set ARM Id.
+	TargetAvailabilitySetId pulumi.StringPtrInput `pulumi:"targetAvailabilitySetId"`
 	// The target availability zone.
 	TargetAvailabilityZone pulumi.StringPtrInput `pulumi:"targetAvailabilityZone"`
 	// The selected target Azure network Id.
@@ -20771,6 +26205,11 @@ func (o InMageAzureV2EnableProtectionInputOutput) RunAsAccountId() pulumi.String
 // The storage account name.
 func (o InMageAzureV2EnableProtectionInputOutput) StorageAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InMageAzureV2EnableProtectionInput) *string { return v.StorageAccountId }).(pulumi.StringPtrOutput)
+}
+
+// The availability set ARM Id.
+func (o InMageAzureV2EnableProtectionInputOutput) TargetAvailabilitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InMageAzureV2EnableProtectionInput) *string { return v.TargetAvailabilitySetId }).(pulumi.StringPtrOutput)
 }
 
 // The target availability zone.
@@ -39685,6 +45124,115 @@ func (o UpgradeDetailsResponsePtrOutput) UpgradedResourceId() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// A resource identity that is managed by the user of the service.
+type UserIdentityResponse struct {
+	// The client ID of the user-assigned identity.
+	ClientId string `pulumi:"clientId"`
+	// The principal ID of the user-assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+}
+
+// UserIdentityResponseInput is an input type that accepts UserIdentityResponseArgs and UserIdentityResponseOutput values.
+// You can construct a concrete instance of `UserIdentityResponseInput` via:
+//
+//          UserIdentityResponseArgs{...}
+type UserIdentityResponseInput interface {
+	pulumi.Input
+
+	ToUserIdentityResponseOutput() UserIdentityResponseOutput
+	ToUserIdentityResponseOutputWithContext(context.Context) UserIdentityResponseOutput
+}
+
+// A resource identity that is managed by the user of the service.
+type UserIdentityResponseArgs struct {
+	// The client ID of the user-assigned identity.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// The principal ID of the user-assigned identity.
+	PrincipalId pulumi.StringInput `pulumi:"principalId"`
+}
+
+func (UserIdentityResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserIdentityResponse)(nil)).Elem()
+}
+
+func (i UserIdentityResponseArgs) ToUserIdentityResponseOutput() UserIdentityResponseOutput {
+	return i.ToUserIdentityResponseOutputWithContext(context.Background())
+}
+
+func (i UserIdentityResponseArgs) ToUserIdentityResponseOutputWithContext(ctx context.Context) UserIdentityResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserIdentityResponseOutput)
+}
+
+// UserIdentityResponseMapInput is an input type that accepts UserIdentityResponseMap and UserIdentityResponseMapOutput values.
+// You can construct a concrete instance of `UserIdentityResponseMapInput` via:
+//
+//          UserIdentityResponseMap{ "key": UserIdentityResponseArgs{...} }
+type UserIdentityResponseMapInput interface {
+	pulumi.Input
+
+	ToUserIdentityResponseMapOutput() UserIdentityResponseMapOutput
+	ToUserIdentityResponseMapOutputWithContext(context.Context) UserIdentityResponseMapOutput
+}
+
+type UserIdentityResponseMap map[string]UserIdentityResponseInput
+
+func (UserIdentityResponseMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]UserIdentityResponse)(nil)).Elem()
+}
+
+func (i UserIdentityResponseMap) ToUserIdentityResponseMapOutput() UserIdentityResponseMapOutput {
+	return i.ToUserIdentityResponseMapOutputWithContext(context.Background())
+}
+
+func (i UserIdentityResponseMap) ToUserIdentityResponseMapOutputWithContext(ctx context.Context) UserIdentityResponseMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserIdentityResponseMapOutput)
+}
+
+// A resource identity that is managed by the user of the service.
+type UserIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (UserIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserIdentityResponse)(nil)).Elem()
+}
+
+func (o UserIdentityResponseOutput) ToUserIdentityResponseOutput() UserIdentityResponseOutput {
+	return o
+}
+
+func (o UserIdentityResponseOutput) ToUserIdentityResponseOutputWithContext(ctx context.Context) UserIdentityResponseOutput {
+	return o
+}
+
+// The client ID of the user-assigned identity.
+func (o UserIdentityResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The principal ID of the user-assigned identity.
+func (o UserIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+type UserIdentityResponseMapOutput struct{ *pulumi.OutputState }
+
+func (UserIdentityResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]UserIdentityResponse)(nil)).Elem()
+}
+
+func (o UserIdentityResponseMapOutput) ToUserIdentityResponseMapOutput() UserIdentityResponseMapOutput {
+	return o
+}
+
+func (o UserIdentityResponseMapOutput) ToUserIdentityResponseMapOutputWithContext(ctx context.Context) UserIdentityResponseMapOutput {
+	return o
+}
+
+func (o UserIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserIdentityResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserIdentityResponse {
+		return vs[0].(map[string]UserIdentityResponse)[vs[1].(string)]
+	}).(UserIdentityResponseOutput)
+}
+
 // vCenter properties.
 type VCenterPropertiesResponse struct {
 	// The VCenter discovery status.
@@ -42472,7 +48020,315 @@ func (o VMwareV2FabricSpecificDetailsResponseOutput) VmwareSiteId() pulumi.Strin
 }
 
 // Properties of the vault.
+type VaultProperties struct {
+	// Customer Managed Key details of the resource.
+	Encryption *VaultPropertiesEncryption `pulumi:"encryption"`
+}
+
+// VaultPropertiesInput is an input type that accepts VaultPropertiesArgs and VaultPropertiesOutput values.
+// You can construct a concrete instance of `VaultPropertiesInput` via:
+//
+//          VaultPropertiesArgs{...}
+type VaultPropertiesInput interface {
+	pulumi.Input
+
+	ToVaultPropertiesOutput() VaultPropertiesOutput
+	ToVaultPropertiesOutputWithContext(context.Context) VaultPropertiesOutput
+}
+
+// Properties of the vault.
+type VaultPropertiesArgs struct {
+	// Customer Managed Key details of the resource.
+	Encryption VaultPropertiesEncryptionPtrInput `pulumi:"encryption"`
+}
+
+func (VaultPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VaultProperties)(nil)).Elem()
+}
+
+func (i VaultPropertiesArgs) ToVaultPropertiesOutput() VaultPropertiesOutput {
+	return i.ToVaultPropertiesOutputWithContext(context.Background())
+}
+
+func (i VaultPropertiesArgs) ToVaultPropertiesOutputWithContext(ctx context.Context) VaultPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VaultPropertiesOutput)
+}
+
+func (i VaultPropertiesArgs) ToVaultPropertiesPtrOutput() VaultPropertiesPtrOutput {
+	return i.ToVaultPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i VaultPropertiesArgs) ToVaultPropertiesPtrOutputWithContext(ctx context.Context) VaultPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VaultPropertiesOutput).ToVaultPropertiesPtrOutputWithContext(ctx)
+}
+
+// VaultPropertiesPtrInput is an input type that accepts VaultPropertiesArgs, VaultPropertiesPtr and VaultPropertiesPtrOutput values.
+// You can construct a concrete instance of `VaultPropertiesPtrInput` via:
+//
+//          VaultPropertiesArgs{...}
+//
+//  or:
+//
+//          nil
+type VaultPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToVaultPropertiesPtrOutput() VaultPropertiesPtrOutput
+	ToVaultPropertiesPtrOutputWithContext(context.Context) VaultPropertiesPtrOutput
+}
+
+type vaultPropertiesPtrType VaultPropertiesArgs
+
+func VaultPropertiesPtr(v *VaultPropertiesArgs) VaultPropertiesPtrInput {
+	return (*vaultPropertiesPtrType)(v)
+}
+
+func (*vaultPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VaultProperties)(nil)).Elem()
+}
+
+func (i *vaultPropertiesPtrType) ToVaultPropertiesPtrOutput() VaultPropertiesPtrOutput {
+	return i.ToVaultPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *vaultPropertiesPtrType) ToVaultPropertiesPtrOutputWithContext(ctx context.Context) VaultPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VaultPropertiesPtrOutput)
+}
+
+// Properties of the vault.
+type VaultPropertiesOutput struct{ *pulumi.OutputState }
+
+func (VaultPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VaultProperties)(nil)).Elem()
+}
+
+func (o VaultPropertiesOutput) ToVaultPropertiesOutput() VaultPropertiesOutput {
+	return o
+}
+
+func (o VaultPropertiesOutput) ToVaultPropertiesOutputWithContext(ctx context.Context) VaultPropertiesOutput {
+	return o
+}
+
+func (o VaultPropertiesOutput) ToVaultPropertiesPtrOutput() VaultPropertiesPtrOutput {
+	return o.ToVaultPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o VaultPropertiesOutput) ToVaultPropertiesPtrOutputWithContext(ctx context.Context) VaultPropertiesPtrOutput {
+	return o.ApplyT(func(v VaultProperties) *VaultProperties {
+		return &v
+	}).(VaultPropertiesPtrOutput)
+}
+
+// Customer Managed Key details of the resource.
+func (o VaultPropertiesOutput) Encryption() VaultPropertiesEncryptionPtrOutput {
+	return o.ApplyT(func(v VaultProperties) *VaultPropertiesEncryption { return v.Encryption }).(VaultPropertiesEncryptionPtrOutput)
+}
+
+type VaultPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (VaultPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VaultProperties)(nil)).Elem()
+}
+
+func (o VaultPropertiesPtrOutput) ToVaultPropertiesPtrOutput() VaultPropertiesPtrOutput {
+	return o
+}
+
+func (o VaultPropertiesPtrOutput) ToVaultPropertiesPtrOutputWithContext(ctx context.Context) VaultPropertiesPtrOutput {
+	return o
+}
+
+func (o VaultPropertiesPtrOutput) Elem() VaultPropertiesOutput {
+	return o.ApplyT(func(v *VaultProperties) VaultProperties { return *v }).(VaultPropertiesOutput)
+}
+
+// Customer Managed Key details of the resource.
+func (o VaultPropertiesPtrOutput) Encryption() VaultPropertiesEncryptionPtrOutput {
+	return o.ApplyT(func(v *VaultProperties) *VaultPropertiesEncryption {
+		if v == nil {
+			return nil
+		}
+		return v.Encryption
+	}).(VaultPropertiesEncryptionPtrOutput)
+}
+
+// Customer Managed Key details of the resource.
+type VaultPropertiesEncryption struct {
+	// Enabling/Disabling the Double Encryption state
+	InfrastructureEncryption *string `pulumi:"infrastructureEncryption"`
+	// The details of the identity used for CMK
+	KekIdentity *CmkKekIdentity `pulumi:"kekIdentity"`
+	// The properties of the Key Vault which hosts CMK
+	KeyVaultProperties *CmkKeyVaultProperties `pulumi:"keyVaultProperties"`
+}
+
+// VaultPropertiesEncryptionInput is an input type that accepts VaultPropertiesEncryptionArgs and VaultPropertiesEncryptionOutput values.
+// You can construct a concrete instance of `VaultPropertiesEncryptionInput` via:
+//
+//          VaultPropertiesEncryptionArgs{...}
+type VaultPropertiesEncryptionInput interface {
+	pulumi.Input
+
+	ToVaultPropertiesEncryptionOutput() VaultPropertiesEncryptionOutput
+	ToVaultPropertiesEncryptionOutputWithContext(context.Context) VaultPropertiesEncryptionOutput
+}
+
+// Customer Managed Key details of the resource.
+type VaultPropertiesEncryptionArgs struct {
+	// Enabling/Disabling the Double Encryption state
+	InfrastructureEncryption pulumi.StringPtrInput `pulumi:"infrastructureEncryption"`
+	// The details of the identity used for CMK
+	KekIdentity CmkKekIdentityPtrInput `pulumi:"kekIdentity"`
+	// The properties of the Key Vault which hosts CMK
+	KeyVaultProperties CmkKeyVaultPropertiesPtrInput `pulumi:"keyVaultProperties"`
+}
+
+func (VaultPropertiesEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VaultPropertiesEncryption)(nil)).Elem()
+}
+
+func (i VaultPropertiesEncryptionArgs) ToVaultPropertiesEncryptionOutput() VaultPropertiesEncryptionOutput {
+	return i.ToVaultPropertiesEncryptionOutputWithContext(context.Background())
+}
+
+func (i VaultPropertiesEncryptionArgs) ToVaultPropertiesEncryptionOutputWithContext(ctx context.Context) VaultPropertiesEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VaultPropertiesEncryptionOutput)
+}
+
+func (i VaultPropertiesEncryptionArgs) ToVaultPropertiesEncryptionPtrOutput() VaultPropertiesEncryptionPtrOutput {
+	return i.ToVaultPropertiesEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i VaultPropertiesEncryptionArgs) ToVaultPropertiesEncryptionPtrOutputWithContext(ctx context.Context) VaultPropertiesEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VaultPropertiesEncryptionOutput).ToVaultPropertiesEncryptionPtrOutputWithContext(ctx)
+}
+
+// VaultPropertiesEncryptionPtrInput is an input type that accepts VaultPropertiesEncryptionArgs, VaultPropertiesEncryptionPtr and VaultPropertiesEncryptionPtrOutput values.
+// You can construct a concrete instance of `VaultPropertiesEncryptionPtrInput` via:
+//
+//          VaultPropertiesEncryptionArgs{...}
+//
+//  or:
+//
+//          nil
+type VaultPropertiesEncryptionPtrInput interface {
+	pulumi.Input
+
+	ToVaultPropertiesEncryptionPtrOutput() VaultPropertiesEncryptionPtrOutput
+	ToVaultPropertiesEncryptionPtrOutputWithContext(context.Context) VaultPropertiesEncryptionPtrOutput
+}
+
+type vaultPropertiesEncryptionPtrType VaultPropertiesEncryptionArgs
+
+func VaultPropertiesEncryptionPtr(v *VaultPropertiesEncryptionArgs) VaultPropertiesEncryptionPtrInput {
+	return (*vaultPropertiesEncryptionPtrType)(v)
+}
+
+func (*vaultPropertiesEncryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VaultPropertiesEncryption)(nil)).Elem()
+}
+
+func (i *vaultPropertiesEncryptionPtrType) ToVaultPropertiesEncryptionPtrOutput() VaultPropertiesEncryptionPtrOutput {
+	return i.ToVaultPropertiesEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i *vaultPropertiesEncryptionPtrType) ToVaultPropertiesEncryptionPtrOutputWithContext(ctx context.Context) VaultPropertiesEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VaultPropertiesEncryptionPtrOutput)
+}
+
+// Customer Managed Key details of the resource.
+type VaultPropertiesEncryptionOutput struct{ *pulumi.OutputState }
+
+func (VaultPropertiesEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VaultPropertiesEncryption)(nil)).Elem()
+}
+
+func (o VaultPropertiesEncryptionOutput) ToVaultPropertiesEncryptionOutput() VaultPropertiesEncryptionOutput {
+	return o
+}
+
+func (o VaultPropertiesEncryptionOutput) ToVaultPropertiesEncryptionOutputWithContext(ctx context.Context) VaultPropertiesEncryptionOutput {
+	return o
+}
+
+func (o VaultPropertiesEncryptionOutput) ToVaultPropertiesEncryptionPtrOutput() VaultPropertiesEncryptionPtrOutput {
+	return o.ToVaultPropertiesEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (o VaultPropertiesEncryptionOutput) ToVaultPropertiesEncryptionPtrOutputWithContext(ctx context.Context) VaultPropertiesEncryptionPtrOutput {
+	return o.ApplyT(func(v VaultPropertiesEncryption) *VaultPropertiesEncryption {
+		return &v
+	}).(VaultPropertiesEncryptionPtrOutput)
+}
+
+// Enabling/Disabling the Double Encryption state
+func (o VaultPropertiesEncryptionOutput) InfrastructureEncryption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VaultPropertiesEncryption) *string { return v.InfrastructureEncryption }).(pulumi.StringPtrOutput)
+}
+
+// The details of the identity used for CMK
+func (o VaultPropertiesEncryptionOutput) KekIdentity() CmkKekIdentityPtrOutput {
+	return o.ApplyT(func(v VaultPropertiesEncryption) *CmkKekIdentity { return v.KekIdentity }).(CmkKekIdentityPtrOutput)
+}
+
+// The properties of the Key Vault which hosts CMK
+func (o VaultPropertiesEncryptionOutput) KeyVaultProperties() CmkKeyVaultPropertiesPtrOutput {
+	return o.ApplyT(func(v VaultPropertiesEncryption) *CmkKeyVaultProperties { return v.KeyVaultProperties }).(CmkKeyVaultPropertiesPtrOutput)
+}
+
+type VaultPropertiesEncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (VaultPropertiesEncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VaultPropertiesEncryption)(nil)).Elem()
+}
+
+func (o VaultPropertiesEncryptionPtrOutput) ToVaultPropertiesEncryptionPtrOutput() VaultPropertiesEncryptionPtrOutput {
+	return o
+}
+
+func (o VaultPropertiesEncryptionPtrOutput) ToVaultPropertiesEncryptionPtrOutputWithContext(ctx context.Context) VaultPropertiesEncryptionPtrOutput {
+	return o
+}
+
+func (o VaultPropertiesEncryptionPtrOutput) Elem() VaultPropertiesEncryptionOutput {
+	return o.ApplyT(func(v *VaultPropertiesEncryption) VaultPropertiesEncryption { return *v }).(VaultPropertiesEncryptionOutput)
+}
+
+// Enabling/Disabling the Double Encryption state
+func (o VaultPropertiesEncryptionPtrOutput) InfrastructureEncryption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VaultPropertiesEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InfrastructureEncryption
+	}).(pulumi.StringPtrOutput)
+}
+
+// The details of the identity used for CMK
+func (o VaultPropertiesEncryptionPtrOutput) KekIdentity() CmkKekIdentityPtrOutput {
+	return o.ApplyT(func(v *VaultPropertiesEncryption) *CmkKekIdentity {
+		if v == nil {
+			return nil
+		}
+		return v.KekIdentity
+	}).(CmkKekIdentityPtrOutput)
+}
+
+// The properties of the Key Vault which hosts CMK
+func (o VaultPropertiesEncryptionPtrOutput) KeyVaultProperties() CmkKeyVaultPropertiesPtrOutput {
+	return o.ApplyT(func(v *VaultPropertiesEncryption) *CmkKeyVaultProperties {
+		if v == nil {
+			return nil
+		}
+		return v.KeyVaultProperties
+	}).(CmkKeyVaultPropertiesPtrOutput)
+}
+
+// Properties of the vault.
 type VaultPropertiesResponse struct {
+	// Customer Managed Key details of the resource.
+	Encryption *VaultPropertiesResponseEncryption `pulumi:"encryption"`
 	// List of private endpoint connection.
 	PrivateEndpointConnections []PrivateEndpointConnectionVaultPropertiesResponse `pulumi:"privateEndpointConnections"`
 	// Private endpoint state for backup.
@@ -42498,6 +48354,8 @@ type VaultPropertiesResponseInput interface {
 
 // Properties of the vault.
 type VaultPropertiesResponseArgs struct {
+	// Customer Managed Key details of the resource.
+	Encryption VaultPropertiesResponseEncryptionPtrInput `pulumi:"encryption"`
 	// List of private endpoint connection.
 	PrivateEndpointConnections PrivateEndpointConnectionVaultPropertiesResponseArrayInput `pulumi:"privateEndpointConnections"`
 	// Private endpoint state for backup.
@@ -42588,6 +48446,11 @@ func (o VaultPropertiesResponseOutput) ToVaultPropertiesResponsePtrOutputWithCon
 	}).(VaultPropertiesResponsePtrOutput)
 }
 
+// Customer Managed Key details of the resource.
+func (o VaultPropertiesResponseOutput) Encryption() VaultPropertiesResponseEncryptionPtrOutput {
+	return o.ApplyT(func(v VaultPropertiesResponse) *VaultPropertiesResponseEncryption { return v.Encryption }).(VaultPropertiesResponseEncryptionPtrOutput)
+}
+
 // List of private endpoint connection.
 func (o VaultPropertiesResponseOutput) PrivateEndpointConnections() PrivateEndpointConnectionVaultPropertiesResponseArrayOutput {
 	return o.ApplyT(func(v VaultPropertiesResponse) []PrivateEndpointConnectionVaultPropertiesResponse {
@@ -42631,6 +48494,16 @@ func (o VaultPropertiesResponsePtrOutput) ToVaultPropertiesResponsePtrOutputWith
 
 func (o VaultPropertiesResponsePtrOutput) Elem() VaultPropertiesResponseOutput {
 	return o.ApplyT(func(v *VaultPropertiesResponse) VaultPropertiesResponse { return *v }).(VaultPropertiesResponseOutput)
+}
+
+// Customer Managed Key details of the resource.
+func (o VaultPropertiesResponsePtrOutput) Encryption() VaultPropertiesResponseEncryptionPtrOutput {
+	return o.ApplyT(func(v *VaultPropertiesResponse) *VaultPropertiesResponseEncryption {
+		if v == nil {
+			return nil
+		}
+		return v.Encryption
+	}).(VaultPropertiesResponseEncryptionPtrOutput)
 }
 
 // List of private endpoint connection.
@@ -42681,6 +48554,178 @@ func (o VaultPropertiesResponsePtrOutput) UpgradeDetails() UpgradeDetailsRespons
 		}
 		return v.UpgradeDetails
 	}).(UpgradeDetailsResponsePtrOutput)
+}
+
+// Customer Managed Key details of the resource.
+type VaultPropertiesResponseEncryption struct {
+	// Enabling/Disabling the Double Encryption state
+	InfrastructureEncryption *string `pulumi:"infrastructureEncryption"`
+	// The details of the identity used for CMK
+	KekIdentity *CmkKekIdentityResponse `pulumi:"kekIdentity"`
+	// The properties of the Key Vault which hosts CMK
+	KeyVaultProperties *CmkKeyVaultPropertiesResponse `pulumi:"keyVaultProperties"`
+}
+
+// VaultPropertiesResponseEncryptionInput is an input type that accepts VaultPropertiesResponseEncryptionArgs and VaultPropertiesResponseEncryptionOutput values.
+// You can construct a concrete instance of `VaultPropertiesResponseEncryptionInput` via:
+//
+//          VaultPropertiesResponseEncryptionArgs{...}
+type VaultPropertiesResponseEncryptionInput interface {
+	pulumi.Input
+
+	ToVaultPropertiesResponseEncryptionOutput() VaultPropertiesResponseEncryptionOutput
+	ToVaultPropertiesResponseEncryptionOutputWithContext(context.Context) VaultPropertiesResponseEncryptionOutput
+}
+
+// Customer Managed Key details of the resource.
+type VaultPropertiesResponseEncryptionArgs struct {
+	// Enabling/Disabling the Double Encryption state
+	InfrastructureEncryption pulumi.StringPtrInput `pulumi:"infrastructureEncryption"`
+	// The details of the identity used for CMK
+	KekIdentity CmkKekIdentityResponsePtrInput `pulumi:"kekIdentity"`
+	// The properties of the Key Vault which hosts CMK
+	KeyVaultProperties CmkKeyVaultPropertiesResponsePtrInput `pulumi:"keyVaultProperties"`
+}
+
+func (VaultPropertiesResponseEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VaultPropertiesResponseEncryption)(nil)).Elem()
+}
+
+func (i VaultPropertiesResponseEncryptionArgs) ToVaultPropertiesResponseEncryptionOutput() VaultPropertiesResponseEncryptionOutput {
+	return i.ToVaultPropertiesResponseEncryptionOutputWithContext(context.Background())
+}
+
+func (i VaultPropertiesResponseEncryptionArgs) ToVaultPropertiesResponseEncryptionOutputWithContext(ctx context.Context) VaultPropertiesResponseEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VaultPropertiesResponseEncryptionOutput)
+}
+
+func (i VaultPropertiesResponseEncryptionArgs) ToVaultPropertiesResponseEncryptionPtrOutput() VaultPropertiesResponseEncryptionPtrOutput {
+	return i.ToVaultPropertiesResponseEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i VaultPropertiesResponseEncryptionArgs) ToVaultPropertiesResponseEncryptionPtrOutputWithContext(ctx context.Context) VaultPropertiesResponseEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VaultPropertiesResponseEncryptionOutput).ToVaultPropertiesResponseEncryptionPtrOutputWithContext(ctx)
+}
+
+// VaultPropertiesResponseEncryptionPtrInput is an input type that accepts VaultPropertiesResponseEncryptionArgs, VaultPropertiesResponseEncryptionPtr and VaultPropertiesResponseEncryptionPtrOutput values.
+// You can construct a concrete instance of `VaultPropertiesResponseEncryptionPtrInput` via:
+//
+//          VaultPropertiesResponseEncryptionArgs{...}
+//
+//  or:
+//
+//          nil
+type VaultPropertiesResponseEncryptionPtrInput interface {
+	pulumi.Input
+
+	ToVaultPropertiesResponseEncryptionPtrOutput() VaultPropertiesResponseEncryptionPtrOutput
+	ToVaultPropertiesResponseEncryptionPtrOutputWithContext(context.Context) VaultPropertiesResponseEncryptionPtrOutput
+}
+
+type vaultPropertiesResponseEncryptionPtrType VaultPropertiesResponseEncryptionArgs
+
+func VaultPropertiesResponseEncryptionPtr(v *VaultPropertiesResponseEncryptionArgs) VaultPropertiesResponseEncryptionPtrInput {
+	return (*vaultPropertiesResponseEncryptionPtrType)(v)
+}
+
+func (*vaultPropertiesResponseEncryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VaultPropertiesResponseEncryption)(nil)).Elem()
+}
+
+func (i *vaultPropertiesResponseEncryptionPtrType) ToVaultPropertiesResponseEncryptionPtrOutput() VaultPropertiesResponseEncryptionPtrOutput {
+	return i.ToVaultPropertiesResponseEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i *vaultPropertiesResponseEncryptionPtrType) ToVaultPropertiesResponseEncryptionPtrOutputWithContext(ctx context.Context) VaultPropertiesResponseEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VaultPropertiesResponseEncryptionPtrOutput)
+}
+
+// Customer Managed Key details of the resource.
+type VaultPropertiesResponseEncryptionOutput struct{ *pulumi.OutputState }
+
+func (VaultPropertiesResponseEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VaultPropertiesResponseEncryption)(nil)).Elem()
+}
+
+func (o VaultPropertiesResponseEncryptionOutput) ToVaultPropertiesResponseEncryptionOutput() VaultPropertiesResponseEncryptionOutput {
+	return o
+}
+
+func (o VaultPropertiesResponseEncryptionOutput) ToVaultPropertiesResponseEncryptionOutputWithContext(ctx context.Context) VaultPropertiesResponseEncryptionOutput {
+	return o
+}
+
+func (o VaultPropertiesResponseEncryptionOutput) ToVaultPropertiesResponseEncryptionPtrOutput() VaultPropertiesResponseEncryptionPtrOutput {
+	return o.ToVaultPropertiesResponseEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (o VaultPropertiesResponseEncryptionOutput) ToVaultPropertiesResponseEncryptionPtrOutputWithContext(ctx context.Context) VaultPropertiesResponseEncryptionPtrOutput {
+	return o.ApplyT(func(v VaultPropertiesResponseEncryption) *VaultPropertiesResponseEncryption {
+		return &v
+	}).(VaultPropertiesResponseEncryptionPtrOutput)
+}
+
+// Enabling/Disabling the Double Encryption state
+func (o VaultPropertiesResponseEncryptionOutput) InfrastructureEncryption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VaultPropertiesResponseEncryption) *string { return v.InfrastructureEncryption }).(pulumi.StringPtrOutput)
+}
+
+// The details of the identity used for CMK
+func (o VaultPropertiesResponseEncryptionOutput) KekIdentity() CmkKekIdentityResponsePtrOutput {
+	return o.ApplyT(func(v VaultPropertiesResponseEncryption) *CmkKekIdentityResponse { return v.KekIdentity }).(CmkKekIdentityResponsePtrOutput)
+}
+
+// The properties of the Key Vault which hosts CMK
+func (o VaultPropertiesResponseEncryptionOutput) KeyVaultProperties() CmkKeyVaultPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v VaultPropertiesResponseEncryption) *CmkKeyVaultPropertiesResponse { return v.KeyVaultProperties }).(CmkKeyVaultPropertiesResponsePtrOutput)
+}
+
+type VaultPropertiesResponseEncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (VaultPropertiesResponseEncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VaultPropertiesResponseEncryption)(nil)).Elem()
+}
+
+func (o VaultPropertiesResponseEncryptionPtrOutput) ToVaultPropertiesResponseEncryptionPtrOutput() VaultPropertiesResponseEncryptionPtrOutput {
+	return o
+}
+
+func (o VaultPropertiesResponseEncryptionPtrOutput) ToVaultPropertiesResponseEncryptionPtrOutputWithContext(ctx context.Context) VaultPropertiesResponseEncryptionPtrOutput {
+	return o
+}
+
+func (o VaultPropertiesResponseEncryptionPtrOutput) Elem() VaultPropertiesResponseEncryptionOutput {
+	return o.ApplyT(func(v *VaultPropertiesResponseEncryption) VaultPropertiesResponseEncryption { return *v }).(VaultPropertiesResponseEncryptionOutput)
+}
+
+// Enabling/Disabling the Double Encryption state
+func (o VaultPropertiesResponseEncryptionPtrOutput) InfrastructureEncryption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VaultPropertiesResponseEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InfrastructureEncryption
+	}).(pulumi.StringPtrOutput)
+}
+
+// The details of the identity used for CMK
+func (o VaultPropertiesResponseEncryptionPtrOutput) KekIdentity() CmkKekIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *VaultPropertiesResponseEncryption) *CmkKekIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.KekIdentity
+	}).(CmkKekIdentityResponsePtrOutput)
+}
+
+// The properties of the Key Vault which hosts CMK
+func (o VaultPropertiesResponseEncryptionPtrOutput) KeyVaultProperties() CmkKeyVaultPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *VaultPropertiesResponseEncryption) *CmkKeyVaultPropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.KeyVaultProperties
+	}).(CmkKeyVaultPropertiesResponsePtrOutput)
 }
 
 // Version related details.
@@ -44601,6 +50646,8 @@ func init() {
 	pulumi.RegisterOutputType(AgentDetailsResponseArrayOutput{})
 	pulumi.RegisterOutputType(AgentDiskDetailsResponseOutput{})
 	pulumi.RegisterOutputType(AgentDiskDetailsResponseArrayOutput{})
+	pulumi.RegisterOutputType(AzureBackupServerContainerOutput{})
+	pulumi.RegisterOutputType(AzureBackupServerContainerResponseOutput{})
 	pulumi.RegisterOutputType(AzureFabricCreationInputOutput{})
 	pulumi.RegisterOutputType(AzureFabricSpecificDetailsResponseOutput{})
 	pulumi.RegisterOutputType(AzureFileShareProtectionPolicyOutput{})
@@ -44611,6 +50658,14 @@ func init() {
 	pulumi.RegisterOutputType(AzureFileshareProtectedItemExtendedInfoResponseOutput{})
 	pulumi.RegisterOutputType(AzureFileshareProtectedItemExtendedInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(AzureFileshareProtectedItemResponseOutput{})
+	pulumi.RegisterOutputType(AzureIaaSClassicComputeVMContainerOutput{})
+	pulumi.RegisterOutputType(AzureIaaSClassicComputeVMContainerResponseOutput{})
+	pulumi.RegisterOutputType(AzureIaaSClassicComputeVMProtectedItemOutput{})
+	pulumi.RegisterOutputType(AzureIaaSClassicComputeVMProtectedItemResponseOutput{})
+	pulumi.RegisterOutputType(AzureIaaSComputeVMContainerOutput{})
+	pulumi.RegisterOutputType(AzureIaaSComputeVMContainerResponseOutput{})
+	pulumi.RegisterOutputType(AzureIaaSComputeVMProtectedItemOutput{})
+	pulumi.RegisterOutputType(AzureIaaSComputeVMProtectedItemResponseOutput{})
 	pulumi.RegisterOutputType(AzureIaaSVMHealthDetailsResponseOutput{})
 	pulumi.RegisterOutputType(AzureIaaSVMHealthDetailsResponseArrayOutput{})
 	pulumi.RegisterOutputType(AzureIaaSVMProtectedItemOutput{})
@@ -44625,6 +50680,8 @@ func init() {
 	pulumi.RegisterOutputType(AzureRecoveryServiceVaultProtectionIntentResponseOutput{})
 	pulumi.RegisterOutputType(AzureResourceProtectionIntentOutput{})
 	pulumi.RegisterOutputType(AzureResourceProtectionIntentResponseOutput{})
+	pulumi.RegisterOutputType(AzureSQLAGWorkloadContainerProtectionContainerOutput{})
+	pulumi.RegisterOutputType(AzureSQLAGWorkloadContainerProtectionContainerResponseOutput{})
 	pulumi.RegisterOutputType(AzureSqlContainerOutput{})
 	pulumi.RegisterOutputType(AzureSqlContainerResponseOutput{})
 	pulumi.RegisterOutputType(AzureSqlProtectedItemOutput{})
@@ -44641,6 +50698,8 @@ func init() {
 	pulumi.RegisterOutputType(AzureToAzureNetworkMappingSettingsResponseOutput{})
 	pulumi.RegisterOutputType(AzureToAzureVmSyncedConfigDetailsResponseOutput{})
 	pulumi.RegisterOutputType(AzureToAzureVmSyncedConfigDetailsResponsePtrOutput{})
+	pulumi.RegisterOutputType(AzureVMAppContainerProtectionContainerOutput{})
+	pulumi.RegisterOutputType(AzureVMAppContainerProtectionContainerResponseOutput{})
 	pulumi.RegisterOutputType(AzureVmDiskDetailsResponseOutput{})
 	pulumi.RegisterOutputType(AzureVmDiskDetailsResponseArrayOutput{})
 	pulumi.RegisterOutputType(AzureVmWorkloadProtectedItemOutput{})
@@ -44651,12 +50710,30 @@ func init() {
 	pulumi.RegisterOutputType(AzureVmWorkloadProtectedItemResponseOutput{})
 	pulumi.RegisterOutputType(AzureVmWorkloadProtectionPolicyOutput{})
 	pulumi.RegisterOutputType(AzureVmWorkloadProtectionPolicyResponseOutput{})
+	pulumi.RegisterOutputType(AzureVmWorkloadSAPAseDatabaseProtectedItemOutput{})
+	pulumi.RegisterOutputType(AzureVmWorkloadSAPAseDatabaseProtectedItemResponseOutput{})
+	pulumi.RegisterOutputType(AzureVmWorkloadSAPHanaDatabaseProtectedItemOutput{})
+	pulumi.RegisterOutputType(AzureVmWorkloadSAPHanaDatabaseProtectedItemResponseOutput{})
+	pulumi.RegisterOutputType(AzureVmWorkloadSQLDatabaseProtectedItemOutput{})
+	pulumi.RegisterOutputType(AzureVmWorkloadSQLDatabaseProtectedItemResponseOutput{})
+	pulumi.RegisterOutputType(AzureWorkloadAutoProtectionIntentOutput{})
+	pulumi.RegisterOutputType(AzureWorkloadAutoProtectionIntentResponseOutput{})
 	pulumi.RegisterOutputType(AzureWorkloadContainerOutput{})
 	pulumi.RegisterOutputType(AzureWorkloadContainerExtendedInfoOutput{})
 	pulumi.RegisterOutputType(AzureWorkloadContainerExtendedInfoPtrOutput{})
 	pulumi.RegisterOutputType(AzureWorkloadContainerExtendedInfoResponseOutput{})
 	pulumi.RegisterOutputType(AzureWorkloadContainerExtendedInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(AzureWorkloadContainerResponseOutput{})
+	pulumi.RegisterOutputType(AzureWorkloadSQLAutoProtectionIntentOutput{})
+	pulumi.RegisterOutputType(AzureWorkloadSQLAutoProtectionIntentResponseOutput{})
+	pulumi.RegisterOutputType(CmkKekIdentityOutput{})
+	pulumi.RegisterOutputType(CmkKekIdentityPtrOutput{})
+	pulumi.RegisterOutputType(CmkKekIdentityResponseOutput{})
+	pulumi.RegisterOutputType(CmkKekIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(CmkKeyVaultPropertiesOutput{})
+	pulumi.RegisterOutputType(CmkKeyVaultPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(CmkKeyVaultPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(CmkKeyVaultPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(ContainerIdentityInfoOutput{})
 	pulumi.RegisterOutputType(ContainerIdentityInfoPtrOutput{})
 	pulumi.RegisterOutputType(ContainerIdentityInfoResponseOutput{})
@@ -44965,6 +51042,8 @@ func init() {
 	pulumi.RegisterOutputType(SubProtectionPolicyResponseArrayOutput{})
 	pulumi.RegisterOutputType(UpgradeDetailsResponseOutput{})
 	pulumi.RegisterOutputType(UpgradeDetailsResponsePtrOutput{})
+	pulumi.RegisterOutputType(UserIdentityResponseOutput{})
+	pulumi.RegisterOutputType(UserIdentityResponseMapOutput{})
 	pulumi.RegisterOutputType(VCenterPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(VCenterPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(VMNicDetailsResponseOutput{})
@@ -44985,8 +51064,14 @@ func init() {
 	pulumi.RegisterOutputType(VMwareDetailsResponseOutput{})
 	pulumi.RegisterOutputType(VMwareV2FabricCreationInputOutput{})
 	pulumi.RegisterOutputType(VMwareV2FabricSpecificDetailsResponseOutput{})
+	pulumi.RegisterOutputType(VaultPropertiesOutput{})
+	pulumi.RegisterOutputType(VaultPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(VaultPropertiesEncryptionOutput{})
+	pulumi.RegisterOutputType(VaultPropertiesEncryptionPtrOutput{})
 	pulumi.RegisterOutputType(VaultPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(VaultPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(VaultPropertiesResponseEncryptionOutput{})
+	pulumi.RegisterOutputType(VaultPropertiesResponseEncryptionPtrOutput{})
 	pulumi.RegisterOutputType(VersionDetailsResponseOutput{})
 	pulumi.RegisterOutputType(VersionDetailsResponsePtrOutput{})
 	pulumi.RegisterOutputType(VmmDetailsResponseOutput{})

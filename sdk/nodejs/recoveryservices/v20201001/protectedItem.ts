@@ -50,7 +50,7 @@ export class ProtectedItem extends pulumi.CustomResource {
     /**
      * ProtectedItemResource properties
      */
-    public readonly properties!: pulumi.Output<outputs.recoveryservices.v20201001.AzureFileshareProtectedItemResponse | outputs.recoveryservices.v20201001.AzureIaaSVMProtectedItemResponse | outputs.recoveryservices.v20201001.AzureSqlProtectedItemResponse | outputs.recoveryservices.v20201001.AzureVmWorkloadProtectedItemResponse | outputs.recoveryservices.v20201001.DPMProtectedItemResponse | outputs.recoveryservices.v20201001.GenericProtectedItemResponse | outputs.recoveryservices.v20201001.MabFileFolderProtectedItemResponse>;
+    public readonly properties!: pulumi.Output<outputs.recoveryservices.v20201001.AzureFileshareProtectedItemResponse | outputs.recoveryservices.v20201001.AzureIaaSClassicComputeVMProtectedItemResponse | outputs.recoveryservices.v20201001.AzureIaaSComputeVMProtectedItemResponse | outputs.recoveryservices.v20201001.AzureIaaSVMProtectedItemResponse | outputs.recoveryservices.v20201001.AzureSqlProtectedItemResponse | outputs.recoveryservices.v20201001.AzureVmWorkloadProtectedItemResponse | outputs.recoveryservices.v20201001.AzureVmWorkloadSAPAseDatabaseProtectedItemResponse | outputs.recoveryservices.v20201001.AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse | outputs.recoveryservices.v20201001.AzureVmWorkloadSQLDatabaseProtectedItemResponse | outputs.recoveryservices.v20201001.DPMProtectedItemResponse | outputs.recoveryservices.v20201001.GenericProtectedItemResponse | outputs.recoveryservices.v20201001.MabFileFolderProtectedItemResponse>;
     /**
      * Resource tags.
      */
@@ -111,7 +111,7 @@ export class ProtectedItem extends pulumi.CustomResource {
         if (!opts.version) {
             opts.version = utilities.getVersion();
         }
-        const aliasOpts = { aliases: [{ type: "azure-nextgen:recoveryservices/latest:ProtectedItem" }, { type: "azure-nextgen:recoveryservices/v20160601:ProtectedItem" }, { type: "azure-nextgen:recoveryservices/v20190513:ProtectedItem" }, { type: "azure-nextgen:recoveryservices/v20190615:ProtectedItem" }] };
+        const aliasOpts = { aliases: [{ type: "azure-nextgen:recoveryservices/latest:ProtectedItem" }, { type: "azure-nextgen:recoveryservices/v20160601:ProtectedItem" }, { type: "azure-nextgen:recoveryservices/v20190513:ProtectedItem" }, { type: "azure-nextgen:recoveryservices/v20190615:ProtectedItem" }, { type: "azure-nextgen:recoveryservices/v20201201:ProtectedItem" }] };
         opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
         super(ProtectedItem.__pulumiType, name, inputs, opts);
     }
@@ -140,7 +140,7 @@ export interface ProtectedItemArgs {
     /**
      * ProtectedItemResource properties
      */
-    readonly properties?: pulumi.Input<inputs.recoveryservices.v20201001.AzureFileshareProtectedItem | inputs.recoveryservices.v20201001.AzureIaaSVMProtectedItem | inputs.recoveryservices.v20201001.AzureSqlProtectedItem | inputs.recoveryservices.v20201001.AzureVmWorkloadProtectedItem | inputs.recoveryservices.v20201001.DPMProtectedItem | inputs.recoveryservices.v20201001.GenericProtectedItem | inputs.recoveryservices.v20201001.MabFileFolderProtectedItem>;
+    readonly properties?: pulumi.Input<inputs.recoveryservices.v20201001.AzureFileshareProtectedItem | inputs.recoveryservices.v20201001.AzureIaaSClassicComputeVMProtectedItem | inputs.recoveryservices.v20201001.AzureIaaSComputeVMProtectedItem | inputs.recoveryservices.v20201001.AzureIaaSVMProtectedItem | inputs.recoveryservices.v20201001.AzureSqlProtectedItem | inputs.recoveryservices.v20201001.AzureVmWorkloadProtectedItem | inputs.recoveryservices.v20201001.AzureVmWorkloadSAPAseDatabaseProtectedItem | inputs.recoveryservices.v20201001.AzureVmWorkloadSAPHanaDatabaseProtectedItem | inputs.recoveryservices.v20201001.AzureVmWorkloadSQLDatabaseProtectedItem | inputs.recoveryservices.v20201001.DPMProtectedItem | inputs.recoveryservices.v20201001.GenericProtectedItem | inputs.recoveryservices.v20201001.MabFileFolderProtectedItem>;
     /**
      * Item name to be backed up.
      */

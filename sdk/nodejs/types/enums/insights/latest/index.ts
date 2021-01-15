@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
-export const AggregationType = {
+export const AggregationTypeEnum = {
     Average: "Average",
     Count: "Count",
     Minimum: "Minimum",
@@ -13,7 +13,7 @@ export const AggregationType = {
 /**
  * the criteria time aggregation types.
  */
-export type AggregationType = (typeof AggregationType)[keyof typeof AggregationType];
+export type AggregationTypeEnum = (typeof AggregationTypeEnum)[keyof typeof AggregationTypeEnum];
 
 export const AlertSeverity = {
     Zero: "0",
@@ -169,6 +169,16 @@ export const ItemType = {
  */
 export type ItemType = (typeof ItemType)[keyof typeof ItemType];
 
+export const Kind = {
+    User: "user",
+    Shared: "shared",
+} as const;
+
+/**
+ * The kind of workbook. Choices are user and shared.
+ */
+export type Kind = (typeof Kind)[keyof typeof Kind];
+
 export const MetricStatisticType = {
     Average: "Average",
     Min: "Min",
@@ -285,16 +295,6 @@ export const ScaleType = {
  * the type of action that should occur when the scale rule fires.
  */
 export type ScaleType = (typeof ScaleType)[keyof typeof ScaleType];
-
-export const SharedTypeKind = {
-    User: "user",
-    Shared: "shared",
-} as const;
-
-/**
- * The kind of workbook. Choices are user and shared.
- */
-export type SharedTypeKind = (typeof SharedTypeKind)[keyof typeof SharedTypeKind];
 
 export const TimeAggregationOperator = {
     Average: "Average",

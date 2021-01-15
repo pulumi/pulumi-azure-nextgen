@@ -54,6 +54,9 @@ func NewIpAllocation(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	if args.PrefixLength == nil {
+		args.PrefixLength = pulumi.IntPtr(0)
+	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-nextgen:network/latest:IpAllocation"),
@@ -69,6 +72,9 @@ func NewIpAllocation(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-nextgen:network/v20200701:IpAllocation"),
+		},
+		{
+			Type: pulumi.String("azure-nextgen:network/v20200801:IpAllocation"),
 		},
 	})
 	opts = append(opts, aliases)

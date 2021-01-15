@@ -172,6 +172,7 @@ namespace Pulumi.AzureNextGen.Network.V20200401
                     new Pulumi.Alias { Type = "azure-nextgen:network/v20200501:ConnectionMonitor"},
                     new Pulumi.Alias { Type = "azure-nextgen:network/v20200601:ConnectionMonitor"},
                     new Pulumi.Alias { Type = "azure-nextgen:network/v20200701:ConnectionMonitor"},
+                    new Pulumi.Alias { Type = "azure-nextgen:network/v20200801:ConnectionMonitor"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -311,6 +312,8 @@ namespace Pulumi.AzureNextGen.Network.V20200401
 
         public ConnectionMonitorArgs()
         {
+            AutoStart = true;
+            MonitoringIntervalInSeconds = 60;
         }
     }
 }

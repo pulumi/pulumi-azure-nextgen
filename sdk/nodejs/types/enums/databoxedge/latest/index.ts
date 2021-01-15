@@ -12,6 +12,16 @@ export const AccountType = {
  */
 export type AccountType = (typeof AccountType)[keyof typeof AccountType];
 
+export const AddonType = {
+    IotEdge: "IotEdge",
+    ArcForKubernetes: "ArcForKubernetes",
+} as const;
+
+/**
+ * Addon type.
+ */
+export type AddonType = (typeof AddonType)[keyof typeof AddonType];
+
 export const AzureContainerDataFormat = {
     BlockBlob: "BlockBlob",
     PageBlob: "PageBlob",
@@ -33,6 +43,18 @@ export const ClientPermissionType = {
  * Type of access to be allowed for the client.
  */
 export type ClientPermissionType = (typeof ClientPermissionType)[keyof typeof ClientPermissionType];
+
+export const DataBoxEdgeDeviceKind = {
+    AzureDataBoxGateway: "AzureDataBoxGateway",
+    AzureStackEdge: "AzureStackEdge",
+    AzureStackHub: "AzureStackHub",
+    AzureModularDataCentre: "AzureModularDataCentre",
+} as const;
+
+/**
+ * The etag for the devices.
+ */
+export type DataBoxEdgeDeviceKind = (typeof DataBoxEdgeDeviceKind)[keyof typeof DataBoxEdgeDeviceKind];
 
 export const DataBoxEdgeDeviceStatus = {
     ReadyToSetup: "ReadyToSetup",
@@ -92,6 +114,17 @@ export const MonitoringStatus = {
  */
 export type MonitoringStatus = (typeof MonitoringStatus)[keyof typeof MonitoringStatus];
 
+export const MsiIdentityType = {
+    None: "None",
+    SystemAssigned: "SystemAssigned",
+    UserAssigned: "UserAssigned",
+} as const;
+
+/**
+ * Identity type
+ */
+export type MsiIdentityType = (typeof MsiIdentityType)[keyof typeof MsiIdentityType];
+
 export const OrderState = {
     Untracked: "Untracked",
     AwaitingFulfilment: "AwaitingFulfilment",
@@ -107,6 +140,9 @@ export const OrderState = {
     AwaitingReturnShipment: "AwaitingReturnShipment",
     ShippedBack: "ShippedBack",
     CollectedAtMicrosoft: "CollectedAtMicrosoft",
+    AwaitingPickup: "AwaitingPickup",
+    PickupCompleted: "PickupCompleted",
+    AwaitingDrop: "AwaitingDrop",
 } as const;
 
 /**
@@ -114,11 +150,25 @@ export const OrderState = {
  */
 export type OrderState = (typeof OrderState)[keyof typeof OrderState];
 
+export const ResourceMoveStatus = {
+    None: "None",
+    ResourceMoveInProgress: "ResourceMoveInProgress",
+    ResourceMoveFailed: "ResourceMoveFailed",
+} as const;
+
+/**
+ * Denotes whether move operation is in progress
+ */
+export type ResourceMoveStatus = (typeof ResourceMoveStatus)[keyof typeof ResourceMoveStatus];
+
 export const RoleTypes = {
     IOT: "IOT",
     ASA: "ASA",
     Functions: "Functions",
     Cognitive: "Cognitive",
+    MEC: "MEC",
+    CloudEdgeManagement: "CloudEdgeManagement",
+    Kubernetes: "Kubernetes",
 } as const;
 
 /**
@@ -153,7 +203,7 @@ export const ShareAccessType = {
 } as const;
 
 /**
- * Type of access to be allowed on the share for this user.
+ * Type of access to be allowed for the user.
  */
 export type ShareAccessType = (typeof ShareAccessType)[keyof typeof ShareAccessType];
 
@@ -170,6 +220,17 @@ export const ShareStatus = {
  */
 export type ShareStatus = (typeof ShareStatus)[keyof typeof ShareStatus];
 
+export const ShipmentType = {
+    NotApplicable: "NotApplicable",
+    ShippedToCustomer: "ShippedToCustomer",
+    SelfPickup: "SelfPickup",
+} as const;
+
+/**
+ * ShipmentType of the order
+ */
+export type ShipmentType = (typeof ShipmentType)[keyof typeof ShipmentType];
+
 export const SkuName = {
     Gateway: "Gateway",
     Edge: "Edge",
@@ -180,6 +241,18 @@ export const SkuName = {
     TEA_4Node_Heater: "TEA_4Node_Heater",
     TEA_4Node_UPS_Heater: "TEA_4Node_UPS_Heater",
     TMA: "TMA",
+    TDC: "TDC",
+    TCA_Small: "TCA_Small",
+    GPU: "GPU",
+    TCA_Large: "TCA_Large",
+    EdgeP_Base: "EdgeP_Base",
+    EdgeP_High: "EdgeP_High",
+    EdgePR_Base: "EdgePR_Base",
+    EdgePR_Base_UPS: "EdgePR_Base_UPS",
+    EdgeMR_Mini: "EdgeMR_Mini",
+    RCA_Small: "RCA_Small",
+    RCA_Large: "RCA_Large",
+    RDC: "RDC",
 } as const;
 
 /**
@@ -208,6 +281,16 @@ export const StorageAccountStatus = {
  * Current status of the storage account
  */
 export type StorageAccountStatus = (typeof StorageAccountStatus)[keyof typeof StorageAccountStatus];
+
+export const SubscriptionState = {
+    Registered: "Registered",
+    Warned: "Warned",
+    Suspended: "Suspended",
+    Deleted: "Deleted",
+    Unregistered: "Unregistered",
+} as const;
+
+export type SubscriptionState = (typeof SubscriptionState)[keyof typeof SubscriptionState];
 
 export const TriggerEventType = {
     FileEvent: "FileEvent",

@@ -106,11 +106,11 @@ export class ConnectionMonitor extends pulumi.CustomResource {
             if ((!args || args.source === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'source'");
             }
-            inputs["autoStart"] = args ? args.autoStart : undefined;
+            inputs["autoStart"] = (args ? args.autoStart : undefined) || true;
             inputs["connectionMonitorName"] = args ? args.connectionMonitorName : undefined;
             inputs["destination"] = args ? args.destination : undefined;
             inputs["location"] = args ? args.location : undefined;
-            inputs["monitoringIntervalInSeconds"] = args ? args.monitoringIntervalInSeconds : undefined;
+            inputs["monitoringIntervalInSeconds"] = (args ? args.monitoringIntervalInSeconds : undefined) || 60;
             inputs["networkWatcherName"] = args ? args.networkWatcherName : undefined;
             inputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             inputs["source"] = args ? args.source : undefined;
@@ -142,7 +142,7 @@ export class ConnectionMonitor extends pulumi.CustomResource {
         if (!opts.version) {
             opts.version = utilities.getVersion();
         }
-        const aliasOpts = { aliases: [{ type: "azure-nextgen:network/latest:ConnectionMonitor" }, { type: "azure-nextgen:network/v20171001:ConnectionMonitor" }, { type: "azure-nextgen:network/v20171101:ConnectionMonitor" }, { type: "azure-nextgen:network/v20180101:ConnectionMonitor" }, { type: "azure-nextgen:network/v20180201:ConnectionMonitor" }, { type: "azure-nextgen:network/v20180401:ConnectionMonitor" }, { type: "azure-nextgen:network/v20180601:ConnectionMonitor" }, { type: "azure-nextgen:network/v20180801:ConnectionMonitor" }, { type: "azure-nextgen:network/v20181001:ConnectionMonitor" }, { type: "azure-nextgen:network/v20181101:ConnectionMonitor" }, { type: "azure-nextgen:network/v20181201:ConnectionMonitor" }, { type: "azure-nextgen:network/v20190201:ConnectionMonitor" }, { type: "azure-nextgen:network/v20190401:ConnectionMonitor" }, { type: "azure-nextgen:network/v20190601:ConnectionMonitor" }, { type: "azure-nextgen:network/v20190701:ConnectionMonitor" }, { type: "azure-nextgen:network/v20190801:ConnectionMonitor" }, { type: "azure-nextgen:network/v20190901:ConnectionMonitor" }, { type: "azure-nextgen:network/v20191101:ConnectionMonitor" }, { type: "azure-nextgen:network/v20191201:ConnectionMonitor" }, { type: "azure-nextgen:network/v20200301:ConnectionMonitor" }, { type: "azure-nextgen:network/v20200401:ConnectionMonitor" }, { type: "azure-nextgen:network/v20200501:ConnectionMonitor" }, { type: "azure-nextgen:network/v20200601:ConnectionMonitor" }, { type: "azure-nextgen:network/v20200701:ConnectionMonitor" }] };
+        const aliasOpts = { aliases: [{ type: "azure-nextgen:network/latest:ConnectionMonitor" }, { type: "azure-nextgen:network/v20171001:ConnectionMonitor" }, { type: "azure-nextgen:network/v20171101:ConnectionMonitor" }, { type: "azure-nextgen:network/v20180101:ConnectionMonitor" }, { type: "azure-nextgen:network/v20180201:ConnectionMonitor" }, { type: "azure-nextgen:network/v20180401:ConnectionMonitor" }, { type: "azure-nextgen:network/v20180601:ConnectionMonitor" }, { type: "azure-nextgen:network/v20180801:ConnectionMonitor" }, { type: "azure-nextgen:network/v20181001:ConnectionMonitor" }, { type: "azure-nextgen:network/v20181101:ConnectionMonitor" }, { type: "azure-nextgen:network/v20181201:ConnectionMonitor" }, { type: "azure-nextgen:network/v20190201:ConnectionMonitor" }, { type: "azure-nextgen:network/v20190401:ConnectionMonitor" }, { type: "azure-nextgen:network/v20190601:ConnectionMonitor" }, { type: "azure-nextgen:network/v20190701:ConnectionMonitor" }, { type: "azure-nextgen:network/v20190801:ConnectionMonitor" }, { type: "azure-nextgen:network/v20190901:ConnectionMonitor" }, { type: "azure-nextgen:network/v20191101:ConnectionMonitor" }, { type: "azure-nextgen:network/v20191201:ConnectionMonitor" }, { type: "azure-nextgen:network/v20200301:ConnectionMonitor" }, { type: "azure-nextgen:network/v20200401:ConnectionMonitor" }, { type: "azure-nextgen:network/v20200501:ConnectionMonitor" }, { type: "azure-nextgen:network/v20200601:ConnectionMonitor" }, { type: "azure-nextgen:network/v20200701:ConnectionMonitor" }, { type: "azure-nextgen:network/v20200801:ConnectionMonitor" }] };
         opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
         super(ConnectionMonitor.__pulumiType, name, inputs, opts);
     }

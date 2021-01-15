@@ -6,22 +6,28 @@ from enum import Enum
 
 __all__ = [
     'AccountType',
+    'AddonType',
     'AzureContainerDataFormat',
     'ClientPermissionType',
+    'DataBoxEdgeDeviceKind',
     'DataBoxEdgeDeviceStatus',
     'DataPolicy',
     'DayOfWeek',
     'EncryptionAlgorithm',
     'MonitoringStatus',
+    'MsiIdentityType',
     'OrderState',
+    'ResourceMoveStatus',
     'RoleTypes',
     'SSLStatus',
     'ShareAccessProtocol',
     'ShareAccessType',
     'ShareStatus',
+    'ShipmentType',
     'SkuName',
     'SkuTier',
     'StorageAccountStatus',
+    'SubscriptionState',
     'TriggerEventType',
     'UserType',
 ]
@@ -33,6 +39,14 @@ class AccountType(str, Enum):
     """
     GENERAL_PURPOSE_STORAGE = "GeneralPurposeStorage"
     BLOB_STORAGE = "BlobStorage"
+
+
+class AddonType(str, Enum):
+    """
+    Addon type.
+    """
+    IOT_EDGE = "IotEdge"
+    ARC_FOR_KUBERNETES = "ArcForKubernetes"
 
 
 class AzureContainerDataFormat(str, Enum):
@@ -51,6 +65,16 @@ class ClientPermissionType(str, Enum):
     NO_ACCESS = "NoAccess"
     READ_ONLY = "ReadOnly"
     READ_WRITE = "ReadWrite"
+
+
+class DataBoxEdgeDeviceKind(str, Enum):
+    """
+    The etag for the devices.
+    """
+    AZURE_DATA_BOX_GATEWAY = "AzureDataBoxGateway"
+    AZURE_STACK_EDGE = "AzureStackEdge"
+    AZURE_STACK_HUB = "AzureStackHub"
+    AZURE_MODULAR_DATA_CENTRE = "AzureModularDataCentre"
 
 
 class DataBoxEdgeDeviceStatus(str, Enum):
@@ -101,6 +125,15 @@ class MonitoringStatus(str, Enum):
     DISABLED = "Disabled"
 
 
+class MsiIdentityType(str, Enum):
+    """
+    Identity type
+    """
+    NONE = "None"
+    SYSTEM_ASSIGNED = "SystemAssigned"
+    USER_ASSIGNED = "UserAssigned"
+
+
 class OrderState(str, Enum):
     """
     Status of the order as per the allowed status types.
@@ -119,6 +152,18 @@ class OrderState(str, Enum):
     AWAITING_RETURN_SHIPMENT = "AwaitingReturnShipment"
     SHIPPED_BACK = "ShippedBack"
     COLLECTED_AT_MICROSOFT = "CollectedAtMicrosoft"
+    AWAITING_PICKUP = "AwaitingPickup"
+    PICKUP_COMPLETED = "PickupCompleted"
+    AWAITING_DROP = "AwaitingDrop"
+
+
+class ResourceMoveStatus(str, Enum):
+    """
+    Denotes whether move operation is in progress
+    """
+    NONE = "None"
+    RESOURCE_MOVE_IN_PROGRESS = "ResourceMoveInProgress"
+    RESOURCE_MOVE_FAILED = "ResourceMoveFailed"
 
 
 class RoleTypes(str, Enum):
@@ -129,6 +174,9 @@ class RoleTypes(str, Enum):
     ASA = "ASA"
     FUNCTIONS = "Functions"
     COGNITIVE = "Cognitive"
+    MEC = "MEC"
+    CLOUD_EDGE_MANAGEMENT = "CloudEdgeManagement"
+    KUBERNETES = "Kubernetes"
 
 
 class SSLStatus(str, Enum):
@@ -149,7 +197,7 @@ class ShareAccessProtocol(str, Enum):
 
 class ShareAccessType(str, Enum):
     """
-    Type of access to be allowed on the share for this user.
+    Type of access to be allowed for the user.
     """
     CHANGE = "Change"
     READ = "Read"
@@ -167,6 +215,15 @@ class ShareStatus(str, Enum):
     NEEDS_ATTENTION = "NeedsAttention"
 
 
+class ShipmentType(str, Enum):
+    """
+    ShipmentType of the order
+    """
+    NOT_APPLICABLE = "NotApplicable"
+    SHIPPED_TO_CUSTOMER = "ShippedToCustomer"
+    SELF_PICKUP = "SelfPickup"
+
+
 class SkuName(str, Enum):
     """
     SKU name.
@@ -180,6 +237,18 @@ class SkuName(str, Enum):
     TE_A_4_NODE_HEATER = "TEA_4Node_Heater"
     TE_A_4_NODE_UP_S_HEATER = "TEA_4Node_UPS_Heater"
     TMA = "TMA"
+    TDC = "TDC"
+    TC_A_SMALL = "TCA_Small"
+    GPU = "GPU"
+    TC_A_LARGE = "TCA_Large"
+    EDGE_P_BASE = "EdgeP_Base"
+    EDGE_P_HIGH = "EdgeP_High"
+    EDGE_P_R_BASE = "EdgePR_Base"
+    EDGE_P_R_BASE_UPS = "EdgePR_Base_UPS"
+    EDGE_M_R_MINI = "EdgeMR_Mini"
+    RC_A_SMALL = "RCA_Small"
+    RC_A_LARGE = "RCA_Large"
+    RDC = "RDC"
 
 
 class SkuTier(str, Enum):
@@ -198,6 +267,14 @@ class StorageAccountStatus(str, Enum):
     UNKNOWN = "Unknown"
     UPDATING = "Updating"
     NEEDS_ATTENTION = "NeedsAttention"
+
+
+class SubscriptionState(str, Enum):
+    REGISTERED = "Registered"
+    WARNED = "Warned"
+    SUSPENDED = "Suspended"
+    DELETED = "Deleted"
+    UNREGISTERED = "Unregistered"
 
 
 class TriggerEventType(str, Enum):

@@ -2,6 +2,16 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const AddonType = {
+    SRM: "SRM",
+    VR: "VR",
+} as const;
+
+/**
+ * The type of private cloud addon
+ */
+export type AddonType = (typeof AddonType)[keyof typeof AddonType];
+
 export const DhcpTypeEnum = {
     SERVER_RELAY: "SERVER, RELAY",
 } as const;
@@ -34,15 +44,6 @@ export const InternetEnum = {
  */
 export type InternetEnum = (typeof InternetEnum)[keyof typeof InternetEnum];
 
-export const NsxtAdminRotateEnum = {
-    OnetimeRotate: "OnetimeRotate",
-} as const;
-
-/**
- * Indicate to rotate the NSX-T Manager password for the private cloud
- */
-export type NsxtAdminRotateEnum = (typeof NsxtAdminRotateEnum)[keyof typeof NsxtAdminRotateEnum];
-
 export const PortMirroringDirectionEnum = {
     INGRESS_EGRESS_BIDIRECTIONAL: "INGRESS, EGRESS, BIDIRECTIONAL",
 } as const;
@@ -61,12 +62,3 @@ export const SslEnum = {
  * Protect LDAP communication using SSL certificate (LDAPS)
  */
 export type SslEnum = (typeof SslEnum)[keyof typeof SslEnum];
-
-export const VcsaAdminRotateEnum = {
-    OnetimeRotate: "OnetimeRotate",
-} as const;
-
-/**
- * Indicate to rotate the vCenter admin password for the private cloud
- */
-export type VcsaAdminRotateEnum = (typeof VcsaAdminRotateEnum)[keyof typeof VcsaAdminRotateEnum];

@@ -2845,6 +2845,38 @@ namespace Pulumi.AzureNextGen.Network.Latest
     }
 
     /// <summary>
+    /// Defines the action to take when a managed rule set score threshold is met.
+    /// </summary>
+    [EnumType]
+    public readonly struct ManagedRuleSetActionType : IEquatable<ManagedRuleSetActionType>
+    {
+        private readonly string _value;
+
+        private ManagedRuleSetActionType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static ManagedRuleSetActionType Block { get; } = new ManagedRuleSetActionType("Block");
+        public static ManagedRuleSetActionType Log { get; } = new ManagedRuleSetActionType("Log");
+        public static ManagedRuleSetActionType Redirect { get; } = new ManagedRuleSetActionType("Redirect");
+
+        public static bool operator ==(ManagedRuleSetActionType left, ManagedRuleSetActionType right) => left.Equals(right);
+        public static bool operator !=(ManagedRuleSetActionType left, ManagedRuleSetActionType right) => !left.Equals(right);
+
+        public static explicit operator string(ManagedRuleSetActionType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ManagedRuleSetActionType other && Equals(other);
+        public bool Equals(ManagedRuleSetActionType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue.
     /// </summary>
     [EnumType]
@@ -3199,6 +3231,37 @@ namespace Pulumi.AzureNextGen.Network.Latest
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is PolicyMode other && Equals(other);
         public bool Equals(PolicyMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Describes if policy managed rules will inspect the request body content.
+    /// </summary>
+    [EnumType]
+    public readonly struct PolicyRequestBodyCheck : IEquatable<PolicyRequestBodyCheck>
+    {
+        private readonly string _value;
+
+        private PolicyRequestBodyCheck(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static PolicyRequestBodyCheck Disabled { get; } = new PolicyRequestBodyCheck("Disabled");
+        public static PolicyRequestBodyCheck Enabled { get; } = new PolicyRequestBodyCheck("Enabled");
+
+        public static bool operator ==(PolicyRequestBodyCheck left, PolicyRequestBodyCheck right) => left.Equals(right);
+        public static bool operator !=(PolicyRequestBodyCheck left, PolicyRequestBodyCheck right) => !left.Equals(right);
+
+        public static explicit operator string(PolicyRequestBodyCheck value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is PolicyRequestBodyCheck other && Equals(other);
+        public bool Equals(PolicyRequestBodyCheck other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -3929,6 +3992,38 @@ namespace Pulumi.AzureNextGen.Network.Latest
     }
 
     /// <summary>
+    /// Name of the pricing tier.
+    /// </summary>
+    [EnumType]
+    public readonly struct SkuName : IEquatable<SkuName>
+    {
+        private readonly string _value;
+
+        private SkuName(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static SkuName Classic_AzureFrontDoor { get; } = new SkuName("Classic_AzureFrontDoor");
+        public static SkuName Standard_AzureFrontDoor { get; } = new SkuName("Standard_AzureFrontDoor");
+        public static SkuName Premium_AzureFrontDoor { get; } = new SkuName("Premium_AzureFrontDoor");
+
+        public static bool operator ==(SkuName left, SkuName right) => left.Equals(right);
+        public static bool operator !=(SkuName left, SkuName right) => !left.Equals(right);
+
+        public static explicit operator string(SkuName value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SkuName other && Equals(other);
+        public bool Equals(SkuName other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The state of the Experiment
     /// </summary>
     [EnumType]
@@ -4499,6 +4594,100 @@ namespace Pulumi.AzureNextGen.Network.Latest
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is VpnGatewayTunnelingProtocol other && Equals(other);
         public bool Equals(VpnGatewayTunnelingProtocol other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Vpn link connection mode.
+    /// </summary>
+    [EnumType]
+    public readonly struct VpnLinkConnectionMode : IEquatable<VpnLinkConnectionMode>
+    {
+        private readonly string _value;
+
+        private VpnLinkConnectionMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static VpnLinkConnectionMode Default { get; } = new VpnLinkConnectionMode("Default");
+        public static VpnLinkConnectionMode ResponderOnly { get; } = new VpnLinkConnectionMode("ResponderOnly");
+        public static VpnLinkConnectionMode InitiatorOnly { get; } = new VpnLinkConnectionMode("InitiatorOnly");
+
+        public static bool operator ==(VpnLinkConnectionMode left, VpnLinkConnectionMode right) => left.Equals(right);
+        public static bool operator !=(VpnLinkConnectionMode left, VpnLinkConnectionMode right) => !left.Equals(right);
+
+        public static explicit operator string(VpnLinkConnectionMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is VpnLinkConnectionMode other && Equals(other);
+        public bool Equals(VpnLinkConnectionMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The Source NAT direction of a VPN NAT.
+    /// </summary>
+    [EnumType]
+    public readonly struct VpnNatRuleMode : IEquatable<VpnNatRuleMode>
+    {
+        private readonly string _value;
+
+        private VpnNatRuleMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static VpnNatRuleMode EgressSnat { get; } = new VpnNatRuleMode("EgressSnat");
+        public static VpnNatRuleMode IngressSnat { get; } = new VpnNatRuleMode("IngressSnat");
+
+        public static bool operator ==(VpnNatRuleMode left, VpnNatRuleMode right) => left.Equals(right);
+        public static bool operator !=(VpnNatRuleMode left, VpnNatRuleMode right) => !left.Equals(right);
+
+        public static explicit operator string(VpnNatRuleMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is VpnNatRuleMode other && Equals(other);
+        public bool Equals(VpnNatRuleMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The type of NAT rule for VPN NAT.
+    /// </summary>
+    [EnumType]
+    public readonly struct VpnNatRuleType : IEquatable<VpnNatRuleType>
+    {
+        private readonly string _value;
+
+        private VpnNatRuleType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static VpnNatRuleType Static { get; } = new VpnNatRuleType("Static");
+        public static VpnNatRuleType Dynamic { get; } = new VpnNatRuleType("Dynamic");
+
+        public static bool operator ==(VpnNatRuleType left, VpnNatRuleType right) => left.Equals(right);
+        public static bool operator !=(VpnNatRuleType left, VpnNatRuleType right) => !left.Equals(right);
+
+        public static explicit operator string(VpnNatRuleType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is VpnNatRuleType other && Equals(other);
+        public bool Equals(VpnNatRuleType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

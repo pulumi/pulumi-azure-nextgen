@@ -12,16 +12,6 @@ export const ConnectionMode = {
  */
 export type ConnectionMode = (typeof ConnectionMode)[keyof typeof ConnectionMode];
 
-export const ManagedMode = {
-    Zero: "0",
-    One: "1",
-} as const;
-
-/**
- * The managed mode of the server (0 = not managed, 1 = managed).
- */
-export type ManagedMode = (typeof ManagedMode)[keyof typeof ManagedMode];
-
 export const SkuTier = {
     Development: "Development",
     Basic: "Basic",

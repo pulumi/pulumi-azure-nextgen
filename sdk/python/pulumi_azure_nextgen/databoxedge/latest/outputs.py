@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._enums import *
 
 __all__ = [
@@ -15,11 +16,21 @@ __all__ = [
     'AzureContainerInfoResponse',
     'ClientAccessRightResponse',
     'ContactDetailsResponse',
+    'EdgeProfileResponse',
+    'EdgeProfileSubscriptionResponse',
+    'MetricConfigurationResponse',
+    'MetricCounterResponse',
+    'MetricCounterSetResponse',
+    'MetricDimensionResponse',
     'MountPointMapResponse',
     'OrderStatusResponse',
     'RefreshDetailsResponse',
+    'ResourceIdentityResponse',
+    'ResourceMoveDetailsResponse',
     'ShareAccessRightResponse',
     'SkuResponse',
+    'SubscriptionRegisteredFeaturesResponse',
+    'SystemDataResponse',
     'TrackingInfoResponse',
     'UserAccessRightResponse',
 ]
@@ -30,48 +41,36 @@ class AddressResponse(dict):
     The shipping address of the customer.
     """
     def __init__(__self__, *,
-                 address_line1: str,
-                 city: str,
                  country: str,
-                 postal_code: str,
-                 state: str,
+                 address_line1: Optional[str] = None,
                  address_line2: Optional[str] = None,
-                 address_line3: Optional[str] = None):
+                 address_line3: Optional[str] = None,
+                 city: Optional[str] = None,
+                 postal_code: Optional[str] = None,
+                 state: Optional[str] = None):
         """
         The shipping address of the customer.
-        :param str address_line1: The address line1.
-        :param str city: The city name.
         :param str country: The country name.
-        :param str postal_code: The postal code.
-        :param str state: The state name.
+        :param str address_line1: The address line1.
         :param str address_line2: The address line2.
         :param str address_line3: The address line3.
+        :param str city: The city name.
+        :param str postal_code: The postal code.
+        :param str state: The state name.
         """
-        pulumi.set(__self__, "address_line1", address_line1)
-        pulumi.set(__self__, "city", city)
         pulumi.set(__self__, "country", country)
-        pulumi.set(__self__, "postal_code", postal_code)
-        pulumi.set(__self__, "state", state)
+        if address_line1 is not None:
+            pulumi.set(__self__, "address_line1", address_line1)
         if address_line2 is not None:
             pulumi.set(__self__, "address_line2", address_line2)
         if address_line3 is not None:
             pulumi.set(__self__, "address_line3", address_line3)
-
-    @property
-    @pulumi.getter(name="addressLine1")
-    def address_line1(self) -> str:
-        """
-        The address line1.
-        """
-        return pulumi.get(self, "address_line1")
-
-    @property
-    @pulumi.getter
-    def city(self) -> str:
-        """
-        The city name.
-        """
-        return pulumi.get(self, "city")
+        if city is not None:
+            pulumi.set(__self__, "city", city)
+        if postal_code is not None:
+            pulumi.set(__self__, "postal_code", postal_code)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter
@@ -82,20 +81,12 @@ class AddressResponse(dict):
         return pulumi.get(self, "country")
 
     @property
-    @pulumi.getter(name="postalCode")
-    def postal_code(self) -> str:
+    @pulumi.getter(name="addressLine1")
+    def address_line1(self) -> Optional[str]:
         """
-        The postal code.
+        The address line1.
         """
-        return pulumi.get(self, "postal_code")
-
-    @property
-    @pulumi.getter
-    def state(self) -> str:
-        """
-        The state name.
-        """
-        return pulumi.get(self, "state")
+        return pulumi.get(self, "address_line1")
 
     @property
     @pulumi.getter(name="addressLine2")
@@ -112,6 +103,30 @@ class AddressResponse(dict):
         The address line3.
         """
         return pulumi.get(self, "address_line3")
+
+    @property
+    @pulumi.getter
+    def city(self) -> Optional[str]:
+        """
+        The city name.
+        """
+        return pulumi.get(self, "city")
+
+    @property
+    @pulumi.getter(name="postalCode")
+    def postal_code(self) -> Optional[str]:
+        """
+        The postal code.
+        """
+        return pulumi.get(self, "postal_code")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        """
+        The state name.
+        """
+        return pulumi.get(self, "state")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -307,23 +322,336 @@ class ContactDetailsResponse(dict):
 
 
 @pulumi.output_type
+class EdgeProfileResponse(dict):
+    """
+    Details about Edge Profile for the resource
+    """
+    def __init__(__self__, *,
+                 subscription: Optional['outputs.EdgeProfileSubscriptionResponse'] = None):
+        """
+        Details about Edge Profile for the resource
+        :param 'EdgeProfileSubscriptionResponseArgs' subscription: Edge Profile Subscription
+        """
+        if subscription is not None:
+            pulumi.set(__self__, "subscription", subscription)
+
+    @property
+    @pulumi.getter
+    def subscription(self) -> Optional['outputs.EdgeProfileSubscriptionResponse']:
+        """
+        Edge Profile Subscription
+        """
+        return pulumi.get(self, "subscription")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class EdgeProfileSubscriptionResponse(dict):
+    """
+    Subscription details for the Edge Profile
+    """
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 location_placement_id: Optional[str] = None,
+                 quota_id: Optional[str] = None,
+                 registered_features: Optional[Sequence['outputs.SubscriptionRegisteredFeaturesResponse']] = None,
+                 registration_date: Optional[str] = None,
+                 registration_id: Optional[str] = None,
+                 serialized_details: Optional[str] = None,
+                 state: Optional[str] = None,
+                 subscription_id: Optional[str] = None,
+                 tenant_id: Optional[str] = None):
+        """
+        Subscription details for the Edge Profile
+        :param str id: ARM ID of the subscription
+        :param str registration_id: Edge Subscription Registration ID
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if location_placement_id is not None:
+            pulumi.set(__self__, "location_placement_id", location_placement_id)
+        if quota_id is not None:
+            pulumi.set(__self__, "quota_id", quota_id)
+        if registered_features is not None:
+            pulumi.set(__self__, "registered_features", registered_features)
+        if registration_date is not None:
+            pulumi.set(__self__, "registration_date", registration_date)
+        if registration_id is not None:
+            pulumi.set(__self__, "registration_id", registration_id)
+        if serialized_details is not None:
+            pulumi.set(__self__, "serialized_details", serialized_details)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if subscription_id is not None:
+            pulumi.set(__self__, "subscription_id", subscription_id)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ARM ID of the subscription
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="locationPlacementId")
+    def location_placement_id(self) -> Optional[str]:
+        return pulumi.get(self, "location_placement_id")
+
+    @property
+    @pulumi.getter(name="quotaId")
+    def quota_id(self) -> Optional[str]:
+        return pulumi.get(self, "quota_id")
+
+    @property
+    @pulumi.getter(name="registeredFeatures")
+    def registered_features(self) -> Optional[Sequence['outputs.SubscriptionRegisteredFeaturesResponse']]:
+        return pulumi.get(self, "registered_features")
+
+    @property
+    @pulumi.getter(name="registrationDate")
+    def registration_date(self) -> Optional[str]:
+        return pulumi.get(self, "registration_date")
+
+    @property
+    @pulumi.getter(name="registrationId")
+    def registration_id(self) -> Optional[str]:
+        """
+        Edge Subscription Registration ID
+        """
+        return pulumi.get(self, "registration_id")
+
+    @property
+    @pulumi.getter(name="serializedDetails")
+    def serialized_details(self) -> Optional[str]:
+        return pulumi.get(self, "serialized_details")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="subscriptionId")
+    def subscription_id(self) -> Optional[str]:
+        return pulumi.get(self, "subscription_id")
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[str]:
+        return pulumi.get(self, "tenant_id")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class MetricConfigurationResponse(dict):
+    """
+    Metric configuration.
+    """
+    def __init__(__self__, *,
+                 counter_sets: Sequence['outputs.MetricCounterSetResponse'],
+                 resource_id: str,
+                 mdm_account: Optional[str] = None,
+                 metric_name_space: Optional[str] = None):
+        """
+        Metric configuration.
+        :param Sequence['MetricCounterSetResponseArgs'] counter_sets: Host name for the IoT hub associated to the device.
+        :param str resource_id: The Resource ID on which the metrics should be pushed.
+        :param str mdm_account: The MDM account to which the counters should be pushed.
+        :param str metric_name_space: The MDM namespace to which the counters should be pushed. This is required if MDMAccount is specified
+        """
+        pulumi.set(__self__, "counter_sets", counter_sets)
+        pulumi.set(__self__, "resource_id", resource_id)
+        if mdm_account is not None:
+            pulumi.set(__self__, "mdm_account", mdm_account)
+        if metric_name_space is not None:
+            pulumi.set(__self__, "metric_name_space", metric_name_space)
+
+    @property
+    @pulumi.getter(name="counterSets")
+    def counter_sets(self) -> Sequence['outputs.MetricCounterSetResponse']:
+        """
+        Host name for the IoT hub associated to the device.
+        """
+        return pulumi.get(self, "counter_sets")
+
+    @property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> str:
+        """
+        The Resource ID on which the metrics should be pushed.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @property
+    @pulumi.getter(name="mdmAccount")
+    def mdm_account(self) -> Optional[str]:
+        """
+        The MDM account to which the counters should be pushed.
+        """
+        return pulumi.get(self, "mdm_account")
+
+    @property
+    @pulumi.getter(name="metricNameSpace")
+    def metric_name_space(self) -> Optional[str]:
+        """
+        The MDM namespace to which the counters should be pushed. This is required if MDMAccount is specified
+        """
+        return pulumi.get(self, "metric_name_space")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class MetricCounterResponse(dict):
+    """
+    The metric counter
+    """
+    def __init__(__self__, *,
+                 name: str,
+                 additional_dimensions: Optional[Sequence['outputs.MetricDimensionResponse']] = None,
+                 dimension_filter: Optional[Sequence['outputs.MetricDimensionResponse']] = None,
+                 instance: Optional[str] = None):
+        """
+        The metric counter
+        :param str name: The counter name.
+        :param Sequence['MetricDimensionResponseArgs'] additional_dimensions: The additional dimensions to be added to metric.
+        :param Sequence['MetricDimensionResponseArgs'] dimension_filter: The dimension filter.
+        :param str instance: The instance from which counter should be collected.
+        """
+        pulumi.set(__self__, "name", name)
+        if additional_dimensions is not None:
+            pulumi.set(__self__, "additional_dimensions", additional_dimensions)
+        if dimension_filter is not None:
+            pulumi.set(__self__, "dimension_filter", dimension_filter)
+        if instance is not None:
+            pulumi.set(__self__, "instance", instance)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The counter name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="additionalDimensions")
+    def additional_dimensions(self) -> Optional[Sequence['outputs.MetricDimensionResponse']]:
+        """
+        The additional dimensions to be added to metric.
+        """
+        return pulumi.get(self, "additional_dimensions")
+
+    @property
+    @pulumi.getter(name="dimensionFilter")
+    def dimension_filter(self) -> Optional[Sequence['outputs.MetricDimensionResponse']]:
+        """
+        The dimension filter.
+        """
+        return pulumi.get(self, "dimension_filter")
+
+    @property
+    @pulumi.getter
+    def instance(self) -> Optional[str]:
+        """
+        The instance from which counter should be collected.
+        """
+        return pulumi.get(self, "instance")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class MetricCounterSetResponse(dict):
+    """
+    The metric counter set
+    """
+    def __init__(__self__, *,
+                 counters: Sequence['outputs.MetricCounterResponse']):
+        """
+        The metric counter set
+        :param Sequence['MetricCounterResponseArgs'] counters: The counters that should be collected in this set.
+        """
+        pulumi.set(__self__, "counters", counters)
+
+    @property
+    @pulumi.getter
+    def counters(self) -> Sequence['outputs.MetricCounterResponse']:
+        """
+        The counters that should be collected in this set.
+        """
+        return pulumi.get(self, "counters")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class MetricDimensionResponse(dict):
+    """
+    The metric dimension
+    """
+    def __init__(__self__, *,
+                 source_name: str,
+                 source_type: str):
+        """
+        The metric dimension
+        :param str source_name: The dimension value.
+        :param str source_type: The dimension type.
+        """
+        pulumi.set(__self__, "source_name", source_name)
+        pulumi.set(__self__, "source_type", source_type)
+
+    @property
+    @pulumi.getter(name="sourceName")
+    def source_name(self) -> str:
+        """
+        The dimension value.
+        """
+        return pulumi.get(self, "source_name")
+
+    @property
+    @pulumi.getter(name="sourceType")
+    def source_type(self) -> str:
+        """
+        The dimension type.
+        """
+        return pulumi.get(self, "source_type")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
 class MountPointMapResponse(dict):
     """
     The share mount point.
     """
     def __init__(__self__, *,
                  mount_point: str,
+                 mount_type: str,
                  role_id: str,
                  role_type: str,
                  share_id: str):
         """
         The share mount point.
         :param str mount_point: Mount point for the share.
+        :param str mount_type: Mounting type.
         :param str role_id: ID of the role to which share is mounted.
         :param str role_type: Role type.
         :param str share_id: ID of the share mounted to the role VM.
         """
         pulumi.set(__self__, "mount_point", mount_point)
+        pulumi.set(__self__, "mount_type", mount_type)
         pulumi.set(__self__, "role_id", role_id)
         pulumi.set(__self__, "role_type", role_type)
         pulumi.set(__self__, "share_id", share_id)
@@ -335,6 +663,14 @@ class MountPointMapResponse(dict):
         Mount point for the share.
         """
         return pulumi.get(self, "mount_point")
+
+    @property
+    @pulumi.getter(name="mountType")
+    def mount_type(self) -> str:
+        """
+        Mounting type.
+        """
+        return pulumi.get(self, "mount_type")
 
     @property
     @pulumi.getter(name="roleId")
@@ -372,6 +708,7 @@ class OrderStatusResponse(dict):
     def __init__(__self__, *,
                  additional_order_details: Mapping[str, str],
                  status: str,
+                 tracking_information: 'outputs.TrackingInfoResponse',
                  update_date_time: str,
                  comments: Optional[str] = None):
         """
@@ -379,11 +716,13 @@ class OrderStatusResponse(dict):
         :param Mapping[str, str] additional_order_details: Dictionary to hold generic information which is not stored
                by the already existing properties
         :param str status: Status of the order as per the allowed status types.
+        :param 'TrackingInfoResponseArgs' tracking_information: Tracking information related to the state in the ordering flow
         :param str update_date_time: Time of status update.
         :param str comments: Comments related to this status change.
         """
         pulumi.set(__self__, "additional_order_details", additional_order_details)
         pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tracking_information", tracking_information)
         pulumi.set(__self__, "update_date_time", update_date_time)
         if comments is not None:
             pulumi.set(__self__, "comments", comments)
@@ -404,6 +743,14 @@ class OrderStatusResponse(dict):
         Status of the order as per the allowed status types.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="trackingInformation")
+    def tracking_information(self) -> 'outputs.TrackingInfoResponse':
+        """
+        Tracking information related to the state in the ordering flow
+        """
+        return pulumi.get(self, "tracking_information")
 
     @property
     @pulumi.getter(name="updateDateTime")
@@ -488,6 +835,92 @@ class RefreshDetailsResponse(dict):
 
 
 @pulumi.output_type
+class ResourceIdentityResponse(dict):
+    """
+    Msi identity details of the resource
+    """
+    def __init__(__self__, *,
+                 principal_id: str,
+                 tenant_id: str,
+                 type: Optional[str] = None):
+        """
+        Msi identity details of the resource
+        :param str principal_id: Service Principal Id backing the Msi
+        :param str tenant_id: Home Tenant Id
+        :param str type: Identity type
+        """
+        pulumi.set(__self__, "principal_id", principal_id)
+        pulumi.set(__self__, "tenant_id", tenant_id)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="principalId")
+    def principal_id(self) -> str:
+        """
+        Service Principal Id backing the Msi
+        """
+        return pulumi.get(self, "principal_id")
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> str:
+        """
+        Home Tenant Id
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Identity type
+        """
+        return pulumi.get(self, "type")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ResourceMoveDetailsResponse(dict):
+    """
+    Fields for tracking resource move
+    """
+    def __init__(__self__, *,
+                 operation_in_progress: Optional[str] = None,
+                 operation_in_progress_lock_timeout_in_utc: Optional[str] = None):
+        """
+        Fields for tracking resource move
+        :param str operation_in_progress: Denotes whether move operation is in progress
+        :param str operation_in_progress_lock_timeout_in_utc: Denotes the timeout of the operation to finish
+        """
+        if operation_in_progress is not None:
+            pulumi.set(__self__, "operation_in_progress", operation_in_progress)
+        if operation_in_progress_lock_timeout_in_utc is not None:
+            pulumi.set(__self__, "operation_in_progress_lock_timeout_in_utc", operation_in_progress_lock_timeout_in_utc)
+
+    @property
+    @pulumi.getter(name="operationInProgress")
+    def operation_in_progress(self) -> Optional[str]:
+        """
+        Denotes whether move operation is in progress
+        """
+        return pulumi.get(self, "operation_in_progress")
+
+    @property
+    @pulumi.getter(name="operationInProgressLockTimeoutInUTC")
+    def operation_in_progress_lock_timeout_in_utc(self) -> Optional[str]:
+        """
+        Denotes the timeout of the operation to finish
+        """
+        return pulumi.get(self, "operation_in_progress_lock_timeout_in_utc")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
 class ShareAccessRightResponse(dict):
     """
     Specifies the mapping between this particular user and the type of access he has on shares on this device.
@@ -556,6 +989,116 @@ class SkuResponse(dict):
         The SKU tier. This is based on the SKU name.
         """
         return pulumi.get(self, "tier")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class SubscriptionRegisteredFeaturesResponse(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 state: Optional[str] = None):
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        return pulumi.get(self, "state")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class SystemDataResponse(dict):
+    """
+    Metadata pertaining to creation and last modification of the resource.
+    """
+    def __init__(__self__, *,
+                 created_at: Optional[str] = None,
+                 created_by: Optional[str] = None,
+                 created_by_type: Optional[str] = None,
+                 last_modified_at: Optional[str] = None,
+                 last_modified_by: Optional[str] = None,
+                 last_modified_by_type: Optional[str] = None):
+        """
+        Metadata pertaining to creation and last modification of the resource.
+        :param str created_at: The timestamp of resource creation (UTC).
+        :param str created_by: The identity that created the resource.
+        :param str created_by_type: The type of identity that created the resource.
+        :param str last_modified_at: The type of identity that last modified the resource.
+        :param str last_modified_by: The identity that last modified the resource.
+        :param str last_modified_by_type: The type of identity that last modified the resource.
+        """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if created_by_type is not None:
+            pulumi.set(__self__, "created_by_type", created_by_type)
+        if last_modified_at is not None:
+            pulumi.set(__self__, "last_modified_at", last_modified_at)
+        if last_modified_by is not None:
+            pulumi.set(__self__, "last_modified_by", last_modified_by)
+        if last_modified_by_type is not None:
+            pulumi.set(__self__, "last_modified_by_type", last_modified_by_type)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[str]:
+        """
+        The timestamp of resource creation (UTC).
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[str]:
+        """
+        The identity that created the resource.
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="createdByType")
+    def created_by_type(self) -> Optional[str]:
+        """
+        The type of identity that created the resource.
+        """
+        return pulumi.get(self, "created_by_type")
+
+    @property
+    @pulumi.getter(name="lastModifiedAt")
+    def last_modified_at(self) -> Optional[str]:
+        """
+        The type of identity that last modified the resource.
+        """
+        return pulumi.get(self, "last_modified_at")
+
+    @property
+    @pulumi.getter(name="lastModifiedBy")
+    def last_modified_by(self) -> Optional[str]:
+        """
+        The identity that last modified the resource.
+        """
+        return pulumi.get(self, "last_modified_by")
+
+    @property
+    @pulumi.getter(name="lastModifiedByType")
+    def last_modified_by_type(self) -> Optional[str]:
+        """
+        The type of identity that last modified the resource.
+        """
+        return pulumi.get(self, "last_modified_by_type")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
