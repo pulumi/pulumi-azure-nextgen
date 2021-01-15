@@ -348,6 +348,34 @@ func (e HealthStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.S
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+// Enabling/Disabling the Double Encryption state
+type InfrastructureEncryptionState pulumi.String
+
+const (
+	InfrastructureEncryptionStateEnabled  = InfrastructureEncryptionState("Enabled")
+	InfrastructureEncryptionStateDisabled = InfrastructureEncryptionState("Disabled")
+)
+
+func (InfrastructureEncryptionState) ElementType() reflect.Type {
+	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+}
+
+func (e InfrastructureEncryptionState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InfrastructureEncryptionState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InfrastructureEncryptionState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e InfrastructureEncryptionState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
 // Last backup operation status. Possible values: Healthy, Unhealthy.
 type LastBackupStatus pulumi.String
 
@@ -818,12 +846,14 @@ func (e ResourceHealthStatus) ToStringPtrOutputWithContext(ctx context.Context) 
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// The identity type.
+// The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities.
 type ResourceIdentityType pulumi.String
 
 const (
-	ResourceIdentityTypeSystemAssigned = ResourceIdentityType("SystemAssigned")
-	ResourceIdentityTypeNone           = ResourceIdentityType("None")
+	ResourceIdentityTypeSystemAssigned               = ResourceIdentityType("SystemAssigned")
+	ResourceIdentityTypeNone                         = ResourceIdentityType("None")
+	ResourceIdentityTypeUserAssigned                 = ResourceIdentityType("UserAssigned")
+	ResourceIdentityType_SystemAssigned_UserAssigned = ResourceIdentityType("SystemAssigned, UserAssigned")
 )
 
 func (ResourceIdentityType) ElementType() reflect.Type {
@@ -1019,6 +1049,39 @@ func (e WeekOfMonth) ToStringPtrOutput() pulumi.StringPtrOutput {
 }
 
 func (e WeekOfMonth) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+// Workload item type of the item for which intent is to be set
+type WorkloadItemType pulumi.String
+
+const (
+	WorkloadItemTypeInvalid         = WorkloadItemType("Invalid")
+	WorkloadItemTypeSQLInstance     = WorkloadItemType("SQLInstance")
+	WorkloadItemTypeSQLDataBase     = WorkloadItemType("SQLDataBase")
+	WorkloadItemTypeSAPHanaSystem   = WorkloadItemType("SAPHanaSystem")
+	WorkloadItemTypeSAPHanaDatabase = WorkloadItemType("SAPHanaDatabase")
+	WorkloadItemTypeSAPAseSystem    = WorkloadItemType("SAPAseSystem")
+	WorkloadItemTypeSAPAseDatabase  = WorkloadItemType("SAPAseDatabase")
+)
+
+func (WorkloadItemType) ElementType() reflect.Type {
+	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+}
+
+func (e WorkloadItemType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e WorkloadItemType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e WorkloadItemType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e WorkloadItemType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 

@@ -472,8 +472,6 @@ type ManagedHsmProperties struct {
 	EnablePurgeProtection *bool `pulumi:"enablePurgeProtection"`
 	// Property to specify whether the 'soft delete' functionality is enabled for this managed HSM pool. If it's not set to any value(true or false) when creating new managed HSM pool, it will be set to true by default. Once set to true, it cannot be reverted to false.
 	EnableSoftDelete *bool `pulumi:"enableSoftDelete"`
-	// The URI of the managed hsm pool for performing operations on keys.
-	HsmUri *string `pulumi:"hsmUri"`
 	// Array of initial administrators object ids for this managed hsm pool.
 	InitialAdminObjectIds []string `pulumi:"initialAdminObjectIds"`
 	// softDelete data retention days. It accepts >=7 and <=90.
@@ -501,8 +499,6 @@ type ManagedHsmPropertiesArgs struct {
 	EnablePurgeProtection pulumi.BoolPtrInput `pulumi:"enablePurgeProtection"`
 	// Property to specify whether the 'soft delete' functionality is enabled for this managed HSM pool. If it's not set to any value(true or false) when creating new managed HSM pool, it will be set to true by default. Once set to true, it cannot be reverted to false.
 	EnableSoftDelete pulumi.BoolPtrInput `pulumi:"enableSoftDelete"`
-	// The URI of the managed hsm pool for performing operations on keys.
-	HsmUri pulumi.StringPtrInput `pulumi:"hsmUri"`
 	// Array of initial administrators object ids for this managed hsm pool.
 	InitialAdminObjectIds pulumi.StringArrayInput `pulumi:"initialAdminObjectIds"`
 	// softDelete data retention days. It accepts >=7 and <=90.
@@ -604,11 +600,6 @@ func (o ManagedHsmPropertiesOutput) EnableSoftDelete() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedHsmProperties) *bool { return v.EnableSoftDelete }).(pulumi.BoolPtrOutput)
 }
 
-// The URI of the managed hsm pool for performing operations on keys.
-func (o ManagedHsmPropertiesOutput) HsmUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedHsmProperties) *string { return v.HsmUri }).(pulumi.StringPtrOutput)
-}
-
 // Array of initial administrators object ids for this managed hsm pool.
 func (o ManagedHsmPropertiesOutput) InitialAdminObjectIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ManagedHsmProperties) []string { return v.InitialAdminObjectIds }).(pulumi.StringArrayOutput)
@@ -672,16 +663,6 @@ func (o ManagedHsmPropertiesPtrOutput) EnableSoftDelete() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The URI of the managed hsm pool for performing operations on keys.
-func (o ManagedHsmPropertiesPtrOutput) HsmUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedHsmProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.HsmUri
-	}).(pulumi.StringPtrOutput)
-}
-
 // Array of initial administrators object ids for this managed hsm pool.
 func (o ManagedHsmPropertiesPtrOutput) InitialAdminObjectIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ManagedHsmProperties) []string {
@@ -721,7 +702,7 @@ type ManagedHsmPropertiesResponse struct {
 	// Property to specify whether the 'soft delete' functionality is enabled for this managed HSM pool. If it's not set to any value(true or false) when creating new managed HSM pool, it will be set to true by default. Once set to true, it cannot be reverted to false.
 	EnableSoftDelete *bool `pulumi:"enableSoftDelete"`
 	// The URI of the managed hsm pool for performing operations on keys.
-	HsmUri *string `pulumi:"hsmUri"`
+	HsmUri string `pulumi:"hsmUri"`
 	// Array of initial administrators object ids for this managed hsm pool.
 	InitialAdminObjectIds []string `pulumi:"initialAdminObjectIds"`
 	// Provisioning state.
@@ -754,7 +735,7 @@ type ManagedHsmPropertiesResponseArgs struct {
 	// Property to specify whether the 'soft delete' functionality is enabled for this managed HSM pool. If it's not set to any value(true or false) when creating new managed HSM pool, it will be set to true by default. Once set to true, it cannot be reverted to false.
 	EnableSoftDelete pulumi.BoolPtrInput `pulumi:"enableSoftDelete"`
 	// The URI of the managed hsm pool for performing operations on keys.
-	HsmUri pulumi.StringPtrInput `pulumi:"hsmUri"`
+	HsmUri pulumi.StringInput `pulumi:"hsmUri"`
 	// Array of initial administrators object ids for this managed hsm pool.
 	InitialAdminObjectIds pulumi.StringArrayInput `pulumi:"initialAdminObjectIds"`
 	// Provisioning state.
@@ -861,8 +842,8 @@ func (o ManagedHsmPropertiesResponseOutput) EnableSoftDelete() pulumi.BoolPtrOut
 }
 
 // The URI of the managed hsm pool for performing operations on keys.
-func (o ManagedHsmPropertiesResponseOutput) HsmUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedHsmPropertiesResponse) *string { return v.HsmUri }).(pulumi.StringPtrOutput)
+func (o ManagedHsmPropertiesResponseOutput) HsmUri() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedHsmPropertiesResponse) string { return v.HsmUri }).(pulumi.StringOutput)
 }
 
 // Array of initial administrators object ids for this managed hsm pool.
@@ -944,7 +925,7 @@ func (o ManagedHsmPropertiesResponsePtrOutput) HsmUri() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return v.HsmUri
+		return &v.HsmUri
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2107,7 +2088,7 @@ func (o PrivateEndpointResponsePtrOutput) Id() pulumi.StringPtrOutput {
 // An object that represents the approval state of the private link connection.
 type PrivateLinkServiceConnectionState struct {
 	// A message indicating if changes on the service provider require any updates on the consumer.
-	ActionRequired *string `pulumi:"actionRequired"`
+	ActionsRequired *string `pulumi:"actionsRequired"`
 	// The reason for approval or rejection.
 	Description *string `pulumi:"description"`
 	// Indicates whether the connection has been approved, rejected or removed by the key vault owner.
@@ -2128,7 +2109,7 @@ type PrivateLinkServiceConnectionStateInput interface {
 // An object that represents the approval state of the private link connection.
 type PrivateLinkServiceConnectionStateArgs struct {
 	// A message indicating if changes on the service provider require any updates on the consumer.
-	ActionRequired pulumi.StringPtrInput `pulumi:"actionRequired"`
+	ActionsRequired pulumi.StringPtrInput `pulumi:"actionsRequired"`
 	// The reason for approval or rejection.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Indicates whether the connection has been approved, rejected or removed by the key vault owner.
@@ -2214,8 +2195,8 @@ func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionS
 }
 
 // A message indicating if changes on the service provider require any updates on the consumer.
-func (o PrivateLinkServiceConnectionStateOutput) ActionRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.ActionRequired }).(pulumi.StringPtrOutput)
+func (o PrivateLinkServiceConnectionStateOutput) ActionsRequired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
 }
 
 // The reason for approval or rejection.
@@ -2247,12 +2228,12 @@ func (o PrivateLinkServiceConnectionStatePtrOutput) Elem() PrivateLinkServiceCon
 }
 
 // A message indicating if changes on the service provider require any updates on the consumer.
-func (o PrivateLinkServiceConnectionStatePtrOutput) ActionRequired() pulumi.StringPtrOutput {
+func (o PrivateLinkServiceConnectionStatePtrOutput) ActionsRequired() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateLinkServiceConnectionState) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ActionRequired
+		return v.ActionsRequired
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2279,7 +2260,7 @@ func (o PrivateLinkServiceConnectionStatePtrOutput) Status() pulumi.StringPtrOut
 // An object that represents the approval state of the private link connection.
 type PrivateLinkServiceConnectionStateResponse struct {
 	// A message indicating if changes on the service provider require any updates on the consumer.
-	ActionRequired *string `pulumi:"actionRequired"`
+	ActionsRequired *string `pulumi:"actionsRequired"`
 	// The reason for approval or rejection.
 	Description *string `pulumi:"description"`
 	// Indicates whether the connection has been approved, rejected or removed by the key vault owner.
@@ -2300,7 +2281,7 @@ type PrivateLinkServiceConnectionStateResponseInput interface {
 // An object that represents the approval state of the private link connection.
 type PrivateLinkServiceConnectionStateResponseArgs struct {
 	// A message indicating if changes on the service provider require any updates on the consumer.
-	ActionRequired pulumi.StringPtrInput `pulumi:"actionRequired"`
+	ActionsRequired pulumi.StringPtrInput `pulumi:"actionsRequired"`
 	// The reason for approval or rejection.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Indicates whether the connection has been approved, rejected or removed by the key vault owner.
@@ -2386,8 +2367,8 @@ func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceCon
 }
 
 // A message indicating if changes on the service provider require any updates on the consumer.
-func (o PrivateLinkServiceConnectionStateResponseOutput) ActionRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.ActionRequired }).(pulumi.StringPtrOutput)
+func (o PrivateLinkServiceConnectionStateResponseOutput) ActionsRequired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
 }
 
 // The reason for approval or rejection.
@@ -2421,12 +2402,12 @@ func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Elem() PrivateLinkSe
 }
 
 // A message indicating if changes on the service provider require any updates on the consumer.
-func (o PrivateLinkServiceConnectionStateResponsePtrOutput) ActionRequired() pulumi.StringPtrOutput {
+func (o PrivateLinkServiceConnectionStateResponsePtrOutput) ActionsRequired() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateLinkServiceConnectionStateResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ActionRequired
+		return v.ActionsRequired
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3540,6 +3521,8 @@ type VaultProperties struct {
 	EnabledForTemplateDeployment *bool `pulumi:"enabledForTemplateDeployment"`
 	// Rules governing the accessibility of the key vault from specific network locations.
 	NetworkAcls *NetworkRuleSet `pulumi:"networkAcls"`
+	// Provisioning state of the vault.
+	ProvisioningState *string `pulumi:"provisioningState"`
 	// SKU details
 	Sku Sku `pulumi:"sku"`
 	// softDelete data retention days. It accepts >=7 and <=90.
@@ -3581,6 +3564,8 @@ type VaultPropertiesArgs struct {
 	EnabledForTemplateDeployment pulumi.BoolPtrInput `pulumi:"enabledForTemplateDeployment"`
 	// Rules governing the accessibility of the key vault from specific network locations.
 	NetworkAcls NetworkRuleSetPtrInput `pulumi:"networkAcls"`
+	// Provisioning state of the vault.
+	ProvisioningState pulumi.StringPtrInput `pulumi:"provisioningState"`
 	// SKU details
 	Sku SkuInput `pulumi:"sku"`
 	// softDelete data retention days. It accepts >=7 and <=90.
@@ -3714,6 +3699,11 @@ func (o VaultPropertiesOutput) NetworkAcls() NetworkRuleSetPtrOutput {
 	return o.ApplyT(func(v VaultProperties) *NetworkRuleSet { return v.NetworkAcls }).(NetworkRuleSetPtrOutput)
 }
 
+// Provisioning state of the vault.
+func (o VaultPropertiesOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VaultProperties) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+}
+
 // SKU details
 func (o VaultPropertiesOutput) Sku() SkuOutput {
 	return o.ApplyT(func(v VaultProperties) Sku { return v.Sku }).(SkuOutput)
@@ -3842,6 +3832,16 @@ func (o VaultPropertiesPtrOutput) NetworkAcls() NetworkRuleSetPtrOutput {
 	}).(NetworkRuleSetPtrOutput)
 }
 
+// Provisioning state of the vault.
+func (o VaultPropertiesPtrOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VaultProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisioningState
+	}).(pulumi.StringPtrOutput)
+}
+
 // SKU details
 func (o VaultPropertiesPtrOutput) Sku() SkuPtrOutput {
 	return o.ApplyT(func(v *VaultProperties) *Sku {
@@ -3904,6 +3904,8 @@ type VaultPropertiesResponse struct {
 	NetworkAcls *NetworkRuleSetResponse `pulumi:"networkAcls"`
 	// List of private endpoint connections associated with the key vault.
 	PrivateEndpointConnections []PrivateEndpointConnectionItemResponse `pulumi:"privateEndpointConnections"`
+	// Provisioning state of the vault.
+	ProvisioningState *string `pulumi:"provisioningState"`
 	// SKU details
 	Sku SkuResponse `pulumi:"sku"`
 	// softDelete data retention days. It accepts >=7 and <=90.
@@ -3947,6 +3949,8 @@ type VaultPropertiesResponseArgs struct {
 	NetworkAcls NetworkRuleSetResponsePtrInput `pulumi:"networkAcls"`
 	// List of private endpoint connections associated with the key vault.
 	PrivateEndpointConnections PrivateEndpointConnectionItemResponseArrayInput `pulumi:"privateEndpointConnections"`
+	// Provisioning state of the vault.
+	ProvisioningState pulumi.StringPtrInput `pulumi:"provisioningState"`
 	// SKU details
 	Sku SkuResponseInput `pulumi:"sku"`
 	// softDelete data retention days. It accepts >=7 and <=90.
@@ -4087,6 +4091,11 @@ func (o VaultPropertiesResponseOutput) PrivateEndpointConnections() PrivateEndpo
 	}).(PrivateEndpointConnectionItemResponseArrayOutput)
 }
 
+// Provisioning state of the vault.
+func (o VaultPropertiesResponseOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VaultPropertiesResponse) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+}
+
 // SKU details
 func (o VaultPropertiesResponseOutput) Sku() SkuResponseOutput {
 	return o.ApplyT(func(v VaultPropertiesResponse) SkuResponse { return v.Sku }).(SkuResponseOutput)
@@ -4223,6 +4232,16 @@ func (o VaultPropertiesResponsePtrOutput) PrivateEndpointConnections() PrivateEn
 		}
 		return v.PrivateEndpointConnections
 	}).(PrivateEndpointConnectionItemResponseArrayOutput)
+}
+
+// Provisioning state of the vault.
+func (o VaultPropertiesResponsePtrOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VaultPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisioningState
+	}).(pulumi.StringPtrOutput)
 }
 
 // SKU details

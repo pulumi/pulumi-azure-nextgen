@@ -5,14 +5,21 @@
 from enum import Enum
 
 __all__ = [
+    'AddonType',
     'DhcpTypeEnum',
     'DnsServiceLogLevelEnum',
     'InternetEnum',
-    'NsxtAdminRotateEnum',
     'PortMirroringDirectionEnum',
     'SslEnum',
-    'VcsaAdminRotateEnum',
 ]
+
+
+class AddonType(str, Enum):
+    """
+    The type of private cloud addon
+    """
+    SRM = "SRM"
+    VR = "VR"
 
 
 class DhcpTypeEnum(str, Enum):
@@ -41,13 +48,6 @@ class InternetEnum(str, Enum):
     DISABLED = "Disabled"
 
 
-class NsxtAdminRotateEnum(str, Enum):
-    """
-    Indicate to rotate the NSX-T Manager password for the private cloud
-    """
-    ONETIME_ROTATE = "OnetimeRotate"
-
-
 class PortMirroringDirectionEnum(str, Enum):
     """
     Direction of port mirroring profile.
@@ -61,10 +61,3 @@ class SslEnum(str, Enum):
     """
     ENABLED = "Enabled"
     DISABLED = "Disabled"
-
-
-class VcsaAdminRotateEnum(str, Enum):
-    """
-    Indicate to rotate the vCenter admin password for the private cloud
-    """
-    ONETIME_ROTATE = "OnetimeRotate"

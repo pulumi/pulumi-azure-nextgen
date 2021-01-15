@@ -124,6 +124,7 @@ namespace Pulumi.AzureNextGen.Network.V20200401
                     new Pulumi.Alias { Type = "azure-nextgen:network/v20200501:PacketCapture"},
                     new Pulumi.Alias { Type = "azure-nextgen:network/v20200601:PacketCapture"},
                     new Pulumi.Alias { Type = "azure-nextgen:network/v20200701:PacketCapture"},
+                    new Pulumi.Alias { Type = "azure-nextgen:network/v20200801:PacketCapture"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -209,6 +210,9 @@ namespace Pulumi.AzureNextGen.Network.V20200401
 
         public PacketCaptureArgs()
         {
+            BytesToCapturePerPacket = 0;
+            TimeLimitInSeconds = 18000;
+            TotalBytesPerSession = 1073741824;
         }
     }
 }

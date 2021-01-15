@@ -117,43 +117,56 @@ class ManagedHsmPropertiesResponse(dict):
     Properties of the managed HSM Pool
     """
     def __init__(__self__, *,
+                 hsm_uri: str,
                  provisioning_state: str,
                  status_message: str,
                  create_mode: Optional[str] = None,
                  enable_purge_protection: Optional[bool] = None,
                  enable_soft_delete: Optional[bool] = None,
-                 hsm_uri: Optional[str] = None,
                  initial_admin_object_ids: Optional[Sequence[str]] = None,
                  soft_delete_retention_in_days: Optional[int] = None,
                  tenant_id: Optional[str] = None):
         """
         Properties of the managed HSM Pool
+        :param str hsm_uri: The URI of the managed hsm pool for performing operations on keys.
         :param str provisioning_state: Provisioning state.
         :param str status_message: Resource Status Message.
         :param str create_mode: The create mode to indicate whether the resource is being created or is being recovered from a deleted resource.
         :param bool enable_purge_protection: Property specifying whether protection against purge is enabled for this managed HSM pool. Setting this property to true activates protection against purge for this managed HSM pool and its content - only the Managed HSM service may initiate a hard, irrecoverable deletion. The setting is effective only if soft delete is also enabled. Enabling this functionality is irreversible.
         :param bool enable_soft_delete: Property to specify whether the 'soft delete' functionality is enabled for this managed HSM pool. If it's not set to any value(true or false) when creating new managed HSM pool, it will be set to true by default. Once set to true, it cannot be reverted to false.
-        :param str hsm_uri: The URI of the managed hsm pool for performing operations on keys.
         :param Sequence[str] initial_admin_object_ids: Array of initial administrators object ids for this managed hsm pool.
         :param int soft_delete_retention_in_days: softDelete data retention days. It accepts >=7 and <=90.
         :param str tenant_id: The Azure Active Directory tenant ID that should be used for authenticating requests to the managed HSM pool.
         """
+        pulumi.set(__self__, "hsm_uri", hsm_uri)
         pulumi.set(__self__, "provisioning_state", provisioning_state)
         pulumi.set(__self__, "status_message", status_message)
         if create_mode is not None:
             pulumi.set(__self__, "create_mode", create_mode)
+        if enable_purge_protection is None:
+            enable_purge_protection = True
         if enable_purge_protection is not None:
             pulumi.set(__self__, "enable_purge_protection", enable_purge_protection)
+        if enable_soft_delete is None:
+            enable_soft_delete = True
         if enable_soft_delete is not None:
             pulumi.set(__self__, "enable_soft_delete", enable_soft_delete)
-        if hsm_uri is not None:
-            pulumi.set(__self__, "hsm_uri", hsm_uri)
         if initial_admin_object_ids is not None:
             pulumi.set(__self__, "initial_admin_object_ids", initial_admin_object_ids)
+        if soft_delete_retention_in_days is None:
+            soft_delete_retention_in_days = 90
         if soft_delete_retention_in_days is not None:
             pulumi.set(__self__, "soft_delete_retention_in_days", soft_delete_retention_in_days)
         if tenant_id is not None:
             pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @property
+    @pulumi.getter(name="hsmUri")
+    def hsm_uri(self) -> str:
+        """
+        The URI of the managed hsm pool for performing operations on keys.
+        """
+        return pulumi.get(self, "hsm_uri")
 
     @property
     @pulumi.getter(name="provisioningState")
@@ -194,14 +207,6 @@ class ManagedHsmPropertiesResponse(dict):
         Property to specify whether the 'soft delete' functionality is enabled for this managed HSM pool. If it's not set to any value(true or false) when creating new managed HSM pool, it will be set to true by default. Once set to true, it cannot be reverted to false.
         """
         return pulumi.get(self, "enable_soft_delete")
-
-    @property
-    @pulumi.getter(name="hsmUri")
-    def hsm_uri(self) -> Optional[str]:
-        """
-        The URI of the managed hsm pool for performing operations on keys.
-        """
-        return pulumi.get(self, "hsm_uri")
 
     @property
     @pulumi.getter(name="initialAdminObjectIds")
@@ -471,29 +476,29 @@ class PrivateLinkServiceConnectionStateResponse(dict):
     An object that represents the approval state of the private link connection.
     """
     def __init__(__self__, *,
-                 action_required: Optional[str] = None,
+                 actions_required: Optional[str] = None,
                  description: Optional[str] = None,
                  status: Optional[str] = None):
         """
         An object that represents the approval state of the private link connection.
-        :param str action_required: A message indicating if changes on the service provider require any updates on the consumer.
+        :param str actions_required: A message indicating if changes on the service provider require any updates on the consumer.
         :param str description: The reason for approval or rejection.
         :param str status: Indicates whether the connection has been approved, rejected or removed by the key vault owner.
         """
-        if action_required is not None:
-            pulumi.set(__self__, "action_required", action_required)
+        if actions_required is not None:
+            pulumi.set(__self__, "actions_required", actions_required)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if status is not None:
             pulumi.set(__self__, "status", status)
 
     @property
-    @pulumi.getter(name="actionRequired")
-    def action_required(self) -> Optional[str]:
+    @pulumi.getter(name="actionsRequired")
+    def actions_required(self) -> Optional[str]:
         """
         A message indicating if changes on the service provider require any updates on the consumer.
         """
-        return pulumi.get(self, "action_required")
+        return pulumi.get(self, "actions_required")
 
     @property
     @pulumi.getter
@@ -713,6 +718,7 @@ class VaultPropertiesResponse(dict):
                  enabled_for_disk_encryption: Optional[bool] = None,
                  enabled_for_template_deployment: Optional[bool] = None,
                  network_acls: Optional['outputs.NetworkRuleSetResponse'] = None,
+                 provisioning_state: Optional[str] = None,
                  soft_delete_retention_in_days: Optional[int] = None,
                  vault_uri: Optional[str] = None):
         """
@@ -729,6 +735,7 @@ class VaultPropertiesResponse(dict):
         :param bool enabled_for_disk_encryption: Property to specify whether Azure Disk Encryption is permitted to retrieve secrets from the vault and unwrap keys.
         :param bool enabled_for_template_deployment: Property to specify whether Azure Resource Manager is permitted to retrieve secrets from the key vault.
         :param 'NetworkRuleSetResponseArgs' network_acls: Rules governing the accessibility of the key vault from specific network locations.
+        :param str provisioning_state: Provisioning state of the vault.
         :param int soft_delete_retention_in_days: softDelete data retention days. It accepts >=7 and <=90.
         :param str vault_uri: The URI of the vault for performing operations on keys and secrets.
         """
@@ -741,8 +748,12 @@ class VaultPropertiesResponse(dict):
             pulumi.set(__self__, "create_mode", create_mode)
         if enable_purge_protection is not None:
             pulumi.set(__self__, "enable_purge_protection", enable_purge_protection)
+        if enable_rbac_authorization is None:
+            enable_rbac_authorization = False
         if enable_rbac_authorization is not None:
             pulumi.set(__self__, "enable_rbac_authorization", enable_rbac_authorization)
+        if enable_soft_delete is None:
+            enable_soft_delete = True
         if enable_soft_delete is not None:
             pulumi.set(__self__, "enable_soft_delete", enable_soft_delete)
         if enabled_for_deployment is not None:
@@ -753,6 +764,10 @@ class VaultPropertiesResponse(dict):
             pulumi.set(__self__, "enabled_for_template_deployment", enabled_for_template_deployment)
         if network_acls is not None:
             pulumi.set(__self__, "network_acls", network_acls)
+        if provisioning_state is not None:
+            pulumi.set(__self__, "provisioning_state", provisioning_state)
+        if soft_delete_retention_in_days is None:
+            soft_delete_retention_in_days = 90
         if soft_delete_retention_in_days is not None:
             pulumi.set(__self__, "soft_delete_retention_in_days", soft_delete_retention_in_days)
         if vault_uri is not None:
@@ -853,6 +868,14 @@ class VaultPropertiesResponse(dict):
         Rules governing the accessibility of the key vault from specific network locations.
         """
         return pulumi.get(self, "network_acls")
+
+    @property
+    @pulumi.getter(name="provisioningState")
+    def provisioning_state(self) -> Optional[str]:
+        """
+        Provisioning state of the vault.
+        """
+        return pulumi.get(self, "provisioning_state")
 
     @property
     @pulumi.getter(name="softDeleteRetentionInDays")

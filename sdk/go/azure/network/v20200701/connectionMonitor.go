@@ -69,6 +69,12 @@ func NewConnectionMonitor(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	if args.AutoStart == nil {
+		args.AutoStart = pulumi.BoolPtr(true)
+	}
+	if args.MonitoringIntervalInSeconds == nil {
+		args.MonitoringIntervalInSeconds = pulumi.IntPtr(60)
+	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-nextgen:network/latest:ConnectionMonitor"),
@@ -141,6 +147,9 @@ func NewConnectionMonitor(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-nextgen:network/v20200601:ConnectionMonitor"),
+		},
+		{
+			Type: pulumi.String("azure-nextgen:network/v20200801:ConnectionMonitor"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -103,6 +103,7 @@ namespace Pulumi.AzureNextGen.Network.V20180101
                     new Pulumi.Alias { Type = "azure-nextgen:network/v20200501:NetworkWatcher"},
                     new Pulumi.Alias { Type = "azure-nextgen:network/v20200601:NetworkWatcher"},
                     new Pulumi.Alias { Type = "azure-nextgen:network/v20200701:NetworkWatcher"},
+                    new Pulumi.Alias { Type = "azure-nextgen:network/v20200801:NetworkWatcher"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -167,6 +168,7 @@ namespace Pulumi.AzureNextGen.Network.V20180101
 
         public NetworkWatcherArgs()
         {
+            Etag = "A unique read-only string that changes whenever the resource is updated.";
         }
     }
 }

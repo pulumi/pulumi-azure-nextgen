@@ -22,7 +22,9 @@ __all__ = [
     'KeySource',
     'LoginMode',
     'NetworkSecurityGroupRuleAccess',
+    'NodePlacementPolicyType',
     'PoolAllocationMode',
+    'PoolIdentityType',
     'PublicNetworkAccessType',
     'ResourceIdentityType',
     'StorageAccountType',
@@ -157,12 +159,28 @@ class NetworkSecurityGroupRuleAccess(str, Enum):
     DENY = "Deny"
 
 
+class NodePlacementPolicyType(str, Enum):
+    """
+    Allocation policy used by Batch Service to provision the nodes. If not specified, Batch will use the regional policy.
+    """
+    REGIONAL = "Regional"
+    ZONAL = "Zonal"
+
+
 class PoolAllocationMode(str, Enum):
     """
     The pool allocation mode also affects how clients may authenticate to the Batch Service API. If the mode is BatchService, clients may authenticate using access keys or Azure Active Directory. If the mode is UserSubscription, clients must use Azure Active Directory. The default is BatchService.
     """
     BATCH_SERVICE = "BatchService"
     USER_SUBSCRIPTION = "UserSubscription"
+
+
+class PoolIdentityType(str, Enum):
+    """
+    The type of identity used for the Batch Pool.
+    """
+    USER_ASSIGNED = "UserAssigned"
+    NONE = "None"
 
 
 class PublicNetworkAccessType(str, Enum):
@@ -178,6 +196,7 @@ class ResourceIdentityType(str, Enum):
     The type of identity used for the Batch account.
     """
     SYSTEM_ASSIGNED = "SystemAssigned"
+    USER_ASSIGNED = "UserAssigned"
     NONE = "None"
 
 

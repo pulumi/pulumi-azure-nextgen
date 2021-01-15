@@ -97,15 +97,15 @@ export class PacketCapture extends pulumi.CustomResource {
             if ((!args || args.target === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'target'");
             }
-            inputs["bytesToCapturePerPacket"] = args ? args.bytesToCapturePerPacket : undefined;
+            inputs["bytesToCapturePerPacket"] = (args ? args.bytesToCapturePerPacket : undefined) || 0;
             inputs["filters"] = args ? args.filters : undefined;
             inputs["networkWatcherName"] = args ? args.networkWatcherName : undefined;
             inputs["packetCaptureName"] = args ? args.packetCaptureName : undefined;
             inputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             inputs["storageLocation"] = args ? args.storageLocation : undefined;
             inputs["target"] = args ? args.target : undefined;
-            inputs["timeLimitInSeconds"] = args ? args.timeLimitInSeconds : undefined;
-            inputs["totalBytesPerSession"] = args ? args.totalBytesPerSession : undefined;
+            inputs["timeLimitInSeconds"] = (args ? args.timeLimitInSeconds : undefined) || 18000;
+            inputs["totalBytesPerSession"] = (args ? args.totalBytesPerSession : undefined) || 1073741824;
             inputs["etag"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["provisioningState"] = undefined /*out*/;
@@ -127,7 +127,7 @@ export class PacketCapture extends pulumi.CustomResource {
         if (!opts.version) {
             opts.version = utilities.getVersion();
         }
-        const aliasOpts = { aliases: [{ type: "azure-nextgen:network/latest:PacketCapture" }, { type: "azure-nextgen:network/v20160901:PacketCapture" }, { type: "azure-nextgen:network/v20161201:PacketCapture" }, { type: "azure-nextgen:network/v20170301:PacketCapture" }, { type: "azure-nextgen:network/v20170601:PacketCapture" }, { type: "azure-nextgen:network/v20170801:PacketCapture" }, { type: "azure-nextgen:network/v20170901:PacketCapture" }, { type: "azure-nextgen:network/v20171001:PacketCapture" }, { type: "azure-nextgen:network/v20171101:PacketCapture" }, { type: "azure-nextgen:network/v20180101:PacketCapture" }, { type: "azure-nextgen:network/v20180201:PacketCapture" }, { type: "azure-nextgen:network/v20180401:PacketCapture" }, { type: "azure-nextgen:network/v20180601:PacketCapture" }, { type: "azure-nextgen:network/v20180701:PacketCapture" }, { type: "azure-nextgen:network/v20180801:PacketCapture" }, { type: "azure-nextgen:network/v20181001:PacketCapture" }, { type: "azure-nextgen:network/v20181101:PacketCapture" }, { type: "azure-nextgen:network/v20181201:PacketCapture" }, { type: "azure-nextgen:network/v20190201:PacketCapture" }, { type: "azure-nextgen:network/v20190401:PacketCapture" }, { type: "azure-nextgen:network/v20190601:PacketCapture" }, { type: "azure-nextgen:network/v20190701:PacketCapture" }, { type: "azure-nextgen:network/v20190801:PacketCapture" }, { type: "azure-nextgen:network/v20191101:PacketCapture" }, { type: "azure-nextgen:network/v20191201:PacketCapture" }, { type: "azure-nextgen:network/v20200301:PacketCapture" }, { type: "azure-nextgen:network/v20200401:PacketCapture" }, { type: "azure-nextgen:network/v20200501:PacketCapture" }, { type: "azure-nextgen:network/v20200601:PacketCapture" }, { type: "azure-nextgen:network/v20200701:PacketCapture" }] };
+        const aliasOpts = { aliases: [{ type: "azure-nextgen:network/latest:PacketCapture" }, { type: "azure-nextgen:network/v20160901:PacketCapture" }, { type: "azure-nextgen:network/v20161201:PacketCapture" }, { type: "azure-nextgen:network/v20170301:PacketCapture" }, { type: "azure-nextgen:network/v20170601:PacketCapture" }, { type: "azure-nextgen:network/v20170801:PacketCapture" }, { type: "azure-nextgen:network/v20170901:PacketCapture" }, { type: "azure-nextgen:network/v20171001:PacketCapture" }, { type: "azure-nextgen:network/v20171101:PacketCapture" }, { type: "azure-nextgen:network/v20180101:PacketCapture" }, { type: "azure-nextgen:network/v20180201:PacketCapture" }, { type: "azure-nextgen:network/v20180401:PacketCapture" }, { type: "azure-nextgen:network/v20180601:PacketCapture" }, { type: "azure-nextgen:network/v20180701:PacketCapture" }, { type: "azure-nextgen:network/v20180801:PacketCapture" }, { type: "azure-nextgen:network/v20181001:PacketCapture" }, { type: "azure-nextgen:network/v20181101:PacketCapture" }, { type: "azure-nextgen:network/v20181201:PacketCapture" }, { type: "azure-nextgen:network/v20190201:PacketCapture" }, { type: "azure-nextgen:network/v20190401:PacketCapture" }, { type: "azure-nextgen:network/v20190601:PacketCapture" }, { type: "azure-nextgen:network/v20190701:PacketCapture" }, { type: "azure-nextgen:network/v20190801:PacketCapture" }, { type: "azure-nextgen:network/v20191101:PacketCapture" }, { type: "azure-nextgen:network/v20191201:PacketCapture" }, { type: "azure-nextgen:network/v20200301:PacketCapture" }, { type: "azure-nextgen:network/v20200401:PacketCapture" }, { type: "azure-nextgen:network/v20200501:PacketCapture" }, { type: "azure-nextgen:network/v20200601:PacketCapture" }, { type: "azure-nextgen:network/v20200701:PacketCapture" }, { type: "azure-nextgen:network/v20200801:PacketCapture" }] };
         opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
         super(PacketCapture.__pulumiType, name, inputs, opts);
     }

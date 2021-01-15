@@ -15,66 +15,54 @@ __all__ = [
     'AzureContainerInfoArgs',
     'ClientAccessRightArgs',
     'ContactDetailsArgs',
+    'EdgeProfileArgs',
+    'EdgeProfileSubscriptionArgs',
+    'MetricConfigurationArgs',
+    'MetricCounterArgs',
+    'MetricCounterSetArgs',
+    'MetricDimensionArgs',
     'OrderStatusArgs',
     'RefreshDetailsArgs',
-    'ShareAccessRightArgs',
+    'ResourceIdentityArgs',
+    'ResourceMoveDetailsArgs',
     'SkuArgs',
+    'SubscriptionRegisteredFeaturesArgs',
     'UserAccessRightArgs',
 ]
 
 @pulumi.input_type
 class AddressArgs:
     def __init__(__self__, *,
-                 address_line1: pulumi.Input[str],
-                 city: pulumi.Input[str],
                  country: pulumi.Input[str],
-                 postal_code: pulumi.Input[str],
-                 state: pulumi.Input[str],
+                 address_line1: Optional[pulumi.Input[str]] = None,
                  address_line2: Optional[pulumi.Input[str]] = None,
-                 address_line3: Optional[pulumi.Input[str]] = None):
+                 address_line3: Optional[pulumi.Input[str]] = None,
+                 city: Optional[pulumi.Input[str]] = None,
+                 postal_code: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None):
         """
         The shipping address of the customer.
-        :param pulumi.Input[str] address_line1: The address line1.
-        :param pulumi.Input[str] city: The city name.
         :param pulumi.Input[str] country: The country name.
-        :param pulumi.Input[str] postal_code: The postal code.
-        :param pulumi.Input[str] state: The state name.
+        :param pulumi.Input[str] address_line1: The address line1.
         :param pulumi.Input[str] address_line2: The address line2.
         :param pulumi.Input[str] address_line3: The address line3.
+        :param pulumi.Input[str] city: The city name.
+        :param pulumi.Input[str] postal_code: The postal code.
+        :param pulumi.Input[str] state: The state name.
         """
-        pulumi.set(__self__, "address_line1", address_line1)
-        pulumi.set(__self__, "city", city)
         pulumi.set(__self__, "country", country)
-        pulumi.set(__self__, "postal_code", postal_code)
-        pulumi.set(__self__, "state", state)
+        if address_line1 is not None:
+            pulumi.set(__self__, "address_line1", address_line1)
         if address_line2 is not None:
             pulumi.set(__self__, "address_line2", address_line2)
         if address_line3 is not None:
             pulumi.set(__self__, "address_line3", address_line3)
-
-    @property
-    @pulumi.getter(name="addressLine1")
-    def address_line1(self) -> pulumi.Input[str]:
-        """
-        The address line1.
-        """
-        return pulumi.get(self, "address_line1")
-
-    @address_line1.setter
-    def address_line1(self, value: pulumi.Input[str]):
-        pulumi.set(self, "address_line1", value)
-
-    @property
-    @pulumi.getter
-    def city(self) -> pulumi.Input[str]:
-        """
-        The city name.
-        """
-        return pulumi.get(self, "city")
-
-    @city.setter
-    def city(self, value: pulumi.Input[str]):
-        pulumi.set(self, "city", value)
+        if city is not None:
+            pulumi.set(__self__, "city", city)
+        if postal_code is not None:
+            pulumi.set(__self__, "postal_code", postal_code)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter
@@ -89,28 +77,16 @@ class AddressArgs:
         pulumi.set(self, "country", value)
 
     @property
-    @pulumi.getter(name="postalCode")
-    def postal_code(self) -> pulumi.Input[str]:
+    @pulumi.getter(name="addressLine1")
+    def address_line1(self) -> Optional[pulumi.Input[str]]:
         """
-        The postal code.
+        The address line1.
         """
-        return pulumi.get(self, "postal_code")
+        return pulumi.get(self, "address_line1")
 
-    @postal_code.setter
-    def postal_code(self, value: pulumi.Input[str]):
-        pulumi.set(self, "postal_code", value)
-
-    @property
-    @pulumi.getter
-    def state(self) -> pulumi.Input[str]:
-        """
-        The state name.
-        """
-        return pulumi.get(self, "state")
-
-    @state.setter
-    def state(self, value: pulumi.Input[str]):
-        pulumi.set(self, "state", value)
+    @address_line1.setter
+    def address_line1(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "address_line1", value)
 
     @property
     @pulumi.getter(name="addressLine2")
@@ -135,6 +111,42 @@ class AddressArgs:
     @address_line3.setter
     def address_line3(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "address_line3", value)
+
+    @property
+    @pulumi.getter
+    def city(self) -> Optional[pulumi.Input[str]]:
+        """
+        The city name.
+        """
+        return pulumi.get(self, "city")
+
+    @city.setter
+    def city(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "city", value)
+
+    @property
+    @pulumi.getter(name="postalCode")
+    def postal_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        The postal code.
+        """
+        return pulumi.get(self, "postal_code")
+
+    @postal_code.setter
+    def postal_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "postal_code", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state name.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
 
 
 @pulumi.input_type
@@ -351,6 +363,368 @@ class ContactDetailsArgs:
 
 
 @pulumi.input_type
+class EdgeProfileArgs:
+    def __init__(__self__, *,
+                 subscription: Optional[pulumi.Input['EdgeProfileSubscriptionArgs']] = None):
+        """
+        Details about Edge Profile for the resource
+        :param pulumi.Input['EdgeProfileSubscriptionArgs'] subscription: Edge Profile Subscription
+        """
+        if subscription is not None:
+            pulumi.set(__self__, "subscription", subscription)
+
+    @property
+    @pulumi.getter
+    def subscription(self) -> Optional[pulumi.Input['EdgeProfileSubscriptionArgs']]:
+        """
+        Edge Profile Subscription
+        """
+        return pulumi.get(self, "subscription")
+
+    @subscription.setter
+    def subscription(self, value: Optional[pulumi.Input['EdgeProfileSubscriptionArgs']]):
+        pulumi.set(self, "subscription", value)
+
+
+@pulumi.input_type
+class EdgeProfileSubscriptionArgs:
+    def __init__(__self__, *,
+                 id: Optional[pulumi.Input[str]] = None,
+                 location_placement_id: Optional[pulumi.Input[str]] = None,
+                 quota_id: Optional[pulumi.Input[str]] = None,
+                 registered_features: Optional[pulumi.Input[Sequence[pulumi.Input['SubscriptionRegisteredFeaturesArgs']]]] = None,
+                 registration_date: Optional[pulumi.Input[str]] = None,
+                 registration_id: Optional[pulumi.Input[str]] = None,
+                 serialized_details: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[Union[str, 'SubscriptionState']]] = None,
+                 subscription_id: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None):
+        """
+        Subscription details for the Edge Profile
+        :param pulumi.Input[str] id: ARM ID of the subscription
+        :param pulumi.Input[str] registration_id: Edge Subscription Registration ID
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if location_placement_id is not None:
+            pulumi.set(__self__, "location_placement_id", location_placement_id)
+        if quota_id is not None:
+            pulumi.set(__self__, "quota_id", quota_id)
+        if registered_features is not None:
+            pulumi.set(__self__, "registered_features", registered_features)
+        if registration_date is not None:
+            pulumi.set(__self__, "registration_date", registration_date)
+        if registration_id is not None:
+            pulumi.set(__self__, "registration_id", registration_id)
+        if serialized_details is not None:
+            pulumi.set(__self__, "serialized_details", serialized_details)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if subscription_id is not None:
+            pulumi.set(__self__, "subscription_id", subscription_id)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ARM ID of the subscription
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="locationPlacementId")
+    def location_placement_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location_placement_id")
+
+    @location_placement_id.setter
+    def location_placement_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location_placement_id", value)
+
+    @property
+    @pulumi.getter(name="quotaId")
+    def quota_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "quota_id")
+
+    @quota_id.setter
+    def quota_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "quota_id", value)
+
+    @property
+    @pulumi.getter(name="registeredFeatures")
+    def registered_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SubscriptionRegisteredFeaturesArgs']]]]:
+        return pulumi.get(self, "registered_features")
+
+    @registered_features.setter
+    def registered_features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SubscriptionRegisteredFeaturesArgs']]]]):
+        pulumi.set(self, "registered_features", value)
+
+    @property
+    @pulumi.getter(name="registrationDate")
+    def registration_date(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "registration_date")
+
+    @registration_date.setter
+    def registration_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "registration_date", value)
+
+    @property
+    @pulumi.getter(name="registrationId")
+    def registration_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Edge Subscription Registration ID
+        """
+        return pulumi.get(self, "registration_id")
+
+    @registration_id.setter
+    def registration_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "registration_id", value)
+
+    @property
+    @pulumi.getter(name="serializedDetails")
+    def serialized_details(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "serialized_details")
+
+    @serialized_details.setter
+    def serialized_details(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "serialized_details", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[Union[str, 'SubscriptionState']]]:
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[Union[str, 'SubscriptionState']]]):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter(name="subscriptionId")
+    def subscription_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "subscription_id")
+
+    @subscription_id.setter
+    def subscription_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subscription_id", value)
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tenant_id", value)
+
+
+@pulumi.input_type
+class MetricConfigurationArgs:
+    def __init__(__self__, *,
+                 counter_sets: pulumi.Input[Sequence[pulumi.Input['MetricCounterSetArgs']]],
+                 resource_id: pulumi.Input[str],
+                 mdm_account: Optional[pulumi.Input[str]] = None,
+                 metric_name_space: Optional[pulumi.Input[str]] = None):
+        """
+        Metric configuration.
+        :param pulumi.Input[Sequence[pulumi.Input['MetricCounterSetArgs']]] counter_sets: Host name for the IoT hub associated to the device.
+        :param pulumi.Input[str] resource_id: The Resource ID on which the metrics should be pushed.
+        :param pulumi.Input[str] mdm_account: The MDM account to which the counters should be pushed.
+        :param pulumi.Input[str] metric_name_space: The MDM namespace to which the counters should be pushed. This is required if MDMAccount is specified
+        """
+        pulumi.set(__self__, "counter_sets", counter_sets)
+        pulumi.set(__self__, "resource_id", resource_id)
+        if mdm_account is not None:
+            pulumi.set(__self__, "mdm_account", mdm_account)
+        if metric_name_space is not None:
+            pulumi.set(__self__, "metric_name_space", metric_name_space)
+
+    @property
+    @pulumi.getter(name="counterSets")
+    def counter_sets(self) -> pulumi.Input[Sequence[pulumi.Input['MetricCounterSetArgs']]]:
+        """
+        Host name for the IoT hub associated to the device.
+        """
+        return pulumi.get(self, "counter_sets")
+
+    @counter_sets.setter
+    def counter_sets(self, value: pulumi.Input[Sequence[pulumi.Input['MetricCounterSetArgs']]]):
+        pulumi.set(self, "counter_sets", value)
+
+    @property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> pulumi.Input[str]:
+        """
+        The Resource ID on which the metrics should be pushed.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @resource_id.setter
+    def resource_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_id", value)
+
+    @property
+    @pulumi.getter(name="mdmAccount")
+    def mdm_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        The MDM account to which the counters should be pushed.
+        """
+        return pulumi.get(self, "mdm_account")
+
+    @mdm_account.setter
+    def mdm_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mdm_account", value)
+
+    @property
+    @pulumi.getter(name="metricNameSpace")
+    def metric_name_space(self) -> Optional[pulumi.Input[str]]:
+        """
+        The MDM namespace to which the counters should be pushed. This is required if MDMAccount is specified
+        """
+        return pulumi.get(self, "metric_name_space")
+
+    @metric_name_space.setter
+    def metric_name_space(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metric_name_space", value)
+
+
+@pulumi.input_type
+class MetricCounterArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 additional_dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['MetricDimensionArgs']]]] = None,
+                 dimension_filter: Optional[pulumi.Input[Sequence[pulumi.Input['MetricDimensionArgs']]]] = None,
+                 instance: Optional[pulumi.Input[str]] = None):
+        """
+        The metric counter
+        :param pulumi.Input[str] name: The counter name.
+        :param pulumi.Input[Sequence[pulumi.Input['MetricDimensionArgs']]] additional_dimensions: The additional dimensions to be added to metric.
+        :param pulumi.Input[Sequence[pulumi.Input['MetricDimensionArgs']]] dimension_filter: The dimension filter.
+        :param pulumi.Input[str] instance: The instance from which counter should be collected.
+        """
+        pulumi.set(__self__, "name", name)
+        if additional_dimensions is not None:
+            pulumi.set(__self__, "additional_dimensions", additional_dimensions)
+        if dimension_filter is not None:
+            pulumi.set(__self__, "dimension_filter", dimension_filter)
+        if instance is not None:
+            pulumi.set(__self__, "instance", instance)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The counter name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="additionalDimensions")
+    def additional_dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MetricDimensionArgs']]]]:
+        """
+        The additional dimensions to be added to metric.
+        """
+        return pulumi.get(self, "additional_dimensions")
+
+    @additional_dimensions.setter
+    def additional_dimensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MetricDimensionArgs']]]]):
+        pulumi.set(self, "additional_dimensions", value)
+
+    @property
+    @pulumi.getter(name="dimensionFilter")
+    def dimension_filter(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MetricDimensionArgs']]]]:
+        """
+        The dimension filter.
+        """
+        return pulumi.get(self, "dimension_filter")
+
+    @dimension_filter.setter
+    def dimension_filter(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MetricDimensionArgs']]]]):
+        pulumi.set(self, "dimension_filter", value)
+
+    @property
+    @pulumi.getter
+    def instance(self) -> Optional[pulumi.Input[str]]:
+        """
+        The instance from which counter should be collected.
+        """
+        return pulumi.get(self, "instance")
+
+    @instance.setter
+    def instance(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance", value)
+
+
+@pulumi.input_type
+class MetricCounterSetArgs:
+    def __init__(__self__, *,
+                 counters: pulumi.Input[Sequence[pulumi.Input['MetricCounterArgs']]]):
+        """
+        The metric counter set
+        :param pulumi.Input[Sequence[pulumi.Input['MetricCounterArgs']]] counters: The counters that should be collected in this set.
+        """
+        pulumi.set(__self__, "counters", counters)
+
+    @property
+    @pulumi.getter
+    def counters(self) -> pulumi.Input[Sequence[pulumi.Input['MetricCounterArgs']]]:
+        """
+        The counters that should be collected in this set.
+        """
+        return pulumi.get(self, "counters")
+
+    @counters.setter
+    def counters(self, value: pulumi.Input[Sequence[pulumi.Input['MetricCounterArgs']]]):
+        pulumi.set(self, "counters", value)
+
+
+@pulumi.input_type
+class MetricDimensionArgs:
+    def __init__(__self__, *,
+                 source_name: pulumi.Input[str],
+                 source_type: pulumi.Input[str]):
+        """
+        The metric dimension
+        :param pulumi.Input[str] source_name: The dimension value.
+        :param pulumi.Input[str] source_type: The dimension type.
+        """
+        pulumi.set(__self__, "source_name", source_name)
+        pulumi.set(__self__, "source_type", source_type)
+
+    @property
+    @pulumi.getter(name="sourceName")
+    def source_name(self) -> pulumi.Input[str]:
+        """
+        The dimension value.
+        """
+        return pulumi.get(self, "source_name")
+
+    @source_name.setter
+    def source_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "source_name", value)
+
+    @property
+    @pulumi.getter(name="sourceType")
+    def source_type(self) -> pulumi.Input[str]:
+        """
+        The dimension type.
+        """
+        return pulumi.get(self, "source_type")
+
+    @source_type.setter
+    def source_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "source_type", value)
+
+
+@pulumi.input_type
 class OrderStatusArgs:
     def __init__(__self__, *,
                  status: pulumi.Input[Union[str, 'OrderState']],
@@ -462,41 +836,67 @@ class RefreshDetailsArgs:
 
 
 @pulumi.input_type
-class ShareAccessRightArgs:
+class ResourceIdentityArgs:
     def __init__(__self__, *,
-                 access_type: pulumi.Input[Union[str, 'ShareAccessType']],
-                 share_id: pulumi.Input[str]):
+                 type: Optional[pulumi.Input[Union[str, 'MsiIdentityType']]] = None):
         """
-        Specifies the mapping between this particular user and the type of access he has on shares on this device.
-        :param pulumi.Input[Union[str, 'ShareAccessType']] access_type: Type of access to be allowed on the share for this user.
-        :param pulumi.Input[str] share_id: The share ID.
+        Msi identity details of the resource
+        :param pulumi.Input[Union[str, 'MsiIdentityType']] type: Identity type
         """
-        pulumi.set(__self__, "access_type", access_type)
-        pulumi.set(__self__, "share_id", share_id)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
-    @pulumi.getter(name="accessType")
-    def access_type(self) -> pulumi.Input[Union[str, 'ShareAccessType']]:
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[Union[str, 'MsiIdentityType']]]:
         """
-        Type of access to be allowed on the share for this user.
+        Identity type
         """
-        return pulumi.get(self, "access_type")
+        return pulumi.get(self, "type")
 
-    @access_type.setter
-    def access_type(self, value: pulumi.Input[Union[str, 'ShareAccessType']]):
-        pulumi.set(self, "access_type", value)
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[Union[str, 'MsiIdentityType']]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class ResourceMoveDetailsArgs:
+    def __init__(__self__, *,
+                 operation_in_progress: Optional[pulumi.Input[Union[str, 'ResourceMoveStatus']]] = None,
+                 operation_in_progress_lock_timeout_in_utc: Optional[pulumi.Input[str]] = None):
+        """
+        Fields for tracking resource move
+        :param pulumi.Input[Union[str, 'ResourceMoveStatus']] operation_in_progress: Denotes whether move operation is in progress
+        :param pulumi.Input[str] operation_in_progress_lock_timeout_in_utc: Denotes the timeout of the operation to finish
+        """
+        if operation_in_progress is not None:
+            pulumi.set(__self__, "operation_in_progress", operation_in_progress)
+        if operation_in_progress_lock_timeout_in_utc is not None:
+            pulumi.set(__self__, "operation_in_progress_lock_timeout_in_utc", operation_in_progress_lock_timeout_in_utc)
 
     @property
-    @pulumi.getter(name="shareId")
-    def share_id(self) -> pulumi.Input[str]:
+    @pulumi.getter(name="operationInProgress")
+    def operation_in_progress(self) -> Optional[pulumi.Input[Union[str, 'ResourceMoveStatus']]]:
         """
-        The share ID.
+        Denotes whether move operation is in progress
         """
-        return pulumi.get(self, "share_id")
+        return pulumi.get(self, "operation_in_progress")
 
-    @share_id.setter
-    def share_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "share_id", value)
+    @operation_in_progress.setter
+    def operation_in_progress(self, value: Optional[pulumi.Input[Union[str, 'ResourceMoveStatus']]]):
+        pulumi.set(self, "operation_in_progress", value)
+
+    @property
+    @pulumi.getter(name="operationInProgressLockTimeoutInUTC")
+    def operation_in_progress_lock_timeout_in_utc(self) -> Optional[pulumi.Input[str]]:
+        """
+        Denotes the timeout of the operation to finish
+        """
+        return pulumi.get(self, "operation_in_progress_lock_timeout_in_utc")
+
+    @operation_in_progress_lock_timeout_in_utc.setter
+    def operation_in_progress_lock_timeout_in_utc(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operation_in_progress_lock_timeout_in_utc", value)
 
 
 @pulumi.input_type
@@ -537,6 +937,35 @@ class SkuArgs:
     @tier.setter
     def tier(self, value: Optional[pulumi.Input[Union[str, 'SkuTier']]]):
         pulumi.set(self, "tier", value)
+
+
+@pulumi.input_type
+class SubscriptionRegisteredFeaturesArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None):
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
 
 
 @pulumi.input_type

@@ -15,6 +15,7 @@ __all__ = [
     'DiskAccountType',
     'FailoverDeploymentModel',
     'HealthStatus',
+    'InfrastructureEncryptionState',
     'LastBackupStatus',
     'LicenseType',
     'MonthOfYear',
@@ -37,6 +38,7 @@ __all__ = [
     'SetMultiVmSyncStatus',
     'SkuName',
     'WeekOfMonth',
+    'WorkloadItemType',
     'WorkloadType',
 ]
 
@@ -175,6 +177,14 @@ class HealthStatus(str, Enum):
     ACTION_REQUIRED = "ActionRequired"
     ACTION_SUGGESTED = "ActionSuggested"
     INVALID = "Invalid"
+
+
+class InfrastructureEncryptionState(str, Enum):
+    """
+    Enabling/Disabling the Double Encryption state
+    """
+    ENABLED = "Enabled"
+    DISABLED = "Disabled"
 
 
 class LastBackupStatus(str, Enum):
@@ -343,10 +353,12 @@ class ResourceHealthStatus(str, Enum):
 
 class ResourceIdentityType(str, Enum):
     """
-    The identity type.
+    The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities.
     """
     SYSTEM_ASSIGNED = "SystemAssigned"
     NONE = "None"
+    USER_ASSIGNED = "UserAssigned"
+    SYSTEM_ASSIGNED_USER_ASSIGNED = "SystemAssigned, UserAssigned"
 
 
 class RetentionDurationType(str, Enum):
@@ -401,6 +413,19 @@ class WeekOfMonth(str, Enum):
     FOURTH = "Fourth"
     LAST = "Last"
     INVALID = "Invalid"
+
+
+class WorkloadItemType(str, Enum):
+    """
+    Workload item type of the item for which intent is to be set
+    """
+    INVALID = "Invalid"
+    SQL_INSTANCE = "SQLInstance"
+    SQL_DATA_BASE = "SQLDataBase"
+    SAP_HANA_SYSTEM = "SAPHanaSystem"
+    SAP_HANA_DATABASE = "SAPHanaDatabase"
+    SAPASE_SYSTEM = "SAPAseSystem"
+    SAPASE_DATABASE = "SAPAseDatabase"
 
 
 class WorkloadType(str, Enum):

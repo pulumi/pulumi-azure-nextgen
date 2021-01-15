@@ -17,6 +17,7 @@ __all__ = [
     'AzureBlobFileSystemConfigurationArgs',
     'AzureFileShareConfigurationArgs',
     'BatchAccountIdentityArgs',
+    'BatchPoolIdentityArgs',
     'CIFSMountConfigurationArgs',
     'CertificateReferenceArgs',
     'CloudServiceConfigurationArgs',
@@ -38,6 +39,7 @@ __all__ = [
     'NFSMountConfigurationArgs',
     'NetworkConfigurationArgs',
     'NetworkSecurityGroupRuleArgs',
+    'NodePlacementConfigurationArgs',
     'PoolEndpointConfigurationArgs',
     'PublicIPAddressConfigurationArgs',
     'ResourceFileArgs',
@@ -47,6 +49,7 @@ __all__ = [
     'TaskSchedulingPolicyArgs',
     'UserAccountArgs',
     'UserIdentityArgs',
+    'VMExtensionArgs',
     'VirtualMachineConfigurationArgs',
     'WindowsConfigurationArgs',
     'WindowsUserConfigurationArgs',
@@ -352,12 +355,16 @@ class AzureFileShareConfigurationArgs:
 @pulumi.input_type
 class BatchAccountIdentityArgs:
     def __init__(__self__, *,
-                 type: pulumi.Input['ResourceIdentityType']):
+                 type: pulumi.Input['ResourceIdentityType'],
+                 user_assigned_identities: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The identity of the Batch account, if configured. This is only used when the user specifies 'Microsoft.KeyVault' as their Batch account encryption configuration.
         :param pulumi.Input['ResourceIdentityType'] type: The type of identity used for the Batch account.
+        :param pulumi.Input[Mapping[str, Any]] user_assigned_identities: The list of user identities associated with the Batch account. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
         """
         pulumi.set(__self__, "type", type)
+        if user_assigned_identities is not None:
+            pulumi.set(__self__, "user_assigned_identities", user_assigned_identities)
 
     @property
     @pulumi.getter
@@ -370,6 +377,57 @@ class BatchAccountIdentityArgs:
     @type.setter
     def type(self, value: pulumi.Input['ResourceIdentityType']):
         pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="userAssignedIdentities")
+    def user_assigned_identities(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The list of user identities associated with the Batch account. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+        """
+        return pulumi.get(self, "user_assigned_identities")
+
+    @user_assigned_identities.setter
+    def user_assigned_identities(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "user_assigned_identities", value)
+
+
+@pulumi.input_type
+class BatchPoolIdentityArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input['PoolIdentityType'],
+                 user_assigned_identities: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        The identity of the Batch pool, if configured. If the pool identity is updated during update an existing pool, only the new vms which are created after the pool shrinks to 0 will have the updated identities
+        :param pulumi.Input['PoolIdentityType'] type: The type of identity used for the Batch Pool.
+        :param pulumi.Input[Mapping[str, Any]] user_assigned_identities: The list of user identities associated with the Batch pool. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+        """
+        pulumi.set(__self__, "type", type)
+        if user_assigned_identities is not None:
+            pulumi.set(__self__, "user_assigned_identities", user_assigned_identities)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input['PoolIdentityType']:
+        """
+        The type of identity used for the Batch Pool.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input['PoolIdentityType']):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="userAssignedIdentities")
+    def user_assigned_identities(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The list of user identities associated with the Batch pool. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+        """
+        return pulumi.get(self, "user_assigned_identities")
+
+    @user_assigned_identities.setter
+    def user_assigned_identities(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "user_assigned_identities", value)
 
 
 @pulumi.input_type
@@ -1501,6 +1559,30 @@ class NetworkSecurityGroupRuleArgs:
 
 
 @pulumi.input_type
+class NodePlacementConfigurationArgs:
+    def __init__(__self__, *,
+                 policy: Optional[pulumi.Input['NodePlacementPolicyType']] = None):
+        """
+        Allocation configuration used by Batch Service to provision the nodes.
+        :param pulumi.Input['NodePlacementPolicyType'] policy: Allocation policy used by Batch Service to provision the nodes. If not specified, Batch will use the regional policy.
+        """
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input['NodePlacementPolicyType']]:
+        """
+        Allocation policy used by Batch Service to provision the nodes. If not specified, Batch will use the regional policy.
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input['NodePlacementPolicyType']]):
+        pulumi.set(self, "policy", value)
+
+
+@pulumi.input_type
 class PoolEndpointConfigurationArgs:
     def __init__(__self__, *,
                  inbound_nat_pools: pulumi.Input[Sequence[pulumi.Input['InboundNatPoolArgs']]]):
@@ -2017,6 +2099,118 @@ class UserIdentityArgs:
 
 
 @pulumi.input_type
+class VMExtensionArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 publisher: pulumi.Input[str],
+                 type: pulumi.Input[str],
+                 auto_upgrade_minor_version: Optional[pulumi.Input[bool]] = None,
+                 protected_settings: Optional[Any] = None,
+                 provision_after_extensions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 settings: Optional[Any] = None,
+                 type_handler_version: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] auto_upgrade_minor_version: Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
+        :param Any protected_settings: The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all. 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] provision_after_extensions: Collection of extension names after which this extension needs to be provisioned.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "publisher", publisher)
+        pulumi.set(__self__, "type", type)
+        if auto_upgrade_minor_version is not None:
+            pulumi.set(__self__, "auto_upgrade_minor_version", auto_upgrade_minor_version)
+        if protected_settings is not None:
+            pulumi.set(__self__, "protected_settings", protected_settings)
+        if provision_after_extensions is not None:
+            pulumi.set(__self__, "provision_after_extensions", provision_after_extensions)
+        if settings is not None:
+            pulumi.set(__self__, "settings", settings)
+        if type_handler_version is not None:
+            pulumi.set(__self__, "type_handler_version", type_handler_version)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def publisher(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "publisher")
+
+    @publisher.setter
+    def publisher(self, value: pulumi.Input[str]):
+        pulumi.set(self, "publisher", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="autoUpgradeMinorVersion")
+    def auto_upgrade_minor_version(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
+        """
+        return pulumi.get(self, "auto_upgrade_minor_version")
+
+    @auto_upgrade_minor_version.setter
+    def auto_upgrade_minor_version(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_upgrade_minor_version", value)
+
+    @property
+    @pulumi.getter(name="protectedSettings")
+    def protected_settings(self) -> Optional[Any]:
+        """
+        The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all. 
+        """
+        return pulumi.get(self, "protected_settings")
+
+    @protected_settings.setter
+    def protected_settings(self, value: Optional[Any]):
+        pulumi.set(self, "protected_settings", value)
+
+    @property
+    @pulumi.getter(name="provisionAfterExtensions")
+    def provision_after_extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Collection of extension names after which this extension needs to be provisioned.
+        """
+        return pulumi.get(self, "provision_after_extensions")
+
+    @provision_after_extensions.setter
+    def provision_after_extensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "provision_after_extensions", value)
+
+    @property
+    @pulumi.getter
+    def settings(self) -> Optional[Any]:
+        return pulumi.get(self, "settings")
+
+    @settings.setter
+    def settings(self, value: Optional[Any]):
+        pulumi.set(self, "settings", value)
+
+    @property
+    @pulumi.getter(name="typeHandlerVersion")
+    def type_handler_version(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "type_handler_version")
+
+    @type_handler_version.setter
+    def type_handler_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type_handler_version", value)
+
+
+@pulumi.input_type
 class VirtualMachineConfigurationArgs:
     def __init__(__self__, *,
                  image_reference: pulumi.Input['ImageReferenceArgs'],
@@ -2024,17 +2218,21 @@ class VirtualMachineConfigurationArgs:
                  container_configuration: Optional[pulumi.Input['ContainerConfigurationArgs']] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['DataDiskArgs']]]] = None,
                  disk_encryption_configuration: Optional[pulumi.Input['DiskEncryptionConfigurationArgs']] = None,
+                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input['VMExtensionArgs']]]] = None,
                  license_type: Optional[pulumi.Input[str]] = None,
+                 node_placement_configuration: Optional[pulumi.Input['NodePlacementConfigurationArgs']] = None,
                  windows_configuration: Optional[pulumi.Input['WindowsConfigurationArgs']] = None):
         """
         :param pulumi.Input[str] node_agent_sku_id: The Batch node agent is a program that runs on each node in the pool, and provides the command-and-control interface between the node and the Batch service. There are different implementations of the node agent, known as SKUs, for different operating systems. You must specify a node agent SKU which matches the selected image reference. To get the list of supported node agent SKUs along with their list of verified image references, see the 'List supported node agent SKUs' operation.
         :param pulumi.Input['ContainerConfigurationArgs'] container_configuration: If specified, setup is performed on each node in the pool to allow tasks to run in containers. All regular tasks and job manager tasks run on this pool must specify the containerSettings property, and all other tasks may specify it.
         :param pulumi.Input[Sequence[pulumi.Input['DataDiskArgs']]] data_disks: This property must be specified if the compute nodes in the pool need to have empty data disks attached to them.
         :param pulumi.Input['DiskEncryptionConfigurationArgs'] disk_encryption_configuration: If specified, encryption is performed on each node in the pool during node provisioning.
+        :param pulumi.Input[Sequence[pulumi.Input['VMExtensionArgs']]] extensions: If specified, the extensions mentioned in this configuration will be installed on each node.
         :param pulumi.Input[str] license_type: This only applies to images that contain the Windows operating system, and should only be used when you hold valid on-premises licenses for the nodes which will be deployed. If omitted, no on-premises licensing discount is applied. Values are:
                
                 Windows_Server - The on-premises license is for Windows Server.
                 Windows_Client - The on-premises license is for Windows Client.
+        :param pulumi.Input['NodePlacementConfigurationArgs'] node_placement_configuration: This configuration will specify rules on how nodes in the pool will be physically allocated.
         :param pulumi.Input['WindowsConfigurationArgs'] windows_configuration: This property must not be specified if the imageReference specifies a Linux OS image.
         """
         pulumi.set(__self__, "image_reference", image_reference)
@@ -2045,8 +2243,12 @@ class VirtualMachineConfigurationArgs:
             pulumi.set(__self__, "data_disks", data_disks)
         if disk_encryption_configuration is not None:
             pulumi.set(__self__, "disk_encryption_configuration", disk_encryption_configuration)
+        if extensions is not None:
+            pulumi.set(__self__, "extensions", extensions)
         if license_type is not None:
             pulumi.set(__self__, "license_type", license_type)
+        if node_placement_configuration is not None:
+            pulumi.set(__self__, "node_placement_configuration", node_placement_configuration)
         if windows_configuration is not None:
             pulumi.set(__self__, "windows_configuration", windows_configuration)
 
@@ -2108,6 +2310,18 @@ class VirtualMachineConfigurationArgs:
         pulumi.set(self, "disk_encryption_configuration", value)
 
     @property
+    @pulumi.getter
+    def extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMExtensionArgs']]]]:
+        """
+        If specified, the extensions mentioned in this configuration will be installed on each node.
+        """
+        return pulumi.get(self, "extensions")
+
+    @extensions.setter
+    def extensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMExtensionArgs']]]]):
+        pulumi.set(self, "extensions", value)
+
+    @property
     @pulumi.getter(name="licenseType")
     def license_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2121,6 +2335,18 @@ class VirtualMachineConfigurationArgs:
     @license_type.setter
     def license_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "license_type", value)
+
+    @property
+    @pulumi.getter(name="nodePlacementConfiguration")
+    def node_placement_configuration(self) -> Optional[pulumi.Input['NodePlacementConfigurationArgs']]:
+        """
+        This configuration will specify rules on how nodes in the pool will be physically allocated.
+        """
+        return pulumi.get(self, "node_placement_configuration")
+
+    @node_placement_configuration.setter
+    def node_placement_configuration(self, value: Optional[pulumi.Input['NodePlacementConfigurationArgs']]):
+        pulumi.set(self, "node_placement_configuration", value)
 
     @property
     @pulumi.getter(name="windowsConfiguration")

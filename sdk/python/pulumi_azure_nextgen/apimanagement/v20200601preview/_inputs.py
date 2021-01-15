@@ -67,6 +67,8 @@ class AdditionalLocationArgs:
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "sku", sku)
+        if disable_gateway is None:
+            disable_gateway = False
         if disable_gateway is not None:
             pulumi.set(__self__, "disable_gateway", disable_gateway)
         if virtual_network_configuration is not None:
@@ -469,12 +471,14 @@ class BackendCredentialsContractArgs:
     def __init__(__self__, *,
                  authorization: Optional[pulumi.Input['BackendAuthorizationHeaderCredentialsArgs']] = None,
                  certificate: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 certificate_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  header: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[str]]]]]] = None,
                  query: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[str]]]]]] = None):
         """
         Details of the Credentials used to connect to Backend.
         :param pulumi.Input['BackendAuthorizationHeaderCredentialsArgs'] authorization: Authorization header authentication
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate: List of Client Certificate Thumbprint.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate: List of Client Certificate Thumbprints. Will be ignored if certificatesIds are provided.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_ids: List of Client Certificate Ids.
         :param pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[str]]]]] header: Header Parameter description.
         :param pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[str]]]]] query: Query Parameter description.
         """
@@ -482,6 +486,8 @@ class BackendCredentialsContractArgs:
             pulumi.set(__self__, "authorization", authorization)
         if certificate is not None:
             pulumi.set(__self__, "certificate", certificate)
+        if certificate_ids is not None:
+            pulumi.set(__self__, "certificate_ids", certificate_ids)
         if header is not None:
             pulumi.set(__self__, "header", header)
         if query is not None:
@@ -503,13 +509,25 @@ class BackendCredentialsContractArgs:
     @pulumi.getter
     def certificate(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of Client Certificate Thumbprint.
+        List of Client Certificate Thumbprints. Will be ignored if certificatesIds are provided.
         """
         return pulumi.get(self, "certificate")
 
     @certificate.setter
     def certificate(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "certificate", value)
+
+    @property
+    @pulumi.getter(name="certificateIds")
+    def certificate_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of Client Certificate Ids.
+        """
+        return pulumi.get(self, "certificate_ids")
+
+    @certificate_ids.setter
+    def certificate_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "certificate_ids", value)
 
     @property
     @pulumi.getter
@@ -618,39 +636,32 @@ class BackendProxyContractArgs:
 @pulumi.input_type
 class BackendServiceFabricClusterPropertiesArgs:
     def __init__(__self__, *,
-                 client_certificatethumbprint: pulumi.Input[str],
                  management_endpoints: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 client_certificate_id: Optional[pulumi.Input[str]] = None,
+                 client_certificatethumbprint: Optional[pulumi.Input[str]] = None,
                  max_partition_resolution_retries: Optional[pulumi.Input[int]] = None,
                  server_certificate_thumbprints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  server_x509_names: Optional[pulumi.Input[Sequence[pulumi.Input['X509CertificateNameArgs']]]] = None):
         """
         Properties of the Service Fabric Type Backend.
-        :param pulumi.Input[str] client_certificatethumbprint: The client certificate thumbprint for the management endpoint.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] management_endpoints: The cluster management endpoint.
+        :param pulumi.Input[str] client_certificate_id: The client certificate id for the management endpoint.
+        :param pulumi.Input[str] client_certificatethumbprint: The client certificate thumbprint for the management endpoint. Will be ignored if certificatesIds are provided
         :param pulumi.Input[int] max_partition_resolution_retries: Maximum number of retries while attempting resolve the partition.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] server_certificate_thumbprints: Thumbprints of certificates cluster management service uses for tls communication
         :param pulumi.Input[Sequence[pulumi.Input['X509CertificateNameArgs']]] server_x509_names: Server X509 Certificate Names Collection
         """
-        pulumi.set(__self__, "client_certificatethumbprint", client_certificatethumbprint)
         pulumi.set(__self__, "management_endpoints", management_endpoints)
+        if client_certificate_id is not None:
+            pulumi.set(__self__, "client_certificate_id", client_certificate_id)
+        if client_certificatethumbprint is not None:
+            pulumi.set(__self__, "client_certificatethumbprint", client_certificatethumbprint)
         if max_partition_resolution_retries is not None:
             pulumi.set(__self__, "max_partition_resolution_retries", max_partition_resolution_retries)
         if server_certificate_thumbprints is not None:
             pulumi.set(__self__, "server_certificate_thumbprints", server_certificate_thumbprints)
         if server_x509_names is not None:
             pulumi.set(__self__, "server_x509_names", server_x509_names)
-
-    @property
-    @pulumi.getter(name="clientCertificatethumbprint")
-    def client_certificatethumbprint(self) -> pulumi.Input[str]:
-        """
-        The client certificate thumbprint for the management endpoint.
-        """
-        return pulumi.get(self, "client_certificatethumbprint")
-
-    @client_certificatethumbprint.setter
-    def client_certificatethumbprint(self, value: pulumi.Input[str]):
-        pulumi.set(self, "client_certificatethumbprint", value)
 
     @property
     @pulumi.getter(name="managementEndpoints")
@@ -663,6 +674,30 @@ class BackendServiceFabricClusterPropertiesArgs:
     @management_endpoints.setter
     def management_endpoints(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "management_endpoints", value)
+
+    @property
+    @pulumi.getter(name="clientCertificateId")
+    def client_certificate_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The client certificate id for the management endpoint.
+        """
+        return pulumi.get(self, "client_certificate_id")
+
+    @client_certificate_id.setter
+    def client_certificate_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_certificate_id", value)
+
+    @property
+    @pulumi.getter(name="clientCertificatethumbprint")
+    def client_certificatethumbprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The client certificate thumbprint for the management endpoint. Will be ignored if certificatesIds are provided
+        """
+        return pulumi.get(self, "client_certificatethumbprint")
+
+    @client_certificatethumbprint.setter
+    def client_certificatethumbprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_certificatethumbprint", value)
 
     @property
     @pulumi.getter(name="maxPartitionResolutionRetries")
@@ -711,8 +746,12 @@ class BackendTlsPropertiesArgs:
         :param pulumi.Input[bool] validate_certificate_chain: Flag indicating whether SSL certificate chain validation should be done when using self-signed certificates for this backend host.
         :param pulumi.Input[bool] validate_certificate_name: Flag indicating whether SSL certificate name validation should be done when using self-signed certificates for this backend host.
         """
+        if validate_certificate_chain is None:
+            validate_certificate_chain = True
         if validate_certificate_chain is not None:
             pulumi.set(__self__, "validate_certificate_chain", validate_certificate_chain)
+        if validate_certificate_name is None:
+            validate_certificate_name = True
         if validate_certificate_name is not None:
             pulumi.set(__self__, "validate_certificate_name", validate_certificate_name)
 
@@ -1053,6 +1092,8 @@ class HostnameConfigurationArgs:
             pulumi.set(__self__, "certificate", certificate)
         if certificate_password is not None:
             pulumi.set(__self__, "certificate_password", certificate_password)
+        if default_ssl_binding is None:
+            default_ssl_binding = False
         if default_ssl_binding is not None:
             pulumi.set(__self__, "default_ssl_binding", default_ssl_binding)
         if encoded_certificate is not None:
@@ -1061,6 +1102,8 @@ class HostnameConfigurationArgs:
             pulumi.set(__self__, "identity_client_id", identity_client_id)
         if key_vault_id is not None:
             pulumi.set(__self__, "key_vault_id", key_vault_id)
+        if negotiate_client_certificate is None:
+            negotiate_client_certificate = False
         if negotiate_client_certificate is not None:
             pulumi.set(__self__, "negotiate_client_certificate", negotiate_client_certificate)
 

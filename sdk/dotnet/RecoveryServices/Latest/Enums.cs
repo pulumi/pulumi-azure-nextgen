@@ -374,6 +374,37 @@ namespace Pulumi.AzureNextGen.RecoveryServices.Latest
     }
 
     /// <summary>
+    /// Enabling/Disabling the Double Encryption state
+    /// </summary>
+    [EnumType]
+    public readonly struct InfrastructureEncryptionState : IEquatable<InfrastructureEncryptionState>
+    {
+        private readonly string _value;
+
+        private InfrastructureEncryptionState(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static InfrastructureEncryptionState Enabled { get; } = new InfrastructureEncryptionState("Enabled");
+        public static InfrastructureEncryptionState Disabled { get; } = new InfrastructureEncryptionState("Disabled");
+
+        public static bool operator ==(InfrastructureEncryptionState left, InfrastructureEncryptionState right) => left.Equals(right);
+        public static bool operator !=(InfrastructureEncryptionState left, InfrastructureEncryptionState right) => !left.Equals(right);
+
+        public static explicit operator string(InfrastructureEncryptionState value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is InfrastructureEncryptionState other && Equals(other);
+        public bool Equals(InfrastructureEncryptionState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Last backup operation status. Possible values: Healthy, Unhealthy.
     /// </summary>
     [EnumType]
@@ -883,7 +914,7 @@ namespace Pulumi.AzureNextGen.RecoveryServices.Latest
     }
 
     /// <summary>
-    /// The identity type.
+    /// The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities.
     /// </summary>
     [EnumType]
     public readonly struct ResourceIdentityType : IEquatable<ResourceIdentityType>
@@ -897,6 +928,8 @@ namespace Pulumi.AzureNextGen.RecoveryServices.Latest
 
         public static ResourceIdentityType SystemAssigned { get; } = new ResourceIdentityType("SystemAssigned");
         public static ResourceIdentityType None { get; } = new ResourceIdentityType("None");
+        public static ResourceIdentityType UserAssigned { get; } = new ResourceIdentityType("UserAssigned");
+        public static ResourceIdentityType SystemAssigned_UserAssigned { get; } = new ResourceIdentityType("SystemAssigned, UserAssigned");
 
         public static bool operator ==(ResourceIdentityType left, ResourceIdentityType right) => left.Equals(right);
         public static bool operator !=(ResourceIdentityType left, ResourceIdentityType right) => !left.Equals(right);
@@ -1098,6 +1131,42 @@ namespace Pulumi.AzureNextGen.RecoveryServices.Latest
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is WeekOfMonth other && Equals(other);
         public bool Equals(WeekOfMonth other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Workload item type of the item for which intent is to be set
+    /// </summary>
+    [EnumType]
+    public readonly struct WorkloadItemType : IEquatable<WorkloadItemType>
+    {
+        private readonly string _value;
+
+        private WorkloadItemType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static WorkloadItemType Invalid { get; } = new WorkloadItemType("Invalid");
+        public static WorkloadItemType SQLInstance { get; } = new WorkloadItemType("SQLInstance");
+        public static WorkloadItemType SQLDataBase { get; } = new WorkloadItemType("SQLDataBase");
+        public static WorkloadItemType SAPHanaSystem { get; } = new WorkloadItemType("SAPHanaSystem");
+        public static WorkloadItemType SAPHanaDatabase { get; } = new WorkloadItemType("SAPHanaDatabase");
+        public static WorkloadItemType SAPAseSystem { get; } = new WorkloadItemType("SAPAseSystem");
+        public static WorkloadItemType SAPAseDatabase { get; } = new WorkloadItemType("SAPAseDatabase");
+
+        public static bool operator ==(WorkloadItemType left, WorkloadItemType right) => left.Equals(right);
+        public static bool operator !=(WorkloadItemType left, WorkloadItemType right) => !left.Equals(right);
+
+        public static explicit operator string(WorkloadItemType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is WorkloadItemType other && Equals(other);
+        public bool Equals(WorkloadItemType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

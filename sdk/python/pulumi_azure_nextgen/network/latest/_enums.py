@@ -93,6 +93,7 @@ __all__ = [
     'ManagedRuleEnabledState',
     'ManagedRuleExclusionMatchVariable',
     'ManagedRuleExclusionSelectorMatchOperator',
+    'ManagedRuleSetActionType',
     'MatchProcessingBehavior',
     'MonitorProtocol',
     'NatGatewaySkuName',
@@ -104,6 +105,7 @@ __all__ = [
     'PfsGroup',
     'PolicyEnabledState',
     'PolicyMode',
+    'PolicyRequestBodyCheck',
     'PreferredIPVersion',
     'ProbeProtocol',
     'ProfileMonitorStatus',
@@ -126,6 +128,7 @@ __all__ = [
     'SecurityRuleProtocol',
     'ServiceProviderProvisioningState',
     'SessionAffinityEnabledState',
+    'SkuName',
     'State',
     'TrafficRoutingMethod',
     'TrafficViewEnrollmentStatus',
@@ -143,6 +146,9 @@ __all__ = [
     'VpnClientProtocol',
     'VpnGatewayGeneration',
     'VpnGatewayTunnelingProtocol',
+    'VpnLinkConnectionMode',
+    'VpnNatRuleMode',
+    'VpnNatRuleType',
     'VpnType',
     'WebApplicationFirewallAction',
     'WebApplicationFirewallEnabledState',
@@ -968,6 +974,15 @@ class ManagedRuleExclusionSelectorMatchOperator(str, Enum):
     EQUALS_ANY = "EqualsAny"
 
 
+class ManagedRuleSetActionType(str, Enum):
+    """
+    Defines the action to take when a managed rule set score threshold is met.
+    """
+    BLOCK = "Block"
+    LOG = "Log"
+    REDIRECT = "Redirect"
+
+
 class MatchProcessingBehavior(str, Enum):
     """
     If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue.
@@ -1075,6 +1090,14 @@ class PolicyMode(str, Enum):
     """
     PREVENTION = "Prevention"
     DETECTION = "Detection"
+
+
+class PolicyRequestBodyCheck(str, Enum):
+    """
+    Describes if policy managed rules will inspect the request body content.
+    """
+    DISABLED = "Disabled"
+    ENABLED = "Enabled"
 
 
 class PreferredIPVersion(str, Enum):
@@ -1293,6 +1316,15 @@ class SessionAffinityEnabledState(str, Enum):
     DISABLED = "Disabled"
 
 
+class SkuName(str, Enum):
+    """
+    Name of the pricing tier.
+    """
+    CLASSIC_AZURE_FRONT_DOOR = "Classic_AzureFrontDoor"
+    STANDARD_AZURE_FRONT_DOOR = "Standard_AzureFrontDoor"
+    PREMIUM_AZURE_FRONT_DOOR = "Premium_AzureFrontDoor"
+
+
 class State(str, Enum):
     """
     The state of the Experiment
@@ -1478,6 +1510,31 @@ class VpnGatewayTunnelingProtocol(str, Enum):
     """
     IKE_V2 = "IkeV2"
     OPEN_VPN = "OpenVPN"
+
+
+class VpnLinkConnectionMode(str, Enum):
+    """
+    Vpn link connection mode.
+    """
+    DEFAULT = "Default"
+    RESPONDER_ONLY = "ResponderOnly"
+    INITIATOR_ONLY = "InitiatorOnly"
+
+
+class VpnNatRuleMode(str, Enum):
+    """
+    The Source NAT direction of a VPN NAT.
+    """
+    EGRESS_SNAT = "EgressSnat"
+    INGRESS_SNAT = "IngressSnat"
+
+
+class VpnNatRuleType(str, Enum):
+    """
+    The type of NAT rule for VPN NAT.
+    """
+    STATIC = "Static"
+    DYNAMIC = "Dynamic"
 
 
 class VpnType(str, Enum):
