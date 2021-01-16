@@ -50168,6 +50168,39 @@ export namespace compute {
     }
 }
 
+export namespace confidentialledger {
+    export namespace v20201201preview {
+        /**
+         * User cert and permissions associated with that user
+         */
+        export interface ConfidentialLedgerCertUser {
+            /**
+             * Base64 encoded public key of the user cert (.pem or .cer)
+             */
+            cert?: pulumi.Input<string>;
+        }
+
+        /**
+         * Additional Confidential Ledger properties.
+         */
+        export interface LedgerProperties {
+            /**
+             * Array of all the cert based users who can access Confidential Ledger
+             */
+            certUsers?: pulumi.Input<pulumi.Input<inputs.confidentialledger.v20201201preview.ConfidentialLedgerCertUser>[]>;
+            /**
+             * Name of the Blob Storage Account for saving ledger files
+             */
+            ledgerStorageAccount?: pulumi.Input<string>;
+            /**
+             * Type of Confidential Ledger
+             */
+            ledgerType?: pulumi.Input<string | enums.confidentialledger.v20201201preview.LedgerType>;
+        }
+
+    }
+}
+
 export namespace confluent {
     export namespace latest {
         /**
@@ -156054,6 +156087,20 @@ export namespace hanaonazure {
         }
 
         /**
+         * Specifies the hardware settings for the HANA instance.
+         */
+        export interface HardwareProfile {
+            /**
+             * Specifies the HANA instance SKU.
+             */
+            hanaInstanceSize?: pulumi.Input<string | enums.hanaonazure.v20171103preview.HanaInstanceSizeNamesEnum>;
+            /**
+             * Name of the hardware type (vendor and/or their product name)
+             */
+            hardwareType?: pulumi.Input<string | enums.hanaonazure.v20171103preview.HanaHardwareTypeNamesEnum>;
+        }
+
+        /**
          * Specifies the IP address of the network interface.
          */
         export interface IpAddress {
@@ -156067,6 +156114,10 @@ export namespace hanaonazure {
          * Specifies the network settings for the HANA instance disks.
          */
         export interface NetworkProfile {
+            /**
+             * Specifies the circuit id for connecting to express route.
+             */
+            circuitId?: pulumi.Input<string>;
             /**
              * Specifies the network interfaces for the HANA instance.
              */
@@ -156082,15 +156133,27 @@ export namespace hanaonazure {
              */
             computerName?: pulumi.Input<string>;
             /**
+             * This property allows you to specify the type of the OS.
+             */
+            osType?: pulumi.Input<string>;
+            /**
              * Specifies the SSH public key used to access the operating system.
              */
             sshPublicKey?: pulumi.Input<string>;
+            /**
+             * Specifies version of operating system.
+             */
+            version?: pulumi.Input<string>;
         }
 
         /**
          * Specifies the storage settings for the HANA instance disks.
          */
         export interface StorageProfile {
+            /**
+             * IP Address to connect to storage.
+             */
+            nfsIpAddress?: pulumi.Input<string>;
             /**
              * Specifies information about the operating system disk used by the hana instance.
              */
@@ -337727,165 +337790,6 @@ export namespace redhatopenshift {
              * The size of the worker VMs (immutable).
              */
             vmSize?: pulumi.Input<string>;
-        }
-
-    }
-
-    export namespace v20210131preview {
-        /**
-         * APIServerProfile represents an API server profile.
-         */
-        export interface APIServerProfile {
-            /**
-             * The IP of the cluster API server.
-             */
-            ip?: pulumi.Input<string>;
-            /**
-             * The URL to access the cluster API server.
-             */
-            url?: pulumi.Input<string>;
-            /**
-             * API server visibility.
-             */
-            visibility?: pulumi.Input<string>;
-        }
-
-        /**
-         * ClusterProfile represents a cluster profile.
-         */
-        export interface ClusterProfile {
-            /**
-             * The domain for the cluster.
-             */
-            domain?: pulumi.Input<string>;
-            /**
-             * The pull secret for the cluster.
-             */
-            pullSecret?: pulumi.Input<string>;
-            /**
-             * The ID of the cluster resource group.
-             */
-            resourceGroupId?: pulumi.Input<string>;
-            /**
-             * The version of the cluster.
-             */
-            version?: pulumi.Input<string>;
-        }
-
-        /**
-         * ConsoleProfile represents a console profile.
-         */
-        export interface ConsoleProfile {
-            /**
-             * The URL to access the cluster console.
-             */
-            url?: pulumi.Input<string>;
-        }
-
-        /**
-         * IngressProfile represents an ingress profile.
-         */
-        export interface IngressProfile {
-            /**
-             * The IP of the ingress.
-             */
-            ip?: pulumi.Input<string>;
-            /**
-             * The ingress profile name.
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * Ingress visibility.
-             */
-            visibility?: pulumi.Input<string>;
-        }
-
-        /**
-         * MasterProfile represents a master profile.
-         */
-        export interface MasterProfile {
-            /**
-             * The resource ID of an associated DiskEncryptionSet, if applicable.
-             */
-            diskEncryptionSetId?: pulumi.Input<string>;
-            /**
-             * Whether master virtual machines are encrypted at host.
-             */
-            encryptionAtHost?: pulumi.Input<string>;
-            /**
-             * The Azure resource ID of the master subnet.
-             */
-            subnetId?: pulumi.Input<string>;
-            /**
-             * The size of the master VMs.
-             */
-            vmSize?: pulumi.Input<string | enums.redhatopenshift.v20210131preview.VMSize>;
-        }
-
-        /**
-         * NetworkProfile represents a network profile.
-         */
-        export interface NetworkProfile {
-            /**
-             * The CIDR used for OpenShift/Kubernetes Pods.
-             */
-            podCidr?: pulumi.Input<string>;
-            /**
-             * The SDN plugin used in the cluster.
-             */
-            sdnProvider?: pulumi.Input<string | enums.redhatopenshift.v20210131preview.SDNProvider>;
-            /**
-             * The CIDR used for OpenShift/Kubernetes Services.
-             */
-            serviceCidr?: pulumi.Input<string>;
-        }
-
-        /**
-         * ServicePrincipalProfile represents a service principal profile.
-         */
-        export interface ServicePrincipalProfile {
-            /**
-             * The client ID used for the cluster.
-             */
-            clientId?: pulumi.Input<string>;
-            /**
-             * The client secret used for the cluster.
-             */
-            clientSecret?: pulumi.Input<string>;
-        }
-
-        /**
-         * WorkerProfile represents a worker profile.
-         */
-        export interface WorkerProfile {
-            /**
-             * The number of worker VMs.
-             */
-            count?: pulumi.Input<number>;
-            /**
-             * The resource ID of an associated DiskEncryptionSet, if applicable.
-             */
-            diskEncryptionSetId?: pulumi.Input<string>;
-            /**
-             * The disk size of the worker VMs.
-             */
-            diskSizeGB?: pulumi.Input<number>;
-            /**
-             * Whether master virtual machines are encrypted at host.
-             */
-            encryptionAtHost?: pulumi.Input<string>;
-            /**
-             * The worker profile name.
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * The Azure resource ID of the worker subnet.
-             */
-            subnetId?: pulumi.Input<string>;
-            /**
-             * The size of the worker VMs.
-             */
-            vmSize?: pulumi.Input<string | enums.redhatopenshift.v20210131preview.VMSize>;
         }
 
     }
