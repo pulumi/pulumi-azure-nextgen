@@ -51280,11 +51280,11 @@ export namespace consumption {
          */
         export interface Notification {
             /**
-             * Email addresses to send the budget notification to when the threshold is exceeded.
+             * Email addresses to send the budget notification to when the threshold is exceeded. Must have at least one contact email or contact group specified at the Subscription or Resource Group scopes. All other scopes must have at least one contact email specified.
              */
             contactEmails: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Action groups to send the budget notification to when the threshold is exceeded.
+             * Action groups to send the budget notification to when the threshold is exceeded. Must be provided as a fully qualified Azure resource id. Only supported at Subscription or Resource Group scopes.
              */
             contactGroups?: pulumi.Input<pulumi.Input<string>[]>;
             /**
@@ -362659,6 +362659,16 @@ export namespace synapse {
         }
 
         /**
+         * Dynamic Executor Allocation Properties
+         */
+        export interface DynamicExecutorAllocation {
+            /**
+             * Indicates whether Dynamic Executor Allocation is enabled or not.
+             */
+            enabled?: pulumi.Input<boolean>;
+        }
+
+        /**
          * Details of the encryption associated with the workspace
          */
         export interface EncryptionDetails {
@@ -363101,6 +363111,10 @@ export namespace synapse {
              */
             hostName?: pulumi.Input<string>;
             /**
+             * The last commit ID
+             */
+            lastCommitId?: pulumi.Input<string>;
+            /**
              * VSTS project name
              */
             projectName?: pulumi.Input<string>;
@@ -363112,6 +363126,10 @@ export namespace synapse {
              * Root folder to use in the repository
              */
             rootFolder?: pulumi.Input<string>;
+            /**
+             * The VSTS tenant ID
+             */
+            tenantId?: pulumi.Input<string>;
             /**
              * Type of workspace repositoryID configuration. Example WorkspaceVSTSConfiguration, WorkspaceGitHubConfiguration
              */

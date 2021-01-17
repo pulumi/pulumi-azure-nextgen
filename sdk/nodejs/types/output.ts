@@ -63603,11 +63603,11 @@ export namespace consumption {
          */
         export interface NotificationResponse {
             /**
-             * Email addresses to send the budget notification to when the threshold is exceeded.
+             * Email addresses to send the budget notification to when the threshold is exceeded. Must have at least one contact email or contact group specified at the Subscription or Resource Group scopes. All other scopes must have at least one contact email specified.
              */
             contactEmails: string[];
             /**
-             * Action groups to send the budget notification to when the threshold is exceeded.
+             * Action groups to send the budget notification to when the threshold is exceeded. Must be provided as a fully qualified Azure resource id. Only supported at Subscription or Resource Group scopes.
              */
             contactGroups?: string[];
             /**
@@ -480136,6 +480136,16 @@ export namespace synapse {
         }
 
         /**
+         * Dynamic Executor Allocation Properties
+         */
+        export interface DynamicExecutorAllocationResponse {
+            /**
+             * Indicates whether Dynamic Executor Allocation is enabled or not.
+             */
+            enabled?: boolean;
+        }
+
+        /**
          * Details of the encryption associated with the workspace
          */
         export interface EncryptionDetailsResponse {
@@ -481192,6 +481202,10 @@ export namespace synapse {
              */
             hostName?: string;
             /**
+             * The last commit ID
+             */
+            lastCommitId?: string;
+            /**
              * VSTS project name
              */
             projectName?: string;
@@ -481203,6 +481217,10 @@ export namespace synapse {
              * Root folder to use in the repository
              */
             rootFolder?: string;
+            /**
+             * The VSTS tenant ID
+             */
+            tenantId?: string;
             /**
              * Type of workspace repositoryID configuration. Example WorkspaceVSTSConfiguration, WorkspaceGitHubConfiguration
              */
