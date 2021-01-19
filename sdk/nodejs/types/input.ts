@@ -160794,7 +160794,7 @@ export namespace insights {
              */
             actionGroupId?: pulumi.Input<string>;
             /**
-             * The properties of a webhook object.
+             * This field allows specifying custom properties, which would be appended to the alert payload sent as input to the webhook.
              */
             webHookProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         }
@@ -162377,7 +162377,7 @@ export namespace insights {
              */
             actionGroupId?: pulumi.Input<string>;
             /**
-             * The properties of a webhook object.
+             * This field allows specifying custom properties, which would be appended to the alert payload sent as input to the webhook.
              */
             webHookProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         }
@@ -198174,6 +198174,20 @@ export namespace migrate {
         }
 
         /**
+         * Defines reference to load balancer NAT rules.
+         */
+        export interface LoadBalancerNatRuleReference {
+            /**
+             * Gets the name of the proxy resource on the target side.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Gets the ARM resource ID of the tracked resource being referenced.
+             */
+            sourceArmResourceId: pulumi.Input<string>;
+        }
+
+        /**
          * Defines the load balancer resource settings.
          */
         export interface LoadBalancerResourceSettings {
@@ -198307,6 +198321,10 @@ export namespace migrate {
              */
             loadBalancerBackendAddressPools?: pulumi.Input<pulumi.Input<inputs.migrate.v20191001preview.LoadBalancerBackendAddressPoolReference>[]>;
             /**
+             * Gets or sets the references of the load balancer NAT rules.
+             */
+            loadBalancerNatRules?: pulumi.Input<pulumi.Input<inputs.migrate.v20191001preview.LoadBalancerNatRuleReference>[]>;
+            /**
              * Gets or sets the IP configuration name.
              */
             name?: pulumi.Input<string>;
@@ -198323,9 +198341,23 @@ export namespace migrate {
              */
             privateIpAllocationMethod?: pulumi.Input<string>;
             /**
+             * Defines reference to a public IP.
+             */
+            publicIp?: pulumi.Input<inputs.migrate.v20191001preview.PublicIpReference>;
+            /**
              * Defines reference to subnet.
              */
             subnet?: pulumi.Input<inputs.migrate.v20191001preview.SubnetReference>;
+        }
+
+        /**
+         * Defines reference to NSG.
+         */
+        export interface NsgReference {
+            /**
+             * Gets the ARM resource ID of the tracked resource being referenced.
+             */
+            sourceArmResourceId: pulumi.Input<string>;
         }
 
         /**
@@ -198418,6 +198450,16 @@ export namespace migrate {
              * Gets or sets public IP zones.
              */
             zones?: pulumi.Input<string>;
+        }
+
+        /**
+         * Defines reference to a public IP.
+         */
+        export interface PublicIpReference {
+            /**
+             * Gets the ARM resource ID of the tracked resource being referenced.
+             */
+            sourceArmResourceId: pulumi.Input<string>;
         }
 
         /**
@@ -198514,6 +198556,10 @@ export namespace migrate {
              * Gets or sets the Subnet name.
              */
             name?: pulumi.Input<string>;
+            /**
+             * Defines reference to NSG.
+             */
+            networkSecurityGroup?: pulumi.Input<inputs.migrate.v20191001preview.NsgReference>;
         }
 
         /**
@@ -320857,6 +320903,51 @@ export namespace purview {
              * The status.
              */
             status?: pulumi.Input<string | enums.purview.v20201201preview.Status>;
+        }
+
+    }
+}
+
+export namespace quantum {
+    export namespace v20191104preview {
+        /**
+         * Information about a Provider. A Provider is an entity that offers Targets to run Azure Quantum Jobs.
+         */
+        export interface Provider {
+            /**
+             * The provider's marketplace application display name.
+             */
+            applicationName?: pulumi.Input<string>;
+            /**
+             * A Uri identifying the specific instance of this provider.
+             */
+            instanceUri?: pulumi.Input<string>;
+            /**
+             * Unique id of this provider.
+             */
+            providerId?: pulumi.Input<string>;
+            /**
+             * The sku associated with pricing information for this provider.
+             */
+            providerSku?: pulumi.Input<string>;
+            /**
+             * Provisioning status field
+             */
+            provisioningState?: pulumi.Input<string | enums.quantum.v20191104preview.Status>;
+            /**
+             * Id to track resource usage for the provider.
+             */
+            resourceUsageId?: pulumi.Input<string>;
+        }
+
+        /**
+         * Managed Identity information.
+         */
+        export interface QuantumWorkspaceIdentity {
+            /**
+             * The identity type.
+             */
+            type?: pulumi.Input<string | enums.quantum.v20191104preview.ResourceIdentityType>;
         }
 
     }

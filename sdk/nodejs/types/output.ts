@@ -200957,7 +200957,7 @@ export namespace insights {
              */
             actionGroupId?: string;
             /**
-             * The properties of a webhook object.
+             * This field allows specifying custom properties, which would be appended to the alert payload sent as input to the webhook.
              */
             webHookProperties?: {[key: string]: string};
         }
@@ -202600,7 +202600,7 @@ export namespace insights {
              */
             actionGroupId?: string;
             /**
-             * The properties of a webhook object.
+             * This field allows specifying custom properties, which would be appended to the alert payload sent as input to the webhook.
              */
             webHookProperties?: {[key: string]: string};
         }
@@ -253755,6 +253755,20 @@ export namespace migrate {
         }
 
         /**
+         * Defines reference to load balancer NAT rules.
+         */
+        export interface LoadBalancerNatRuleReferenceResponse {
+            /**
+             * Gets the name of the proxy resource on the target side.
+             */
+            name?: string;
+            /**
+             * Gets the ARM resource ID of the tracked resource being referenced.
+             */
+            sourceArmResourceId: string;
+        }
+
+        /**
          * Defines the load balancer resource settings.
          */
         export interface LoadBalancerResourceSettingsResponse {
@@ -254042,6 +254056,10 @@ export namespace migrate {
              */
             loadBalancerBackendAddressPools?: outputs.migrate.v20191001preview.LoadBalancerBackendAddressPoolReferenceResponse[];
             /**
+             * Gets or sets the references of the load balancer NAT rules.
+             */
+            loadBalancerNatRules?: outputs.migrate.v20191001preview.LoadBalancerNatRuleReferenceResponse[];
+            /**
              * Gets or sets the IP configuration name.
              */
             name?: string;
@@ -254058,9 +254076,23 @@ export namespace migrate {
              */
             privateIpAllocationMethod?: string;
             /**
+             * Defines reference to a public IP.
+             */
+            publicIp?: outputs.migrate.v20191001preview.PublicIpReferenceResponse;
+            /**
              * Defines reference to subnet.
              */
             subnet?: outputs.migrate.v20191001preview.SubnetReferenceResponse;
+        }
+
+        /**
+         * Defines reference to NSG.
+         */
+        export interface NsgReferenceResponse {
+            /**
+             * Gets the ARM resource ID of the tracked resource being referenced.
+             */
+            sourceArmResourceId: string;
         }
 
         /**
@@ -254153,6 +254185,16 @@ export namespace migrate {
              * Gets or sets public IP zones.
              */
             zones?: string;
+        }
+
+        /**
+         * Defines reference to a public IP.
+         */
+        export interface PublicIpReferenceResponse {
+            /**
+             * Gets the ARM resource ID of the tracked resource being referenced.
+             */
+            sourceArmResourceId: string;
         }
 
         /**
@@ -254249,6 +254291,10 @@ export namespace migrate {
              * Gets or sets the Subnet name.
              */
             name?: string;
+            /**
+             * Defines reference to NSG.
+             */
+            networkSecurityGroup?: outputs.migrate.v20191001preview.NsgReferenceResponse;
         }
 
         /**
@@ -415508,6 +415554,58 @@ export namespace purview {
              * The status.
              */
             status?: string;
+        }
+    }
+}
+
+export namespace quantum {
+    export namespace v20191104preview {
+        /**
+         * Information about a Provider. A Provider is an entity that offers Targets to run Azure Quantum Jobs.
+         */
+        export interface ProviderResponse {
+            /**
+             * The provider's marketplace application display name.
+             */
+            applicationName?: string;
+            /**
+             * A Uri identifying the specific instance of this provider.
+             */
+            instanceUri?: string;
+            /**
+             * Unique id of this provider.
+             */
+            providerId?: string;
+            /**
+             * The sku associated with pricing information for this provider.
+             */
+            providerSku?: string;
+            /**
+             * Provisioning status field
+             */
+            provisioningState?: string;
+            /**
+             * Id to track resource usage for the provider.
+             */
+            resourceUsageId?: string;
+        }
+
+        /**
+         * Managed Identity information.
+         */
+        export interface QuantumWorkspaceResponseIdentity {
+            /**
+             * The principal ID of resource identity.
+             */
+            principalId: string;
+            /**
+             * The tenant ID of resource.
+             */
+            tenantId: string;
+            /**
+             * The identity type.
+             */
+            type?: string;
         }
     }
 }
