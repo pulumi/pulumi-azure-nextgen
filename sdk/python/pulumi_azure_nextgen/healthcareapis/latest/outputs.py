@@ -15,12 +15,14 @@ __all__ = [
     'PrivateEndpointResponse',
     'PrivateLinkServiceConnectionStateResponse',
     'ServiceAccessPolicyEntryResponse',
+    'ServiceAcrConfigurationInfoResponse',
     'ServiceAuthenticationConfigurationInfoResponse',
     'ServiceCorsConfigurationInfoResponse',
     'ServiceCosmosDbConfigurationInfoResponse',
     'ServiceExportConfigurationInfoResponse',
     'ServicesPropertiesResponse',
     'ServicesResourceResponseIdentity',
+    'SystemDataResponse',
 ]
 
 @pulumi.output_type
@@ -199,6 +201,32 @@ class ServiceAccessPolicyEntryResponse(dict):
         An Azure AD object ID (User or Apps) that is allowed access to the FHIR service.
         """
         return pulumi.get(self, "object_id")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ServiceAcrConfigurationInfoResponse(dict):
+    """
+    Azure container registry configuration information
+    """
+    def __init__(__self__, *,
+                 login_servers: Optional[Sequence[str]] = None):
+        """
+        Azure container registry configuration information
+        :param Sequence[str] login_servers: The list of the ACR login servers.
+        """
+        if login_servers is not None:
+            pulumi.set(__self__, "login_servers", login_servers)
+
+    @property
+    @pulumi.getter(name="loginServers")
+    def login_servers(self) -> Optional[Sequence[str]]:
+        """
+        The list of the ACR login servers.
+        """
+        return pulumi.get(self, "login_servers")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -400,6 +428,7 @@ class ServicesPropertiesResponse(dict):
     def __init__(__self__, *,
                  provisioning_state: str,
                  access_policies: Optional[Sequence['outputs.ServiceAccessPolicyEntryResponse']] = None,
+                 acr_configuration: Optional['outputs.ServiceAcrConfigurationInfoResponse'] = None,
                  authentication_configuration: Optional['outputs.ServiceAuthenticationConfigurationInfoResponse'] = None,
                  cors_configuration: Optional['outputs.ServiceCorsConfigurationInfoResponse'] = None,
                  cosmos_db_configuration: Optional['outputs.ServiceCosmosDbConfigurationInfoResponse'] = None,
@@ -410,6 +439,7 @@ class ServicesPropertiesResponse(dict):
         The properties of a service instance.
         :param str provisioning_state: The provisioning state.
         :param Sequence['ServiceAccessPolicyEntryResponseArgs'] access_policies: The access policies of the service instance.
+        :param 'ServiceAcrConfigurationInfoResponseArgs' acr_configuration: The azure container registry settings used for convert data operation of the service instance.
         :param 'ServiceAuthenticationConfigurationInfoResponseArgs' authentication_configuration: The authentication configuration for the service instance.
         :param 'ServiceCorsConfigurationInfoResponseArgs' cors_configuration: The settings for the CORS configuration of the service instance.
         :param 'ServiceCosmosDbConfigurationInfoResponseArgs' cosmos_db_configuration: The settings for the Cosmos DB database backing the service.
@@ -420,6 +450,8 @@ class ServicesPropertiesResponse(dict):
         pulumi.set(__self__, "provisioning_state", provisioning_state)
         if access_policies is not None:
             pulumi.set(__self__, "access_policies", access_policies)
+        if acr_configuration is not None:
+            pulumi.set(__self__, "acr_configuration", acr_configuration)
         if authentication_configuration is not None:
             pulumi.set(__self__, "authentication_configuration", authentication_configuration)
         if cors_configuration is not None:
@@ -448,6 +480,14 @@ class ServicesPropertiesResponse(dict):
         The access policies of the service instance.
         """
         return pulumi.get(self, "access_policies")
+
+    @property
+    @pulumi.getter(name="acrConfiguration")
+    def acr_configuration(self) -> Optional['outputs.ServiceAcrConfigurationInfoResponse']:
+        """
+        The azure container registry settings used for convert data operation of the service instance.
+        """
+        return pulumi.get(self, "acr_configuration")
 
     @property
     @pulumi.getter(name="authenticationConfiguration")
@@ -544,6 +584,92 @@ class ServicesResourceResponseIdentity(dict):
         Type of identity being specified, currently SystemAssigned and None are allowed.
         """
         return pulumi.get(self, "type")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class SystemDataResponse(dict):
+    """
+    Metadata pertaining to creation and last modification of the resource.
+    """
+    def __init__(__self__, *,
+                 created_at: Optional[str] = None,
+                 created_by: Optional[str] = None,
+                 created_by_type: Optional[str] = None,
+                 last_modified_at: Optional[str] = None,
+                 last_modified_by: Optional[str] = None,
+                 last_modified_by_type: Optional[str] = None):
+        """
+        Metadata pertaining to creation and last modification of the resource.
+        :param str created_at: The timestamp of resource creation (UTC).
+        :param str created_by: The identity that created the resource.
+        :param str created_by_type: The type of identity that created the resource.
+        :param str last_modified_at: The type of identity that last modified the resource.
+        :param str last_modified_by: The identity that last modified the resource.
+        :param str last_modified_by_type: The type of identity that last modified the resource.
+        """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if created_by_type is not None:
+            pulumi.set(__self__, "created_by_type", created_by_type)
+        if last_modified_at is not None:
+            pulumi.set(__self__, "last_modified_at", last_modified_at)
+        if last_modified_by is not None:
+            pulumi.set(__self__, "last_modified_by", last_modified_by)
+        if last_modified_by_type is not None:
+            pulumi.set(__self__, "last_modified_by_type", last_modified_by_type)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[str]:
+        """
+        The timestamp of resource creation (UTC).
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[str]:
+        """
+        The identity that created the resource.
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="createdByType")
+    def created_by_type(self) -> Optional[str]:
+        """
+        The type of identity that created the resource.
+        """
+        return pulumi.get(self, "created_by_type")
+
+    @property
+    @pulumi.getter(name="lastModifiedAt")
+    def last_modified_at(self) -> Optional[str]:
+        """
+        The type of identity that last modified the resource.
+        """
+        return pulumi.get(self, "last_modified_at")
+
+    @property
+    @pulumi.getter(name="lastModifiedBy")
+    def last_modified_by(self) -> Optional[str]:
+        """
+        The identity that last modified the resource.
+        """
+        return pulumi.get(self, "last_modified_by")
+
+    @property
+    @pulumi.getter(name="lastModifiedByType")
+    def last_modified_by_type(self) -> Optional[str]:
+        """
+        The type of identity that last modified the resource.
+        """
+        return pulumi.get(self, "last_modified_by_type")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

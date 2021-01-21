@@ -132159,10 +132159,6 @@ export namespace desktopvirtualization {
              */
             rampDownNotificationMessage?: pulumi.Input<string>;
             /**
-             * Number of minutes to wait to stop hosts during ramp down period.
-             */
-            rampDownNotificationMinutes?: pulumi.Input<number>;
-            /**
              * Starting time for ramp down period.
              */
             rampDownStartTime?: pulumi.Input<string>;
@@ -132171,17 +132167,21 @@ export namespace desktopvirtualization {
              */
             rampDownStopHostsWhen?: pulumi.Input<string | enums.desktopvirtualization.v20201110preview.StopHostsWhen>;
             /**
-             * Load balancing algorithm for ramp up period.
+             * Number of minutes to wait to stop hosts during ramp down period.
              */
-            rampUpAlgorithm?: pulumi.Input<string | enums.desktopvirtualization.v20201110preview.SessionHostLoadBalancingAlgorithm>;
+            rampDownWaitTimeMinutes?: pulumi.Input<number>;
             /**
              * Capacity threshold for ramp up period.
              */
             rampUpCapacityThresholdPct?: pulumi.Input<number>;
             /**
+             * Load balancing algorithm for ramp up period.
+             */
+            rampUpLoadBalancingAlgorithm?: pulumi.Input<string | enums.desktopvirtualization.v20201110preview.SessionHostLoadBalancingAlgorithm>;
+            /**
              * Minimum host percentage for ramp up period.
              */
-            rampUpMinimumHostPct?: pulumi.Input<number>;
+            rampUpMinimumHostsPct?: pulumi.Input<number>;
             /**
              * Starting time for ramp up period.
              */
@@ -151610,6 +151610,253 @@ export namespace domainregistration {
     }
 }
 
+export namespace edgeorder {
+    export namespace v20201201preview {
+        /**
+         * Address details for an order.
+         */
+        export interface AddressDetails {
+            /**
+             * Customer address and contact details. It should be address resource
+             */
+            shippingAddress: pulumi.Input<inputs.edgeorder.v20201201preview.AddressProperties>;
+        }
+
+        /**
+         * Address Properties
+         */
+        export interface AddressProperties {
+            /**
+             * Contact details for the address
+             */
+            contactDetails: pulumi.Input<inputs.edgeorder.v20201201preview.ContactDetails>;
+            /**
+             * Shipping details for the address
+             */
+            shippingAddress?: pulumi.Input<inputs.edgeorder.v20201201preview.ShippingAddress>;
+        }
+
+        /**
+         * Configuration filters
+         */
+        export interface ConfigurationFilters {
+            /**
+             * Filters specific to product
+             */
+            filterableProperty?: inputs.edgeorder.v20201201preview.FilterableProperty;
+            /**
+             * Product hierarchy information
+             */
+            hierarchyInformation?: inputs.edgeorder.v20201201preview.HierarchyInformation;
+        }
+
+        /**
+         * Contact Details.
+         */
+        export interface ContactDetails {
+            /**
+             * Contact name of the person.
+             */
+            contactName: pulumi.Input<string>;
+            /**
+             * Mobile number of the contact person.
+             */
+            mobile?: pulumi.Input<string>;
+            /**
+             * Phone number of the contact person.
+             */
+            phone: pulumi.Input<string>;
+            /**
+             * Phone extension number of the contact person.
+             */
+            phoneExtension?: pulumi.Input<string>;
+        }
+
+        export interface CustomerSubscriptionDetails {
+            /**
+             * Location placement Id of a subscription
+             */
+            locationPlacementId?: string;
+            /**
+             * Quota ID of a subscription
+             */
+            quotaId: string;
+            /**
+             * List of registered feature flags for subscription
+             */
+            registeredFeatures?: inputs.edgeorder.v20201201preview.CustomerSubscriptionRegisteredFeatures[];
+        }
+
+        export interface CustomerSubscriptionRegisteredFeatures {
+            /**
+             * Name of subscription registered feature
+             */
+            name?: string;
+            /**
+             * State of subscription registered feature
+             */
+            state?: string;
+        }
+
+        /**
+         * Class defining the list of filter values on a filter type as part of configuration request.
+         */
+        export interface FilterableProperty {
+            /**
+             * Values to be filtered.
+             */
+            supportedValues?: string[];
+            /**
+             * Type of product filter.
+             */
+            type: string | enums.edgeorder.v20201201preview.SupportedFilterTypes;
+        }
+
+        /**
+         * Holds details about product hierarchy information
+         */
+        export interface HierarchyInformation {
+            /**
+             * Represents configuration name that uniquely identifies configuration
+             */
+            configurationName?: pulumi.Input<string>;
+            /**
+             * Represents product family name that uniquely identifies product family
+             */
+            productFamilyName?: pulumi.Input<string>;
+            /**
+             * Represents product line name that uniquely identifies product line
+             */
+            productLineName?: pulumi.Input<string>;
+            /**
+             * Represents product name that uniquely identifies product
+             */
+            productName?: pulumi.Input<string>;
+        }
+
+        /**
+         * Notification preference for a job stage.
+         */
+        export interface NotificationPreference {
+            /**
+             * Notification is required or not.
+             */
+            sendNotification: pulumi.Input<boolean>;
+            /**
+             * Name of the stage.
+             */
+            stageName: pulumi.Input<string | enums.edgeorder.v20201201preview.NotificationStageName>;
+        }
+
+        /**
+         * Order details
+         */
+        export interface OrderDetails {
+            /**
+             * Package Shipping details
+             */
+            notificationEmailList?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Order type.
+             */
+            orderType: pulumi.Input<string | enums.edgeorder.v20201201preview.OrderType>;
+            /**
+             * Customer notification Preferences
+             */
+            preferences?: pulumi.Input<inputs.edgeorder.v20201201preview.Preferences>;
+            /**
+             * Unique identifier for configuration.
+             */
+            productDetails: pulumi.Input<inputs.edgeorder.v20201201preview.ProductDetails>;
+        }
+
+        /**
+         * Preferences related to the order
+         */
+        export interface Preferences {
+            /**
+             * Notification preferences.
+             */
+            notificationPreferences?: pulumi.Input<pulumi.Input<inputs.edgeorder.v20201201preview.NotificationPreference>[]>;
+            /**
+             * Preferences related to the shipment logistics of the order.
+             */
+            transportPreferences?: pulumi.Input<inputs.edgeorder.v20201201preview.TransportPreferences>;
+        }
+
+        /**
+         * Represents product details
+         */
+        export interface ProductDetails {
+            /**
+             * Quantity of the product
+             */
+            count?: pulumi.Input<number>;
+            /**
+             *  Hierarchy of the product which uniquely identifies the product
+             */
+            hierarchyInformation: pulumi.Input<inputs.edgeorder.v20201201preview.HierarchyInformation>;
+        }
+
+        /**
+         * Shipping address where customer wishes to receive the device.
+         */
+        export interface ShippingAddress {
+            /**
+             * Type of address.
+             */
+            addressType?: pulumi.Input<string | enums.edgeorder.v20201201preview.AddressType>;
+            /**
+             * Name of the City.
+             */
+            city?: pulumi.Input<string>;
+            /**
+             * Name of the company.
+             */
+            companyName?: pulumi.Input<string>;
+            /**
+             * Name of the Country.
+             */
+            country: pulumi.Input<string>;
+            /**
+             * Postal code.
+             */
+            postalCode?: pulumi.Input<string>;
+            /**
+             * Name of the State or Province.
+             */
+            stateOrProvince?: pulumi.Input<string>;
+            /**
+             * Street Address line 1.
+             */
+            streetAddress1: pulumi.Input<string>;
+            /**
+             * Street Address line 2.
+             */
+            streetAddress2?: pulumi.Input<string>;
+            /**
+             * Street Address line 3.
+             */
+            streetAddress3?: pulumi.Input<string>;
+            /**
+             * Extended Zip Code.
+             */
+            zipExtendedCode?: pulumi.Input<string>;
+        }
+
+        /**
+         * Preferences related to the shipment logistics of the sku
+         */
+        export interface TransportPreferences {
+            /**
+             * Indicates Shipment Logistics type that the customer preferred.
+             */
+            preferredShipmentType: pulumi.Input<string | enums.edgeorder.v20201201preview.TransportShipmentTypes>;
+        }
+
+    }
+}
+
 export namespace engagementfabric {
     export namespace v20180901preview {
         /**
@@ -156822,6 +157069,10 @@ export namespace hdinsight {
              */
             location?: pulumi.Input<string>;
             /**
+             * The private ip address of the endpoint.
+             */
+            privateIPAddress?: pulumi.Input<string>;
+            /**
              * The public port to connect to.
              */
             publicPort?: pulumi.Input<number>;
@@ -157595,6 +157846,16 @@ export namespace healthcareapis {
         }
 
         /**
+         * Azure container registry configuration information
+         */
+        export interface ServiceAcrConfigurationInfo {
+            /**
+             * The list of the ACR login servers.
+             */
+            loginServers?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
          * Authentication configuration information
          */
         export interface ServiceAuthenticationConfigurationInfo {
@@ -157670,6 +157931,10 @@ export namespace healthcareapis {
              * The access policies of the service instance.
              */
             accessPolicies?: pulumi.Input<pulumi.Input<inputs.healthcareapis.latest.ServiceAccessPolicyEntry>[]>;
+            /**
+             * The azure container registry settings used for convert data operation of the service instance.
+             */
+            acrConfiguration?: pulumi.Input<inputs.healthcareapis.latest.ServiceAcrConfigurationInfo>;
             /**
              * The authentication configuration for the service instance.
              */
@@ -158176,6 +158441,173 @@ export namespace healthcareapis {
              * Type of identity being specified, currently SystemAssigned and None are allowed.
              */
             type?: pulumi.Input<string | enums.healthcareapis.v20200330.ManagedServiceIdentityType>;
+        }
+
+    }
+
+    export namespace v20210111 {
+        /**
+         * The Private Endpoint Connection resource.
+         */
+        export interface PrivateEndpointConnection {
+            /**
+             * A collection of information about the state of the connection between service consumer and provider.
+             */
+            privateLinkServiceConnectionState: pulumi.Input<inputs.healthcareapis.v20210111.PrivateLinkServiceConnectionState>;
+        }
+
+        /**
+         * A collection of information about the state of the connection between service consumer and provider.
+         */
+        export interface PrivateLinkServiceConnectionState {
+            /**
+             * A message indicating if changes on the service provider require any updates on the consumer.
+             */
+            actionsRequired?: pulumi.Input<string>;
+            /**
+             * The reason for approval/rejection of the connection.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+             */
+            status?: pulumi.Input<string | enums.healthcareapis.v20210111.PrivateEndpointServiceConnectionStatus>;
+        }
+
+        /**
+         * An access policy entry.
+         */
+        export interface ServiceAccessPolicyEntry {
+            /**
+             * An Azure AD object ID (User or Apps) that is allowed access to the FHIR service.
+             */
+            objectId: pulumi.Input<string>;
+        }
+
+        /**
+         * Azure container registry configuration information
+         */
+        export interface ServiceAcrConfigurationInfo {
+            /**
+             * The list of the ACR login servers.
+             */
+            loginServers?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * Authentication configuration information
+         */
+        export interface ServiceAuthenticationConfigurationInfo {
+            /**
+             * The audience url for the service
+             */
+            audience?: pulumi.Input<string>;
+            /**
+             * The authority url for the service
+             */
+            authority?: pulumi.Input<string>;
+            /**
+             * If the SMART on FHIR proxy is enabled
+             */
+            smartProxyEnabled?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * The settings for the CORS configuration of the service instance.
+         */
+        export interface ServiceCorsConfigurationInfo {
+            /**
+             * If credentials are allowed via CORS.
+             */
+            allowCredentials?: pulumi.Input<boolean>;
+            /**
+             * The headers to be allowed via CORS.
+             */
+            headers?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The max age to be allowed via CORS.
+             */
+            maxAge?: pulumi.Input<number>;
+            /**
+             * The methods to be allowed via CORS.
+             */
+            methods?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The origins to be allowed via CORS.
+             */
+            origins?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * The settings for the Cosmos DB database backing the service.
+         */
+        export interface ServiceCosmosDbConfigurationInfo {
+            /**
+             * The URI of the customer-managed key for the backing database.
+             */
+            keyVaultKeyUri?: pulumi.Input<string>;
+            /**
+             * The provisioned throughput for the backing database.
+             */
+            offerThroughput?: pulumi.Input<number>;
+        }
+
+        /**
+         * Export operation configuration information
+         */
+        export interface ServiceExportConfigurationInfo {
+            /**
+             * The name of the default export storage account.
+             */
+            storageAccountName?: pulumi.Input<string>;
+        }
+
+        /**
+         * The properties of a service instance.
+         */
+        export interface ServicesProperties {
+            /**
+             * The access policies of the service instance.
+             */
+            accessPolicies?: pulumi.Input<pulumi.Input<inputs.healthcareapis.v20210111.ServiceAccessPolicyEntry>[]>;
+            /**
+             * The azure container registry settings used for convert data operation of the service instance.
+             */
+            acrConfiguration?: pulumi.Input<inputs.healthcareapis.v20210111.ServiceAcrConfigurationInfo>;
+            /**
+             * The authentication configuration for the service instance.
+             */
+            authenticationConfiguration?: pulumi.Input<inputs.healthcareapis.v20210111.ServiceAuthenticationConfigurationInfo>;
+            /**
+             * The settings for the CORS configuration of the service instance.
+             */
+            corsConfiguration?: pulumi.Input<inputs.healthcareapis.v20210111.ServiceCorsConfigurationInfo>;
+            /**
+             * The settings for the Cosmos DB database backing the service.
+             */
+            cosmosDbConfiguration?: pulumi.Input<inputs.healthcareapis.v20210111.ServiceCosmosDbConfigurationInfo>;
+            /**
+             * The settings for the export operation of the service instance.
+             */
+            exportConfiguration?: pulumi.Input<inputs.healthcareapis.v20210111.ServiceExportConfigurationInfo>;
+            /**
+             * The list of private endpoint connections that are set up for this resource.
+             */
+            privateEndpointConnections?: pulumi.Input<pulumi.Input<inputs.healthcareapis.v20210111.PrivateEndpointConnection>[]>;
+            /**
+             * Control permission for data plane traffic coming from public networks while private endpoint is enabled.
+             */
+            publicNetworkAccess?: pulumi.Input<string | enums.healthcareapis.v20210111.PublicNetworkAccess>;
+        }
+
+        /**
+         * Setting indicating whether the service has a managed identity associated with it.
+         */
+        export interface ServicesResourceIdentity {
+            /**
+             * Type of identity being specified, currently SystemAssigned and None are allowed.
+             */
+            type?: pulumi.Input<string | enums.healthcareapis.v20210111.ManagedServiceIdentityType>;
         }
 
     }
@@ -198637,6 +199069,32 @@ export namespace mixedreality {
             type?: pulumi.Input<enums.mixedreality.latest.ResourceIdentityType>;
         }
 
+        /**
+         * The resource model definition representing SKU
+         */
+        export interface Sku {
+            /**
+             * If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+             */
+            capacity?: pulumi.Input<number>;
+            /**
+             * If the service has different generations of hardware, for the same SKU, then that can be captured here.
+             */
+            family?: pulumi.Input<string>;
+            /**
+             * The name of the SKU. Ex - P3. It is typically a letter+number code
+             */
+            name: pulumi.Input<string>;
+            /**
+             * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+             */
+            size?: pulumi.Input<string>;
+            /**
+             * This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+             */
+            tier?: pulumi.Input<enums.mixedreality.latest.SkuTier>;
+        }
+
     }
 
     export namespace v20190228preview {
@@ -198684,6 +199142,45 @@ export namespace mixedreality {
              * The identity type.
              */
             type?: pulumi.Input<enums.mixedreality.v20200501.ResourceIdentityType>;
+        }
+
+    }
+
+    export namespace v20210101 {
+        /**
+         * Identity for the resource.
+         */
+        export interface Identity {
+            /**
+             * The identity type.
+             */
+            type?: pulumi.Input<enums.mixedreality.v20210101.ResourceIdentityType>;
+        }
+
+        /**
+         * The resource model definition representing SKU
+         */
+        export interface Sku {
+            /**
+             * If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+             */
+            capacity?: pulumi.Input<number>;
+            /**
+             * If the service has different generations of hardware, for the same SKU, then that can be captured here.
+             */
+            family?: pulumi.Input<string>;
+            /**
+             * The name of the SKU. Ex - P3. It is typically a letter+number code
+             */
+            name: pulumi.Input<string>;
+            /**
+             * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+             */
+            size?: pulumi.Input<string>;
+            /**
+             * This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+             */
+            tier?: pulumi.Input<enums.mixedreality.v20210101.SkuTier>;
         }
 
     }

@@ -166967,10 +166967,6 @@ export namespace desktopvirtualization {
              */
             rampDownNotificationMessage?: string;
             /**
-             * Number of minutes to wait to stop hosts during ramp down period.
-             */
-            rampDownNotificationMinutes?: number;
-            /**
              * Starting time for ramp down period.
              */
             rampDownStartTime?: string;
@@ -166979,17 +166975,21 @@ export namespace desktopvirtualization {
              */
             rampDownStopHostsWhen?: string;
             /**
-             * Load balancing algorithm for ramp up period.
+             * Number of minutes to wait to stop hosts during ramp down period.
              */
-            rampUpAlgorithm?: string;
+            rampDownWaitTimeMinutes?: number;
             /**
              * Capacity threshold for ramp up period.
              */
             rampUpCapacityThresholdPct?: number;
             /**
+             * Load balancing algorithm for ramp up period.
+             */
+            rampUpLoadBalancingAlgorithm?: string;
+            /**
              * Minimum host percentage for ramp up period.
              */
-            rampUpMinimumHostPct?: number;
+            rampUpMinimumHostsPct?: number;
             /**
              * Starting time for ramp up period.
              */
@@ -190325,6 +190325,641 @@ export namespace domainregistration {
     }
 }
 
+export namespace edgeorder {
+    export namespace v20201201preview {
+        export interface AdditionalErrorInfoResponse {
+            info?: any;
+            type?: string;
+        }
+
+        /**
+         * Address details for an order.
+         */
+        export interface AddressDetailsResponse {
+            /**
+             * Return shipping address
+             */
+            returnAddress: outputs.edgeorder.v20201201preview.AddressPropertiesResponse;
+            /**
+             * Customer address and contact details. It should be address resource
+             */
+            shippingAddress: outputs.edgeorder.v20201201preview.AddressPropertiesResponse;
+        }
+
+        /**
+         * Address Properties
+         */
+        export interface AddressPropertiesResponse {
+            /**
+             * Contact details for the address
+             */
+            contactDetails: outputs.edgeorder.v20201201preview.ContactDetailsResponse;
+            /**
+             * Shipping details for the address
+             */
+            shippingAddress?: outputs.edgeorder.v20201201preview.ShippingAddressResponse;
+        }
+
+        /**
+         * Availability information of a product system.
+         */
+        export interface AvailabilityInformationResponse {
+            /**
+             * Current availability stage of the product. Availability stage
+             */
+            availabilityStage: string;
+            /**
+             * Reason why the product is disabled.
+             */
+            disabledReason: string;
+            /**
+             * Message for why the product is disabled.
+             */
+            disabledReasonMessage: string;
+        }
+
+        /**
+         * Model to represent the billing cycle
+         */
+        export interface BillingModelResponse {
+            /**
+             * String to represent the billing model
+             */
+            model: string;
+        }
+
+        export interface CloudErrorResponse {
+            additionalInfo: outputs.edgeorder.v20201201preview.AdditionalErrorInfoResponse[];
+            code?: string;
+            details: outputs.edgeorder.v20201201preview.CloudErrorResponse[];
+            message?: string;
+            target?: string;
+        }
+
+        /**
+         * Configuration object.
+         */
+        export interface ConfigurationResponse {
+            /**
+             * Availability information of the product system.
+             */
+            availabilityInformation: outputs.edgeorder.v20201201preview.AvailabilityInformationResponse;
+            /**
+             * Cost information for the product system.
+             */
+            costInformation: outputs.edgeorder.v20201201preview.CostInformationResponse;
+            /**
+             * Description related to the product system.
+             */
+            description: outputs.edgeorder.v20201201preview.DescriptionResponse;
+            /**
+             * Display Name for the product system.
+             */
+            displayName: string;
+            /**
+             * list of filters supported for a product
+             */
+            filterableProperties: outputs.edgeorder.v20201201preview.FilterablePropertyResponse[];
+            /**
+             * Hierarchy information of the product system.
+             */
+            hierarchyInformation: outputs.edgeorder.v20201201preview.HierarchyInformationResponse;
+            /**
+             * Image information for the product system.
+             */
+            imageInformation: outputs.edgeorder.v20201201preview.ImageInformationResponse[];
+            /**
+             * Specifications of the configuration
+             */
+            specifications: outputs.edgeorder.v20201201preview.SpecificationResponse[];
+        }
+
+        /**
+         * Contact Details.
+         */
+        export interface ContactDetailsResponse {
+            /**
+             * Contact name of the person.
+             */
+            contactName: string;
+            /**
+             * Mobile number of the contact person.
+             */
+            mobile?: string;
+            /**
+             * Phone number of the contact person.
+             */
+            phone: string;
+            /**
+             * Phone extension number of the contact person.
+             */
+            phoneExtension?: string;
+        }
+
+        /**
+         * Cost information for the product system
+         */
+        export interface CostInformationResponse {
+            /**
+             * Details on the various billing aspects for the product system.
+             */
+            meterDetails: outputs.edgeorder.v20201201preview.MeterDetailsResponse[];
+            /**
+             * Primary meter i.e. basic billing type for the product system.
+             */
+            primaryMeterType: string;
+        }
+
+        /**
+         * Description related properties of a product system.
+         */
+        export interface DescriptionResponse {
+            /**
+             * Attributes for the product system.
+             */
+            attributes: string[];
+            /**
+             * Type of description.
+             */
+            descriptionType: string;
+            /**
+             * Keywords for the product system.
+             */
+            keywords: string[];
+            /**
+             * Links for the product system.
+             */
+            links: outputs.edgeorder.v20201201preview.LinkResponse[];
+            /**
+             * Long description of the product system.
+             */
+            longDescription: string;
+            /**
+             * Short description of the product system.
+             */
+            shortDescription: string;
+        }
+
+        /**
+         * Device details.
+         */
+        export interface DeviceDetailsResponse {
+            /**
+             * Package Shipping details
+             */
+            deviceHistory: string[];
+            /**
+             * device serial number
+             */
+            serialNumber: string;
+        }
+
+        /**
+         * Class defining the list of filter values on a filter type as part of configuration request.
+         */
+        export interface FilterablePropertyResponse {
+            /**
+             * Values to be filtered.
+             */
+            supportedValues?: string[];
+            /**
+             * Type of product filter.
+             */
+            type: string;
+        }
+
+        /**
+         * Holds details about product hierarchy information
+         */
+        export interface HierarchyInformationResponse {
+            /**
+             * Represents configuration name that uniquely identifies configuration
+             */
+            configurationName?: string;
+            /**
+             * Represents product family name that uniquely identifies product family
+             */
+            productFamilyName?: string;
+            /**
+             * Represents product line name that uniquely identifies product line
+             */
+            productLineName?: string;
+            /**
+             * Represents product name that uniquely identifies product
+             */
+            productName?: string;
+        }
+
+        /**
+         * Image for the product
+         */
+        export interface ImageInformationResponse {
+            /**
+             * Type of the image
+             */
+            imageType: string;
+            /**
+             * Url of the image
+             */
+            imageUrl: string;
+        }
+
+        /**
+         * Returns link related to the product
+         */
+        export interface LinkResponse {
+            /**
+             * Type of link
+             */
+            linkType: string;
+            /**
+             * Url of the link
+             */
+            linkUrl: string;
+        }
+
+        /**
+         * Billing details for each meter.
+         */
+        export interface MeterDetailsResponse {
+            /**
+             * Billing model to represent billing cycle, i.e. Monthly, biweekly, daily, hourly etc.
+             */
+            billingModel: outputs.edgeorder.v20201201preview.BillingModelResponse;
+            /**
+             * MeterId/ Billing Guid against which the product system will be charged
+             */
+            meterId: string;
+            /**
+             * Category of the billing meter.
+             */
+            meterType: string;
+        }
+
+        /**
+         * Notification preference for a job stage.
+         */
+        export interface NotificationPreferenceResponse {
+            /**
+             * Notification is required or not.
+             */
+            sendNotification: boolean;
+            /**
+             * Name of the stage.
+             */
+            stageName: string;
+        }
+
+        /**
+         * Order details
+         */
+        export interface OrderDetailsResponse {
+            /**
+             * Cancellation reason.
+             */
+            cancellationReason: string;
+            /**
+             * Describes whether the order is cancellable or not.
+             */
+            cancellationStatus: string;
+            /**
+             * Current Order Status
+             */
+            currentStatus: outputs.edgeorder.v20201201preview.OrderStatusDetailsResponse;
+            /**
+             * Describes whether the order is deletable or not.
+             */
+            deletionStatus: string;
+            /**
+             * Top level error for the job.
+             */
+            error: outputs.edgeorder.v20201201preview.CloudErrorResponse;
+            /**
+             * Forward Package Shipping details
+             */
+            forwardShippingDetails: outputs.edgeorder.v20201201preview.ShippingDetailsResponse;
+            /**
+             * parent RP details
+             */
+            managementRpDetails: any;
+            /**
+             * Package Shipping details
+             */
+            notificationEmailList?: string[];
+            /**
+             * Order history
+             */
+            orderStatusHistory: outputs.edgeorder.v20201201preview.OrderStatusDetailsResponse[];
+            /**
+             * Order type.
+             */
+            orderType: string;
+            /**
+             * Customer notification Preferences
+             */
+            preferences?: outputs.edgeorder.v20201201preview.PreferencesResponse;
+            /**
+             * Unique identifier for configuration.
+             */
+            productDetails: outputs.edgeorder.v20201201preview.ProductDetailsResponse;
+            /**
+             * Return reason.
+             */
+            returnReason: string;
+            /**
+             * Describes whether the order is returnable or not.
+             */
+            returnStatus: string;
+            /**
+             * Reverse Package Shipping details
+             */
+            reverseShippingDetails: outputs.edgeorder.v20201201preview.ShippingDetailsResponse;
+        }
+
+        /**
+         * Order status CurrentStatus
+         */
+        export interface OrderStatusDetailsResponse {
+            /**
+             * last time order was updated
+             */
+            lastUpdatedTime?: string;
+            /**
+             * Order status
+             */
+            orderStatus: string;
+        }
+
+        /**
+         * Preferences related to the order
+         */
+        export interface PreferencesResponse {
+            /**
+             * Notification preferences.
+             */
+            notificationPreferences?: outputs.edgeorder.v20201201preview.NotificationPreferenceResponse[];
+            /**
+             * Preferences related to the shipment logistics of the order.
+             */
+            transportPreferences?: outputs.edgeorder.v20201201preview.TransportPreferencesResponse;
+        }
+
+        /**
+         * Represents product details
+         */
+        export interface ProductDetailsResponse {
+            /**
+             * Quantity of the product
+             */
+            count?: number;
+            /**
+             * list of device details
+             */
+            deviceDetails: outputs.edgeorder.v20201201preview.DeviceDetailsResponse[];
+            /**
+             *  Hierarchy of the product which uniquely identifies the product
+             */
+            hierarchyInformation: outputs.edgeorder.v20201201preview.HierarchyInformationResponse;
+        }
+
+        /**
+         * Product Family
+         */
+        export interface ProductFamilyResponse {
+            /**
+             * Availability information of the product system.
+             */
+            availabilityInformation: outputs.edgeorder.v20201201preview.AvailabilityInformationResponse;
+            /**
+             * Cost information for the product system.
+             */
+            costInformation: outputs.edgeorder.v20201201preview.CostInformationResponse;
+            /**
+             * Description related to the product system.
+             */
+            description: outputs.edgeorder.v20201201preview.DescriptionResponse;
+            /**
+             * Display Name for the product system.
+             */
+            displayName: string;
+            /**
+             * list of filters supported for a product
+             */
+            filterableProperties: outputs.edgeorder.v20201201preview.FilterablePropertyResponse[];
+            /**
+             * Hierarchy information of the product system.
+             */
+            hierarchyInformation: outputs.edgeorder.v20201201preview.HierarchyInformationResponse;
+            /**
+             * Image information for the product system.
+             */
+            imageInformation: outputs.edgeorder.v20201201preview.ImageInformationResponse[];
+            /**
+             * List of product lines supported in the product family
+             */
+            productLines: outputs.edgeorder.v20201201preview.ProductLineResponse[];
+        }
+
+        /**
+         * Product line
+         */
+        export interface ProductLineResponse {
+            /**
+             * Availability information of the product system.
+             */
+            availabilityInformation: outputs.edgeorder.v20201201preview.AvailabilityInformationResponse;
+            /**
+             * Cost information for the product system.
+             */
+            costInformation: outputs.edgeorder.v20201201preview.CostInformationResponse;
+            /**
+             * Description related to the product system.
+             */
+            description: outputs.edgeorder.v20201201preview.DescriptionResponse;
+            /**
+             * Display Name for the product system.
+             */
+            displayName: string;
+            /**
+             * list of filters supported for a product
+             */
+            filterableProperties: outputs.edgeorder.v20201201preview.FilterablePropertyResponse[];
+            /**
+             * Hierarchy information of the product system.
+             */
+            hierarchyInformation: outputs.edgeorder.v20201201preview.HierarchyInformationResponse;
+            /**
+             * Image information for the product system.
+             */
+            imageInformation: outputs.edgeorder.v20201201preview.ImageInformationResponse[];
+            /**
+             * List of products in the product line
+             */
+            products: outputs.edgeorder.v20201201preview.ProductResponse[];
+        }
+
+        /**
+         * List of Products
+         */
+        export interface ProductResponse {
+            /**
+             * Availability information of the product system.
+             */
+            availabilityInformation: outputs.edgeorder.v20201201preview.AvailabilityInformationResponse;
+            /**
+             * List of configurations for the product
+             */
+            configurations: outputs.edgeorder.v20201201preview.ConfigurationResponse[];
+            /**
+             * Cost information for the product system.
+             */
+            costInformation: outputs.edgeorder.v20201201preview.CostInformationResponse;
+            /**
+             * Description related to the product system.
+             */
+            description: outputs.edgeorder.v20201201preview.DescriptionResponse;
+            /**
+             * Display Name for the product system.
+             */
+            displayName: string;
+            /**
+             * list of filters supported for a product
+             */
+            filterableProperties: outputs.edgeorder.v20201201preview.FilterablePropertyResponse[];
+            /**
+             * Hierarchy information of the product system.
+             */
+            hierarchyInformation: outputs.edgeorder.v20201201preview.HierarchyInformationResponse;
+            /**
+             * Image information for the product system.
+             */
+            imageInformation: outputs.edgeorder.v20201201preview.ImageInformationResponse[];
+        }
+
+        /**
+         * Shipping address where customer wishes to receive the device.
+         */
+        export interface ShippingAddressResponse {
+            /**
+             * Type of address.
+             */
+            addressType?: string;
+            /**
+             * Name of the City.
+             */
+            city?: string;
+            /**
+             * Name of the company.
+             */
+            companyName?: string;
+            /**
+             * Name of the Country.
+             */
+            country: string;
+            /**
+             * Postal code.
+             */
+            postalCode?: string;
+            /**
+             * Name of the State or Province.
+             */
+            stateOrProvince?: string;
+            /**
+             * Street Address line 1.
+             */
+            streetAddress1: string;
+            /**
+             * Street Address line 2.
+             */
+            streetAddress2?: string;
+            /**
+             * Street Address line 3.
+             */
+            streetAddress3?: string;
+            /**
+             * Extended Zip Code.
+             */
+            zipExtendedCode?: string;
+        }
+
+        /**
+         * Package shipping details
+         */
+        export interface ShippingDetailsResponse {
+            /**
+             * Carrier Name for display purpose. Not to be used for any processing.
+             */
+            carrierDisplayName: string;
+            /**
+             * Name of the carrier.
+             */
+            carrierName: string;
+            /**
+             * TrackingId of the package
+             */
+            trackingId: string;
+            /**
+             * TrackingUrl of the package.
+             */
+            trackingUrl: string;
+        }
+
+        /**
+         * Specifications of the configurations
+         */
+        export interface SpecificationResponse {
+            /**
+             * Name of the specification
+             */
+            name: string;
+            /**
+             * Value of the specification
+             */
+            value: string;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
+        }
+
+        /**
+         * Preferences related to the shipment logistics of the sku
+         */
+        export interface TransportPreferencesResponse {
+            /**
+             * Indicates Shipment Logistics type that the customer preferred.
+             */
+            preferredShipmentType: string;
+        }
+    }
+}
+
 export namespace engagementfabric {
     export namespace v20180901preview {
         /**
@@ -195701,6 +196336,10 @@ export namespace hdinsight {
              */
             location?: string;
             /**
+             * The private ip address of the endpoint.
+             */
+            privateIPAddress?: string;
+            /**
              * The public port to connect to.
              */
             publicPort?: number;
@@ -196067,6 +196706,10 @@ export namespace hdinsight {
              * The port to connect to.
              */
             port?: number;
+            /**
+             * The private ip address of the endpoint.
+             */
+            privateIPAddress?: string;
             /**
              * The protocol of the endpoint.
              */
@@ -196844,6 +197487,16 @@ export namespace healthcareapis {
         }
 
         /**
+         * Azure container registry configuration information
+         */
+        export interface ServiceAcrConfigurationInfoResponse {
+            /**
+             * The list of the ACR login servers.
+             */
+            loginServers?: string[];
+        }
+
+        /**
          * Authentication configuration information
          */
         export interface ServiceAuthenticationConfigurationInfoResponse {
@@ -196920,6 +197573,10 @@ export namespace healthcareapis {
              */
             accessPolicies?: outputs.healthcareapis.latest.ServiceAccessPolicyEntryResponse[];
             /**
+             * The azure container registry settings used for convert data operation of the service instance.
+             */
+            acrConfiguration?: outputs.healthcareapis.latest.ServiceAcrConfigurationInfoResponse;
+            /**
              * The authentication configuration for the service instance.
              */
             authenticationConfiguration?: outputs.healthcareapis.latest.ServiceAuthenticationConfigurationInfoResponse;
@@ -196965,6 +197622,36 @@ export namespace healthcareapis {
              * Type of identity being specified, currently SystemAssigned and None are allowed.
              */
             type?: string;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
         }
     }
 
@@ -197503,6 +198190,244 @@ export namespace healthcareapis {
              * Type of identity being specified, currently SystemAssigned and None are allowed.
              */
             type?: string;
+        }
+    }
+
+    export namespace v20210111 {
+        /**
+         * The Private Endpoint Connection resource.
+         */
+        export interface PrivateEndpointConnectionResponse {
+            /**
+             * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             */
+            id: string;
+            /**
+             * The name of the resource
+             */
+            name: string;
+            /**
+             * The resource of private end point.
+             */
+            privateEndpoint?: outputs.healthcareapis.v20210111.PrivateEndpointResponse;
+            /**
+             * A collection of information about the state of the connection between service consumer and provider.
+             */
+            privateLinkServiceConnectionState: outputs.healthcareapis.v20210111.PrivateLinkServiceConnectionStateResponse;
+            /**
+             * The provisioning state of the private endpoint connection resource.
+             */
+            provisioningState: string;
+            /**
+             * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+             */
+            type: string;
+        }
+
+        /**
+         * The Private Endpoint resource.
+         */
+        export interface PrivateEndpointResponse {
+            /**
+             * The ARM identifier for Private Endpoint
+             */
+            id: string;
+        }
+
+        /**
+         * A collection of information about the state of the connection between service consumer and provider.
+         */
+        export interface PrivateLinkServiceConnectionStateResponse {
+            /**
+             * A message indicating if changes on the service provider require any updates on the consumer.
+             */
+            actionsRequired?: string;
+            /**
+             * The reason for approval/rejection of the connection.
+             */
+            description?: string;
+            /**
+             * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+             */
+            status?: string;
+        }
+
+        /**
+         * An access policy entry.
+         */
+        export interface ServiceAccessPolicyEntryResponse {
+            /**
+             * An Azure AD object ID (User or Apps) that is allowed access to the FHIR service.
+             */
+            objectId: string;
+        }
+
+        /**
+         * Azure container registry configuration information
+         */
+        export interface ServiceAcrConfigurationInfoResponse {
+            /**
+             * The list of the ACR login servers.
+             */
+            loginServers?: string[];
+        }
+
+        /**
+         * Authentication configuration information
+         */
+        export interface ServiceAuthenticationConfigurationInfoResponse {
+            /**
+             * The audience url for the service
+             */
+            audience?: string;
+            /**
+             * The authority url for the service
+             */
+            authority?: string;
+            /**
+             * If the SMART on FHIR proxy is enabled
+             */
+            smartProxyEnabled?: boolean;
+        }
+
+        /**
+         * The settings for the CORS configuration of the service instance.
+         */
+        export interface ServiceCorsConfigurationInfoResponse {
+            /**
+             * If credentials are allowed via CORS.
+             */
+            allowCredentials?: boolean;
+            /**
+             * The headers to be allowed via CORS.
+             */
+            headers?: string[];
+            /**
+             * The max age to be allowed via CORS.
+             */
+            maxAge?: number;
+            /**
+             * The methods to be allowed via CORS.
+             */
+            methods?: string[];
+            /**
+             * The origins to be allowed via CORS.
+             */
+            origins?: string[];
+        }
+
+        /**
+         * The settings for the Cosmos DB database backing the service.
+         */
+        export interface ServiceCosmosDbConfigurationInfoResponse {
+            /**
+             * The URI of the customer-managed key for the backing database.
+             */
+            keyVaultKeyUri?: string;
+            /**
+             * The provisioned throughput for the backing database.
+             */
+            offerThroughput?: number;
+        }
+
+        /**
+         * Export operation configuration information
+         */
+        export interface ServiceExportConfigurationInfoResponse {
+            /**
+             * The name of the default export storage account.
+             */
+            storageAccountName?: string;
+        }
+
+        /**
+         * The properties of a service instance.
+         */
+        export interface ServicesPropertiesResponse {
+            /**
+             * The access policies of the service instance.
+             */
+            accessPolicies?: outputs.healthcareapis.v20210111.ServiceAccessPolicyEntryResponse[];
+            /**
+             * The azure container registry settings used for convert data operation of the service instance.
+             */
+            acrConfiguration?: outputs.healthcareapis.v20210111.ServiceAcrConfigurationInfoResponse;
+            /**
+             * The authentication configuration for the service instance.
+             */
+            authenticationConfiguration?: outputs.healthcareapis.v20210111.ServiceAuthenticationConfigurationInfoResponse;
+            /**
+             * The settings for the CORS configuration of the service instance.
+             */
+            corsConfiguration?: outputs.healthcareapis.v20210111.ServiceCorsConfigurationInfoResponse;
+            /**
+             * The settings for the Cosmos DB database backing the service.
+             */
+            cosmosDbConfiguration?: outputs.healthcareapis.v20210111.ServiceCosmosDbConfigurationInfoResponse;
+            /**
+             * The settings for the export operation of the service instance.
+             */
+            exportConfiguration?: outputs.healthcareapis.v20210111.ServiceExportConfigurationInfoResponse;
+            /**
+             * The list of private endpoint connections that are set up for this resource.
+             */
+            privateEndpointConnections?: outputs.healthcareapis.v20210111.PrivateEndpointConnectionResponse[];
+            /**
+             * The provisioning state.
+             */
+            provisioningState: string;
+            /**
+             * Control permission for data plane traffic coming from public networks while private endpoint is enabled.
+             */
+            publicNetworkAccess?: string;
+        }
+
+        /**
+         * Setting indicating whether the service has a managed identity associated with it.
+         */
+        export interface ServicesResourceResponseIdentity {
+            /**
+             * The principal ID of the resource identity.
+             */
+            principalId: string;
+            /**
+             * The tenant ID of the resource.
+             */
+            tenantId: string;
+            /**
+             * Type of identity being specified, currently SystemAssigned and None are allowed.
+             */
+            type?: string;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
         }
     }
 }
@@ -254378,6 +255303,62 @@ export namespace mixedreality {
              */
             type?: string;
         }
+
+        /**
+         * The resource model definition representing SKU
+         */
+        export interface SkuResponse {
+            /**
+             * If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+             */
+            capacity?: number;
+            /**
+             * If the service has different generations of hardware, for the same SKU, then that can be captured here.
+             */
+            family?: string;
+            /**
+             * The name of the SKU. Ex - P3. It is typically a letter+number code
+             */
+            name: string;
+            /**
+             * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+             */
+            size?: string;
+            /**
+             * This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+             */
+            tier?: string;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
+        }
     }
 
     export namespace v20190228preview {
@@ -254454,6 +255435,82 @@ export namespace mixedreality {
              * The identity type.
              */
             type?: string;
+        }
+    }
+
+    export namespace v20210101 {
+        /**
+         * Identity for the resource.
+         */
+        export interface IdentityResponse {
+            /**
+             * The principal ID of resource identity.
+             */
+            principalId: string;
+            /**
+             * The tenant ID of resource.
+             */
+            tenantId: string;
+            /**
+             * The identity type.
+             */
+            type?: string;
+        }
+
+        /**
+         * The resource model definition representing SKU
+         */
+        export interface SkuResponse {
+            /**
+             * If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+             */
+            capacity?: number;
+            /**
+             * If the service has different generations of hardware, for the same SKU, then that can be captured here.
+             */
+            family?: string;
+            /**
+             * The name of the SKU. Ex - P3. It is typically a letter+number code
+             */
+            name: string;
+            /**
+             * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+             */
+            size?: string;
+            /**
+             * This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+             */
+            tier?: string;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
         }
     }
 }
@@ -264604,6 +265661,16 @@ export namespace network {
              * A priority assigned to this rule. 
              */
             priority: number;
+        }
+
+        /**
+         * Defines the Resource ID for a Security Policy.
+         */
+        export interface SecurityPolicyLinkResponse {
+            /**
+             * Resource ID.
+             */
+            id?: string;
         }
 
         /**
@@ -409803,6 +410870,16 @@ export namespace network {
          * Defines the Resource ID for a Routing Rule.
          */
         export interface RoutingRuleLinkResponse {
+            /**
+             * Resource ID.
+             */
+            id?: string;
+        }
+
+        /**
+         * Defines the Resource ID for a Security Policy.
+         */
+        export interface SecurityPolicyLinkResponse {
             /**
              * Resource ID.
              */

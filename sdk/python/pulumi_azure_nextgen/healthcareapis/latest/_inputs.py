@@ -13,6 +13,7 @@ __all__ = [
     'PrivateEndpointConnectionArgs',
     'PrivateLinkServiceConnectionStateArgs',
     'ServiceAccessPolicyEntryArgs',
+    'ServiceAcrConfigurationInfoArgs',
     'ServiceAuthenticationConfigurationInfoArgs',
     'ServiceCorsConfigurationInfoArgs',
     'ServiceCosmosDbConfigurationInfoArgs',
@@ -121,6 +122,30 @@ class ServiceAccessPolicyEntryArgs:
     @object_id.setter
     def object_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "object_id", value)
+
+
+@pulumi.input_type
+class ServiceAcrConfigurationInfoArgs:
+    def __init__(__self__, *,
+                 login_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Azure container registry configuration information
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] login_servers: The list of the ACR login servers.
+        """
+        if login_servers is not None:
+            pulumi.set(__self__, "login_servers", login_servers)
+
+    @property
+    @pulumi.getter(name="loginServers")
+    def login_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of the ACR login servers.
+        """
+        return pulumi.get(self, "login_servers")
+
+    @login_servers.setter
+    def login_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "login_servers", value)
 
 
 @pulumi.input_type
@@ -335,6 +360,7 @@ class ServiceExportConfigurationInfoArgs:
 class ServicesPropertiesArgs:
     def __init__(__self__, *,
                  access_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAccessPolicyEntryArgs']]]] = None,
+                 acr_configuration: Optional[pulumi.Input['ServiceAcrConfigurationInfoArgs']] = None,
                  authentication_configuration: Optional[pulumi.Input['ServiceAuthenticationConfigurationInfoArgs']] = None,
                  cors_configuration: Optional[pulumi.Input['ServiceCorsConfigurationInfoArgs']] = None,
                  cosmos_db_configuration: Optional[pulumi.Input['ServiceCosmosDbConfigurationInfoArgs']] = None,
@@ -344,6 +370,7 @@ class ServicesPropertiesArgs:
         """
         The properties of a service instance.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceAccessPolicyEntryArgs']]] access_policies: The access policies of the service instance.
+        :param pulumi.Input['ServiceAcrConfigurationInfoArgs'] acr_configuration: The azure container registry settings used for convert data operation of the service instance.
         :param pulumi.Input['ServiceAuthenticationConfigurationInfoArgs'] authentication_configuration: The authentication configuration for the service instance.
         :param pulumi.Input['ServiceCorsConfigurationInfoArgs'] cors_configuration: The settings for the CORS configuration of the service instance.
         :param pulumi.Input['ServiceCosmosDbConfigurationInfoArgs'] cosmos_db_configuration: The settings for the Cosmos DB database backing the service.
@@ -353,6 +380,8 @@ class ServicesPropertiesArgs:
         """
         if access_policies is not None:
             pulumi.set(__self__, "access_policies", access_policies)
+        if acr_configuration is not None:
+            pulumi.set(__self__, "acr_configuration", acr_configuration)
         if authentication_configuration is not None:
             pulumi.set(__self__, "authentication_configuration", authentication_configuration)
         if cors_configuration is not None:
@@ -377,6 +406,18 @@ class ServicesPropertiesArgs:
     @access_policies.setter
     def access_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAccessPolicyEntryArgs']]]]):
         pulumi.set(self, "access_policies", value)
+
+    @property
+    @pulumi.getter(name="acrConfiguration")
+    def acr_configuration(self) -> Optional[pulumi.Input['ServiceAcrConfigurationInfoArgs']]:
+        """
+        The azure container registry settings used for convert data operation of the service instance.
+        """
+        return pulumi.get(self, "acr_configuration")
+
+    @acr_configuration.setter
+    def acr_configuration(self, value: Optional[pulumi.Input['ServiceAcrConfigurationInfoArgs']]):
+        pulumi.set(self, "acr_configuration", value)
 
     @property
     @pulumi.getter(name="authenticationConfiguration")
