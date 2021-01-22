@@ -15,6 +15,7 @@ Fixes:
 - Reduce the memory footprint ([#203](https://github.com/pulumi/pulumi-azure-nextgen/issues/203))
 - Improved error messaging ([#213](https://github.com/pulumi/pulumi-azure-nextgen/issues/213))
 - Fix failure when creating Certificate resource ([#212](https://github.com/pulumi/pulumi-azure-nextgen/issues/212))
+- Creation of PrivateDnsZoneGroup ([#227](https://github.com/pulumi/pulumi-azure-nextgen/issues/227))
 
 ---
 
