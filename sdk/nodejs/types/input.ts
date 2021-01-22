@@ -42916,13 +42916,9 @@ export namespace compute {
         }
 
         /**
-         * The publishing profile of a gallery Image Version.
+         * The publishing profile of a gallery image version.
          */
         export interface GalleryApplicationVersionPublishingProfile {
-            /**
-             * Optional. May be used to help process this file. The type of file contained in the source, e.g. zip, json, etc.
-             */
-            contentType?: pulumi.Input<string>;
             /**
              * Optional. Whether or not this application reports health.
              */
@@ -42935,6 +42931,7 @@ export namespace compute {
              * If set to true, Virtual Machines deployed from the latest version of the Image Definition won't use this Image Version.
              */
             excludeFromLatest?: pulumi.Input<boolean>;
+            manageActions?: pulumi.Input<inputs.compute.v20190301.UserArtifactManage>;
             /**
              * The number of replicas of the Image Version to be created per region. This property would take effect for a region when regionalReplicaCount is not specified. This property is updatable.
              */
@@ -43632,16 +43629,31 @@ export namespace compute {
             rollingUpgradePolicy?: pulumi.Input<inputs.compute.v20190301.RollingUpgradePolicy>;
         }
 
+        export interface UserArtifactManage {
+            /**
+             * Required. The path and arguments to install the gallery application. This is limited to 4096 characters.
+             */
+            install: pulumi.Input<string>;
+            /**
+             * Required. The path and arguments to remove the gallery application. This is limited to 4096 characters.
+             */
+            remove: pulumi.Input<string>;
+            /**
+             * Optional. The path and arguments to update the gallery application. If not present, then update operation will invoke remove command on the previous version and install command on the current version of the gallery application. This is limited to 4096 characters.
+             */
+            update?: pulumi.Input<string>;
+        }
+
         /**
          * The source image from which the Image Version is going to be created.
          */
         export interface UserArtifactSource {
             /**
-             * Required. The fileName of the artifact.
+             * Optional. The defaultConfigurationLink of the artifact, must be a readable storage page blob.
              */
-            fileName: pulumi.Input<string>;
+            defaultConfigurationLink?: pulumi.Input<string>;
             /**
-             * Required. The mediaLink of the artifact, must be a readable storage blob.
+             * Required. The mediaLink of the artifact, must be a readable storage page blob.
              */
             mediaLink: pulumi.Input<string>;
         }
@@ -44508,13 +44520,9 @@ export namespace compute {
         }
 
         /**
-         * The publishing profile of a gallery Image Version.
+         * The publishing profile of a gallery image version.
          */
         export interface GalleryApplicationVersionPublishingProfile {
-            /**
-             * Optional. May be used to help process this file. The type of file contained in the source, e.g. zip, json, etc.
-             */
-            contentType?: pulumi.Input<string>;
             /**
              * Optional. Whether or not this application reports health.
              */
@@ -44527,6 +44535,7 @@ export namespace compute {
              * If set to true, Virtual Machines deployed from the latest version of the Image Definition won't use this Image Version.
              */
             excludeFromLatest?: pulumi.Input<boolean>;
+            manageActions?: pulumi.Input<inputs.compute.v20190701.UserArtifactManage>;
             /**
              * The number of replicas of the Image Version to be created per region. This property would take effect for a region when regionalReplicaCount is not specified. This property is updatable.
              */
@@ -45272,16 +45281,31 @@ export namespace compute {
             rollingUpgradePolicy?: pulumi.Input<inputs.compute.v20190701.RollingUpgradePolicy>;
         }
 
+        export interface UserArtifactManage {
+            /**
+             * Required. The path and arguments to install the gallery application. This is limited to 4096 characters.
+             */
+            install: pulumi.Input<string>;
+            /**
+             * Required. The path and arguments to remove the gallery application. This is limited to 4096 characters.
+             */
+            remove: pulumi.Input<string>;
+            /**
+             * Optional. The path and arguments to update the gallery application. If not present, then update operation will invoke remove command on the previous version and install command on the current version of the gallery application. This is limited to 4096 characters.
+             */
+            update?: pulumi.Input<string>;
+        }
+
         /**
          * The source image from which the Image Version is going to be created.
          */
         export interface UserArtifactSource {
             /**
-             * Required. The fileName of the artifact.
+             * Optional. The defaultConfigurationLink of the artifact, must be a readable storage page blob.
              */
-            fileName: pulumi.Input<string>;
+            defaultConfigurationLink?: pulumi.Input<string>;
             /**
-             * Required. The mediaLink of the artifact, must be a readable storage blob.
+             * Required. The mediaLink of the artifact, must be a readable storage page blob.
              */
             mediaLink: pulumi.Input<string>;
         }
@@ -46265,13 +46289,9 @@ export namespace compute {
         }
 
         /**
-         * The publishing profile of a gallery Image Version.
+         * The publishing profile of a gallery image version.
          */
         export interface GalleryApplicationVersionPublishingProfile {
-            /**
-             * Optional. May be used to help process this file. The type of file contained in the source, e.g. zip, json, etc.
-             */
-            contentType?: pulumi.Input<string>;
             /**
              * Optional. Whether or not this application reports health.
              */
@@ -46284,6 +46304,7 @@ export namespace compute {
              * If set to true, Virtual Machines deployed from the latest version of the Image Definition won't use this Image Version.
              */
             excludeFromLatest?: pulumi.Input<boolean>;
+            manageActions?: pulumi.Input<inputs.compute.v20191201.UserArtifactManage>;
             /**
              * The number of replicas of the Image Version to be created per region. This property would take effect for a region when regionalReplicaCount is not specified. This property is updatable.
              */
@@ -46981,16 +47002,31 @@ export namespace compute {
             rollingUpgradePolicy?: pulumi.Input<inputs.compute.v20191201.RollingUpgradePolicy>;
         }
 
+        export interface UserArtifactManage {
+            /**
+             * Required. The path and arguments to install the gallery application. This is limited to 4096 characters.
+             */
+            install: pulumi.Input<string>;
+            /**
+             * Required. The path and arguments to remove the gallery application. This is limited to 4096 characters.
+             */
+            remove: pulumi.Input<string>;
+            /**
+             * Optional. The path and arguments to update the gallery application. If not present, then update operation will invoke remove command on the previous version and install command on the current version of the gallery application. This is limited to 4096 characters.
+             */
+            update?: pulumi.Input<string>;
+        }
+
         /**
          * The source image from which the Image Version is going to be created.
          */
         export interface UserArtifactSource {
             /**
-             * Required. The fileName of the artifact.
+             * Optional. The defaultConfigurationLink of the artifact, must be a readable storage page blob.
              */
-            fileName: pulumi.Input<string>;
+            defaultConfigurationLink?: pulumi.Input<string>;
             /**
-             * Required. The mediaLink of the artifact, must be a readable storage blob.
+             * Required. The mediaLink of the artifact, must be a readable storage page blob.
              */
             mediaLink: pulumi.Input<string>;
         }
@@ -76035,11 +76071,15 @@ export namespace datafactory {
             /**
              * Access token for databricks REST API. Refer to https://docs.azuredatabricks.net/api/latest/authentication.html. Type: string (or Expression with resultType string).
              */
-            accessToken: pulumi.Input<inputs.datafactory.latest.AzureKeyVaultSecretReference | inputs.datafactory.latest.SecureString>;
+            accessToken?: pulumi.Input<inputs.datafactory.latest.AzureKeyVaultSecretReference | inputs.datafactory.latest.SecureString>;
             /**
              * List of tags that can be used for describing the linked service.
              */
             annotations?: pulumi.Input<any[]>;
+            /**
+             * Required to specify MSI, if using Workspace resource id for databricks REST API. Type: string (or Expression with resultType string).
+             */
+            authentication?: any;
             /**
              * The integration runtime reference.
              */
@@ -76113,6 +76153,10 @@ export namespace datafactory {
              * Expected value is 'AzureDatabricks'.
              */
             type: pulumi.Input<"AzureDatabricks">;
+            /**
+             * Workspace resource id for databricks REST API. Type: string (or Expression with resultType string).
+             */
+            workspaceResourceId?: any;
         }
 
         /**
@@ -105632,11 +105676,15 @@ export namespace datafactory {
             /**
              * Access token for databricks REST API. Refer to https://docs.azuredatabricks.net/api/latest/authentication.html. Type: string (or Expression with resultType string).
              */
-            accessToken: pulumi.Input<inputs.datafactory.v20180601.AzureKeyVaultSecretReference | inputs.datafactory.v20180601.SecureString>;
+            accessToken?: pulumi.Input<inputs.datafactory.v20180601.AzureKeyVaultSecretReference | inputs.datafactory.v20180601.SecureString>;
             /**
              * List of tags that can be used for describing the linked service.
              */
             annotations?: pulumi.Input<any[]>;
+            /**
+             * Required to specify MSI, if using Workspace resource id for databricks REST API. Type: string (or Expression with resultType string).
+             */
+            authentication?: any;
             /**
              * The integration runtime reference.
              */
@@ -105710,6 +105758,10 @@ export namespace datafactory {
              * Expected value is 'AzureDatabricks'.
              */
             type: pulumi.Input<"AzureDatabricks">;
+            /**
+             * Workspace resource id for databricks REST API. Type: string (or Expression with resultType string).
+             */
+            workspaceResourceId?: any;
         }
 
         /**
@@ -321362,16 +321414,6 @@ export namespace purview {
              * Identity Type
              */
             type?: pulumi.Input<string | enums.purview.v20201201preview.Type>;
-        }
-
-        /**
-         * The Network ACLs
-         */
-        export interface NetworkAcls {
-            /**
-             * Gets or sets the default behavior of network ACLs.
-             */
-            defaultAction?: pulumi.Input<string | enums.purview.v20201201preview.DefaultAction>;
         }
 
         /**

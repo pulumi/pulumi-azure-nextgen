@@ -13194,6 +13194,28 @@ export namespace azuredata {
 export namespace azurestack {
     export namespace latest {
         /**
+         * Product compatibility
+         */
+        export interface CompatibilityResponse {
+            /**
+             * Full error message if any compatibility issues are found
+             */
+            description?: string;
+            /**
+             * Tells if product is compatible with current device
+             */
+            isCompatible?: boolean;
+            /**
+             * List of all issues found
+             */
+            issues?: string[];
+            /**
+             * Short error message if any compatibility issues are found
+             */
+            message?: string;
+        }
+
+        /**
          * Data disk image.
          */
         export interface DataDiskImageResponse {
@@ -13208,6 +13230,32 @@ export namespace azurestack {
         }
 
         /**
+         * Links to product icons.
+         */
+        export interface IconUrisResponse {
+            /**
+             * URI to hero icon.
+             */
+            hero?: string;
+            /**
+             * URI to large icon.
+             */
+            large?: string;
+            /**
+             * URI to medium icon.
+             */
+            medium?: string;
+            /**
+             * URI to small icon.
+             */
+            small?: string;
+            /**
+             * URI to wide icon.
+             */
+            wide?: string;
+        }
+
+        /**
          * OS disk image.
          */
         export interface OsDiskImageResponse {
@@ -13219,11 +13267,151 @@ export namespace azurestack {
              * SAS key for source blob.
              */
             sourceBlobSasUri: string;
+        }
+
+        /**
+         * Link with additional information about a product.
+         */
+        export interface ProductLinkResponse {
+            /**
+             * The description of the link.
+             */
+            displayName?: string;
+            /**
+             * The URI corresponding to the link.
+             */
+            uri?: string;
+        }
+
+        /**
+         * Additional properties of the product
+         */
+        export interface ProductPropertiesResponse {
+            /**
+             * The version.
+             */
+            version?: string;
+        }
+
+        /**
+         * Product information.
+         */
+        export interface ProductResponse {
+            /**
+             * The part number used for billing purposes.
+             */
+            billingPartNumber?: string;
+            /**
+             * Product compatibility with current device.
+             */
+            compatibility?: outputs.azurestack.latest.CompatibilityResponse;
+            /**
+             * The description of the product.
+             */
+            description?: string;
+            /**
+             * The display name of the product.
+             */
+            displayName?: string;
+            /**
+             * The entity tag used for optimistic concurrency when modifying the resource.
+             */
+            etag?: string;
+            /**
+             * The identifier of the gallery item corresponding to the product.
+             */
+            galleryItemIdentity?: string;
+            /**
+             * Additional links available for this product.
+             */
+            iconUris?: outputs.azurestack.latest.IconUrisResponse;
+            /**
+             * ID of the resource.
+             */
+            id: string;
+            /**
+             * The legal terms.
+             */
+            legalTerms?: string;
+            /**
+             * Additional links available for this product.
+             */
+            links?: outputs.azurestack.latest.ProductLinkResponse[];
+            /**
+             * Name of the resource.
+             */
+            name: string;
+            /**
+             * The offer representing the product.
+             */
+            offer?: string;
+            /**
+             * The version of the product offer.
+             */
+            offerVersion?: string;
+            /**
+             * The length of product content.
+             */
+            payloadLength?: number;
+            /**
+             * The privacy policy.
+             */
+            privacyPolicy?: string;
+            /**
+             * The kind of the product (virtualMachine or virtualMachineExtension)
+             */
+            productKind?: string;
+            /**
+             * Additional properties for the product.
+             */
+            productProperties?: outputs.azurestack.latest.ProductPropertiesResponse;
+            /**
+             * The user-friendly name of the product publisher.
+             */
+            publisherDisplayName?: string;
+            /**
+             * Publisher identifier.
+             */
+            publisherIdentifier?: string;
+            /**
+             * The product SKU.
+             */
+            sku?: string;
+            /**
+             * Type of Resource.
+             */
+            type: string;
+            /**
+             * The type of the Virtual Machine Extension.
+             */
+            vmExtensionType?: string;
         }
     }
 
     export namespace v20170601 {
         /**
+         * Product compatibility
+         */
+        export interface CompatibilityResponse {
+            /**
+             * Full error message if any compatibility issues are found
+             */
+            description?: string;
+            /**
+             * Tells if product is compatible with current device
+             */
+            isCompatible?: boolean;
+            /**
+             * List of all issues found
+             */
+            issues?: string[];
+            /**
+             * Short error message if any compatibility issues are found
+             */
+            message?: string;
+        }
+
+        /**
          * Data disk image.
          */
         export interface DataDiskImageResponse {
@@ -13238,6 +13426,32 @@ export namespace azurestack {
         }
 
         /**
+         * Links to product icons.
+         */
+        export interface IconUrisResponse {
+            /**
+             * URI to hero icon.
+             */
+            hero?: string;
+            /**
+             * URI to large icon.
+             */
+            large?: string;
+            /**
+             * URI to medium icon.
+             */
+            medium?: string;
+            /**
+             * URI to small icon.
+             */
+            small?: string;
+            /**
+             * URI to wide icon.
+             */
+            wide?: string;
+        }
+
+        /**
          * OS disk image.
          */
         export interface OsDiskImageResponse {
@@ -13249,6 +13463,124 @@ export namespace azurestack {
              * SAS key for source blob.
              */
             sourceBlobSasUri: string;
+        }
+
+        /**
+         * Link with additional information about a product.
+         */
+        export interface ProductLinkResponse {
+            /**
+             * The description of the link.
+             */
+            displayName?: string;
+            /**
+             * The URI corresponding to the link.
+             */
+            uri?: string;
+        }
+
+        /**
+         * Additional properties of the product
+         */
+        export interface ProductPropertiesResponse {
+            /**
+             * The version.
+             */
+            version?: string;
+        }
+
+        /**
+         * Product information.
+         */
+        export interface ProductResponse {
+            /**
+             * The part number used for billing purposes.
+             */
+            billingPartNumber?: string;
+            /**
+             * Product compatibility with current device.
+             */
+            compatibility?: outputs.azurestack.v20170601.CompatibilityResponse;
+            /**
+             * The description of the product.
+             */
+            description?: string;
+            /**
+             * The display name of the product.
+             */
+            displayName?: string;
+            /**
+             * The entity tag used for optimistic concurrency when modifying the resource.
+             */
+            etag?: string;
+            /**
+             * The identifier of the gallery item corresponding to the product.
+             */
+            galleryItemIdentity?: string;
+            /**
+             * Additional links available for this product.
+             */
+            iconUris?: outputs.azurestack.v20170601.IconUrisResponse;
+            /**
+             * ID of the resource.
+             */
+            id: string;
+            /**
+             * The legal terms.
+             */
+            legalTerms?: string;
+            /**
+             * Additional links available for this product.
+             */
+            links?: outputs.azurestack.v20170601.ProductLinkResponse[];
+            /**
+             * Name of the resource.
+             */
+            name: string;
+            /**
+             * The offer representing the product.
+             */
+            offer?: string;
+            /**
+             * The version of the product offer.
+             */
+            offerVersion?: string;
+            /**
+             * The length of product content.
+             */
+            payloadLength?: number;
+            /**
+             * The privacy policy.
+             */
+            privacyPolicy?: string;
+            /**
+             * The kind of the product (virtualMachine or virtualMachineExtension)
+             */
+            productKind?: string;
+            /**
+             * Additional properties for the product.
+             */
+            productProperties?: outputs.azurestack.v20170601.ProductPropertiesResponse;
+            /**
+             * The user-friendly name of the product publisher.
+             */
+            publisherDisplayName?: string;
+            /**
+             * Publisher identifier.
+             */
+            publisherIdentifier?: string;
+            /**
+             * The product SKU.
+             */
+            sku?: string;
+            /**
+             * Type of Resource.
+             */
+            type: string;
+            /**
+             * The type of the Virtual Machine Extension.
+             */
+            vmExtensionType?: string;
         }
     }
 }
@@ -52459,13 +52791,9 @@ export namespace compute {
         }
 
         /**
-         * The publishing profile of a gallery Image Version.
+         * The publishing profile of a gallery image version.
          */
         export interface GalleryApplicationVersionPublishingProfileResponse {
-            /**
-             * Optional. May be used to help process this file. The type of file contained in the source, e.g. zip, json, etc.
-             */
-            contentType?: string;
             /**
              * Optional. Whether or not this application reports health.
              */
@@ -52478,6 +52806,7 @@ export namespace compute {
              * If set to true, Virtual Machines deployed from the latest version of the Image Definition won't use this Image Version.
              */
             excludeFromLatest?: boolean;
+            manageActions?: outputs.compute.v20190301.UserArtifactManageResponse;
             /**
              * The timestamp for when the gallery Image Version is published.
              */
@@ -53330,16 +53659,31 @@ export namespace compute {
             rollingUpgradePolicy?: outputs.compute.v20190301.RollingUpgradePolicyResponse;
         }
 
+        export interface UserArtifactManageResponse {
+            /**
+             * Required. The path and arguments to install the gallery application. This is limited to 4096 characters.
+             */
+            install: string;
+            /**
+             * Required. The path and arguments to remove the gallery application. This is limited to 4096 characters.
+             */
+            remove: string;
+            /**
+             * Optional. The path and arguments to update the gallery application. If not present, then update operation will invoke remove command on the previous version and install command on the current version of the gallery application. This is limited to 4096 characters.
+             */
+            update?: string;
+        }
+
         /**
          * The source image from which the Image Version is going to be created.
          */
         export interface UserArtifactSourceResponse {
             /**
-             * Required. The fileName of the artifact.
+             * Optional. The defaultConfigurationLink of the artifact, must be a readable storage page blob.
              */
-            fileName: string;
+            defaultConfigurationLink?: string;
             /**
-             * Required. The mediaLink of the artifact, must be a readable storage blob.
+             * Required. The mediaLink of the artifact, must be a readable storage page blob.
              */
             mediaLink: string;
         }
@@ -54565,13 +54909,9 @@ export namespace compute {
         }
 
         /**
-         * The publishing profile of a gallery Image Version.
+         * The publishing profile of a gallery image version.
          */
         export interface GalleryApplicationVersionPublishingProfileResponse {
-            /**
-             * Optional. May be used to help process this file. The type of file contained in the source, e.g. zip, json, etc.
-             */
-            contentType?: string;
             /**
              * Optional. Whether or not this application reports health.
              */
@@ -54584,6 +54924,7 @@ export namespace compute {
              * If set to true, Virtual Machines deployed from the latest version of the Image Definition won't use this Image Version.
              */
             excludeFromLatest?: boolean;
+            manageActions?: outputs.compute.v20190701.UserArtifactManageResponse;
             /**
              * The timestamp for when the gallery Image Version is published.
              */
@@ -55461,16 +55802,31 @@ export namespace compute {
             rollingUpgradePolicy?: outputs.compute.v20190701.RollingUpgradePolicyResponse;
         }
 
+        export interface UserArtifactManageResponse {
+            /**
+             * Required. The path and arguments to install the gallery application. This is limited to 4096 characters.
+             */
+            install: string;
+            /**
+             * Required. The path and arguments to remove the gallery application. This is limited to 4096 characters.
+             */
+            remove: string;
+            /**
+             * Optional. The path and arguments to update the gallery application. If not present, then update operation will invoke remove command on the previous version and install command on the current version of the gallery application. This is limited to 4096 characters.
+             */
+            update?: string;
+        }
+
         /**
          * The source image from which the Image Version is going to be created.
          */
         export interface UserArtifactSourceResponse {
             /**
-             * Required. The fileName of the artifact.
+             * Optional. The defaultConfigurationLink of the artifact, must be a readable storage page blob.
              */
-            fileName: string;
+            defaultConfigurationLink?: string;
             /**
-             * Required. The mediaLink of the artifact, must be a readable storage blob.
+             * Required. The mediaLink of the artifact, must be a readable storage page blob.
              */
             mediaLink: string;
         }
@@ -56823,13 +57179,9 @@ export namespace compute {
         }
 
         /**
-         * The publishing profile of a gallery Image Version.
+         * The publishing profile of a gallery image version.
          */
         export interface GalleryApplicationVersionPublishingProfileResponse {
-            /**
-             * Optional. May be used to help process this file. The type of file contained in the source, e.g. zip, json, etc.
-             */
-            contentType?: string;
             /**
              * Optional. Whether or not this application reports health.
              */
@@ -56842,6 +57194,7 @@ export namespace compute {
              * If set to true, Virtual Machines deployed from the latest version of the Image Definition won't use this Image Version.
              */
             excludeFromLatest?: boolean;
+            manageActions?: outputs.compute.v20191201.UserArtifactManageResponse;
             /**
              * The timestamp for when the gallery Image Version is published.
              */
@@ -57667,16 +58020,31 @@ export namespace compute {
             rollingUpgradePolicy?: outputs.compute.v20191201.RollingUpgradePolicyResponse;
         }
 
+        export interface UserArtifactManageResponse {
+            /**
+             * Required. The path and arguments to install the gallery application. This is limited to 4096 characters.
+             */
+            install: string;
+            /**
+             * Required. The path and arguments to remove the gallery application. This is limited to 4096 characters.
+             */
+            remove: string;
+            /**
+             * Optional. The path and arguments to update the gallery application. If not present, then update operation will invoke remove command on the previous version and install command on the current version of the gallery application. This is limited to 4096 characters.
+             */
+            update?: string;
+        }
+
         /**
          * The source image from which the Image Version is going to be created.
          */
         export interface UserArtifactSourceResponse {
             /**
-             * Required. The fileName of the artifact.
+             * Optional. The defaultConfigurationLink of the artifact, must be a readable storage page blob.
              */
-            fileName: string;
+            defaultConfigurationLink?: string;
             /**
-             * Required. The mediaLink of the artifact, must be a readable storage blob.
+             * Required. The mediaLink of the artifact, must be a readable storage page blob.
              */
             mediaLink: string;
         }
@@ -97583,11 +97951,15 @@ export namespace datafactory {
             /**
              * Access token for databricks REST API. Refer to https://docs.azuredatabricks.net/api/latest/authentication.html. Type: string (or Expression with resultType string).
              */
-            accessToken: outputs.datafactory.latest.AzureKeyVaultSecretReferenceResponse | outputs.datafactory.latest.SecureStringResponse;
+            accessToken?: outputs.datafactory.latest.AzureKeyVaultSecretReferenceResponse | outputs.datafactory.latest.SecureStringResponse;
             /**
              * List of tags that can be used for describing the linked service.
              */
             annotations?: any[];
+            /**
+             * Required to specify MSI, if using Workspace resource id for databricks REST API. Type: string (or Expression with resultType string).
+             */
+            authentication?: any;
             /**
              * The integration runtime reference.
              */
@@ -97661,6 +98033,10 @@ export namespace datafactory {
              * Expected value is 'AzureDatabricks'.
              */
             type: "AzureDatabricks";
+            /**
+             * Workspace resource id for databricks REST API. Type: string (or Expression with resultType string).
+             */
+            workspaceResourceId?: any;
         }
 
         /**
@@ -128120,11 +128496,15 @@ export namespace datafactory {
             /**
              * Access token for databricks REST API. Refer to https://docs.azuredatabricks.net/api/latest/authentication.html. Type: string (or Expression with resultType string).
              */
-            accessToken: outputs.datafactory.v20180601.AzureKeyVaultSecretReferenceResponse | outputs.datafactory.v20180601.SecureStringResponse;
+            accessToken?: outputs.datafactory.v20180601.AzureKeyVaultSecretReferenceResponse | outputs.datafactory.v20180601.SecureStringResponse;
             /**
              * List of tags that can be used for describing the linked service.
              */
             annotations?: any[];
+            /**
+             * Required to specify MSI, if using Workspace resource id for databricks REST API. Type: string (or Expression with resultType string).
+             */
+            authentication?: any;
             /**
              * The integration runtime reference.
              */
@@ -128198,6 +128578,10 @@ export namespace datafactory {
              * Expected value is 'AzureDatabricks'.
              */
             type: "AzureDatabricks";
+            /**
+             * Workspace resource id for databricks REST API. Type: string (or Expression with resultType string).
+             */
+            workspaceResourceId?: any;
         }
 
         /**
@@ -416563,16 +416947,6 @@ export namespace purview {
              * Identity Type
              */
             type?: string;
-        }
-
-        /**
-         * The Network ACLs
-         */
-        export interface NetworkAclsResponse {
-            /**
-             * Gets or sets the default behavior of network ACLs.
-             */
-            defaultAction?: string;
         }
 
         /**

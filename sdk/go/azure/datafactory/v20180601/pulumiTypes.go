@@ -13910,6 +13910,8 @@ type AzureDatabricksLinkedService struct {
 	AccessToken interface{} `pulumi:"accessToken"`
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
+	// Required to specify MSI, if using Workspace resource id for databricks REST API. Type: string (or Expression with resultType string).
+	Authentication interface{} `pulumi:"authentication"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// Linked service description.
@@ -13947,6 +13949,8 @@ type AzureDatabricksLinkedService struct {
 	// Type of linked service.
 	// Expected value is 'AzureDatabricks'.
 	Type string `pulumi:"type"`
+	// Workspace resource id for databricks REST API. Type: string (or Expression with resultType string).
+	WorkspaceResourceId interface{} `pulumi:"workspaceResourceId"`
 }
 
 // AzureDatabricksLinkedServiceInput is an input type that accepts AzureDatabricksLinkedServiceArgs and AzureDatabricksLinkedServiceOutput values.
@@ -13966,6 +13970,8 @@ type AzureDatabricksLinkedServiceArgs struct {
 	AccessToken pulumi.Input `pulumi:"accessToken"`
 	// List of tags that can be used for describing the linked service.
 	Annotations pulumi.ArrayInput `pulumi:"annotations"`
+	// Required to specify MSI, if using Workspace resource id for databricks REST API. Type: string (or Expression with resultType string).
+	Authentication pulumi.Input `pulumi:"authentication"`
 	// The integration runtime reference.
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
 	// Linked service description.
@@ -14003,6 +14009,8 @@ type AzureDatabricksLinkedServiceArgs struct {
 	// Type of linked service.
 	// Expected value is 'AzureDatabricks'.
 	Type pulumi.StringInput `pulumi:"type"`
+	// Workspace resource id for databricks REST API. Type: string (or Expression with resultType string).
+	WorkspaceResourceId pulumi.Input `pulumi:"workspaceResourceId"`
 }
 
 func (AzureDatabricksLinkedServiceArgs) ElementType() reflect.Type {
@@ -14040,6 +14048,11 @@ func (o AzureDatabricksLinkedServiceOutput) AccessToken() pulumi.AnyOutput {
 // List of tags that can be used for describing the linked service.
 func (o AzureDatabricksLinkedServiceOutput) Annotations() pulumi.ArrayOutput {
 	return o.ApplyT(func(v AzureDatabricksLinkedService) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// Required to specify MSI, if using Workspace resource id for databricks REST API. Type: string (or Expression with resultType string).
+func (o AzureDatabricksLinkedServiceOutput) Authentication() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureDatabricksLinkedService) interface{} { return v.Authentication }).(pulumi.AnyOutput)
 }
 
 // The integration runtime reference.
@@ -14133,12 +14146,19 @@ func (o AzureDatabricksLinkedServiceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureDatabricksLinkedService) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Workspace resource id for databricks REST API. Type: string (or Expression with resultType string).
+func (o AzureDatabricksLinkedServiceOutput) WorkspaceResourceId() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureDatabricksLinkedService) interface{} { return v.WorkspaceResourceId }).(pulumi.AnyOutput)
+}
+
 // Azure Databricks linked service.
 type AzureDatabricksLinkedServiceResponse struct {
 	// Access token for databricks REST API. Refer to https://docs.azuredatabricks.net/api/latest/authentication.html. Type: string (or Expression with resultType string).
 	AccessToken interface{} `pulumi:"accessToken"`
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
+	// Required to specify MSI, if using Workspace resource id for databricks REST API. Type: string (or Expression with resultType string).
+	Authentication interface{} `pulumi:"authentication"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// Linked service description.
@@ -14176,6 +14196,8 @@ type AzureDatabricksLinkedServiceResponse struct {
 	// Type of linked service.
 	// Expected value is 'AzureDatabricks'.
 	Type string `pulumi:"type"`
+	// Workspace resource id for databricks REST API. Type: string (or Expression with resultType string).
+	WorkspaceResourceId interface{} `pulumi:"workspaceResourceId"`
 }
 
 // AzureDatabricksLinkedServiceResponseInput is an input type that accepts AzureDatabricksLinkedServiceResponseArgs and AzureDatabricksLinkedServiceResponseOutput values.
@@ -14195,6 +14217,8 @@ type AzureDatabricksLinkedServiceResponseArgs struct {
 	AccessToken pulumi.Input `pulumi:"accessToken"`
 	// List of tags that can be used for describing the linked service.
 	Annotations pulumi.ArrayInput `pulumi:"annotations"`
+	// Required to specify MSI, if using Workspace resource id for databricks REST API. Type: string (or Expression with resultType string).
+	Authentication pulumi.Input `pulumi:"authentication"`
 	// The integration runtime reference.
 	ConnectVia IntegrationRuntimeReferenceResponsePtrInput `pulumi:"connectVia"`
 	// Linked service description.
@@ -14232,6 +14256,8 @@ type AzureDatabricksLinkedServiceResponseArgs struct {
 	// Type of linked service.
 	// Expected value is 'AzureDatabricks'.
 	Type pulumi.StringInput `pulumi:"type"`
+	// Workspace resource id for databricks REST API. Type: string (or Expression with resultType string).
+	WorkspaceResourceId pulumi.Input `pulumi:"workspaceResourceId"`
 }
 
 func (AzureDatabricksLinkedServiceResponseArgs) ElementType() reflect.Type {
@@ -14269,6 +14295,11 @@ func (o AzureDatabricksLinkedServiceResponseOutput) AccessToken() pulumi.AnyOutp
 // List of tags that can be used for describing the linked service.
 func (o AzureDatabricksLinkedServiceResponseOutput) Annotations() pulumi.ArrayOutput {
 	return o.ApplyT(func(v AzureDatabricksLinkedServiceResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// Required to specify MSI, if using Workspace resource id for databricks REST API. Type: string (or Expression with resultType string).
+func (o AzureDatabricksLinkedServiceResponseOutput) Authentication() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureDatabricksLinkedServiceResponse) interface{} { return v.Authentication }).(pulumi.AnyOutput)
 }
 
 // The integration runtime reference.
@@ -14362,6 +14393,11 @@ func (o AzureDatabricksLinkedServiceResponseOutput) Parameters() ParameterSpecif
 // Expected value is 'AzureDatabricks'.
 func (o AzureDatabricksLinkedServiceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureDatabricksLinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Workspace resource id for databricks REST API. Type: string (or Expression with resultType string).
+func (o AzureDatabricksLinkedServiceResponseOutput) WorkspaceResourceId() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureDatabricksLinkedServiceResponse) interface{} { return v.WorkspaceResourceId }).(pulumi.AnyOutput)
 }
 
 // Azure File Storage linked service.
