@@ -3,6 +3,12 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
+None
+
+---
+
+## 0.5.0 (2021-01-23)
+
 Features:
 
 - Respect default values as Azure API specs define ([#183](https://github.com/pulumi/pulumi-azure-nextgen/issues/183))
