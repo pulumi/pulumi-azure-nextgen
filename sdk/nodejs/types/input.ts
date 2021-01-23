@@ -363303,6 +363303,607 @@ export namespace subscription {
 }
 
 export namespace synapse {
+    export namespace latest {
+        /**
+         * Auto-pausing properties of a Big Data pool powered by Apache Spark
+         */
+        export interface AutoPauseProperties {
+            /**
+             * Number of minutes of idle time before the Big Data pool is automatically paused.
+             */
+            delayInMinutes?: pulumi.Input<number>;
+            /**
+             * Whether auto-pausing is enabled for the Big Data pool.
+             */
+            enabled?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Auto-scaling properties of a Big Data pool powered by Apache Spark
+         */
+        export interface AutoScaleProperties {
+            /**
+             * Whether automatic scaling is enabled for the Big Data pool.
+             */
+            enabled?: pulumi.Input<boolean>;
+            /**
+             * The maximum number of nodes the Big Data pool can support.
+             */
+            maxNodeCount?: pulumi.Input<number>;
+            /**
+             * The minimum number of nodes the Big Data pool can support.
+             */
+            minNodeCount?: pulumi.Input<number>;
+        }
+
+        /**
+         * The custom setup of running cmdkey commands.
+         */
+        export interface CmdkeySetup {
+            /**
+             * The password of data source access.
+             */
+            password: pulumi.Input<inputs.synapse.latest.SecureString>;
+            /**
+             * The server name of data source access.
+             */
+            targetName: any;
+            /**
+             * The type of custom setup.
+             * Expected value is 'CmdkeySetup'.
+             */
+            type: pulumi.Input<"CmdkeySetup">;
+            /**
+             * The user name of data source access.
+             */
+            userName: any;
+        }
+
+        /**
+         * The custom setup of installing 3rd party components.
+         */
+        export interface ComponentSetup {
+            /**
+             * The name of the 3rd party component.
+             */
+            componentName: pulumi.Input<string>;
+            /**
+             * The license key to activate the component.
+             */
+            licenseKey?: pulumi.Input<inputs.synapse.latest.SecureString>;
+            /**
+             * The type of custom setup.
+             * Expected value is 'ComponentSetup'.
+             */
+            type: pulumi.Input<"ComponentSetup">;
+        }
+
+        /**
+         * Details of the customer managed key associated with the workspace
+         */
+        export interface CustomerManagedKeyDetails {
+            /**
+             * The key object of the workspace
+             */
+            key?: pulumi.Input<inputs.synapse.latest.WorkspaceKeyDetails>;
+        }
+
+        /**
+         * Details of the data lake storage account associated with the workspace
+         */
+        export interface DataLakeStorageAccountDetails {
+            /**
+             * Account URL
+             */
+            accountUrl?: pulumi.Input<string>;
+            /**
+             * Filesystem name
+             */
+            filesystem?: pulumi.Input<string>;
+        }
+
+        /**
+         * Dynamic Executor Allocation Properties
+         */
+        export interface DynamicExecutorAllocation {
+            /**
+             * Indicates whether Dynamic Executor Allocation is enabled or not.
+             */
+            enabled?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Details of the encryption associated with the workspace
+         */
+        export interface EncryptionDetails {
+            /**
+             * Customer Managed Key Details
+             */
+            cmk?: pulumi.Input<inputs.synapse.latest.CustomerManagedKeyDetails>;
+        }
+
+        /**
+         * The entity reference.
+         */
+        export interface EntityReference {
+            /**
+             * The name of this referenced entity.
+             */
+            referenceName?: pulumi.Input<string>;
+            /**
+             * The type of this referenced entity.
+             */
+            type?: pulumi.Input<string | enums.synapse.latest.IntegrationRuntimeEntityReferenceType>;
+        }
+
+        /**
+         * The custom setup of setting environment variable.
+         */
+        export interface EnvironmentVariableSetup {
+            /**
+             * The type of custom setup.
+             * Expected value is 'EnvironmentVariableSetup'.
+             */
+            type: pulumi.Input<"EnvironmentVariableSetup">;
+            /**
+             * The name of the environment variable.
+             */
+            variableName: pulumi.Input<string>;
+            /**
+             * The value of the environment variable.
+             */
+            variableValue: pulumi.Input<string>;
+        }
+
+        /**
+         * The compute resource properties for managed integration runtime.
+         */
+        export interface IntegrationRuntimeComputeProperties {
+            /**
+             * Data flow properties for managed integration runtime.
+             */
+            dataFlowProperties?: pulumi.Input<inputs.synapse.latest.IntegrationRuntimeDataFlowProperties>;
+            /**
+             * The location for managed integration runtime. The supported regions could be found on https://docs.microsoft.com/en-us/azure/data-factory/data-factory-data-movement-activities
+             */
+            location?: pulumi.Input<string>;
+            /**
+             * Maximum parallel executions count per node for managed integration runtime.
+             */
+            maxParallelExecutionsPerNode?: pulumi.Input<number>;
+            /**
+             * The node size requirement to managed integration runtime.
+             */
+            nodeSize?: pulumi.Input<string>;
+            /**
+             * The required number of nodes for managed integration runtime.
+             */
+            numberOfNodes?: pulumi.Input<number>;
+            /**
+             * VNet properties for managed integration runtime.
+             */
+            vNetProperties?: pulumi.Input<inputs.synapse.latest.IntegrationRuntimeVNetProperties>;
+        }
+
+        /**
+         * Custom setup script properties for a managed dedicated integration runtime.
+         */
+        export interface IntegrationRuntimeCustomSetupScriptProperties {
+            /**
+             * The URI of the Azure blob container that contains the custom setup script.
+             */
+            blobContainerUri?: pulumi.Input<string>;
+            /**
+             * The SAS token of the Azure blob container.
+             */
+            sasToken?: pulumi.Input<inputs.synapse.latest.SecureString>;
+        }
+
+        /**
+         * Data flow properties for managed integration runtime.
+         */
+        export interface IntegrationRuntimeDataFlowProperties {
+            /**
+             * Compute type of the cluster which will execute data flow job.
+             */
+            computeType?: pulumi.Input<string | enums.synapse.latest.DataFlowComputeType>;
+            /**
+             * Core count of the cluster which will execute data flow job. Supported values are: 8, 16, 32, 48, 80, 144 and 272.
+             */
+            coreCount?: pulumi.Input<number>;
+            /**
+             * Time to live (in minutes) setting of the cluster which will execute data flow job.
+             */
+            timeToLive?: pulumi.Input<number>;
+        }
+
+        /**
+         * Data proxy properties for a managed dedicated integration runtime.
+         */
+        export interface IntegrationRuntimeDataProxyProperties {
+            /**
+             * The self-hosted integration runtime reference.
+             */
+            connectVia?: pulumi.Input<inputs.synapse.latest.EntityReference>;
+            /**
+             * The path to contain the staged data in the Blob storage.
+             */
+            path?: pulumi.Input<string>;
+            /**
+             * The staging linked service reference.
+             */
+            stagingLinkedService?: pulumi.Input<inputs.synapse.latest.EntityReference>;
+        }
+
+        /**
+         * Catalog information for managed dedicated integration runtime.
+         */
+        export interface IntegrationRuntimeSsisCatalogInfo {
+            /**
+             * The password of the administrator user account of the catalog database.
+             */
+            catalogAdminPassword?: pulumi.Input<inputs.synapse.latest.SecureString>;
+            /**
+             * The administrator user name of catalog database.
+             */
+            catalogAdminUserName?: pulumi.Input<string>;
+            /**
+             * The pricing tier for the catalog database. The valid values could be found in https://azure.microsoft.com/en-us/pricing/details/sql-database/
+             */
+            catalogPricingTier?: pulumi.Input<string | enums.synapse.latest.IntegrationRuntimeSsisCatalogPricingTier>;
+            /**
+             * The catalog database server URL.
+             */
+            catalogServerEndpoint?: pulumi.Input<string>;
+        }
+
+        /**
+         * SSIS properties for managed integration runtime.
+         */
+        export interface IntegrationRuntimeSsisProperties {
+            /**
+             * Catalog information for managed dedicated integration runtime.
+             */
+            catalogInfo?: pulumi.Input<inputs.synapse.latest.IntegrationRuntimeSsisCatalogInfo>;
+            /**
+             * Custom setup script properties for a managed dedicated integration runtime.
+             */
+            customSetupScriptProperties?: pulumi.Input<inputs.synapse.latest.IntegrationRuntimeCustomSetupScriptProperties>;
+            /**
+             * Data proxy properties for a managed dedicated integration runtime.
+             */
+            dataProxyProperties?: pulumi.Input<inputs.synapse.latest.IntegrationRuntimeDataProxyProperties>;
+            /**
+             * The edition for the SSIS Integration Runtime
+             */
+            edition?: pulumi.Input<string | enums.synapse.latest.IntegrationRuntimeEdition>;
+            /**
+             * Custom setup without script properties for a SSIS integration runtime.
+             */
+            expressCustomSetupProperties?: pulumi.Input<pulumi.Input<inputs.synapse.latest.CmdkeySetup | inputs.synapse.latest.ComponentSetup | inputs.synapse.latest.EnvironmentVariableSetup>[]>;
+            /**
+             * License type for bringing your own license scenario.
+             */
+            licenseType?: pulumi.Input<string | enums.synapse.latest.IntegrationRuntimeLicenseType>;
+        }
+
+        /**
+         * VNet properties for managed integration runtime.
+         */
+        export interface IntegrationRuntimeVNetProperties {
+            /**
+             * Resource IDs of the public IP addresses that this integration runtime will use.
+             */
+            publicIPs?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The name of the subnet this integration runtime will join.
+             */
+            subnet?: pulumi.Input<string>;
+            /**
+             * The ID of the VNet that this integration runtime will join.
+             */
+            vNetId?: pulumi.Input<string>;
+        }
+
+        /**
+         * Library/package information of a Big Data pool powered by Apache Spark
+         */
+        export interface LibraryInfo {
+            /**
+             * Storage blob container name.
+             */
+            containerName?: pulumi.Input<string>;
+            /**
+             * Name of the library.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Storage blob path of library.
+             */
+            path?: pulumi.Input<string>;
+            /**
+             * Type of the library.
+             */
+            type?: pulumi.Input<string>;
+        }
+
+        /**
+         * Library requirements for a Big Data pool powered by Apache Spark
+         */
+        export interface LibraryRequirements {
+            /**
+             * The library requirements.
+             */
+            content?: pulumi.Input<string>;
+            /**
+             * The filename of the library requirements file.
+             */
+            filename?: pulumi.Input<string>;
+        }
+
+        /**
+         * The key authorization type integration runtime.
+         */
+        export interface LinkedIntegrationRuntimeKeyAuthorization {
+            /**
+             * The authorization type for integration runtime sharing.
+             * Expected value is 'Key'.
+             */
+            authorizationType: pulumi.Input<"Key">;
+            /**
+             * The key used for authorization.
+             */
+            key: pulumi.Input<inputs.synapse.latest.SecureString>;
+        }
+
+        /**
+         * The role based access control (RBAC) authorization type integration runtime.
+         */
+        export interface LinkedIntegrationRuntimeRbacAuthorization {
+            /**
+             * The authorization type for integration runtime sharing.
+             * Expected value is 'RBAC'.
+             */
+            authorizationType: pulumi.Input<"RBAC">;
+            /**
+             * The resource identifier of the integration runtime to be shared.
+             */
+            resourceId: pulumi.Input<string>;
+        }
+
+        /**
+         * The workspace managed identity
+         */
+        export interface ManagedIdentity {
+            /**
+             * The type of managed identity for the workspace
+             */
+            type?: pulumi.Input<enums.synapse.latest.ResourceIdentityType>;
+        }
+
+        /**
+         * Managed integration runtime, including managed elastic and managed dedicated integration runtimes.
+         */
+        export interface ManagedIntegrationRuntime {
+            /**
+             * The compute resource for managed integration runtime.
+             */
+            computeProperties?: pulumi.Input<inputs.synapse.latest.IntegrationRuntimeComputeProperties>;
+            /**
+             * Integration runtime description.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * SSIS properties for managed integration runtime.
+             */
+            ssisProperties?: pulumi.Input<inputs.synapse.latest.IntegrationRuntimeSsisProperties>;
+            /**
+             * Type of integration runtime.
+             * Expected value is 'Managed'.
+             */
+            type: pulumi.Input<"Managed">;
+        }
+
+        /**
+         * Managed Virtual Network Settings
+         */
+        export interface ManagedVirtualNetworkSettings {
+            /**
+             * Allowed Aad Tenant Ids For Linking
+             */
+            allowedAadTenantIdsForLinking?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Linked Access Check On Target Resource
+             */
+            linkedAccessCheckOnTargetResource?: pulumi.Input<boolean>;
+            /**
+             * Prevent Data Exfiltration
+             */
+            preventDataExfiltration?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * A private endpoint connection
+         */
+        export interface PrivateEndpointConnection {
+            /**
+             * Connection state of the private endpoint connection.
+             */
+            privateLinkServiceConnectionState?: pulumi.Input<inputs.synapse.latest.PrivateLinkServiceConnectionState>;
+        }
+
+        /**
+         * Connection state details of the private endpoint
+         */
+        export interface PrivateLinkServiceConnectionState {
+            /**
+             * The private link service connection description.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * The private link service connection status.
+             */
+            status?: pulumi.Input<string>;
+        }
+
+        /**
+         * Purview Configuration
+         */
+        export interface PurviewConfiguration {
+            /**
+             * Purview Resource ID
+             */
+            purviewResourceId?: pulumi.Input<string>;
+        }
+
+        /**
+         * Azure Synapse secure string definition. The string value will be masked with asterisks '*' during Get or List API calls.
+         */
+        export interface SecureString {
+            /**
+             * Type of the secret.
+             * Expected value is 'SecureString'.
+             */
+            type: pulumi.Input<"SecureString">;
+            /**
+             * Value of secure string.
+             */
+            value: pulumi.Input<string>;
+        }
+
+        /**
+         * Self-hosted integration runtime.
+         */
+        export interface SelfHostedIntegrationRuntime {
+            /**
+             * Integration runtime description.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Linked integration runtime type from data factory
+             */
+            linkedInfo?: pulumi.Input<inputs.synapse.latest.LinkedIntegrationRuntimeKeyAuthorization | inputs.synapse.latest.LinkedIntegrationRuntimeRbacAuthorization>;
+            /**
+             * Type of integration runtime.
+             * Expected value is 'SelfHosted'.
+             */
+            type: pulumi.Input<"SelfHosted">;
+        }
+
+        /**
+         * SQL pool SKU
+         */
+        export interface Sku {
+            /**
+             * If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+             */
+            capacity?: pulumi.Input<number>;
+            /**
+             * The SKU name
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * The service tier
+             */
+            tier?: pulumi.Input<string>;
+        }
+
+        /**
+         * Properties for an Sql pool vulnerability assessment rule baseline's result.
+         */
+        export interface SqlPoolVulnerabilityAssessmentRuleBaselineItem {
+            /**
+             * The rule baseline result
+             */
+            result: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * Virtual Network Profile
+         */
+        export interface VirtualNetworkProfile {
+            /**
+             * Subnet ID used for computes in workspace
+             */
+            computeSubnetId?: pulumi.Input<string>;
+        }
+
+        /**
+         * Properties of a Vulnerability Assessment recurring scans.
+         */
+        export interface VulnerabilityAssessmentRecurringScansProperties {
+            /**
+             * Specifies that the schedule scan notification will be is sent to the subscription administrators.
+             */
+            emailSubscriptionAdmins?: pulumi.Input<boolean>;
+            /**
+             * Specifies an array of e-mail addresses to which the scan notification is sent.
+             */
+            emails?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Recurring scans state.
+             */
+            isEnabled?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Details of the customer managed key associated with the workspace
+         */
+        export interface WorkspaceKeyDetails {
+            /**
+             * Workspace Key sub-resource key vault url
+             */
+            keyVaultUrl?: pulumi.Input<string>;
+            /**
+             * Workspace Key sub-resource name
+             */
+            name?: pulumi.Input<string>;
+        }
+
+        /**
+         * Git integration settings
+         */
+        export interface WorkspaceRepositoryConfiguration {
+            /**
+             * Account name
+             */
+            accountName?: pulumi.Input<string>;
+            /**
+             * Collaboration branch
+             */
+            collaborationBranch?: pulumi.Input<string>;
+            /**
+             * GitHub Enterprise host name. For example: https://github.mydomain.com
+             */
+            hostName?: pulumi.Input<string>;
+            /**
+             * The last commit ID
+             */
+            lastCommitId?: pulumi.Input<string>;
+            /**
+             * VSTS project name
+             */
+            projectName?: pulumi.Input<string>;
+            /**
+             * Repository name
+             */
+            repositoryName?: pulumi.Input<string>;
+            /**
+             * Root folder to use in the repository
+             */
+            rootFolder?: pulumi.Input<string>;
+            /**
+             * The VSTS tenant ID
+             */
+            tenantId?: pulumi.Input<string>;
+            /**
+             * Type of workspace repositoryID configuration. Example WorkspaceVSTSConfiguration, WorkspaceGitHubConfiguration
+             */
+            type?: pulumi.Input<string>;
+        }
+
+    }
+
     export namespace v20190601preview {
         /**
          * Auto-pausing properties of a Big Data pool powered by Apache Spark
@@ -363895,6 +364496,607 @@ export namespace synapse {
              * The tier or edition of the particular SKU, e.g. Basic, Premium.
              */
             tier?: pulumi.Input<string>;
+        }
+
+    }
+
+    export namespace v20201201 {
+        /**
+         * Auto-pausing properties of a Big Data pool powered by Apache Spark
+         */
+        export interface AutoPauseProperties {
+            /**
+             * Number of minutes of idle time before the Big Data pool is automatically paused.
+             */
+            delayInMinutes?: pulumi.Input<number>;
+            /**
+             * Whether auto-pausing is enabled for the Big Data pool.
+             */
+            enabled?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Auto-scaling properties of a Big Data pool powered by Apache Spark
+         */
+        export interface AutoScaleProperties {
+            /**
+             * Whether automatic scaling is enabled for the Big Data pool.
+             */
+            enabled?: pulumi.Input<boolean>;
+            /**
+             * The maximum number of nodes the Big Data pool can support.
+             */
+            maxNodeCount?: pulumi.Input<number>;
+            /**
+             * The minimum number of nodes the Big Data pool can support.
+             */
+            minNodeCount?: pulumi.Input<number>;
+        }
+
+        /**
+         * The custom setup of running cmdkey commands.
+         */
+        export interface CmdkeySetup {
+            /**
+             * The password of data source access.
+             */
+            password: pulumi.Input<inputs.synapse.v20201201.SecureString>;
+            /**
+             * The server name of data source access.
+             */
+            targetName: any;
+            /**
+             * The type of custom setup.
+             * Expected value is 'CmdkeySetup'.
+             */
+            type: pulumi.Input<"CmdkeySetup">;
+            /**
+             * The user name of data source access.
+             */
+            userName: any;
+        }
+
+        /**
+         * The custom setup of installing 3rd party components.
+         */
+        export interface ComponentSetup {
+            /**
+             * The name of the 3rd party component.
+             */
+            componentName: pulumi.Input<string>;
+            /**
+             * The license key to activate the component.
+             */
+            licenseKey?: pulumi.Input<inputs.synapse.v20201201.SecureString>;
+            /**
+             * The type of custom setup.
+             * Expected value is 'ComponentSetup'.
+             */
+            type: pulumi.Input<"ComponentSetup">;
+        }
+
+        /**
+         * Details of the customer managed key associated with the workspace
+         */
+        export interface CustomerManagedKeyDetails {
+            /**
+             * The key object of the workspace
+             */
+            key?: pulumi.Input<inputs.synapse.v20201201.WorkspaceKeyDetails>;
+        }
+
+        /**
+         * Details of the data lake storage account associated with the workspace
+         */
+        export interface DataLakeStorageAccountDetails {
+            /**
+             * Account URL
+             */
+            accountUrl?: pulumi.Input<string>;
+            /**
+             * Filesystem name
+             */
+            filesystem?: pulumi.Input<string>;
+        }
+
+        /**
+         * Dynamic Executor Allocation Properties
+         */
+        export interface DynamicExecutorAllocation {
+            /**
+             * Indicates whether Dynamic Executor Allocation is enabled or not.
+             */
+            enabled?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Details of the encryption associated with the workspace
+         */
+        export interface EncryptionDetails {
+            /**
+             * Customer Managed Key Details
+             */
+            cmk?: pulumi.Input<inputs.synapse.v20201201.CustomerManagedKeyDetails>;
+        }
+
+        /**
+         * The entity reference.
+         */
+        export interface EntityReference {
+            /**
+             * The name of this referenced entity.
+             */
+            referenceName?: pulumi.Input<string>;
+            /**
+             * The type of this referenced entity.
+             */
+            type?: pulumi.Input<string | enums.synapse.v20201201.IntegrationRuntimeEntityReferenceType>;
+        }
+
+        /**
+         * The custom setup of setting environment variable.
+         */
+        export interface EnvironmentVariableSetup {
+            /**
+             * The type of custom setup.
+             * Expected value is 'EnvironmentVariableSetup'.
+             */
+            type: pulumi.Input<"EnvironmentVariableSetup">;
+            /**
+             * The name of the environment variable.
+             */
+            variableName: pulumi.Input<string>;
+            /**
+             * The value of the environment variable.
+             */
+            variableValue: pulumi.Input<string>;
+        }
+
+        /**
+         * The compute resource properties for managed integration runtime.
+         */
+        export interface IntegrationRuntimeComputeProperties {
+            /**
+             * Data flow properties for managed integration runtime.
+             */
+            dataFlowProperties?: pulumi.Input<inputs.synapse.v20201201.IntegrationRuntimeDataFlowProperties>;
+            /**
+             * The location for managed integration runtime. The supported regions could be found on https://docs.microsoft.com/en-us/azure/data-factory/data-factory-data-movement-activities
+             */
+            location?: pulumi.Input<string>;
+            /**
+             * Maximum parallel executions count per node for managed integration runtime.
+             */
+            maxParallelExecutionsPerNode?: pulumi.Input<number>;
+            /**
+             * The node size requirement to managed integration runtime.
+             */
+            nodeSize?: pulumi.Input<string>;
+            /**
+             * The required number of nodes for managed integration runtime.
+             */
+            numberOfNodes?: pulumi.Input<number>;
+            /**
+             * VNet properties for managed integration runtime.
+             */
+            vNetProperties?: pulumi.Input<inputs.synapse.v20201201.IntegrationRuntimeVNetProperties>;
+        }
+
+        /**
+         * Custom setup script properties for a managed dedicated integration runtime.
+         */
+        export interface IntegrationRuntimeCustomSetupScriptProperties {
+            /**
+             * The URI of the Azure blob container that contains the custom setup script.
+             */
+            blobContainerUri?: pulumi.Input<string>;
+            /**
+             * The SAS token of the Azure blob container.
+             */
+            sasToken?: pulumi.Input<inputs.synapse.v20201201.SecureString>;
+        }
+
+        /**
+         * Data flow properties for managed integration runtime.
+         */
+        export interface IntegrationRuntimeDataFlowProperties {
+            /**
+             * Compute type of the cluster which will execute data flow job.
+             */
+            computeType?: pulumi.Input<string | enums.synapse.v20201201.DataFlowComputeType>;
+            /**
+             * Core count of the cluster which will execute data flow job. Supported values are: 8, 16, 32, 48, 80, 144 and 272.
+             */
+            coreCount?: pulumi.Input<number>;
+            /**
+             * Time to live (in minutes) setting of the cluster which will execute data flow job.
+             */
+            timeToLive?: pulumi.Input<number>;
+        }
+
+        /**
+         * Data proxy properties for a managed dedicated integration runtime.
+         */
+        export interface IntegrationRuntimeDataProxyProperties {
+            /**
+             * The self-hosted integration runtime reference.
+             */
+            connectVia?: pulumi.Input<inputs.synapse.v20201201.EntityReference>;
+            /**
+             * The path to contain the staged data in the Blob storage.
+             */
+            path?: pulumi.Input<string>;
+            /**
+             * The staging linked service reference.
+             */
+            stagingLinkedService?: pulumi.Input<inputs.synapse.v20201201.EntityReference>;
+        }
+
+        /**
+         * Catalog information for managed dedicated integration runtime.
+         */
+        export interface IntegrationRuntimeSsisCatalogInfo {
+            /**
+             * The password of the administrator user account of the catalog database.
+             */
+            catalogAdminPassword?: pulumi.Input<inputs.synapse.v20201201.SecureString>;
+            /**
+             * The administrator user name of catalog database.
+             */
+            catalogAdminUserName?: pulumi.Input<string>;
+            /**
+             * The pricing tier for the catalog database. The valid values could be found in https://azure.microsoft.com/en-us/pricing/details/sql-database/
+             */
+            catalogPricingTier?: pulumi.Input<string | enums.synapse.v20201201.IntegrationRuntimeSsisCatalogPricingTier>;
+            /**
+             * The catalog database server URL.
+             */
+            catalogServerEndpoint?: pulumi.Input<string>;
+        }
+
+        /**
+         * SSIS properties for managed integration runtime.
+         */
+        export interface IntegrationRuntimeSsisProperties {
+            /**
+             * Catalog information for managed dedicated integration runtime.
+             */
+            catalogInfo?: pulumi.Input<inputs.synapse.v20201201.IntegrationRuntimeSsisCatalogInfo>;
+            /**
+             * Custom setup script properties for a managed dedicated integration runtime.
+             */
+            customSetupScriptProperties?: pulumi.Input<inputs.synapse.v20201201.IntegrationRuntimeCustomSetupScriptProperties>;
+            /**
+             * Data proxy properties for a managed dedicated integration runtime.
+             */
+            dataProxyProperties?: pulumi.Input<inputs.synapse.v20201201.IntegrationRuntimeDataProxyProperties>;
+            /**
+             * The edition for the SSIS Integration Runtime
+             */
+            edition?: pulumi.Input<string | enums.synapse.v20201201.IntegrationRuntimeEdition>;
+            /**
+             * Custom setup without script properties for a SSIS integration runtime.
+             */
+            expressCustomSetupProperties?: pulumi.Input<pulumi.Input<inputs.synapse.v20201201.CmdkeySetup | inputs.synapse.v20201201.ComponentSetup | inputs.synapse.v20201201.EnvironmentVariableSetup>[]>;
+            /**
+             * License type for bringing your own license scenario.
+             */
+            licenseType?: pulumi.Input<string | enums.synapse.v20201201.IntegrationRuntimeLicenseType>;
+        }
+
+        /**
+         * VNet properties for managed integration runtime.
+         */
+        export interface IntegrationRuntimeVNetProperties {
+            /**
+             * Resource IDs of the public IP addresses that this integration runtime will use.
+             */
+            publicIPs?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The name of the subnet this integration runtime will join.
+             */
+            subnet?: pulumi.Input<string>;
+            /**
+             * The ID of the VNet that this integration runtime will join.
+             */
+            vNetId?: pulumi.Input<string>;
+        }
+
+        /**
+         * Library/package information of a Big Data pool powered by Apache Spark
+         */
+        export interface LibraryInfo {
+            /**
+             * Storage blob container name.
+             */
+            containerName?: pulumi.Input<string>;
+            /**
+             * Name of the library.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Storage blob path of library.
+             */
+            path?: pulumi.Input<string>;
+            /**
+             * Type of the library.
+             */
+            type?: pulumi.Input<string>;
+        }
+
+        /**
+         * Library requirements for a Big Data pool powered by Apache Spark
+         */
+        export interface LibraryRequirements {
+            /**
+             * The library requirements.
+             */
+            content?: pulumi.Input<string>;
+            /**
+             * The filename of the library requirements file.
+             */
+            filename?: pulumi.Input<string>;
+        }
+
+        /**
+         * The key authorization type integration runtime.
+         */
+        export interface LinkedIntegrationRuntimeKeyAuthorization {
+            /**
+             * The authorization type for integration runtime sharing.
+             * Expected value is 'Key'.
+             */
+            authorizationType: pulumi.Input<"Key">;
+            /**
+             * The key used for authorization.
+             */
+            key: pulumi.Input<inputs.synapse.v20201201.SecureString>;
+        }
+
+        /**
+         * The role based access control (RBAC) authorization type integration runtime.
+         */
+        export interface LinkedIntegrationRuntimeRbacAuthorization {
+            /**
+             * The authorization type for integration runtime sharing.
+             * Expected value is 'RBAC'.
+             */
+            authorizationType: pulumi.Input<"RBAC">;
+            /**
+             * The resource identifier of the integration runtime to be shared.
+             */
+            resourceId: pulumi.Input<string>;
+        }
+
+        /**
+         * The workspace managed identity
+         */
+        export interface ManagedIdentity {
+            /**
+             * The type of managed identity for the workspace
+             */
+            type?: pulumi.Input<enums.synapse.v20201201.ResourceIdentityType>;
+        }
+
+        /**
+         * Managed integration runtime, including managed elastic and managed dedicated integration runtimes.
+         */
+        export interface ManagedIntegrationRuntime {
+            /**
+             * The compute resource for managed integration runtime.
+             */
+            computeProperties?: pulumi.Input<inputs.synapse.v20201201.IntegrationRuntimeComputeProperties>;
+            /**
+             * Integration runtime description.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * SSIS properties for managed integration runtime.
+             */
+            ssisProperties?: pulumi.Input<inputs.synapse.v20201201.IntegrationRuntimeSsisProperties>;
+            /**
+             * Type of integration runtime.
+             * Expected value is 'Managed'.
+             */
+            type: pulumi.Input<"Managed">;
+        }
+
+        /**
+         * Managed Virtual Network Settings
+         */
+        export interface ManagedVirtualNetworkSettings {
+            /**
+             * Allowed Aad Tenant Ids For Linking
+             */
+            allowedAadTenantIdsForLinking?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Linked Access Check On Target Resource
+             */
+            linkedAccessCheckOnTargetResource?: pulumi.Input<boolean>;
+            /**
+             * Prevent Data Exfiltration
+             */
+            preventDataExfiltration?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * A private endpoint connection
+         */
+        export interface PrivateEndpointConnection {
+            /**
+             * Connection state of the private endpoint connection.
+             */
+            privateLinkServiceConnectionState?: pulumi.Input<inputs.synapse.v20201201.PrivateLinkServiceConnectionState>;
+        }
+
+        /**
+         * Connection state details of the private endpoint
+         */
+        export interface PrivateLinkServiceConnectionState {
+            /**
+             * The private link service connection description.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * The private link service connection status.
+             */
+            status?: pulumi.Input<string>;
+        }
+
+        /**
+         * Purview Configuration
+         */
+        export interface PurviewConfiguration {
+            /**
+             * Purview Resource ID
+             */
+            purviewResourceId?: pulumi.Input<string>;
+        }
+
+        /**
+         * Azure Synapse secure string definition. The string value will be masked with asterisks '*' during Get or List API calls.
+         */
+        export interface SecureString {
+            /**
+             * Type of the secret.
+             * Expected value is 'SecureString'.
+             */
+            type: pulumi.Input<"SecureString">;
+            /**
+             * Value of secure string.
+             */
+            value: pulumi.Input<string>;
+        }
+
+        /**
+         * Self-hosted integration runtime.
+         */
+        export interface SelfHostedIntegrationRuntime {
+            /**
+             * Integration runtime description.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Linked integration runtime type from data factory
+             */
+            linkedInfo?: pulumi.Input<inputs.synapse.v20201201.LinkedIntegrationRuntimeKeyAuthorization | inputs.synapse.v20201201.LinkedIntegrationRuntimeRbacAuthorization>;
+            /**
+             * Type of integration runtime.
+             * Expected value is 'SelfHosted'.
+             */
+            type: pulumi.Input<"SelfHosted">;
+        }
+
+        /**
+         * SQL pool SKU
+         */
+        export interface Sku {
+            /**
+             * If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+             */
+            capacity?: pulumi.Input<number>;
+            /**
+             * The SKU name
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * The service tier
+             */
+            tier?: pulumi.Input<string>;
+        }
+
+        /**
+         * Properties for an Sql pool vulnerability assessment rule baseline's result.
+         */
+        export interface SqlPoolVulnerabilityAssessmentRuleBaselineItem {
+            /**
+             * The rule baseline result
+             */
+            result: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * Virtual Network Profile
+         */
+        export interface VirtualNetworkProfile {
+            /**
+             * Subnet ID used for computes in workspace
+             */
+            computeSubnetId?: pulumi.Input<string>;
+        }
+
+        /**
+         * Properties of a Vulnerability Assessment recurring scans.
+         */
+        export interface VulnerabilityAssessmentRecurringScansProperties {
+            /**
+             * Specifies that the schedule scan notification will be is sent to the subscription administrators.
+             */
+            emailSubscriptionAdmins?: pulumi.Input<boolean>;
+            /**
+             * Specifies an array of e-mail addresses to which the scan notification is sent.
+             */
+            emails?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Recurring scans state.
+             */
+            isEnabled?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Details of the customer managed key associated with the workspace
+         */
+        export interface WorkspaceKeyDetails {
+            /**
+             * Workspace Key sub-resource key vault url
+             */
+            keyVaultUrl?: pulumi.Input<string>;
+            /**
+             * Workspace Key sub-resource name
+             */
+            name?: pulumi.Input<string>;
+        }
+
+        /**
+         * Git integration settings
+         */
+        export interface WorkspaceRepositoryConfiguration {
+            /**
+             * Account name
+             */
+            accountName?: pulumi.Input<string>;
+            /**
+             * Collaboration branch
+             */
+            collaborationBranch?: pulumi.Input<string>;
+            /**
+             * GitHub Enterprise host name. For example: https://github.mydomain.com
+             */
+            hostName?: pulumi.Input<string>;
+            /**
+             * The last commit ID
+             */
+            lastCommitId?: pulumi.Input<string>;
+            /**
+             * VSTS project name
+             */
+            projectName?: pulumi.Input<string>;
+            /**
+             * Repository name
+             */
+            repositoryName?: pulumi.Input<string>;
+            /**
+             * Root folder to use in the repository
+             */
+            rootFolder?: pulumi.Input<string>;
+            /**
+             * The VSTS tenant ID
+             */
+            tenantId?: pulumi.Input<string>;
+            /**
+             * Type of workspace repositoryID configuration. Example WorkspaceVSTSConfiguration, WorkspaceGitHubConfiguration
+             */
+            type?: pulumi.Input<string>;
         }
 
     }
