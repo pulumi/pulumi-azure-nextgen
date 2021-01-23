@@ -51463,6 +51463,10 @@ export namespace containerinstance {
          */
         export interface ContainerHttpGet {
             /**
+             * The HTTP headers.
+             */
+            httpHeaders?: pulumi.Input<inputs.containerinstance.latest.HttpHeaders>;
+            /**
              * The path to probe.
              */
             path?: pulumi.Input<string>;
@@ -51608,6 +51612,20 @@ export namespace containerinstance {
              * The SKU of the GPU resource.
              */
             sku: pulumi.Input<string | enums.containerinstance.latest.GpuSku>;
+        }
+
+        /**
+         * The HTTP headers.
+         */
+        export interface HttpHeaders {
+            /**
+             * The header name.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * The header value.
+             */
+            value?: pulumi.Input<string>;
         }
 
         /**
@@ -54657,6 +54675,10 @@ export namespace containerinstance {
          */
         export interface ContainerHttpGet {
             /**
+             * The HTTP headers.
+             */
+            httpHeaders?: pulumi.Input<inputs.containerinstance.v20201101.HttpHeaders>;
+            /**
              * The path to probe.
              */
             path?: pulumi.Input<string>;
@@ -54802,6 +54824,20 @@ export namespace containerinstance {
              * The SKU of the GPU resource.
              */
             sku: pulumi.Input<string | enums.containerinstance.v20201101.GpuSku>;
+        }
+
+        /**
+         * The HTTP headers.
+         */
+        export interface HttpHeaders {
+            /**
+             * The header name.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * The header value.
+             */
+            value?: pulumi.Input<string>;
         }
 
         /**
@@ -79511,6 +79547,45 @@ export namespace datafactory {
              * Expected value is 'CustomDataset'.
              */
             type: pulumi.Input<"CustomDataset">;
+        }
+
+        /**
+         * Trigger that runs every time a custom event is received.
+         */
+        export interface CustomEventsTrigger {
+            /**
+             * List of tags that can be used for describing the trigger.
+             */
+            annotations?: pulumi.Input<any[]>;
+            /**
+             * Trigger description.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * The list of event types that cause this trigger to fire.
+             */
+            events: pulumi.Input<any[]>;
+            /**
+             * Pipelines that need to be started.
+             */
+            pipelines?: pulumi.Input<pulumi.Input<inputs.datafactory.latest.TriggerPipelineReference>[]>;
+            /**
+             * The ARM resource ID of the Azure Event Grid Topic.
+             */
+            scope: pulumi.Input<string>;
+            /**
+             * The event subject must begin with the pattern provided for trigger to fire. At least one of these must be provided: subjectBeginsWith, subjectEndsWith.
+             */
+            subjectBeginsWith?: pulumi.Input<string>;
+            /**
+             * The event subject must end with the pattern provided for trigger to fire. At least one of these must be provided: subjectBeginsWith, subjectEndsWith.
+             */
+            subjectEndsWith?: pulumi.Input<string>;
+            /**
+             * Trigger type.
+             * Expected value is 'MultiplePipelineTrigger'.
+             */
+            type: pulumi.Input<"MultiplePipelineTrigger">;
         }
 
         /**
@@ -109116,6 +109191,45 @@ export namespace datafactory {
              * Expected value is 'CustomDataset'.
              */
             type: pulumi.Input<"CustomDataset">;
+        }
+
+        /**
+         * Trigger that runs every time a custom event is received.
+         */
+        export interface CustomEventsTrigger {
+            /**
+             * List of tags that can be used for describing the trigger.
+             */
+            annotations?: pulumi.Input<any[]>;
+            /**
+             * Trigger description.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * The list of event types that cause this trigger to fire.
+             */
+            events: pulumi.Input<any[]>;
+            /**
+             * Pipelines that need to be started.
+             */
+            pipelines?: pulumi.Input<pulumi.Input<inputs.datafactory.v20180601.TriggerPipelineReference>[]>;
+            /**
+             * The ARM resource ID of the Azure Event Grid Topic.
+             */
+            scope: pulumi.Input<string>;
+            /**
+             * The event subject must begin with the pattern provided for trigger to fire. At least one of these must be provided: subjectBeginsWith, subjectEndsWith.
+             */
+            subjectBeginsWith?: pulumi.Input<string>;
+            /**
+             * The event subject must end with the pattern provided for trigger to fire. At least one of these must be provided: subjectBeginsWith, subjectEndsWith.
+             */
+            subjectEndsWith?: pulumi.Input<string>;
+            /**
+             * Trigger type.
+             * Expected value is 'MultiplePipelineTrigger'.
+             */
+            type: pulumi.Input<"MultiplePipelineTrigger">;
         }
 
         /**
@@ -198912,7 +199026,7 @@ export namespace migrate {
             /**
              * Gets or sets the fully qualified domain name.
              */
-            fQDN?: pulumi.Input<string>;
+            fqdn?: pulumi.Input<string>;
             /**
              * Gets or sets public IP allocation method.
              */

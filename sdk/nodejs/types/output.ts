@@ -40070,11 +40070,11 @@ export namespace compute {
          */
         export interface PrivateEndpointConnectionResponse {
             /**
-             * Resource Id
+             * private endpoint connection Id
              */
             id: string;
             /**
-             * Resource name
+             * private endpoint connection name
              */
             name: string;
             /**
@@ -40090,7 +40090,7 @@ export namespace compute {
              */
             provisioningState: string;
             /**
-             * Resource type
+             * private endpoint connection type
              */
             type: string;
         }
@@ -62121,11 +62121,11 @@ export namespace compute {
          */
         export interface PrivateEndpointConnectionResponse {
             /**
-             * Resource Id
+             * private endpoint connection Id
              */
             id: string;
             /**
-             * Resource name
+             * private endpoint connection name
              */
             name: string;
             /**
@@ -62141,7 +62141,7 @@ export namespace compute {
              */
             provisioningState: string;
             /**
-             * Resource type
+             * private endpoint connection type
              */
             type: string;
         }
@@ -64108,6 +64108,10 @@ export namespace containerinstance {
          */
         export interface ContainerHttpGetResponse {
             /**
+             * The HTTP headers.
+             */
+            httpHeaders?: outputs.containerinstance.latest.HttpHeadersResponse;
+            /**
              * The path to probe.
              */
             path?: string;
@@ -64377,6 +64381,20 @@ export namespace containerinstance {
              * The SKU of the GPU resource.
              */
             sku: string;
+        }
+
+        /**
+         * The HTTP headers.
+         */
+        export interface HttpHeadersResponse {
+            /**
+             * The header name.
+             */
+            name?: string;
+            /**
+             * The header value.
+             */
+            value?: string;
         }
 
         /**
@@ -68371,6 +68389,10 @@ export namespace containerinstance {
          */
         export interface ContainerHttpGetResponse {
             /**
+             * The HTTP headers.
+             */
+            httpHeaders?: outputs.containerinstance.v20201101.HttpHeadersResponse;
+            /**
              * The path to probe.
              */
             path?: string;
@@ -68640,6 +68662,20 @@ export namespace containerinstance {
              * The SKU of the GPU resource.
              */
             sku: string;
+        }
+
+        /**
+         * The HTTP headers.
+         */
+        export interface HttpHeadersResponse {
+            /**
+             * The header name.
+             */
+            name?: string;
+            /**
+             * The header value.
+             */
+            value?: string;
         }
 
         /**
@@ -101424,6 +101460,49 @@ export namespace datafactory {
         }
 
         /**
+         * Trigger that runs every time a custom event is received.
+         */
+        export interface CustomEventsTriggerResponse {
+            /**
+             * List of tags that can be used for describing the trigger.
+             */
+            annotations?: any[];
+            /**
+             * Trigger description.
+             */
+            description?: string;
+            /**
+             * The list of event types that cause this trigger to fire.
+             */
+            events: any[];
+            /**
+             * Pipelines that need to be started.
+             */
+            pipelines?: outputs.datafactory.latest.TriggerPipelineReferenceResponse[];
+            /**
+             * Indicates if trigger is running or not. Updated when Start/Stop APIs are called on the Trigger.
+             */
+            runtimeState: string;
+            /**
+             * The ARM resource ID of the Azure Event Grid Topic.
+             */
+            scope: string;
+            /**
+             * The event subject must begin with the pattern provided for trigger to fire. At least one of these must be provided: subjectBeginsWith, subjectEndsWith.
+             */
+            subjectBeginsWith?: string;
+            /**
+             * The event subject must end with the pattern provided for trigger to fire. At least one of these must be provided: subjectBeginsWith, subjectEndsWith.
+             */
+            subjectEndsWith?: string;
+            /**
+             * Trigger type.
+             * Expected value is 'MultiplePipelineTrigger'.
+             */
+            type: "MultiplePipelineTrigger";
+        }
+
+        /**
          * Default value.
          */
         export interface DWCopyCommandDefaultValueResponse {
@@ -131966,6 +132045,49 @@ export namespace datafactory {
              * Expected value is 'CustomDataset'.
              */
             type: "CustomDataset";
+        }
+
+        /**
+         * Trigger that runs every time a custom event is received.
+         */
+        export interface CustomEventsTriggerResponse {
+            /**
+             * List of tags that can be used for describing the trigger.
+             */
+            annotations?: any[];
+            /**
+             * Trigger description.
+             */
+            description?: string;
+            /**
+             * The list of event types that cause this trigger to fire.
+             */
+            events: any[];
+            /**
+             * Pipelines that need to be started.
+             */
+            pipelines?: outputs.datafactory.v20180601.TriggerPipelineReferenceResponse[];
+            /**
+             * Indicates if trigger is running or not. Updated when Start/Stop APIs are called on the Trigger.
+             */
+            runtimeState: string;
+            /**
+             * The ARM resource ID of the Azure Event Grid Topic.
+             */
+            scope: string;
+            /**
+             * The event subject must begin with the pattern provided for trigger to fire. At least one of these must be provided: subjectBeginsWith, subjectEndsWith.
+             */
+            subjectBeginsWith?: string;
+            /**
+             * The event subject must end with the pattern provided for trigger to fire. At least one of these must be provided: subjectBeginsWith, subjectEndsWith.
+             */
+            subjectEndsWith?: string;
+            /**
+             * Trigger type.
+             * Expected value is 'MultiplePipelineTrigger'.
+             */
+            type: "MultiplePipelineTrigger";
         }
 
         /**
@@ -255308,10 +255430,6 @@ export namespace migrate {
              * Defines the MoveResource states.
              */
             moveState: string;
-            /**
-             * Gets the Target ARM Id of the resource.
-             */
-            targetId: string;
         }
 
         /**
@@ -255472,7 +255590,7 @@ export namespace migrate {
             /**
              * Gets or sets the fully qualified domain name.
              */
-            fQDN?: string;
+            fqdn?: string;
             /**
              * Gets or sets public IP allocation method.
              */

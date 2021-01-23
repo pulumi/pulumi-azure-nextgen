@@ -36225,6 +36225,257 @@ func (o CustomDatasetResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomDatasetResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Trigger that runs every time a custom event is received.
+type CustomEventsTrigger struct {
+	// List of tags that can be used for describing the trigger.
+	Annotations []interface{} `pulumi:"annotations"`
+	// Trigger description.
+	Description *string `pulumi:"description"`
+	// The list of event types that cause this trigger to fire.
+	Events []interface{} `pulumi:"events"`
+	// Pipelines that need to be started.
+	Pipelines []TriggerPipelineReference `pulumi:"pipelines"`
+	// The ARM resource ID of the Azure Event Grid Topic.
+	Scope string `pulumi:"scope"`
+	// The event subject must begin with the pattern provided for trigger to fire. At least one of these must be provided: subjectBeginsWith, subjectEndsWith.
+	SubjectBeginsWith *string `pulumi:"subjectBeginsWith"`
+	// The event subject must end with the pattern provided for trigger to fire. At least one of these must be provided: subjectBeginsWith, subjectEndsWith.
+	SubjectEndsWith *string `pulumi:"subjectEndsWith"`
+	// Trigger type.
+	// Expected value is 'MultiplePipelineTrigger'.
+	Type string `pulumi:"type"`
+}
+
+// CustomEventsTriggerInput is an input type that accepts CustomEventsTriggerArgs and CustomEventsTriggerOutput values.
+// You can construct a concrete instance of `CustomEventsTriggerInput` via:
+//
+//          CustomEventsTriggerArgs{...}
+type CustomEventsTriggerInput interface {
+	pulumi.Input
+
+	ToCustomEventsTriggerOutput() CustomEventsTriggerOutput
+	ToCustomEventsTriggerOutputWithContext(context.Context) CustomEventsTriggerOutput
+}
+
+// Trigger that runs every time a custom event is received.
+type CustomEventsTriggerArgs struct {
+	// List of tags that can be used for describing the trigger.
+	Annotations pulumi.ArrayInput `pulumi:"annotations"`
+	// Trigger description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The list of event types that cause this trigger to fire.
+	Events pulumi.ArrayInput `pulumi:"events"`
+	// Pipelines that need to be started.
+	Pipelines TriggerPipelineReferenceArrayInput `pulumi:"pipelines"`
+	// The ARM resource ID of the Azure Event Grid Topic.
+	Scope pulumi.StringInput `pulumi:"scope"`
+	// The event subject must begin with the pattern provided for trigger to fire. At least one of these must be provided: subjectBeginsWith, subjectEndsWith.
+	SubjectBeginsWith pulumi.StringPtrInput `pulumi:"subjectBeginsWith"`
+	// The event subject must end with the pattern provided for trigger to fire. At least one of these must be provided: subjectBeginsWith, subjectEndsWith.
+	SubjectEndsWith pulumi.StringPtrInput `pulumi:"subjectEndsWith"`
+	// Trigger type.
+	// Expected value is 'MultiplePipelineTrigger'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (CustomEventsTriggerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomEventsTrigger)(nil)).Elem()
+}
+
+func (i CustomEventsTriggerArgs) ToCustomEventsTriggerOutput() CustomEventsTriggerOutput {
+	return i.ToCustomEventsTriggerOutputWithContext(context.Background())
+}
+
+func (i CustomEventsTriggerArgs) ToCustomEventsTriggerOutputWithContext(ctx context.Context) CustomEventsTriggerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomEventsTriggerOutput)
+}
+
+// Trigger that runs every time a custom event is received.
+type CustomEventsTriggerOutput struct{ *pulumi.OutputState }
+
+func (CustomEventsTriggerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomEventsTrigger)(nil)).Elem()
+}
+
+func (o CustomEventsTriggerOutput) ToCustomEventsTriggerOutput() CustomEventsTriggerOutput {
+	return o
+}
+
+func (o CustomEventsTriggerOutput) ToCustomEventsTriggerOutputWithContext(ctx context.Context) CustomEventsTriggerOutput {
+	return o
+}
+
+// List of tags that can be used for describing the trigger.
+func (o CustomEventsTriggerOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v CustomEventsTrigger) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// Trigger description.
+func (o CustomEventsTriggerOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomEventsTrigger) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The list of event types that cause this trigger to fire.
+func (o CustomEventsTriggerOutput) Events() pulumi.ArrayOutput {
+	return o.ApplyT(func(v CustomEventsTrigger) []interface{} { return v.Events }).(pulumi.ArrayOutput)
+}
+
+// Pipelines that need to be started.
+func (o CustomEventsTriggerOutput) Pipelines() TriggerPipelineReferenceArrayOutput {
+	return o.ApplyT(func(v CustomEventsTrigger) []TriggerPipelineReference { return v.Pipelines }).(TriggerPipelineReferenceArrayOutput)
+}
+
+// The ARM resource ID of the Azure Event Grid Topic.
+func (o CustomEventsTriggerOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomEventsTrigger) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+// The event subject must begin with the pattern provided for trigger to fire. At least one of these must be provided: subjectBeginsWith, subjectEndsWith.
+func (o CustomEventsTriggerOutput) SubjectBeginsWith() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomEventsTrigger) *string { return v.SubjectBeginsWith }).(pulumi.StringPtrOutput)
+}
+
+// The event subject must end with the pattern provided for trigger to fire. At least one of these must be provided: subjectBeginsWith, subjectEndsWith.
+func (o CustomEventsTriggerOutput) SubjectEndsWith() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomEventsTrigger) *string { return v.SubjectEndsWith }).(pulumi.StringPtrOutput)
+}
+
+// Trigger type.
+// Expected value is 'MultiplePipelineTrigger'.
+func (o CustomEventsTriggerOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomEventsTrigger) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Trigger that runs every time a custom event is received.
+type CustomEventsTriggerResponse struct {
+	// List of tags that can be used for describing the trigger.
+	Annotations []interface{} `pulumi:"annotations"`
+	// Trigger description.
+	Description *string `pulumi:"description"`
+	// The list of event types that cause this trigger to fire.
+	Events []interface{} `pulumi:"events"`
+	// Pipelines that need to be started.
+	Pipelines []TriggerPipelineReferenceResponse `pulumi:"pipelines"`
+	// Indicates if trigger is running or not. Updated when Start/Stop APIs are called on the Trigger.
+	RuntimeState string `pulumi:"runtimeState"`
+	// The ARM resource ID of the Azure Event Grid Topic.
+	Scope string `pulumi:"scope"`
+	// The event subject must begin with the pattern provided for trigger to fire. At least one of these must be provided: subjectBeginsWith, subjectEndsWith.
+	SubjectBeginsWith *string `pulumi:"subjectBeginsWith"`
+	// The event subject must end with the pattern provided for trigger to fire. At least one of these must be provided: subjectBeginsWith, subjectEndsWith.
+	SubjectEndsWith *string `pulumi:"subjectEndsWith"`
+	// Trigger type.
+	// Expected value is 'MultiplePipelineTrigger'.
+	Type string `pulumi:"type"`
+}
+
+// CustomEventsTriggerResponseInput is an input type that accepts CustomEventsTriggerResponseArgs and CustomEventsTriggerResponseOutput values.
+// You can construct a concrete instance of `CustomEventsTriggerResponseInput` via:
+//
+//          CustomEventsTriggerResponseArgs{...}
+type CustomEventsTriggerResponseInput interface {
+	pulumi.Input
+
+	ToCustomEventsTriggerResponseOutput() CustomEventsTriggerResponseOutput
+	ToCustomEventsTriggerResponseOutputWithContext(context.Context) CustomEventsTriggerResponseOutput
+}
+
+// Trigger that runs every time a custom event is received.
+type CustomEventsTriggerResponseArgs struct {
+	// List of tags that can be used for describing the trigger.
+	Annotations pulumi.ArrayInput `pulumi:"annotations"`
+	// Trigger description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The list of event types that cause this trigger to fire.
+	Events pulumi.ArrayInput `pulumi:"events"`
+	// Pipelines that need to be started.
+	Pipelines TriggerPipelineReferenceResponseArrayInput `pulumi:"pipelines"`
+	// Indicates if trigger is running or not. Updated when Start/Stop APIs are called on the Trigger.
+	RuntimeState pulumi.StringInput `pulumi:"runtimeState"`
+	// The ARM resource ID of the Azure Event Grid Topic.
+	Scope pulumi.StringInput `pulumi:"scope"`
+	// The event subject must begin with the pattern provided for trigger to fire. At least one of these must be provided: subjectBeginsWith, subjectEndsWith.
+	SubjectBeginsWith pulumi.StringPtrInput `pulumi:"subjectBeginsWith"`
+	// The event subject must end with the pattern provided for trigger to fire. At least one of these must be provided: subjectBeginsWith, subjectEndsWith.
+	SubjectEndsWith pulumi.StringPtrInput `pulumi:"subjectEndsWith"`
+	// Trigger type.
+	// Expected value is 'MultiplePipelineTrigger'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (CustomEventsTriggerResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomEventsTriggerResponse)(nil)).Elem()
+}
+
+func (i CustomEventsTriggerResponseArgs) ToCustomEventsTriggerResponseOutput() CustomEventsTriggerResponseOutput {
+	return i.ToCustomEventsTriggerResponseOutputWithContext(context.Background())
+}
+
+func (i CustomEventsTriggerResponseArgs) ToCustomEventsTriggerResponseOutputWithContext(ctx context.Context) CustomEventsTriggerResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomEventsTriggerResponseOutput)
+}
+
+// Trigger that runs every time a custom event is received.
+type CustomEventsTriggerResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomEventsTriggerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomEventsTriggerResponse)(nil)).Elem()
+}
+
+func (o CustomEventsTriggerResponseOutput) ToCustomEventsTriggerResponseOutput() CustomEventsTriggerResponseOutput {
+	return o
+}
+
+func (o CustomEventsTriggerResponseOutput) ToCustomEventsTriggerResponseOutputWithContext(ctx context.Context) CustomEventsTriggerResponseOutput {
+	return o
+}
+
+// List of tags that can be used for describing the trigger.
+func (o CustomEventsTriggerResponseOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v CustomEventsTriggerResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// Trigger description.
+func (o CustomEventsTriggerResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomEventsTriggerResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The list of event types that cause this trigger to fire.
+func (o CustomEventsTriggerResponseOutput) Events() pulumi.ArrayOutput {
+	return o.ApplyT(func(v CustomEventsTriggerResponse) []interface{} { return v.Events }).(pulumi.ArrayOutput)
+}
+
+// Pipelines that need to be started.
+func (o CustomEventsTriggerResponseOutput) Pipelines() TriggerPipelineReferenceResponseArrayOutput {
+	return o.ApplyT(func(v CustomEventsTriggerResponse) []TriggerPipelineReferenceResponse { return v.Pipelines }).(TriggerPipelineReferenceResponseArrayOutput)
+}
+
+// Indicates if trigger is running or not. Updated when Start/Stop APIs are called on the Trigger.
+func (o CustomEventsTriggerResponseOutput) RuntimeState() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomEventsTriggerResponse) string { return v.RuntimeState }).(pulumi.StringOutput)
+}
+
+// The ARM resource ID of the Azure Event Grid Topic.
+func (o CustomEventsTriggerResponseOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomEventsTriggerResponse) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+// The event subject must begin with the pattern provided for trigger to fire. At least one of these must be provided: subjectBeginsWith, subjectEndsWith.
+func (o CustomEventsTriggerResponseOutput) SubjectBeginsWith() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomEventsTriggerResponse) *string { return v.SubjectBeginsWith }).(pulumi.StringPtrOutput)
+}
+
+// The event subject must end with the pattern provided for trigger to fire. At least one of these must be provided: subjectBeginsWith, subjectEndsWith.
+func (o CustomEventsTriggerResponseOutput) SubjectEndsWith() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomEventsTriggerResponse) *string { return v.SubjectEndsWith }).(pulumi.StringPtrOutput)
+}
+
+// Trigger type.
+// Expected value is 'MultiplePipelineTrigger'.
+func (o CustomEventsTriggerResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomEventsTriggerResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Default value.
 type DWCopyCommandDefaultValue struct {
 	// Column name. Type: object (or Expression with resultType string).
@@ -142061,6 +142312,8 @@ func init() {
 	pulumi.RegisterOutputType(CustomDataSourceLinkedServiceResponseOutput{})
 	pulumi.RegisterOutputType(CustomDatasetOutput{})
 	pulumi.RegisterOutputType(CustomDatasetResponseOutput{})
+	pulumi.RegisterOutputType(CustomEventsTriggerOutput{})
+	pulumi.RegisterOutputType(CustomEventsTriggerResponseOutput{})
 	pulumi.RegisterOutputType(DWCopyCommandDefaultValueOutput{})
 	pulumi.RegisterOutputType(DWCopyCommandDefaultValueArrayOutput{})
 	pulumi.RegisterOutputType(DWCopyCommandDefaultValueResponseOutput{})
