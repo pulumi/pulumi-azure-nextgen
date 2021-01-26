@@ -3,7 +3,9 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
-None
+Fixes:
+
+- Empty arrays are now serialized to HTTP payloads as-is, fixing ([#231](https://github.com/pulumi/pulumi-azure-nextgen/issues/231))
 
 ---
 
