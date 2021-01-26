@@ -255103,6 +255103,21 @@ export namespace migrate {
         }
 
         /**
+         * Defines the disk encryption set resource settings.
+         */
+        export interface DiskEncryptionSetResourceSettingsResponse {
+            /**
+             * The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+             * Expected value is 'Microsoft.Compute/diskEncryptionSets'.
+             */
+            resourceType: "Microsoft.Compute/diskEncryptionSets";
+            /**
+             * Gets or sets the target Resource name.
+             */
+            targetResourceName: string;
+        }
+
+        /**
          * Defines the MSI properties of the Move Collection.
          */
         export interface IdentityResponse {
@@ -255132,6 +255147,21 @@ export namespace migrate {
              * Gets or sets the monitoring job percentage.
              */
             jobProgress: string;
+        }
+
+        /**
+         * Defines the key vault resource settings.
+         */
+        export interface KeyVaultResourceSettingsResponse {
+            /**
+             * The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+             * Expected value is 'Microsoft.KeyVault/vaults'.
+             */
+            resourceType: "Microsoft.KeyVault/vaults";
+            /**
+             * Gets or sets the target Resource name.
+             */
+            targetResourceName: string;
         }
 
         /**
@@ -255389,7 +255419,7 @@ export namespace migrate {
             /**
              * Gets or sets the resource settings.
              */
-            resourceSettings?: outputs.migrate.v20191001preview.AvailabilitySetResourceSettingsResponse | outputs.migrate.v20191001preview.LoadBalancerResourceSettingsResponse | outputs.migrate.v20191001preview.NetworkInterfaceResourceSettingsResponse | outputs.migrate.v20191001preview.NetworkSecurityGroupResourceSettingsResponse | outputs.migrate.v20191001preview.PublicIPAddressResourceSettingsResponse | outputs.migrate.v20191001preview.ResourceGroupResourceSettingsResponse | outputs.migrate.v20191001preview.SqlDatabaseResourceSettingsResponse | outputs.migrate.v20191001preview.SqlElasticPoolResourceSettingsResponse | outputs.migrate.v20191001preview.SqlServerResourceSettingsResponse | outputs.migrate.v20191001preview.VirtualMachineResourceSettingsResponse | outputs.migrate.v20191001preview.VirtualNetworkResourceSettingsResponse;
+            resourceSettings?: outputs.migrate.v20191001preview.AvailabilitySetResourceSettingsResponse | outputs.migrate.v20191001preview.DiskEncryptionSetResourceSettingsResponse | outputs.migrate.v20191001preview.KeyVaultResourceSettingsResponse | outputs.migrate.v20191001preview.LoadBalancerResourceSettingsResponse | outputs.migrate.v20191001preview.NetworkInterfaceResourceSettingsResponse | outputs.migrate.v20191001preview.NetworkSecurityGroupResourceSettingsResponse | outputs.migrate.v20191001preview.PublicIPAddressResourceSettingsResponse | outputs.migrate.v20191001preview.ResourceGroupResourceSettingsResponse | outputs.migrate.v20191001preview.SqlDatabaseResourceSettingsResponse | outputs.migrate.v20191001preview.SqlElasticPoolResourceSettingsResponse | outputs.migrate.v20191001preview.SqlServerResourceSettingsResponse | outputs.migrate.v20191001preview.VirtualMachineResourceSettingsResponse | outputs.migrate.v20191001preview.VirtualNetworkResourceSettingsResponse;
             /**
              * Gets or sets the Source ARM Id of the resource.
              */
@@ -255397,7 +255427,7 @@ export namespace migrate {
             /**
              * Gets or sets the source resource settings.
              */
-            sourceResourceSettings: outputs.migrate.v20191001preview.AvailabilitySetResourceSettingsResponse | outputs.migrate.v20191001preview.LoadBalancerResourceSettingsResponse | outputs.migrate.v20191001preview.NetworkInterfaceResourceSettingsResponse | outputs.migrate.v20191001preview.NetworkSecurityGroupResourceSettingsResponse | outputs.migrate.v20191001preview.PublicIPAddressResourceSettingsResponse | outputs.migrate.v20191001preview.ResourceGroupResourceSettingsResponse | outputs.migrate.v20191001preview.SqlDatabaseResourceSettingsResponse | outputs.migrate.v20191001preview.SqlElasticPoolResourceSettingsResponse | outputs.migrate.v20191001preview.SqlServerResourceSettingsResponse | outputs.migrate.v20191001preview.VirtualMachineResourceSettingsResponse | outputs.migrate.v20191001preview.VirtualNetworkResourceSettingsResponse;
+            sourceResourceSettings: outputs.migrate.v20191001preview.AvailabilitySetResourceSettingsResponse | outputs.migrate.v20191001preview.DiskEncryptionSetResourceSettingsResponse | outputs.migrate.v20191001preview.KeyVaultResourceSettingsResponse | outputs.migrate.v20191001preview.LoadBalancerResourceSettingsResponse | outputs.migrate.v20191001preview.NetworkInterfaceResourceSettingsResponse | outputs.migrate.v20191001preview.NetworkSecurityGroupResourceSettingsResponse | outputs.migrate.v20191001preview.PublicIPAddressResourceSettingsResponse | outputs.migrate.v20191001preview.ResourceGroupResourceSettingsResponse | outputs.migrate.v20191001preview.SqlDatabaseResourceSettingsResponse | outputs.migrate.v20191001preview.SqlElasticPoolResourceSettingsResponse | outputs.migrate.v20191001preview.SqlServerResourceSettingsResponse | outputs.migrate.v20191001preview.VirtualMachineResourceSettingsResponse | outputs.migrate.v20191001preview.VirtualNetworkResourceSettingsResponse;
             /**
              * Gets or sets the Target ARM Id of the resource.
              */

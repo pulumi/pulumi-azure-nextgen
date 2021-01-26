@@ -198703,6 +198703,21 @@ export namespace migrate {
         }
 
         /**
+         * Defines the disk encryption set resource settings.
+         */
+        export interface DiskEncryptionSetResourceSettings {
+            /**
+             * The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+             * Expected value is 'Microsoft.Compute/diskEncryptionSets'.
+             */
+            resourceType: pulumi.Input<"Microsoft.Compute/diskEncryptionSets">;
+            /**
+             * Gets or sets the target Resource name.
+             */
+            targetResourceName: pulumi.Input<string>;
+        }
+
+        /**
          * Defines the MSI properties of the Move Collection.
          */
         export interface Identity {
@@ -198718,6 +198733,21 @@ export namespace migrate {
              * The type of identity used for the resource mover service.
              */
             type?: pulumi.Input<string | enums.migrate.v20191001preview.ResourceIdentityType>;
+        }
+
+        /**
+         * Defines the key vault resource settings.
+         */
+        export interface KeyVaultResourceSettings {
+            /**
+             * The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+             * Expected value is 'Microsoft.KeyVault/vaults'.
+             */
+            resourceType: pulumi.Input<"Microsoft.KeyVault/vaults">;
+            /**
+             * Gets or sets the target Resource name.
+             */
+            targetResourceName: pulumi.Input<string>;
         }
 
         /**
@@ -198861,7 +198891,7 @@ export namespace migrate {
             /**
              * Gets or sets the resource settings.
              */
-            resourceSettings?: pulumi.Input<inputs.migrate.v20191001preview.AvailabilitySetResourceSettings | inputs.migrate.v20191001preview.LoadBalancerResourceSettings | inputs.migrate.v20191001preview.NetworkInterfaceResourceSettings | inputs.migrate.v20191001preview.NetworkSecurityGroupResourceSettings | inputs.migrate.v20191001preview.PublicIPAddressResourceSettings | inputs.migrate.v20191001preview.ResourceGroupResourceSettings | inputs.migrate.v20191001preview.SqlDatabaseResourceSettings | inputs.migrate.v20191001preview.SqlElasticPoolResourceSettings | inputs.migrate.v20191001preview.SqlServerResourceSettings | inputs.migrate.v20191001preview.VirtualMachineResourceSettings | inputs.migrate.v20191001preview.VirtualNetworkResourceSettings>;
+            resourceSettings?: pulumi.Input<inputs.migrate.v20191001preview.AvailabilitySetResourceSettings | inputs.migrate.v20191001preview.DiskEncryptionSetResourceSettings | inputs.migrate.v20191001preview.KeyVaultResourceSettings | inputs.migrate.v20191001preview.LoadBalancerResourceSettings | inputs.migrate.v20191001preview.NetworkInterfaceResourceSettings | inputs.migrate.v20191001preview.NetworkSecurityGroupResourceSettings | inputs.migrate.v20191001preview.PublicIPAddressResourceSettings | inputs.migrate.v20191001preview.ResourceGroupResourceSettings | inputs.migrate.v20191001preview.SqlDatabaseResourceSettings | inputs.migrate.v20191001preview.SqlElasticPoolResourceSettings | inputs.migrate.v20191001preview.SqlServerResourceSettings | inputs.migrate.v20191001preview.VirtualMachineResourceSettings | inputs.migrate.v20191001preview.VirtualNetworkResourceSettings>;
             /**
              * Gets or sets the Source ARM Id of the resource.
              */
