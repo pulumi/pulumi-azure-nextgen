@@ -6,6 +6,7 @@ CHANGELOG
 #### Breaking changes in SDKs
 
 Several resources and functions were moved to another namespace to correctly match their Azure API classification.
+([#230](https://github.com/pulumi/pulumi-azure-nextgen/issues/230))
 
 Moved from `Billing` to `CostManagement`:
 
