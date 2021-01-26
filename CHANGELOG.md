@@ -69,9 +69,10 @@ Moved from `OperationalInsights` to `SecurityInsights`:
 - `AlertRule` resource
 - `Action` resource
 
-Fixes:
+#### Fixes
 
 - Fix unknown propagation in Update's preview ([#115](https://github.com/pulumi/pulumi-azure-nextgen/issues/115))
+- Re-model Identity and Ecryption properties of EventHubs/ServiceBus namespace ([#243](https://github.com/pulumi/pulumi-azure-nextgen/issues/243))
 
 ---
 
