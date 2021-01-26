@@ -69,6 +69,10 @@ Moved from `OperationalInsights` to `SecurityInsights`:
 - `AlertRule` resource
 - `Action` resource
 
+Fixes:
+
+- Fix unknown propagation in Update's preview ([#115](https://github.com/pulumi/pulumi-azure-nextgen/issues/115))
+
 ---
 
 ## 0.5.1 (2021-01-26)
