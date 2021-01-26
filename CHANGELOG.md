@@ -3,11 +3,14 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
+---
+
+## 0.5.1 (2021-01-26)
+
 Fixes:
 
 - Empty arrays are now serialized to HTTP payloads as-is, fixing 'accessPolicies is not specified' ([#231](https://github.com/pulumi/pulumi-azure-nextgen/issues/231))
-
----
+- Do not require replacements when updating to a version with default values ([#238](https://github.com/pulumi/pulumi-azure-nextgen/issues/238))
 
 ## 0.5.0 (2021-01-23)
 
