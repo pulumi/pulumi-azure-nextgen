@@ -8183,45 +8183,6 @@ export namespace authorization {
 
     }
 
-    export namespace v20151101 {
-        /**
-         * Policy Assignment properties.
-         */
-        export interface PolicyAssignmentProperties {
-            /**
-             * Gets or sets the policy assignment display name.
-             */
-            displayName?: pulumi.Input<string>;
-            /**
-             * Gets or sets the policy definition Id.
-             */
-            policyDefinitionId?: pulumi.Input<string>;
-            /**
-             * Gets or sets the policy assignment scope.
-             */
-            scope?: pulumi.Input<string>;
-        }
-
-        /**
-         * Policy definition properties.
-         */
-        export interface PolicyDefinitionProperties {
-            /**
-             * Gets or sets the policy definition description.
-             */
-            description?: pulumi.Input<string>;
-            /**
-             * Gets or sets the policy definition display name.
-             */
-            displayName?: pulumi.Input<string>;
-            /**
-             * The policy rule json.
-             */
-            policyRule?: any;
-        }
-
-    }
-
     export namespace v20160901 {
         /**
          * Lock owner properties.
@@ -8857,6 +8818,28 @@ export namespace automanage {
              * The type of identity used for the Automanage account. Currently, the only supported type is 'SystemAssigned', which implicitly creates an identity.
              */
             type?: pulumi.Input<enums.automanage.v20200630preview.ResourceIdentityType>;
+        }
+
+        /**
+         * Automanage configuration profile assignment properties.
+         */
+        export interface ConfigurationProfileAssignmentProperties {
+            /**
+             * The Automanage account ARM Resource URI
+             */
+            accountId?: pulumi.Input<string>;
+            /**
+             * A value indicating configuration profile.
+             */
+            configurationProfile?: pulumi.Input<string | enums.automanage.v20200630preview.ConfigurationProfile>;
+            /**
+             * The configuration profile custom preferences ARM resource URI
+             */
+            configurationProfilePreferenceId?: pulumi.Input<string>;
+            /**
+             * The target VM resource URI
+             */
+            targetId?: pulumi.Input<string>;
         }
 
         /**
@@ -18313,303 +18296,7 @@ export namespace billing {
     export namespace latest {
     }
 
-    export namespace v20180801preview {
-        /**
-         * The aggregation expression to be used in the report.
-         */
-        export interface ReportAggregation {
-            /**
-             * The name of the aggregation function to use.
-             */
-            function: pulumi.Input<string | enums.billing.v20180801preview.FunctionType>;
-            /**
-             * The name of the column to aggregate.
-             */
-            name: pulumi.Input<string>;
-        }
-
-        /**
-         * The comparison expression to be used in the report.
-         */
-        export interface ReportComparisonExpression {
-            /**
-             * The name of the column to use in comparison.
-             */
-            name: pulumi.Input<string>;
-            /**
-             * The operator to use for comparison.
-             */
-            operator: pulumi.Input<string | enums.billing.v20180801preview.OperatorType>;
-            /**
-             * Array of values to use for comparison
-             */
-            values: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-        /**
-         * The definition of data present in the report.
-         */
-        export interface ReportDataset {
-            /**
-             * Dictionary of aggregation expression to use in the report. The key of each item in the dictionary is the alias for the aggregated column. Report can have up to 2 aggregation clauses.
-             */
-            aggregation?: pulumi.Input<{[key: string]: pulumi.Input<inputs.billing.v20180801preview.ReportAggregation>}>;
-            /**
-             * Has configuration information for the data in the report. The configuration will be ignored if aggregation and grouping are provided.
-             */
-            configuration?: pulumi.Input<inputs.billing.v20180801preview.ReportDatasetConfiguration>;
-            /**
-             * Has filter expression to use in the report.
-             */
-            filter?: pulumi.Input<inputs.billing.v20180801preview.ReportFilter>;
-            /**
-             * The granularity of rows in the report.
-             */
-            granularity?: pulumi.Input<string | enums.billing.v20180801preview.GranularityType>;
-            /**
-             * Array of group by expression to use in the report. Report can have up to 2 group by clauses.
-             */
-            grouping?: pulumi.Input<pulumi.Input<inputs.billing.v20180801preview.ReportGrouping>[]>;
-        }
-
-        /**
-         * The configuration of dataset in the report.
-         */
-        export interface ReportDatasetConfiguration {
-            /**
-             * Array of column names to be included in the report. Any valid report column name is allowed. If not provided, then report includes all columns.
-             */
-            columns?: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-        /**
-         * The definition of a report.
-         */
-        export interface ReportDefinition {
-            /**
-             * Has definition for data in this report.
-             */
-            dataset?: pulumi.Input<inputs.billing.v20180801preview.ReportDataset>;
-            /**
-             * Has time period for pulling data for the report.
-             */
-            timePeriod?: pulumi.Input<inputs.billing.v20180801preview.ReportTimePeriod>;
-            /**
-             * The time frame for pulling data for the report. If custom, then a specific time period must be provided.
-             */
-            timeframe: pulumi.Input<string | enums.billing.v20180801preview.TimeframeType>;
-            /**
-             * The type of the report.
-             */
-            type: pulumi.Input<string | enums.billing.v20180801preview.ReportType>;
-        }
-
-        /**
-         * The destination information for the delivery of the report.
-         */
-        export interface ReportDeliveryDestination {
-            /**
-             * The name of the container where reports will be uploaded.
-             */
-            container: pulumi.Input<string>;
-            /**
-             * The resource id of the storage account where reports will be delivered.
-             */
-            resourceId: pulumi.Input<string>;
-            /**
-             * The name of the directory where reports will be uploaded.
-             */
-            rootFolderPath?: pulumi.Input<string>;
-        }
-
-        /**
-         * The delivery information associated with a report.
-         */
-        export interface ReportDeliveryInfo {
-            /**
-             * Has destination for the report being delivered.
-             */
-            destination: pulumi.Input<inputs.billing.v20180801preview.ReportDeliveryDestination>;
-        }
-
-        /**
-         * The filter expression to be used in the report.
-         */
-        export interface ReportFilter {
-            /**
-             * The logical "AND" expression. Must have at least 2 items.
-             */
-            and?: pulumi.Input<pulumi.Input<inputs.billing.v20180801preview.ReportFilter>[]>;
-            /**
-             * Has comparison expression for a dimension
-             */
-            dimension?: pulumi.Input<inputs.billing.v20180801preview.ReportComparisonExpression>;
-            /**
-             * The logical "NOT" expression.
-             */
-            not?: pulumi.Input<inputs.billing.v20180801preview.ReportFilter>;
-            /**
-             * The logical "OR" expression. Must have at least 2 items.
-             */
-            or?: pulumi.Input<pulumi.Input<inputs.billing.v20180801preview.ReportFilter>[]>;
-            /**
-             * Has comparison expression for a tag
-             */
-            tag?: pulumi.Input<inputs.billing.v20180801preview.ReportComparisonExpression>;
-        }
-
-        /**
-         * The group by expression to be used in the report.
-         */
-        export interface ReportGrouping {
-            /**
-             * The name of the column to group.
-             */
-            name: pulumi.Input<string>;
-            /**
-             * Has type of the column to group.
-             */
-            type: pulumi.Input<string | enums.billing.v20180801preview.ReportColumnType>;
-        }
-
-        /**
-         * The start and end date for recurrence schedule.
-         */
-        export interface ReportRecurrencePeriod {
-            /**
-             * The start date of recurrence.
-             */
-            from: pulumi.Input<string>;
-            /**
-             * The end date of recurrence.
-             */
-            to?: pulumi.Input<string>;
-        }
-
-        /**
-         * The schedule associated with a report.
-         */
-        export interface ReportSchedule {
-            /**
-             * The schedule recurrence.
-             */
-            recurrence: pulumi.Input<string | enums.billing.v20180801preview.RecurrenceType>;
-            /**
-             * Has start and end date of the recurrence. The start date must be in future. If present, the end date must be greater than start date.
-             */
-            recurrencePeriod?: pulumi.Input<inputs.billing.v20180801preview.ReportRecurrencePeriod>;
-            /**
-             * The status of the schedule. Whether active or not. If inactive, the report's scheduled execution is paused.
-             */
-            status?: pulumi.Input<string | enums.billing.v20180801preview.StatusType>;
-        }
-
-        /**
-         * The start and end date for pulling data for the report.
-         */
-        export interface ReportTimePeriod {
-            /**
-             * The start date to pull data from.
-             */
-            from: pulumi.Input<string>;
-            /**
-             * The end date to pull data to.
-             */
-            to: pulumi.Input<string>;
-        }
-
-    }
-
     export namespace v20191001preview {
-    }
-
-    export namespace v20200301preview {
-        /**
-         * Target resources and allocation
-         */
-        export interface CostAllocationProportion {
-            /**
-             * Target resource for cost allocation
-             */
-            name: pulumi.Input<string>;
-            /**
-             * Percentage of source cost to allocate to this resource. This value can be specified to two decimal places and the total percentage of all resources in this rule must sum to 100.00.
-             */
-            percentage: pulumi.Input<number>;
-        }
-
-        /**
-         * Resource details of the cost allocation rule
-         */
-        export interface CostAllocationRuleDetails {
-            /**
-             * Source resources for cost allocation. At this time, this list can contain no more than one element.
-             */
-            sourceResources?: pulumi.Input<pulumi.Input<inputs.billing.v20200301preview.SourceCostAllocationResource>[]>;
-            /**
-             * Target resources for cost allocation. At this time, this list can contain no more than one element.
-             */
-            targetResources?: pulumi.Input<pulumi.Input<inputs.billing.v20200301preview.TargetCostAllocationResource>[]>;
-        }
-
-        /**
-         * The properties of a cost allocation rule
-         */
-        export interface CostAllocationRuleProperties {
-            /**
-             * Description of a cost allocation rule.
-             */
-            description?: pulumi.Input<string>;
-            /**
-             * Resource information for the cost allocation rule
-             */
-            details: pulumi.Input<inputs.billing.v20200301preview.CostAllocationRuleDetails>;
-            /**
-             * Status of the rule
-             */
-            status: pulumi.Input<string | enums.billing.v20200301preview.RuleStatus>;
-        }
-
-        /**
-         * Source resources for cost allocation
-         */
-        export interface SourceCostAllocationResource {
-            /**
-             * If resource type is dimension, this must be either ResourceGroupName or SubscriptionId. If resource type is tag, this must be a valid Azure tag
-             */
-            name: pulumi.Input<string>;
-            /**
-             * Type of resources contained in this cost allocation rule
-             */
-            resourceType: pulumi.Input<string | enums.billing.v20200301preview.CostAllocationResourceType>;
-            /**
-             * Source Resources for cost allocation. This list cannot contain more than 25 values.
-             */
-            values: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-        /**
-         * Target resources for cost allocation.
-         */
-        export interface TargetCostAllocationResource {
-            /**
-             * If resource type is dimension, this must be either ResourceGroupName or SubscriptionId. If resource type is tag, this must be a valid Azure tag
-             */
-            name: pulumi.Input<string>;
-            /**
-             * Method of cost allocation for the rule
-             */
-            policyType: pulumi.Input<string | enums.billing.v20200301preview.CostAllocationPolicyType>;
-            /**
-             * Type of resources contained in this cost allocation rule
-             */
-            resourceType: pulumi.Input<string | enums.billing.v20200301preview.CostAllocationResourceType>;
-            /**
-             * Target resources for cost allocation. This list cannot contain more than 25 values.
-             */
-            values: pulumi.Input<pulumi.Input<inputs.billing.v20200301preview.CostAllocationProportion>[]>;
-        }
-
     }
 
     export namespace v20200501 {
@@ -18694,6 +18381,36 @@ export namespace blueprint {
         }
 
         /**
+         * Represent a parameter with constrains and metadata.
+         */
+        export interface ParameterDefinition {
+            /**
+             * Array of allowed values for this parameter.
+             */
+            allowedValues?: pulumi.Input<any[]>;
+            /**
+             * Default Value for this parameter.
+             */
+            defaultValue?: any;
+            /**
+             * Description of this parameter/resourceGroup.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * DisplayName of this parameter/resourceGroup.
+             */
+            displayName?: pulumi.Input<string>;
+            /**
+             * StrongType for UI to render rich experience during assignment time.
+             */
+            strongType?: pulumi.Input<string>;
+            /**
+             * Allowed data types for Azure Resource Manager template parameters.
+             */
+            type: pulumi.Input<string | enums.blueprint.v20171111preview.TemplateParameterType>;
+        }
+
+        /**
          * Base class for ParameterValue.
          */
         export interface ParameterValueBase {
@@ -18701,6 +18418,36 @@ export namespace blueprint {
              * Optional property, just to establish ParameterValueBase as a BaseClass.
              */
             description?: pulumi.Input<string>;
+        }
+
+        /**
+         * Represents an Azure resource group in a Blueprint definition.
+         */
+        export interface ResourceGroupDefinition {
+            /**
+             * Artifacts which need to be deployed before this resource group.
+             */
+            dependsOn?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Description of this parameter/resourceGroup.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * DisplayName of this parameter/resourceGroup.
+             */
+            displayName?: pulumi.Input<string>;
+            /**
+             * Location of this resourceGroup, leave empty if the resource group location will be specified during the Blueprint assignment.
+             */
+            location?: pulumi.Input<string>;
+            /**
+             * Name of this resourceGroup, leave empty if the resource group name will be specified during the Blueprint assignment.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * StrongType for UI to render rich experience during assignment time.
+             */
+            strongType?: pulumi.Input<string>;
         }
 
         /**
@@ -31272,114 +31019,6 @@ export namespace certificateregistration {
             keyVaultSecretName?: pulumi.Input<string>;
         }
 
-        /**
-         * Certificate Details
-         */
-        export interface CertificateDetails {
-            /**
-             * Resource Id
-             */
-            id?: pulumi.Input<string>;
-            /**
-             * Issuer
-             */
-            issuer?: pulumi.Input<string>;
-            /**
-             * Kind of resource
-             */
-            kind?: pulumi.Input<string>;
-            /**
-             * Resource Location
-             */
-            location: pulumi.Input<string>;
-            /**
-             * Resource Name
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * Valid to
-             */
-            notAfter?: pulumi.Input<string>;
-            /**
-             * Valid from
-             */
-            notBefore?: pulumi.Input<string>;
-            /**
-             * Raw certificate data
-             */
-            rawData?: pulumi.Input<string>;
-            /**
-             * Serial Number
-             */
-            serialNumber?: pulumi.Input<string>;
-            /**
-             * Signature Algorithm
-             */
-            signatureAlgorithm?: pulumi.Input<string>;
-            /**
-             * Subject
-             */
-            subject?: pulumi.Input<string>;
-            /**
-             * Resource tags
-             */
-            tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-            /**
-             * Thumbprint
-             */
-            thumbprint?: pulumi.Input<string>;
-            /**
-             * Resource type
-             */
-            type?: pulumi.Input<string>;
-            /**
-             * Version
-             */
-            version?: pulumi.Input<number>;
-        }
-
-        /**
-         * Class representing the Key Vault container for certificate purchased through Azure
-         */
-        export interface CertificateOrderCertificate {
-            /**
-             * Resource Id
-             */
-            id?: pulumi.Input<string>;
-            /**
-             * Key Vault Csm resource Id
-             */
-            keyVaultId?: pulumi.Input<string>;
-            /**
-             * Key Vault secret name
-             */
-            keyVaultSecretName?: pulumi.Input<string>;
-            /**
-             * Kind of resource
-             */
-            kind?: pulumi.Input<string>;
-            /**
-             * Resource Location
-             */
-            location: pulumi.Input<string>;
-            /**
-             * Resource Name
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * Status of the Key Vault secret
-             */
-            provisioningState?: pulumi.Input<enums.certificateregistration.v20150801.KeyVaultSecretStatus>;
-            /**
-             * Resource tags
-             */
-            tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-            /**
-             * Resource type
-             */
-            type?: pulumi.Input<string>;
-        }
-
     }
 
     export namespace v20180201 {
@@ -32102,50 +31741,6 @@ export namespace compute {
         }
 
         /**
-         * Represents a configuration parameter.
-         */
-        export interface ConfigurationParameter {
-            /**
-             * Name of the configuration parameter.
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * Value of the configuration parameter.
-             */
-            value?: pulumi.Input<string>;
-        }
-
-        /**
-         * Configuration setting of LCM (Local Configuration Manager).
-         */
-        export interface ConfigurationSetting {
-            /**
-             * Specifies what happens after a reboot during the application of a configuration. The possible values are ContinueConfiguration and StopConfiguration
-             */
-            actionAfterReboot?: pulumi.Input<string | enums.compute.latest.ActionAfterReboot>;
-            /**
-             * If true - new configurations downloaded from the pull service are allowed to overwrite the old ones on the target node. Otherwise, false
-             */
-            allowModuleOverwrite?: pulumi.Input<string | enums.compute.latest.AllowModuleOverwrite>;
-            /**
-             * Specifies how the LCM(Local Configuration Manager) actually applies the configuration to the target nodes. Possible values are ApplyOnly, ApplyAndMonitor, and ApplyAndAutoCorrect.
-             */
-            configurationMode?: pulumi.Input<string | enums.compute.latest.ConfigurationMode>;
-            /**
-             * How often, in minutes, the current configuration is checked and applied. This property is ignored if the ConfigurationMode property is set to ApplyOnly. The default value is 15.
-             */
-            configurationModeFrequencyMins?: pulumi.Input<number>;
-            /**
-             * Set this to true to automatically reboot the node after a configuration that requires reboot is applied. Otherwise, you will have to manually reboot the node for any configuration that requires it. The default value is false. To use this setting when a reboot condition is enacted by something other than DSC (such as Windows Installer), combine this setting with the xPendingReboot module.
-             */
-            rebootIfNeeded?: pulumi.Input<string | enums.compute.latest.RebootIfNeeded>;
-            /**
-             * The time interval, in minutes, at which the LCM checks a pull service to get updated configurations. This value is ignored if the LCM is not configured in pull mode. The default value is 30.
-             */
-            refreshFrequencyMins?: pulumi.Input<number>;
-        }
-
-        /**
          * Data used when creating a disk.
          */
         export interface CreationData {
@@ -32554,46 +32149,6 @@ export namespace compute {
              * The gallery artifact version source.
              */
             source?: pulumi.Input<inputs.compute.latest.GalleryArtifactVersionSource>;
-        }
-
-        /**
-         * Guest configuration assignment properties.
-         */
-        export interface GuestConfigurationAssignmentProperties {
-            /**
-             * The source which initiated the guest configuration assignment. Ex: Azure Policy
-             */
-            context?: pulumi.Input<string>;
-            /**
-             * The guest configuration to assign.
-             */
-            guestConfiguration?: pulumi.Input<inputs.compute.latest.GuestConfigurationNavigation>;
-        }
-
-        /**
-         * Guest configuration is an artifact that encapsulates DSC configuration and its dependencies. The artifact is a zip file containing DSC configuration (as MOF) and dependent resources and other dependencies like modules.
-         */
-        export interface GuestConfigurationNavigation {
-            /**
-             * The configuration parameters for the guest configuration.
-             */
-            configurationParameter?: pulumi.Input<pulumi.Input<inputs.compute.latest.ConfigurationParameter>[]>;
-            /**
-             * The configuration setting for the guest configuration.
-             */
-            configurationSetting?: pulumi.Input<inputs.compute.latest.ConfigurationSetting>;
-            /**
-             * Kind of the guest configuration. For example:DSC
-             */
-            kind?: pulumi.Input<string | enums.compute.latest.Kind>;
-            /**
-             * Name of the guest configuration.
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * Version of the guest configuration.
-             */
-            version?: pulumi.Input<string>;
         }
 
         /**
@@ -41233,55 +40788,6 @@ export namespace compute {
 
     }
 
-    export namespace v20180630preview {
-        /**
-         * Configuration setting of LCM (Local Configuration Manager).
-         */
-        export interface ConfigurationSetting {
-            /**
-             * If true - new configurations downloaded from the pull service are allowed to overwrite the old ones on the target node. Otherwise, false
-             */
-            allowModuleOverwrite?: pulumi.Input<string | enums.compute.v20180630preview.AllowModuleOverwrite>;
-        }
-
-        /**
-         * Guest configuration assignment properties.
-         */
-        export interface GuestConfigurationAssignmentProperties {
-            /**
-             * The source which initiated the guest configuration assignment. Ex: Azure Policy
-             */
-            context?: pulumi.Input<string>;
-            /**
-             * The guest configuration to assign.
-             */
-            guestConfiguration?: pulumi.Input<inputs.compute.v20180630preview.GuestConfigurationNavigation>;
-        }
-
-        /**
-         * Guest configuration is an artifact that encapsulates DSC configuration and its dependencies. The artifact is a zip file containing DSC configuration (as MOF) and dependent resources and other dependencies like modules.
-         */
-        export interface GuestConfigurationNavigation {
-            /**
-             * The configuration setting for the guest configuration.
-             */
-            configurationSetting?: pulumi.Input<inputs.compute.v20180630preview.ConfigurationSetting>;
-            /**
-             * Kind of the guest configuration. For example:DSC
-             */
-            kind?: pulumi.Input<string | enums.compute.v20180630preview.Kind>;
-            /**
-             * Name of the guest configuration.
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * Version of the guest configuration.
-             */
-            version?: pulumi.Input<string>;
-        }
-
-    }
-
     export namespace v20180930 {
         /**
          * Data used when creating a disk.
@@ -42563,93 +42069,6 @@ export namespace compute {
              * Specifies the Windows Remote Management listeners. This enables remote Windows PowerShell.
              */
             winRM?: pulumi.Input<inputs.compute.v20181001.WinRMConfiguration>;
-        }
-
-    }
-
-    export namespace v20181120 {
-        /**
-         * Represents a configuration parameter.
-         */
-        export interface ConfigurationParameter {
-            /**
-             * Name of the configuration parameter.
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * Value of the configuration parameter.
-             */
-            value?: pulumi.Input<string>;
-        }
-
-        /**
-         * Configuration setting of LCM (Local Configuration Manager).
-         */
-        export interface ConfigurationSetting {
-            /**
-             * Specifies what happens after a reboot during the application of a configuration. The possible values are ContinueConfiguration and StopConfiguration
-             */
-            actionAfterReboot?: pulumi.Input<string | enums.compute.v20181120.ActionAfterReboot>;
-            /**
-             * If true - new configurations downloaded from the pull service are allowed to overwrite the old ones on the target node. Otherwise, false
-             */
-            allowModuleOverwrite?: pulumi.Input<string | enums.compute.v20181120.AllowModuleOverwrite>;
-            /**
-             * Specifies how the LCM(Local Configuration Manager) actually applies the configuration to the target nodes. Possible values are ApplyOnly, ApplyAndMonitor, and ApplyAndAutoCorrect.
-             */
-            configurationMode?: pulumi.Input<string | enums.compute.v20181120.ConfigurationMode>;
-            /**
-             * How often, in minutes, the current configuration is checked and applied. This property is ignored if the ConfigurationMode property is set to ApplyOnly. The default value is 15.
-             */
-            configurationModeFrequencyMins?: pulumi.Input<number>;
-            /**
-             * Set this to true to automatically reboot the node after a configuration that requires reboot is applied. Otherwise, you will have to manually reboot the node for any configuration that requires it. The default value is false. To use this setting when a reboot condition is enacted by something other than DSC (such as Windows Installer), combine this setting with the xPendingReboot module.
-             */
-            rebootIfNeeded?: pulumi.Input<string | enums.compute.v20181120.RebootIfNeeded>;
-            /**
-             * The time interval, in minutes, at which the LCM checks a pull service to get updated configurations. This value is ignored if the LCM is not configured in pull mode. The default value is 30.
-             */
-            refreshFrequencyMins?: pulumi.Input<number>;
-        }
-
-        /**
-         * Guest configuration assignment properties.
-         */
-        export interface GuestConfigurationAssignmentProperties {
-            /**
-             * The source which initiated the guest configuration assignment. Ex: Azure Policy
-             */
-            context?: pulumi.Input<string>;
-            /**
-             * The guest configuration to assign.
-             */
-            guestConfiguration?: pulumi.Input<inputs.compute.v20181120.GuestConfigurationNavigation>;
-        }
-
-        /**
-         * Guest configuration is an artifact that encapsulates DSC configuration and its dependencies. The artifact is a zip file containing DSC configuration (as MOF) and dependent resources and other dependencies like modules.
-         */
-        export interface GuestConfigurationNavigation {
-            /**
-             * The configuration parameters for the guest configuration.
-             */
-            configurationParameter?: pulumi.Input<pulumi.Input<inputs.compute.v20181120.ConfigurationParameter>[]>;
-            /**
-             * The configuration setting for the guest configuration.
-             */
-            configurationSetting?: pulumi.Input<inputs.compute.v20181120.ConfigurationSetting>;
-            /**
-             * Kind of the guest configuration. For example:DSC
-             */
-            kind?: pulumi.Input<string | enums.compute.v20181120.Kind>;
-            /**
-             * Name of the guest configuration.
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * Version of the guest configuration.
-             */
-            version?: pulumi.Input<string>;
         }
 
     }
@@ -49119,93 +48538,6 @@ export namespace compute {
 
     }
 
-    export namespace v20200625 {
-        /**
-         * Represents a configuration parameter.
-         */
-        export interface ConfigurationParameter {
-            /**
-             * Name of the configuration parameter.
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * Value of the configuration parameter.
-             */
-            value?: pulumi.Input<string>;
-        }
-
-        /**
-         * Configuration setting of LCM (Local Configuration Manager).
-         */
-        export interface ConfigurationSetting {
-            /**
-             * Specifies what happens after a reboot during the application of a configuration. The possible values are ContinueConfiguration and StopConfiguration
-             */
-            actionAfterReboot?: pulumi.Input<string | enums.compute.v20200625.ActionAfterReboot>;
-            /**
-             * If true - new configurations downloaded from the pull service are allowed to overwrite the old ones on the target node. Otherwise, false
-             */
-            allowModuleOverwrite?: pulumi.Input<string | enums.compute.v20200625.AllowModuleOverwrite>;
-            /**
-             * Specifies how the LCM(Local Configuration Manager) actually applies the configuration to the target nodes. Possible values are ApplyOnly, ApplyAndMonitor, and ApplyAndAutoCorrect.
-             */
-            configurationMode?: pulumi.Input<string | enums.compute.v20200625.ConfigurationMode>;
-            /**
-             * How often, in minutes, the current configuration is checked and applied. This property is ignored if the ConfigurationMode property is set to ApplyOnly. The default value is 15.
-             */
-            configurationModeFrequencyMins?: pulumi.Input<number>;
-            /**
-             * Set this to true to automatically reboot the node after a configuration that requires reboot is applied. Otherwise, you will have to manually reboot the node for any configuration that requires it. The default value is false. To use this setting when a reboot condition is enacted by something other than DSC (such as Windows Installer), combine this setting with the xPendingReboot module.
-             */
-            rebootIfNeeded?: pulumi.Input<string | enums.compute.v20200625.RebootIfNeeded>;
-            /**
-             * The time interval, in minutes, at which the LCM checks a pull service to get updated configurations. This value is ignored if the LCM is not configured in pull mode. The default value is 30.
-             */
-            refreshFrequencyMins?: pulumi.Input<number>;
-        }
-
-        /**
-         * Guest configuration assignment properties.
-         */
-        export interface GuestConfigurationAssignmentProperties {
-            /**
-             * The source which initiated the guest configuration assignment. Ex: Azure Policy
-             */
-            context?: pulumi.Input<string>;
-            /**
-             * The guest configuration to assign.
-             */
-            guestConfiguration?: pulumi.Input<inputs.compute.v20200625.GuestConfigurationNavigation>;
-        }
-
-        /**
-         * Guest configuration is an artifact that encapsulates DSC configuration and its dependencies. The artifact is a zip file containing DSC configuration (as MOF) and dependent resources and other dependencies like modules.
-         */
-        export interface GuestConfigurationNavigation {
-            /**
-             * The configuration parameters for the guest configuration.
-             */
-            configurationParameter?: pulumi.Input<pulumi.Input<inputs.compute.v20200625.ConfigurationParameter>[]>;
-            /**
-             * The configuration setting for the guest configuration.
-             */
-            configurationSetting?: pulumi.Input<inputs.compute.v20200625.ConfigurationSetting>;
-            /**
-             * Kind of the guest configuration. For example:DSC
-             */
-            kind?: pulumi.Input<string | enums.compute.v20200625.Kind>;
-            /**
-             * Name of the guest configuration.
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * Version of the guest configuration.
-             */
-            version?: pulumi.Input<string>;
-        }
-
-    }
-
     export namespace v20200630 {
         /**
          * Data used when creating a disk.
@@ -49371,31 +48703,6 @@ export namespace compute {
              * Resource Id
              */
             id?: pulumi.Input<string>;
-        }
-
-    }
-
-    export namespace v20200630preview {
-        /**
-         * Automanage configuration profile assignment properties.
-         */
-        export interface ConfigurationProfileAssignmentProperties {
-            /**
-             * The Automanage account ARM Resource URI
-             */
-            accountId?: pulumi.Input<string>;
-            /**
-             * A value indicating configuration profile.
-             */
-            configurationProfile?: pulumi.Input<string | enums.compute.v20200630preview.ConfigurationProfile>;
-            /**
-             * The configuration profile custom preferences ARM resource URI
-             */
-            configurationProfilePreferenceId?: pulumi.Input<string>;
-            /**
-             * The target VM resource URI
-             */
-            targetId?: pulumi.Input<string>;
         }
 
     }
@@ -68152,6 +67459,95 @@ export namespace costmanagement {
              * The end date to pull data to.
              */
             to: pulumi.Input<string>;
+        }
+
+    }
+
+    export namespace v20200301preview {
+        /**
+         * Target resources and allocation
+         */
+        export interface CostAllocationProportion {
+            /**
+             * Target resource for cost allocation
+             */
+            name: pulumi.Input<string>;
+            /**
+             * Percentage of source cost to allocate to this resource. This value can be specified to two decimal places and the total percentage of all resources in this rule must sum to 100.00.
+             */
+            percentage: pulumi.Input<number>;
+        }
+
+        /**
+         * Resource details of the cost allocation rule
+         */
+        export interface CostAllocationRuleDetails {
+            /**
+             * Source resources for cost allocation. At this time, this list can contain no more than one element.
+             */
+            sourceResources?: pulumi.Input<pulumi.Input<inputs.costmanagement.v20200301preview.SourceCostAllocationResource>[]>;
+            /**
+             * Target resources for cost allocation. At this time, this list can contain no more than one element.
+             */
+            targetResources?: pulumi.Input<pulumi.Input<inputs.costmanagement.v20200301preview.TargetCostAllocationResource>[]>;
+        }
+
+        /**
+         * The properties of a cost allocation rule
+         */
+        export interface CostAllocationRuleProperties {
+            /**
+             * Description of a cost allocation rule.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Resource information for the cost allocation rule
+             */
+            details: pulumi.Input<inputs.costmanagement.v20200301preview.CostAllocationRuleDetails>;
+            /**
+             * Status of the rule
+             */
+            status: pulumi.Input<string | enums.costmanagement.v20200301preview.RuleStatus>;
+        }
+
+        /**
+         * Source resources for cost allocation
+         */
+        export interface SourceCostAllocationResource {
+            /**
+             * If resource type is dimension, this must be either ResourceGroupName or SubscriptionId. If resource type is tag, this must be a valid Azure tag
+             */
+            name: pulumi.Input<string>;
+            /**
+             * Type of resources contained in this cost allocation rule
+             */
+            resourceType: pulumi.Input<string | enums.costmanagement.v20200301preview.CostAllocationResourceType>;
+            /**
+             * Source Resources for cost allocation. This list cannot contain more than 25 values.
+             */
+            values: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * Target resources for cost allocation.
+         */
+        export interface TargetCostAllocationResource {
+            /**
+             * If resource type is dimension, this must be either ResourceGroupName or SubscriptionId. If resource type is tag, this must be a valid Azure tag
+             */
+            name: pulumi.Input<string>;
+            /**
+             * Method of cost allocation for the rule
+             */
+            policyType: pulumi.Input<string | enums.costmanagement.v20200301preview.CostAllocationPolicyType>;
+            /**
+             * Type of resources contained in this cost allocation rule
+             */
+            resourceType: pulumi.Input<string | enums.costmanagement.v20200301preview.CostAllocationResourceType>;
+            /**
+             * Target resources for cost allocation. This list cannot contain more than 25 values.
+             */
+            values: pulumi.Input<pulumi.Input<inputs.costmanagement.v20200301preview.CostAllocationProportion>[]>;
         }
 
     }
@@ -151276,129 +150672,6 @@ export namespace domainregistration {
 
     }
 
-    export namespace v20150801 {
-        /**
-         * Address information for domain registration
-         */
-        export interface Address {
-            /**
-             * Address 1
-             */
-            address1?: pulumi.Input<string>;
-            /**
-             * Address 2
-             */
-            address2?: pulumi.Input<string>;
-            /**
-             * City
-             */
-            city?: pulumi.Input<string>;
-            /**
-             * Country
-             */
-            country?: pulumi.Input<string>;
-            /**
-             * Postal code
-             */
-            postalCode?: pulumi.Input<string>;
-            /**
-             * State
-             */
-            state?: pulumi.Input<string>;
-        }
-
-        /**
-         * Contact information for domain registration. If 'Domain Privacy' option is not selected then the contact information will be made publicly available through the Whois directories as per ICANN requirements.
-         */
-        export interface Contact {
-            /**
-             * Mailing address
-             */
-            addressMailing?: pulumi.Input<inputs.domainregistration.v20150801.Address>;
-            /**
-             * Email address
-             */
-            email?: pulumi.Input<string>;
-            /**
-             * Fax number
-             */
-            fax?: pulumi.Input<string>;
-            /**
-             * Job title
-             */
-            jobTitle?: pulumi.Input<string>;
-            /**
-             * First name
-             */
-            nameFirst?: pulumi.Input<string>;
-            /**
-             * Last name
-             */
-            nameLast?: pulumi.Input<string>;
-            /**
-             * Middle name
-             */
-            nameMiddle?: pulumi.Input<string>;
-            /**
-             * Organization
-             */
-            organization?: pulumi.Input<string>;
-            /**
-             * Phone number
-             */
-            phone?: pulumi.Input<string>;
-        }
-
-        /**
-         * Domain purchase consent object representing acceptance of applicable legal agreements
-         */
-        export interface DomainPurchaseConsent {
-            /**
-             * Timestamp when the agreements were accepted
-             */
-            agreedAt?: pulumi.Input<string>;
-            /**
-             * Client IP address
-             */
-            agreedBy?: pulumi.Input<string>;
-            /**
-             * List of applicable legal agreement keys. This list can be retrieved using ListLegalAgreements Api under TopLevelDomain resource
-             */
-            agreementKeys?: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-        /**
-         * Details of a hostname derived from a domain
-         */
-        export interface HostName {
-            /**
-             * Name of the Azure resource the hostname is assigned to. If it is assigned to a traffic manager then it will be the traffic manager name otherwise it will be the website name
-             */
-            azureResourceName?: pulumi.Input<string>;
-            /**
-             * Type of the Azure resource the hostname is assigned to
-             */
-            azureResourceType?: pulumi.Input<enums.domainregistration.v20150801.AzureResourceType>;
-            /**
-             * Type of the Dns record
-             */
-            customHostNameDnsRecordType?: pulumi.Input<enums.domainregistration.v20150801.CustomHostNameDnsRecordType>;
-            /**
-             * Type of the hostname
-             */
-            hostNameType?: pulumi.Input<enums.domainregistration.v20150801.HostNameType>;
-            /**
-             * Name of the hostname
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * List of sites the hostname is assigned to. This list will have more than one site only if the hostname is pointing to a Traffic Manager
-             */
-            siteNames?: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-    }
-
     export namespace v20180201 {
         /**
          * Address information for domain registration.
@@ -156453,6 +155726,20 @@ export namespace eventhub {
         }
 
         /**
+         * The response from the List namespace operation.
+         */
+        export interface NWRuleSetVirtualNetworkRules {
+            /**
+             * Value that indicates whether to ignore missing Vnet Service Endpoint
+             */
+            ignoreMissingVnetServiceEndpoint?: pulumi.Input<boolean>;
+            /**
+             * Subnet properties
+             */
+            subnet?: pulumi.Input<inputs.eventhub.v20180101preview.Subnet>;
+        }
+
+        /**
          * PrivateEndpoint information.
          */
         export interface PrivateEndpoint {
@@ -156478,6 +155765,328 @@ export namespace eventhub {
              * The billing tier of this particular SKU.
              */
             tier?: pulumi.Input<string | enums.eventhub.v20180101preview.SkuTier>;
+        }
+
+        /**
+         * Properties supplied for Subnet
+         */
+        export interface Subnet {
+            /**
+             * Resource ID of Virtual Network Subnet
+             */
+            id?: pulumi.Input<string>;
+        }
+
+    }
+}
+
+export namespace guestconfiguration {
+    export namespace latest {
+        /**
+         * Represents a configuration parameter.
+         */
+        export interface ConfigurationParameter {
+            /**
+             * Name of the configuration parameter.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Value of the configuration parameter.
+             */
+            value?: pulumi.Input<string>;
+        }
+
+        /**
+         * Configuration setting of LCM (Local Configuration Manager).
+         */
+        export interface ConfigurationSetting {
+            /**
+             * Specifies what happens after a reboot during the application of a configuration. The possible values are ContinueConfiguration and StopConfiguration
+             */
+            actionAfterReboot?: pulumi.Input<string | enums.guestconfiguration.latest.ActionAfterReboot>;
+            /**
+             * If true - new configurations downloaded from the pull service are allowed to overwrite the old ones on the target node. Otherwise, false
+             */
+            allowModuleOverwrite?: pulumi.Input<string | enums.guestconfiguration.latest.AllowModuleOverwrite>;
+            /**
+             * Specifies how the LCM(Local Configuration Manager) actually applies the configuration to the target nodes. Possible values are ApplyOnly, ApplyAndMonitor, and ApplyAndAutoCorrect.
+             */
+            configurationMode?: pulumi.Input<string | enums.guestconfiguration.latest.ConfigurationMode>;
+            /**
+             * How often, in minutes, the current configuration is checked and applied. This property is ignored if the ConfigurationMode property is set to ApplyOnly. The default value is 15.
+             */
+            configurationModeFrequencyMins?: pulumi.Input<number>;
+            /**
+             * Set this to true to automatically reboot the node after a configuration that requires reboot is applied. Otherwise, you will have to manually reboot the node for any configuration that requires it. The default value is false. To use this setting when a reboot condition is enacted by something other than DSC (such as Windows Installer), combine this setting with the xPendingReboot module.
+             */
+            rebootIfNeeded?: pulumi.Input<string | enums.guestconfiguration.latest.RebootIfNeeded>;
+            /**
+             * The time interval, in minutes, at which the LCM checks a pull service to get updated configurations. This value is ignored if the LCM is not configured in pull mode. The default value is 30.
+             */
+            refreshFrequencyMins?: pulumi.Input<number>;
+        }
+
+        /**
+         * Guest configuration assignment properties.
+         */
+        export interface GuestConfigurationAssignmentProperties {
+            /**
+             * The source which initiated the guest configuration assignment. Ex: Azure Policy
+             */
+            context?: pulumi.Input<string>;
+            /**
+             * The guest configuration to assign.
+             */
+            guestConfiguration?: pulumi.Input<inputs.guestconfiguration.latest.GuestConfigurationNavigation>;
+        }
+
+        /**
+         * Guest configuration is an artifact that encapsulates DSC configuration and its dependencies. The artifact is a zip file containing DSC configuration (as MOF) and dependent resources and other dependencies like modules.
+         */
+        export interface GuestConfigurationNavigation {
+            /**
+             * The configuration parameters for the guest configuration.
+             */
+            configurationParameter?: pulumi.Input<pulumi.Input<inputs.guestconfiguration.latest.ConfigurationParameter>[]>;
+            /**
+             * The configuration setting for the guest configuration.
+             */
+            configurationSetting?: pulumi.Input<inputs.guestconfiguration.latest.ConfigurationSetting>;
+            /**
+             * Kind of the guest configuration. For example:DSC
+             */
+            kind?: pulumi.Input<string | enums.guestconfiguration.latest.Kind>;
+            /**
+             * Name of the guest configuration.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Version of the guest configuration.
+             */
+            version?: pulumi.Input<string>;
+        }
+
+    }
+
+    export namespace v20180630preview {
+        /**
+         * Configuration setting of LCM (Local Configuration Manager).
+         */
+        export interface ConfigurationSetting {
+            /**
+             * If true - new configurations downloaded from the pull service are allowed to overwrite the old ones on the target node. Otherwise, false
+             */
+            allowModuleOverwrite?: pulumi.Input<string | enums.guestconfiguration.v20180630preview.AllowModuleOverwrite>;
+        }
+
+        /**
+         * Guest configuration assignment properties.
+         */
+        export interface GuestConfigurationAssignmentProperties {
+            /**
+             * The source which initiated the guest configuration assignment. Ex: Azure Policy
+             */
+            context?: pulumi.Input<string>;
+            /**
+             * The guest configuration to assign.
+             */
+            guestConfiguration?: pulumi.Input<inputs.guestconfiguration.v20180630preview.GuestConfigurationNavigation>;
+        }
+
+        /**
+         * Guest configuration is an artifact that encapsulates DSC configuration and its dependencies. The artifact is a zip file containing DSC configuration (as MOF) and dependent resources and other dependencies like modules.
+         */
+        export interface GuestConfigurationNavigation {
+            /**
+             * The configuration setting for the guest configuration.
+             */
+            configurationSetting?: pulumi.Input<inputs.guestconfiguration.v20180630preview.ConfigurationSetting>;
+            /**
+             * Kind of the guest configuration. For example:DSC
+             */
+            kind?: pulumi.Input<string | enums.guestconfiguration.v20180630preview.Kind>;
+            /**
+             * Name of the guest configuration.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Version of the guest configuration.
+             */
+            version?: pulumi.Input<string>;
+        }
+
+    }
+
+    export namespace v20181120 {
+        /**
+         * Represents a configuration parameter.
+         */
+        export interface ConfigurationParameter {
+            /**
+             * Name of the configuration parameter.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Value of the configuration parameter.
+             */
+            value?: pulumi.Input<string>;
+        }
+
+        /**
+         * Configuration setting of LCM (Local Configuration Manager).
+         */
+        export interface ConfigurationSetting {
+            /**
+             * Specifies what happens after a reboot during the application of a configuration. The possible values are ContinueConfiguration and StopConfiguration
+             */
+            actionAfterReboot?: pulumi.Input<string | enums.guestconfiguration.v20181120.ActionAfterReboot>;
+            /**
+             * If true - new configurations downloaded from the pull service are allowed to overwrite the old ones on the target node. Otherwise, false
+             */
+            allowModuleOverwrite?: pulumi.Input<string | enums.guestconfiguration.v20181120.AllowModuleOverwrite>;
+            /**
+             * Specifies how the LCM(Local Configuration Manager) actually applies the configuration to the target nodes. Possible values are ApplyOnly, ApplyAndMonitor, and ApplyAndAutoCorrect.
+             */
+            configurationMode?: pulumi.Input<string | enums.guestconfiguration.v20181120.ConfigurationMode>;
+            /**
+             * How often, in minutes, the current configuration is checked and applied. This property is ignored if the ConfigurationMode property is set to ApplyOnly. The default value is 15.
+             */
+            configurationModeFrequencyMins?: pulumi.Input<number>;
+            /**
+             * Set this to true to automatically reboot the node after a configuration that requires reboot is applied. Otherwise, you will have to manually reboot the node for any configuration that requires it. The default value is false. To use this setting when a reboot condition is enacted by something other than DSC (such as Windows Installer), combine this setting with the xPendingReboot module.
+             */
+            rebootIfNeeded?: pulumi.Input<string | enums.guestconfiguration.v20181120.RebootIfNeeded>;
+            /**
+             * The time interval, in minutes, at which the LCM checks a pull service to get updated configurations. This value is ignored if the LCM is not configured in pull mode. The default value is 30.
+             */
+            refreshFrequencyMins?: pulumi.Input<number>;
+        }
+
+        /**
+         * Guest configuration assignment properties.
+         */
+        export interface GuestConfigurationAssignmentProperties {
+            /**
+             * The source which initiated the guest configuration assignment. Ex: Azure Policy
+             */
+            context?: pulumi.Input<string>;
+            /**
+             * The guest configuration to assign.
+             */
+            guestConfiguration?: pulumi.Input<inputs.guestconfiguration.v20181120.GuestConfigurationNavigation>;
+        }
+
+        /**
+         * Guest configuration is an artifact that encapsulates DSC configuration and its dependencies. The artifact is a zip file containing DSC configuration (as MOF) and dependent resources and other dependencies like modules.
+         */
+        export interface GuestConfigurationNavigation {
+            /**
+             * The configuration parameters for the guest configuration.
+             */
+            configurationParameter?: pulumi.Input<pulumi.Input<inputs.guestconfiguration.v20181120.ConfigurationParameter>[]>;
+            /**
+             * The configuration setting for the guest configuration.
+             */
+            configurationSetting?: pulumi.Input<inputs.guestconfiguration.v20181120.ConfigurationSetting>;
+            /**
+             * Kind of the guest configuration. For example:DSC
+             */
+            kind?: pulumi.Input<string | enums.guestconfiguration.v20181120.Kind>;
+            /**
+             * Name of the guest configuration.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Version of the guest configuration.
+             */
+            version?: pulumi.Input<string>;
+        }
+
+    }
+
+    export namespace v20200625 {
+        /**
+         * Represents a configuration parameter.
+         */
+        export interface ConfigurationParameter {
+            /**
+             * Name of the configuration parameter.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Value of the configuration parameter.
+             */
+            value?: pulumi.Input<string>;
+        }
+
+        /**
+         * Configuration setting of LCM (Local Configuration Manager).
+         */
+        export interface ConfigurationSetting {
+            /**
+             * Specifies what happens after a reboot during the application of a configuration. The possible values are ContinueConfiguration and StopConfiguration
+             */
+            actionAfterReboot?: pulumi.Input<string | enums.guestconfiguration.v20200625.ActionAfterReboot>;
+            /**
+             * If true - new configurations downloaded from the pull service are allowed to overwrite the old ones on the target node. Otherwise, false
+             */
+            allowModuleOverwrite?: pulumi.Input<string | enums.guestconfiguration.v20200625.AllowModuleOverwrite>;
+            /**
+             * Specifies how the LCM(Local Configuration Manager) actually applies the configuration to the target nodes. Possible values are ApplyOnly, ApplyAndMonitor, and ApplyAndAutoCorrect.
+             */
+            configurationMode?: pulumi.Input<string | enums.guestconfiguration.v20200625.ConfigurationMode>;
+            /**
+             * How often, in minutes, the current configuration is checked and applied. This property is ignored if the ConfigurationMode property is set to ApplyOnly. The default value is 15.
+             */
+            configurationModeFrequencyMins?: pulumi.Input<number>;
+            /**
+             * Set this to true to automatically reboot the node after a configuration that requires reboot is applied. Otherwise, you will have to manually reboot the node for any configuration that requires it. The default value is false. To use this setting when a reboot condition is enacted by something other than DSC (such as Windows Installer), combine this setting with the xPendingReboot module.
+             */
+            rebootIfNeeded?: pulumi.Input<string | enums.guestconfiguration.v20200625.RebootIfNeeded>;
+            /**
+             * The time interval, in minutes, at which the LCM checks a pull service to get updated configurations. This value is ignored if the LCM is not configured in pull mode. The default value is 30.
+             */
+            refreshFrequencyMins?: pulumi.Input<number>;
+        }
+
+        /**
+         * Guest configuration assignment properties.
+         */
+        export interface GuestConfigurationAssignmentProperties {
+            /**
+             * The source which initiated the guest configuration assignment. Ex: Azure Policy
+             */
+            context?: pulumi.Input<string>;
+            /**
+             * The guest configuration to assign.
+             */
+            guestConfiguration?: pulumi.Input<inputs.guestconfiguration.v20200625.GuestConfigurationNavigation>;
+        }
+
+        /**
+         * Guest configuration is an artifact that encapsulates DSC configuration and its dependencies. The artifact is a zip file containing DSC configuration (as MOF) and dependent resources and other dependencies like modules.
+         */
+        export interface GuestConfigurationNavigation {
+            /**
+             * The configuration parameters for the guest configuration.
+             */
+            configurationParameter?: pulumi.Input<pulumi.Input<inputs.guestconfiguration.v20200625.ConfigurationParameter>[]>;
+            /**
+             * The configuration setting for the guest configuration.
+             */
+            configurationSetting?: pulumi.Input<inputs.guestconfiguration.v20200625.ConfigurationSetting>;
+            /**
+             * Kind of the guest configuration. For example:DSC
+             */
+            kind?: pulumi.Input<string | enums.guestconfiguration.v20200625.Kind>;
+            /**
+             * Name of the guest configuration.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Version of the guest configuration.
+             */
+            version?: pulumi.Input<string>;
         }
 
     }
@@ -158782,90 +158391,6 @@ export namespace healthcareapis {
 export namespace hybridcompute {
     export namespace latest {
         /**
-         * Represents a configuration parameter.
-         */
-        export interface ConfigurationParameter {
-            /**
-             * Name of the configuration parameter.
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * Value of the configuration parameter.
-             */
-            value?: pulumi.Input<string>;
-        }
-
-        /**
-         * Configuration setting of LCM (Local Configuration Manager).
-         */
-        export interface ConfigurationSetting {
-            /**
-             * Specifies what happens after a reboot during the application of a configuration. The possible values are ContinueConfiguration and StopConfiguration
-             */
-            actionAfterReboot?: pulumi.Input<string | enums.hybridcompute.latest.ActionAfterReboot>;
-            /**
-             * If true - new configurations downloaded from the pull service are allowed to overwrite the old ones on the target node. Otherwise, false
-             */
-            allowModuleOverwrite?: pulumi.Input<string | enums.hybridcompute.latest.AllowModuleOverwrite>;
-            /**
-             * Specifies how the LCM(Local Configuration Manager) actually applies the configuration to the target nodes. Possible values are ApplyOnly, ApplyAndMonitor, and ApplyAndAutoCorrect.
-             */
-            configurationMode?: pulumi.Input<string | enums.hybridcompute.latest.ConfigurationMode>;
-            /**
-             * How often, in minutes, the current configuration is checked and applied. This property is ignored if the ConfigurationMode property is set to ApplyOnly. The default value is 15.
-             */
-            configurationModeFrequencyMins?: pulumi.Input<number>;
-            /**
-             * Set this to true to automatically reboot the node after a configuration that requires reboot is applied. Otherwise, you will have to manually reboot the node for any configuration that requires it. The default value is false. To use this setting when a reboot condition is enacted by something other than DSC (such as Windows Installer), combine this setting with the xPendingReboot module.
-             */
-            rebootIfNeeded?: pulumi.Input<string | enums.hybridcompute.latest.RebootIfNeeded>;
-            /**
-             * The time interval, in minutes, at which the LCM checks a pull service to get updated configurations. This value is ignored if the LCM is not configured in pull mode. The default value is 30.
-             */
-            refreshFrequencyMins?: pulumi.Input<number>;
-        }
-
-        /**
-         * Guest configuration assignment properties.
-         */
-        export interface GuestConfigurationAssignmentProperties {
-            /**
-             * The source which initiated the guest configuration assignment. Ex: Azure Policy
-             */
-            context?: pulumi.Input<string>;
-            /**
-             * The guest configuration to assign.
-             */
-            guestConfiguration?: pulumi.Input<inputs.hybridcompute.latest.GuestConfigurationNavigation>;
-        }
-
-        /**
-         * Guest configuration is an artifact that encapsulates DSC configuration and its dependencies. The artifact is a zip file containing DSC configuration (as MOF) and dependent resources and other dependencies like modules.
-         */
-        export interface GuestConfigurationNavigation {
-            /**
-             * The configuration parameters for the guest configuration.
-             */
-            configurationParameter?: pulumi.Input<pulumi.Input<inputs.hybridcompute.latest.ConfigurationParameter>[]>;
-            /**
-             * The configuration setting for the guest configuration.
-             */
-            configurationSetting?: pulumi.Input<inputs.hybridcompute.latest.ConfigurationSetting>;
-            /**
-             * Kind of the guest configuration. For example:DSC
-             */
-            kind?: pulumi.Input<string | enums.hybridcompute.latest.Kind>;
-            /**
-             * Name of the guest configuration.
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * Version of the guest configuration.
-             */
-            version?: pulumi.Input<string>;
-        }
-
-        /**
          * Metadata pertaining to the geographic location of the resource.
          */
         export interface LocationData {
@@ -158892,93 +158417,6 @@ export namespace hybridcompute {
              * The identity type.
              */
             type?: pulumi.Input<string>;
-        }
-
-    }
-
-    export namespace v20181120 {
-        /**
-         * Represents a configuration parameter.
-         */
-        export interface ConfigurationParameter {
-            /**
-             * Name of the configuration parameter.
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * Value of the configuration parameter.
-             */
-            value?: pulumi.Input<string>;
-        }
-
-        /**
-         * Configuration setting of LCM (Local Configuration Manager).
-         */
-        export interface ConfigurationSetting {
-            /**
-             * Specifies what happens after a reboot during the application of a configuration. The possible values are ContinueConfiguration and StopConfiguration
-             */
-            actionAfterReboot?: pulumi.Input<string | enums.hybridcompute.v20181120.ActionAfterReboot>;
-            /**
-             * If true - new configurations downloaded from the pull service are allowed to overwrite the old ones on the target node. Otherwise, false
-             */
-            allowModuleOverwrite?: pulumi.Input<string | enums.hybridcompute.v20181120.AllowModuleOverwrite>;
-            /**
-             * Specifies how the LCM(Local Configuration Manager) actually applies the configuration to the target nodes. Possible values are ApplyOnly, ApplyAndMonitor, and ApplyAndAutoCorrect.
-             */
-            configurationMode?: pulumi.Input<string | enums.hybridcompute.v20181120.ConfigurationMode>;
-            /**
-             * How often, in minutes, the current configuration is checked and applied. This property is ignored if the ConfigurationMode property is set to ApplyOnly. The default value is 15.
-             */
-            configurationModeFrequencyMins?: pulumi.Input<number>;
-            /**
-             * Set this to true to automatically reboot the node after a configuration that requires reboot is applied. Otherwise, you will have to manually reboot the node for any configuration that requires it. The default value is false. To use this setting when a reboot condition is enacted by something other than DSC (such as Windows Installer), combine this setting with the xPendingReboot module.
-             */
-            rebootIfNeeded?: pulumi.Input<string | enums.hybridcompute.v20181120.RebootIfNeeded>;
-            /**
-             * The time interval, in minutes, at which the LCM checks a pull service to get updated configurations. This value is ignored if the LCM is not configured in pull mode. The default value is 30.
-             */
-            refreshFrequencyMins?: pulumi.Input<number>;
-        }
-
-        /**
-         * Guest configuration assignment properties.
-         */
-        export interface GuestConfigurationAssignmentProperties {
-            /**
-             * The source which initiated the guest configuration assignment. Ex: Azure Policy
-             */
-            context?: pulumi.Input<string>;
-            /**
-             * The guest configuration to assign.
-             */
-            guestConfiguration?: pulumi.Input<inputs.hybridcompute.v20181120.GuestConfigurationNavigation>;
-        }
-
-        /**
-         * Guest configuration is an artifact that encapsulates DSC configuration and its dependencies. The artifact is a zip file containing DSC configuration (as MOF) and dependent resources and other dependencies like modules.
-         */
-        export interface GuestConfigurationNavigation {
-            /**
-             * The configuration parameters for the guest configuration.
-             */
-            configurationParameter?: pulumi.Input<pulumi.Input<inputs.hybridcompute.v20181120.ConfigurationParameter>[]>;
-            /**
-             * The configuration setting for the guest configuration.
-             */
-            configurationSetting?: pulumi.Input<inputs.hybridcompute.v20181120.ConfigurationSetting>;
-            /**
-             * Kind of the guest configuration. For example:DSC
-             */
-            kind?: pulumi.Input<string | enums.hybridcompute.v20181120.Kind>;
-            /**
-             * Name of the guest configuration.
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * Version of the guest configuration.
-             */
-            version?: pulumi.Input<string>;
         }
 
     }
@@ -159135,93 +158573,6 @@ export namespace hybridcompute {
              * The identity type.
              */
             type?: pulumi.Input<enums.hybridcompute.v20191212.ResourceIdentityType>;
-        }
-
-    }
-
-    export namespace v20200625 {
-        /**
-         * Represents a configuration parameter.
-         */
-        export interface ConfigurationParameter {
-            /**
-             * Name of the configuration parameter.
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * Value of the configuration parameter.
-             */
-            value?: pulumi.Input<string>;
-        }
-
-        /**
-         * Configuration setting of LCM (Local Configuration Manager).
-         */
-        export interface ConfigurationSetting {
-            /**
-             * Specifies what happens after a reboot during the application of a configuration. The possible values are ContinueConfiguration and StopConfiguration
-             */
-            actionAfterReboot?: pulumi.Input<string | enums.hybridcompute.v20200625.ActionAfterReboot>;
-            /**
-             * If true - new configurations downloaded from the pull service are allowed to overwrite the old ones on the target node. Otherwise, false
-             */
-            allowModuleOverwrite?: pulumi.Input<string | enums.hybridcompute.v20200625.AllowModuleOverwrite>;
-            /**
-             * Specifies how the LCM(Local Configuration Manager) actually applies the configuration to the target nodes. Possible values are ApplyOnly, ApplyAndMonitor, and ApplyAndAutoCorrect.
-             */
-            configurationMode?: pulumi.Input<string | enums.hybridcompute.v20200625.ConfigurationMode>;
-            /**
-             * How often, in minutes, the current configuration is checked and applied. This property is ignored if the ConfigurationMode property is set to ApplyOnly. The default value is 15.
-             */
-            configurationModeFrequencyMins?: pulumi.Input<number>;
-            /**
-             * Set this to true to automatically reboot the node after a configuration that requires reboot is applied. Otherwise, you will have to manually reboot the node for any configuration that requires it. The default value is false. To use this setting when a reboot condition is enacted by something other than DSC (such as Windows Installer), combine this setting with the xPendingReboot module.
-             */
-            rebootIfNeeded?: pulumi.Input<string | enums.hybridcompute.v20200625.RebootIfNeeded>;
-            /**
-             * The time interval, in minutes, at which the LCM checks a pull service to get updated configurations. This value is ignored if the LCM is not configured in pull mode. The default value is 30.
-             */
-            refreshFrequencyMins?: pulumi.Input<number>;
-        }
-
-        /**
-         * Guest configuration assignment properties.
-         */
-        export interface GuestConfigurationAssignmentProperties {
-            /**
-             * The source which initiated the guest configuration assignment. Ex: Azure Policy
-             */
-            context?: pulumi.Input<string>;
-            /**
-             * The guest configuration to assign.
-             */
-            guestConfiguration?: pulumi.Input<inputs.hybridcompute.v20200625.GuestConfigurationNavigation>;
-        }
-
-        /**
-         * Guest configuration is an artifact that encapsulates DSC configuration and its dependencies. The artifact is a zip file containing DSC configuration (as MOF) and dependent resources and other dependencies like modules.
-         */
-        export interface GuestConfigurationNavigation {
-            /**
-             * The configuration parameters for the guest configuration.
-             */
-            configurationParameter?: pulumi.Input<pulumi.Input<inputs.hybridcompute.v20200625.ConfigurationParameter>[]>;
-            /**
-             * The configuration setting for the guest configuration.
-             */
-            configurationSetting?: pulumi.Input<inputs.hybridcompute.v20200625.ConfigurationSetting>;
-            /**
-             * Kind of the guest configuration. For example:DSC
-             */
-            kind?: pulumi.Input<string | enums.hybridcompute.v20200625.Kind>;
-            /**
-             * Name of the guest configuration.
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * Version of the guest configuration.
-             */
-            version?: pulumi.Input<string>;
         }
 
     }
@@ -164262,6 +163613,23 @@ export namespace insights {
              * A list of Windows Event Log queries in XPATH format.
              */
             xPathQueries: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+    }
+
+    export namespace v20200101preview {
+        /**
+         * Part of Management Group diagnostic setting. Specifies the settings for a particular log.
+         */
+        export interface ManagementGroupLogSettings {
+            /**
+             * Name of a Management Group Diagnostic Log category for a resource type this setting is applied to.
+             */
+            category: pulumi.Input<string>;
+            /**
+             * a value indicating whether this log is enabled.
+             */
+            enabled: pulumi.Input<boolean>;
         }
 
     }
@@ -187200,303 +186568,9 @@ export namespace management {
             id?: pulumi.Input<string>;
         }
 
-        /**
-         * The debug setting.
-         */
-        export interface DebugSetting {
-            /**
-             * Specifies the type of information to log for debugging. The permitted values are none, requestContent, responseContent, or both requestContent and responseContent separated by a comma. The default is none. When setting this value, carefully consider the type of information you are passing in during deployment. By logging information about the request or response, you could potentially expose sensitive data that is retrieved through the deployment operations.
-             */
-            detailLevel?: pulumi.Input<string>;
-        }
-
-        /**
-         * Deployment properties.
-         */
-        export interface DeploymentProperties {
-            /**
-             * The debug setting of the deployment.
-             */
-            debugSetting?: pulumi.Input<inputs.management.latest.DebugSetting>;
-            /**
-             * Specifies whether template expressions are evaluated within the scope of the parent template or nested template. Only applicable to nested templates. If not specified, default value is outer.
-             */
-            expressionEvaluationOptions?: pulumi.Input<inputs.management.latest.ExpressionEvaluationOptions>;
-            /**
-             * The mode that is used to deploy resources. This value can be either Incremental or Complete. In Incremental mode, resources are deployed without deleting existing resources that are not included in the template. In Complete mode, resources are deployed and existing resources in the resource group that are not included in the template are deleted. Be careful when using Complete mode as you may unintentionally delete resources.
-             */
-            mode: pulumi.Input<enums.management.latest.DeploymentMode>;
-            /**
-             * The deployment on error behavior.
-             */
-            onErrorDeployment?: pulumi.Input<inputs.management.latest.OnErrorDeployment>;
-            /**
-             * Name and value pairs that define the deployment parameters for the template. You use this element when you want to provide the parameter values directly in the request rather than link to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. It can be a JObject or a well formed JSON string.
-             */
-            parameters?: any;
-            /**
-             * The URI of parameters file. You use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
-             */
-            parametersLink?: pulumi.Input<inputs.management.latest.ParametersLink>;
-            /**
-             * The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both.
-             */
-            template?: any;
-            /**
-             * The URI of the template. Use either the templateLink property or the template property, but not both.
-             */
-            templateLink?: pulumi.Input<inputs.management.latest.TemplateLink>;
-        }
-
-        /**
-         * Specifies whether template expressions are evaluated within the scope of the parent template or nested template.
-         */
-        export interface ExpressionEvaluationOptions {
-            /**
-             * The scope to be used for evaluation of parameters, variables and functions in a nested template.
-             */
-            scope?: pulumi.Input<string | enums.management.latest.ExpressionEvaluationOptionsScopeType>;
-        }
-
-        /**
-         * Deployment on error behavior.
-         */
-        export interface OnErrorDeployment {
-            /**
-             * The deployment to be used on error case.
-             */
-            deploymentName?: pulumi.Input<string>;
-            /**
-             * The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment.
-             */
-            type?: pulumi.Input<enums.management.latest.OnErrorDeploymentType>;
-        }
-
-        /**
-         * The definition of a parameter that can be provided to the policy.
-         */
-        export interface ParameterDefinitionsValue {
-            /**
-             * The allowed values for the parameter.
-             */
-            allowedValues?: pulumi.Input<any[]>;
-            /**
-             * The default value for the parameter if no value is provided.
-             */
-            defaultValue?: any;
-            /**
-             * General metadata for the parameter.
-             */
-            metadata?: pulumi.Input<inputs.management.latest.ParameterDefinitionsValueMetadata>;
-            /**
-             * The data type of the parameter.
-             */
-            type?: pulumi.Input<string | enums.management.latest.ParameterType>;
-        }
-
-        /**
-         * General metadata for the parameter.
-         */
-        export interface ParameterDefinitionsValueMetadata {
-            /**
-             * Set to true to have Azure portal create role assignments on the resource ID or resource scope value of this parameter during policy assignment. This property is useful in case you wish to assign permissions outside the assignment scope.
-             */
-            assignPermissions?: pulumi.Input<boolean>;
-            /**
-             * The description of the parameter.
-             */
-            description?: pulumi.Input<string>;
-            /**
-             * The display name for the parameter.
-             */
-            displayName?: pulumi.Input<string>;
-            /**
-             * Used when assigning the policy definition through the portal. Provides a context aware list of values for the user to choose from.
-             */
-            strongType?: pulumi.Input<string>;
-        }
-
-        /**
-         * The value of a parameter.
-         */
-        export interface ParameterValuesValue {
-            /**
-             * The value of the parameter.
-             */
-            value?: any;
-        }
-
-        /**
-         * Entity representing the reference to the deployment parameters.
-         */
-        export interface ParametersLink {
-            /**
-             * If included, must match the ContentVersion in the template.
-             */
-            contentVersion?: pulumi.Input<string>;
-            /**
-             * The URI of the parameters file.
-             */
-            uri: pulumi.Input<string>;
-        }
-
-        /**
-         * The policy definition group.
-         */
-        export interface PolicyDefinitionGroup {
-            /**
-             * A resource ID of a resource that contains additional metadata about the group.
-             */
-            additionalMetadataId?: pulumi.Input<string>;
-            /**
-             * The group's category.
-             */
-            category?: pulumi.Input<string>;
-            /**
-             * The group's description.
-             */
-            description?: pulumi.Input<string>;
-            /**
-             * The group's display name.
-             */
-            displayName?: pulumi.Input<string>;
-            /**
-             * The name of the group.
-             */
-            name: pulumi.Input<string>;
-        }
-
-        /**
-         * The policy definition reference.
-         */
-        export interface PolicyDefinitionReference {
-            /**
-             * The name of the groups that this policy definition reference belongs to.
-             */
-            groupNames?: pulumi.Input<pulumi.Input<string>[]>;
-            /**
-             * The parameter values for the referenced policy rule. The keys are the parameter names.
-             */
-            parameters?: pulumi.Input<{[key: string]: pulumi.Input<inputs.management.latest.ParameterValuesValue>}>;
-            /**
-             * The ID of the policy definition or policy set definition.
-             */
-            policyDefinitionId: pulumi.Input<string>;
-            /**
-             * A unique id (within the policy set definition) for this policy definition reference.
-             */
-            policyDefinitionReferenceId?: pulumi.Input<string>;
-        }
-
-        /**
-         * Entity representing the reference to the template.
-         */
-        export interface TemplateLink {
-            /**
-             * If included, must match the ContentVersion in the template.
-             */
-            contentVersion?: pulumi.Input<string>;
-            /**
-             * The resource id of a Template Spec. Use either the id or uri property, but not both.
-             */
-            id?: pulumi.Input<string>;
-            /**
-             * The query string (for example, a SAS token) to be used with the templateLink URI.
-             */
-            queryString?: pulumi.Input<string>;
-            /**
-             * The relativePath property can be used to deploy a linked template at a location relative to the parent. If the parent template was linked with a TemplateSpec, this will reference an artifact in the TemplateSpec.  If the parent was linked with a URI, the child deployment will be a combination of the parent and relativePath URIs
-             */
-            relativePath?: pulumi.Input<string>;
-            /**
-             * The URI of the template to deploy. Use either the uri or id property, but not both.
-             */
-            uri?: pulumi.Input<string>;
-        }
-
-    }
-
-    export namespace v20170601preview {
-        /**
-         * The policy definition reference.
-         */
-        export interface PolicyDefinitionReference {
-            /**
-             * Required if a parameter is used in policy rule.
-             */
-            parameters?: any;
-            /**
-             * The ID of the policy definition or policy set definition.
-             */
-            policyDefinitionId?: pulumi.Input<string>;
-        }
-
     }
 
     export namespace v20171101preview {
-    }
-
-    export namespace v20171111preview {
-        /**
-         * Represent a parameter with constrains and metadata.
-         */
-        export interface ParameterDefinition {
-            /**
-             * Array of allowed values for this parameter.
-             */
-            allowedValues?: pulumi.Input<any[]>;
-            /**
-             * Default Value for this parameter.
-             */
-            defaultValue?: any;
-            /**
-             * Description of this parameter/resourceGroup.
-             */
-            description?: pulumi.Input<string>;
-            /**
-             * DisplayName of this parameter/resourceGroup.
-             */
-            displayName?: pulumi.Input<string>;
-            /**
-             * StrongType for UI to render rich experience during assignment time.
-             */
-            strongType?: pulumi.Input<string>;
-            /**
-             * Allowed data types for Azure Resource Manager template parameters.
-             */
-            type: pulumi.Input<string | enums.management.v20171111preview.TemplateParameterType>;
-        }
-
-        /**
-         * Represents an Azure resource group in a Blueprint definition.
-         */
-        export interface ResourceGroupDefinition {
-            /**
-             * Artifacts which need to be deployed before this resource group.
-             */
-            dependsOn?: pulumi.Input<pulumi.Input<string>[]>;
-            /**
-             * Description of this parameter/resourceGroup.
-             */
-            description?: pulumi.Input<string>;
-            /**
-             * DisplayName of this parameter/resourceGroup.
-             */
-            displayName?: pulumi.Input<string>;
-            /**
-             * Location of this resourceGroup, leave empty if the resource group location will be specified during the Blueprint assignment.
-             */
-            location?: pulumi.Input<string>;
-            /**
-             * Name of this resourceGroup, leave empty if the resource group name will be specified during the Blueprint assignment.
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * StrongType for UI to render rich experience during assignment time.
-             */
-            strongType?: pulumi.Input<string>;
-        }
-
     }
 
     export namespace v20180101preview {
@@ -187518,23 +186592,6 @@ export namespace management {
              * The fully qualified ID for the parent management group.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
              */
             id?: pulumi.Input<string>;
-        }
-
-    }
-
-    export namespace v20180301 {
-        /**
-         * The policy definition reference.
-         */
-        export interface PolicyDefinitionReference {
-            /**
-             * Required if a parameter is used in policy rule.
-             */
-            parameters?: any;
-            /**
-             * The ID of the policy definition or policy set definition.
-             */
-            policyDefinitionId?: pulumi.Input<string>;
         }
 
     }
@@ -187562,599 +186619,6 @@ export namespace management {
 
     }
 
-    export namespace v20180501 {
-        /**
-         * The policy definition reference.
-         */
-        export interface PolicyDefinitionReference {
-            /**
-             * Required if a parameter is used in policy rule.
-             */
-            parameters?: any;
-            /**
-             * The ID of the policy definition or policy set definition.
-             */
-            policyDefinitionId?: pulumi.Input<string>;
-        }
-
-    }
-
-    export namespace v20190101 {
-        /**
-         * The policy definition reference.
-         */
-        export interface PolicyDefinitionReference {
-            /**
-             * Required if a parameter is used in policy rule.
-             */
-            parameters?: any;
-            /**
-             * The ID of the policy definition or policy set definition.
-             */
-            policyDefinitionId?: pulumi.Input<string>;
-        }
-
-    }
-
-    export namespace v20190501 {
-        /**
-         * The debug setting.
-         */
-        export interface DebugSetting {
-            /**
-             * Specifies the type of information to log for debugging. The permitted values are none, requestContent, responseContent, or both requestContent and responseContent separated by a comma. The default is none. When setting this value, carefully consider the type of information you are passing in during deployment. By logging information about the request or response, you could potentially expose sensitive data that is retrieved through the deployment operations.
-             */
-            detailLevel?: pulumi.Input<string>;
-        }
-
-        /**
-         * Deployment properties.
-         */
-        export interface DeploymentProperties {
-            /**
-             * The debug setting of the deployment.
-             */
-            debugSetting?: pulumi.Input<inputs.management.v20190501.DebugSetting>;
-            /**
-             * The mode that is used to deploy resources. This value can be either Incremental or Complete. In Incremental mode, resources are deployed without deleting existing resources that are not included in the template. In Complete mode, resources are deployed and existing resources in the resource group that are not included in the template are deleted. Be careful when using Complete mode as you may unintentionally delete resources.
-             */
-            mode: pulumi.Input<enums.management.v20190501.DeploymentMode>;
-            /**
-             * The deployment on error behavior.
-             */
-            onErrorDeployment?: pulumi.Input<inputs.management.v20190501.OnErrorDeployment>;
-            /**
-             * Name and value pairs that define the deployment parameters for the template. You use this element when you want to provide the parameter values directly in the request rather than link to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. It can be a JObject or a well formed JSON string.
-             */
-            parameters?: any;
-            /**
-             * The URI of parameters file. You use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
-             */
-            parametersLink?: pulumi.Input<inputs.management.v20190501.ParametersLink>;
-            /**
-             * The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both.
-             */
-            template?: any;
-            /**
-             * The URI of the template. Use either the templateLink property or the template property, but not both.
-             */
-            templateLink?: pulumi.Input<inputs.management.v20190501.TemplateLink>;
-        }
-
-        /**
-         * Deployment on error behavior.
-         */
-        export interface OnErrorDeployment {
-            /**
-             * The deployment to be used on error case.
-             */
-            deploymentName?: pulumi.Input<string>;
-            /**
-             * The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment.
-             */
-            type?: pulumi.Input<enums.management.v20190501.OnErrorDeploymentType>;
-        }
-
-        /**
-         * Entity representing the reference to the deployment parameters.
-         */
-        export interface ParametersLink {
-            /**
-             * If included, must match the ContentVersion in the template.
-             */
-            contentVersion?: pulumi.Input<string>;
-            /**
-             * The URI of the parameters file.
-             */
-            uri: pulumi.Input<string>;
-        }
-
-        /**
-         * Entity representing the reference to the template.
-         */
-        export interface TemplateLink {
-            /**
-             * If included, must match the ContentVersion in the template.
-             */
-            contentVersion?: pulumi.Input<string>;
-            /**
-             * The URI of the template to deploy.
-             */
-            uri: pulumi.Input<string>;
-        }
-
-    }
-
-    export namespace v20190510 {
-        /**
-         * The debug setting.
-         */
-        export interface DebugSetting {
-            /**
-             * Specifies the type of information to log for debugging. The permitted values are none, requestContent, responseContent, or both requestContent and responseContent separated by a comma. The default is none. When setting this value, carefully consider the type of information you are passing in during deployment. By logging information about the request or response, you could potentially expose sensitive data that is retrieved through the deployment operations.
-             */
-            detailLevel?: pulumi.Input<string>;
-        }
-
-        /**
-         * Deployment properties.
-         */
-        export interface DeploymentProperties {
-            /**
-             * The debug setting of the deployment.
-             */
-            debugSetting?: pulumi.Input<inputs.management.v20190510.DebugSetting>;
-            /**
-             * The mode that is used to deploy resources. This value can be either Incremental or Complete. In Incremental mode, resources are deployed without deleting existing resources that are not included in the template. In Complete mode, resources are deployed and existing resources in the resource group that are not included in the template are deleted. Be careful when using Complete mode as you may unintentionally delete resources.
-             */
-            mode: pulumi.Input<enums.management.v20190510.DeploymentMode>;
-            /**
-             * The deployment on error behavior.
-             */
-            onErrorDeployment?: pulumi.Input<inputs.management.v20190510.OnErrorDeployment>;
-            /**
-             * Name and value pairs that define the deployment parameters for the template. You use this element when you want to provide the parameter values directly in the request rather than link to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. It can be a JObject or a well formed JSON string.
-             */
-            parameters?: any;
-            /**
-             * The URI of parameters file. You use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
-             */
-            parametersLink?: pulumi.Input<inputs.management.v20190510.ParametersLink>;
-            /**
-             * The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both.
-             */
-            template?: any;
-            /**
-             * The URI of the template. Use either the templateLink property or the template property, but not both.
-             */
-            templateLink?: pulumi.Input<inputs.management.v20190510.TemplateLink>;
-        }
-
-        /**
-         * Deployment on error behavior.
-         */
-        export interface OnErrorDeployment {
-            /**
-             * The deployment to be used on error case.
-             */
-            deploymentName?: pulumi.Input<string>;
-            /**
-             * The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment.
-             */
-            type?: pulumi.Input<enums.management.v20190510.OnErrorDeploymentType>;
-        }
-
-        /**
-         * Entity representing the reference to the deployment parameters.
-         */
-        export interface ParametersLink {
-            /**
-             * If included, must match the ContentVersion in the template.
-             */
-            contentVersion?: pulumi.Input<string>;
-            /**
-             * The URI of the parameters file.
-             */
-            uri: pulumi.Input<string>;
-        }
-
-        /**
-         * Entity representing the reference to the template.
-         */
-        export interface TemplateLink {
-            /**
-             * If included, must match the ContentVersion in the template.
-             */
-            contentVersion?: pulumi.Input<string>;
-            /**
-             * The URI of the template to deploy.
-             */
-            uri: pulumi.Input<string>;
-        }
-
-    }
-
-    export namespace v20190601 {
-        /**
-         * The policy definition reference.
-         */
-        export interface PolicyDefinitionReference {
-            /**
-             * Required if a parameter is used in policy rule.
-             */
-            parameters?: any;
-            /**
-             * The ID of the policy definition or policy set definition.
-             */
-            policyDefinitionId?: pulumi.Input<string>;
-        }
-
-    }
-
-    export namespace v20190701 {
-        /**
-         * The debug setting.
-         */
-        export interface DebugSetting {
-            /**
-             * Specifies the type of information to log for debugging. The permitted values are none, requestContent, responseContent, or both requestContent and responseContent separated by a comma. The default is none. When setting this value, carefully consider the type of information you are passing in during deployment. By logging information about the request or response, you could potentially expose sensitive data that is retrieved through the deployment operations.
-             */
-            detailLevel?: pulumi.Input<string>;
-        }
-
-        /**
-         * Deployment properties.
-         */
-        export interface DeploymentProperties {
-            /**
-             * The debug setting of the deployment.
-             */
-            debugSetting?: pulumi.Input<inputs.management.v20190701.DebugSetting>;
-            /**
-             * The mode that is used to deploy resources. This value can be either Incremental or Complete. In Incremental mode, resources are deployed without deleting existing resources that are not included in the template. In Complete mode, resources are deployed and existing resources in the resource group that are not included in the template are deleted. Be careful when using Complete mode as you may unintentionally delete resources.
-             */
-            mode: pulumi.Input<enums.management.v20190701.DeploymentMode>;
-            /**
-             * The deployment on error behavior.
-             */
-            onErrorDeployment?: pulumi.Input<inputs.management.v20190701.OnErrorDeployment>;
-            /**
-             * Name and value pairs that define the deployment parameters for the template. You use this element when you want to provide the parameter values directly in the request rather than link to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. It can be a JObject or a well formed JSON string.
-             */
-            parameters?: any;
-            /**
-             * The URI of parameters file. You use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
-             */
-            parametersLink?: pulumi.Input<inputs.management.v20190701.ParametersLink>;
-            /**
-             * The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both.
-             */
-            template?: any;
-            /**
-             * The URI of the template. Use either the templateLink property or the template property, but not both.
-             */
-            templateLink?: pulumi.Input<inputs.management.v20190701.TemplateLink>;
-        }
-
-        /**
-         * Deployment on error behavior.
-         */
-        export interface OnErrorDeployment {
-            /**
-             * The deployment to be used on error case.
-             */
-            deploymentName?: pulumi.Input<string>;
-            /**
-             * The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment.
-             */
-            type?: pulumi.Input<enums.management.v20190701.OnErrorDeploymentType>;
-        }
-
-        /**
-         * Entity representing the reference to the deployment parameters.
-         */
-        export interface ParametersLink {
-            /**
-             * If included, must match the ContentVersion in the template.
-             */
-            contentVersion?: pulumi.Input<string>;
-            /**
-             * The URI of the parameters file.
-             */
-            uri: pulumi.Input<string>;
-        }
-
-        /**
-         * Entity representing the reference to the template.
-         */
-        export interface TemplateLink {
-            /**
-             * If included, must match the ContentVersion in the template.
-             */
-            contentVersion?: pulumi.Input<string>;
-            /**
-             * The URI of the template to deploy.
-             */
-            uri: pulumi.Input<string>;
-        }
-
-    }
-
-    export namespace v20190801 {
-        /**
-         * The debug setting.
-         */
-        export interface DebugSetting {
-            /**
-             * Specifies the type of information to log for debugging. The permitted values are none, requestContent, responseContent, or both requestContent and responseContent separated by a comma. The default is none. When setting this value, carefully consider the type of information you are passing in during deployment. By logging information about the request or response, you could potentially expose sensitive data that is retrieved through the deployment operations.
-             */
-            detailLevel?: pulumi.Input<string>;
-        }
-
-        /**
-         * Deployment properties.
-         */
-        export interface DeploymentProperties {
-            /**
-             * The debug setting of the deployment.
-             */
-            debugSetting?: pulumi.Input<inputs.management.v20190801.DebugSetting>;
-            /**
-             * The mode that is used to deploy resources. This value can be either Incremental or Complete. In Incremental mode, resources are deployed without deleting existing resources that are not included in the template. In Complete mode, resources are deployed and existing resources in the resource group that are not included in the template are deleted. Be careful when using Complete mode as you may unintentionally delete resources.
-             */
-            mode: pulumi.Input<enums.management.v20190801.DeploymentMode>;
-            /**
-             * The deployment on error behavior.
-             */
-            onErrorDeployment?: pulumi.Input<inputs.management.v20190801.OnErrorDeployment>;
-            /**
-             * Name and value pairs that define the deployment parameters for the template. You use this element when you want to provide the parameter values directly in the request rather than link to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. It can be a JObject or a well formed JSON string.
-             */
-            parameters?: any;
-            /**
-             * The URI of parameters file. You use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
-             */
-            parametersLink?: pulumi.Input<inputs.management.v20190801.ParametersLink>;
-            /**
-             * The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both.
-             */
-            template?: any;
-            /**
-             * The URI of the template. Use either the templateLink property or the template property, but not both.
-             */
-            templateLink?: pulumi.Input<inputs.management.v20190801.TemplateLink>;
-        }
-
-        /**
-         * Deployment on error behavior.
-         */
-        export interface OnErrorDeployment {
-            /**
-             * The deployment to be used on error case.
-             */
-            deploymentName?: pulumi.Input<string>;
-            /**
-             * The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment.
-             */
-            type?: pulumi.Input<enums.management.v20190801.OnErrorDeploymentType>;
-        }
-
-        /**
-         * Entity representing the reference to the deployment parameters.
-         */
-        export interface ParametersLink {
-            /**
-             * If included, must match the ContentVersion in the template.
-             */
-            contentVersion?: pulumi.Input<string>;
-            /**
-             * The URI of the parameters file.
-             */
-            uri: pulumi.Input<string>;
-        }
-
-        /**
-         * Entity representing the reference to the template.
-         */
-        export interface TemplateLink {
-            /**
-             * If included, must match the ContentVersion in the template.
-             */
-            contentVersion?: pulumi.Input<string>;
-            /**
-             * The URI of the template to deploy.
-             */
-            uri: pulumi.Input<string>;
-        }
-
-    }
-
-    export namespace v20190901 {
-        /**
-         * The definition of a parameter that can be provided to the policy.
-         */
-        export interface ParameterDefinitionsValue {
-            /**
-             * The allowed values for the parameter.
-             */
-            allowedValues?: pulumi.Input<any[]>;
-            /**
-             * The default value for the parameter if no value is provided.
-             */
-            defaultValue?: any;
-            /**
-             * General metadata for the parameter.
-             */
-            metadata?: pulumi.Input<inputs.management.v20190901.ParameterDefinitionsValueMetadata>;
-            /**
-             * The data type of the parameter.
-             */
-            type?: pulumi.Input<string | enums.management.v20190901.ParameterType>;
-        }
-
-        /**
-         * General metadata for the parameter.
-         */
-        export interface ParameterDefinitionsValueMetadata {
-            /**
-             * The description of the parameter.
-             */
-            description?: pulumi.Input<string>;
-            /**
-             * The display name for the parameter.
-             */
-            displayName?: pulumi.Input<string>;
-        }
-
-        /**
-         * The value of a parameter.
-         */
-        export interface ParameterValuesValue {
-            /**
-             * The value of the parameter.
-             */
-            value?: any;
-        }
-
-        /**
-         * The policy definition group.
-         */
-        export interface PolicyDefinitionGroup {
-            /**
-             * A resource ID of a resource that contains additional metadata about the group.
-             */
-            additionalMetadataId?: pulumi.Input<string>;
-            /**
-             * The group's category.
-             */
-            category?: pulumi.Input<string>;
-            /**
-             * The group's description.
-             */
-            description?: pulumi.Input<string>;
-            /**
-             * The group's display name.
-             */
-            displayName?: pulumi.Input<string>;
-            /**
-             * The name of the group.
-             */
-            name: pulumi.Input<string>;
-        }
-
-        /**
-         * The policy definition reference.
-         */
-        export interface PolicyDefinitionReference {
-            /**
-             * The name of the groups that this policy definition reference belongs to.
-             */
-            groupNames?: pulumi.Input<pulumi.Input<string>[]>;
-            /**
-             * The parameter values for the referenced policy rule. The keys are the parameter names.
-             */
-            parameters?: pulumi.Input<{[key: string]: pulumi.Input<inputs.management.v20190901.ParameterValuesValue>}>;
-            /**
-             * The ID of the policy definition or policy set definition.
-             */
-            policyDefinitionId: pulumi.Input<string>;
-            /**
-             * A unique id (within the policy set definition) for this policy definition reference.
-             */
-            policyDefinitionReferenceId?: pulumi.Input<string>;
-        }
-
-    }
-
-    export namespace v20191001 {
-        /**
-         * The debug setting.
-         */
-        export interface DebugSetting {
-            /**
-             * Specifies the type of information to log for debugging. The permitted values are none, requestContent, responseContent, or both requestContent and responseContent separated by a comma. The default is none. When setting this value, carefully consider the type of information you are passing in during deployment. By logging information about the request or response, you could potentially expose sensitive data that is retrieved through the deployment operations.
-             */
-            detailLevel?: pulumi.Input<string>;
-        }
-
-        /**
-         * Deployment properties.
-         */
-        export interface DeploymentProperties {
-            /**
-             * The debug setting of the deployment.
-             */
-            debugSetting?: pulumi.Input<inputs.management.v20191001.DebugSetting>;
-            /**
-             * The mode that is used to deploy resources. This value can be either Incremental or Complete. In Incremental mode, resources are deployed without deleting existing resources that are not included in the template. In Complete mode, resources are deployed and existing resources in the resource group that are not included in the template are deleted. Be careful when using Complete mode as you may unintentionally delete resources.
-             */
-            mode: pulumi.Input<enums.management.v20191001.DeploymentMode>;
-            /**
-             * The deployment on error behavior.
-             */
-            onErrorDeployment?: pulumi.Input<inputs.management.v20191001.OnErrorDeployment>;
-            /**
-             * Name and value pairs that define the deployment parameters for the template. You use this element when you want to provide the parameter values directly in the request rather than link to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. It can be a JObject or a well formed JSON string.
-             */
-            parameters?: any;
-            /**
-             * The URI of parameters file. You use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
-             */
-            parametersLink?: pulumi.Input<inputs.management.v20191001.ParametersLink>;
-            /**
-             * The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both.
-             */
-            template?: any;
-            /**
-             * The URI of the template. Use either the templateLink property or the template property, but not both.
-             */
-            templateLink?: pulumi.Input<inputs.management.v20191001.TemplateLink>;
-        }
-
-        /**
-         * Deployment on error behavior.
-         */
-        export interface OnErrorDeployment {
-            /**
-             * The deployment to be used on error case.
-             */
-            deploymentName?: pulumi.Input<string>;
-            /**
-             * The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment.
-             */
-            type?: pulumi.Input<enums.management.v20191001.OnErrorDeploymentType>;
-        }
-
-        /**
-         * Entity representing the reference to the deployment parameters.
-         */
-        export interface ParametersLink {
-            /**
-             * If included, must match the ContentVersion in the template.
-             */
-            contentVersion?: pulumi.Input<string>;
-            /**
-             * The URI of the parameters file.
-             */
-            uri: pulumi.Input<string>;
-        }
-
-        /**
-         * Entity representing the reference to the template.
-         */
-        export interface TemplateLink {
-            /**
-             * If included, must match the ContentVersion in the template.
-             */
-            contentVersion?: pulumi.Input<string>;
-            /**
-             * The URI of the template to deploy.
-             */
-            uri: pulumi.Input<string>;
-        }
-
-    }
-
     export namespace v20191101 {
         /**
          * The details of a management group used during creation.
@@ -188174,23 +186638,6 @@ export namespace management {
              * The fully qualified ID for the parent management group.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
              */
             id?: pulumi.Input<string>;
-        }
-
-    }
-
-    export namespace v20200101preview {
-        /**
-         * Part of Management Group diagnostic setting. Specifies the settings for a particular log.
-         */
-        export interface ManagementGroupLogSettings {
-            /**
-             * Name of a Management Group Diagnostic Log category for a resource type this setting is applied to.
-             */
-            category: pulumi.Input<string>;
-            /**
-             * a value indicating whether this log is enabled.
-             */
-            enabled: pulumi.Input<boolean>;
         }
 
     }
@@ -188218,103 +186665,6 @@ export namespace management {
 
     }
 
-    export namespace v20200301 {
-        /**
-         * The definition of a parameter that can be provided to the policy.
-         */
-        export interface ParameterDefinitionsValue {
-            /**
-             * The allowed values for the parameter.
-             */
-            allowedValues?: pulumi.Input<any[]>;
-            /**
-             * The default value for the parameter if no value is provided.
-             */
-            defaultValue?: any;
-            /**
-             * General metadata for the parameter.
-             */
-            metadata?: pulumi.Input<inputs.management.v20200301.ParameterDefinitionsValueMetadata>;
-            /**
-             * The data type of the parameter.
-             */
-            type?: pulumi.Input<string | enums.management.v20200301.ParameterType>;
-        }
-
-        /**
-         * General metadata for the parameter.
-         */
-        export interface ParameterDefinitionsValueMetadata {
-            /**
-             * The description of the parameter.
-             */
-            description?: pulumi.Input<string>;
-            /**
-             * The display name for the parameter.
-             */
-            displayName?: pulumi.Input<string>;
-        }
-
-        /**
-         * The value of a parameter.
-         */
-        export interface ParameterValuesValue {
-            /**
-             * The value of the parameter.
-             */
-            value?: any;
-        }
-
-        /**
-         * The policy definition group.
-         */
-        export interface PolicyDefinitionGroup {
-            /**
-             * A resource ID of a resource that contains additional metadata about the group.
-             */
-            additionalMetadataId?: pulumi.Input<string>;
-            /**
-             * The group's category.
-             */
-            category?: pulumi.Input<string>;
-            /**
-             * The group's description.
-             */
-            description?: pulumi.Input<string>;
-            /**
-             * The group's display name.
-             */
-            displayName?: pulumi.Input<string>;
-            /**
-             * The name of the group.
-             */
-            name: pulumi.Input<string>;
-        }
-
-        /**
-         * The policy definition reference.
-         */
-        export interface PolicyDefinitionReference {
-            /**
-             * The name of the groups that this policy definition reference belongs to.
-             */
-            groupNames?: pulumi.Input<pulumi.Input<string>[]>;
-            /**
-             * The parameter values for the referenced policy rule. The keys are the parameter names.
-             */
-            parameters?: pulumi.Input<{[key: string]: pulumi.Input<inputs.management.v20200301.ParameterValuesValue>}>;
-            /**
-             * The ID of the policy definition or policy set definition.
-             */
-            policyDefinitionId: pulumi.Input<string>;
-            /**
-             * A unique id (within the policy set definition) for this policy definition reference.
-             */
-            policyDefinitionReferenceId?: pulumi.Input<string>;
-        }
-
-    }
-
     export namespace v20200501 {
         /**
          * The details of a management group used during creation.
@@ -188334,434 +186684,6 @@ export namespace management {
              * The fully qualified ID for the parent management group.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
              */
             id?: pulumi.Input<string>;
-        }
-
-    }
-
-    export namespace v20200601 {
-        /**
-         * The debug setting.
-         */
-        export interface DebugSetting {
-            /**
-             * Specifies the type of information to log for debugging. The permitted values are none, requestContent, responseContent, or both requestContent and responseContent separated by a comma. The default is none. When setting this value, carefully consider the type of information you are passing in during deployment. By logging information about the request or response, you could potentially expose sensitive data that is retrieved through the deployment operations.
-             */
-            detailLevel?: pulumi.Input<string>;
-        }
-
-        /**
-         * Deployment properties.
-         */
-        export interface DeploymentProperties {
-            /**
-             * The debug setting of the deployment.
-             */
-            debugSetting?: pulumi.Input<inputs.management.v20200601.DebugSetting>;
-            /**
-             * Specifies whether template expressions are evaluated within the scope of the parent template or nested template. Only applicable to nested templates. If not specified, default value is outer.
-             */
-            expressionEvaluationOptions?: pulumi.Input<inputs.management.v20200601.ExpressionEvaluationOptions>;
-            /**
-             * The mode that is used to deploy resources. This value can be either Incremental or Complete. In Incremental mode, resources are deployed without deleting existing resources that are not included in the template. In Complete mode, resources are deployed and existing resources in the resource group that are not included in the template are deleted. Be careful when using Complete mode as you may unintentionally delete resources.
-             */
-            mode: pulumi.Input<enums.management.v20200601.DeploymentMode>;
-            /**
-             * The deployment on error behavior.
-             */
-            onErrorDeployment?: pulumi.Input<inputs.management.v20200601.OnErrorDeployment>;
-            /**
-             * Name and value pairs that define the deployment parameters for the template. You use this element when you want to provide the parameter values directly in the request rather than link to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. It can be a JObject or a well formed JSON string.
-             */
-            parameters?: any;
-            /**
-             * The URI of parameters file. You use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
-             */
-            parametersLink?: pulumi.Input<inputs.management.v20200601.ParametersLink>;
-            /**
-             * The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both.
-             */
-            template?: any;
-            /**
-             * The URI of the template. Use either the templateLink property or the template property, but not both.
-             */
-            templateLink?: pulumi.Input<inputs.management.v20200601.TemplateLink>;
-        }
-
-        /**
-         * Specifies whether template expressions are evaluated within the scope of the parent template or nested template.
-         */
-        export interface ExpressionEvaluationOptions {
-            /**
-             * The scope to be used for evaluation of parameters, variables and functions in a nested template.
-             */
-            scope?: pulumi.Input<string | enums.management.v20200601.ExpressionEvaluationOptionsScopeType>;
-        }
-
-        /**
-         * Deployment on error behavior.
-         */
-        export interface OnErrorDeployment {
-            /**
-             * The deployment to be used on error case.
-             */
-            deploymentName?: pulumi.Input<string>;
-            /**
-             * The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment.
-             */
-            type?: pulumi.Input<enums.management.v20200601.OnErrorDeploymentType>;
-        }
-
-        /**
-         * Entity representing the reference to the deployment parameters.
-         */
-        export interface ParametersLink {
-            /**
-             * If included, must match the ContentVersion in the template.
-             */
-            contentVersion?: pulumi.Input<string>;
-            /**
-             * The URI of the parameters file.
-             */
-            uri: pulumi.Input<string>;
-        }
-
-        /**
-         * Entity representing the reference to the template.
-         */
-        export interface TemplateLink {
-            /**
-             * If included, must match the ContentVersion in the template.
-             */
-            contentVersion?: pulumi.Input<string>;
-            /**
-             * The resource id of a Template Spec. Use either the id or uri property, but not both.
-             */
-            id?: pulumi.Input<string>;
-            /**
-             * Applicable only if this template link references a Template Spec. This relativePath property can optionally be used to reference a Template Spec artifact by path.
-             */
-            relativePath?: pulumi.Input<string>;
-            /**
-             * The URI of the template to deploy. Use either the uri or id property, but not both.
-             */
-            uri?: pulumi.Input<string>;
-        }
-
-    }
-
-    export namespace v20200801 {
-        /**
-         * The debug setting.
-         */
-        export interface DebugSetting {
-            /**
-             * Specifies the type of information to log for debugging. The permitted values are none, requestContent, responseContent, or both requestContent and responseContent separated by a comma. The default is none. When setting this value, carefully consider the type of information you are passing in during deployment. By logging information about the request or response, you could potentially expose sensitive data that is retrieved through the deployment operations.
-             */
-            detailLevel?: pulumi.Input<string>;
-        }
-
-        /**
-         * Deployment properties.
-         */
-        export interface DeploymentProperties {
-            /**
-             * The debug setting of the deployment.
-             */
-            debugSetting?: pulumi.Input<inputs.management.v20200801.DebugSetting>;
-            /**
-             * The mode that is used to deploy resources. This value can be either Incremental or Complete. In Incremental mode, resources are deployed without deleting existing resources that are not included in the template. In Complete mode, resources are deployed and existing resources in the resource group that are not included in the template are deleted. Be careful when using Complete mode as you may unintentionally delete resources.
-             */
-            mode: pulumi.Input<enums.management.v20200801.DeploymentMode>;
-            /**
-             * The deployment on error behavior.
-             */
-            onErrorDeployment?: pulumi.Input<inputs.management.v20200801.OnErrorDeployment>;
-            /**
-             * Name and value pairs that define the deployment parameters for the template. You use this element when you want to provide the parameter values directly in the request rather than link to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. It can be a JObject or a well formed JSON string.
-             */
-            parameters?: any;
-            /**
-             * The URI of parameters file. You use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
-             */
-            parametersLink?: pulumi.Input<inputs.management.v20200801.ParametersLink>;
-            /**
-             * The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both.
-             */
-            template?: any;
-            /**
-             * The URI of the template. Use either the templateLink property or the template property, but not both.
-             */
-            templateLink?: pulumi.Input<inputs.management.v20200801.TemplateLink>;
-        }
-
-        /**
-         * Deployment on error behavior.
-         */
-        export interface OnErrorDeployment {
-            /**
-             * The deployment to be used on error case.
-             */
-            deploymentName?: pulumi.Input<string>;
-            /**
-             * The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment.
-             */
-            type?: pulumi.Input<enums.management.v20200801.OnErrorDeploymentType>;
-        }
-
-        /**
-         * Entity representing the reference to the deployment parameters.
-         */
-        export interface ParametersLink {
-            /**
-             * If included, must match the ContentVersion in the template.
-             */
-            contentVersion?: pulumi.Input<string>;
-            /**
-             * The URI of the parameters file.
-             */
-            uri: pulumi.Input<string>;
-        }
-
-        /**
-         * Entity representing the reference to the template.
-         */
-        export interface TemplateLink {
-            /**
-             * If included, must match the ContentVersion in the template.
-             */
-            contentVersion?: pulumi.Input<string>;
-            /**
-             * The resource id of a Template Spec. Use either the id or uri property, but not both.
-             */
-            id?: pulumi.Input<string>;
-            /**
-             * Applicable only if this template link references a Template Spec. This relativePath property can optionally be used to reference a Template Spec artifact by path.
-             */
-            relativePath?: pulumi.Input<string>;
-            /**
-             * The URI of the template to deploy. Use either the uri or id property, but not both.
-             */
-            uri?: pulumi.Input<string>;
-        }
-
-    }
-
-    export namespace v20200901 {
-        /**
-         * The definition of a parameter that can be provided to the policy.
-         */
-        export interface ParameterDefinitionsValue {
-            /**
-             * The allowed values for the parameter.
-             */
-            allowedValues?: pulumi.Input<any[]>;
-            /**
-             * The default value for the parameter if no value is provided.
-             */
-            defaultValue?: any;
-            /**
-             * General metadata for the parameter.
-             */
-            metadata?: pulumi.Input<inputs.management.v20200901.ParameterDefinitionsValueMetadata>;
-            /**
-             * The data type of the parameter.
-             */
-            type?: pulumi.Input<string | enums.management.v20200901.ParameterType>;
-        }
-
-        /**
-         * General metadata for the parameter.
-         */
-        export interface ParameterDefinitionsValueMetadata {
-            /**
-             * Set to true to have Azure portal create role assignments on the resource ID or resource scope value of this parameter during policy assignment. This property is useful in case you wish to assign permissions outside the assignment scope.
-             */
-            assignPermissions?: pulumi.Input<boolean>;
-            /**
-             * The description of the parameter.
-             */
-            description?: pulumi.Input<string>;
-            /**
-             * The display name for the parameter.
-             */
-            displayName?: pulumi.Input<string>;
-            /**
-             * Used when assigning the policy definition through the portal. Provides a context aware list of values for the user to choose from.
-             */
-            strongType?: pulumi.Input<string>;
-        }
-
-        /**
-         * The value of a parameter.
-         */
-        export interface ParameterValuesValue {
-            /**
-             * The value of the parameter.
-             */
-            value?: any;
-        }
-
-        /**
-         * The policy definition group.
-         */
-        export interface PolicyDefinitionGroup {
-            /**
-             * A resource ID of a resource that contains additional metadata about the group.
-             */
-            additionalMetadataId?: pulumi.Input<string>;
-            /**
-             * The group's category.
-             */
-            category?: pulumi.Input<string>;
-            /**
-             * The group's description.
-             */
-            description?: pulumi.Input<string>;
-            /**
-             * The group's display name.
-             */
-            displayName?: pulumi.Input<string>;
-            /**
-             * The name of the group.
-             */
-            name: pulumi.Input<string>;
-        }
-
-        /**
-         * The policy definition reference.
-         */
-        export interface PolicyDefinitionReference {
-            /**
-             * The name of the groups that this policy definition reference belongs to.
-             */
-            groupNames?: pulumi.Input<pulumi.Input<string>[]>;
-            /**
-             * The parameter values for the referenced policy rule. The keys are the parameter names.
-             */
-            parameters?: pulumi.Input<{[key: string]: pulumi.Input<inputs.management.v20200901.ParameterValuesValue>}>;
-            /**
-             * The ID of the policy definition or policy set definition.
-             */
-            policyDefinitionId: pulumi.Input<string>;
-            /**
-             * A unique id (within the policy set definition) for this policy definition reference.
-             */
-            policyDefinitionReferenceId?: pulumi.Input<string>;
-        }
-
-    }
-
-    export namespace v20201001 {
-        /**
-         * The debug setting.
-         */
-        export interface DebugSetting {
-            /**
-             * Specifies the type of information to log for debugging. The permitted values are none, requestContent, responseContent, or both requestContent and responseContent separated by a comma. The default is none. When setting this value, carefully consider the type of information you are passing in during deployment. By logging information about the request or response, you could potentially expose sensitive data that is retrieved through the deployment operations.
-             */
-            detailLevel?: pulumi.Input<string>;
-        }
-
-        /**
-         * Deployment properties.
-         */
-        export interface DeploymentProperties {
-            /**
-             * The debug setting of the deployment.
-             */
-            debugSetting?: pulumi.Input<inputs.management.v20201001.DebugSetting>;
-            /**
-             * Specifies whether template expressions are evaluated within the scope of the parent template or nested template. Only applicable to nested templates. If not specified, default value is outer.
-             */
-            expressionEvaluationOptions?: pulumi.Input<inputs.management.v20201001.ExpressionEvaluationOptions>;
-            /**
-             * The mode that is used to deploy resources. This value can be either Incremental or Complete. In Incremental mode, resources are deployed without deleting existing resources that are not included in the template. In Complete mode, resources are deployed and existing resources in the resource group that are not included in the template are deleted. Be careful when using Complete mode as you may unintentionally delete resources.
-             */
-            mode: pulumi.Input<enums.management.v20201001.DeploymentMode>;
-            /**
-             * The deployment on error behavior.
-             */
-            onErrorDeployment?: pulumi.Input<inputs.management.v20201001.OnErrorDeployment>;
-            /**
-             * Name and value pairs that define the deployment parameters for the template. You use this element when you want to provide the parameter values directly in the request rather than link to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. It can be a JObject or a well formed JSON string.
-             */
-            parameters?: any;
-            /**
-             * The URI of parameters file. You use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
-             */
-            parametersLink?: pulumi.Input<inputs.management.v20201001.ParametersLink>;
-            /**
-             * The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both.
-             */
-            template?: any;
-            /**
-             * The URI of the template. Use either the templateLink property or the template property, but not both.
-             */
-            templateLink?: pulumi.Input<inputs.management.v20201001.TemplateLink>;
-        }
-
-        /**
-         * Specifies whether template expressions are evaluated within the scope of the parent template or nested template.
-         */
-        export interface ExpressionEvaluationOptions {
-            /**
-             * The scope to be used for evaluation of parameters, variables and functions in a nested template.
-             */
-            scope?: pulumi.Input<string | enums.management.v20201001.ExpressionEvaluationOptionsScopeType>;
-        }
-
-        /**
-         * Deployment on error behavior.
-         */
-        export interface OnErrorDeployment {
-            /**
-             * The deployment to be used on error case.
-             */
-            deploymentName?: pulumi.Input<string>;
-            /**
-             * The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment.
-             */
-            type?: pulumi.Input<enums.management.v20201001.OnErrorDeploymentType>;
-        }
-
-        /**
-         * Entity representing the reference to the deployment parameters.
-         */
-        export interface ParametersLink {
-            /**
-             * If included, must match the ContentVersion in the template.
-             */
-            contentVersion?: pulumi.Input<string>;
-            /**
-             * The URI of the parameters file.
-             */
-            uri: pulumi.Input<string>;
-        }
-
-        /**
-         * Entity representing the reference to the template.
-         */
-        export interface TemplateLink {
-            /**
-             * If included, must match the ContentVersion in the template.
-             */
-            contentVersion?: pulumi.Input<string>;
-            /**
-             * The resource id of a Template Spec. Use either the id or uri property, but not both.
-             */
-            id?: pulumi.Input<string>;
-            /**
-             * The query string (for example, a SAS token) to be used with the templateLink URI.
-             */
-            queryString?: pulumi.Input<string>;
-            /**
-             * The relativePath property can be used to deploy a linked template at a location relative to the parent. If the parent template was linked with a TemplateSpec, this will reference an artifact in the TemplateSpec.  If the parent was linked with a URI, the child deployment will be a combination of the parent and relativePath URIs
-             */
-            relativePath?: pulumi.Input<string>;
-            /**
-             * The URI of the template to deploy. Use either the uri or id property, but not both.
-             */
-            uri?: pulumi.Input<string>;
         }
 
     }
@@ -319139,60 +317061,6 @@ export namespace operationalinsights {
         }
 
         /**
-         * Describes related incident information for the bookmark
-         */
-        export interface IncidentInfo {
-            /**
-             * Incident Id
-             */
-            incidentId: pulumi.Input<string>;
-            /**
-             * Relation Name
-             */
-            relationName: pulumi.Input<string>;
-            /**
-             * The severity of the incident
-             */
-            severity: pulumi.Input<string | enums.operationalinsights.latest.CaseSeverity>;
-            /**
-             * The title of the incident
-             */
-            title: pulumi.Input<string>;
-        }
-
-        /**
-         * Represents an incident label
-         */
-        export interface IncidentLabel {
-            /**
-             * The name of the label
-             */
-            labelName: pulumi.Input<string>;
-        }
-
-        /**
-         * Information on the user an incident is assigned to
-         */
-        export interface IncidentOwnerInfo {
-            /**
-             * The name of the user the incident is assigned to.
-             */
-            assignedTo?: pulumi.Input<string>;
-            /**
-             * The email of the user the incident is assigned to.
-             */
-            email?: pulumi.Input<string>;
-            /**
-             * The object id of the user the incident is assigned to.
-             */
-            objectId?: pulumi.Input<string>;
-            /**
-             * The user principal name of the user the incident is assigned to.
-             */
-            userPrincipalName?: pulumi.Input<string>;
-        }
-
-        /**
          * The key vault properties.
          */
         export interface KeyVaultProperties {
@@ -319240,16 +317108,6 @@ export namespace operationalinsights {
              * The tag value.
              */
             value: pulumi.Input<string>;
-        }
-
-        /**
-         * User information that made some action
-         */
-        export interface UserInfo {
-            /**
-             * The object id of the user.
-             */
-            objectId: pulumi.Input<string>;
         }
 
         /**
@@ -319357,73 +317215,6 @@ export namespace operationalinsights {
              * The related Log Analytics solutions for the function.
              */
             solutions?: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-    }
-
-    export namespace v20200101 {
-        /**
-         * Describes related incident information for the bookmark
-         */
-        export interface IncidentInfo {
-            /**
-             * Incident Id
-             */
-            incidentId: pulumi.Input<string>;
-            /**
-             * Relation Name
-             */
-            relationName: pulumi.Input<string>;
-            /**
-             * The severity of the incident
-             */
-            severity: pulumi.Input<string | enums.operationalinsights.v20200101.CaseSeverity>;
-            /**
-             * The title of the incident
-             */
-            title: pulumi.Input<string>;
-        }
-
-        /**
-         * Represents an incident label
-         */
-        export interface IncidentLabel {
-            /**
-             * The name of the label
-             */
-            labelName: pulumi.Input<string>;
-        }
-
-        /**
-         * Information on the user an incident is assigned to
-         */
-        export interface IncidentOwnerInfo {
-            /**
-             * The name of the user the incident is assigned to.
-             */
-            assignedTo?: pulumi.Input<string>;
-            /**
-             * The email of the user the incident is assigned to.
-             */
-            email?: pulumi.Input<string>;
-            /**
-             * The object id of the user the incident is assigned to.
-             */
-            objectId?: pulumi.Input<string>;
-            /**
-             * The user principal name of the user the incident is assigned to.
-             */
-            userPrincipalName?: pulumi.Input<string>;
-        }
-
-        /**
-         * User information that made some action
-         */
-        export interface UserInfo {
-            /**
-             * The object id of the user.
-             */
-            objectId: pulumi.Input<string>;
         }
 
     }
@@ -345264,6 +343055,73 @@ export namespace security {
 }
 
 export namespace securityinsights {
+    export namespace latest {
+        /**
+         * Describes related incident information for the bookmark
+         */
+        export interface IncidentInfo {
+            /**
+             * Incident Id
+             */
+            incidentId: pulumi.Input<string>;
+            /**
+             * Relation Name
+             */
+            relationName: pulumi.Input<string>;
+            /**
+             * The severity of the incident
+             */
+            severity: pulumi.Input<string | enums.securityinsights.latest.CaseSeverity>;
+            /**
+             * The title of the incident
+             */
+            title: pulumi.Input<string>;
+        }
+
+        /**
+         * Represents an incident label
+         */
+        export interface IncidentLabel {
+            /**
+             * The name of the label
+             */
+            labelName: pulumi.Input<string>;
+        }
+
+        /**
+         * Information on the user an incident is assigned to
+         */
+        export interface IncidentOwnerInfo {
+            /**
+             * The name of the user the incident is assigned to.
+             */
+            assignedTo?: pulumi.Input<string>;
+            /**
+             * The email of the user the incident is assigned to.
+             */
+            email?: pulumi.Input<string>;
+            /**
+             * The object id of the user the incident is assigned to.
+             */
+            objectId?: pulumi.Input<string>;
+            /**
+             * The user principal name of the user the incident is assigned to.
+             */
+            userPrincipalName?: pulumi.Input<string>;
+        }
+
+        /**
+         * User information that made some action
+         */
+        export interface UserInfo {
+            /**
+             * The object id of the user.
+             */
+            objectId: pulumi.Input<string>;
+        }
+
+    }
+
     export namespace v20190101preview {
         /**
          * Describes related incident information for the bookmark
@@ -345359,6 +343217,73 @@ export namespace securityinsights {
              * The object id of the user.
              */
             objectId?: pulumi.Input<string>;
+        }
+
+    }
+
+    export namespace v20200101 {
+        /**
+         * Describes related incident information for the bookmark
+         */
+        export interface IncidentInfo {
+            /**
+             * Incident Id
+             */
+            incidentId: pulumi.Input<string>;
+            /**
+             * Relation Name
+             */
+            relationName: pulumi.Input<string>;
+            /**
+             * The severity of the incident
+             */
+            severity: pulumi.Input<string | enums.securityinsights.v20200101.CaseSeverity>;
+            /**
+             * The title of the incident
+             */
+            title: pulumi.Input<string>;
+        }
+
+        /**
+         * Represents an incident label
+         */
+        export interface IncidentLabel {
+            /**
+             * The name of the label
+             */
+            labelName: pulumi.Input<string>;
+        }
+
+        /**
+         * Information on the user an incident is assigned to
+         */
+        export interface IncidentOwnerInfo {
+            /**
+             * The name of the user the incident is assigned to.
+             */
+            assignedTo?: pulumi.Input<string>;
+            /**
+             * The email of the user the incident is assigned to.
+             */
+            email?: pulumi.Input<string>;
+            /**
+             * The object id of the user the incident is assigned to.
+             */
+            objectId?: pulumi.Input<string>;
+            /**
+             * The user principal name of the user the incident is assigned to.
+             */
+            userPrincipalName?: pulumi.Input<string>;
+        }
+
+        /**
+         * User information that made some action
+         */
+        export interface UserInfo {
+            /**
+             * The object id of the user.
+             */
+            objectId: pulumi.Input<string>;
         }
 
     }

@@ -9838,44 +9838,6 @@ export namespace authorization {
         }
     }
 
-    export namespace v20151101 {
-        /**
-         * Policy Assignment properties.
-         */
-        export interface PolicyAssignmentPropertiesResponse {
-            /**
-             * Gets or sets the policy assignment display name.
-             */
-            displayName?: string;
-            /**
-             * Gets or sets the policy definition Id.
-             */
-            policyDefinitionId?: string;
-            /**
-             * Gets or sets the policy assignment scope.
-             */
-            scope?: string;
-        }
-
-        /**
-         * Policy definition properties.
-         */
-        export interface PolicyDefinitionPropertiesResponse {
-            /**
-             * Gets or sets the policy definition description.
-             */
-            description?: string;
-            /**
-             * Gets or sets the policy definition display name.
-             */
-            displayName?: string;
-            /**
-             * The policy rule json.
-             */
-            policyRule?: any;
-        }
-    }
-
     export namespace v20160901 {
         /**
          * Lock owner properties.
@@ -10605,6 +10567,46 @@ export namespace automanage {
              * The type of identity used for the Automanage account. Currently, the only supported type is 'SystemAssigned', which implicitly creates an identity.
              */
             type?: string;
+        }
+
+        /**
+         * The compliance status for the configuration profile assignment.
+         */
+        export interface ConfigurationProfileAssignmentComplianceResponse {
+            /**
+             * The state of compliance, which only appears in the response.
+             */
+            updateStatus: string;
+        }
+
+        /**
+         * Automanage configuration profile assignment properties.
+         */
+        export interface ConfigurationProfileAssignmentPropertiesResponse {
+            /**
+             * The Automanage account ARM Resource URI
+             */
+            accountId?: string;
+            /**
+             * The configuration setting for the configuration profile.
+             */
+            compliance?: outputs.automanage.v20200630preview.ConfigurationProfileAssignmentComplianceResponse;
+            /**
+             * A value indicating configuration profile.
+             */
+            configurationProfile?: string;
+            /**
+             * The configuration profile custom preferences ARM resource URI
+             */
+            configurationProfilePreferenceId?: string;
+            /**
+             * The state of onboarding, which only appears in the response.
+             */
+            provisioningState: string;
+            /**
+             * The target VM resource URI
+             */
+            targetId?: string;
         }
 
         /**
@@ -22776,212 +22778,6 @@ export namespace billing {
         }
     }
 
-    export namespace v20180801preview {
-        /**
-         * The aggregation expression to be used in the report.
-         */
-        export interface ReportAggregationResponse {
-            /**
-             * The name of the aggregation function to use.
-             */
-            function: string;
-            /**
-             * The name of the column to aggregate.
-             */
-            name: string;
-        }
-
-        /**
-         * The comparison expression to be used in the report.
-         */
-        export interface ReportComparisonExpressionResponse {
-            /**
-             * The name of the column to use in comparison.
-             */
-            name: string;
-            /**
-             * The operator to use for comparison.
-             */
-            operator: string;
-            /**
-             * Array of values to use for comparison
-             */
-            values: string[];
-        }
-
-        /**
-         * The configuration of dataset in the report.
-         */
-        export interface ReportDatasetConfigurationResponse {
-            /**
-             * Array of column names to be included in the report. Any valid report column name is allowed. If not provided, then report includes all columns.
-             */
-            columns?: string[];
-        }
-
-        /**
-         * The definition of data present in the report.
-         */
-        export interface ReportDatasetResponse {
-            /**
-             * Dictionary of aggregation expression to use in the report. The key of each item in the dictionary is the alias for the aggregated column. Report can have up to 2 aggregation clauses.
-             */
-            aggregation?: {[key: string]: outputs.billing.v20180801preview.ReportAggregationResponse};
-            /**
-             * Has configuration information for the data in the report. The configuration will be ignored if aggregation and grouping are provided.
-             */
-            configuration?: outputs.billing.v20180801preview.ReportDatasetConfigurationResponse;
-            /**
-             * Has filter expression to use in the report.
-             */
-            filter?: outputs.billing.v20180801preview.ReportFilterResponse;
-            /**
-             * The granularity of rows in the report.
-             */
-            granularity?: string;
-            /**
-             * Array of group by expression to use in the report. Report can have up to 2 group by clauses.
-             */
-            grouping?: outputs.billing.v20180801preview.ReportGroupingResponse[];
-        }
-
-        /**
-         * The definition of a report.
-         */
-        export interface ReportDefinitionResponse {
-            /**
-             * Has definition for data in this report.
-             */
-            dataset?: outputs.billing.v20180801preview.ReportDatasetResponse;
-            /**
-             * Has time period for pulling data for the report.
-             */
-            timePeriod?: outputs.billing.v20180801preview.ReportTimePeriodResponse;
-            /**
-             * The time frame for pulling data for the report. If custom, then a specific time period must be provided.
-             */
-            timeframe: string;
-            /**
-             * The type of the report.
-             */
-            type: string;
-        }
-
-        /**
-         * The destination information for the delivery of the report.
-         */
-        export interface ReportDeliveryDestinationResponse {
-            /**
-             * The name of the container where reports will be uploaded.
-             */
-            container: string;
-            /**
-             * The resource id of the storage account where reports will be delivered.
-             */
-            resourceId: string;
-            /**
-             * The name of the directory where reports will be uploaded.
-             */
-            rootFolderPath?: string;
-        }
-
-        /**
-         * The delivery information associated with a report.
-         */
-        export interface ReportDeliveryInfoResponse {
-            /**
-             * Has destination for the report being delivered.
-             */
-            destination: outputs.billing.v20180801preview.ReportDeliveryDestinationResponse;
-        }
-
-        /**
-         * The filter expression to be used in the report.
-         */
-        export interface ReportFilterResponse {
-            /**
-             * The logical "AND" expression. Must have at least 2 items.
-             */
-            and?: outputs.billing.v20180801preview.ReportFilterResponse[];
-            /**
-             * Has comparison expression for a dimension
-             */
-            dimension?: outputs.billing.v20180801preview.ReportComparisonExpressionResponse;
-            /**
-             * The logical "NOT" expression.
-             */
-            not?: outputs.billing.v20180801preview.ReportFilterResponse;
-            /**
-             * The logical "OR" expression. Must have at least 2 items.
-             */
-            or?: outputs.billing.v20180801preview.ReportFilterResponse[];
-            /**
-             * Has comparison expression for a tag
-             */
-            tag?: outputs.billing.v20180801preview.ReportComparisonExpressionResponse;
-        }
-
-        /**
-         * The group by expression to be used in the report.
-         */
-        export interface ReportGroupingResponse {
-            /**
-             * The name of the column to group.
-             */
-            name: string;
-            /**
-             * Has type of the column to group.
-             */
-            type: string;
-        }
-
-        /**
-         * The start and end date for recurrence schedule.
-         */
-        export interface ReportRecurrencePeriodResponse {
-            /**
-             * The start date of recurrence.
-             */
-            from: string;
-            /**
-             * The end date of recurrence.
-             */
-            to?: string;
-        }
-
-        /**
-         * The schedule associated with a report.
-         */
-        export interface ReportScheduleResponse {
-            /**
-             * The schedule recurrence.
-             */
-            recurrence: string;
-            /**
-             * Has start and end date of the recurrence. The start date must be in future. If present, the end date must be greater than start date.
-             */
-            recurrencePeriod?: outputs.billing.v20180801preview.ReportRecurrencePeriodResponse;
-            /**
-             * The status of the schedule. Whether active or not. If inactive, the report's scheduled execution is paused.
-             */
-            status?: string;
-        }
-
-        /**
-         * The start and end date for pulling data for the report.
-         */
-        export interface ReportTimePeriodResponse {
-            /**
-             * The start date to pull data from.
-             */
-            from: string;
-            /**
-             * The end date to pull data to.
-             */
-            to: string;
-        }
-    }
-
     export namespace v20191001preview {
         /**
          * Details of the Azure plan.
@@ -23033,102 +22829,6 @@ export namespace billing {
              * The ID of the invoice section.
              */
             invoiceSectionId: string;
-        }
-    }
-
-    export namespace v20200301preview {
-        /**
-         * Target resources and allocation
-         */
-        export interface CostAllocationProportionResponse {
-            /**
-             * Target resource for cost allocation
-             */
-            name: string;
-            /**
-             * Percentage of source cost to allocate to this resource. This value can be specified to two decimal places and the total percentage of all resources in this rule must sum to 100.00.
-             */
-            percentage: number;
-        }
-
-        /**
-         * Resource details of the cost allocation rule
-         */
-        export interface CostAllocationRuleDetailsResponse {
-            /**
-             * Source resources for cost allocation. At this time, this list can contain no more than one element.
-             */
-            sourceResources?: outputs.billing.v20200301preview.SourceCostAllocationResourceResponse[];
-            /**
-             * Target resources for cost allocation. At this time, this list can contain no more than one element.
-             */
-            targetResources?: outputs.billing.v20200301preview.TargetCostAllocationResourceResponse[];
-        }
-
-        /**
-         * The properties of a cost allocation rule
-         */
-        export interface CostAllocationRulePropertiesResponse {
-            /**
-             * Time at which the rule was created. Rules that change cost for the same resource are applied in order of creation.
-             */
-            createdDate: string;
-            /**
-             * Description of a cost allocation rule.
-             */
-            description?: string;
-            /**
-             * Resource information for the cost allocation rule
-             */
-            details: outputs.billing.v20200301preview.CostAllocationRuleDetailsResponse;
-            /**
-             * Status of the rule
-             */
-            status: string;
-            /**
-             * Time at which the rule was last updated.
-             */
-            updatedDate: string;
-        }
-
-        /**
-         * Source resources for cost allocation
-         */
-        export interface SourceCostAllocationResourceResponse {
-            /**
-             * If resource type is dimension, this must be either ResourceGroupName or SubscriptionId. If resource type is tag, this must be a valid Azure tag
-             */
-            name: string;
-            /**
-             * Type of resources contained in this cost allocation rule
-             */
-            resourceType: string;
-            /**
-             * Source Resources for cost allocation. This list cannot contain more than 25 values.
-             */
-            values: string[];
-        }
-
-        /**
-         * Target resources for cost allocation.
-         */
-        export interface TargetCostAllocationResourceResponse {
-            /**
-             * If resource type is dimension, this must be either ResourceGroupName or SubscriptionId. If resource type is tag, this must be a valid Azure tag
-             */
-            name: string;
-            /**
-             * Method of cost allocation for the rule
-             */
-            policyType: string;
-            /**
-             * Type of resources contained in this cost allocation rule
-             */
-            resourceType: string;
-            /**
-             * Target resources for cost allocation. This list cannot contain more than 25 values.
-             */
-            values: outputs.billing.v20200301preview.CostAllocationProportionResponse[];
         }
     }
 
@@ -23296,6 +22996,20 @@ export namespace blueprint {
         }
 
         /**
+         * The status of the blueprint. This field is readonly.
+         */
+        export interface BlueprintStatusResponse {
+            /**
+             * Last modified time of this blueprint.
+             */
+            lastModified: string;
+            /**
+             * Creation time of this blueprint.
+             */
+            timeCreated: string;
+        }
+
+        /**
          * Managed Service Identity
          */
         export interface ManagedServiceIdentityResponse {
@@ -23314,6 +23028,36 @@ export namespace blueprint {
         }
 
         /**
+         * Represent a parameter with constrains and metadata.
+         */
+        export interface ParameterDefinitionResponse {
+            /**
+             * Array of allowed values for this parameter.
+             */
+            allowedValues?: any[];
+            /**
+             * Default Value for this parameter.
+             */
+            defaultValue?: any;
+            /**
+             * Description of this parameter/resourceGroup.
+             */
+            description?: string;
+            /**
+             * DisplayName of this parameter/resourceGroup.
+             */
+            displayName?: string;
+            /**
+             * StrongType for UI to render rich experience during assignment time.
+             */
+            strongType?: string;
+            /**
+             * Allowed data types for Azure Resource Manager template parameters.
+             */
+            type: string;
+        }
+
+        /**
          * Base class for ParameterValue.
          */
         export interface ParameterValueBaseResponse {
@@ -23321,6 +23065,36 @@ export namespace blueprint {
              * Optional property, just to establish ParameterValueBase as a BaseClass.
              */
             description?: string;
+        }
+
+        /**
+         * Represents an Azure resource group in a Blueprint definition.
+         */
+        export interface ResourceGroupDefinitionResponse {
+            /**
+             * Artifacts which need to be deployed before this resource group.
+             */
+            dependsOn?: string[];
+            /**
+             * Description of this parameter/resourceGroup.
+             */
+            description?: string;
+            /**
+             * DisplayName of this parameter/resourceGroup.
+             */
+            displayName?: string;
+            /**
+             * Location of this resourceGroup, leave empty if the resource group location will be specified during the Blueprint assignment.
+             */
+            location?: string;
+            /**
+             * Name of this resourceGroup, leave empty if the resource group name will be specified during the Blueprint assignment.
+             */
+            name?: string;
+            /**
+             * StrongType for UI to render rich experience during assignment time.
+             */
+            strongType?: string;
         }
 
         /**
@@ -37400,111 +37174,45 @@ export namespace certificateregistration {
         }
 
         /**
-         * Certificate Details
+         * SSL certificate details.
          */
         export interface CertificateDetailsResponse {
             /**
-             * Resource Id
+             * Certificate Issuer.
              */
-            id?: string;
+            issuer: string;
             /**
-             * Issuer
+             * Date Certificate is valid to.
              */
-            issuer?: string;
+            notAfter: string;
             /**
-             * Kind of resource
+             * Date Certificate is valid from.
              */
-            kind?: string;
+            notBefore: string;
             /**
-             * Resource Location
+             * Raw certificate data.
              */
-            location: string;
+            rawData: string;
             /**
-             * Resource Name
+             * Certificate Serial Number.
              */
-            name?: string;
+            serialNumber: string;
             /**
-             * Valid to
+             * Certificate Signature algorithm.
              */
-            notAfter?: string;
+            signatureAlgorithm: string;
             /**
-             * Valid from
+             * Certificate Subject.
              */
-            notBefore?: string;
+            subject: string;
             /**
-             * Raw certificate data
+             * Certificate Thumbprint.
              */
-            rawData?: string;
+            thumbprint: string;
             /**
-             * Serial Number
+             * Certificate Version.
              */
-            serialNumber?: string;
-            /**
-             * Signature Algorithm
-             */
-            signatureAlgorithm?: string;
-            /**
-             * Subject
-             */
-            subject?: string;
-            /**
-             * Resource tags
-             */
-            tags?: {[key: string]: string};
-            /**
-             * Thumbprint
-             */
-            thumbprint?: string;
-            /**
-             * Resource type
-             */
-            type?: string;
-            /**
-             * Version
-             */
-            version?: number;
-        }
-
-        /**
-         * Class representing the Key Vault container for certificate purchased through Azure
-         */
-        export interface CertificateOrderCertificateResponse {
-            /**
-             * Resource Id
-             */
-            id?: string;
-            /**
-             * Key Vault Csm resource Id
-             */
-            keyVaultId?: string;
-            /**
-             * Key Vault secret name
-             */
-            keyVaultSecretName?: string;
-            /**
-             * Kind of resource
-             */
-            kind?: string;
-            /**
-             * Resource Location
-             */
-            location: string;
-            /**
-             * Resource Name
-             */
-            name?: string;
-            /**
-             * Status of the Key Vault secret
-             */
-            provisioningState?: string;
-            /**
-             * Resource tags
-             */
-            tags?: {[key: string]: string};
-            /**
-             * Resource type
-             */
-            type?: string;
+            version: number;
         }
     }
 
@@ -38612,95 +38320,6 @@ export namespace compute {
         }
 
         /**
-         * Information about the guest configuration assignment.
-         */
-        export interface AssignmentInfoResponse {
-            /**
-             * Information about the configuration.
-             */
-            configuration?: outputs.compute.latest.ConfigurationInfoResponse;
-            /**
-             * Name of the guest configuration assignment.
-             */
-            name: string;
-        }
-
-        /**
-         * Reason and code for the compliance of the guest configuration assignment resource.
-         */
-        export interface AssignmentReportResourceComplianceReasonResponse {
-            /**
-             * Code for the compliance of the guest configuration assignment resource.
-             */
-            code: string;
-            /**
-             * Reason for the compliance of the guest configuration assignment resource.
-             */
-            phrase: string;
-        }
-
-        /**
-         * The guest configuration assignment resource.
-         */
-        export interface AssignmentReportResourceResponse {
-            /**
-             * A value indicating compliance status of the machine for the assigned guest configuration.
-             */
-            complianceStatus: string;
-            /**
-             * Properties of a guest configuration assignment resource.
-             */
-            properties: any;
-            /**
-             * Compliance reason and reason code for a resource.
-             */
-            reasons?: outputs.compute.latest.AssignmentReportResourceComplianceReasonResponse[];
-            /**
-             * Name of the guest configuration assignment resource setting.
-             */
-            resourceId: string;
-        }
-
-        export interface AssignmentReportResponse {
-            /**
-             * Configuration details of the guest configuration assignment.
-             */
-            assignment?: outputs.compute.latest.AssignmentInfoResponse;
-            /**
-             * A value indicating compliance status of the machine for the assigned guest configuration.
-             */
-            complianceStatus: string;
-            /**
-             * End date and time of the guest configuration assignment compliance status check.
-             */
-            endTime: string;
-            /**
-             * ARM resource id of the report for the guest configuration assignment.
-             */
-            id: string;
-            /**
-             * Type of report, Consistency or Initial
-             */
-            operationType: string;
-            /**
-             * GUID that identifies the guest configuration assignment report under a subscription, resource group.
-             */
-            reportId: string;
-            /**
-             * The list of resources for which guest configuration assignment compliance is checked.
-             */
-            resources?: outputs.compute.latest.AssignmentReportResourceResponse[];
-            /**
-             * Start date and time of the guest configuration assignment compliance status check.
-             */
-            startTime: string;
-            /**
-             * Information about the VM.
-             */
-            vm?: outputs.compute.latest.VMInfoResponse;
-        }
-
-        /**
          * The configuration parameters used for performing automatic OS upgrade.
          */
         export interface AutomaticOSUpgradePolicyResponse {
@@ -38806,64 +38425,6 @@ export namespace compute {
              * Uri of the storage account to use for placing the console output and screenshot. <br><br>If storageUri is not specified while enabling boot diagnostics, managed storage will be used.
              */
             storageUri?: string;
-        }
-
-        /**
-         * Information about the configuration.
-         */
-        export interface ConfigurationInfoResponse {
-            /**
-             * Name of the configuration.
-             */
-            name: string;
-            /**
-             * Version of the configuration.
-             */
-            version: string;
-        }
-
-        /**
-         * Represents a configuration parameter.
-         */
-        export interface ConfigurationParameterResponse {
-            /**
-             * Name of the configuration parameter.
-             */
-            name?: string;
-            /**
-             * Value of the configuration parameter.
-             */
-            value?: string;
-        }
-
-        /**
-         * Configuration setting of LCM (Local Configuration Manager).
-         */
-        export interface ConfigurationSettingResponse {
-            /**
-             * Specifies what happens after a reboot during the application of a configuration. The possible values are ContinueConfiguration and StopConfiguration
-             */
-            actionAfterReboot?: string;
-            /**
-             * If true - new configurations downloaded from the pull service are allowed to overwrite the old ones on the target node. Otherwise, false
-             */
-            allowModuleOverwrite?: string;
-            /**
-             * Specifies how the LCM(Local Configuration Manager) actually applies the configuration to the target nodes. Possible values are ApplyOnly, ApplyAndMonitor, and ApplyAndAutoCorrect.
-             */
-            configurationMode?: string;
-            /**
-             * How often, in minutes, the current configuration is checked and applied. This property is ignored if the ConfigurationMode property is set to ApplyOnly. The default value is 15.
-             */
-            configurationModeFrequencyMins?: number;
-            /**
-             * Set this to true to automatically reboot the node after a configuration that requires reboot is applied. Otherwise, you will have to manually reboot the node for any configuration that requires it. The default value is false. To use this setting when a reboot condition is enacted by something other than DSC (such as Windows Installer), combine this setting with the xPendingReboot module.
-             */
-            rebootIfNeeded?: string;
-            /**
-             * The time interval, in minutes, at which the LCM checks a pull service to get updated configurations. This value is ignored if the LCM is not configured in pull mode. The default value is 30.
-             */
-            refreshFrequencyMins?: number;
         }
 
         /**
@@ -39414,82 +38975,6 @@ export namespace compute {
              * The gallery artifact version source.
              */
             source?: outputs.compute.latest.GalleryArtifactVersionSourceResponse;
-        }
-
-        /**
-         * Guest configuration assignment properties.
-         */
-        export interface GuestConfigurationAssignmentPropertiesResponse {
-            /**
-             * Combined hash of the configuration package and parameters.
-             */
-            assignmentHash: string;
-            /**
-             * A value indicating compliance status of the machine for the assigned guest configuration.
-             */
-            complianceStatus: string;
-            /**
-             * The source which initiated the guest configuration assignment. Ex: Azure Policy
-             */
-            context?: string;
-            /**
-             * The guest configuration to assign.
-             */
-            guestConfiguration?: outputs.compute.latest.GuestConfigurationNavigationResponse;
-            /**
-             * Date and time when last compliance status was checked.
-             */
-            lastComplianceStatusChecked: string;
-            /**
-             * Last reported guest configuration assignment report.
-             */
-            latestAssignmentReport?: outputs.compute.latest.AssignmentReportResponse;
-            /**
-             * Id of the latest report for the guest configuration assignment. 
-             */
-            latestReportId: string;
-            /**
-             * The provisioning state, which only appears in the response.
-             */
-            provisioningState: string;
-            /**
-             * VM resource Id.
-             */
-            targetResourceId: string;
-        }
-
-        /**
-         * Guest configuration is an artifact that encapsulates DSC configuration and its dependencies. The artifact is a zip file containing DSC configuration (as MOF) and dependent resources and other dependencies like modules.
-         */
-        export interface GuestConfigurationNavigationResponse {
-            /**
-             * The configuration parameters for the guest configuration.
-             */
-            configurationParameter?: outputs.compute.latest.ConfigurationParameterResponse[];
-            /**
-             * The configuration setting for the guest configuration.
-             */
-            configurationSetting?: outputs.compute.latest.ConfigurationSettingResponse;
-            /**
-             * Combined hash of the guest configuration package and configuration parameters.
-             */
-            contentHash: string;
-            /**
-             * Uri of the storage where guest configuration package is uploaded.
-             */
-            contentUri: string;
-            /**
-             * Kind of the guest configuration. For example:DSC
-             */
-            kind?: string;
-            /**
-             * Name of the guest configuration.
-             */
-            name?: string;
-            /**
-             * Version of the guest configuration.
-             */
-            version?: string;
         }
 
         /**
@@ -40494,20 +39979,6 @@ export namespace compute {
              * Required. The mediaLink of the artifact, must be a readable storage page blob.
              */
             mediaLink: string;
-        }
-
-        /**
-         * Information about the VM.
-         */
-        export interface VMInfoResponse {
-            /**
-             * Azure resource Id of the VM.
-             */
-            id: string;
-            /**
-             * UUID(Universally Unique Identifier) of the VM.
-             */
-            uuid: string;
         }
 
         /**
@@ -50590,120 +50061,6 @@ export namespace compute {
         }
     }
 
-    export namespace v20180630preview {
-        /**
-         * Represents a configuration parameter.
-         */
-        export interface ConfigurationParameterResponse {
-            /**
-             * Name of the configuration parameter.
-             */
-            name: string;
-            /**
-             * Value of the configuration parameter.
-             */
-            value: string;
-        }
-
-        /**
-         * Configuration setting of LCM (Local Configuration Manager).
-         */
-        export interface ConfigurationSettingResponse {
-            /**
-             * Specifies what happens after a reboot during the application of a configuration. The possible values are ContinueConfiguration and StopConfiguration
-             */
-            actionAfterReboot: string;
-            /**
-             * If true - new configurations downloaded from the pull service are allowed to overwrite the old ones on the target node. Otherwise, false
-             */
-            allowModuleOverwrite?: string;
-            /**
-             * Specifies how the LCM(Local Configuration Manager) actually applies the configuration to the target nodes. Possible values are ApplyOnly, ApplyAndMonitor, and ApplyAndAutoCorrect.
-             */
-            configurationMode: string;
-            /**
-             * How often, in minutes, the current configuration is checked and applied. This property is ignored if the ConfigurationMode property is set to ApplyOnly. The default value is 15.
-             */
-            configurationModeFrequencyMins: number;
-            /**
-             * Set this to true to automatically reboot the node after a configuration that requires reboot is applied. Otherwise, you will have to manually reboot the node for any configuration that requires it. The default value is false. To use this setting when a reboot condition is enacted by something other than DSC (such as Windows Installer), combine this setting with the xPendingReboot module.
-             */
-            rebootIfNeeded: string;
-            /**
-             * The time interval, in minutes, at which the LCM checks a pull service to get updated configurations. This value is ignored if the LCM is not configured in pull mode. The default value is 30.
-             */
-            refreshFrequencyMins: number;
-        }
-
-        /**
-         * Guest configuration assignment properties.
-         */
-        export interface GuestConfigurationAssignmentPropertiesResponse {
-            /**
-             * Combined hash of the configuration package and parameters.
-             */
-            assignmentHash: string;
-            /**
-             * A value indicating compliance status of the virtual machine for the assigned guest configuration.
-             */
-            complianceStatus: string;
-            /**
-             * The source which initiated the guest configuration assignment. Ex: Azure Policy
-             */
-            context?: string;
-            /**
-             * The guest configuration to assign.
-             */
-            guestConfiguration?: outputs.compute.v20180630preview.GuestConfigurationNavigationResponse;
-            /**
-             * Date and time when last compliance status was checked.
-             */
-            lastComplianceStatusChecked: string;
-            /**
-             * Id of the latest report for the guest configuration assignment. 
-             */
-            latestReportId: string;
-            /**
-             * The provisioning state, which only appears in the response.
-             */
-            provisioningState: string;
-        }
-
-        /**
-         * Guest configuration is an artifact that encapsulates DSC configuration and its dependencies. The artifact is a zip file containing DSC configuration (as MOF) and dependent resources and other dependencies like modules.
-         */
-        export interface GuestConfigurationNavigationResponse {
-            /**
-             * The configuration parameters for the guest configuration.
-             */
-            configurationParameter?: outputs.compute.v20180630preview.ConfigurationParameterResponse[];
-            /**
-             * The configuration setting for the guest configuration.
-             */
-            configurationSetting?: outputs.compute.v20180630preview.ConfigurationSettingResponse;
-            /**
-             * Combined hash of the guest configuration package and configuration parameters.
-             */
-            contentHash: string;
-            /**
-             * Uri of the storage where guest configuration package is uploaded.
-             */
-            contentUri: string;
-            /**
-             * Kind of the guest configuration. For example:DSC
-             */
-            kind?: string;
-            /**
-             * Name of the guest configuration.
-             */
-            name?: string;
-            /**
-             * Version of the guest configuration.
-             */
-            version?: string;
-        }
-    }
-
     export namespace v20180930 {
         /**
          * Data used when creating a disk.
@@ -52326,120 +51683,6 @@ export namespace compute {
              * Specifies the Windows Remote Management listeners. This enables remote Windows PowerShell.
              */
             winRM?: outputs.compute.v20181001.WinRMConfigurationResponse;
-        }
-    }
-
-    export namespace v20181120 {
-        /**
-         * Represents a configuration parameter.
-         */
-        export interface ConfigurationParameterResponse {
-            /**
-             * Name of the configuration parameter.
-             */
-            name?: string;
-            /**
-             * Value of the configuration parameter.
-             */
-            value?: string;
-        }
-
-        /**
-         * Configuration setting of LCM (Local Configuration Manager).
-         */
-        export interface ConfigurationSettingResponse {
-            /**
-             * Specifies what happens after a reboot during the application of a configuration. The possible values are ContinueConfiguration and StopConfiguration
-             */
-            actionAfterReboot?: string;
-            /**
-             * If true - new configurations downloaded from the pull service are allowed to overwrite the old ones on the target node. Otherwise, false
-             */
-            allowModuleOverwrite?: string;
-            /**
-             * Specifies how the LCM(Local Configuration Manager) actually applies the configuration to the target nodes. Possible values are ApplyOnly, ApplyAndMonitor, and ApplyAndAutoCorrect.
-             */
-            configurationMode?: string;
-            /**
-             * How often, in minutes, the current configuration is checked and applied. This property is ignored if the ConfigurationMode property is set to ApplyOnly. The default value is 15.
-             */
-            configurationModeFrequencyMins?: number;
-            /**
-             * Set this to true to automatically reboot the node after a configuration that requires reboot is applied. Otherwise, you will have to manually reboot the node for any configuration that requires it. The default value is false. To use this setting when a reboot condition is enacted by something other than DSC (such as Windows Installer), combine this setting with the xPendingReboot module.
-             */
-            rebootIfNeeded?: string;
-            /**
-             * The time interval, in minutes, at which the LCM checks a pull service to get updated configurations. This value is ignored if the LCM is not configured in pull mode. The default value is 30.
-             */
-            refreshFrequencyMins?: number;
-        }
-
-        /**
-         * Guest configuration assignment properties.
-         */
-        export interface GuestConfigurationAssignmentPropertiesResponse {
-            /**
-             * Combined hash of the configuration package and parameters.
-             */
-            assignmentHash: string;
-            /**
-             * A value indicating compliance status of the machine for the assigned guest configuration.
-             */
-            complianceStatus: string;
-            /**
-             * The source which initiated the guest configuration assignment. Ex: Azure Policy
-             */
-            context?: string;
-            /**
-             * The guest configuration to assign.
-             */
-            guestConfiguration?: outputs.compute.v20181120.GuestConfigurationNavigationResponse;
-            /**
-             * Date and time when last compliance status was checked.
-             */
-            lastComplianceStatusChecked: string;
-            /**
-             * Id of the latest report for the guest configuration assignment. 
-             */
-            latestReportId: string;
-            /**
-             * The provisioning state, which only appears in the response.
-             */
-            provisioningState: string;
-        }
-
-        /**
-         * Guest configuration is an artifact that encapsulates DSC configuration and its dependencies. The artifact is a zip file containing DSC configuration (as MOF) and dependent resources and other dependencies like modules.
-         */
-        export interface GuestConfigurationNavigationResponse {
-            /**
-             * The configuration parameters for the guest configuration.
-             */
-            configurationParameter?: outputs.compute.v20181120.ConfigurationParameterResponse[];
-            /**
-             * The configuration setting for the guest configuration.
-             */
-            configurationSetting?: outputs.compute.v20181120.ConfigurationSettingResponse;
-            /**
-             * Combined hash of the guest configuration package and configuration parameters.
-             */
-            contentHash: string;
-            /**
-             * Uri of the storage where guest configuration package is uploaded.
-             */
-            contentUri: string;
-            /**
-             * Kind of the guest configuration. For example:DSC
-             */
-            kind?: string;
-            /**
-             * Name of the guest configuration.
-             */
-            name?: string;
-            /**
-             * Version of the guest configuration.
-             */
-            version?: string;
         }
     }
 
@@ -61142,245 +60385,6 @@ export namespace compute {
         }
     }
 
-    export namespace v20200625 {
-        /**
-         * Information about the guest configuration assignment.
-         */
-        export interface AssignmentInfoResponse {
-            /**
-             * Information about the configuration.
-             */
-            configuration?: outputs.compute.v20200625.ConfigurationInfoResponse;
-            /**
-             * Name of the guest configuration assignment.
-             */
-            name: string;
-        }
-
-        /**
-         * Reason and code for the compliance of the guest configuration assignment resource.
-         */
-        export interface AssignmentReportResourceComplianceReasonResponse {
-            /**
-             * Code for the compliance of the guest configuration assignment resource.
-             */
-            code: string;
-            /**
-             * Reason for the compliance of the guest configuration assignment resource.
-             */
-            phrase: string;
-        }
-
-        /**
-         * The guest configuration assignment resource.
-         */
-        export interface AssignmentReportResourceResponse {
-            /**
-             * A value indicating compliance status of the machine for the assigned guest configuration.
-             */
-            complianceStatus: string;
-            /**
-             * Properties of a guest configuration assignment resource.
-             */
-            properties: any;
-            /**
-             * Compliance reason and reason code for a resource.
-             */
-            reasons?: outputs.compute.v20200625.AssignmentReportResourceComplianceReasonResponse[];
-            /**
-             * Name of the guest configuration assignment resource setting.
-             */
-            resourceId: string;
-        }
-
-        export interface AssignmentReportResponse {
-            /**
-             * Configuration details of the guest configuration assignment.
-             */
-            assignment?: outputs.compute.v20200625.AssignmentInfoResponse;
-            /**
-             * A value indicating compliance status of the machine for the assigned guest configuration.
-             */
-            complianceStatus: string;
-            /**
-             * End date and time of the guest configuration assignment compliance status check.
-             */
-            endTime: string;
-            /**
-             * ARM resource id of the report for the guest configuration assignment.
-             */
-            id: string;
-            /**
-             * Type of report, Consistency or Initial
-             */
-            operationType: string;
-            /**
-             * GUID that identifies the guest configuration assignment report under a subscription, resource group.
-             */
-            reportId: string;
-            /**
-             * The list of resources for which guest configuration assignment compliance is checked.
-             */
-            resources?: outputs.compute.v20200625.AssignmentReportResourceResponse[];
-            /**
-             * Start date and time of the guest configuration assignment compliance status check.
-             */
-            startTime: string;
-            /**
-             * Information about the VM.
-             */
-            vm?: outputs.compute.v20200625.VMInfoResponse;
-        }
-
-        /**
-         * Information about the configuration.
-         */
-        export interface ConfigurationInfoResponse {
-            /**
-             * Name of the configuration.
-             */
-            name: string;
-            /**
-             * Version of the configuration.
-             */
-            version: string;
-        }
-
-        /**
-         * Represents a configuration parameter.
-         */
-        export interface ConfigurationParameterResponse {
-            /**
-             * Name of the configuration parameter.
-             */
-            name?: string;
-            /**
-             * Value of the configuration parameter.
-             */
-            value?: string;
-        }
-
-        /**
-         * Configuration setting of LCM (Local Configuration Manager).
-         */
-        export interface ConfigurationSettingResponse {
-            /**
-             * Specifies what happens after a reboot during the application of a configuration. The possible values are ContinueConfiguration and StopConfiguration
-             */
-            actionAfterReboot?: string;
-            /**
-             * If true - new configurations downloaded from the pull service are allowed to overwrite the old ones on the target node. Otherwise, false
-             */
-            allowModuleOverwrite?: string;
-            /**
-             * Specifies how the LCM(Local Configuration Manager) actually applies the configuration to the target nodes. Possible values are ApplyOnly, ApplyAndMonitor, and ApplyAndAutoCorrect.
-             */
-            configurationMode?: string;
-            /**
-             * How often, in minutes, the current configuration is checked and applied. This property is ignored if the ConfigurationMode property is set to ApplyOnly. The default value is 15.
-             */
-            configurationModeFrequencyMins?: number;
-            /**
-             * Set this to true to automatically reboot the node after a configuration that requires reboot is applied. Otherwise, you will have to manually reboot the node for any configuration that requires it. The default value is false. To use this setting when a reboot condition is enacted by something other than DSC (such as Windows Installer), combine this setting with the xPendingReboot module.
-             */
-            rebootIfNeeded?: string;
-            /**
-             * The time interval, in minutes, at which the LCM checks a pull service to get updated configurations. This value is ignored if the LCM is not configured in pull mode. The default value is 30.
-             */
-            refreshFrequencyMins?: number;
-        }
-
-        /**
-         * Guest configuration assignment properties.
-         */
-        export interface GuestConfigurationAssignmentPropertiesResponse {
-            /**
-             * Combined hash of the configuration package and parameters.
-             */
-            assignmentHash: string;
-            /**
-             * A value indicating compliance status of the machine for the assigned guest configuration.
-             */
-            complianceStatus: string;
-            /**
-             * The source which initiated the guest configuration assignment. Ex: Azure Policy
-             */
-            context?: string;
-            /**
-             * The guest configuration to assign.
-             */
-            guestConfiguration?: outputs.compute.v20200625.GuestConfigurationNavigationResponse;
-            /**
-             * Date and time when last compliance status was checked.
-             */
-            lastComplianceStatusChecked: string;
-            /**
-             * Last reported guest configuration assignment report.
-             */
-            latestAssignmentReport?: outputs.compute.v20200625.AssignmentReportResponse;
-            /**
-             * Id of the latest report for the guest configuration assignment. 
-             */
-            latestReportId: string;
-            /**
-             * The provisioning state, which only appears in the response.
-             */
-            provisioningState: string;
-            /**
-             * VM resource Id.
-             */
-            targetResourceId: string;
-        }
-
-        /**
-         * Guest configuration is an artifact that encapsulates DSC configuration and its dependencies. The artifact is a zip file containing DSC configuration (as MOF) and dependent resources and other dependencies like modules.
-         */
-        export interface GuestConfigurationNavigationResponse {
-            /**
-             * The configuration parameters for the guest configuration.
-             */
-            configurationParameter?: outputs.compute.v20200625.ConfigurationParameterResponse[];
-            /**
-             * The configuration setting for the guest configuration.
-             */
-            configurationSetting?: outputs.compute.v20200625.ConfigurationSettingResponse;
-            /**
-             * Combined hash of the guest configuration package and configuration parameters.
-             */
-            contentHash: string;
-            /**
-             * Uri of the storage where guest configuration package is uploaded.
-             */
-            contentUri: string;
-            /**
-             * Kind of the guest configuration. For example:DSC
-             */
-            kind?: string;
-            /**
-             * Name of the guest configuration.
-             */
-            name?: string;
-            /**
-             * Version of the guest configuration.
-             */
-            version?: string;
-        }
-
-        /**
-         * Information about the VM.
-         */
-        export interface VMInfoResponse {
-            /**
-             * Azure resource Id of the VM.
-             */
-            id: string;
-            /**
-             * UUID(Universally Unique Identifier) of the VM.
-             */
-            uuid: string;
-        }
-    }
-
     export namespace v20200630 {
         /**
          * Data used when creating a disk.
@@ -61631,48 +60635,6 @@ export namespace compute {
              * Resource Id
              */
             id?: string;
-        }
-    }
-
-    export namespace v20200630preview {
-        /**
-         * The compliance status for the configuration profile assignment.
-         */
-        export interface ConfigurationProfileAssignmentComplianceResponse {
-            /**
-             * The state of compliance, which only appears in the response.
-             */
-            updateStatus: string;
-        }
-
-        /**
-         * Automanage configuration profile assignment properties.
-         */
-        export interface ConfigurationProfileAssignmentPropertiesResponse {
-            /**
-             * The Automanage account ARM Resource URI
-             */
-            accountId?: string;
-            /**
-             * The configuration setting for the configuration profile.
-             */
-            compliance?: outputs.compute.v20200630preview.ConfigurationProfileAssignmentComplianceResponse;
-            /**
-             * A value indicating configuration profile.
-             */
-            configurationProfile?: string;
-            /**
-             * The configuration profile custom preferences ARM resource URI
-             */
-            configurationProfilePreferenceId?: string;
-            /**
-             * The state of onboarding, which only appears in the response.
-             */
-            provisioningState: string;
-            /**
-             * The target VM resource URI
-             */
-            targetId?: string;
         }
     }
 
@@ -85974,6 +84936,102 @@ export namespace costmanagement {
              * The end date to pull data to.
              */
             to: string;
+        }
+    }
+
+    export namespace v20200301preview {
+        /**
+         * Target resources and allocation
+         */
+        export interface CostAllocationProportionResponse {
+            /**
+             * Target resource for cost allocation
+             */
+            name: string;
+            /**
+             * Percentage of source cost to allocate to this resource. This value can be specified to two decimal places and the total percentage of all resources in this rule must sum to 100.00.
+             */
+            percentage: number;
+        }
+
+        /**
+         * Resource details of the cost allocation rule
+         */
+        export interface CostAllocationRuleDetailsResponse {
+            /**
+             * Source resources for cost allocation. At this time, this list can contain no more than one element.
+             */
+            sourceResources?: outputs.costmanagement.v20200301preview.SourceCostAllocationResourceResponse[];
+            /**
+             * Target resources for cost allocation. At this time, this list can contain no more than one element.
+             */
+            targetResources?: outputs.costmanagement.v20200301preview.TargetCostAllocationResourceResponse[];
+        }
+
+        /**
+         * The properties of a cost allocation rule
+         */
+        export interface CostAllocationRulePropertiesResponse {
+            /**
+             * Time at which the rule was created. Rules that change cost for the same resource are applied in order of creation.
+             */
+            createdDate: string;
+            /**
+             * Description of a cost allocation rule.
+             */
+            description?: string;
+            /**
+             * Resource information for the cost allocation rule
+             */
+            details: outputs.costmanagement.v20200301preview.CostAllocationRuleDetailsResponse;
+            /**
+             * Status of the rule
+             */
+            status: string;
+            /**
+             * Time at which the rule was last updated.
+             */
+            updatedDate: string;
+        }
+
+        /**
+         * Source resources for cost allocation
+         */
+        export interface SourceCostAllocationResourceResponse {
+            /**
+             * If resource type is dimension, this must be either ResourceGroupName or SubscriptionId. If resource type is tag, this must be a valid Azure tag
+             */
+            name: string;
+            /**
+             * Type of resources contained in this cost allocation rule
+             */
+            resourceType: string;
+            /**
+             * Source Resources for cost allocation. This list cannot contain more than 25 values.
+             */
+            values: string[];
+        }
+
+        /**
+         * Target resources for cost allocation.
+         */
+        export interface TargetCostAllocationResourceResponse {
+            /**
+             * If resource type is dimension, this must be either ResourceGroupName or SubscriptionId. If resource type is tag, this must be a valid Azure tag
+             */
+            name: string;
+            /**
+             * Method of cost allocation for the rule
+             */
+            policyType: string;
+            /**
+             * Type of resources contained in this cost allocation rule
+             */
+            resourceType: string;
+            /**
+             * Target resources for cost allocation. This list cannot contain more than 25 values.
+             */
+            values: outputs.costmanagement.v20200301preview.CostAllocationProportionResponse[];
         }
     }
 
@@ -190026,160 +189084,6 @@ export namespace domainregistration {
         }
     }
 
-    export namespace v20150801 {
-        /**
-         * Address information for domain registration
-         */
-        export interface AddressResponse {
-            /**
-             * Address 1
-             */
-            address1?: string;
-            /**
-             * Address 2
-             */
-            address2?: string;
-            /**
-             * City
-             */
-            city?: string;
-            /**
-             * Country
-             */
-            country?: string;
-            /**
-             * Postal code
-             */
-            postalCode?: string;
-            /**
-             * State
-             */
-            state?: string;
-        }
-
-        /**
-         * Contact information for domain registration. If 'Domain Privacy' option is not selected then the contact information will be made publicly available through the Whois directories as per ICANN requirements.
-         */
-        export interface ContactResponse {
-            /**
-             * Mailing address
-             */
-            addressMailing?: outputs.domainregistration.v20150801.AddressResponse;
-            /**
-             * Email address
-             */
-            email?: string;
-            /**
-             * Fax number
-             */
-            fax?: string;
-            /**
-             * Job title
-             */
-            jobTitle?: string;
-            /**
-             * First name
-             */
-            nameFirst?: string;
-            /**
-             * Last name
-             */
-            nameLast?: string;
-            /**
-             * Middle name
-             */
-            nameMiddle?: string;
-            /**
-             * Organization
-             */
-            organization?: string;
-            /**
-             * Phone number
-             */
-            phone?: string;
-        }
-
-        /**
-         * Domain purchase consent object representing acceptance of applicable legal agreements
-         */
-        export interface DomainPurchaseConsentResponse {
-            /**
-             * Timestamp when the agreements were accepted
-             */
-            agreedAt?: string;
-            /**
-             * Client IP address
-             */
-            agreedBy?: string;
-            /**
-             * List of applicable legal agreement keys. This list can be retrieved using ListLegalAgreements Api under TopLevelDomain resource
-             */
-            agreementKeys?: string[];
-        }
-
-        /**
-         * Details of a hostname derived from a domain
-         */
-        export interface HostNameResponse {
-            /**
-             * Name of the Azure resource the hostname is assigned to. If it is assigned to a traffic manager then it will be the traffic manager name otherwise it will be the website name
-             */
-            azureResourceName?: string;
-            /**
-             * Type of the Azure resource the hostname is assigned to
-             */
-            azureResourceType?: string;
-            /**
-             * Type of the Dns record
-             */
-            customHostNameDnsRecordType?: string;
-            /**
-             * Type of the hostname
-             */
-            hostNameType?: string;
-            /**
-             * Name of the hostname
-             */
-            name?: string;
-            /**
-             * List of sites the hostname is assigned to. This list will have more than one site only if the hostname is pointing to a Traffic Manager
-             */
-            siteNames?: string[];
-        }
-
-        /**
-         * Identifies an object
-         */
-        export interface NameIdentifierResponse {
-            /**
-             * Name of the object
-             */
-            name?: string;
-        }
-
-        /**
-         * Represents a legal agreement for top level domain
-         */
-        export interface TldLegalAgreementResponse {
-            /**
-             * Unique identifier for the agreement
-             */
-            agreementKey?: string;
-            /**
-             * Agreement details
-             */
-            content?: string;
-            /**
-             * Agreement title
-             */
-            title?: string;
-            /**
-             * Url where a copy of the agreement details is hosted
-             */
-            url?: string;
-        }
-    }
-
     export namespace v20180201 {
         /**
          * Address information for domain registration.
@@ -195997,6 +194901,20 @@ export namespace eventhub {
         }
 
         /**
+         * The response from the List namespace operation.
+         */
+        export interface NWRuleSetVirtualNetworkRulesResponse {
+            /**
+             * Value that indicates whether to ignore missing Vnet Service Endpoint
+             */
+            ignoreMissingVnetServiceEndpoint?: boolean;
+            /**
+             * Subnet properties
+             */
+            subnet?: outputs.eventhub.v20180101preview.SubnetResponse;
+        }
+
+        /**
          * PrivateEndpoint information.
          */
         export interface PrivateEndpointResponse {
@@ -196022,6 +194940,724 @@ export namespace eventhub {
              * The billing tier of this particular SKU.
              */
             tier?: string;
+        }
+
+        /**
+         * Properties supplied for Subnet
+         */
+        export interface SubnetResponse {
+            /**
+             * Resource ID of Virtual Network Subnet
+             */
+            id?: string;
+        }
+    }
+}
+
+export namespace guestconfiguration {
+    export namespace latest {
+        /**
+         * Information about the guest configuration assignment.
+         */
+        export interface AssignmentInfoResponse {
+            /**
+             * Information about the configuration.
+             */
+            configuration?: outputs.guestconfiguration.latest.ConfigurationInfoResponse;
+            /**
+             * Name of the guest configuration assignment.
+             */
+            name: string;
+        }
+
+        /**
+         * Reason and code for the compliance of the guest configuration assignment resource.
+         */
+        export interface AssignmentReportResourceComplianceReasonResponse {
+            /**
+             * Code for the compliance of the guest configuration assignment resource.
+             */
+            code: string;
+            /**
+             * Reason for the compliance of the guest configuration assignment resource.
+             */
+            phrase: string;
+        }
+
+        /**
+         * The guest configuration assignment resource.
+         */
+        export interface AssignmentReportResourceResponse {
+            /**
+             * A value indicating compliance status of the machine for the assigned guest configuration.
+             */
+            complianceStatus: string;
+            /**
+             * Properties of a guest configuration assignment resource.
+             */
+            properties: any;
+            /**
+             * Compliance reason and reason code for a resource.
+             */
+            reasons?: outputs.guestconfiguration.latest.AssignmentReportResourceComplianceReasonResponse[];
+            /**
+             * Name of the guest configuration assignment resource setting.
+             */
+            resourceId: string;
+        }
+
+        export interface AssignmentReportResponse {
+            /**
+             * Configuration details of the guest configuration assignment.
+             */
+            assignment?: outputs.guestconfiguration.latest.AssignmentInfoResponse;
+            /**
+             * A value indicating compliance status of the machine for the assigned guest configuration.
+             */
+            complianceStatus: string;
+            /**
+             * End date and time of the guest configuration assignment compliance status check.
+             */
+            endTime: string;
+            /**
+             * ARM resource id of the report for the guest configuration assignment.
+             */
+            id: string;
+            /**
+             * Type of report, Consistency or Initial
+             */
+            operationType: string;
+            /**
+             * GUID that identifies the guest configuration assignment report under a subscription, resource group.
+             */
+            reportId: string;
+            /**
+             * The list of resources for which guest configuration assignment compliance is checked.
+             */
+            resources?: outputs.guestconfiguration.latest.AssignmentReportResourceResponse[];
+            /**
+             * Start date and time of the guest configuration assignment compliance status check.
+             */
+            startTime: string;
+            /**
+             * Information about the VM.
+             */
+            vm?: outputs.guestconfiguration.latest.VMInfoResponse;
+        }
+
+        /**
+         * Information about the configuration.
+         */
+        export interface ConfigurationInfoResponse {
+            /**
+             * Name of the configuration.
+             */
+            name: string;
+            /**
+             * Version of the configuration.
+             */
+            version: string;
+        }
+
+        /**
+         * Represents a configuration parameter.
+         */
+        export interface ConfigurationParameterResponse {
+            /**
+             * Name of the configuration parameter.
+             */
+            name?: string;
+            /**
+             * Value of the configuration parameter.
+             */
+            value?: string;
+        }
+
+        /**
+         * Configuration setting of LCM (Local Configuration Manager).
+         */
+        export interface ConfigurationSettingResponse {
+            /**
+             * Specifies what happens after a reboot during the application of a configuration. The possible values are ContinueConfiguration and StopConfiguration
+             */
+            actionAfterReboot?: string;
+            /**
+             * If true - new configurations downloaded from the pull service are allowed to overwrite the old ones on the target node. Otherwise, false
+             */
+            allowModuleOverwrite?: string;
+            /**
+             * Specifies how the LCM(Local Configuration Manager) actually applies the configuration to the target nodes. Possible values are ApplyOnly, ApplyAndMonitor, and ApplyAndAutoCorrect.
+             */
+            configurationMode?: string;
+            /**
+             * How often, in minutes, the current configuration is checked and applied. This property is ignored if the ConfigurationMode property is set to ApplyOnly. The default value is 15.
+             */
+            configurationModeFrequencyMins?: number;
+            /**
+             * Set this to true to automatically reboot the node after a configuration that requires reboot is applied. Otherwise, you will have to manually reboot the node for any configuration that requires it. The default value is false. To use this setting when a reboot condition is enacted by something other than DSC (such as Windows Installer), combine this setting with the xPendingReboot module.
+             */
+            rebootIfNeeded?: string;
+            /**
+             * The time interval, in minutes, at which the LCM checks a pull service to get updated configurations. This value is ignored if the LCM is not configured in pull mode. The default value is 30.
+             */
+            refreshFrequencyMins?: number;
+        }
+
+        /**
+         * Guest configuration assignment properties.
+         */
+        export interface GuestConfigurationAssignmentPropertiesResponse {
+            /**
+             * Combined hash of the configuration package and parameters.
+             */
+            assignmentHash: string;
+            /**
+             * A value indicating compliance status of the machine for the assigned guest configuration.
+             */
+            complianceStatus: string;
+            /**
+             * The source which initiated the guest configuration assignment. Ex: Azure Policy
+             */
+            context?: string;
+            /**
+             * The guest configuration to assign.
+             */
+            guestConfiguration?: outputs.guestconfiguration.latest.GuestConfigurationNavigationResponse;
+            /**
+             * Date and time when last compliance status was checked.
+             */
+            lastComplianceStatusChecked: string;
+            /**
+             * Last reported guest configuration assignment report.
+             */
+            latestAssignmentReport?: outputs.guestconfiguration.latest.AssignmentReportResponse;
+            /**
+             * Id of the latest report for the guest configuration assignment. 
+             */
+            latestReportId: string;
+            /**
+             * The provisioning state, which only appears in the response.
+             */
+            provisioningState: string;
+            /**
+             * VM resource Id.
+             */
+            targetResourceId: string;
+        }
+
+        /**
+         * Guest configuration is an artifact that encapsulates DSC configuration and its dependencies. The artifact is a zip file containing DSC configuration (as MOF) and dependent resources and other dependencies like modules.
+         */
+        export interface GuestConfigurationNavigationResponse {
+            /**
+             * The configuration parameters for the guest configuration.
+             */
+            configurationParameter?: outputs.guestconfiguration.latest.ConfigurationParameterResponse[];
+            /**
+             * The configuration setting for the guest configuration.
+             */
+            configurationSetting?: outputs.guestconfiguration.latest.ConfigurationSettingResponse;
+            /**
+             * Combined hash of the guest configuration package and configuration parameters.
+             */
+            contentHash: string;
+            /**
+             * Uri of the storage where guest configuration package is uploaded.
+             */
+            contentUri: string;
+            /**
+             * Kind of the guest configuration. For example:DSC
+             */
+            kind?: string;
+            /**
+             * Name of the guest configuration.
+             */
+            name?: string;
+            /**
+             * Version of the guest configuration.
+             */
+            version?: string;
+        }
+
+        /**
+         * Information about the VM.
+         */
+        export interface VMInfoResponse {
+            /**
+             * Azure resource Id of the VM.
+             */
+            id: string;
+            /**
+             * UUID(Universally Unique Identifier) of the VM.
+             */
+            uuid: string;
+        }
+    }
+
+    export namespace v20180630preview {
+        /**
+         * Represents a configuration parameter.
+         */
+        export interface ConfigurationParameterResponse {
+            /**
+             * Name of the configuration parameter.
+             */
+            name: string;
+            /**
+             * Value of the configuration parameter.
+             */
+            value: string;
+        }
+
+        /**
+         * Configuration setting of LCM (Local Configuration Manager).
+         */
+        export interface ConfigurationSettingResponse {
+            /**
+             * Specifies what happens after a reboot during the application of a configuration. The possible values are ContinueConfiguration and StopConfiguration
+             */
+            actionAfterReboot: string;
+            /**
+             * If true - new configurations downloaded from the pull service are allowed to overwrite the old ones on the target node. Otherwise, false
+             */
+            allowModuleOverwrite?: string;
+            /**
+             * Specifies how the LCM(Local Configuration Manager) actually applies the configuration to the target nodes. Possible values are ApplyOnly, ApplyAndMonitor, and ApplyAndAutoCorrect.
+             */
+            configurationMode: string;
+            /**
+             * How often, in minutes, the current configuration is checked and applied. This property is ignored if the ConfigurationMode property is set to ApplyOnly. The default value is 15.
+             */
+            configurationModeFrequencyMins: number;
+            /**
+             * Set this to true to automatically reboot the node after a configuration that requires reboot is applied. Otherwise, you will have to manually reboot the node for any configuration that requires it. The default value is false. To use this setting when a reboot condition is enacted by something other than DSC (such as Windows Installer), combine this setting with the xPendingReboot module.
+             */
+            rebootIfNeeded: string;
+            /**
+             * The time interval, in minutes, at which the LCM checks a pull service to get updated configurations. This value is ignored if the LCM is not configured in pull mode. The default value is 30.
+             */
+            refreshFrequencyMins: number;
+        }
+
+        /**
+         * Guest configuration assignment properties.
+         */
+        export interface GuestConfigurationAssignmentPropertiesResponse {
+            /**
+             * Combined hash of the configuration package and parameters.
+             */
+            assignmentHash: string;
+            /**
+             * A value indicating compliance status of the virtual machine for the assigned guest configuration.
+             */
+            complianceStatus: string;
+            /**
+             * The source which initiated the guest configuration assignment. Ex: Azure Policy
+             */
+            context?: string;
+            /**
+             * The guest configuration to assign.
+             */
+            guestConfiguration?: outputs.guestconfiguration.v20180630preview.GuestConfigurationNavigationResponse;
+            /**
+             * Date and time when last compliance status was checked.
+             */
+            lastComplianceStatusChecked: string;
+            /**
+             * Id of the latest report for the guest configuration assignment. 
+             */
+            latestReportId: string;
+            /**
+             * The provisioning state, which only appears in the response.
+             */
+            provisioningState: string;
+        }
+
+        /**
+         * Guest configuration is an artifact that encapsulates DSC configuration and its dependencies. The artifact is a zip file containing DSC configuration (as MOF) and dependent resources and other dependencies like modules.
+         */
+        export interface GuestConfigurationNavigationResponse {
+            /**
+             * The configuration parameters for the guest configuration.
+             */
+            configurationParameter?: outputs.guestconfiguration.v20180630preview.ConfigurationParameterResponse[];
+            /**
+             * The configuration setting for the guest configuration.
+             */
+            configurationSetting?: outputs.guestconfiguration.v20180630preview.ConfigurationSettingResponse;
+            /**
+             * Combined hash of the guest configuration package and configuration parameters.
+             */
+            contentHash: string;
+            /**
+             * Uri of the storage where guest configuration package is uploaded.
+             */
+            contentUri: string;
+            /**
+             * Kind of the guest configuration. For example:DSC
+             */
+            kind?: string;
+            /**
+             * Name of the guest configuration.
+             */
+            name?: string;
+            /**
+             * Version of the guest configuration.
+             */
+            version?: string;
+        }
+    }
+
+    export namespace v20181120 {
+        /**
+         * Represents a configuration parameter.
+         */
+        export interface ConfigurationParameterResponse {
+            /**
+             * Name of the configuration parameter.
+             */
+            name?: string;
+            /**
+             * Value of the configuration parameter.
+             */
+            value?: string;
+        }
+
+        /**
+         * Configuration setting of LCM (Local Configuration Manager).
+         */
+        export interface ConfigurationSettingResponse {
+            /**
+             * Specifies what happens after a reboot during the application of a configuration. The possible values are ContinueConfiguration and StopConfiguration
+             */
+            actionAfterReboot?: string;
+            /**
+             * If true - new configurations downloaded from the pull service are allowed to overwrite the old ones on the target node. Otherwise, false
+             */
+            allowModuleOverwrite?: string;
+            /**
+             * Specifies how the LCM(Local Configuration Manager) actually applies the configuration to the target nodes. Possible values are ApplyOnly, ApplyAndMonitor, and ApplyAndAutoCorrect.
+             */
+            configurationMode?: string;
+            /**
+             * How often, in minutes, the current configuration is checked and applied. This property is ignored if the ConfigurationMode property is set to ApplyOnly. The default value is 15.
+             */
+            configurationModeFrequencyMins?: number;
+            /**
+             * Set this to true to automatically reboot the node after a configuration that requires reboot is applied. Otherwise, you will have to manually reboot the node for any configuration that requires it. The default value is false. To use this setting when a reboot condition is enacted by something other than DSC (such as Windows Installer), combine this setting with the xPendingReboot module.
+             */
+            rebootIfNeeded?: string;
+            /**
+             * The time interval, in minutes, at which the LCM checks a pull service to get updated configurations. This value is ignored if the LCM is not configured in pull mode. The default value is 30.
+             */
+            refreshFrequencyMins?: number;
+        }
+
+        /**
+         * Guest configuration assignment properties.
+         */
+        export interface GuestConfigurationAssignmentPropertiesResponse {
+            /**
+             * Combined hash of the configuration package and parameters.
+             */
+            assignmentHash: string;
+            /**
+             * A value indicating compliance status of the machine for the assigned guest configuration.
+             */
+            complianceStatus: string;
+            /**
+             * The source which initiated the guest configuration assignment. Ex: Azure Policy
+             */
+            context?: string;
+            /**
+             * The guest configuration to assign.
+             */
+            guestConfiguration?: outputs.guestconfiguration.v20181120.GuestConfigurationNavigationResponse;
+            /**
+             * Date and time when last compliance status was checked.
+             */
+            lastComplianceStatusChecked: string;
+            /**
+             * Id of the latest report for the guest configuration assignment. 
+             */
+            latestReportId: string;
+            /**
+             * The provisioning state, which only appears in the response.
+             */
+            provisioningState: string;
+        }
+
+        /**
+         * Guest configuration is an artifact that encapsulates DSC configuration and its dependencies. The artifact is a zip file containing DSC configuration (as MOF) and dependent resources and other dependencies like modules.
+         */
+        export interface GuestConfigurationNavigationResponse {
+            /**
+             * The configuration parameters for the guest configuration.
+             */
+            configurationParameter?: outputs.guestconfiguration.v20181120.ConfigurationParameterResponse[];
+            /**
+             * The configuration setting for the guest configuration.
+             */
+            configurationSetting?: outputs.guestconfiguration.v20181120.ConfigurationSettingResponse;
+            /**
+             * Combined hash of the guest configuration package and configuration parameters.
+             */
+            contentHash: string;
+            /**
+             * Uri of the storage where guest configuration package is uploaded.
+             */
+            contentUri: string;
+            /**
+             * Kind of the guest configuration. For example:DSC
+             */
+            kind?: string;
+            /**
+             * Name of the guest configuration.
+             */
+            name?: string;
+            /**
+             * Version of the guest configuration.
+             */
+            version?: string;
+        }
+    }
+
+    export namespace v20200625 {
+        /**
+         * Information about the guest configuration assignment.
+         */
+        export interface AssignmentInfoResponse {
+            /**
+             * Information about the configuration.
+             */
+            configuration?: outputs.guestconfiguration.v20200625.ConfigurationInfoResponse;
+            /**
+             * Name of the guest configuration assignment.
+             */
+            name: string;
+        }
+
+        /**
+         * Reason and code for the compliance of the guest configuration assignment resource.
+         */
+        export interface AssignmentReportResourceComplianceReasonResponse {
+            /**
+             * Code for the compliance of the guest configuration assignment resource.
+             */
+            code: string;
+            /**
+             * Reason for the compliance of the guest configuration assignment resource.
+             */
+            phrase: string;
+        }
+
+        /**
+         * The guest configuration assignment resource.
+         */
+        export interface AssignmentReportResourceResponse {
+            /**
+             * A value indicating compliance status of the machine for the assigned guest configuration.
+             */
+            complianceStatus: string;
+            /**
+             * Properties of a guest configuration assignment resource.
+             */
+            properties: any;
+            /**
+             * Compliance reason and reason code for a resource.
+             */
+            reasons?: outputs.guestconfiguration.v20200625.AssignmentReportResourceComplianceReasonResponse[];
+            /**
+             * Name of the guest configuration assignment resource setting.
+             */
+            resourceId: string;
+        }
+
+        export interface AssignmentReportResponse {
+            /**
+             * Configuration details of the guest configuration assignment.
+             */
+            assignment?: outputs.guestconfiguration.v20200625.AssignmentInfoResponse;
+            /**
+             * A value indicating compliance status of the machine for the assigned guest configuration.
+             */
+            complianceStatus: string;
+            /**
+             * End date and time of the guest configuration assignment compliance status check.
+             */
+            endTime: string;
+            /**
+             * ARM resource id of the report for the guest configuration assignment.
+             */
+            id: string;
+            /**
+             * Type of report, Consistency or Initial
+             */
+            operationType: string;
+            /**
+             * GUID that identifies the guest configuration assignment report under a subscription, resource group.
+             */
+            reportId: string;
+            /**
+             * The list of resources for which guest configuration assignment compliance is checked.
+             */
+            resources?: outputs.guestconfiguration.v20200625.AssignmentReportResourceResponse[];
+            /**
+             * Start date and time of the guest configuration assignment compliance status check.
+             */
+            startTime: string;
+            /**
+             * Information about the VM.
+             */
+            vm?: outputs.guestconfiguration.v20200625.VMInfoResponse;
+        }
+
+        /**
+         * Information about the configuration.
+         */
+        export interface ConfigurationInfoResponse {
+            /**
+             * Name of the configuration.
+             */
+            name: string;
+            /**
+             * Version of the configuration.
+             */
+            version: string;
+        }
+
+        /**
+         * Represents a configuration parameter.
+         */
+        export interface ConfigurationParameterResponse {
+            /**
+             * Name of the configuration parameter.
+             */
+            name?: string;
+            /**
+             * Value of the configuration parameter.
+             */
+            value?: string;
+        }
+
+        /**
+         * Configuration setting of LCM (Local Configuration Manager).
+         */
+        export interface ConfigurationSettingResponse {
+            /**
+             * Specifies what happens after a reboot during the application of a configuration. The possible values are ContinueConfiguration and StopConfiguration
+             */
+            actionAfterReboot?: string;
+            /**
+             * If true - new configurations downloaded from the pull service are allowed to overwrite the old ones on the target node. Otherwise, false
+             */
+            allowModuleOverwrite?: string;
+            /**
+             * Specifies how the LCM(Local Configuration Manager) actually applies the configuration to the target nodes. Possible values are ApplyOnly, ApplyAndMonitor, and ApplyAndAutoCorrect.
+             */
+            configurationMode?: string;
+            /**
+             * How often, in minutes, the current configuration is checked and applied. This property is ignored if the ConfigurationMode property is set to ApplyOnly. The default value is 15.
+             */
+            configurationModeFrequencyMins?: number;
+            /**
+             * Set this to true to automatically reboot the node after a configuration that requires reboot is applied. Otherwise, you will have to manually reboot the node for any configuration that requires it. The default value is false. To use this setting when a reboot condition is enacted by something other than DSC (such as Windows Installer), combine this setting with the xPendingReboot module.
+             */
+            rebootIfNeeded?: string;
+            /**
+             * The time interval, in minutes, at which the LCM checks a pull service to get updated configurations. This value is ignored if the LCM is not configured in pull mode. The default value is 30.
+             */
+            refreshFrequencyMins?: number;
+        }
+
+        /**
+         * Guest configuration assignment properties.
+         */
+        export interface GuestConfigurationAssignmentPropertiesResponse {
+            /**
+             * Combined hash of the configuration package and parameters.
+             */
+            assignmentHash: string;
+            /**
+             * A value indicating compliance status of the machine for the assigned guest configuration.
+             */
+            complianceStatus: string;
+            /**
+             * The source which initiated the guest configuration assignment. Ex: Azure Policy
+             */
+            context?: string;
+            /**
+             * The guest configuration to assign.
+             */
+            guestConfiguration?: outputs.guestconfiguration.v20200625.GuestConfigurationNavigationResponse;
+            /**
+             * Date and time when last compliance status was checked.
+             */
+            lastComplianceStatusChecked: string;
+            /**
+             * Last reported guest configuration assignment report.
+             */
+            latestAssignmentReport?: outputs.guestconfiguration.v20200625.AssignmentReportResponse;
+            /**
+             * Id of the latest report for the guest configuration assignment. 
+             */
+            latestReportId: string;
+            /**
+             * The provisioning state, which only appears in the response.
+             */
+            provisioningState: string;
+            /**
+             * VM resource Id.
+             */
+            targetResourceId: string;
+        }
+
+        /**
+         * Guest configuration is an artifact that encapsulates DSC configuration and its dependencies. The artifact is a zip file containing DSC configuration (as MOF) and dependent resources and other dependencies like modules.
+         */
+        export interface GuestConfigurationNavigationResponse {
+            /**
+             * The configuration parameters for the guest configuration.
+             */
+            configurationParameter?: outputs.guestconfiguration.v20200625.ConfigurationParameterResponse[];
+            /**
+             * The configuration setting for the guest configuration.
+             */
+            configurationSetting?: outputs.guestconfiguration.v20200625.ConfigurationSettingResponse;
+            /**
+             * Combined hash of the guest configuration package and configuration parameters.
+             */
+            contentHash: string;
+            /**
+             * Uri of the storage where guest configuration package is uploaded.
+             */
+            contentUri: string;
+            /**
+             * Kind of the guest configuration. For example:DSC
+             */
+            kind?: string;
+            /**
+             * Name of the guest configuration.
+             */
+            name?: string;
+            /**
+             * Version of the guest configuration.
+             */
+            version?: string;
+        }
+
+        /**
+         * Information about the VM.
+         */
+        export interface VMInfoResponse {
+            /**
+             * Azure resource Id of the VM.
+             */
+            id: string;
+            /**
+             * UUID(Universally Unique Identifier) of the VM.
+             */
+            uuid: string;
         }
     }
 }
@@ -198940,153 +198576,6 @@ export namespace healthcareapis {
 
 export namespace hybridcompute {
     export namespace latest {
-        /**
-         * Information about the guest configuration assignment.
-         */
-        export interface AssignmentInfoResponse {
-            /**
-             * Information about the configuration.
-             */
-            configuration?: outputs.hybridcompute.latest.ConfigurationInfoResponse;
-            /**
-             * Name of the guest configuration assignment.
-             */
-            name: string;
-        }
-
-        /**
-         * Reason and code for the compliance of the guest configuration assignment resource.
-         */
-        export interface AssignmentReportResourceComplianceReasonResponse {
-            /**
-             * Code for the compliance of the guest configuration assignment resource.
-             */
-            code: string;
-            /**
-             * Reason for the compliance of the guest configuration assignment resource.
-             */
-            phrase: string;
-        }
-
-        /**
-         * The guest configuration assignment resource.
-         */
-        export interface AssignmentReportResourceResponse {
-            /**
-             * A value indicating compliance status of the machine for the assigned guest configuration.
-             */
-            complianceStatus: string;
-            /**
-             * Properties of a guest configuration assignment resource.
-             */
-            properties: any;
-            /**
-             * Compliance reason and reason code for a resource.
-             */
-            reasons?: outputs.hybridcompute.latest.AssignmentReportResourceComplianceReasonResponse[];
-            /**
-             * Name of the guest configuration assignment resource setting.
-             */
-            resourceId: string;
-        }
-
-        export interface AssignmentReportResponse {
-            /**
-             * Configuration details of the guest configuration assignment.
-             */
-            assignment?: outputs.hybridcompute.latest.AssignmentInfoResponse;
-            /**
-             * A value indicating compliance status of the machine for the assigned guest configuration.
-             */
-            complianceStatus: string;
-            /**
-             * End date and time of the guest configuration assignment compliance status check.
-             */
-            endTime: string;
-            /**
-             * ARM resource id of the report for the guest configuration assignment.
-             */
-            id: string;
-            /**
-             * Type of report, Consistency or Initial
-             */
-            operationType: string;
-            /**
-             * GUID that identifies the guest configuration assignment report under a subscription, resource group.
-             */
-            reportId: string;
-            /**
-             * The list of resources for which guest configuration assignment compliance is checked.
-             */
-            resources?: outputs.hybridcompute.latest.AssignmentReportResourceResponse[];
-            /**
-             * Start date and time of the guest configuration assignment compliance status check.
-             */
-            startTime: string;
-            /**
-             * Information about the VM.
-             */
-            vm?: outputs.hybridcompute.latest.VMInfoResponse;
-        }
-
-        /**
-         * Information about the configuration.
-         */
-        export interface ConfigurationInfoResponse {
-            /**
-             * Name of the configuration.
-             */
-            name: string;
-            /**
-             * Version of the configuration.
-             */
-            version: string;
-        }
-
-        /**
-         * Represents a configuration parameter.
-         */
-        export interface ConfigurationParameterResponse {
-            /**
-             * Name of the configuration parameter.
-             */
-            name?: string;
-            /**
-             * Value of the configuration parameter.
-             */
-            value?: string;
-        }
-
-        /**
-         * Configuration setting of LCM (Local Configuration Manager).
-         */
-        export interface ConfigurationSettingResponse {
-            /**
-             * Specifies what happens after a reboot during the application of a configuration. The possible values are ContinueConfiguration and StopConfiguration
-             */
-            actionAfterReboot?: string;
-            /**
-             * If true - new configurations downloaded from the pull service are allowed to overwrite the old ones on the target node. Otherwise, false
-             */
-            allowModuleOverwrite?: string;
-            /**
-             * Specifies how the LCM(Local Configuration Manager) actually applies the configuration to the target nodes. Possible values are ApplyOnly, ApplyAndMonitor, and ApplyAndAutoCorrect.
-             */
-            configurationMode?: string;
-            /**
-             * How often, in minutes, the current configuration is checked and applied. This property is ignored if the ConfigurationMode property is set to ApplyOnly. The default value is 15.
-             */
-            configurationModeFrequencyMins?: number;
-            /**
-             * Set this to true to automatically reboot the node after a configuration that requires reboot is applied. Otherwise, you will have to manually reboot the node for any configuration that requires it. The default value is false. To use this setting when a reboot condition is enacted by something other than DSC (such as Windows Installer), combine this setting with the xPendingReboot module.
-             */
-            rebootIfNeeded?: string;
-            /**
-             * The time interval, in minutes, at which the LCM checks a pull service to get updated configurations. This value is ignored if the LCM is not configured in pull mode. The default value is 30.
-             */
-            refreshFrequencyMins?: number;
-        }
-
         export interface ErrorDetailResponse {
             /**
              * The error's code.
@@ -199104,82 +198593,6 @@ export namespace hybridcompute {
              * Indicates which property in the request is responsible for the error.
              */
             target?: string;
-        }
-
-        /**
-         * Guest configuration assignment properties.
-         */
-        export interface GuestConfigurationAssignmentPropertiesResponse {
-            /**
-             * Combined hash of the configuration package and parameters.
-             */
-            assignmentHash: string;
-            /**
-             * A value indicating compliance status of the machine for the assigned guest configuration.
-             */
-            complianceStatus: string;
-            /**
-             * The source which initiated the guest configuration assignment. Ex: Azure Policy
-             */
-            context?: string;
-            /**
-             * The guest configuration to assign.
-             */
-            guestConfiguration?: outputs.hybridcompute.latest.GuestConfigurationNavigationResponse;
-            /**
-             * Date and time when last compliance status was checked.
-             */
-            lastComplianceStatusChecked: string;
-            /**
-             * Last reported guest configuration assignment report.
-             */
-            latestAssignmentReport?: outputs.hybridcompute.latest.AssignmentReportResponse;
-            /**
-             * Id of the latest report for the guest configuration assignment. 
-             */
-            latestReportId: string;
-            /**
-             * The provisioning state, which only appears in the response.
-             */
-            provisioningState: string;
-            /**
-             * VM resource Id.
-             */
-            targetResourceId: string;
-        }
-
-        /**
-         * Guest configuration is an artifact that encapsulates DSC configuration and its dependencies. The artifact is a zip file containing DSC configuration (as MOF) and dependent resources and other dependencies like modules.
-         */
-        export interface GuestConfigurationNavigationResponse {
-            /**
-             * The configuration parameters for the guest configuration.
-             */
-            configurationParameter?: outputs.hybridcompute.latest.ConfigurationParameterResponse[];
-            /**
-             * The configuration setting for the guest configuration.
-             */
-            configurationSetting?: outputs.hybridcompute.latest.ConfigurationSettingResponse;
-            /**
-             * Combined hash of the guest configuration package and configuration parameters.
-             */
-            contentHash: string;
-            /**
-             * Uri of the storage where guest configuration package is uploaded.
-             */
-            contentUri: string;
-            /**
-             * Kind of the guest configuration. For example:DSC
-             */
-            kind?: string;
-            /**
-             * Name of the guest configuration.
-             */
-            name?: string;
-            /**
-             * Version of the guest configuration.
-             */
-            version?: string;
         }
 
         /**
@@ -199297,134 +198710,6 @@ export namespace hybridcompute {
              * The identity type.
              */
             type?: string;
-        }
-
-        /**
-         * Information about the VM.
-         */
-        export interface VMInfoResponse {
-            /**
-             * Azure resource Id of the VM.
-             */
-            id: string;
-            /**
-             * UUID(Universally Unique Identifier) of the VM.
-             */
-            uuid: string;
-        }
-    }
-
-    export namespace v20181120 {
-        /**
-         * Represents a configuration parameter.
-         */
-        export interface ConfigurationParameterResponse {
-            /**
-             * Name of the configuration parameter.
-             */
-            name?: string;
-            /**
-             * Value of the configuration parameter.
-             */
-            value?: string;
-        }
-
-        /**
-         * Configuration setting of LCM (Local Configuration Manager).
-         */
-        export interface ConfigurationSettingResponse {
-            /**
-             * Specifies what happens after a reboot during the application of a configuration. The possible values are ContinueConfiguration and StopConfiguration
-             */
-            actionAfterReboot?: string;
-            /**
-             * If true - new configurations downloaded from the pull service are allowed to overwrite the old ones on the target node. Otherwise, false
-             */
-            allowModuleOverwrite?: string;
-            /**
-             * Specifies how the LCM(Local Configuration Manager) actually applies the configuration to the target nodes. Possible values are ApplyOnly, ApplyAndMonitor, and ApplyAndAutoCorrect.
-             */
-            configurationMode?: string;
-            /**
-             * How often, in minutes, the current configuration is checked and applied. This property is ignored if the ConfigurationMode property is set to ApplyOnly. The default value is 15.
-             */
-            configurationModeFrequencyMins?: number;
-            /**
-             * Set this to true to automatically reboot the node after a configuration that requires reboot is applied. Otherwise, you will have to manually reboot the node for any configuration that requires it. The default value is false. To use this setting when a reboot condition is enacted by something other than DSC (such as Windows Installer), combine this setting with the xPendingReboot module.
-             */
-            rebootIfNeeded?: string;
-            /**
-             * The time interval, in minutes, at which the LCM checks a pull service to get updated configurations. This value is ignored if the LCM is not configured in pull mode. The default value is 30.
-             */
-            refreshFrequencyMins?: number;
-        }
-
-        /**
-         * Guest configuration assignment properties.
-         */
-        export interface GuestConfigurationAssignmentPropertiesResponse {
-            /**
-             * Combined hash of the configuration package and parameters.
-             */
-            assignmentHash: string;
-            /**
-             * A value indicating compliance status of the machine for the assigned guest configuration.
-             */
-            complianceStatus: string;
-            /**
-             * The source which initiated the guest configuration assignment. Ex: Azure Policy
-             */
-            context?: string;
-            /**
-             * The guest configuration to assign.
-             */
-            guestConfiguration?: outputs.hybridcompute.v20181120.GuestConfigurationNavigationResponse;
-            /**
-             * Date and time when last compliance status was checked.
-             */
-            lastComplianceStatusChecked: string;
-            /**
-             * Id of the latest report for the guest configuration assignment. 
-             */
-            latestReportId: string;
-            /**
-             * The provisioning state, which only appears in the response.
-             */
-            provisioningState: string;
-        }
-
-        /**
-         * Guest configuration is an artifact that encapsulates DSC configuration and its dependencies. The artifact is a zip file containing DSC configuration (as MOF) and dependent resources and other dependencies like modules.
-         */
-        export interface GuestConfigurationNavigationResponse {
-            /**
-             * The configuration parameters for the guest configuration.
-             */
-            configurationParameter?: outputs.hybridcompute.v20181120.ConfigurationParameterResponse[];
-            /**
-             * The configuration setting for the guest configuration.
-             */
-            configurationSetting?: outputs.hybridcompute.v20181120.ConfigurationSettingResponse;
-            /**
-             * Combined hash of the guest configuration package and configuration parameters.
-             */
-            contentHash: string;
-            /**
-             * Uri of the storage where guest configuration package is uploaded.
-             */
-            contentUri: string;
-            /**
-             * Kind of the guest configuration. For example:DSC
-             */
-            kind?: string;
-            /**
-             * Name of the guest configuration.
-             */
-            name?: string;
-            /**
-             * Version of the guest configuration.
-             */
-            version?: string;
         }
     }
 
@@ -199673,245 +198958,6 @@ export namespace hybridcompute {
              * The identity type.
              */
             type?: string;
-        }
-    }
-
-    export namespace v20200625 {
-        /**
-         * Information about the guest configuration assignment.
-         */
-        export interface AssignmentInfoResponse {
-            /**
-             * Information about the configuration.
-             */
-            configuration?: outputs.hybridcompute.v20200625.ConfigurationInfoResponse;
-            /**
-             * Name of the guest configuration assignment.
-             */
-            name: string;
-        }
-
-        /**
-         * Reason and code for the compliance of the guest configuration assignment resource.
-         */
-        export interface AssignmentReportResourceComplianceReasonResponse {
-            /**
-             * Code for the compliance of the guest configuration assignment resource.
-             */
-            code: string;
-            /**
-             * Reason for the compliance of the guest configuration assignment resource.
-             */
-            phrase: string;
-        }
-
-        /**
-         * The guest configuration assignment resource.
-         */
-        export interface AssignmentReportResourceResponse {
-            /**
-             * A value indicating compliance status of the machine for the assigned guest configuration.
-             */
-            complianceStatus: string;
-            /**
-             * Properties of a guest configuration assignment resource.
-             */
-            properties: any;
-            /**
-             * Compliance reason and reason code for a resource.
-             */
-            reasons?: outputs.hybridcompute.v20200625.AssignmentReportResourceComplianceReasonResponse[];
-            /**
-             * Name of the guest configuration assignment resource setting.
-             */
-            resourceId: string;
-        }
-
-        export interface AssignmentReportResponse {
-            /**
-             * Configuration details of the guest configuration assignment.
-             */
-            assignment?: outputs.hybridcompute.v20200625.AssignmentInfoResponse;
-            /**
-             * A value indicating compliance status of the machine for the assigned guest configuration.
-             */
-            complianceStatus: string;
-            /**
-             * End date and time of the guest configuration assignment compliance status check.
-             */
-            endTime: string;
-            /**
-             * ARM resource id of the report for the guest configuration assignment.
-             */
-            id: string;
-            /**
-             * Type of report, Consistency or Initial
-             */
-            operationType: string;
-            /**
-             * GUID that identifies the guest configuration assignment report under a subscription, resource group.
-             */
-            reportId: string;
-            /**
-             * The list of resources for which guest configuration assignment compliance is checked.
-             */
-            resources?: outputs.hybridcompute.v20200625.AssignmentReportResourceResponse[];
-            /**
-             * Start date and time of the guest configuration assignment compliance status check.
-             */
-            startTime: string;
-            /**
-             * Information about the VM.
-             */
-            vm?: outputs.hybridcompute.v20200625.VMInfoResponse;
-        }
-
-        /**
-         * Information about the configuration.
-         */
-        export interface ConfigurationInfoResponse {
-            /**
-             * Name of the configuration.
-             */
-            name: string;
-            /**
-             * Version of the configuration.
-             */
-            version: string;
-        }
-
-        /**
-         * Represents a configuration parameter.
-         */
-        export interface ConfigurationParameterResponse {
-            /**
-             * Name of the configuration parameter.
-             */
-            name?: string;
-            /**
-             * Value of the configuration parameter.
-             */
-            value?: string;
-        }
-
-        /**
-         * Configuration setting of LCM (Local Configuration Manager).
-         */
-        export interface ConfigurationSettingResponse {
-            /**
-             * Specifies what happens after a reboot during the application of a configuration. The possible values are ContinueConfiguration and StopConfiguration
-             */
-            actionAfterReboot?: string;
-            /**
-             * If true - new configurations downloaded from the pull service are allowed to overwrite the old ones on the target node. Otherwise, false
-             */
-            allowModuleOverwrite?: string;
-            /**
-             * Specifies how the LCM(Local Configuration Manager) actually applies the configuration to the target nodes. Possible values are ApplyOnly, ApplyAndMonitor, and ApplyAndAutoCorrect.
-             */
-            configurationMode?: string;
-            /**
-             * How often, in minutes, the current configuration is checked and applied. This property is ignored if the ConfigurationMode property is set to ApplyOnly. The default value is 15.
-             */
-            configurationModeFrequencyMins?: number;
-            /**
-             * Set this to true to automatically reboot the node after a configuration that requires reboot is applied. Otherwise, you will have to manually reboot the node for any configuration that requires it. The default value is false. To use this setting when a reboot condition is enacted by something other than DSC (such as Windows Installer), combine this setting with the xPendingReboot module.
-             */
-            rebootIfNeeded?: string;
-            /**
-             * The time interval, in minutes, at which the LCM checks a pull service to get updated configurations. This value is ignored if the LCM is not configured in pull mode. The default value is 30.
-             */
-            refreshFrequencyMins?: number;
-        }
-
-        /**
-         * Guest configuration assignment properties.
-         */
-        export interface GuestConfigurationAssignmentPropertiesResponse {
-            /**
-             * Combined hash of the configuration package and parameters.
-             */
-            assignmentHash: string;
-            /**
-             * A value indicating compliance status of the machine for the assigned guest configuration.
-             */
-            complianceStatus: string;
-            /**
-             * The source which initiated the guest configuration assignment. Ex: Azure Policy
-             */
-            context?: string;
-            /**
-             * The guest configuration to assign.
-             */
-            guestConfiguration?: outputs.hybridcompute.v20200625.GuestConfigurationNavigationResponse;
-            /**
-             * Date and time when last compliance status was checked.
-             */
-            lastComplianceStatusChecked: string;
-            /**
-             * Last reported guest configuration assignment report.
-             */
-            latestAssignmentReport?: outputs.hybridcompute.v20200625.AssignmentReportResponse;
-            /**
-             * Id of the latest report for the guest configuration assignment. 
-             */
-            latestReportId: string;
-            /**
-             * The provisioning state, which only appears in the response.
-             */
-            provisioningState: string;
-            /**
-             * VM resource Id.
-             */
-            targetResourceId: string;
-        }
-
-        /**
-         * Guest configuration is an artifact that encapsulates DSC configuration and its dependencies. The artifact is a zip file containing DSC configuration (as MOF) and dependent resources and other dependencies like modules.
-         */
-        export interface GuestConfigurationNavigationResponse {
-            /**
-             * The configuration parameters for the guest configuration.
-             */
-            configurationParameter?: outputs.hybridcompute.v20200625.ConfigurationParameterResponse[];
-            /**
-             * The configuration setting for the guest configuration.
-             */
-            configurationSetting?: outputs.hybridcompute.v20200625.ConfigurationSettingResponse;
-            /**
-             * Combined hash of the guest configuration package and configuration parameters.
-             */
-            contentHash: string;
-            /**
-             * Uri of the storage where guest configuration package is uploaded.
-             */
-            contentUri: string;
-            /**
-             * Kind of the guest configuration. For example:DSC
-             */
-            kind?: string;
-            /**
-             * Name of the guest configuration.
-             */
-            name?: string;
-            /**
-             * Version of the guest configuration.
-             */
-            version?: string;
-        }
-
-        /**
-         * Information about the VM.
-         */
-        export interface VMInfoResponse {
-            /**
-             * Azure resource Id of the VM.
-             */
-            id: string;
-            /**
-             * UUID(Universally Unique Identifier) of the VM.
-             */
-            uuid: string;
         }
     }
 
@@ -205386,6 +204432,22 @@ export namespace insights {
              * A list of Windows Event Log queries in XPATH format.
              */
             xPathQueries: string[];
+        }
+    }
+
+    export namespace v20200101preview {
+        /**
+         * Part of Management Group diagnostic setting. Specifies the settings for a particular log.
+         */
+        export interface ManagementGroupLogSettingsResponse {
+            /**
+             * Name of a Management Group Diagnostic Log category for a resource type this setting is applied to.
+             */
+            category: string;
+            /**
+             * a value indicating whether this log is enabled.
+             */
+            enabled: boolean;
         }
     }
 
@@ -239407,222 +238469,6 @@ export namespace managedservices {
 
 export namespace management {
     export namespace latest {
-        export interface AliasPathMetadataResponse {
-            /**
-             * The attributes of the token that the alias path is referring to.
-             */
-            attributes: string;
-            /**
-             * The type of the token that the alias path is referring to.
-             */
-            type: string;
-        }
-
-        /**
-         * The type of the paths for alias.
-         */
-        export interface AliasPathResponse {
-            /**
-             * The API versions.
-             */
-            apiVersions?: string[];
-            /**
-             * The metadata of the alias path. If missing, fall back to the default metadata of the alias.
-             */
-            metadata: outputs.management.latest.AliasPathMetadataResponse;
-            /**
-             * The path of an alias.
-             */
-            path?: string;
-            /**
-             * The pattern for an alias path.
-             */
-            pattern?: outputs.management.latest.AliasPatternResponse;
-        }
-
-        /**
-         * The type of the pattern for an alias path.
-         */
-        export interface AliasPatternResponse {
-            /**
-             * The alias pattern phrase.
-             */
-            phrase?: string;
-            /**
-             * The type of alias pattern
-             */
-            type?: string;
-            /**
-             * The alias pattern variable.
-             */
-            variable?: string;
-        }
-
-        /**
-         * The alias type. 
-         */
-        export interface AliasResponse {
-            /**
-             * The default alias path metadata. Applies to the default path and to any alias path that doesn't have metadata
-             */
-            defaultMetadata: outputs.management.latest.AliasPathMetadataResponse;
-            /**
-             * The default path for an alias.
-             */
-            defaultPath?: string;
-            /**
-             * The default pattern for an alias.
-             */
-            defaultPattern?: outputs.management.latest.AliasPatternResponse;
-            /**
-             * The alias name.
-             */
-            name?: string;
-            /**
-             * The paths for an alias.
-             */
-            paths?: outputs.management.latest.AliasPathResponse[];
-            /**
-             * The type of the alias.
-             */
-            type?: string;
-        }
-
-        export interface ApiProfileResponse {
-            /**
-             * The API version.
-             */
-            apiVersion: string;
-            /**
-             * The profile version.
-             */
-            profileVersion: string;
-        }
-
-        /**
-         * Deployment dependency information.
-         */
-        export interface BasicDependencyResponse {
-            /**
-             * The ID of the dependency.
-             */
-            id?: string;
-            /**
-             * The dependency resource name.
-             */
-            resourceName?: string;
-            /**
-             * The dependency resource type.
-             */
-            resourceType?: string;
-        }
-
-        /**
-         * The debug setting.
-         */
-        export interface DebugSettingResponse {
-            /**
-             * Specifies the type of information to log for debugging. The permitted values are none, requestContent, responseContent, or both requestContent and responseContent separated by a comma. The default is none. When setting this value, carefully consider the type of information you are passing in during deployment. By logging information about the request or response, you could potentially expose sensitive data that is retrieved through the deployment operations.
-             */
-            detailLevel?: string;
-        }
-
-        /**
-         * Deployment dependency information.
-         */
-        export interface DependencyResponse {
-            /**
-             * The list of dependencies.
-             */
-            dependsOn?: outputs.management.latest.BasicDependencyResponse[];
-            /**
-             * The ID of the dependency.
-             */
-            id?: string;
-            /**
-             * The dependency resource name.
-             */
-            resourceName?: string;
-            /**
-             * The dependency resource type.
-             */
-            resourceType?: string;
-        }
-
-        /**
-         * Deployment properties with additional details.
-         */
-        export interface DeploymentPropertiesExtendedResponse {
-            /**
-             * The correlation ID of the deployment.
-             */
-            correlationId: string;
-            /**
-             * The debug setting of the deployment.
-             */
-            debugSetting: outputs.management.latest.DebugSettingResponse;
-            /**
-             * The list of deployment dependencies.
-             */
-            dependencies: outputs.management.latest.DependencyResponse[];
-            /**
-             * The duration of the template deployment.
-             */
-            duration: string;
-            /**
-             * The deployment error.
-             */
-            error: outputs.management.latest.ErrorResponseResponse;
-            /**
-             * The deployment mode. Possible values are Incremental and Complete.
-             */
-            mode: string;
-            /**
-             * The deployment on error behavior.
-             */
-            onErrorDeployment: outputs.management.latest.OnErrorDeploymentExtendedResponse;
-            /**
-             * Array of provisioned resources.
-             */
-            outputResources: outputs.management.latest.ResourceReferenceResponse[];
-            /**
-             * Key/value pairs that represent deployment output.
-             */
-            outputs: any;
-            /**
-             * Deployment parameters. 
-             */
-            parameters: any;
-            /**
-             * The URI referencing the parameters. 
-             */
-            parametersLink: outputs.management.latest.ParametersLinkResponse;
-            /**
-             * The list of resource providers needed for the deployment.
-             */
-            providers: outputs.management.latest.ProviderResponse[];
-            /**
-             * Denotes the state of provisioning.
-             */
-            provisioningState: string;
-            /**
-             * The hash produced for the template.
-             */
-            templateHash: string;
-            /**
-             * The URI referencing the template.
-             */
-            templateLink: outputs.management.latest.TemplateLinkResponse;
-            /**
-             * The timestamp of the template deployment.
-             */
-            timestamp: string;
-            /**
-             * Array of validated resources.
-             */
-            validatedResources: outputs.management.latest.ResourceReferenceResponse[];
-        }
-
         /**
          * The ID of the parent management group.
          */
@@ -239699,46 +238545,6 @@ export namespace management {
         }
 
         /**
-         * The resource management error additional info.
-         */
-        export interface ErrorAdditionalInfoResponse {
-            /**
-             * The additional info.
-             */
-            info: any;
-            /**
-             * The additional info type.
-             */
-            type: string;
-        }
-
-        /**
-         * Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.)
-         */
-        export interface ErrorResponseResponse {
-            /**
-             * The error additional info.
-             */
-            additionalInfo: outputs.management.latest.ErrorAdditionalInfoResponse[];
-            /**
-             * The error code.
-             */
-            code: string;
-            /**
-             * The error details.
-             */
-            details: outputs.management.latest.ErrorResponseResponse[];
-            /**
-             * The error message.
-             */
-            message: string;
-            /**
-             * The error target.
-             */
-            target: string;
-        }
-
-        /**
          * The child information of a management group.
          */
         export interface ManagementGroupChildInfoResponse {
@@ -239801,92 +238607,6 @@ export namespace management {
         }
 
         /**
-         * Deployment on error behavior with additional details.
-         */
-        export interface OnErrorDeploymentExtendedResponse {
-            /**
-             * The deployment to be used on error case.
-             */
-            deploymentName?: string;
-            /**
-             * The state of the provisioning for the on error deployment.
-             */
-            provisioningState: string;
-            /**
-             * The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment.
-             */
-            type?: string;
-        }
-
-        /**
-         * The definition of a parameter that can be provided to the policy.
-         */
-        export interface ParameterDefinitionsValueResponse {
-            /**
-             * The allowed values for the parameter.
-             */
-            allowedValues?: any[];
-            /**
-             * The default value for the parameter if no value is provided.
-             */
-            defaultValue?: any;
-            /**
-             * General metadata for the parameter.
-             */
-            metadata?: outputs.management.latest.ParameterDefinitionsValueResponseMetadata;
-            /**
-             * The data type of the parameter.
-             */
-            type?: string;
-        }
-
-        /**
-         * General metadata for the parameter.
-         */
-        export interface ParameterDefinitionsValueResponseMetadata {
-            /**
-             * Set to true to have Azure portal create role assignments on the resource ID or resource scope value of this parameter during policy assignment. This property is useful in case you wish to assign permissions outside the assignment scope.
-             */
-            assignPermissions?: boolean;
-            /**
-             * The description of the parameter.
-             */
-            description?: string;
-            /**
-             * The display name for the parameter.
-             */
-            displayName?: string;
-            /**
-             * Used when assigning the policy definition through the portal. Provides a context aware list of values for the user to choose from.
-             */
-            strongType?: string;
-        }
-
-        /**
-         * The value of a parameter.
-         */
-        export interface ParameterValuesValueResponse {
-            /**
-             * The value of the parameter.
-             */
-            value?: any;
-        }
-
-        /**
-         * Entity representing the reference to the deployment parameters.
-         */
-        export interface ParametersLinkResponse {
-            /**
-             * If included, must match the ContentVersion in the template.
-             */
-            contentVersion?: string;
-            /**
-             * The URI of the parameters file.
-             */
-            uri: string;
-        }
-
-        /**
          * (Optional) The ID of the parent management group.
          */
         export interface ParentGroupInfoResponse {
@@ -239902,192 +238622,6 @@ export namespace management {
              * The name of the parent management group
              */
             name?: string;
-        }
-
-        /**
-         * The policy definition group.
-         */
-        export interface PolicyDefinitionGroupResponse {
-            /**
-             * A resource ID of a resource that contains additional metadata about the group.
-             */
-            additionalMetadataId?: string;
-            /**
-             * The group's category.
-             */
-            category?: string;
-            /**
-             * The group's description.
-             */
-            description?: string;
-            /**
-             * The group's display name.
-             */
-            displayName?: string;
-            /**
-             * The name of the group.
-             */
-            name: string;
-        }
-
-        /**
-         * The policy definition reference.
-         */
-        export interface PolicyDefinitionReferenceResponse {
-            /**
-             * The name of the groups that this policy definition reference belongs to.
-             */
-            groupNames?: string[];
-            /**
-             * The parameter values for the referenced policy rule. The keys are the parameter names.
-             */
-            parameters?: {[key: string]: outputs.management.latest.ParameterValuesValueResponse};
-            /**
-             * The ID of the policy definition or policy set definition.
-             */
-            policyDefinitionId: string;
-            /**
-             * A unique id (within the policy set definition) for this policy definition reference.
-             */
-            policyDefinitionReferenceId?: string;
-        }
-
-        /**
-         * The provider extended location. 
-         */
-        export interface ProviderExtendedLocationResponse {
-            /**
-             * The extended locations for the azure location.
-             */
-            extendedLocations?: string[];
-            /**
-             * The azure location.
-             */
-            location?: string;
-            /**
-             * The extended location type.
-             */
-            type?: string;
-        }
-
-        /**
-         * Resource type managed by the resource provider.
-         */
-        export interface ProviderResourceTypeResponse {
-            /**
-             * The aliases that are supported by this resource type.
-             */
-            aliases?: outputs.management.latest.AliasResponse[];
-            /**
-             * The API profiles for the resource provider.
-             */
-            apiProfiles: outputs.management.latest.ApiProfileResponse[];
-            /**
-             * The API version.
-             */
-            apiVersions?: string[];
-            /**
-             * The additional capabilities offered by this resource type.
-             */
-            capabilities?: string;
-            /**
-             * The default API version.
-             */
-            defaultApiVersion: string;
-            /**
-             * The location mappings that are supported by this resource type.
-             */
-            locationMappings?: outputs.management.latest.ProviderExtendedLocationResponse[];
-            /**
-             * The collection of locations where this resource type can be created.
-             */
-            locations?: string[];
-            /**
-             * The properties.
-             */
-            properties?: {[key: string]: string};
-            /**
-             * The resource type.
-             */
-            resourceType?: string;
-        }
-
-        /**
-         * Resource provider information.
-         */
-        export interface ProviderResponse {
-            /**
-             * The provider ID.
-             */
-            id: string;
-            /**
-             * The namespace of the resource provider.
-             */
-            namespace?: string;
-            /**
-             * The registration policy of the resource provider.
-             */
-            registrationPolicy: string;
-            /**
-             * The registration state of the resource provider.
-             */
-            registrationState: string;
-            /**
-             * The collection of provider resource types.
-             */
-            resourceTypes: outputs.management.latest.ProviderResourceTypeResponse[];
-        }
-
-        /**
-         * The resource Id model.
-         */
-        export interface ResourceReferenceResponse {
-            /**
-             * The fully qualified resource Id.
-             */
-            id: string;
-        }
-
-        /**
-         * Entity representing the reference to the template.
-         */
-        export interface TemplateLinkResponse {
-            /**
-             * If included, must match the ContentVersion in the template.
-             */
-            contentVersion?: string;
-            /**
-             * The resource id of a Template Spec. Use either the id or uri property, but not both.
-             */
-            id?: string;
-            /**
-             * The query string (for example, a SAS token) to be used with the templateLink URI.
-             */
-            queryString?: string;
-            /**
-             * The relativePath property can be used to deploy a linked template at a location relative to the parent. If the parent template was linked with a TemplateSpec, this will reference an artifact in the TemplateSpec.  If the parent was linked with a URI, the child deployment will be a combination of the parent and relativePath URIs
-             */
-            relativePath?: string;
-            /**
-             * The URI of the template to deploy. Use either the uri or id property, but not both.
-             */
-            uri?: string;
-        }
-    }
-
-    export namespace v20170601preview {
-        /**
-         * The policy definition reference.
-         */
-        export interface PolicyDefinitionReferenceResponse {
-            /**
-             * Required if a parameter is used in policy rule.
-             */
-            parameters?: any;
-            /**
-             * The ID of the policy definition or policy set definition.
-             */
-            policyDefinitionId?: string;
         }
     }
 
@@ -240148,82 +238682,6 @@ export namespace management {
              * The fully qualified ID for the parent management group.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
              */
             parentId?: string;
-        }
-    }
-
-    export namespace v20171111preview {
-        /**
-         * The status of the blueprint. This field is readonly.
-         */
-        export interface BlueprintStatusResponse {
-            /**
-             * Last modified time of this blueprint.
-             */
-            lastModified: string;
-            /**
-             * Creation time of this blueprint.
-             */
-            timeCreated: string;
-        }
-
-        /**
-         * Represent a parameter with constrains and metadata.
-         */
-        export interface ParameterDefinitionResponse {
-            /**
-             * Array of allowed values for this parameter.
-             */
-            allowedValues?: any[];
-            /**
-             * Default Value for this parameter.
-             */
-            defaultValue?: any;
-            /**
-             * Description of this parameter/resourceGroup.
-             */
-            description?: string;
-            /**
-             * DisplayName of this parameter/resourceGroup.
-             */
-            displayName?: string;
-            /**
-             * StrongType for UI to render rich experience during assignment time.
-             */
-            strongType?: string;
-            /**
-             * Allowed data types for Azure Resource Manager template parameters.
-             */
-            type: string;
-        }
-
-        /**
-         * Represents an Azure resource group in a Blueprint definition.
-         */
-        export interface ResourceGroupDefinitionResponse {
-            /**
-             * Artifacts which need to be deployed before this resource group.
-             */
-            dependsOn?: string[];
-            /**
-             * Description of this parameter/resourceGroup.
-             */
-            description?: string;
-            /**
-             * DisplayName of this parameter/resourceGroup.
-             */
-            displayName?: string;
-            /**
-             * Location of this resourceGroup, leave empty if the resource group location will be specified during the Blueprint assignment.
-             */
-            location?: string;
-            /**
-             * Name of this resourceGroup, leave empty if the resource group name will be specified during the Blueprint assignment.
-             */
-            name?: string;
-            /**
-             * StrongType for UI to render rich experience during assignment time.
-             */
-            strongType?: string;
         }
     }
 
@@ -240340,22 +238798,6 @@ export namespace management {
              * The name of the parent management group
              */
             name?: string;
-        }
-    }
-
-    export namespace v20180301 {
-        /**
-         * The policy definition reference.
-         */
-        export interface PolicyDefinitionReferenceResponse {
-            /**
-             * Required if a parameter is used in policy rule.
-             */
-            parameters?: any;
-            /**
-             * The ID of the policy definition or policy set definition.
-             */
-            policyDefinitionId?: string;
         }
     }
 
@@ -240493,1466 +238935,6 @@ export namespace management {
              * The name of the parent management group
              */
             name?: string;
-        }
-    }
-
-    export namespace v20180501 {
-        /**
-         * The policy definition reference.
-         */
-        export interface PolicyDefinitionReferenceResponse {
-            /**
-             * Required if a parameter is used in policy rule.
-             */
-            parameters?: any;
-            /**
-             * The ID of the policy definition or policy set definition.
-             */
-            policyDefinitionId?: string;
-        }
-    }
-
-    export namespace v20190101 {
-        /**
-         * The policy definition reference.
-         */
-        export interface PolicyDefinitionReferenceResponse {
-            /**
-             * Required if a parameter is used in policy rule.
-             */
-            parameters?: any;
-            /**
-             * The ID of the policy definition or policy set definition.
-             */
-            policyDefinitionId?: string;
-        }
-    }
-
-    export namespace v20190501 {
-        /**
-         * The type of the paths for alias. 
-         */
-        export interface AliasPathTypeResponse {
-            /**
-             * The API versions.
-             */
-            apiVersions?: string[];
-            /**
-             * The path of an alias.
-             */
-            path?: string;
-        }
-
-        /**
-         * The alias type. 
-         */
-        export interface AliasTypeResponse {
-            /**
-             * The alias name.
-             */
-            name?: string;
-            /**
-             * The paths for an alias.
-             */
-            paths?: outputs.management.v20190501.AliasPathTypeResponse[];
-        }
-
-        /**
-         * Deployment dependency information.
-         */
-        export interface BasicDependencyResponse {
-            /**
-             * The ID of the dependency.
-             */
-            id?: string;
-            /**
-             * The dependency resource name.
-             */
-            resourceName?: string;
-            /**
-             * The dependency resource type.
-             */
-            resourceType?: string;
-        }
-
-        /**
-         * The debug setting.
-         */
-        export interface DebugSettingResponse {
-            /**
-             * Specifies the type of information to log for debugging. The permitted values are none, requestContent, responseContent, or both requestContent and responseContent separated by a comma. The default is none. When setting this value, carefully consider the type of information you are passing in during deployment. By logging information about the request or response, you could potentially expose sensitive data that is retrieved through the deployment operations.
-             */
-            detailLevel?: string;
-        }
-
-        /**
-         * Deployment dependency information.
-         */
-        export interface DependencyResponse {
-            /**
-             * The list of dependencies.
-             */
-            dependsOn?: outputs.management.v20190501.BasicDependencyResponse[];
-            /**
-             * The ID of the dependency.
-             */
-            id?: string;
-            /**
-             * The dependency resource name.
-             */
-            resourceName?: string;
-            /**
-             * The dependency resource type.
-             */
-            resourceType?: string;
-        }
-
-        /**
-         * Deployment properties with additional details.
-         */
-        export interface DeploymentPropertiesExtendedResponse {
-            /**
-             * The correlation ID of the deployment.
-             */
-            correlationId: string;
-            /**
-             * The debug setting of the deployment.
-             */
-            debugSetting?: outputs.management.v20190501.DebugSettingResponse;
-            /**
-             * The list of deployment dependencies.
-             */
-            dependencies?: outputs.management.v20190501.DependencyResponse[];
-            /**
-             * The duration of the template deployment.
-             */
-            duration: string;
-            /**
-             * The deployment mode. Possible values are Incremental and Complete.
-             */
-            mode?: string;
-            /**
-             * The deployment on error behavior.
-             */
-            onErrorDeployment?: outputs.management.v20190501.OnErrorDeploymentExtendedResponse;
-            /**
-             * Key/value pairs that represent deployment output.
-             */
-            outputs?: any;
-            /**
-             * Deployment parameters. Use only one of Parameters or ParametersLink.
-             */
-            parameters?: any;
-            /**
-             * The URI referencing the parameters. Use only one of Parameters or ParametersLink.
-             */
-            parametersLink?: outputs.management.v20190501.ParametersLinkResponse;
-            /**
-             * The list of resource providers needed for the deployment.
-             */
-            providers?: outputs.management.v20190501.ProviderResponse[];
-            /**
-             * The state of the provisioning.
-             */
-            provisioningState: string;
-            /**
-             * The template content. Use only one of Template or TemplateLink.
-             */
-            template?: any;
-            /**
-             * The URI referencing the template. Use only one of Template or TemplateLink.
-             */
-            templateLink?: outputs.management.v20190501.TemplateLinkResponse;
-            /**
-             * The timestamp of the template deployment.
-             */
-            timestamp: string;
-        }
-
-        /**
-         * Deployment on error behavior with additional details.
-         */
-        export interface OnErrorDeploymentExtendedResponse {
-            /**
-             * The deployment to be used on error case.
-             */
-            deploymentName?: string;
-            /**
-             * The state of the provisioning for the on error deployment.
-             */
-            provisioningState: string;
-            /**
-             * The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment.
-             */
-            type?: string;
-        }
-
-        /**
-         * Entity representing the reference to the deployment parameters.
-         */
-        export interface ParametersLinkResponse {
-            /**
-             * If included, must match the ContentVersion in the template.
-             */
-            contentVersion?: string;
-            /**
-             * The URI of the parameters file.
-             */
-            uri: string;
-        }
-
-        /**
-         * Resource type managed by the resource provider.
-         */
-        export interface ProviderResourceTypeResponse {
-            /**
-             * The aliases that are supported by this resource type.
-             */
-            aliases?: outputs.management.v20190501.AliasTypeResponse[];
-            /**
-             * The API version.
-             */
-            apiVersions?: string[];
-            /**
-             * The additional capabilities offered by this resource type.
-             */
-            capabilities?: string;
-            /**
-             * The collection of locations where this resource type can be created.
-             */
-            locations?: string[];
-            /**
-             * The properties.
-             */
-            properties?: {[key: string]: string};
-            /**
-             * The resource type.
-             */
-            resourceType?: string;
-        }
-
-        /**
-         * Resource provider information.
-         */
-        export interface ProviderResponse {
-            /**
-             * The provider ID.
-             */
-            id: string;
-            /**
-             * The namespace of the resource provider.
-             */
-            namespace?: string;
-            /**
-             * The registration policy of the resource provider.
-             */
-            registrationPolicy: string;
-            /**
-             * The registration state of the resource provider.
-             */
-            registrationState: string;
-            /**
-             * The collection of provider resource types.
-             */
-            resourceTypes: outputs.management.v20190501.ProviderResourceTypeResponse[];
-        }
-
-        /**
-         * Entity representing the reference to the template.
-         */
-        export interface TemplateLinkResponse {
-            /**
-             * If included, must match the ContentVersion in the template.
-             */
-            contentVersion?: string;
-            /**
-             * The URI of the template to deploy.
-             */
-            uri: string;
-        }
-    }
-
-    export namespace v20190510 {
-        /**
-         * The type of the paths for alias. 
-         */
-        export interface AliasPathTypeResponse {
-            /**
-             * The API versions.
-             */
-            apiVersions?: string[];
-            /**
-             * The path of an alias.
-             */
-            path?: string;
-        }
-
-        /**
-         * The alias type. 
-         */
-        export interface AliasTypeResponse {
-            /**
-             * The alias name.
-             */
-            name?: string;
-            /**
-             * The paths for an alias.
-             */
-            paths?: outputs.management.v20190510.AliasPathTypeResponse[];
-        }
-
-        /**
-         * Deployment dependency information.
-         */
-        export interface BasicDependencyResponse {
-            /**
-             * The ID of the dependency.
-             */
-            id?: string;
-            /**
-             * The dependency resource name.
-             */
-            resourceName?: string;
-            /**
-             * The dependency resource type.
-             */
-            resourceType?: string;
-        }
-
-        /**
-         * The debug setting.
-         */
-        export interface DebugSettingResponse {
-            /**
-             * Specifies the type of information to log for debugging. The permitted values are none, requestContent, responseContent, or both requestContent and responseContent separated by a comma. The default is none. When setting this value, carefully consider the type of information you are passing in during deployment. By logging information about the request or response, you could potentially expose sensitive data that is retrieved through the deployment operations.
-             */
-            detailLevel?: string;
-        }
-
-        /**
-         * Deployment dependency information.
-         */
-        export interface DependencyResponse {
-            /**
-             * The list of dependencies.
-             */
-            dependsOn?: outputs.management.v20190510.BasicDependencyResponse[];
-            /**
-             * The ID of the dependency.
-             */
-            id?: string;
-            /**
-             * The dependency resource name.
-             */
-            resourceName?: string;
-            /**
-             * The dependency resource type.
-             */
-            resourceType?: string;
-        }
-
-        /**
-         * Deployment properties with additional details.
-         */
-        export interface DeploymentPropertiesExtendedResponse {
-            /**
-             * The correlation ID of the deployment.
-             */
-            correlationId: string;
-            /**
-             * The debug setting of the deployment.
-             */
-            debugSetting?: outputs.management.v20190510.DebugSettingResponse;
-            /**
-             * The list of deployment dependencies.
-             */
-            dependencies?: outputs.management.v20190510.DependencyResponse[];
-            /**
-             * The duration of the template deployment.
-             */
-            duration: string;
-            /**
-             * The deployment mode. Possible values are Incremental and Complete.
-             */
-            mode?: string;
-            /**
-             * The deployment on error behavior.
-             */
-            onErrorDeployment?: outputs.management.v20190510.OnErrorDeploymentExtendedResponse;
-            /**
-             * Key/value pairs that represent deployment output.
-             */
-            outputs?: any;
-            /**
-             * Deployment parameters. Use only one of Parameters or ParametersLink.
-             */
-            parameters?: any;
-            /**
-             * The URI referencing the parameters. Use only one of Parameters or ParametersLink.
-             */
-            parametersLink?: outputs.management.v20190510.ParametersLinkResponse;
-            /**
-             * The list of resource providers needed for the deployment.
-             */
-            providers?: outputs.management.v20190510.ProviderResponse[];
-            /**
-             * The state of the provisioning.
-             */
-            provisioningState: string;
-            /**
-             * The template content. Use only one of Template or TemplateLink.
-             */
-            template?: any;
-            /**
-             * The URI referencing the template. Use only one of Template or TemplateLink.
-             */
-            templateLink?: outputs.management.v20190510.TemplateLinkResponse;
-            /**
-             * The timestamp of the template deployment.
-             */
-            timestamp: string;
-        }
-
-        /**
-         * Deployment on error behavior with additional details.
-         */
-        export interface OnErrorDeploymentExtendedResponse {
-            /**
-             * The deployment to be used on error case.
-             */
-            deploymentName?: string;
-            /**
-             * The state of the provisioning for the on error deployment.
-             */
-            provisioningState: string;
-            /**
-             * The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment.
-             */
-            type?: string;
-        }
-
-        /**
-         * Entity representing the reference to the deployment parameters.
-         */
-        export interface ParametersLinkResponse {
-            /**
-             * If included, must match the ContentVersion in the template.
-             */
-            contentVersion?: string;
-            /**
-             * The URI of the parameters file.
-             */
-            uri: string;
-        }
-
-        /**
-         * Resource type managed by the resource provider.
-         */
-        export interface ProviderResourceTypeResponse {
-            /**
-             * The aliases that are supported by this resource type.
-             */
-            aliases?: outputs.management.v20190510.AliasTypeResponse[];
-            /**
-             * The API version.
-             */
-            apiVersions?: string[];
-            /**
-             * The additional capabilities offered by this resource type.
-             */
-            capabilities?: string;
-            /**
-             * The collection of locations where this resource type can be created.
-             */
-            locations?: string[];
-            /**
-             * The properties.
-             */
-            properties?: {[key: string]: string};
-            /**
-             * The resource type.
-             */
-            resourceType?: string;
-        }
-
-        /**
-         * Resource provider information.
-         */
-        export interface ProviderResponse {
-            /**
-             * The provider ID.
-             */
-            id: string;
-            /**
-             * The namespace of the resource provider.
-             */
-            namespace?: string;
-            /**
-             * The registration policy of the resource provider.
-             */
-            registrationPolicy: string;
-            /**
-             * The registration state of the resource provider.
-             */
-            registrationState: string;
-            /**
-             * The collection of provider resource types.
-             */
-            resourceTypes: outputs.management.v20190510.ProviderResourceTypeResponse[];
-        }
-
-        /**
-         * Entity representing the reference to the template.
-         */
-        export interface TemplateLinkResponse {
-            /**
-             * If included, must match the ContentVersion in the template.
-             */
-            contentVersion?: string;
-            /**
-             * The URI of the template to deploy.
-             */
-            uri: string;
-        }
-    }
-
-    export namespace v20190601 {
-        /**
-         * The policy definition reference.
-         */
-        export interface PolicyDefinitionReferenceResponse {
-            /**
-             * Required if a parameter is used in policy rule.
-             */
-            parameters?: any;
-            /**
-             * The ID of the policy definition or policy set definition.
-             */
-            policyDefinitionId?: string;
-        }
-    }
-
-    export namespace v20190701 {
-        /**
-         * The type of the paths for alias. 
-         */
-        export interface AliasPathTypeResponse {
-            /**
-             * The API versions.
-             */
-            apiVersions?: string[];
-            /**
-             * The path of an alias.
-             */
-            path?: string;
-        }
-
-        /**
-         * The alias type. 
-         */
-        export interface AliasTypeResponse {
-            /**
-             * The alias name.
-             */
-            name?: string;
-            /**
-             * The paths for an alias.
-             */
-            paths?: outputs.management.v20190701.AliasPathTypeResponse[];
-        }
-
-        /**
-         * Deployment dependency information.
-         */
-        export interface BasicDependencyResponse {
-            /**
-             * The ID of the dependency.
-             */
-            id?: string;
-            /**
-             * The dependency resource name.
-             */
-            resourceName?: string;
-            /**
-             * The dependency resource type.
-             */
-            resourceType?: string;
-        }
-
-        /**
-         * The debug setting.
-         */
-        export interface DebugSettingResponse {
-            /**
-             * Specifies the type of information to log for debugging. The permitted values are none, requestContent, responseContent, or both requestContent and responseContent separated by a comma. The default is none. When setting this value, carefully consider the type of information you are passing in during deployment. By logging information about the request or response, you could potentially expose sensitive data that is retrieved through the deployment operations.
-             */
-            detailLevel?: string;
-        }
-
-        /**
-         * Deployment dependency information.
-         */
-        export interface DependencyResponse {
-            /**
-             * The list of dependencies.
-             */
-            dependsOn?: outputs.management.v20190701.BasicDependencyResponse[];
-            /**
-             * The ID of the dependency.
-             */
-            id?: string;
-            /**
-             * The dependency resource name.
-             */
-            resourceName?: string;
-            /**
-             * The dependency resource type.
-             */
-            resourceType?: string;
-        }
-
-        /**
-         * Deployment properties with additional details.
-         */
-        export interface DeploymentPropertiesExtendedResponse {
-            /**
-             * The correlation ID of the deployment.
-             */
-            correlationId: string;
-            /**
-             * The debug setting of the deployment.
-             */
-            debugSetting?: outputs.management.v20190701.DebugSettingResponse;
-            /**
-             * The list of deployment dependencies.
-             */
-            dependencies?: outputs.management.v20190701.DependencyResponse[];
-            /**
-             * The duration of the template deployment.
-             */
-            duration: string;
-            /**
-             * The deployment mode. Possible values are Incremental and Complete.
-             */
-            mode?: string;
-            /**
-             * The deployment on error behavior.
-             */
-            onErrorDeployment?: outputs.management.v20190701.OnErrorDeploymentExtendedResponse;
-            /**
-             * Key/value pairs that represent deployment output.
-             */
-            outputs?: any;
-            /**
-             * Deployment parameters. Use only one of Parameters or ParametersLink.
-             */
-            parameters?: any;
-            /**
-             * The URI referencing the parameters. Use only one of Parameters or ParametersLink.
-             */
-            parametersLink?: outputs.management.v20190701.ParametersLinkResponse;
-            /**
-             * The list of resource providers needed for the deployment.
-             */
-            providers?: outputs.management.v20190701.ProviderResponse[];
-            /**
-             * The state of the provisioning.
-             */
-            provisioningState: string;
-            /**
-             * The template content. Use only one of Template or TemplateLink.
-             */
-            template?: any;
-            /**
-             * The URI referencing the template. Use only one of Template or TemplateLink.
-             */
-            templateLink?: outputs.management.v20190701.TemplateLinkResponse;
-            /**
-             * The timestamp of the template deployment.
-             */
-            timestamp: string;
-        }
-
-        /**
-         * Deployment on error behavior with additional details.
-         */
-        export interface OnErrorDeploymentExtendedResponse {
-            /**
-             * The deployment to be used on error case.
-             */
-            deploymentName?: string;
-            /**
-             * The state of the provisioning for the on error deployment.
-             */
-            provisioningState: string;
-            /**
-             * The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment.
-             */
-            type?: string;
-        }
-
-        /**
-         * Entity representing the reference to the deployment parameters.
-         */
-        export interface ParametersLinkResponse {
-            /**
-             * If included, must match the ContentVersion in the template.
-             */
-            contentVersion?: string;
-            /**
-             * The URI of the parameters file.
-             */
-            uri: string;
-        }
-
-        /**
-         * Resource type managed by the resource provider.
-         */
-        export interface ProviderResourceTypeResponse {
-            /**
-             * The aliases that are supported by this resource type.
-             */
-            aliases?: outputs.management.v20190701.AliasTypeResponse[];
-            /**
-             * The API version.
-             */
-            apiVersions?: string[];
-            /**
-             * The additional capabilities offered by this resource type.
-             */
-            capabilities?: string;
-            /**
-             * The collection of locations where this resource type can be created.
-             */
-            locations?: string[];
-            /**
-             * The properties.
-             */
-            properties?: {[key: string]: string};
-            /**
-             * The resource type.
-             */
-            resourceType?: string;
-        }
-
-        /**
-         * Resource provider information.
-         */
-        export interface ProviderResponse {
-            /**
-             * The provider ID.
-             */
-            id: string;
-            /**
-             * The namespace of the resource provider.
-             */
-            namespace?: string;
-            /**
-             * The registration policy of the resource provider.
-             */
-            registrationPolicy: string;
-            /**
-             * The registration state of the resource provider.
-             */
-            registrationState: string;
-            /**
-             * The collection of provider resource types.
-             */
-            resourceTypes: outputs.management.v20190701.ProviderResourceTypeResponse[];
-        }
-
-        /**
-         * Entity representing the reference to the template.
-         */
-        export interface TemplateLinkResponse {
-            /**
-             * If included, must match the ContentVersion in the template.
-             */
-            contentVersion?: string;
-            /**
-             * The URI of the template to deploy.
-             */
-            uri: string;
-        }
-    }
-
-    export namespace v20190801 {
-        /**
-         * The type of the paths for alias. 
-         */
-        export interface AliasPathTypeResponse {
-            /**
-             * The API versions.
-             */
-            apiVersions?: string[];
-            /**
-             * The path of an alias.
-             */
-            path?: string;
-        }
-
-        /**
-         * The alias type. 
-         */
-        export interface AliasTypeResponse {
-            /**
-             * The alias name.
-             */
-            name?: string;
-            /**
-             * The paths for an alias.
-             */
-            paths?: outputs.management.v20190801.AliasPathTypeResponse[];
-        }
-
-        /**
-         * Deployment dependency information.
-         */
-        export interface BasicDependencyResponse {
-            /**
-             * The ID of the dependency.
-             */
-            id?: string;
-            /**
-             * The dependency resource name.
-             */
-            resourceName?: string;
-            /**
-             * The dependency resource type.
-             */
-            resourceType?: string;
-        }
-
-        /**
-         * The debug setting.
-         */
-        export interface DebugSettingResponse {
-            /**
-             * Specifies the type of information to log for debugging. The permitted values are none, requestContent, responseContent, or both requestContent and responseContent separated by a comma. The default is none. When setting this value, carefully consider the type of information you are passing in during deployment. By logging information about the request or response, you could potentially expose sensitive data that is retrieved through the deployment operations.
-             */
-            detailLevel?: string;
-        }
-
-        /**
-         * Deployment dependency information.
-         */
-        export interface DependencyResponse {
-            /**
-             * The list of dependencies.
-             */
-            dependsOn?: outputs.management.v20190801.BasicDependencyResponse[];
-            /**
-             * The ID of the dependency.
-             */
-            id?: string;
-            /**
-             * The dependency resource name.
-             */
-            resourceName?: string;
-            /**
-             * The dependency resource type.
-             */
-            resourceType?: string;
-        }
-
-        /**
-         * Deployment properties with additional details.
-         */
-        export interface DeploymentPropertiesExtendedResponse {
-            /**
-             * The correlation ID of the deployment.
-             */
-            correlationId: string;
-            /**
-             * The debug setting of the deployment.
-             */
-            debugSetting?: outputs.management.v20190801.DebugSettingResponse;
-            /**
-             * The list of deployment dependencies.
-             */
-            dependencies?: outputs.management.v20190801.DependencyResponse[];
-            /**
-             * The duration of the template deployment.
-             */
-            duration: string;
-            /**
-             * The deployment mode. Possible values are Incremental and Complete.
-             */
-            mode?: string;
-            /**
-             * The deployment on error behavior.
-             */
-            onErrorDeployment?: outputs.management.v20190801.OnErrorDeploymentExtendedResponse;
-            /**
-             * Key/value pairs that represent deployment output.
-             */
-            outputs?: any;
-            /**
-             * Deployment parameters. Use only one of Parameters or ParametersLink.
-             */
-            parameters?: any;
-            /**
-             * The URI referencing the parameters. Use only one of Parameters or ParametersLink.
-             */
-            parametersLink?: outputs.management.v20190801.ParametersLinkResponse;
-            /**
-             * The list of resource providers needed for the deployment.
-             */
-            providers?: outputs.management.v20190801.ProviderResponse[];
-            /**
-             * The state of the provisioning.
-             */
-            provisioningState: string;
-            /**
-             * The template content. Use only one of Template or TemplateLink.
-             */
-            template?: any;
-            /**
-             * The URI referencing the template. Use only one of Template or TemplateLink.
-             */
-            templateLink?: outputs.management.v20190801.TemplateLinkResponse;
-            /**
-             * The timestamp of the template deployment.
-             */
-            timestamp: string;
-        }
-
-        /**
-         * Deployment on error behavior with additional details.
-         */
-        export interface OnErrorDeploymentExtendedResponse {
-            /**
-             * The deployment to be used on error case.
-             */
-            deploymentName?: string;
-            /**
-             * The state of the provisioning for the on error deployment.
-             */
-            provisioningState: string;
-            /**
-             * The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment.
-             */
-            type?: string;
-        }
-
-        /**
-         * Entity representing the reference to the deployment parameters.
-         */
-        export interface ParametersLinkResponse {
-            /**
-             * If included, must match the ContentVersion in the template.
-             */
-            contentVersion?: string;
-            /**
-             * The URI of the parameters file.
-             */
-            uri: string;
-        }
-
-        /**
-         * Resource type managed by the resource provider.
-         */
-        export interface ProviderResourceTypeResponse {
-            /**
-             * The aliases that are supported by this resource type.
-             */
-            aliases?: outputs.management.v20190801.AliasTypeResponse[];
-            /**
-             * The API version.
-             */
-            apiVersions?: string[];
-            /**
-             * The additional capabilities offered by this resource type.
-             */
-            capabilities?: string;
-            /**
-             * The collection of locations where this resource type can be created.
-             */
-            locations?: string[];
-            /**
-             * The properties.
-             */
-            properties?: {[key: string]: string};
-            /**
-             * The resource type.
-             */
-            resourceType?: string;
-        }
-
-        /**
-         * Resource provider information.
-         */
-        export interface ProviderResponse {
-            /**
-             * The provider ID.
-             */
-            id: string;
-            /**
-             * The namespace of the resource provider.
-             */
-            namespace?: string;
-            /**
-             * The registration policy of the resource provider.
-             */
-            registrationPolicy: string;
-            /**
-             * The registration state of the resource provider.
-             */
-            registrationState: string;
-            /**
-             * The collection of provider resource types.
-             */
-            resourceTypes: outputs.management.v20190801.ProviderResourceTypeResponse[];
-        }
-
-        /**
-         * Entity representing the reference to the template.
-         */
-        export interface TemplateLinkResponse {
-            /**
-             * If included, must match the ContentVersion in the template.
-             */
-            contentVersion?: string;
-            /**
-             * The URI of the template to deploy.
-             */
-            uri: string;
-        }
-    }
-
-    export namespace v20190901 {
-        /**
-         * The definition of a parameter that can be provided to the policy.
-         */
-        export interface ParameterDefinitionsValueResponse {
-            /**
-             * The allowed values for the parameter.
-             */
-            allowedValues?: any[];
-            /**
-             * The default value for the parameter if no value is provided.
-             */
-            defaultValue?: any;
-            /**
-             * General metadata for the parameter.
-             */
-            metadata?: outputs.management.v20190901.ParameterDefinitionsValueResponseMetadata;
-            /**
-             * The data type of the parameter.
-             */
-            type?: string;
-        }
-
-        /**
-         * General metadata for the parameter.
-         */
-        export interface ParameterDefinitionsValueResponseMetadata {
-            /**
-             * The description of the parameter.
-             */
-            description?: string;
-            /**
-             * The display name for the parameter.
-             */
-            displayName?: string;
-        }
-
-        /**
-         * The value of a parameter.
-         */
-        export interface ParameterValuesValueResponse {
-            /**
-             * The value of the parameter.
-             */
-            value?: any;
-        }
-
-        /**
-         * The policy definition group.
-         */
-        export interface PolicyDefinitionGroupResponse {
-            /**
-             * A resource ID of a resource that contains additional metadata about the group.
-             */
-            additionalMetadataId?: string;
-            /**
-             * The group's category.
-             */
-            category?: string;
-            /**
-             * The group's description.
-             */
-            description?: string;
-            /**
-             * The group's display name.
-             */
-            displayName?: string;
-            /**
-             * The name of the group.
-             */
-            name: string;
-        }
-
-        /**
-         * The policy definition reference.
-         */
-        export interface PolicyDefinitionReferenceResponse {
-            /**
-             * The name of the groups that this policy definition reference belongs to.
-             */
-            groupNames?: string[];
-            /**
-             * The parameter values for the referenced policy rule. The keys are the parameter names.
-             */
-            parameters?: {[key: string]: outputs.management.v20190901.ParameterValuesValueResponse};
-            /**
-             * The ID of the policy definition or policy set definition.
-             */
-            policyDefinitionId: string;
-            /**
-             * A unique id (within the policy set definition) for this policy definition reference.
-             */
-            policyDefinitionReferenceId?: string;
-        }
-    }
-
-    export namespace v20191001 {
-        /**
-         * The type of the paths for alias.
-         */
-        export interface AliasPathResponse {
-            /**
-             * The API versions.
-             */
-            apiVersions?: string[];
-            /**
-             * The path of an alias.
-             */
-            path?: string;
-            /**
-             * The pattern for an alias path.
-             */
-            pattern?: outputs.management.v20191001.AliasPatternResponse;
-        }
-
-        /**
-         * The type of the pattern for an alias path.
-         */
-        export interface AliasPatternResponse {
-            /**
-             * The alias pattern phrase.
-             */
-            phrase?: string;
-            /**
-             * The type of alias pattern
-             */
-            type?: string;
-            /**
-             * The alias pattern variable.
-             */
-            variable?: string;
-        }
-
-        /**
-         * The alias type. 
-         */
-        export interface AliasResponse {
-            /**
-             * The default path for an alias.
-             */
-            defaultPath?: string;
-            /**
-             * The default pattern for an alias.
-             */
-            defaultPattern?: outputs.management.v20191001.AliasPatternResponse;
-            /**
-             * The alias name.
-             */
-            name?: string;
-            /**
-             * The paths for an alias.
-             */
-            paths?: outputs.management.v20191001.AliasPathResponse[];
-            /**
-             * The type of the alias.
-             */
-            type?: string;
-        }
-
-        /**
-         * Deployment dependency information.
-         */
-        export interface BasicDependencyResponse {
-            /**
-             * The ID of the dependency.
-             */
-            id?: string;
-            /**
-             * The dependency resource name.
-             */
-            resourceName?: string;
-            /**
-             * The dependency resource type.
-             */
-            resourceType?: string;
-        }
-
-        /**
-         * The debug setting.
-         */
-        export interface DebugSettingResponse {
-            /**
-             * Specifies the type of information to log for debugging. The permitted values are none, requestContent, responseContent, or both requestContent and responseContent separated by a comma. The default is none. When setting this value, carefully consider the type of information you are passing in during deployment. By logging information about the request or response, you could potentially expose sensitive data that is retrieved through the deployment operations.
-             */
-            detailLevel?: string;
-        }
-
-        /**
-         * Deployment dependency information.
-         */
-        export interface DependencyResponse {
-            /**
-             * The list of dependencies.
-             */
-            dependsOn?: outputs.management.v20191001.BasicDependencyResponse[];
-            /**
-             * The ID of the dependency.
-             */
-            id?: string;
-            /**
-             * The dependency resource name.
-             */
-            resourceName?: string;
-            /**
-             * The dependency resource type.
-             */
-            resourceType?: string;
-        }
-
-        /**
-         * Deployment properties with additional details.
-         */
-        export interface DeploymentPropertiesExtendedResponse {
-            /**
-             * The correlation ID of the deployment.
-             */
-            correlationId: string;
-            /**
-             * The debug setting of the deployment.
-             */
-            debugSetting: outputs.management.v20191001.DebugSettingResponse;
-            /**
-             * The list of deployment dependencies.
-             */
-            dependencies: outputs.management.v20191001.DependencyResponse[];
-            /**
-             * The duration of the template deployment.
-             */
-            duration: string;
-            /**
-             * The deployment error.
-             */
-            error: outputs.management.v20191001.ErrorResponseResponse;
-            /**
-             * The deployment mode. Possible values are Incremental and Complete.
-             */
-            mode: string;
-            /**
-             * The deployment on error behavior.
-             */
-            onErrorDeployment: outputs.management.v20191001.OnErrorDeploymentExtendedResponse;
-            /**
-             * Array of provisioned resources.
-             */
-            outputResources: outputs.management.v20191001.ResourceReferenceResponse[];
-            /**
-             * Key/value pairs that represent deployment output.
-             */
-            outputs: any;
-            /**
-             * Deployment parameters. 
-             */
-            parameters: any;
-            /**
-             * The URI referencing the parameters. 
-             */
-            parametersLink: outputs.management.v20191001.ParametersLinkResponse;
-            /**
-             * The list of resource providers needed for the deployment.
-             */
-            providers: outputs.management.v20191001.ProviderResponse[];
-            /**
-             * The state of the provisioning.
-             */
-            provisioningState: string;
-            /**
-             * The hash produced for the template.
-             */
-            templateHash: string;
-            /**
-             * The URI referencing the template.
-             */
-            templateLink: outputs.management.v20191001.TemplateLinkResponse;
-            /**
-             * The timestamp of the template deployment.
-             */
-            timestamp: string;
-            /**
-             * Array of validated resources.
-             */
-            validatedResources: outputs.management.v20191001.ResourceReferenceResponse[];
-        }
-
-        /**
-         * The resource management error additional info.
-         */
-        export interface ErrorAdditionalInfoResponse {
-            /**
-             * The additional info.
-             */
-            info: any;
-            /**
-             * The additional info type.
-             */
-            type: string;
-        }
-
-        /**
-         * Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.)
-         */
-        export interface ErrorResponseResponse {
-            /**
-             * The error additional info.
-             */
-            additionalInfo: outputs.management.v20191001.ErrorAdditionalInfoResponse[];
-            /**
-             * The error code.
-             */
-            code: string;
-            /**
-             * The error details.
-             */
-            details: outputs.management.v20191001.ErrorResponseResponse[];
-            /**
-             * The error message.
-             */
-            message: string;
-            /**
-             * The error target.
-             */
-            target: string;
-        }
-
-        /**
-         * Deployment on error behavior with additional details.
-         */
-        export interface OnErrorDeploymentExtendedResponse {
-            /**
-             * The deployment to be used on error case.
-             */
-            deploymentName?: string;
-            /**
-             * The state of the provisioning for the on error deployment.
-             */
-            provisioningState: string;
-            /**
-             * The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment.
-             */
-            type?: string;
-        }
-
-        /**
-         * Entity representing the reference to the deployment parameters.
-         */
-        export interface ParametersLinkResponse {
-            /**
-             * If included, must match the ContentVersion in the template.
-             */
-            contentVersion?: string;
-            /**
-             * The URI of the parameters file.
-             */
-            uri: string;
-        }
-
-        /**
-         * Resource type managed by the resource provider.
-         */
-        export interface ProviderResourceTypeResponse {
-            /**
-             * The aliases that are supported by this resource type.
-             */
-            aliases?: outputs.management.v20191001.AliasResponse[];
-            /**
-             * The API version.
-             */
-            apiVersions?: string[];
-            /**
-             * The additional capabilities offered by this resource type.
-             */
-            capabilities?: string;
-            /**
-             * The collection of locations where this resource type can be created.
-             */
-            locations?: string[];
-            /**
-             * The properties.
-             */
-            properties?: {[key: string]: string};
-            /**
-             * The resource type.
-             */
-            resourceType?: string;
-        }
-
-        /**
-         * Resource provider information.
-         */
-        export interface ProviderResponse {
-            /**
-             * The provider ID.
-             */
-            id: string;
-            /**
-             * The namespace of the resource provider.
-             */
-            namespace?: string;
-            /**
-             * The registration policy of the resource provider.
-             */
-            registrationPolicy: string;
-            /**
-             * The registration state of the resource provider.
-             */
-            registrationState: string;
-            /**
-             * The collection of provider resource types.
-             */
-            resourceTypes: outputs.management.v20191001.ProviderResourceTypeResponse[];
-        }
-
-        /**
-         * The resource Id model.
-         */
-        export interface ResourceReferenceResponse {
-            /**
-             * The fully qualified resource Id.
-             */
-            id: string;
-        }
-
-        /**
-         * Entity representing the reference to the template.
-         */
-        export interface TemplateLinkResponse {
-            /**
-             * If included, must match the ContentVersion in the template.
-             */
-            contentVersion?: string;
-            /**
-             * The URI of the template to deploy.
-             */
-            uri: string;
         }
     }
 
@@ -242107,22 +239089,6 @@ export namespace management {
         }
     }
 
-    export namespace v20200101preview {
-        /**
-         * Part of Management Group diagnostic setting. Specifies the settings for a particular log.
-         */
-        export interface ManagementGroupLogSettingsResponse {
-            /**
-             * Name of a Management Group Diagnostic Log category for a resource type this setting is applied to.
-             */
-            category: string;
-            /**
-             * a value indicating whether this log is enabled.
-             */
-            enabled: boolean;
-        }
-    }
-
     export namespace v20200201 {
         /**
          * The entity.
@@ -242271,102 +239237,6 @@ export namespace management {
              * The name of the parent management group
              */
             name?: string;
-        }
-    }
-
-    export namespace v20200301 {
-        /**
-         * The definition of a parameter that can be provided to the policy.
-         */
-        export interface ParameterDefinitionsValueResponse {
-            /**
-             * The allowed values for the parameter.
-             */
-            allowedValues?: any[];
-            /**
-             * The default value for the parameter if no value is provided.
-             */
-            defaultValue?: any;
-            /**
-             * General metadata for the parameter.
-             */
-            metadata?: outputs.management.v20200301.ParameterDefinitionsValueResponseMetadata;
-            /**
-             * The data type of the parameter.
-             */
-            type?: string;
-        }
-
-        /**
-         * General metadata for the parameter.
-         */
-        export interface ParameterDefinitionsValueResponseMetadata {
-            /**
-             * The description of the parameter.
-             */
-            description?: string;
-            /**
-             * The display name for the parameter.
-             */
-            displayName?: string;
-        }
-
-        /**
-         * The value of a parameter.
-         */
-        export interface ParameterValuesValueResponse {
-            /**
-             * The value of the parameter.
-             */
-            value?: any;
-        }
-
-        /**
-         * The policy definition group.
-         */
-        export interface PolicyDefinitionGroupResponse {
-            /**
-             * A resource ID of a resource that contains additional metadata about the group.
-             */
-            additionalMetadataId?: string;
-            /**
-             * The group's category.
-             */
-            category?: string;
-            /**
-             * The group's description.
-             */
-            description?: string;
-            /**
-             * The group's display name.
-             */
-            displayName?: string;
-            /**
-             * The name of the group.
-             */
-            name: string;
-        }
-
-        /**
-         * The policy definition reference.
-         */
-        export interface PolicyDefinitionReferenceResponse {
-            /**
-             * The name of the groups that this policy definition reference belongs to.
-             */
-            groupNames?: string[];
-            /**
-             * The parameter values for the referenced policy rule. The keys are the parameter names.
-             */
-            parameters?: {[key: string]: outputs.management.v20200301.ParameterValuesValueResponse};
-            /**
-             * The ID of the policy definition or policy set definition.
-             */
-            policyDefinitionId: string;
-            /**
-             * A unique id (within the policy set definition) for this policy definition reference.
-             */
-            policyDefinitionReferenceId?: string;
         }
     }
 
@@ -242524,1316 +239394,6 @@ export namespace management {
              * The name of the parent management group
              */
             name?: string;
-        }
-    }
-
-    export namespace v20200601 {
-        export interface AliasPathMetadataResponse {
-            /**
-             * The attributes of the token that the alias path is referring to.
-             */
-            attributes: string;
-            /**
-             * The type of the token that the alias path is referring to.
-             */
-            type: string;
-        }
-
-        /**
-         * The type of the paths for alias.
-         */
-        export interface AliasPathResponse {
-            /**
-             * The API versions.
-             */
-            apiVersions?: string[];
-            /**
-             * The metadata of the alias path. If missing, fall back to the default metadata of the alias.
-             */
-            metadata: outputs.management.v20200601.AliasPathMetadataResponse;
-            /**
-             * The path of an alias.
-             */
-            path?: string;
-            /**
-             * The pattern for an alias path.
-             */
-            pattern?: outputs.management.v20200601.AliasPatternResponse;
-        }
-
-        /**
-         * The type of the pattern for an alias path.
-         */
-        export interface AliasPatternResponse {
-            /**
-             * The alias pattern phrase.
-             */
-            phrase?: string;
-            /**
-             * The type of alias pattern
-             */
-            type?: string;
-            /**
-             * The alias pattern variable.
-             */
-            variable?: string;
-        }
-
-        /**
-         * The alias type. 
-         */
-        export interface AliasResponse {
-            /**
-             * The default alias path metadata. Applies to the default path and to any alias path that doesn't have metadata
-             */
-            defaultMetadata: outputs.management.v20200601.AliasPathMetadataResponse;
-            /**
-             * The default path for an alias.
-             */
-            defaultPath?: string;
-            /**
-             * The default pattern for an alias.
-             */
-            defaultPattern?: outputs.management.v20200601.AliasPatternResponse;
-            /**
-             * The alias name.
-             */
-            name?: string;
-            /**
-             * The paths for an alias.
-             */
-            paths?: outputs.management.v20200601.AliasPathResponse[];
-            /**
-             * The type of the alias.
-             */
-            type?: string;
-        }
-
-        export interface ApiProfileResponse {
-            /**
-             * The API version.
-             */
-            apiVersion: string;
-            /**
-             * The profile version.
-             */
-            profileVersion: string;
-        }
-
-        /**
-         * Deployment dependency information.
-         */
-        export interface BasicDependencyResponse {
-            /**
-             * The ID of the dependency.
-             */
-            id?: string;
-            /**
-             * The dependency resource name.
-             */
-            resourceName?: string;
-            /**
-             * The dependency resource type.
-             */
-            resourceType?: string;
-        }
-
-        /**
-         * The debug setting.
-         */
-        export interface DebugSettingResponse {
-            /**
-             * Specifies the type of information to log for debugging. The permitted values are none, requestContent, responseContent, or both requestContent and responseContent separated by a comma. The default is none. When setting this value, carefully consider the type of information you are passing in during deployment. By logging information about the request or response, you could potentially expose sensitive data that is retrieved through the deployment operations.
-             */
-            detailLevel?: string;
-        }
-
-        /**
-         * Deployment dependency information.
-         */
-        export interface DependencyResponse {
-            /**
-             * The list of dependencies.
-             */
-            dependsOn?: outputs.management.v20200601.BasicDependencyResponse[];
-            /**
-             * The ID of the dependency.
-             */
-            id?: string;
-            /**
-             * The dependency resource name.
-             */
-            resourceName?: string;
-            /**
-             * The dependency resource type.
-             */
-            resourceType?: string;
-        }
-
-        /**
-         * Deployment properties with additional details.
-         */
-        export interface DeploymentPropertiesExtendedResponse {
-            /**
-             * The correlation ID of the deployment.
-             */
-            correlationId: string;
-            /**
-             * The debug setting of the deployment.
-             */
-            debugSetting: outputs.management.v20200601.DebugSettingResponse;
-            /**
-             * The list of deployment dependencies.
-             */
-            dependencies: outputs.management.v20200601.DependencyResponse[];
-            /**
-             * The duration of the template deployment.
-             */
-            duration: string;
-            /**
-             * The deployment error.
-             */
-            error: outputs.management.v20200601.ErrorResponseResponse;
-            /**
-             * The deployment mode. Possible values are Incremental and Complete.
-             */
-            mode: string;
-            /**
-             * The deployment on error behavior.
-             */
-            onErrorDeployment: outputs.management.v20200601.OnErrorDeploymentExtendedResponse;
-            /**
-             * Array of provisioned resources.
-             */
-            outputResources: outputs.management.v20200601.ResourceReferenceResponse[];
-            /**
-             * Key/value pairs that represent deployment output.
-             */
-            outputs: any;
-            /**
-             * Deployment parameters. 
-             */
-            parameters: any;
-            /**
-             * The URI referencing the parameters. 
-             */
-            parametersLink: outputs.management.v20200601.ParametersLinkResponse;
-            /**
-             * The list of resource providers needed for the deployment.
-             */
-            providers: outputs.management.v20200601.ProviderResponse[];
-            /**
-             * Denotes the state of provisioning.
-             */
-            provisioningState: string;
-            /**
-             * The hash produced for the template.
-             */
-            templateHash: string;
-            /**
-             * The URI referencing the template.
-             */
-            templateLink: outputs.management.v20200601.TemplateLinkResponse;
-            /**
-             * The timestamp of the template deployment.
-             */
-            timestamp: string;
-            /**
-             * Array of validated resources.
-             */
-            validatedResources: outputs.management.v20200601.ResourceReferenceResponse[];
-        }
-
-        /**
-         * The resource management error additional info.
-         */
-        export interface ErrorAdditionalInfoResponse {
-            /**
-             * The additional info.
-             */
-            info: any;
-            /**
-             * The additional info type.
-             */
-            type: string;
-        }
-
-        /**
-         * Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.)
-         */
-        export interface ErrorResponseResponse {
-            /**
-             * The error additional info.
-             */
-            additionalInfo: outputs.management.v20200601.ErrorAdditionalInfoResponse[];
-            /**
-             * The error code.
-             */
-            code: string;
-            /**
-             * The error details.
-             */
-            details: outputs.management.v20200601.ErrorResponseResponse[];
-            /**
-             * The error message.
-             */
-            message: string;
-            /**
-             * The error target.
-             */
-            target: string;
-        }
-
-        /**
-         * Deployment on error behavior with additional details.
-         */
-        export interface OnErrorDeploymentExtendedResponse {
-            /**
-             * The deployment to be used on error case.
-             */
-            deploymentName?: string;
-            /**
-             * The state of the provisioning for the on error deployment.
-             */
-            provisioningState: string;
-            /**
-             * The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment.
-             */
-            type?: string;
-        }
-
-        /**
-         * Entity representing the reference to the deployment parameters.
-         */
-        export interface ParametersLinkResponse {
-            /**
-             * If included, must match the ContentVersion in the template.
-             */
-            contentVersion?: string;
-            /**
-             * The URI of the parameters file.
-             */
-            uri: string;
-        }
-
-        /**
-         * Resource type managed by the resource provider.
-         */
-        export interface ProviderResourceTypeResponse {
-            /**
-             * The aliases that are supported by this resource type.
-             */
-            aliases?: outputs.management.v20200601.AliasResponse[];
-            /**
-             * The API profiles for the resource provider.
-             */
-            apiProfiles: outputs.management.v20200601.ApiProfileResponse[];
-            /**
-             * The API version.
-             */
-            apiVersions?: string[];
-            /**
-             * The additional capabilities offered by this resource type.
-             */
-            capabilities?: string;
-            /**
-             * The default API version.
-             */
-            defaultApiVersion: string;
-            /**
-             * The collection of locations where this resource type can be created.
-             */
-            locations?: string[];
-            /**
-             * The properties.
-             */
-            properties?: {[key: string]: string};
-            /**
-             * The resource type.
-             */
-            resourceType?: string;
-        }
-
-        /**
-         * Resource provider information.
-         */
-        export interface ProviderResponse {
-            /**
-             * The provider ID.
-             */
-            id: string;
-            /**
-             * The namespace of the resource provider.
-             */
-            namespace?: string;
-            /**
-             * The registration policy of the resource provider.
-             */
-            registrationPolicy: string;
-            /**
-             * The registration state of the resource provider.
-             */
-            registrationState: string;
-            /**
-             * The collection of provider resource types.
-             */
-            resourceTypes: outputs.management.v20200601.ProviderResourceTypeResponse[];
-        }
-
-        /**
-         * The resource Id model.
-         */
-        export interface ResourceReferenceResponse {
-            /**
-             * The fully qualified resource Id.
-             */
-            id: string;
-        }
-
-        /**
-         * Entity representing the reference to the template.
-         */
-        export interface TemplateLinkResponse {
-            /**
-             * If included, must match the ContentVersion in the template.
-             */
-            contentVersion?: string;
-            /**
-             * The resource id of a Template Spec. Use either the id or uri property, but not both.
-             */
-            id?: string;
-            /**
-             * Applicable only if this template link references a Template Spec. This relativePath property can optionally be used to reference a Template Spec artifact by path.
-             */
-            relativePath?: string;
-            /**
-             * The URI of the template to deploy. Use either the uri or id property, but not both.
-             */
-            uri?: string;
-        }
-    }
-
-    export namespace v20200801 {
-        export interface AliasPathMetadataResponse {
-            /**
-             * The attributes of the token that the alias path is referring to.
-             */
-            attributes: string;
-            /**
-             * The type of the token that the alias path is referring to.
-             */
-            type: string;
-        }
-
-        /**
-         * The type of the paths for alias.
-         */
-        export interface AliasPathResponse {
-            /**
-             * The API versions.
-             */
-            apiVersions?: string[];
-            /**
-             * The metadata of the alias path. If missing, fall back to the default metadata of the alias.
-             */
-            metadata: outputs.management.v20200801.AliasPathMetadataResponse;
-            /**
-             * The path of an alias.
-             */
-            path?: string;
-            /**
-             * The pattern for an alias path.
-             */
-            pattern?: outputs.management.v20200801.AliasPatternResponse;
-        }
-
-        /**
-         * The type of the pattern for an alias path.
-         */
-        export interface AliasPatternResponse {
-            /**
-             * The alias pattern phrase.
-             */
-            phrase?: string;
-            /**
-             * The type of alias pattern
-             */
-            type?: string;
-            /**
-             * The alias pattern variable.
-             */
-            variable?: string;
-        }
-
-        /**
-         * The alias type. 
-         */
-        export interface AliasResponse {
-            /**
-             * The default alias path metadata. Applies to the default path and to any alias path that doesn't have metadata
-             */
-            defaultMetadata: outputs.management.v20200801.AliasPathMetadataResponse;
-            /**
-             * The default path for an alias.
-             */
-            defaultPath?: string;
-            /**
-             * The default pattern for an alias.
-             */
-            defaultPattern?: outputs.management.v20200801.AliasPatternResponse;
-            /**
-             * The alias name.
-             */
-            name?: string;
-            /**
-             * The paths for an alias.
-             */
-            paths?: outputs.management.v20200801.AliasPathResponse[];
-            /**
-             * The type of the alias.
-             */
-            type?: string;
-        }
-
-        export interface ApiProfileResponse {
-            /**
-             * The API version.
-             */
-            apiVersion: string;
-            /**
-             * The profile version.
-             */
-            profileVersion: string;
-        }
-
-        /**
-         * Deployment dependency information.
-         */
-        export interface BasicDependencyResponse {
-            /**
-             * The ID of the dependency.
-             */
-            id?: string;
-            /**
-             * The dependency resource name.
-             */
-            resourceName?: string;
-            /**
-             * The dependency resource type.
-             */
-            resourceType?: string;
-        }
-
-        /**
-         * The debug setting.
-         */
-        export interface DebugSettingResponse {
-            /**
-             * Specifies the type of information to log for debugging. The permitted values are none, requestContent, responseContent, or both requestContent and responseContent separated by a comma. The default is none. When setting this value, carefully consider the type of information you are passing in during deployment. By logging information about the request or response, you could potentially expose sensitive data that is retrieved through the deployment operations.
-             */
-            detailLevel?: string;
-        }
-
-        /**
-         * Deployment dependency information.
-         */
-        export interface DependencyResponse {
-            /**
-             * The list of dependencies.
-             */
-            dependsOn?: outputs.management.v20200801.BasicDependencyResponse[];
-            /**
-             * The ID of the dependency.
-             */
-            id?: string;
-            /**
-             * The dependency resource name.
-             */
-            resourceName?: string;
-            /**
-             * The dependency resource type.
-             */
-            resourceType?: string;
-        }
-
-        /**
-         * Deployment properties with additional details.
-         */
-        export interface DeploymentPropertiesExtendedResponse {
-            /**
-             * The correlation ID of the deployment.
-             */
-            correlationId: string;
-            /**
-             * The debug setting of the deployment.
-             */
-            debugSetting: outputs.management.v20200801.DebugSettingResponse;
-            /**
-             * The list of deployment dependencies.
-             */
-            dependencies: outputs.management.v20200801.DependencyResponse[];
-            /**
-             * The duration of the template deployment.
-             */
-            duration: string;
-            /**
-             * The deployment error.
-             */
-            error: outputs.management.v20200801.ErrorResponseResponse;
-            /**
-             * The deployment mode. Possible values are Incremental and Complete.
-             */
-            mode: string;
-            /**
-             * The deployment on error behavior.
-             */
-            onErrorDeployment: outputs.management.v20200801.OnErrorDeploymentExtendedResponse;
-            /**
-             * Array of provisioned resources.
-             */
-            outputResources: outputs.management.v20200801.ResourceReferenceResponse[];
-            /**
-             * Key/value pairs that represent deployment output.
-             */
-            outputs: any;
-            /**
-             * Deployment parameters. 
-             */
-            parameters: any;
-            /**
-             * The URI referencing the parameters. 
-             */
-            parametersLink: outputs.management.v20200801.ParametersLinkResponse;
-            /**
-             * The list of resource providers needed for the deployment.
-             */
-            providers: outputs.management.v20200801.ProviderResponse[];
-            /**
-             * Denotes the state of provisioning.
-             */
-            provisioningState: string;
-            /**
-             * The hash produced for the template.
-             */
-            templateHash: string;
-            /**
-             * The URI referencing the template.
-             */
-            templateLink: outputs.management.v20200801.TemplateLinkResponse;
-            /**
-             * The timestamp of the template deployment.
-             */
-            timestamp: string;
-            /**
-             * Array of validated resources.
-             */
-            validatedResources: outputs.management.v20200801.ResourceReferenceResponse[];
-        }
-
-        /**
-         * The resource management error additional info.
-         */
-        export interface ErrorAdditionalInfoResponse {
-            /**
-             * The additional info.
-             */
-            info: any;
-            /**
-             * The additional info type.
-             */
-            type: string;
-        }
-
-        /**
-         * Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.)
-         */
-        export interface ErrorResponseResponse {
-            /**
-             * The error additional info.
-             */
-            additionalInfo: outputs.management.v20200801.ErrorAdditionalInfoResponse[];
-            /**
-             * The error code.
-             */
-            code: string;
-            /**
-             * The error details.
-             */
-            details: outputs.management.v20200801.ErrorResponseResponse[];
-            /**
-             * The error message.
-             */
-            message: string;
-            /**
-             * The error target.
-             */
-            target: string;
-        }
-
-        /**
-         * Deployment on error behavior with additional details.
-         */
-        export interface OnErrorDeploymentExtendedResponse {
-            /**
-             * The deployment to be used on error case.
-             */
-            deploymentName?: string;
-            /**
-             * The state of the provisioning for the on error deployment.
-             */
-            provisioningState: string;
-            /**
-             * The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment.
-             */
-            type?: string;
-        }
-
-        /**
-         * Entity representing the reference to the deployment parameters.
-         */
-        export interface ParametersLinkResponse {
-            /**
-             * If included, must match the ContentVersion in the template.
-             */
-            contentVersion?: string;
-            /**
-             * The URI of the parameters file.
-             */
-            uri: string;
-        }
-
-        /**
-         * The provider extended location. 
-         */
-        export interface ProviderExtendedLocationResponse {
-            /**
-             * The extended locations for the azure location.
-             */
-            extendedLocations?: string[];
-            /**
-             * The azure location.
-             */
-            location?: string;
-            /**
-             * The extended location type.
-             */
-            type?: string;
-        }
-
-        /**
-         * Resource type managed by the resource provider.
-         */
-        export interface ProviderResourceTypeResponse {
-            /**
-             * The aliases that are supported by this resource type.
-             */
-            aliases?: outputs.management.v20200801.AliasResponse[];
-            /**
-             * The API profiles for the resource provider.
-             */
-            apiProfiles: outputs.management.v20200801.ApiProfileResponse[];
-            /**
-             * The API version.
-             */
-            apiVersions?: string[];
-            /**
-             * The additional capabilities offered by this resource type.
-             */
-            capabilities?: string;
-            /**
-             * The default API version.
-             */
-            defaultApiVersion: string;
-            /**
-             * The location mappings that are supported by this resource type.
-             */
-            locationMappings?: outputs.management.v20200801.ProviderExtendedLocationResponse[];
-            /**
-             * The collection of locations where this resource type can be created.
-             */
-            locations?: string[];
-            /**
-             * The properties.
-             */
-            properties?: {[key: string]: string};
-            /**
-             * The resource type.
-             */
-            resourceType?: string;
-        }
-
-        /**
-         * Resource provider information.
-         */
-        export interface ProviderResponse {
-            /**
-             * The provider ID.
-             */
-            id: string;
-            /**
-             * The namespace of the resource provider.
-             */
-            namespace?: string;
-            /**
-             * The registration policy of the resource provider.
-             */
-            registrationPolicy: string;
-            /**
-             * The registration state of the resource provider.
-             */
-            registrationState: string;
-            /**
-             * The collection of provider resource types.
-             */
-            resourceTypes: outputs.management.v20200801.ProviderResourceTypeResponse[];
-        }
-
-        /**
-         * The resource Id model.
-         */
-        export interface ResourceReferenceResponse {
-            /**
-             * The fully qualified resource Id.
-             */
-            id: string;
-        }
-
-        /**
-         * Entity representing the reference to the template.
-         */
-        export interface TemplateLinkResponse {
-            /**
-             * If included, must match the ContentVersion in the template.
-             */
-            contentVersion?: string;
-            /**
-             * The resource id of a Template Spec. Use either the id or uri property, but not both.
-             */
-            id?: string;
-            /**
-             * Applicable only if this template link references a Template Spec. This relativePath property can optionally be used to reference a Template Spec artifact by path.
-             */
-            relativePath?: string;
-            /**
-             * The URI of the template to deploy. Use either the uri or id property, but not both.
-             */
-            uri?: string;
-        }
-    }
-
-    export namespace v20200901 {
-        /**
-         * The definition of a parameter that can be provided to the policy.
-         */
-        export interface ParameterDefinitionsValueResponse {
-            /**
-             * The allowed values for the parameter.
-             */
-            allowedValues?: any[];
-            /**
-             * The default value for the parameter if no value is provided.
-             */
-            defaultValue?: any;
-            /**
-             * General metadata for the parameter.
-             */
-            metadata?: outputs.management.v20200901.ParameterDefinitionsValueResponseMetadata;
-            /**
-             * The data type of the parameter.
-             */
-            type?: string;
-        }
-
-        /**
-         * General metadata for the parameter.
-         */
-        export interface ParameterDefinitionsValueResponseMetadata {
-            /**
-             * Set to true to have Azure portal create role assignments on the resource ID or resource scope value of this parameter during policy assignment. This property is useful in case you wish to assign permissions outside the assignment scope.
-             */
-            assignPermissions?: boolean;
-            /**
-             * The description of the parameter.
-             */
-            description?: string;
-            /**
-             * The display name for the parameter.
-             */
-            displayName?: string;
-            /**
-             * Used when assigning the policy definition through the portal. Provides a context aware list of values for the user to choose from.
-             */
-            strongType?: string;
-        }
-
-        /**
-         * The value of a parameter.
-         */
-        export interface ParameterValuesValueResponse {
-            /**
-             * The value of the parameter.
-             */
-            value?: any;
-        }
-
-        /**
-         * The policy definition group.
-         */
-        export interface PolicyDefinitionGroupResponse {
-            /**
-             * A resource ID of a resource that contains additional metadata about the group.
-             */
-            additionalMetadataId?: string;
-            /**
-             * The group's category.
-             */
-            category?: string;
-            /**
-             * The group's description.
-             */
-            description?: string;
-            /**
-             * The group's display name.
-             */
-            displayName?: string;
-            /**
-             * The name of the group.
-             */
-            name: string;
-        }
-
-        /**
-         * The policy definition reference.
-         */
-        export interface PolicyDefinitionReferenceResponse {
-            /**
-             * The name of the groups that this policy definition reference belongs to.
-             */
-            groupNames?: string[];
-            /**
-             * The parameter values for the referenced policy rule. The keys are the parameter names.
-             */
-            parameters?: {[key: string]: outputs.management.v20200901.ParameterValuesValueResponse};
-            /**
-             * The ID of the policy definition or policy set definition.
-             */
-            policyDefinitionId: string;
-            /**
-             * A unique id (within the policy set definition) for this policy definition reference.
-             */
-            policyDefinitionReferenceId?: string;
-        }
-    }
-
-    export namespace v20201001 {
-        export interface AliasPathMetadataResponse {
-            /**
-             * The attributes of the token that the alias path is referring to.
-             */
-            attributes: string;
-            /**
-             * The type of the token that the alias path is referring to.
-             */
-            type: string;
-        }
-
-        /**
-         * The type of the paths for alias.
-         */
-        export interface AliasPathResponse {
-            /**
-             * The API versions.
-             */
-            apiVersions?: string[];
-            /**
-             * The metadata of the alias path. If missing, fall back to the default metadata of the alias.
-             */
-            metadata: outputs.management.v20201001.AliasPathMetadataResponse;
-            /**
-             * The path of an alias.
-             */
-            path?: string;
-            /**
-             * The pattern for an alias path.
-             */
-            pattern?: outputs.management.v20201001.AliasPatternResponse;
-        }
-
-        /**
-         * The type of the pattern for an alias path.
-         */
-        export interface AliasPatternResponse {
-            /**
-             * The alias pattern phrase.
-             */
-            phrase?: string;
-            /**
-             * The type of alias pattern
-             */
-            type?: string;
-            /**
-             * The alias pattern variable.
-             */
-            variable?: string;
-        }
-
-        /**
-         * The alias type. 
-         */
-        export interface AliasResponse {
-            /**
-             * The default alias path metadata. Applies to the default path and to any alias path that doesn't have metadata
-             */
-            defaultMetadata: outputs.management.v20201001.AliasPathMetadataResponse;
-            /**
-             * The default path for an alias.
-             */
-            defaultPath?: string;
-            /**
-             * The default pattern for an alias.
-             */
-            defaultPattern?: outputs.management.v20201001.AliasPatternResponse;
-            /**
-             * The alias name.
-             */
-            name?: string;
-            /**
-             * The paths for an alias.
-             */
-            paths?: outputs.management.v20201001.AliasPathResponse[];
-            /**
-             * The type of the alias.
-             */
-            type?: string;
-        }
-
-        export interface ApiProfileResponse {
-            /**
-             * The API version.
-             */
-            apiVersion: string;
-            /**
-             * The profile version.
-             */
-            profileVersion: string;
-        }
-
-        /**
-         * Deployment dependency information.
-         */
-        export interface BasicDependencyResponse {
-            /**
-             * The ID of the dependency.
-             */
-            id?: string;
-            /**
-             * The dependency resource name.
-             */
-            resourceName?: string;
-            /**
-             * The dependency resource type.
-             */
-            resourceType?: string;
-        }
-
-        /**
-         * The debug setting.
-         */
-        export interface DebugSettingResponse {
-            /**
-             * Specifies the type of information to log for debugging. The permitted values are none, requestContent, responseContent, or both requestContent and responseContent separated by a comma. The default is none. When setting this value, carefully consider the type of information you are passing in during deployment. By logging information about the request or response, you could potentially expose sensitive data that is retrieved through the deployment operations.
-             */
-            detailLevel?: string;
-        }
-
-        /**
-         * Deployment dependency information.
-         */
-        export interface DependencyResponse {
-            /**
-             * The list of dependencies.
-             */
-            dependsOn?: outputs.management.v20201001.BasicDependencyResponse[];
-            /**
-             * The ID of the dependency.
-             */
-            id?: string;
-            /**
-             * The dependency resource name.
-             */
-            resourceName?: string;
-            /**
-             * The dependency resource type.
-             */
-            resourceType?: string;
-        }
-
-        /**
-         * Deployment properties with additional details.
-         */
-        export interface DeploymentPropertiesExtendedResponse {
-            /**
-             * The correlation ID of the deployment.
-             */
-            correlationId: string;
-            /**
-             * The debug setting of the deployment.
-             */
-            debugSetting: outputs.management.v20201001.DebugSettingResponse;
-            /**
-             * The list of deployment dependencies.
-             */
-            dependencies: outputs.management.v20201001.DependencyResponse[];
-            /**
-             * The duration of the template deployment.
-             */
-            duration: string;
-            /**
-             * The deployment error.
-             */
-            error: outputs.management.v20201001.ErrorResponseResponse;
-            /**
-             * The deployment mode. Possible values are Incremental and Complete.
-             */
-            mode: string;
-            /**
-             * The deployment on error behavior.
-             */
-            onErrorDeployment: outputs.management.v20201001.OnErrorDeploymentExtendedResponse;
-            /**
-             * Array of provisioned resources.
-             */
-            outputResources: outputs.management.v20201001.ResourceReferenceResponse[];
-            /**
-             * Key/value pairs that represent deployment output.
-             */
-            outputs: any;
-            /**
-             * Deployment parameters. 
-             */
-            parameters: any;
-            /**
-             * The URI referencing the parameters. 
-             */
-            parametersLink: outputs.management.v20201001.ParametersLinkResponse;
-            /**
-             * The list of resource providers needed for the deployment.
-             */
-            providers: outputs.management.v20201001.ProviderResponse[];
-            /**
-             * Denotes the state of provisioning.
-             */
-            provisioningState: string;
-            /**
-             * The hash produced for the template.
-             */
-            templateHash: string;
-            /**
-             * The URI referencing the template.
-             */
-            templateLink: outputs.management.v20201001.TemplateLinkResponse;
-            /**
-             * The timestamp of the template deployment.
-             */
-            timestamp: string;
-            /**
-             * Array of validated resources.
-             */
-            validatedResources: outputs.management.v20201001.ResourceReferenceResponse[];
-        }
-
-        /**
-         * The resource management error additional info.
-         */
-        export interface ErrorAdditionalInfoResponse {
-            /**
-             * The additional info.
-             */
-            info: any;
-            /**
-             * The additional info type.
-             */
-            type: string;
-        }
-
-        /**
-         * Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.)
-         */
-        export interface ErrorResponseResponse {
-            /**
-             * The error additional info.
-             */
-            additionalInfo: outputs.management.v20201001.ErrorAdditionalInfoResponse[];
-            /**
-             * The error code.
-             */
-            code: string;
-            /**
-             * The error details.
-             */
-            details: outputs.management.v20201001.ErrorResponseResponse[];
-            /**
-             * The error message.
-             */
-            message: string;
-            /**
-             * The error target.
-             */
-            target: string;
-        }
-
-        /**
-         * Deployment on error behavior with additional details.
-         */
-        export interface OnErrorDeploymentExtendedResponse {
-            /**
-             * The deployment to be used on error case.
-             */
-            deploymentName?: string;
-            /**
-             * The state of the provisioning for the on error deployment.
-             */
-            provisioningState: string;
-            /**
-             * The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment.
-             */
-            type?: string;
-        }
-
-        /**
-         * Entity representing the reference to the deployment parameters.
-         */
-        export interface ParametersLinkResponse {
-            /**
-             * If included, must match the ContentVersion in the template.
-             */
-            contentVersion?: string;
-            /**
-             * The URI of the parameters file.
-             */
-            uri: string;
-        }
-
-        /**
-         * The provider extended location. 
-         */
-        export interface ProviderExtendedLocationResponse {
-            /**
-             * The extended locations for the azure location.
-             */
-            extendedLocations?: string[];
-            /**
-             * The azure location.
-             */
-            location?: string;
-            /**
-             * The extended location type.
-             */
-            type?: string;
-        }
-
-        /**
-         * Resource type managed by the resource provider.
-         */
-        export interface ProviderResourceTypeResponse {
-            /**
-             * The aliases that are supported by this resource type.
-             */
-            aliases?: outputs.management.v20201001.AliasResponse[];
-            /**
-             * The API profiles for the resource provider.
-             */
-            apiProfiles: outputs.management.v20201001.ApiProfileResponse[];
-            /**
-             * The API version.
-             */
-            apiVersions?: string[];
-            /**
-             * The additional capabilities offered by this resource type.
-             */
-            capabilities?: string;
-            /**
-             * The default API version.
-             */
-            defaultApiVersion: string;
-            /**
-             * The location mappings that are supported by this resource type.
-             */
-            locationMappings?: outputs.management.v20201001.ProviderExtendedLocationResponse[];
-            /**
-             * The collection of locations where this resource type can be created.
-             */
-            locations?: string[];
-            /**
-             * The properties.
-             */
-            properties?: {[key: string]: string};
-            /**
-             * The resource type.
-             */
-            resourceType?: string;
-        }
-
-        /**
-         * Resource provider information.
-         */
-        export interface ProviderResponse {
-            /**
-             * The provider ID.
-             */
-            id: string;
-            /**
-             * The namespace of the resource provider.
-             */
-            namespace?: string;
-            /**
-             * The registration policy of the resource provider.
-             */
-            registrationPolicy: string;
-            /**
-             * The registration state of the resource provider.
-             */
-            registrationState: string;
-            /**
-             * The collection of provider resource types.
-             */
-            resourceTypes: outputs.management.v20201001.ProviderResourceTypeResponse[];
-        }
-
-        /**
-         * The resource Id model.
-         */
-        export interface ResourceReferenceResponse {
-            /**
-             * The fully qualified resource Id.
-             */
-            id: string;
-        }
-
-        /**
-         * Entity representing the reference to the template.
-         */
-        export interface TemplateLinkResponse {
-            /**
-             * If included, must match the ContentVersion in the template.
-             */
-            contentVersion?: string;
-            /**
-             * The resource id of a Template Spec. Use either the id or uri property, but not both.
-             */
-            id?: string;
-            /**
-             * The query string (for example, a SAS token) to be used with the templateLink URI.
-             */
-            queryString?: string;
-            /**
-             * The relativePath property can be used to deploy a linked template at a location relative to the parent. If the parent template was linked with a TemplateSpec, this will reference an artifact in the TemplateSpec.  If the parent was linked with a URI, the child deployment will be a combination of the parent and relativePath URIs
-             */
-            relativePath?: string;
-            /**
-             * The URI of the template to deploy. Use either the uri or id property, but not both.
-             */
-            uri?: string;
         }
     }
 }
@@ -412774,90 +408334,6 @@ export namespace operationalinsights {
         }
 
         /**
-         * Incident additional data property bag.
-         */
-        export interface IncidentAdditionalDataResponse {
-            /**
-             * List of product names of alerts in the incident
-             */
-            alertProductNames: string[];
-            /**
-             * The number of alerts in the incident
-             */
-            alertsCount: number;
-            /**
-             * The number of bookmarks in the incident
-             */
-            bookmarksCount: number;
-            /**
-             * The number of comments in the incident
-             */
-            commentsCount: number;
-            /**
-             * The tactics associated with incident
-             */
-            tactics: string[];
-        }
-
-        /**
-         * Describes related incident information for the bookmark
-         */
-        export interface IncidentInfoResponse {
-            /**
-             * Incident Id
-             */
-            incidentId: string;
-            /**
-             * Relation Name
-             */
-            relationName: string;
-            /**
-             * The severity of the incident
-             */
-            severity: string;
-            /**
-             * The title of the incident
-             */
-            title: string;
-        }
-
-        /**
-         * Represents an incident label
-         */
-        export interface IncidentLabelResponse {
-            /**
-             * The name of the label
-             */
-            labelName: string;
-            /**
-             * The type of the label
-             */
-            labelType: string;
-        }
-
-        /**
-         * Information on the user an incident is assigned to
-         */
-        export interface IncidentOwnerInfoResponse {
-            /**
-             * The name of the user the incident is assigned to.
-             */
-            assignedTo?: string;
-            /**
-             * The email of the user the incident is assigned to.
-             */
-            email?: string;
-            /**
-             * The object id of the user the incident is assigned to.
-             */
-            objectId?: string;
-            /**
-             * The user principal name of the user the incident is assigned to.
-             */
-            userPrincipalName?: string;
-        }
-
-        /**
          * The key vault properties.
          */
         export interface KeyVaultPropertiesResponse {
@@ -412947,24 +408423,6 @@ export namespace operationalinsights {
              * The principal id of user assigned identity.
              */
             principalId: string;
-        }
-
-        /**
-         * User information that made some action
-         */
-        export interface UserInfoResponse {
-            /**
-             * The email of the user.
-             */
-            email: string;
-            /**
-             * The name of the user.
-             */
-            name: string;
-            /**
-             * The object id of the user.
-             */
-            objectId: string;
         }
 
         /**
@@ -413145,110 +408603,6 @@ export namespace operationalinsights {
              * The type of identity that last modified the resource
              */
             lastModifiedByType?: string;
-        }
-    }
-
-    export namespace v20200101 {
-        /**
-         * Incident additional data property bag.
-         */
-        export interface IncidentAdditionalDataResponse {
-            /**
-             * List of product names of alerts in the incident
-             */
-            alertProductNames: string[];
-            /**
-             * The number of alerts in the incident
-             */
-            alertsCount: number;
-            /**
-             * The number of bookmarks in the incident
-             */
-            bookmarksCount: number;
-            /**
-             * The number of comments in the incident
-             */
-            commentsCount: number;
-            /**
-             * The tactics associated with incident
-             */
-            tactics: string[];
-        }
-
-        /**
-         * Describes related incident information for the bookmark
-         */
-        export interface IncidentInfoResponse {
-            /**
-             * Incident Id
-             */
-            incidentId: string;
-            /**
-             * Relation Name
-             */
-            relationName: string;
-            /**
-             * The severity of the incident
-             */
-            severity: string;
-            /**
-             * The title of the incident
-             */
-            title: string;
-        }
-
-        /**
-         * Represents an incident label
-         */
-        export interface IncidentLabelResponse {
-            /**
-             * The name of the label
-             */
-            labelName: string;
-            /**
-             * The type of the label
-             */
-            labelType: string;
-        }
-
-        /**
-         * Information on the user an incident is assigned to
-         */
-        export interface IncidentOwnerInfoResponse {
-            /**
-             * The name of the user the incident is assigned to.
-             */
-            assignedTo?: string;
-            /**
-             * The email of the user the incident is assigned to.
-             */
-            email?: string;
-            /**
-             * The object id of the user the incident is assigned to.
-             */
-            objectId?: string;
-            /**
-             * The user principal name of the user the incident is assigned to.
-             */
-            userPrincipalName?: string;
-        }
-
-        /**
-         * User information that made some action
-         */
-        export interface UserInfoResponse {
-            /**
-             * The email of the user.
-             */
-            email: string;
-            /**
-             * The name of the user.
-             */
-            name: string;
-            /**
-             * The object id of the user.
-             */
-            objectId: string;
         }
     }
 
@@ -456084,6 +451438,110 @@ export namespace security {
 }
 
 export namespace securityinsights {
+    export namespace latest {
+        /**
+         * Incident additional data property bag.
+         */
+        export interface IncidentAdditionalDataResponse {
+            /**
+             * List of product names of alerts in the incident
+             */
+            alertProductNames: string[];
+            /**
+             * The number of alerts in the incident
+             */
+            alertsCount: number;
+            /**
+             * The number of bookmarks in the incident
+             */
+            bookmarksCount: number;
+            /**
+             * The number of comments in the incident
+             */
+            commentsCount: number;
+            /**
+             * The tactics associated with incident
+             */
+            tactics: string[];
+        }
+
+        /**
+         * Describes related incident information for the bookmark
+         */
+        export interface IncidentInfoResponse {
+            /**
+             * Incident Id
+             */
+            incidentId: string;
+            /**
+             * Relation Name
+             */
+            relationName: string;
+            /**
+             * The severity of the incident
+             */
+            severity: string;
+            /**
+             * The title of the incident
+             */
+            title: string;
+        }
+
+        /**
+         * Represents an incident label
+         */
+        export interface IncidentLabelResponse {
+            /**
+             * The name of the label
+             */
+            labelName: string;
+            /**
+             * The type of the label
+             */
+            labelType: string;
+        }
+
+        /**
+         * Information on the user an incident is assigned to
+         */
+        export interface IncidentOwnerInfoResponse {
+            /**
+             * The name of the user the incident is assigned to.
+             */
+            assignedTo?: string;
+            /**
+             * The email of the user the incident is assigned to.
+             */
+            email?: string;
+            /**
+             * The object id of the user the incident is assigned to.
+             */
+            objectId?: string;
+            /**
+             * The user principal name of the user the incident is assigned to.
+             */
+            userPrincipalName?: string;
+        }
+
+        /**
+         * User information that made some action
+         */
+        export interface UserInfoResponse {
+            /**
+             * The email of the user.
+             */
+            email: string;
+            /**
+             * The name of the user.
+             */
+            name: string;
+            /**
+             * The object id of the user.
+             */
+            objectId: string;
+        }
+    }
+
     export namespace v20190101preview {
         /**
          * Represents Activity timeline item.
@@ -456475,6 +451933,110 @@ export namespace securityinsights {
              * The object id of the user.
              */
             objectId?: string;
+        }
+    }
+
+    export namespace v20200101 {
+        /**
+         * Incident additional data property bag.
+         */
+        export interface IncidentAdditionalDataResponse {
+            /**
+             * List of product names of alerts in the incident
+             */
+            alertProductNames: string[];
+            /**
+             * The number of alerts in the incident
+             */
+            alertsCount: number;
+            /**
+             * The number of bookmarks in the incident
+             */
+            bookmarksCount: number;
+            /**
+             * The number of comments in the incident
+             */
+            commentsCount: number;
+            /**
+             * The tactics associated with incident
+             */
+            tactics: string[];
+        }
+
+        /**
+         * Describes related incident information for the bookmark
+         */
+        export interface IncidentInfoResponse {
+            /**
+             * Incident Id
+             */
+            incidentId: string;
+            /**
+             * Relation Name
+             */
+            relationName: string;
+            /**
+             * The severity of the incident
+             */
+            severity: string;
+            /**
+             * The title of the incident
+             */
+            title: string;
+        }
+
+        /**
+         * Represents an incident label
+         */
+        export interface IncidentLabelResponse {
+            /**
+             * The name of the label
+             */
+            labelName: string;
+            /**
+             * The type of the label
+             */
+            labelType: string;
+        }
+
+        /**
+         * Information on the user an incident is assigned to
+         */
+        export interface IncidentOwnerInfoResponse {
+            /**
+             * The name of the user the incident is assigned to.
+             */
+            assignedTo?: string;
+            /**
+             * The email of the user the incident is assigned to.
+             */
+            email?: string;
+            /**
+             * The object id of the user the incident is assigned to.
+             */
+            objectId?: string;
+            /**
+             * The user principal name of the user the incident is assigned to.
+             */
+            userPrincipalName?: string;
+        }
+
+        /**
+         * User information that made some action
+         */
+        export interface UserInfoResponse {
+            /**
+             * The email of the user.
+             */
+            email: string;
+            /**
+             * The name of the user.
+             */
+            name: string;
+            /**
+             * The object id of the user.
+             */
+            objectId: string;
         }
     }
 }
