@@ -3,6 +3,71 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
+#### Breaking changes in SDKs
+
+Several resources and functions were moved to another namespace to correctly match their Azure API classification.
+
+Moved from `Billing` to `CostManagement`:
+
+- `GetCostAllocationRule` function
+- `CostAllocationRule` resource
+- `ReportByDepartment` resource
+- `ReportByBillingAccount` resource
+- `GetReportByDepartment` function
+- `GetReportByBillingAccount` function
+- `GetCostAllocationRule` function
+
+Moved from `Compute` to `Automanage`:
+
+- `ConfigurationProfileAssignment` resource
+- `GetConfigurationProfileAssignment` function
+
+Moved from `HybridCompute` to `GuestConfiguration`:
+
+- `GuestConfigurationHCRPAssignment` resource
+- `GuestConfigurationAssignment` resource
+- `GetGuestConfigurationHCRPAssignment` function
+- `GetGuestConfigurationAssignment` function
+
+Moved from `Management` to `Authorization`:
+
+- `GetPolicyDefinitionAtManagementGroup` function
+- `GetPolicySetDefinitionAtManagementGroup` function
+- `PolicyDefinitionAtManagementGroup` resource
+- `PolicySetDefinitionAtManagementGroup` resource
+
+Moved from `Management` to `Blueprint`:
+
+- `Artifact` resource
+- `Blueprint` resource
+- `GetPublishedBlueprint` function
+- `GetBlueprint` function
+- `GetArtifact` function
+- `PublishedBlueprint` resource
+
+Moved from `Management` to `Insights`:
+
+- `ManagementGroupDiagnosticSetting` resource
+- `GetManagementGroupDiagnosticSetting` function
+
+Moved from `Management` to `Resources`:
+
+- `GetDeploymentAtManagementGroupScope` function
+- `DeploymentAtManagementGroupScope` resource
+
+Moved from `OperationalInsights` to `SecurityInsights`:
+
+- `Incident` resource
+- `GetIncident` function
+- `GetDataConnector` function
+- `GetBookmark` function
+- `GetAlertRule` function
+- `GetAction` function
+- `DataConnector` resource
+- `Bookmark` resource
+- `AlertRule` resource
+- `Action` resource
+
 ---
 
 ## 0.5.1 (2021-01-26)
