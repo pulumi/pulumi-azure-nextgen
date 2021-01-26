@@ -16,7 +16,10 @@ Fixes:
 
 Features:
 
-- Respect default values as Azure API specs define ([#183](https://github.com/pulumi/pulumi-azure-nextgen/issues/183))
+- Respect default values as Azure API specs define. This is potentially breaking, as
+  applying default values for a resource may require an update operation. You may
+  need to adjust your code to avoid undesired updates.
+  ([#183](https://github.com/pulumi/pulumi-azure-nextgen/issues/183))
 - GetClientToken invoke to retrieve an OAuth token for the current auth context ([#207](https://github.com/pulumi/pulumi-azure-nextgen/issues/207))
 
 Fixes:
