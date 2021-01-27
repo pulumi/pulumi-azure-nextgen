@@ -13946,6 +13946,8 @@ type AzureDatabricksLinkedService struct {
 	NewClusterVersion interface{} `pulumi:"newClusterVersion"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
+	// The policy id for limiting the ability to configure clusters based on a user defined set of rules. Type: string (or Expression with resultType string).
+	PolicyId interface{} `pulumi:"policyId"`
 	// Type of linked service.
 	// Expected value is 'AzureDatabricks'.
 	Type string `pulumi:"type"`
@@ -14006,6 +14008,8 @@ type AzureDatabricksLinkedServiceArgs struct {
 	NewClusterVersion pulumi.Input `pulumi:"newClusterVersion"`
 	// Parameters for linked service.
 	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
+	// The policy id for limiting the ability to configure clusters based on a user defined set of rules. Type: string (or Expression with resultType string).
+	PolicyId pulumi.Input `pulumi:"policyId"`
 	// Type of linked service.
 	// Expected value is 'AzureDatabricks'.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -14140,6 +14144,11 @@ func (o AzureDatabricksLinkedServiceOutput) Parameters() ParameterSpecificationM
 	return o.ApplyT(func(v AzureDatabricksLinkedService) map[string]ParameterSpecification { return v.Parameters }).(ParameterSpecificationMapOutput)
 }
 
+// The policy id for limiting the ability to configure clusters based on a user defined set of rules. Type: string (or Expression with resultType string).
+func (o AzureDatabricksLinkedServiceOutput) PolicyId() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureDatabricksLinkedService) interface{} { return v.PolicyId }).(pulumi.AnyOutput)
+}
+
 // Type of linked service.
 // Expected value is 'AzureDatabricks'.
 func (o AzureDatabricksLinkedServiceOutput) Type() pulumi.StringOutput {
@@ -14193,6 +14202,8 @@ type AzureDatabricksLinkedServiceResponse struct {
 	NewClusterVersion interface{} `pulumi:"newClusterVersion"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
+	// The policy id for limiting the ability to configure clusters based on a user defined set of rules. Type: string (or Expression with resultType string).
+	PolicyId interface{} `pulumi:"policyId"`
 	// Type of linked service.
 	// Expected value is 'AzureDatabricks'.
 	Type string `pulumi:"type"`
@@ -14253,6 +14264,8 @@ type AzureDatabricksLinkedServiceResponseArgs struct {
 	NewClusterVersion pulumi.Input `pulumi:"newClusterVersion"`
 	// Parameters for linked service.
 	Parameters ParameterSpecificationResponseMapInput `pulumi:"parameters"`
+	// The policy id for limiting the ability to configure clusters based on a user defined set of rules. Type: string (or Expression with resultType string).
+	PolicyId pulumi.Input `pulumi:"policyId"`
 	// Type of linked service.
 	// Expected value is 'AzureDatabricks'.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -14387,6 +14400,11 @@ func (o AzureDatabricksLinkedServiceResponseOutput) Parameters() ParameterSpecif
 	return o.ApplyT(func(v AzureDatabricksLinkedServiceResponse) map[string]ParameterSpecificationResponse {
 		return v.Parameters
 	}).(ParameterSpecificationResponseMapOutput)
+}
+
+// The policy id for limiting the ability to configure clusters based on a user defined set of rules. Type: string (or Expression with resultType string).
+func (o AzureDatabricksLinkedServiceResponseOutput) PolicyId() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureDatabricksLinkedServiceResponse) interface{} { return v.PolicyId }).(pulumi.AnyOutput)
 }
 
 // Type of linked service.
@@ -35153,6 +35171,8 @@ func (o CouchbaseTableDatasetResponseOutput) Type() pulumi.StringOutput {
 
 // Custom activity type.
 type CustomActivity struct {
+	// Elevation level and scope for the user, default is nonadmin task. Type: string (or Expression with resultType double).
+	AutoUserSpecification interface{} `pulumi:"autoUserSpecification"`
 	// Command for custom activity Type: string (or Expression with resultType string).
 	Command interface{} `pulumi:"command"`
 	// Activity depends on condition.
@@ -35195,6 +35215,8 @@ type CustomActivityInput interface {
 
 // Custom activity type.
 type CustomActivityArgs struct {
+	// Elevation level and scope for the user, default is nonadmin task. Type: string (or Expression with resultType double).
+	AutoUserSpecification pulumi.Input `pulumi:"autoUserSpecification"`
 	// Command for custom activity Type: string (or Expression with resultType string).
 	Command pulumi.Input `pulumi:"command"`
 	// Activity depends on condition.
@@ -35249,6 +35271,11 @@ func (o CustomActivityOutput) ToCustomActivityOutput() CustomActivityOutput {
 
 func (o CustomActivityOutput) ToCustomActivityOutputWithContext(ctx context.Context) CustomActivityOutput {
 	return o
+}
+
+// Elevation level and scope for the user, default is nonadmin task. Type: string (or Expression with resultType double).
+func (o CustomActivityOutput) AutoUserSpecification() pulumi.AnyOutput {
+	return o.ApplyT(func(v CustomActivity) interface{} { return v.AutoUserSpecification }).(pulumi.AnyOutput)
 }
 
 // Command for custom activity Type: string (or Expression with resultType string).
@@ -35627,6 +35654,8 @@ func (o CustomActivityReferenceObjectResponsePtrOutput) LinkedServices() LinkedS
 
 // Custom activity type.
 type CustomActivityResponse struct {
+	// Elevation level and scope for the user, default is nonadmin task. Type: string (or Expression with resultType double).
+	AutoUserSpecification interface{} `pulumi:"autoUserSpecification"`
 	// Command for custom activity Type: string (or Expression with resultType string).
 	Command interface{} `pulumi:"command"`
 	// Activity depends on condition.
@@ -35669,6 +35698,8 @@ type CustomActivityResponseInput interface {
 
 // Custom activity type.
 type CustomActivityResponseArgs struct {
+	// Elevation level and scope for the user, default is nonadmin task. Type: string (or Expression with resultType double).
+	AutoUserSpecification pulumi.Input `pulumi:"autoUserSpecification"`
 	// Command for custom activity Type: string (or Expression with resultType string).
 	Command pulumi.Input `pulumi:"command"`
 	// Activity depends on condition.
@@ -35723,6 +35754,11 @@ func (o CustomActivityResponseOutput) ToCustomActivityResponseOutput() CustomAct
 
 func (o CustomActivityResponseOutput) ToCustomActivityResponseOutputWithContext(ctx context.Context) CustomActivityResponseOutput {
 	return o
+}
+
+// Elevation level and scope for the user, default is nonadmin task. Type: string (or Expression with resultType double).
+func (o CustomActivityResponseOutput) AutoUserSpecification() pulumi.AnyOutput {
+	return o.ApplyT(func(v CustomActivityResponse) interface{} { return v.AutoUserSpecification }).(pulumi.AnyOutput)
 }
 
 // Command for custom activity Type: string (or Expression with resultType string).

@@ -10547,6 +10547,252 @@ export namespace authorization {
             policyDefinitionReferenceId?: string;
         }
     }
+
+    export namespace v20201001preview {
+        /**
+         * The approval settings.
+         */
+        export interface ApprovalSettingsResponse {
+            /**
+             * The type of rule
+             */
+            approvalMode?: string;
+            /**
+             * The approval stages of the request.
+             */
+            approvalStages?: outputs.authorization.v20201001preview.ApprovalStageResponse[];
+            /**
+             * Determine whether approval is required or not.
+             */
+            isApprovalRequired?: boolean;
+            /**
+             * Determine whether approval is required for assignment extension.
+             */
+            isApprovalRequiredForExtension?: boolean;
+            /**
+             * Determine whether requestor justification required.
+             */
+            isRequestorJustificationRequired?: boolean;
+        }
+
+        /**
+         * The approval stage.
+         */
+        export interface ApprovalStageResponse {
+            /**
+             * The time in days when approval request would be timed out.
+             */
+            approvalStageTimeOutInDays?: number;
+            /**
+             * The escalation approver of the request.
+             */
+            escalationApprovers?: outputs.authorization.v20201001preview.SingleUserResponse[];
+            /**
+             * The time in minutes when the approval request would be escalated if the primary approver does not approves.
+             */
+            escalationTimeInMinutes?: number;
+            /**
+             * Determine whether approver need to provide justification for his decision.
+             */
+            isApproverJustificationRequired?: boolean;
+            /**
+             * The value determine whether escalation feature is enabled.
+             */
+            isEscalationEnabled?: boolean;
+            /**
+             * The primary approver of the request.
+             */
+            primaryApprovers?: outputs.authorization.v20201001preview.SingleUserResponse[];
+        }
+
+        /**
+         * The role management policy rule.
+         */
+        export interface RoleManagementPolicyApprovalRuleResponse {
+            /**
+             * The id of the rule.
+             */
+            id?: string;
+            /**
+             * The type of rule
+             * Expected value is 'RoleManagementPolicyApprovalRule'.
+             */
+            ruleType: "RoleManagementPolicyApprovalRule";
+            /**
+             * The approval setting
+             */
+            setting?: outputs.authorization.v20201001preview.ApprovalSettingsResponse;
+            /**
+             * The target of the current rule.
+             */
+            target?: outputs.authorization.v20201001preview.RoleManagementPolicyRuleTargetResponse;
+        }
+
+        /**
+         * The role management policy rule.
+         */
+        export interface RoleManagementPolicyAuthenticationContextRuleResponse {
+            /**
+             * The claim value.
+             */
+            claimValue?: string;
+            /**
+             * The id of the rule.
+             */
+            id?: string;
+            /**
+             * The value indicating if rule is enabled.
+             */
+            isEnabled?: boolean;
+            /**
+             * The type of rule
+             * Expected value is 'RoleManagementPolicyAuthenticationContextRule'.
+             */
+            ruleType: "RoleManagementPolicyAuthenticationContextRule";
+            /**
+             * The target of the current rule.
+             */
+            target?: outputs.authorization.v20201001preview.RoleManagementPolicyRuleTargetResponse;
+        }
+
+        /**
+         * The role management policy rule.
+         */
+        export interface RoleManagementPolicyEnablementRuleResponse {
+            /**
+             * The list of enabled rules.
+             */
+            enabledRules?: string[];
+            /**
+             * The id of the rule.
+             */
+            id?: string;
+            /**
+             * The type of rule
+             * Expected value is 'RoleManagementPolicyEnablementRule'.
+             */
+            ruleType: "RoleManagementPolicyEnablementRule";
+            /**
+             * The target of the current rule.
+             */
+            target?: outputs.authorization.v20201001preview.RoleManagementPolicyRuleTargetResponse;
+        }
+
+        /**
+         * The role management policy rule.
+         */
+        export interface RoleManagementPolicyExpirationRuleResponse {
+            /**
+             * The id of the rule.
+             */
+            id?: string;
+            /**
+             * The value indicating whether expiration is required.
+             */
+            isExpirationRequired?: boolean;
+            /**
+             * The maximum duration of expiration in timespan.
+             */
+            maximumDuration?: string;
+            /**
+             * The type of rule
+             * Expected value is 'RoleManagementPolicyExpirationRule'.
+             */
+            ruleType: "RoleManagementPolicyExpirationRule";
+            /**
+             * The target of the current rule.
+             */
+            target?: outputs.authorization.v20201001preview.RoleManagementPolicyRuleTargetResponse;
+        }
+
+        /**
+         * The role management policy rule.
+         */
+        export interface RoleManagementPolicyNotificationRuleResponse {
+            /**
+             * The id of the rule.
+             */
+            id?: string;
+            /**
+             * The notification level.
+             */
+            notificationLevel?: string;
+            /**
+             * The list notification recipients.
+             */
+            notificationRecipients?: string[];
+            /**
+             * The type of notification.
+             */
+            notificationType?: string;
+            /**
+             * The recipient type.
+             */
+            recipientType?: string;
+            /**
+             * The type of rule
+             * Expected value is 'RoleManagementPolicyNotificationRule'.
+             */
+            ruleType: "RoleManagementPolicyNotificationRule";
+            /**
+             * The target of the current rule.
+             */
+            target?: outputs.authorization.v20201001preview.RoleManagementPolicyRuleTargetResponse;
+        }
+
+        /**
+         * The role management policy rule target.
+         */
+        export interface RoleManagementPolicyRuleTargetResponse {
+            /**
+             * The caller of the setting.
+             */
+            caller?: string;
+            /**
+             * The list of enforced settings.
+             */
+            enforcedSettings?: string[];
+            /**
+             * The list of inheritable settings.
+             */
+            inheritableSettings?: string[];
+            /**
+             * The assignment level to which it is applied.
+             */
+            level?: string;
+            /**
+             * The type of operation.
+             */
+            operations?: string[];
+            /**
+             * The list of target objects.
+             */
+            targetObjects?: string[];
+        }
+
+        /**
+         * The detail of a user.
+         */
+        export interface SingleUserResponse {
+            /**
+             * The description of the user.
+             */
+            description?: string;
+            /**
+             * The object id of the user.
+             */
+            id?: string;
+            /**
+             * The value indicating whether the user is a backup fallback approver
+             */
+            isBackup?: boolean;
+            /**
+             * The object id of the user.
+             * Expected value is 'SingleUser'.
+             */
+            userType: "SingleUser";
+        }
+    }
 }
 
 export namespace automanage {
@@ -27267,10 +27513,6 @@ export namespace cdn {
              */
             certificateAuthority?: string;
             /**
-             * Certificate expiration date.
-             */
-            expirationDate?: string;
-            /**
              * Resource reference to the KV secret
              */
             secretSource: outputs.cdn.latest.ResourceReferenceResponse;
@@ -27279,17 +27521,9 @@ export namespace cdn {
              */
             secretVersion?: string;
             /**
-             * Subject name in the certificate.
-             */
-            subject?: string;
-            /**
              * The list of SANs.
              */
             subjectAlternativeNames?: string[];
-            /**
-             * Certificate thumbprint.
-             */
-            thumbprint?: string;
             /**
              * The type of the Secret to create.
              * Expected value is 'CustomerCertificate'.
@@ -27875,18 +28109,6 @@ export namespace cdn {
          * Managed Certificate used for https
          */
         export interface ManagedCertificateParametersResponse {
-            /**
-             * Certificate expiration date.
-             */
-            expirationDate?: string;
-            /**
-             * Subject name in the certificate.
-             */
-            subject?: string;
-            /**
-             * Certificate thumbprint.
-             */
-            thumbprint?: string;
             /**
              * The type of the Secret to create.
              * Expected value is 'ManagedCertificate'.
@@ -35701,10 +35923,6 @@ export namespace cdn {
              */
             certificateAuthority?: string;
             /**
-             * Certificate expiration date.
-             */
-            expirationDate?: string;
-            /**
              * Resource reference to the KV secret
              */
             secretSource: outputs.cdn.v20200901.ResourceReferenceResponse;
@@ -35713,17 +35931,9 @@ export namespace cdn {
              */
             secretVersion?: string;
             /**
-             * Subject name in the certificate.
-             */
-            subject?: string;
-            /**
              * The list of SANs.
              */
             subjectAlternativeNames?: string[];
-            /**
-             * Certificate thumbprint.
-             */
-            thumbprint?: string;
             /**
              * The type of the Secret to create.
              * Expected value is 'CustomerCertificate'.
@@ -36309,18 +36519,6 @@ export namespace cdn {
          * Managed Certificate used for https
          */
         export interface ManagedCertificateParametersResponse {
-            /**
-             * Certificate expiration date.
-             */
-            expirationDate?: string;
-            /**
-             * Subject name in the certificate.
-             */
-            subject?: string;
-            /**
-             * Certificate thumbprint.
-             */
-            thumbprint?: string;
             /**
              * The type of the Secret to create.
              * Expected value is 'ManagedCertificate'.
@@ -39849,7 +40047,7 @@ export namespace compute {
          */
         export interface SshPublicKeyResponse {
             /**
-             * SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+             * SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
              */
             keyData?: string;
             /**
@@ -59355,7 +59553,7 @@ export namespace compute {
          */
         export interface SshPublicKeyResponse {
             /**
-             * SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+             * SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
              */
             keyData?: string;
             /**
@@ -97123,6 +97321,10 @@ export namespace datafactory {
              */
             parameters?: {[key: string]: outputs.datafactory.latest.ParameterSpecificationResponse};
             /**
+             * The policy id for limiting the ability to configure clusters based on a user defined set of rules. Type: string (or Expression with resultType string).
+             */
+            policyId?: any;
+            /**
              * Type of linked service.
              * Expected value is 'AzureDatabricks'.
              */
@@ -100396,6 +100598,10 @@ export namespace datafactory {
          * Custom activity type.
          */
         export interface CustomActivityResponse {
+            /**
+             * Elevation level and scope for the user, default is nonadmin task. Type: string (or Expression with resultType double).
+             */
+            autoUserSpecification?: any;
             /**
              * Command for custom activity Type: string (or Expression with resultType string).
              */
@@ -127711,6 +127917,10 @@ export namespace datafactory {
              */
             parameters?: {[key: string]: outputs.datafactory.v20180601.ParameterSpecificationResponse};
             /**
+             * The policy id for limiting the ability to configure clusters based on a user defined set of rules. Type: string (or Expression with resultType string).
+             */
+            policyId?: any;
+            /**
              * Type of linked service.
              * Expected value is 'AzureDatabricks'.
              */
@@ -130984,6 +131194,10 @@ export namespace datafactory {
          * Custom activity type.
          */
         export interface CustomActivityResponse {
+            /**
+             * Elevation level and scope for the user, default is nonadmin task. Type: string (or Expression with resultType double).
+             */
+            autoUserSpecification?: any;
             /**
              * Command for custom activity Type: string (or Expression with resultType string).
              */
@@ -166560,6 +166774,170 @@ export namespace desktopvirtualization {
             rampUpStartTime?: string;
         }
     }
+
+    export namespace v20210114preview {
+        /**
+         * Schema for MSIX Package Application properties.
+         */
+        export interface MsixPackageApplicationsResponse {
+            /**
+             * Package Application Id, found in appxmanifest.xml.
+             */
+            appId?: string;
+            /**
+             * Used to activate Package Application. Consists of Package Name and ApplicationID. Found in appxmanifest.xml.
+             */
+            appUserModelID?: string;
+            /**
+             * Description of Package Application.
+             */
+            description?: string;
+            /**
+             * User friendly name.
+             */
+            friendlyName?: string;
+            /**
+             * User friendly name.
+             */
+            iconImageName?: string;
+            /**
+             * the icon a 64 bit string as a byte array.
+             */
+            rawIcon?: string;
+            /**
+             * the icon a 64 bit string as a byte array.
+             */
+            rawPng?: string;
+        }
+
+        /**
+         * Schema for MSIX Package Dependencies properties.
+         */
+        export interface MsixPackageDependenciesResponse {
+            /**
+             * Name of package dependency.
+             */
+            dependencyName?: string;
+            /**
+             * Dependency version required.
+             */
+            minVersion?: string;
+            /**
+             * Name of dependency publisher.
+             */
+            publisher?: string;
+        }
+
+        /**
+         * Represents a RegistrationInfo definition.
+         */
+        export interface RegistrationInfoResponse {
+            /**
+             * Expiration time of registration token.
+             */
+            expirationTime?: string;
+            /**
+             * The type of resetting the token.
+             */
+            registrationTokenOperation?: string;
+            /**
+             * The registration token base64 encoded string.
+             */
+            token?: string;
+        }
+
+        /**
+         * Scaling plan reference to hostpool.
+         */
+        export interface ScalingHostPoolReferenceResponse {
+            /**
+             * Arm path of referenced hostpool.
+             */
+            hostPoolArmPath?: string;
+            /**
+             * Is the scaling plan enabled for this hostpool.
+             */
+            scalingPlanEnabled?: boolean;
+        }
+
+        /**
+         * Scaling plan schedule.
+         */
+        export interface ScalingScheduleResponse {
+            /**
+             * Set of days of the week on which this schedule is active.
+             */
+            daysOfWeek?: string[];
+            /**
+             * Name of the scaling schedule.
+             */
+            name?: string;
+            /**
+             * Load balancing algorithm for off-peak period.
+             */
+            offPeakLoadBalancingAlgorithm?: string;
+            /**
+             * Starting time for off-peak period.
+             */
+            offPeakStartTime?: string;
+            /**
+             * Load balancing algorithm for peak period.
+             */
+            peakLoadBalancingAlgorithm?: string;
+            /**
+             * Starting time for peak period.
+             */
+            peakStartTime?: string;
+            /**
+             * Capacity threshold for ramp down period.
+             */
+            rampDownCapacityThresholdPct?: number;
+            /**
+             * Should users be logged off forcefully from hosts.
+             */
+            rampDownForceLogoffUsers?: boolean;
+            /**
+             * Load balancing algorithm for ramp down period.
+             */
+            rampDownLoadBalancingAlgorithm?: string;
+            /**
+             * Minimum host percentage for ramp down period.
+             */
+            rampDownMinimumHostsPct?: number;
+            /**
+             * Notification message for users during ramp down period.
+             */
+            rampDownNotificationMessage?: string;
+            /**
+             * Number of minutes to wait to stop hosts during ramp down period.
+             */
+            rampDownNotificationMinutes?: number;
+            /**
+             * Starting time for ramp down period.
+             */
+            rampDownStartTime?: string;
+            /**
+             * Specifies when to stop hosts during ramp down period.
+             */
+            rampDownStopHostsWhen?: string;
+            /**
+             * Load balancing algorithm for ramp up period.
+             */
+            rampUpAlgorithm?: string;
+            /**
+             * Capacity threshold for ramp up period.
+             */
+            rampUpCapacityThresholdPct?: number;
+            /**
+             * Minimum host percentage for ramp up period.
+             */
+            rampUpMinimumHostPct?: number;
+            /**
+             * Starting time for ramp up period.
+             */
+            rampUpStartTime?: string;
+        }
+    }
 }
 
 export namespace devices {
@@ -194869,6 +195247,38 @@ export namespace eventhub {
         }
 
         /**
+         * Properties to configure Encryption
+         */
+        export interface EncryptionResponse {
+            /**
+             * Enumerates the possible value of keySource for Encryption
+             */
+            keySource?: string;
+            /**
+             * Properties of KeyVault
+             */
+            keyVaultProperties?: outputs.eventhub.v20180101preview.KeyVaultPropertiesResponse[];
+        }
+
+        /**
+         * Properties to configure Identity for Bring your Own Keys
+         */
+        export interface IdentityResponse {
+            /**
+             * ObjectId from the KeyVault
+             */
+            principalId?: string;
+            /**
+             * TenantId from the KeyVault
+             */
+            tenantId?: string;
+            /**
+             * Enumerates the possible value Identity type, which currently supports only 'SystemAssigned'
+             */
+            type?: string;
+        }
+
+        /**
          * Properties to configure keyVault Properties
          */
         export interface KeyVaultPropertiesResponse {
@@ -200203,11 +200613,11 @@ export namespace importexport {
             /**
              * The city name to use when returning the drives.
              */
-            city: string;
+            city?: string;
             /**
              * The country or region to use when returning the drives. 
              */
-            countryOrRegion: string;
+            countryOrRegion?: string;
             /**
              * Phone number of the recipient of the returned drives.
              */
@@ -200215,27 +200625,79 @@ export namespace importexport {
             /**
              * The postal code to use when returning the drives.
              */
-            postalCode: string;
+            postalCode?: string;
             /**
              * The name of the recipient who will receive the hard drives when they are returned. 
              */
-            recipientName: string;
+            recipientName?: string;
             /**
              * The state or province to use when returning the drives.
              */
-            stateOrProvince: string;
+            stateOrProvince?: string;
             /**
              * The first line of the street address to use when returning the drives. 
              */
-            streetAddress1: string;
+            streetAddress1?: string;
             /**
              * The second line of the street address to use when returning the drives. 
              */
             streetAddress2?: string;
         }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
+        }
     }
 
     export namespace v20161101 {
+        /**
+         * Contains information about the delivery package being shipped by the customer to the Microsoft data center.
+         */
+        export interface DeliveryPackageInformationResponse {
+            /**
+             * The name of the carrier that is used to ship the import or export drives.
+             */
+            carrierName: string;
+            /**
+             * The number of drives included in the package.
+             */
+            driveCount?: number;
+            /**
+             * The date when the package is shipped.
+             */
+            shipDate?: string;
+            /**
+             * The tracking number of the package.
+             */
+            trackingNumber: string;
+        }
+
         /**
          * BitLocker recovery key or password to the specified drive
          */
@@ -200305,13 +200767,31 @@ export namespace importexport {
         }
 
         /**
+         * Specifies the encryption key properties
+         */
+        export interface EncryptionKeyDetailsResponse {
+            /**
+             * The type of kek encryption key
+             */
+            kekType?: string;
+            /**
+             * Specifies the url for kek encryption key. 
+             */
+            kekUrl?: string;
+            /**
+             * Specifies the keyvault resource id for kek encryption key. 
+             */
+            kekVaultResourceID?: string;
+        }
+
+        /**
          * A property containing information about the blobs to be exported for an export job. This property is required for export jobs, but must not be specified for import jobs.
          */
         export interface ExportResponse {
             /**
              * The relative URI to the block blob that contains the list of blob paths or blob path prefixes as defined above, beginning with the container name. If the blob is in root container, the URI must begin with $root. 
              */
-            blobListblobPath?: string;
+            blobListBlobPath?: string;
             /**
              * A collection of blob-path strings.
              */
@@ -200320,6 +200800,24 @@ export namespace importexport {
              * A collection of blob-prefix strings.
              */
             blobPathPrefix?: string[];
+        }
+
+        /**
+         * Specifies the identity properties. 
+         */
+        export interface IdentityDetailsResponse {
+            /**
+             * Specifies the principal id for the identity for the job. 
+             */
+            principalId: string;
+            /**
+             * Specifies the tenant id for the identity for the job. 
+             */
+            tenantId: string;
+            /**
+             * The type of identity
+             */
+            type?: string;
         }
 
         /**
@@ -200337,7 +200835,7 @@ export namespace importexport {
             /**
              * Contains information about the package being shipped by the customer to the Microsoft data center. 
              */
-            deliveryPackage?: outputs.importexport.v20161101.PackageInfomationResponse;
+            deliveryPackage?: outputs.importexport.v20161101.DeliveryPackageInformationResponse;
             /**
              * The virtual blob directory to which the copy logs and backups of drive manifest files (if enabled) will be stored.
              */
@@ -200346,6 +200844,10 @@ export namespace importexport {
              * List of up to ten drives that comprise the job. The drive list is a required element for an import job; it is not specified for export jobs.
              */
             driveList?: outputs.importexport.v20161101.DriveStatusResponse[];
+            /**
+             * Contains information about the encryption key.
+             */
+            encryptionKey?: outputs.importexport.v20161101.EncryptionKeyDetailsResponse;
             /**
              * A property containing information about the blobs to be exported for an export job. This property is included for export jobs only.
              */
@@ -200479,13 +200981,17 @@ export namespace importexport {
          */
         export interface ShippingInformationResponse {
             /**
+             * Additional shipping information for customer, specific to datacenter to which customer should send their disks.
+             */
+            additionalInformation: string;
+            /**
              * The city name to use when returning the drives.
              */
-            city: string;
+            city?: string;
             /**
              * The country or region to use when returning the drives. 
              */
-            countryOrRegion: string;
+            countryOrRegion?: string;
             /**
              * Phone number of the recipient of the returned drives.
              */
@@ -200493,23 +200999,53 @@ export namespace importexport {
             /**
              * The postal code to use when returning the drives.
              */
-            postalCode: string;
+            postalCode?: string;
             /**
              * The name of the recipient who will receive the hard drives when they are returned. 
              */
-            recipientName: string;
+            recipientName?: string;
             /**
              * The state or province to use when returning the drives.
              */
-            stateOrProvince: string;
+            stateOrProvince?: string;
             /**
              * The first line of the street address to use when returning the drives. 
              */
-            streetAddress1: string;
+            streetAddress1?: string;
             /**
              * The second line of the street address to use when returning the drives. 
              */
             streetAddress2?: string;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
         }
     }
 
@@ -200825,11 +201361,11 @@ export namespace importexport {
             /**
              * The city name to use when returning the drives.
              */
-            city: string;
+            city?: string;
             /**
              * The country or region to use when returning the drives. 
              */
-            countryOrRegion: string;
+            countryOrRegion?: string;
             /**
              * Phone number of the recipient of the returned drives.
              */
@@ -200837,23 +201373,53 @@ export namespace importexport {
             /**
              * The postal code to use when returning the drives.
              */
-            postalCode: string;
+            postalCode?: string;
             /**
              * The name of the recipient who will receive the hard drives when they are returned. 
              */
-            recipientName: string;
+            recipientName?: string;
             /**
              * The state or province to use when returning the drives.
              */
-            stateOrProvince: string;
+            stateOrProvince?: string;
             /**
              * The first line of the street address to use when returning the drives. 
              */
-            streetAddress1: string;
+            streetAddress1?: string;
             /**
              * The second line of the street address to use when returning the drives. 
              */
             streetAddress2?: string;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
         }
     }
 }
@@ -452546,6 +453112,38 @@ export namespace servicebus {
         }
 
         /**
+         * Properties to configure Encryption
+         */
+        export interface EncryptionResponse {
+            /**
+             * Enumerates the possible value of keySource for Encryption
+             */
+            keySource?: string;
+            /**
+             * Properties of KeyVault
+             */
+            keyVaultProperties?: outputs.servicebus.v20180101preview.KeyVaultPropertiesResponse;
+        }
+
+        /**
+         * Properties to configure Identity for Bring your Own Keys
+         */
+        export interface IdentityResponse {
+            /**
+             * ObjectId from the KeyVault
+             */
+            principalId?: string;
+            /**
+             * TenantId from the KeyVault
+             */
+            tenantId?: string;
+            /**
+             * Enumerates the possible value Identity type, which currently supports only 'SystemAssigned'
+             */
+            type?: string;
+        }
+
+        /**
          * Properties to configure keyVault Properties
          */
         export interface KeyVaultPropertiesResponse {
@@ -457131,34 +457729,6 @@ export namespace servicefabric {
 
     export namespace v20200101preview {
         /**
-         * Defines a delta health policy used to evaluate the health of an application or one of its child entities when upgrading the cluster.
-         */
-        export interface ApplicationDeltaHealthPolicyResponse {
-            /**
-             * The delta health policy used by default to evaluate the health of a service type when upgrading the cluster.
-             */
-            defaultServiceTypeDeltaHealthPolicy?: outputs.servicefabric.v20200101preview.ServiceTypeDeltaHealthPolicyResponse;
-            /**
-             * The map with service type delta health policy per service type name. The map is empty by default.
-             */
-            serviceTypeDeltaHealthPolicies?: {[key: string]: outputs.servicefabric.v20200101preview.ServiceTypeDeltaHealthPolicyResponse};
-        }
-
-        /**
-         * Defines a health policy used to evaluate the health of an application or one of its children entities.
-         */
-        export interface ApplicationHealthPolicyResponse {
-            /**
-             * The health policy used by default to evaluate the health of a service type.
-             */
-            defaultServiceTypeHealthPolicy?: outputs.servicefabric.v20200101preview.ServiceTypeHealthPolicyResponse;
-            /**
-             * The map with service type health policy per service type name. The map is empty by default.
-             */
-            serviceTypeHealthPolicies?: {[key: string]: outputs.servicefabric.v20200101preview.ServiceTypeHealthPolicyResponse};
-        }
-
-        /**
          * The settings to enable AAD authentication on the cluster.
          */
         export interface AzureActiveDirectoryResponse {
@@ -457189,113 +457759,13 @@ export namespace servicefabric {
              */
             isAdmin: boolean;
             /**
-             * Issuer thumbprint for the certificate. Its only use CommonName is used.
+             * Issuer thumbprint for the certificate. Only used together with CommonName.
              */
             issuerThumbprint?: string;
             /**
              * Certificate Thumbprint.
              */
             thumbprint?: string;
-        }
-
-        /**
-         * Defines a health policy used to evaluate the health of the cluster or of a cluster node.
-         */
-        export interface ClusterHealthPolicyResponse {
-            /**
-             * Defines the application health policy map used to evaluate the health of an application or one of its children entities.
-             */
-            applicationHealthPolicies?: {[key: string]: outputs.servicefabric.v20200101preview.ApplicationHealthPolicyResponse};
-            /**
-             * The maximum allowed percentage of unhealthy applications before reporting an error. For example, to allow 10% of applications to be unhealthy, this value would be 10.
-             *
-             * The percentage represents the maximum tolerated percentage of applications that can be unhealthy before the cluster is considered in error.
-             * If the percentage is respected but there is at least one unhealthy application, the health is evaluated as Warning.
-             * This is calculated by dividing the number of unhealthy applications over the total number of application instances in the cluster, excluding applications of application types that are included in the ApplicationTypeHealthPolicyMap.
-             * The computation rounds up to tolerate one failure on small numbers of applications. Default percentage is zero.
-             */
-            maxPercentUnhealthyApplications?: number;
-            /**
-             * The maximum allowed percentage of unhealthy nodes before reporting an error. For example, to allow 10% of nodes to be unhealthy, this value would be 10.
-             *
-             * The percentage represents the maximum tolerated percentage of nodes that can be unhealthy before the cluster is considered in error.
-             * If the percentage is respected but there is at least one unhealthy node, the health is evaluated as Warning.
-             * The percentage is calculated by dividing the number of unhealthy nodes over the total number of nodes in the cluster.
-             * The computation rounds up to tolerate one failure on small numbers of nodes. Default percentage is zero.
-             *
-             * In large clusters, some nodes will always be down or out for repairs, so this percentage should be configured to tolerate that.
-             */
-            maxPercentUnhealthyNodes?: number;
-        }
-
-        /**
-         * Describes the delta health policies for the cluster upgrade.
-         */
-        export interface ClusterUpgradeDeltaHealthPolicyResponse {
-            /**
-             * Defines the application delta health policy map used to evaluate the health of an application or one of its child entities when upgrading the cluster.
-             */
-            applicationDeltaHealthPolicies?: {[key: string]: outputs.servicefabric.v20200101preview.ApplicationDeltaHealthPolicyResponse};
-            /**
-             * The maximum allowed percentage of applications health degradation allowed during cluster upgrades.
-             * The delta is measured between the state of the applications at the beginning of upgrade and the state of the applications at the time of the health evaluation.
-             * The check is performed after every upgrade domain upgrade completion to make sure the global state of the cluster is within tolerated limits. System services are not included in this.
-             */
-            maxPercentDeltaUnhealthyApplications: number;
-            /**
-             * The maximum allowed percentage of nodes health degradation allowed during cluster upgrades.
-             * The delta is measured between the state of the nodes at the beginning of upgrade and the state of the nodes at the time of the health evaluation.
-             * The check is performed after every upgrade domain upgrade completion to make sure the global state of the cluster is within tolerated limits.
-             */
-            maxPercentDeltaUnhealthyNodes: number;
-            /**
-             * The maximum allowed percentage of upgrade domain nodes health degradation allowed during cluster upgrades.
-             * The delta is measured between the state of the upgrade domain nodes at the beginning of upgrade and the state of the upgrade domain nodes at the time of the health evaluation.
-             * The check is performed after every upgrade domain upgrade completion for all completed upgrade domains to make sure the state of the upgrade domains is within tolerated limits.
-             */
-            maxPercentUpgradeDomainDeltaUnhealthyNodes: number;
-        }
-
-        /**
-         * Describes the policy used when upgrading the cluster.
-         */
-        export interface ClusterUpgradePolicyResponse {
-            /**
-             * The cluster delta health policy used when upgrading the cluster.
-             */
-            deltaHealthPolicy?: outputs.servicefabric.v20200101preview.ClusterUpgradeDeltaHealthPolicyResponse;
-            /**
-             * If true, then processes are forcefully restarted during upgrade even when the code version has not changed (the upgrade only changes configuration or data).
-             */
-            forceRestart?: boolean;
-            /**
-             * The amount of time to retry health evaluation when the application or cluster is unhealthy before the upgrade rolls back. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
-             */
-            healthCheckRetryTimeout: string;
-            /**
-             * The amount of time that the application or cluster must remain healthy before the upgrade proceeds to the next upgrade domain. The duration can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
-             */
-            healthCheckStableDuration: string;
-            /**
-             * The length of time to wait after completing an upgrade domain before performing health checks. The duration can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
-             */
-            healthCheckWaitDuration: string;
-            /**
-             * The cluster health policy used when upgrading the cluster.
-             */
-            healthPolicy: outputs.servicefabric.v20200101preview.ClusterHealthPolicyResponse;
-            /**
-             * The amount of time each upgrade domain has to complete before the upgrade rolls back. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
-             */
-            upgradeDomainTimeout: string;
-            /**
-             * The maximum amount of time to block processing of an upgrade domain and prevent loss of availability when there are unexpected issues. When this timeout expires, processing of the upgrade domain will proceed regardless of availability loss issues. The timeout is reset at the start of each upgrade domain. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
-             */
-            upgradeReplicaSetCheckTimeout: string;
-            /**
-             * The amount of time the overall upgrade has to complete before the upgrade rolls back. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
-             */
-            upgradeTimeout: string;
         }
 
         /**
@@ -457339,28 +457809,6 @@ export namespace servicefabric {
         }
 
         /**
-         * Represents the delta health policy used to evaluate the health of services belonging to a service type when upgrading the cluster.
-         */
-        export interface ServiceTypeDeltaHealthPolicyResponse {
-            /**
-             * The maximum allowed percentage of services health degradation allowed during cluster upgrades.
-             * The delta is measured between the state of the services at the beginning of upgrade and the state of the services at the time of the health evaluation.
-             * The check is performed after every upgrade domain upgrade completion to make sure the global state of the cluster is within tolerated limits.
-             */
-            maxPercentDeltaUnhealthyServices?: number;
-        }
-
-        /**
-         * Represents the health policy used to evaluate the health of services belonging to a service type.
-         */
-        export interface ServiceTypeHealthPolicyResponse {
-            /**
-             * The maximum percentage of services allowed to be unhealthy before your application is considered in error.
-             */
-            maxPercentUnhealthyServices?: number;
-        }
-
-        /**
          * Describes a parameter in fabric settings of the cluster.
          */
         export interface SettingsParameterDescriptionResponse {
@@ -457393,7 +457841,7 @@ export namespace servicefabric {
          */
         export interface SkuResponse {
             /**
-             * Sku Name. Basic will have a minimum of 3 seed nodes and Standard a minimum of 5. Basic only allows 1 node type.
+             * Sku Name.
              */
             name: string;
         }

@@ -8806,6 +8806,253 @@ export namespace authorization {
         }
 
     }
+
+    export namespace v20201001preview {
+        /**
+         * The approval settings.
+         */
+        export interface ApprovalSettings {
+            /**
+             * The type of rule
+             */
+            approvalMode?: pulumi.Input<string | enums.authorization.v20201001preview.ApprovalMode>;
+            /**
+             * The approval stages of the request.
+             */
+            approvalStages?: pulumi.Input<pulumi.Input<inputs.authorization.v20201001preview.ApprovalStage>[]>;
+            /**
+             * Determine whether approval is required or not.
+             */
+            isApprovalRequired?: pulumi.Input<boolean>;
+            /**
+             * Determine whether approval is required for assignment extension.
+             */
+            isApprovalRequiredForExtension?: pulumi.Input<boolean>;
+            /**
+             * Determine whether requestor justification required.
+             */
+            isRequestorJustificationRequired?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * The approval stage.
+         */
+        export interface ApprovalStage {
+            /**
+             * The time in days when approval request would be timed out.
+             */
+            approvalStageTimeOutInDays?: pulumi.Input<number>;
+            /**
+             * The escalation approver of the request.
+             */
+            escalationApprovers?: pulumi.Input<pulumi.Input<inputs.authorization.v20201001preview.SingleUser>[]>;
+            /**
+             * The time in minutes when the approval request would be escalated if the primary approver does not approves.
+             */
+            escalationTimeInMinutes?: pulumi.Input<number>;
+            /**
+             * Determine whether approver need to provide justification for his decision.
+             */
+            isApproverJustificationRequired?: pulumi.Input<boolean>;
+            /**
+             * The value determine whether escalation feature is enabled.
+             */
+            isEscalationEnabled?: pulumi.Input<boolean>;
+            /**
+             * The primary approver of the request.
+             */
+            primaryApprovers?: pulumi.Input<pulumi.Input<inputs.authorization.v20201001preview.SingleUser>[]>;
+        }
+
+        /**
+         * The role management policy rule.
+         */
+        export interface RoleManagementPolicyApprovalRule {
+            /**
+             * The id of the rule.
+             */
+            id?: pulumi.Input<string>;
+            /**
+             * The type of rule
+             * Expected value is 'RoleManagementPolicyApprovalRule'.
+             */
+            ruleType: pulumi.Input<"RoleManagementPolicyApprovalRule">;
+            /**
+             * The approval setting
+             */
+            setting?: pulumi.Input<inputs.authorization.v20201001preview.ApprovalSettings>;
+            /**
+             * The target of the current rule.
+             */
+            target?: pulumi.Input<inputs.authorization.v20201001preview.RoleManagementPolicyRuleTarget>;
+        }
+
+        /**
+         * The role management policy rule.
+         */
+        export interface RoleManagementPolicyAuthenticationContextRule {
+            /**
+             * The claim value.
+             */
+            claimValue?: pulumi.Input<string>;
+            /**
+             * The id of the rule.
+             */
+            id?: pulumi.Input<string>;
+            /**
+             * The value indicating if rule is enabled.
+             */
+            isEnabled?: pulumi.Input<boolean>;
+            /**
+             * The type of rule
+             * Expected value is 'RoleManagementPolicyAuthenticationContextRule'.
+             */
+            ruleType: pulumi.Input<"RoleManagementPolicyAuthenticationContextRule">;
+            /**
+             * The target of the current rule.
+             */
+            target?: pulumi.Input<inputs.authorization.v20201001preview.RoleManagementPolicyRuleTarget>;
+        }
+
+        /**
+         * The role management policy rule.
+         */
+        export interface RoleManagementPolicyEnablementRule {
+            /**
+             * The list of enabled rules.
+             */
+            enabledRules?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The id of the rule.
+             */
+            id?: pulumi.Input<string>;
+            /**
+             * The type of rule
+             * Expected value is 'RoleManagementPolicyEnablementRule'.
+             */
+            ruleType: pulumi.Input<"RoleManagementPolicyEnablementRule">;
+            /**
+             * The target of the current rule.
+             */
+            target?: pulumi.Input<inputs.authorization.v20201001preview.RoleManagementPolicyRuleTarget>;
+        }
+
+        /**
+         * The role management policy rule.
+         */
+        export interface RoleManagementPolicyExpirationRule {
+            /**
+             * The id of the rule.
+             */
+            id?: pulumi.Input<string>;
+            /**
+             * The value indicating whether expiration is required.
+             */
+            isExpirationRequired?: pulumi.Input<boolean>;
+            /**
+             * The maximum duration of expiration in timespan.
+             */
+            maximumDuration?: pulumi.Input<string>;
+            /**
+             * The type of rule
+             * Expected value is 'RoleManagementPolicyExpirationRule'.
+             */
+            ruleType: pulumi.Input<"RoleManagementPolicyExpirationRule">;
+            /**
+             * The target of the current rule.
+             */
+            target?: pulumi.Input<inputs.authorization.v20201001preview.RoleManagementPolicyRuleTarget>;
+        }
+
+        /**
+         * The role management policy rule.
+         */
+        export interface RoleManagementPolicyNotificationRule {
+            /**
+             * The id of the rule.
+             */
+            id?: pulumi.Input<string>;
+            /**
+             * The notification level.
+             */
+            notificationLevel?: pulumi.Input<string | enums.authorization.v20201001preview.NotificationLevel>;
+            /**
+             * The list notification recipients.
+             */
+            notificationRecipients?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The type of notification.
+             */
+            notificationType?: pulumi.Input<string | enums.authorization.v20201001preview.NotificationDeliveryMechanism>;
+            /**
+             * The recipient type.
+             */
+            recipientType?: pulumi.Input<string | enums.authorization.v20201001preview.RecipientType>;
+            /**
+             * The type of rule
+             * Expected value is 'RoleManagementPolicyNotificationRule'.
+             */
+            ruleType: pulumi.Input<"RoleManagementPolicyNotificationRule">;
+            /**
+             * The target of the current rule.
+             */
+            target?: pulumi.Input<inputs.authorization.v20201001preview.RoleManagementPolicyRuleTarget>;
+        }
+
+        /**
+         * The role management policy rule target.
+         */
+        export interface RoleManagementPolicyRuleTarget {
+            /**
+             * The caller of the setting.
+             */
+            caller?: pulumi.Input<string>;
+            /**
+             * The list of enforced settings.
+             */
+            enforcedSettings?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The list of inheritable settings.
+             */
+            inheritableSettings?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The assignment level to which it is applied.
+             */
+            level?: pulumi.Input<string>;
+            /**
+             * The type of operation.
+             */
+            operations?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The list of target objects.
+             */
+            targetObjects?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * The detail of a user.
+         */
+        export interface SingleUser {
+            /**
+             * The description of the user.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * The object id of the user.
+             */
+            id?: pulumi.Input<string>;
+            /**
+             * The value indicating whether the user is a backup fallback approver
+             */
+            isBackup?: pulumi.Input<boolean>;
+            /**
+             * The object id of the user.
+             * Expected value is 'SingleUser'.
+             */
+            userType: pulumi.Input<"SingleUser">;
+        }
+
+    }
 }
 
 export namespace automanage {
@@ -21593,10 +21840,6 @@ export namespace cdn {
              */
             certificateAuthority?: pulumi.Input<string>;
             /**
-             * Certificate expiration date.
-             */
-            expirationDate?: pulumi.Input<string>;
-            /**
              * Resource reference to the KV secret
              */
             secretSource: pulumi.Input<inputs.cdn.latest.ResourceReference>;
@@ -21605,17 +21848,9 @@ export namespace cdn {
              */
             secretVersion?: pulumi.Input<string>;
             /**
-             * Subject name in the certificate.
-             */
-            subject?: pulumi.Input<string>;
-            /**
              * The list of SANs.
              */
             subjectAlternativeNames?: pulumi.Input<pulumi.Input<string>[]>;
-            /**
-             * Certificate thumbprint.
-             */
-            thumbprint?: pulumi.Input<string>;
             /**
              * The type of the Secret to create.
              * Expected value is 'CustomerCertificate'.
@@ -22187,18 +22422,6 @@ export namespace cdn {
          * Managed Certificate used for https
          */
         export interface ManagedCertificateParameters {
-            /**
-             * Certificate expiration date.
-             */
-            expirationDate?: pulumi.Input<string>;
-            /**
-             * Subject name in the certificate.
-             */
-            subject?: pulumi.Input<string>;
-            /**
-             * Certificate thumbprint.
-             */
-            thumbprint?: pulumi.Input<string>;
             /**
              * The type of the Secret to create.
              * Expected value is 'ManagedCertificate'.
@@ -29669,10 +29892,6 @@ export namespace cdn {
              */
             certificateAuthority?: pulumi.Input<string>;
             /**
-             * Certificate expiration date.
-             */
-            expirationDate?: pulumi.Input<string>;
-            /**
              * Resource reference to the KV secret
              */
             secretSource: pulumi.Input<inputs.cdn.v20200901.ResourceReference>;
@@ -29681,17 +29900,9 @@ export namespace cdn {
              */
             secretVersion?: pulumi.Input<string>;
             /**
-             * Subject name in the certificate.
-             */
-            subject?: pulumi.Input<string>;
-            /**
              * The list of SANs.
              */
             subjectAlternativeNames?: pulumi.Input<pulumi.Input<string>[]>;
-            /**
-             * Certificate thumbprint.
-             */
-            thumbprint?: pulumi.Input<string>;
             /**
              * The type of the Secret to create.
              * Expected value is 'CustomerCertificate'.
@@ -30263,18 +30474,6 @@ export namespace cdn {
          * Managed Certificate used for https
          */
         export interface ManagedCertificateParameters {
-            /**
-             * Certificate expiration date.
-             */
-            expirationDate?: pulumi.Input<string>;
-            /**
-             * Subject name in the certificate.
-             */
-            subject?: pulumi.Input<string>;
-            /**
-             * Certificate thumbprint.
-             */
-            thumbprint?: pulumi.Input<string>;
             /**
              * The type of the Secret to create.
              * Expected value is 'ManagedCertificate'.
@@ -32798,7 +32997,7 @@ export namespace compute {
          */
         export interface SshPublicKey {
             /**
-             * SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+             * SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
              */
             keyData?: pulumi.Input<string>;
             /**
@@ -47855,7 +48054,7 @@ export namespace compute {
          */
         export interface SshPublicKey {
             /**
-             * SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+             * SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
              */
             keyData?: pulumi.Input<string>;
             /**
@@ -75581,6 +75780,10 @@ export namespace datafactory {
              */
             parameters?: pulumi.Input<{[key: string]: pulumi.Input<inputs.datafactory.latest.ParameterSpecification>}>;
             /**
+             * The policy id for limiting the ability to configure clusters based on a user defined set of rules. Type: string (or Expression with resultType string).
+             */
+            policyId?: any;
+            /**
              * Type of linked service.
              * Expected value is 'AzureDatabricks'.
              */
@@ -78810,6 +79013,10 @@ export namespace datafactory {
          * Custom activity type.
          */
         export interface CustomActivity {
+            /**
+             * Elevation level and scope for the user, default is nonadmin task. Type: string (or Expression with resultType double).
+             */
+            autoUserSpecification?: any;
             /**
              * Command for custom activity Type: string (or Expression with resultType string).
              */
@@ -105225,6 +105432,10 @@ export namespace datafactory {
              */
             parameters?: pulumi.Input<{[key: string]: pulumi.Input<inputs.datafactory.v20180601.ParameterSpecification>}>;
             /**
+             * The policy id for limiting the ability to configure clusters based on a user defined set of rules. Type: string (or Expression with resultType string).
+             */
+            policyId?: any;
+            /**
              * Type of linked service.
              * Expected value is 'AzureDatabricks'.
              */
@@ -108454,6 +108665,10 @@ export namespace datafactory {
          * Custom activity type.
          */
         export interface CustomActivity {
+            /**
+             * Elevation level and scope for the user, default is nonadmin task. Type: string (or Expression with resultType double).
+             */
+            autoUserSpecification?: any;
             /**
              * Command for custom activity Type: string (or Expression with resultType string).
              */
@@ -131744,6 +131959,171 @@ export namespace desktopvirtualization {
              * Minimum host percentage for ramp up period.
              */
             rampUpMinimumHostsPct?: pulumi.Input<number>;
+            /**
+             * Starting time for ramp up period.
+             */
+            rampUpStartTime?: pulumi.Input<string>;
+        }
+
+    }
+
+    export namespace v20210114preview {
+        /**
+         * Schema for MSIX Package Application properties.
+         */
+        export interface MsixPackageApplications {
+            /**
+             * Package Application Id, found in appxmanifest.xml.
+             */
+            appId?: pulumi.Input<string>;
+            /**
+             * Used to activate Package Application. Consists of Package Name and ApplicationID. Found in appxmanifest.xml.
+             */
+            appUserModelID?: pulumi.Input<string>;
+            /**
+             * Description of Package Application.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * User friendly name.
+             */
+            friendlyName?: pulumi.Input<string>;
+            /**
+             * User friendly name.
+             */
+            iconImageName?: pulumi.Input<string>;
+            /**
+             * the icon a 64 bit string as a byte array.
+             */
+            rawIcon?: pulumi.Input<string>;
+            /**
+             * the icon a 64 bit string as a byte array.
+             */
+            rawPng?: pulumi.Input<string>;
+        }
+
+        /**
+         * Schema for MSIX Package Dependencies properties.
+         */
+        export interface MsixPackageDependencies {
+            /**
+             * Name of package dependency.
+             */
+            dependencyName?: pulumi.Input<string>;
+            /**
+             * Dependency version required.
+             */
+            minVersion?: pulumi.Input<string>;
+            /**
+             * Name of dependency publisher.
+             */
+            publisher?: pulumi.Input<string>;
+        }
+
+        /**
+         * Represents a RegistrationInfo definition.
+         */
+        export interface RegistrationInfo {
+            /**
+             * Expiration time of registration token.
+             */
+            expirationTime?: pulumi.Input<string>;
+            /**
+             * The type of resetting the token.
+             */
+            registrationTokenOperation?: pulumi.Input<string | enums.desktopvirtualization.v20210114preview.RegistrationTokenOperation>;
+            /**
+             * The registration token base64 encoded string.
+             */
+            token?: pulumi.Input<string>;
+        }
+
+        /**
+         * Scaling plan reference to hostpool.
+         */
+        export interface ScalingHostPoolReference {
+            /**
+             * Arm path of referenced hostpool.
+             */
+            hostPoolArmPath?: pulumi.Input<string>;
+            /**
+             * Is the scaling plan enabled for this hostpool.
+             */
+            scalingPlanEnabled?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Scaling plan schedule.
+         */
+        export interface ScalingSchedule {
+            /**
+             * Set of days of the week on which this schedule is active.
+             */
+            daysOfWeek?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Name of the scaling schedule.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Load balancing algorithm for off-peak period.
+             */
+            offPeakLoadBalancingAlgorithm?: pulumi.Input<string | enums.desktopvirtualization.v20210114preview.SessionHostLoadBalancingAlgorithm>;
+            /**
+             * Starting time for off-peak period.
+             */
+            offPeakStartTime?: pulumi.Input<string>;
+            /**
+             * Load balancing algorithm for peak period.
+             */
+            peakLoadBalancingAlgorithm?: pulumi.Input<string | enums.desktopvirtualization.v20210114preview.SessionHostLoadBalancingAlgorithm>;
+            /**
+             * Starting time for peak period.
+             */
+            peakStartTime?: pulumi.Input<string>;
+            /**
+             * Capacity threshold for ramp down period.
+             */
+            rampDownCapacityThresholdPct?: pulumi.Input<number>;
+            /**
+             * Should users be logged off forcefully from hosts.
+             */
+            rampDownForceLogoffUsers?: pulumi.Input<boolean>;
+            /**
+             * Load balancing algorithm for ramp down period.
+             */
+            rampDownLoadBalancingAlgorithm?: pulumi.Input<string | enums.desktopvirtualization.v20210114preview.SessionHostLoadBalancingAlgorithm>;
+            /**
+             * Minimum host percentage for ramp down period.
+             */
+            rampDownMinimumHostsPct?: pulumi.Input<number>;
+            /**
+             * Notification message for users during ramp down period.
+             */
+            rampDownNotificationMessage?: pulumi.Input<string>;
+            /**
+             * Number of minutes to wait to stop hosts during ramp down period.
+             */
+            rampDownNotificationMinutes?: pulumi.Input<number>;
+            /**
+             * Starting time for ramp down period.
+             */
+            rampDownStartTime?: pulumi.Input<string>;
+            /**
+             * Specifies when to stop hosts during ramp down period.
+             */
+            rampDownStopHostsWhen?: pulumi.Input<string | enums.desktopvirtualization.v20210114preview.StopHostsWhen>;
+            /**
+             * Load balancing algorithm for ramp up period.
+             */
+            rampUpAlgorithm?: pulumi.Input<string | enums.desktopvirtualization.v20210114preview.SessionHostLoadBalancingAlgorithm>;
+            /**
+             * Capacity threshold for ramp up period.
+             */
+            rampUpCapacityThresholdPct?: pulumi.Input<number>;
+            /**
+             * Minimum host percentage for ramp up period.
+             */
+            rampUpMinimumHostPct?: pulumi.Input<number>;
             /**
              * Starting time for ramp up period.
              */
@@ -155694,6 +156074,38 @@ export namespace eventhub {
         }
 
         /**
+         * Properties to configure Encryption
+         */
+        export interface Encryption {
+            /**
+             * Enumerates the possible value of keySource for Encryption
+             */
+            keySource?: pulumi.Input<enums.eventhub.v20180101preview.KeySource>;
+            /**
+             * Properties of KeyVault
+             */
+            keyVaultProperties?: pulumi.Input<pulumi.Input<inputs.eventhub.v20180101preview.KeyVaultProperties>[]>;
+        }
+
+        /**
+         * Properties to configure Identity for Bring your Own Keys
+         */
+        export interface Identity {
+            /**
+             * ObjectId from the KeyVault
+             */
+            principalId?: pulumi.Input<string>;
+            /**
+             * TenantId from the KeyVault
+             */
+            tenantId?: pulumi.Input<string>;
+            /**
+             * Enumerates the possible value Identity type, which currently supports only 'SystemAssigned'
+             */
+            type?: pulumi.Input<enums.eventhub.v20180101preview.IdentityType>;
+        }
+
+        /**
          * Properties to configure keyVault Properties
          */
         export interface KeyVaultProperties {
@@ -159383,7 +159795,7 @@ export namespace importexport {
             /**
              * The type of kek encryption key
              */
-            kekType?: pulumi.Input<string>;
+            kekType?: pulumi.Input<string | enums.importexport.latest.EncryptionKekType>;
             /**
              * Specifies the url for kek encryption key. 
              */
@@ -159575,11 +159987,11 @@ export namespace importexport {
             /**
              * The city name to use when returning the drives.
              */
-            city: pulumi.Input<string>;
+            city?: pulumi.Input<string>;
             /**
              * The country or region to use when returning the drives. 
              */
-            countryOrRegion: pulumi.Input<string>;
+            countryOrRegion?: pulumi.Input<string>;
             /**
              * Phone number of the recipient of the returned drives.
              */
@@ -159587,19 +159999,19 @@ export namespace importexport {
             /**
              * The postal code to use when returning the drives.
              */
-            postalCode: pulumi.Input<string>;
+            postalCode?: pulumi.Input<string>;
             /**
              * The name of the recipient who will receive the hard drives when they are returned. 
              */
-            recipientName: pulumi.Input<string>;
+            recipientName?: pulumi.Input<string>;
             /**
              * The state or province to use when returning the drives.
              */
-            stateOrProvince: pulumi.Input<string>;
+            stateOrProvince?: pulumi.Input<string>;
             /**
              * The first line of the street address to use when returning the drives. 
              */
-            streetAddress1: pulumi.Input<string>;
+            streetAddress1?: pulumi.Input<string>;
             /**
              * The second line of the street address to use when returning the drives. 
              */
@@ -159609,6 +160021,28 @@ export namespace importexport {
     }
 
     export namespace v20161101 {
+        /**
+         * Contains information about the delivery package being shipped by the customer to the Microsoft data center.
+         */
+        export interface DeliveryPackageInformation {
+            /**
+             * The name of the carrier that is used to ship the import or export drives.
+             */
+            carrierName: pulumi.Input<string>;
+            /**
+             * The number of drives included in the package.
+             */
+            driveCount?: pulumi.Input<number>;
+            /**
+             * The date when the package is shipped.
+             */
+            shipDate?: pulumi.Input<string>;
+            /**
+             * The tracking number of the package.
+             */
+            trackingNumber: pulumi.Input<string>;
+        }
+
         /**
          * Provides information about the drive's status
          */
@@ -159664,13 +160098,31 @@ export namespace importexport {
         }
 
         /**
+         * Specifies the encryption key properties
+         */
+        export interface EncryptionKeyDetails {
+            /**
+             * The type of kek encryption key
+             */
+            kekType?: pulumi.Input<string | enums.importexport.v20161101.EncryptionKekType>;
+            /**
+             * Specifies the url for kek encryption key. 
+             */
+            kekUrl?: pulumi.Input<string>;
+            /**
+             * Specifies the keyvault resource id for kek encryption key. 
+             */
+            kekVaultResourceID?: pulumi.Input<string>;
+        }
+
+        /**
          * A property containing information about the blobs to be exported for an export job. This property is required for export jobs, but must not be specified for import jobs.
          */
         export interface Export {
             /**
              * The relative URI to the block blob that contains the list of blob paths or blob path prefixes as defined above, beginning with the container name. If the blob is in root container, the URI must begin with $root. 
              */
-            blobListblobPath?: pulumi.Input<string>;
+            blobListBlobPath?: pulumi.Input<string>;
             /**
              * A collection of blob-path strings.
              */
@@ -159696,7 +160148,7 @@ export namespace importexport {
             /**
              * Contains information about the package being shipped by the customer to the Microsoft data center. 
              */
-            deliveryPackage?: pulumi.Input<inputs.importexport.v20161101.PackageInfomation>;
+            deliveryPackage?: pulumi.Input<inputs.importexport.v20161101.DeliveryPackageInformation>;
             /**
              * The virtual blob directory to which the copy logs and backups of drive manifest files (if enabled) will be stored.
              */
@@ -159705,6 +160157,10 @@ export namespace importexport {
              * List of up to ten drives that comprise the job. The drive list is a required element for an import job; it is not specified for export jobs.
              */
             driveList?: pulumi.Input<pulumi.Input<inputs.importexport.v20161101.DriveStatus>[]>;
+            /**
+             * Contains information about the encryption key.
+             */
+            encryptionKey?: pulumi.Input<inputs.importexport.v20161101.EncryptionKeyDetails>;
             /**
              * A property containing information about the blobs to be exported for an export job. This property is included for export jobs only.
              */
@@ -159840,11 +160296,11 @@ export namespace importexport {
             /**
              * The city name to use when returning the drives.
              */
-            city: pulumi.Input<string>;
+            city?: pulumi.Input<string>;
             /**
              * The country or region to use when returning the drives. 
              */
-            countryOrRegion: pulumi.Input<string>;
+            countryOrRegion?: pulumi.Input<string>;
             /**
              * Phone number of the recipient of the returned drives.
              */
@@ -159852,19 +160308,19 @@ export namespace importexport {
             /**
              * The postal code to use when returning the drives.
              */
-            postalCode: pulumi.Input<string>;
+            postalCode?: pulumi.Input<string>;
             /**
              * The name of the recipient who will receive the hard drives when they are returned. 
              */
-            recipientName: pulumi.Input<string>;
+            recipientName?: pulumi.Input<string>;
             /**
              * The state or province to use when returning the drives.
              */
-            stateOrProvince: pulumi.Input<string>;
+            stateOrProvince?: pulumi.Input<string>;
             /**
              * The first line of the street address to use when returning the drives. 
              */
-            streetAddress1: pulumi.Input<string>;
+            streetAddress1?: pulumi.Input<string>;
             /**
              * The second line of the street address to use when returning the drives. 
              */
@@ -159957,7 +160413,7 @@ export namespace importexport {
             /**
              * The type of kek encryption key
              */
-            kekType?: pulumi.Input<string>;
+            kekType?: pulumi.Input<string | enums.importexport.v20200801.EncryptionKekType>;
             /**
              * Specifies the url for kek encryption key. 
              */
@@ -160149,11 +160605,11 @@ export namespace importexport {
             /**
              * The city name to use when returning the drives.
              */
-            city: pulumi.Input<string>;
+            city?: pulumi.Input<string>;
             /**
              * The country or region to use when returning the drives. 
              */
-            countryOrRegion: pulumi.Input<string>;
+            countryOrRegion?: pulumi.Input<string>;
             /**
              * Phone number of the recipient of the returned drives.
              */
@@ -160161,19 +160617,19 @@ export namespace importexport {
             /**
              * The postal code to use when returning the drives.
              */
-            postalCode: pulumi.Input<string>;
+            postalCode?: pulumi.Input<string>;
             /**
              * The name of the recipient who will receive the hard drives when they are returned. 
              */
-            recipientName: pulumi.Input<string>;
+            recipientName?: pulumi.Input<string>;
             /**
              * The state or province to use when returning the drives.
              */
-            stateOrProvince: pulumi.Input<string>;
+            stateOrProvince?: pulumi.Input<string>;
             /**
              * The first line of the street address to use when returning the drives. 
              */
-            streetAddress1: pulumi.Input<string>;
+            streetAddress1?: pulumi.Input<string>;
             /**
              * The second line of the street address to use when returning the drives. 
              */
@@ -343694,6 +344150,38 @@ export namespace servicebus {
         }
 
         /**
+         * Properties to configure Encryption
+         */
+        export interface Encryption {
+            /**
+             * Enumerates the possible value of keySource for Encryption
+             */
+            keySource?: pulumi.Input<enums.servicebus.v20180101preview.KeySource>;
+            /**
+             * Properties of KeyVault
+             */
+            keyVaultProperties?: pulumi.Input<inputs.servicebus.v20180101preview.KeyVaultProperties>;
+        }
+
+        /**
+         * Properties to configure Identity for Bring your Own Keys
+         */
+        export interface Identity {
+            /**
+             * ObjectId from the KeyVault
+             */
+            principalId?: pulumi.Input<string>;
+            /**
+             * TenantId from the KeyVault
+             */
+            tenantId?: pulumi.Input<string>;
+            /**
+             * Enumerates the possible value Identity type, which currently supports only 'SystemAssigned'
+             */
+            type?: pulumi.Input<enums.servicebus.v20180101preview.IdentityType>;
+        }
+
+        /**
          * Properties to configure keyVault Properties
          */
         export interface KeyVaultProperties {
@@ -348079,34 +348567,6 @@ export namespace servicefabric {
 
     export namespace v20200101preview {
         /**
-         * Defines a delta health policy used to evaluate the health of an application or one of its child entities when upgrading the cluster.
-         */
-        export interface ApplicationDeltaHealthPolicy {
-            /**
-             * The delta health policy used by default to evaluate the health of a service type when upgrading the cluster.
-             */
-            defaultServiceTypeDeltaHealthPolicy?: pulumi.Input<inputs.servicefabric.v20200101preview.ServiceTypeDeltaHealthPolicy>;
-            /**
-             * The map with service type delta health policy per service type name. The map is empty by default.
-             */
-            serviceTypeDeltaHealthPolicies?: pulumi.Input<{[key: string]: pulumi.Input<inputs.servicefabric.v20200101preview.ServiceTypeDeltaHealthPolicy>}>;
-        }
-
-        /**
-         * Defines a health policy used to evaluate the health of an application or one of its children entities.
-         */
-        export interface ApplicationHealthPolicy {
-            /**
-             * The health policy used by default to evaluate the health of a service type.
-             */
-            defaultServiceTypeHealthPolicy?: pulumi.Input<inputs.servicefabric.v20200101preview.ServiceTypeHealthPolicy>;
-            /**
-             * The map with service type health policy per service type name. The map is empty by default.
-             */
-            serviceTypeHealthPolicies?: pulumi.Input<{[key: string]: pulumi.Input<inputs.servicefabric.v20200101preview.ServiceTypeHealthPolicy>}>;
-        }
-
-        /**
          * The settings to enable AAD authentication on the cluster.
          */
         export interface AzureActiveDirectory {
@@ -348137,113 +348597,13 @@ export namespace servicefabric {
              */
             isAdmin: pulumi.Input<boolean>;
             /**
-             * Issuer thumbprint for the certificate. Its only use CommonName is used.
+             * Issuer thumbprint for the certificate. Only used together with CommonName.
              */
             issuerThumbprint?: pulumi.Input<string>;
             /**
              * Certificate Thumbprint.
              */
             thumbprint?: pulumi.Input<string>;
-        }
-
-        /**
-         * Defines a health policy used to evaluate the health of the cluster or of a cluster node.
-         */
-        export interface ClusterHealthPolicy {
-            /**
-             * Defines the application health policy map used to evaluate the health of an application or one of its children entities.
-             */
-            applicationHealthPolicies?: pulumi.Input<{[key: string]: pulumi.Input<inputs.servicefabric.v20200101preview.ApplicationHealthPolicy>}>;
-            /**
-             * The maximum allowed percentage of unhealthy applications before reporting an error. For example, to allow 10% of applications to be unhealthy, this value would be 10.
-             *
-             * The percentage represents the maximum tolerated percentage of applications that can be unhealthy before the cluster is considered in error.
-             * If the percentage is respected but there is at least one unhealthy application, the health is evaluated as Warning.
-             * This is calculated by dividing the number of unhealthy applications over the total number of application instances in the cluster, excluding applications of application types that are included in the ApplicationTypeHealthPolicyMap.
-             * The computation rounds up to tolerate one failure on small numbers of applications. Default percentage is zero.
-             */
-            maxPercentUnhealthyApplications?: pulumi.Input<number>;
-            /**
-             * The maximum allowed percentage of unhealthy nodes before reporting an error. For example, to allow 10% of nodes to be unhealthy, this value would be 10.
-             *
-             * The percentage represents the maximum tolerated percentage of nodes that can be unhealthy before the cluster is considered in error.
-             * If the percentage is respected but there is at least one unhealthy node, the health is evaluated as Warning.
-             * The percentage is calculated by dividing the number of unhealthy nodes over the total number of nodes in the cluster.
-             * The computation rounds up to tolerate one failure on small numbers of nodes. Default percentage is zero.
-             *
-             * In large clusters, some nodes will always be down or out for repairs, so this percentage should be configured to tolerate that.
-             */
-            maxPercentUnhealthyNodes?: pulumi.Input<number>;
-        }
-
-        /**
-         * Describes the delta health policies for the cluster upgrade.
-         */
-        export interface ClusterUpgradeDeltaHealthPolicy {
-            /**
-             * Defines the application delta health policy map used to evaluate the health of an application or one of its child entities when upgrading the cluster.
-             */
-            applicationDeltaHealthPolicies?: pulumi.Input<{[key: string]: pulumi.Input<inputs.servicefabric.v20200101preview.ApplicationDeltaHealthPolicy>}>;
-            /**
-             * The maximum allowed percentage of applications health degradation allowed during cluster upgrades.
-             * The delta is measured between the state of the applications at the beginning of upgrade and the state of the applications at the time of the health evaluation.
-             * The check is performed after every upgrade domain upgrade completion to make sure the global state of the cluster is within tolerated limits. System services are not included in this.
-             */
-            maxPercentDeltaUnhealthyApplications: pulumi.Input<number>;
-            /**
-             * The maximum allowed percentage of nodes health degradation allowed during cluster upgrades.
-             * The delta is measured between the state of the nodes at the beginning of upgrade and the state of the nodes at the time of the health evaluation.
-             * The check is performed after every upgrade domain upgrade completion to make sure the global state of the cluster is within tolerated limits.
-             */
-            maxPercentDeltaUnhealthyNodes: pulumi.Input<number>;
-            /**
-             * The maximum allowed percentage of upgrade domain nodes health degradation allowed during cluster upgrades.
-             * The delta is measured between the state of the upgrade domain nodes at the beginning of upgrade and the state of the upgrade domain nodes at the time of the health evaluation.
-             * The check is performed after every upgrade domain upgrade completion for all completed upgrade domains to make sure the state of the upgrade domains is within tolerated limits.
-             */
-            maxPercentUpgradeDomainDeltaUnhealthyNodes: pulumi.Input<number>;
-        }
-
-        /**
-         * Describes the policy used when upgrading the cluster.
-         */
-        export interface ClusterUpgradePolicy {
-            /**
-             * The cluster delta health policy used when upgrading the cluster.
-             */
-            deltaHealthPolicy?: pulumi.Input<inputs.servicefabric.v20200101preview.ClusterUpgradeDeltaHealthPolicy>;
-            /**
-             * If true, then processes are forcefully restarted during upgrade even when the code version has not changed (the upgrade only changes configuration or data).
-             */
-            forceRestart?: pulumi.Input<boolean>;
-            /**
-             * The amount of time to retry health evaluation when the application or cluster is unhealthy before the upgrade rolls back. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
-             */
-            healthCheckRetryTimeout: pulumi.Input<string>;
-            /**
-             * The amount of time that the application or cluster must remain healthy before the upgrade proceeds to the next upgrade domain. The duration can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
-             */
-            healthCheckStableDuration: pulumi.Input<string>;
-            /**
-             * The length of time to wait after completing an upgrade domain before performing health checks. The duration can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
-             */
-            healthCheckWaitDuration: pulumi.Input<string>;
-            /**
-             * The cluster health policy used when upgrading the cluster.
-             */
-            healthPolicy: pulumi.Input<inputs.servicefabric.v20200101preview.ClusterHealthPolicy>;
-            /**
-             * The amount of time each upgrade domain has to complete before the upgrade rolls back. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
-             */
-            upgradeDomainTimeout: pulumi.Input<string>;
-            /**
-             * The maximum amount of time to block processing of an upgrade domain and prevent loss of availability when there are unexpected issues. When this timeout expires, processing of the upgrade domain will proceed regardless of availability loss issues. The timeout is reset at the start of each upgrade domain. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
-             */
-            upgradeReplicaSetCheckTimeout: pulumi.Input<string>;
-            /**
-             * The amount of time the overall upgrade has to complete before the upgrade rolls back. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
-             */
-            upgradeTimeout: pulumi.Input<string>;
         }
 
         /**
@@ -348287,28 +348647,6 @@ export namespace servicefabric {
         }
 
         /**
-         * Represents the delta health policy used to evaluate the health of services belonging to a service type when upgrading the cluster.
-         */
-        export interface ServiceTypeDeltaHealthPolicy {
-            /**
-             * The maximum allowed percentage of services health degradation allowed during cluster upgrades.
-             * The delta is measured between the state of the services at the beginning of upgrade and the state of the services at the time of the health evaluation.
-             * The check is performed after every upgrade domain upgrade completion to make sure the global state of the cluster is within tolerated limits.
-             */
-            maxPercentDeltaUnhealthyServices?: pulumi.Input<number>;
-        }
-
-        /**
-         * Represents the health policy used to evaluate the health of services belonging to a service type.
-         */
-        export interface ServiceTypeHealthPolicy {
-            /**
-             * The maximum percentage of services allowed to be unhealthy before your application is considered in error.
-             */
-            maxPercentUnhealthyServices?: pulumi.Input<number>;
-        }
-
-        /**
          * Describes a parameter in fabric settings of the cluster.
          */
         export interface SettingsParameterDescription {
@@ -348341,7 +348679,7 @@ export namespace servicefabric {
          */
         export interface Sku {
             /**
-             * Sku Name. Basic will have a minimum of 3 seed nodes and Standard a minimum of 5. Basic only allows 1 node type.
+             * Sku Name.
              */
             name: pulumi.Input<string>;
         }
