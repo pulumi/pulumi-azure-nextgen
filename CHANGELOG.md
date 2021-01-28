@@ -76,6 +76,15 @@ Moved from `OperationalInsights` to `SecurityInsights`:
 - Fix unknown propagation in Update's preview ([#115](https://github.com/pulumi/pulumi-azure-nextgen/issues/115))
 - Re-model Identity and Ecryption properties of EventHubs/ServiceBus namespace ([#243](https://github.com/pulumi/pulumi-azure-nextgen/issues/243))
 
+#### New invoke functions
+
+- `AppConfiguration.listConfigurationStoreKeys`
+- `Relay.listHybridConnectionKeys`
+- `ServiceBus.listQueueKeys`
+- `ServiceBus.listTopicKeys` ([#248](https://github.com/pulumi/pulumi-azure-nextgen/issues/248))
+- `Storage.listStorageAccountSAS`
+- `Storage.listStorageAccountServiceSAS`
+
 ---
 
 ## 0.5.1 (2021-01-26)
