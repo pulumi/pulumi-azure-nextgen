@@ -137,6 +137,7 @@ namespace Pulumi.AzureNextGen.KubernetesConfiguration.V20201001Preview
                 Aliases =
                 {
                     new Pulumi.Alias { Type = "azure-nextgen:kubernetesconfiguration/v20191101preview:SourceControlConfiguration"},
+                    new Pulumi.Alias { Type = "azure-nextgen:kubernetesconfiguration/v20210301:SourceControlConfiguration"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
