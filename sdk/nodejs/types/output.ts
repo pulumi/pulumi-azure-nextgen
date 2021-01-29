@@ -7082,6 +7082,36 @@ export namespace apimanagement {
 export namespace appconfiguration {
     export namespace latest {
         /**
+         * An API key used for authenticating with a configuration store endpoint.
+         */
+        export interface ApiKeyResponse {
+            /**
+             * A connection string that can be used by supporting clients for authentication.
+             */
+            connectionString: string;
+            /**
+             * The key ID.
+             */
+            id: string;
+            /**
+             * The last time any of the key's properties were modified.
+             */
+            lastModified: string;
+            /**
+             * A name for the key describing its usage.
+             */
+            name: string;
+            /**
+             * Whether this key can only be used for read operations.
+             */
+            readOnly: boolean;
+            /**
+             * The value of the key that is used for authentication purposes.
+             */
+            value: string;
+        }
+
+        /**
          * The encryption settings for a configuration store.
          */
         export interface EncryptionPropertiesResponse {
@@ -7210,7 +7240,69 @@ export namespace appconfiguration {
         }
     }
 
+    export namespace v20190201preview {
+        /**
+         * An API key used for authenticating with a configuration store endpoint.
+         */
+        export interface ApiKeyResponse {
+            /**
+             * A connection string that can be used by supporting clients for authentication.
+             */
+            connectionString: string;
+            /**
+             * The key ID.
+             */
+            id: string;
+            /**
+             * The last time any of the key's properties were modified.
+             */
+            lastModified: string;
+            /**
+             * A name for the key describing its usage.
+             */
+            name: string;
+            /**
+             * Whether this key can only be used for read operations.
+             */
+            readOnly: boolean;
+            /**
+             * The value of the key that is used for authentication purposes.
+             */
+            value: string;
+        }
+    }
+
     export namespace v20191001 {
+        /**
+         * An API key used for authenticating with a configuration store endpoint.
+         */
+        export interface ApiKeyResponse {
+            /**
+             * A connection string that can be used by supporting clients for authentication.
+             */
+            connectionString: string;
+            /**
+             * The key ID.
+             */
+            id: string;
+            /**
+             * The last time any of the key's properties were modified.
+             */
+            lastModified: string;
+            /**
+             * A name for the key describing its usage.
+             */
+            name: string;
+            /**
+             * Whether this key can only be used for read operations.
+             */
+            readOnly: boolean;
+            /**
+             * The value of the key that is used for authentication purposes.
+             */
+            value: string;
+        }
+
         export interface ResourceIdentityResponse {
             /**
              * The principal id of the identity. This property will only be provided for a system-assigned identity.
@@ -7253,6 +7345,36 @@ export namespace appconfiguration {
     }
 
     export namespace v20191101preview {
+        /**
+         * An API key used for authenticating with a configuration store endpoint.
+         */
+        export interface ApiKeyResponse {
+            /**
+             * A connection string that can be used by supporting clients for authentication.
+             */
+            connectionString: string;
+            /**
+             * The key ID.
+             */
+            id: string;
+            /**
+             * The last time any of the key's properties were modified.
+             */
+            lastModified: string;
+            /**
+             * A name for the key describing its usage.
+             */
+            name: string;
+            /**
+             * Whether this key can only be used for read operations.
+             */
+            readOnly: boolean;
+            /**
+             * The value of the key that is used for authentication purposes.
+             */
+            value: string;
+        }
+
         /**
          * The encryption settings for a configuration store.
          */
@@ -7383,6 +7505,36 @@ export namespace appconfiguration {
     }
 
     export namespace v20200601 {
+        /**
+         * An API key used for authenticating with a configuration store endpoint.
+         */
+        export interface ApiKeyResponse {
+            /**
+             * A connection string that can be used by supporting clients for authentication.
+             */
+            connectionString: string;
+            /**
+             * The key ID.
+             */
+            id: string;
+            /**
+             * The last time any of the key's properties were modified.
+             */
+            lastModified: string;
+            /**
+             * A name for the key describing its usage.
+             */
+            name: string;
+            /**
+             * Whether this key can only be used for read operations.
+             */
+            readOnly: boolean;
+            /**
+             * The value of the key that is used for authentication purposes.
+             */
+            value: string;
+        }
+
         /**
          * The encryption settings for a configuration store.
          */
@@ -411457,6 +411609,52 @@ export namespace policyinsights {
              * The type of included error details.
              */
             type: string;
+        }
+    }
+
+    export namespace v20210101 {
+        /**
+         * A piece of evidence supporting the compliance state set in the attestation.
+         */
+        export interface AttestationEvidenceResponse {
+            /**
+             * The description for this piece of evidence.
+             */
+            description?: string;
+            /**
+             * The URI location of the evidence.
+             */
+            sourceUri?: string;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
         }
     }
 }

@@ -6176,6 +6176,9 @@ export namespace appconfiguration {
 
     }
 
+    export namespace v20190201preview {
+    }
+
     export namespace v20191001 {
         export interface ResourceIdentity {
             /**
@@ -319125,6 +319128,23 @@ export namespace policyinsights {
              * The resource locations that will be remediated.
              */
             locations?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+    }
+
+    export namespace v20210101 {
+        /**
+         * A piece of evidence supporting the compliance state set in the attestation.
+         */
+        export interface AttestationEvidence {
+            /**
+             * The description for this piece of evidence.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * The URI location of the evidence.
+             */
+            sourceUri?: pulumi.Input<string>;
         }
 
     }
