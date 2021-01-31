@@ -195054,6 +195054,948 @@ export namespace eventgrid {
             preferredBatchSizeInKilobytes?: number;
         }
     }
+
+    export namespace v20201015preview {
+        /**
+         * Information about the azure function destination for an event subscription.
+         */
+        export interface AzureFunctionEventSubscriptionDestinationResponse {
+            /**
+             * Delivery attribute details.
+             */
+            deliveryAttributeMappings?: outputs.eventgrid.v20201015preview.DynamicDeliveryAttributeMappingResponse | outputs.eventgrid.v20201015preview.StaticDeliveryAttributeMappingResponse[];
+            /**
+             * Type of the endpoint for the event subscription destination.
+             * Expected value is 'AzureFunction'.
+             */
+            endpointType: "AzureFunction";
+            /**
+             * Maximum number of events per batch.
+             */
+            maxEventsPerBatch?: number;
+            /**
+             * Preferred batch size in Kilobytes.
+             */
+            preferredBatchSizeInKilobytes?: number;
+            /**
+             * The Azure Resource Id that represents the endpoint of the Azure Function destination of an event subscription.
+             */
+            resourceId?: string;
+        }
+
+        /**
+         * BoolEquals Advanced Filter.
+         */
+        export interface BoolEqualsAdvancedFilterResponse {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: string;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'BoolEquals'.
+             */
+            operatorType: "BoolEquals";
+            /**
+             * The boolean filter value.
+             */
+            value?: boolean;
+        }
+
+        /**
+         * ConnectionState information.
+         */
+        export interface ConnectionStateResponse {
+            /**
+             * Actions required (if any).
+             */
+            actionsRequired?: string;
+            /**
+             * Description of the connection state.
+             */
+            description?: string;
+            /**
+             * Status of the connection.
+             */
+            status?: string;
+        }
+
+        /**
+         * Information about the deadletter destination with resource identity.
+         */
+        export interface DeadLetterWithResourceIdentityResponse {
+            /**
+             * Information about the destination where events have to be delivered for the event subscription.
+             * Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery / dead-lettering.
+             */
+            deadLetterDestination?: outputs.eventgrid.v20201015preview.StorageBlobDeadLetterDestinationResponse;
+            /**
+             * The identity to use when dead-lettering events.
+             */
+            identity?: outputs.eventgrid.v20201015preview.EventSubscriptionIdentityResponse;
+        }
+
+        /**
+         * Information about the delivery for an event subscription with resource identity.
+         */
+        export interface DeliveryWithResourceIdentityResponse {
+            /**
+             * Information about the destination where events have to be delivered for the event subscription.
+             * Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
+             */
+            destination?: outputs.eventgrid.v20201015preview.AzureFunctionEventSubscriptionDestinationResponse | outputs.eventgrid.v20201015preview.EventHubEventSubscriptionDestinationResponse | outputs.eventgrid.v20201015preview.HybridConnectionEventSubscriptionDestinationResponse | outputs.eventgrid.v20201015preview.ServiceBusQueueEventSubscriptionDestinationResponse | outputs.eventgrid.v20201015preview.ServiceBusTopicEventSubscriptionDestinationResponse | outputs.eventgrid.v20201015preview.StorageQueueEventSubscriptionDestinationResponse | outputs.eventgrid.v20201015preview.WebHookEventSubscriptionDestinationResponse;
+            /**
+             * The identity to use when delivering events.
+             */
+            identity?: outputs.eventgrid.v20201015preview.EventSubscriptionIdentityResponse;
+        }
+
+        /**
+         * Dynamic delivery attribute mapping details.
+         */
+        export interface DynamicDeliveryAttributeMappingResponse {
+            /**
+             * Name of the delivery attribute or header.
+             */
+            name?: string;
+            /**
+             * JSON path in the event which contains attribute value.
+             */
+            sourceField?: string;
+            /**
+             * Type of the delivery attribute or header name.
+             * Expected value is 'Dynamic'.
+             */
+            type: "Dynamic";
+        }
+
+        /**
+         * Properties of the destination of an event channel.
+         */
+        export interface EventChannelDestinationResponse {
+            /**
+             * Azure subscription ID of the customer creating the event channel. The partner topic
+             * associated with the event channel will be created under this Azure subscription.
+             */
+            azureSubscriptionId?: string;
+            /**
+             * Name of the partner topic associated with the event channel.
+             */
+            partnerTopicName?: string;
+            /**
+             * Azure Resource Group of the customer creating the event channel. The partner topic
+             * associated with the event channel will be created under this resource group.
+             */
+            resourceGroup?: string;
+        }
+
+        /**
+         * Filter for the Event Channel.
+         */
+        export interface EventChannelFilterResponse {
+            /**
+             * An array of advanced filters that are used for filtering event channels.
+             */
+            advancedFilters?: outputs.eventgrid.v20201015preview.BoolEqualsAdvancedFilterResponse | outputs.eventgrid.v20201015preview.IsNotNullAdvancedFilterResponse | outputs.eventgrid.v20201015preview.IsNullOrUndefinedAdvancedFilterResponse | outputs.eventgrid.v20201015preview.NumberGreaterThanAdvancedFilterResponse | outputs.eventgrid.v20201015preview.NumberGreaterThanOrEqualsAdvancedFilterResponse | outputs.eventgrid.v20201015preview.NumberInAdvancedFilterResponse | outputs.eventgrid.v20201015preview.NumberInRangeAdvancedFilterResponse | outputs.eventgrid.v20201015preview.NumberLessThanAdvancedFilterResponse | outputs.eventgrid.v20201015preview.NumberLessThanOrEqualsAdvancedFilterResponse | outputs.eventgrid.v20201015preview.NumberNotInAdvancedFilterResponse | outputs.eventgrid.v20201015preview.NumberNotInRangeAdvancedFilterResponse | outputs.eventgrid.v20201015preview.StringBeginsWithAdvancedFilterResponse | outputs.eventgrid.v20201015preview.StringContainsAdvancedFilterResponse | outputs.eventgrid.v20201015preview.StringEndsWithAdvancedFilterResponse | outputs.eventgrid.v20201015preview.StringInAdvancedFilterResponse | outputs.eventgrid.v20201015preview.StringNotBeginsWithAdvancedFilterResponse | outputs.eventgrid.v20201015preview.StringNotContainsAdvancedFilterResponse | outputs.eventgrid.v20201015preview.StringNotEndsWithAdvancedFilterResponse | outputs.eventgrid.v20201015preview.StringNotInAdvancedFilterResponse[];
+            /**
+             * Allows advanced filters to be evaluated against an array of values instead of expecting a singular value.
+             */
+            enableAdvancedFilteringOnArrays?: boolean;
+        }
+
+        /**
+         * Properties of the source of an event channel.
+         */
+        export interface EventChannelSourceResponse {
+            /**
+             * The identifier of the resource that's the source of the events.
+             * This represents a unique resource in the partner's resource model.
+             */
+            source?: string;
+        }
+
+        /**
+         * Information about the event hub destination for an event subscription.
+         */
+        export interface EventHubEventSubscriptionDestinationResponse {
+            /**
+             * Delivery attribute details.
+             */
+            deliveryAttributeMappings?: outputs.eventgrid.v20201015preview.DynamicDeliveryAttributeMappingResponse | outputs.eventgrid.v20201015preview.StaticDeliveryAttributeMappingResponse[];
+            /**
+             * Type of the endpoint for the event subscription destination.
+             * Expected value is 'EventHub'.
+             */
+            endpointType: "EventHub";
+            /**
+             * The Azure Resource Id that represents the endpoint of an Event Hub destination of an event subscription.
+             */
+            resourceId?: string;
+        }
+
+        /**
+         * Filter for the Event Subscription.
+         */
+        export interface EventSubscriptionFilterResponse {
+            /**
+             * An array of advanced filters that are used for filtering event subscriptions.
+             */
+            advancedFilters?: outputs.eventgrid.v20201015preview.BoolEqualsAdvancedFilterResponse | outputs.eventgrid.v20201015preview.IsNotNullAdvancedFilterResponse | outputs.eventgrid.v20201015preview.IsNullOrUndefinedAdvancedFilterResponse | outputs.eventgrid.v20201015preview.NumberGreaterThanAdvancedFilterResponse | outputs.eventgrid.v20201015preview.NumberGreaterThanOrEqualsAdvancedFilterResponse | outputs.eventgrid.v20201015preview.NumberInAdvancedFilterResponse | outputs.eventgrid.v20201015preview.NumberInRangeAdvancedFilterResponse | outputs.eventgrid.v20201015preview.NumberLessThanAdvancedFilterResponse | outputs.eventgrid.v20201015preview.NumberLessThanOrEqualsAdvancedFilterResponse | outputs.eventgrid.v20201015preview.NumberNotInAdvancedFilterResponse | outputs.eventgrid.v20201015preview.NumberNotInRangeAdvancedFilterResponse | outputs.eventgrid.v20201015preview.StringBeginsWithAdvancedFilterResponse | outputs.eventgrid.v20201015preview.StringContainsAdvancedFilterResponse | outputs.eventgrid.v20201015preview.StringEndsWithAdvancedFilterResponse | outputs.eventgrid.v20201015preview.StringInAdvancedFilterResponse | outputs.eventgrid.v20201015preview.StringNotBeginsWithAdvancedFilterResponse | outputs.eventgrid.v20201015preview.StringNotContainsAdvancedFilterResponse | outputs.eventgrid.v20201015preview.StringNotEndsWithAdvancedFilterResponse | outputs.eventgrid.v20201015preview.StringNotInAdvancedFilterResponse[];
+            /**
+             * Allows advanced filters to be evaluated against an array of values instead of expecting a singular value.
+             */
+            enableAdvancedFilteringOnArrays?: boolean;
+            /**
+             * A list of applicable event types that need to be part of the event subscription. If it is desired to subscribe to all default event types, set the IncludedEventTypes to null.
+             */
+            includedEventTypes?: string[];
+            /**
+             * Specifies if the SubjectBeginsWith and SubjectEndsWith properties of the filter
+             * should be compared in a case sensitive manner.
+             */
+            isSubjectCaseSensitive?: boolean;
+            /**
+             * An optional string to filter events for an event subscription based on a resource path prefix.
+             * The format of this depends on the publisher of the events.
+             * Wildcard characters are not supported in this path.
+             */
+            subjectBeginsWith?: string;
+            /**
+             * An optional string to filter events for an event subscription based on a resource path suffix.
+             * Wildcard characters are not supported in this path.
+             */
+            subjectEndsWith?: string;
+        }
+
+        /**
+         * The identity information with the event subscription.
+         */
+        export interface EventSubscriptionIdentityResponse {
+            /**
+             * The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identity.
+             */
+            type?: string;
+            /**
+             * The user identity associated with the resource.
+             */
+            userAssignedIdentity?: string;
+        }
+
+        /**
+         * Definition of an Extended Location
+         */
+        export interface ExtendedLocationResponse {
+            /**
+             * Fully qualified name of the extended location.
+             */
+            name?: string;
+            /**
+             * Type of the extended location.
+             */
+            type?: string;
+        }
+
+        /**
+         * Information about the HybridConnection destination for an event subscription.
+         */
+        export interface HybridConnectionEventSubscriptionDestinationResponse {
+            /**
+             * Delivery attribute details.
+             */
+            deliveryAttributeMappings?: outputs.eventgrid.v20201015preview.DynamicDeliveryAttributeMappingResponse | outputs.eventgrid.v20201015preview.StaticDeliveryAttributeMappingResponse[];
+            /**
+             * Type of the endpoint for the event subscription destination.
+             * Expected value is 'HybridConnection'.
+             */
+            endpointType: "HybridConnection";
+            /**
+             * The Azure Resource ID of an hybrid connection that is the destination of an event subscription.
+             */
+            resourceId?: string;
+        }
+
+        /**
+         * The identity information for the resource.
+         */
+        export interface IdentityInfoResponse {
+            /**
+             * The principal ID of resource identity.
+             */
+            principalId?: string;
+            /**
+             * The tenant ID of resource.
+             */
+            tenantId?: string;
+            /**
+             * The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identity.
+             */
+            type?: string;
+            /**
+             * The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form:
+             * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+             * This property is currently not used and reserved for future usage.
+             */
+            userAssignedIdentities?: {[key: string]: outputs.eventgrid.v20201015preview.UserIdentityPropertiesResponse};
+        }
+
+        export interface InboundIpRuleResponse {
+            /**
+             * Action to perform based on the match or no match of the IpMask.
+             */
+            action?: string;
+            /**
+             * IP Address in CIDR notation e.g., 10.0.0.0/8.
+             */
+            ipMask?: string;
+        }
+
+        /**
+         * IsNotNull Advanced Filter.
+         */
+        export interface IsNotNullAdvancedFilterResponse {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: string;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'IsNotNull'.
+             */
+            operatorType: "IsNotNull";
+        }
+
+        /**
+         * IsNullOrUndefined Advanced Filter.
+         */
+        export interface IsNullOrUndefinedAdvancedFilterResponse {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: string;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'IsNullOrUndefined'.
+             */
+            operatorType: "IsNullOrUndefined";
+        }
+
+        /**
+         * This is used to express the source of an input schema mapping for a single target field in the Event Grid Event schema. This is currently used in the mappings for the 'id', 'topic' and 'eventtime' properties. This represents a field in the input event schema.
+         */
+        export interface JsonFieldResponse {
+            /**
+             * Name of a field in the input event schema that's to be used as the source of a mapping.
+             */
+            sourceField?: string;
+        }
+
+        /**
+         * This is used to express the source of an input schema mapping for a single target field
+         * in the Event Grid Event schema. This is currently used in the mappings for the 'subject',
+         * 'eventtype' and 'dataversion' properties. This represents a field in the input event schema
+         * along with a default value to be used, and at least one of these two properties should be provided.
+         */
+        export interface JsonFieldWithDefaultResponse {
+            /**
+             * The default value to be used for mapping when a SourceField is not provided or if there's no property with the specified name in the published JSON event payload.
+             */
+            defaultValue?: string;
+            /**
+             * Name of a field in the input event schema that's to be used as the source of a mapping.
+             */
+            sourceField?: string;
+        }
+
+        /**
+         * This enables publishing to Event Grid using a custom input schema. This can be used to map properties from a custom input JSON schema to the Event Grid event schema.
+         */
+        export interface JsonInputSchemaMappingResponse {
+            /**
+             * The mapping information for the DataVersion property of the Event Grid Event.
+             */
+            dataVersion?: outputs.eventgrid.v20201015preview.JsonFieldWithDefaultResponse;
+            /**
+             * The mapping information for the EventTime property of the Event Grid Event.
+             */
+            eventTime?: outputs.eventgrid.v20201015preview.JsonFieldResponse;
+            /**
+             * The mapping information for the EventType property of the Event Grid Event.
+             */
+            eventType?: outputs.eventgrid.v20201015preview.JsonFieldWithDefaultResponse;
+            /**
+             * The mapping information for the Id property of the Event Grid Event.
+             */
+            id?: outputs.eventgrid.v20201015preview.JsonFieldResponse;
+            /**
+             * Type of the custom mapping
+             * Expected value is 'Json'.
+             */
+            inputSchemaMappingType: "Json";
+            /**
+             * The mapping information for the Subject property of the Event Grid Event.
+             */
+            subject?: outputs.eventgrid.v20201015preview.JsonFieldWithDefaultResponse;
+            /**
+             * The mapping information for the Topic property of the Event Grid Event.
+             */
+            topic?: outputs.eventgrid.v20201015preview.JsonFieldResponse;
+        }
+
+        /**
+         * NumberGreaterThan Advanced Filter.
+         */
+        export interface NumberGreaterThanAdvancedFilterResponse {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: string;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'NumberGreaterThan'.
+             */
+            operatorType: "NumberGreaterThan";
+            /**
+             * The filter value.
+             */
+            value?: number;
+        }
+
+        /**
+         * NumberGreaterThanOrEquals Advanced Filter.
+         */
+        export interface NumberGreaterThanOrEqualsAdvancedFilterResponse {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: string;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'NumberGreaterThanOrEquals'.
+             */
+            operatorType: "NumberGreaterThanOrEquals";
+            /**
+             * The filter value.
+             */
+            value?: number;
+        }
+
+        /**
+         * NumberIn Advanced Filter.
+         */
+        export interface NumberInAdvancedFilterResponse {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: string;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'NumberIn'.
+             */
+            operatorType: "NumberIn";
+            /**
+             * The set of filter values.
+             */
+            values?: number[];
+        }
+
+        /**
+         * NumberInRange Advanced Filter.
+         */
+        export interface NumberInRangeAdvancedFilterResponse {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: string;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'NumberInRange'.
+             */
+            operatorType: "NumberInRange";
+            /**
+             * The set of filter values.
+             */
+            values?: number[][];
+        }
+
+        /**
+         * NumberLessThan Advanced Filter.
+         */
+        export interface NumberLessThanAdvancedFilterResponse {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: string;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'NumberLessThan'.
+             */
+            operatorType: "NumberLessThan";
+            /**
+             * The filter value.
+             */
+            value?: number;
+        }
+
+        /**
+         * NumberLessThanOrEquals Advanced Filter.
+         */
+        export interface NumberLessThanOrEqualsAdvancedFilterResponse {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: string;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'NumberLessThanOrEquals'.
+             */
+            operatorType: "NumberLessThanOrEquals";
+            /**
+             * The filter value.
+             */
+            value?: number;
+        }
+
+        /**
+         * NumberNotIn Advanced Filter.
+         */
+        export interface NumberNotInAdvancedFilterResponse {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: string;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'NumberNotIn'.
+             */
+            operatorType: "NumberNotIn";
+            /**
+             * The set of filter values.
+             */
+            values?: number[];
+        }
+
+        /**
+         * NumberNotInRange Advanced Filter.
+         */
+        export interface NumberNotInRangeAdvancedFilterResponse {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: string;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'NumberNotInRange'.
+             */
+            operatorType: "NumberNotInRange";
+            /**
+             * The set of filter values.
+             */
+            values?: number[][];
+        }
+
+        export interface PrivateEndpointConnectionResponse {
+            /**
+             * GroupIds from the private link service resource.
+             */
+            groupIds?: string[];
+            /**
+             * Fully qualified identifier of the resource.
+             */
+            id: string;
+            /**
+             * Name of the resource.
+             */
+            name: string;
+            /**
+             * The Private Endpoint resource for this Connection.
+             */
+            privateEndpoint?: outputs.eventgrid.v20201015preview.PrivateEndpointResponse;
+            /**
+             * Details about the state of the connection.
+             */
+            privateLinkServiceConnectionState?: outputs.eventgrid.v20201015preview.ConnectionStateResponse;
+            /**
+             * Provisioning state of the Private Endpoint Connection.
+             */
+            provisioningState?: string;
+            /**
+             * Type of the resource.
+             */
+            type: string;
+        }
+
+        /**
+         * PrivateEndpoint information.
+         */
+        export interface PrivateEndpointResponse {
+            /**
+             * The ARM identifier for Private Endpoint.
+             */
+            id?: string;
+        }
+
+        /**
+         * Describes an EventGrid Resource Sku.
+         */
+        export interface ResourceSkuResponse {
+            /**
+             * The Sku name of the resource. The possible values are: Basic or Premium.
+             */
+            name?: string;
+        }
+
+        /**
+         * Information about the retry policy for an event subscription.
+         */
+        export interface RetryPolicyResponse {
+            /**
+             * Time To Live (in minutes) for events.
+             */
+            eventTimeToLiveInMinutes?: number;
+            /**
+             * Maximum number of delivery retry attempts for events.
+             */
+            maxDeliveryAttempts?: number;
+        }
+
+        /**
+         * Information about the service bus destination for an event subscription.
+         */
+        export interface ServiceBusQueueEventSubscriptionDestinationResponse {
+            /**
+             * Delivery attribute details.
+             */
+            deliveryAttributeMappings?: outputs.eventgrid.v20201015preview.DynamicDeliveryAttributeMappingResponse | outputs.eventgrid.v20201015preview.StaticDeliveryAttributeMappingResponse[];
+            /**
+             * Type of the endpoint for the event subscription destination.
+             * Expected value is 'ServiceBusQueue'.
+             */
+            endpointType: "ServiceBusQueue";
+            /**
+             * The Azure Resource Id that represents the endpoint of the Service Bus destination of an event subscription.
+             */
+            resourceId?: string;
+        }
+
+        /**
+         * Information about the service bus topic destination for an event subscription.
+         */
+        export interface ServiceBusTopicEventSubscriptionDestinationResponse {
+            /**
+             * Delivery attribute details.
+             */
+            deliveryAttributeMappings?: outputs.eventgrid.v20201015preview.DynamicDeliveryAttributeMappingResponse | outputs.eventgrid.v20201015preview.StaticDeliveryAttributeMappingResponse[];
+            /**
+             * Type of the endpoint for the event subscription destination.
+             * Expected value is 'ServiceBusTopic'.
+             */
+            endpointType: "ServiceBusTopic";
+            /**
+             * The Azure Resource Id that represents the endpoint of the Service Bus Topic destination of an event subscription.
+             */
+            resourceId?: string;
+        }
+
+        /**
+         * Static delivery attribute mapping details.
+         */
+        export interface StaticDeliveryAttributeMappingResponse {
+            /**
+             * Boolean flag to tell if the attribute contains sensitive information .
+             */
+            isSecret?: boolean;
+            /**
+             * Name of the delivery attribute or header.
+             */
+            name?: string;
+            /**
+             * Type of the delivery attribute or header name.
+             * Expected value is 'Static'.
+             */
+            type: "Static";
+            /**
+             * Value of the delivery attribute.
+             */
+            value?: string;
+        }
+
+        /**
+         * Information about the storage blob based dead letter destination.
+         */
+        export interface StorageBlobDeadLetterDestinationResponse {
+            /**
+             * The name of the Storage blob container that is the destination of the deadletter events
+             */
+            blobContainerName?: string;
+            /**
+             * Type of the endpoint for the dead letter destination
+             * Expected value is 'StorageBlob'.
+             */
+            endpointType: "StorageBlob";
+            /**
+             * The Azure Resource ID of the storage account that is the destination of the deadletter events
+             */
+            resourceId?: string;
+        }
+
+        /**
+         * Information about the storage queue destination for an event subscription.
+         */
+        export interface StorageQueueEventSubscriptionDestinationResponse {
+            /**
+             * Type of the endpoint for the event subscription destination.
+             * Expected value is 'StorageQueue'.
+             */
+            endpointType: "StorageQueue";
+            /**
+             * Storage queue message time to live in seconds.
+             */
+            queueMessageTimeToLiveInSeconds?: number;
+            /**
+             * The name of the Storage queue under a storage account that is the destination of an event subscription.
+             */
+            queueName?: string;
+            /**
+             * The Azure Resource ID of the storage account that contains the queue that is the destination of an event subscription.
+             */
+            resourceId?: string;
+        }
+
+        /**
+         * StringBeginsWith Advanced Filter.
+         */
+        export interface StringBeginsWithAdvancedFilterResponse {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: string;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'StringBeginsWith'.
+             */
+            operatorType: "StringBeginsWith";
+            /**
+             * The set of filter values.
+             */
+            values?: string[];
+        }
+
+        /**
+         * StringContains Advanced Filter.
+         */
+        export interface StringContainsAdvancedFilterResponse {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: string;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'StringContains'.
+             */
+            operatorType: "StringContains";
+            /**
+             * The set of filter values.
+             */
+            values?: string[];
+        }
+
+        /**
+         * StringEndsWith Advanced Filter.
+         */
+        export interface StringEndsWithAdvancedFilterResponse {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: string;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'StringEndsWith'.
+             */
+            operatorType: "StringEndsWith";
+            /**
+             * The set of filter values.
+             */
+            values?: string[];
+        }
+
+        /**
+         * StringIn Advanced Filter.
+         */
+        export interface StringInAdvancedFilterResponse {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: string;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'StringIn'.
+             */
+            operatorType: "StringIn";
+            /**
+             * The set of filter values.
+             */
+            values?: string[];
+        }
+
+        /**
+         * StringNotBeginsWith Advanced Filter.
+         */
+        export interface StringNotBeginsWithAdvancedFilterResponse {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: string;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'StringNotBeginsWith'.
+             */
+            operatorType: "StringNotBeginsWith";
+            /**
+             * The set of filter values.
+             */
+            values?: string[];
+        }
+
+        /**
+         * StringNotContains Advanced Filter.
+         */
+        export interface StringNotContainsAdvancedFilterResponse {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: string;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'StringNotContains'.
+             */
+            operatorType: "StringNotContains";
+            /**
+             * The set of filter values.
+             */
+            values?: string[];
+        }
+
+        /**
+         * StringNotEndsWith Advanced Filter.
+         */
+        export interface StringNotEndsWithAdvancedFilterResponse {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: string;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'StringNotEndsWith'.
+             */
+            operatorType: "StringNotEndsWith";
+            /**
+             * The set of filter values.
+             */
+            values?: string[];
+        }
+
+        /**
+         * StringNotIn Advanced Filter.
+         */
+        export interface StringNotInAdvancedFilterResponse {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: string;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'StringNotIn'.
+             */
+            operatorType: "StringNotIn";
+            /**
+             * The set of filter values.
+             */
+            values?: string[];
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
+        }
+
+        /**
+         * The information about the user identity.
+         */
+        export interface UserIdentityPropertiesResponse {
+            /**
+             * The client id of user assigned identity.
+             */
+            clientId?: string;
+            /**
+             * The principal id of user assigned identity.
+             */
+            principalId?: string;
+        }
+
+        /**
+         * Information about the webhook destination for an event subscription.
+         */
+        export interface WebHookEventSubscriptionDestinationResponse {
+            /**
+             * The Azure Active Directory Application ID or URI to get the access token that will be included as the bearer token in delivery requests.
+             */
+            azureActiveDirectoryApplicationIdOrUri?: string;
+            /**
+             * The Azure Active Directory Tenant ID to get the access token that will be included as the bearer token in delivery requests.
+             */
+            azureActiveDirectoryTenantId?: string;
+            /**
+             * Delivery attribute details.
+             */
+            deliveryAttributeMappings?: outputs.eventgrid.v20201015preview.DynamicDeliveryAttributeMappingResponse | outputs.eventgrid.v20201015preview.StaticDeliveryAttributeMappingResponse[];
+            /**
+             * The base URL that represents the endpoint of the destination of an event subscription.
+             */
+            endpointBaseUrl: string;
+            /**
+             * Type of the endpoint for the event subscription destination.
+             * Expected value is 'WebHook'.
+             */
+            endpointType: "WebHook";
+            /**
+             * The URL that represents the endpoint of the destination of an event subscription.
+             */
+            endpointUrl?: string;
+            /**
+             * Maximum number of events per batch.
+             */
+            maxEventsPerBatch?: number;
+            /**
+             * Preferred batch size in Kilobytes.
+             */
+            preferredBatchSizeInKilobytes?: number;
+        }
+    }
 }
 
 export namespace eventhub {
@@ -197070,6 +198012,10 @@ export namespace hdinsight {
              */
             location?: string;
             /**
+             * The private ip address of the endpoint.
+             */
+            privateIPAddress?: string;
+            /**
              * The public port to connect to.
              */
             publicPort?: number;
@@ -197619,6 +198565,10 @@ export namespace hdinsight {
              */
             targetInstanceCount?: number;
             /**
+             * The name of the virtual machine group.
+             */
+            vMGroupName?: string;
+            /**
              * The virtual network profile.
              */
             virtualNetworkProfile?: outputs.hdinsight.v20180601preview.VirtualNetworkProfileResponse;
@@ -197743,6 +198693,10 @@ export namespace hdinsight {
              */
             fileSystem?: string;
             /**
+             * The file share name.
+             */
+            fileshare?: string;
+            /**
              * Whether or not the storage account is the default storage account.
              */
             isDefault?: boolean;
@@ -197762,6 +198716,10 @@ export namespace hdinsight {
              * The resource ID of storage account, only to be specified for Azure Data Lake Storage Gen 2.
              */
             resourceId?: string;
+            /**
+             * The shared access signature key.
+             */
+            saskey?: string;
         }
 
         /**
@@ -207190,6 +208148,142 @@ export namespace kubernetes {
              * Sender access token
              */
             token: string;
+        }
+    }
+
+    export namespace v20210301 {
+        /**
+         * Identity for the connected cluster.
+         */
+        export interface ConnectedClusterIdentityResponse {
+            /**
+             * The principal id of connected cluster identity. This property will only be provided for a system assigned identity.
+             */
+            principalId: string;
+            /**
+             * The tenant id associated with the connected cluster. This property will only be provided for a system assigned identity.
+             */
+            tenantId: string;
+            /**
+             * The type of identity used for the connected cluster. The type 'SystemAssigned, includes a system created identity. The type 'None' means no identity is assigned to the connected cluster.
+             */
+            type: string;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The timestamp of resource modification (UTC).
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
+        }
+    }
+
+    export namespace v20210401preview {
+        /**
+         * Identity for the connected cluster.
+         */
+        export interface ConnectedClusterIdentityResponse {
+            /**
+             * The principal id of connected cluster identity. This property will only be provided for a system assigned identity.
+             */
+            principalId: string;
+            /**
+             * The tenant id associated with the connected cluster. This property will only be provided for a system assigned identity.
+             */
+            tenantId: string;
+            /**
+             * The type of identity used for the connected cluster. The type 'SystemAssigned, includes a system created identity. The type 'None' means no identity is assigned to the connected cluster.
+             */
+            type: string;
+        }
+
+        /**
+         * The credential result response.
+         */
+        export interface CredentialResultResponse {
+            /**
+             * The name of the credential.
+             */
+            name: string;
+            /**
+             * Base64-encoded Kubernetes configuration file.
+             */
+            value: string;
+        }
+
+        /**
+         * Contains the REP (rendezvous endpoint) and “Sender” access token.
+         */
+        export interface HybridConnectionConfigResponse {
+            /**
+             * Timestamp when this token will be expired.
+             */
+            expirationTime: number;
+            /**
+             * Name of the connection
+             */
+            hybridConnectionName: string;
+            /**
+             * Name of the relay.
+             */
+            relay: string;
+            /**
+             * Sender access token
+             */
+            token: string;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The timestamp of resource modification (UTC).
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
         }
     }
 }
@@ -464861,6 +465955,78 @@ export namespace storage {
         }
 
         /**
+         * An object that defines the blob inventory rule. Each definition consists of a set of filters.
+         */
+        export interface BlobInventoryPolicyDefinitionResponse {
+            /**
+             * An object that defines the filter set.
+             */
+            filters: outputs.storage.latest.BlobInventoryPolicyFilterResponse;
+        }
+
+        /**
+         * An object that defines the blob inventory rule filter conditions.
+         */
+        export interface BlobInventoryPolicyFilterResponse {
+            /**
+             * An array of predefined enum values. Valid values include blockBlob, appendBlob, pageBlob. Hns accounts does not support pageBlobs.
+             */
+            blobTypes: string[];
+            /**
+             * Includes blob versions in blob inventory when value set to true.
+             */
+            includeBlobVersions?: boolean;
+            /**
+             * Includes blob snapshots in blob inventory when value set to true.
+             */
+            includeSnapshots?: boolean;
+            /**
+             * An array of strings for blob prefixes to be matched.
+             */
+            prefixMatch?: string[];
+        }
+
+        /**
+         * An object that wraps the blob inventory rule. Each rule is uniquely defined by name.
+         */
+        export interface BlobInventoryPolicyRuleResponse {
+            /**
+             * An object that defines the blob inventory policy rule.
+             */
+            definition: outputs.storage.latest.BlobInventoryPolicyDefinitionResponse;
+            /**
+             * Rule is enabled when set to true.
+             */
+            enabled: boolean;
+            /**
+             * A rule name can contain any combination of alpha numeric characters. Rule name is case-sensitive. It must be unique within a policy.
+             */
+            name: string;
+        }
+
+        /**
+         * The storage account blob inventory policy rules.
+         */
+        export interface BlobInventoryPolicySchemaResponse {
+            /**
+             * Container name where blob inventory files are stored. Must be pre-created.
+             */
+            destination: string;
+            /**
+             * Policy is enabled if set to true.
+             */
+            enabled: boolean;
+            /**
+             * The storage account blob inventory policy rules. The rule is applied when it is enabled.
+             */
+            rules: outputs.storage.latest.BlobInventoryPolicyRuleResponse[];
+            /**
+             * The valid value is Inventory
+             */
+            type: string;
+        }
+
+        /**
          * Blob restore parameters
          */
         export interface BlobRestoreParametersResponse {
@@ -464918,6 +466084,10 @@ export namespace storage {
              * Indicates whether change feed event logging is enabled for the Blob service.
              */
             enabled?: boolean;
+            /**
+             * Indicates the duration of changeFeed retention in days. Minimum value is 1 day and maximum value is 146000 days (400 years). A null value indicates an infinite retention of the change feed.
+             */
+            retentionInDays?: number;
         }
 
         /**
@@ -464981,13 +466151,17 @@ export namespace storage {
         }
 
         /**
-         * Object to define the number of days after last modification.
+         * Object to define the number of days after object last modification Or last access. Properties daysAfterModificationGreaterThan and daysAfterLastAccessTimeGreaterThan are mutually exclusive.
          */
         export interface DateAfterModificationResponse {
             /**
+             * Value indicating the age in days after last blob access. This property can only be used in conjunction with last access time tracking policy
+             */
+            daysAfterLastAccessTimeGreaterThan?: number;
+            /**
              * Value indicating the age in days after last modification
              */
-            daysAfterModificationGreaterThan: number;
+            daysAfterModificationGreaterThan?: number;
         }
 
         /**
@@ -465207,6 +466381,28 @@ export namespace storage {
         }
 
         /**
+         * The blob service properties for Last access time based tracking policy.
+         */
+        export interface LastAccessTimeTrackingPolicyResponse {
+            /**
+             * An array of predefined supported blob types. Only blockBlob is the supported value. This field is currently read only
+             */
+            blobType?: string[];
+            /**
+             * When set to true last access time based tracking is enabled.
+             */
+            enable: boolean;
+            /**
+             * Name of the policy. The valid value is AccessTimeTracking. This field is currently read only
+             */
+            name?: string;
+            /**
+             * The field specifies blob object tracking granularity in days, typically how often the blob object should be tracked.This field is currently read only with value as 1
+             */
+            trackingGranularityInDays?: number;
+        }
+
+        /**
          * The LegalHold property of a blob container.
          */
         export interface LegalHoldPropertiesResponse {
@@ -465232,6 +466428,10 @@ export namespace storage {
              * The management policy action for snapshot
              */
             snapshot?: outputs.storage.latest.ManagementPolicySnapShotResponse;
+            /**
+             * The management policy action for version
+             */
+            version?: outputs.storage.latest.ManagementPolicyVersionResponse;
         }
 
         /**
@@ -465242,6 +466442,10 @@ export namespace storage {
              * The function to delete the blob
              */
             delete?: outputs.storage.latest.DateAfterModificationResponse;
+            /**
+             * This property enables auto tiering of a blob from cool to hot on a blob access. This property requires tierToCool.daysAfterLastAccessTimeGreaterThan.
+             */
+            enableAutoTierToHotFromCool?: boolean;
             /**
              * The function to tier blobs to archive storage. Support blobs currently at Hot or Cool tier
              */
@@ -465275,7 +466479,7 @@ export namespace storage {
              */
             blobIndexMatch?: outputs.storage.latest.TagFilterResponse[];
             /**
-             * An array of predefined enum values. Only blockBlob is supported.
+             * An array of predefined enum values. Currently blockBlob supports all tiering and delete actions. Only delete actions are supported for appendBlob.
              */
             blobTypes: string[];
             /**
@@ -465324,6 +466528,32 @@ export namespace storage {
              * The function to delete the blob snapshot
              */
             delete?: outputs.storage.latest.DateAfterCreationResponse;
+            /**
+             * The function to tier blob snapshot to archive storage. Support blob snapshot currently at Hot or Cool tier
+             */
+            tierToArchive?: outputs.storage.latest.DateAfterCreationResponse;
+            /**
+             * The function to tier blob snapshot to cool storage. Support blob snapshot currently at Hot tier
+             */
+            tierToCool?: outputs.storage.latest.DateAfterCreationResponse;
+        }
+
+        /**
+         * Management policy action for blob version.
+         */
+        export interface ManagementPolicyVersionResponse {
+            /**
+             * The function to delete the blob version
+             */
+            delete?: outputs.storage.latest.DateAfterCreationResponse;
+            /**
+             * The function to tier blob version to archive storage. Support blob version currently at Hot or Cool tier
+             */
+            tierToArchive?: outputs.storage.latest.DateAfterCreationResponse;
+            /**
+             * The function to tier blob version to cool storage. Support blob version currently at Hot tier
+             */
+            tierToCool?: outputs.storage.latest.DateAfterCreationResponse;
         }
 
         /**
@@ -465564,6 +466794,36 @@ export namespace storage {
              * Gets the web endpoint.
              */
             web: string;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
         }
 
         /**
@@ -468977,6 +470237,78 @@ export namespace storage {
         }
 
         /**
+         * An object that defines the blob inventory rule. Each definition consists of a set of filters.
+         */
+        export interface BlobInventoryPolicyDefinitionResponse {
+            /**
+             * An object that defines the filter set.
+             */
+            filters: outputs.storage.v20190601.BlobInventoryPolicyFilterResponse;
+        }
+
+        /**
+         * An object that defines the blob inventory rule filter conditions.
+         */
+        export interface BlobInventoryPolicyFilterResponse {
+            /**
+             * An array of predefined enum values. Valid values include blockBlob, appendBlob, pageBlob. Hns accounts does not support pageBlobs.
+             */
+            blobTypes: string[];
+            /**
+             * Includes blob versions in blob inventory when value set to true.
+             */
+            includeBlobVersions?: boolean;
+            /**
+             * Includes blob snapshots in blob inventory when value set to true.
+             */
+            includeSnapshots?: boolean;
+            /**
+             * An array of strings for blob prefixes to be matched.
+             */
+            prefixMatch?: string[];
+        }
+
+        /**
+         * An object that wraps the blob inventory rule. Each rule is uniquely defined by name.
+         */
+        export interface BlobInventoryPolicyRuleResponse {
+            /**
+             * An object that defines the blob inventory policy rule.
+             */
+            definition: outputs.storage.v20190601.BlobInventoryPolicyDefinitionResponse;
+            /**
+             * Rule is enabled when set to true.
+             */
+            enabled: boolean;
+            /**
+             * A rule name can contain any combination of alpha numeric characters. Rule name is case-sensitive. It must be unique within a policy.
+             */
+            name: string;
+        }
+
+        /**
+         * The storage account blob inventory policy rules.
+         */
+        export interface BlobInventoryPolicySchemaResponse {
+            /**
+             * Container name where blob inventory files are stored. Must be pre-created.
+             */
+            destination: string;
+            /**
+             * Policy is enabled if set to true.
+             */
+            enabled: boolean;
+            /**
+             * The storage account blob inventory policy rules. The rule is applied when it is enabled.
+             */
+            rules: outputs.storage.v20190601.BlobInventoryPolicyRuleResponse[];
+            /**
+             * The valid value is Inventory
+             */
+            type: string;
+        }
+
+        /**
          * Blob restore parameters
          */
         export interface BlobRestoreParametersResponse {
@@ -469034,6 +470366,10 @@ export namespace storage {
              * Indicates whether change feed event logging is enabled for the Blob service.
              */
             enabled?: boolean;
+            /**
+             * Indicates the duration of changeFeed retention in days. Minimum value is 1 day and maximum value is 146000 days (400 years). A null value indicates an infinite retention of the change feed.
+             */
+            retentionInDays?: number;
         }
 
         /**
@@ -469097,13 +470433,17 @@ export namespace storage {
         }
 
         /**
-         * Object to define the number of days after last modification.
+         * Object to define the number of days after object last modification Or last access. Properties daysAfterModificationGreaterThan and daysAfterLastAccessTimeGreaterThan are mutually exclusive.
          */
         export interface DateAfterModificationResponse {
             /**
+             * Value indicating the age in days after last blob access. This property can only be used in conjunction with last access time tracking policy
+             */
+            daysAfterLastAccessTimeGreaterThan?: number;
+            /**
              * Value indicating the age in days after last modification
              */
-            daysAfterModificationGreaterThan: number;
+            daysAfterModificationGreaterThan?: number;
         }
 
         /**
@@ -469323,6 +470663,28 @@ export namespace storage {
         }
 
         /**
+         * The blob service properties for Last access time based tracking policy.
+         */
+        export interface LastAccessTimeTrackingPolicyResponse {
+            /**
+             * An array of predefined supported blob types. Only blockBlob is the supported value. This field is currently read only
+             */
+            blobType?: string[];
+            /**
+             * When set to true last access time based tracking is enabled.
+             */
+            enable: boolean;
+            /**
+             * Name of the policy. The valid value is AccessTimeTracking. This field is currently read only
+             */
+            name?: string;
+            /**
+             * The field specifies blob object tracking granularity in days, typically how often the blob object should be tracked.This field is currently read only with value as 1
+             */
+            trackingGranularityInDays?: number;
+        }
+
+        /**
          * The LegalHold property of a blob container.
          */
         export interface LegalHoldPropertiesResponse {
@@ -469348,6 +470710,10 @@ export namespace storage {
              * The management policy action for snapshot
              */
             snapshot?: outputs.storage.v20190601.ManagementPolicySnapShotResponse;
+            /**
+             * The management policy action for version
+             */
+            version?: outputs.storage.v20190601.ManagementPolicyVersionResponse;
         }
 
         /**
@@ -469358,6 +470724,10 @@ export namespace storage {
              * The function to delete the blob
              */
             delete?: outputs.storage.v20190601.DateAfterModificationResponse;
+            /**
+             * This property enables auto tiering of a blob from cool to hot on a blob access. This property requires tierToCool.daysAfterLastAccessTimeGreaterThan.
+             */
+            enableAutoTierToHotFromCool?: boolean;
             /**
              * The function to tier blobs to archive storage. Support blobs currently at Hot or Cool tier
              */
@@ -469391,7 +470761,7 @@ export namespace storage {
              */
             blobIndexMatch?: outputs.storage.v20190601.TagFilterResponse[];
             /**
-             * An array of predefined enum values. Only blockBlob is supported.
+             * An array of predefined enum values. Currently blockBlob supports all tiering and delete actions. Only delete actions are supported for appendBlob.
              */
             blobTypes: string[];
             /**
@@ -469440,6 +470810,32 @@ export namespace storage {
              * The function to delete the blob snapshot
              */
             delete?: outputs.storage.v20190601.DateAfterCreationResponse;
+            /**
+             * The function to tier blob snapshot to archive storage. Support blob snapshot currently at Hot or Cool tier
+             */
+            tierToArchive?: outputs.storage.v20190601.DateAfterCreationResponse;
+            /**
+             * The function to tier blob snapshot to cool storage. Support blob snapshot currently at Hot tier
+             */
+            tierToCool?: outputs.storage.v20190601.DateAfterCreationResponse;
+        }
+
+        /**
+         * Management policy action for blob version.
+         */
+        export interface ManagementPolicyVersionResponse {
+            /**
+             * The function to delete the blob version
+             */
+            delete?: outputs.storage.v20190601.DateAfterCreationResponse;
+            /**
+             * The function to tier blob version to archive storage. Support blob version currently at Hot or Cool tier
+             */
+            tierToArchive?: outputs.storage.v20190601.DateAfterCreationResponse;
+            /**
+             * The function to tier blob version to cool storage. Support blob version currently at Hot tier
+             */
+            tierToCool?: outputs.storage.v20190601.DateAfterCreationResponse;
         }
 
         /**
@@ -469680,6 +471076,36 @@ export namespace storage {
              * Gets the web endpoint.
              */
             web: string;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
         }
 
         /**
@@ -469950,6 +471376,10 @@ export namespace storage {
              * Indicates whether change feed event logging is enabled for the Blob service.
              */
             enabled?: boolean;
+            /**
+             * Indicates the duration of changeFeed retention in days. Minimum value is 1 day and maximum value is 146000 days (400 years). A null value indicates an infinite retention of the change feed.
+             */
+            retentionInDays?: number;
         }
 
         /**
@@ -470013,7 +471443,7 @@ export namespace storage {
         }
 
         /**
-         * Object to define the number of days after last modification.
+         * Object to define the number of days after object last modification Or last access. Properties daysAfterModificationGreaterThan and daysAfterLastAccessTimeGreaterThan are mutually exclusive.
          */
         export interface DateAfterModificationResponse {
             /**
@@ -470304,6 +471734,10 @@ export namespace storage {
              * The management policy action for snapshot
              */
             snapshot?: outputs.storage.v20200801preview.ManagementPolicySnapShotResponse;
+            /**
+             * The management policy action for version
+             */
+            version?: outputs.storage.v20200801preview.ManagementPolicyVersionResponse;
         }
 
         /**
@@ -470351,7 +471785,7 @@ export namespace storage {
              */
             blobIndexMatch?: outputs.storage.v20200801preview.TagFilterResponse[];
             /**
-             * An array of predefined enum values. Only blockBlob is supported.
+             * An array of predefined enum values. Currently blockBlob supports all tiering and delete actions. Only delete actions are supported for appendBlob.
              */
             blobTypes: string[];
             /**
@@ -470400,6 +471834,32 @@ export namespace storage {
              * The function to delete the blob snapshot
              */
             delete?: outputs.storage.v20200801preview.DateAfterCreationResponse;
+            /**
+             * The function to tier blob snapshot to archive storage. Support blob snapshot currently at Hot or Cool tier
+             */
+            tierToArchive?: outputs.storage.v20200801preview.DateAfterCreationResponse;
+            /**
+             * The function to tier blob snapshot to cool storage. Support blob snapshot currently at Hot tier
+             */
+            tierToCool?: outputs.storage.v20200801preview.DateAfterCreationResponse;
+        }
+
+        /**
+         * Management policy action for blob version.
+         */
+        export interface ManagementPolicyVersionResponse {
+            /**
+             * The function to delete the blob version
+             */
+            delete?: outputs.storage.v20200801preview.DateAfterCreationResponse;
+            /**
+             * The function to tier blob version to archive storage. Support blob version currently at Hot or Cool tier
+             */
+            tierToArchive?: outputs.storage.v20200801preview.DateAfterCreationResponse;
+            /**
+             * The function to tier blob version to cool storage. Support blob version currently at Hot tier
+             */
+            tierToCool?: outputs.storage.v20200801preview.DateAfterCreationResponse;
         }
 
         /**
@@ -471000,7 +472460,7 @@ export namespace storagecache {
             /**
              * Whether or not Extended Groups is enabled.
              */
-            extendedGroupsEnabled?: boolean;
+            extendedGroups?: boolean;
             /**
              * The URI of the file containing group information (in /etc/group file format). This field must be populated when 'usernameSource' is set to 'File'.
              */
@@ -471008,7 +472468,7 @@ export namespace storagecache {
             /**
              * The base distinguished name for the LDAP domain.
              */
-            ldapBaseDn?: string;
+            ldapBaseDN?: string;
             /**
              * The fully qualified domain name or IP address of the LDAP server to use.
              */
@@ -471814,7 +473274,7 @@ export namespace storagecache {
             /**
              * Whether or not Extended Groups is enabled.
              */
-            extendedGroupsEnabled?: boolean;
+            extendedGroups?: boolean;
             /**
              * The URI of the file containing group information (in /etc/group file format). This field must be populated when 'usernameSource' is set to 'File'.
              */
@@ -471822,7 +473282,7 @@ export namespace storagecache {
             /**
              * The base distinguished name for the LDAP domain.
              */
-            ldapBaseDn?: string;
+            ldapBaseDN?: string;
             /**
              * The fully qualified domain name or IP address of the LDAP server to use.
              */

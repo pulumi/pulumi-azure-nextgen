@@ -155728,6 +155728,903 @@ export namespace eventgrid {
         }
 
     }
+
+    export namespace v20201015preview {
+        /**
+         * Information about the azure function destination for an event subscription.
+         */
+        export interface AzureFunctionEventSubscriptionDestination {
+            /**
+             * Delivery attribute details.
+             */
+            deliveryAttributeMappings?: pulumi.Input<pulumi.Input<inputs.eventgrid.v20201015preview.DynamicDeliveryAttributeMapping | inputs.eventgrid.v20201015preview.StaticDeliveryAttributeMapping>[]>;
+            /**
+             * Type of the endpoint for the event subscription destination.
+             * Expected value is 'AzureFunction'.
+             */
+            endpointType: pulumi.Input<"AzureFunction">;
+            /**
+             * Maximum number of events per batch.
+             */
+            maxEventsPerBatch?: pulumi.Input<number>;
+            /**
+             * Preferred batch size in Kilobytes.
+             */
+            preferredBatchSizeInKilobytes?: pulumi.Input<number>;
+            /**
+             * The Azure Resource Id that represents the endpoint of the Azure Function destination of an event subscription.
+             */
+            resourceId?: pulumi.Input<string>;
+        }
+
+        /**
+         * BoolEquals Advanced Filter.
+         */
+        export interface BoolEqualsAdvancedFilter {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'BoolEquals'.
+             */
+            operatorType: pulumi.Input<"BoolEquals">;
+            /**
+             * The boolean filter value.
+             */
+            value?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * ConnectionState information.
+         */
+        export interface ConnectionState {
+            /**
+             * Actions required (if any).
+             */
+            actionsRequired?: pulumi.Input<string>;
+            /**
+             * Description of the connection state.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Status of the connection.
+             */
+            status?: pulumi.Input<string | enums.eventgrid.v20201015preview.PersistedConnectionStatus>;
+        }
+
+        /**
+         * Information about the deadletter destination with resource identity.
+         */
+        export interface DeadLetterWithResourceIdentity {
+            /**
+             * Information about the destination where events have to be delivered for the event subscription.
+             * Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery / dead-lettering.
+             */
+            deadLetterDestination?: pulumi.Input<inputs.eventgrid.v20201015preview.StorageBlobDeadLetterDestination>;
+            /**
+             * The identity to use when dead-lettering events.
+             */
+            identity?: pulumi.Input<inputs.eventgrid.v20201015preview.EventSubscriptionIdentity>;
+        }
+
+        /**
+         * Information about the delivery for an event subscription with resource identity.
+         */
+        export interface DeliveryWithResourceIdentity {
+            /**
+             * Information about the destination where events have to be delivered for the event subscription.
+             * Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
+             */
+            destination?: pulumi.Input<inputs.eventgrid.v20201015preview.AzureFunctionEventSubscriptionDestination | inputs.eventgrid.v20201015preview.EventHubEventSubscriptionDestination | inputs.eventgrid.v20201015preview.HybridConnectionEventSubscriptionDestination | inputs.eventgrid.v20201015preview.ServiceBusQueueEventSubscriptionDestination | inputs.eventgrid.v20201015preview.ServiceBusTopicEventSubscriptionDestination | inputs.eventgrid.v20201015preview.StorageQueueEventSubscriptionDestination | inputs.eventgrid.v20201015preview.WebHookEventSubscriptionDestination>;
+            /**
+             * The identity to use when delivering events.
+             */
+            identity?: pulumi.Input<inputs.eventgrid.v20201015preview.EventSubscriptionIdentity>;
+        }
+
+        /**
+         * Dynamic delivery attribute mapping details.
+         */
+        export interface DynamicDeliveryAttributeMapping {
+            /**
+             * Name of the delivery attribute or header.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * JSON path in the event which contains attribute value.
+             */
+            sourceField?: pulumi.Input<string>;
+            /**
+             * Type of the delivery attribute or header name.
+             * Expected value is 'Dynamic'.
+             */
+            type: pulumi.Input<"Dynamic">;
+        }
+
+        /**
+         * Properties of the destination of an event channel.
+         */
+        export interface EventChannelDestination {
+            /**
+             * Azure subscription ID of the customer creating the event channel. The partner topic
+             * associated with the event channel will be created under this Azure subscription.
+             */
+            azureSubscriptionId?: pulumi.Input<string>;
+            /**
+             * Name of the partner topic associated with the event channel.
+             */
+            partnerTopicName?: pulumi.Input<string>;
+            /**
+             * Azure Resource Group of the customer creating the event channel. The partner topic
+             * associated with the event channel will be created under this resource group.
+             */
+            resourceGroup?: pulumi.Input<string>;
+        }
+
+        /**
+         * Filter for the Event Channel.
+         */
+        export interface EventChannelFilter {
+            /**
+             * An array of advanced filters that are used for filtering event channels.
+             */
+            advancedFilters?: pulumi.Input<pulumi.Input<inputs.eventgrid.v20201015preview.BoolEqualsAdvancedFilter | inputs.eventgrid.v20201015preview.IsNotNullAdvancedFilter | inputs.eventgrid.v20201015preview.IsNullOrUndefinedAdvancedFilter | inputs.eventgrid.v20201015preview.NumberGreaterThanAdvancedFilter | inputs.eventgrid.v20201015preview.NumberGreaterThanOrEqualsAdvancedFilter | inputs.eventgrid.v20201015preview.NumberInAdvancedFilter | inputs.eventgrid.v20201015preview.NumberInRangeAdvancedFilter | inputs.eventgrid.v20201015preview.NumberLessThanAdvancedFilter | inputs.eventgrid.v20201015preview.NumberLessThanOrEqualsAdvancedFilter | inputs.eventgrid.v20201015preview.NumberNotInAdvancedFilter | inputs.eventgrid.v20201015preview.NumberNotInRangeAdvancedFilter | inputs.eventgrid.v20201015preview.StringBeginsWithAdvancedFilter | inputs.eventgrid.v20201015preview.StringContainsAdvancedFilter | inputs.eventgrid.v20201015preview.StringEndsWithAdvancedFilter | inputs.eventgrid.v20201015preview.StringInAdvancedFilter | inputs.eventgrid.v20201015preview.StringNotBeginsWithAdvancedFilter | inputs.eventgrid.v20201015preview.StringNotContainsAdvancedFilter | inputs.eventgrid.v20201015preview.StringNotEndsWithAdvancedFilter | inputs.eventgrid.v20201015preview.StringNotInAdvancedFilter>[]>;
+            /**
+             * Allows advanced filters to be evaluated against an array of values instead of expecting a singular value.
+             */
+            enableAdvancedFilteringOnArrays?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Properties of the source of an event channel.
+         */
+        export interface EventChannelSource {
+            /**
+             * The identifier of the resource that's the source of the events.
+             * This represents a unique resource in the partner's resource model.
+             */
+            source?: pulumi.Input<string>;
+        }
+
+        /**
+         * Information about the event hub destination for an event subscription.
+         */
+        export interface EventHubEventSubscriptionDestination {
+            /**
+             * Delivery attribute details.
+             */
+            deliveryAttributeMappings?: pulumi.Input<pulumi.Input<inputs.eventgrid.v20201015preview.DynamicDeliveryAttributeMapping | inputs.eventgrid.v20201015preview.StaticDeliveryAttributeMapping>[]>;
+            /**
+             * Type of the endpoint for the event subscription destination.
+             * Expected value is 'EventHub'.
+             */
+            endpointType: pulumi.Input<"EventHub">;
+            /**
+             * The Azure Resource Id that represents the endpoint of an Event Hub destination of an event subscription.
+             */
+            resourceId?: pulumi.Input<string>;
+        }
+
+        /**
+         * Filter for the Event Subscription.
+         */
+        export interface EventSubscriptionFilter {
+            /**
+             * An array of advanced filters that are used for filtering event subscriptions.
+             */
+            advancedFilters?: pulumi.Input<pulumi.Input<inputs.eventgrid.v20201015preview.BoolEqualsAdvancedFilter | inputs.eventgrid.v20201015preview.IsNotNullAdvancedFilter | inputs.eventgrid.v20201015preview.IsNullOrUndefinedAdvancedFilter | inputs.eventgrid.v20201015preview.NumberGreaterThanAdvancedFilter | inputs.eventgrid.v20201015preview.NumberGreaterThanOrEqualsAdvancedFilter | inputs.eventgrid.v20201015preview.NumberInAdvancedFilter | inputs.eventgrid.v20201015preview.NumberInRangeAdvancedFilter | inputs.eventgrid.v20201015preview.NumberLessThanAdvancedFilter | inputs.eventgrid.v20201015preview.NumberLessThanOrEqualsAdvancedFilter | inputs.eventgrid.v20201015preview.NumberNotInAdvancedFilter | inputs.eventgrid.v20201015preview.NumberNotInRangeAdvancedFilter | inputs.eventgrid.v20201015preview.StringBeginsWithAdvancedFilter | inputs.eventgrid.v20201015preview.StringContainsAdvancedFilter | inputs.eventgrid.v20201015preview.StringEndsWithAdvancedFilter | inputs.eventgrid.v20201015preview.StringInAdvancedFilter | inputs.eventgrid.v20201015preview.StringNotBeginsWithAdvancedFilter | inputs.eventgrid.v20201015preview.StringNotContainsAdvancedFilter | inputs.eventgrid.v20201015preview.StringNotEndsWithAdvancedFilter | inputs.eventgrid.v20201015preview.StringNotInAdvancedFilter>[]>;
+            /**
+             * Allows advanced filters to be evaluated against an array of values instead of expecting a singular value.
+             */
+            enableAdvancedFilteringOnArrays?: pulumi.Input<boolean>;
+            /**
+             * A list of applicable event types that need to be part of the event subscription. If it is desired to subscribe to all default event types, set the IncludedEventTypes to null.
+             */
+            includedEventTypes?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Specifies if the SubjectBeginsWith and SubjectEndsWith properties of the filter
+             * should be compared in a case sensitive manner.
+             */
+            isSubjectCaseSensitive?: pulumi.Input<boolean>;
+            /**
+             * An optional string to filter events for an event subscription based on a resource path prefix.
+             * The format of this depends on the publisher of the events.
+             * Wildcard characters are not supported in this path.
+             */
+            subjectBeginsWith?: pulumi.Input<string>;
+            /**
+             * An optional string to filter events for an event subscription based on a resource path suffix.
+             * Wildcard characters are not supported in this path.
+             */
+            subjectEndsWith?: pulumi.Input<string>;
+        }
+
+        /**
+         * The identity information with the event subscription.
+         */
+        export interface EventSubscriptionIdentity {
+            /**
+             * The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identity.
+             */
+            type?: pulumi.Input<string | enums.eventgrid.v20201015preview.EventSubscriptionIdentityType>;
+            /**
+             * The user identity associated with the resource.
+             */
+            userAssignedIdentity?: pulumi.Input<string>;
+        }
+
+        /**
+         * Definition of an Extended Location
+         */
+        export interface ExtendedLocation {
+            /**
+             * Fully qualified name of the extended location.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Type of the extended location.
+             */
+            type?: pulumi.Input<string>;
+        }
+
+        /**
+         * Information about the HybridConnection destination for an event subscription.
+         */
+        export interface HybridConnectionEventSubscriptionDestination {
+            /**
+             * Delivery attribute details.
+             */
+            deliveryAttributeMappings?: pulumi.Input<pulumi.Input<inputs.eventgrid.v20201015preview.DynamicDeliveryAttributeMapping | inputs.eventgrid.v20201015preview.StaticDeliveryAttributeMapping>[]>;
+            /**
+             * Type of the endpoint for the event subscription destination.
+             * Expected value is 'HybridConnection'.
+             */
+            endpointType: pulumi.Input<"HybridConnection">;
+            /**
+             * The Azure Resource ID of an hybrid connection that is the destination of an event subscription.
+             */
+            resourceId?: pulumi.Input<string>;
+        }
+
+        /**
+         * The identity information for the resource.
+         */
+        export interface IdentityInfo {
+            /**
+             * The principal ID of resource identity.
+             */
+            principalId?: pulumi.Input<string>;
+            /**
+             * The tenant ID of resource.
+             */
+            tenantId?: pulumi.Input<string>;
+            /**
+             * The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identity.
+             */
+            type?: pulumi.Input<string | enums.eventgrid.v20201015preview.IdentityType>;
+            /**
+             * The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form:
+             * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+             * This property is currently not used and reserved for future usage.
+             */
+            userAssignedIdentities?: pulumi.Input<{[key: string]: pulumi.Input<inputs.eventgrid.v20201015preview.UserIdentityProperties>}>;
+        }
+
+        export interface InboundIpRule {
+            /**
+             * Action to perform based on the match or no match of the IpMask.
+             */
+            action?: pulumi.Input<string | enums.eventgrid.v20201015preview.IpActionType>;
+            /**
+             * IP Address in CIDR notation e.g., 10.0.0.0/8.
+             */
+            ipMask?: pulumi.Input<string>;
+        }
+
+        /**
+         * IsNotNull Advanced Filter.
+         */
+        export interface IsNotNullAdvancedFilter {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'IsNotNull'.
+             */
+            operatorType: pulumi.Input<"IsNotNull">;
+        }
+
+        /**
+         * IsNullOrUndefined Advanced Filter.
+         */
+        export interface IsNullOrUndefinedAdvancedFilter {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'IsNullOrUndefined'.
+             */
+            operatorType: pulumi.Input<"IsNullOrUndefined">;
+        }
+
+        /**
+         * This is used to express the source of an input schema mapping for a single target field in the Event Grid Event schema. This is currently used in the mappings for the 'id', 'topic' and 'eventtime' properties. This represents a field in the input event schema.
+         */
+        export interface JsonField {
+            /**
+             * Name of a field in the input event schema that's to be used as the source of a mapping.
+             */
+            sourceField?: pulumi.Input<string>;
+        }
+
+        /**
+         * This is used to express the source of an input schema mapping for a single target field
+         * in the Event Grid Event schema. This is currently used in the mappings for the 'subject',
+         * 'eventtype' and 'dataversion' properties. This represents a field in the input event schema
+         * along with a default value to be used, and at least one of these two properties should be provided.
+         */
+        export interface JsonFieldWithDefault {
+            /**
+             * The default value to be used for mapping when a SourceField is not provided or if there's no property with the specified name in the published JSON event payload.
+             */
+            defaultValue?: pulumi.Input<string>;
+            /**
+             * Name of a field in the input event schema that's to be used as the source of a mapping.
+             */
+            sourceField?: pulumi.Input<string>;
+        }
+
+        /**
+         * This enables publishing to Event Grid using a custom input schema. This can be used to map properties from a custom input JSON schema to the Event Grid event schema.
+         */
+        export interface JsonInputSchemaMapping {
+            /**
+             * The mapping information for the DataVersion property of the Event Grid Event.
+             */
+            dataVersion?: pulumi.Input<inputs.eventgrid.v20201015preview.JsonFieldWithDefault>;
+            /**
+             * The mapping information for the EventTime property of the Event Grid Event.
+             */
+            eventTime?: pulumi.Input<inputs.eventgrid.v20201015preview.JsonField>;
+            /**
+             * The mapping information for the EventType property of the Event Grid Event.
+             */
+            eventType?: pulumi.Input<inputs.eventgrid.v20201015preview.JsonFieldWithDefault>;
+            /**
+             * The mapping information for the Id property of the Event Grid Event.
+             */
+            id?: pulumi.Input<inputs.eventgrid.v20201015preview.JsonField>;
+            /**
+             * Type of the custom mapping
+             * Expected value is 'Json'.
+             */
+            inputSchemaMappingType: pulumi.Input<"Json">;
+            /**
+             * The mapping information for the Subject property of the Event Grid Event.
+             */
+            subject?: pulumi.Input<inputs.eventgrid.v20201015preview.JsonFieldWithDefault>;
+            /**
+             * The mapping information for the Topic property of the Event Grid Event.
+             */
+            topic?: pulumi.Input<inputs.eventgrid.v20201015preview.JsonField>;
+        }
+
+        /**
+         * NumberGreaterThan Advanced Filter.
+         */
+        export interface NumberGreaterThanAdvancedFilter {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'NumberGreaterThan'.
+             */
+            operatorType: pulumi.Input<"NumberGreaterThan">;
+            /**
+             * The filter value.
+             */
+            value?: pulumi.Input<number>;
+        }
+
+        /**
+         * NumberGreaterThanOrEquals Advanced Filter.
+         */
+        export interface NumberGreaterThanOrEqualsAdvancedFilter {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'NumberGreaterThanOrEquals'.
+             */
+            operatorType: pulumi.Input<"NumberGreaterThanOrEquals">;
+            /**
+             * The filter value.
+             */
+            value?: pulumi.Input<number>;
+        }
+
+        /**
+         * NumberIn Advanced Filter.
+         */
+        export interface NumberInAdvancedFilter {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'NumberIn'.
+             */
+            operatorType: pulumi.Input<"NumberIn">;
+            /**
+             * The set of filter values.
+             */
+            values?: pulumi.Input<pulumi.Input<number>[]>;
+        }
+
+        /**
+         * NumberInRange Advanced Filter.
+         */
+        export interface NumberInRangeAdvancedFilter {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'NumberInRange'.
+             */
+            operatorType: pulumi.Input<"NumberInRange">;
+            /**
+             * The set of filter values.
+             */
+            values?: pulumi.Input<pulumi.Input<pulumi.Input<number>[]>[]>;
+        }
+
+        /**
+         * NumberLessThan Advanced Filter.
+         */
+        export interface NumberLessThanAdvancedFilter {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'NumberLessThan'.
+             */
+            operatorType: pulumi.Input<"NumberLessThan">;
+            /**
+             * The filter value.
+             */
+            value?: pulumi.Input<number>;
+        }
+
+        /**
+         * NumberLessThanOrEquals Advanced Filter.
+         */
+        export interface NumberLessThanOrEqualsAdvancedFilter {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'NumberLessThanOrEquals'.
+             */
+            operatorType: pulumi.Input<"NumberLessThanOrEquals">;
+            /**
+             * The filter value.
+             */
+            value?: pulumi.Input<number>;
+        }
+
+        /**
+         * NumberNotIn Advanced Filter.
+         */
+        export interface NumberNotInAdvancedFilter {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'NumberNotIn'.
+             */
+            operatorType: pulumi.Input<"NumberNotIn">;
+            /**
+             * The set of filter values.
+             */
+            values?: pulumi.Input<pulumi.Input<number>[]>;
+        }
+
+        /**
+         * NumberNotInRange Advanced Filter.
+         */
+        export interface NumberNotInRangeAdvancedFilter {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'NumberNotInRange'.
+             */
+            operatorType: pulumi.Input<"NumberNotInRange">;
+            /**
+             * The set of filter values.
+             */
+            values?: pulumi.Input<pulumi.Input<pulumi.Input<number>[]>[]>;
+        }
+
+        /**
+         * PrivateEndpoint information.
+         */
+        export interface PrivateEndpoint {
+            /**
+             * The ARM identifier for Private Endpoint.
+             */
+            id?: pulumi.Input<string>;
+        }
+
+        export interface PrivateEndpointConnection {
+            /**
+             * GroupIds from the private link service resource.
+             */
+            groupIds?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The Private Endpoint resource for this Connection.
+             */
+            privateEndpoint?: pulumi.Input<inputs.eventgrid.v20201015preview.PrivateEndpoint>;
+            /**
+             * Details about the state of the connection.
+             */
+            privateLinkServiceConnectionState?: pulumi.Input<inputs.eventgrid.v20201015preview.ConnectionState>;
+            /**
+             * Provisioning state of the Private Endpoint Connection.
+             */
+            provisioningState?: pulumi.Input<string | enums.eventgrid.v20201015preview.ResourceProvisioningState>;
+        }
+
+        /**
+         * Describes an EventGrid Resource Sku.
+         */
+        export interface ResourceSku {
+            /**
+             * The Sku name of the resource. The possible values are: Basic or Premium.
+             */
+            name?: pulumi.Input<string | enums.eventgrid.v20201015preview.Sku>;
+        }
+
+        /**
+         * Information about the retry policy for an event subscription.
+         */
+        export interface RetryPolicy {
+            /**
+             * Time To Live (in minutes) for events.
+             */
+            eventTimeToLiveInMinutes?: pulumi.Input<number>;
+            /**
+             * Maximum number of delivery retry attempts for events.
+             */
+            maxDeliveryAttempts?: pulumi.Input<number>;
+        }
+
+        /**
+         * Information about the service bus destination for an event subscription.
+         */
+        export interface ServiceBusQueueEventSubscriptionDestination {
+            /**
+             * Delivery attribute details.
+             */
+            deliveryAttributeMappings?: pulumi.Input<pulumi.Input<inputs.eventgrid.v20201015preview.DynamicDeliveryAttributeMapping | inputs.eventgrid.v20201015preview.StaticDeliveryAttributeMapping>[]>;
+            /**
+             * Type of the endpoint for the event subscription destination.
+             * Expected value is 'ServiceBusQueue'.
+             */
+            endpointType: pulumi.Input<"ServiceBusQueue">;
+            /**
+             * The Azure Resource Id that represents the endpoint of the Service Bus destination of an event subscription.
+             */
+            resourceId?: pulumi.Input<string>;
+        }
+
+        /**
+         * Information about the service bus topic destination for an event subscription.
+         */
+        export interface ServiceBusTopicEventSubscriptionDestination {
+            /**
+             * Delivery attribute details.
+             */
+            deliveryAttributeMappings?: pulumi.Input<pulumi.Input<inputs.eventgrid.v20201015preview.DynamicDeliveryAttributeMapping | inputs.eventgrid.v20201015preview.StaticDeliveryAttributeMapping>[]>;
+            /**
+             * Type of the endpoint for the event subscription destination.
+             * Expected value is 'ServiceBusTopic'.
+             */
+            endpointType: pulumi.Input<"ServiceBusTopic">;
+            /**
+             * The Azure Resource Id that represents the endpoint of the Service Bus Topic destination of an event subscription.
+             */
+            resourceId?: pulumi.Input<string>;
+        }
+
+        /**
+         * Static delivery attribute mapping details.
+         */
+        export interface StaticDeliveryAttributeMapping {
+            /**
+             * Boolean flag to tell if the attribute contains sensitive information .
+             */
+            isSecret?: pulumi.Input<boolean>;
+            /**
+             * Name of the delivery attribute or header.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Type of the delivery attribute or header name.
+             * Expected value is 'Static'.
+             */
+            type: pulumi.Input<"Static">;
+            /**
+             * Value of the delivery attribute.
+             */
+            value?: pulumi.Input<string>;
+        }
+
+        /**
+         * Information about the storage blob based dead letter destination.
+         */
+        export interface StorageBlobDeadLetterDestination {
+            /**
+             * The name of the Storage blob container that is the destination of the deadletter events
+             */
+            blobContainerName?: pulumi.Input<string>;
+            /**
+             * Type of the endpoint for the dead letter destination
+             * Expected value is 'StorageBlob'.
+             */
+            endpointType: pulumi.Input<"StorageBlob">;
+            /**
+             * The Azure Resource ID of the storage account that is the destination of the deadletter events
+             */
+            resourceId?: pulumi.Input<string>;
+        }
+
+        /**
+         * Information about the storage queue destination for an event subscription.
+         */
+        export interface StorageQueueEventSubscriptionDestination {
+            /**
+             * Type of the endpoint for the event subscription destination.
+             * Expected value is 'StorageQueue'.
+             */
+            endpointType: pulumi.Input<"StorageQueue">;
+            /**
+             * Storage queue message time to live in seconds.
+             */
+            queueMessageTimeToLiveInSeconds?: pulumi.Input<number>;
+            /**
+             * The name of the Storage queue under a storage account that is the destination of an event subscription.
+             */
+            queueName?: pulumi.Input<string>;
+            /**
+             * The Azure Resource ID of the storage account that contains the queue that is the destination of an event subscription.
+             */
+            resourceId?: pulumi.Input<string>;
+        }
+
+        /**
+         * StringBeginsWith Advanced Filter.
+         */
+        export interface StringBeginsWithAdvancedFilter {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'StringBeginsWith'.
+             */
+            operatorType: pulumi.Input<"StringBeginsWith">;
+            /**
+             * The set of filter values.
+             */
+            values?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * StringContains Advanced Filter.
+         */
+        export interface StringContainsAdvancedFilter {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'StringContains'.
+             */
+            operatorType: pulumi.Input<"StringContains">;
+            /**
+             * The set of filter values.
+             */
+            values?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * StringEndsWith Advanced Filter.
+         */
+        export interface StringEndsWithAdvancedFilter {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'StringEndsWith'.
+             */
+            operatorType: pulumi.Input<"StringEndsWith">;
+            /**
+             * The set of filter values.
+             */
+            values?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * StringIn Advanced Filter.
+         */
+        export interface StringInAdvancedFilter {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'StringIn'.
+             */
+            operatorType: pulumi.Input<"StringIn">;
+            /**
+             * The set of filter values.
+             */
+            values?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * StringNotBeginsWith Advanced Filter.
+         */
+        export interface StringNotBeginsWithAdvancedFilter {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'StringNotBeginsWith'.
+             */
+            operatorType: pulumi.Input<"StringNotBeginsWith">;
+            /**
+             * The set of filter values.
+             */
+            values?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * StringNotContains Advanced Filter.
+         */
+        export interface StringNotContainsAdvancedFilter {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'StringNotContains'.
+             */
+            operatorType: pulumi.Input<"StringNotContains">;
+            /**
+             * The set of filter values.
+             */
+            values?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * StringNotEndsWith Advanced Filter.
+         */
+        export interface StringNotEndsWithAdvancedFilter {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'StringNotEndsWith'.
+             */
+            operatorType: pulumi.Input<"StringNotEndsWith">;
+            /**
+             * The set of filter values.
+             */
+            values?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * StringNotIn Advanced Filter.
+         */
+        export interface StringNotInAdvancedFilter {
+            /**
+             * The field/property in the event based on which you want to filter.
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+             * Expected value is 'StringNotIn'.
+             */
+            operatorType: pulumi.Input<"StringNotIn">;
+            /**
+             * The set of filter values.
+             */
+            values?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * The information about the user identity.
+         */
+        export interface UserIdentityProperties {
+            /**
+             * The client id of user assigned identity.
+             */
+            clientId?: pulumi.Input<string>;
+            /**
+             * The principal id of user assigned identity.
+             */
+            principalId?: pulumi.Input<string>;
+        }
+
+        /**
+         * Information about the webhook destination for an event subscription.
+         */
+        export interface WebHookEventSubscriptionDestination {
+            /**
+             * The Azure Active Directory Application ID or URI to get the access token that will be included as the bearer token in delivery requests.
+             */
+            azureActiveDirectoryApplicationIdOrUri?: pulumi.Input<string>;
+            /**
+             * The Azure Active Directory Tenant ID to get the access token that will be included as the bearer token in delivery requests.
+             */
+            azureActiveDirectoryTenantId?: pulumi.Input<string>;
+            /**
+             * Delivery attribute details.
+             */
+            deliveryAttributeMappings?: pulumi.Input<pulumi.Input<inputs.eventgrid.v20201015preview.DynamicDeliveryAttributeMapping | inputs.eventgrid.v20201015preview.StaticDeliveryAttributeMapping>[]>;
+            /**
+             * Type of the endpoint for the event subscription destination.
+             * Expected value is 'WebHook'.
+             */
+            endpointType: pulumi.Input<"WebHook">;
+            /**
+             * The URL that represents the endpoint of the destination of an event subscription.
+             */
+            endpointUrl?: pulumi.Input<string>;
+            /**
+             * Maximum number of events per batch.
+             */
+            maxEventsPerBatch?: pulumi.Input<number>;
+            /**
+             * Preferred batch size in Kilobytes.
+             */
+            preferredBatchSizeInKilobytes?: pulumi.Input<number>;
+        }
+
+    }
 }
 
 export namespace eventhub {
@@ -157289,6 +158186,10 @@ export namespace hdinsight {
              */
             location?: pulumi.Input<string>;
             /**
+             * The private ip address of the endpoint.
+             */
+            privateIPAddress?: pulumi.Input<string>;
+            /**
              * The public port to connect to.
              */
             publicPort?: pulumi.Input<number>;
@@ -157712,6 +158613,10 @@ export namespace hdinsight {
              */
             targetInstanceCount?: pulumi.Input<number>;
             /**
+             * The name of the virtual machine group.
+             */
+            vMGroupName?: pulumi.Input<string>;
+            /**
              * The virtual network profile.
              */
             virtualNetworkProfile?: pulumi.Input<inputs.hdinsight.v20180601preview.VirtualNetworkProfile>;
@@ -157832,6 +158737,10 @@ export namespace hdinsight {
              */
             fileSystem?: pulumi.Input<string>;
             /**
+             * The file share name.
+             */
+            fileshare?: pulumi.Input<string>;
+            /**
              * Whether or not the storage account is the default storage account.
              */
             isDefault?: pulumi.Input<boolean>;
@@ -157851,6 +158760,10 @@ export namespace hdinsight {
              * The resource ID of storage account, only to be specified for Azure Data Lake Storage Gen 2.
              */
             resourceId?: pulumi.Input<string>;
+            /**
+             * The shared access signature key.
+             */
+            saskey?: pulumi.Input<string>;
         }
 
         /**
@@ -165837,6 +166750,32 @@ export namespace kubernetes {
              * The type of identity used for the connected cluster. The type 'SystemAssigned, includes a system created identity. The type 'None' means no identity is assigned to the connected cluster.
              */
             type: pulumi.Input<enums.kubernetes.v20200101preview.ResourceIdentityType>;
+        }
+
+    }
+
+    export namespace v20210301 {
+        /**
+         * Identity for the connected cluster.
+         */
+        export interface ConnectedClusterIdentity {
+            /**
+             * The type of identity used for the connected cluster. The type 'SystemAssigned, includes a system created identity. The type 'None' means no identity is assigned to the connected cluster.
+             */
+            type: pulumi.Input<enums.kubernetes.v20210301.ResourceIdentityType>;
+        }
+
+    }
+
+    export namespace v20210401preview {
+        /**
+         * Identity for the connected cluster.
+         */
+        export interface ConnectedClusterIdentity {
+            /**
+             * The type of identity used for the connected cluster. The type 'SystemAssigned, includes a system created identity. The type 'None' means no identity is assigned to the connected cluster.
+             */
+            type: pulumi.Input<enums.kubernetes.v20210401preview.ResourceIdentityType>;
         }
 
     }
@@ -354011,6 +354950,78 @@ export namespace storage {
         }
 
         /**
+         * An object that defines the blob inventory rule. Each definition consists of a set of filters.
+         */
+        export interface BlobInventoryPolicyDefinition {
+            /**
+             * An object that defines the filter set.
+             */
+            filters: pulumi.Input<inputs.storage.latest.BlobInventoryPolicyFilter>;
+        }
+
+        /**
+         * An object that defines the blob inventory rule filter conditions.
+         */
+        export interface BlobInventoryPolicyFilter {
+            /**
+             * An array of predefined enum values. Valid values include blockBlob, appendBlob, pageBlob. Hns accounts does not support pageBlobs.
+             */
+            blobTypes: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Includes blob versions in blob inventory when value set to true.
+             */
+            includeBlobVersions?: pulumi.Input<boolean>;
+            /**
+             * Includes blob snapshots in blob inventory when value set to true.
+             */
+            includeSnapshots?: pulumi.Input<boolean>;
+            /**
+             * An array of strings for blob prefixes to be matched.
+             */
+            prefixMatch?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * An object that wraps the blob inventory rule. Each rule is uniquely defined by name.
+         */
+        export interface BlobInventoryPolicyRule {
+            /**
+             * An object that defines the blob inventory policy rule.
+             */
+            definition: pulumi.Input<inputs.storage.latest.BlobInventoryPolicyDefinition>;
+            /**
+             * Rule is enabled when set to true.
+             */
+            enabled: pulumi.Input<boolean>;
+            /**
+             * A rule name can contain any combination of alpha numeric characters. Rule name is case-sensitive. It must be unique within a policy.
+             */
+            name: pulumi.Input<string>;
+        }
+
+        /**
+         * The storage account blob inventory policy rules.
+         */
+        export interface BlobInventoryPolicySchema {
+            /**
+             * Container name where blob inventory files are stored. Must be pre-created.
+             */
+            destination: pulumi.Input<string>;
+            /**
+             * Policy is enabled if set to true.
+             */
+            enabled: pulumi.Input<boolean>;
+            /**
+             * The storage account blob inventory policy rules. The rule is applied when it is enabled.
+             */
+            rules: pulumi.Input<pulumi.Input<inputs.storage.latest.BlobInventoryPolicyRule>[]>;
+            /**
+             * The valid value is Inventory
+             */
+            type: pulumi.Input<string | enums.storage.latest.InventoryRuleType>;
+        }
+
+        /**
          * The blob service properties for change feed events.
          */
         export interface ChangeFeed {
@@ -354018,6 +355029,10 @@ export namespace storage {
              * Indicates whether change feed event logging is enabled for the Blob service.
              */
             enabled?: pulumi.Input<boolean>;
+            /**
+             * Indicates the duration of changeFeed retention in days. Minimum value is 1 day and maximum value is 146000 days (400 years). A null value indicates an infinite retention of the change feed.
+             */
+            retentionInDays?: pulumi.Input<number>;
         }
 
         /**
@@ -354081,13 +355096,17 @@ export namespace storage {
         }
 
         /**
-         * Object to define the number of days after last modification.
+         * Object to define the number of days after object last modification Or last access. Properties daysAfterModificationGreaterThan and daysAfterLastAccessTimeGreaterThan are mutually exclusive.
          */
         export interface DateAfterModification {
             /**
+             * Value indicating the age in days after last blob access. This property can only be used in conjunction with last access time tracking policy
+             */
+            daysAfterLastAccessTimeGreaterThan?: pulumi.Input<number>;
+            /**
              * Value indicating the age in days after last modification
              */
-            daysAfterModificationGreaterThan: pulumi.Input<number>;
+            daysAfterModificationGreaterThan?: pulumi.Input<number>;
         }
 
         /**
@@ -354205,6 +355224,28 @@ export namespace storage {
         }
 
         /**
+         * The blob service properties for Last access time based tracking policy.
+         */
+        export interface LastAccessTimeTrackingPolicy {
+            /**
+             * An array of predefined supported blob types. Only blockBlob is the supported value. This field is currently read only
+             */
+            blobType?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * When set to true last access time based tracking is enabled.
+             */
+            enable: pulumi.Input<boolean>;
+            /**
+             * Name of the policy. The valid value is AccessTimeTracking. This field is currently read only
+             */
+            name?: pulumi.Input<string | enums.storage.latest.Name>;
+            /**
+             * The field specifies blob object tracking granularity in days, typically how often the blob object should be tracked.This field is currently read only with value as 1
+             */
+            trackingGranularityInDays?: pulumi.Input<number>;
+        }
+
+        /**
          * Actions are applied to the filtered blobs when the execution condition is met.
          */
         export interface ManagementPolicyAction {
@@ -354216,6 +355257,10 @@ export namespace storage {
              * The management policy action for snapshot
              */
             snapshot?: pulumi.Input<inputs.storage.latest.ManagementPolicySnapShot>;
+            /**
+             * The management policy action for version
+             */
+            version?: pulumi.Input<inputs.storage.latest.ManagementPolicyVersion>;
         }
 
         /**
@@ -354226,6 +355271,10 @@ export namespace storage {
              * The function to delete the blob
              */
             delete?: pulumi.Input<inputs.storage.latest.DateAfterModification>;
+            /**
+             * This property enables auto tiering of a blob from cool to hot on a blob access. This property requires tierToCool.daysAfterLastAccessTimeGreaterThan.
+             */
+            enableAutoTierToHotFromCool?: pulumi.Input<boolean>;
             /**
              * The function to tier blobs to archive storage. Support blobs currently at Hot or Cool tier
              */
@@ -354259,7 +355308,7 @@ export namespace storage {
              */
             blobIndexMatch?: pulumi.Input<pulumi.Input<inputs.storage.latest.TagFilter>[]>;
             /**
-             * An array of predefined enum values. Only blockBlob is supported.
+             * An array of predefined enum values. Currently blockBlob supports all tiering and delete actions. Only delete actions are supported for appendBlob.
              */
             blobTypes: pulumi.Input<pulumi.Input<string>[]>;
             /**
@@ -354308,6 +355357,32 @@ export namespace storage {
              * The function to delete the blob snapshot
              */
             delete?: pulumi.Input<inputs.storage.latest.DateAfterCreation>;
+            /**
+             * The function to tier blob snapshot to archive storage. Support blob snapshot currently at Hot or Cool tier
+             */
+            tierToArchive?: pulumi.Input<inputs.storage.latest.DateAfterCreation>;
+            /**
+             * The function to tier blob snapshot to cool storage. Support blob snapshot currently at Hot tier
+             */
+            tierToCool?: pulumi.Input<inputs.storage.latest.DateAfterCreation>;
+        }
+
+        /**
+         * Management policy action for blob version.
+         */
+        export interface ManagementPolicyVersion {
+            /**
+             * The function to delete the blob version
+             */
+            delete?: pulumi.Input<inputs.storage.latest.DateAfterCreation>;
+            /**
+             * The function to tier blob version to archive storage. Support blob version currently at Hot or Cool tier
+             */
+            tierToArchive?: pulumi.Input<inputs.storage.latest.DateAfterCreation>;
+            /**
+             * The function to tier blob version to cool storage. Support blob version currently at Hot tier
+             */
+            tierToCool?: pulumi.Input<inputs.storage.latest.DateAfterCreation>;
         }
 
         /**
@@ -356308,6 +357383,78 @@ export namespace storage {
         }
 
         /**
+         * An object that defines the blob inventory rule. Each definition consists of a set of filters.
+         */
+        export interface BlobInventoryPolicyDefinition {
+            /**
+             * An object that defines the filter set.
+             */
+            filters: pulumi.Input<inputs.storage.v20190601.BlobInventoryPolicyFilter>;
+        }
+
+        /**
+         * An object that defines the blob inventory rule filter conditions.
+         */
+        export interface BlobInventoryPolicyFilter {
+            /**
+             * An array of predefined enum values. Valid values include blockBlob, appendBlob, pageBlob. Hns accounts does not support pageBlobs.
+             */
+            blobTypes: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Includes blob versions in blob inventory when value set to true.
+             */
+            includeBlobVersions?: pulumi.Input<boolean>;
+            /**
+             * Includes blob snapshots in blob inventory when value set to true.
+             */
+            includeSnapshots?: pulumi.Input<boolean>;
+            /**
+             * An array of strings for blob prefixes to be matched.
+             */
+            prefixMatch?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * An object that wraps the blob inventory rule. Each rule is uniquely defined by name.
+         */
+        export interface BlobInventoryPolicyRule {
+            /**
+             * An object that defines the blob inventory policy rule.
+             */
+            definition: pulumi.Input<inputs.storage.v20190601.BlobInventoryPolicyDefinition>;
+            /**
+             * Rule is enabled when set to true.
+             */
+            enabled: pulumi.Input<boolean>;
+            /**
+             * A rule name can contain any combination of alpha numeric characters. Rule name is case-sensitive. It must be unique within a policy.
+             */
+            name: pulumi.Input<string>;
+        }
+
+        /**
+         * The storage account blob inventory policy rules.
+         */
+        export interface BlobInventoryPolicySchema {
+            /**
+             * Container name where blob inventory files are stored. Must be pre-created.
+             */
+            destination: pulumi.Input<string>;
+            /**
+             * Policy is enabled if set to true.
+             */
+            enabled: pulumi.Input<boolean>;
+            /**
+             * The storage account blob inventory policy rules. The rule is applied when it is enabled.
+             */
+            rules: pulumi.Input<pulumi.Input<inputs.storage.v20190601.BlobInventoryPolicyRule>[]>;
+            /**
+             * The valid value is Inventory
+             */
+            type: pulumi.Input<string | enums.storage.v20190601.InventoryRuleType>;
+        }
+
+        /**
          * The blob service properties for change feed events.
          */
         export interface ChangeFeed {
@@ -356315,6 +357462,10 @@ export namespace storage {
              * Indicates whether change feed event logging is enabled for the Blob service.
              */
             enabled?: pulumi.Input<boolean>;
+            /**
+             * Indicates the duration of changeFeed retention in days. Minimum value is 1 day and maximum value is 146000 days (400 years). A null value indicates an infinite retention of the change feed.
+             */
+            retentionInDays?: pulumi.Input<number>;
         }
 
         /**
@@ -356378,13 +357529,17 @@ export namespace storage {
         }
 
         /**
-         * Object to define the number of days after last modification.
+         * Object to define the number of days after object last modification Or last access. Properties daysAfterModificationGreaterThan and daysAfterLastAccessTimeGreaterThan are mutually exclusive.
          */
         export interface DateAfterModification {
             /**
+             * Value indicating the age in days after last blob access. This property can only be used in conjunction with last access time tracking policy
+             */
+            daysAfterLastAccessTimeGreaterThan?: pulumi.Input<number>;
+            /**
              * Value indicating the age in days after last modification
              */
-            daysAfterModificationGreaterThan: pulumi.Input<number>;
+            daysAfterModificationGreaterThan?: pulumi.Input<number>;
         }
 
         /**
@@ -356502,6 +357657,28 @@ export namespace storage {
         }
 
         /**
+         * The blob service properties for Last access time based tracking policy.
+         */
+        export interface LastAccessTimeTrackingPolicy {
+            /**
+             * An array of predefined supported blob types. Only blockBlob is the supported value. This field is currently read only
+             */
+            blobType?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * When set to true last access time based tracking is enabled.
+             */
+            enable: pulumi.Input<boolean>;
+            /**
+             * Name of the policy. The valid value is AccessTimeTracking. This field is currently read only
+             */
+            name?: pulumi.Input<string | enums.storage.v20190601.Name>;
+            /**
+             * The field specifies blob object tracking granularity in days, typically how often the blob object should be tracked.This field is currently read only with value as 1
+             */
+            trackingGranularityInDays?: pulumi.Input<number>;
+        }
+
+        /**
          * Actions are applied to the filtered blobs when the execution condition is met.
          */
         export interface ManagementPolicyAction {
@@ -356513,6 +357690,10 @@ export namespace storage {
              * The management policy action for snapshot
              */
             snapshot?: pulumi.Input<inputs.storage.v20190601.ManagementPolicySnapShot>;
+            /**
+             * The management policy action for version
+             */
+            version?: pulumi.Input<inputs.storage.v20190601.ManagementPolicyVersion>;
         }
 
         /**
@@ -356523,6 +357704,10 @@ export namespace storage {
              * The function to delete the blob
              */
             delete?: pulumi.Input<inputs.storage.v20190601.DateAfterModification>;
+            /**
+             * This property enables auto tiering of a blob from cool to hot on a blob access. This property requires tierToCool.daysAfterLastAccessTimeGreaterThan.
+             */
+            enableAutoTierToHotFromCool?: pulumi.Input<boolean>;
             /**
              * The function to tier blobs to archive storage. Support blobs currently at Hot or Cool tier
              */
@@ -356556,7 +357741,7 @@ export namespace storage {
              */
             blobIndexMatch?: pulumi.Input<pulumi.Input<inputs.storage.v20190601.TagFilter>[]>;
             /**
-             * An array of predefined enum values. Only blockBlob is supported.
+             * An array of predefined enum values. Currently blockBlob supports all tiering and delete actions. Only delete actions are supported for appendBlob.
              */
             blobTypes: pulumi.Input<pulumi.Input<string>[]>;
             /**
@@ -356605,6 +357790,32 @@ export namespace storage {
              * The function to delete the blob snapshot
              */
             delete?: pulumi.Input<inputs.storage.v20190601.DateAfterCreation>;
+            /**
+             * The function to tier blob snapshot to archive storage. Support blob snapshot currently at Hot or Cool tier
+             */
+            tierToArchive?: pulumi.Input<inputs.storage.v20190601.DateAfterCreation>;
+            /**
+             * The function to tier blob snapshot to cool storage. Support blob snapshot currently at Hot tier
+             */
+            tierToCool?: pulumi.Input<inputs.storage.v20190601.DateAfterCreation>;
+        }
+
+        /**
+         * Management policy action for blob version.
+         */
+        export interface ManagementPolicyVersion {
+            /**
+             * The function to delete the blob version
+             */
+            delete?: pulumi.Input<inputs.storage.v20190601.DateAfterCreation>;
+            /**
+             * The function to tier blob version to archive storage. Support blob version currently at Hot or Cool tier
+             */
+            tierToArchive?: pulumi.Input<inputs.storage.v20190601.DateAfterCreation>;
+            /**
+             * The function to tier blob version to cool storage. Support blob version currently at Hot tier
+             */
+            tierToCool?: pulumi.Input<inputs.storage.v20190601.DateAfterCreation>;
         }
 
         /**
@@ -356888,6 +358099,10 @@ export namespace storage {
              * Indicates whether change feed event logging is enabled for the Blob service.
              */
             enabled?: pulumi.Input<boolean>;
+            /**
+             * Indicates the duration of changeFeed retention in days. Minimum value is 1 day and maximum value is 146000 days (400 years). A null value indicates an infinite retention of the change feed.
+             */
+            retentionInDays?: pulumi.Input<number>;
         }
 
         /**
@@ -356951,7 +358166,7 @@ export namespace storage {
         }
 
         /**
-         * Object to define the number of days after last modification.
+         * Object to define the number of days after object last modification Or last access. Properties daysAfterModificationGreaterThan and daysAfterLastAccessTimeGreaterThan are mutually exclusive.
          */
         export interface DateAfterModification {
             /**
@@ -357126,6 +358341,10 @@ export namespace storage {
              * The management policy action for snapshot
              */
             snapshot?: pulumi.Input<inputs.storage.v20200801preview.ManagementPolicySnapShot>;
+            /**
+             * The management policy action for version
+             */
+            version?: pulumi.Input<inputs.storage.v20200801preview.ManagementPolicyVersion>;
         }
 
         /**
@@ -357173,7 +358392,7 @@ export namespace storage {
              */
             blobIndexMatch?: pulumi.Input<pulumi.Input<inputs.storage.v20200801preview.TagFilter>[]>;
             /**
-             * An array of predefined enum values. Only blockBlob is supported.
+             * An array of predefined enum values. Currently blockBlob supports all tiering and delete actions. Only delete actions are supported for appendBlob.
              */
             blobTypes: pulumi.Input<pulumi.Input<string>[]>;
             /**
@@ -357222,6 +358441,32 @@ export namespace storage {
              * The function to delete the blob snapshot
              */
             delete?: pulumi.Input<inputs.storage.v20200801preview.DateAfterCreation>;
+            /**
+             * The function to tier blob snapshot to archive storage. Support blob snapshot currently at Hot or Cool tier
+             */
+            tierToArchive?: pulumi.Input<inputs.storage.v20200801preview.DateAfterCreation>;
+            /**
+             * The function to tier blob snapshot to cool storage. Support blob snapshot currently at Hot tier
+             */
+            tierToCool?: pulumi.Input<inputs.storage.v20200801preview.DateAfterCreation>;
+        }
+
+        /**
+         * Management policy action for blob version.
+         */
+        export interface ManagementPolicyVersion {
+            /**
+             * The function to delete the blob version
+             */
+            delete?: pulumi.Input<inputs.storage.v20200801preview.DateAfterCreation>;
+            /**
+             * The function to tier blob version to archive storage. Support blob version currently at Hot or Cool tier
+             */
+            tierToArchive?: pulumi.Input<inputs.storage.v20200801preview.DateAfterCreation>;
+            /**
+             * The function to tier blob version to cool storage. Support blob version currently at Hot tier
+             */
+            tierToCool?: pulumi.Input<inputs.storage.v20200801preview.DateAfterCreation>;
         }
 
         /**
@@ -357559,7 +358804,7 @@ export namespace storagecache {
             /**
              * Whether or not Extended Groups is enabled.
              */
-            extendedGroupsEnabled?: pulumi.Input<boolean>;
+            extendedGroups?: pulumi.Input<boolean>;
             /**
              * The URI of the file containing group information (in /etc/group file format). This field must be populated when 'usernameSource' is set to 'File'.
              */
@@ -357567,7 +358812,7 @@ export namespace storagecache {
             /**
              * The base distinguished name for the LDAP domain.
              */
-            ldapBaseDn?: pulumi.Input<string>;
+            ldapBaseDN?: pulumi.Input<string>;
             /**
              * The fully qualified domain name or IP address of the LDAP server to use.
              */
@@ -358125,7 +359370,7 @@ export namespace storagecache {
             /**
              * Whether or not Extended Groups is enabled.
              */
-            extendedGroupsEnabled?: pulumi.Input<boolean>;
+            extendedGroups?: pulumi.Input<boolean>;
             /**
              * The URI of the file containing group information (in /etc/group file format). This field must be populated when 'usernameSource' is set to 'File'.
              */
@@ -358133,7 +359378,7 @@ export namespace storagecache {
             /**
              * The base distinguished name for the LDAP domain.
              */
-            ldapBaseDn?: pulumi.Input<string>;
+            ldapBaseDN?: pulumi.Input<string>;
             /**
              * The fully qualified domain name or IP address of the LDAP server to use.
              */
