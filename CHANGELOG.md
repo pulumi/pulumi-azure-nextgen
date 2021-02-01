@@ -77,6 +77,25 @@ Moved from `OperationalInsights` to `SecurityInsights`:
 - Re-model Identity and Encryption properties of EventHubs/ServiceBus namespace ([#243](https://github.com/pulumi/pulumi-azure-nextgen/issues/243))
 - Various fixes to Go SDK to address compilation issues due to name collisions. Conflicting types have been renamed for various resource providers but Go programs would not have been able to successfully compile with previous names anyway. ([#137](https://github.com/pulumi/pulumi-azure-nextgen/issues/137))
 
+#### New resources
+
+- `Web.WebAppAuthSettings`
+- `Web.WebAppAuthSettingsSlot`
+- `Web.WebAppAuthSettingsV2` ([#34](https://github.com/pulumi/pulumi-azure-nextgen/issues/34))
+- `Web.WebAppAuthSettingsV2Slot`
+- `Web.WebAppAzureStorageAccounts`
+- `Web.WebAppAzureStorageAccountsSlot`
+- `Web.WebAppBackupConfiguration`
+- `Web.WebAppBackupConfigurationSlot`
+- `Web.WebAppConnectionStrings`
+- `Web.WebAppConnectionStringsSlot`
+- `Web.WebAppMetadata`
+- `Web.WebAppMetadataSlot`
+- `Web.WebAppSitePushSettings`
+- `Web.WebAppSitePushSettingsSlot`
+- `Web.WebApplicationSettings`
+- `Web.WebApplicationSettingsSlot`
+
 #### New invoke functions
 
 - `AppConfiguration.listConfigurationStoreKeys`
