@@ -359549,29 +359549,29 @@ export namespace storagecache {
 export namespace storagepool {
     export namespace v20200315preview {
         /**
-         * Access Control List (ACL) for an iSCSI target lun
+         * Access Control List (ACL) for an iSCSI target portal group
          */
         export interface Acl {
             /**
-             * iSCSI initiator iqn (iSCSI Qualified Name); example: iqn.2005-03.org.iscsi:client
+             * iSCSI initiator IQN (iSCSI Qualified Name); example: "iqn.2005-03.org.iscsi:client".
              */
             initiatorIqn: pulumi.Input<string>;
             /**
-             * Array of lun names mapped to the ACL
+             * List of LUN names mapped to the ACL.
              */
             mappedLuns: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Password for Challenge Handshake Authentication Protocol (CHAP) authentication
+             * Password for Challenge Handshake Authentication Protocol (CHAP) authentication.
              */
             password: pulumi.Input<string>;
             /**
-             * Username for Challenge Handshake Authentication Protocol (CHAP) authentication
+             * Username for Challenge Handshake Authentication Protocol (CHAP) authentication.
              */
             username: pulumi.Input<string>;
         }
 
         /**
-         * Attributes of an iSCSI target
+         * Attributes of a iSCSI target portal group.
          */
         export interface Attributes {
             /**
@@ -359579,75 +359579,49 @@ export namespace storagepool {
              */
             authentication: pulumi.Input<boolean>;
             /**
-             * Indicates whether or not write protect is enabled on the luns.
+             * Indicates whether or not write protect is enabled on the LUNs.
              */
             prodModeWriteProtect: pulumi.Input<boolean>;
         }
 
         /**
-         * Managed disk to attach to the DiskPool. Required.
+         * Azure Managed Disk to attach to the Disk pool.
          */
         export interface Disk {
             /**
-             * Unique Azure resource id of the managed disk. Required.
+             * Unique Azure Resource ID of the Managed Disk.
              */
             id: pulumi.Input<string>;
         }
 
         /**
-         * Lun to expose the ManagedDisk.
+         * LUN to expose the Azure Managed Disk.
          */
         export interface IscsiLun {
             /**
-             * Unique Azure resource id of the managed disk. Required.
+             * Azure Resource ID of the Managed Disk.
              */
             managedDiskAzureResourceId: pulumi.Input<string>;
             /**
-             * Lun name.
+             * User defined name for iSCSI LUN; example: "lun0"
              */
             name: pulumi.Input<string>;
         }
 
         /**
-         * The resource model definition representing SKU
+         * Target portal group properties for create or update iSCSI target request.
          */
-        export interface Sku {
+        export interface TargetPortalGroupCreate {
             /**
-             * If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-             */
-            capacity?: pulumi.Input<number>;
-            /**
-             * If the service has different generations of hardware, for the same SKU, then that can be captured here.
-             */
-            family?: pulumi.Input<string>;
-            /**
-             * The name of the SKU. Ex - P3. It is typically a letter+number code
-             */
-            name: pulumi.Input<string>;
-            /**
-             * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
-             */
-            size?: pulumi.Input<string>;
-            /**
-             * This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-             */
-            tier?: pulumi.Input<enums.storagepool.v20200315preview.SkuTier>;
-        }
-
-        /**
-         * iSCSI target portal group
-         */
-        export interface TargetPortalGroup {
-            /**
-             * Access Control List (ACL) for an iSCSI target lun
+             * Access Control List (ACL) for an iSCSI target portal group.
              */
             acls: pulumi.Input<pulumi.Input<inputs.storagepool.v20200315preview.Acl>[]>;
             /**
-             * Attributes of an iSCSI target
+             * Attributes of an iSCSI target portal group.
              */
             attributes: pulumi.Input<inputs.storagepool.v20200315preview.Attributes>;
             /**
-             * Lun list to be exposed through the iSCSI target. Required
+             * List of LUNs to be exposed through the iSCSI target portal group.
              */
             luns: pulumi.Input<pulumi.Input<inputs.storagepool.v20200315preview.IscsiLun>[]>;
         }
@@ -366000,6 +365974,14 @@ export namespace vmwarecloudsimple {
 
 export namespace web {
     export namespace latest {
+        export interface AllowedAudiencesValidation {
+            allowedAudiences?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+        }
+
         export interface ApiConnectionDefinitionProperties {
             api?: pulumi.Input<inputs.web.latest.ApiReference>;
             /**
@@ -366181,6 +366163,15 @@ export namespace web {
             originalSwaggerUrl?: pulumi.Input<string>;
         }
 
+        export interface AppRegistration {
+            appId?: pulumi.Input<string>;
+            appSecretSettingName?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+        }
+
         /**
          * Application logs configuration.
          */
@@ -366197,6 +366188,16 @@ export namespace web {
              * Application logs to file system configuration.
              */
             fileSystem?: pulumi.Input<inputs.web.latest.FileSystemApplicationLogsConfig>;
+        }
+
+        export interface AuthPlatform {
+            configFilePath?: pulumi.Input<string>;
+            enabled?: pulumi.Input<boolean>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            runtimeVersion?: pulumi.Input<string>;
         }
 
         /**
@@ -366269,6 +366270,47 @@ export namespace web {
             statusCodes?: pulumi.Input<pulumi.Input<inputs.web.latest.StatusCodesBasedTrigger>[]>;
         }
 
+        export interface AzureActiveDirectory {
+            enabled?: pulumi.Input<boolean>;
+            isAutoProvisioned?: pulumi.Input<boolean>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            login?: pulumi.Input<inputs.web.latest.AzureActiveDirectoryLogin>;
+            registration?: pulumi.Input<inputs.web.latest.AzureActiveDirectoryRegistration>;
+            validation?: pulumi.Input<inputs.web.latest.AzureActiveDirectoryValidation>;
+        }
+
+        export interface AzureActiveDirectoryLogin {
+            disableWWWAuthenticate?: pulumi.Input<boolean>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            loginParameters?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        export interface AzureActiveDirectoryRegistration {
+            clientId?: pulumi.Input<string>;
+            clientSecretCertificateThumbprint?: pulumi.Input<string>;
+            clientSecretSettingName?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            openIdIssuer?: pulumi.Input<string>;
+        }
+
+        export interface AzureActiveDirectoryValidation {
+            allowedAudiences?: pulumi.Input<pulumi.Input<string>[]>;
+            jwtClaimChecks?: pulumi.Input<inputs.web.latest.JwtClaimChecks>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+        }
+
         /**
          * Application logs azure blob storage configuration.
          */
@@ -366310,6 +366352,32 @@ export namespace web {
         }
 
         /**
+         * Azure Files or Blob Storage access information value for dictionary storage.
+         */
+        export interface AzureStorageInfoValue {
+            /**
+             * Access key for the storage account.
+             */
+            accessKey?: pulumi.Input<string>;
+            /**
+             * Name of the storage account.
+             */
+            accountName?: pulumi.Input<string>;
+            /**
+             * Path to mount the storage within the site's runtime environment.
+             */
+            mountPath?: pulumi.Input<string>;
+            /**
+             * Name of the file share (container name, for Blob storage).
+             */
+            shareName?: pulumi.Input<string>;
+            /**
+             * Type of storage.
+             */
+            type?: pulumi.Input<enums.web.latest.AzureStorageType>;
+        }
+
+        /**
          * Application logs to Azure table storage configuration.
          */
         export interface AzureTableStorageApplicationLogsConfig {
@@ -366330,23 +366398,31 @@ export namespace web {
             /**
              * How often the backup should be executed (e.g. for weekly backup, this should be set to 7 and FrequencyUnit should be set to Day)
              */
-            frequencyInterval: number;
+            frequencyInterval: pulumi.Input<number>;
             /**
              * The unit of time for how often the backup should be executed (e.g. for weekly backup, this should be set to Day and FrequencyInterval should be set to 7)
              */
-            frequencyUnit: enums.web.latest.FrequencyUnit;
+            frequencyUnit: pulumi.Input<enums.web.latest.FrequencyUnit>;
             /**
              * True if the retention policy should always keep at least one backup in the storage account, regardless how old it is; false otherwise.
              */
-            keepAtLeastOneBackup: boolean;
+            keepAtLeastOneBackup: pulumi.Input<boolean>;
             /**
              * After how many days backups should be deleted.
              */
-            retentionPeriodInDays: number;
+            retentionPeriodInDays: pulumi.Input<number>;
             /**
              * When the schedule should start working.
              */
-            startTime?: string;
+            startTime?: pulumi.Input<string>;
+        }
+
+        export interface BlobStorageTokenStore {
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            sasUrlSettingName?: pulumi.Input<string>;
         }
 
         /**
@@ -366365,6 +366441,15 @@ export namespace web {
              * Value of the SKU capability.
              */
             value?: pulumi.Input<string>;
+        }
+
+        export interface ClientRegistration {
+            clientId?: pulumi.Input<string>;
+            clientSecretSettingName?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
         }
 
         /**
@@ -366438,6 +366523,20 @@ export namespace web {
              * Type of database.
              */
             type?: pulumi.Input<enums.web.latest.ConnectionStringType>;
+        }
+
+        /**
+         * Database connection string value to type pair.
+         */
+        export interface ConnStringValueTypePair {
+            /**
+             * Type of database.
+             */
+            type: pulumi.Input<enums.web.latest.ConnectionStringType>;
+            /**
+             * Value of pair.
+             */
+            value: pulumi.Input<string>;
         }
 
         /**
@@ -366573,6 +366672,15 @@ export namespace web {
             tenantId?: string;
         }
 
+        export interface CookieExpiration {
+            convention?: pulumi.Input<enums.web.latest.CookieExpirationConvention>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            timeToExpiration?: pulumi.Input<string>;
+        }
+
         /**
          * Cross-Origin Resource Sharing (CORS) settings for the app.
          */
@@ -366644,6 +366752,16 @@ export namespace web {
             wsdlDefinition?: pulumi.Input<inputs.web.latest.WsdlDefinition>;
         }
 
+        export interface CustomOpenIdConnectProvider {
+            enabled?: pulumi.Input<boolean>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            login?: pulumi.Input<inputs.web.latest.OpenIdConnectLogin>;
+            registration?: pulumi.Input<inputs.web.latest.OpenIdConnectRegistration>;
+        }
+
         /**
          * Database backup settings.
          */
@@ -366651,17 +366769,17 @@ export namespace web {
             /**
              * Contains a connection string to a database which is being backed up or restored. If the restore should happen to a new database, the database name inside is the new one.
              */
-            connectionString?: string;
+            connectionString?: pulumi.Input<string>;
             /**
              * Contains a connection string name that is linked to the SiteConfig.ConnectionStrings.
              * This is used during restore with overwrite connection strings options.
              */
-            connectionStringName?: string;
+            connectionStringName?: pulumi.Input<string>;
             /**
              * Database type (e.g. SqlAzure / MySql).
              */
-            databaseType: string | enums.web.latest.DatabaseType;
-            name?: string;
+            databaseType: pulumi.Input<string | enums.web.latest.DatabaseType>;
+            name?: pulumi.Input<string>;
         }
 
         /**
@@ -366682,6 +366800,17 @@ export namespace web {
              * List of ramp-up rules.
              */
             rampUpRules?: pulumi.Input<pulumi.Input<inputs.web.latest.RampUpRule>[]>;
+        }
+
+        export interface Facebook {
+            enabled?: pulumi.Input<boolean>;
+            graphApiVersion?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            login?: pulumi.Input<inputs.web.latest.LoginScopes>;
+            registration?: pulumi.Input<inputs.web.latest.AppRegistration>;
         }
 
         /**
@@ -366714,6 +366843,56 @@ export namespace web {
              * Value can range between 25 and 100.
              */
             retentionInMb?: pulumi.Input<number>;
+        }
+
+        export interface FileSystemTokenStore {
+            directory?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+        }
+
+        export interface ForwardProxy {
+            convention?: pulumi.Input<enums.web.latest.ForwardProxyConvention>;
+            customHostHeaderName?: pulumi.Input<string>;
+            customProtoHeaderName?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+        }
+
+        export interface GitHub {
+            enabled?: pulumi.Input<boolean>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            login?: pulumi.Input<inputs.web.latest.LoginScopes>;
+            registration?: pulumi.Input<inputs.web.latest.ClientRegistration>;
+        }
+
+        export interface GlobalValidation {
+            excludedPaths?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            redirectToProvider?: pulumi.Input<string>;
+            requireAuthentication?: pulumi.Input<boolean>;
+            unauthenticatedClientAction?: pulumi.Input<enums.web.latest.UnauthenticatedClientActionV2>;
+        }
+
+        export interface Google {
+            enabled?: pulumi.Input<boolean>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            login?: pulumi.Input<inputs.web.latest.LoginScopes>;
+            registration?: pulumi.Input<inputs.web.latest.ClientRegistration>;
+            validation?: pulumi.Input<inputs.web.latest.AllowedAudiencesValidation>;
         }
 
         /**
@@ -366789,6 +366968,37 @@ export namespace web {
             fileSystem?: pulumi.Input<inputs.web.latest.FileSystemHttpLogsConfig>;
         }
 
+        export interface HttpSettings {
+            forwardProxy?: pulumi.Input<inputs.web.latest.ForwardProxy>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            requireHttps?: pulumi.Input<boolean>;
+            routes?: pulumi.Input<inputs.web.latest.HttpSettingsRoutes>;
+        }
+
+        export interface HttpSettingsRoutes {
+            apiPrefix?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+        }
+
+        export interface IdentityProviders {
+            azureActiveDirectory?: pulumi.Input<inputs.web.latest.AzureActiveDirectory>;
+            customOpenIdConnectProviders?: pulumi.Input<{[key: string]: pulumi.Input<inputs.web.latest.CustomOpenIdConnectProvider>}>;
+            facebook?: pulumi.Input<inputs.web.latest.Facebook>;
+            gitHub?: pulumi.Input<inputs.web.latest.GitHub>;
+            google?: pulumi.Input<inputs.web.latest.Google>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            twitter?: pulumi.Input<inputs.web.latest.Twitter>;
+        }
+
         /**
          * IP security restriction on an app.
          */
@@ -366857,6 +367067,44 @@ export namespace web {
             vnetTrafficTag?: pulumi.Input<number>;
         }
 
+        export interface JwtClaimChecks {
+            allowedClientApplications?: pulumi.Input<pulumi.Input<string>[]>;
+            allowedGroups?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+        }
+
+        export interface Login {
+            allowedExternalRedirectUrls?: pulumi.Input<pulumi.Input<string>[]>;
+            cookieExpiration?: pulumi.Input<inputs.web.latest.CookieExpiration>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            nonce?: pulumi.Input<inputs.web.latest.Nonce>;
+            preserveUrlFragmentsForLogins?: pulumi.Input<boolean>;
+            routes?: pulumi.Input<inputs.web.latest.LoginRoutes>;
+            tokenStore?: pulumi.Input<inputs.web.latest.TokenStore>;
+        }
+
+        export interface LoginRoutes {
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            logoutEndpoint?: pulumi.Input<string>;
+        }
+
+        export interface LoginScopes {
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            scopes?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
         /**
          * Managed service identity.
          */
@@ -366890,6 +367138,55 @@ export namespace web {
             description?: pulumi.Input<string>;
             order?: pulumi.Input<number>;
             remoteSubnet?: pulumi.Input<string>;
+        }
+
+        export interface Nonce {
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            nonceExpirationInterval?: pulumi.Input<string>;
+            validateNonce?: pulumi.Input<boolean>;
+        }
+
+        export interface OpenIdConnectClientCredential {
+            clientSecretSettingName?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            method?: pulumi.Input<enums.web.latest.ClientCredentialMethod>;
+        }
+
+        export interface OpenIdConnectConfig {
+            authorizationEndpoint?: pulumi.Input<string>;
+            certificationUri?: pulumi.Input<string>;
+            issuer?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            tokenEndpoint?: pulumi.Input<string>;
+            wellKnownOpenIdConfiguration?: pulumi.Input<string>;
+        }
+
+        export interface OpenIdConnectLogin {
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            nameClaimType?: pulumi.Input<string>;
+            scopes?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        export interface OpenIdConnectRegistration {
+            clientCredential?: pulumi.Input<inputs.web.latest.OpenIdConnectClientCredential>;
+            clientId?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            openIdConnectConfiguration?: pulumi.Input<inputs.web.latest.OpenIdConnectConfig>;
         }
 
         /**
@@ -367419,6 +367716,35 @@ export namespace web {
             win32Status?: pulumi.Input<number>;
         }
 
+        export interface TokenStore {
+            azureBlobStorage?: pulumi.Input<inputs.web.latest.BlobStorageTokenStore>;
+            enabled?: pulumi.Input<boolean>;
+            fileSystem?: pulumi.Input<inputs.web.latest.FileSystemTokenStore>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            tokenRefreshExtensionHours?: pulumi.Input<number>;
+        }
+
+        export interface Twitter {
+            enabled?: pulumi.Input<boolean>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            registration?: pulumi.Input<inputs.web.latest.TwitterRegistration>;
+        }
+
+        export interface TwitterRegistration {
+            consumerKey?: pulumi.Input<string>;
+            consumerSecretSettingName?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+        }
+
         /**
          * Virtual application in an app.
          */
@@ -367752,27 +368078,27 @@ export namespace web {
             /**
              * How often should be the backup executed (e.g. for weekly backup, this should be set to 7 and FrequencyUnit should be set to Day)
              */
-            frequencyInterval?: number;
+            frequencyInterval?: pulumi.Input<number>;
             /**
              * How often should be the backup executed (e.g. for weekly backup, this should be set to Day and FrequencyInterval should be set to 7)
              */
-            frequencyUnit: enums.web.v20150801.FrequencyUnit;
+            frequencyUnit: pulumi.Input<enums.web.v20150801.FrequencyUnit>;
             /**
              * True if the retention policy should always keep at least one backup in the storage account, regardless how old it is; false otherwise.
              */
-            keepAtLeastOneBackup?: boolean;
+            keepAtLeastOneBackup?: pulumi.Input<boolean>;
             /**
              * The last time when this schedule was triggered
              */
-            lastExecutionTime?: string;
+            lastExecutionTime?: pulumi.Input<string>;
             /**
              * After how many days backups should be deleted
              */
-            retentionPeriodInDays?: number;
+            retentionPeriodInDays?: pulumi.Input<number>;
             /**
              * When the schedule should start working
              */
-            startTime?: string;
+            startTime?: pulumi.Input<string>;
         }
 
         /**
@@ -367845,6 +368171,20 @@ export namespace web {
         }
 
         /**
+         * Database connection string value to type pair
+         */
+        export interface ConnStringValueTypePair {
+            /**
+             * Type of database
+             */
+            type: pulumi.Input<enums.web.v20150801.DatabaseServerType>;
+            /**
+             * Value of pair
+             */
+            value?: pulumi.Input<string>;
+        }
+
+        /**
          * Cross-Origin Resource Sharing (CORS) settings for the web app.
          */
         export interface CorsSettings {
@@ -367864,17 +368204,17 @@ export namespace web {
             /**
              * Contains a connection string to a database which is being backed up/restored. If the restore should happen to a new database, the database name inside is the new one.
              */
-            connectionString?: string;
+            connectionString?: pulumi.Input<string>;
             /**
              * Contains a connection string name that is linked to the SiteConfig.ConnectionStrings.
              *             This is used during restore with overwrite connection strings options.
              */
-            connectionStringName?: string;
+            connectionStringName?: pulumi.Input<string>;
             /**
              * SqlAzure / MySql
              */
-            databaseType?: string;
-            name?: string;
+            databaseType?: pulumi.Input<string>;
+            name?: pulumi.Input<string>;
         }
 
         /**
@@ -369746,23 +370086,23 @@ export namespace web {
             /**
              * How often the backup should be executed (e.g. for weekly backup, this should be set to 7 and FrequencyUnit should be set to Day)
              */
-            frequencyInterval: number;
+            frequencyInterval: pulumi.Input<number>;
             /**
              * The unit of time for how often the backup should be executed (e.g. for weekly backup, this should be set to Day and FrequencyInterval should be set to 7)
              */
-            frequencyUnit: enums.web.v20160801.FrequencyUnit;
+            frequencyUnit: pulumi.Input<enums.web.v20160801.FrequencyUnit>;
             /**
              * True if the retention policy should always keep at least one backup in the storage account, regardless how old it is; false otherwise.
              */
-            keepAtLeastOneBackup: boolean;
+            keepAtLeastOneBackup: pulumi.Input<boolean>;
             /**
              * After how many days backups should be deleted.
              */
-            retentionPeriodInDays: number;
+            retentionPeriodInDays: pulumi.Input<number>;
             /**
              * When the schedule should start working.
              */
-            startTime?: string;
+            startTime?: pulumi.Input<string>;
         }
 
         /**
@@ -369839,6 +370179,20 @@ export namespace web {
         }
 
         /**
+         * Database connection string value to type pair.
+         */
+        export interface ConnStringValueTypePair {
+            /**
+             * Type of database.
+             */
+            type: pulumi.Input<enums.web.v20160801.ConnectionStringType>;
+            /**
+             * Value of pair.
+             */
+            value: pulumi.Input<string>;
+        }
+
+        /**
          * Cross-Origin Resource Sharing (CORS) settings for the app.
          */
         export interface CorsSettings {
@@ -369856,17 +370210,17 @@ export namespace web {
             /**
              * Contains a connection string to a database which is being backed up or restored. If the restore should happen to a new database, the database name inside is the new one.
              */
-            connectionString?: string;
+            connectionString?: pulumi.Input<string>;
             /**
              * Contains a connection string name that is linked to the SiteConfig.ConnectionStrings.
              * This is used during restore with overwrite connection strings options.
              */
-            connectionStringName?: string;
+            connectionStringName?: pulumi.Input<string>;
             /**
              * Database type (e.g. SqlAzure / MySql).
              */
-            databaseType: string | enums.web.v20160801.DatabaseType;
-            name?: string;
+            databaseType: pulumi.Input<string | enums.web.v20160801.DatabaseType>;
+            name?: pulumi.Input<string>;
         }
 
         /**
@@ -370794,23 +371148,23 @@ export namespace web {
             /**
              * How often the backup should be executed (e.g. for weekly backup, this should be set to 7 and FrequencyUnit should be set to Day)
              */
-            frequencyInterval: number;
+            frequencyInterval: pulumi.Input<number>;
             /**
              * The unit of time for how often the backup should be executed (e.g. for weekly backup, this should be set to Day and FrequencyInterval should be set to 7)
              */
-            frequencyUnit: enums.web.v20180201.FrequencyUnit;
+            frequencyUnit: pulumi.Input<enums.web.v20180201.FrequencyUnit>;
             /**
              * True if the retention policy should always keep at least one backup in the storage account, regardless how old it is; false otherwise.
              */
-            keepAtLeastOneBackup: boolean;
+            keepAtLeastOneBackup: pulumi.Input<boolean>;
             /**
              * After how many days backups should be deleted.
              */
-            retentionPeriodInDays: number;
+            retentionPeriodInDays: pulumi.Input<number>;
             /**
              * When the schedule should start working.
              */
-            startTime?: string;
+            startTime?: pulumi.Input<string>;
         }
 
         /**
@@ -370905,6 +371259,20 @@ export namespace web {
         }
 
         /**
+         * Database connection string value to type pair.
+         */
+        export interface ConnStringValueTypePair {
+            /**
+             * Type of database.
+             */
+            type: pulumi.Input<enums.web.v20180201.ConnectionStringType>;
+            /**
+             * Value of pair.
+             */
+            value: pulumi.Input<string>;
+        }
+
+        /**
          * Cross-Origin Resource Sharing (CORS) settings for the app.
          */
         export interface CorsSettings {
@@ -370928,17 +371296,17 @@ export namespace web {
             /**
              * Contains a connection string to a database which is being backed up or restored. If the restore should happen to a new database, the database name inside is the new one.
              */
-            connectionString?: string;
+            connectionString?: pulumi.Input<string>;
             /**
              * Contains a connection string name that is linked to the SiteConfig.ConnectionStrings.
              * This is used during restore with overwrite connection strings options.
              */
-            connectionStringName?: string;
+            connectionStringName?: pulumi.Input<string>;
             /**
              * Database type (e.g. SqlAzure / MySql).
              */
-            databaseType: string | enums.web.v20180201.DatabaseType;
-            name?: string;
+            databaseType: pulumi.Input<string | enums.web.v20180201.DatabaseType>;
+            name?: pulumi.Input<string>;
         }
 
         /**
@@ -371860,23 +372228,23 @@ export namespace web {
             /**
              * How often the backup should be executed (e.g. for weekly backup, this should be set to 7 and FrequencyUnit should be set to Day)
              */
-            frequencyInterval: number;
+            frequencyInterval: pulumi.Input<number>;
             /**
              * The unit of time for how often the backup should be executed (e.g. for weekly backup, this should be set to Day and FrequencyInterval should be set to 7)
              */
-            frequencyUnit: enums.web.v20181101.FrequencyUnit;
+            frequencyUnit: pulumi.Input<enums.web.v20181101.FrequencyUnit>;
             /**
              * True if the retention policy should always keep at least one backup in the storage account, regardless how old it is; false otherwise.
              */
-            keepAtLeastOneBackup: boolean;
+            keepAtLeastOneBackup: pulumi.Input<boolean>;
             /**
              * After how many days backups should be deleted.
              */
-            retentionPeriodInDays: number;
+            retentionPeriodInDays: pulumi.Input<number>;
             /**
              * When the schedule should start working.
              */
-            startTime?: string;
+            startTime?: pulumi.Input<string>;
         }
 
         /**
@@ -371953,6 +372321,20 @@ export namespace web {
         }
 
         /**
+         * Database connection string value to type pair.
+         */
+        export interface ConnStringValueTypePair {
+            /**
+             * Type of database.
+             */
+            type: pulumi.Input<enums.web.v20181101.ConnectionStringType>;
+            /**
+             * Value of pair.
+             */
+            value: pulumi.Input<string>;
+        }
+
+        /**
          * Cross-Origin Resource Sharing (CORS) settings for the app.
          */
         export interface CorsSettings {
@@ -371976,17 +372358,17 @@ export namespace web {
             /**
              * Contains a connection string to a database which is being backed up or restored. If the restore should happen to a new database, the database name inside is the new one.
              */
-            connectionString?: string;
+            connectionString?: pulumi.Input<string>;
             /**
              * Contains a connection string name that is linked to the SiteConfig.ConnectionStrings.
              * This is used during restore with overwrite connection strings options.
              */
-            connectionStringName?: string;
+            connectionStringName?: pulumi.Input<string>;
             /**
              * Database type (e.g. SqlAzure / MySql).
              */
-            databaseType: string | enums.web.v20181101.DatabaseType;
-            name?: string;
+            databaseType: pulumi.Input<string | enums.web.v20181101.DatabaseType>;
+            name?: pulumi.Input<string>;
         }
 
         /**
@@ -372754,6 +373136,32 @@ export namespace web {
         }
 
         /**
+         * Azure Files or Blob Storage access information value for dictionary storage.
+         */
+        export interface AzureStorageInfoValue {
+            /**
+             * Access key for the storage account.
+             */
+            accessKey?: pulumi.Input<string>;
+            /**
+             * Name of the storage account.
+             */
+            accountName?: pulumi.Input<string>;
+            /**
+             * Path to mount the storage within the site's runtime environment.
+             */
+            mountPath?: pulumi.Input<string>;
+            /**
+             * Name of the file share (container name, for Blob storage).
+             */
+            shareName?: pulumi.Input<string>;
+            /**
+             * Type of storage.
+             */
+            type?: pulumi.Input<enums.web.v20190801.AzureStorageType>;
+        }
+
+        /**
          * Application logs to Azure table storage configuration.
          */
         export interface AzureTableStorageApplicationLogsConfig {
@@ -372774,23 +373182,23 @@ export namespace web {
             /**
              * How often the backup should be executed (e.g. for weekly backup, this should be set to 7 and FrequencyUnit should be set to Day)
              */
-            frequencyInterval: number;
+            frequencyInterval: pulumi.Input<number>;
             /**
              * The unit of time for how often the backup should be executed (e.g. for weekly backup, this should be set to Day and FrequencyInterval should be set to 7)
              */
-            frequencyUnit: enums.web.v20190801.FrequencyUnit;
+            frequencyUnit: pulumi.Input<enums.web.v20190801.FrequencyUnit>;
             /**
              * True if the retention policy should always keep at least one backup in the storage account, regardless how old it is; false otherwise.
              */
-            keepAtLeastOneBackup: boolean;
+            keepAtLeastOneBackup: pulumi.Input<boolean>;
             /**
              * After how many days backups should be deleted.
              */
-            retentionPeriodInDays: number;
+            retentionPeriodInDays: pulumi.Input<number>;
             /**
              * When the schedule should start working.
              */
-            startTime?: string;
+            startTime?: pulumi.Input<string>;
         }
 
         /**
@@ -372885,6 +373293,20 @@ export namespace web {
         }
 
         /**
+         * Database connection string value to type pair.
+         */
+        export interface ConnStringValueTypePair {
+            /**
+             * Type of database.
+             */
+            type: pulumi.Input<enums.web.v20190801.ConnectionStringType>;
+            /**
+             * Value of pair.
+             */
+            value: pulumi.Input<string>;
+        }
+
+        /**
          * Cross-Origin Resource Sharing (CORS) settings for the app.
          */
         export interface CorsSettings {
@@ -372908,17 +373330,17 @@ export namespace web {
             /**
              * Contains a connection string to a database which is being backed up or restored. If the restore should happen to a new database, the database name inside is the new one.
              */
-            connectionString?: string;
+            connectionString?: pulumi.Input<string>;
             /**
              * Contains a connection string name that is linked to the SiteConfig.ConnectionStrings.
              * This is used during restore with overwrite connection strings options.
              */
-            connectionStringName?: string;
+            connectionStringName?: pulumi.Input<string>;
             /**
              * Database type (e.g. SqlAzure / MySql).
              */
-            databaseType: string | enums.web.v20190801.DatabaseType;
-            name?: string;
+            databaseType: pulumi.Input<string | enums.web.v20190801.DatabaseType>;
+            name?: pulumi.Input<string>;
         }
 
         /**
@@ -373693,6 +374115,14 @@ export namespace web {
     }
 
     export namespace v20200601 {
+        export interface AllowedAudiencesValidation {
+            allowedAudiences?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+        }
+
         /**
          * Information about the formal API definition for the app.
          */
@@ -373713,6 +374143,15 @@ export namespace web {
             id?: pulumi.Input<string>;
         }
 
+        export interface AppRegistration {
+            appId?: pulumi.Input<string>;
+            appSecretSettingName?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+        }
+
         /**
          * Application logs configuration.
          */
@@ -373729,6 +374168,16 @@ export namespace web {
              * Application logs to file system configuration.
              */
             fileSystem?: pulumi.Input<inputs.web.v20200601.FileSystemApplicationLogsConfig>;
+        }
+
+        export interface AuthPlatform {
+            configFilePath?: pulumi.Input<string>;
+            enabled?: pulumi.Input<boolean>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            runtimeVersion?: pulumi.Input<string>;
         }
 
         /**
@@ -373801,6 +374250,47 @@ export namespace web {
             statusCodes?: pulumi.Input<pulumi.Input<inputs.web.v20200601.StatusCodesBasedTrigger>[]>;
         }
 
+        export interface AzureActiveDirectory {
+            enabled?: pulumi.Input<boolean>;
+            isAutoProvisioned?: pulumi.Input<boolean>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            login?: pulumi.Input<inputs.web.v20200601.AzureActiveDirectoryLogin>;
+            registration?: pulumi.Input<inputs.web.v20200601.AzureActiveDirectoryRegistration>;
+            validation?: pulumi.Input<inputs.web.v20200601.AzureActiveDirectoryValidation>;
+        }
+
+        export interface AzureActiveDirectoryLogin {
+            disableWWWAuthenticate?: pulumi.Input<boolean>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            loginParameters?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        export interface AzureActiveDirectoryRegistration {
+            clientId?: pulumi.Input<string>;
+            clientSecretCertificateThumbprint?: pulumi.Input<string>;
+            clientSecretSettingName?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            openIdIssuer?: pulumi.Input<string>;
+        }
+
+        export interface AzureActiveDirectoryValidation {
+            allowedAudiences?: pulumi.Input<pulumi.Input<string>[]>;
+            jwtClaimChecks?: pulumi.Input<inputs.web.v20200601.JwtClaimChecks>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+        }
+
         /**
          * Application logs azure blob storage configuration.
          */
@@ -373842,6 +374332,32 @@ export namespace web {
         }
 
         /**
+         * Azure Files or Blob Storage access information value for dictionary storage.
+         */
+        export interface AzureStorageInfoValue {
+            /**
+             * Access key for the storage account.
+             */
+            accessKey?: pulumi.Input<string>;
+            /**
+             * Name of the storage account.
+             */
+            accountName?: pulumi.Input<string>;
+            /**
+             * Path to mount the storage within the site's runtime environment.
+             */
+            mountPath?: pulumi.Input<string>;
+            /**
+             * Name of the file share (container name, for Blob storage).
+             */
+            shareName?: pulumi.Input<string>;
+            /**
+             * Type of storage.
+             */
+            type?: pulumi.Input<enums.web.v20200601.AzureStorageType>;
+        }
+
+        /**
          * Application logs to Azure table storage configuration.
          */
         export interface AzureTableStorageApplicationLogsConfig {
@@ -373862,23 +374378,31 @@ export namespace web {
             /**
              * How often the backup should be executed (e.g. for weekly backup, this should be set to 7 and FrequencyUnit should be set to Day)
              */
-            frequencyInterval: number;
+            frequencyInterval: pulumi.Input<number>;
             /**
              * The unit of time for how often the backup should be executed (e.g. for weekly backup, this should be set to Day and FrequencyInterval should be set to 7)
              */
-            frequencyUnit: enums.web.v20200601.FrequencyUnit;
+            frequencyUnit: pulumi.Input<enums.web.v20200601.FrequencyUnit>;
             /**
              * True if the retention policy should always keep at least one backup in the storage account, regardless how old it is; false otherwise.
              */
-            keepAtLeastOneBackup: boolean;
+            keepAtLeastOneBackup: pulumi.Input<boolean>;
             /**
              * After how many days backups should be deleted.
              */
-            retentionPeriodInDays: number;
+            retentionPeriodInDays: pulumi.Input<number>;
             /**
              * When the schedule should start working.
              */
-            startTime?: string;
+            startTime?: pulumi.Input<string>;
+        }
+
+        export interface BlobStorageTokenStore {
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            sasUrlSettingName?: pulumi.Input<string>;
         }
 
         /**
@@ -373897,6 +374421,15 @@ export namespace web {
              * Value of the SKU capability.
              */
             value?: pulumi.Input<string>;
+        }
+
+        export interface ClientRegistration {
+            clientId?: pulumi.Input<string>;
+            clientSecretSettingName?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
         }
 
         /**
@@ -373973,6 +374506,29 @@ export namespace web {
         }
 
         /**
+         * Database connection string value to type pair.
+         */
+        export interface ConnStringValueTypePair {
+            /**
+             * Type of database.
+             */
+            type: pulumi.Input<enums.web.v20200601.ConnectionStringType>;
+            /**
+             * Value of pair.
+             */
+            value: pulumi.Input<string>;
+        }
+
+        export interface CookieExpiration {
+            convention?: pulumi.Input<enums.web.v20200601.CookieExpirationConvention>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            timeToExpiration?: pulumi.Input<string>;
+        }
+
+        /**
          * Cross-Origin Resource Sharing (CORS) settings for the app.
          */
         export interface CorsSettings {
@@ -373989,6 +374545,16 @@ export namespace web {
             supportCredentials?: pulumi.Input<boolean>;
         }
 
+        export interface CustomOpenIdConnectProvider {
+            enabled?: pulumi.Input<boolean>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            login?: pulumi.Input<inputs.web.v20200601.OpenIdConnectLogin>;
+            registration?: pulumi.Input<inputs.web.v20200601.OpenIdConnectRegistration>;
+        }
+
         /**
          * Database backup settings.
          */
@@ -373996,17 +374562,17 @@ export namespace web {
             /**
              * Contains a connection string to a database which is being backed up or restored. If the restore should happen to a new database, the database name inside is the new one.
              */
-            connectionString?: string;
+            connectionString?: pulumi.Input<string>;
             /**
              * Contains a connection string name that is linked to the SiteConfig.ConnectionStrings.
              * This is used during restore with overwrite connection strings options.
              */
-            connectionStringName?: string;
+            connectionStringName?: pulumi.Input<string>;
             /**
              * Database type (e.g. SqlAzure / MySql).
              */
-            databaseType: string | enums.web.v20200601.DatabaseType;
-            name?: string;
+            databaseType: pulumi.Input<string | enums.web.v20200601.DatabaseType>;
+            name?: pulumi.Input<string>;
         }
 
         /**
@@ -374027,6 +374593,17 @@ export namespace web {
              * List of ramp-up rules.
              */
             rampUpRules?: pulumi.Input<pulumi.Input<inputs.web.v20200601.RampUpRule>[]>;
+        }
+
+        export interface Facebook {
+            enabled?: pulumi.Input<boolean>;
+            graphApiVersion?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            login?: pulumi.Input<inputs.web.v20200601.LoginScopes>;
+            registration?: pulumi.Input<inputs.web.v20200601.AppRegistration>;
         }
 
         /**
@@ -374059,6 +374636,56 @@ export namespace web {
              * Value can range between 25 and 100.
              */
             retentionInMb?: pulumi.Input<number>;
+        }
+
+        export interface FileSystemTokenStore {
+            directory?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+        }
+
+        export interface ForwardProxy {
+            convention?: pulumi.Input<enums.web.v20200601.ForwardProxyConvention>;
+            customHostHeaderName?: pulumi.Input<string>;
+            customProtoHeaderName?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+        }
+
+        export interface GitHub {
+            enabled?: pulumi.Input<boolean>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            login?: pulumi.Input<inputs.web.v20200601.LoginScopes>;
+            registration?: pulumi.Input<inputs.web.v20200601.ClientRegistration>;
+        }
+
+        export interface GlobalValidation {
+            excludedPaths?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            redirectToProvider?: pulumi.Input<string>;
+            requireAuthentication?: pulumi.Input<boolean>;
+            unauthenticatedClientAction?: pulumi.Input<enums.web.v20200601.UnauthenticatedClientActionV2>;
+        }
+
+        export interface Google {
+            enabled?: pulumi.Input<boolean>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            login?: pulumi.Input<inputs.web.v20200601.LoginScopes>;
+            registration?: pulumi.Input<inputs.web.v20200601.ClientRegistration>;
+            validation?: pulumi.Input<inputs.web.v20200601.AllowedAudiencesValidation>;
         }
 
         /**
@@ -374134,6 +374761,37 @@ export namespace web {
             fileSystem?: pulumi.Input<inputs.web.v20200601.FileSystemHttpLogsConfig>;
         }
 
+        export interface HttpSettings {
+            forwardProxy?: pulumi.Input<inputs.web.v20200601.ForwardProxy>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            requireHttps?: pulumi.Input<boolean>;
+            routes?: pulumi.Input<inputs.web.v20200601.HttpSettingsRoutes>;
+        }
+
+        export interface HttpSettingsRoutes {
+            apiPrefix?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+        }
+
+        export interface IdentityProviders {
+            azureActiveDirectory?: pulumi.Input<inputs.web.v20200601.AzureActiveDirectory>;
+            customOpenIdConnectProviders?: pulumi.Input<{[key: string]: pulumi.Input<inputs.web.v20200601.CustomOpenIdConnectProvider>}>;
+            facebook?: pulumi.Input<inputs.web.v20200601.Facebook>;
+            gitHub?: pulumi.Input<inputs.web.v20200601.GitHub>;
+            google?: pulumi.Input<inputs.web.v20200601.Google>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            twitter?: pulumi.Input<inputs.web.v20200601.Twitter>;
+        }
+
         /**
          * IP security restriction on an app.
          */
@@ -374202,6 +374860,44 @@ export namespace web {
             vnetTrafficTag?: pulumi.Input<number>;
         }
 
+        export interface JwtClaimChecks {
+            allowedClientApplications?: pulumi.Input<pulumi.Input<string>[]>;
+            allowedGroups?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+        }
+
+        export interface Login {
+            allowedExternalRedirectUrls?: pulumi.Input<pulumi.Input<string>[]>;
+            cookieExpiration?: pulumi.Input<inputs.web.v20200601.CookieExpiration>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            nonce?: pulumi.Input<inputs.web.v20200601.Nonce>;
+            preserveUrlFragmentsForLogins?: pulumi.Input<boolean>;
+            routes?: pulumi.Input<inputs.web.v20200601.LoginRoutes>;
+            tokenStore?: pulumi.Input<inputs.web.v20200601.TokenStore>;
+        }
+
+        export interface LoginRoutes {
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            logoutEndpoint?: pulumi.Input<string>;
+        }
+
+        export interface LoginScopes {
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            scopes?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
         /**
          * Managed service identity.
          */
@@ -374250,6 +374946,55 @@ export namespace web {
              * Remote subnet.
              */
             remoteSubnet?: pulumi.Input<string>;
+        }
+
+        export interface Nonce {
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            nonceExpirationInterval?: pulumi.Input<string>;
+            validateNonce?: pulumi.Input<boolean>;
+        }
+
+        export interface OpenIdConnectClientCredential {
+            clientSecretSettingName?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            method?: pulumi.Input<enums.web.v20200601.ClientCredentialMethod>;
+        }
+
+        export interface OpenIdConnectConfig {
+            authorizationEndpoint?: pulumi.Input<string>;
+            certificationUri?: pulumi.Input<string>;
+            issuer?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            tokenEndpoint?: pulumi.Input<string>;
+            wellKnownOpenIdConfiguration?: pulumi.Input<string>;
+        }
+
+        export interface OpenIdConnectLogin {
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            nameClaimType?: pulumi.Input<string>;
+            scopes?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        export interface OpenIdConnectRegistration {
+            clientCredential?: pulumi.Input<inputs.web.v20200601.OpenIdConnectClientCredential>;
+            clientId?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            openIdConnectConfiguration?: pulumi.Input<inputs.web.v20200601.OpenIdConnectConfig>;
         }
 
         /**
@@ -374729,6 +375474,35 @@ export namespace web {
             win32Status?: pulumi.Input<number>;
         }
 
+        export interface TokenStore {
+            azureBlobStorage?: pulumi.Input<inputs.web.v20200601.BlobStorageTokenStore>;
+            enabled?: pulumi.Input<boolean>;
+            fileSystem?: pulumi.Input<inputs.web.v20200601.FileSystemTokenStore>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            tokenRefreshExtensionHours?: pulumi.Input<number>;
+        }
+
+        export interface Twitter {
+            enabled?: pulumi.Input<boolean>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            registration?: pulumi.Input<inputs.web.v20200601.TwitterRegistration>;
+        }
+
+        export interface TwitterRegistration {
+            consumerKey?: pulumi.Input<string>;
+            consumerSecretSettingName?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+        }
+
         /**
          * Virtual application in an app.
          */
@@ -374804,6 +375578,14 @@ export namespace web {
     }
 
     export namespace v20200901 {
+        export interface AllowedAudiencesValidation {
+            allowedAudiences?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+        }
+
         /**
          * Information about the formal API definition for the app.
          */
@@ -374824,6 +375606,15 @@ export namespace web {
             id?: pulumi.Input<string>;
         }
 
+        export interface AppRegistration {
+            appId?: pulumi.Input<string>;
+            appSecretSettingName?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+        }
+
         /**
          * Application logs configuration.
          */
@@ -374840,6 +375631,16 @@ export namespace web {
              * Application logs to file system configuration.
              */
             fileSystem?: pulumi.Input<inputs.web.v20200901.FileSystemApplicationLogsConfig>;
+        }
+
+        export interface AuthPlatform {
+            configFilePath?: pulumi.Input<string>;
+            enabled?: pulumi.Input<boolean>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            runtimeVersion?: pulumi.Input<string>;
         }
 
         /**
@@ -374912,6 +375713,47 @@ export namespace web {
             statusCodes?: pulumi.Input<pulumi.Input<inputs.web.v20200901.StatusCodesBasedTrigger>[]>;
         }
 
+        export interface AzureActiveDirectory {
+            enabled?: pulumi.Input<boolean>;
+            isAutoProvisioned?: pulumi.Input<boolean>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            login?: pulumi.Input<inputs.web.v20200901.AzureActiveDirectoryLogin>;
+            registration?: pulumi.Input<inputs.web.v20200901.AzureActiveDirectoryRegistration>;
+            validation?: pulumi.Input<inputs.web.v20200901.AzureActiveDirectoryValidation>;
+        }
+
+        export interface AzureActiveDirectoryLogin {
+            disableWWWAuthenticate?: pulumi.Input<boolean>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            loginParameters?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        export interface AzureActiveDirectoryRegistration {
+            clientId?: pulumi.Input<string>;
+            clientSecretCertificateThumbprint?: pulumi.Input<string>;
+            clientSecretSettingName?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            openIdIssuer?: pulumi.Input<string>;
+        }
+
+        export interface AzureActiveDirectoryValidation {
+            allowedAudiences?: pulumi.Input<pulumi.Input<string>[]>;
+            jwtClaimChecks?: pulumi.Input<inputs.web.v20200901.JwtClaimChecks>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+        }
+
         /**
          * Application logs azure blob storage configuration.
          */
@@ -374953,6 +375795,32 @@ export namespace web {
         }
 
         /**
+         * Azure Files or Blob Storage access information value for dictionary storage.
+         */
+        export interface AzureStorageInfoValue {
+            /**
+             * Access key for the storage account.
+             */
+            accessKey?: pulumi.Input<string>;
+            /**
+             * Name of the storage account.
+             */
+            accountName?: pulumi.Input<string>;
+            /**
+             * Path to mount the storage within the site's runtime environment.
+             */
+            mountPath?: pulumi.Input<string>;
+            /**
+             * Name of the file share (container name, for Blob storage).
+             */
+            shareName?: pulumi.Input<string>;
+            /**
+             * Type of storage.
+             */
+            type?: pulumi.Input<enums.web.v20200901.AzureStorageType>;
+        }
+
+        /**
          * Application logs to Azure table storage configuration.
          */
         export interface AzureTableStorageApplicationLogsConfig {
@@ -374973,23 +375841,31 @@ export namespace web {
             /**
              * How often the backup should be executed (e.g. for weekly backup, this should be set to 7 and FrequencyUnit should be set to Day)
              */
-            frequencyInterval: number;
+            frequencyInterval: pulumi.Input<number>;
             /**
              * The unit of time for how often the backup should be executed (e.g. for weekly backup, this should be set to Day and FrequencyInterval should be set to 7)
              */
-            frequencyUnit: enums.web.v20200901.FrequencyUnit;
+            frequencyUnit: pulumi.Input<enums.web.v20200901.FrequencyUnit>;
             /**
              * True if the retention policy should always keep at least one backup in the storage account, regardless how old it is; false otherwise.
              */
-            keepAtLeastOneBackup: boolean;
+            keepAtLeastOneBackup: pulumi.Input<boolean>;
             /**
              * After how many days backups should be deleted.
              */
-            retentionPeriodInDays: number;
+            retentionPeriodInDays: pulumi.Input<number>;
             /**
              * When the schedule should start working.
              */
-            startTime?: string;
+            startTime?: pulumi.Input<string>;
+        }
+
+        export interface BlobStorageTokenStore {
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            sasUrlSettingName?: pulumi.Input<string>;
         }
 
         /**
@@ -375008,6 +375884,15 @@ export namespace web {
              * Value of the SKU capability.
              */
             value?: pulumi.Input<string>;
+        }
+
+        export interface ClientRegistration {
+            clientId?: pulumi.Input<string>;
+            clientSecretSettingName?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
         }
 
         /**
@@ -375084,6 +375969,29 @@ export namespace web {
         }
 
         /**
+         * Database connection string value to type pair.
+         */
+        export interface ConnStringValueTypePair {
+            /**
+             * Type of database.
+             */
+            type: pulumi.Input<enums.web.v20200901.ConnectionStringType>;
+            /**
+             * Value of pair.
+             */
+            value: pulumi.Input<string>;
+        }
+
+        export interface CookieExpiration {
+            convention?: pulumi.Input<enums.web.v20200901.CookieExpirationConvention>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            timeToExpiration?: pulumi.Input<string>;
+        }
+
+        /**
          * Cross-Origin Resource Sharing (CORS) settings for the app.
          */
         export interface CorsSettings {
@@ -375100,6 +376008,16 @@ export namespace web {
             supportCredentials?: pulumi.Input<boolean>;
         }
 
+        export interface CustomOpenIdConnectProvider {
+            enabled?: pulumi.Input<boolean>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            login?: pulumi.Input<inputs.web.v20200901.OpenIdConnectLogin>;
+            registration?: pulumi.Input<inputs.web.v20200901.OpenIdConnectRegistration>;
+        }
+
         /**
          * Database backup settings.
          */
@@ -375107,17 +376025,17 @@ export namespace web {
             /**
              * Contains a connection string to a database which is being backed up or restored. If the restore should happen to a new database, the database name inside is the new one.
              */
-            connectionString?: string;
+            connectionString?: pulumi.Input<string>;
             /**
              * Contains a connection string name that is linked to the SiteConfig.ConnectionStrings.
              * This is used during restore with overwrite connection strings options.
              */
-            connectionStringName?: string;
+            connectionStringName?: pulumi.Input<string>;
             /**
              * Database type (e.g. SqlAzure / MySql).
              */
-            databaseType: string | enums.web.v20200901.DatabaseType;
-            name?: string;
+            databaseType: pulumi.Input<string | enums.web.v20200901.DatabaseType>;
+            name?: pulumi.Input<string>;
         }
 
         /**
@@ -375138,6 +376056,17 @@ export namespace web {
              * List of ramp-up rules.
              */
             rampUpRules?: pulumi.Input<pulumi.Input<inputs.web.v20200901.RampUpRule>[]>;
+        }
+
+        export interface Facebook {
+            enabled?: pulumi.Input<boolean>;
+            graphApiVersion?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            login?: pulumi.Input<inputs.web.v20200901.LoginScopes>;
+            registration?: pulumi.Input<inputs.web.v20200901.AppRegistration>;
         }
 
         /**
@@ -375170,6 +376099,56 @@ export namespace web {
              * Value can range between 25 and 100.
              */
             retentionInMb?: pulumi.Input<number>;
+        }
+
+        export interface FileSystemTokenStore {
+            directory?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+        }
+
+        export interface ForwardProxy {
+            convention?: pulumi.Input<enums.web.v20200901.ForwardProxyConvention>;
+            customHostHeaderName?: pulumi.Input<string>;
+            customProtoHeaderName?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+        }
+
+        export interface GitHub {
+            enabled?: pulumi.Input<boolean>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            login?: pulumi.Input<inputs.web.v20200901.LoginScopes>;
+            registration?: pulumi.Input<inputs.web.v20200901.ClientRegistration>;
+        }
+
+        export interface GlobalValidation {
+            excludedPaths?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            redirectToProvider?: pulumi.Input<string>;
+            requireAuthentication?: pulumi.Input<boolean>;
+            unauthenticatedClientAction?: pulumi.Input<enums.web.v20200901.UnauthenticatedClientActionV2>;
+        }
+
+        export interface Google {
+            enabled?: pulumi.Input<boolean>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            login?: pulumi.Input<inputs.web.v20200901.LoginScopes>;
+            registration?: pulumi.Input<inputs.web.v20200901.ClientRegistration>;
+            validation?: pulumi.Input<inputs.web.v20200901.AllowedAudiencesValidation>;
         }
 
         /**
@@ -375245,6 +376224,37 @@ export namespace web {
             fileSystem?: pulumi.Input<inputs.web.v20200901.FileSystemHttpLogsConfig>;
         }
 
+        export interface HttpSettings {
+            forwardProxy?: pulumi.Input<inputs.web.v20200901.ForwardProxy>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            requireHttps?: pulumi.Input<boolean>;
+            routes?: pulumi.Input<inputs.web.v20200901.HttpSettingsRoutes>;
+        }
+
+        export interface HttpSettingsRoutes {
+            apiPrefix?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+        }
+
+        export interface IdentityProviders {
+            azureActiveDirectory?: pulumi.Input<inputs.web.v20200901.AzureActiveDirectory>;
+            customOpenIdConnectProviders?: pulumi.Input<{[key: string]: pulumi.Input<inputs.web.v20200901.CustomOpenIdConnectProvider>}>;
+            facebook?: pulumi.Input<inputs.web.v20200901.Facebook>;
+            gitHub?: pulumi.Input<inputs.web.v20200901.GitHub>;
+            google?: pulumi.Input<inputs.web.v20200901.Google>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            twitter?: pulumi.Input<inputs.web.v20200901.Twitter>;
+        }
+
         /**
          * IP security restriction on an app.
          */
@@ -375313,6 +376323,44 @@ export namespace web {
             vnetTrafficTag?: pulumi.Input<number>;
         }
 
+        export interface JwtClaimChecks {
+            allowedClientApplications?: pulumi.Input<pulumi.Input<string>[]>;
+            allowedGroups?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+        }
+
+        export interface Login {
+            allowedExternalRedirectUrls?: pulumi.Input<pulumi.Input<string>[]>;
+            cookieExpiration?: pulumi.Input<inputs.web.v20200901.CookieExpiration>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            nonce?: pulumi.Input<inputs.web.v20200901.Nonce>;
+            preserveUrlFragmentsForLogins?: pulumi.Input<boolean>;
+            routes?: pulumi.Input<inputs.web.v20200901.LoginRoutes>;
+            tokenStore?: pulumi.Input<inputs.web.v20200901.TokenStore>;
+        }
+
+        export interface LoginRoutes {
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            logoutEndpoint?: pulumi.Input<string>;
+        }
+
+        export interface LoginScopes {
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            scopes?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
         /**
          * Managed service identity.
          */
@@ -375361,6 +376409,55 @@ export namespace web {
              * Remote subnet.
              */
             remoteSubnet?: pulumi.Input<string>;
+        }
+
+        export interface Nonce {
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            nonceExpirationInterval?: pulumi.Input<string>;
+            validateNonce?: pulumi.Input<boolean>;
+        }
+
+        export interface OpenIdConnectClientCredential {
+            clientSecretSettingName?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            method?: pulumi.Input<enums.web.v20200901.ClientCredentialMethod>;
+        }
+
+        export interface OpenIdConnectConfig {
+            authorizationEndpoint?: pulumi.Input<string>;
+            certificationUri?: pulumi.Input<string>;
+            issuer?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            tokenEndpoint?: pulumi.Input<string>;
+            wellKnownOpenIdConfiguration?: pulumi.Input<string>;
+        }
+
+        export interface OpenIdConnectLogin {
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            nameClaimType?: pulumi.Input<string>;
+            scopes?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        export interface OpenIdConnectRegistration {
+            clientCredential?: pulumi.Input<inputs.web.v20200901.OpenIdConnectClientCredential>;
+            clientId?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            openIdConnectConfiguration?: pulumi.Input<inputs.web.v20200901.OpenIdConnectConfig>;
         }
 
         /**
@@ -375838,6 +376935,35 @@ export namespace web {
              * Win32 error code.
              */
             win32Status?: pulumi.Input<number>;
+        }
+
+        export interface TokenStore {
+            azureBlobStorage?: pulumi.Input<inputs.web.v20200901.BlobStorageTokenStore>;
+            enabled?: pulumi.Input<boolean>;
+            fileSystem?: pulumi.Input<inputs.web.v20200901.FileSystemTokenStore>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            tokenRefreshExtensionHours?: pulumi.Input<number>;
+        }
+
+        export interface Twitter {
+            enabled?: pulumi.Input<boolean>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            registration?: pulumi.Input<inputs.web.v20200901.TwitterRegistration>;
+        }
+
+        export interface TwitterRegistration {
+            consumerKey?: pulumi.Input<string>;
+            consumerSecretSettingName?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
         }
 
         /**

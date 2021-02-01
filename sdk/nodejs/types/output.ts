@@ -473486,29 +473486,29 @@ export namespace storagecache {
 export namespace storagepool {
     export namespace v20200315preview {
         /**
-         * Access Control List (ACL) for an iSCSI target lun
+         * Access Control List (ACL) for an iSCSI target portal group
          */
         export interface AclResponse {
             /**
-             * iSCSI initiator iqn (iSCSI Qualified Name); example: iqn.2005-03.org.iscsi:client
+             * iSCSI initiator IQN (iSCSI Qualified Name); example: "iqn.2005-03.org.iscsi:client".
              */
             initiatorIqn: string;
             /**
-             * Array of lun names mapped to the ACL
+             * List of LUN names mapped to the ACL.
              */
             mappedLuns: string[];
             /**
-             * Password for Challenge Handshake Authentication Protocol (CHAP) authentication
+             * Password for Challenge Handshake Authentication Protocol (CHAP) authentication.
              */
             password: string;
             /**
-             * Username for Challenge Handshake Authentication Protocol (CHAP) authentication
+             * Username for Challenge Handshake Authentication Protocol (CHAP) authentication.
              */
             username: string;
         }
 
         /**
-         * Attributes of an iSCSI target
+         * Attributes of a iSCSI target portal group.
          */
         export interface AttributesResponse {
             /**
@@ -473516,67 +473516,41 @@ export namespace storagepool {
              */
             authentication: boolean;
             /**
-             * Indicates whether or not write protect is enabled on the luns.
+             * Indicates whether or not write protect is enabled on the LUNs.
              */
             prodModeWriteProtect: boolean;
         }
 
         /**
-         * Managed disk to attach to the DiskPool. Required.
+         * Azure Managed Disk to attach to the Disk pool.
          */
         export interface DiskResponse {
             /**
-             * Unique Azure resource id of the managed disk. Required.
+             * Unique Azure Resource ID of the Managed Disk.
              */
             id: string;
         }
 
         /**
-         * Lun to expose the ManagedDisk.
+         * LUN to expose the Azure Managed Disk.
          */
         export interface IscsiLunResponse {
             /**
-             * Unique Azure resource id of the managed disk. Required.
+             * Azure Resource ID of the Managed Disk.
              */
             managedDiskAzureResourceId: string;
             /**
-             * Lun name.
+             * User defined name for iSCSI LUN; example: "lun0"
              */
             name: string;
         }
 
         /**
-         * The resource model definition representing SKU
-         */
-        export interface SkuResponse {
-            /**
-             * If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-             */
-            capacity?: number;
-            /**
-             * If the service has different generations of hardware, for the same SKU, then that can be captured here.
-             */
-            family?: string;
-            /**
-             * The name of the SKU. Ex - P3. It is typically a letter+number code
-             */
-            name: string;
-            /**
-             * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
-             */
-            size?: string;
-            /**
-             * This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-             */
-            tier?: string;
-        }
-
-        /**
-         * Resource metadata required by ARM RPC
+         * Resource metadata required by ARM RPC.
          */
         export interface SystemMetadataResponse {
             /**
-             * The timestamp of resource creation (UTC)
+             * The timestamp of resource creation (UTC).
              */
             createdAt?: string;
             /**
@@ -473584,49 +473558,49 @@ export namespace storagepool {
              */
             createdBy?: string;
             /**
-             * The type of identity that created the resource: user, application, managedIdentity
+             * The type of identity that created the resource: user, application, managedIdentity.
              */
             createdByType?: string;
             /**
-             * The timestamp of resource last modification (UTC)
+             * The timestamp of resource last modification (UTC).
              */
             lastModifiedAt?: string;
             /**
-             * A string identifier for the identity that last modified the resource
+             * A string identifier for the identity that last modified the resource.
              */
             lastModifiedBy?: string;
             /**
-             * The type of identity that last modified the resource: user, application, managedIdentity
+             * The type of identity that last modified the resource: user, application, managedIdentity.
              */
             lastModifiedByType?: string;
         }
 
         /**
-         * iSCSI target portal group
+         * Response properties for iSCSI target portal group.
          */
         export interface TargetPortalGroupResponse {
             /**
-             * Access Control List (ACL) for an iSCSI target lun
+             * Access Control List (ACL) for an iSCSI target portal group.
              */
             acls: outputs.storagepool.v20200315preview.AclResponse[];
             /**
-             * Attributes of an iSCSI target
+             * Attributes of an iSCSI target portal group.
              */
             attributes: outputs.storagepool.v20200315preview.AttributesResponse;
             /**
-             * list of public ip addresses to connect to the iSCSI target
+             * List of private IPv4 addresses to connect to the iSCSI target.
              */
             endpoints: string[];
             /**
-             * Lun list to be exposed through the iSCSI target. Required
+             * List of LUNs to be exposed through iSCSI target portal group.
              */
             luns: outputs.storagepool.v20200315preview.IscsiLunResponse[];
             /**
-             * The port at which the iSCSI target is available
+             * The port used by iSCSI target portal group.
              */
             port: number;
             /**
-             * The tag associated with the iSCSI target portal group
+             * The tag associated with the iSCSI target portal group.
              */
             tag: number;
         }
@@ -484180,6 +484154,30 @@ export namespace vmwarecloudsimple {
 
 export namespace web {
     export namespace latest {
+        export interface AllowedAudiencesValidationResponse {
+            allowedAudiences?: string[];
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.latest.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
         export interface ApiConnectionDefinitionResponseProperties {
             api?: outputs.web.latest.ApiReferenceResponse;
             /**
@@ -484361,6 +484359,31 @@ export namespace web {
             originalSwaggerUrl?: string;
         }
 
+        export interface AppRegistrationResponse {
+            appId?: string;
+            appSecretSettingName?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.latest.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
         /**
          * Application logs configuration.
          */
@@ -484384,6 +484407,32 @@ export namespace web {
          */
         export interface ArmIdWrapperResponse {
             id: string;
+        }
+
+        export interface AuthPlatformResponse {
+            configFilePath?: string;
+            enabled?: boolean;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            runtimeVersion?: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.latest.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
         }
 
         /**
@@ -484454,6 +484503,111 @@ export namespace web {
              * A rule based on status codes.
              */
             statusCodes?: outputs.web.latest.StatusCodesBasedTriggerResponse[];
+        }
+
+        export interface AzureActiveDirectoryLoginResponse {
+            disableWWWAuthenticate?: boolean;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            loginParameters?: string[];
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.latest.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface AzureActiveDirectoryRegistrationResponse {
+            clientId?: string;
+            clientSecretCertificateThumbprint?: string;
+            clientSecretSettingName?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            openIdIssuer?: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.latest.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface AzureActiveDirectoryResponse {
+            enabled?: boolean;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            isAutoProvisioned?: boolean;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            login?: outputs.web.latest.AzureActiveDirectoryLoginResponse;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            registration?: outputs.web.latest.AzureActiveDirectoryRegistrationResponse;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.latest.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+            validation?: outputs.web.latest.AzureActiveDirectoryValidationResponse;
+        }
+
+        export interface AzureActiveDirectoryValidationResponse {
+            allowedAudiences?: string[];
+            /**
+             * Resource Id.
+             */
+            id: string;
+            jwtClaimChecks?: outputs.web.latest.JwtClaimChecksResponse;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.latest.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
         }
 
         /**
@@ -484648,6 +484802,30 @@ export namespace web {
             startTime?: string;
         }
 
+        export interface BlobStorageTokenStoreResponse {
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            sasUrlSettingName?: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.latest.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
         /**
          * Describes the capabilities/features allowed for a specific SKU.
          */
@@ -484664,6 +484842,31 @@ export namespace web {
              * Value of the SKU capability.
              */
             value?: string;
+        }
+
+        export interface ClientRegistrationResponse {
+            clientId?: string;
+            clientSecretSettingName?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.latest.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
         }
 
         /**
@@ -484898,6 +485101,31 @@ export namespace web {
             status?: string;
         }
 
+        export interface CookieExpirationResponse {
+            convention?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.latest.SystemDataResponse;
+            timeToExpiration?: string;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
         /**
          * Cross-Origin Resource Sharing (CORS) settings for the app.
          */
@@ -484969,6 +485197,32 @@ export namespace web {
             wsdlDefinition?: outputs.web.latest.WsdlDefinitionResponse;
         }
 
+        export interface CustomOpenIdConnectProviderResponse {
+            enabled?: boolean;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            login?: outputs.web.latest.OpenIdConnectLoginResponse;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            registration?: outputs.web.latest.OpenIdConnectRegistrationResponse;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.latest.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
         /**
          * Database backup settings.
          */
@@ -485009,6 +485263,33 @@ export namespace web {
             rampUpRules?: outputs.web.latest.RampUpRuleResponse[];
         }
 
+        export interface FacebookResponse {
+            enabled?: boolean;
+            graphApiVersion?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            login?: outputs.web.latest.LoginScopesResponse;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            registration?: outputs.web.latest.AppRegistrationResponse;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.latest.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
         /**
          * Application logs to file system configuration.
          */
@@ -485039,6 +485320,136 @@ export namespace web {
              * Value can range between 25 and 100.
              */
             retentionInMb?: number;
+        }
+
+        export interface FileSystemTokenStoreResponse {
+            directory?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.latest.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface ForwardProxyResponse {
+            convention?: string;
+            customHostHeaderName?: string;
+            customProtoHeaderName?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.latest.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface GitHubResponse {
+            enabled?: boolean;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            login?: outputs.web.latest.LoginScopesResponse;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            registration?: outputs.web.latest.ClientRegistrationResponse;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.latest.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface GlobalValidationResponse {
+            excludedPaths?: string[];
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            redirectToProvider?: string;
+            requireAuthentication?: boolean;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.latest.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+            unauthenticatedClientAction?: string;
+        }
+
+        export interface GoogleResponse {
+            enabled?: boolean;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            login?: outputs.web.latest.LoginScopesResponse;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            registration?: outputs.web.latest.ClientRegistrationResponse;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.latest.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+            validation?: outputs.web.latest.AllowedAudiencesValidationResponse;
         }
 
         /**
@@ -485122,6 +485533,56 @@ export namespace web {
             fileSystem?: outputs.web.latest.FileSystemHttpLogsConfigResponse;
         }
 
+        export interface HttpSettingsResponse {
+            forwardProxy?: outputs.web.latest.ForwardProxyResponse;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            requireHttps?: boolean;
+            routes?: outputs.web.latest.HttpSettingsRoutesResponse;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.latest.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface HttpSettingsRoutesResponse {
+            apiPrefix?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.latest.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
         /**
          * A domain specific resource identifier.
          */
@@ -485150,6 +485611,35 @@ export namespace web {
              * String representation of the identity.
              */
             value?: string;
+        }
+
+        export interface IdentityProvidersResponse {
+            azureActiveDirectory?: outputs.web.latest.AzureActiveDirectoryResponse;
+            customOpenIdConnectProviders?: {[key: string]: outputs.web.latest.CustomOpenIdConnectProviderResponse};
+            facebook?: outputs.web.latest.FacebookResponse;
+            gitHub?: outputs.web.latest.GitHubResponse;
+            google?: outputs.web.latest.GoogleResponse;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.latest.SystemDataResponse;
+            twitter?: outputs.web.latest.TwitterResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
         }
 
         /**
@@ -485220,6 +485710,108 @@ export namespace web {
             vnetTrafficTag?: number;
         }
 
+        export interface JwtClaimChecksResponse {
+            allowedClientApplications?: string[];
+            allowedGroups?: string[];
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.latest.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface LoginResponse {
+            allowedExternalRedirectUrls?: string[];
+            cookieExpiration?: outputs.web.latest.CookieExpirationResponse;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            nonce?: outputs.web.latest.NonceResponse;
+            preserveUrlFragmentsForLogins?: boolean;
+            routes?: outputs.web.latest.LoginRoutesResponse;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.latest.SystemDataResponse;
+            tokenStore?: outputs.web.latest.TokenStoreResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface LoginRoutesResponse {
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            logoutEndpoint?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.latest.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface LoginScopesResponse {
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            scopes?: string[];
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.latest.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
         /**
          * Managed service identity.
          */
@@ -485272,6 +485864,135 @@ export namespace web {
             description?: string;
             order?: number;
             remoteSubnet?: string;
+        }
+
+        export interface NonceResponse {
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            nonceExpirationInterval?: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.latest.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+            validateNonce?: boolean;
+        }
+
+        export interface OpenIdConnectClientCredentialResponse {
+            clientSecretSettingName?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            method?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.latest.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface OpenIdConnectConfigResponse {
+            authorizationEndpoint?: string;
+            certificationUri?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            issuer?: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.latest.SystemDataResponse;
+            tokenEndpoint?: string;
+            /**
+             * Resource type.
+             */
+            type: string;
+            wellKnownOpenIdConfiguration?: string;
+        }
+
+        export interface OpenIdConnectLoginResponse {
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            nameClaimType?: string;
+            scopes?: string[];
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.latest.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface OpenIdConnectRegistrationResponse {
+            clientCredential?: outputs.web.latest.OpenIdConnectClientCredentialResponse;
+            clientId?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            openIdConnectConfiguration?: outputs.web.latest.OpenIdConnectConfigResponse;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.latest.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
         }
 
         /**
@@ -485931,6 +486652,83 @@ export namespace web {
              * The type of identity that last modified the resource.
              */
             lastModifiedByType?: string;
+        }
+
+        export interface TokenStoreResponse {
+            azureBlobStorage?: outputs.web.latest.BlobStorageTokenStoreResponse;
+            enabled?: boolean;
+            fileSystem?: outputs.web.latest.FileSystemTokenStoreResponse;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.latest.SystemDataResponse;
+            tokenRefreshExtensionHours?: number;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface TwitterRegistrationResponse {
+            consumerKey?: string;
+            consumerSecretSettingName?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.latest.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface TwitterResponse {
+            enabled?: boolean;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            registration?: outputs.web.latest.TwitterRegistrationResponse;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.latest.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
         }
 
         /**
@@ -493343,6 +494141,26 @@ export namespace web {
     }
 
     export namespace v20200601 {
+        export interface AllowedAudiencesValidationResponse {
+            allowedAudiences?: string[];
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
         /**
          * Information about the formal API definition for the app.
          */
@@ -493361,6 +494179,27 @@ export namespace web {
              * APIM-Api Identifier.
              */
             id?: string;
+        }
+
+        export interface AppRegistrationResponse {
+            appId?: string;
+            appSecretSettingName?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * Resource type.
+             */
+            type: string;
         }
 
         /**
@@ -493386,6 +494225,28 @@ export namespace web {
          */
         export interface ArmIdWrapperResponse {
             id: string;
+        }
+
+        export interface AuthPlatformResponse {
+            configFilePath?: string;
+            enabled?: boolean;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            runtimeVersion?: string;
+            /**
+             * Resource type.
+             */
+            type: string;
         }
 
         /**
@@ -493456,6 +494317,95 @@ export namespace web {
              * A rule based on status codes.
              */
             statusCodes?: outputs.web.v20200601.StatusCodesBasedTriggerResponse[];
+        }
+
+        export interface AzureActiveDirectoryLoginResponse {
+            disableWWWAuthenticate?: boolean;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            loginParameters?: string[];
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface AzureActiveDirectoryRegistrationResponse {
+            clientId?: string;
+            clientSecretCertificateThumbprint?: string;
+            clientSecretSettingName?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            openIdIssuer?: string;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface AzureActiveDirectoryResponse {
+            enabled?: boolean;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            isAutoProvisioned?: boolean;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            login?: outputs.web.v20200601.AzureActiveDirectoryLoginResponse;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            registration?: outputs.web.v20200601.AzureActiveDirectoryRegistrationResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+            validation?: outputs.web.v20200601.AzureActiveDirectoryValidationResponse;
+        }
+
+        export interface AzureActiveDirectoryValidationResponse {
+            allowedAudiences?: string[];
+            /**
+             * Resource Id.
+             */
+            id: string;
+            jwtClaimChecks?: outputs.web.v20200601.JwtClaimChecksResponse;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * Resource type.
+             */
+            type: string;
         }
 
         /**
@@ -493646,6 +494596,26 @@ export namespace web {
             startTime?: string;
         }
 
+        export interface BlobStorageTokenStoreResponse {
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            sasUrlSettingName?: string;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
         /**
          * Describes the capabilities/features allowed for a specific SKU.
          */
@@ -493662,6 +494632,27 @@ export namespace web {
              * Value of the SKU capability.
              */
             value?: string;
+        }
+
+        export interface ClientRegistrationResponse {
+            clientId?: string;
+            clientSecretSettingName?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * Resource type.
+             */
+            type: string;
         }
 
         /**
@@ -493751,6 +494742,27 @@ export namespace web {
             value: string;
         }
 
+        export interface CookieExpirationResponse {
+            convention?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            timeToExpiration?: string;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
         /**
          * Cross-Origin Resource Sharing (CORS) settings for the app.
          */
@@ -493766,6 +494778,28 @@ export namespace web {
              * for more details.
              */
             supportCredentials?: boolean;
+        }
+
+        export interface CustomOpenIdConnectProviderResponse {
+            enabled?: boolean;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            login?: outputs.web.v20200601.OpenIdConnectLoginResponse;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            registration?: outputs.web.v20200601.OpenIdConnectRegistrationResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
         }
 
         /**
@@ -493808,6 +494842,29 @@ export namespace web {
             rampUpRules?: outputs.web.v20200601.RampUpRuleResponse[];
         }
 
+        export interface FacebookResponse {
+            enabled?: boolean;
+            graphApiVersion?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            login?: outputs.web.v20200601.LoginScopesResponse;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            registration?: outputs.web.v20200601.AppRegistrationResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
         /**
          * Application logs to file system configuration.
          */
@@ -493838,6 +494895,116 @@ export namespace web {
              * Value can range between 25 and 100.
              */
             retentionInMb?: number;
+        }
+
+        export interface FileSystemTokenStoreResponse {
+            directory?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface ForwardProxyResponse {
+            convention?: string;
+            customHostHeaderName?: string;
+            customProtoHeaderName?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface GitHubResponse {
+            enabled?: boolean;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            login?: outputs.web.v20200601.LoginScopesResponse;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            registration?: outputs.web.v20200601.ClientRegistrationResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface GlobalValidationResponse {
+            excludedPaths?: string[];
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            redirectToProvider?: string;
+            requireAuthentication?: boolean;
+            /**
+             * Resource type.
+             */
+            type: string;
+            unauthenticatedClientAction?: string;
+        }
+
+        export interface GoogleResponse {
+            enabled?: boolean;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            login?: outputs.web.v20200601.LoginScopesResponse;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            registration?: outputs.web.v20200601.ClientRegistrationResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+            validation?: outputs.web.v20200601.AllowedAudiencesValidationResponse;
         }
 
         /**
@@ -493921,6 +495088,48 @@ export namespace web {
             fileSystem?: outputs.web.v20200601.FileSystemHttpLogsConfigResponse;
         }
 
+        export interface HttpSettingsResponse {
+            forwardProxy?: outputs.web.v20200601.ForwardProxyResponse;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            requireHttps?: boolean;
+            routes?: outputs.web.v20200601.HttpSettingsRoutesResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface HttpSettingsRoutesResponse {
+            apiPrefix?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
         /**
          * A domain specific resource identifier.
          */
@@ -493945,6 +495154,31 @@ export namespace web {
              * String representation of the identity.
              */
             value?: string;
+        }
+
+        export interface IdentityProvidersResponse {
+            azureActiveDirectory?: outputs.web.v20200601.AzureActiveDirectoryResponse;
+            customOpenIdConnectProviders?: {[key: string]: outputs.web.v20200601.CustomOpenIdConnectProviderResponse};
+            facebook?: outputs.web.v20200601.FacebookResponse;
+            gitHub?: outputs.web.v20200601.GitHubResponse;
+            google?: outputs.web.v20200601.GoogleResponse;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            twitter?: outputs.web.v20200601.TwitterResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
         }
 
         /**
@@ -494015,6 +495249,92 @@ export namespace web {
             vnetTrafficTag?: number;
         }
 
+        export interface JwtClaimChecksResponse {
+            allowedClientApplications?: string[];
+            allowedGroups?: string[];
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface LoginResponse {
+            allowedExternalRedirectUrls?: string[];
+            cookieExpiration?: outputs.web.v20200601.CookieExpirationResponse;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            nonce?: outputs.web.v20200601.NonceResponse;
+            preserveUrlFragmentsForLogins?: boolean;
+            routes?: outputs.web.v20200601.LoginRoutesResponse;
+            tokenStore?: outputs.web.v20200601.TokenStoreResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface LoginRoutesResponse {
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            logoutEndpoint?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface LoginScopesResponse {
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            scopes?: string[];
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
         /**
          * Managed service identity.
          */
@@ -494082,6 +495402,115 @@ export namespace web {
              * Remote subnet.
              */
             remoteSubnet?: string;
+        }
+
+        export interface NonceResponse {
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            nonceExpirationInterval?: string;
+            /**
+             * Resource type.
+             */
+            type: string;
+            validateNonce?: boolean;
+        }
+
+        export interface OpenIdConnectClientCredentialResponse {
+            clientSecretSettingName?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            method?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface OpenIdConnectConfigResponse {
+            authorizationEndpoint?: string;
+            certificationUri?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            issuer?: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            tokenEndpoint?: string;
+            /**
+             * Resource type.
+             */
+            type: string;
+            wellKnownOpenIdConfiguration?: string;
+        }
+
+        export interface OpenIdConnectLoginResponse {
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            nameClaimType?: string;
+            scopes?: string[];
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface OpenIdConnectRegistrationResponse {
+            clientCredential?: outputs.web.v20200601.OpenIdConnectClientCredentialResponse;
+            clientId?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            openIdConnectConfiguration?: outputs.web.v20200601.OpenIdConnectConfigResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
         }
 
         /**
@@ -494709,6 +496138,71 @@ export namespace web {
             win32Status?: number;
         }
 
+        export interface TokenStoreResponse {
+            azureBlobStorage?: outputs.web.v20200601.BlobStorageTokenStoreResponse;
+            enabled?: boolean;
+            fileSystem?: outputs.web.v20200601.FileSystemTokenStoreResponse;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            tokenRefreshExtensionHours?: number;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface TwitterRegistrationResponse {
+            consumerKey?: string;
+            consumerSecretSettingName?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface TwitterResponse {
+            enabled?: boolean;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            registration?: outputs.web.v20200601.TwitterRegistrationResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
         /**
          * Virtual application in an app.
          */
@@ -494860,6 +496354,30 @@ export namespace web {
     }
 
     export namespace v20200901 {
+        export interface AllowedAudiencesValidationResponse {
+            allowedAudiences?: string[];
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20200901.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
         /**
          * Information about the formal API definition for the app.
          */
@@ -494878,6 +496396,31 @@ export namespace web {
              * APIM-Api Identifier.
              */
             id?: string;
+        }
+
+        export interface AppRegistrationResponse {
+            appId?: string;
+            appSecretSettingName?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20200901.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
         }
 
         /**
@@ -494903,6 +496446,32 @@ export namespace web {
          */
         export interface ArmIdWrapperResponse {
             id: string;
+        }
+
+        export interface AuthPlatformResponse {
+            configFilePath?: string;
+            enabled?: boolean;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            runtimeVersion?: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20200901.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
         }
 
         /**
@@ -494973,6 +496542,111 @@ export namespace web {
              * A rule based on status codes.
              */
             statusCodes?: outputs.web.v20200901.StatusCodesBasedTriggerResponse[];
+        }
+
+        export interface AzureActiveDirectoryLoginResponse {
+            disableWWWAuthenticate?: boolean;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            loginParameters?: string[];
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20200901.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface AzureActiveDirectoryRegistrationResponse {
+            clientId?: string;
+            clientSecretCertificateThumbprint?: string;
+            clientSecretSettingName?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            openIdIssuer?: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20200901.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface AzureActiveDirectoryResponse {
+            enabled?: boolean;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            isAutoProvisioned?: boolean;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            login?: outputs.web.v20200901.AzureActiveDirectoryLoginResponse;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            registration?: outputs.web.v20200901.AzureActiveDirectoryRegistrationResponse;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20200901.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+            validation?: outputs.web.v20200901.AzureActiveDirectoryValidationResponse;
+        }
+
+        export interface AzureActiveDirectoryValidationResponse {
+            allowedAudiences?: string[];
+            /**
+             * Resource Id.
+             */
+            id: string;
+            jwtClaimChecks?: outputs.web.v20200901.JwtClaimChecksResponse;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20200901.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
         }
 
         /**
@@ -495167,6 +496841,30 @@ export namespace web {
             startTime?: string;
         }
 
+        export interface BlobStorageTokenStoreResponse {
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            sasUrlSettingName?: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20200901.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
         /**
          * Describes the capabilities/features allowed for a specific SKU.
          */
@@ -495183,6 +496881,31 @@ export namespace web {
              * Value of the SKU capability.
              */
             value?: string;
+        }
+
+        export interface ClientRegistrationResponse {
+            clientId?: string;
+            clientSecretSettingName?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20200901.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
         }
 
         /**
@@ -495272,6 +496995,31 @@ export namespace web {
             value: string;
         }
 
+        export interface CookieExpirationResponse {
+            convention?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20200901.SystemDataResponse;
+            timeToExpiration?: string;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
         /**
          * Cross-Origin Resource Sharing (CORS) settings for the app.
          */
@@ -495287,6 +497035,32 @@ export namespace web {
              * for more details.
              */
             supportCredentials?: boolean;
+        }
+
+        export interface CustomOpenIdConnectProviderResponse {
+            enabled?: boolean;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            login?: outputs.web.v20200901.OpenIdConnectLoginResponse;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            registration?: outputs.web.v20200901.OpenIdConnectRegistrationResponse;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20200901.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
         }
 
         /**
@@ -495329,6 +497103,33 @@ export namespace web {
             rampUpRules?: outputs.web.v20200901.RampUpRuleResponse[];
         }
 
+        export interface FacebookResponse {
+            enabled?: boolean;
+            graphApiVersion?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            login?: outputs.web.v20200901.LoginScopesResponse;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            registration?: outputs.web.v20200901.AppRegistrationResponse;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20200901.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
         /**
          * Application logs to file system configuration.
          */
@@ -495359,6 +497160,136 @@ export namespace web {
              * Value can range between 25 and 100.
              */
             retentionInMb?: number;
+        }
+
+        export interface FileSystemTokenStoreResponse {
+            directory?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20200901.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface ForwardProxyResponse {
+            convention?: string;
+            customHostHeaderName?: string;
+            customProtoHeaderName?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20200901.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface GitHubResponse {
+            enabled?: boolean;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            login?: outputs.web.v20200901.LoginScopesResponse;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            registration?: outputs.web.v20200901.ClientRegistrationResponse;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20200901.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface GlobalValidationResponse {
+            excludedPaths?: string[];
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            redirectToProvider?: string;
+            requireAuthentication?: boolean;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20200901.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+            unauthenticatedClientAction?: string;
+        }
+
+        export interface GoogleResponse {
+            enabled?: boolean;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            login?: outputs.web.v20200901.LoginScopesResponse;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            registration?: outputs.web.v20200901.ClientRegistrationResponse;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20200901.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+            validation?: outputs.web.v20200901.AllowedAudiencesValidationResponse;
         }
 
         /**
@@ -495442,6 +497373,56 @@ export namespace web {
             fileSystem?: outputs.web.v20200901.FileSystemHttpLogsConfigResponse;
         }
 
+        export interface HttpSettingsResponse {
+            forwardProxy?: outputs.web.v20200901.ForwardProxyResponse;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            requireHttps?: boolean;
+            routes?: outputs.web.v20200901.HttpSettingsRoutesResponse;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20200901.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface HttpSettingsRoutesResponse {
+            apiPrefix?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20200901.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
         /**
          * A domain specific resource identifier.
          */
@@ -495470,6 +497451,35 @@ export namespace web {
              * String representation of the identity.
              */
             value?: string;
+        }
+
+        export interface IdentityProvidersResponse {
+            azureActiveDirectory?: outputs.web.v20200901.AzureActiveDirectoryResponse;
+            customOpenIdConnectProviders?: {[key: string]: outputs.web.v20200901.CustomOpenIdConnectProviderResponse};
+            facebook?: outputs.web.v20200901.FacebookResponse;
+            gitHub?: outputs.web.v20200901.GitHubResponse;
+            google?: outputs.web.v20200901.GoogleResponse;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20200901.SystemDataResponse;
+            twitter?: outputs.web.v20200901.TwitterResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
         }
 
         /**
@@ -495540,6 +497550,108 @@ export namespace web {
             vnetTrafficTag?: number;
         }
 
+        export interface JwtClaimChecksResponse {
+            allowedClientApplications?: string[];
+            allowedGroups?: string[];
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20200901.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface LoginResponse {
+            allowedExternalRedirectUrls?: string[];
+            cookieExpiration?: outputs.web.v20200901.CookieExpirationResponse;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            nonce?: outputs.web.v20200901.NonceResponse;
+            preserveUrlFragmentsForLogins?: boolean;
+            routes?: outputs.web.v20200901.LoginRoutesResponse;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20200901.SystemDataResponse;
+            tokenStore?: outputs.web.v20200901.TokenStoreResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface LoginRoutesResponse {
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            logoutEndpoint?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20200901.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface LoginScopesResponse {
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            scopes?: string[];
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20200901.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
         /**
          * Managed service identity.
          */
@@ -495607,6 +497719,135 @@ export namespace web {
              * Remote subnet.
              */
             remoteSubnet?: string;
+        }
+
+        export interface NonceResponse {
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            nonceExpirationInterval?: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20200901.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+            validateNonce?: boolean;
+        }
+
+        export interface OpenIdConnectClientCredentialResponse {
+            clientSecretSettingName?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            method?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20200901.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface OpenIdConnectConfigResponse {
+            authorizationEndpoint?: string;
+            certificationUri?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            issuer?: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20200901.SystemDataResponse;
+            tokenEndpoint?: string;
+            /**
+             * Resource type.
+             */
+            type: string;
+            wellKnownOpenIdConfiguration?: string;
+        }
+
+        export interface OpenIdConnectLoginResponse {
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            nameClaimType?: string;
+            scopes?: string[];
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20200901.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface OpenIdConnectRegistrationResponse {
+            clientCredential?: outputs.web.v20200901.OpenIdConnectClientCredentialResponse;
+            clientId?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            openIdConnectConfiguration?: outputs.web.v20200901.OpenIdConnectConfigResponse;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20200901.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
         }
 
         /**
@@ -496270,6 +498511,83 @@ export namespace web {
              * The type of identity that last modified the resource.
              */
             lastModifiedByType?: string;
+        }
+
+        export interface TokenStoreResponse {
+            azureBlobStorage?: outputs.web.v20200901.BlobStorageTokenStoreResponse;
+            enabled?: boolean;
+            fileSystem?: outputs.web.v20200901.FileSystemTokenStoreResponse;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20200901.SystemDataResponse;
+            tokenRefreshExtensionHours?: number;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface TwitterRegistrationResponse {
+            consumerKey?: string;
+            consumerSecretSettingName?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20200901.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface TwitterResponse {
+            enabled?: boolean;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            registration?: outputs.web.v20200901.TwitterRegistrationResponse;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20200901.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
         }
 
         /**
