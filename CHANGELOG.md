@@ -79,6 +79,8 @@ Moved from `OperationalInsights` to `SecurityInsights`:
 
 #### New resources
 
+- `Sql.DatabaseSecurityAlertPolicy` ([#257](https://github.com/pulumi/pulumi-azure-nextgen/issues/257))
+- `Storage.StorageAccountStaticWebsite` ([#86](https://github.com/pulumi/pulumi-azure-nextgen/issues/86))
 - `Web.WebAppAuthSettings`
 - `Web.WebAppAuthSettingsSlot`
 - `Web.WebAppAuthSettingsV2` ([#34](https://github.com/pulumi/pulumi-azure-nextgen/issues/34))
