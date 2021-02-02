@@ -3,6 +3,12 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
+None
+
+---
+
+## 0.6.0 (2020-02-02)
+
 #### Breaking changes in SDKs
 
 Limit the `latest` version to published versions of APIs ([#191](https://github.com/pulumi/pulumi-azure-nextgen/issues/191))
@@ -107,8 +113,6 @@ Moved from `OperationalInsights` to `SecurityInsights`:
 - `ServiceBus.listTopicKeys` ([#248](https://github.com/pulumi/pulumi-azure-nextgen/issues/248))
 - `Storage.listStorageAccountSAS`
 - `Storage.listStorageAccountServiceSAS`
-
----
 
 ## 0.5.1 (2021-01-26)
 
