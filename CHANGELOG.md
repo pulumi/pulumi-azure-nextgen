@@ -112,7 +112,7 @@ Moved from `OperationalInsights` to `SecurityInsights`:
 - `ServiceBus.listQueueKeys`
 - `ServiceBus.listTopicKeys` ([#248](https://github.com/pulumi/pulumi-azure-nextgen/issues/248))
 - `Storage.listStorageAccountSAS`
-- `Storage.listStorageAccountServiceSAS`
+- `Storage.listStorageAccountServiceSAS` ([#201](https://github.com/pulumi/pulumi-azure-nextgen/issues/201))
 
 ## 0.5.1 (2021-01-26)
 
