@@ -3,7 +3,7 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
-None
+- New resource: `Storage.Blob` ([#13](https://github.com/pulumi/pulumi-azure-nextgen/issues/13))
 
 ---
 
