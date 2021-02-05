@@ -6,6 +6,7 @@ from enum import Enum
 
 __all__ = [
     'EndpointType',
+    'KeySource',
     'QosType',
     'ReplicationSchedule',
     'SecurityStyle',
@@ -19,6 +20,13 @@ class EndpointType(str, Enum):
     """
     SRC = "src"
     DST = "dst"
+
+
+class KeySource(str, Enum):
+    """
+    Encryption Key Source. Possible values are: 'Microsoft.NetApp'.
+    """
+    MICROSOFT_NET_APP = "Microsoft.NetApp"
 
 
 class QosType(str, Enum):
@@ -40,7 +48,7 @@ class ReplicationSchedule(str, Enum):
 
 class SecurityStyle(str, Enum):
     """
-    The security style of volume
+    The security style of volume, default unix, defaults to ntfs for dual protocol or CIFS protocol
     """
     NTFS = "ntfs"
     UNIX = "unix"

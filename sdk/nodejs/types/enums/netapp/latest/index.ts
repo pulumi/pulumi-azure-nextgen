@@ -12,6 +12,18 @@ export const EndpointType = {
  */
 export type EndpointType = (typeof EndpointType)[keyof typeof EndpointType];
 
+export const KeySource = {
+    /**
+     * The service manages the keys.
+     */
+    Microsoft_NetApp: "Microsoft.NetApp",
+} as const;
+
+/**
+ * Encryption Key Source. Possible values are: 'Microsoft.NetApp'.
+ */
+export type KeySource = (typeof KeySource)[keyof typeof KeySource];
+
 export const QosType = {
     /**
      * qos type Auto
@@ -45,7 +57,7 @@ export const SecurityStyle = {
 } as const;
 
 /**
- * The security style of volume
+ * The security style of volume, default unix, defaults to ntfs for dual protocol or CIFS protocol
  */
 export type SecurityStyle = (typeof SecurityStyle)[keyof typeof SecurityStyle];
 

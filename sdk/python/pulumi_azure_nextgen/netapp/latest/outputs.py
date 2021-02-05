@@ -11,6 +11,7 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'AccountEncryptionResponse',
     'ActiveDirectoryResponse',
     'DailyScheduleResponse',
     'ExportPolicyRuleResponse',
@@ -18,6 +19,7 @@ __all__ = [
     'MonthlyScheduleResponse',
     'MountTargetPropertiesResponse',
     'ReplicationObjectResponse',
+    'SystemDataResponse',
     'VolumeBackupPropertiesResponse',
     'VolumeBackupsResponse',
     'VolumePropertiesResponseDataProtection',
@@ -25,6 +27,32 @@ __all__ = [
     'VolumeSnapshotPropertiesResponse',
     'WeeklyScheduleResponse',
 ]
+
+@pulumi.output_type
+class AccountEncryptionResponse(dict):
+    """
+    Encryption settings
+    """
+    def __init__(__self__, *,
+                 key_source: Optional[str] = None):
+        """
+        Encryption settings
+        :param str key_source: Encryption Key Source. Possible values are: 'Microsoft.NetApp'.
+        """
+        if key_source is not None:
+            pulumi.set(__self__, "key_source", key_source)
+
+    @property
+    @pulumi.getter(name="keySource")
+    def key_source(self) -> Optional[str]:
+        """
+        Encryption Key Source. Possible values are: 'Microsoft.NetApp'.
+        """
+        return pulumi.get(self, "key_source")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
 
 @pulumi.output_type
 class ActiveDirectoryResponse(dict):
@@ -41,6 +69,7 @@ class ActiveDirectoryResponse(dict):
                  dns: Optional[str] = None,
                  domain: Optional[str] = None,
                  kdc_ip: Optional[str] = None,
+                 ldap_over_tls: Optional[bool] = None,
                  ldap_signing: Optional[bool] = None,
                  organizational_unit: Optional[str] = None,
                  password: Optional[str] = None,
@@ -60,6 +89,7 @@ class ActiveDirectoryResponse(dict):
         :param str dns: Comma separated list of DNS server IP addresses (IPv4 only) for the Active Directory domain
         :param str domain: Name of the Active Directory domain
         :param str kdc_ip: kdc server IP addresses for the active directory machine. This optional parameter is used only while creating kerberos volume.
+        :param bool ldap_over_tls: Specifies whether or not the LDAP traffic needs to be secured via TLS.
         :param bool ldap_signing: Specifies whether or not the LDAP traffic needs to be signed.
         :param str organizational_unit: The Organizational Unit (OU) within the Windows Active Directory
         :param str password: Plain text password of Active Directory domain administrator, value is masked in the response
@@ -85,8 +115,12 @@ class ActiveDirectoryResponse(dict):
             pulumi.set(__self__, "domain", domain)
         if kdc_ip is not None:
             pulumi.set(__self__, "kdc_ip", kdc_ip)
+        if ldap_over_tls is not None:
+            pulumi.set(__self__, "ldap_over_tls", ldap_over_tls)
         if ldap_signing is not None:
             pulumi.set(__self__, "ldap_signing", ldap_signing)
+        if organizational_unit is None:
+            organizational_unit = 'CN=Computers'
         if organizational_unit is not None:
             pulumi.set(__self__, "organizational_unit", organizational_unit)
         if password is not None:
@@ -173,6 +207,14 @@ class ActiveDirectoryResponse(dict):
         kdc server IP addresses for the active directory machine. This optional parameter is used only while creating kerberos volume.
         """
         return pulumi.get(self, "kdc_ip")
+
+    @property
+    @pulumi.getter(name="ldapOverTLS")
+    def ldap_over_tls(self) -> Optional[bool]:
+        """
+        Specifies whether or not the LDAP traffic needs to be secured via TLS.
+        """
+        return pulumi.get(self, "ldap_over_tls")
 
     @property
     @pulumi.getter(name="ldapSigning")
@@ -750,6 +792,92 @@ class ReplicationObjectResponse(dict):
         Id
         """
         return pulumi.get(self, "replication_id")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class SystemDataResponse(dict):
+    """
+    Metadata pertaining to creation and last modification of the resource.
+    """
+    def __init__(__self__, *,
+                 created_at: Optional[str] = None,
+                 created_by: Optional[str] = None,
+                 created_by_type: Optional[str] = None,
+                 last_modified_at: Optional[str] = None,
+                 last_modified_by: Optional[str] = None,
+                 last_modified_by_type: Optional[str] = None):
+        """
+        Metadata pertaining to creation and last modification of the resource.
+        :param str created_at: The timestamp of resource creation (UTC).
+        :param str created_by: The identity that created the resource.
+        :param str created_by_type: The type of identity that created the resource.
+        :param str last_modified_at: The type of identity that last modified the resource.
+        :param str last_modified_by: The identity that last modified the resource.
+        :param str last_modified_by_type: The type of identity that last modified the resource.
+        """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if created_by_type is not None:
+            pulumi.set(__self__, "created_by_type", created_by_type)
+        if last_modified_at is not None:
+            pulumi.set(__self__, "last_modified_at", last_modified_at)
+        if last_modified_by is not None:
+            pulumi.set(__self__, "last_modified_by", last_modified_by)
+        if last_modified_by_type is not None:
+            pulumi.set(__self__, "last_modified_by_type", last_modified_by_type)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[str]:
+        """
+        The timestamp of resource creation (UTC).
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[str]:
+        """
+        The identity that created the resource.
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="createdByType")
+    def created_by_type(self) -> Optional[str]:
+        """
+        The type of identity that created the resource.
+        """
+        return pulumi.get(self, "created_by_type")
+
+    @property
+    @pulumi.getter(name="lastModifiedAt")
+    def last_modified_at(self) -> Optional[str]:
+        """
+        The type of identity that last modified the resource.
+        """
+        return pulumi.get(self, "last_modified_at")
+
+    @property
+    @pulumi.getter(name="lastModifiedBy")
+    def last_modified_by(self) -> Optional[str]:
+        """
+        The identity that last modified the resource.
+        """
+        return pulumi.get(self, "last_modified_by")
+
+    @property
+    @pulumi.getter(name="lastModifiedByType")
+    def last_modified_by_type(self) -> Optional[str]:
+        """
+        The type of identity that last modified the resource.
+        """
+        return pulumi.get(self, "last_modified_by_type")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -10,12 +10,12 @@ from ... import _utilities, _tables
 from ._enums import *
 
 __all__ = [
+    'AccountEncryptionArgs',
     'ActiveDirectoryArgs',
     'DailyScheduleArgs',
     'ExportPolicyRuleArgs',
     'HourlyScheduleArgs',
     'MonthlyScheduleArgs',
-    'MountTargetPropertiesArgs',
     'ReplicationObjectArgs',
     'VolumeBackupPropertiesArgs',
     'VolumeBackupsArgs',
@@ -24,6 +24,30 @@ __all__ = [
     'VolumeSnapshotPropertiesArgs',
     'WeeklyScheduleArgs',
 ]
+
+@pulumi.input_type
+class AccountEncryptionArgs:
+    def __init__(__self__, *,
+                 key_source: Optional[pulumi.Input[Union[str, 'KeySource']]] = None):
+        """
+        Encryption settings
+        :param pulumi.Input[Union[str, 'KeySource']] key_source: Encryption Key Source. Possible values are: 'Microsoft.NetApp'.
+        """
+        if key_source is not None:
+            pulumi.set(__self__, "key_source", key_source)
+
+    @property
+    @pulumi.getter(name="keySource")
+    def key_source(self) -> Optional[pulumi.Input[Union[str, 'KeySource']]]:
+        """
+        Encryption Key Source. Possible values are: 'Microsoft.NetApp'.
+        """
+        return pulumi.get(self, "key_source")
+
+    @key_source.setter
+    def key_source(self, value: Optional[pulumi.Input[Union[str, 'KeySource']]]):
+        pulumi.set(self, "key_source", value)
+
 
 @pulumi.input_type
 class ActiveDirectoryArgs:
@@ -35,6 +59,7 @@ class ActiveDirectoryArgs:
                  dns: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  kdc_ip: Optional[pulumi.Input[str]] = None,
+                 ldap_over_tls: Optional[pulumi.Input[bool]] = None,
                  ldap_signing: Optional[pulumi.Input[bool]] = None,
                  organizational_unit: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
@@ -52,6 +77,7 @@ class ActiveDirectoryArgs:
         :param pulumi.Input[str] dns: Comma separated list of DNS server IP addresses (IPv4 only) for the Active Directory domain
         :param pulumi.Input[str] domain: Name of the Active Directory domain
         :param pulumi.Input[str] kdc_ip: kdc server IP addresses for the active directory machine. This optional parameter is used only while creating kerberos volume.
+        :param pulumi.Input[bool] ldap_over_tls: Specifies whether or not the LDAP traffic needs to be secured via TLS.
         :param pulumi.Input[bool] ldap_signing: Specifies whether or not the LDAP traffic needs to be signed.
         :param pulumi.Input[str] organizational_unit: The Organizational Unit (OU) within the Windows Active Directory
         :param pulumi.Input[str] password: Plain text password of Active Directory domain administrator, value is masked in the response
@@ -75,8 +101,12 @@ class ActiveDirectoryArgs:
             pulumi.set(__self__, "domain", domain)
         if kdc_ip is not None:
             pulumi.set(__self__, "kdc_ip", kdc_ip)
+        if ldap_over_tls is not None:
+            pulumi.set(__self__, "ldap_over_tls", ldap_over_tls)
         if ldap_signing is not None:
             pulumi.set(__self__, "ldap_signing", ldap_signing)
+        if organizational_unit is None:
+            organizational_unit = 'CN=Computers'
         if organizational_unit is not None:
             pulumi.set(__self__, "organizational_unit", organizational_unit)
         if password is not None:
@@ -175,6 +205,18 @@ class ActiveDirectoryArgs:
     @kdc_ip.setter
     def kdc_ip(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "kdc_ip", value)
+
+    @property
+    @pulumi.getter(name="ldapOverTLS")
+    def ldap_over_tls(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether or not the LDAP traffic needs to be secured via TLS.
+        """
+        return pulumi.get(self, "ldap_over_tls")
+
+    @ldap_over_tls.setter
+    def ldap_over_tls(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ldap_over_tls", value)
 
     @property
     @pulumi.getter(name="ldapSigning")
@@ -733,45 +775,6 @@ class MonthlyScheduleArgs:
     @used_bytes.setter
     def used_bytes(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "used_bytes", value)
-
-
-@pulumi.input_type
-class MountTargetPropertiesArgs:
-    def __init__(__self__, *,
-                 file_system_id: pulumi.Input[str],
-                 smb_server_fqdn: Optional[pulumi.Input[str]] = None):
-        """
-        Mount target properties
-        :param pulumi.Input[str] file_system_id: UUID v4 used to identify the MountTarget
-        :param pulumi.Input[str] smb_server_fqdn: The SMB server's Fully Qualified Domain Name, FQDN
-        """
-        pulumi.set(__self__, "file_system_id", file_system_id)
-        if smb_server_fqdn is not None:
-            pulumi.set(__self__, "smb_server_fqdn", smb_server_fqdn)
-
-    @property
-    @pulumi.getter(name="fileSystemId")
-    def file_system_id(self) -> pulumi.Input[str]:
-        """
-        UUID v4 used to identify the MountTarget
-        """
-        return pulumi.get(self, "file_system_id")
-
-    @file_system_id.setter
-    def file_system_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "file_system_id", value)
-
-    @property
-    @pulumi.getter(name="smbServerFqdn")
-    def smb_server_fqdn(self) -> Optional[pulumi.Input[str]]:
-        """
-        The SMB server's Fully Qualified Domain Name, FQDN
-        """
-        return pulumi.get(self, "smb_server_fqdn")
-
-    @smb_server_fqdn.setter
-    def smb_server_fqdn(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "smb_server_fqdn", value)
 
 
 @pulumi.input_type

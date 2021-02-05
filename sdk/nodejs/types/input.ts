@@ -31993,6 +31993,10 @@ export namespace compute {
              */
             createOption: pulumi.Input<string | enums.compute.latest.DiskCreateOptionTypes>;
             /**
+             * Specifies the detach behavior to be used while detaching a disk or which is already in the process of detachment from the virtual machine. Supported values: **ForceDetach**. <br><br> detachOption: **ForceDetach** is applicable only for managed data disks. If a previous detachment attempt of the data disk did not complete due to an unexpected failure from the virtual machine and the disk is still not released then use force-detach as a last resort option to detach the disk forcibly from the VM. All writes might not have been flushed when using this detach behavior. <br><br> This feature is still in preview mode and is not supported for VirtualMachineScaleSet. To force-detach a data disk update toBeDetached to 'true' along with setting detachOption: 'ForceDetach'.
+             */
+            detachOption?: pulumi.Input<string | enums.compute.latest.DiskDetachOptionTypes>;
+            /**
              * Specifies the size of an empty data disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image. <br><br> This value cannot be larger than 1023 GB
              */
             diskSizeGB?: pulumi.Input<number>;
@@ -32358,7 +32362,7 @@ export namespace compute {
          */
         export interface HardwareProfile {
             /**
-             * Specifies the size of the virtual machine. For more information about virtual machine sizes, see [Sizes for virtual machines](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes). <br><br> The available VM sizes depend on region and availability set. For a list of available sizes use these APIs:  <br><br> [List all available virtual machine sizes in an availability set](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes) <br><br> [List all available virtual machine sizes in a region]( https://docs.microsoft.com/en-us/rest/api/compute/resourceskus/list) <br><br> [List all available virtual machine sizes for resizing](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes). <br><br> This list of sizes is no longer updated and the **VirtualMachineSizeTypes** string constants will be removed from the subsequent REST API specification. Use [List all available virtual machine sizes in a region]( https://docs.microsoft.com/en-us/rest/api/compute/resourceskus/list) to get the latest sizes.
+             * Specifies the size of the virtual machine. <br><br> The enum data type is currently deprecated and will be removed by December 23rd 2023. <br><br> Recommended way to get the list of available sizes is using these APIs: <br><br> [List all available virtual machine sizes in an availability set](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes) <br><br> [List all available virtual machine sizes in a region]( https://docs.microsoft.com/en-us/rest/api/compute/resourceskus/list) <br><br> [List all available virtual machine sizes for resizing](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes). For more information about virtual machine sizes, see [Sizes for virtual machines](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes). <br><br> The available VM sizes depend on region and availability set.
              */
             vmSize?: pulumi.Input<string | enums.compute.latest.VirtualMachineSizeTypes>;
         }
@@ -32624,6 +32628,10 @@ export namespace compute {
              */
             disablePasswordAuthentication?: pulumi.Input<boolean>;
             /**
+             * [Preview Feature] Specifies settings related to VM Guest Patching on Linux.
+             */
+            patchSettings?: pulumi.Input<inputs.compute.latest.LinuxPatchSettings>;
+            /**
              * Indicates whether virtual machine agent should be provisioned on the virtual machine. <br><br> When this property is not specified in the request body, default behavior is to set it to true.  This will ensure that VM Agent is installed on the VM so that extensions can be added to the VM later.
              */
             provisionVMAgent?: pulumi.Input<boolean>;
@@ -32631,6 +32639,16 @@ export namespace compute {
              * Specifies the ssh key configuration for a Linux OS.
              */
             ssh?: pulumi.Input<inputs.compute.latest.SshConfiguration>;
+        }
+
+        /**
+         * Specifies settings related to VM Guest Patching on Linux.
+         */
+        export interface LinuxPatchSettings {
+            /**
+             * Specifies the mode of VM Guest Patching to IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - The virtual machine's default patching configuration is used. <br /><br /> **AutomaticByPlatform** - The virtual machine will be automatically updated by the platform. The property provisionVMAgent must be true
+             */
+            patchMode?: pulumi.Input<string | enums.compute.latest.LinuxVMGuestPatchMode>;
         }
 
         /**
@@ -32777,11 +32795,18 @@ export namespace compute {
             windowsConfiguration?: pulumi.Input<inputs.compute.latest.WindowsConfiguration>;
         }
 
+        /**
+         * Specifies settings related to VM Guest Patching on Windows.
+         */
         export interface PatchSettings {
             /**
-             * Specifies the mode of in-guest patching to IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br /><br /> ** AutomaticByPlatform** - the virtual machine will automatically updated by the platform. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true 
+             * Enables customers to patch their Azure VMs without requiring a reboot. For enableHotpatching, the 'provisionVMAgent' must be set to true and 'patchMode' must be set to 'AutomaticByPlatform'.
              */
-            patchMode?: pulumi.Input<string | enums.compute.latest.InGuestPatchMode>;
+            enableHotpatching?: pulumi.Input<boolean>;
+            /**
+             * Specifies the mode of VM Guest Patching to IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br /><br /> ** AutomaticByPlatform** - the virtual machine will automatically updated by the platform. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true 
+             */
+            patchMode?: pulumi.Input<string | enums.compute.latest.WindowsVMGuestPatchMode>;
         }
 
         /**
@@ -32879,6 +32904,10 @@ export namespace compute {
          */
         export interface RollingUpgradePolicy {
             /**
+             * Allow VMSS to ignore AZ boundaries when constructing upgrade batches. Take into consideration the Update Domain and maxBatchInstancePercent to determine the batch size.
+             */
+            enableCrossZoneUpgrade?: pulumi.Input<boolean>;
+            /**
              * The maximum percent of total virtual machine instances that will be upgraded simultaneously by the rolling upgrade in one batch. As this is a maximum, unhealthy instances in previous or future batches can cause the percentage of instances in a batch to decrease to ensure higher reliability. The default value for this parameter is 20%.
              */
             maxBatchInstancePercent?: pulumi.Input<number>;
@@ -32894,6 +32923,10 @@ export namespace compute {
              * The wait time between completing the update for all virtual machines in one batch and starting the next batch. The time duration should be specified in ISO 8601 format. The default value is 0 seconds (PT0S).
              */
             pauseTimeBetweenBatches?: pulumi.Input<string>;
+            /**
+             * Upgrade all unhealthy instances in a scale set before any healthy instances.
+             */
+            prioritizeUnhealthyInstances?: pulumi.Input<boolean>;
         }
 
         /**
@@ -32935,6 +32968,14 @@ export namespace compute {
              * This property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set. This will enable the encryption for all the disks including Resource/Temp disk at host itself. <br><br> Default: The Encryption at host will be disabled unless this property is set to true for the resource.
              */
             encryptionAtHost?: pulumi.Input<boolean>;
+            /**
+             * Specifies the SecurityType of the virtual machine. It is set as TrustedLaunch to enable UefiSettings. <br><br> Default: UefiSettings will not be enabled unless this property is set as TrustedLaunch.
+             */
+            securityType?: pulumi.Input<enums.compute.latest.SecurityTypes>;
+            /**
+             * Specifies the security settings like secure boot and vTPM used while creating the virtual machine. <br><br>Minimum api-version: 2020-12-01
+             */
+            uefiSettings?: pulumi.Input<inputs.compute.latest.UefiSettings>;
         }
 
         /**
@@ -33065,6 +33106,20 @@ export namespace compute {
              * Configurable length of time a Virtual Machine being deleted will have to potentially approve the Terminate Scheduled Event before the event is auto approved (timed out). The configuration must be specified in ISO 8601 format, the default value is 5 minutes (PT5M)
              */
             notBeforeTimeout?: pulumi.Input<string>;
+        }
+
+        /**
+         * Specifies the security settings like secure boot and vTPM used while creating the virtual machine. <br><br>Minimum api-version: 2020-12-01
+         */
+        export interface UefiSettings {
+            /**
+             * Specifies whether secure boot should be enabled on the virtual machine. <br><br>Minimum api-version: 2020-12-01
+             */
+            secureBootEnabled?: pulumi.Input<boolean>;
+            /**
+             * Specifies whether vTPM should be enabled on the virtual machine. <br><br>Minimum api-version: 2020-12-01
+             */
+            vTpmEnabled?: pulumi.Input<boolean>;
         }
 
         /**
@@ -33715,7 +33770,7 @@ export namespace compute {
              */
             enableAutomaticUpdates?: pulumi.Input<boolean>;
             /**
-             * Specifies settings related to in-guest patching (KBs).
+             * [Preview Feature] Specifies settings related to VM Guest Patching on Windows.
              */
             patchSettings?: pulumi.Input<inputs.compute.latest.PatchSettings>;
             /**
@@ -49711,6 +49766,1416 @@ export namespace compute {
         }
 
     }
+
+    export namespace v20201201 {
+        /**
+         * Enables or disables a capability on the virtual machine or virtual machine scale set.
+         */
+        export interface AdditionalCapabilities {
+            /**
+             * The flag that enables or disables a capability to have one or more managed data disks with UltraSSD_LRS storage account type on the VM or VMSS. Managed disks with storage account type UltraSSD_LRS can be added to a virtual machine or virtual machine scale set only if this property is enabled.
+             */
+            ultraSSDEnabled?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Specifies additional XML formatted information that can be included in the Unattend.xml file, which is used by Windows Setup. Contents are defined by setting name, component name, and the pass in which the content is applied.
+         */
+        export interface AdditionalUnattendContent {
+            /**
+             * The component name. Currently, the only allowable value is Microsoft-Windows-Shell-Setup.
+             */
+            componentName?: pulumi.Input<enums.compute.v20201201.ComponentNames>;
+            /**
+             * Specifies the XML formatted content that is added to the unattend.xml file for the specified path and component. The XML must be less than 4KB and must include the root element for the setting or feature that is being inserted.
+             */
+            content?: pulumi.Input<string>;
+            /**
+             * The pass name. Currently, the only allowable value is OobeSystem.
+             */
+            passName?: pulumi.Input<enums.compute.v20201201.PassNames>;
+            /**
+             * Specifies the name of the setting to which the content applies. Possible values are: FirstLogonCommands and AutoLogon.
+             */
+            settingName?: pulumi.Input<enums.compute.v20201201.SettingNames>;
+        }
+
+        /**
+         * The API entity reference.
+         */
+        export interface ApiEntityReference {
+            /**
+             * The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+             */
+            id?: pulumi.Input<string>;
+        }
+
+        /**
+         * The configuration parameters used for performing automatic OS upgrade.
+         */
+        export interface AutomaticOSUpgradePolicy {
+            /**
+             * Whether OS image rollback feature should be disabled. Default value is false.
+             */
+            disableAutomaticRollback?: pulumi.Input<boolean>;
+            /**
+             * Indicates whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the OS image becomes available. Default value is false. <br><br> If this is set to true for Windows based scale sets, [enableAutomaticUpdates](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.compute.models.windowsconfiguration.enableautomaticupdates?view=azure-dotnet) is automatically set to false and cannot be set to true.
+             */
+            enableAutomaticOSUpgrade?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Specifies the configuration parameters for automatic repairs on the virtual machine scale set.
+         */
+        export interface AutomaticRepairsPolicy {
+            /**
+             * Specifies whether automatic repairs should be enabled on the virtual machine scale set. The default value is false.
+             */
+            enabled?: pulumi.Input<boolean>;
+            /**
+             * The amount of time for which automatic repairs are suspended due to a state change on VM. The grace time starts after the state change has completed. This helps avoid premature or accidental repairs. The time duration should be specified in ISO 8601 format. The minimum allowed grace period is 30 minutes (PT30M), which is also the default value. The maximum allowed grace period is 90 minutes (PT90M).
+             */
+            gracePeriod?: pulumi.Input<string>;
+        }
+
+        /**
+         * Specifies the billing related details of a Azure Spot VM or VMSS. <br><br>Minimum api-version: 2019-03-01.
+         */
+        export interface BillingProfile {
+            /**
+             * Specifies the maximum price you are willing to pay for a Azure Spot VM/VMSS. This price is in US Dollars. <br><br> This price will be compared with the current Azure Spot price for the VM size. Also, the prices are compared at the time of create/update of Azure Spot VM/VMSS and the operation will only succeed if  the maxPrice is greater than the current Azure Spot price. <br><br> The maxPrice will also be used for evicting a Azure Spot VM/VMSS if the current Azure Spot price goes beyond the maxPrice after creation of VM/VMSS. <br><br> Possible values are: <br><br> - Any decimal value greater than zero. Example: 0.01538 <br><br> -1 – indicates default price to be up-to on-demand. <br><br> You can set the maxPrice to -1 to indicate that the Azure Spot VM/VMSS should not be evicted for price reasons. Also, the default max price is -1 if it is not provided by you. <br><br>Minimum api-version: 2019-03-01.
+             */
+            maxPrice?: pulumi.Input<number>;
+        }
+
+        /**
+         * Boot Diagnostics is a debugging feature which allows you to view Console Output and Screenshot to diagnose VM status. <br><br> You can easily view the output of your console log. <br><br> Azure also enables you to see a screenshot of the VM from the hypervisor.
+         */
+        export interface BootDiagnostics {
+            /**
+             * Whether boot diagnostics should be enabled on the Virtual Machine.
+             */
+            enabled?: pulumi.Input<boolean>;
+            /**
+             * Uri of the storage account to use for placing the console output and screenshot. <br><br>If storageUri is not specified while enabling boot diagnostics, managed storage will be used.
+             */
+            storageUri?: pulumi.Input<string>;
+        }
+
+        /**
+         * Describes a data disk.
+         */
+        export interface DataDisk {
+            /**
+             * Specifies the caching requirements. <br><br> Possible values are: <br><br> **None** <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for Standard storage. ReadOnly for Premium storage**
+             */
+            caching?: pulumi.Input<enums.compute.v20201201.CachingTypes>;
+            /**
+             * Specifies how the virtual machine should be created.<br><br> Possible values are:<br><br> **Attach** \u2013 This value is used when you are using a specialized disk to create the virtual machine.<br><br> **FromImage** \u2013 This value is used when you are using an image to create the virtual machine. If you are using a platform image, you also use the imageReference element described above. If you are using a marketplace image, you  also use the plan element previously described.
+             */
+            createOption: pulumi.Input<string | enums.compute.v20201201.DiskCreateOptionTypes>;
+            /**
+             * Specifies the detach behavior to be used while detaching a disk or which is already in the process of detachment from the virtual machine. Supported values: **ForceDetach**. <br><br> detachOption: **ForceDetach** is applicable only for managed data disks. If a previous detachment attempt of the data disk did not complete due to an unexpected failure from the virtual machine and the disk is still not released then use force-detach as a last resort option to detach the disk forcibly from the VM. All writes might not have been flushed when using this detach behavior. <br><br> This feature is still in preview mode and is not supported for VirtualMachineScaleSet. To force-detach a data disk update toBeDetached to 'true' along with setting detachOption: 'ForceDetach'.
+             */
+            detachOption?: pulumi.Input<string | enums.compute.v20201201.DiskDetachOptionTypes>;
+            /**
+             * Specifies the size of an empty data disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image. <br><br> This value cannot be larger than 1023 GB
+             */
+            diskSizeGB?: pulumi.Input<number>;
+            /**
+             * The source user image virtual hard disk. The virtual hard disk will be copied before being attached to the virtual machine. If SourceImage is provided, the destination virtual hard drive must not exist.
+             */
+            image?: pulumi.Input<inputs.compute.v20201201.VirtualHardDisk>;
+            /**
+             * Specifies the logical unit number of the data disk. This value is used to identify data disks within the VM and therefore must be unique for each data disk attached to a VM.
+             */
+            lun: pulumi.Input<number>;
+            /**
+             * The managed disk parameters.
+             */
+            managedDisk?: pulumi.Input<inputs.compute.v20201201.ManagedDiskParameters>;
+            /**
+             * The disk name.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Specifies whether the data disk is in process of detachment from the VirtualMachine/VirtualMachineScaleset
+             */
+            toBeDetached?: pulumi.Input<boolean>;
+            /**
+             * The virtual hard disk.
+             */
+            vhd?: pulumi.Input<inputs.compute.v20201201.VirtualHardDisk>;
+            /**
+             * Specifies whether writeAccelerator should be enabled or disabled on the disk.
+             */
+            writeAcceleratorEnabled?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Specifies the boot diagnostic settings state. <br><br>Minimum api-version: 2015-06-15.
+         */
+        export interface DiagnosticsProfile {
+            /**
+             * Boot Diagnostics is a debugging feature which allows you to view Console Output and Screenshot to diagnose VM status. <br><br> You can easily view the output of your console log. <br><br> Azure also enables you to see a screenshot of the VM from the hypervisor.
+             */
+            bootDiagnostics?: pulumi.Input<inputs.compute.v20201201.BootDiagnostics>;
+        }
+
+        /**
+         * Describes the parameters of ephemeral disk settings that can be specified for operating system disk. <br><br> NOTE: The ephemeral disk settings can only be specified for managed disk.
+         */
+        export interface DiffDiskSettings {
+            /**
+             * Specifies the ephemeral disk settings for operating system disk.
+             */
+            option?: pulumi.Input<string | enums.compute.v20201201.DiffDiskOptions>;
+            /**
+             * Specifies the ephemeral disk placement for operating system disk.<br><br> Possible values are: <br><br> **CacheDisk** <br><br> **ResourceDisk** <br><br> Default: **CacheDisk** if one is configured for the VM size otherwise **ResourceDisk** is used.<br><br> Refer to VM size documentation for Windows VM at https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes to check which VM sizes exposes a cache disk.
+             */
+            placement?: pulumi.Input<string | enums.compute.v20201201.DiffDiskPlacement>;
+        }
+
+        /**
+         * Describes the parameter of customer managed disk encryption set resource id that can be specified for disk. <br><br> NOTE: The disk encryption set resource id can only be specified for managed disk. Please refer https://aka.ms/mdssewithcmkoverview for more details.
+         */
+        export interface DiskEncryptionSetParameters {
+            /**
+             * Resource Id
+             */
+            id?: pulumi.Input<string>;
+        }
+
+        /**
+         * Describes a Encryption Settings for a Disk
+         */
+        export interface DiskEncryptionSettings {
+            /**
+             * Specifies the location of the disk encryption key, which is a Key Vault Secret.
+             */
+            diskEncryptionKey?: pulumi.Input<inputs.compute.v20201201.KeyVaultSecretReference>;
+            /**
+             * Specifies whether disk encryption should be enabled on the virtual machine.
+             */
+            enabled?: pulumi.Input<boolean>;
+            /**
+             * Specifies the location of the key encryption key in Key Vault.
+             */
+            keyEncryptionKey?: pulumi.Input<inputs.compute.v20201201.KeyVaultKeyReference>;
+        }
+
+        /**
+         * The complex type of the extended location.
+         */
+        export interface ExtendedLocation {
+            /**
+             * The name of the extended location.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * The type of the extended location.
+             */
+            type?: pulumi.Input<string | enums.compute.v20201201.ExtendedLocationTypes>;
+        }
+
+        /**
+         * Specifies the hardware settings for the virtual machine.
+         */
+        export interface HardwareProfile {
+            /**
+             * Specifies the size of the virtual machine. <br><br> The enum data type is currently deprecated and will be removed by December 23rd 2023. <br><br> Recommended way to get the list of available sizes is using these APIs: <br><br> [List all available virtual machine sizes in an availability set](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes) <br><br> [List all available virtual machine sizes in a region]( https://docs.microsoft.com/en-us/rest/api/compute/resourceskus/list) <br><br> [List all available virtual machine sizes for resizing](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes). For more information about virtual machine sizes, see [Sizes for virtual machines](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes). <br><br> The available VM sizes depend on region and availability set.
+             */
+            vmSize?: pulumi.Input<string | enums.compute.v20201201.VirtualMachineSizeTypes>;
+        }
+
+        /**
+         * Describes a data disk.
+         */
+        export interface ImageDataDisk {
+            /**
+             * The Virtual Hard Disk.
+             */
+            blobUri?: pulumi.Input<string>;
+            /**
+             * Specifies the caching requirements. <br><br> Possible values are: <br><br> **None** <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for Standard storage. ReadOnly for Premium storage**
+             */
+            caching?: pulumi.Input<enums.compute.v20201201.CachingTypes>;
+            /**
+             * Specifies the customer managed disk encryption set resource id for the managed image disk.
+             */
+            diskEncryptionSet?: pulumi.Input<inputs.compute.v20201201.DiskEncryptionSetParameters>;
+            /**
+             * Specifies the size of empty data disks in gigabytes. This element can be used to overwrite the name of the disk in a virtual machine image. <br><br> This value cannot be larger than 1023 GB
+             */
+            diskSizeGB?: pulumi.Input<number>;
+            /**
+             * Specifies the logical unit number of the data disk. This value is used to identify data disks within the VM and therefore must be unique for each data disk attached to a VM.
+             */
+            lun: pulumi.Input<number>;
+            /**
+             * The managedDisk.
+             */
+            managedDisk?: pulumi.Input<inputs.compute.v20201201.SubResource>;
+            /**
+             * The snapshot.
+             */
+            snapshot?: pulumi.Input<inputs.compute.v20201201.SubResource>;
+            /**
+             * Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
+             */
+            storageAccountType?: pulumi.Input<string | enums.compute.v20201201.StorageAccountTypes>;
+        }
+
+        /**
+         * Describes an Operating System disk.
+         */
+        export interface ImageOSDisk {
+            /**
+             * The Virtual Hard Disk.
+             */
+            blobUri?: pulumi.Input<string>;
+            /**
+             * Specifies the caching requirements. <br><br> Possible values are: <br><br> **None** <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for Standard storage. ReadOnly for Premium storage**
+             */
+            caching?: pulumi.Input<enums.compute.v20201201.CachingTypes>;
+            /**
+             * Specifies the customer managed disk encryption set resource id for the managed image disk.
+             */
+            diskEncryptionSet?: pulumi.Input<inputs.compute.v20201201.DiskEncryptionSetParameters>;
+            /**
+             * Specifies the size of empty data disks in gigabytes. This element can be used to overwrite the name of the disk in a virtual machine image. <br><br> This value cannot be larger than 1023 GB
+             */
+            diskSizeGB?: pulumi.Input<number>;
+            /**
+             * The managedDisk.
+             */
+            managedDisk?: pulumi.Input<inputs.compute.v20201201.SubResource>;
+            /**
+             * The OS State.
+             */
+            osState: pulumi.Input<enums.compute.v20201201.OperatingSystemStateTypes>;
+            /**
+             * This property allows you to specify the type of the OS that is included in the disk if creating a VM from a custom image. <br><br> Possible values are: <br><br> **Windows** <br><br> **Linux**
+             */
+            osType: pulumi.Input<enums.compute.v20201201.OperatingSystemTypes>;
+            /**
+             * The snapshot.
+             */
+            snapshot?: pulumi.Input<inputs.compute.v20201201.SubResource>;
+            /**
+             * Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
+             */
+            storageAccountType?: pulumi.Input<string | enums.compute.v20201201.StorageAccountTypes>;
+        }
+
+        /**
+         * Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations. NOTE: Image reference publisher and offer can only be set when you create the scale set.
+         */
+        export interface ImageReference {
+            /**
+             * Resource Id
+             */
+            id?: pulumi.Input<string>;
+            /**
+             * Specifies the offer of the platform image or marketplace image used to create the virtual machine.
+             */
+            offer?: pulumi.Input<string>;
+            /**
+             * The image publisher.
+             */
+            publisher?: pulumi.Input<string>;
+            /**
+             * The image SKU.
+             */
+            sku?: pulumi.Input<string>;
+            /**
+             * Specifies the version of the platform image or marketplace image used to create the virtual machine. The allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest version of an image available at deploy time. Even if you use 'latest', the VM image will not automatically update after deploy time even if a new version becomes available.
+             */
+            version?: pulumi.Input<string>;
+        }
+
+        /**
+         * Describes a storage profile.
+         */
+        export interface ImageStorageProfile {
+            /**
+             * Specifies the parameters that are used to add a data disk to a virtual machine. <br><br> For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+             */
+            dataDisks?: pulumi.Input<pulumi.Input<inputs.compute.v20201201.ImageDataDisk>[]>;
+            /**
+             * Specifies information about the operating system disk used by the virtual machine. <br><br> For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+             */
+            osDisk?: pulumi.Input<inputs.compute.v20201201.ImageOSDisk>;
+            /**
+             * Specifies whether an image is zone resilient or not. Default is false. Zone resilient images can be created only in regions that provide Zone Redundant Storage (ZRS).
+             */
+            zoneResilient?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Instance view status.
+         */
+        export interface InstanceViewStatus {
+            /**
+             * The status code.
+             */
+            code?: pulumi.Input<string>;
+            /**
+             * The short localizable label for the status.
+             */
+            displayStatus?: pulumi.Input<string>;
+            /**
+             * The level code.
+             */
+            level?: pulumi.Input<enums.compute.v20201201.StatusLevelTypes>;
+            /**
+             * The detailed status message, including for alerts and error messages.
+             */
+            message?: pulumi.Input<string>;
+            /**
+             * The time of the status.
+             */
+            time?: pulumi.Input<string>;
+        }
+
+        /**
+         * Describes a reference to Key Vault Key
+         */
+        export interface KeyVaultKeyReference {
+            /**
+             * The URL referencing a key encryption key in Key Vault.
+             */
+            keyUrl: pulumi.Input<string>;
+            /**
+             * The relative URL of the Key Vault containing the key.
+             */
+            sourceVault: pulumi.Input<inputs.compute.v20201201.SubResource>;
+        }
+
+        /**
+         * Describes a reference to Key Vault Secret
+         */
+        export interface KeyVaultSecretReference {
+            /**
+             * The URL referencing a secret in a Key Vault.
+             */
+            secretUrl: pulumi.Input<string>;
+            /**
+             * The relative URL of the Key Vault containing the secret.
+             */
+            sourceVault: pulumi.Input<inputs.compute.v20201201.SubResource>;
+        }
+
+        /**
+         * Specifies the Linux operating system settings on the virtual machine. <br><br>For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-endorsed-distros?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) <br><br> For running non-endorsed distributions, see [Information for Non-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+         */
+        export interface LinuxConfiguration {
+            /**
+             * Specifies whether password authentication should be disabled.
+             */
+            disablePasswordAuthentication?: pulumi.Input<boolean>;
+            /**
+             * [Preview Feature] Specifies settings related to VM Guest Patching on Linux.
+             */
+            patchSettings?: pulumi.Input<inputs.compute.v20201201.LinuxPatchSettings>;
+            /**
+             * Indicates whether virtual machine agent should be provisioned on the virtual machine. <br><br> When this property is not specified in the request body, default behavior is to set it to true.  This will ensure that VM Agent is installed on the VM so that extensions can be added to the VM later.
+             */
+            provisionVMAgent?: pulumi.Input<boolean>;
+            /**
+             * Specifies the ssh key configuration for a Linux OS.
+             */
+            ssh?: pulumi.Input<inputs.compute.v20201201.SshConfiguration>;
+        }
+
+        /**
+         * Specifies settings related to VM Guest Patching on Linux.
+         */
+        export interface LinuxPatchSettings {
+            /**
+             * Specifies the mode of VM Guest Patching to IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - The virtual machine's default patching configuration is used. <br /><br /> **AutomaticByPlatform** - The virtual machine will be automatically updated by the platform. The property provisionVMAgent must be true
+             */
+            patchMode?: pulumi.Input<string | enums.compute.v20201201.LinuxVMGuestPatchMode>;
+        }
+
+        /**
+         * The parameters of a managed disk.
+         */
+        export interface ManagedDiskParameters {
+            /**
+             * Specifies the customer managed disk encryption set resource id for the managed disk.
+             */
+            diskEncryptionSet?: pulumi.Input<inputs.compute.v20201201.DiskEncryptionSetParameters>;
+            /**
+             * Resource Id
+             */
+            id?: pulumi.Input<string>;
+            /**
+             * Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
+             */
+            storageAccountType?: pulumi.Input<string | enums.compute.v20201201.StorageAccountTypes>;
+        }
+
+        /**
+         * Describes a network interface reference.
+         */
+        export interface NetworkInterfaceReference {
+            /**
+             * Resource Id
+             */
+            id?: pulumi.Input<string>;
+            /**
+             * Specifies the primary network interface in case the virtual machine has more than 1 network interface.
+             */
+            primary?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Specifies the network interfaces of the virtual machine.
+         */
+        export interface NetworkProfile {
+            /**
+             * Specifies the list of resource Ids for the network interfaces associated with the virtual machine.
+             */
+            networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.v20201201.NetworkInterfaceReference>[]>;
+        }
+
+        /**
+         * Specifies information about the operating system disk used by the virtual machine. <br><br> For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+         */
+        export interface OSDisk {
+            /**
+             * Specifies the caching requirements. <br><br> Possible values are: <br><br> **None** <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None** for Standard storage. **ReadOnly** for Premium storage.
+             */
+            caching?: pulumi.Input<enums.compute.v20201201.CachingTypes>;
+            /**
+             * Specifies how the virtual machine should be created.<br><br> Possible values are:<br><br> **Attach** \u2013 This value is used when you are using a specialized disk to create the virtual machine.<br><br> **FromImage** \u2013 This value is used when you are using an image to create the virtual machine. If you are using a platform image, you also use the imageReference element described above. If you are using a marketplace image, you  also use the plan element previously described.
+             */
+            createOption: pulumi.Input<string | enums.compute.v20201201.DiskCreateOptionTypes>;
+            /**
+             * Specifies the ephemeral Disk Settings for the operating system disk used by the virtual machine.
+             */
+            diffDiskSettings?: pulumi.Input<inputs.compute.v20201201.DiffDiskSettings>;
+            /**
+             * Specifies the size of an empty data disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image. <br><br> This value cannot be larger than 1023 GB
+             */
+            diskSizeGB?: pulumi.Input<number>;
+            /**
+             * Specifies the encryption settings for the OS Disk. <br><br> Minimum api-version: 2015-06-15
+             */
+            encryptionSettings?: pulumi.Input<inputs.compute.v20201201.DiskEncryptionSettings>;
+            /**
+             * The source user image virtual hard disk. The virtual hard disk will be copied before being attached to the virtual machine. If SourceImage is provided, the destination virtual hard drive must not exist.
+             */
+            image?: pulumi.Input<inputs.compute.v20201201.VirtualHardDisk>;
+            /**
+             * The managed disk parameters.
+             */
+            managedDisk?: pulumi.Input<inputs.compute.v20201201.ManagedDiskParameters>;
+            /**
+             * The disk name.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. <br><br> Possible values are: <br><br> **Windows** <br><br> **Linux**
+             */
+            osType?: pulumi.Input<enums.compute.v20201201.OperatingSystemTypes>;
+            /**
+             * The virtual hard disk.
+             */
+            vhd?: pulumi.Input<inputs.compute.v20201201.VirtualHardDisk>;
+            /**
+             * Specifies whether writeAccelerator should be enabled or disabled on the disk.
+             */
+            writeAcceleratorEnabled?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Specifies the operating system settings for the virtual machine. Some of the settings cannot be changed once VM is provisioned.
+         */
+        export interface OSProfile {
+            /**
+             * Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-reset-rdp?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-vmaccess-extension?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#reset-root-password)
+             */
+            adminPassword?: pulumi.Input<string>;
+            /**
+             * Specifies the name of the administrator account. <br><br> This property cannot be updated after the VM is created. <br><br> **Windows-only restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters <br><br> **Max-length (Windows):** 20 characters  <br><br><li> For root access to the Linux VM, see [Using root privileges on Linux virtual machines in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)<br><li> For a list of built-in system users on Linux that should not be used in this field, see [Selecting User Names for Linux on Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+             */
+            adminUsername?: pulumi.Input<string>;
+            /**
+             * Specifies whether extension operations should be allowed on the virtual machine. <br><br>This may only be set to False when no extensions are present on the virtual machine.
+             */
+            allowExtensionOperations?: pulumi.Input<boolean>;
+            /**
+             * Specifies the host OS name of the virtual machine. <br><br> This name cannot be updated after the VM is created. <br><br> **Max-length (Windows):** 15 characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For naming conventions and restrictions see [Azure infrastructure services implementation guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
+             */
+            computerName?: pulumi.Input<string>;
+            /**
+             * Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the Virtual Machine. The maximum length of the binary array is 65535 bytes. <br><br> **Note: Do not pass any secrets or passwords in customData property** <br><br> This property cannot be updated after the VM is created. <br><br> customData is passed to the VM to be saved as a file, for more information see [Custom Data on Azure VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/) <br><br> For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+             */
+            customData?: pulumi.Input<string>;
+            /**
+             * Specifies the Linux operating system settings on the virtual machine. <br><br>For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-endorsed-distros?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) <br><br> For running non-endorsed distributions, see [Information for Non-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+             */
+            linuxConfiguration?: pulumi.Input<inputs.compute.v20201201.LinuxConfiguration>;
+            /**
+             * Specifies whether the guest provision signal is required to infer provision success of the virtual machine.  **Note: This property is for private testing only, and all customers must not set the property to false.**
+             */
+            requireGuestProvisionSignal?: pulumi.Input<boolean>;
+            /**
+             * Specifies set of certificates that should be installed onto the virtual machine.
+             */
+            secrets?: pulumi.Input<pulumi.Input<inputs.compute.v20201201.VaultSecretGroup>[]>;
+            /**
+             * Specifies Windows operating system settings on the virtual machine.
+             */
+            windowsConfiguration?: pulumi.Input<inputs.compute.v20201201.WindowsConfiguration>;
+        }
+
+        /**
+         * Specifies settings related to VM Guest Patching on Windows.
+         */
+        export interface PatchSettings {
+            /**
+             * Enables customers to patch their Azure VMs without requiring a reboot. For enableHotpatching, the 'provisionVMAgent' must be set to true and 'patchMode' must be set to 'AutomaticByPlatform'.
+             */
+            enableHotpatching?: pulumi.Input<boolean>;
+            /**
+             * Specifies the mode of VM Guest Patching to IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br /><br /> ** AutomaticByPlatform** - the virtual machine will automatically updated by the platform. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true 
+             */
+            patchMode?: pulumi.Input<string | enums.compute.v20201201.WindowsVMGuestPatchMode>;
+        }
+
+        /**
+         * Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use.  In the Azure portal, find the marketplace image that you want to use and then click **Want to deploy programmatically, Get Started ->**. Enter any required information and then click **Save**.
+         */
+        export interface Plan {
+            /**
+             * The plan ID.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Specifies the product of the image from the marketplace. This is the same value as Offer under the imageReference element.
+             */
+            product?: pulumi.Input<string>;
+            /**
+             * The promotion code.
+             */
+            promotionCode?: pulumi.Input<string>;
+            /**
+             * The publisher ID.
+             */
+            publisher?: pulumi.Input<string>;
+        }
+
+        /**
+         * The configuration parameters used while performing a rolling upgrade.
+         */
+        export interface RollingUpgradePolicy {
+            /**
+             * Allow VMSS to ignore AZ boundaries when constructing upgrade batches. Take into consideration the Update Domain and maxBatchInstancePercent to determine the batch size.
+             */
+            enableCrossZoneUpgrade?: pulumi.Input<boolean>;
+            /**
+             * The maximum percent of total virtual machine instances that will be upgraded simultaneously by the rolling upgrade in one batch. As this is a maximum, unhealthy instances in previous or future batches can cause the percentage of instances in a batch to decrease to ensure higher reliability. The default value for this parameter is 20%.
+             */
+            maxBatchInstancePercent?: pulumi.Input<number>;
+            /**
+             * The maximum percentage of the total virtual machine instances in the scale set that can be simultaneously unhealthy, either as a result of being upgraded, or by being found in an unhealthy state by the virtual machine health checks before the rolling upgrade aborts. This constraint will be checked prior to starting any batch. The default value for this parameter is 20%.
+             */
+            maxUnhealthyInstancePercent?: pulumi.Input<number>;
+            /**
+             * The maximum percentage of upgraded virtual machine instances that can be found to be in an unhealthy state. This check will happen after each batch is upgraded. If this percentage is ever exceeded, the rolling update aborts. The default value for this parameter is 20%.
+             */
+            maxUnhealthyUpgradedInstancePercent?: pulumi.Input<number>;
+            /**
+             * The wait time between completing the update for all virtual machines in one batch and starting the next batch. The time duration should be specified in ISO 8601 format. The default value is 0 seconds (PT0S).
+             */
+            pauseTimeBetweenBatches?: pulumi.Input<string>;
+            /**
+             * Upgrade all unhealthy instances in a scale set before any healthy instances.
+             */
+            prioritizeUnhealthyInstances?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Describes the properties of a run command parameter.
+         */
+        export interface RunCommandInputParameter {
+            /**
+             * The run command parameter name.
+             */
+            name: pulumi.Input<string>;
+            /**
+             * The run command parameter value.
+             */
+            value: pulumi.Input<string>;
+        }
+
+        /**
+         * Describes a scale-in policy for a virtual machine scale set.
+         */
+        export interface ScaleInPolicy {
+            /**
+             * The rules to be followed when scaling-in a virtual machine scale set. <br><br> Possible values are: <br><br> **Default** When a virtual machine scale set is scaled in, the scale set will first be balanced across zones if it is a zonal scale set. Then, it will be balanced across Fault Domains as far as possible. Within each Fault Domain, the virtual machines chosen for removal will be the newest ones that are not protected from scale-in. <br><br> **OldestVM** When a virtual machine scale set is being scaled-in, the oldest virtual machines that are not protected from scale-in will be chosen for removal. For zonal virtual machine scale sets, the scale set will first be balanced across zones. Within each zone, the oldest virtual machines that are not protected will be chosen for removal. <br><br> **NewestVM** When a virtual machine scale set is being scaled-in, the newest virtual machines that are not protected from scale-in will be chosen for removal. For zonal virtual machine scale sets, the scale set will first be balanced across zones. Within each zone, the newest virtual machines that are not protected will be chosen for removal. <br><br>
+             */
+            rules?: pulumi.Input<pulumi.Input<string | enums.compute.v20201201.VirtualMachineScaleSetScaleInRules>[]>;
+        }
+
+        export interface ScheduledEventsProfile {
+            /**
+             * Specifies Terminate Scheduled Event related configurations.
+             */
+            terminateNotificationProfile?: pulumi.Input<inputs.compute.v20201201.TerminateNotificationProfile>;
+        }
+
+        /**
+         * Specifies the Security profile settings for the virtual machine or virtual machine scale set.
+         */
+        export interface SecurityProfile {
+            /**
+             * This property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set. This will enable the encryption for all the disks including Resource/Temp disk at host itself. <br><br> Default: The Encryption at host will be disabled unless this property is set to true for the resource.
+             */
+            encryptionAtHost?: pulumi.Input<boolean>;
+            /**
+             * Specifies the SecurityType of the virtual machine. It is set as TrustedLaunch to enable UefiSettings. <br><br> Default: UefiSettings will not be enabled unless this property is set as TrustedLaunch.
+             */
+            securityType?: pulumi.Input<enums.compute.v20201201.SecurityTypes>;
+            /**
+             * Specifies the security settings like secure boot and vTPM used while creating the virtual machine. <br><br>Minimum api-version: 2020-12-01
+             */
+            uefiSettings?: pulumi.Input<inputs.compute.v20201201.UefiSettings>;
+        }
+
+        /**
+         * Describes a virtual machine scale set sku. NOTE: If the new VM SKU is not supported on the hardware the scale set is currently on, you need to deallocate the VMs in the scale set before you modify the SKU name.
+         */
+        export interface Sku {
+            /**
+             * Specifies the number of virtual machines in the scale set.
+             */
+            capacity?: pulumi.Input<number>;
+            /**
+             * The sku name.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Specifies the tier of virtual machines in a scale set.<br /><br /> Possible Values:<br /><br /> **Standard**<br /><br /> **Basic**
+             */
+            tier?: pulumi.Input<string>;
+        }
+
+        /**
+         * SSH configuration for Linux based VMs running on Azure
+         */
+        export interface SshConfiguration {
+            /**
+             * The list of SSH public keys used to authenticate with linux based VMs.
+             */
+            publicKeys?: pulumi.Input<pulumi.Input<inputs.compute.v20201201.SshPublicKey>[]>;
+        }
+
+        /**
+         * Contains information about SSH certificate public key and the path on the Linux VM where the public key is placed.
+         */
+        export interface SshPublicKey {
+            /**
+             * SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+             */
+            keyData?: pulumi.Input<string>;
+            /**
+             * Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
+             */
+            path?: pulumi.Input<string>;
+        }
+
+        /**
+         * Specifies the storage settings for the virtual machine disks.
+         */
+        export interface StorageProfile {
+            /**
+             * Specifies the parameters that are used to add a data disk to a virtual machine. <br><br> For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+             */
+            dataDisks?: pulumi.Input<pulumi.Input<inputs.compute.v20201201.DataDisk>[]>;
+            /**
+             * Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations.
+             */
+            imageReference?: pulumi.Input<inputs.compute.v20201201.ImageReference>;
+            /**
+             * Specifies information about the operating system disk used by the virtual machine. <br><br> For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+             */
+            osDisk?: pulumi.Input<inputs.compute.v20201201.OSDisk>;
+        }
+
+        export interface SubResource {
+            /**
+             * Resource Id
+             */
+            id?: pulumi.Input<string>;
+        }
+
+        export interface TerminateNotificationProfile {
+            /**
+             * Specifies whether the Terminate Scheduled event is enabled or disabled.
+             */
+            enable?: pulumi.Input<boolean>;
+            /**
+             * Configurable length of time a Virtual Machine being deleted will have to potentially approve the Terminate Scheduled Event before the event is auto approved (timed out). The configuration must be specified in ISO 8601 format, the default value is 5 minutes (PT5M)
+             */
+            notBeforeTimeout?: pulumi.Input<string>;
+        }
+
+        /**
+         * Specifies the security settings like secure boot and vTPM used while creating the virtual machine. <br><br>Minimum api-version: 2020-12-01
+         */
+        export interface UefiSettings {
+            /**
+             * Specifies whether secure boot should be enabled on the virtual machine. <br><br>Minimum api-version: 2020-12-01
+             */
+            secureBootEnabled?: pulumi.Input<boolean>;
+            /**
+             * Specifies whether vTPM should be enabled on the virtual machine. <br><br>Minimum api-version: 2020-12-01
+             */
+            vTpmEnabled?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Describes an upgrade policy - automatic, manual, or rolling.
+         */
+        export interface UpgradePolicy {
+            /**
+             * Configuration parameters used for performing automatic OS Upgrade.
+             */
+            automaticOSUpgradePolicy?: pulumi.Input<inputs.compute.v20201201.AutomaticOSUpgradePolicy>;
+            /**
+             * Specifies the mode of an upgrade to virtual machines in the scale set.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of updates to virtual machines in the scale set. You do this by using the manualUpgrade action.<br /><br /> **Automatic** - All virtual machines in the scale set are  automatically updated at the same time.
+             */
+            mode?: pulumi.Input<enums.compute.v20201201.UpgradeMode>;
+            /**
+             * The configuration parameters used while performing a rolling upgrade.
+             */
+            rollingUpgradePolicy?: pulumi.Input<inputs.compute.v20201201.RollingUpgradePolicy>;
+        }
+
+        /**
+         * Describes a single certificate reference in a Key Vault, and where the certificate should reside on the VM.
+         */
+        export interface VaultCertificate {
+            /**
+             * For Windows VMs, specifies the certificate store on the Virtual Machine to which the certificate should be added. The specified certificate store is implicitly in the LocalMachine account. <br><br>For Linux VMs, the certificate file is placed under the /var/lib/waagent directory, with the file name &lt;UppercaseThumbprint&gt;.crt for the X509 certificate file and &lt;UppercaseThumbprint&gt;.prv for private key. Both of these files are .pem formatted.
+             */
+            certificateStore?: pulumi.Input<string>;
+            /**
+             * This is the URL of a certificate that has been uploaded to Key Vault as a secret. For adding a secret to the Key Vault, see [Add a key or secret to the key vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add). In this case, your certificate needs to be It is the Base64 encoding of the following JSON Object which is encoded in UTF-8: <br><br> {<br>  "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>  "password":"<pfx-file-password>"<br>}
+             */
+            certificateUrl?: pulumi.Input<string>;
+        }
+
+        /**
+         * Describes a set of certificates which are all in the same Key Vault.
+         */
+        export interface VaultSecretGroup {
+            /**
+             * The relative URL of the Key Vault containing all of the certificates in VaultCertificates.
+             */
+            sourceVault?: pulumi.Input<inputs.compute.v20201201.SubResource>;
+            /**
+             * The list of key vault references in SourceVault which contain certificates.
+             */
+            vaultCertificates?: pulumi.Input<pulumi.Input<inputs.compute.v20201201.VaultCertificate>[]>;
+        }
+
+        /**
+         * Describes the uri of a disk.
+         */
+        export interface VirtualHardDisk {
+            /**
+             * Specifies the virtual hard disk's uri.
+             */
+            uri?: pulumi.Input<string>;
+        }
+
+        /**
+         * The instance view of a virtual machine extension.
+         */
+        export interface VirtualMachineExtensionInstanceView {
+            /**
+             * The virtual machine extension name.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * The resource status information.
+             */
+            statuses?: pulumi.Input<pulumi.Input<inputs.compute.v20201201.InstanceViewStatus>[]>;
+            /**
+             * The resource status information.
+             */
+            substatuses?: pulumi.Input<pulumi.Input<inputs.compute.v20201201.InstanceViewStatus>[]>;
+            /**
+             * Specifies the type of the extension; an example is "CustomScriptExtension".
+             */
+            type?: pulumi.Input<string>;
+            /**
+             * Specifies the version of the script handler.
+             */
+            typeHandlerVersion?: pulumi.Input<string>;
+        }
+
+        /**
+         * Identity for the virtual machine.
+         */
+        export interface VirtualMachineIdentity {
+            /**
+             * The type of identity used for the virtual machine. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the virtual machine.
+             */
+            type?: pulumi.Input<enums.compute.v20201201.ResourceIdentityType>;
+            /**
+             * The list of user identities associated with the Virtual Machine. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+             */
+            userAssignedIdentities?: pulumi.Input<{[key: string]: any}>;
+        }
+
+        /**
+         * Describes the script sources for run command.
+         */
+        export interface VirtualMachineRunCommandScriptSource {
+            /**
+             * Specifies a commandId of predefined built-in script.
+             */
+            commandId?: pulumi.Input<string>;
+            /**
+             * Specifies the script content to be executed on the VM.
+             */
+            script?: pulumi.Input<string>;
+            /**
+             * Specifies the script download location.
+             */
+            scriptUri?: pulumi.Input<string>;
+        }
+
+        /**
+         * Describes a virtual machine scale set data disk.
+         */
+        export interface VirtualMachineScaleSetDataDisk {
+            /**
+             * Specifies the caching requirements. <br><br> Possible values are: <br><br> **None** <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for Standard storage. ReadOnly for Premium storage**
+             */
+            caching?: pulumi.Input<enums.compute.v20201201.CachingTypes>;
+            /**
+             * The create option.
+             */
+            createOption: pulumi.Input<string | enums.compute.v20201201.DiskCreateOptionTypes>;
+            /**
+             * Specifies the Read-Write IOPS for the managed disk. Should be used only when StorageAccountType is UltraSSD_LRS. If not specified, a default value would be assigned based on diskSizeGB.
+             */
+            diskIOPSReadWrite?: pulumi.Input<number>;
+            /**
+             * Specifies the bandwidth in MB per second for the managed disk. Should be used only when StorageAccountType is UltraSSD_LRS. If not specified, a default value would be assigned based on diskSizeGB.
+             */
+            diskMBpsReadWrite?: pulumi.Input<number>;
+            /**
+             * Specifies the size of an empty data disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image. <br><br> This value cannot be larger than 1023 GB
+             */
+            diskSizeGB?: pulumi.Input<number>;
+            /**
+             * Specifies the logical unit number of the data disk. This value is used to identify data disks within the VM and therefore must be unique for each data disk attached to a VM.
+             */
+            lun: pulumi.Input<number>;
+            /**
+             * The managed disk parameters.
+             */
+            managedDisk?: pulumi.Input<inputs.compute.v20201201.VirtualMachineScaleSetManagedDiskParameters>;
+            /**
+             * The disk name.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Specifies whether writeAccelerator should be enabled or disabled on the disk.
+             */
+            writeAcceleratorEnabled?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Describes a Virtual Machine Scale Set Extension.
+         */
+        export interface VirtualMachineScaleSetExtension {
+            /**
+             * Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
+             */
+            autoUpgradeMinorVersion?: pulumi.Input<boolean>;
+            /**
+             * Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
+             */
+            enableAutomaticUpgrade?: pulumi.Input<boolean>;
+            /**
+             * If a value is provided and is different from the previous value, the extension handler will be forced to update even if the extension configuration has not changed.
+             */
+            forceUpdateTag?: pulumi.Input<string>;
+            /**
+             * The name of the extension.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
+             */
+            protectedSettings?: any;
+            /**
+             * Collection of extension names after which this extension needs to be provisioned.
+             */
+            provisionAfterExtensions?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The name of the extension handler publisher.
+             */
+            publisher?: pulumi.Input<string>;
+            /**
+             * Json formatted public settings for the extension.
+             */
+            settings?: any;
+            /**
+             * Specifies the type of the extension; an example is "CustomScriptExtension".
+             */
+            type?: pulumi.Input<string>;
+            /**
+             * Specifies the version of the script handler.
+             */
+            typeHandlerVersion?: pulumi.Input<string>;
+        }
+
+        /**
+         * Describes a virtual machine scale set extension profile.
+         */
+        export interface VirtualMachineScaleSetExtensionProfile {
+            /**
+             * The virtual machine scale set child extension resources.
+             */
+            extensions?: pulumi.Input<pulumi.Input<inputs.compute.v20201201.VirtualMachineScaleSetExtension>[]>;
+            /**
+             * Specifies the time alloted for all extensions to start. The time duration should be between 15 minutes and 120 minutes (inclusive) and should be specified in ISO 8601 format. The default value is 90 minutes (PT1H30M). <br><br> Minimum api-version: 2020-06-01
+             */
+            extensionsTimeBudget?: pulumi.Input<string>;
+        }
+
+        /**
+         * Describes a virtual machine scale set network profile's IP configuration.
+         */
+        export interface VirtualMachineScaleSetIPConfiguration {
+            /**
+             * Specifies an array of references to backend address pools of application gateways. A scale set can reference backend address pools of multiple application gateways. Multiple scale sets cannot use the same application gateway.
+             */
+            applicationGatewayBackendAddressPools?: pulumi.Input<pulumi.Input<inputs.compute.v20201201.SubResource>[]>;
+            /**
+             * Specifies an array of references to application security group.
+             */
+            applicationSecurityGroups?: pulumi.Input<pulumi.Input<inputs.compute.v20201201.SubResource>[]>;
+            /**
+             * Resource Id
+             */
+            id?: pulumi.Input<string>;
+            /**
+             * Specifies an array of references to backend address pools of load balancers. A scale set can reference backend address pools of one public and one internal load balancer. Multiple scale sets cannot use the same basic sku load balancer.
+             */
+            loadBalancerBackendAddressPools?: pulumi.Input<pulumi.Input<inputs.compute.v20201201.SubResource>[]>;
+            /**
+             * Specifies an array of references to inbound Nat pools of the load balancers. A scale set can reference inbound nat pools of one public and one internal load balancer. Multiple scale sets cannot use the same basic sku load balancer.
+             */
+            loadBalancerInboundNatPools?: pulumi.Input<pulumi.Input<inputs.compute.v20201201.SubResource>[]>;
+            /**
+             * The IP configuration name.
+             */
+            name: pulumi.Input<string>;
+            /**
+             * Specifies the primary network interface in case the virtual machine has more than 1 network interface.
+             */
+            primary?: pulumi.Input<boolean>;
+            /**
+             * Available from Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.  Possible values are: 'IPv4' and 'IPv6'.
+             */
+            privateIPAddressVersion?: pulumi.Input<string | enums.compute.v20201201.IPVersion>;
+            /**
+             * The publicIPAddressConfiguration.
+             */
+            publicIPAddressConfiguration?: pulumi.Input<inputs.compute.v20201201.VirtualMachineScaleSetPublicIPAddressConfiguration>;
+            /**
+             * Specifies the identifier of the subnet.
+             */
+            subnet?: pulumi.Input<inputs.compute.v20201201.ApiEntityReference>;
+        }
+
+        /**
+         * Identity for the virtual machine scale set.
+         */
+        export interface VirtualMachineScaleSetIdentity {
+            /**
+             * The type of identity used for the virtual machine scale set. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the virtual machine scale set.
+             */
+            type?: pulumi.Input<enums.compute.v20201201.ResourceIdentityType>;
+            /**
+             * The list of user identities associated with the virtual machine scale set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+             */
+            userAssignedIdentities?: pulumi.Input<{[key: string]: any}>;
+        }
+
+        /**
+         * Contains the IP tag associated with the public IP address.
+         */
+        export interface VirtualMachineScaleSetIpTag {
+            /**
+             * IP tag type. Example: FirstPartyUsage.
+             */
+            ipTagType?: pulumi.Input<string>;
+            /**
+             * IP tag associated with the public IP. Example: SQL, Storage etc.
+             */
+            tag?: pulumi.Input<string>;
+        }
+
+        /**
+         * Describes the parameters of a ScaleSet managed disk.
+         */
+        export interface VirtualMachineScaleSetManagedDiskParameters {
+            /**
+             * Specifies the customer managed disk encryption set resource id for the managed disk.
+             */
+            diskEncryptionSet?: pulumi.Input<inputs.compute.v20201201.DiskEncryptionSetParameters>;
+            /**
+             * Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
+             */
+            storageAccountType?: pulumi.Input<string | enums.compute.v20201201.StorageAccountTypes>;
+        }
+
+        /**
+         * Describes a virtual machine scale set network profile's network configurations.
+         */
+        export interface VirtualMachineScaleSetNetworkConfiguration {
+            /**
+             * The dns settings to be applied on the network interfaces.
+             */
+            dnsSettings?: pulumi.Input<inputs.compute.v20201201.VirtualMachineScaleSetNetworkConfigurationDnsSettings>;
+            /**
+             * Specifies whether the network interface is accelerated networking-enabled.
+             */
+            enableAcceleratedNetworking?: pulumi.Input<boolean>;
+            /**
+             * Specifies whether the network interface is FPGA networking-enabled.
+             */
+            enableFpga?: pulumi.Input<boolean>;
+            /**
+             * Whether IP forwarding enabled on this NIC.
+             */
+            enableIPForwarding?: pulumi.Input<boolean>;
+            /**
+             * Resource Id
+             */
+            id?: pulumi.Input<string>;
+            /**
+             * Specifies the IP configurations of the network interface.
+             */
+            ipConfigurations: pulumi.Input<pulumi.Input<inputs.compute.v20201201.VirtualMachineScaleSetIPConfiguration>[]>;
+            /**
+             * The network configuration name.
+             */
+            name: pulumi.Input<string>;
+            /**
+             * The network security group.
+             */
+            networkSecurityGroup?: pulumi.Input<inputs.compute.v20201201.SubResource>;
+            /**
+             * Specifies the primary network interface in case the virtual machine has more than 1 network interface.
+             */
+            primary?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Describes a virtual machines scale sets network configuration's DNS settings.
+         */
+        export interface VirtualMachineScaleSetNetworkConfigurationDnsSettings {
+            /**
+             * List of DNS servers IP addresses
+             */
+            dnsServers?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * Describes a virtual machine scale set network profile.
+         */
+        export interface VirtualMachineScaleSetNetworkProfile {
+            /**
+             * A reference to a load balancer probe used to determine the health of an instance in the virtual machine scale set. The reference will be in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.
+             */
+            healthProbe?: pulumi.Input<inputs.compute.v20201201.ApiEntityReference>;
+            /**
+             * The list of network configurations.
+             */
+            networkInterfaceConfigurations?: pulumi.Input<pulumi.Input<inputs.compute.v20201201.VirtualMachineScaleSetNetworkConfiguration>[]>;
+        }
+
+        /**
+         * Describes a virtual machine scale set operating system disk.
+         */
+        export interface VirtualMachineScaleSetOSDisk {
+            /**
+             * Specifies the caching requirements. <br><br> Possible values are: <br><br> **None** <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for Standard storage. ReadOnly for Premium storage**
+             */
+            caching?: pulumi.Input<enums.compute.v20201201.CachingTypes>;
+            /**
+             * Specifies how the virtual machines in the scale set should be created.<br><br> The only allowed value is: **FromImage** \u2013 This value is used when you are using an image to create the virtual machine. If you are using a platform image, you also use the imageReference element described above. If you are using a marketplace image, you  also use the plan element previously described.
+             */
+            createOption: pulumi.Input<string | enums.compute.v20201201.DiskCreateOptionTypes>;
+            /**
+             * Specifies the ephemeral disk Settings for the operating system disk used by the virtual machine scale set.
+             */
+            diffDiskSettings?: pulumi.Input<inputs.compute.v20201201.DiffDiskSettings>;
+            /**
+             * Specifies the size of the operating system disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image. <br><br> This value cannot be larger than 1023 GB
+             */
+            diskSizeGB?: pulumi.Input<number>;
+            /**
+             * Specifies information about the unmanaged user image to base the scale set on.
+             */
+            image?: pulumi.Input<inputs.compute.v20201201.VirtualHardDisk>;
+            /**
+             * The managed disk parameters.
+             */
+            managedDisk?: pulumi.Input<inputs.compute.v20201201.VirtualMachineScaleSetManagedDiskParameters>;
+            /**
+             * The disk name.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. <br><br> Possible values are: <br><br> **Windows** <br><br> **Linux**
+             */
+            osType?: pulumi.Input<enums.compute.v20201201.OperatingSystemTypes>;
+            /**
+             * Specifies the container urls that are used to store operating system disks for the scale set.
+             */
+            vhdContainers?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Specifies whether writeAccelerator should be enabled or disabled on the disk.
+             */
+            writeAcceleratorEnabled?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Describes a virtual machine scale set OS profile.
+         */
+        export interface VirtualMachineScaleSetOSProfile {
+            /**
+             * Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-reset-rdp?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-vmaccess-extension?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#reset-root-password)
+             */
+            adminPassword?: pulumi.Input<string>;
+            /**
+             * Specifies the name of the administrator account. <br><br> **Windows-only restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters <br><br> **Max-length (Windows):** 20 characters  <br><br><li> For root access to the Linux VM, see [Using root privileges on Linux virtual machines in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)<br><li> For a list of built-in system users on Linux that should not be used in this field, see [Selecting User Names for Linux on Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+             */
+            adminUsername?: pulumi.Input<string>;
+            /**
+             * Specifies the computer name prefix for all of the virtual machines in the scale set. Computer name prefixes must be 1 to 15 characters long.
+             */
+            computerNamePrefix?: pulumi.Input<string>;
+            /**
+             * Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the Virtual Machine. The maximum length of the binary array is 65535 bytes. <br><br> For using cloud-init for your VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+             */
+            customData?: pulumi.Input<string>;
+            /**
+             * Specifies the Linux operating system settings on the virtual machine. <br><br>For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-endorsed-distros?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) <br><br> For running non-endorsed distributions, see [Information for Non-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+             */
+            linuxConfiguration?: pulumi.Input<inputs.compute.v20201201.LinuxConfiguration>;
+            /**
+             * Specifies set of certificates that should be installed onto the virtual machines in the scale set.
+             */
+            secrets?: pulumi.Input<pulumi.Input<inputs.compute.v20201201.VaultSecretGroup>[]>;
+            /**
+             * Specifies Windows operating system settings on the virtual machine.
+             */
+            windowsConfiguration?: pulumi.Input<inputs.compute.v20201201.WindowsConfiguration>;
+        }
+
+        /**
+         * Describes a virtual machines scale set IP Configuration's PublicIPAddress configuration
+         */
+        export interface VirtualMachineScaleSetPublicIPAddressConfiguration {
+            /**
+             * The dns settings to be applied on the publicIP addresses .
+             */
+            dnsSettings?: pulumi.Input<inputs.compute.v20201201.VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings>;
+            /**
+             * The idle timeout of the public IP address.
+             */
+            idleTimeoutInMinutes?: pulumi.Input<number>;
+            /**
+             * The list of IP tags associated with the public IP address.
+             */
+            ipTags?: pulumi.Input<pulumi.Input<inputs.compute.v20201201.VirtualMachineScaleSetIpTag>[]>;
+            /**
+             * The publicIP address configuration name.
+             */
+            name: pulumi.Input<string>;
+            /**
+             * Available from Api-Version 2019-07-01 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible values are: 'IPv4' and 'IPv6'.
+             */
+            publicIPAddressVersion?: pulumi.Input<string | enums.compute.v20201201.IPVersion>;
+            /**
+             * The PublicIPPrefix from which to allocate publicIP addresses.
+             */
+            publicIPPrefix?: pulumi.Input<inputs.compute.v20201201.SubResource>;
+        }
+
+        /**
+         * Describes a virtual machines scale sets network configuration's DNS settings.
+         */
+        export interface VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings {
+            /**
+             * The Domain name label.The concatenation of the domain name label and vm index will be the domain name labels of the PublicIPAddress resources that will be created
+             */
+            domainNameLabel: pulumi.Input<string>;
+        }
+
+        /**
+         * Describes a virtual machine scale set storage profile.
+         */
+        export interface VirtualMachineScaleSetStorageProfile {
+            /**
+             * Specifies the parameters that are used to add data disks to the virtual machines in the scale set. <br><br> For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+             */
+            dataDisks?: pulumi.Input<pulumi.Input<inputs.compute.v20201201.VirtualMachineScaleSetDataDisk>[]>;
+            /**
+             * Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations.
+             */
+            imageReference?: pulumi.Input<inputs.compute.v20201201.ImageReference>;
+            /**
+             * Specifies information about the operating system disk used by the virtual machines in the scale set. <br><br> For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+             */
+            osDisk?: pulumi.Input<inputs.compute.v20201201.VirtualMachineScaleSetOSDisk>;
+        }
+
+        /**
+         * Describes a virtual machine scale set VM network profile.
+         */
+        export interface VirtualMachineScaleSetVMNetworkProfileConfiguration {
+            /**
+             * The list of network configurations.
+             */
+            networkInterfaceConfigurations?: pulumi.Input<pulumi.Input<inputs.compute.v20201201.VirtualMachineScaleSetNetworkConfiguration>[]>;
+        }
+
+        /**
+         * Describes a virtual machine scale set virtual machine profile.
+         */
+        export interface VirtualMachineScaleSetVMProfile {
+            /**
+             * Specifies the billing related details of a Azure Spot VMSS. <br><br>Minimum api-version: 2019-03-01.
+             */
+            billingProfile?: pulumi.Input<inputs.compute.v20201201.BillingProfile>;
+            /**
+             * Specifies the boot diagnostic settings state. <br><br>Minimum api-version: 2015-06-15.
+             */
+            diagnosticsProfile?: pulumi.Input<inputs.compute.v20201201.DiagnosticsProfile>;
+            /**
+             * Specifies the eviction policy for the Azure Spot virtual machine and Azure Spot scale set. <br><br>For Azure Spot virtual machines, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2019-03-01. <br><br>For Azure Spot scale sets, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2017-10-30-preview.
+             */
+            evictionPolicy?: pulumi.Input<string | enums.compute.v20201201.VirtualMachineEvictionPolicyTypes>;
+            /**
+             * Specifies a collection of settings for extensions installed on virtual machines in the scale set.
+             */
+            extensionProfile?: pulumi.Input<inputs.compute.v20201201.VirtualMachineScaleSetExtensionProfile>;
+            /**
+             * Specifies that the image or disk that is being used was licensed on-premises. <br><br> Possible values for Windows Server operating system are: <br><br> Windows_Client <br><br> Windows_Server <br><br> Possible values for Linux Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) <br><br> [Azure Hybrid Use Benefit for Linux Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux) <br><br> Minimum api-version: 2015-06-15
+             */
+            licenseType?: pulumi.Input<string>;
+            /**
+             * Specifies properties of the network interfaces of the virtual machines in the scale set.
+             */
+            networkProfile?: pulumi.Input<inputs.compute.v20201201.VirtualMachineScaleSetNetworkProfile>;
+            /**
+             * Specifies the operating system settings for the virtual machines in the scale set.
+             */
+            osProfile?: pulumi.Input<inputs.compute.v20201201.VirtualMachineScaleSetOSProfile>;
+            /**
+             * Specifies the priority for the virtual machines in the scale set. <br><br>Minimum api-version: 2017-10-30-preview
+             */
+            priority?: pulumi.Input<string | enums.compute.v20201201.VirtualMachinePriorityTypes>;
+            /**
+             * Specifies Scheduled Event related configurations.
+             */
+            scheduledEventsProfile?: pulumi.Input<inputs.compute.v20201201.ScheduledEventsProfile>;
+            /**
+             * Specifies the Security related profile settings for the virtual machines in the scale set.
+             */
+            securityProfile?: pulumi.Input<inputs.compute.v20201201.SecurityProfile>;
+            /**
+             * Specifies the storage settings for the virtual machine disks.
+             */
+            storageProfile?: pulumi.Input<inputs.compute.v20201201.VirtualMachineScaleSetStorageProfile>;
+        }
+
+        /**
+         * The protection policy of a virtual machine scale set VM.
+         */
+        export interface VirtualMachineScaleSetVMProtectionPolicy {
+            /**
+             * Indicates that the virtual machine scale set VM shouldn't be considered for deletion during a scale-in operation.
+             */
+            protectFromScaleIn?: pulumi.Input<boolean>;
+            /**
+             * Indicates that model updates or actions (including scale-in) initiated on the virtual machine scale set should not be applied to the virtual machine scale set VM.
+             */
+            protectFromScaleSetActions?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Describes Windows Remote Management configuration of the VM
+         */
+        export interface WinRMConfiguration {
+            /**
+             * The list of Windows Remote Management listeners
+             */
+            listeners?: pulumi.Input<pulumi.Input<inputs.compute.v20201201.WinRMListener>[]>;
+        }
+
+        /**
+         * Describes Protocol and thumbprint of Windows Remote Management listener
+         */
+        export interface WinRMListener {
+            /**
+             * This is the URL of a certificate that has been uploaded to Key Vault as a secret. For adding a secret to the Key Vault, see [Add a key or secret to the key vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add). In this case, your certificate needs to be It is the Base64 encoding of the following JSON Object which is encoded in UTF-8: <br><br> {<br>  "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>  "password":"<pfx-file-password>"<br>}
+             */
+            certificateUrl?: pulumi.Input<string>;
+            /**
+             * Specifies the protocol of WinRM listener. <br><br> Possible values are: <br>**http** <br><br> **https**
+             */
+            protocol?: pulumi.Input<enums.compute.v20201201.ProtocolTypes>;
+        }
+
+        /**
+         * Specifies Windows operating system settings on the virtual machine.
+         */
+        export interface WindowsConfiguration {
+            /**
+             * Specifies additional base-64 encoded XML formatted information that can be included in the Unattend.xml file, which is used by Windows Setup.
+             */
+            additionalUnattendContent?: pulumi.Input<pulumi.Input<inputs.compute.v20201201.AdditionalUnattendContent>[]>;
+            /**
+             * Indicates whether Automatic Updates is enabled for the Windows virtual machine. Default value is true. <br><br> For virtual machine scale sets, this property can be updated and updates will take effect on OS reprovisioning.
+             */
+            enableAutomaticUpdates?: pulumi.Input<boolean>;
+            /**
+             * [Preview Feature] Specifies settings related to VM Guest Patching on Windows.
+             */
+            patchSettings?: pulumi.Input<inputs.compute.v20201201.PatchSettings>;
+            /**
+             * Indicates whether virtual machine agent should be provisioned on the virtual machine. <br><br> When this property is not specified in the request body, default behavior is to set it to true.  This will ensure that VM Agent is installed on the VM so that extensions can be added to the VM later.
+             */
+            provisionVMAgent?: pulumi.Input<boolean>;
+            /**
+             * Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time". <br><br> Possible values can be [TimeZoneInfo.Id](https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id) value from time zones returned by [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.getsystemtimezones).
+             */
+            timeZone?: pulumi.Input<string>;
+            /**
+             * Specifies the Windows Remote Management listeners. This enables remote Windows PowerShell.
+             */
+            winRM?: pulumi.Input<inputs.compute.v20201201.WinRMConfiguration>;
+        }
+
+    }
 }
 
 export namespace confidentialledger {
@@ -54521,6 +55986,487 @@ export namespace containerinstance {
              * The git repo volume.
              */
             gitRepo?: pulumi.Input<inputs.containerinstance.v20201101.GitRepoVolume>;
+            /**
+             * The name of the volume.
+             */
+            name: pulumi.Input<string>;
+            /**
+             * The secret volume.
+             */
+            secret?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        }
+
+        /**
+         * The properties of the volume mount.
+         */
+        export interface VolumeMount {
+            /**
+             * The path within the container where the volume should be mounted. Must not contain colon (:).
+             */
+            mountPath: pulumi.Input<string>;
+            /**
+             * The name of the volume mount.
+             */
+            name: pulumi.Input<string>;
+            /**
+             * The flag indicating whether the volume mount is read-only.
+             */
+            readOnly?: pulumi.Input<boolean>;
+        }
+
+    }
+
+    export namespace v20210301 {
+        /**
+         * The properties of the Azure File volume. Azure File shares are mounted as volumes.
+         */
+        export interface AzureFileVolume {
+            /**
+             * The flag indicating whether the Azure File shared mounted as a volume is read-only.
+             */
+            readOnly?: pulumi.Input<boolean>;
+            /**
+             * The name of the Azure File share to be mounted as a volume.
+             */
+            shareName: pulumi.Input<string>;
+            /**
+             * The storage account access key used to access the Azure File share.
+             */
+            storageAccountKey?: pulumi.Input<string>;
+            /**
+             * The name of the storage account that contains the Azure File share.
+             */
+            storageAccountName: pulumi.Input<string>;
+        }
+
+        /**
+         * A container instance.
+         */
+        export interface Container {
+            /**
+             * The commands to execute within the container instance in exec form.
+             */
+            command?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The environment variables to set in the container instance.
+             */
+            environmentVariables?: pulumi.Input<pulumi.Input<inputs.containerinstance.v20210301.EnvironmentVariable>[]>;
+            /**
+             * The name of the image used to create the container instance.
+             */
+            image: pulumi.Input<string>;
+            /**
+             * The liveness probe.
+             */
+            livenessProbe?: pulumi.Input<inputs.containerinstance.v20210301.ContainerProbe>;
+            /**
+             * The user-provided name of the container instance.
+             */
+            name: pulumi.Input<string>;
+            /**
+             * The exposed ports on the container instance.
+             */
+            ports?: pulumi.Input<pulumi.Input<inputs.containerinstance.v20210301.ContainerPort>[]>;
+            /**
+             * The readiness probe.
+             */
+            readinessProbe?: pulumi.Input<inputs.containerinstance.v20210301.ContainerProbe>;
+            /**
+             * The resource requirements of the container instance.
+             */
+            resources: pulumi.Input<inputs.containerinstance.v20210301.ResourceRequirements>;
+            /**
+             * The volume mounts available to the container instance.
+             */
+            volumeMounts?: pulumi.Input<pulumi.Input<inputs.containerinstance.v20210301.VolumeMount>[]>;
+        }
+
+        /**
+         * The container execution command, for liveness or readiness probe
+         */
+        export interface ContainerExec {
+            /**
+             * The commands to execute within the container.
+             */
+            command?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * Container group diagnostic information.
+         */
+        export interface ContainerGroupDiagnostics {
+            /**
+             * Container group log analytics information.
+             */
+            logAnalytics?: pulumi.Input<inputs.containerinstance.v20210301.LogAnalytics>;
+        }
+
+        /**
+         * Identity for the container group.
+         */
+        export interface ContainerGroupIdentity {
+            /**
+             * The type of identity used for the container group. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the container group.
+             */
+            type?: pulumi.Input<enums.containerinstance.v20210301.ResourceIdentityType>;
+            /**
+             * The list of user identities associated with the container group. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+             */
+            userAssignedIdentities?: pulumi.Input<{[key: string]: any}>;
+        }
+
+        /**
+         * Container group network profile information.
+         */
+        export interface ContainerGroupNetworkProfile {
+            /**
+             * The identifier for a network profile.
+             */
+            id: pulumi.Input<string>;
+        }
+
+        /**
+         * The container Http Get settings, for liveness or readiness probe
+         */
+        export interface ContainerHttpGet {
+            /**
+             * The HTTP headers.
+             */
+            httpHeaders?: pulumi.Input<inputs.containerinstance.v20210301.HttpHeaders>;
+            /**
+             * The path to probe.
+             */
+            path?: pulumi.Input<string>;
+            /**
+             * The port number to probe.
+             */
+            port: pulumi.Input<number>;
+            /**
+             * The scheme.
+             */
+            scheme?: pulumi.Input<string | enums.containerinstance.v20210301.Scheme>;
+        }
+
+        /**
+         * The port exposed on the container instance.
+         */
+        export interface ContainerPort {
+            /**
+             * The port number exposed within the container group.
+             */
+            port: pulumi.Input<number>;
+            /**
+             * The protocol associated with the port.
+             */
+            protocol?: pulumi.Input<string | enums.containerinstance.v20210301.ContainerNetworkProtocol>;
+        }
+
+        /**
+         * The container probe, for liveness or readiness
+         */
+        export interface ContainerProbe {
+            /**
+             * The execution command to probe
+             */
+            exec?: pulumi.Input<inputs.containerinstance.v20210301.ContainerExec>;
+            /**
+             * The failure threshold.
+             */
+            failureThreshold?: pulumi.Input<number>;
+            /**
+             * The Http Get settings to probe
+             */
+            httpGet?: pulumi.Input<inputs.containerinstance.v20210301.ContainerHttpGet>;
+            /**
+             * The initial delay seconds.
+             */
+            initialDelaySeconds?: pulumi.Input<number>;
+            /**
+             * The period seconds.
+             */
+            periodSeconds?: pulumi.Input<number>;
+            /**
+             * The success threshold.
+             */
+            successThreshold?: pulumi.Input<number>;
+            /**
+             * The timeout seconds.
+             */
+            timeoutSeconds?: pulumi.Input<number>;
+        }
+
+        /**
+         * DNS configuration for the container group.
+         */
+        export interface DnsConfiguration {
+            /**
+             * The DNS servers for the container group.
+             */
+            nameServers: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The DNS options for the container group.
+             */
+            options?: pulumi.Input<string>;
+            /**
+             * The DNS search domains for hostname lookup in the container group.
+             */
+            searchDomains?: pulumi.Input<string>;
+        }
+
+        /**
+         * The container group encryption properties.
+         */
+        export interface EncryptionProperties {
+            /**
+             * The encryption key name.
+             */
+            keyName: pulumi.Input<string>;
+            /**
+             * The encryption key version.
+             */
+            keyVersion: pulumi.Input<string>;
+            /**
+             * The keyvault base url.
+             */
+            vaultBaseUrl: pulumi.Input<string>;
+        }
+
+        /**
+         * The environment variable to set within the container instance.
+         */
+        export interface EnvironmentVariable {
+            /**
+             * The name of the environment variable.
+             */
+            name: pulumi.Input<string>;
+            /**
+             * The value of the secure environment variable.
+             */
+            secureValue?: pulumi.Input<string>;
+            /**
+             * The value of the environment variable.
+             */
+            value?: pulumi.Input<string>;
+        }
+
+        /**
+         * Represents a volume that is populated with the contents of a git repository
+         */
+        export interface GitRepoVolume {
+            /**
+             * Target directory name. Must not contain or start with '..'.  If '.' is supplied, the volume directory will be the git repository.  Otherwise, if specified, the volume will contain the git repository in the subdirectory with the given name.
+             */
+            directory?: pulumi.Input<string>;
+            /**
+             * Repository URL
+             */
+            repository: pulumi.Input<string>;
+            /**
+             * Commit hash for the specified revision.
+             */
+            revision?: pulumi.Input<string>;
+        }
+
+        /**
+         * The GPU resource.
+         */
+        export interface GpuResource {
+            /**
+             * The count of the GPU resource.
+             */
+            count: pulumi.Input<number>;
+            /**
+             * The SKU of the GPU resource.
+             */
+            sku: pulumi.Input<string | enums.containerinstance.v20210301.GpuSku>;
+        }
+
+        /**
+         * The HTTP headers.
+         */
+        export interface HttpHeaders {
+            /**
+             * The header name.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * The header value.
+             */
+            value?: pulumi.Input<string>;
+        }
+
+        /**
+         * Image registry credential.
+         */
+        export interface ImageRegistryCredential {
+            /**
+             * The password for the private registry.
+             */
+            password?: pulumi.Input<string>;
+            /**
+             * The Docker image registry server without a protocol such as "http" and "https".
+             */
+            server: pulumi.Input<string>;
+            /**
+             * The username for the private registry.
+             */
+            username: pulumi.Input<string>;
+        }
+
+        /**
+         * The init container definition.
+         */
+        export interface InitContainerDefinition {
+            /**
+             * The command to execute within the init container in exec form.
+             */
+            command?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The environment variables to set in the init container.
+             */
+            environmentVariables?: pulumi.Input<pulumi.Input<inputs.containerinstance.v20210301.EnvironmentVariable>[]>;
+            /**
+             * The image of the init container.
+             */
+            image?: pulumi.Input<string>;
+            /**
+             * The name for the init container.
+             */
+            name: pulumi.Input<string>;
+            /**
+             * The volume mounts available to the init container.
+             */
+            volumeMounts?: pulumi.Input<pulumi.Input<inputs.containerinstance.v20210301.VolumeMount>[]>;
+        }
+
+        /**
+         * IP address for the container group.
+         */
+        export interface IpAddress {
+            /**
+             * The Dns name label for the IP.
+             */
+            dnsNameLabel?: pulumi.Input<string>;
+            /**
+             * The IP exposed to the public internet.
+             */
+            ip?: pulumi.Input<string>;
+            /**
+             * The list of ports exposed on the container group.
+             */
+            ports: pulumi.Input<pulumi.Input<inputs.containerinstance.v20210301.Port>[]>;
+            /**
+             * Specifies if the IP is exposed to the public internet or private VNET.
+             */
+            type: pulumi.Input<string | enums.containerinstance.v20210301.ContainerGroupIpAddressType>;
+        }
+
+        /**
+         * Container group log analytics information.
+         */
+        export interface LogAnalytics {
+            /**
+             * The log type to be used.
+             */
+            logType?: pulumi.Input<string | enums.containerinstance.v20210301.LogAnalyticsLogType>;
+            /**
+             * Metadata for log analytics.
+             */
+            metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * The workspace id for log analytics
+             */
+            workspaceId: pulumi.Input<string>;
+            /**
+             * The workspace key for log analytics
+             */
+            workspaceKey: pulumi.Input<string>;
+            /**
+             * The workspace resource id for log analytics
+             */
+            workspaceResourceId?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        }
+
+        /**
+         * The port exposed on the container group.
+         */
+        export interface Port {
+            /**
+             * The port number.
+             */
+            port: pulumi.Input<number>;
+            /**
+             * The protocol associated with the port.
+             */
+            protocol?: pulumi.Input<string | enums.containerinstance.v20210301.ContainerGroupNetworkProtocol>;
+        }
+
+        /**
+         * The resource limits.
+         */
+        export interface ResourceLimits {
+            /**
+             * The CPU limit of this container instance.
+             */
+            cpu?: pulumi.Input<number>;
+            /**
+             * The GPU limit of this container instance.
+             */
+            gpu?: pulumi.Input<inputs.containerinstance.v20210301.GpuResource>;
+            /**
+             * The memory limit in GB of this container instance.
+             */
+            memoryInGB?: pulumi.Input<number>;
+        }
+
+        /**
+         * The resource requests.
+         */
+        export interface ResourceRequests {
+            /**
+             * The CPU request of this container instance.
+             */
+            cpu: pulumi.Input<number>;
+            /**
+             * The GPU request of this container instance.
+             */
+            gpu?: pulumi.Input<inputs.containerinstance.v20210301.GpuResource>;
+            /**
+             * The memory request in GB of this container instance.
+             */
+            memoryInGB: pulumi.Input<number>;
+        }
+
+        /**
+         * The resource requirements.
+         */
+        export interface ResourceRequirements {
+            /**
+             * The resource limits of this container instance.
+             */
+            limits?: pulumi.Input<inputs.containerinstance.v20210301.ResourceLimits>;
+            /**
+             * The resource requests of this container instance.
+             */
+            requests: pulumi.Input<inputs.containerinstance.v20210301.ResourceRequests>;
+        }
+
+        /**
+         * The properties of the volume.
+         */
+        export interface Volume {
+            /**
+             * The Azure File volume.
+             */
+            azureFile?: pulumi.Input<inputs.containerinstance.v20210301.AzureFileVolume>;
+            /**
+             * The empty directory volume.
+             */
+            emptyDir?: any;
+            /**
+             * The git repo volume.
+             */
+            gitRepo?: pulumi.Input<inputs.containerinstance.v20210301.GitRepoVolume>;
             /**
              * The name of the volume.
              */
@@ -69519,7 +71465,7 @@ export namespace databox {
             /**
              * The expected size of the data, which needs to be transferred in this job, in terabytes.
              */
-            expectedDataSizeInTerabytes?: pulumi.Input<number>;
+            expectedDataSizeInTeraBytes?: pulumi.Input<number>;
             /**
              * Indicates the type of job details.
              * Expected value is 'DataBoxDisk'.
@@ -69570,7 +71516,7 @@ export namespace databox {
             /**
              * The expected size of the data, which needs to be transferred in this job, in terabytes.
              */
-            expectedDataSizeInTerabytes?: pulumi.Input<number>;
+            expectedDataSizeInTeraBytes?: pulumi.Input<number>;
             /**
              * Indicates the type of job details.
              * Expected value is 'DataBoxHeavy'.
@@ -69613,7 +71559,7 @@ export namespace databox {
             /**
              * The expected size of the data, which needs to be transferred in this job, in terabytes.
              */
-            expectedDataSizeInTerabytes?: pulumi.Input<number>;
+            expectedDataSizeInTeraBytes?: pulumi.Input<number>;
             /**
              * Indicates the type of job details.
              * Expected value is 'DataBox'.
@@ -71108,7 +73054,7 @@ export namespace databox {
             /**
              * The expected size of the data, which needs to be transferred in this job, in terabytes.
              */
-            expectedDataSizeInTerabytes?: pulumi.Input<number>;
+            expectedDataSizeInTeraBytes?: pulumi.Input<number>;
             /**
              * Indicates the type of job details.
              * Expected value is 'DataBoxDisk'.
@@ -71159,7 +73105,7 @@ export namespace databox {
             /**
              * The expected size of the data, which needs to be transferred in this job, in terabytes.
              */
-            expectedDataSizeInTerabytes?: pulumi.Input<number>;
+            expectedDataSizeInTeraBytes?: pulumi.Input<number>;
             /**
              * Indicates the type of job details.
              * Expected value is 'DataBoxHeavy'.
@@ -71202,7 +73148,7 @@ export namespace databox {
             /**
              * The expected size of the data, which needs to be transferred in this job, in terabytes.
              */
-            expectedDataSizeInTerabytes?: pulumi.Input<number>;
+            expectedDataSizeInTeraBytes?: pulumi.Input<number>;
             /**
              * Indicates the type of job details.
              * Expected value is 'DataBox'.
@@ -71682,38 +73628,6 @@ export namespace databoxedge {
         }
 
         /**
-         * Details about Edge Profile for the resource
-         */
-        export interface EdgeProfile {
-            /**
-             * Edge Profile Subscription
-             */
-            subscription?: pulumi.Input<inputs.databoxedge.latest.EdgeProfileSubscription>;
-        }
-
-        /**
-         * Subscription details for the Edge Profile
-         */
-        export interface EdgeProfileSubscription {
-            /**
-             * ARM ID of the subscription
-             */
-            id?: pulumi.Input<string>;
-            locationPlacementId?: pulumi.Input<string>;
-            quotaId?: pulumi.Input<string>;
-            registeredFeatures?: pulumi.Input<pulumi.Input<inputs.databoxedge.latest.SubscriptionRegisteredFeatures>[]>;
-            registrationDate?: pulumi.Input<string>;
-            /**
-             * Edge Subscription Registration ID
-             */
-            registrationId?: pulumi.Input<string>;
-            serializedDetails?: pulumi.Input<string>;
-            state?: pulumi.Input<string | enums.databoxedge.latest.SubscriptionState>;
-            subscriptionId?: pulumi.Input<string>;
-            tenantId?: pulumi.Input<string>;
-        }
-
-        /**
          * Metric configuration.
          */
         export interface MetricConfiguration {
@@ -71782,20 +73696,6 @@ export namespace databoxedge {
         }
 
         /**
-         * Represents a single status change.
-         */
-        export interface OrderStatus {
-            /**
-             * Comments related to this status change.
-             */
-            comments?: pulumi.Input<string>;
-            /**
-             * Status of the order as per the allowed status types.
-             */
-            status: pulumi.Input<string | enums.databoxedge.latest.OrderState>;
-        }
-
-        /**
          * Fields for tracking refresh job on the share or container.
          */
         export interface RefreshDetails {
@@ -71828,20 +73728,6 @@ export namespace databoxedge {
         }
 
         /**
-         * Fields for tracking resource move
-         */
-        export interface ResourceMoveDetails {
-            /**
-             * Denotes whether move operation is in progress
-             */
-            operationInProgress?: pulumi.Input<string | enums.databoxedge.latest.ResourceMoveStatus>;
-            /**
-             * Denotes the timeout of the operation to finish
-             */
-            operationInProgressLockTimeoutInUTC?: pulumi.Input<string>;
-        }
-
-        /**
          * The SKU type.
          */
         export interface Sku {
@@ -71853,11 +73739,6 @@ export namespace databoxedge {
              * The SKU tier. This is based on the SKU name.
              */
             tier?: pulumi.Input<string | enums.databoxedge.latest.SkuTier>;
-        }
-
-        export interface SubscriptionRegisteredFeatures {
-            name?: pulumi.Input<string>;
-            state?: pulumi.Input<string>;
         }
 
         /**
@@ -72718,38 +74599,6 @@ export namespace databoxedge {
         }
 
         /**
-         * Details about Edge Profile for the resource
-         */
-        export interface EdgeProfile {
-            /**
-             * Edge Profile Subscription
-             */
-            subscription?: pulumi.Input<inputs.databoxedge.v20200901.EdgeProfileSubscription>;
-        }
-
-        /**
-         * Subscription details for the Edge Profile
-         */
-        export interface EdgeProfileSubscription {
-            /**
-             * ARM ID of the subscription
-             */
-            id?: pulumi.Input<string>;
-            locationPlacementId?: pulumi.Input<string>;
-            quotaId?: pulumi.Input<string>;
-            registeredFeatures?: pulumi.Input<pulumi.Input<inputs.databoxedge.v20200901.SubscriptionRegisteredFeatures>[]>;
-            registrationDate?: pulumi.Input<string>;
-            /**
-             * Edge Subscription Registration ID
-             */
-            registrationId?: pulumi.Input<string>;
-            serializedDetails?: pulumi.Input<string>;
-            state?: pulumi.Input<string | enums.databoxedge.v20200901.SubscriptionState>;
-            subscriptionId?: pulumi.Input<string>;
-            tenantId?: pulumi.Input<string>;
-        }
-
-        /**
          * Metric configuration.
          */
         export interface MetricConfiguration {
@@ -72818,20 +74667,6 @@ export namespace databoxedge {
         }
 
         /**
-         * Represents a single status change.
-         */
-        export interface OrderStatus {
-            /**
-             * Comments related to this status change.
-             */
-            comments?: pulumi.Input<string>;
-            /**
-             * Status of the order as per the allowed status types.
-             */
-            status: pulumi.Input<string | enums.databoxedge.v20200901.OrderState>;
-        }
-
-        /**
          * Fields for tracking refresh job on the share or container.
          */
         export interface RefreshDetails {
@@ -72864,20 +74699,6 @@ export namespace databoxedge {
         }
 
         /**
-         * Fields for tracking resource move
-         */
-        export interface ResourceMoveDetails {
-            /**
-             * Denotes whether move operation is in progress
-             */
-            operationInProgress?: pulumi.Input<string | enums.databoxedge.v20200901.ResourceMoveStatus>;
-            /**
-             * Denotes the timeout of the operation to finish
-             */
-            operationInProgressLockTimeoutInUTC?: pulumi.Input<string>;
-        }
-
-        /**
          * The SKU type.
          */
         export interface Sku {
@@ -72889,11 +74710,6 @@ export namespace databoxedge {
              * The SKU tier. This is based on the SKU name.
              */
             tier?: pulumi.Input<string | enums.databoxedge.v20200901.SkuTier>;
-        }
-
-        export interface SubscriptionRegisteredFeatures {
-            name?: pulumi.Input<string>;
-            state?: pulumi.Input<string>;
         }
 
         /**
@@ -73020,38 +74836,6 @@ export namespace databoxedge {
         }
 
         /**
-         * Details about Edge Profile for the resource
-         */
-        export interface EdgeProfile {
-            /**
-             * Edge Profile Subscription
-             */
-            subscription?: pulumi.Input<inputs.databoxedge.v20200901preview.EdgeProfileSubscription>;
-        }
-
-        /**
-         * Subscription details for the Edge Profile
-         */
-        export interface EdgeProfileSubscription {
-            /**
-             * ARM ID of the subscription
-             */
-            id?: pulumi.Input<string>;
-            locationPlacementId?: pulumi.Input<string>;
-            quotaId?: pulumi.Input<string>;
-            registeredFeatures?: pulumi.Input<pulumi.Input<inputs.databoxedge.v20200901preview.SubscriptionRegisteredFeatures>[]>;
-            registrationDate?: pulumi.Input<string>;
-            /**
-             * Edge Subscription Registration ID
-             */
-            registrationId?: pulumi.Input<string>;
-            serializedDetails?: pulumi.Input<string>;
-            state?: pulumi.Input<string | enums.databoxedge.v20200901preview.SubscriptionState>;
-            subscriptionId?: pulumi.Input<string>;
-            tenantId?: pulumi.Input<string>;
-        }
-
-        /**
          * Metric configuration.
          */
         export interface MetricConfiguration {
@@ -73120,20 +74904,6 @@ export namespace databoxedge {
         }
 
         /**
-         * Represents a single status change.
-         */
-        export interface OrderStatus {
-            /**
-             * Comments related to this status change.
-             */
-            comments?: pulumi.Input<string>;
-            /**
-             * Status of the order as per the allowed status types.
-             */
-            status: pulumi.Input<string | enums.databoxedge.v20200901preview.OrderState>;
-        }
-
-        /**
          * Fields for tracking refresh job on the share or container.
          */
         export interface RefreshDetails {
@@ -73166,20 +74936,6 @@ export namespace databoxedge {
         }
 
         /**
-         * Fields for tracking resource move
-         */
-        export interface ResourceMoveDetails {
-            /**
-             * Denotes whether move operation is in progress
-             */
-            operationInProgress?: pulumi.Input<string | enums.databoxedge.v20200901preview.ResourceMoveStatus>;
-            /**
-             * Denotes the timeout of the operation to finish
-             */
-            operationInProgressLockTimeoutInUTC?: pulumi.Input<string>;
-        }
-
-        /**
          * The SKU type.
          */
         export interface Sku {
@@ -73191,11 +74947,6 @@ export namespace databoxedge {
              * The SKU tier. This is based on the SKU name.
              */
             tier?: pulumi.Input<string | enums.databoxedge.v20200901preview.SkuTier>;
-        }
-
-        export interface SubscriptionRegisteredFeatures {
-            name?: pulumi.Input<string>;
-            state?: pulumi.Input<string>;
         }
 
         /**
@@ -162367,9 +164118,17 @@ export namespace insights {
              */
             eventSource?: pulumi.Input<string>;
             /**
+             * the legacy resource identifier of the resource the rule monitors. **NOTE**: this property cannot be updated for an existing rule.
+             */
+            legacyResourceId?: pulumi.Input<string>;
+            /**
              * the level.
              */
             level?: pulumi.Input<string>;
+            /**
+             * the namespace of the metric.
+             */
+            metricNamespace?: pulumi.Input<string>;
             /**
              * specifies the type of data source. There are two types of rule data sources: RuleMetricDataSource and RuleManagementEventDataSource
              * Expected value is 'Microsoft.Azure.Management.Insights.Models.RuleManagementEventDataSource'.
@@ -162383,6 +164142,10 @@ export namespace insights {
              * the resource group name.
              */
             resourceGroupName?: pulumi.Input<string>;
+            /**
+             * the location of the resource.
+             */
+            resourceLocation?: pulumi.Input<string>;
             /**
              * the resource provider name.
              */
@@ -162406,14 +164169,26 @@ export namespace insights {
          */
         export interface RuleMetricDataSource {
             /**
+             * the legacy resource identifier of the resource the rule monitors. **NOTE**: this property cannot be updated for an existing rule.
+             */
+            legacyResourceId?: pulumi.Input<string>;
+            /**
              * the name of the metric that defines what the rule monitors.
              */
             metricName?: pulumi.Input<string>;
+            /**
+             * the namespace of the metric.
+             */
+            metricNamespace?: pulumi.Input<string>;
             /**
              * specifies the type of data source. There are two types of rule data sources: RuleMetricDataSource and RuleManagementEventDataSource
              * Expected value is 'Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource'.
              */
             odataType: pulumi.Input<"Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource">;
+            /**
+             * the location of the resource.
+             */
+            resourceLocation?: pulumi.Input<string>;
             /**
              * the resource identifier of the resource the rule monitors. **NOTE**: this property cannot be updated for an existing rule.
              */
@@ -162850,9 +164625,17 @@ export namespace insights {
              */
             eventSource?: pulumi.Input<string>;
             /**
+             * the legacy resource identifier of the resource the rule monitors. **NOTE**: this property cannot be updated for an existing rule.
+             */
+            legacyResourceId?: pulumi.Input<string>;
+            /**
              * the level.
              */
             level?: pulumi.Input<string>;
+            /**
+             * the namespace of the metric.
+             */
+            metricNamespace?: pulumi.Input<string>;
             /**
              * specifies the type of data source. There are two types of rule data sources: RuleMetricDataSource and RuleManagementEventDataSource
              * Expected value is 'Microsoft.Azure.Management.Insights.Models.RuleManagementEventDataSource'.
@@ -162866,6 +164649,10 @@ export namespace insights {
              * the resource group name.
              */
             resourceGroupName?: pulumi.Input<string>;
+            /**
+             * the location of the resource.
+             */
+            resourceLocation?: pulumi.Input<string>;
             /**
              * the resource provider name.
              */
@@ -162889,14 +164676,26 @@ export namespace insights {
          */
         export interface RuleMetricDataSource {
             /**
+             * the legacy resource identifier of the resource the rule monitors. **NOTE**: this property cannot be updated for an existing rule.
+             */
+            legacyResourceId?: pulumi.Input<string>;
+            /**
              * the name of the metric that defines what the rule monitors.
              */
             metricName?: pulumi.Input<string>;
+            /**
+             * the namespace of the metric.
+             */
+            metricNamespace?: pulumi.Input<string>;
             /**
              * specifies the type of data source. There are two types of rule data sources: RuleMetricDataSource and RuleManagementEventDataSource
              * Expected value is 'Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource'.
              */
             odataType: pulumi.Input<"Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource">;
+            /**
+             * the location of the resource.
+             */
+            resourceLocation?: pulumi.Input<string>;
             /**
              * the resource identifier of the resource the rule monitors. **NOTE**: this property cannot be updated for an existing rule.
              */
@@ -163382,9 +165181,17 @@ export namespace insights {
              */
             eventSource?: pulumi.Input<string>;
             /**
+             * the legacy resource identifier of the resource the rule monitors. **NOTE**: this property cannot be updated for an existing rule.
+             */
+            legacyResourceId?: pulumi.Input<string>;
+            /**
              * the level.
              */
             level?: pulumi.Input<string>;
+            /**
+             * the namespace of the metric.
+             */
+            metricNamespace?: pulumi.Input<string>;
             /**
              * specifies the type of data source. There are two types of rule data sources: RuleMetricDataSource and RuleManagementEventDataSource
              * Expected value is 'Microsoft.Azure.Management.Insights.Models.RuleManagementEventDataSource'.
@@ -163398,6 +165205,10 @@ export namespace insights {
              * the resource group name.
              */
             resourceGroupName?: pulumi.Input<string>;
+            /**
+             * the location of the resource.
+             */
+            resourceLocation?: pulumi.Input<string>;
             /**
              * the resource provider name.
              */
@@ -163421,14 +165232,26 @@ export namespace insights {
          */
         export interface RuleMetricDataSource {
             /**
+             * the legacy resource identifier of the resource the rule monitors. **NOTE**: this property cannot be updated for an existing rule.
+             */
+            legacyResourceId?: pulumi.Input<string>;
+            /**
              * the name of the metric that defines what the rule monitors.
              */
             metricName?: pulumi.Input<string>;
+            /**
+             * the namespace of the metric.
+             */
+            metricNamespace?: pulumi.Input<string>;
             /**
              * specifies the type of data source. There are two types of rule data sources: RuleMetricDataSource and RuleManagementEventDataSource
              * Expected value is 'Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource'.
              */
             odataType: pulumi.Input<"Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource">;
+            /**
+             * the location of the resource.
+             */
+            resourceLocation?: pulumi.Input<string>;
             /**
              * the resource identifier of the resource the rule monitors. **NOTE**: this property cannot be updated for an existing rule.
              */
@@ -179204,7 +181027,7 @@ export namespace machinelearningservices {
             /**
              * Agent virtual machine size
              */
-            agentVMSize?: pulumi.Input<string>;
+            agentVmSize?: pulumi.Input<string>;
             /**
              * AKS networking configuration for vnet
              */
@@ -179273,6 +181096,10 @@ export namespace machinelearningservices {
          */
         export interface AmlComputeProperties {
             /**
+             * Compute OS Type
+             */
+            osType?: pulumi.Input<string | enums.machinelearningservices.latest.OsType>;
+            /**
              * State of the public SSH port. Possible values are: Disabled - Indicates that the public ssh port is closed on all nodes of the cluster. Enabled - Indicates that the public ssh port is open on all nodes of the cluster. NotSpecified - Indicates that the public ssh port is closed on all nodes of the cluster if VNet is defined, else is open all public nodes. It can be default only during cluster creation time, after creation it will be either enabled or disabled.
              */
             remoteLoginPortPublicAccess?: pulumi.Input<string | enums.machinelearningservices.latest.RemoteLoginPortPublicAccess>;
@@ -179296,6 +181123,20 @@ export namespace machinelearningservices {
              * Virtual Machine Size
              */
             vmSize?: pulumi.Input<string>;
+        }
+
+        /**
+         * A user that can be assigned to a compute instance.
+         */
+        export interface AssignedUser {
+            /**
+             * User’s AAD Object Id.
+             */
+            objectId: pulumi.Input<string>;
+            /**
+             * User’s AAD Tenant Id.
+             */
+            tenantId: pulumi.Input<string>;
         }
 
         /**
@@ -179333,6 +181174,14 @@ export namespace machinelearningservices {
              * Policy for sharing applications on this compute instance among users of parent workspace. If Personal, only the creator can access applications on this compute instance. When Shared, any workspace user can access applications on this instance depending on his/her assigned role.
              */
             applicationSharingPolicy?: pulumi.Input<string | enums.machinelearningservices.latest.ApplicationSharingPolicy>;
+            /**
+             * The Compute Instance Authorization type. Available values are personal (default).
+             */
+            computeInstanceAuthorizationType?: pulumi.Input<string | enums.machinelearningservices.latest.ComputeInstanceAuthorizationType>;
+            /**
+             * Settings for a personal compute instance.
+             */
+            personalComputeInstanceSettings?: pulumi.Input<inputs.machinelearningservices.latest.PersonalComputeInstanceSettings>;
             /**
              * Specifies policy and settings for SSH access.
              */
@@ -179540,6 +181389,16 @@ export namespace machinelearningservices {
         }
 
         /**
+         * Settings for a personal compute instance.
+         */
+        export interface PersonalComputeInstanceSettings {
+            /**
+             * A user explicitly assigned to a personal compute instance.
+             */
+            assignedUser?: pulumi.Input<inputs.machinelearningservices.latest.AssignedUser>;
+        }
+
+        /**
          * A collection of information about the state of the connection between service consumer and provider.
          */
         export interface PrivateLinkServiceConnectionState {
@@ -179580,7 +181439,7 @@ export namespace machinelearningservices {
              */
             minNodeCount?: pulumi.Input<number>;
             /**
-             * Node Idle Time before scaling down amlCompute
+             * Node Idle Time before scaling down amlCompute. This string needs to be in the RFC Format.
              */
             nodeIdleTimeBeforeScaleDown?: pulumi.Input<string>;
         }
@@ -186081,7 +187940,7 @@ export namespace machinelearningservices {
             /**
              * Agent virtual machine size
              */
-            agentVMSize?: pulumi.Input<string>;
+            agentVmSize?: pulumi.Input<string>;
             /**
              * AKS networking configuration for vnet
              */
@@ -186150,6 +188009,10 @@ export namespace machinelearningservices {
          */
         export interface AmlComputeProperties {
             /**
+             * Compute OS Type
+             */
+            osType?: pulumi.Input<string | enums.machinelearningservices.v20200801.OsType>;
+            /**
              * State of the public SSH port. Possible values are: Disabled - Indicates that the public ssh port is closed on all nodes of the cluster. Enabled - Indicates that the public ssh port is open on all nodes of the cluster. NotSpecified - Indicates that the public ssh port is closed on all nodes of the cluster if VNet is defined, else is open all public nodes. It can be default only during cluster creation time, after creation it will be either enabled or disabled.
              */
             remoteLoginPortPublicAccess?: pulumi.Input<string | enums.machinelearningservices.v20200801.RemoteLoginPortPublicAccess>;
@@ -186173,6 +188036,20 @@ export namespace machinelearningservices {
              * Virtual Machine Size
              */
             vmSize?: pulumi.Input<string>;
+        }
+
+        /**
+         * A user that can be assigned to a compute instance.
+         */
+        export interface AssignedUser {
+            /**
+             * User’s AAD Object Id.
+             */
+            objectId: pulumi.Input<string>;
+            /**
+             * User’s AAD Tenant Id.
+             */
+            tenantId: pulumi.Input<string>;
         }
 
         /**
@@ -186210,6 +188087,14 @@ export namespace machinelearningservices {
              * Policy for sharing applications on this compute instance among users of parent workspace. If Personal, only the creator can access applications on this compute instance. When Shared, any workspace user can access applications on this instance depending on his/her assigned role.
              */
             applicationSharingPolicy?: pulumi.Input<string | enums.machinelearningservices.v20200801.ApplicationSharingPolicy>;
+            /**
+             * The Compute Instance Authorization type. Available values are personal (default).
+             */
+            computeInstanceAuthorizationType?: pulumi.Input<string | enums.machinelearningservices.v20200801.ComputeInstanceAuthorizationType>;
+            /**
+             * Settings for a personal compute instance.
+             */
+            personalComputeInstanceSettings?: pulumi.Input<inputs.machinelearningservices.v20200801.PersonalComputeInstanceSettings>;
             /**
              * Specifies policy and settings for SSH access.
              */
@@ -186403,6 +188288,16 @@ export namespace machinelearningservices {
         }
 
         /**
+         * Settings for a personal compute instance.
+         */
+        export interface PersonalComputeInstanceSettings {
+            /**
+             * A user explicitly assigned to a personal compute instance.
+             */
+            assignedUser?: pulumi.Input<inputs.machinelearningservices.v20200801.AssignedUser>;
+        }
+
+        /**
          * A collection of information about the state of the connection between service consumer and provider.
          */
         export interface PrivateLinkServiceConnectionState {
@@ -186443,7 +188338,7 @@ export namespace machinelearningservices {
              */
             minNodeCount?: pulumi.Input<number>;
             /**
-             * Node Idle Time before scaling down amlCompute
+             * Node Idle Time before scaling down amlCompute. This string needs to be in the RFC Format.
              */
             nodeIdleTimeBeforeScaleDown?: pulumi.Input<string>;
         }
@@ -186631,7 +188526,7 @@ export namespace machinelearningservices {
             /**
              * Agent virtual machine size
              */
-            agentVMSize?: pulumi.Input<string>;
+            agentVmSize?: pulumi.Input<string>;
             /**
              * AKS networking configuration for vnet
              */
@@ -186756,6 +188651,20 @@ export namespace machinelearningservices {
         }
 
         /**
+         * Compute binding definition.
+         */
+        export interface ComputeBinding {
+            /**
+             * ID of the compute resource.
+             */
+            computeId?: pulumi.Input<string>;
+            /**
+             * Number of nodes.
+             */
+            nodeCount?: pulumi.Input<number>;
+        }
+
+        /**
          * An Azure Machine Learning compute instance.
          */
         export interface ComputeInstance {
@@ -186798,6 +188707,10 @@ export namespace machinelearningservices {
              * Settings for a personal compute instance.
              */
             personalComputeInstanceSettings?: pulumi.Input<inputs.machinelearningservices.v20200901preview.PersonalComputeInstanceSettings>;
+            /**
+             * Details of customized scripts to execute for setting up the cluster.
+             */
+            setupScripts?: pulumi.Input<inputs.machinelearningservices.v20200901preview.SetupScripts>;
             /**
              * Specifies policy and settings for SSH access.
              */
@@ -187145,6 +189058,111 @@ export namespace machinelearningservices {
         }
 
         /**
+         * Represents a category of labels in a labeling job.
+         */
+        export interface LabelCategory {
+            /**
+             * Indicates whether it is allowed to select multiple classes in this category.
+             */
+            allowMultiSelect?: pulumi.Input<boolean>;
+            /**
+             * Dictionary of label classes in this category.
+             */
+            classes: pulumi.Input<{[key: string]: pulumi.Input<inputs.machinelearningservices.v20200901preview.LabelClass>}>;
+            /**
+             * Display name of the label category.
+             */
+            displayName?: pulumi.Input<string>;
+        }
+
+        /**
+         * Represents a label or a category of labels in a labeling job.
+         */
+        export interface LabelClass {
+            /**
+             * Display name of the label class.
+             */
+            displayName?: pulumi.Input<string>;
+            /**
+             * Dictionary of subclasses of the label class.
+             */
+            subclasses?: pulumi.Input<{[key: string]: pulumi.Input<inputs.machinelearningservices.v20200901preview.LabelClass>}>;
+        }
+
+        /**
+         * Represents configuration of dataset used in a labeling job.
+         */
+        export interface LabelingDatasetConfiguration {
+            /**
+             * Name of the data asset to perform labeling.
+             */
+            assetName: pulumi.Input<string>;
+            /**
+             * AML dataset version.
+             */
+            datasetVersion: pulumi.Input<string>;
+            /**
+             * Indicates whether to enable incremental dataset refresh.
+             */
+            enableIncrementalDatasetRefresh?: pulumi.Input<boolean>;
+        }
+
+        export interface LabelingJobImageProperties {
+            /**
+             * Annotation type of image labeling tasks.
+             */
+            annotationType?: pulumi.Input<string | enums.machinelearningservices.v20200901preview.ImageAnnotationType>;
+            /**
+             * Media type of data asset.
+             */
+            mediaType: pulumi.Input<string | enums.machinelearningservices.v20200901preview.MediaType>;
+        }
+
+        /**
+         * Instructions for a labeling job.
+         */
+        export interface LabelingJobInstructions {
+            /**
+             * The link to a page with detailed labeling instructions for labelers.
+             */
+            uri?: pulumi.Input<string>;
+        }
+
+        /**
+         * Definition of a labeling job.
+         */
+        export interface LabelingJobProperties {
+            /**
+             * Dataset configuration for the job.
+             */
+            datasetConfiguration: pulumi.Input<inputs.machinelearningservices.v20200901preview.LabelingDatasetConfiguration>;
+            /**
+             * Instructions for the job.
+             */
+            jobInstructions: pulumi.Input<inputs.machinelearningservices.v20200901preview.LabelingJobInstructions>;
+            /**
+             * Label categories of the job.
+             */
+            labelCategories: pulumi.Input<{[key: string]: pulumi.Input<inputs.machinelearningservices.v20200901preview.LabelCategory>}>;
+            /**
+             * Media specific properties in a labeling job.
+             */
+            labelingJobMediaProperties: pulumi.Input<inputs.machinelearningservices.v20200901preview.LabelingJobImageProperties>;
+            /**
+             * Machine learning assisted configuration for the job.
+             */
+            mlAssistConfiguration?: pulumi.Input<inputs.machinelearningservices.v20200901preview.MLAssistConfiguration>;
+            /**
+             * The job property dictionary. Properties can be added, but not removed or altered.
+             */
+            properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * The job tag dictionary. Tags can be added, removed, and updated.
+             */
+            tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        }
+
+        /**
          * LinkedService specific properties.
          */
         export interface LinkedServiceProps {
@@ -187164,6 +189182,32 @@ export namespace machinelearningservices {
              * The last modified time of the linked service.
              */
             modifiedTime?: pulumi.Input<string>;
+        }
+
+        /**
+         * Represents configuration for machine learning assisted features in a labeling job.
+         */
+        export interface MLAssistConfiguration {
+            /**
+             * The compute designated for inferencing.
+             */
+            inferencingComputeBinding: pulumi.Input<inputs.machinelearningservices.v20200901preview.ComputeBinding>;
+            /**
+             * Indicates whether MLAssist feature is enabled.
+             */
+            mlAssistEnabled?: pulumi.Input<boolean>;
+            /**
+             * Name prefix to use for machine learning model. For each iteration modelName will be appended with iteration e.g.{modelName}_{i}.
+             */
+            modelNamePrefix: pulumi.Input<string>;
+            /**
+             * Prelabel accuracy threshold used in MLAssist feature.
+             */
+            prelabelAccuracyThreshold?: pulumi.Input<number>;
+            /**
+             * The compute designated for training.
+             */
+            trainingComputeBinding: pulumi.Input<inputs.machinelearningservices.v20200901preview.ComputeBinding>;
         }
 
         /**
@@ -187435,6 +189479,52 @@ export namespace machinelearningservices {
              * Node Idle Time before scaling down amlCompute. This string needs to be in the RFC Format.
              */
             nodeIdleTimeBeforeScaleDown?: pulumi.Input<string>;
+        }
+
+        /**
+         * Script reference
+         */
+        export interface ScriptReference {
+            /**
+             * Optional command line arguments passed to the script to run.
+             */
+            scriptArguments?: pulumi.Input<string>;
+            /**
+             * The location of scripts in the mounted volume.
+             */
+            scriptData?: pulumi.Input<string>;
+            /**
+             * The storage source of the script: inline, workspace.
+             */
+            scriptSource?: pulumi.Input<string>;
+            /**
+             * Optional time period passed to timeout command.
+             */
+            timeout?: pulumi.Input<string>;
+        }
+
+        /**
+         * Customized setup scripts
+         */
+        export interface ScriptsToExecute {
+            /**
+             * Script that's run only once during provision of the compute.
+             */
+            creationScript?: pulumi.Input<inputs.machinelearningservices.v20200901preview.ScriptReference>;
+            /**
+             * Script that's run every time the machine starts.
+             */
+            startupScript?: pulumi.Input<inputs.machinelearningservices.v20200901preview.ScriptReference>;
+        }
+
+        /**
+         * Details of customized scripts to execute for setting up the cluster.
+         */
+        export interface SetupScripts {
+            /**
+             * Customized setup scripts
+             */
+            scripts?: pulumi.Input<inputs.machinelearningservices.v20200901preview.ScriptsToExecute>;
         }
 
         export interface SharedPrivateLinkResource {
@@ -198800,6 +200890,580 @@ export namespace migrate {
         }
 
     }
+
+    export namespace v20210101 {
+        /**
+         * Gets or sets the availability set resource settings.
+         */
+        export interface AvailabilitySetResourceSettings {
+            /**
+             * Gets or sets the target fault domain.
+             */
+            faultDomain?: pulumi.Input<number>;
+            /**
+             * The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+             * Expected value is 'Microsoft.Compute/availabilitySets'.
+             */
+            resourceType: pulumi.Input<"Microsoft.Compute/availabilitySets">;
+            /**
+             * Gets or sets the target Resource name.
+             */
+            targetResourceName: pulumi.Input<string>;
+            /**
+             * Gets or sets the target update domain.
+             */
+            updateDomain?: pulumi.Input<number>;
+        }
+
+        /**
+         * Defines the disk encryption set resource settings.
+         */
+        export interface DiskEncryptionSetResourceSettings {
+            /**
+             * The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+             * Expected value is 'Microsoft.Compute/diskEncryptionSets'.
+             */
+            resourceType: pulumi.Input<"Microsoft.Compute/diskEncryptionSets">;
+            /**
+             * Gets or sets the target Resource name.
+             */
+            targetResourceName: pulumi.Input<string>;
+        }
+
+        /**
+         * Defines the MSI properties of the Move Collection.
+         */
+        export interface Identity {
+            /**
+             * Gets or sets the principal id.
+             */
+            principalId?: pulumi.Input<string>;
+            /**
+             * Gets or sets the tenant id.
+             */
+            tenantId?: pulumi.Input<string>;
+            /**
+             * The type of identity used for the resource mover service.
+             */
+            type?: pulumi.Input<string | enums.migrate.v20210101.ResourceIdentityType>;
+        }
+
+        /**
+         * Defines the key vault resource settings.
+         */
+        export interface KeyVaultResourceSettings {
+            /**
+             * The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+             * Expected value is 'Microsoft.KeyVault/vaults'.
+             */
+            resourceType: pulumi.Input<"Microsoft.KeyVault/vaults">;
+            /**
+             * Gets or sets the target Resource name.
+             */
+            targetResourceName: pulumi.Input<string>;
+        }
+
+        /**
+         * Defines load balancer backend address pool properties.
+         */
+        export interface LBBackendAddressPoolResourceSettings {
+            /**
+             * Gets or sets the backend address pool name.
+             */
+            name?: pulumi.Input<string>;
+        }
+
+        /**
+         * Defines load balancer frontend IP configuration properties.
+         */
+        export interface LBFrontendIPConfigurationResourceSettings {
+            /**
+             * Gets or sets the frontend IP configuration name.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Gets or sets the IP address of the Load Balancer.This is only specified if a specific
+             * private IP address shall be allocated from the subnet specified in subnetRef.
+             */
+            privateIpAddress?: pulumi.Input<string>;
+            /**
+             * Gets or sets PrivateIP allocation method (Static/Dynamic).
+             */
+            privateIpAllocationMethod?: pulumi.Input<string>;
+            /**
+             * Defines reference to subnet.
+             */
+            subnet?: pulumi.Input<inputs.migrate.v20210101.SubnetReference>;
+            /**
+             * Gets or sets the csv list of zones.
+             */
+            zones?: pulumi.Input<string>;
+        }
+
+        /**
+         * Defines reference to load balancer backend address pools.
+         */
+        export interface LoadBalancerBackendAddressPoolReference {
+            /**
+             * Gets the name of the proxy resource on the target side.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Gets the ARM resource ID of the tracked resource being referenced.
+             */
+            sourceArmResourceId: pulumi.Input<string>;
+        }
+
+        /**
+         * Defines reference to load balancer NAT rules.
+         */
+        export interface LoadBalancerNatRuleReference {
+            /**
+             * Gets the name of the proxy resource on the target side.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Gets the ARM resource ID of the tracked resource being referenced.
+             */
+            sourceArmResourceId: pulumi.Input<string>;
+        }
+
+        /**
+         * Defines the load balancer resource settings.
+         */
+        export interface LoadBalancerResourceSettings {
+            /**
+             * Gets or sets the backend address pools of the load balancer.
+             */
+            backendAddressPools?: pulumi.Input<pulumi.Input<inputs.migrate.v20210101.LBBackendAddressPoolResourceSettings>[]>;
+            /**
+             * Gets or sets the frontend IP configurations of the load balancer.
+             */
+            frontendIPConfigurations?: pulumi.Input<pulumi.Input<inputs.migrate.v20210101.LBFrontendIPConfigurationResourceSettings>[]>;
+            /**
+             * The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+             * Expected value is 'Microsoft.Network/loadBalancers'.
+             */
+            resourceType: pulumi.Input<"Microsoft.Network/loadBalancers">;
+            /**
+             * Gets or sets load balancer sku (Basic/Standard).
+             */
+            sku?: pulumi.Input<string>;
+            /**
+             * Gets or sets the target Resource name.
+             */
+            targetResourceName: pulumi.Input<string>;
+            /**
+             * Gets or sets the csv list of zones common for all frontend IP configurations. Note this is given
+             *  precedence only if frontend IP configurations settings are not present.
+             */
+            zones?: pulumi.Input<string>;
+        }
+
+        /**
+         * Defines the move collection properties.
+         */
+        export interface MoveCollectionProperties {
+            /**
+             * Gets or sets the source region.
+             */
+            sourceRegion: pulumi.Input<string>;
+            /**
+             * Gets or sets the target region.
+             */
+            targetRegion: pulumi.Input<string>;
+        }
+
+        /**
+         * Defines the dependency override of the move resource.
+         */
+        export interface MoveResourceDependencyOverride {
+            /**
+             * Gets or sets the ARM ID of the dependent resource.
+             */
+            id?: pulumi.Input<string>;
+            /**
+             * Gets or sets the resource ARM id of either the MoveResource or the resource ARM ID of
+             * the dependent resource.
+             */
+            targetId?: pulumi.Input<string>;
+        }
+
+        /**
+         * Defines the move resource properties.
+         */
+        export interface MoveResourceProperties {
+            /**
+             * Gets or sets the move resource dependencies overrides.
+             */
+            dependsOnOverrides?: pulumi.Input<pulumi.Input<inputs.migrate.v20210101.MoveResourceDependencyOverride>[]>;
+            /**
+             * Gets or sets the existing target ARM Id of the resource.
+             */
+            existingTargetId?: pulumi.Input<string>;
+            /**
+             * Gets or sets the resource settings.
+             */
+            resourceSettings?: pulumi.Input<inputs.migrate.v20210101.AvailabilitySetResourceSettings | inputs.migrate.v20210101.DiskEncryptionSetResourceSettings | inputs.migrate.v20210101.KeyVaultResourceSettings | inputs.migrate.v20210101.LoadBalancerResourceSettings | inputs.migrate.v20210101.NetworkInterfaceResourceSettings | inputs.migrate.v20210101.NetworkSecurityGroupResourceSettings | inputs.migrate.v20210101.PublicIPAddressResourceSettings | inputs.migrate.v20210101.ResourceGroupResourceSettings | inputs.migrate.v20210101.SqlDatabaseResourceSettings | inputs.migrate.v20210101.SqlElasticPoolResourceSettings | inputs.migrate.v20210101.SqlServerResourceSettings | inputs.migrate.v20210101.VirtualMachineResourceSettings | inputs.migrate.v20210101.VirtualNetworkResourceSettings>;
+            /**
+             * Gets or sets the Source ARM Id of the resource.
+             */
+            sourceId: pulumi.Input<string>;
+        }
+
+        /**
+         * Defines the network interface resource settings.
+         */
+        export interface NetworkInterfaceResourceSettings {
+            /**
+             * Gets or sets a value indicating whether accelerated networking is enabled.
+             */
+            enableAcceleratedNetworking?: pulumi.Input<boolean>;
+            /**
+             * Gets or sets the IP configurations of the NIC.
+             */
+            ipConfigurations?: pulumi.Input<pulumi.Input<inputs.migrate.v20210101.NicIpConfigurationResourceSettings>[]>;
+            /**
+             * The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+             * Expected value is 'Microsoft.Network/networkInterfaces'.
+             */
+            resourceType: pulumi.Input<"Microsoft.Network/networkInterfaces">;
+            /**
+             * Gets or sets the target Resource name.
+             */
+            targetResourceName: pulumi.Input<string>;
+        }
+
+        /**
+         * Defines the NSG resource settings.
+         */
+        export interface NetworkSecurityGroupResourceSettings {
+            /**
+             * The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+             * Expected value is 'Microsoft.Network/networkSecurityGroups'.
+             */
+            resourceType: pulumi.Input<"Microsoft.Network/networkSecurityGroups">;
+            /**
+             * Gets or sets Security rules of network security group.
+             */
+            securityRules?: pulumi.Input<pulumi.Input<inputs.migrate.v20210101.NsgSecurityRule>[]>;
+            /**
+             * Gets or sets the target Resource name.
+             */
+            targetResourceName: pulumi.Input<string>;
+        }
+
+        /**
+         * Defines NIC IP configuration properties.
+         */
+        export interface NicIpConfigurationResourceSettings {
+            /**
+             * Gets or sets the references of the load balancer backend address pools.
+             */
+            loadBalancerBackendAddressPools?: pulumi.Input<pulumi.Input<inputs.migrate.v20210101.LoadBalancerBackendAddressPoolReference>[]>;
+            /**
+             * Gets or sets the references of the load balancer NAT rules.
+             */
+            loadBalancerNatRules?: pulumi.Input<pulumi.Input<inputs.migrate.v20210101.LoadBalancerNatRuleReference>[]>;
+            /**
+             * Gets or sets the IP configuration name.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Gets or sets a value indicating whether this IP configuration is the primary.
+             */
+            primary?: pulumi.Input<boolean>;
+            /**
+             * Gets or sets the private IP address of the network interface IP Configuration.
+             */
+            privateIpAddress?: pulumi.Input<string>;
+            /**
+             * Gets or sets the private IP address allocation method.
+             */
+            privateIpAllocationMethod?: pulumi.Input<string>;
+            /**
+             * Defines reference to a public IP.
+             */
+            publicIp?: pulumi.Input<inputs.migrate.v20210101.PublicIpReference>;
+            /**
+             * Defines reference to subnet.
+             */
+            subnet?: pulumi.Input<inputs.migrate.v20210101.SubnetReference>;
+        }
+
+        /**
+         * Defines reference to NSG.
+         */
+        export interface NsgReference {
+            /**
+             * Gets the ARM resource ID of the tracked resource being referenced.
+             */
+            sourceArmResourceId: pulumi.Input<string>;
+        }
+
+        /**
+         * Security Rule data model for Network Security Groups.
+         */
+        export interface NsgSecurityRule {
+            /**
+             * Gets or sets whether network traffic is allowed or denied.
+             * Possible values are “Allow” and “Deny”.
+             */
+            access?: pulumi.Input<string>;
+            /**
+             * Gets or sets a description for this rule. Restricted to 140 chars.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Gets or sets destination address prefix. CIDR or source IP range.
+             *  A “*” can also be used to match all source IPs. Default tags such
+             * as ‘VirtualNetwork’, ‘AzureLoadBalancer’ and ‘Internet’ can also be used.
+             */
+            destinationAddressPrefix?: pulumi.Input<string>;
+            /**
+             * Gets or sets Destination Port or Range. Integer or range between
+             * 0 and 65535. A “*” can also be used to match all ports.
+             */
+            destinationPortRange?: pulumi.Input<string>;
+            /**
+             * Gets or sets the direction of the rule.InBound or Outbound. The
+             * direction specifies if rule will be evaluated on incoming or outgoing traffic.
+             */
+            direction?: pulumi.Input<string>;
+            /**
+             * Gets or sets the Security rule name.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Gets or sets the priority of the rule. The value can be between
+             * 100 and 4096. The priority number must be unique for each rule in the collection.
+             * The lower the priority number, the higher the priority of the rule.
+             */
+            priority?: pulumi.Input<number>;
+            /**
+             * Gets or sets Network protocol this rule applies to. Can be Tcp, Udp or All(*).
+             */
+            protocol?: pulumi.Input<string>;
+            /**
+             * Gets or sets source address prefix. CIDR or source IP range. A
+             * “*” can also be used to match all source IPs.  Default tags such as ‘VirtualNetwork’,
+             * ‘AzureLoadBalancer’ and ‘Internet’ can also be used. If this is an ingress
+             * rule, specifies where network traffic originates from.
+             */
+            sourceAddressPrefix?: pulumi.Input<string>;
+            /**
+             * Gets or sets Source Port or Range. Integer or range between 0 and
+             * 65535. A “*” can also be used to match all ports.
+             */
+            sourcePortRange?: pulumi.Input<string>;
+        }
+
+        /**
+         * Defines the public IP address resource settings.
+         */
+        export interface PublicIPAddressResourceSettings {
+            /**
+             * Gets or sets the domain name label.
+             */
+            domainNameLabel?: pulumi.Input<string>;
+            /**
+             * Gets or sets the fully qualified domain name.
+             */
+            fqdn?: pulumi.Input<string>;
+            /**
+             * Gets or sets public IP allocation method.
+             */
+            publicIpAllocationMethod?: pulumi.Input<string>;
+            /**
+             * The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+             * Expected value is 'Microsoft.Network/publicIPAddresses'.
+             */
+            resourceType: pulumi.Input<"Microsoft.Network/publicIPAddresses">;
+            /**
+             * Gets or sets public IP sku.
+             */
+            sku?: pulumi.Input<string>;
+            /**
+             * Gets or sets the target Resource name.
+             */
+            targetResourceName: pulumi.Input<string>;
+            /**
+             * Gets or sets public IP zones.
+             */
+            zones?: pulumi.Input<string>;
+        }
+
+        /**
+         * Defines reference to a public IP.
+         */
+        export interface PublicIpReference {
+            /**
+             * Gets the ARM resource ID of the tracked resource being referenced.
+             */
+            sourceArmResourceId: pulumi.Input<string>;
+        }
+
+        /**
+         * Defines the resource group resource settings.
+         */
+        export interface ResourceGroupResourceSettings {
+            /**
+             * The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+             * Expected value is 'resourceGroups'.
+             */
+            resourceType: pulumi.Input<"resourceGroups">;
+            /**
+             * Gets or sets the target Resource name.
+             */
+            targetResourceName: pulumi.Input<string>;
+        }
+
+        /**
+         * Defines the Sql Database resource settings.
+         */
+        export interface SqlDatabaseResourceSettings {
+            /**
+             * The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+             * Expected value is 'Microsoft.Sql/servers/databases'.
+             */
+            resourceType: pulumi.Input<"Microsoft.Sql/servers/databases">;
+            /**
+             * Gets or sets the target Resource name.
+             */
+            targetResourceName: pulumi.Input<string>;
+            /**
+             * Defines the zone redundant resource setting.
+             */
+            zoneRedundant?: pulumi.Input<string | enums.migrate.v20210101.ZoneRedundant>;
+        }
+
+        /**
+         * Defines the Sql ElasticPool resource settings.
+         */
+        export interface SqlElasticPoolResourceSettings {
+            /**
+             * The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+             * Expected value is 'Microsoft.Sql/servers/elasticPools'.
+             */
+            resourceType: pulumi.Input<"Microsoft.Sql/servers/elasticPools">;
+            /**
+             * Gets or sets the target Resource name.
+             */
+            targetResourceName: pulumi.Input<string>;
+            /**
+             * Defines the zone redundant resource setting.
+             */
+            zoneRedundant?: pulumi.Input<string | enums.migrate.v20210101.ZoneRedundant>;
+        }
+
+        /**
+         * Defines the SQL Server resource settings.
+         */
+        export interface SqlServerResourceSettings {
+            /**
+             * The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+             * Expected value is 'Microsoft.Sql/servers'.
+             */
+            resourceType: pulumi.Input<"Microsoft.Sql/servers">;
+            /**
+             * Gets or sets the target Resource name.
+             */
+            targetResourceName: pulumi.Input<string>;
+        }
+
+        /**
+         * Defines reference to subnet.
+         */
+        export interface SubnetReference {
+            /**
+             * Gets the name of the proxy resource on the target side.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Gets the ARM resource ID of the tracked resource being referenced.
+             */
+            sourceArmResourceId: pulumi.Input<string>;
+        }
+
+        /**
+         * Defines the virtual network subnets resource settings.
+         */
+        export interface SubnetResourceSettings {
+            /**
+             * Gets or sets address prefix for the subnet.
+             */
+            addressPrefix?: pulumi.Input<string>;
+            /**
+             * Gets or sets the Subnet name.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Defines reference to NSG.
+             */
+            networkSecurityGroup?: pulumi.Input<inputs.migrate.v20210101.NsgReference>;
+        }
+
+        /**
+         * Gets or sets the virtual machine resource settings.
+         */
+        export interface VirtualMachineResourceSettings {
+            /**
+             * The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+             * Expected value is 'Microsoft.Compute/virtualMachines'.
+             */
+            resourceType: pulumi.Input<"Microsoft.Compute/virtualMachines">;
+            /**
+             * Gets or sets the target availability set id for virtual machines not in an availability set at source.
+             */
+            targetAvailabilitySetId?: pulumi.Input<string>;
+            /**
+             * Gets or sets the target availability zone.
+             */
+            targetAvailabilityZone?: pulumi.Input<string | enums.migrate.v20210101.TargetAvailabilityZone>;
+            /**
+             * Gets or sets the target Resource name.
+             */
+            targetResourceName: pulumi.Input<string>;
+            /**
+             * Gets or sets the target virtual machine size.
+             */
+            targetVmSize?: pulumi.Input<string>;
+        }
+
+        /**
+         * Defines the virtual network resource settings.
+         */
+        export interface VirtualNetworkResourceSettings {
+            /**
+             * Gets or sets the address prefixes for the virtual network.
+             */
+            addressSpace?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Gets or sets DHCPOptions that contains an array of DNS servers available to VMs
+             * deployed in the virtual network.
+             */
+            dnsServers?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Gets or sets a value indicating whether gets or sets whether the
+             * DDOS protection should be switched on.
+             */
+            enableDdosProtection?: pulumi.Input<boolean>;
+            /**
+             * The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+             * Expected value is 'Microsoft.Network/virtualNetworks'.
+             */
+            resourceType: pulumi.Input<"Microsoft.Network/virtualNetworks">;
+            /**
+             * Gets or sets List of subnets in a VirtualNetwork.
+             */
+            subnets?: pulumi.Input<pulumi.Input<inputs.migrate.v20210101.SubnetResourceSettings>[]>;
+            /**
+             * Gets or sets the target Resource name.
+             */
+            targetResourceName: pulumi.Input<string>;
+        }
+
+    }
 }
 
 export namespace mixedreality {
@@ -198934,6 +201598,16 @@ export namespace mixedreality {
 export namespace netapp {
     export namespace latest {
         /**
+         * Encryption settings
+         */
+        export interface AccountEncryption {
+            /**
+             * Encryption Key Source. Possible values are: 'Microsoft.NetApp'.
+             */
+            keySource?: pulumi.Input<string | enums.netapp.latest.KeySource>;
+        }
+
+        /**
          * Active Directory
          */
         export interface ActiveDirectory {
@@ -198965,6 +201639,10 @@ export namespace netapp {
              * kdc server IP addresses for the active directory machine. This optional parameter is used only while creating kerberos volume.
              */
             kdcIP?: pulumi.Input<string>;
+            /**
+             * Specifies whether or not the LDAP traffic needs to be secured via TLS.
+             */
+            ldapOverTLS?: pulumi.Input<boolean>;
             /**
              * Specifies whether or not the LDAP traffic needs to be signed.
              */
@@ -199125,20 +201803,6 @@ export namespace netapp {
              * Resource size in bytes, current storage usage for the volume in bytes
              */
             usedBytes?: pulumi.Input<number>;
-        }
-
-        /**
-         * Mount target properties
-         */
-        export interface MountTargetProperties {
-            /**
-             * UUID v4 used to identify the MountTarget
-             */
-            fileSystemId: pulumi.Input<string>;
-            /**
-             * The SMB server's Fully Qualified Domain Name, FQDN
-             */
-            smbServerFqdn?: pulumi.Input<string>;
         }
 
         /**
@@ -202164,6 +204828,347 @@ export namespace netapp {
              * Export policy rule
              */
             rules?: pulumi.Input<pulumi.Input<inputs.netapp.v20200901.ExportPolicyRule>[]>;
+        }
+
+        /**
+         * Volume Snapshot Properties
+         */
+        export interface VolumeSnapshotProperties {
+            /**
+             * Snapshot Policy ResourceId
+             */
+            snapshotPolicyId?: pulumi.Input<string>;
+        }
+
+        /**
+         * Weekly Schedule properties, make a snapshot every week at a specific day or days
+         */
+        export interface WeeklySchedule {
+            /**
+             * Indicates which weekdays snapshot should be taken, accepts a comma separated list of week day names in english
+             */
+            day?: pulumi.Input<string>;
+            /**
+             * Indicates which hour in UTC timezone a snapshot should be taken
+             */
+            hour?: pulumi.Input<number>;
+            /**
+             * Indicates which minute snapshot should be taken
+             */
+            minute?: pulumi.Input<number>;
+            /**
+             * Weekly snapshot count to keep
+             */
+            snapshotsToKeep?: pulumi.Input<number>;
+            /**
+             * Resource size in bytes, current storage usage for the volume in bytes
+             */
+            usedBytes?: pulumi.Input<number>;
+        }
+
+    }
+
+    export namespace v20201101 {
+        /**
+         * Encryption settings
+         */
+        export interface AccountEncryption {
+            /**
+             * Encryption Key Source. Possible values are: 'Microsoft.NetApp'.
+             */
+            keySource?: pulumi.Input<string | enums.netapp.v20201101.KeySource>;
+        }
+
+        /**
+         * Active Directory
+         */
+        export interface ActiveDirectory {
+            /**
+             * Id of the Active Directory
+             */
+            activeDirectoryId?: pulumi.Input<string>;
+            /**
+             * Name of the active directory machine. This optional parameter is used only while creating kerberos volume
+             */
+            adName?: pulumi.Input<string>;
+            /**
+             * If enabled, AES encryption will be enabled for SMB communication.
+             */
+            aesEncryption?: pulumi.Input<boolean>;
+            /**
+             * Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier
+             */
+            backupOperators?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Comma separated list of DNS server IP addresses (IPv4 only) for the Active Directory domain
+             */
+            dns?: pulumi.Input<string>;
+            /**
+             * Name of the Active Directory domain
+             */
+            domain?: pulumi.Input<string>;
+            /**
+             * kdc server IP addresses for the active directory machine. This optional parameter is used only while creating kerberos volume.
+             */
+            kdcIP?: pulumi.Input<string>;
+            /**
+             * Specifies whether or not the LDAP traffic needs to be secured via TLS.
+             */
+            ldapOverTLS?: pulumi.Input<boolean>;
+            /**
+             * Specifies whether or not the LDAP traffic needs to be signed.
+             */
+            ldapSigning?: pulumi.Input<boolean>;
+            /**
+             * The Organizational Unit (OU) within the Windows Active Directory
+             */
+            organizationalUnit?: pulumi.Input<string>;
+            /**
+             * Plain text password of Active Directory domain administrator, value is masked in the response
+             */
+            password?: pulumi.Input<string>;
+            /**
+             * Domain Users in the Active directory to be given SeSecurityPrivilege privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier
+             */
+            securityOperators?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * When LDAP over SSL/TLS is enabled, the LDAP client is required to have base64 encoded Active Directory Certificate Service's self-signed root CA certificate, this optional parameter is used only for dual protocol with LDAP user-mapping volumes.
+             */
+            serverRootCACertificate?: pulumi.Input<string>;
+            /**
+             * The Active Directory site the service will limit Domain Controller discovery to
+             */
+            site?: pulumi.Input<string>;
+            /**
+             * NetBIOS name of the SMB server. This name will be registered as a computer account in the AD and used to mount volumes
+             */
+            smbServerName?: pulumi.Input<string>;
+            /**
+             * Username of Active Directory domain administrator
+             */
+            username?: pulumi.Input<string>;
+        }
+
+        /**
+         * Daily Schedule properties
+         */
+        export interface DailySchedule {
+            /**
+             * Indicates which hour in UTC timezone a snapshot should be taken
+             */
+            hour?: pulumi.Input<number>;
+            /**
+             * Indicates which minute snapshot should be taken
+             */
+            minute?: pulumi.Input<number>;
+            /**
+             * Daily snapshot count to keep
+             */
+            snapshotsToKeep?: pulumi.Input<number>;
+            /**
+             * Resource size in bytes, current storage usage for the volume in bytes
+             */
+            usedBytes?: pulumi.Input<number>;
+        }
+
+        /**
+         * Volume Export Policy Rule
+         */
+        export interface ExportPolicyRule {
+            /**
+             * Client ingress specification as comma separated string with IPv4 CIDRs, IPv4 host addresses and host names
+             */
+            allowedClients?: pulumi.Input<string>;
+            /**
+             * Allows CIFS protocol
+             */
+            cifs?: pulumi.Input<boolean>;
+            /**
+             * Has root access to volume
+             */
+            hasRootAccess?: pulumi.Input<boolean>;
+            /**
+             * Kerberos5 Read only access. To be use with swagger version 2020-05-01 or later
+             */
+            kerberos5ReadOnly?: pulumi.Input<boolean>;
+            /**
+             * Kerberos5 Read and write access. To be use with swagger version 2020-05-01 or later
+             */
+            kerberos5ReadWrite?: pulumi.Input<boolean>;
+            /**
+             * Kerberos5i Read only access. To be use with swagger version 2020-05-01 or later
+             */
+            kerberos5iReadOnly?: pulumi.Input<boolean>;
+            /**
+             * Kerberos5i Read and write access. To be use with swagger version 2020-05-01 or later
+             */
+            kerberos5iReadWrite?: pulumi.Input<boolean>;
+            /**
+             * Kerberos5p Read only access. To be use with swagger version 2020-05-01 or later
+             */
+            kerberos5pReadOnly?: pulumi.Input<boolean>;
+            /**
+             * Kerberos5p Read and write access. To be use with swagger version 2020-05-01 or later
+             */
+            kerberos5pReadWrite?: pulumi.Input<boolean>;
+            /**
+             * Allows NFSv3 protocol. Enable only for NFSv3 type volumes
+             */
+            nfsv3?: pulumi.Input<boolean>;
+            /**
+             * Allows NFSv4.1 protocol. Enable only for NFSv4.1 type volumes
+             */
+            nfsv41?: pulumi.Input<boolean>;
+            /**
+             * Order index
+             */
+            ruleIndex?: pulumi.Input<number>;
+            /**
+             * Read only access
+             */
+            unixReadOnly?: pulumi.Input<boolean>;
+            /**
+             * Read and write access
+             */
+            unixReadWrite?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Hourly Schedule properties
+         */
+        export interface HourlySchedule {
+            /**
+             * Indicates which minute snapshot should be taken
+             */
+            minute?: pulumi.Input<number>;
+            /**
+             * Hourly snapshot count to keep
+             */
+            snapshotsToKeep?: pulumi.Input<number>;
+            /**
+             * Resource size in bytes, current storage usage for the volume in bytes
+             */
+            usedBytes?: pulumi.Input<number>;
+        }
+
+        /**
+         * Monthly Schedule properties
+         */
+        export interface MonthlySchedule {
+            /**
+             * Indicates which days of the month snapshot should be taken. A comma delimited string.
+             */
+            daysOfMonth?: pulumi.Input<string>;
+            /**
+             * Indicates which hour in UTC timezone a snapshot should be taken
+             */
+            hour?: pulumi.Input<number>;
+            /**
+             * Indicates which minute snapshot should be taken
+             */
+            minute?: pulumi.Input<number>;
+            /**
+             * Monthly snapshot count to keep
+             */
+            snapshotsToKeep?: pulumi.Input<number>;
+            /**
+             * Resource size in bytes, current storage usage for the volume in bytes
+             */
+            usedBytes?: pulumi.Input<number>;
+        }
+
+        /**
+         * Replication properties
+         */
+        export interface ReplicationObject {
+            /**
+             * Indicates whether the local volume is the source or destination for the Volume Replication
+             */
+            endpointType?: pulumi.Input<string | enums.netapp.v20201101.EndpointType>;
+            /**
+             * The remote region for the other end of the Volume Replication.
+             */
+            remoteVolumeRegion?: pulumi.Input<string>;
+            /**
+             * The resource ID of the remote volume.
+             */
+            remoteVolumeResourceId: pulumi.Input<string>;
+            /**
+             * Id
+             */
+            replicationId?: pulumi.Input<string>;
+            /**
+             * Schedule
+             */
+            replicationSchedule: pulumi.Input<string | enums.netapp.v20201101.ReplicationSchedule>;
+        }
+
+        /**
+         * Volume Backup Properties
+         */
+        export interface VolumeBackupProperties {
+            /**
+             * Backup Enabled
+             */
+            backupEnabled?: pulumi.Input<boolean>;
+            /**
+             * Backup Policy Resource ID
+             */
+            backupPolicyId?: pulumi.Input<string>;
+            /**
+             * Policy Enforced
+             */
+            policyEnforced?: pulumi.Input<boolean>;
+            /**
+             * Vault Resource ID
+             */
+            vaultId?: pulumi.Input<string>;
+        }
+
+        /**
+         * Volume details using the backup policy
+         */
+        export interface VolumeBackups {
+            /**
+             * Total count of backups for volume
+             */
+            backupsCount?: pulumi.Input<number>;
+            /**
+             * Policy enabled
+             */
+            policyEnabled?: pulumi.Input<boolean>;
+            /**
+             * Volume name
+             */
+            volumeName?: pulumi.Input<string>;
+        }
+
+        /**
+         * DataProtection type volumes include an object containing details of the replication
+         */
+        export interface VolumePropertiesDataProtection {
+            /**
+             * Backup Properties
+             */
+            backup?: pulumi.Input<inputs.netapp.v20201101.VolumeBackupProperties>;
+            /**
+             * Replication properties
+             */
+            replication?: pulumi.Input<inputs.netapp.v20201101.ReplicationObject>;
+            /**
+             * Snapshot properties.
+             */
+            snapshot?: pulumi.Input<inputs.netapp.v20201101.VolumeSnapshotProperties>;
+        }
+
+        /**
+         * Set of export policy rules
+         */
+        export interface VolumePropertiesExportPolicy {
+            /**
+             * Export policy rule
+             */
+            rules?: pulumi.Input<pulumi.Input<inputs.netapp.v20201101.ExportPolicyRule>[]>;
         }
 
         /**
@@ -318632,7 +321637,7 @@ export namespace operationalinsights {
          */
         export interface Identity {
             /**
-             * The type of identity used for the resource. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities.
+             * Type of managed service identity.
              */
             type: pulumi.Input<enums.operationalinsights.latest.IdentityType>;
             /**
@@ -319014,7 +322019,7 @@ export namespace operationalinsights {
          */
         export interface Identity {
             /**
-             * The type of identity used for the resource. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities.
+             * Type of managed service identity.
              */
             type: pulumi.Input<enums.operationalinsights.v20201001.IdentityType>;
             /**
@@ -323623,6 +326628,10 @@ export namespace recoveryservices {
              */
             targetStorageAccountId?: pulumi.Input<string>;
             /**
+             * The target VM size.
+             */
+            targetVmSize?: pulumi.Input<string>;
+            /**
              * A value indicating whether managed disks should be used during failover.
              */
             useManagedDisks?: pulumi.Input<string>;
@@ -323962,6 +326971,10 @@ export namespace recoveryservices {
              * The proximity placement group ARM Id.
              */
             targetProximityPlacementGroupId?: pulumi.Input<string>;
+            /**
+             * The target VM size.
+             */
+            targetVmSize?: pulumi.Input<string>;
         }
 
         /**
@@ -328723,6 +331736,10 @@ export namespace recoveryservices {
              */
             targetStorageAccountId?: pulumi.Input<string>;
             /**
+             * The target VM size.
+             */
+            targetVmSize?: pulumi.Input<string>;
+            /**
              * A value indicating whether managed disks should be used during failover.
              */
             useManagedDisks?: pulumi.Input<string>;
@@ -329006,6 +332023,10 @@ export namespace recoveryservices {
              * The proximity placement group ARM Id.
              */
             targetProximityPlacementGroupId?: pulumi.Input<string>;
+            /**
+             * The target VM size.
+             */
+            targetVmSize?: pulumi.Input<string>;
         }
 
         /**
@@ -347301,19 +350322,19 @@ export namespace securityinsights {
             /**
              * Incident Id
              */
-            incidentId: pulumi.Input<string>;
+            incidentId?: pulumi.Input<string>;
             /**
              * Relation Name
              */
-            relationName: pulumi.Input<string>;
+            relationName?: pulumi.Input<string>;
             /**
              * The severity of the incident
              */
-            severity: pulumi.Input<string | enums.securityinsights.latest.CaseSeverity>;
+            severity?: pulumi.Input<string | enums.securityinsights.latest.CaseSeverity>;
             /**
              * The title of the incident
              */
-            title: pulumi.Input<string>;
+            title?: pulumi.Input<string>;
         }
 
         /**
@@ -347368,19 +350389,19 @@ export namespace securityinsights {
             /**
              * Incident Id
              */
-            incidentId: pulumi.Input<string>;
+            incidentId?: pulumi.Input<string>;
             /**
              * Relation Name
              */
-            relationName: pulumi.Input<string>;
+            relationName?: pulumi.Input<string>;
             /**
              * The severity of the incident
              */
-            severity: pulumi.Input<string | enums.securityinsights.v20190101preview.CaseSeverity>;
+            severity?: pulumi.Input<string | enums.securityinsights.v20190101preview.CaseSeverity>;
             /**
              * The title of the incident
              */
-            title: pulumi.Input<string>;
+            title?: pulumi.Input<string>;
         }
 
         /**
@@ -347495,19 +350516,19 @@ export namespace securityinsights {
             /**
              * Incident Id
              */
-            incidentId: pulumi.Input<string>;
+            incidentId?: pulumi.Input<string>;
             /**
              * Relation Name
              */
-            relationName: pulumi.Input<string>;
+            relationName?: pulumi.Input<string>;
             /**
              * The severity of the incident
              */
-            severity: pulumi.Input<string | enums.securityinsights.v20200101.CaseSeverity>;
+            severity?: pulumi.Input<string | enums.securityinsights.v20200101.CaseSeverity>;
             /**
              * The title of the incident
              */
-            title: pulumi.Input<string>;
+            title?: pulumi.Input<string>;
         }
 
         /**
@@ -354834,7 +357855,7 @@ export namespace signalrservice {
         }
 
         /**
-         * The billing information of the SignalR resource.
+         * The billing information of the resource.
          */
         export interface ResourceSku {
             /**
@@ -354860,7 +357881,7 @@ export namespace signalrservice {
         }
 
         /**
-         * The settings for the Upstream when the Azure SignalR is in server-less mode.
+         * The settings for the Upstream when the service is in server-less mode.
          */
         export interface ServerlessUpstreamSettings {
             /**
@@ -354900,7 +357921,7 @@ export namespace signalrservice {
         }
 
         /**
-         * Network ACLs for SignalR
+         * Network ACLs for the resource
          */
         export interface SignalRNetworkACLs {
             /**
@@ -354918,7 +357939,7 @@ export namespace signalrservice {
         }
 
         /**
-         * TLS settings for SignalR
+         * TLS settings for the resource
          */
         export interface SignalRTlsSettings {
             /**
@@ -365673,6 +368694,607 @@ export namespace subscription {
 }
 
 export namespace synapse {
+    export namespace latest {
+        /**
+         * Auto-pausing properties of a Big Data pool powered by Apache Spark
+         */
+        export interface AutoPauseProperties {
+            /**
+             * Number of minutes of idle time before the Big Data pool is automatically paused.
+             */
+            delayInMinutes?: pulumi.Input<number>;
+            /**
+             * Whether auto-pausing is enabled for the Big Data pool.
+             */
+            enabled?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Auto-scaling properties of a Big Data pool powered by Apache Spark
+         */
+        export interface AutoScaleProperties {
+            /**
+             * Whether automatic scaling is enabled for the Big Data pool.
+             */
+            enabled?: pulumi.Input<boolean>;
+            /**
+             * The maximum number of nodes the Big Data pool can support.
+             */
+            maxNodeCount?: pulumi.Input<number>;
+            /**
+             * The minimum number of nodes the Big Data pool can support.
+             */
+            minNodeCount?: pulumi.Input<number>;
+        }
+
+        /**
+         * The custom setup of running cmdkey commands.
+         */
+        export interface CmdkeySetup {
+            /**
+             * The password of data source access.
+             */
+            password: pulumi.Input<inputs.synapse.latest.SecureString>;
+            /**
+             * The server name of data source access.
+             */
+            targetName: any;
+            /**
+             * The type of custom setup.
+             * Expected value is 'CmdkeySetup'.
+             */
+            type: pulumi.Input<"CmdkeySetup">;
+            /**
+             * The user name of data source access.
+             */
+            userName: any;
+        }
+
+        /**
+         * The custom setup of installing 3rd party components.
+         */
+        export interface ComponentSetup {
+            /**
+             * The name of the 3rd party component.
+             */
+            componentName: pulumi.Input<string>;
+            /**
+             * The license key to activate the component.
+             */
+            licenseKey?: pulumi.Input<inputs.synapse.latest.SecureString>;
+            /**
+             * The type of custom setup.
+             * Expected value is 'ComponentSetup'.
+             */
+            type: pulumi.Input<"ComponentSetup">;
+        }
+
+        /**
+         * Details of the customer managed key associated with the workspace
+         */
+        export interface CustomerManagedKeyDetails {
+            /**
+             * The key object of the workspace
+             */
+            key?: pulumi.Input<inputs.synapse.latest.WorkspaceKeyDetails>;
+        }
+
+        /**
+         * Details of the data lake storage account associated with the workspace
+         */
+        export interface DataLakeStorageAccountDetails {
+            /**
+             * Account URL
+             */
+            accountUrl?: pulumi.Input<string>;
+            /**
+             * Filesystem name
+             */
+            filesystem?: pulumi.Input<string>;
+        }
+
+        /**
+         * Dynamic Executor Allocation Properties
+         */
+        export interface DynamicExecutorAllocation {
+            /**
+             * Indicates whether Dynamic Executor Allocation is enabled or not.
+             */
+            enabled?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Details of the encryption associated with the workspace
+         */
+        export interface EncryptionDetails {
+            /**
+             * Customer Managed Key Details
+             */
+            cmk?: pulumi.Input<inputs.synapse.latest.CustomerManagedKeyDetails>;
+        }
+
+        /**
+         * The entity reference.
+         */
+        export interface EntityReference {
+            /**
+             * The name of this referenced entity.
+             */
+            referenceName?: pulumi.Input<string>;
+            /**
+             * The type of this referenced entity.
+             */
+            type?: pulumi.Input<string | enums.synapse.latest.IntegrationRuntimeEntityReferenceType>;
+        }
+
+        /**
+         * The custom setup of setting environment variable.
+         */
+        export interface EnvironmentVariableSetup {
+            /**
+             * The type of custom setup.
+             * Expected value is 'EnvironmentVariableSetup'.
+             */
+            type: pulumi.Input<"EnvironmentVariableSetup">;
+            /**
+             * The name of the environment variable.
+             */
+            variableName: pulumi.Input<string>;
+            /**
+             * The value of the environment variable.
+             */
+            variableValue: pulumi.Input<string>;
+        }
+
+        /**
+         * The compute resource properties for managed integration runtime.
+         */
+        export interface IntegrationRuntimeComputeProperties {
+            /**
+             * Data flow properties for managed integration runtime.
+             */
+            dataFlowProperties?: pulumi.Input<inputs.synapse.latest.IntegrationRuntimeDataFlowProperties>;
+            /**
+             * The location for managed integration runtime. The supported regions could be found on https://docs.microsoft.com/en-us/azure/data-factory/data-factory-data-movement-activities
+             */
+            location?: pulumi.Input<string>;
+            /**
+             * Maximum parallel executions count per node for managed integration runtime.
+             */
+            maxParallelExecutionsPerNode?: pulumi.Input<number>;
+            /**
+             * The node size requirement to managed integration runtime.
+             */
+            nodeSize?: pulumi.Input<string>;
+            /**
+             * The required number of nodes for managed integration runtime.
+             */
+            numberOfNodes?: pulumi.Input<number>;
+            /**
+             * VNet properties for managed integration runtime.
+             */
+            vNetProperties?: pulumi.Input<inputs.synapse.latest.IntegrationRuntimeVNetProperties>;
+        }
+
+        /**
+         * Custom setup script properties for a managed dedicated integration runtime.
+         */
+        export interface IntegrationRuntimeCustomSetupScriptProperties {
+            /**
+             * The URI of the Azure blob container that contains the custom setup script.
+             */
+            blobContainerUri?: pulumi.Input<string>;
+            /**
+             * The SAS token of the Azure blob container.
+             */
+            sasToken?: pulumi.Input<inputs.synapse.latest.SecureString>;
+        }
+
+        /**
+         * Data flow properties for managed integration runtime.
+         */
+        export interface IntegrationRuntimeDataFlowProperties {
+            /**
+             * Compute type of the cluster which will execute data flow job.
+             */
+            computeType?: pulumi.Input<string | enums.synapse.latest.DataFlowComputeType>;
+            /**
+             * Core count of the cluster which will execute data flow job. Supported values are: 8, 16, 32, 48, 80, 144 and 272.
+             */
+            coreCount?: pulumi.Input<number>;
+            /**
+             * Time to live (in minutes) setting of the cluster which will execute data flow job.
+             */
+            timeToLive?: pulumi.Input<number>;
+        }
+
+        /**
+         * Data proxy properties for a managed dedicated integration runtime.
+         */
+        export interface IntegrationRuntimeDataProxyProperties {
+            /**
+             * The self-hosted integration runtime reference.
+             */
+            connectVia?: pulumi.Input<inputs.synapse.latest.EntityReference>;
+            /**
+             * The path to contain the staged data in the Blob storage.
+             */
+            path?: pulumi.Input<string>;
+            /**
+             * The staging linked service reference.
+             */
+            stagingLinkedService?: pulumi.Input<inputs.synapse.latest.EntityReference>;
+        }
+
+        /**
+         * Catalog information for managed dedicated integration runtime.
+         */
+        export interface IntegrationRuntimeSsisCatalogInfo {
+            /**
+             * The password of the administrator user account of the catalog database.
+             */
+            catalogAdminPassword?: pulumi.Input<inputs.synapse.latest.SecureString>;
+            /**
+             * The administrator user name of catalog database.
+             */
+            catalogAdminUserName?: pulumi.Input<string>;
+            /**
+             * The pricing tier for the catalog database. The valid values could be found in https://azure.microsoft.com/en-us/pricing/details/sql-database/
+             */
+            catalogPricingTier?: pulumi.Input<string | enums.synapse.latest.IntegrationRuntimeSsisCatalogPricingTier>;
+            /**
+             * The catalog database server URL.
+             */
+            catalogServerEndpoint?: pulumi.Input<string>;
+        }
+
+        /**
+         * SSIS properties for managed integration runtime.
+         */
+        export interface IntegrationRuntimeSsisProperties {
+            /**
+             * Catalog information for managed dedicated integration runtime.
+             */
+            catalogInfo?: pulumi.Input<inputs.synapse.latest.IntegrationRuntimeSsisCatalogInfo>;
+            /**
+             * Custom setup script properties for a managed dedicated integration runtime.
+             */
+            customSetupScriptProperties?: pulumi.Input<inputs.synapse.latest.IntegrationRuntimeCustomSetupScriptProperties>;
+            /**
+             * Data proxy properties for a managed dedicated integration runtime.
+             */
+            dataProxyProperties?: pulumi.Input<inputs.synapse.latest.IntegrationRuntimeDataProxyProperties>;
+            /**
+             * The edition for the SSIS Integration Runtime
+             */
+            edition?: pulumi.Input<string | enums.synapse.latest.IntegrationRuntimeEdition>;
+            /**
+             * Custom setup without script properties for a SSIS integration runtime.
+             */
+            expressCustomSetupProperties?: pulumi.Input<pulumi.Input<inputs.synapse.latest.CmdkeySetup | inputs.synapse.latest.ComponentSetup | inputs.synapse.latest.EnvironmentVariableSetup>[]>;
+            /**
+             * License type for bringing your own license scenario.
+             */
+            licenseType?: pulumi.Input<string | enums.synapse.latest.IntegrationRuntimeLicenseType>;
+        }
+
+        /**
+         * VNet properties for managed integration runtime.
+         */
+        export interface IntegrationRuntimeVNetProperties {
+            /**
+             * Resource IDs of the public IP addresses that this integration runtime will use.
+             */
+            publicIPs?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The name of the subnet this integration runtime will join.
+             */
+            subnet?: pulumi.Input<string>;
+            /**
+             * The ID of the VNet that this integration runtime will join.
+             */
+            vNetId?: pulumi.Input<string>;
+        }
+
+        /**
+         * Library/package information of a Big Data pool powered by Apache Spark
+         */
+        export interface LibraryInfo {
+            /**
+             * Storage blob container name.
+             */
+            containerName?: pulumi.Input<string>;
+            /**
+             * Name of the library.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Storage blob path of library.
+             */
+            path?: pulumi.Input<string>;
+            /**
+             * Type of the library.
+             */
+            type?: pulumi.Input<string>;
+        }
+
+        /**
+         * Library requirements for a Big Data pool powered by Apache Spark
+         */
+        export interface LibraryRequirements {
+            /**
+             * The library requirements.
+             */
+            content?: pulumi.Input<string>;
+            /**
+             * The filename of the library requirements file.
+             */
+            filename?: pulumi.Input<string>;
+        }
+
+        /**
+         * The key authorization type integration runtime.
+         */
+        export interface LinkedIntegrationRuntimeKeyAuthorization {
+            /**
+             * The authorization type for integration runtime sharing.
+             * Expected value is 'Key'.
+             */
+            authorizationType: pulumi.Input<"Key">;
+            /**
+             * The key used for authorization.
+             */
+            key: pulumi.Input<inputs.synapse.latest.SecureString>;
+        }
+
+        /**
+         * The role based access control (RBAC) authorization type integration runtime.
+         */
+        export interface LinkedIntegrationRuntimeRbacAuthorization {
+            /**
+             * The authorization type for integration runtime sharing.
+             * Expected value is 'RBAC'.
+             */
+            authorizationType: pulumi.Input<"RBAC">;
+            /**
+             * The resource identifier of the integration runtime to be shared.
+             */
+            resourceId: pulumi.Input<string>;
+        }
+
+        /**
+         * The workspace managed identity
+         */
+        export interface ManagedIdentity {
+            /**
+             * The type of managed identity for the workspace
+             */
+            type?: pulumi.Input<enums.synapse.latest.ResourceIdentityType>;
+        }
+
+        /**
+         * Managed integration runtime, including managed elastic and managed dedicated integration runtimes.
+         */
+        export interface ManagedIntegrationRuntime {
+            /**
+             * The compute resource for managed integration runtime.
+             */
+            computeProperties?: pulumi.Input<inputs.synapse.latest.IntegrationRuntimeComputeProperties>;
+            /**
+             * Integration runtime description.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * SSIS properties for managed integration runtime.
+             */
+            ssisProperties?: pulumi.Input<inputs.synapse.latest.IntegrationRuntimeSsisProperties>;
+            /**
+             * Type of integration runtime.
+             * Expected value is 'Managed'.
+             */
+            type: pulumi.Input<"Managed">;
+        }
+
+        /**
+         * Managed Virtual Network Settings
+         */
+        export interface ManagedVirtualNetworkSettings {
+            /**
+             * Allowed Aad Tenant Ids For Linking
+             */
+            allowedAadTenantIdsForLinking?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Linked Access Check On Target Resource
+             */
+            linkedAccessCheckOnTargetResource?: pulumi.Input<boolean>;
+            /**
+             * Prevent Data Exfiltration
+             */
+            preventDataExfiltration?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * A private endpoint connection
+         */
+        export interface PrivateEndpointConnection {
+            /**
+             * Connection state of the private endpoint connection.
+             */
+            privateLinkServiceConnectionState?: pulumi.Input<inputs.synapse.latest.PrivateLinkServiceConnectionState>;
+        }
+
+        /**
+         * Connection state details of the private endpoint
+         */
+        export interface PrivateLinkServiceConnectionState {
+            /**
+             * The private link service connection description.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * The private link service connection status.
+             */
+            status?: pulumi.Input<string>;
+        }
+
+        /**
+         * Purview Configuration
+         */
+        export interface PurviewConfiguration {
+            /**
+             * Purview Resource ID
+             */
+            purviewResourceId?: pulumi.Input<string>;
+        }
+
+        /**
+         * Azure Synapse secure string definition. The string value will be masked with asterisks '*' during Get or List API calls.
+         */
+        export interface SecureString {
+            /**
+             * Type of the secret.
+             * Expected value is 'SecureString'.
+             */
+            type: pulumi.Input<"SecureString">;
+            /**
+             * Value of secure string.
+             */
+            value: pulumi.Input<string>;
+        }
+
+        /**
+         * Self-hosted integration runtime.
+         */
+        export interface SelfHostedIntegrationRuntime {
+            /**
+             * Integration runtime description.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Linked integration runtime type from data factory
+             */
+            linkedInfo?: pulumi.Input<inputs.synapse.latest.LinkedIntegrationRuntimeKeyAuthorization | inputs.synapse.latest.LinkedIntegrationRuntimeRbacAuthorization>;
+            /**
+             * Type of integration runtime.
+             * Expected value is 'SelfHosted'.
+             */
+            type: pulumi.Input<"SelfHosted">;
+        }
+
+        /**
+         * SQL pool SKU
+         */
+        export interface Sku {
+            /**
+             * If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+             */
+            capacity?: pulumi.Input<number>;
+            /**
+             * The SKU name
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * The service tier
+             */
+            tier?: pulumi.Input<string>;
+        }
+
+        /**
+         * Properties for an Sql pool vulnerability assessment rule baseline's result.
+         */
+        export interface SqlPoolVulnerabilityAssessmentRuleBaselineItem {
+            /**
+             * The rule baseline result
+             */
+            result: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * Virtual Network Profile
+         */
+        export interface VirtualNetworkProfile {
+            /**
+             * Subnet ID used for computes in workspace
+             */
+            computeSubnetId?: pulumi.Input<string>;
+        }
+
+        /**
+         * Properties of a Vulnerability Assessment recurring scans.
+         */
+        export interface VulnerabilityAssessmentRecurringScansProperties {
+            /**
+             * Specifies that the schedule scan notification will be is sent to the subscription administrators.
+             */
+            emailSubscriptionAdmins?: pulumi.Input<boolean>;
+            /**
+             * Specifies an array of e-mail addresses to which the scan notification is sent.
+             */
+            emails?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Recurring scans state.
+             */
+            isEnabled?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Details of the customer managed key associated with the workspace
+         */
+        export interface WorkspaceKeyDetails {
+            /**
+             * Workspace Key sub-resource key vault url
+             */
+            keyVaultUrl?: pulumi.Input<string>;
+            /**
+             * Workspace Key sub-resource name
+             */
+            name?: pulumi.Input<string>;
+        }
+
+        /**
+         * Git integration settings
+         */
+        export interface WorkspaceRepositoryConfiguration {
+            /**
+             * Account name
+             */
+            accountName?: pulumi.Input<string>;
+            /**
+             * Collaboration branch
+             */
+            collaborationBranch?: pulumi.Input<string>;
+            /**
+             * GitHub Enterprise host name. For example: https://github.mydomain.com
+             */
+            hostName?: pulumi.Input<string>;
+            /**
+             * The last commit ID
+             */
+            lastCommitId?: pulumi.Input<string>;
+            /**
+             * VSTS project name
+             */
+            projectName?: pulumi.Input<string>;
+            /**
+             * Repository name
+             */
+            repositoryName?: pulumi.Input<string>;
+            /**
+             * Root folder to use in the repository
+             */
+            rootFolder?: pulumi.Input<string>;
+            /**
+             * The VSTS tenant ID
+             */
+            tenantId?: pulumi.Input<string>;
+            /**
+             * Type of workspace repositoryID configuration. Example WorkspaceVSTSConfiguration, WorkspaceGitHubConfiguration
+             */
+            type?: pulumi.Input<string>;
+        }
+
+    }
+
     export namespace v20190601preview {
         /**
          * Auto-pausing properties of a Big Data pool powered by Apache Spark
