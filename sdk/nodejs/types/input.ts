@@ -7345,6 +7345,10 @@ export namespace appplatform {
              */
             activeDeploymentName?: pulumi.Input<string>;
             /**
+             * Indicate if end to end TLS is enabled.
+             */
+            enableEndToEndTLS?: pulumi.Input<boolean>;
+            /**
              * Fully qualified dns Name.
              */
             fqdn?: pulumi.Input<string>;
@@ -130511,6 +130515,19 @@ export namespace datashare {
              * Identity Type
              */
             type?: pulumi.Input<string | enums.datashare.v20191101.Type>;
+        }
+
+    }
+
+    export namespace v20200901 {
+        /**
+         * Identity of resource
+         */
+        export interface Identity {
+            /**
+             * Identity Type
+             */
+            type?: pulumi.Input<string | enums.datashare.v20200901.Type>;
         }
 
     }
