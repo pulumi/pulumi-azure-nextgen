@@ -11364,6 +11364,9 @@ export namespace azurestack {
 
     export namespace v20170601 {
     }
+
+    export namespace v20200601preview {
+    }
 }
 
 export namespace azurestackhci {
@@ -168848,6 +168851,23 @@ export namespace kubernetes {
 }
 
 export namespace kubernetesconfiguration {
+    export namespace latest {
+        /**
+         * Properties for Helm operator.
+         */
+        export interface HelmOperatorProperties {
+            /**
+             * Values override for the operator Helm chart.
+             */
+            chartValues?: pulumi.Input<string>;
+            /**
+             * Version of the operator Helm chart.
+             */
+            chartVersion?: pulumi.Input<string>;
+        }
+
+    }
+
     export namespace v20191101preview {
         /**
          * Properties for Helm operator.
