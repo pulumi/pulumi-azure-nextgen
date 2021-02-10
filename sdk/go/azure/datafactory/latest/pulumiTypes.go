@@ -16836,6 +16836,8 @@ func (o AzureMLBatchExecutionActivityResponseOutput) WebServiceOutputs() AzureML
 type AzureMLExecutePipelineActivity struct {
 	// Whether to continue execution of other steps in the PipelineRun if a step fails. This information will be passed in the continueOnStepFailure property of the published pipeline execution request. Type: boolean (or Expression with resultType boolean).
 	ContinueOnStepFailure interface{} `pulumi:"continueOnStepFailure"`
+	// Dictionary used for changing data path assignments without retraining. Values will be passed in the dataPathAssignments property of the published pipeline execution request. Type: object with key value pairs (or Expression with resultType object).
+	DataPathAssignments interface{} `pulumi:"dataPathAssignments"`
 	// Activity depends on condition.
 	DependsOn []ActivityDependency `pulumi:"dependsOn"`
 	// Activity description.
@@ -16846,6 +16848,8 @@ type AzureMLExecutePipelineActivity struct {
 	LinkedServiceName *LinkedServiceReference `pulumi:"linkedServiceName"`
 	// The parent Azure ML Service pipeline run id. This information will be passed in the ParentRunId property of the published pipeline execution request. Type: string (or Expression with resultType string).
 	MlParentRunId interface{} `pulumi:"mlParentRunId"`
+	// ID of the published Azure ML pipeline endpoint. Type: string (or Expression with resultType string).
+	MlPipelineEndpointId interface{} `pulumi:"mlPipelineEndpointId"`
 	// ID of the published Azure ML pipeline. Type: string (or Expression with resultType string).
 	MlPipelineId interface{} `pulumi:"mlPipelineId"`
 	// Key,Value pairs to be passed to the published Azure ML pipeline endpoint. Keys must match the names of pipeline parameters defined in the published pipeline. Values will be passed in the ParameterAssignments property of the published pipeline execution request. Type: object with key value pairs (or Expression with resultType object).
@@ -16859,6 +16863,8 @@ type AzureMLExecutePipelineActivity struct {
 	Type string `pulumi:"type"`
 	// Activity user properties.
 	UserProperties []UserProperty `pulumi:"userProperties"`
+	// Version of the published Azure ML pipeline endpoint. Type: string (or Expression with resultType string).
+	Version interface{} `pulumi:"version"`
 }
 
 // AzureMLExecutePipelineActivityInput is an input type that accepts AzureMLExecutePipelineActivityArgs and AzureMLExecutePipelineActivityOutput values.
@@ -16876,6 +16882,8 @@ type AzureMLExecutePipelineActivityInput interface {
 type AzureMLExecutePipelineActivityArgs struct {
 	// Whether to continue execution of other steps in the PipelineRun if a step fails. This information will be passed in the continueOnStepFailure property of the published pipeline execution request. Type: boolean (or Expression with resultType boolean).
 	ContinueOnStepFailure pulumi.Input `pulumi:"continueOnStepFailure"`
+	// Dictionary used for changing data path assignments without retraining. Values will be passed in the dataPathAssignments property of the published pipeline execution request. Type: object with key value pairs (or Expression with resultType object).
+	DataPathAssignments pulumi.Input `pulumi:"dataPathAssignments"`
 	// Activity depends on condition.
 	DependsOn ActivityDependencyArrayInput `pulumi:"dependsOn"`
 	// Activity description.
@@ -16886,6 +16894,8 @@ type AzureMLExecutePipelineActivityArgs struct {
 	LinkedServiceName LinkedServiceReferencePtrInput `pulumi:"linkedServiceName"`
 	// The parent Azure ML Service pipeline run id. This information will be passed in the ParentRunId property of the published pipeline execution request. Type: string (or Expression with resultType string).
 	MlParentRunId pulumi.Input `pulumi:"mlParentRunId"`
+	// ID of the published Azure ML pipeline endpoint. Type: string (or Expression with resultType string).
+	MlPipelineEndpointId pulumi.Input `pulumi:"mlPipelineEndpointId"`
 	// ID of the published Azure ML pipeline. Type: string (or Expression with resultType string).
 	MlPipelineId pulumi.Input `pulumi:"mlPipelineId"`
 	// Key,Value pairs to be passed to the published Azure ML pipeline endpoint. Keys must match the names of pipeline parameters defined in the published pipeline. Values will be passed in the ParameterAssignments property of the published pipeline execution request. Type: object with key value pairs (or Expression with resultType object).
@@ -16899,6 +16909,8 @@ type AzureMLExecutePipelineActivityArgs struct {
 	Type pulumi.StringInput `pulumi:"type"`
 	// Activity user properties.
 	UserProperties UserPropertyArrayInput `pulumi:"userProperties"`
+	// Version of the published Azure ML pipeline endpoint. Type: string (or Expression with resultType string).
+	Version pulumi.Input `pulumi:"version"`
 }
 
 func (AzureMLExecutePipelineActivityArgs) ElementType() reflect.Type {
@@ -16933,6 +16945,11 @@ func (o AzureMLExecutePipelineActivityOutput) ContinueOnStepFailure() pulumi.Any
 	return o.ApplyT(func(v AzureMLExecutePipelineActivity) interface{} { return v.ContinueOnStepFailure }).(pulumi.AnyOutput)
 }
 
+// Dictionary used for changing data path assignments without retraining. Values will be passed in the dataPathAssignments property of the published pipeline execution request. Type: object with key value pairs (or Expression with resultType object).
+func (o AzureMLExecutePipelineActivityOutput) DataPathAssignments() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureMLExecutePipelineActivity) interface{} { return v.DataPathAssignments }).(pulumi.AnyOutput)
+}
+
 // Activity depends on condition.
 func (o AzureMLExecutePipelineActivityOutput) DependsOn() ActivityDependencyArrayOutput {
 	return o.ApplyT(func(v AzureMLExecutePipelineActivity) []ActivityDependency { return v.DependsOn }).(ActivityDependencyArrayOutput)
@@ -16956,6 +16973,11 @@ func (o AzureMLExecutePipelineActivityOutput) LinkedServiceName() LinkedServiceR
 // The parent Azure ML Service pipeline run id. This information will be passed in the ParentRunId property of the published pipeline execution request. Type: string (or Expression with resultType string).
 func (o AzureMLExecutePipelineActivityOutput) MlParentRunId() pulumi.AnyOutput {
 	return o.ApplyT(func(v AzureMLExecutePipelineActivity) interface{} { return v.MlParentRunId }).(pulumi.AnyOutput)
+}
+
+// ID of the published Azure ML pipeline endpoint. Type: string (or Expression with resultType string).
+func (o AzureMLExecutePipelineActivityOutput) MlPipelineEndpointId() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureMLExecutePipelineActivity) interface{} { return v.MlPipelineEndpointId }).(pulumi.AnyOutput)
 }
 
 // ID of the published Azure ML pipeline. Type: string (or Expression with resultType string).
@@ -16989,10 +17011,17 @@ func (o AzureMLExecutePipelineActivityOutput) UserProperties() UserPropertyArray
 	return o.ApplyT(func(v AzureMLExecutePipelineActivity) []UserProperty { return v.UserProperties }).(UserPropertyArrayOutput)
 }
 
+// Version of the published Azure ML pipeline endpoint. Type: string (or Expression with resultType string).
+func (o AzureMLExecutePipelineActivityOutput) Version() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureMLExecutePipelineActivity) interface{} { return v.Version }).(pulumi.AnyOutput)
+}
+
 // Azure ML Execute Pipeline activity.
 type AzureMLExecutePipelineActivityResponse struct {
 	// Whether to continue execution of other steps in the PipelineRun if a step fails. This information will be passed in the continueOnStepFailure property of the published pipeline execution request. Type: boolean (or Expression with resultType boolean).
 	ContinueOnStepFailure interface{} `pulumi:"continueOnStepFailure"`
+	// Dictionary used for changing data path assignments without retraining. Values will be passed in the dataPathAssignments property of the published pipeline execution request. Type: object with key value pairs (or Expression with resultType object).
+	DataPathAssignments interface{} `pulumi:"dataPathAssignments"`
 	// Activity depends on condition.
 	DependsOn []ActivityDependencyResponse `pulumi:"dependsOn"`
 	// Activity description.
@@ -17003,6 +17032,8 @@ type AzureMLExecutePipelineActivityResponse struct {
 	LinkedServiceName *LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// The parent Azure ML Service pipeline run id. This information will be passed in the ParentRunId property of the published pipeline execution request. Type: string (or Expression with resultType string).
 	MlParentRunId interface{} `pulumi:"mlParentRunId"`
+	// ID of the published Azure ML pipeline endpoint. Type: string (or Expression with resultType string).
+	MlPipelineEndpointId interface{} `pulumi:"mlPipelineEndpointId"`
 	// ID of the published Azure ML pipeline. Type: string (or Expression with resultType string).
 	MlPipelineId interface{} `pulumi:"mlPipelineId"`
 	// Key,Value pairs to be passed to the published Azure ML pipeline endpoint. Keys must match the names of pipeline parameters defined in the published pipeline. Values will be passed in the ParameterAssignments property of the published pipeline execution request. Type: object with key value pairs (or Expression with resultType object).
@@ -17016,6 +17047,8 @@ type AzureMLExecutePipelineActivityResponse struct {
 	Type string `pulumi:"type"`
 	// Activity user properties.
 	UserProperties []UserPropertyResponse `pulumi:"userProperties"`
+	// Version of the published Azure ML pipeline endpoint. Type: string (or Expression with resultType string).
+	Version interface{} `pulumi:"version"`
 }
 
 // AzureMLExecutePipelineActivityResponseInput is an input type that accepts AzureMLExecutePipelineActivityResponseArgs and AzureMLExecutePipelineActivityResponseOutput values.
@@ -17033,6 +17066,8 @@ type AzureMLExecutePipelineActivityResponseInput interface {
 type AzureMLExecutePipelineActivityResponseArgs struct {
 	// Whether to continue execution of other steps in the PipelineRun if a step fails. This information will be passed in the continueOnStepFailure property of the published pipeline execution request. Type: boolean (or Expression with resultType boolean).
 	ContinueOnStepFailure pulumi.Input `pulumi:"continueOnStepFailure"`
+	// Dictionary used for changing data path assignments without retraining. Values will be passed in the dataPathAssignments property of the published pipeline execution request. Type: object with key value pairs (or Expression with resultType object).
+	DataPathAssignments pulumi.Input `pulumi:"dataPathAssignments"`
 	// Activity depends on condition.
 	DependsOn ActivityDependencyResponseArrayInput `pulumi:"dependsOn"`
 	// Activity description.
@@ -17043,6 +17078,8 @@ type AzureMLExecutePipelineActivityResponseArgs struct {
 	LinkedServiceName LinkedServiceReferenceResponsePtrInput `pulumi:"linkedServiceName"`
 	// The parent Azure ML Service pipeline run id. This information will be passed in the ParentRunId property of the published pipeline execution request. Type: string (or Expression with resultType string).
 	MlParentRunId pulumi.Input `pulumi:"mlParentRunId"`
+	// ID of the published Azure ML pipeline endpoint. Type: string (or Expression with resultType string).
+	MlPipelineEndpointId pulumi.Input `pulumi:"mlPipelineEndpointId"`
 	// ID of the published Azure ML pipeline. Type: string (or Expression with resultType string).
 	MlPipelineId pulumi.Input `pulumi:"mlPipelineId"`
 	// Key,Value pairs to be passed to the published Azure ML pipeline endpoint. Keys must match the names of pipeline parameters defined in the published pipeline. Values will be passed in the ParameterAssignments property of the published pipeline execution request. Type: object with key value pairs (or Expression with resultType object).
@@ -17056,6 +17093,8 @@ type AzureMLExecutePipelineActivityResponseArgs struct {
 	Type pulumi.StringInput `pulumi:"type"`
 	// Activity user properties.
 	UserProperties UserPropertyResponseArrayInput `pulumi:"userProperties"`
+	// Version of the published Azure ML pipeline endpoint. Type: string (or Expression with resultType string).
+	Version pulumi.Input `pulumi:"version"`
 }
 
 func (AzureMLExecutePipelineActivityResponseArgs) ElementType() reflect.Type {
@@ -17090,6 +17129,11 @@ func (o AzureMLExecutePipelineActivityResponseOutput) ContinueOnStepFailure() pu
 	return o.ApplyT(func(v AzureMLExecutePipelineActivityResponse) interface{} { return v.ContinueOnStepFailure }).(pulumi.AnyOutput)
 }
 
+// Dictionary used for changing data path assignments without retraining. Values will be passed in the dataPathAssignments property of the published pipeline execution request. Type: object with key value pairs (or Expression with resultType object).
+func (o AzureMLExecutePipelineActivityResponseOutput) DataPathAssignments() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureMLExecutePipelineActivityResponse) interface{} { return v.DataPathAssignments }).(pulumi.AnyOutput)
+}
+
 // Activity depends on condition.
 func (o AzureMLExecutePipelineActivityResponseOutput) DependsOn() ActivityDependencyResponseArrayOutput {
 	return o.ApplyT(func(v AzureMLExecutePipelineActivityResponse) []ActivityDependencyResponse { return v.DependsOn }).(ActivityDependencyResponseArrayOutput)
@@ -17115,6 +17159,11 @@ func (o AzureMLExecutePipelineActivityResponseOutput) LinkedServiceName() Linked
 // The parent Azure ML Service pipeline run id. This information will be passed in the ParentRunId property of the published pipeline execution request. Type: string (or Expression with resultType string).
 func (o AzureMLExecutePipelineActivityResponseOutput) MlParentRunId() pulumi.AnyOutput {
 	return o.ApplyT(func(v AzureMLExecutePipelineActivityResponse) interface{} { return v.MlParentRunId }).(pulumi.AnyOutput)
+}
+
+// ID of the published Azure ML pipeline endpoint. Type: string (or Expression with resultType string).
+func (o AzureMLExecutePipelineActivityResponseOutput) MlPipelineEndpointId() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureMLExecutePipelineActivityResponse) interface{} { return v.MlPipelineEndpointId }).(pulumi.AnyOutput)
 }
 
 // ID of the published Azure ML pipeline. Type: string (or Expression with resultType string).
@@ -17146,6 +17195,11 @@ func (o AzureMLExecutePipelineActivityResponseOutput) Type() pulumi.StringOutput
 // Activity user properties.
 func (o AzureMLExecutePipelineActivityResponseOutput) UserProperties() UserPropertyResponseArrayOutput {
 	return o.ApplyT(func(v AzureMLExecutePipelineActivityResponse) []UserPropertyResponse { return v.UserProperties }).(UserPropertyResponseArrayOutput)
+}
+
+// Version of the published Azure ML pipeline endpoint. Type: string (or Expression with resultType string).
+func (o AzureMLExecutePipelineActivityResponseOutput) Version() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureMLExecutePipelineActivityResponse) interface{} { return v.Version }).(pulumi.AnyOutput)
 }
 
 // Azure ML Studio Web Service linked service.
@@ -137231,15 +137285,17 @@ func (o WebActivityOutput) UserProperties() UserPropertyArrayOutput {
 
 // Web activity authentication properties.
 type WebActivityAuthentication struct {
-	// Password for the PFX file or basic authentication.
+	// Password for the PFX file or basic authentication / Secret when used for ServicePrincipal
 	Password interface{} `pulumi:"password"`
-	// Base64-encoded contents of a PFX file.
+	// Base64-encoded contents of a PFX file or Certificate when used for ServicePrincipal
 	Pfx interface{} `pulumi:"pfx"`
 	// Resource for which Azure Auth token will be requested when using MSI Authentication.
 	Resource *string `pulumi:"resource"`
-	// Web activity authentication (Basic/ClientCertificate/MSI)
+	// Web activity authentication (Basic/ClientCertificate/MSI/ServicePrincipal)
 	Type string `pulumi:"type"`
-	// Web activity authentication user name for basic authentication.
+	// TenantId for which Azure Auth token will be requested when using ServicePrincipal Authentication. Type: string (or Expression with resultType string).
+	UserTenant interface{} `pulumi:"userTenant"`
+	// Web activity authentication user name for basic authentication or ClientID when used for ServicePrincipal
 	Username *string `pulumi:"username"`
 }
 
@@ -137256,15 +137312,17 @@ type WebActivityAuthenticationInput interface {
 
 // Web activity authentication properties.
 type WebActivityAuthenticationArgs struct {
-	// Password for the PFX file or basic authentication.
+	// Password for the PFX file or basic authentication / Secret when used for ServicePrincipal
 	Password pulumi.Input `pulumi:"password"`
-	// Base64-encoded contents of a PFX file.
+	// Base64-encoded contents of a PFX file or Certificate when used for ServicePrincipal
 	Pfx pulumi.Input `pulumi:"pfx"`
 	// Resource for which Azure Auth token will be requested when using MSI Authentication.
 	Resource pulumi.StringPtrInput `pulumi:"resource"`
-	// Web activity authentication (Basic/ClientCertificate/MSI)
+	// Web activity authentication (Basic/ClientCertificate/MSI/ServicePrincipal)
 	Type pulumi.StringInput `pulumi:"type"`
-	// Web activity authentication user name for basic authentication.
+	// TenantId for which Azure Auth token will be requested when using ServicePrincipal Authentication. Type: string (or Expression with resultType string).
+	UserTenant pulumi.Input `pulumi:"userTenant"`
+	// Web activity authentication user name for basic authentication or ClientID when used for ServicePrincipal
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
@@ -137346,12 +137404,12 @@ func (o WebActivityAuthenticationOutput) ToWebActivityAuthenticationPtrOutputWit
 	}).(WebActivityAuthenticationPtrOutput)
 }
 
-// Password for the PFX file or basic authentication.
+// Password for the PFX file or basic authentication / Secret when used for ServicePrincipal
 func (o WebActivityAuthenticationOutput) Password() pulumi.AnyOutput {
 	return o.ApplyT(func(v WebActivityAuthentication) interface{} { return v.Password }).(pulumi.AnyOutput)
 }
 
-// Base64-encoded contents of a PFX file.
+// Base64-encoded contents of a PFX file or Certificate when used for ServicePrincipal
 func (o WebActivityAuthenticationOutput) Pfx() pulumi.AnyOutput {
 	return o.ApplyT(func(v WebActivityAuthentication) interface{} { return v.Pfx }).(pulumi.AnyOutput)
 }
@@ -137361,12 +137419,17 @@ func (o WebActivityAuthenticationOutput) Resource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WebActivityAuthentication) *string { return v.Resource }).(pulumi.StringPtrOutput)
 }
 
-// Web activity authentication (Basic/ClientCertificate/MSI)
+// Web activity authentication (Basic/ClientCertificate/MSI/ServicePrincipal)
 func (o WebActivityAuthenticationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v WebActivityAuthentication) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Web activity authentication user name for basic authentication.
+// TenantId for which Azure Auth token will be requested when using ServicePrincipal Authentication. Type: string (or Expression with resultType string).
+func (o WebActivityAuthenticationOutput) UserTenant() pulumi.AnyOutput {
+	return o.ApplyT(func(v WebActivityAuthentication) interface{} { return v.UserTenant }).(pulumi.AnyOutput)
+}
+
+// Web activity authentication user name for basic authentication or ClientID when used for ServicePrincipal
 func (o WebActivityAuthenticationOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WebActivityAuthentication) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -137389,7 +137452,7 @@ func (o WebActivityAuthenticationPtrOutput) Elem() WebActivityAuthenticationOutp
 	return o.ApplyT(func(v *WebActivityAuthentication) WebActivityAuthentication { return *v }).(WebActivityAuthenticationOutput)
 }
 
-// Password for the PFX file or basic authentication.
+// Password for the PFX file or basic authentication / Secret when used for ServicePrincipal
 func (o WebActivityAuthenticationPtrOutput) Password() pulumi.AnyOutput {
 	return o.ApplyT(func(v *WebActivityAuthentication) interface{} {
 		if v == nil {
@@ -137399,7 +137462,7 @@ func (o WebActivityAuthenticationPtrOutput) Password() pulumi.AnyOutput {
 	}).(pulumi.AnyOutput)
 }
 
-// Base64-encoded contents of a PFX file.
+// Base64-encoded contents of a PFX file or Certificate when used for ServicePrincipal
 func (o WebActivityAuthenticationPtrOutput) Pfx() pulumi.AnyOutput {
 	return o.ApplyT(func(v *WebActivityAuthentication) interface{} {
 		if v == nil {
@@ -137419,7 +137482,7 @@ func (o WebActivityAuthenticationPtrOutput) Resource() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Web activity authentication (Basic/ClientCertificate/MSI)
+// Web activity authentication (Basic/ClientCertificate/MSI/ServicePrincipal)
 func (o WebActivityAuthenticationPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebActivityAuthentication) *string {
 		if v == nil {
@@ -137429,7 +137492,17 @@ func (o WebActivityAuthenticationPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Web activity authentication user name for basic authentication.
+// TenantId for which Azure Auth token will be requested when using ServicePrincipal Authentication. Type: string (or Expression with resultType string).
+func (o WebActivityAuthenticationPtrOutput) UserTenant() pulumi.AnyOutput {
+	return o.ApplyT(func(v *WebActivityAuthentication) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.UserTenant
+	}).(pulumi.AnyOutput)
+}
+
+// Web activity authentication user name for basic authentication or ClientID when used for ServicePrincipal
 func (o WebActivityAuthenticationPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebActivityAuthentication) *string {
 		if v == nil {
@@ -137441,15 +137514,17 @@ func (o WebActivityAuthenticationPtrOutput) Username() pulumi.StringPtrOutput {
 
 // Web activity authentication properties.
 type WebActivityAuthenticationResponse struct {
-	// Password for the PFX file or basic authentication.
+	// Password for the PFX file or basic authentication / Secret when used for ServicePrincipal
 	Password interface{} `pulumi:"password"`
-	// Base64-encoded contents of a PFX file.
+	// Base64-encoded contents of a PFX file or Certificate when used for ServicePrincipal
 	Pfx interface{} `pulumi:"pfx"`
 	// Resource for which Azure Auth token will be requested when using MSI Authentication.
 	Resource *string `pulumi:"resource"`
-	// Web activity authentication (Basic/ClientCertificate/MSI)
+	// Web activity authentication (Basic/ClientCertificate/MSI/ServicePrincipal)
 	Type string `pulumi:"type"`
-	// Web activity authentication user name for basic authentication.
+	// TenantId for which Azure Auth token will be requested when using ServicePrincipal Authentication. Type: string (or Expression with resultType string).
+	UserTenant interface{} `pulumi:"userTenant"`
+	// Web activity authentication user name for basic authentication or ClientID when used for ServicePrincipal
 	Username *string `pulumi:"username"`
 }
 
@@ -137466,15 +137541,17 @@ type WebActivityAuthenticationResponseInput interface {
 
 // Web activity authentication properties.
 type WebActivityAuthenticationResponseArgs struct {
-	// Password for the PFX file or basic authentication.
+	// Password for the PFX file or basic authentication / Secret when used for ServicePrincipal
 	Password pulumi.Input `pulumi:"password"`
-	// Base64-encoded contents of a PFX file.
+	// Base64-encoded contents of a PFX file or Certificate when used for ServicePrincipal
 	Pfx pulumi.Input `pulumi:"pfx"`
 	// Resource for which Azure Auth token will be requested when using MSI Authentication.
 	Resource pulumi.StringPtrInput `pulumi:"resource"`
-	// Web activity authentication (Basic/ClientCertificate/MSI)
+	// Web activity authentication (Basic/ClientCertificate/MSI/ServicePrincipal)
 	Type pulumi.StringInput `pulumi:"type"`
-	// Web activity authentication user name for basic authentication.
+	// TenantId for which Azure Auth token will be requested when using ServicePrincipal Authentication. Type: string (or Expression with resultType string).
+	UserTenant pulumi.Input `pulumi:"userTenant"`
+	// Web activity authentication user name for basic authentication or ClientID when used for ServicePrincipal
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
@@ -137556,12 +137633,12 @@ func (o WebActivityAuthenticationResponseOutput) ToWebActivityAuthenticationResp
 	}).(WebActivityAuthenticationResponsePtrOutput)
 }
 
-// Password for the PFX file or basic authentication.
+// Password for the PFX file or basic authentication / Secret when used for ServicePrincipal
 func (o WebActivityAuthenticationResponseOutput) Password() pulumi.AnyOutput {
 	return o.ApplyT(func(v WebActivityAuthenticationResponse) interface{} { return v.Password }).(pulumi.AnyOutput)
 }
 
-// Base64-encoded contents of a PFX file.
+// Base64-encoded contents of a PFX file or Certificate when used for ServicePrincipal
 func (o WebActivityAuthenticationResponseOutput) Pfx() pulumi.AnyOutput {
 	return o.ApplyT(func(v WebActivityAuthenticationResponse) interface{} { return v.Pfx }).(pulumi.AnyOutput)
 }
@@ -137571,12 +137648,17 @@ func (o WebActivityAuthenticationResponseOutput) Resource() pulumi.StringPtrOutp
 	return o.ApplyT(func(v WebActivityAuthenticationResponse) *string { return v.Resource }).(pulumi.StringPtrOutput)
 }
 
-// Web activity authentication (Basic/ClientCertificate/MSI)
+// Web activity authentication (Basic/ClientCertificate/MSI/ServicePrincipal)
 func (o WebActivityAuthenticationResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v WebActivityAuthenticationResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Web activity authentication user name for basic authentication.
+// TenantId for which Azure Auth token will be requested when using ServicePrincipal Authentication. Type: string (or Expression with resultType string).
+func (o WebActivityAuthenticationResponseOutput) UserTenant() pulumi.AnyOutput {
+	return o.ApplyT(func(v WebActivityAuthenticationResponse) interface{} { return v.UserTenant }).(pulumi.AnyOutput)
+}
+
+// Web activity authentication user name for basic authentication or ClientID when used for ServicePrincipal
 func (o WebActivityAuthenticationResponseOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WebActivityAuthenticationResponse) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -137599,7 +137681,7 @@ func (o WebActivityAuthenticationResponsePtrOutput) Elem() WebActivityAuthentica
 	return o.ApplyT(func(v *WebActivityAuthenticationResponse) WebActivityAuthenticationResponse { return *v }).(WebActivityAuthenticationResponseOutput)
 }
 
-// Password for the PFX file or basic authentication.
+// Password for the PFX file or basic authentication / Secret when used for ServicePrincipal
 func (o WebActivityAuthenticationResponsePtrOutput) Password() pulumi.AnyOutput {
 	return o.ApplyT(func(v *WebActivityAuthenticationResponse) interface{} {
 		if v == nil {
@@ -137609,7 +137691,7 @@ func (o WebActivityAuthenticationResponsePtrOutput) Password() pulumi.AnyOutput 
 	}).(pulumi.AnyOutput)
 }
 
-// Base64-encoded contents of a PFX file.
+// Base64-encoded contents of a PFX file or Certificate when used for ServicePrincipal
 func (o WebActivityAuthenticationResponsePtrOutput) Pfx() pulumi.AnyOutput {
 	return o.ApplyT(func(v *WebActivityAuthenticationResponse) interface{} {
 		if v == nil {
@@ -137629,7 +137711,7 @@ func (o WebActivityAuthenticationResponsePtrOutput) Resource() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// Web activity authentication (Basic/ClientCertificate/MSI)
+// Web activity authentication (Basic/ClientCertificate/MSI/ServicePrincipal)
 func (o WebActivityAuthenticationResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebActivityAuthenticationResponse) *string {
 		if v == nil {
@@ -137639,7 +137721,17 @@ func (o WebActivityAuthenticationResponsePtrOutput) Type() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Web activity authentication user name for basic authentication.
+// TenantId for which Azure Auth token will be requested when using ServicePrincipal Authentication. Type: string (or Expression with resultType string).
+func (o WebActivityAuthenticationResponsePtrOutput) UserTenant() pulumi.AnyOutput {
+	return o.ApplyT(func(v *WebActivityAuthenticationResponse) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.UserTenant
+	}).(pulumi.AnyOutput)
+}
+
+// Web activity authentication user name for basic authentication or ClientID when used for ServicePrincipal
 func (o WebActivityAuthenticationResponsePtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebActivityAuthenticationResponse) *string {
 		if v == nil {

@@ -21708,6 +21708,77 @@ export namespace cache {
         }
 
     }
+
+    export namespace v20210301 {
+        /**
+         * Specifies configuration of a redis module
+         */
+        export interface Module {
+            /**
+             * Configuration options for the module, e.g. 'ERROR_RATE 0.00 INITIAL_SIZE 400'.
+             */
+            args?: pulumi.Input<string>;
+            /**
+             * The name of the module, e.g. 'RedisBloom', 'RediSearch', 'RedisTimeSeries'
+             */
+            name: pulumi.Input<string>;
+        }
+
+        /**
+         * Persistence-related configuration for the RedisEnterprise database
+         */
+        export interface Persistence {
+            /**
+             * Sets whether AOF is enabled.
+             */
+            aofEnabled?: pulumi.Input<boolean>;
+            /**
+             * Sets the frequency at which data is written to disk.
+             */
+            aofFrequency?: pulumi.Input<string | enums.cache.v20210301.AofFrequency>;
+            /**
+             * Sets whether RDB is enabled.
+             */
+            rdbEnabled?: pulumi.Input<boolean>;
+            /**
+             * Sets the frequency at which a snapshot of the database is created.
+             */
+            rdbFrequency?: pulumi.Input<string | enums.cache.v20210301.RdbFrequency>;
+        }
+
+        /**
+         * A collection of information about the state of the connection between service consumer and provider.
+         */
+        export interface PrivateLinkServiceConnectionState {
+            /**
+             * A message indicating if changes on the service provider require any updates on the consumer.
+             */
+            actionsRequired?: pulumi.Input<string>;
+            /**
+             * The reason for approval/rejection of the connection.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+             */
+            status?: pulumi.Input<string | enums.cache.v20210301.PrivateEndpointServiceConnectionStatus>;
+        }
+
+        /**
+         * SKU parameters supplied to the create RedisEnterprise operation.
+         */
+        export interface Sku {
+            /**
+             * The size of the RedisEnterprise cluster. Defaults to 2 or 3 depending on SKU. Valid values are (2, 4, 6, ...) for Enterprise SKUs and (3, 9, 15, ...) for Flash SKUs.
+             */
+            capacity?: pulumi.Input<number>;
+            /**
+             * The type of RedisEnterprise cluster to deploy. Possible values: (Enterprise_E10, EnterpriseFlash_F300 etc.)
+             */
+            name: pulumi.Input<string | enums.cache.v20210301.SkuName>;
+        }
+
+    }
 }
 
 export namespace cdn {
@@ -69569,6 +69640,10 @@ export namespace costmanagement {
              */
             or?: pulumi.Input<pulumi.Input<inputs.costmanagement.v20191101.ReportConfigFilter>[]>;
             /**
+             * Has comparison expression for a tag key
+             */
+            tagKey?: pulumi.Input<inputs.costmanagement.v20191101.ReportConfigComparisonExpression>;
+            /**
              * Has comparison expression for a tag
              */
             tags?: pulumi.Input<inputs.costmanagement.v20191101.ReportConfigComparisonExpression>;
@@ -77915,6 +77990,10 @@ export namespace datafactory {
              */
             continueOnStepFailure?: any;
             /**
+             * Dictionary used for changing data path assignments without retraining. Values will be passed in the dataPathAssignments property of the published pipeline execution request. Type: object with key value pairs (or Expression with resultType object).
+             */
+            dataPathAssignments?: any;
+            /**
              * Activity depends on condition.
              */
             dependsOn?: pulumi.Input<pulumi.Input<inputs.datafactory.latest.ActivityDependency>[]>;
@@ -77935,9 +78014,13 @@ export namespace datafactory {
              */
             mlParentRunId?: any;
             /**
+             * ID of the published Azure ML pipeline endpoint. Type: string (or Expression with resultType string).
+             */
+            mlPipelineEndpointId?: any;
+            /**
              * ID of the published Azure ML pipeline. Type: string (or Expression with resultType string).
              */
-            mlPipelineId: any;
+            mlPipelineId?: any;
             /**
              * Key,Value pairs to be passed to the published Azure ML pipeline endpoint. Keys must match the names of pipeline parameters defined in the published pipeline. Values will be passed in the ParameterAssignments property of the published pipeline execution request. Type: object with key value pairs (or Expression with resultType object).
              */
@@ -77959,6 +78042,10 @@ export namespace datafactory {
              * Activity user properties.
              */
             userProperties?: pulumi.Input<pulumi.Input<inputs.datafactory.latest.UserProperty>[]>;
+            /**
+             * Version of the published Azure ML pipeline endpoint. Type: string (or Expression with resultType string).
+             */
+            version?: any;
         }
 
         /**
@@ -94827,11 +94914,11 @@ export namespace datafactory {
          */
         export interface WebActivityAuthentication {
             /**
-             * Password for the PFX file or basic authentication.
+             * Password for the PFX file or basic authentication / Secret when used for ServicePrincipal
              */
             password?: pulumi.Input<inputs.datafactory.latest.AzureKeyVaultSecretReference | inputs.datafactory.latest.SecureString>;
             /**
-             * Base64-encoded contents of a PFX file.
+             * Base64-encoded contents of a PFX file or Certificate when used for ServicePrincipal
              */
             pfx?: pulumi.Input<inputs.datafactory.latest.AzureKeyVaultSecretReference | inputs.datafactory.latest.SecureString>;
             /**
@@ -94839,11 +94926,15 @@ export namespace datafactory {
              */
             resource?: pulumi.Input<string>;
             /**
-             * Web activity authentication (Basic/ClientCertificate/MSI)
+             * Web activity authentication (Basic/ClientCertificate/MSI/ServicePrincipal)
              */
             type: pulumi.Input<string>;
             /**
-             * Web activity authentication user name for basic authentication.
+             * TenantId for which Azure Auth token will be requested when using ServicePrincipal Authentication. Type: string (or Expression with resultType string).
+             */
+            userTenant?: any;
+            /**
+             * Web activity authentication user name for basic authentication or ClientID when used for ServicePrincipal
              */
             username?: pulumi.Input<string>;
         }
@@ -107567,6 +107658,10 @@ export namespace datafactory {
              */
             continueOnStepFailure?: any;
             /**
+             * Dictionary used for changing data path assignments without retraining. Values will be passed in the dataPathAssignments property of the published pipeline execution request. Type: object with key value pairs (or Expression with resultType object).
+             */
+            dataPathAssignments?: any;
+            /**
              * Activity depends on condition.
              */
             dependsOn?: pulumi.Input<pulumi.Input<inputs.datafactory.v20180601.ActivityDependency>[]>;
@@ -107587,9 +107682,13 @@ export namespace datafactory {
              */
             mlParentRunId?: any;
             /**
+             * ID of the published Azure ML pipeline endpoint. Type: string (or Expression with resultType string).
+             */
+            mlPipelineEndpointId?: any;
+            /**
              * ID of the published Azure ML pipeline. Type: string (or Expression with resultType string).
              */
-            mlPipelineId: any;
+            mlPipelineId?: any;
             /**
              * Key,Value pairs to be passed to the published Azure ML pipeline endpoint. Keys must match the names of pipeline parameters defined in the published pipeline. Values will be passed in the ParameterAssignments property of the published pipeline execution request. Type: object with key value pairs (or Expression with resultType object).
              */
@@ -107611,6 +107710,10 @@ export namespace datafactory {
              * Activity user properties.
              */
             userProperties?: pulumi.Input<pulumi.Input<inputs.datafactory.v20180601.UserProperty>[]>;
+            /**
+             * Version of the published Azure ML pipeline endpoint. Type: string (or Expression with resultType string).
+             */
+            version?: any;
         }
 
         /**
@@ -124479,11 +124582,11 @@ export namespace datafactory {
          */
         export interface WebActivityAuthentication {
             /**
-             * Password for the PFX file or basic authentication.
+             * Password for the PFX file or basic authentication / Secret when used for ServicePrincipal
              */
             password?: pulumi.Input<inputs.datafactory.v20180601.AzureKeyVaultSecretReference | inputs.datafactory.v20180601.SecureString>;
             /**
-             * Base64-encoded contents of a PFX file.
+             * Base64-encoded contents of a PFX file or Certificate when used for ServicePrincipal
              */
             pfx?: pulumi.Input<inputs.datafactory.v20180601.AzureKeyVaultSecretReference | inputs.datafactory.v20180601.SecureString>;
             /**
@@ -124491,11 +124594,15 @@ export namespace datafactory {
              */
             resource?: pulumi.Input<string>;
             /**
-             * Web activity authentication (Basic/ClientCertificate/MSI)
+             * Web activity authentication (Basic/ClientCertificate/MSI/ServicePrincipal)
              */
             type: pulumi.Input<string>;
             /**
-             * Web activity authentication user name for basic authentication.
+             * TenantId for which Azure Auth token will be requested when using ServicePrincipal Authentication. Type: string (or Expression with resultType string).
+             */
+            userTenant?: any;
+            /**
+             * Web activity authentication user name for basic authentication or ClientID when used for ServicePrincipal
              */
             username?: pulumi.Input<string>;
         }
@@ -133890,6 +133997,171 @@ export namespace desktopvirtualization {
              * Load balancing algorithm for ramp up period.
              */
             rampUpAlgorithm?: pulumi.Input<string | enums.desktopvirtualization.v20210114preview.SessionHostLoadBalancingAlgorithm>;
+            /**
+             * Capacity threshold for ramp up period.
+             */
+            rampUpCapacityThresholdPct?: pulumi.Input<number>;
+            /**
+             * Minimum host percentage for ramp up period.
+             */
+            rampUpMinimumHostPct?: pulumi.Input<number>;
+            /**
+             * Starting time for ramp up period.
+             */
+            rampUpStartTime?: pulumi.Input<string>;
+        }
+
+    }
+
+    export namespace v20210201preview {
+        /**
+         * Schema for MSIX Package Application properties.
+         */
+        export interface MsixPackageApplications {
+            /**
+             * Package Application Id, found in appxmanifest.xml.
+             */
+            appId?: pulumi.Input<string>;
+            /**
+             * Used to activate Package Application. Consists of Package Name and ApplicationID. Found in appxmanifest.xml.
+             */
+            appUserModelID?: pulumi.Input<string>;
+            /**
+             * Description of Package Application.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * User friendly name.
+             */
+            friendlyName?: pulumi.Input<string>;
+            /**
+             * User friendly name.
+             */
+            iconImageName?: pulumi.Input<string>;
+            /**
+             * the icon a 64 bit string as a byte array.
+             */
+            rawIcon?: pulumi.Input<string>;
+            /**
+             * the icon a 64 bit string as a byte array.
+             */
+            rawPng?: pulumi.Input<string>;
+        }
+
+        /**
+         * Schema for MSIX Package Dependencies properties.
+         */
+        export interface MsixPackageDependencies {
+            /**
+             * Name of package dependency.
+             */
+            dependencyName?: pulumi.Input<string>;
+            /**
+             * Dependency version required.
+             */
+            minVersion?: pulumi.Input<string>;
+            /**
+             * Name of dependency publisher.
+             */
+            publisher?: pulumi.Input<string>;
+        }
+
+        /**
+         * Represents a RegistrationInfo definition.
+         */
+        export interface RegistrationInfo {
+            /**
+             * Expiration time of registration token.
+             */
+            expirationTime?: pulumi.Input<string>;
+            /**
+             * The type of resetting the token.
+             */
+            registrationTokenOperation?: pulumi.Input<string | enums.desktopvirtualization.v20210201preview.RegistrationTokenOperation>;
+            /**
+             * The registration token base64 encoded string.
+             */
+            token?: pulumi.Input<string>;
+        }
+
+        /**
+         * Scaling plan reference to hostpool.
+         */
+        export interface ScalingHostPoolReference {
+            /**
+             * Arm path of referenced hostpool.
+             */
+            hostPoolArmPath?: pulumi.Input<string>;
+            /**
+             * Is the scaling plan enabled for this hostpool.
+             */
+            scalingPlanEnabled?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Scaling plan schedule.
+         */
+        export interface ScalingSchedule {
+            /**
+             * Set of days of the week on which this schedule is active.
+             */
+            daysOfWeek?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Name of the scaling schedule.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Load balancing algorithm for off-peak period.
+             */
+            offPeakLoadBalancingAlgorithm?: pulumi.Input<string | enums.desktopvirtualization.v20210201preview.SessionHostLoadBalancingAlgorithm>;
+            /**
+             * Starting time for off-peak period.
+             */
+            offPeakStartTime?: pulumi.Input<string>;
+            /**
+             * Load balancing algorithm for peak period.
+             */
+            peakLoadBalancingAlgorithm?: pulumi.Input<string | enums.desktopvirtualization.v20210201preview.SessionHostLoadBalancingAlgorithm>;
+            /**
+             * Starting time for peak period.
+             */
+            peakStartTime?: pulumi.Input<string>;
+            /**
+             * Capacity threshold for ramp down period.
+             */
+            rampDownCapacityThresholdPct?: pulumi.Input<number>;
+            /**
+             * Should users be logged off forcefully from hosts.
+             */
+            rampDownForceLogoffUsers?: pulumi.Input<boolean>;
+            /**
+             * Load balancing algorithm for ramp down period.
+             */
+            rampDownLoadBalancingAlgorithm?: pulumi.Input<string | enums.desktopvirtualization.v20210201preview.SessionHostLoadBalancingAlgorithm>;
+            /**
+             * Minimum host percentage for ramp down period.
+             */
+            rampDownMinimumHostsPct?: pulumi.Input<number>;
+            /**
+             * Notification message for users during ramp down period.
+             */
+            rampDownNotificationMessage?: pulumi.Input<string>;
+            /**
+             * Number of minutes to wait to stop hosts during ramp down period.
+             */
+            rampDownNotificationMinutes?: pulumi.Input<number>;
+            /**
+             * Starting time for ramp down period.
+             */
+            rampDownStartTime?: pulumi.Input<string>;
+            /**
+             * Specifies when to stop hosts during ramp down period.
+             */
+            rampDownStopHostsWhen?: pulumi.Input<string | enums.desktopvirtualization.v20210201preview.StopHostsWhen>;
+            /**
+             * Load balancing algorithm for ramp up period.
+             */
+            rampUpAlgorithm?: pulumi.Input<string | enums.desktopvirtualization.v20210201preview.SessionHostLoadBalancingAlgorithm>;
             /**
              * Capacity threshold for ramp up period.
              */
@@ -189732,6 +190004,91 @@ export namespace machinelearningservices {
              * Username of admin account
              */
             username?: pulumi.Input<string>;
+        }
+
+    }
+}
+
+export namespace maintenance {
+    export namespace v20210401preview {
+        /**
+         * Input properties for patching a Linux machine.
+         */
+        export interface InputLinuxParameters {
+            /**
+             * Classification category of patches to be patched
+             */
+            classificationsToInclude?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Package names to be excluded for patching.
+             */
+            packageNameMasksToExclude?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Package names to be included for patching.
+             */
+            packageNameMasksToInclude?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * Input configuration for a patch run
+         */
+        export interface InputPatchConfiguration {
+            /**
+             * Input parameters specific to patching Linux machine. For Windows machines, do not pass this property.
+             */
+            linuxParameters?: pulumi.Input<inputs.maintenance.v20210401preview.InputLinuxParameters>;
+            /**
+             * List of post tasks. e.g. [{'source' :'runbook', 'taskScope': 'Resource', 'parameters': { 'arg1': 'value1'}}]
+             */
+            postTasks?: pulumi.Input<pulumi.Input<inputs.maintenance.v20210401preview.TaskProperties>[]>;
+            /**
+             * List of pre tasks. e.g. [{'source' :'runbook', 'taskScope': 'Global', 'parameters': { 'arg1': 'value1'}}]
+             */
+            preTasks?: pulumi.Input<pulumi.Input<inputs.maintenance.v20210401preview.TaskProperties>[]>;
+            /**
+             * Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed.
+             */
+            rebootSetting?: pulumi.Input<string | enums.maintenance.v20210401preview.RebootOptions>;
+            /**
+             * Input parameters specific to patching a Windows machine. For Linux machines, do not pass this property.
+             */
+            windowsParameters?: pulumi.Input<inputs.maintenance.v20210401preview.InputWindowsParameters>;
+        }
+
+        /**
+         * Input properties for patching a Windows machine.
+         */
+        export interface InputWindowsParameters {
+            /**
+             * Classification category of patches to be patched
+             */
+            classificationsToInclude?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Windows KBID to be excluded for patching.
+             */
+            kbNumbersToExclude?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Windows KBID to be included for patching.
+             */
+            kbNumbersToInclude?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * Task properties of the software update configuration.
+         */
+        export interface TaskProperties {
+            /**
+             * Gets or sets the parameters of the task.
+             */
+            parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * Gets or sets the name of the runbook.
+             */
+            source?: pulumi.Input<string>;
+            /**
+             * Global Task execute once when schedule trigger. Resource task execute for each VM.
+             */
+            taskScope?: pulumi.Input<string | enums.maintenance.v20210401preview.TaskScope>;
         }
 
     }

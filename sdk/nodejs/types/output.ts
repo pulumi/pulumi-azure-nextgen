@@ -27747,6 +27747,120 @@ export namespace cache {
             name: string;
         }
     }
+
+    export namespace v20210301 {
+        /**
+         * Specifies configuration of a redis module
+         */
+        export interface ModuleResponse {
+            /**
+             * Configuration options for the module, e.g. 'ERROR_RATE 0.00 INITIAL_SIZE 400'.
+             */
+            args?: string;
+            /**
+             * The name of the module, e.g. 'RedisBloom', 'RediSearch', 'RedisTimeSeries'
+             */
+            name: string;
+            /**
+             * The version of the module, e.g. '1.0'.
+             */
+            version: string;
+        }
+
+        /**
+         * Persistence-related configuration for the RedisEnterprise database
+         */
+        export interface PersistenceResponse {
+            /**
+             * Sets whether AOF is enabled.
+             */
+            aofEnabled?: boolean;
+            /**
+             * Sets the frequency at which data is written to disk.
+             */
+            aofFrequency?: string;
+            /**
+             * Sets whether RDB is enabled.
+             */
+            rdbEnabled?: boolean;
+            /**
+             * Sets the frequency at which a snapshot of the database is created.
+             */
+            rdbFrequency?: string;
+        }
+
+        /**
+         * The Private Endpoint Connection resource.
+         */
+        export interface PrivateEndpointConnectionResponse {
+            /**
+             * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             */
+            id: string;
+            /**
+             * The name of the resource
+             */
+            name: string;
+            /**
+             * The resource of private end point.
+             */
+            privateEndpoint?: outputs.cache.v20210301.PrivateEndpointResponse;
+            /**
+             * A collection of information about the state of the connection between service consumer and provider.
+             */
+            privateLinkServiceConnectionState: outputs.cache.v20210301.PrivateLinkServiceConnectionStateResponse;
+            /**
+             * The provisioning state of the private endpoint connection resource.
+             */
+            provisioningState: string;
+            /**
+             * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+             */
+            type: string;
+        }
+
+        /**
+         * The Private Endpoint resource.
+         */
+        export interface PrivateEndpointResponse {
+            /**
+             * The ARM identifier for Private Endpoint
+             */
+            id: string;
+        }
+
+        /**
+         * A collection of information about the state of the connection between service consumer and provider.
+         */
+        export interface PrivateLinkServiceConnectionStateResponse {
+            /**
+             * A message indicating if changes on the service provider require any updates on the consumer.
+             */
+            actionsRequired?: string;
+            /**
+             * The reason for approval/rejection of the connection.
+             */
+            description?: string;
+            /**
+             * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+             */
+            status?: string;
+        }
+
+        /**
+         * SKU parameters supplied to the create RedisEnterprise operation.
+         */
+        export interface SkuResponse {
+            /**
+             * The size of the RedisEnterprise cluster. Defaults to 2 or 3 depending on SKU. Valid values are (2, 4, 6, ...) for Enterprise SKUs and (3, 9, 15, ...) for Flash SKUs.
+             */
+            capacity?: number;
+            /**
+             * The type of RedisEnterprise cluster to deploy. Possible values: (Enterprise_E10, EnterpriseFlash_F300 etc.)
+             */
+            name: string;
+        }
+    }
 }
 
 export namespace cdn {
@@ -88221,6 +88335,10 @@ export namespace costmanagement {
              */
             or?: outputs.costmanagement.v20191101.ReportConfigFilterResponse[];
             /**
+             * Has comparison expression for a tag key
+             */
+            tagKey?: outputs.costmanagement.v20191101.ReportConfigComparisonExpressionResponse;
+            /**
              * Has comparison expression for a tag
              */
             tags?: outputs.costmanagement.v20191101.ReportConfigComparisonExpressionResponse;
@@ -100827,6 +100945,10 @@ export namespace datafactory {
              */
             continueOnStepFailure?: any;
             /**
+             * Dictionary used for changing data path assignments without retraining. Values will be passed in the dataPathAssignments property of the published pipeline execution request. Type: object with key value pairs (or Expression with resultType object).
+             */
+            dataPathAssignments?: any;
+            /**
              * Activity depends on condition.
              */
             dependsOn?: outputs.datafactory.latest.ActivityDependencyResponse[];
@@ -100847,9 +100969,13 @@ export namespace datafactory {
              */
             mlParentRunId?: any;
             /**
+             * ID of the published Azure ML pipeline endpoint. Type: string (or Expression with resultType string).
+             */
+            mlPipelineEndpointId?: any;
+            /**
              * ID of the published Azure ML pipeline. Type: string (or Expression with resultType string).
              */
-            mlPipelineId: any;
+            mlPipelineId?: any;
             /**
              * Key,Value pairs to be passed to the published Azure ML pipeline endpoint. Keys must match the names of pipeline parameters defined in the published pipeline. Values will be passed in the ParameterAssignments property of the published pipeline execution request. Type: object with key value pairs (or Expression with resultType object).
              */
@@ -100871,6 +100997,10 @@ export namespace datafactory {
              * Activity user properties.
              */
             userProperties?: outputs.datafactory.latest.UserPropertyResponse[];
+            /**
+             * Version of the published Azure ML pipeline endpoint. Type: string (or Expression with resultType string).
+             */
+            version?: any;
         }
 
         /**
@@ -118306,11 +118436,11 @@ export namespace datafactory {
          */
         export interface WebActivityAuthenticationResponse {
             /**
-             * Password for the PFX file or basic authentication.
+             * Password for the PFX file or basic authentication / Secret when used for ServicePrincipal
              */
             password?: outputs.datafactory.latest.AzureKeyVaultSecretReferenceResponse | outputs.datafactory.latest.SecureStringResponse;
             /**
-             * Base64-encoded contents of a PFX file.
+             * Base64-encoded contents of a PFX file or Certificate when used for ServicePrincipal
              */
             pfx?: outputs.datafactory.latest.AzureKeyVaultSecretReferenceResponse | outputs.datafactory.latest.SecureStringResponse;
             /**
@@ -118318,11 +118448,15 @@ export namespace datafactory {
              */
             resource?: string;
             /**
-             * Web activity authentication (Basic/ClientCertificate/MSI)
+             * Web activity authentication (Basic/ClientCertificate/MSI/ServicePrincipal)
              */
             type: string;
             /**
-             * Web activity authentication user name for basic authentication.
+             * TenantId for which Azure Auth token will be requested when using ServicePrincipal Authentication. Type: string (or Expression with resultType string).
+             */
+            userTenant?: any;
+            /**
+             * Web activity authentication user name for basic authentication or ClientID when used for ServicePrincipal
              */
             username?: string;
         }
@@ -131423,6 +131557,10 @@ export namespace datafactory {
              */
             continueOnStepFailure?: any;
             /**
+             * Dictionary used for changing data path assignments without retraining. Values will be passed in the dataPathAssignments property of the published pipeline execution request. Type: object with key value pairs (or Expression with resultType object).
+             */
+            dataPathAssignments?: any;
+            /**
              * Activity depends on condition.
              */
             dependsOn?: outputs.datafactory.v20180601.ActivityDependencyResponse[];
@@ -131443,9 +131581,13 @@ export namespace datafactory {
              */
             mlParentRunId?: any;
             /**
+             * ID of the published Azure ML pipeline endpoint. Type: string (or Expression with resultType string).
+             */
+            mlPipelineEndpointId?: any;
+            /**
              * ID of the published Azure ML pipeline. Type: string (or Expression with resultType string).
              */
-            mlPipelineId: any;
+            mlPipelineId?: any;
             /**
              * Key,Value pairs to be passed to the published Azure ML pipeline endpoint. Keys must match the names of pipeline parameters defined in the published pipeline. Values will be passed in the ParameterAssignments property of the published pipeline execution request. Type: object with key value pairs (or Expression with resultType object).
              */
@@ -131467,6 +131609,10 @@ export namespace datafactory {
              * Activity user properties.
              */
             userProperties?: outputs.datafactory.v20180601.UserPropertyResponse[];
+            /**
+             * Version of the published Azure ML pipeline endpoint. Type: string (or Expression with resultType string).
+             */
+            version?: any;
         }
 
         /**
@@ -148902,11 +149048,11 @@ export namespace datafactory {
          */
         export interface WebActivityAuthenticationResponse {
             /**
-             * Password for the PFX file or basic authentication.
+             * Password for the PFX file or basic authentication / Secret when used for ServicePrincipal
              */
             password?: outputs.datafactory.v20180601.AzureKeyVaultSecretReferenceResponse | outputs.datafactory.v20180601.SecureStringResponse;
             /**
-             * Base64-encoded contents of a PFX file.
+             * Base64-encoded contents of a PFX file or Certificate when used for ServicePrincipal
              */
             pfx?: outputs.datafactory.v20180601.AzureKeyVaultSecretReferenceResponse | outputs.datafactory.v20180601.SecureStringResponse;
             /**
@@ -148914,11 +149060,15 @@ export namespace datafactory {
              */
             resource?: string;
             /**
-             * Web activity authentication (Basic/ClientCertificate/MSI)
+             * Web activity authentication (Basic/ClientCertificate/MSI/ServicePrincipal)
              */
             type: string;
             /**
-             * Web activity authentication user name for basic authentication.
+             * TenantId for which Azure Auth token will be requested when using ServicePrincipal Authentication. Type: string (or Expression with resultType string).
+             */
+            userTenant?: any;
+            /**
+             * Web activity authentication user name for basic authentication or ClientID when used for ServicePrincipal
              */
             username?: string;
         }
@@ -170213,6 +170363,170 @@ export namespace desktopvirtualization {
     }
 
     export namespace v20210114preview {
+        /**
+         * Schema for MSIX Package Application properties.
+         */
+        export interface MsixPackageApplicationsResponse {
+            /**
+             * Package Application Id, found in appxmanifest.xml.
+             */
+            appId?: string;
+            /**
+             * Used to activate Package Application. Consists of Package Name and ApplicationID. Found in appxmanifest.xml.
+             */
+            appUserModelID?: string;
+            /**
+             * Description of Package Application.
+             */
+            description?: string;
+            /**
+             * User friendly name.
+             */
+            friendlyName?: string;
+            /**
+             * User friendly name.
+             */
+            iconImageName?: string;
+            /**
+             * the icon a 64 bit string as a byte array.
+             */
+            rawIcon?: string;
+            /**
+             * the icon a 64 bit string as a byte array.
+             */
+            rawPng?: string;
+        }
+
+        /**
+         * Schema for MSIX Package Dependencies properties.
+         */
+        export interface MsixPackageDependenciesResponse {
+            /**
+             * Name of package dependency.
+             */
+            dependencyName?: string;
+            /**
+             * Dependency version required.
+             */
+            minVersion?: string;
+            /**
+             * Name of dependency publisher.
+             */
+            publisher?: string;
+        }
+
+        /**
+         * Represents a RegistrationInfo definition.
+         */
+        export interface RegistrationInfoResponse {
+            /**
+             * Expiration time of registration token.
+             */
+            expirationTime?: string;
+            /**
+             * The type of resetting the token.
+             */
+            registrationTokenOperation?: string;
+            /**
+             * The registration token base64 encoded string.
+             */
+            token?: string;
+        }
+
+        /**
+         * Scaling plan reference to hostpool.
+         */
+        export interface ScalingHostPoolReferenceResponse {
+            /**
+             * Arm path of referenced hostpool.
+             */
+            hostPoolArmPath?: string;
+            /**
+             * Is the scaling plan enabled for this hostpool.
+             */
+            scalingPlanEnabled?: boolean;
+        }
+
+        /**
+         * Scaling plan schedule.
+         */
+        export interface ScalingScheduleResponse {
+            /**
+             * Set of days of the week on which this schedule is active.
+             */
+            daysOfWeek?: string[];
+            /**
+             * Name of the scaling schedule.
+             */
+            name?: string;
+            /**
+             * Load balancing algorithm for off-peak period.
+             */
+            offPeakLoadBalancingAlgorithm?: string;
+            /**
+             * Starting time for off-peak period.
+             */
+            offPeakStartTime?: string;
+            /**
+             * Load balancing algorithm for peak period.
+             */
+            peakLoadBalancingAlgorithm?: string;
+            /**
+             * Starting time for peak period.
+             */
+            peakStartTime?: string;
+            /**
+             * Capacity threshold for ramp down period.
+             */
+            rampDownCapacityThresholdPct?: number;
+            /**
+             * Should users be logged off forcefully from hosts.
+             */
+            rampDownForceLogoffUsers?: boolean;
+            /**
+             * Load balancing algorithm for ramp down period.
+             */
+            rampDownLoadBalancingAlgorithm?: string;
+            /**
+             * Minimum host percentage for ramp down period.
+             */
+            rampDownMinimumHostsPct?: number;
+            /**
+             * Notification message for users during ramp down period.
+             */
+            rampDownNotificationMessage?: string;
+            /**
+             * Number of minutes to wait to stop hosts during ramp down period.
+             */
+            rampDownNotificationMinutes?: number;
+            /**
+             * Starting time for ramp down period.
+             */
+            rampDownStartTime?: string;
+            /**
+             * Specifies when to stop hosts during ramp down period.
+             */
+            rampDownStopHostsWhen?: string;
+            /**
+             * Load balancing algorithm for ramp up period.
+             */
+            rampUpAlgorithm?: string;
+            /**
+             * Capacity threshold for ramp up period.
+             */
+            rampUpCapacityThresholdPct?: number;
+            /**
+             * Minimum host percentage for ramp up period.
+             */
+            rampUpMinimumHostPct?: number;
+            /**
+             * Starting time for ramp up period.
+             */
+            rampUpStartTime?: string;
+        }
+    }
+
+    export namespace v20210201preview {
         /**
          * Schema for MSIX Package Application properties.
          */
@@ -243222,6 +243536,120 @@ export namespace machinelearningservices {
              * Username of admin account
              */
             username?: string;
+        }
+    }
+}
+
+export namespace maintenance {
+    export namespace v20210401preview {
+        /**
+         * Input properties for patching a Linux machine.
+         */
+        export interface InputLinuxParametersResponse {
+            /**
+             * Classification category of patches to be patched
+             */
+            classificationsToInclude?: string[];
+            /**
+             * Package names to be excluded for patching.
+             */
+            packageNameMasksToExclude?: string[];
+            /**
+             * Package names to be included for patching.
+             */
+            packageNameMasksToInclude?: string[];
+        }
+
+        /**
+         * Input configuration for a patch run
+         */
+        export interface InputPatchConfigurationResponse {
+            /**
+             * Input parameters specific to patching Linux machine. For Windows machines, do not pass this property.
+             */
+            linuxParameters?: outputs.maintenance.v20210401preview.InputLinuxParametersResponse;
+            /**
+             * List of post tasks. e.g. [{'source' :'runbook', 'taskScope': 'Resource', 'parameters': { 'arg1': 'value1'}}]
+             */
+            postTasks?: outputs.maintenance.v20210401preview.TaskPropertiesResponse[];
+            /**
+             * List of pre tasks. e.g. [{'source' :'runbook', 'taskScope': 'Global', 'parameters': { 'arg1': 'value1'}}]
+             */
+            preTasks?: outputs.maintenance.v20210401preview.TaskPropertiesResponse[];
+            /**
+             * Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed.
+             */
+            rebootSetting?: string;
+            /**
+             * Input parameters specific to patching a Windows machine. For Linux machines, do not pass this property.
+             */
+            windowsParameters?: outputs.maintenance.v20210401preview.InputWindowsParametersResponse;
+        }
+
+        /**
+         * Input properties for patching a Windows machine.
+         */
+        export interface InputWindowsParametersResponse {
+            /**
+             * Classification category of patches to be patched
+             */
+            classificationsToInclude?: string[];
+            /**
+             * Windows KBID to be excluded for patching.
+             */
+            kbNumbersToExclude?: string[];
+            /**
+             * Windows KBID to be included for patching.
+             */
+            kbNumbersToInclude?: string[];
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
+        }
+
+        /**
+         * Task properties of the software update configuration.
+         */
+        export interface TaskPropertiesResponse {
+            /**
+             * Gets or sets the parameters of the task.
+             */
+            parameters?: {[key: string]: string};
+            /**
+             * Gets or sets the name of the runbook.
+             */
+            source?: string;
+            /**
+             * Global Task execute once when schedule trigger. Resource task execute for each VM.
+             */
+            taskScope?: string;
         }
     }
 }
