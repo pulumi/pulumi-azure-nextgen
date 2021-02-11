@@ -12,6 +12,27 @@ export const ApplicationSharingPolicy = {
  */
 export type ApplicationSharingPolicy = (typeof ApplicationSharingPolicy)[keyof typeof ApplicationSharingPolicy];
 
+export const ClusterPurpose = {
+    FastProd: "FastProd",
+    DenseProd: "DenseProd",
+    DevTest: "DevTest",
+} as const;
+
+/**
+ * Intended usage of the cluster
+ */
+export type ClusterPurpose = (typeof ClusterPurpose)[keyof typeof ClusterPurpose];
+
+export const ComputeEnvironmentType = {
+    ACI: "ACI",
+    AKS: "AKS",
+} as const;
+
+/**
+ * The compute environment type for the service.
+ */
+export type ComputeEnvironmentType = (typeof ComputeEnvironmentType)[keyof typeof ComputeEnvironmentType];
+
 export const ComputeInstanceAuthorizationType = {
     Personal: "personal",
 } as const;
@@ -102,6 +123,15 @@ export const SshPublicAccess = {
  * State of the public SSH port. Possible values are: Disabled - Indicates that the public ssh port is closed on this instance. Enabled - Indicates that the public ssh port is open and accessible according to the VNet/subnet policy if applicable.
  */
 export type SshPublicAccess = (typeof SshPublicAccess)[keyof typeof SshPublicAccess];
+
+export const ValueFormat = {
+    JSON: "JSON",
+} as const;
+
+/**
+ * format for the workspace connection value
+ */
+export type ValueFormat = (typeof ValueFormat)[keyof typeof ValueFormat];
 
 export const VmPriority = {
     Dedicated: "Dedicated",

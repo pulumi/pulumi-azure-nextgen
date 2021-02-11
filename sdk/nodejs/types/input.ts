@@ -31368,6 +31368,23 @@ export namespace certificateregistration {
         }
 
     }
+
+    export namespace v20201001 {
+        /**
+         * Key Vault container for a certificate that is purchased through Azure.
+         */
+        export interface AppServiceCertificate {
+            /**
+             * Key Vault resource Id.
+             */
+            keyVaultId?: pulumi.Input<string>;
+            /**
+             * Key Vault secret name.
+             */
+            keyVaultSecretName?: pulumi.Input<string>;
+        }
+
+    }
 }
 
 export namespace changeanalysis {
@@ -153477,6 +153494,100 @@ export namespace domainregistration {
         }
 
     }
+
+    export namespace v20201001 {
+        /**
+         * Address information for domain registration.
+         */
+        export interface Address {
+            /**
+             * First line of an Address.
+             */
+            address1: pulumi.Input<string>;
+            /**
+             * The second line of the Address. Optional.
+             */
+            address2?: pulumi.Input<string>;
+            /**
+             * The city for the address.
+             */
+            city: pulumi.Input<string>;
+            /**
+             * The country for the address.
+             */
+            country: pulumi.Input<string>;
+            /**
+             * The postal code for the address.
+             */
+            postalCode: pulumi.Input<string>;
+            /**
+             * The state or province for the address.
+             */
+            state: pulumi.Input<string>;
+        }
+
+        /**
+         * Contact information for domain registration. If 'Domain Privacy' option is not selected then the contact information is made publicly available through the Whois 
+         * directories as per ICANN requirements.
+         */
+        export interface Contact {
+            /**
+             * Mailing address.
+             */
+            addressMailing?: pulumi.Input<inputs.domainregistration.v20201001.Address>;
+            /**
+             * Email address.
+             */
+            email: pulumi.Input<string>;
+            /**
+             * Fax number.
+             */
+            fax?: pulumi.Input<string>;
+            /**
+             * Job title.
+             */
+            jobTitle?: pulumi.Input<string>;
+            /**
+             * First name.
+             */
+            nameFirst: pulumi.Input<string>;
+            /**
+             * Last name.
+             */
+            nameLast: pulumi.Input<string>;
+            /**
+             * Middle name.
+             */
+            nameMiddle?: pulumi.Input<string>;
+            /**
+             * Organization contact belongs to.
+             */
+            organization?: pulumi.Input<string>;
+            /**
+             * Phone number.
+             */
+            phone: pulumi.Input<string>;
+        }
+
+        /**
+         * Domain purchase consent object, representing acceptance of applicable legal agreements.
+         */
+        export interface DomainPurchaseConsent {
+            /**
+             * Timestamp when the agreements were accepted.
+             */
+            agreedAt?: pulumi.Input<string>;
+            /**
+             * Client IP address.
+             */
+            agreedBy?: pulumi.Input<string>;
+            /**
+             * List of applicable legal agreement keys. This list can be retrieved using ListLegalAgreements API under <code>TopLevelDomain</code> resource.
+             */
+            agreementKeys?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+    }
 }
 
 export namespace edgeorder {
@@ -163617,9 +163728,9 @@ export namespace insights {
         /**
          * A pointer to an Azure Action Group.
          */
-        export interface ActivityLogAlertActionGroup {
+        export interface ActionGroup {
             /**
-             * The resourceId of the action group. This cannot be null or empty.
+             * The resource ID of the Action Group. This cannot be null or empty.
              */
             actionGroupId: pulumi.Input<string>;
             /**
@@ -163629,37 +163740,72 @@ export namespace insights {
         }
 
         /**
-         * A list of activity log alert actions.
+         * A list of Activity Log Alert rule actions.
          */
-        export interface ActivityLogAlertActionList {
+        export interface ActionList {
             /**
-             * The list of activity log alerts.
+             * The list of the Action Groups.
              */
-            actionGroups?: pulumi.Input<pulumi.Input<inputs.insights.latest.ActivityLogAlertActionGroup>[]>;
+            actionGroups?: pulumi.Input<pulumi.Input<inputs.insights.latest.ActionGroup>[]>;
         }
 
         /**
-         * An Activity Log alert condition that is met when all its member conditions are met.
+         * An Activity Log Alert rule condition that is met when all its member conditions are met.
          */
-        export interface ActivityLogAlertAllOfCondition {
+        export interface AlertRuleAllOfCondition {
             /**
-             * The list of activity log alert conditions.
+             * The list of Activity Log Alert rule conditions.
              */
-            allOf: pulumi.Input<pulumi.Input<inputs.insights.latest.ActivityLogAlertLeafCondition>[]>;
+            allOf: pulumi.Input<pulumi.Input<inputs.insights.latest.AlertRuleAnyOfOrLeafCondition>[]>;
         }
 
         /**
-         * An Activity Log alert condition that is met by comparing an activity log field and value.
+         * An Activity Log Alert rule condition that is met when all its member conditions are met.
+         * Each condition can be of one of the following types:
+         * __Important__: Each type has its unique subset of properties. Properties from different types CANNOT exist in one condition.
+         *    * __Leaf Condition -__ must contain 'field' and either 'equals' or 'containsAny'.
+         *   _Please note, 'anyOf' should __not__ be set in a Leaf Condition._
+         *   * __AnyOf Condition -__ must contain __only__ 'anyOf' (which is an array of Leaf Conditions).
+         *   _Please note, 'field', 'equals' and 'containsAny' should __not__ be set in an AnyOf Condition._
          */
-        export interface ActivityLogAlertLeafCondition {
+        export interface AlertRuleAnyOfOrLeafCondition {
             /**
-             * The field value will be compared to this value (case-insensitive) to determine if the condition is met.
+             * An Activity Log Alert rule condition that is met when at least one of its member leaf conditions are met.
              */
-            equals: pulumi.Input<string>;
+            anyOf?: pulumi.Input<pulumi.Input<inputs.insights.latest.AlertRuleLeafCondition>[]>;
             /**
-             * The name of the field that this condition will examine. The possible values for this field are (case-insensitive): 'resourceId', 'category', 'caller', 'level', 'operationName', 'resourceGroup', 'resourceProvider', 'status', 'subStatus', 'resourceType', or anything beginning with 'properties.'.
+             * The value of the event's field will be compared to the values in this array (case-insensitive) to determine if the condition is met.
              */
-            field: pulumi.Input<string>;
+            containsAny?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The value of the event's field will be compared to this value (case-insensitive) to determine if the condition is met.
+             */
+            equals?: pulumi.Input<string>;
+            /**
+             * The name of the Activity Log event's field that this condition will examine.
+             * The possible values for this field are (case-insensitive): 'resourceId', 'category', 'caller', 'level', 'operationName', 'resourceGroup', 'resourceProvider', 'status', 'subStatus', 'resourceType', or anything beginning with 'properties'.
+             */
+            field?: pulumi.Input<string>;
+        }
+
+        /**
+         * An Activity Log Alert rule condition that is met by comparing the field and value of an Activity Log event.
+         * This condition must contain 'field' and either 'equals' or 'containsAny'.
+         */
+        export interface AlertRuleLeafCondition {
+            /**
+             * The value of the event's field will be compared to the values in this array (case-insensitive) to determine if the condition is met.
+             */
+            containsAny?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The value of the event's field will be compared to this value (case-insensitive) to determine if the condition is met.
+             */
+            equals?: pulumi.Input<string>;
+            /**
+             * The name of the Activity Log event's field that this condition will examine.
+             * The possible values for this field are (case-insensitive): 'resourceId', 'category', 'caller', 'level', 'operationName', 'resourceGroup', 'resourceProvider', 'status', 'subStatus', 'resourceType', or anything beginning with 'properties'.
+             */
+            field?: pulumi.Input<string>;
         }
 
         /**
@@ -167443,6 +167589,92 @@ export namespace insights {
              * A list of conditions to evaluate against the specified scopes
              */
             allOf?: pulumi.Input<pulumi.Input<inputs.insights.v20200501preview.Condition>[]>;
+        }
+
+    }
+
+    export namespace v20201001 {
+        /**
+         * A pointer to an Azure Action Group.
+         */
+        export interface ActionGroup {
+            /**
+             * The resource ID of the Action Group. This cannot be null or empty.
+             */
+            actionGroupId: pulumi.Input<string>;
+            /**
+             * the dictionary of custom properties to include with the post operation. These data are appended to the webhook payload.
+             */
+            webhookProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        }
+
+        /**
+         * A list of Activity Log Alert rule actions.
+         */
+        export interface ActionList {
+            /**
+             * The list of the Action Groups.
+             */
+            actionGroups?: pulumi.Input<pulumi.Input<inputs.insights.v20201001.ActionGroup>[]>;
+        }
+
+        /**
+         * An Activity Log Alert rule condition that is met when all its member conditions are met.
+         */
+        export interface AlertRuleAllOfCondition {
+            /**
+             * The list of Activity Log Alert rule conditions.
+             */
+            allOf: pulumi.Input<pulumi.Input<inputs.insights.v20201001.AlertRuleAnyOfOrLeafCondition>[]>;
+        }
+
+        /**
+         * An Activity Log Alert rule condition that is met when all its member conditions are met.
+         * Each condition can be of one of the following types:
+         * __Important__: Each type has its unique subset of properties. Properties from different types CANNOT exist in one condition.
+         *    * __Leaf Condition -__ must contain 'field' and either 'equals' or 'containsAny'.
+         *   _Please note, 'anyOf' should __not__ be set in a Leaf Condition._
+         *   * __AnyOf Condition -__ must contain __only__ 'anyOf' (which is an array of Leaf Conditions).
+         *   _Please note, 'field', 'equals' and 'containsAny' should __not__ be set in an AnyOf Condition._
+         */
+        export interface AlertRuleAnyOfOrLeafCondition {
+            /**
+             * An Activity Log Alert rule condition that is met when at least one of its member leaf conditions are met.
+             */
+            anyOf?: pulumi.Input<pulumi.Input<inputs.insights.v20201001.AlertRuleLeafCondition>[]>;
+            /**
+             * The value of the event's field will be compared to the values in this array (case-insensitive) to determine if the condition is met.
+             */
+            containsAny?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The value of the event's field will be compared to this value (case-insensitive) to determine if the condition is met.
+             */
+            equals?: pulumi.Input<string>;
+            /**
+             * The name of the Activity Log event's field that this condition will examine.
+             * The possible values for this field are (case-insensitive): 'resourceId', 'category', 'caller', 'level', 'operationName', 'resourceGroup', 'resourceProvider', 'status', 'subStatus', 'resourceType', or anything beginning with 'properties'.
+             */
+            field?: pulumi.Input<string>;
+        }
+
+        /**
+         * An Activity Log Alert rule condition that is met by comparing the field and value of an Activity Log event.
+         * This condition must contain 'field' and either 'equals' or 'containsAny'.
+         */
+        export interface AlertRuleLeafCondition {
+            /**
+             * The value of the event's field will be compared to the values in this array (case-insensitive) to determine if the condition is met.
+             */
+            containsAny?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The value of the event's field will be compared to this value (case-insensitive) to determine if the condition is met.
+             */
+            equals?: pulumi.Input<string>;
+            /**
+             * The name of the Activity Log event's field that this condition will examine.
+             * The possible values for this field are (case-insensitive): 'resourceId', 'category', 'caller', 'level', 'operationName', 'resourceGroup', 'resourceProvider', 'status', 'subStatus', 'resourceType', or anything beginning with 'properties'.
+             */
+            field?: pulumi.Input<string>;
         }
 
     }
@@ -181358,6 +181590,10 @@ export namespace machinelearningservices {
              */
             clusterFqdn?: pulumi.Input<string>;
             /**
+             * Intended usage of the cluster
+             */
+            clusterPurpose?: pulumi.Input<string | enums.machinelearningservices.latest.ClusterPurpose>;
+            /**
              * SSL configuration
              */
             sslConfiguration?: pulumi.Input<inputs.machinelearningservices.latest.SslConfiguration>;
@@ -181417,6 +181653,14 @@ export namespace machinelearningservices {
          */
         export interface AmlComputeProperties {
             /**
+             * Enable or disable node public IP address provisioning. Possible values are: Possible values are: true - Indicates that the compute nodes will have public IPs provisioned. false - Indicates that the compute nodes will have a private endpoint and no public IPs.
+             */
+            enableNodePublicIp?: pulumi.Input<boolean>;
+            /**
+             * Network is isolated or not
+             */
+            isolatedNetwork?: pulumi.Input<boolean>;
+            /**
              * Compute OS Type
              */
             osType?: pulumi.Input<string | enums.machinelearningservices.latest.OsType>;
@@ -181436,6 +181680,10 @@ export namespace machinelearningservices {
              * Credentials for an administrator user account that will be created on each compute node.
              */
             userAccountCredentials?: pulumi.Input<inputs.machinelearningservices.latest.UserAccountCredentials>;
+            /**
+             * Virtual Machine image for AML Compute - windows only
+             */
+            virtualMachineImage?: pulumi.Input<inputs.machinelearningservices.latest.VirtualMachineImage>;
             /**
              * Virtual Machine priority
              */
@@ -181504,6 +181752,10 @@ export namespace machinelearningservices {
              */
             personalComputeInstanceSettings?: pulumi.Input<inputs.machinelearningservices.latest.PersonalComputeInstanceSettings>;
             /**
+             * Details of customized scripts to execute for setting up the cluster.
+             */
+            setupScripts?: pulumi.Input<inputs.machinelearningservices.latest.SetupScripts>;
+            /**
              * Specifies policy and settings for SSH access.
              */
             sshSettings?: pulumi.Input<inputs.machinelearningservices.latest.ComputeInstanceSshSettings>;
@@ -181529,6 +181781,91 @@ export namespace machinelearningservices {
              * State of the public SSH port. Possible values are: Disabled - Indicates that the public ssh port is closed on this instance. Enabled - Indicates that the public ssh port is open and accessible according to the VNet/subnet policy if applicable.
              */
             sshPublicAccess?: pulumi.Input<string | enums.machinelearningservices.latest.SshPublicAccess>;
+        }
+
+        /**
+         * The resource requirements for the container (cpu and memory).
+         */
+        export interface ContainerResourceRequirements {
+            /**
+             * The minimum amount of CPU cores to be used by the container. More info:
+             * https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+             */
+            cpu?: pulumi.Input<number>;
+            /**
+             * The maximum amount of CPU cores allowed to be used by the container. More info:
+             * https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+             */
+            cpuLimit?: pulumi.Input<number>;
+            /**
+             * The number of FPGA PCIE devices exposed to the container. Must be multiple of 2.
+             */
+            fpga?: pulumi.Input<number>;
+            /**
+             * The number of GPU cores in the container.
+             */
+            gpu?: pulumi.Input<number>;
+            /**
+             * The minimum amount of memory (in GB) to be used by the container. More info:
+             * https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+             */
+            memoryInGB?: pulumi.Input<number>;
+            /**
+             * The maximum amount of memory (in GB) allowed to be used by the container. More info:
+             * https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+             */
+            memoryInGBLimit?: pulumi.Input<number>;
+        }
+
+        export interface CosmosDbSettings {
+            /**
+             * The throughput of the collections in cosmosdb database
+             */
+            collectionsThroughput?: pulumi.Input<number>;
+        }
+
+        /**
+         * The Environment, models and assets needed for inferencing.
+         */
+        export interface CreateServiceRequestEnvironmentImageRequest {
+            /**
+             * The list of assets.
+             */
+            assets?: pulumi.Input<pulumi.Input<inputs.machinelearningservices.latest.ImageAsset>[]>;
+            /**
+             * The name of the driver file.
+             */
+            driverProgram?: pulumi.Input<string>;
+            /**
+             * The details of the AZURE ML environment.
+             */
+            environment?: pulumi.Input<inputs.machinelearningservices.latest.EnvironmentImageRequestEnvironment>;
+            /**
+             * The unique identifying details of the AZURE ML environment.
+             */
+            environmentReference?: pulumi.Input<inputs.machinelearningservices.latest.EnvironmentImageRequestEnvironmentReference>;
+            /**
+             * The list of model Ids.
+             */
+            modelIds?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The list of models.
+             */
+            models?: pulumi.Input<pulumi.Input<inputs.machinelearningservices.latest.Model>[]>;
+        }
+
+        /**
+         * The authentication keys.
+         */
+        export interface CreateServiceRequestKeys {
+            /**
+             * The primary key.
+             */
+            primaryKey?: pulumi.Input<string>;
+            /**
+             * The secondary key.
+             */
+            secondaryKey?: pulumi.Input<string>;
         }
 
         /**
@@ -181614,9 +181951,31 @@ export namespace machinelearningservices {
              * Databricks access token
              */
             databricksAccessToken?: pulumi.Input<string>;
+            /**
+             * Workspace Url
+             */
+            workspaceUrl?: pulumi.Input<string>;
+        }
+
+        /**
+         * The dataset reference object.
+         */
+        export interface DatasetReference {
+            /**
+             * The id of the dataset reference.
+             */
+            id?: pulumi.Input<string>;
+            /**
+             * The name of the dataset reference.
+             */
+            name?: pulumi.Input<string>;
         }
 
         export interface EncryptionProperty {
+            /**
+             * The identity that will be used to access the key vault for encryption at rest.
+             */
+            identity?: pulumi.Input<inputs.machinelearningservices.latest.IdentityForCmk>;
             /**
              * Customer Key vault properties.
              */
@@ -181625,6 +181984,58 @@ export namespace machinelearningservices {
              * Indicates whether or not the encryption is enabled for the workspace.
              */
             status: pulumi.Input<string | enums.machinelearningservices.latest.EncryptionStatus>;
+        }
+
+        /**
+         * The details of the AZURE ML environment.
+         */
+        export interface EnvironmentImageRequestEnvironment {
+            /**
+             * The definition of a Docker container.
+             */
+            docker?: pulumi.Input<inputs.machinelearningservices.latest.ModelEnvironmentDefinitionDocker>;
+            /**
+             * Definition of environment variables to be defined in the environment.
+             */
+            environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * The inferencing stack version added to the image. To avoid adding an inferencing stack, do not set this value. Valid values: "latest".
+             */
+            inferencingStackVersion?: pulumi.Input<string>;
+            /**
+             * The name of the environment.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Settings for a Python environment.
+             */
+            python?: pulumi.Input<inputs.machinelearningservices.latest.ModelEnvironmentDefinitionPython>;
+            /**
+             * Settings for a R environment.
+             */
+            r?: pulumi.Input<inputs.machinelearningservices.latest.ModelEnvironmentDefinitionR>;
+            /**
+             * The configuration for a Spark environment.
+             */
+            spark?: pulumi.Input<inputs.machinelearningservices.latest.ModelEnvironmentDefinitionSpark>;
+            /**
+             * The environment version.
+             */
+            version?: pulumi.Input<string>;
+        }
+
+        /**
+         * The unique identifying details of the AZURE ML environment.
+         */
+        export interface EnvironmentImageRequestEnvironmentReference {
+            /**
+             * Name of the environment.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Version of the environment.
+             */
+            version?: pulumi.Input<string>;
         }
 
         /**
@@ -181673,11 +182084,43 @@ export namespace machinelearningservices {
             /**
              * The identity type.
              */
-            type: pulumi.Input<enums.machinelearningservices.latest.ResourceIdentityType>;
+            type?: pulumi.Input<enums.machinelearningservices.latest.ResourceIdentityType>;
             /**
-             * The list of user identities associated with resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+             * The user assigned identities associated with the resource.
              */
             userAssignedIdentities?: pulumi.Input<{[key: string]: any}>;
+        }
+
+        /**
+         * Identity that will be used to access key vault for encryption at rest
+         */
+        export interface IdentityForCmk {
+            /**
+             * The ArmId of the user assigned identity that will be used to access the customer managed key vault
+             */
+            userAssignedIdentity: pulumi.Input<string>;
+        }
+
+        /**
+         * An Image asset.
+         */
+        export interface ImageAsset {
+            /**
+             * The Asset Id.
+             */
+            id?: pulumi.Input<string>;
+            /**
+             * The mime type.
+             */
+            mimeType?: pulumi.Input<string>;
+            /**
+             * Whether the Asset is unpacked.
+             */
+            unpack?: pulumi.Input<boolean>;
+            /**
+             * The Url of the Asset.
+             */
+            url?: pulumi.Input<string>;
         }
 
         export interface KeyVaultProperties {
@@ -181710,6 +182153,199 @@ export namespace machinelearningservices {
         }
 
         /**
+         * An Azure Machine Learning Model.
+         */
+        export interface Model {
+            /**
+             * The Model creation time (UTC).
+             */
+            createdTime?: pulumi.Input<string>;
+            /**
+             * The list of datasets associated with the model.
+             */
+            datasets?: pulumi.Input<pulumi.Input<inputs.machinelearningservices.latest.DatasetReference>[]>;
+            /**
+             * Models derived from this model
+             */
+            derivedModelIds?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The Model description text.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * The name of the experiment where this model was created.
+             */
+            experimentName?: pulumi.Input<string>;
+            /**
+             * The Model framework.
+             */
+            framework?: pulumi.Input<string>;
+            /**
+             * The Model framework version.
+             */
+            frameworkVersion?: pulumi.Input<string>;
+            /**
+             * The Model Id.
+             */
+            id?: pulumi.Input<string>;
+            /**
+             * The Model tag dictionary. Items are mutable.
+             */
+            kvTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * The MIME type of Model content. For more details about MIME type, please open https://www.iana.org/assignments/media-types/media-types.xhtml
+             */
+            mimeType: pulumi.Input<string>;
+            /**
+             * The Model last modified time (UTC).
+             */
+            modifiedTime?: pulumi.Input<string>;
+            /**
+             * The Model name.
+             */
+            name: pulumi.Input<string>;
+            /**
+             * The Parent Model Id.
+             */
+            parentModelId?: pulumi.Input<string>;
+            /**
+             * The Model property dictionary. Properties are immutable.
+             */
+            properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * Resource requirements for the model
+             */
+            resourceRequirements?: pulumi.Input<inputs.machinelearningservices.latest.ContainerResourceRequirements>;
+            /**
+             * The RunId that created this model.
+             */
+            runId?: pulumi.Input<string>;
+            /**
+             * Sample Input Data for the Model. A reference to a dataset in the workspace in the format aml://dataset/{datasetId}
+             */
+            sampleInputData?: pulumi.Input<string>;
+            /**
+             * Sample Output Data for the Model. A reference to a dataset in the workspace in the format aml://dataset/{datasetId}
+             */
+            sampleOutputData?: pulumi.Input<string>;
+            /**
+             * Indicates whether we need to unpack the Model during docker Image creation.
+             */
+            unpack?: pulumi.Input<boolean>;
+            /**
+             * The URL of the Model. Usually a SAS URL.
+             */
+            url: pulumi.Input<string>;
+            /**
+             * The Model version assigned by Model Management Service.
+             */
+            version?: pulumi.Input<number>;
+        }
+
+        /**
+         * Image registry that contains the base image.
+         */
+        export interface ModelDockerSectionBaseImageRegistry {
+            address?: pulumi.Input<string>;
+            password?: pulumi.Input<string>;
+            username?: pulumi.Input<string>;
+        }
+
+        /**
+         * The definition of a Docker container.
+         */
+        export interface ModelEnvironmentDefinitionDocker {
+            /**
+             * Base Dockerfile used for Docker-based runs. Mutually exclusive with BaseImage.
+             */
+            baseDockerfile?: pulumi.Input<string>;
+            /**
+             * Base image used for Docker-based runs. Mutually exclusive with BaseDockerfile.
+             */
+            baseImage?: pulumi.Input<string>;
+            /**
+             * Image registry that contains the base image.
+             */
+            baseImageRegistry?: pulumi.Input<inputs.machinelearningservices.latest.ModelDockerSectionBaseImageRegistry>;
+        }
+
+        /**
+         * Settings for a Python environment.
+         */
+        export interface ModelEnvironmentDefinitionPython {
+            baseCondaEnvironment?: pulumi.Input<string>;
+            /**
+             * A JObject containing Conda dependencies.
+             */
+            condaDependencies?: any;
+            /**
+             * The python interpreter path to use if an environment build is not required. The path specified gets used to call the user script.
+             */
+            interpreterPath?: pulumi.Input<string>;
+            /**
+             * True means that AzureML reuses an existing python environment; False means that AzureML will create a python environment based on the Conda dependencies specification.
+             */
+            userManagedDependencies?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Settings for a R environment.
+         */
+        export interface ModelEnvironmentDefinitionR {
+            /**
+             * The packages from Bioconductor.
+             */
+            bioConductorPackages?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The CRAN packages to use.
+             */
+            cranPackages?: pulumi.Input<pulumi.Input<inputs.machinelearningservices.latest.RCranPackage>[]>;
+            /**
+             * The packages from custom urls.
+             */
+            customUrlPackages?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The packages directly from GitHub.
+             */
+            gitHubPackages?: pulumi.Input<pulumi.Input<inputs.machinelearningservices.latest.RGitHubPackage>[]>;
+            /**
+             * The version of R to be installed
+             */
+            rVersion?: pulumi.Input<string>;
+            /**
+             * The Rscript path to use if an environment build is not required.
+             * The path specified gets used to call the user script.
+             */
+            rscriptPath?: pulumi.Input<string>;
+            /**
+             * Date of MRAN snapshot to use in YYYY-MM-DD format, e.g. "2019-04-17"
+             */
+            snapshotDate?: pulumi.Input<string>;
+            /**
+             * Indicates whether the environment is managed by user or by AzureML.
+             */
+            userManaged?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * The configuration for a Spark environment.
+         */
+        export interface ModelEnvironmentDefinitionSpark {
+            /**
+             * The Spark packages to use.
+             */
+            packages?: pulumi.Input<pulumi.Input<inputs.machinelearningservices.latest.SparkMavenPackage>[]>;
+            /**
+             * Whether to precache the packages.
+             */
+            precachePackages?: pulumi.Input<boolean>;
+            /**
+             * The list of spark repositories.
+             */
+            repositories?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
          * Settings for a personal compute instance.
          */
         export interface PersonalComputeInstanceSettings {
@@ -181735,6 +182371,28 @@ export namespace machinelearningservices {
              * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
              */
             status?: pulumi.Input<string | enums.machinelearningservices.latest.PrivateEndpointServiceConnectionStatus>;
+        }
+
+        export interface RCranPackage {
+            /**
+             * The package name.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * The repository name.
+             */
+            repository?: pulumi.Input<string>;
+        }
+
+        export interface RGitHubPackage {
+            /**
+             * Personal access token to install from a private repo
+             */
+            authToken?: pulumi.Input<string>;
+            /**
+             * Repository address in the format username/repo[/subdir][@ref|#pull].
+             */
+            repository?: pulumi.Input<string>;
         }
 
         /**
@@ -181763,6 +182421,59 @@ export namespace machinelearningservices {
              * Node Idle Time before scaling down amlCompute. This string needs to be in the RFC Format.
              */
             nodeIdleTimeBeforeScaleDown?: pulumi.Input<string>;
+        }
+
+        /**
+         * Script reference
+         */
+        export interface ScriptReference {
+            /**
+             * Optional command line arguments passed to the script to run.
+             */
+            scriptArguments?: pulumi.Input<string>;
+            /**
+             * The location of scripts in the mounted volume.
+             */
+            scriptData?: pulumi.Input<string>;
+            /**
+             * The storage source of the script: inline, workspace.
+             */
+            scriptSource?: pulumi.Input<string>;
+            /**
+             * Optional time period passed to timeout command.
+             */
+            timeout?: pulumi.Input<string>;
+        }
+
+        /**
+         * Customized setup scripts
+         */
+        export interface ScriptsToExecute {
+            /**
+             * Script that's run only once during provision of the compute.
+             */
+            creationScript?: pulumi.Input<inputs.machinelearningservices.latest.ScriptReference>;
+            /**
+             * Script that's run every time the machine starts.
+             */
+            startupScript?: pulumi.Input<inputs.machinelearningservices.latest.ScriptReference>;
+        }
+
+        export interface ServiceManagedResourcesSettings {
+            /**
+             * The settings for the service managed cosmosdb account.
+             */
+            cosmosDb?: pulumi.Input<inputs.machinelearningservices.latest.CosmosDbSettings>;
+        }
+
+        /**
+         * Details of customized scripts to execute for setting up the cluster.
+         */
+        export interface SetupScripts {
+            /**
+             * Customized setup scripts
+             */
+            scripts?: pulumi.Input<inputs.machinelearningservices.latest.ScriptsToExecute>;
         }
 
         export interface SharedPrivateLinkResource {
@@ -181800,6 +182511,12 @@ export namespace machinelearningservices {
              * Tier of the sku like Basic or Enterprise
              */
             tier?: pulumi.Input<string>;
+        }
+
+        export interface SparkMavenPackage {
+            artifact?: pulumi.Input<string>;
+            group?: pulumi.Input<string>;
+            version?: pulumi.Input<string>;
         }
 
         /**
@@ -181864,6 +182581,16 @@ export namespace machinelearningservices {
              * ARM resource id of the underlying compute
              */
             resourceId?: pulumi.Input<string>;
+        }
+
+        /**
+         * Virtual Machine image for Windows AML Compute
+         */
+        export interface VirtualMachineImage {
+            /**
+             * Virtual Machine image path
+             */
+            id: pulumi.Input<string>;
         }
 
         export interface VirtualMachineProperties {
@@ -190007,6 +190734,1087 @@ export namespace machinelearningservices {
         }
 
     }
+
+    export namespace v20210101 {
+        /**
+         * A Machine Learning compute based on AKS.
+         */
+        export interface AKS {
+            /**
+             * Location for the underlying compute
+             */
+            computeLocation?: pulumi.Input<string>;
+            /**
+             * The type of compute
+             * Expected value is 'AKS'.
+             */
+            computeType: pulumi.Input<"AKS">;
+            /**
+             * The description of the Machine Learning compute.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * AKS properties
+             */
+            properties?: pulumi.Input<inputs.machinelearningservices.v20210101.AKSProperties>;
+            /**
+             * ARM resource id of the underlying compute
+             */
+            resourceId?: pulumi.Input<string>;
+        }
+
+        /**
+         * AKS properties
+         */
+        export interface AKSProperties {
+            /**
+             * Number of agents
+             */
+            agentCount?: pulumi.Input<number>;
+            /**
+             * Agent virtual machine size
+             */
+            agentVmSize?: pulumi.Input<string>;
+            /**
+             * AKS networking configuration for vnet
+             */
+            aksNetworkingConfiguration?: pulumi.Input<inputs.machinelearningservices.v20210101.AksNetworkingConfiguration>;
+            /**
+             * Cluster full qualified domain name
+             */
+            clusterFqdn?: pulumi.Input<string>;
+            /**
+             * Intended usage of the cluster
+             */
+            clusterPurpose?: pulumi.Input<string | enums.machinelearningservices.v20210101.ClusterPurpose>;
+            /**
+             * SSL configuration
+             */
+            sslConfiguration?: pulumi.Input<inputs.machinelearningservices.v20210101.SslConfiguration>;
+        }
+
+        /**
+         * Advance configuration for AKS networking
+         */
+        export interface AksNetworkingConfiguration {
+            /**
+             * An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr.
+             */
+            dnsServiceIP?: pulumi.Input<string>;
+            /**
+             * A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes service address range.
+             */
+            dockerBridgeCidr?: pulumi.Input<string>;
+            /**
+             * A CIDR notation IP range from which to assign service cluster IPs. It must not overlap with any Subnet IP ranges.
+             */
+            serviceCidr?: pulumi.Input<string>;
+            /**
+             * Virtual network subnet resource ID the compute nodes belong to
+             */
+            subnetId?: pulumi.Input<string>;
+        }
+
+        /**
+         * An Azure Machine Learning compute.
+         */
+        export interface AmlCompute {
+            /**
+             * Location for the underlying compute
+             */
+            computeLocation?: pulumi.Input<string>;
+            /**
+             * The type of compute
+             * Expected value is 'AmlCompute'.
+             */
+            computeType: pulumi.Input<"AmlCompute">;
+            /**
+             * The description of the Machine Learning compute.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * AML Compute properties
+             */
+            properties?: pulumi.Input<inputs.machinelearningservices.v20210101.AmlComputeProperties>;
+            /**
+             * ARM resource id of the underlying compute
+             */
+            resourceId?: pulumi.Input<string>;
+        }
+
+        /**
+         * AML Compute properties
+         */
+        export interface AmlComputeProperties {
+            /**
+             * Enable or disable node public IP address provisioning. Possible values are: Possible values are: true - Indicates that the compute nodes will have public IPs provisioned. false - Indicates that the compute nodes will have a private endpoint and no public IPs.
+             */
+            enableNodePublicIp?: pulumi.Input<boolean>;
+            /**
+             * Network is isolated or not
+             */
+            isolatedNetwork?: pulumi.Input<boolean>;
+            /**
+             * Compute OS Type
+             */
+            osType?: pulumi.Input<string | enums.machinelearningservices.v20210101.OsType>;
+            /**
+             * State of the public SSH port. Possible values are: Disabled - Indicates that the public ssh port is closed on all nodes of the cluster. Enabled - Indicates that the public ssh port is open on all nodes of the cluster. NotSpecified - Indicates that the public ssh port is closed on all nodes of the cluster if VNet is defined, else is open all public nodes. It can be default only during cluster creation time, after creation it will be either enabled or disabled.
+             */
+            remoteLoginPortPublicAccess?: pulumi.Input<string | enums.machinelearningservices.v20210101.RemoteLoginPortPublicAccess>;
+            /**
+             * Scale settings for AML Compute
+             */
+            scaleSettings?: pulumi.Input<inputs.machinelearningservices.v20210101.ScaleSettings>;
+            /**
+             * Virtual network subnet resource ID the compute nodes belong to.
+             */
+            subnet?: pulumi.Input<inputs.machinelearningservices.v20210101.ResourceId>;
+            /**
+             * Credentials for an administrator user account that will be created on each compute node.
+             */
+            userAccountCredentials?: pulumi.Input<inputs.machinelearningservices.v20210101.UserAccountCredentials>;
+            /**
+             * Virtual Machine image for AML Compute - windows only
+             */
+            virtualMachineImage?: pulumi.Input<inputs.machinelearningservices.v20210101.VirtualMachineImage>;
+            /**
+             * Virtual Machine priority
+             */
+            vmPriority?: pulumi.Input<string | enums.machinelearningservices.v20210101.VmPriority>;
+            /**
+             * Virtual Machine Size
+             */
+            vmSize?: pulumi.Input<string>;
+        }
+
+        /**
+         * A user that can be assigned to a compute instance.
+         */
+        export interface AssignedUser {
+            /**
+             * User’s AAD Object Id.
+             */
+            objectId: pulumi.Input<string>;
+            /**
+             * User’s AAD Tenant Id.
+             */
+            tenantId: pulumi.Input<string>;
+        }
+
+        /**
+         * An Azure Machine Learning compute instance.
+         */
+        export interface ComputeInstance {
+            /**
+             * Location for the underlying compute
+             */
+            computeLocation?: pulumi.Input<string>;
+            /**
+             * The type of compute
+             * Expected value is 'ComputeInstance'.
+             */
+            computeType: pulumi.Input<"ComputeInstance">;
+            /**
+             * The description of the Machine Learning compute.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Compute Instance properties
+             */
+            properties?: pulumi.Input<inputs.machinelearningservices.v20210101.ComputeInstanceProperties>;
+            /**
+             * ARM resource id of the underlying compute
+             */
+            resourceId?: pulumi.Input<string>;
+        }
+
+        /**
+         * Compute Instance properties
+         */
+        export interface ComputeInstanceProperties {
+            /**
+             * Policy for sharing applications on this compute instance among users of parent workspace. If Personal, only the creator can access applications on this compute instance. When Shared, any workspace user can access applications on this instance depending on his/her assigned role.
+             */
+            applicationSharingPolicy?: pulumi.Input<string | enums.machinelearningservices.v20210101.ApplicationSharingPolicy>;
+            /**
+             * The Compute Instance Authorization type. Available values are personal (default).
+             */
+            computeInstanceAuthorizationType?: pulumi.Input<string | enums.machinelearningservices.v20210101.ComputeInstanceAuthorizationType>;
+            /**
+             * Settings for a personal compute instance.
+             */
+            personalComputeInstanceSettings?: pulumi.Input<inputs.machinelearningservices.v20210101.PersonalComputeInstanceSettings>;
+            /**
+             * Details of customized scripts to execute for setting up the cluster.
+             */
+            setupScripts?: pulumi.Input<inputs.machinelearningservices.v20210101.SetupScripts>;
+            /**
+             * Specifies policy and settings for SSH access.
+             */
+            sshSettings?: pulumi.Input<inputs.machinelearningservices.v20210101.ComputeInstanceSshSettings>;
+            /**
+             * Virtual network subnet resource ID the compute nodes belong to.
+             */
+            subnet?: pulumi.Input<inputs.machinelearningservices.v20210101.ResourceId>;
+            /**
+             * Virtual Machine Size
+             */
+            vmSize?: pulumi.Input<string>;
+        }
+
+        /**
+         * Specifies policy and settings for SSH access.
+         */
+        export interface ComputeInstanceSshSettings {
+            /**
+             * Specifies the SSH rsa public key file as a string. Use "ssh-keygen -t rsa -b 2048" to generate your SSH key pairs.
+             */
+            adminPublicKey?: pulumi.Input<string>;
+            /**
+             * State of the public SSH port. Possible values are: Disabled - Indicates that the public ssh port is closed on this instance. Enabled - Indicates that the public ssh port is open and accessible according to the VNet/subnet policy if applicable.
+             */
+            sshPublicAccess?: pulumi.Input<string | enums.machinelearningservices.v20210101.SshPublicAccess>;
+        }
+
+        /**
+         * The resource requirements for the container (cpu and memory).
+         */
+        export interface ContainerResourceRequirements {
+            /**
+             * The minimum amount of CPU cores to be used by the container. More info:
+             * https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+             */
+            cpu?: pulumi.Input<number>;
+            /**
+             * The maximum amount of CPU cores allowed to be used by the container. More info:
+             * https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+             */
+            cpuLimit?: pulumi.Input<number>;
+            /**
+             * The number of FPGA PCIE devices exposed to the container. Must be multiple of 2.
+             */
+            fpga?: pulumi.Input<number>;
+            /**
+             * The number of GPU cores in the container.
+             */
+            gpu?: pulumi.Input<number>;
+            /**
+             * The minimum amount of memory (in GB) to be used by the container. More info:
+             * https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+             */
+            memoryInGB?: pulumi.Input<number>;
+            /**
+             * The maximum amount of memory (in GB) allowed to be used by the container. More info:
+             * https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+             */
+            memoryInGBLimit?: pulumi.Input<number>;
+        }
+
+        export interface CosmosDbSettings {
+            /**
+             * The throughput of the collections in cosmosdb database
+             */
+            collectionsThroughput?: pulumi.Input<number>;
+        }
+
+        /**
+         * The Environment, models and assets needed for inferencing.
+         */
+        export interface CreateServiceRequestEnvironmentImageRequest {
+            /**
+             * The list of assets.
+             */
+            assets?: pulumi.Input<pulumi.Input<inputs.machinelearningservices.v20210101.ImageAsset>[]>;
+            /**
+             * The name of the driver file.
+             */
+            driverProgram?: pulumi.Input<string>;
+            /**
+             * The details of the AZURE ML environment.
+             */
+            environment?: pulumi.Input<inputs.machinelearningservices.v20210101.EnvironmentImageRequestEnvironment>;
+            /**
+             * The unique identifying details of the AZURE ML environment.
+             */
+            environmentReference?: pulumi.Input<inputs.machinelearningservices.v20210101.EnvironmentImageRequestEnvironmentReference>;
+            /**
+             * The list of model Ids.
+             */
+            modelIds?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The list of models.
+             */
+            models?: pulumi.Input<pulumi.Input<inputs.machinelearningservices.v20210101.Model>[]>;
+        }
+
+        /**
+         * The authentication keys.
+         */
+        export interface CreateServiceRequestKeys {
+            /**
+             * The primary key.
+             */
+            primaryKey?: pulumi.Input<string>;
+            /**
+             * The secondary key.
+             */
+            secondaryKey?: pulumi.Input<string>;
+        }
+
+        /**
+         * A DataFactory compute.
+         */
+        export interface DataFactory {
+            /**
+             * Location for the underlying compute
+             */
+            computeLocation?: pulumi.Input<string>;
+            /**
+             * The type of compute
+             * Expected value is 'DataFactory'.
+             */
+            computeType: pulumi.Input<"DataFactory">;
+            /**
+             * The description of the Machine Learning compute.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * ARM resource id of the underlying compute
+             */
+            resourceId?: pulumi.Input<string>;
+        }
+
+        /**
+         * A DataLakeAnalytics compute.
+         */
+        export interface DataLakeAnalytics {
+            /**
+             * Location for the underlying compute
+             */
+            computeLocation?: pulumi.Input<string>;
+            /**
+             * The type of compute
+             * Expected value is 'DataLakeAnalytics'.
+             */
+            computeType: pulumi.Input<"DataLakeAnalytics">;
+            /**
+             * The description of the Machine Learning compute.
+             */
+            description?: pulumi.Input<string>;
+            properties?: pulumi.Input<inputs.machinelearningservices.v20210101.DataLakeAnalyticsProperties>;
+            /**
+             * ARM resource id of the underlying compute
+             */
+            resourceId?: pulumi.Input<string>;
+        }
+
+        export interface DataLakeAnalyticsProperties {
+            /**
+             * DataLake Store Account Name
+             */
+            dataLakeStoreAccountName?: pulumi.Input<string>;
+        }
+
+        /**
+         * A DataFactory compute.
+         */
+        export interface Databricks {
+            /**
+             * Location for the underlying compute
+             */
+            computeLocation?: pulumi.Input<string>;
+            /**
+             * The type of compute
+             * Expected value is 'Databricks'.
+             */
+            computeType: pulumi.Input<"Databricks">;
+            /**
+             * The description of the Machine Learning compute.
+             */
+            description?: pulumi.Input<string>;
+            properties?: pulumi.Input<inputs.machinelearningservices.v20210101.DatabricksProperties>;
+            /**
+             * ARM resource id of the underlying compute
+             */
+            resourceId?: pulumi.Input<string>;
+        }
+
+        export interface DatabricksProperties {
+            /**
+             * Databricks access token
+             */
+            databricksAccessToken?: pulumi.Input<string>;
+            /**
+             * Workspace Url
+             */
+            workspaceUrl?: pulumi.Input<string>;
+        }
+
+        /**
+         * The dataset reference object.
+         */
+        export interface DatasetReference {
+            /**
+             * The id of the dataset reference.
+             */
+            id?: pulumi.Input<string>;
+            /**
+             * The name of the dataset reference.
+             */
+            name?: pulumi.Input<string>;
+        }
+
+        export interface EncryptionProperty {
+            /**
+             * The identity that will be used to access the key vault for encryption at rest.
+             */
+            identity?: pulumi.Input<inputs.machinelearningservices.v20210101.IdentityForCmk>;
+            /**
+             * Customer Key vault properties.
+             */
+            keyVaultProperties: pulumi.Input<inputs.machinelearningservices.v20210101.KeyVaultProperties>;
+            /**
+             * Indicates whether or not the encryption is enabled for the workspace.
+             */
+            status: pulumi.Input<string | enums.machinelearningservices.v20210101.EncryptionStatus>;
+        }
+
+        /**
+         * The details of the AZURE ML environment.
+         */
+        export interface EnvironmentImageRequestEnvironment {
+            /**
+             * The definition of a Docker container.
+             */
+            docker?: pulumi.Input<inputs.machinelearningservices.v20210101.ModelEnvironmentDefinitionDocker>;
+            /**
+             * Definition of environment variables to be defined in the environment.
+             */
+            environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * The inferencing stack version added to the image. To avoid adding an inferencing stack, do not set this value. Valid values: "latest".
+             */
+            inferencingStackVersion?: pulumi.Input<string>;
+            /**
+             * The name of the environment.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Settings for a Python environment.
+             */
+            python?: pulumi.Input<inputs.machinelearningservices.v20210101.ModelEnvironmentDefinitionPython>;
+            /**
+             * Settings for a R environment.
+             */
+            r?: pulumi.Input<inputs.machinelearningservices.v20210101.ModelEnvironmentDefinitionR>;
+            /**
+             * The configuration for a Spark environment.
+             */
+            spark?: pulumi.Input<inputs.machinelearningservices.v20210101.ModelEnvironmentDefinitionSpark>;
+            /**
+             * The environment version.
+             */
+            version?: pulumi.Input<string>;
+        }
+
+        /**
+         * The unique identifying details of the AZURE ML environment.
+         */
+        export interface EnvironmentImageRequestEnvironmentReference {
+            /**
+             * Name of the environment.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Version of the environment.
+             */
+            version?: pulumi.Input<string>;
+        }
+
+        /**
+         * A HDInsight compute.
+         */
+        export interface HDInsight {
+            /**
+             * Location for the underlying compute
+             */
+            computeLocation?: pulumi.Input<string>;
+            /**
+             * The type of compute
+             * Expected value is 'HDInsight'.
+             */
+            computeType: pulumi.Input<"HDInsight">;
+            /**
+             * The description of the Machine Learning compute.
+             */
+            description?: pulumi.Input<string>;
+            properties?: pulumi.Input<inputs.machinelearningservices.v20210101.HDInsightProperties>;
+            /**
+             * ARM resource id of the underlying compute
+             */
+            resourceId?: pulumi.Input<string>;
+        }
+
+        export interface HDInsightProperties {
+            /**
+             * Public IP address of the master node of the cluster.
+             */
+            address?: pulumi.Input<string>;
+            /**
+             * Admin credentials for master node of the cluster
+             */
+            administratorAccount?: pulumi.Input<inputs.machinelearningservices.v20210101.VirtualMachineSshCredentials>;
+            /**
+             * Port open for ssh connections on the master node of the cluster.
+             */
+            sshPort?: pulumi.Input<number>;
+        }
+
+        /**
+         * Identity for the resource.
+         */
+        export interface Identity {
+            /**
+             * The identity type.
+             */
+            type?: pulumi.Input<enums.machinelearningservices.v20210101.ResourceIdentityType>;
+            /**
+             * The user assigned identities associated with the resource.
+             */
+            userAssignedIdentities?: pulumi.Input<{[key: string]: any}>;
+        }
+
+        /**
+         * Identity that will be used to access key vault for encryption at rest
+         */
+        export interface IdentityForCmk {
+            /**
+             * The ArmId of the user assigned identity that will be used to access the customer managed key vault
+             */
+            userAssignedIdentity: pulumi.Input<string>;
+        }
+
+        /**
+         * An Image asset.
+         */
+        export interface ImageAsset {
+            /**
+             * The Asset Id.
+             */
+            id?: pulumi.Input<string>;
+            /**
+             * The mime type.
+             */
+            mimeType?: pulumi.Input<string>;
+            /**
+             * Whether the Asset is unpacked.
+             */
+            unpack?: pulumi.Input<boolean>;
+            /**
+             * The Url of the Asset.
+             */
+            url?: pulumi.Input<string>;
+        }
+
+        export interface KeyVaultProperties {
+            /**
+             * For future use - The client id of the identity which will be used to access key vault.
+             */
+            identityClientId?: pulumi.Input<string>;
+            /**
+             * Key vault uri to access the encryption key.
+             */
+            keyIdentifier: pulumi.Input<string>;
+            /**
+             * The ArmId of the keyVault where the customer owned encryption key is present.
+             */
+            keyVaultArmId: pulumi.Input<string>;
+        }
+
+        /**
+         * An Azure Machine Learning Model.
+         */
+        export interface Model {
+            /**
+             * The Model creation time (UTC).
+             */
+            createdTime?: pulumi.Input<string>;
+            /**
+             * The list of datasets associated with the model.
+             */
+            datasets?: pulumi.Input<pulumi.Input<inputs.machinelearningservices.v20210101.DatasetReference>[]>;
+            /**
+             * Models derived from this model
+             */
+            derivedModelIds?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The Model description text.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * The name of the experiment where this model was created.
+             */
+            experimentName?: pulumi.Input<string>;
+            /**
+             * The Model framework.
+             */
+            framework?: pulumi.Input<string>;
+            /**
+             * The Model framework version.
+             */
+            frameworkVersion?: pulumi.Input<string>;
+            /**
+             * The Model Id.
+             */
+            id?: pulumi.Input<string>;
+            /**
+             * The Model tag dictionary. Items are mutable.
+             */
+            kvTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * The MIME type of Model content. For more details about MIME type, please open https://www.iana.org/assignments/media-types/media-types.xhtml
+             */
+            mimeType: pulumi.Input<string>;
+            /**
+             * The Model last modified time (UTC).
+             */
+            modifiedTime?: pulumi.Input<string>;
+            /**
+             * The Model name.
+             */
+            name: pulumi.Input<string>;
+            /**
+             * The Parent Model Id.
+             */
+            parentModelId?: pulumi.Input<string>;
+            /**
+             * The Model property dictionary. Properties are immutable.
+             */
+            properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * Resource requirements for the model
+             */
+            resourceRequirements?: pulumi.Input<inputs.machinelearningservices.v20210101.ContainerResourceRequirements>;
+            /**
+             * The RunId that created this model.
+             */
+            runId?: pulumi.Input<string>;
+            /**
+             * Sample Input Data for the Model. A reference to a dataset in the workspace in the format aml://dataset/{datasetId}
+             */
+            sampleInputData?: pulumi.Input<string>;
+            /**
+             * Sample Output Data for the Model. A reference to a dataset in the workspace in the format aml://dataset/{datasetId}
+             */
+            sampleOutputData?: pulumi.Input<string>;
+            /**
+             * Indicates whether we need to unpack the Model during docker Image creation.
+             */
+            unpack?: pulumi.Input<boolean>;
+            /**
+             * The URL of the Model. Usually a SAS URL.
+             */
+            url: pulumi.Input<string>;
+            /**
+             * The Model version assigned by Model Management Service.
+             */
+            version?: pulumi.Input<number>;
+        }
+
+        /**
+         * Image registry that contains the base image.
+         */
+        export interface ModelDockerSectionBaseImageRegistry {
+            address?: pulumi.Input<string>;
+            password?: pulumi.Input<string>;
+            username?: pulumi.Input<string>;
+        }
+
+        /**
+         * The definition of a Docker container.
+         */
+        export interface ModelEnvironmentDefinitionDocker {
+            /**
+             * Base Dockerfile used for Docker-based runs. Mutually exclusive with BaseImage.
+             */
+            baseDockerfile?: pulumi.Input<string>;
+            /**
+             * Base image used for Docker-based runs. Mutually exclusive with BaseDockerfile.
+             */
+            baseImage?: pulumi.Input<string>;
+            /**
+             * Image registry that contains the base image.
+             */
+            baseImageRegistry?: pulumi.Input<inputs.machinelearningservices.v20210101.ModelDockerSectionBaseImageRegistry>;
+        }
+
+        /**
+         * Settings for a Python environment.
+         */
+        export interface ModelEnvironmentDefinitionPython {
+            baseCondaEnvironment?: pulumi.Input<string>;
+            /**
+             * A JObject containing Conda dependencies.
+             */
+            condaDependencies?: any;
+            /**
+             * The python interpreter path to use if an environment build is not required. The path specified gets used to call the user script.
+             */
+            interpreterPath?: pulumi.Input<string>;
+            /**
+             * True means that AzureML reuses an existing python environment; False means that AzureML will create a python environment based on the Conda dependencies specification.
+             */
+            userManagedDependencies?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Settings for a R environment.
+         */
+        export interface ModelEnvironmentDefinitionR {
+            /**
+             * The packages from Bioconductor.
+             */
+            bioConductorPackages?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The CRAN packages to use.
+             */
+            cranPackages?: pulumi.Input<pulumi.Input<inputs.machinelearningservices.v20210101.RCranPackage>[]>;
+            /**
+             * The packages from custom urls.
+             */
+            customUrlPackages?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The packages directly from GitHub.
+             */
+            gitHubPackages?: pulumi.Input<pulumi.Input<inputs.machinelearningservices.v20210101.RGitHubPackage>[]>;
+            /**
+             * The version of R to be installed
+             */
+            rVersion?: pulumi.Input<string>;
+            /**
+             * The Rscript path to use if an environment build is not required.
+             * The path specified gets used to call the user script.
+             */
+            rscriptPath?: pulumi.Input<string>;
+            /**
+             * Date of MRAN snapshot to use in YYYY-MM-DD format, e.g. "2019-04-17"
+             */
+            snapshotDate?: pulumi.Input<string>;
+            /**
+             * Indicates whether the environment is managed by user or by AzureML.
+             */
+            userManaged?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * The configuration for a Spark environment.
+         */
+        export interface ModelEnvironmentDefinitionSpark {
+            /**
+             * The Spark packages to use.
+             */
+            packages?: pulumi.Input<pulumi.Input<inputs.machinelearningservices.v20210101.SparkMavenPackage>[]>;
+            /**
+             * Whether to precache the packages.
+             */
+            precachePackages?: pulumi.Input<boolean>;
+            /**
+             * The list of spark repositories.
+             */
+            repositories?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * Settings for a personal compute instance.
+         */
+        export interface PersonalComputeInstanceSettings {
+            /**
+             * A user explicitly assigned to a personal compute instance.
+             */
+            assignedUser?: pulumi.Input<inputs.machinelearningservices.v20210101.AssignedUser>;
+        }
+
+        /**
+         * A collection of information about the state of the connection between service consumer and provider.
+         */
+        export interface PrivateLinkServiceConnectionState {
+            /**
+             * A message indicating if changes on the service provider require any updates on the consumer.
+             */
+            actionsRequired?: pulumi.Input<string>;
+            /**
+             * The reason for approval/rejection of the connection.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+             */
+            status?: pulumi.Input<string | enums.machinelearningservices.v20210101.PrivateEndpointServiceConnectionStatus>;
+        }
+
+        export interface RCranPackage {
+            /**
+             * The package name.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * The repository name.
+             */
+            repository?: pulumi.Input<string>;
+        }
+
+        export interface RGitHubPackage {
+            /**
+             * Personal access token to install from a private repo
+             */
+            authToken?: pulumi.Input<string>;
+            /**
+             * Repository address in the format username/repo[/subdir][@ref|#pull].
+             */
+            repository?: pulumi.Input<string>;
+        }
+
+        /**
+         * Represents a resource ID. For example, for a subnet, it is the resource URL for the subnet.
+         */
+        export interface ResourceId {
+            /**
+             * The ID of the resource
+             */
+            id: pulumi.Input<string>;
+        }
+
+        /**
+         * scale settings for AML Compute
+         */
+        export interface ScaleSettings {
+            /**
+             * Max number of nodes to use
+             */
+            maxNodeCount: pulumi.Input<number>;
+            /**
+             * Min number of nodes to use
+             */
+            minNodeCount?: pulumi.Input<number>;
+            /**
+             * Node Idle Time before scaling down amlCompute. This string needs to be in the RFC Format.
+             */
+            nodeIdleTimeBeforeScaleDown?: pulumi.Input<string>;
+        }
+
+        /**
+         * Script reference
+         */
+        export interface ScriptReference {
+            /**
+             * Optional command line arguments passed to the script to run.
+             */
+            scriptArguments?: pulumi.Input<string>;
+            /**
+             * The location of scripts in the mounted volume.
+             */
+            scriptData?: pulumi.Input<string>;
+            /**
+             * The storage source of the script: inline, workspace.
+             */
+            scriptSource?: pulumi.Input<string>;
+            /**
+             * Optional time period passed to timeout command.
+             */
+            timeout?: pulumi.Input<string>;
+        }
+
+        /**
+         * Customized setup scripts
+         */
+        export interface ScriptsToExecute {
+            /**
+             * Script that's run only once during provision of the compute.
+             */
+            creationScript?: pulumi.Input<inputs.machinelearningservices.v20210101.ScriptReference>;
+            /**
+             * Script that's run every time the machine starts.
+             */
+            startupScript?: pulumi.Input<inputs.machinelearningservices.v20210101.ScriptReference>;
+        }
+
+        export interface ServiceManagedResourcesSettings {
+            /**
+             * The settings for the service managed cosmosdb account.
+             */
+            cosmosDb?: pulumi.Input<inputs.machinelearningservices.v20210101.CosmosDbSettings>;
+        }
+
+        /**
+         * Details of customized scripts to execute for setting up the cluster.
+         */
+        export interface SetupScripts {
+            /**
+             * Customized setup scripts
+             */
+            scripts?: pulumi.Input<inputs.machinelearningservices.v20210101.ScriptsToExecute>;
+        }
+
+        export interface SharedPrivateLinkResource {
+            /**
+             * The private link resource group id.
+             */
+            groupId?: pulumi.Input<string>;
+            /**
+             * Unique name of the private link.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * The resource id that private link links to.
+             */
+            privateLinkResourceId?: pulumi.Input<string>;
+            /**
+             * Request message.
+             */
+            requestMessage?: pulumi.Input<string>;
+            /**
+             * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+             */
+            status?: pulumi.Input<string | enums.machinelearningservices.v20210101.PrivateEndpointServiceConnectionStatus>;
+        }
+
+        /**
+         * Sku of the resource
+         */
+        export interface Sku {
+            /**
+             * Name of the sku
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Tier of the sku like Basic or Enterprise
+             */
+            tier?: pulumi.Input<string>;
+        }
+
+        export interface SparkMavenPackage {
+            artifact?: pulumi.Input<string>;
+            group?: pulumi.Input<string>;
+            version?: pulumi.Input<string>;
+        }
+
+        /**
+         * The ssl configuration for scoring
+         */
+        export interface SslConfiguration {
+            /**
+             * Cert data
+             */
+            cert?: pulumi.Input<string>;
+            /**
+             * CNAME of the cert
+             */
+            cname?: pulumi.Input<string>;
+            /**
+             * Key data
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * Enable or disable ssl for scoring
+             */
+            status?: pulumi.Input<string>;
+        }
+
+        /**
+         * Settings for user account that gets created on each on the nodes of a compute.
+         */
+        export interface UserAccountCredentials {
+            /**
+             * Name of the administrator user account which can be used to SSH to nodes.
+             */
+            adminUserName: pulumi.Input<string>;
+            /**
+             * Password of the administrator user account.
+             */
+            adminUserPassword?: pulumi.Input<string>;
+            /**
+             * SSH public key of the administrator user account.
+             */
+            adminUserSshPublicKey?: pulumi.Input<string>;
+        }
+
+        /**
+         * A Machine Learning compute based on Azure Virtual Machines.
+         */
+        export interface VirtualMachine {
+            /**
+             * Location for the underlying compute
+             */
+            computeLocation?: pulumi.Input<string>;
+            /**
+             * The type of compute
+             * Expected value is 'VirtualMachine'.
+             */
+            computeType: pulumi.Input<"VirtualMachine">;
+            /**
+             * The description of the Machine Learning compute.
+             */
+            description?: pulumi.Input<string>;
+            properties?: pulumi.Input<inputs.machinelearningservices.v20210101.VirtualMachineProperties>;
+            /**
+             * ARM resource id of the underlying compute
+             */
+            resourceId?: pulumi.Input<string>;
+        }
+
+        /**
+         * Virtual Machine image for Windows AML Compute
+         */
+        export interface VirtualMachineImage {
+            /**
+             * Virtual Machine image path
+             */
+            id: pulumi.Input<string>;
+        }
+
+        export interface VirtualMachineProperties {
+            /**
+             * Public IP address of the virtual machine.
+             */
+            address?: pulumi.Input<string>;
+            /**
+             * Admin credentials for virtual machine
+             */
+            administratorAccount?: pulumi.Input<inputs.machinelearningservices.v20210101.VirtualMachineSshCredentials>;
+            /**
+             * Port open for ssh connections.
+             */
+            sshPort?: pulumi.Input<number>;
+            /**
+             * Virtual Machine size
+             */
+            virtualMachineSize?: pulumi.Input<string>;
+        }
+
+        /**
+         * Admin credentials for virtual machine
+         */
+        export interface VirtualMachineSshCredentials {
+            /**
+             * Password of admin account
+             */
+            password?: pulumi.Input<string>;
+            /**
+             * Private key data
+             */
+            privateKeyData?: pulumi.Input<string>;
+            /**
+             * Public key data
+             */
+            publicKeyData?: pulumi.Input<string>;
+            /**
+             * Username of admin account
+             */
+            username?: pulumi.Input<string>;
+        }
+
+    }
 }
 
 export namespace maintenance {
@@ -191046,7 +192854,7 @@ export namespace media {
              */
             fadeOutDuration?: pulumi.Input<string>;
             /**
-             * The label of the job input which is to be used as an overlay. The Input must specify exactly one file. You can specify an image file in JPG or PNG formats, or an audio file (such as a WAV, MP3, WMA or M4A file), or a video file. See https://aka.ms/mesformats for the complete list of supported audio and video file formats.
+             * The label of the job input which is to be used as an overlay. The Input must specify exactly one file. You can specify an image file in JPG, PNG, GIF or BMP format, or an audio file (such as a WAV, MP3, WMA or M4A file), or a video file. See https://aka.ms/mesformats for the complete list of supported audio and video file formats.
              */
             inputLabel: pulumi.Input<string>;
             /**
@@ -191058,6 +192866,21 @@ export namespace media {
              * The start position, with reference to the input video, at which the overlay starts. The value should be in ISO 8601 format. For example, PT05S to start the overlay at 5 seconds into the input video. If not specified the overlay starts from the beginning of the input video.
              */
             start?: pulumi.Input<string>;
+        }
+
+        /**
+         * A TrackSelection to select audio tracks.
+         */
+        export interface AudioTrackDescriptor {
+            /**
+             * Optional designation for single channel audio tracks.  Can be used to combine the tracks into stereo or multi-channel audio tracks.
+             */
+            channelMapping?: pulumi.Input<string | enums.media.latest.ChannelMapping>;
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.AudioTrackDescriptor'.
+             */
+            odataType: pulumi.Input<"#Microsoft.Media.AudioTrackDescriptor">;
         }
 
         /**
@@ -191656,13 +193479,21 @@ export namespace media {
         }
 
         /**
-         * Describes all the settings to be used when analyzing a video in order to detect all the faces present.
+         * Describes all the settings to be used when analyzing a video in order to detect (and optionally redact) all the faces present.
          */
         export interface FaceDetectorPreset {
+            /**
+             * Blur type
+             */
+            blurType?: pulumi.Input<string | enums.media.latest.BlurType>;
             /**
              * Dictionary containing key value pairs for parameters not exposed in the preset itself
              */
             experimentalOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * This mode provides the ability to choose between the following settings: 1) Analyze - For detection only.This mode generates a metadata JSON file marking appearances of faces throughout the video.Where possible, appearances of the same person are assigned the same ID. 2) Combined - Additionally redacts(blurs) detected faces. 3) Redact - This enables a 2-pass process, allowing for selective redaction of a subset of detected faces.It takes in the metadata file from a prior analyze pass, along with the source video, and a user-selected subset of IDs that require redaction.
+             */
+            mode?: pulumi.Input<string | enums.media.latest.FaceRedactorMode>;
             /**
              * The discriminator for derived types.
              * Expected value is '#Microsoft.Media.FaceDetectorPreset'.
@@ -191732,6 +193563,36 @@ export namespace media {
              * The first quality bitrate.
              */
             bitrate: pulumi.Input<number>;
+        }
+
+        /**
+         * An InputDefinition that looks across all of the files provided to select tracks specified by the IncludedTracks property. Generally used with the AudioTrackByAttribute and VideoTrackByAttribute to allow selection of a single track across a set of input files.
+         */
+        export interface FromAllInputFile {
+            /**
+             * The list of TrackDescriptors which define the metadata and selection of tracks in the input.
+             */
+            includedTracks?: pulumi.Input<pulumi.Input<inputs.media.latest.AudioTrackDescriptor | inputs.media.latest.SelectAudioTrackByAttribute | inputs.media.latest.SelectAudioTrackById | inputs.media.latest.SelectVideoTrackByAttribute | inputs.media.latest.SelectVideoTrackById | inputs.media.latest.VideoTrackDescriptor>[]>;
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.FromAllInputFile'.
+             */
+            odataType: pulumi.Input<"#Microsoft.Media.FromAllInputFile">;
+        }
+
+        /**
+         * An InputDefinition that looks at each input file provided to select tracks specified by the IncludedTracks property. Generally used with the AudioTrackByAttribute and VideoTrackByAttribute to select tracks from each file given.
+         */
+        export interface FromEachInputFile {
+            /**
+             * The list of TrackDescriptors which define the metadata and selection of tracks in the input.
+             */
+            includedTracks?: pulumi.Input<pulumi.Input<inputs.media.latest.AudioTrackDescriptor | inputs.media.latest.SelectAudioTrackByAttribute | inputs.media.latest.SelectAudioTrackById | inputs.media.latest.SelectVideoTrackByAttribute | inputs.media.latest.SelectVideoTrackById | inputs.media.latest.VideoTrackDescriptor>[]>;
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.FromEachInputFile'.
+             */
+            odataType: pulumi.Input<"#Microsoft.Media.FromEachInputFile">;
         }
 
         /**
@@ -191841,6 +193702,108 @@ export namespace media {
         }
 
         /**
+         * Describes the settings to be used when encoding the input video into a desired output bitrate layer with the H.265 video codec.
+         */
+        export interface H265Layer {
+            /**
+             * Specifies whether or not adaptive B-frames are to be used when encoding this layer. If not specified, the encoder will turn it on whenever the video profile permits its use.
+             */
+            adaptiveBFrame?: pulumi.Input<boolean>;
+            /**
+             * The number of B-frames to be used when encoding this layer.  If not specified, the encoder chooses an appropriate number based on the video profile and level.
+             */
+            bFrames?: pulumi.Input<number>;
+            /**
+             * The average bitrate in bits per second at which to encode the input video when generating this layer. For example: a target bitrate of 3000Kbps or 3Mbps means this value should be 3000000 This is a required field.
+             */
+            bitrate: pulumi.Input<number>;
+            /**
+             * The VBV buffer window length. The value should be in ISO 8601 format. The value should be in the range [0.1-100] seconds. The default is 5 seconds (for example, PT5S).
+             */
+            bufferWindow?: pulumi.Input<string>;
+            /**
+             * The frame rate (in frames per second) at which to encode this layer. The value can be in the form of M/N where M and N are integers (For example, 30000/1001), or in the form of a number (For example, 30, or 29.97). The encoder enforces constraints on allowed frame rates based on the profile and level. If it is not specified, the encoder will use the same frame rate as the input video.
+             */
+            frameRate?: pulumi.Input<string>;
+            /**
+             * The height of the output video for this layer. The value can be absolute (in pixels) or relative (in percentage). For example 50% means the output video has half as many pixels in height as the input.
+             */
+            height?: pulumi.Input<string>;
+            /**
+             * The alphanumeric label for this layer, which can be used in multiplexing different video and audio layers, or in naming the output file.
+             */
+            label?: pulumi.Input<string>;
+            /**
+             * We currently support Level up to 6.2. The value can be Auto, or a number that matches the H.265 profile. If not specified, the default is Auto, which lets the encoder choose the Level that is appropriate for this layer.
+             */
+            level?: pulumi.Input<string>;
+            /**
+             * The maximum bitrate (in bits per second), at which the VBV buffer should be assumed to refill. If not specified, defaults to the same value as bitrate.
+             */
+            maxBitrate?: pulumi.Input<number>;
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.H265VideoLayer'.
+             */
+            odataType: pulumi.Input<"#Microsoft.Media.H265VideoLayer">;
+            /**
+             * We currently support Main. Default is Auto.
+             */
+            profile?: pulumi.Input<string | enums.media.latest.H265VideoProfile>;
+            /**
+             * The number of reference frames to be used when encoding this layer. If not specified, the encoder determines an appropriate number based on the encoder complexity setting.
+             */
+            referenceFrames?: pulumi.Input<number>;
+            /**
+             * The number of slices to be used when encoding this layer. If not specified, default is zero, which means that encoder will use a single slice for each frame.
+             */
+            slices?: pulumi.Input<number>;
+            /**
+             * The width of the output video for this layer. The value can be absolute (in pixels) or relative (in percentage). For example 50% means the output video has half as many pixels in width as the input.
+             */
+            width?: pulumi.Input<string>;
+        }
+
+        /**
+         * Describes all the properties for encoding a video with the H.265 codec.
+         */
+        export interface H265Video {
+            /**
+             * Tells the encoder how to choose its encoding settings.  Quality will provide for a higher compression ratio but at a higher cost and longer compute time.  Speed will produce a relatively larger file but is faster and more economical. The default value is Balanced.
+             */
+            complexity?: pulumi.Input<string | enums.media.latest.H265Complexity>;
+            /**
+             * The distance between two key frames. The value should be non-zero in the range [0.5, 20] seconds, specified in ISO 8601 format. The default is 2 seconds(PT2S). Note that this setting is ignored if VideoSyncMode.Passthrough is set, where the KeyFrameInterval value will follow the input source setting.
+             */
+            keyFrameInterval?: pulumi.Input<string>;
+            /**
+             * An optional label for the codec. The label can be used to control muxing behavior.
+             */
+            label?: pulumi.Input<string>;
+            /**
+             * The collection of output H.265 layers to be produced by the encoder.
+             */
+            layers?: pulumi.Input<pulumi.Input<inputs.media.latest.H265Layer>[]>;
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.Video'.
+             */
+            odataType: pulumi.Input<"#Microsoft.Media.Video">;
+            /**
+             * Specifies whether or not the encoder should insert key frames at scene changes. If not specified, the default is false. This flag should be set to true only when the encoder is being configured to produce a single output video.
+             */
+            sceneChangeDetection?: pulumi.Input<boolean>;
+            /**
+             * The resizing mode - how the input video will be resized to fit the desired output resolution(s). Default is AutoSize
+             */
+            stretchMode?: pulumi.Input<string | enums.media.latest.StretchMode>;
+            /**
+             * The Video Sync Mode
+             */
+            syncMode?: pulumi.Input<string | enums.media.latest.VideoSyncMode>;
+        }
+
+        /**
          * HTTP Live Streaming (HLS) packing setting for the live output.
          */
         export interface Hls {
@@ -191922,7 +193885,7 @@ export namespace media {
          */
         export interface ImageFormat {
             /**
-             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
+             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. {Resolution} - The video resolution. Any unsubstituted macros will be collapsed and removed from the filename.
              */
             filenamePattern: pulumi.Input<string>;
             /**
@@ -191930,6 +193893,25 @@ export namespace media {
              * Expected value is '#Microsoft.Media.ImageFormat'.
              */
             odataType: pulumi.Input<"#Microsoft.Media.ImageFormat">;
+        }
+
+        /**
+         * An InputDefinition for a single file.  TrackSelections are scoped to the file specified.
+         */
+        export interface InputFile {
+            /**
+             * Name of the file that this input definition applies to.
+             */
+            filename?: pulumi.Input<string>;
+            /**
+             * The list of TrackDescriptors which define the metadata and selection of tracks in the input.
+             */
+            includedTracks?: pulumi.Input<pulumi.Input<inputs.media.latest.AudioTrackDescriptor | inputs.media.latest.SelectAudioTrackByAttribute | inputs.media.latest.SelectAudioTrackById | inputs.media.latest.SelectVideoTrackByAttribute | inputs.media.latest.SelectVideoTrackById | inputs.media.latest.VideoTrackDescriptor>[]>;
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.InputFile'.
+             */
+            odataType: pulumi.Input<"#Microsoft.Media.InputFile">;
         }
 
         /**
@@ -191948,6 +193930,10 @@ export namespace media {
              * List of files. Required for JobInputHttp. Maximum of 4000 characters each.
              */
             files?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Defines a list of InputDefinitions. For each InputDefinition, it defines a list of track selections and related metadata.
+             */
+            inputDefinitions?: pulumi.Input<pulumi.Input<inputs.media.latest.FromAllInputFile | inputs.media.latest.FromEachInputFile | inputs.media.latest.InputFile>[]>;
             /**
              * A label that is assigned to a JobInputClip, that is used to satisfy a reference used in the Transform. For example, a Transform can be authored so as to take an image file with the label 'xyz' and apply it as an overlay onto the input video before it is encoded. When submitting a Job, exactly one of the JobInputs should be the image file, and it should have the label 'xyz'.
              */
@@ -191975,6 +193961,10 @@ export namespace media {
              * List of files. Required for JobInputHttp. Maximum of 4000 characters each.
              */
             files?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Defines a list of InputDefinitions. For each InputDefinition, it defines a list of track selections and related metadata.
+             */
+            inputDefinitions?: pulumi.Input<pulumi.Input<inputs.media.latest.FromAllInputFile | inputs.media.latest.FromEachInputFile | inputs.media.latest.InputFile>[]>;
             /**
              * A label that is assigned to a JobInputClip, that is used to satisfy a reference used in the Transform. For example, a Transform can be authored so as to take an image file with the label 'xyz' and apply it as an overlay onto the input video before it is encoded. When submitting a Job, exactly one of the JobInputs should be the image file, and it should have the label 'xyz'.
              */
@@ -192007,6 +193997,10 @@ export namespace media {
              */
             files?: pulumi.Input<pulumi.Input<string>[]>;
             /**
+             * Defines a list of InputDefinitions. For each InputDefinition, it defines a list of track selections and related metadata.
+             */
+            inputDefinitions?: pulumi.Input<pulumi.Input<inputs.media.latest.FromAllInputFile | inputs.media.latest.FromEachInputFile | inputs.media.latest.InputFile>[]>;
+            /**
              * A label that is assigned to a JobInputClip, that is used to satisfy a reference used in the Transform. For example, a Transform can be authored so as to take an image file with the label 'xyz' and apply it as an overlay onto the input video before it is encoded. When submitting a Job, exactly one of the JobInputs should be the image file, and it should have the label 'xyz'.
              */
             label?: pulumi.Input<string>;
@@ -192022,13 +194016,28 @@ export namespace media {
         }
 
         /**
+         * A Sequence contains an ordered list of Clips where each clip is a JobInput.  The Sequence will be treated as a single input.
+         */
+        export interface JobInputSequence {
+            /**
+             * JobInputs that make up the timeline.
+             */
+            inputs?: pulumi.Input<pulumi.Input<inputs.media.latest.JobInputClip>[]>;
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.JobInputSequence'.
+             */
+            odataType: pulumi.Input<"#Microsoft.Media.JobInputSequence">;
+        }
+
+        /**
          * Describes a list of inputs to a Job.
          */
         export interface JobInputs {
             /**
              * List of inputs to a Job.
              */
-            inputs?: pulumi.Input<pulumi.Input<inputs.media.latest.JobInputAsset | inputs.media.latest.JobInputClip | inputs.media.latest.JobInputHttp | inputs.media.latest.JobInputs>[]>;
+            inputs?: pulumi.Input<pulumi.Input<inputs.media.latest.JobInputAsset | inputs.media.latest.JobInputClip | inputs.media.latest.JobInputHttp | inputs.media.latest.JobInputSequence | inputs.media.latest.JobInputs>[]>;
             /**
              * The discriminator for derived types.
              * Expected value is '#Microsoft.Media.JobInputs'.
@@ -192060,7 +194069,7 @@ export namespace media {
          */
         export interface JpgFormat {
             /**
-             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
+             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. {Resolution} - The video resolution. Any unsubstituted macros will be collapsed and removed from the filename.
              */
             filenamePattern: pulumi.Input<string>;
             /**
@@ -192317,7 +194326,7 @@ export namespace media {
          */
         export interface Mp4Format {
             /**
-             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
+             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. {Resolution} - The video resolution. Any unsubstituted macros will be collapsed and removed from the filename.
              */
             filenamePattern: pulumi.Input<string>;
             /**
@@ -192336,7 +194345,7 @@ export namespace media {
          */
         export interface MultiBitrateFormat {
             /**
-             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
+             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. {Resolution} - The video resolution. Any unsubstituted macros will be collapsed and removed from the filename.
              */
             filenamePattern: pulumi.Input<string>;
             /**
@@ -192375,7 +194384,7 @@ export namespace media {
          */
         export interface PngFormat {
             /**
-             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
+             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. {Resolution} - The video resolution. Any unsubstituted macros will be collapsed and removed from the filename.
              */
             filenamePattern: pulumi.Input<string>;
             /**
@@ -192522,13 +194531,97 @@ export namespace media {
         }
 
         /**
+         * Select audio tracks from the input by specifying an attribute and an attribute filter.
+         */
+        export interface SelectAudioTrackByAttribute {
+            /**
+             * The TrackAttribute to filter the tracks by.
+             */
+            attribute: pulumi.Input<string | enums.media.latest.TrackAttribute>;
+            /**
+             * Optional designation for single channel audio tracks.  Can be used to combine the tracks into stereo or multi-channel audio tracks.
+             */
+            channelMapping?: pulumi.Input<string | enums.media.latest.ChannelMapping>;
+            /**
+             * The type of AttributeFilter to apply to the TrackAttribute in order to select the tracks.
+             */
+            filter: pulumi.Input<string | enums.media.latest.AttributeFilter>;
+            /**
+             * The value to filter the tracks by.  Only used when AttributeFilter.ValueEquals is specified for the Filter property.
+             */
+            filterValue?: pulumi.Input<string>;
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.AudioTrackDescriptor'.
+             */
+            odataType: pulumi.Input<"#Microsoft.Media.AudioTrackDescriptor">;
+        }
+
+        /**
+         * Select audio tracks from the input by specifying a track identifier.
+         */
+        export interface SelectAudioTrackById {
+            /**
+             * Optional designation for single channel audio tracks.  Can be used to combine the tracks into stereo or multi-channel audio tracks.
+             */
+            channelMapping?: pulumi.Input<string | enums.media.latest.ChannelMapping>;
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.AudioTrackDescriptor'.
+             */
+            odataType: pulumi.Input<"#Microsoft.Media.AudioTrackDescriptor">;
+            /**
+             * Track identifier to select
+             */
+            trackId: pulumi.Input<number>;
+        }
+
+        /**
+         * Select video tracks from the input by specifying an attribute and an attribute filter.
+         */
+        export interface SelectVideoTrackByAttribute {
+            /**
+             * The TrackAttribute to filter the tracks by.
+             */
+            attribute: pulumi.Input<string | enums.media.latest.TrackAttribute>;
+            /**
+             * The type of AttributeFilter to apply to the TrackAttribute in order to select the tracks.
+             */
+            filter: pulumi.Input<string | enums.media.latest.AttributeFilter>;
+            /**
+             * The value to filter the tracks by.  Only used when AttributeFilter.ValueEquals is specified for the Filter property. For TrackAttribute.Bitrate, this should be an integer value in bits per second (e.g: '1500000').  The TrackAttribute.Language is not supported for video tracks.
+             */
+            filterValue?: pulumi.Input<string>;
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.VideoTrackDescriptor'.
+             */
+            odataType: pulumi.Input<"#Microsoft.Media.VideoTrackDescriptor">;
+        }
+
+        /**
+         * Select video tracks from the input by specifying a track identifier.
+         */
+        export interface SelectVideoTrackById {
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.VideoTrackDescriptor'.
+             */
+            odataType: pulumi.Input<"#Microsoft.Media.VideoTrackDescriptor">;
+            /**
+             * Track identifier to select
+             */
+            trackId: pulumi.Input<number>;
+        }
+
+        /**
          * Describes all the settings to be used when encoding the input video with the Standard Encoder.
          */
         export interface StandardEncoderPreset {
             /**
              * The list of codecs to be used when encoding the input video.
              */
-            codecs: pulumi.Input<pulumi.Input<inputs.media.latest.AacAudio | inputs.media.latest.Audio | inputs.media.latest.CopyAudio | inputs.media.latest.CopyVideo | inputs.media.latest.H264Video | inputs.media.latest.Image | inputs.media.latest.JpgImage | inputs.media.latest.PngImage | inputs.media.latest.Video>[]>;
+            codecs: pulumi.Input<pulumi.Input<inputs.media.latest.AacAudio | inputs.media.latest.Audio | inputs.media.latest.CopyAudio | inputs.media.latest.CopyVideo | inputs.media.latest.H264Video | inputs.media.latest.H265Video | inputs.media.latest.Image | inputs.media.latest.JpgImage | inputs.media.latest.PngImage | inputs.media.latest.Video>[]>;
             /**
              * One or more filtering operations that are applied to the input media before encoding.
              */
@@ -192711,7 +194804,7 @@ export namespace media {
          */
         export interface TransportStreamFormat {
             /**
-             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
+             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. {Resolution} - The video resolution. Any unsubstituted macros will be collapsed and removed from the filename.
              */
             filenamePattern: pulumi.Input<string>;
             /**
@@ -192819,7 +194912,7 @@ export namespace media {
              */
             fadeOutDuration?: pulumi.Input<string>;
             /**
-             * The label of the job input which is to be used as an overlay. The Input must specify exactly one file. You can specify an image file in JPG or PNG formats, or an audio file (such as a WAV, MP3, WMA or M4A file), or a video file. See https://aka.ms/mesformats for the complete list of supported audio and video file formats.
+             * The label of the job input which is to be used as an overlay. The Input must specify exactly one file. You can specify an image file in JPG, PNG, GIF or BMP format, or an audio file (such as a WAV, MP3, WMA or M4A file), or a video file. See https://aka.ms/mesformats for the complete list of supported audio and video file formats.
              */
             inputLabel: pulumi.Input<string>;
             /**
@@ -192839,6 +194932,17 @@ export namespace media {
              * The start position, with reference to the input video, at which the overlay starts. The value should be in ISO 8601 format. For example, PT05S to start the overlay at 5 seconds into the input video. If not specified the overlay starts from the beginning of the input video.
              */
             start?: pulumi.Input<string>;
+        }
+
+        /**
+         * A TrackSelection to select video tracks.
+         */
+        export interface VideoTrackDescriptor {
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.VideoTrackDescriptor'.
+             */
+            odataType: pulumi.Input<"#Microsoft.Media.VideoTrackDescriptor">;
         }
 
     }
@@ -198570,7 +200674,7 @@ export namespace media {
              */
             fadeOutDuration?: pulumi.Input<string>;
             /**
-             * The label of the job input which is to be used as an overlay. The Input must specify exactly one file. You can specify an image file in JPG or PNG formats, or an audio file (such as a WAV, MP3, WMA or M4A file), or a video file. See https://aka.ms/mesformats for the complete list of supported audio and video file formats.
+             * The label of the job input which is to be used as an overlay. The Input must specify exactly one file. You can specify an image file in JPG, PNG, GIF or BMP format, or an audio file (such as a WAV, MP3, WMA or M4A file), or a video file. See https://aka.ms/mesformats for the complete list of supported audio and video file formats.
              */
             inputLabel: pulumi.Input<string>;
             /**
@@ -198582,6 +200686,21 @@ export namespace media {
              * The start position, with reference to the input video, at which the overlay starts. The value should be in ISO 8601 format. For example, PT05S to start the overlay at 5 seconds into the input video. If not specified the overlay starts from the beginning of the input video.
              */
             start?: pulumi.Input<string>;
+        }
+
+        /**
+         * A TrackSelection to select audio tracks.
+         */
+        export interface AudioTrackDescriptor {
+            /**
+             * Optional designation for single channel audio tracks.  Can be used to combine the tracks into stereo or multi-channel audio tracks.
+             */
+            channelMapping?: pulumi.Input<string | enums.media.v20200501.ChannelMapping>;
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.AudioTrackDescriptor'.
+             */
+            odataType: pulumi.Input<"#Microsoft.Media.AudioTrackDescriptor">;
         }
 
         /**
@@ -199180,13 +201299,21 @@ export namespace media {
         }
 
         /**
-         * Describes all the settings to be used when analyzing a video in order to detect all the faces present.
+         * Describes all the settings to be used when analyzing a video in order to detect (and optionally redact) all the faces present.
          */
         export interface FaceDetectorPreset {
+            /**
+             * Blur type
+             */
+            blurType?: pulumi.Input<string | enums.media.v20200501.BlurType>;
             /**
              * Dictionary containing key value pairs for parameters not exposed in the preset itself
              */
             experimentalOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * This mode provides the ability to choose between the following settings: 1) Analyze - For detection only.This mode generates a metadata JSON file marking appearances of faces throughout the video.Where possible, appearances of the same person are assigned the same ID. 2) Combined - Additionally redacts(blurs) detected faces. 3) Redact - This enables a 2-pass process, allowing for selective redaction of a subset of detected faces.It takes in the metadata file from a prior analyze pass, along with the source video, and a user-selected subset of IDs that require redaction.
+             */
+            mode?: pulumi.Input<string | enums.media.v20200501.FaceRedactorMode>;
             /**
              * The discriminator for derived types.
              * Expected value is '#Microsoft.Media.FaceDetectorPreset'.
@@ -199256,6 +201383,36 @@ export namespace media {
              * The first quality bitrate.
              */
             bitrate: pulumi.Input<number>;
+        }
+
+        /**
+         * An InputDefinition that looks across all of the files provided to select tracks specified by the IncludedTracks property. Generally used with the AudioTrackByAttribute and VideoTrackByAttribute to allow selection of a single track across a set of input files.
+         */
+        export interface FromAllInputFile {
+            /**
+             * The list of TrackDescriptors which define the metadata and selection of tracks in the input.
+             */
+            includedTracks?: pulumi.Input<pulumi.Input<inputs.media.v20200501.AudioTrackDescriptor | inputs.media.v20200501.SelectAudioTrackByAttribute | inputs.media.v20200501.SelectAudioTrackById | inputs.media.v20200501.SelectVideoTrackByAttribute | inputs.media.v20200501.SelectVideoTrackById | inputs.media.v20200501.VideoTrackDescriptor>[]>;
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.FromAllInputFile'.
+             */
+            odataType: pulumi.Input<"#Microsoft.Media.FromAllInputFile">;
+        }
+
+        /**
+         * An InputDefinition that looks at each input file provided to select tracks specified by the IncludedTracks property. Generally used with the AudioTrackByAttribute and VideoTrackByAttribute to select tracks from each file given.
+         */
+        export interface FromEachInputFile {
+            /**
+             * The list of TrackDescriptors which define the metadata and selection of tracks in the input.
+             */
+            includedTracks?: pulumi.Input<pulumi.Input<inputs.media.v20200501.AudioTrackDescriptor | inputs.media.v20200501.SelectAudioTrackByAttribute | inputs.media.v20200501.SelectAudioTrackById | inputs.media.v20200501.SelectVideoTrackByAttribute | inputs.media.v20200501.SelectVideoTrackById | inputs.media.v20200501.VideoTrackDescriptor>[]>;
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.FromEachInputFile'.
+             */
+            odataType: pulumi.Input<"#Microsoft.Media.FromEachInputFile">;
         }
 
         /**
@@ -199365,6 +201522,108 @@ export namespace media {
         }
 
         /**
+         * Describes the settings to be used when encoding the input video into a desired output bitrate layer with the H.265 video codec.
+         */
+        export interface H265Layer {
+            /**
+             * Specifies whether or not adaptive B-frames are to be used when encoding this layer. If not specified, the encoder will turn it on whenever the video profile permits its use.
+             */
+            adaptiveBFrame?: pulumi.Input<boolean>;
+            /**
+             * The number of B-frames to be used when encoding this layer.  If not specified, the encoder chooses an appropriate number based on the video profile and level.
+             */
+            bFrames?: pulumi.Input<number>;
+            /**
+             * The average bitrate in bits per second at which to encode the input video when generating this layer. For example: a target bitrate of 3000Kbps or 3Mbps means this value should be 3000000 This is a required field.
+             */
+            bitrate: pulumi.Input<number>;
+            /**
+             * The VBV buffer window length. The value should be in ISO 8601 format. The value should be in the range [0.1-100] seconds. The default is 5 seconds (for example, PT5S).
+             */
+            bufferWindow?: pulumi.Input<string>;
+            /**
+             * The frame rate (in frames per second) at which to encode this layer. The value can be in the form of M/N where M and N are integers (For example, 30000/1001), or in the form of a number (For example, 30, or 29.97). The encoder enforces constraints on allowed frame rates based on the profile and level. If it is not specified, the encoder will use the same frame rate as the input video.
+             */
+            frameRate?: pulumi.Input<string>;
+            /**
+             * The height of the output video for this layer. The value can be absolute (in pixels) or relative (in percentage). For example 50% means the output video has half as many pixels in height as the input.
+             */
+            height?: pulumi.Input<string>;
+            /**
+             * The alphanumeric label for this layer, which can be used in multiplexing different video and audio layers, or in naming the output file.
+             */
+            label?: pulumi.Input<string>;
+            /**
+             * We currently support Level up to 6.2. The value can be Auto, or a number that matches the H.265 profile. If not specified, the default is Auto, which lets the encoder choose the Level that is appropriate for this layer.
+             */
+            level?: pulumi.Input<string>;
+            /**
+             * The maximum bitrate (in bits per second), at which the VBV buffer should be assumed to refill. If not specified, defaults to the same value as bitrate.
+             */
+            maxBitrate?: pulumi.Input<number>;
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.H265VideoLayer'.
+             */
+            odataType: pulumi.Input<"#Microsoft.Media.H265VideoLayer">;
+            /**
+             * We currently support Main. Default is Auto.
+             */
+            profile?: pulumi.Input<string | enums.media.v20200501.H265VideoProfile>;
+            /**
+             * The number of reference frames to be used when encoding this layer. If not specified, the encoder determines an appropriate number based on the encoder complexity setting.
+             */
+            referenceFrames?: pulumi.Input<number>;
+            /**
+             * The number of slices to be used when encoding this layer. If not specified, default is zero, which means that encoder will use a single slice for each frame.
+             */
+            slices?: pulumi.Input<number>;
+            /**
+             * The width of the output video for this layer. The value can be absolute (in pixels) or relative (in percentage). For example 50% means the output video has half as many pixels in width as the input.
+             */
+            width?: pulumi.Input<string>;
+        }
+
+        /**
+         * Describes all the properties for encoding a video with the H.265 codec.
+         */
+        export interface H265Video {
+            /**
+             * Tells the encoder how to choose its encoding settings.  Quality will provide for a higher compression ratio but at a higher cost and longer compute time.  Speed will produce a relatively larger file but is faster and more economical. The default value is Balanced.
+             */
+            complexity?: pulumi.Input<string | enums.media.v20200501.H265Complexity>;
+            /**
+             * The distance between two key frames. The value should be non-zero in the range [0.5, 20] seconds, specified in ISO 8601 format. The default is 2 seconds(PT2S). Note that this setting is ignored if VideoSyncMode.Passthrough is set, where the KeyFrameInterval value will follow the input source setting.
+             */
+            keyFrameInterval?: pulumi.Input<string>;
+            /**
+             * An optional label for the codec. The label can be used to control muxing behavior.
+             */
+            label?: pulumi.Input<string>;
+            /**
+             * The collection of output H.265 layers to be produced by the encoder.
+             */
+            layers?: pulumi.Input<pulumi.Input<inputs.media.v20200501.H265Layer>[]>;
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.Video'.
+             */
+            odataType: pulumi.Input<"#Microsoft.Media.Video">;
+            /**
+             * Specifies whether or not the encoder should insert key frames at scene changes. If not specified, the default is false. This flag should be set to true only when the encoder is being configured to produce a single output video.
+             */
+            sceneChangeDetection?: pulumi.Input<boolean>;
+            /**
+             * The resizing mode - how the input video will be resized to fit the desired output resolution(s). Default is AutoSize
+             */
+            stretchMode?: pulumi.Input<string | enums.media.v20200501.StretchMode>;
+            /**
+             * The Video Sync Mode
+             */
+            syncMode?: pulumi.Input<string | enums.media.v20200501.VideoSyncMode>;
+        }
+
+        /**
          * HTTP Live Streaming (HLS) packing setting for the live output.
          */
         export interface Hls {
@@ -199446,7 +201705,7 @@ export namespace media {
          */
         export interface ImageFormat {
             /**
-             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
+             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. {Resolution} - The video resolution. Any unsubstituted macros will be collapsed and removed from the filename.
              */
             filenamePattern: pulumi.Input<string>;
             /**
@@ -199454,6 +201713,25 @@ export namespace media {
              * Expected value is '#Microsoft.Media.ImageFormat'.
              */
             odataType: pulumi.Input<"#Microsoft.Media.ImageFormat">;
+        }
+
+        /**
+         * An InputDefinition for a single file.  TrackSelections are scoped to the file specified.
+         */
+        export interface InputFile {
+            /**
+             * Name of the file that this input definition applies to.
+             */
+            filename?: pulumi.Input<string>;
+            /**
+             * The list of TrackDescriptors which define the metadata and selection of tracks in the input.
+             */
+            includedTracks?: pulumi.Input<pulumi.Input<inputs.media.v20200501.AudioTrackDescriptor | inputs.media.v20200501.SelectAudioTrackByAttribute | inputs.media.v20200501.SelectAudioTrackById | inputs.media.v20200501.SelectVideoTrackByAttribute | inputs.media.v20200501.SelectVideoTrackById | inputs.media.v20200501.VideoTrackDescriptor>[]>;
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.InputFile'.
+             */
+            odataType: pulumi.Input<"#Microsoft.Media.InputFile">;
         }
 
         /**
@@ -199472,6 +201750,10 @@ export namespace media {
              * List of files. Required for JobInputHttp. Maximum of 4000 characters each.
              */
             files?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Defines a list of InputDefinitions. For each InputDefinition, it defines a list of track selections and related metadata.
+             */
+            inputDefinitions?: pulumi.Input<pulumi.Input<inputs.media.v20200501.FromAllInputFile | inputs.media.v20200501.FromEachInputFile | inputs.media.v20200501.InputFile>[]>;
             /**
              * A label that is assigned to a JobInputClip, that is used to satisfy a reference used in the Transform. For example, a Transform can be authored so as to take an image file with the label 'xyz' and apply it as an overlay onto the input video before it is encoded. When submitting a Job, exactly one of the JobInputs should be the image file, and it should have the label 'xyz'.
              */
@@ -199499,6 +201781,10 @@ export namespace media {
              * List of files. Required for JobInputHttp. Maximum of 4000 characters each.
              */
             files?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Defines a list of InputDefinitions. For each InputDefinition, it defines a list of track selections and related metadata.
+             */
+            inputDefinitions?: pulumi.Input<pulumi.Input<inputs.media.v20200501.FromAllInputFile | inputs.media.v20200501.FromEachInputFile | inputs.media.v20200501.InputFile>[]>;
             /**
              * A label that is assigned to a JobInputClip, that is used to satisfy a reference used in the Transform. For example, a Transform can be authored so as to take an image file with the label 'xyz' and apply it as an overlay onto the input video before it is encoded. When submitting a Job, exactly one of the JobInputs should be the image file, and it should have the label 'xyz'.
              */
@@ -199531,6 +201817,10 @@ export namespace media {
              */
             files?: pulumi.Input<pulumi.Input<string>[]>;
             /**
+             * Defines a list of InputDefinitions. For each InputDefinition, it defines a list of track selections and related metadata.
+             */
+            inputDefinitions?: pulumi.Input<pulumi.Input<inputs.media.v20200501.FromAllInputFile | inputs.media.v20200501.FromEachInputFile | inputs.media.v20200501.InputFile>[]>;
+            /**
              * A label that is assigned to a JobInputClip, that is used to satisfy a reference used in the Transform. For example, a Transform can be authored so as to take an image file with the label 'xyz' and apply it as an overlay onto the input video before it is encoded. When submitting a Job, exactly one of the JobInputs should be the image file, and it should have the label 'xyz'.
              */
             label?: pulumi.Input<string>;
@@ -199546,13 +201836,28 @@ export namespace media {
         }
 
         /**
+         * A Sequence contains an ordered list of Clips where each clip is a JobInput.  The Sequence will be treated as a single input.
+         */
+        export interface JobInputSequence {
+            /**
+             * JobInputs that make up the timeline.
+             */
+            inputs?: pulumi.Input<pulumi.Input<inputs.media.v20200501.JobInputClip>[]>;
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.JobInputSequence'.
+             */
+            odataType: pulumi.Input<"#Microsoft.Media.JobInputSequence">;
+        }
+
+        /**
          * Describes a list of inputs to a Job.
          */
         export interface JobInputs {
             /**
              * List of inputs to a Job.
              */
-            inputs?: pulumi.Input<pulumi.Input<inputs.media.v20200501.JobInputAsset | inputs.media.v20200501.JobInputClip | inputs.media.v20200501.JobInputHttp | inputs.media.v20200501.JobInputs>[]>;
+            inputs?: pulumi.Input<pulumi.Input<inputs.media.v20200501.JobInputAsset | inputs.media.v20200501.JobInputClip | inputs.media.v20200501.JobInputHttp | inputs.media.v20200501.JobInputSequence | inputs.media.v20200501.JobInputs>[]>;
             /**
              * The discriminator for derived types.
              * Expected value is '#Microsoft.Media.JobInputs'.
@@ -199584,7 +201889,7 @@ export namespace media {
          */
         export interface JpgFormat {
             /**
-             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
+             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. {Resolution} - The video resolution. Any unsubstituted macros will be collapsed and removed from the filename.
              */
             filenamePattern: pulumi.Input<string>;
             /**
@@ -199841,7 +202146,7 @@ export namespace media {
          */
         export interface Mp4Format {
             /**
-             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
+             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. {Resolution} - The video resolution. Any unsubstituted macros will be collapsed and removed from the filename.
              */
             filenamePattern: pulumi.Input<string>;
             /**
@@ -199860,7 +202165,7 @@ export namespace media {
          */
         export interface MultiBitrateFormat {
             /**
-             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
+             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. {Resolution} - The video resolution. Any unsubstituted macros will be collapsed and removed from the filename.
              */
             filenamePattern: pulumi.Input<string>;
             /**
@@ -199899,7 +202204,7 @@ export namespace media {
          */
         export interface PngFormat {
             /**
-             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
+             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. {Resolution} - The video resolution. Any unsubstituted macros will be collapsed and removed from the filename.
              */
             filenamePattern: pulumi.Input<string>;
             /**
@@ -200046,13 +202351,97 @@ export namespace media {
         }
 
         /**
+         * Select audio tracks from the input by specifying an attribute and an attribute filter.
+         */
+        export interface SelectAudioTrackByAttribute {
+            /**
+             * The TrackAttribute to filter the tracks by.
+             */
+            attribute: pulumi.Input<string | enums.media.v20200501.TrackAttribute>;
+            /**
+             * Optional designation for single channel audio tracks.  Can be used to combine the tracks into stereo or multi-channel audio tracks.
+             */
+            channelMapping?: pulumi.Input<string | enums.media.v20200501.ChannelMapping>;
+            /**
+             * The type of AttributeFilter to apply to the TrackAttribute in order to select the tracks.
+             */
+            filter: pulumi.Input<string | enums.media.v20200501.AttributeFilter>;
+            /**
+             * The value to filter the tracks by.  Only used when AttributeFilter.ValueEquals is specified for the Filter property.
+             */
+            filterValue?: pulumi.Input<string>;
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.AudioTrackDescriptor'.
+             */
+            odataType: pulumi.Input<"#Microsoft.Media.AudioTrackDescriptor">;
+        }
+
+        /**
+         * Select audio tracks from the input by specifying a track identifier.
+         */
+        export interface SelectAudioTrackById {
+            /**
+             * Optional designation for single channel audio tracks.  Can be used to combine the tracks into stereo or multi-channel audio tracks.
+             */
+            channelMapping?: pulumi.Input<string | enums.media.v20200501.ChannelMapping>;
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.AudioTrackDescriptor'.
+             */
+            odataType: pulumi.Input<"#Microsoft.Media.AudioTrackDescriptor">;
+            /**
+             * Track identifier to select
+             */
+            trackId: pulumi.Input<number>;
+        }
+
+        /**
+         * Select video tracks from the input by specifying an attribute and an attribute filter.
+         */
+        export interface SelectVideoTrackByAttribute {
+            /**
+             * The TrackAttribute to filter the tracks by.
+             */
+            attribute: pulumi.Input<string | enums.media.v20200501.TrackAttribute>;
+            /**
+             * The type of AttributeFilter to apply to the TrackAttribute in order to select the tracks.
+             */
+            filter: pulumi.Input<string | enums.media.v20200501.AttributeFilter>;
+            /**
+             * The value to filter the tracks by.  Only used when AttributeFilter.ValueEquals is specified for the Filter property. For TrackAttribute.Bitrate, this should be an integer value in bits per second (e.g: '1500000').  The TrackAttribute.Language is not supported for video tracks.
+             */
+            filterValue?: pulumi.Input<string>;
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.VideoTrackDescriptor'.
+             */
+            odataType: pulumi.Input<"#Microsoft.Media.VideoTrackDescriptor">;
+        }
+
+        /**
+         * Select video tracks from the input by specifying a track identifier.
+         */
+        export interface SelectVideoTrackById {
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.VideoTrackDescriptor'.
+             */
+            odataType: pulumi.Input<"#Microsoft.Media.VideoTrackDescriptor">;
+            /**
+             * Track identifier to select
+             */
+            trackId: pulumi.Input<number>;
+        }
+
+        /**
          * Describes all the settings to be used when encoding the input video with the Standard Encoder.
          */
         export interface StandardEncoderPreset {
             /**
              * The list of codecs to be used when encoding the input video.
              */
-            codecs: pulumi.Input<pulumi.Input<inputs.media.v20200501.AacAudio | inputs.media.v20200501.Audio | inputs.media.v20200501.CopyAudio | inputs.media.v20200501.CopyVideo | inputs.media.v20200501.H264Video | inputs.media.v20200501.Image | inputs.media.v20200501.JpgImage | inputs.media.v20200501.PngImage | inputs.media.v20200501.Video>[]>;
+            codecs: pulumi.Input<pulumi.Input<inputs.media.v20200501.AacAudio | inputs.media.v20200501.Audio | inputs.media.v20200501.CopyAudio | inputs.media.v20200501.CopyVideo | inputs.media.v20200501.H264Video | inputs.media.v20200501.H265Video | inputs.media.v20200501.Image | inputs.media.v20200501.JpgImage | inputs.media.v20200501.PngImage | inputs.media.v20200501.Video>[]>;
             /**
              * One or more filtering operations that are applied to the input media before encoding.
              */
@@ -200235,7 +202624,7 @@ export namespace media {
          */
         export interface TransportStreamFormat {
             /**
-             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
+             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. {Resolution} - The video resolution. Any unsubstituted macros will be collapsed and removed from the filename.
              */
             filenamePattern: pulumi.Input<string>;
             /**
@@ -200343,7 +202732,7 @@ export namespace media {
              */
             fadeOutDuration?: pulumi.Input<string>;
             /**
-             * The label of the job input which is to be used as an overlay. The Input must specify exactly one file. You can specify an image file in JPG or PNG formats, or an audio file (such as a WAV, MP3, WMA or M4A file), or a video file. See https://aka.ms/mesformats for the complete list of supported audio and video file formats.
+             * The label of the job input which is to be used as an overlay. The Input must specify exactly one file. You can specify an image file in JPG, PNG, GIF or BMP format, or an audio file (such as a WAV, MP3, WMA or M4A file), or a video file. See https://aka.ms/mesformats for the complete list of supported audio and video file formats.
              */
             inputLabel: pulumi.Input<string>;
             /**
@@ -200363,6 +202752,17 @@ export namespace media {
              * The start position, with reference to the input video, at which the overlay starts. The value should be in ISO 8601 format. For example, PT05S to start the overlay at 5 seconds into the input video. If not specified the overlay starts from the beginning of the input video.
              */
             start?: pulumi.Input<string>;
+        }
+
+        /**
+         * A TrackSelection to select video tracks.
+         */
+        export interface VideoTrackDescriptor {
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.VideoTrackDescriptor'.
+             */
+            odataType: pulumi.Input<"#Microsoft.Media.VideoTrackDescriptor">;
         }
 
     }
@@ -351271,6 +353671,34 @@ export namespace security {
         }
 
         /**
+         * Defines whether to send email notifications about new security alerts
+         */
+        export interface SecurityContactPropertiesAlertNotifications {
+            /**
+             * Defines the minimal alert severity which will be sent as email notifications
+             */
+            minimalSeverity?: pulumi.Input<string | enums.security.v20200101preview.MinimalSeverity>;
+            /**
+             * Defines if email notifications will be sent about new security alerts
+             */
+            state?: pulumi.Input<string | enums.security.v20200101preview.State>;
+        }
+
+        /**
+         * Defines whether to send email notifications from Azure Security Center to persons with specific RBAC roles on the subscription.
+         */
+        export interface SecurityContactPropertiesNotificationsByRole {
+            /**
+             * Defines which RBAC roles will get email notifications from Azure Security Center. List of allowed RBAC roles: 
+             */
+            roles?: pulumi.Input<pulumi.Input<string | enums.security.v20200101preview.Roles>[]>;
+            /**
+             * Defines whether to send email notifications from Azure Security Center to persons with specific RBAC roles on the subscription.
+             */
+            state?: pulumi.Input<string | enums.security.v20200101preview.State>;
+        }
+
+        /**
          * Details of the service principal.
          */
         export interface ServicePrincipalProperties {
@@ -384485,6 +386913,1469 @@ export namespace web {
              * Shared or dedicated app hosting.
              */
             computeMode?: pulumi.Input<enums.web.v20200901.ComputeModeOptions>;
+            /**
+             * Number of instances in the worker pool.
+             */
+            workerCount?: pulumi.Input<number>;
+            /**
+             * VM size of the worker pool instances.
+             */
+            workerSize?: pulumi.Input<string>;
+            /**
+             * Worker size ID for referencing this worker pool.
+             */
+            workerSizeId?: pulumi.Input<number>;
+        }
+
+    }
+
+    export namespace v20201001 {
+        export interface AllowedAudiencesValidation {
+            allowedAudiences?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+        }
+
+        /**
+         * Information about the formal API definition for the app.
+         */
+        export interface ApiDefinitionInfo {
+            /**
+             * The URL of the API definition.
+             */
+            url?: pulumi.Input<string>;
+        }
+
+        /**
+         * Azure API management (APIM) configuration linked to the app.
+         */
+        export interface ApiManagementConfig {
+            /**
+             * APIM-Api Identifier.
+             */
+            id?: pulumi.Input<string>;
+        }
+
+        export interface AppRegistration {
+            appId?: pulumi.Input<string>;
+            appSecretSettingName?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+        }
+
+        /**
+         * Application logs configuration.
+         */
+        export interface ApplicationLogsConfig {
+            /**
+             * Application logs to blob storage configuration.
+             */
+            azureBlobStorage?: pulumi.Input<inputs.web.v20201001.AzureBlobStorageApplicationLogsConfig>;
+            /**
+             * Application logs to azure table storage configuration.
+             */
+            azureTableStorage?: pulumi.Input<inputs.web.v20201001.AzureTableStorageApplicationLogsConfig>;
+            /**
+             * Application logs to file system configuration.
+             */
+            fileSystem?: pulumi.Input<inputs.web.v20201001.FileSystemApplicationLogsConfig>;
+        }
+
+        export interface AuthPlatform {
+            configFilePath?: pulumi.Input<string>;
+            enabled?: pulumi.Input<boolean>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            runtimeVersion?: pulumi.Input<string>;
+        }
+
+        /**
+         * Actions which to take by the auto-heal module when a rule is triggered.
+         */
+        export interface AutoHealActions {
+            /**
+             * Predefined action to be taken.
+             */
+            actionType?: pulumi.Input<enums.web.v20201001.AutoHealActionType>;
+            /**
+             * Custom action to be taken.
+             */
+            customAction?: pulumi.Input<inputs.web.v20201001.AutoHealCustomAction>;
+            /**
+             * Minimum time the process must execute
+             * before taking the action
+             */
+            minProcessExecutionTime?: pulumi.Input<string>;
+        }
+
+        /**
+         * Custom action to be executed
+         * when an auto heal rule is triggered.
+         */
+        export interface AutoHealCustomAction {
+            /**
+             * Executable to be run.
+             */
+            exe?: pulumi.Input<string>;
+            /**
+             * Parameters for the executable.
+             */
+            parameters?: pulumi.Input<string>;
+        }
+
+        /**
+         * Rules that can be defined for auto-heal.
+         */
+        export interface AutoHealRules {
+            /**
+             * Actions to be executed when a rule is triggered.
+             */
+            actions?: pulumi.Input<inputs.web.v20201001.AutoHealActions>;
+            /**
+             * Conditions that describe when to execute the auto-heal actions.
+             */
+            triggers?: pulumi.Input<inputs.web.v20201001.AutoHealTriggers>;
+        }
+
+        /**
+         * Triggers for auto-heal.
+         */
+        export interface AutoHealTriggers {
+            /**
+             * A rule based on private bytes.
+             */
+            privateBytesInKB?: pulumi.Input<number>;
+            /**
+             * A rule based on total requests.
+             */
+            requests?: pulumi.Input<inputs.web.v20201001.RequestsBasedTrigger>;
+            /**
+             * A rule based on request execution time.
+             */
+            slowRequests?: pulumi.Input<inputs.web.v20201001.SlowRequestsBasedTrigger>;
+            /**
+             * A rule based on status codes.
+             */
+            statusCodes?: pulumi.Input<pulumi.Input<inputs.web.v20201001.StatusCodesBasedTrigger>[]>;
+        }
+
+        export interface AzureActiveDirectory {
+            enabled?: pulumi.Input<boolean>;
+            isAutoProvisioned?: pulumi.Input<boolean>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            login?: pulumi.Input<inputs.web.v20201001.AzureActiveDirectoryLogin>;
+            registration?: pulumi.Input<inputs.web.v20201001.AzureActiveDirectoryRegistration>;
+            validation?: pulumi.Input<inputs.web.v20201001.AzureActiveDirectoryValidation>;
+        }
+
+        export interface AzureActiveDirectoryLogin {
+            disableWWWAuthenticate?: pulumi.Input<boolean>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            loginParameters?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        export interface AzureActiveDirectoryRegistration {
+            clientId?: pulumi.Input<string>;
+            clientSecretCertificateThumbprint?: pulumi.Input<string>;
+            clientSecretSettingName?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            openIdIssuer?: pulumi.Input<string>;
+        }
+
+        export interface AzureActiveDirectoryValidation {
+            allowedAudiences?: pulumi.Input<pulumi.Input<string>[]>;
+            jwtClaimChecks?: pulumi.Input<inputs.web.v20201001.JwtClaimChecks>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+        }
+
+        /**
+         * Application logs azure blob storage configuration.
+         */
+        export interface AzureBlobStorageApplicationLogsConfig {
+            /**
+             * Log level.
+             */
+            level?: pulumi.Input<enums.web.v20201001.LogLevel>;
+            /**
+             * Retention in days.
+             * Remove blobs older than X days.
+             * 0 or lower means no retention.
+             */
+            retentionInDays?: pulumi.Input<number>;
+            /**
+             * SAS url to a azure blob container with read/write/list/delete permissions.
+             */
+            sasUrl?: pulumi.Input<string>;
+        }
+
+        /**
+         * Http logs to azure blob storage configuration.
+         */
+        export interface AzureBlobStorageHttpLogsConfig {
+            /**
+             * True if configuration is enabled, false if it is disabled and null if configuration is not set.
+             */
+            enabled?: pulumi.Input<boolean>;
+            /**
+             * Retention in days.
+             * Remove blobs older than X days.
+             * 0 or lower means no retention.
+             */
+            retentionInDays?: pulumi.Input<number>;
+            /**
+             * SAS url to a azure blob container with read/write/list/delete permissions.
+             */
+            sasUrl?: pulumi.Input<string>;
+        }
+
+        /**
+         * Azure Files or Blob Storage access information value for dictionary storage.
+         */
+        export interface AzureStorageInfoValue {
+            /**
+             * Access key for the storage account.
+             */
+            accessKey?: pulumi.Input<string>;
+            /**
+             * Name of the storage account.
+             */
+            accountName?: pulumi.Input<string>;
+            /**
+             * Path to mount the storage within the site's runtime environment.
+             */
+            mountPath?: pulumi.Input<string>;
+            /**
+             * Name of the file share (container name, for Blob storage).
+             */
+            shareName?: pulumi.Input<string>;
+            /**
+             * Type of storage.
+             */
+            type?: pulumi.Input<enums.web.v20201001.AzureStorageType>;
+        }
+
+        /**
+         * Application logs to Azure table storage configuration.
+         */
+        export interface AzureTableStorageApplicationLogsConfig {
+            /**
+             * Log level.
+             */
+            level?: pulumi.Input<enums.web.v20201001.LogLevel>;
+            /**
+             * SAS URL to an Azure table with add/query/delete permissions.
+             */
+            sasUrl: pulumi.Input<string>;
+        }
+
+        /**
+         * Description of a backup schedule. Describes how often should be the backup performed and what should be the retention policy.
+         */
+        export interface BackupSchedule {
+            /**
+             * How often the backup should be executed (e.g. for weekly backup, this should be set to 7 and FrequencyUnit should be set to Day)
+             */
+            frequencyInterval: pulumi.Input<number>;
+            /**
+             * The unit of time for how often the backup should be executed (e.g. for weekly backup, this should be set to Day and FrequencyInterval should be set to 7)
+             */
+            frequencyUnit: pulumi.Input<enums.web.v20201001.FrequencyUnit>;
+            /**
+             * True if the retention policy should always keep at least one backup in the storage account, regardless how old it is; false otherwise.
+             */
+            keepAtLeastOneBackup: pulumi.Input<boolean>;
+            /**
+             * After how many days backups should be deleted.
+             */
+            retentionPeriodInDays: pulumi.Input<number>;
+            /**
+             * When the schedule should start working.
+             */
+            startTime?: pulumi.Input<string>;
+        }
+
+        export interface BlobStorageTokenStore {
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            sasUrlSettingName?: pulumi.Input<string>;
+        }
+
+        /**
+         * Describes the capabilities/features allowed for a specific SKU.
+         */
+        export interface Capability {
+            /**
+             * Name of the SKU capability.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Reason of the SKU capability.
+             */
+            reason?: pulumi.Input<string>;
+            /**
+             * Value of the SKU capability.
+             */
+            value?: pulumi.Input<string>;
+        }
+
+        export interface ClientRegistration {
+            clientId?: pulumi.Input<string>;
+            clientSecretSettingName?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+        }
+
+        /**
+         * Information needed for cloning operation.
+         */
+        export interface CloningInfo {
+            /**
+             * Application setting overrides for cloned app. If specified, these settings override the settings cloned 
+             * from source app. Otherwise, application settings from source app are retained.
+             */
+            appSettingsOverrides?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * <code>true</code> to clone custom hostnames from source app; otherwise, <code>false</code>.
+             */
+            cloneCustomHostNames?: pulumi.Input<boolean>;
+            /**
+             * <code>true</code> to clone source control from source app; otherwise, <code>false</code>.
+             */
+            cloneSourceControl?: pulumi.Input<boolean>;
+            /**
+             * <code>true</code> to configure load balancing for source and destination app.
+             */
+            configureLoadBalancing?: pulumi.Input<boolean>;
+            /**
+             * Correlation ID of cloning operation. This ID ties multiple cloning operations
+             * together to use the same snapshot.
+             */
+            correlationId?: pulumi.Input<string>;
+            /**
+             * App Service Environment.
+             */
+            hostingEnvironment?: pulumi.Input<string>;
+            /**
+             * <code>true</code> to overwrite destination app; otherwise, <code>false</code>.
+             */
+            overwrite?: pulumi.Input<boolean>;
+            /**
+             * ARM resource ID of the source app. App resource ID is of the form 
+             * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and 
+             * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName} for other slots.
+             */
+            sourceWebAppId: pulumi.Input<string>;
+            /**
+             * Location of source app ex: West US or North Europe
+             */
+            sourceWebAppLocation?: pulumi.Input<string>;
+            /**
+             * ARM resource ID of the Traffic Manager profile to use, if it exists. Traffic Manager resource ID is of the form 
+             * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
+             */
+            trafficManagerProfileId?: pulumi.Input<string>;
+            /**
+             * Name of Traffic Manager profile to create. This is only needed if Traffic Manager profile does not already exist.
+             */
+            trafficManagerProfileName?: pulumi.Input<string>;
+        }
+
+        /**
+         * Database connection string information.
+         */
+        export interface ConnStringInfo {
+            /**
+             * Connection string value.
+             */
+            connectionString?: pulumi.Input<string>;
+            /**
+             * Name of connection string.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Type of database.
+             */
+            type?: pulumi.Input<enums.web.v20201001.ConnectionStringType>;
+        }
+
+        /**
+         * Database connection string value to type pair.
+         */
+        export interface ConnStringValueTypePair {
+            /**
+             * Type of database.
+             */
+            type: pulumi.Input<enums.web.v20201001.ConnectionStringType>;
+            /**
+             * Value of pair.
+             */
+            value: pulumi.Input<string>;
+        }
+
+        export interface CookieExpiration {
+            convention?: pulumi.Input<enums.web.v20201001.CookieExpirationConvention>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            timeToExpiration?: pulumi.Input<string>;
+        }
+
+        /**
+         * Cross-Origin Resource Sharing (CORS) settings for the app.
+         */
+        export interface CorsSettings {
+            /**
+             * Gets or sets the list of origins that should be allowed to make cross-origin
+             * calls (for example: http://example.com:12345). Use "*" to allow all.
+             */
+            allowedOrigins?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Gets or sets whether CORS requests with credentials are allowed. See 
+             * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+             * for more details.
+             */
+            supportCredentials?: pulumi.Input<boolean>;
+        }
+
+        export interface CustomOpenIdConnectProvider {
+            enabled?: pulumi.Input<boolean>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            login?: pulumi.Input<inputs.web.v20201001.OpenIdConnectLogin>;
+            registration?: pulumi.Input<inputs.web.v20201001.OpenIdConnectRegistration>;
+        }
+
+        /**
+         * Database backup settings.
+         */
+        export interface DatabaseBackupSetting {
+            /**
+             * Contains a connection string to a database which is being backed up or restored. If the restore should happen to a new database, the database name inside is the new one.
+             */
+            connectionString?: pulumi.Input<string>;
+            /**
+             * Contains a connection string name that is linked to the SiteConfig.ConnectionStrings.
+             * This is used during restore with overwrite connection strings options.
+             */
+            connectionStringName?: pulumi.Input<string>;
+            /**
+             * Database type (e.g. SqlAzure / MySql).
+             */
+            databaseType: pulumi.Input<string | enums.web.v20201001.DatabaseType>;
+            name?: pulumi.Input<string>;
+        }
+
+        /**
+         * Enabled configuration.
+         */
+        export interface EnabledConfig {
+            /**
+             * True if configuration is enabled, false if it is disabled and null if configuration is not set.
+             */
+            enabled?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Routing rules in production experiments.
+         */
+        export interface Experiments {
+            /**
+             * List of ramp-up rules.
+             */
+            rampUpRules?: pulumi.Input<pulumi.Input<inputs.web.v20201001.RampUpRule>[]>;
+        }
+
+        export interface Facebook {
+            enabled?: pulumi.Input<boolean>;
+            graphApiVersion?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            login?: pulumi.Input<inputs.web.v20201001.LoginScopes>;
+            registration?: pulumi.Input<inputs.web.v20201001.AppRegistration>;
+        }
+
+        /**
+         * Application logs to file system configuration.
+         */
+        export interface FileSystemApplicationLogsConfig {
+            /**
+             * Log level.
+             */
+            level?: pulumi.Input<enums.web.v20201001.LogLevel>;
+        }
+
+        /**
+         * Http logs to file system configuration.
+         */
+        export interface FileSystemHttpLogsConfig {
+            /**
+             * True if configuration is enabled, false if it is disabled and null if configuration is not set.
+             */
+            enabled?: pulumi.Input<boolean>;
+            /**
+             * Retention in days.
+             * Remove files older than X days.
+             * 0 or lower means no retention.
+             */
+            retentionInDays?: pulumi.Input<number>;
+            /**
+             * Maximum size in megabytes that http log files can use.
+             * When reached old log files will be removed to make space for new ones.
+             * Value can range between 25 and 100.
+             */
+            retentionInMb?: pulumi.Input<number>;
+        }
+
+        export interface FileSystemTokenStore {
+            directory?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+        }
+
+        export interface ForwardProxy {
+            convention?: pulumi.Input<enums.web.v20201001.ForwardProxyConvention>;
+            customHostHeaderName?: pulumi.Input<string>;
+            customProtoHeaderName?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+        }
+
+        export interface GitHub {
+            enabled?: pulumi.Input<boolean>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            login?: pulumi.Input<inputs.web.v20201001.LoginScopes>;
+            registration?: pulumi.Input<inputs.web.v20201001.ClientRegistration>;
+        }
+
+        export interface GlobalValidation {
+            excludedPaths?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            redirectToProvider?: pulumi.Input<string>;
+            requireAuthentication?: pulumi.Input<boolean>;
+            unauthenticatedClientAction?: pulumi.Input<enums.web.v20201001.UnauthenticatedClientActionV2>;
+        }
+
+        export interface Google {
+            enabled?: pulumi.Input<boolean>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            login?: pulumi.Input<inputs.web.v20201001.LoginScopes>;
+            registration?: pulumi.Input<inputs.web.v20201001.ClientRegistration>;
+            validation?: pulumi.Input<inputs.web.v20201001.AllowedAudiencesValidation>;
+        }
+
+        /**
+         * The IIS handler mappings used to define which handler processes HTTP requests with certain extension. 
+         * For example, it is used to configure php-cgi.exe process to handle all HTTP requests with *.php extension.
+         */
+        export interface HandlerMapping {
+            /**
+             * Command-line arguments to be passed to the script processor.
+             */
+            arguments?: pulumi.Input<string>;
+            /**
+             * Requests with this extension will be handled using the specified FastCGI application.
+             */
+            extension?: pulumi.Input<string>;
+            /**
+             * The absolute path to the FastCGI application.
+             */
+            scriptProcessor?: pulumi.Input<string>;
+        }
+
+        /**
+         * SSL-enabled hostname.
+         */
+        export interface HostNameSslState {
+            /**
+             * Indicates whether the hostname is a standard or repository hostname.
+             */
+            hostType?: pulumi.Input<enums.web.v20201001.HostType>;
+            /**
+             * Hostname.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * SSL type.
+             */
+            sslState?: pulumi.Input<enums.web.v20201001.SslState>;
+            /**
+             * SSL certificate thumbprint.
+             */
+            thumbprint?: pulumi.Input<string>;
+            /**
+             * Set to <code>true</code> to update existing hostname.
+             */
+            toUpdate?: pulumi.Input<boolean>;
+            /**
+             * Virtual IP address assigned to the hostname if IP based SSL is enabled.
+             */
+            virtualIP?: pulumi.Input<string>;
+        }
+
+        /**
+         * Specification for an App Service Environment to use for this resource.
+         */
+        export interface HostingEnvironmentProfile {
+            /**
+             * Resource ID of the App Service Environment.
+             */
+            id?: pulumi.Input<string>;
+        }
+
+        /**
+         * Http logs configuration.
+         */
+        export interface HttpLogsConfig {
+            /**
+             * Http logs to azure blob storage configuration.
+             */
+            azureBlobStorage?: pulumi.Input<inputs.web.v20201001.AzureBlobStorageHttpLogsConfig>;
+            /**
+             * Http logs to file system configuration.
+             */
+            fileSystem?: pulumi.Input<inputs.web.v20201001.FileSystemHttpLogsConfig>;
+        }
+
+        export interface HttpSettings {
+            forwardProxy?: pulumi.Input<inputs.web.v20201001.ForwardProxy>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            requireHttps?: pulumi.Input<boolean>;
+            routes?: pulumi.Input<inputs.web.v20201001.HttpSettingsRoutes>;
+        }
+
+        export interface HttpSettingsRoutes {
+            apiPrefix?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+        }
+
+        export interface IdentityProviders {
+            azureActiveDirectory?: pulumi.Input<inputs.web.v20201001.AzureActiveDirectory>;
+            customOpenIdConnectProviders?: pulumi.Input<{[key: string]: pulumi.Input<inputs.web.v20201001.CustomOpenIdConnectProvider>}>;
+            facebook?: pulumi.Input<inputs.web.v20201001.Facebook>;
+            gitHub?: pulumi.Input<inputs.web.v20201001.GitHub>;
+            google?: pulumi.Input<inputs.web.v20201001.Google>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            twitter?: pulumi.Input<inputs.web.v20201001.Twitter>;
+        }
+
+        /**
+         * IP security restriction on an app.
+         */
+        export interface IpSecurityRestriction {
+            /**
+             * Allow or Deny access for this IP range.
+             */
+            action?: pulumi.Input<string>;
+            /**
+             * IP restriction rule description.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * IP restriction rule headers.
+             * X-Forwarded-Host (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host#Examples). 
+             * The matching logic is ..
+             * - If the property is null or empty (default), all hosts(or lack of) are allowed.
+             * - A value is compared using ordinal-ignore-case (excluding port number).
+             * - Subdomain wildcards are permitted but don't match the root domain. For example, *.contoso.com matches the subdomain foo.contoso.com
+             *  but not the root domain contoso.com or multi-level foo.bar.contoso.com
+             * - Unicode host names are allowed but are converted to Punycode for matching.
+             *
+             * X-Forwarded-For (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For#Examples).
+             * The matching logic is ..
+             * - If the property is null or empty (default), any forwarded-for chains (or lack of) are allowed.
+             * - If any address (excluding port number) in the chain (comma separated) matches the CIDR defined by the property.
+             *
+             * X-Azure-FDID and X-FD-HealthProbe.
+             * The matching logic is exact match.
+             */
+            headers?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
+            /**
+             * IP address the security restriction is valid for.
+             * It can be in form of pure ipv4 address (required SubnetMask property) or
+             * CIDR notation such as ipv4/mask (leading bit match). For CIDR,
+             * SubnetMask property must not be specified.
+             */
+            ipAddress?: pulumi.Input<string>;
+            /**
+             * IP restriction rule name.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Priority of IP restriction rule.
+             */
+            priority?: pulumi.Input<number>;
+            /**
+             * Subnet mask for the range of IP addresses the restriction is valid for.
+             */
+            subnetMask?: pulumi.Input<string>;
+            /**
+             * (internal) Subnet traffic tag
+             */
+            subnetTrafficTag?: pulumi.Input<number>;
+            /**
+             * Defines what this IP filter will be used for. This is to support IP filtering on proxies.
+             */
+            tag?: pulumi.Input<string | enums.web.v20201001.IpFilterTag>;
+            /**
+             * Virtual network resource id
+             */
+            vnetSubnetResourceId?: pulumi.Input<string>;
+            /**
+             * (internal) Vnet traffic tag
+             */
+            vnetTrafficTag?: pulumi.Input<number>;
+        }
+
+        export interface JwtClaimChecks {
+            allowedClientApplications?: pulumi.Input<pulumi.Input<string>[]>;
+            allowedGroups?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+        }
+
+        export interface Login {
+            allowedExternalRedirectUrls?: pulumi.Input<pulumi.Input<string>[]>;
+            cookieExpiration?: pulumi.Input<inputs.web.v20201001.CookieExpiration>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            nonce?: pulumi.Input<inputs.web.v20201001.Nonce>;
+            preserveUrlFragmentsForLogins?: pulumi.Input<boolean>;
+            routes?: pulumi.Input<inputs.web.v20201001.LoginRoutes>;
+            tokenStore?: pulumi.Input<inputs.web.v20201001.TokenStore>;
+        }
+
+        export interface LoginRoutes {
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            logoutEndpoint?: pulumi.Input<string>;
+        }
+
+        export interface LoginScopes {
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            scopes?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * Managed service identity.
+         */
+        export interface ManagedServiceIdentity {
+            /**
+             * Type of managed service identity.
+             */
+            type?: pulumi.Input<enums.web.v20201001.ManagedServiceIdentityType>;
+            /**
+             * The list of user assigned identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}
+             */
+            userAssignedIdentities?: pulumi.Input<{[key: string]: any}>;
+        }
+
+        /**
+         * Name value pair.
+         */
+        export interface NameValuePair {
+            /**
+             * Pair name.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Pair value.
+             */
+            value?: pulumi.Input<string>;
+        }
+
+        /**
+         * Network access control entry.
+         */
+        export interface NetworkAccessControlEntry {
+            /**
+             * Action object.
+             */
+            action?: pulumi.Input<enums.web.v20201001.AccessControlEntryAction>;
+            /**
+             * Description of network access control entry.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Order of precedence.
+             */
+            order?: pulumi.Input<number>;
+            /**
+             * Remote subnet.
+             */
+            remoteSubnet?: pulumi.Input<string>;
+        }
+
+        export interface Nonce {
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            nonceExpirationInterval?: pulumi.Input<string>;
+            validateNonce?: pulumi.Input<boolean>;
+        }
+
+        export interface OpenIdConnectClientCredential {
+            clientSecretSettingName?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            method?: pulumi.Input<enums.web.v20201001.ClientCredentialMethod>;
+        }
+
+        export interface OpenIdConnectConfig {
+            authorizationEndpoint?: pulumi.Input<string>;
+            certificationUri?: pulumi.Input<string>;
+            issuer?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            tokenEndpoint?: pulumi.Input<string>;
+            wellKnownOpenIdConfiguration?: pulumi.Input<string>;
+        }
+
+        export interface OpenIdConnectLogin {
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            nameClaimType?: pulumi.Input<string>;
+            scopes?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        export interface OpenIdConnectRegistration {
+            clientCredential?: pulumi.Input<inputs.web.v20201001.OpenIdConnectClientCredential>;
+            clientId?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            openIdConnectConfiguration?: pulumi.Input<inputs.web.v20201001.OpenIdConnectConfig>;
+        }
+
+        /**
+         * The state of a private link connection
+         */
+        export interface PrivateLinkConnectionState {
+            /**
+             * ActionsRequired for a private link connection
+             */
+            actionsRequired?: pulumi.Input<string>;
+            /**
+             * Description of a private link connection
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Status of a private link connection
+             */
+            status?: pulumi.Input<string>;
+        }
+
+        /**
+         * Push settings for the App.
+         */
+        export interface PushSettings {
+            /**
+             * Gets or sets a JSON string containing a list of dynamic tags that will be evaluated from user claims in the push registration endpoint.
+             */
+            dynamicTagsJson?: pulumi.Input<string>;
+            /**
+             * Gets or sets a flag indicating whether the Push endpoint is enabled.
+             */
+            isPushEnabled: pulumi.Input<boolean>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            /**
+             * Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
+             */
+            tagWhitelistJson?: pulumi.Input<string>;
+            /**
+             * Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.
+             * Tags can consist of alphanumeric characters and the following:
+             * '_', '@', '#', '.', ':', '-'. 
+             * Validation should be performed at the PushRequestHandler.
+             */
+            tagsRequiringAuth?: pulumi.Input<string>;
+        }
+
+        /**
+         * Routing rules for ramp up testing. This rule allows to redirect static traffic % to a slot or to gradually change routing % based on performance.
+         */
+        export interface RampUpRule {
+            /**
+             * Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
+             */
+            actionHostName?: pulumi.Input<string>;
+            /**
+             * Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.
+             * https://www.siteextensions.net/packages/TiPCallback/
+             */
+            changeDecisionCallbackUrl?: pulumi.Input<string>;
+            /**
+             * Specifies interval in minutes to reevaluate ReroutePercentage.
+             */
+            changeIntervalInMinutes?: pulumi.Input<number>;
+            /**
+             * In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or 
+             * <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm 
+             * can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
+             */
+            changeStep?: pulumi.Input<number>;
+            /**
+             * Specifies upper boundary below which ReroutePercentage will stay.
+             */
+            maxReroutePercentage?: pulumi.Input<number>;
+            /**
+             * Specifies lower boundary above which ReroutePercentage will stay.
+             */
+            minReroutePercentage?: pulumi.Input<number>;
+            /**
+             * Name of the routing rule. The recommended name would be to point to the slot which will receive the traffic in the experiment.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Percentage of the traffic which will be redirected to <code>ActionHostName</code>.
+             */
+            reroutePercentage?: pulumi.Input<number>;
+        }
+
+        /**
+         * Trigger based on total requests.
+         */
+        export interface RequestsBasedTrigger {
+            /**
+             * Request Count.
+             */
+            count?: pulumi.Input<number>;
+            /**
+             * Time interval.
+             */
+            timeInterval?: pulumi.Input<string>;
+        }
+
+        /**
+         * Configuration of an App Service app.
+         */
+        export interface SiteConfig {
+            /**
+             * <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
+             */
+            alwaysOn?: pulumi.Input<boolean>;
+            /**
+             * Information about the formal API definition for the app.
+             */
+            apiDefinition?: pulumi.Input<inputs.web.v20201001.ApiDefinitionInfo>;
+            /**
+             * Azure API management settings linked to the app.
+             */
+            apiManagementConfig?: pulumi.Input<inputs.web.v20201001.ApiManagementConfig>;
+            /**
+             * App command line to launch.
+             */
+            appCommandLine?: pulumi.Input<string>;
+            /**
+             * Application settings.
+             */
+            appSettings?: pulumi.Input<pulumi.Input<inputs.web.v20201001.NameValuePair>[]>;
+            /**
+             * <code>true</code> if Auto Heal is enabled; otherwise, <code>false</code>.
+             */
+            autoHealEnabled?: pulumi.Input<boolean>;
+            /**
+             * Auto Heal rules.
+             */
+            autoHealRules?: pulumi.Input<inputs.web.v20201001.AutoHealRules>;
+            /**
+             * Auto-swap slot name.
+             */
+            autoSwapSlotName?: pulumi.Input<string>;
+            /**
+             * Connection strings.
+             */
+            connectionStrings?: pulumi.Input<pulumi.Input<inputs.web.v20201001.ConnStringInfo>[]>;
+            /**
+             * Cross-Origin Resource Sharing (CORS) settings.
+             */
+            cors?: pulumi.Input<inputs.web.v20201001.CorsSettings>;
+            /**
+             * Default documents.
+             */
+            defaultDocuments?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * <code>true</code> if detailed error logging is enabled; otherwise, <code>false</code>.
+             */
+            detailedErrorLoggingEnabled?: pulumi.Input<boolean>;
+            /**
+             * Document root.
+             */
+            documentRoot?: pulumi.Input<string>;
+            /**
+             * This is work around for polymorphic types.
+             */
+            experiments?: pulumi.Input<inputs.web.v20201001.Experiments>;
+            /**
+             * State of FTP / FTPS service
+             */
+            ftpsState?: pulumi.Input<string | enums.web.v20201001.FtpsState>;
+            /**
+             * Handler mappings.
+             */
+            handlerMappings?: pulumi.Input<pulumi.Input<inputs.web.v20201001.HandlerMapping>[]>;
+            /**
+             * Health check path
+             */
+            healthCheckPath?: pulumi.Input<string>;
+            /**
+             * Http20Enabled: configures a web site to allow clients to connect over http2.0
+             */
+            http20Enabled?: pulumi.Input<boolean>;
+            /**
+             * <code>true</code> if HTTP logging is enabled; otherwise, <code>false</code>.
+             */
+            httpLoggingEnabled?: pulumi.Input<boolean>;
+            /**
+             * IP security restrictions for main.
+             */
+            ipSecurityRestrictions?: pulumi.Input<pulumi.Input<inputs.web.v20201001.IpSecurityRestriction>[]>;
+            /**
+             * Java container.
+             */
+            javaContainer?: pulumi.Input<string>;
+            /**
+             * Java container version.
+             */
+            javaContainerVersion?: pulumi.Input<string>;
+            /**
+             * Java version.
+             */
+            javaVersion?: pulumi.Input<string>;
+            /**
+             * Site limits.
+             */
+            limits?: pulumi.Input<inputs.web.v20201001.SiteLimits>;
+            /**
+             * Linux App Framework and version
+             */
+            linuxFxVersion?: pulumi.Input<string>;
+            /**
+             * Site load balancing.
+             */
+            loadBalancing?: pulumi.Input<enums.web.v20201001.SiteLoadBalancing>;
+            /**
+             * <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
+             */
+            localMySqlEnabled?: pulumi.Input<boolean>;
+            /**
+             * HTTP logs directory size limit.
+             */
+            logsDirectorySizeLimit?: pulumi.Input<number>;
+            /**
+             * Managed pipeline mode.
+             */
+            managedPipelineMode?: pulumi.Input<enums.web.v20201001.ManagedPipelineMode>;
+            /**
+             * Managed Service Identity Id
+             */
+            managedServiceIdentityId?: pulumi.Input<number>;
+            /**
+             * MinTlsVersion: configures the minimum version of TLS required for SSL requests
+             */
+            minTlsVersion?: pulumi.Input<string | enums.web.v20201001.SupportedTlsVersions>;
+            /**
+             * .NET Framework version.
+             */
+            netFrameworkVersion?: pulumi.Input<string>;
+            /**
+             * Version of Node.js.
+             */
+            nodeVersion?: pulumi.Input<string>;
+            /**
+             * Number of workers.
+             */
+            numberOfWorkers?: pulumi.Input<number>;
+            /**
+             * Version of PHP.
+             */
+            phpVersion?: pulumi.Input<string>;
+            /**
+             * Version of PowerShell.
+             */
+            powerShellVersion?: pulumi.Input<string>;
+            /**
+             * Number of preWarmed instances.
+             * This setting only applies to the Consumption and Elastic Plans
+             */
+            preWarmedInstanceCount?: pulumi.Input<number>;
+            /**
+             * Publishing user name.
+             */
+            publishingUsername?: pulumi.Input<string>;
+            /**
+             * Push endpoint settings.
+             */
+            push?: pulumi.Input<inputs.web.v20201001.PushSettings>;
+            /**
+             * Version of Python.
+             */
+            pythonVersion?: pulumi.Input<string>;
+            /**
+             * <code>true</code> if remote debugging is enabled; otherwise, <code>false</code>.
+             */
+            remoteDebuggingEnabled?: pulumi.Input<boolean>;
+            /**
+             * Remote debugging version.
+             */
+            remoteDebuggingVersion?: pulumi.Input<string>;
+            /**
+             * <code>true</code> if request tracing is enabled; otherwise, <code>false</code>.
+             */
+            requestTracingEnabled?: pulumi.Input<boolean>;
+            /**
+             * Request tracing expiration time.
+             */
+            requestTracingExpirationTime?: pulumi.Input<string>;
+            /**
+             * IP security restrictions for scm.
+             */
+            scmIpSecurityRestrictions?: pulumi.Input<pulumi.Input<inputs.web.v20201001.IpSecurityRestriction>[]>;
+            /**
+             * IP security restrictions for scm to use main.
+             */
+            scmIpSecurityRestrictionsUseMain?: pulumi.Input<boolean>;
+            /**
+             * ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
+             */
+            scmMinTlsVersion?: pulumi.Input<string | enums.web.v20201001.SupportedTlsVersions>;
+            /**
+             * SCM type.
+             */
+            scmType?: pulumi.Input<string | enums.web.v20201001.ScmType>;
+            /**
+             * Tracing options.
+             */
+            tracingOptions?: pulumi.Input<string>;
+            /**
+             * <code>true</code> to use 32-bit worker process; otherwise, <code>false</code>.
+             */
+            use32BitWorkerProcess?: pulumi.Input<boolean>;
+            /**
+             * Virtual applications.
+             */
+            virtualApplications?: pulumi.Input<pulumi.Input<inputs.web.v20201001.VirtualApplication>[]>;
+            /**
+             * Virtual Network name.
+             */
+            vnetName?: pulumi.Input<string>;
+            /**
+             * The number of private ports assigned to this app. These will be assigned dynamically on runtime.
+             */
+            vnetPrivatePortsCount?: pulumi.Input<number>;
+            /**
+             * Virtual Network Route All enabled. This causes all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied.
+             */
+            vnetRouteAllEnabled?: pulumi.Input<boolean>;
+            /**
+             * <code>true</code> if WebSocket is enabled; otherwise, <code>false</code>.
+             */
+            webSocketsEnabled?: pulumi.Input<boolean>;
+            /**
+             * Xenon App Framework and version
+             */
+            windowsFxVersion?: pulumi.Input<string>;
+            /**
+             * Explicit Managed Service Identity Id
+             */
+            xManagedServiceIdentityId?: pulumi.Input<number>;
+        }
+
+        /**
+         * Metric limits set on an app.
+         */
+        export interface SiteLimits {
+            /**
+             * Maximum allowed disk size usage in MB.
+             */
+            maxDiskSizeInMb?: pulumi.Input<number>;
+            /**
+             * Maximum allowed memory usage in MB.
+             */
+            maxMemoryInMb?: pulumi.Input<number>;
+            /**
+             * Maximum allowed CPU usage percentage.
+             */
+            maxPercentageCpu?: pulumi.Input<number>;
+        }
+
+        /**
+         * Description of the App Service plan scale options.
+         */
+        export interface SkuCapacity {
+            /**
+             * Default number of workers for this App Service plan SKU.
+             */
+            default?: pulumi.Input<number>;
+            /**
+             * Maximum number of workers for this App Service plan SKU.
+             */
+            maximum?: pulumi.Input<number>;
+            /**
+             * Minimum number of workers for this App Service plan SKU.
+             */
+            minimum?: pulumi.Input<number>;
+            /**
+             * Available scale configurations for an App Service plan.
+             */
+            scaleType?: pulumi.Input<string>;
+        }
+
+        /**
+         * Description of a SKU for a scalable resource.
+         */
+        export interface SkuDescription {
+            /**
+             * Capabilities of the SKU, e.g., is traffic manager enabled?
+             */
+            capabilities?: pulumi.Input<pulumi.Input<inputs.web.v20201001.Capability>[]>;
+            /**
+             * Current number of instances assigned to the resource.
+             */
+            capacity?: pulumi.Input<number>;
+            /**
+             * Family code of the resource SKU.
+             */
+            family?: pulumi.Input<string>;
+            /**
+             * Locations of the SKU.
+             */
+            locations?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Name of the resource SKU.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Size specifier of the resource SKU.
+             */
+            size?: pulumi.Input<string>;
+            /**
+             * Min, max, and default scale values of the SKU.
+             */
+            skuCapacity?: pulumi.Input<inputs.web.v20201001.SkuCapacity>;
+            /**
+             * Service tier of the resource SKU.
+             */
+            tier?: pulumi.Input<string>;
+        }
+
+        /**
+         * Trigger based on request execution time.
+         */
+        export interface SlowRequestsBasedTrigger {
+            /**
+             * Request Count.
+             */
+            count?: pulumi.Input<number>;
+            /**
+             * Time interval.
+             */
+            timeInterval?: pulumi.Input<string>;
+            /**
+             * Time taken.
+             */
+            timeTaken?: pulumi.Input<string>;
+        }
+
+        /**
+         * Build properties for the static site.
+         */
+        export interface StaticSiteBuildProperties {
+            /**
+             * The path to the api code within the repository.
+             */
+            apiLocation?: pulumi.Input<string>;
+            /**
+             * The path of the app artifacts after building.
+             */
+            appArtifactLocation?: pulumi.Input<string>;
+            /**
+             * The path to the app code within the repository.
+             */
+            appLocation?: pulumi.Input<string>;
+        }
+
+        /**
+         * Trigger based on status code.
+         */
+        export interface StatusCodesBasedTrigger {
+            /**
+             * Request Count.
+             */
+            count?: pulumi.Input<number>;
+            /**
+             * HTTP status code.
+             */
+            status?: pulumi.Input<number>;
+            /**
+             * Request Sub Status.
+             */
+            subStatus?: pulumi.Input<number>;
+            /**
+             * Time interval.
+             */
+            timeInterval?: pulumi.Input<string>;
+            /**
+             * Win32 error code.
+             */
+            win32Status?: pulumi.Input<number>;
+        }
+
+        export interface TokenStore {
+            azureBlobStorage?: pulumi.Input<inputs.web.v20201001.BlobStorageTokenStore>;
+            enabled?: pulumi.Input<boolean>;
+            fileSystem?: pulumi.Input<inputs.web.v20201001.FileSystemTokenStore>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            tokenRefreshExtensionHours?: pulumi.Input<number>;
+        }
+
+        export interface Twitter {
+            enabled?: pulumi.Input<boolean>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+            registration?: pulumi.Input<inputs.web.v20201001.TwitterRegistration>;
+        }
+
+        export interface TwitterRegistration {
+            consumerKey?: pulumi.Input<string>;
+            consumerSecretSettingName?: pulumi.Input<string>;
+            /**
+             * Kind of resource.
+             */
+            kind?: pulumi.Input<string>;
+        }
+
+        /**
+         * Virtual application in an app.
+         */
+        export interface VirtualApplication {
+            /**
+             * Physical path.
+             */
+            physicalPath?: pulumi.Input<string>;
+            /**
+             * <code>true</code> if preloading is enabled; otherwise, <code>false</code>.
+             */
+            preloadEnabled?: pulumi.Input<boolean>;
+            /**
+             * Virtual directories for virtual application.
+             */
+            virtualDirectories?: pulumi.Input<pulumi.Input<inputs.web.v20201001.VirtualDirectory>[]>;
+            /**
+             * Virtual path.
+             */
+            virtualPath?: pulumi.Input<string>;
+        }
+
+        /**
+         * Directory for virtual application.
+         */
+        export interface VirtualDirectory {
+            /**
+             * Physical path.
+             */
+            physicalPath?: pulumi.Input<string>;
+            /**
+             * Path to virtual application.
+             */
+            virtualPath?: pulumi.Input<string>;
+        }
+
+        /**
+         * Specification for using a Virtual Network.
+         */
+        export interface VirtualNetworkProfile {
+            /**
+             * Resource id of the Virtual Network.
+             */
+            id?: pulumi.Input<string>;
+            /**
+             * Subnet within the Virtual Network.
+             */
+            subnet?: pulumi.Input<string>;
+        }
+
+        /**
+         * Worker pool of an App Service Environment.
+         */
+        export interface WorkerPool {
+            /**
+             * Shared or dedicated app hosting.
+             */
+            computeMode?: pulumi.Input<enums.web.v20201001.ComputeModeOptions>;
             /**
              * Number of instances in the worker pool.
              */

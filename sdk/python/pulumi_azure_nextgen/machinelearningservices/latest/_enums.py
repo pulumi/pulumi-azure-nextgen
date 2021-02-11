@@ -6,6 +6,8 @@ from enum import Enum
 
 __all__ = [
     'ApplicationSharingPolicy',
+    'ClusterPurpose',
+    'ComputeEnvironmentType',
     'ComputeInstanceAuthorizationType',
     'ComputeType',
     'EncryptionStatus',
@@ -14,6 +16,7 @@ __all__ = [
     'RemoteLoginPortPublicAccess',
     'ResourceIdentityType',
     'SshPublicAccess',
+    'ValueFormat',
     'VmPriority',
 ]
 
@@ -24,6 +27,23 @@ class ApplicationSharingPolicy(str, Enum):
     """
     PERSONAL = "Personal"
     SHARED = "Shared"
+
+
+class ClusterPurpose(str, Enum):
+    """
+    Intended usage of the cluster
+    """
+    FAST_PROD = "FastProd"
+    DENSE_PROD = "DenseProd"
+    DEV_TEST = "DevTest"
+
+
+class ComputeEnvironmentType(str, Enum):
+    """
+    The compute environment type for the service.
+    """
+    ACI = "ACI"
+    AKS = "AKS"
 
 
 class ComputeInstanceAuthorizationType(str, Enum):
@@ -99,6 +119,13 @@ class SshPublicAccess(str, Enum):
     """
     ENABLED = "Enabled"
     DISABLED = "Disabled"
+
+
+class ValueFormat(str, Enum):
+    """
+    format for the workspace connection value
+    """
+    JSON = "JSON"
 
 
 class VmPriority(str, Enum):

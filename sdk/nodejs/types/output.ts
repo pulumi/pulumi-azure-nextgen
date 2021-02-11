@@ -9673,7 +9673,7 @@ export namespace attestation {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -9766,7 +9766,7 @@ export namespace attestation {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -10554,7 +10554,7 @@ export namespace authorization {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -13059,7 +13059,7 @@ export namespace autonomousdevelopmentplatform {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -14204,7 +14204,7 @@ export namespace azurestack {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -37838,7 +37838,7 @@ export namespace certificateregistration {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -38178,7 +38178,99 @@ export namespace certificateregistration {
              */
             createdByType?: string;
             /**
+             * The timestamp of resource last modification (UTC)
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
              * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
+        }
+    }
+
+    export namespace v20201001 {
+        /**
+         * Key Vault container for a certificate that is purchased through Azure.
+         */
+        export interface AppServiceCertificateResponse {
+            /**
+             * Key Vault resource Id.
+             */
+            keyVaultId?: string;
+            /**
+             * Key Vault secret name.
+             */
+            keyVaultSecretName?: string;
+            /**
+             * Status of the Key Vault secret.
+             */
+            provisioningState: string;
+        }
+
+        /**
+         * SSL certificate details.
+         */
+        export interface CertificateDetailsResponse {
+            /**
+             * Certificate Issuer.
+             */
+            issuer: string;
+            /**
+             * Date Certificate is valid to.
+             */
+            notAfter: string;
+            /**
+             * Date Certificate is valid from.
+             */
+            notBefore: string;
+            /**
+             * Raw certificate data.
+             */
+            rawData: string;
+            /**
+             * Certificate Serial Number.
+             */
+            serialNumber: string;
+            /**
+             * Certificate Signature algorithm.
+             */
+            signatureAlgorithm: string;
+            /**
+             * Certificate Subject.
+             */
+            subject: string;
+            /**
+             * Certificate Thumbprint.
+             */
+            thumbprint: string;
+            /**
+             * Certificate Version.
+             */
+            version: number;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -64485,7 +64577,7 @@ export namespace confidentialledger {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -169097,7 +169189,7 @@ export namespace dbforpostgresql {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -181658,7 +181750,7 @@ export namespace devops {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -191887,7 +191979,7 @@ export namespace documentdb {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -193026,7 +193118,7 @@ export namespace domainregistration {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -193831,7 +193923,192 @@ export namespace domainregistration {
              */
             createdByType?: string;
             /**
+             * The timestamp of resource last modification (UTC)
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
              * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
+        }
+
+        /**
+         * Legal agreement for a top level domain.
+         */
+        export interface TldLegalAgreementResponse {
+            /**
+             * Unique identifier for the agreement.
+             */
+            agreementKey: string;
+            /**
+             * Agreement details.
+             */
+            content: string;
+            /**
+             * Agreement title.
+             */
+            title: string;
+            /**
+             * URL where a copy of the agreement details is hosted.
+             */
+            url?: string;
+        }
+    }
+
+    export namespace v20201001 {
+        /**
+         * Address information for domain registration.
+         */
+        export interface AddressResponse {
+            /**
+             * First line of an Address.
+             */
+            address1: string;
+            /**
+             * The second line of the Address. Optional.
+             */
+            address2?: string;
+            /**
+             * The city for the address.
+             */
+            city: string;
+            /**
+             * The country for the address.
+             */
+            country: string;
+            /**
+             * The postal code for the address.
+             */
+            postalCode: string;
+            /**
+             * The state or province for the address.
+             */
+            state: string;
+        }
+
+        /**
+         * Contact information for domain registration. If 'Domain Privacy' option is not selected then the contact information is made publicly available through the Whois 
+         * directories as per ICANN requirements.
+         */
+        export interface ContactResponse {
+            /**
+             * Mailing address.
+             */
+            addressMailing?: outputs.domainregistration.v20201001.AddressResponse;
+            /**
+             * Email address.
+             */
+            email: string;
+            /**
+             * Fax number.
+             */
+            fax?: string;
+            /**
+             * Job title.
+             */
+            jobTitle?: string;
+            /**
+             * First name.
+             */
+            nameFirst: string;
+            /**
+             * Last name.
+             */
+            nameLast: string;
+            /**
+             * Middle name.
+             */
+            nameMiddle?: string;
+            /**
+             * Organization contact belongs to.
+             */
+            organization?: string;
+            /**
+             * Phone number.
+             */
+            phone: string;
+        }
+
+        /**
+         * Domain purchase consent object, representing acceptance of applicable legal agreements.
+         */
+        export interface DomainPurchaseConsentResponse {
+            /**
+             * Timestamp when the agreements were accepted.
+             */
+            agreedAt?: string;
+            /**
+             * Client IP address.
+             */
+            agreedBy?: string;
+            /**
+             * List of applicable legal agreement keys. This list can be retrieved using ListLegalAgreements API under <code>TopLevelDomain</code> resource.
+             */
+            agreementKeys?: string[];
+        }
+
+        /**
+         * Details of a hostname derived from a domain.
+         */
+        export interface HostNameResponse {
+            /**
+             * Name of the Azure resource the hostname is assigned to. If it is assigned to a Traffic Manager then it will be the Traffic Manager name otherwise it will be the app name.
+             */
+            azureResourceName?: string;
+            /**
+             * Type of the Azure resource the hostname is assigned to.
+             */
+            azureResourceType?: string;
+            /**
+             * Type of the DNS record.
+             */
+            customHostNameDnsRecordType?: string;
+            /**
+             * Type of the hostname.
+             */
+            hostNameType?: string;
+            /**
+             * Name of the hostname.
+             */
+            name?: string;
+            /**
+             * List of apps the hostname is assigned to. This list will have more than one app only if the hostname is pointing to a Traffic Manager.
+             */
+            siteNames?: string[];
+        }
+
+        /**
+         * Identifies an object.
+         */
+        export interface NameIdentifierResponse {
+            /**
+             * Name of the object.
+             */
+            name?: string;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -194478,7 +194755,7 @@ export namespace edgeorder {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -199533,7 +199810,7 @@ export namespace eventgrid {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -202906,7 +203183,7 @@ export namespace healthcareapis {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -203700,7 +203977,7 @@ export namespace healthcareapis {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -205392,7 +205669,7 @@ export namespace importexport {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -205766,7 +206043,7 @@ export namespace importexport {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -206140,7 +206417,7 @@ export namespace importexport {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -206160,9 +206437,9 @@ export namespace insights {
         /**
          * A pointer to an Azure Action Group.
          */
-        export interface ActivityLogAlertActionGroupResponse {
+        export interface ActionGroupResponse {
             /**
-             * The resourceId of the action group. This cannot be null or empty.
+             * The resource ID of the Action Group. This cannot be null or empty.
              */
             actionGroupId: string;
             /**
@@ -206172,37 +206449,72 @@ export namespace insights {
         }
 
         /**
-         * A list of activity log alert actions.
+         * A list of Activity Log Alert rule actions.
          */
-        export interface ActivityLogAlertActionListResponse {
+        export interface ActionListResponse {
             /**
-             * The list of activity log alerts.
+             * The list of the Action Groups.
              */
-            actionGroups?: outputs.insights.latest.ActivityLogAlertActionGroupResponse[];
+            actionGroups?: outputs.insights.latest.ActionGroupResponse[];
         }
 
         /**
-         * An Activity Log alert condition that is met when all its member conditions are met.
+         * An Activity Log Alert rule condition that is met when all its member conditions are met.
          */
-        export interface ActivityLogAlertAllOfConditionResponse {
+        export interface AlertRuleAllOfConditionResponse {
             /**
-             * The list of activity log alert conditions.
+             * The list of Activity Log Alert rule conditions.
              */
-            allOf: outputs.insights.latest.ActivityLogAlertLeafConditionResponse[];
+            allOf: outputs.insights.latest.AlertRuleAnyOfOrLeafConditionResponse[];
         }
 
         /**
-         * An Activity Log alert condition that is met by comparing an activity log field and value.
+         * An Activity Log Alert rule condition that is met when all its member conditions are met.
+         * Each condition can be of one of the following types:
+         * __Important__: Each type has its unique subset of properties. Properties from different types CANNOT exist in one condition.
+         *    * __Leaf Condition -__ must contain 'field' and either 'equals' or 'containsAny'.
+         *   _Please note, 'anyOf' should __not__ be set in a Leaf Condition._
+         *   * __AnyOf Condition -__ must contain __only__ 'anyOf' (which is an array of Leaf Conditions).
+         *   _Please note, 'field', 'equals' and 'containsAny' should __not__ be set in an AnyOf Condition._
          */
-        export interface ActivityLogAlertLeafConditionResponse {
+        export interface AlertRuleAnyOfOrLeafConditionResponse {
             /**
-             * The field value will be compared to this value (case-insensitive) to determine if the condition is met.
+             * An Activity Log Alert rule condition that is met when at least one of its member leaf conditions are met.
              */
-            equals: string;
+            anyOf?: outputs.insights.latest.AlertRuleLeafConditionResponse[];
             /**
-             * The name of the field that this condition will examine. The possible values for this field are (case-insensitive): 'resourceId', 'category', 'caller', 'level', 'operationName', 'resourceGroup', 'resourceProvider', 'status', 'subStatus', 'resourceType', or anything beginning with 'properties.'.
+             * The value of the event's field will be compared to the values in this array (case-insensitive) to determine if the condition is met.
              */
-            field: string;
+            containsAny?: string[];
+            /**
+             * The value of the event's field will be compared to this value (case-insensitive) to determine if the condition is met.
+             */
+            equals?: string;
+            /**
+             * The name of the Activity Log event's field that this condition will examine.
+             * The possible values for this field are (case-insensitive): 'resourceId', 'category', 'caller', 'level', 'operationName', 'resourceGroup', 'resourceProvider', 'status', 'subStatus', 'resourceType', or anything beginning with 'properties'.
+             */
+            field?: string;
+        }
+
+        /**
+         * An Activity Log Alert rule condition that is met by comparing the field and value of an Activity Log event.
+         * This condition must contain 'field' and either 'equals' or 'containsAny'.
+         */
+        export interface AlertRuleLeafConditionResponse {
+            /**
+             * The value of the event's field will be compared to the values in this array (case-insensitive) to determine if the condition is met.
+             */
+            containsAny?: string[];
+            /**
+             * The value of the event's field will be compared to this value (case-insensitive) to determine if the condition is met.
+             */
+            equals?: string;
+            /**
+             * The name of the Activity Log event's field that this condition will examine.
+             * The possible values for this field are (case-insensitive): 'resourceId', 'category', 'caller', 'level', 'operationName', 'resourceGroup', 'resourceProvider', 'status', 'subStatus', 'resourceType', or anything beginning with 'properties'.
+             */
+            field?: string;
         }
 
         /**
@@ -210143,6 +210455,91 @@ export namespace insights {
         }
     }
 
+    export namespace v20201001 {
+        /**
+         * A pointer to an Azure Action Group.
+         */
+        export interface ActionGroupResponse {
+            /**
+             * The resource ID of the Action Group. This cannot be null or empty.
+             */
+            actionGroupId: string;
+            /**
+             * the dictionary of custom properties to include with the post operation. These data are appended to the webhook payload.
+             */
+            webhookProperties?: {[key: string]: string};
+        }
+
+        /**
+         * A list of Activity Log Alert rule actions.
+         */
+        export interface ActionListResponse {
+            /**
+             * The list of the Action Groups.
+             */
+            actionGroups?: outputs.insights.v20201001.ActionGroupResponse[];
+        }
+
+        /**
+         * An Activity Log Alert rule condition that is met when all its member conditions are met.
+         */
+        export interface AlertRuleAllOfConditionResponse {
+            /**
+             * The list of Activity Log Alert rule conditions.
+             */
+            allOf: outputs.insights.v20201001.AlertRuleAnyOfOrLeafConditionResponse[];
+        }
+
+        /**
+         * An Activity Log Alert rule condition that is met when all its member conditions are met.
+         * Each condition can be of one of the following types:
+         * __Important__: Each type has its unique subset of properties. Properties from different types CANNOT exist in one condition.
+         *    * __Leaf Condition -__ must contain 'field' and either 'equals' or 'containsAny'.
+         *   _Please note, 'anyOf' should __not__ be set in a Leaf Condition._
+         *   * __AnyOf Condition -__ must contain __only__ 'anyOf' (which is an array of Leaf Conditions).
+         *   _Please note, 'field', 'equals' and 'containsAny' should __not__ be set in an AnyOf Condition._
+         */
+        export interface AlertRuleAnyOfOrLeafConditionResponse {
+            /**
+             * An Activity Log Alert rule condition that is met when at least one of its member leaf conditions are met.
+             */
+            anyOf?: outputs.insights.v20201001.AlertRuleLeafConditionResponse[];
+            /**
+             * The value of the event's field will be compared to the values in this array (case-insensitive) to determine if the condition is met.
+             */
+            containsAny?: string[];
+            /**
+             * The value of the event's field will be compared to this value (case-insensitive) to determine if the condition is met.
+             */
+            equals?: string;
+            /**
+             * The name of the Activity Log event's field that this condition will examine.
+             * The possible values for this field are (case-insensitive): 'resourceId', 'category', 'caller', 'level', 'operationName', 'resourceGroup', 'resourceProvider', 'status', 'subStatus', 'resourceType', or anything beginning with 'properties'.
+             */
+            field?: string;
+        }
+
+        /**
+         * An Activity Log Alert rule condition that is met by comparing the field and value of an Activity Log event.
+         * This condition must contain 'field' and either 'equals' or 'containsAny'.
+         */
+        export interface AlertRuleLeafConditionResponse {
+            /**
+             * The value of the event's field will be compared to the values in this array (case-insensitive) to determine if the condition is met.
+             */
+            containsAny?: string[];
+            /**
+             * The value of the event's field will be compared to this value (case-insensitive) to determine if the condition is met.
+             */
+            equals?: string;
+            /**
+             * The name of the Activity Log event's field that this condition will examine.
+             * The possible values for this field are (case-insensitive): 'resourceId', 'category', 'caller', 'level', 'operationName', 'resourceGroup', 'resourceProvider', 'status', 'subStatus', 'resourceType', or anything beginning with 'properties'.
+             */
+            field?: string;
+        }
+    }
+
     export namespace v20201005preview {
         /**
          * A header to add to the WebTest.
@@ -212271,7 +212668,7 @@ export namespace kubernetesconfiguration {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -212445,7 +212842,7 @@ export namespace kubernetesconfiguration {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -227132,6 +227529,199 @@ export namespace machinelearningexperimentation {
 export namespace machinelearningservices {
     export namespace latest {
         /**
+         * The response for an ACI service.
+         */
+        export interface ACIServiceResponseResponse {
+            /**
+             * Whether or not Application Insights is enabled.
+             */
+            appInsightsEnabled?: boolean;
+            /**
+             * Whether or not authentication is enabled on the service.
+             */
+            authEnabled?: boolean;
+            /**
+             * The CName for the service.
+             */
+            cname?: string;
+            /**
+             * The compute environment type for the service.
+             * Expected value is 'ACI'.
+             */
+            computeType: "ACI";
+            /**
+             * The container resource requirements.
+             */
+            containerResourceRequirements?: outputs.machinelearningservices.latest.ContainerResourceRequirementsResponse;
+            /**
+             * Details of the data collection options specified.
+             */
+            dataCollection?: outputs.machinelearningservices.latest.ACIServiceResponseResponseDataCollection;
+            /**
+             * The deployment type for the service.
+             */
+            deploymentType?: string;
+            /**
+             * The service description.
+             */
+            description?: string;
+            /**
+             * The encryption properties.
+             */
+            encryptionProperties?: outputs.machinelearningservices.latest.ACIServiceResponseResponseEncryptionProperties;
+            /**
+             * The Environment, models and assets used for inferencing.
+             */
+            environmentImageRequest?: outputs.machinelearningservices.latest.ACIServiceResponseResponseEnvironmentImageRequest;
+            /**
+             * The error details.
+             */
+            error: outputs.machinelearningservices.latest.ServiceResponseBaseResponseError;
+            /**
+             * The service tag dictionary. Tags are mutable.
+             */
+            kvTags?: {[key: string]: string};
+            /**
+             * The name of the Azure location/region.
+             */
+            location?: string;
+            /**
+             * Details on the models and configurations.
+             */
+            modelConfigMap: {[key: string]: any};
+            /**
+             * The list of models.
+             */
+            models?: outputs.machinelearningservices.latest.ModelResponse[];
+            /**
+             * The service property dictionary. Properties are immutable.
+             */
+            properties?: {[key: string]: string};
+            /**
+             * The public Fqdn for the service.
+             */
+            publicFqdn?: string;
+            /**
+             * The public IP address for the service.
+             */
+            publicIp?: string;
+            /**
+             * The Uri for sending scoring requests.
+             */
+            scoringUri: string;
+            /**
+             * The public SSL certificate in PEM format to use if SSL is enabled.
+             */
+            sslCertificate?: string;
+            /**
+             * Whether or not SSL is enabled.
+             */
+            sslEnabled?: boolean;
+            /**
+             * The public SSL key in PEM format for the certificate.
+             */
+            sslKey?: string;
+            /**
+             * The current state of the service.
+             */
+            state: string;
+            /**
+             * The Uri for sending swagger requests.
+             */
+            swaggerUri: string;
+            /**
+             * The virtual network configuration.
+             */
+            vnetConfiguration?: outputs.machinelearningservices.latest.ACIServiceResponseResponseVnetConfiguration;
+        }
+
+        /**
+         * Details of the data collection options specified.
+         */
+        export interface ACIServiceResponseResponseDataCollection {
+            /**
+             * Option for enabling/disabling Event Hub.
+             */
+            eventHubEnabled?: boolean;
+            /**
+             * Option for enabling/disabling storage.
+             */
+            storageEnabled?: boolean;
+        }
+
+        /**
+         * The encryption properties.
+         */
+        export interface ACIServiceResponseResponseEncryptionProperties {
+            /**
+             * Encryption Key name
+             */
+            keyName: string;
+            /**
+             * Encryption Key Version
+             */
+            keyVersion: string;
+            /**
+             * vault base Url
+             */
+            vaultBaseUrl: string;
+        }
+
+        /**
+         * The Environment, models and assets used for inferencing.
+         */
+        export interface ACIServiceResponseResponseEnvironmentImageRequest {
+            /**
+             * The list of assets.
+             */
+            assets?: outputs.machinelearningservices.latest.ImageAssetResponse[];
+            /**
+             * The name of the driver file.
+             */
+            driverProgram?: string;
+            /**
+             * The details of the AZURE ML environment.
+             */
+            environment?: outputs.machinelearningservices.latest.EnvironmentImageResponseResponseEnvironment;
+            /**
+             * The unique identifying details of the AZURE ML environment.
+             */
+            environmentReference?: outputs.machinelearningservices.latest.EnvironmentImageResponseResponseEnvironmentReference;
+            /**
+             * The list of model Ids.
+             */
+            modelIds?: string[];
+            /**
+             * The list of models.
+             */
+            models?: outputs.machinelearningservices.latest.ModelResponse[];
+        }
+
+        /**
+         * The virtual network configuration.
+         */
+        export interface ACIServiceResponseResponseVnetConfiguration {
+            /**
+             * The name of the virtual network subnet.
+             */
+            subnetName?: string;
+            /**
+             * The name of the virtual network.
+             */
+            vnetName?: string;
+        }
+
+        /**
+         * The error details.
+         */
+        export interface AKSReplicaStatusResponseError {
+            /**
+             * The error response.
+             */
+            error: outputs.machinelearningservices.latest.ErrorResponseResponse;
+        }
+
+        /**
          * A Machine Learning compute based on AKS.
          */
         export interface AKSResponse {
@@ -227145,10 +227735,6 @@ export namespace machinelearningservices {
              */
             computeType: "AKS";
             /**
-             * The date and time when the compute was created.
-             */
-            createdOn: string;
-            /**
              * The description of the Machine Learning compute.
              */
             description?: string;
@@ -227156,10 +227742,6 @@ export namespace machinelearningservices {
              * Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
              */
             isAttachedCompute: boolean;
-            /**
-             * The date and time when the compute was last modified.
-             */
-            modifiedOn: string;
             /**
              * AKS properties
              */
@@ -227199,6 +227781,10 @@ export namespace machinelearningservices {
              */
             clusterFqdn?: string;
             /**
+             * Intended usage of the cluster
+             */
+            clusterPurpose?: string;
+            /**
              * SSL configuration
              */
             sslConfiguration?: outputs.machinelearningservices.latest.SslConfigurationResponse;
@@ -227206,6 +227792,294 @@ export namespace machinelearningservices {
              * System services
              */
             systemServices: outputs.machinelearningservices.latest.SystemServiceResponse[];
+        }
+
+        /**
+         * The response for an AKS service.
+         */
+        export interface AKSServiceResponseResponse {
+            /**
+             * Whether or not AAD authentication is enabled.
+             */
+            aadAuthEnabled?: boolean;
+            /**
+             * Whether or not Application Insights is enabled.
+             */
+            appInsightsEnabled?: boolean;
+            /**
+             * Whether or not authentication is enabled.
+             */
+            authEnabled?: boolean;
+            /**
+             * The auto scaler properties.
+             */
+            autoScaler?: outputs.machinelearningservices.latest.AKSServiceResponseResponseAutoScaler;
+            /**
+             * The name of the compute resource.
+             */
+            computeName?: string;
+            /**
+             * The compute environment type for the service.
+             * Expected value is 'Custom'.
+             */
+            computeType: "Custom";
+            /**
+             * The container resource requirements.
+             */
+            containerResourceRequirements?: outputs.machinelearningservices.latest.ContainerResourceRequirementsResponse;
+            /**
+             * Details of the data collection options specified.
+             */
+            dataCollection?: outputs.machinelearningservices.latest.AKSServiceResponseResponseDataCollection;
+            /**
+             * The deployment status.
+             */
+            deploymentStatus: outputs.machinelearningservices.latest.AKSServiceResponseResponseDeploymentStatus;
+            /**
+             * The deployment type for the service.
+             */
+            deploymentType?: string;
+            /**
+             * The service description.
+             */
+            description?: string;
+            /**
+             * The Environment, models and assets used for inferencing.
+             */
+            environmentImageRequest?: outputs.machinelearningservices.latest.AKSServiceResponseResponseEnvironmentImageRequest;
+            /**
+             * The error details.
+             */
+            error: outputs.machinelearningservices.latest.ServiceResponseBaseResponseError;
+            /**
+             * Is this the default variant.
+             */
+            isDefault?: boolean;
+            /**
+             * The service tag dictionary. Tags are mutable.
+             */
+            kvTags?: {[key: string]: string};
+            /**
+             * The liveness probe requirements.
+             */
+            livenessProbeRequirements?: outputs.machinelearningservices.latest.AKSServiceResponseResponseLivenessProbeRequirements;
+            /**
+             * The maximum number of concurrent requests per container.
+             */
+            maxConcurrentRequestsPerContainer?: number;
+            /**
+             * Maximum time a request will wait in the queue (in milliseconds). After this time, the service will return 503 (Service Unavailable)
+             */
+            maxQueueWaitMs?: number;
+            /**
+             * Details on the models and configurations.
+             */
+            modelConfigMap: {[key: string]: any};
+            /**
+             * The list of models.
+             */
+            models?: outputs.machinelearningservices.latest.ModelResponse[];
+            /**
+             * The Kubernetes namespace of the deployment.
+             */
+            namespace?: string;
+            /**
+             * The number of replicas on the cluster.
+             */
+            numReplicas?: number;
+            /**
+             * The service property dictionary. Properties are immutable.
+             */
+            properties?: {[key: string]: string};
+            /**
+             * The scoring timeout in milliseconds.
+             */
+            scoringTimeoutMs?: number;
+            /**
+             * The Uri for sending scoring requests.
+             */
+            scoringUri: string;
+            /**
+             * The current state of the service.
+             */
+            state: string;
+            /**
+             * The Uri for sending swagger requests.
+             */
+            swaggerUri: string;
+            /**
+             * The amount of traffic variant receives.
+             */
+            trafficPercentile?: number;
+            /**
+             * The type of the variant.
+             */
+            type?: string;
+        }
+
+        /**
+         * The auto scaler properties.
+         */
+        export interface AKSServiceResponseResponseAutoScaler {
+            /**
+             * Option to enable/disable auto scaling.
+             */
+            autoscaleEnabled?: boolean;
+            /**
+             * The maximum number of replicas in the cluster.
+             */
+            maxReplicas?: number;
+            /**
+             * The minimum number of replicas to scale down to.
+             */
+            minReplicas?: number;
+            /**
+             * The amount of seconds to wait between auto scale updates.
+             */
+            refreshPeriodInSeconds?: number;
+            /**
+             * The target utilization percentage to use for determining whether to scale the cluster.
+             */
+            targetUtilization?: number;
+        }
+
+        /**
+         * Details of the data collection options specified.
+         */
+        export interface AKSServiceResponseResponseDataCollection {
+            /**
+             * Option for enabling/disabling Event Hub.
+             */
+            eventHubEnabled?: boolean;
+            /**
+             * Option for enabling/disabling storage.
+             */
+            storageEnabled?: boolean;
+        }
+
+        /**
+         * The deployment status.
+         */
+        export interface AKSServiceResponseResponseDeploymentStatus {
+            /**
+             * The number of available replicas.
+             */
+            availableReplicas?: number;
+            /**
+             * The desired number of replicas.
+             */
+            desiredReplicas?: number;
+            /**
+             * The error details.
+             */
+            error?: outputs.machinelearningservices.latest.AKSReplicaStatusResponseError;
+            /**
+             * The number of updated replicas.
+             */
+            updatedReplicas?: number;
+        }
+
+        /**
+         * The Environment, models and assets used for inferencing.
+         */
+        export interface AKSServiceResponseResponseEnvironmentImageRequest {
+            /**
+             * The list of assets.
+             */
+            assets?: outputs.machinelearningservices.latest.ImageAssetResponse[];
+            /**
+             * The name of the driver file.
+             */
+            driverProgram?: string;
+            /**
+             * The details of the AZURE ML environment.
+             */
+            environment?: outputs.machinelearningservices.latest.EnvironmentImageResponseResponseEnvironment;
+            /**
+             * The unique identifying details of the AZURE ML environment.
+             */
+            environmentReference?: outputs.machinelearningservices.latest.EnvironmentImageResponseResponseEnvironmentReference;
+            /**
+             * The list of model Ids.
+             */
+            modelIds?: string[];
+            /**
+             * The list of models.
+             */
+            models?: outputs.machinelearningservices.latest.ModelResponse[];
+        }
+
+        /**
+         * The liveness probe requirements.
+         */
+        export interface AKSServiceResponseResponseLivenessProbeRequirements {
+            /**
+             * The number of failures to allow before returning an unhealthy status.
+             */
+            failureThreshold?: number;
+            /**
+             * The delay before the first probe in seconds.
+             */
+            initialDelaySeconds?: number;
+            /**
+             * The length of time between probes in seconds.
+             */
+            periodSeconds?: number;
+            /**
+             * The number of successful probes before returning a healthy status.
+             */
+            successThreshold?: number;
+            /**
+             * The probe timeout in seconds.
+             */
+            timeoutSeconds?: number;
+        }
+
+        /**
+         * The response for an AKS variant.
+         */
+        export interface AKSVariantResponseResponse {
+            /**
+             * The compute environment type for the service.
+             * Expected value is 'Custom'.
+             */
+            computeType: "Custom";
+            /**
+             * The deployment type for the service.
+             */
+            deploymentType?: string;
+            /**
+             * The service description.
+             */
+            description?: string;
+            /**
+             * The error details.
+             */
+            error: outputs.machinelearningservices.latest.ServiceResponseBaseResponseError;
+            /**
+             * Is this the default variant.
+             */
+            isDefault?: boolean;
+            /**
+             * The service tag dictionary. Tags are mutable.
+             */
+            kvTags?: {[key: string]: string};
+            /**
+             * The service property dictionary. Properties are immutable.
+             */
+            properties?: {[key: string]: string};
+            /**
+             * The current state of the service.
+             */
+            state: string;
+            /**
+             * The amount of traffic variant receives.
+             */
+            trafficPercentile?: number;
+            /**
+             * The type of the variant.
+             */
+            type?: string;
         }
 
         /**
@@ -227274,10 +228148,6 @@ export namespace machinelearningservices {
              */
             computeType: "AmlCompute";
             /**
-             * The date and time when the compute was created.
-             */
-            createdOn: string;
-            /**
              * The description of the Machine Learning compute.
              */
             description?: string;
@@ -227285,10 +228155,6 @@ export namespace machinelearningservices {
              * Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
              */
             isAttachedCompute: boolean;
-            /**
-             * The date and time when the compute was last modified.
-             */
-            modifiedOn: string;
             /**
              * AML Compute properties
              */
@@ -227324,9 +228190,17 @@ export namespace machinelearningservices {
              */
             currentNodeCount: number;
             /**
+             * Enable or disable node public IP address provisioning. Possible values are: Possible values are: true - Indicates that the compute nodes will have public IPs provisioned. false - Indicates that the compute nodes will have a private endpoint and no public IPs.
+             */
+            enableNodePublicIp?: boolean;
+            /**
              * Collection of errors encountered by various compute nodes during node setup.
              */
             errors: outputs.machinelearningservices.latest.MachineLearningServiceErrorResponse[];
+            /**
+             * Network is isolated or not
+             */
+            isolatedNetwork?: boolean;
             /**
              * Counts of various node states on the compute.
              */
@@ -227355,6 +228229,10 @@ export namespace machinelearningservices {
              * Credentials for an administrator user account that will be created on each compute node.
              */
             userAccountCredentials?: outputs.machinelearningservices.latest.UserAccountCredentialsResponse;
+            /**
+             * Virtual Machine image for AML Compute - windows only
+             */
+            virtualMachineImage?: outputs.machinelearningservices.latest.VirtualMachineImageResponse;
             /**
              * Virtual Machine priority
              */
@@ -227394,7 +228272,7 @@ export namespace machinelearningservices {
         }
 
         /**
-         * Defines all connectivity endpoints and properties for a ComputeInstance.
+         * Defines all connectivity endpoints and properties for an ComputeInstance.
          */
         export interface ComputeInstanceConnectivityEndpointsResponse {
             /**
@@ -227457,10 +228335,6 @@ export namespace machinelearningservices {
              */
             computeType: "ComputeInstance";
             /**
-             * The date and time when the compute was created.
-             */
-            createdOn: string;
-            /**
              * The description of the Machine Learning compute.
              */
             description?: string;
@@ -227468,10 +228342,6 @@ export namespace machinelearningservices {
              * Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
              */
             isAttachedCompute: boolean;
-            /**
-             * The date and time when the compute was last modified.
-             */
-            modifiedOn: string;
             /**
              * Compute Instance properties
              */
@@ -227527,6 +228397,10 @@ export namespace machinelearningservices {
              */
             personalComputeInstanceSettings?: outputs.machinelearningservices.latest.PersonalComputeInstanceSettingsResponse;
             /**
+             * Details of customized scripts to execute for setting up the cluster.
+             */
+            setupScripts?: outputs.machinelearningservices.latest.SetupScriptsResponse;
+            /**
              * Specifies policy and settings for SSH access.
              */
             sshSettings?: outputs.machinelearningservices.latest.ComputeInstanceSshSettingsResponse;
@@ -227567,6 +228441,47 @@ export namespace machinelearningservices {
         }
 
         /**
+         * The resource requirements for the container (cpu and memory).
+         */
+        export interface ContainerResourceRequirementsResponse {
+            /**
+             * The minimum amount of CPU cores to be used by the container. More info:
+             * https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+             */
+            cpu?: number;
+            /**
+             * The maximum amount of CPU cores allowed to be used by the container. More info:
+             * https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+             */
+            cpuLimit?: number;
+            /**
+             * The number of FPGA PCIE devices exposed to the container. Must be multiple of 2.
+             */
+            fpga?: number;
+            /**
+             * The number of GPU cores in the container.
+             */
+            gpu?: number;
+            /**
+             * The minimum amount of memory (in GB) to be used by the container. More info:
+             * https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+             */
+            memoryInGB?: number;
+            /**
+             * The maximum amount of memory (in GB) allowed to be used by the container. More info:
+             * https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+             */
+            memoryInGBLimit?: number;
+        }
+
+        export interface CosmosDbSettingsResponse {
+            /**
+             * The throughput of the collections in cosmosdb database
+             */
+            collectionsThroughput?: number;
+        }
+
+        /**
          * A DataFactory compute.
          */
         export interface DataFactoryResponse {
@@ -227580,10 +228495,6 @@ export namespace machinelearningservices {
              */
             computeType: "DataFactory";
             /**
-             * The date and time when the compute was created.
-             */
-            createdOn: string;
-            /**
              * The description of the Machine Learning compute.
              */
             description?: string;
@@ -227591,10 +228502,6 @@ export namespace machinelearningservices {
              * Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
              */
             isAttachedCompute: boolean;
-            /**
-             * The date and time when the compute was last modified.
-             */
-            modifiedOn: string;
             /**
              * Errors during provisioning
              */
@@ -227623,10 +228530,6 @@ export namespace machinelearningservices {
              */
             computeType: "DataLakeAnalytics";
             /**
-             * The date and time when the compute was created.
-             */
-            createdOn: string;
-            /**
              * The description of the Machine Learning compute.
              */
             description?: string;
@@ -227634,10 +228537,6 @@ export namespace machinelearningservices {
              * Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
              */
             isAttachedCompute: boolean;
-            /**
-             * The date and time when the compute was last modified.
-             */
-            modifiedOn: string;
             properties?: outputs.machinelearningservices.latest.DataLakeAnalyticsResponseProperties;
             /**
              * Errors during provisioning
@@ -227674,10 +228573,6 @@ export namespace machinelearningservices {
              */
             computeType: "Databricks";
             /**
-             * The date and time when the compute was created.
-             */
-            createdOn: string;
-            /**
              * The description of the Machine Learning compute.
              */
             description?: string;
@@ -227685,10 +228580,6 @@ export namespace machinelearningservices {
              * Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
              */
             isAttachedCompute: boolean;
-            /**
-             * The date and time when the compute was last modified.
-             */
-            modifiedOn: string;
             properties?: outputs.machinelearningservices.latest.DatabricksResponseProperties;
             /**
              * Errors during provisioning
@@ -227709,9 +228600,31 @@ export namespace machinelearningservices {
              * Databricks access token
              */
             databricksAccessToken?: string;
+            /**
+             * Workspace Url
+             */
+            workspaceUrl?: string;
+        }
+
+        /**
+         * The dataset reference object.
+         */
+        export interface DatasetReferenceResponse {
+            /**
+             * The id of the dataset reference.
+             */
+            id?: string;
+            /**
+             * The name of the dataset reference.
+             */
+            name?: string;
         }
 
         export interface EncryptionPropertyResponse {
+            /**
+             * The identity that will be used to access the key vault for encryption at rest.
+             */
+            identity?: outputs.machinelearningservices.latest.IdentityForCmkResponse;
             /**
              * Customer Key vault properties.
              */
@@ -227720,6 +228633,58 @@ export namespace machinelearningservices {
              * Indicates whether or not the encryption is enabled for the workspace.
              */
             status: string;
+        }
+
+        /**
+         * The details of the AZURE ML environment.
+         */
+        export interface EnvironmentImageResponseResponseEnvironment {
+            /**
+             * The definition of a Docker container.
+             */
+            docker?: outputs.machinelearningservices.latest.ModelEnvironmentDefinitionResponseResponseDocker;
+            /**
+             * Definition of environment variables to be defined in the environment.
+             */
+            environmentVariables?: {[key: string]: string};
+            /**
+             * The inferencing stack version added to the image. To avoid adding an inferencing stack, do not set this value. Valid values: "latest".
+             */
+            inferencingStackVersion?: string;
+            /**
+             * The name of the environment.
+             */
+            name?: string;
+            /**
+             * Settings for a Python environment.
+             */
+            python?: outputs.machinelearningservices.latest.ModelEnvironmentDefinitionResponseResponsePython;
+            /**
+             * Settings for a R environment.
+             */
+            r?: outputs.machinelearningservices.latest.ModelEnvironmentDefinitionResponseResponseR;
+            /**
+             * The configuration for a Spark environment.
+             */
+            spark?: outputs.machinelearningservices.latest.ModelEnvironmentDefinitionResponseResponseSpark;
+            /**
+             * The environment version.
+             */
+            version?: string;
+        }
+
+        /**
+         * The unique identifying details of the AZURE ML environment.
+         */
+        export interface EnvironmentImageResponseResponseEnvironmentReference {
+            /**
+             * Name of the environment.
+             */
+            name?: string;
+            /**
+             * Version of the environment.
+             */
+            version?: string;
         }
 
         /**
@@ -227768,10 +228733,6 @@ export namespace machinelearningservices {
              */
             computeType: "HDInsight";
             /**
-             * The date and time when the compute was created.
-             */
-            createdOn: string;
-            /**
              * The description of the Machine Learning compute.
              */
             description?: string;
@@ -227779,10 +228740,6 @@ export namespace machinelearningservices {
              * Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
              */
             isAttachedCompute: boolean;
-            /**
-             * The date and time when the compute was last modified.
-             */
-            modifiedOn: string;
             properties?: outputs.machinelearningservices.latest.HDInsightResponseProperties;
             /**
              * Errors during provisioning
@@ -227814,6 +228771,16 @@ export namespace machinelearningservices {
         }
 
         /**
+         * Identity that will be used to access key vault for encryption at rest
+         */
+        export interface IdentityForCmkResponse {
+            /**
+             * The ArmId of the user assigned identity that will be used to access the customer managed key vault
+             */
+            userAssignedIdentity: string;
+        }
+
+        /**
          * Identity for the resource.
          */
         export interface IdentityResponse {
@@ -227828,22 +228795,33 @@ export namespace machinelearningservices {
             /**
              * The identity type.
              */
-            type: string;
+            type?: string;
             /**
-             * The list of user identities associated with resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+             * The user assigned identities associated with the resource.
              */
-            userAssignedIdentities?: {[key: string]: outputs.machinelearningservices.latest.IdentityResponseUserAssignedIdentities};
+            userAssignedIdentities?: {[key: string]: outputs.machinelearningservices.latest.UserAssignedIdentityResponse};
         }
 
-        export interface IdentityResponseUserAssignedIdentities {
+        /**
+         * An Image asset.
+         */
+        export interface ImageAssetResponse {
             /**
-             * The client id of user assigned identity.
+             * The Asset Id.
              */
-            clientId: string;
+            id?: string;
             /**
-             * The principal id of user assigned identity.
+             * The mime type.
              */
-            principalId: string;
+            mimeType?: string;
+            /**
+             * Whether the Asset is unpacked.
+             */
+            unpack?: boolean;
+            /**
+             * The Url of the Asset.
+             */
+            url?: string;
         }
 
         export interface KeyVaultPropertiesResponse {
@@ -227875,6 +228853,11 @@ export namespace machinelearningservices {
             userAssignedIdentityResourceId?: string;
         }
 
+        export interface ListNotebookKeysResultResponse {
+            primaryAccessKey: string;
+            secondaryAccessKey: string;
+        }
+
         /**
          * Wrapper for error response to follow ARM guidelines.
          */
@@ -227883,6 +228866,197 @@ export namespace machinelearningservices {
              * The error response.
              */
             error: outputs.machinelearningservices.latest.ErrorResponseResponse;
+        }
+
+        /**
+         * Image registry that contains the base image.
+         */
+        export interface ModelDockerSectionResponseResponseBaseImageRegistry {
+            address?: string;
+        }
+
+        /**
+         * The definition of a Docker container.
+         */
+        export interface ModelEnvironmentDefinitionResponseResponseDocker {
+            /**
+             * Base Dockerfile used for Docker-based runs. Mutually exclusive with BaseImage.
+             */
+            baseDockerfile?: string;
+            /**
+             * Base image used for Docker-based runs. Mutually exclusive with BaseDockerfile.
+             */
+            baseImage?: string;
+            /**
+             * Image registry that contains the base image.
+             */
+            baseImageRegistry?: outputs.machinelearningservices.latest.ModelDockerSectionResponseResponseBaseImageRegistry;
+        }
+
+        /**
+         * Settings for a Python environment.
+         */
+        export interface ModelEnvironmentDefinitionResponseResponsePython {
+            baseCondaEnvironment?: string;
+            /**
+             * A JObject containing Conda dependencies.
+             */
+            condaDependencies?: any;
+            /**
+             * The python interpreter path to use if an environment build is not required. The path specified gets used to call the user script.
+             */
+            interpreterPath?: string;
+            /**
+             * True means that AzureML reuses an existing python environment; False means that AzureML will create a python environment based on the Conda dependencies specification.
+             */
+            userManagedDependencies?: boolean;
+        }
+
+        /**
+         * Settings for a R environment.
+         */
+        export interface ModelEnvironmentDefinitionResponseResponseR {
+            /**
+             * The packages from Bioconductor.
+             */
+            bioConductorPackages?: string[];
+            /**
+             * The CRAN packages to use.
+             */
+            cranPackages?: outputs.machinelearningservices.latest.RCranPackageResponse[];
+            /**
+             * The packages from custom urls.
+             */
+            customUrlPackages?: string[];
+            /**
+             * The packages directly from GitHub.
+             */
+            gitHubPackages?: outputs.machinelearningservices.latest.RGitHubPackageResponseResponse[];
+            /**
+             * The version of R to be installed
+             */
+            rVersion?: string;
+            /**
+             * The Rscript path to use if an environment build is not required.
+             * The path specified gets used to call the user script.
+             */
+            rscriptPath?: string;
+            /**
+             * Date of MRAN snapshot to use in YYYY-MM-DD format, e.g. "2019-04-17"
+             */
+            snapshotDate?: string;
+            /**
+             * Indicates whether the environment is managed by user or by AzureML.
+             */
+            userManaged?: boolean;
+        }
+
+        /**
+         * The configuration for a Spark environment.
+         */
+        export interface ModelEnvironmentDefinitionResponseResponseSpark {
+            /**
+             * The Spark packages to use.
+             */
+            packages?: outputs.machinelearningservices.latest.SparkMavenPackageResponse[];
+            /**
+             * Whether to precache the packages.
+             */
+            precachePackages?: boolean;
+            /**
+             * The list of spark repositories.
+             */
+            repositories?: string[];
+        }
+
+        /**
+         * An Azure Machine Learning Model.
+         */
+        export interface ModelResponse {
+            /**
+             * The Model creation time (UTC).
+             */
+            createdTime?: string;
+            /**
+             * The list of datasets associated with the model.
+             */
+            datasets?: outputs.machinelearningservices.latest.DatasetReferenceResponse[];
+            /**
+             * Models derived from this model
+             */
+            derivedModelIds?: string[];
+            /**
+             * The Model description text.
+             */
+            description?: string;
+            /**
+             * The name of the experiment where this model was created.
+             */
+            experimentName?: string;
+            /**
+             * The Model framework.
+             */
+            framework?: string;
+            /**
+             * The Model framework version.
+             */
+            frameworkVersion?: string;
+            /**
+             * The Model Id.
+             */
+            id?: string;
+            /**
+             * The Model tag dictionary. Items are mutable.
+             */
+            kvTags?: {[key: string]: string};
+            /**
+             * The MIME type of Model content. For more details about MIME type, please open https://www.iana.org/assignments/media-types/media-types.xhtml
+             */
+            mimeType: string;
+            /**
+             * The Model last modified time (UTC).
+             */
+            modifiedTime?: string;
+            /**
+             * The Model name.
+             */
+            name: string;
+            /**
+             * The Parent Model Id.
+             */
+            parentModelId?: string;
+            /**
+             * The Model property dictionary. Properties are immutable.
+             */
+            properties?: {[key: string]: string};
+            /**
+             * Resource requirements for the model
+             */
+            resourceRequirements?: outputs.machinelearningservices.latest.ContainerResourceRequirementsResponse;
+            /**
+             * The RunId that created this model.
+             */
+            runId?: string;
+            /**
+             * Sample Input Data for the Model. A reference to a dataset in the workspace in the format aml://dataset/{datasetId}
+             */
+            sampleInputData?: string;
+            /**
+             * Sample Output Data for the Model. A reference to a dataset in the workspace in the format aml://dataset/{datasetId}
+             */
+            sampleOutputData?: string;
+            /**
+             * Indicates whether we need to unpack the Model during docker Image creation.
+             */
+            unpack?: boolean;
+            /**
+             * The URL of the Model. Usually a SAS URL.
+             */
+            url: string;
+            /**
+             * The Model version assigned by Model Management Service.
+             */
+            version?: number;
         }
 
         /**
@@ -227913,11 +229087,6 @@ export namespace machinelearningservices {
              * Number of compute nodes which are in unusable state.
              */
             unusableNodeCount: number;
-        }
-
-        export interface NotebookListCredentialsResultResponse {
-            primaryAccessKey?: string;
-            secondaryAccessKey?: string;
         }
 
         export interface NotebookPreparationErrorResponse {
@@ -227957,11 +229126,19 @@ export namespace machinelearningservices {
          */
         export interface PrivateEndpointConnectionResponse {
             /**
-             * ResourceId of the private endpoint connection.
+             * Specifies the resource ID.
              */
             id: string;
             /**
-             * Friendly name of the private endpoint connection.
+             * The identity of the resource.
+             */
+            identity?: outputs.machinelearningservices.latest.IdentityResponse;
+            /**
+             * Specifies the location of the resource.
+             */
+            location?: string;
+            /**
+             * Specifies the name of the resource.
              */
             name: string;
             /**
@@ -227977,7 +229154,19 @@ export namespace machinelearningservices {
              */
             provisioningState: string;
             /**
-             * Resource type of private endpoint connection.
+             * The sku of the workspace.
+             */
+            sku?: outputs.machinelearningservices.latest.SkuResponse;
+            /**
+             * Read only system data
+             */
+            systemData: outputs.machinelearningservices.latest.SystemDataResponse;
+            /**
+             * Contains resource tags defined as key/value pairs.
+             */
+            tags?: {[key: string]: string};
+            /**
+             * Specifies the type of the resource.
              */
             type: string;
         }
@@ -227990,6 +229179,10 @@ export namespace machinelearningservices {
              * The ARM identifier for Private Endpoint
              */
             id: string;
+            /**
+             * The ARM identifier for Subnet resource that private endpoint links to
+             */
+            subnetArmId: string;
         }
 
         /**
@@ -228008,6 +229201,24 @@ export namespace machinelearningservices {
              * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
              */
             status?: string;
+        }
+
+        export interface RCranPackageResponse {
+            /**
+             * The package name.
+             */
+            name?: string;
+            /**
+             * The repository name.
+             */
+            repository?: string;
+        }
+
+        export interface RGitHubPackageResponseResponse {
+            /**
+             * Repository address in the format username/repo[/subdir][@ref|#pull].
+             */
+            repository?: string;
         }
 
         export interface RegistryListCredentialsResultResponse {
@@ -228042,6 +229253,69 @@ export namespace machinelearningservices {
              * Node Idle Time before scaling down amlCompute. This string needs to be in the RFC Format.
              */
             nodeIdleTimeBeforeScaleDown?: string;
+        }
+
+        /**
+         * Script reference
+         */
+        export interface ScriptReferenceResponse {
+            /**
+             * Optional command line arguments passed to the script to run.
+             */
+            scriptArguments?: string;
+            /**
+             * The location of scripts in the mounted volume.
+             */
+            scriptData?: string;
+            /**
+             * The storage source of the script: inline, workspace.
+             */
+            scriptSource?: string;
+            /**
+             * Optional time period passed to timeout command.
+             */
+            timeout?: string;
+        }
+
+        /**
+         * Customized setup scripts
+         */
+        export interface ScriptsToExecuteResponse {
+            /**
+             * Script that's run only once during provision of the compute.
+             */
+            creationScript?: outputs.machinelearningservices.latest.ScriptReferenceResponse;
+            /**
+             * Script that's run every time the machine starts.
+             */
+            startupScript?: outputs.machinelearningservices.latest.ScriptReferenceResponse;
+        }
+
+        export interface ServiceManagedResourcesSettingsResponse {
+            /**
+             * The settings for the service managed cosmosdb account.
+             */
+            cosmosDb?: outputs.machinelearningservices.latest.CosmosDbSettingsResponse;
+        }
+
+        /**
+         * The error details.
+         */
+        export interface ServiceResponseBaseResponseError {
+            /**
+             * The error response.
+             */
+            error: outputs.machinelearningservices.latest.ErrorResponseResponse;
+        }
+
+        /**
+         * Details of customized scripts to execute for setting up the cluster.
+         */
+        export interface SetupScriptsResponse {
+            /**
+             * Customized setup scripts
+             */
+            scripts?: outputs.machinelearningservices.latest.ScriptsToExecuteResponse;
         }
 
         export interface SharedPrivateLinkResourceResponse {
@@ -228081,6 +229355,12 @@ export namespace machinelearningservices {
             tier?: string;
         }
 
+        export interface SparkMavenPackageResponse {
+            artifact?: string;
+            group?: string;
+            version?: string;
+        }
+
         /**
          * The ssl configuration for scoring
          */
@@ -228101,6 +229381,36 @@ export namespace machinelearningservices {
              * Enable or disable ssl for scoring
              */
             status?: string;
+        }
+
+        /**
+         * Read only system data
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC)
+             */
+            createdAt?: string;
+            /**
+             * An identifier for the identity that created the resource
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource
+             */
+            createdByType?: string;
+            /**
+             * The timestamp of resource last modification (UTC)
+             */
+            lastModifiedAt?: string;
+            /**
+             * An identifier for the identity that last modified the resource
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource
+             */
+            lastModifiedByType?: string;
         }
 
         /**
@@ -228140,6 +229450,34 @@ export namespace machinelearningservices {
         }
 
         /**
+         * User Assigned Identity
+         */
+        export interface UserAssignedIdentityResponse {
+            /**
+             * The clientId(aka appId) of the user assigned identity.
+             */
+            clientId: string;
+            /**
+             * The principal ID of the user assigned identity.
+             */
+            principalId: string;
+            /**
+             * The tenant ID of the user assigned identity.
+             */
+            tenantId: string;
+        }
+
+        /**
+         * Virtual Machine image for Windows AML Compute
+         */
+        export interface VirtualMachineImageResponse {
+            /**
+             * Virtual Machine image path
+             */
+            id: string;
+        }
+
+        /**
          * A Machine Learning compute based on Azure Virtual Machines.
          */
         export interface VirtualMachineResponse {
@@ -228153,10 +229491,6 @@ export namespace machinelearningservices {
              */
             computeType: "VirtualMachine";
             /**
-             * The date and time when the compute was created.
-             */
-            createdOn: string;
-            /**
              * The description of the Machine Learning compute.
              */
             description?: string;
@@ -228164,10 +229498,6 @@ export namespace machinelearningservices {
              * Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
              */
             isAttachedCompute: boolean;
-            /**
-             * The date and time when the compute was last modified.
-             */
-            modifiedOn: string;
             properties?: outputs.machinelearningservices.latest.VirtualMachineResponseProperties;
             /**
              * Errors during provisioning
@@ -243376,7 +244706,7 @@ export namespace machinelearningservices {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -243538,6 +244868,2020 @@ export namespace machinelearningservices {
             username?: string;
         }
     }
+
+    export namespace v20210101 {
+        /**
+         * The response for an ACI service.
+         */
+        export interface ACIServiceResponseResponse {
+            /**
+             * Whether or not Application Insights is enabled.
+             */
+            appInsightsEnabled?: boolean;
+            /**
+             * Whether or not authentication is enabled on the service.
+             */
+            authEnabled?: boolean;
+            /**
+             * The CName for the service.
+             */
+            cname?: string;
+            /**
+             * The compute environment type for the service.
+             * Expected value is 'ACI'.
+             */
+            computeType: "ACI";
+            /**
+             * The container resource requirements.
+             */
+            containerResourceRequirements?: outputs.machinelearningservices.v20210101.ContainerResourceRequirementsResponse;
+            /**
+             * Details of the data collection options specified.
+             */
+            dataCollection?: outputs.machinelearningservices.v20210101.ACIServiceResponseResponseDataCollection;
+            /**
+             * The deployment type for the service.
+             */
+            deploymentType?: string;
+            /**
+             * The service description.
+             */
+            description?: string;
+            /**
+             * The encryption properties.
+             */
+            encryptionProperties?: outputs.machinelearningservices.v20210101.ACIServiceResponseResponseEncryptionProperties;
+            /**
+             * The Environment, models and assets used for inferencing.
+             */
+            environmentImageRequest?: outputs.machinelearningservices.v20210101.ACIServiceResponseResponseEnvironmentImageRequest;
+            /**
+             * The error details.
+             */
+            error: outputs.machinelearningservices.v20210101.ServiceResponseBaseResponseError;
+            /**
+             * The service tag dictionary. Tags are mutable.
+             */
+            kvTags?: {[key: string]: string};
+            /**
+             * The name of the Azure location/region.
+             */
+            location?: string;
+            /**
+             * Details on the models and configurations.
+             */
+            modelConfigMap: {[key: string]: any};
+            /**
+             * The list of models.
+             */
+            models?: outputs.machinelearningservices.v20210101.ModelResponse[];
+            /**
+             * The service property dictionary. Properties are immutable.
+             */
+            properties?: {[key: string]: string};
+            /**
+             * The public Fqdn for the service.
+             */
+            publicFqdn?: string;
+            /**
+             * The public IP address for the service.
+             */
+            publicIp?: string;
+            /**
+             * The Uri for sending scoring requests.
+             */
+            scoringUri: string;
+            /**
+             * The public SSL certificate in PEM format to use if SSL is enabled.
+             */
+            sslCertificate?: string;
+            /**
+             * Whether or not SSL is enabled.
+             */
+            sslEnabled?: boolean;
+            /**
+             * The public SSL key in PEM format for the certificate.
+             */
+            sslKey?: string;
+            /**
+             * The current state of the service.
+             */
+            state: string;
+            /**
+             * The Uri for sending swagger requests.
+             */
+            swaggerUri: string;
+            /**
+             * The virtual network configuration.
+             */
+            vnetConfiguration?: outputs.machinelearningservices.v20210101.ACIServiceResponseResponseVnetConfiguration;
+        }
+
+        /**
+         * Details of the data collection options specified.
+         */
+        export interface ACIServiceResponseResponseDataCollection {
+            /**
+             * Option for enabling/disabling Event Hub.
+             */
+            eventHubEnabled?: boolean;
+            /**
+             * Option for enabling/disabling storage.
+             */
+            storageEnabled?: boolean;
+        }
+
+        /**
+         * The encryption properties.
+         */
+        export interface ACIServiceResponseResponseEncryptionProperties {
+            /**
+             * Encryption Key name
+             */
+            keyName: string;
+            /**
+             * Encryption Key Version
+             */
+            keyVersion: string;
+            /**
+             * vault base Url
+             */
+            vaultBaseUrl: string;
+        }
+
+        /**
+         * The Environment, models and assets used for inferencing.
+         */
+        export interface ACIServiceResponseResponseEnvironmentImageRequest {
+            /**
+             * The list of assets.
+             */
+            assets?: outputs.machinelearningservices.v20210101.ImageAssetResponse[];
+            /**
+             * The name of the driver file.
+             */
+            driverProgram?: string;
+            /**
+             * The details of the AZURE ML environment.
+             */
+            environment?: outputs.machinelearningservices.v20210101.EnvironmentImageResponseResponseEnvironment;
+            /**
+             * The unique identifying details of the AZURE ML environment.
+             */
+            environmentReference?: outputs.machinelearningservices.v20210101.EnvironmentImageResponseResponseEnvironmentReference;
+            /**
+             * The list of model Ids.
+             */
+            modelIds?: string[];
+            /**
+             * The list of models.
+             */
+            models?: outputs.machinelearningservices.v20210101.ModelResponse[];
+        }
+
+        /**
+         * The virtual network configuration.
+         */
+        export interface ACIServiceResponseResponseVnetConfiguration {
+            /**
+             * The name of the virtual network subnet.
+             */
+            subnetName?: string;
+            /**
+             * The name of the virtual network.
+             */
+            vnetName?: string;
+        }
+
+        /**
+         * The error details.
+         */
+        export interface AKSReplicaStatusResponseError {
+            /**
+             * The error response.
+             */
+            error: outputs.machinelearningservices.v20210101.ErrorResponseResponse;
+        }
+
+        /**
+         * A Machine Learning compute based on AKS.
+         */
+        export interface AKSResponse {
+            /**
+             * Location for the underlying compute
+             */
+            computeLocation?: string;
+            /**
+             * The type of compute
+             * Expected value is 'AKS'.
+             */
+            computeType: "AKS";
+            /**
+             * The description of the Machine Learning compute.
+             */
+            description?: string;
+            /**
+             * Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
+             */
+            isAttachedCompute: boolean;
+            /**
+             * AKS properties
+             */
+            properties?: outputs.machinelearningservices.v20210101.AKSResponseProperties;
+            /**
+             * Errors during provisioning
+             */
+            provisioningErrors: outputs.machinelearningservices.v20210101.MachineLearningServiceErrorResponse[];
+            /**
+             * The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
+             */
+            provisioningState: string;
+            /**
+             * ARM resource id of the underlying compute
+             */
+            resourceId?: string;
+        }
+
+        /**
+         * AKS properties
+         */
+        export interface AKSResponseProperties {
+            /**
+             * Number of agents
+             */
+            agentCount?: number;
+            /**
+             * Agent virtual machine size
+             */
+            agentVmSize?: string;
+            /**
+             * AKS networking configuration for vnet
+             */
+            aksNetworkingConfiguration?: outputs.machinelearningservices.v20210101.AksNetworkingConfigurationResponse;
+            /**
+             * Cluster full qualified domain name
+             */
+            clusterFqdn?: string;
+            /**
+             * Intended usage of the cluster
+             */
+            clusterPurpose?: string;
+            /**
+             * SSL configuration
+             */
+            sslConfiguration?: outputs.machinelearningservices.v20210101.SslConfigurationResponse;
+            /**
+             * System services
+             */
+            systemServices: outputs.machinelearningservices.v20210101.SystemServiceResponse[];
+        }
+
+        /**
+         * The response for an AKS service.
+         */
+        export interface AKSServiceResponseResponse {
+            /**
+             * Whether or not AAD authentication is enabled.
+             */
+            aadAuthEnabled?: boolean;
+            /**
+             * Whether or not Application Insights is enabled.
+             */
+            appInsightsEnabled?: boolean;
+            /**
+             * Whether or not authentication is enabled.
+             */
+            authEnabled?: boolean;
+            /**
+             * The auto scaler properties.
+             */
+            autoScaler?: outputs.machinelearningservices.v20210101.AKSServiceResponseResponseAutoScaler;
+            /**
+             * The name of the compute resource.
+             */
+            computeName?: string;
+            /**
+             * The compute environment type for the service.
+             * Expected value is 'Custom'.
+             */
+            computeType: "Custom";
+            /**
+             * The container resource requirements.
+             */
+            containerResourceRequirements?: outputs.machinelearningservices.v20210101.ContainerResourceRequirementsResponse;
+            /**
+             * Details of the data collection options specified.
+             */
+            dataCollection?: outputs.machinelearningservices.v20210101.AKSServiceResponseResponseDataCollection;
+            /**
+             * The deployment status.
+             */
+            deploymentStatus: outputs.machinelearningservices.v20210101.AKSServiceResponseResponseDeploymentStatus;
+            /**
+             * The deployment type for the service.
+             */
+            deploymentType?: string;
+            /**
+             * The service description.
+             */
+            description?: string;
+            /**
+             * The Environment, models and assets used for inferencing.
+             */
+            environmentImageRequest?: outputs.machinelearningservices.v20210101.AKSServiceResponseResponseEnvironmentImageRequest;
+            /**
+             * The error details.
+             */
+            error: outputs.machinelearningservices.v20210101.ServiceResponseBaseResponseError;
+            /**
+             * Is this the default variant.
+             */
+            isDefault?: boolean;
+            /**
+             * The service tag dictionary. Tags are mutable.
+             */
+            kvTags?: {[key: string]: string};
+            /**
+             * The liveness probe requirements.
+             */
+            livenessProbeRequirements?: outputs.machinelearningservices.v20210101.AKSServiceResponseResponseLivenessProbeRequirements;
+            /**
+             * The maximum number of concurrent requests per container.
+             */
+            maxConcurrentRequestsPerContainer?: number;
+            /**
+             * Maximum time a request will wait in the queue (in milliseconds). After this time, the service will return 503 (Service Unavailable)
+             */
+            maxQueueWaitMs?: number;
+            /**
+             * Details on the models and configurations.
+             */
+            modelConfigMap: {[key: string]: any};
+            /**
+             * The list of models.
+             */
+            models?: outputs.machinelearningservices.v20210101.ModelResponse[];
+            /**
+             * The Kubernetes namespace of the deployment.
+             */
+            namespace?: string;
+            /**
+             * The number of replicas on the cluster.
+             */
+            numReplicas?: number;
+            /**
+             * The service property dictionary. Properties are immutable.
+             */
+            properties?: {[key: string]: string};
+            /**
+             * The scoring timeout in milliseconds.
+             */
+            scoringTimeoutMs?: number;
+            /**
+             * The Uri for sending scoring requests.
+             */
+            scoringUri: string;
+            /**
+             * The current state of the service.
+             */
+            state: string;
+            /**
+             * The Uri for sending swagger requests.
+             */
+            swaggerUri: string;
+            /**
+             * The amount of traffic variant receives.
+             */
+            trafficPercentile?: number;
+            /**
+             * The type of the variant.
+             */
+            type?: string;
+        }
+
+        /**
+         * The auto scaler properties.
+         */
+        export interface AKSServiceResponseResponseAutoScaler {
+            /**
+             * Option to enable/disable auto scaling.
+             */
+            autoscaleEnabled?: boolean;
+            /**
+             * The maximum number of replicas in the cluster.
+             */
+            maxReplicas?: number;
+            /**
+             * The minimum number of replicas to scale down to.
+             */
+            minReplicas?: number;
+            /**
+             * The amount of seconds to wait between auto scale updates.
+             */
+            refreshPeriodInSeconds?: number;
+            /**
+             * The target utilization percentage to use for determining whether to scale the cluster.
+             */
+            targetUtilization?: number;
+        }
+
+        /**
+         * Details of the data collection options specified.
+         */
+        export interface AKSServiceResponseResponseDataCollection {
+            /**
+             * Option for enabling/disabling Event Hub.
+             */
+            eventHubEnabled?: boolean;
+            /**
+             * Option for enabling/disabling storage.
+             */
+            storageEnabled?: boolean;
+        }
+
+        /**
+         * The deployment status.
+         */
+        export interface AKSServiceResponseResponseDeploymentStatus {
+            /**
+             * The number of available replicas.
+             */
+            availableReplicas?: number;
+            /**
+             * The desired number of replicas.
+             */
+            desiredReplicas?: number;
+            /**
+             * The error details.
+             */
+            error?: outputs.machinelearningservices.v20210101.AKSReplicaStatusResponseError;
+            /**
+             * The number of updated replicas.
+             */
+            updatedReplicas?: number;
+        }
+
+        /**
+         * The Environment, models and assets used for inferencing.
+         */
+        export interface AKSServiceResponseResponseEnvironmentImageRequest {
+            /**
+             * The list of assets.
+             */
+            assets?: outputs.machinelearningservices.v20210101.ImageAssetResponse[];
+            /**
+             * The name of the driver file.
+             */
+            driverProgram?: string;
+            /**
+             * The details of the AZURE ML environment.
+             */
+            environment?: outputs.machinelearningservices.v20210101.EnvironmentImageResponseResponseEnvironment;
+            /**
+             * The unique identifying details of the AZURE ML environment.
+             */
+            environmentReference?: outputs.machinelearningservices.v20210101.EnvironmentImageResponseResponseEnvironmentReference;
+            /**
+             * The list of model Ids.
+             */
+            modelIds?: string[];
+            /**
+             * The list of models.
+             */
+            models?: outputs.machinelearningservices.v20210101.ModelResponse[];
+        }
+
+        /**
+         * The liveness probe requirements.
+         */
+        export interface AKSServiceResponseResponseLivenessProbeRequirements {
+            /**
+             * The number of failures to allow before returning an unhealthy status.
+             */
+            failureThreshold?: number;
+            /**
+             * The delay before the first probe in seconds.
+             */
+            initialDelaySeconds?: number;
+            /**
+             * The length of time between probes in seconds.
+             */
+            periodSeconds?: number;
+            /**
+             * The number of successful probes before returning a healthy status.
+             */
+            successThreshold?: number;
+            /**
+             * The probe timeout in seconds.
+             */
+            timeoutSeconds?: number;
+        }
+
+        /**
+         * The response for an AKS variant.
+         */
+        export interface AKSVariantResponseResponse {
+            /**
+             * The compute environment type for the service.
+             * Expected value is 'Custom'.
+             */
+            computeType: "Custom";
+            /**
+             * The deployment type for the service.
+             */
+            deploymentType?: string;
+            /**
+             * The service description.
+             */
+            description?: string;
+            /**
+             * The error details.
+             */
+            error: outputs.machinelearningservices.v20210101.ServiceResponseBaseResponseError;
+            /**
+             * Is this the default variant.
+             */
+            isDefault?: boolean;
+            /**
+             * The service tag dictionary. Tags are mutable.
+             */
+            kvTags?: {[key: string]: string};
+            /**
+             * The service property dictionary. Properties are immutable.
+             */
+            properties?: {[key: string]: string};
+            /**
+             * The current state of the service.
+             */
+            state: string;
+            /**
+             * The amount of traffic variant receives.
+             */
+            trafficPercentile?: number;
+            /**
+             * The type of the variant.
+             */
+            type?: string;
+        }
+
+        /**
+         * Advance configuration for AKS networking
+         */
+        export interface AksNetworkingConfigurationResponse {
+            /**
+             * An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr.
+             */
+            dnsServiceIP?: string;
+            /**
+             * A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes service address range.
+             */
+            dockerBridgeCidr?: string;
+            /**
+             * A CIDR notation IP range from which to assign service cluster IPs. It must not overlap with any Subnet IP ranges.
+             */
+            serviceCidr?: string;
+            /**
+             * Virtual network subnet resource ID the compute nodes belong to
+             */
+            subnetId?: string;
+        }
+
+        /**
+         * Compute node information related to a AmlCompute.
+         */
+        export interface AmlComputeNodeInformationResponse {
+            /**
+             * ID of the compute node.
+             */
+            nodeId: string;
+            /**
+             * State of the compute node. Values are idle, running, preparing, unusable, leaving and preempted.
+             */
+            nodeState: string;
+            /**
+             * SSH port number of the node.
+             */
+            port: number;
+            /**
+             * Private IP address of the compute node.
+             */
+            privateIpAddress: string;
+            /**
+             * Public IP address of the compute node.
+             */
+            publicIpAddress: string;
+            /**
+             * ID of the Experiment running on the node, if any else null.
+             */
+            runId: string;
+        }
+
+        /**
+         * An Azure Machine Learning compute.
+         */
+        export interface AmlComputeResponse {
+            /**
+             * Location for the underlying compute
+             */
+            computeLocation?: string;
+            /**
+             * The type of compute
+             * Expected value is 'AmlCompute'.
+             */
+            computeType: "AmlCompute";
+            /**
+             * The description of the Machine Learning compute.
+             */
+            description?: string;
+            /**
+             * Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
+             */
+            isAttachedCompute: boolean;
+            /**
+             * AML Compute properties
+             */
+            properties?: outputs.machinelearningservices.v20210101.AmlComputeResponseProperties;
+            /**
+             * Errors during provisioning
+             */
+            provisioningErrors: outputs.machinelearningservices.v20210101.MachineLearningServiceErrorResponse[];
+            /**
+             * The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
+             */
+            provisioningState: string;
+            /**
+             * ARM resource id of the underlying compute
+             */
+            resourceId?: string;
+        }
+
+        /**
+         * AML Compute properties
+         */
+        export interface AmlComputeResponseProperties {
+            /**
+             * Allocation state of the compute. Possible values are: steady - Indicates that the compute is not resizing. There are no changes to the number of compute nodes in the compute in progress. A compute enters this state when it is created and when no operations are being performed on the compute to change the number of compute nodes. resizing - Indicates that the compute is resizing; that is, compute nodes are being added to or removed from the compute.
+             */
+            allocationState: string;
+            /**
+             * The time at which the compute entered its current allocation state.
+             */
+            allocationStateTransitionTime: string;
+            /**
+             * The number of compute nodes currently assigned to the compute.
+             */
+            currentNodeCount: number;
+            /**
+             * Enable or disable node public IP address provisioning. Possible values are: Possible values are: true - Indicates that the compute nodes will have public IPs provisioned. false - Indicates that the compute nodes will have a private endpoint and no public IPs.
+             */
+            enableNodePublicIp?: boolean;
+            /**
+             * Collection of errors encountered by various compute nodes during node setup.
+             */
+            errors: outputs.machinelearningservices.v20210101.MachineLearningServiceErrorResponse[];
+            /**
+             * Network is isolated or not
+             */
+            isolatedNetwork?: boolean;
+            /**
+             * Counts of various node states on the compute.
+             */
+            nodeStateCounts: outputs.machinelearningservices.v20210101.NodeStateCountsResponse;
+            /**
+             * Compute OS Type
+             */
+            osType?: string;
+            /**
+             * State of the public SSH port. Possible values are: Disabled - Indicates that the public ssh port is closed on all nodes of the cluster. Enabled - Indicates that the public ssh port is open on all nodes of the cluster. NotSpecified - Indicates that the public ssh port is closed on all nodes of the cluster if VNet is defined, else is open all public nodes. It can be default only during cluster creation time, after creation it will be either enabled or disabled.
+             */
+            remoteLoginPortPublicAccess?: string;
+            /**
+             * Scale settings for AML Compute
+             */
+            scaleSettings?: outputs.machinelearningservices.v20210101.ScaleSettingsResponse;
+            /**
+             * Virtual network subnet resource ID the compute nodes belong to.
+             */
+            subnet?: outputs.machinelearningservices.v20210101.ResourceIdResponse;
+            /**
+             * The target number of compute nodes for the compute. If the allocationState is resizing, this property denotes the target node count for the ongoing resize operation. If the allocationState is steady, this property denotes the target node count for the previous resize operation.
+             */
+            targetNodeCount: number;
+            /**
+             * Credentials for an administrator user account that will be created on each compute node.
+             */
+            userAccountCredentials?: outputs.machinelearningservices.v20210101.UserAccountCredentialsResponse;
+            /**
+             * Virtual Machine image for AML Compute - windows only
+             */
+            virtualMachineImage?: outputs.machinelearningservices.v20210101.VirtualMachineImageResponse;
+            /**
+             * Virtual Machine priority
+             */
+            vmPriority?: string;
+            /**
+             * Virtual Machine Size
+             */
+            vmSize?: string;
+        }
+
+        /**
+         * A user that can be assigned to a compute instance.
+         */
+        export interface AssignedUserResponse {
+            /**
+             * User’s AAD Object Id.
+             */
+            objectId: string;
+            /**
+             * User’s AAD Tenant Id.
+             */
+            tenantId: string;
+        }
+
+        /**
+         * Defines an Aml Instance application and its connectivity endpoint URI.
+         */
+        export interface ComputeInstanceApplicationResponse {
+            /**
+             * Name of the ComputeInstance application.
+             */
+            displayName?: string;
+            /**
+             * Application' endpoint URI.
+             */
+            endpointUri?: string;
+        }
+
+        /**
+         * Defines all connectivity endpoints and properties for an ComputeInstance.
+         */
+        export interface ComputeInstanceConnectivityEndpointsResponse {
+            /**
+             * Private IP Address of this ComputeInstance (local to the VNET in which the compute instance is deployed).
+             */
+            privateIpAddress: string;
+            /**
+             * Public IP Address of this ComputeInstance.
+             */
+            publicIpAddress: string;
+        }
+
+        /**
+         * Describes information on user who created this ComputeInstance.
+         */
+        export interface ComputeInstanceCreatedByResponse {
+            /**
+             * Uniquely identifies the user within his/her organization.
+             */
+            userId: string;
+            /**
+             * Name of the user.
+             */
+            userName: string;
+            /**
+             * Uniquely identifies user' Azure Active Directory organization.
+             */
+            userOrgId: string;
+        }
+
+        /**
+         * The last operation on ComputeInstance.
+         */
+        export interface ComputeInstanceLastOperationResponse {
+            /**
+             * Name of the last operation.
+             */
+            operationName?: string;
+            /**
+             * Operation status.
+             */
+            operationStatus?: string;
+            /**
+             * Time of the last operation.
+             */
+            operationTime?: string;
+        }
+
+        /**
+         * An Azure Machine Learning compute instance.
+         */
+        export interface ComputeInstanceResponse {
+            /**
+             * Location for the underlying compute
+             */
+            computeLocation?: string;
+            /**
+             * The type of compute
+             * Expected value is 'ComputeInstance'.
+             */
+            computeType: "ComputeInstance";
+            /**
+             * The description of the Machine Learning compute.
+             */
+            description?: string;
+            /**
+             * Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
+             */
+            isAttachedCompute: boolean;
+            /**
+             * Compute Instance properties
+             */
+            properties?: outputs.machinelearningservices.v20210101.ComputeInstanceResponseProperties;
+            /**
+             * Errors during provisioning
+             */
+            provisioningErrors: outputs.machinelearningservices.v20210101.MachineLearningServiceErrorResponse[];
+            /**
+             * The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
+             */
+            provisioningState: string;
+            /**
+             * ARM resource id of the underlying compute
+             */
+            resourceId?: string;
+        }
+
+        /**
+         * Compute Instance properties
+         */
+        export interface ComputeInstanceResponseProperties {
+            /**
+             * Policy for sharing applications on this compute instance among users of parent workspace. If Personal, only the creator can access applications on this compute instance. When Shared, any workspace user can access applications on this instance depending on his/her assigned role.
+             */
+            applicationSharingPolicy?: string;
+            /**
+             * Describes available applications and their endpoints on this ComputeInstance.
+             */
+            applications: outputs.machinelearningservices.v20210101.ComputeInstanceApplicationResponse[];
+            /**
+             * The Compute Instance Authorization type. Available values are personal (default).
+             */
+            computeInstanceAuthorizationType?: string;
+            /**
+             * Describes all connectivity endpoints available for this ComputeInstance.
+             */
+            connectivityEndpoints: outputs.machinelearningservices.v20210101.ComputeInstanceConnectivityEndpointsResponse;
+            /**
+             * Describes information on user who created this ComputeInstance.
+             */
+            createdBy: outputs.machinelearningservices.v20210101.ComputeInstanceCreatedByResponse;
+            /**
+             * Collection of errors encountered on this ComputeInstance.
+             */
+            errors: outputs.machinelearningservices.v20210101.MachineLearningServiceErrorResponse[];
+            /**
+             * The last operation on ComputeInstance.
+             */
+            lastOperation: outputs.machinelearningservices.v20210101.ComputeInstanceLastOperationResponse;
+            /**
+             * Settings for a personal compute instance.
+             */
+            personalComputeInstanceSettings?: outputs.machinelearningservices.v20210101.PersonalComputeInstanceSettingsResponse;
+            /**
+             * Details of customized scripts to execute for setting up the cluster.
+             */
+            setupScripts?: outputs.machinelearningservices.v20210101.SetupScriptsResponse;
+            /**
+             * Specifies policy and settings for SSH access.
+             */
+            sshSettings?: outputs.machinelearningservices.v20210101.ComputeInstanceSshSettingsResponse;
+            /**
+             * The current state of this ComputeInstance.
+             */
+            state: string;
+            /**
+             * Virtual network subnet resource ID the compute nodes belong to.
+             */
+            subnet?: outputs.machinelearningservices.v20210101.ResourceIdResponse;
+            /**
+             * Virtual Machine Size
+             */
+            vmSize?: string;
+        }
+
+        /**
+         * Specifies policy and settings for SSH access.
+         */
+        export interface ComputeInstanceSshSettingsResponse {
+            /**
+             * Specifies the SSH rsa public key file as a string. Use "ssh-keygen -t rsa -b 2048" to generate your SSH key pairs.
+             */
+            adminPublicKey?: string;
+            /**
+             * Describes the admin user name.
+             */
+            adminUserName: string;
+            /**
+             * Describes the port for connecting through SSH.
+             */
+            sshPort: number;
+            /**
+             * State of the public SSH port. Possible values are: Disabled - Indicates that the public ssh port is closed on this instance. Enabled - Indicates that the public ssh port is open and accessible according to the VNet/subnet policy if applicable.
+             */
+            sshPublicAccess?: string;
+        }
+
+        /**
+         * The resource requirements for the container (cpu and memory).
+         */
+        export interface ContainerResourceRequirementsResponse {
+            /**
+             * The minimum amount of CPU cores to be used by the container. More info:
+             * https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+             */
+            cpu?: number;
+            /**
+             * The maximum amount of CPU cores allowed to be used by the container. More info:
+             * https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+             */
+            cpuLimit?: number;
+            /**
+             * The number of FPGA PCIE devices exposed to the container. Must be multiple of 2.
+             */
+            fpga?: number;
+            /**
+             * The number of GPU cores in the container.
+             */
+            gpu?: number;
+            /**
+             * The minimum amount of memory (in GB) to be used by the container. More info:
+             * https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+             */
+            memoryInGB?: number;
+            /**
+             * The maximum amount of memory (in GB) allowed to be used by the container. More info:
+             * https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+             */
+            memoryInGBLimit?: number;
+        }
+
+        export interface CosmosDbSettingsResponse {
+            /**
+             * The throughput of the collections in cosmosdb database
+             */
+            collectionsThroughput?: number;
+        }
+
+        /**
+         * A DataFactory compute.
+         */
+        export interface DataFactoryResponse {
+            /**
+             * Location for the underlying compute
+             */
+            computeLocation?: string;
+            /**
+             * The type of compute
+             * Expected value is 'DataFactory'.
+             */
+            computeType: "DataFactory";
+            /**
+             * The description of the Machine Learning compute.
+             */
+            description?: string;
+            /**
+             * Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
+             */
+            isAttachedCompute: boolean;
+            /**
+             * Errors during provisioning
+             */
+            provisioningErrors: outputs.machinelearningservices.v20210101.MachineLearningServiceErrorResponse[];
+            /**
+             * The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
+             */
+            provisioningState: string;
+            /**
+             * ARM resource id of the underlying compute
+             */
+            resourceId?: string;
+        }
+
+        /**
+         * A DataLakeAnalytics compute.
+         */
+        export interface DataLakeAnalyticsResponse {
+            /**
+             * Location for the underlying compute
+             */
+            computeLocation?: string;
+            /**
+             * The type of compute
+             * Expected value is 'DataLakeAnalytics'.
+             */
+            computeType: "DataLakeAnalytics";
+            /**
+             * The description of the Machine Learning compute.
+             */
+            description?: string;
+            /**
+             * Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
+             */
+            isAttachedCompute: boolean;
+            properties?: outputs.machinelearningservices.v20210101.DataLakeAnalyticsResponseProperties;
+            /**
+             * Errors during provisioning
+             */
+            provisioningErrors: outputs.machinelearningservices.v20210101.MachineLearningServiceErrorResponse[];
+            /**
+             * The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
+             */
+            provisioningState: string;
+            /**
+             * ARM resource id of the underlying compute
+             */
+            resourceId?: string;
+        }
+
+        export interface DataLakeAnalyticsResponseProperties {
+            /**
+             * DataLake Store Account Name
+             */
+            dataLakeStoreAccountName?: string;
+        }
+
+        /**
+         * A DataFactory compute.
+         */
+        export interface DatabricksResponse {
+            /**
+             * Location for the underlying compute
+             */
+            computeLocation?: string;
+            /**
+             * The type of compute
+             * Expected value is 'Databricks'.
+             */
+            computeType: "Databricks";
+            /**
+             * The description of the Machine Learning compute.
+             */
+            description?: string;
+            /**
+             * Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
+             */
+            isAttachedCompute: boolean;
+            properties?: outputs.machinelearningservices.v20210101.DatabricksResponseProperties;
+            /**
+             * Errors during provisioning
+             */
+            provisioningErrors: outputs.machinelearningservices.v20210101.MachineLearningServiceErrorResponse[];
+            /**
+             * The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
+             */
+            provisioningState: string;
+            /**
+             * ARM resource id of the underlying compute
+             */
+            resourceId?: string;
+        }
+
+        export interface DatabricksResponseProperties {
+            /**
+             * Databricks access token
+             */
+            databricksAccessToken?: string;
+            /**
+             * Workspace Url
+             */
+            workspaceUrl?: string;
+        }
+
+        /**
+         * The dataset reference object.
+         */
+        export interface DatasetReferenceResponse {
+            /**
+             * The id of the dataset reference.
+             */
+            id?: string;
+            /**
+             * The name of the dataset reference.
+             */
+            name?: string;
+        }
+
+        export interface EncryptionPropertyResponse {
+            /**
+             * The identity that will be used to access the key vault for encryption at rest.
+             */
+            identity?: outputs.machinelearningservices.v20210101.IdentityForCmkResponse;
+            /**
+             * Customer Key vault properties.
+             */
+            keyVaultProperties: outputs.machinelearningservices.v20210101.KeyVaultPropertiesResponse;
+            /**
+             * Indicates whether or not the encryption is enabled for the workspace.
+             */
+            status: string;
+        }
+
+        /**
+         * The details of the AZURE ML environment.
+         */
+        export interface EnvironmentImageResponseResponseEnvironment {
+            /**
+             * The definition of a Docker container.
+             */
+            docker?: outputs.machinelearningservices.v20210101.ModelEnvironmentDefinitionResponseResponseDocker;
+            /**
+             * Definition of environment variables to be defined in the environment.
+             */
+            environmentVariables?: {[key: string]: string};
+            /**
+             * The inferencing stack version added to the image. To avoid adding an inferencing stack, do not set this value. Valid values: "latest".
+             */
+            inferencingStackVersion?: string;
+            /**
+             * The name of the environment.
+             */
+            name?: string;
+            /**
+             * Settings for a Python environment.
+             */
+            python?: outputs.machinelearningservices.v20210101.ModelEnvironmentDefinitionResponseResponsePython;
+            /**
+             * Settings for a R environment.
+             */
+            r?: outputs.machinelearningservices.v20210101.ModelEnvironmentDefinitionResponseResponseR;
+            /**
+             * The configuration for a Spark environment.
+             */
+            spark?: outputs.machinelearningservices.v20210101.ModelEnvironmentDefinitionResponseResponseSpark;
+            /**
+             * The environment version.
+             */
+            version?: string;
+        }
+
+        /**
+         * The unique identifying details of the AZURE ML environment.
+         */
+        export interface EnvironmentImageResponseResponseEnvironmentReference {
+            /**
+             * Name of the environment.
+             */
+            name?: string;
+            /**
+             * Version of the environment.
+             */
+            version?: string;
+        }
+
+        /**
+         * Error detail information.
+         */
+        export interface ErrorDetailResponse {
+            /**
+             * Error code.
+             */
+            code: string;
+            /**
+             * Error message.
+             */
+            message: string;
+        }
+
+        /**
+         * Error response information.
+         */
+        export interface ErrorResponseResponse {
+            /**
+             * Error code.
+             */
+            code: string;
+            /**
+             * An array of error detail objects.
+             */
+            details: outputs.machinelearningservices.v20210101.ErrorDetailResponse[];
+            /**
+             * Error message.
+             */
+            message: string;
+        }
+
+        /**
+         * A HDInsight compute.
+         */
+        export interface HDInsightResponse {
+            /**
+             * Location for the underlying compute
+             */
+            computeLocation?: string;
+            /**
+             * The type of compute
+             * Expected value is 'HDInsight'.
+             */
+            computeType: "HDInsight";
+            /**
+             * The description of the Machine Learning compute.
+             */
+            description?: string;
+            /**
+             * Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
+             */
+            isAttachedCompute: boolean;
+            properties?: outputs.machinelearningservices.v20210101.HDInsightResponseProperties;
+            /**
+             * Errors during provisioning
+             */
+            provisioningErrors: outputs.machinelearningservices.v20210101.MachineLearningServiceErrorResponse[];
+            /**
+             * The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
+             */
+            provisioningState: string;
+            /**
+             * ARM resource id of the underlying compute
+             */
+            resourceId?: string;
+        }
+
+        export interface HDInsightResponseProperties {
+            /**
+             * Public IP address of the master node of the cluster.
+             */
+            address?: string;
+            /**
+             * Admin credentials for master node of the cluster
+             */
+            administratorAccount?: outputs.machinelearningservices.v20210101.VirtualMachineSshCredentialsResponse;
+            /**
+             * Port open for ssh connections on the master node of the cluster.
+             */
+            sshPort?: number;
+        }
+
+        /**
+         * Identity that will be used to access key vault for encryption at rest
+         */
+        export interface IdentityForCmkResponse {
+            /**
+             * The ArmId of the user assigned identity that will be used to access the customer managed key vault
+             */
+            userAssignedIdentity: string;
+        }
+
+        /**
+         * Identity for the resource.
+         */
+        export interface IdentityResponse {
+            /**
+             * The principal ID of resource identity.
+             */
+            principalId: string;
+            /**
+             * The tenant ID of resource.
+             */
+            tenantId: string;
+            /**
+             * The identity type.
+             */
+            type?: string;
+            /**
+             * The user assigned identities associated with the resource.
+             */
+            userAssignedIdentities?: {[key: string]: outputs.machinelearningservices.v20210101.UserAssignedIdentityResponse};
+        }
+
+        /**
+         * An Image asset.
+         */
+        export interface ImageAssetResponse {
+            /**
+             * The Asset Id.
+             */
+            id?: string;
+            /**
+             * The mime type.
+             */
+            mimeType?: string;
+            /**
+             * Whether the Asset is unpacked.
+             */
+            unpack?: boolean;
+            /**
+             * The Url of the Asset.
+             */
+            url?: string;
+        }
+
+        export interface KeyVaultPropertiesResponse {
+            /**
+             * For future use - The client id of the identity which will be used to access key vault.
+             */
+            identityClientId?: string;
+            /**
+             * Key vault uri to access the encryption key.
+             */
+            keyIdentifier: string;
+            /**
+             * The ArmId of the keyVault where the customer owned encryption key is present.
+             */
+            keyVaultArmId: string;
+        }
+
+        export interface ListNotebookKeysResultResponse {
+            primaryAccessKey: string;
+            secondaryAccessKey: string;
+        }
+
+        /**
+         * Wrapper for error response to follow ARM guidelines.
+         */
+        export interface MachineLearningServiceErrorResponse {
+            /**
+             * The error response.
+             */
+            error: outputs.machinelearningservices.v20210101.ErrorResponseResponse;
+        }
+
+        /**
+         * Image registry that contains the base image.
+         */
+        export interface ModelDockerSectionResponseResponseBaseImageRegistry {
+            address?: string;
+        }
+
+        /**
+         * The definition of a Docker container.
+         */
+        export interface ModelEnvironmentDefinitionResponseResponseDocker {
+            /**
+             * Base Dockerfile used for Docker-based runs. Mutually exclusive with BaseImage.
+             */
+            baseDockerfile?: string;
+            /**
+             * Base image used for Docker-based runs. Mutually exclusive with BaseDockerfile.
+             */
+            baseImage?: string;
+            /**
+             * Image registry that contains the base image.
+             */
+            baseImageRegistry?: outputs.machinelearningservices.v20210101.ModelDockerSectionResponseResponseBaseImageRegistry;
+        }
+
+        /**
+         * Settings for a Python environment.
+         */
+        export interface ModelEnvironmentDefinitionResponseResponsePython {
+            baseCondaEnvironment?: string;
+            /**
+             * A JObject containing Conda dependencies.
+             */
+            condaDependencies?: any;
+            /**
+             * The python interpreter path to use if an environment build is not required. The path specified gets used to call the user script.
+             */
+            interpreterPath?: string;
+            /**
+             * True means that AzureML reuses an existing python environment; False means that AzureML will create a python environment based on the Conda dependencies specification.
+             */
+            userManagedDependencies?: boolean;
+        }
+
+        /**
+         * Settings for a R environment.
+         */
+        export interface ModelEnvironmentDefinitionResponseResponseR {
+            /**
+             * The packages from Bioconductor.
+             */
+            bioConductorPackages?: string[];
+            /**
+             * The CRAN packages to use.
+             */
+            cranPackages?: outputs.machinelearningservices.v20210101.RCranPackageResponse[];
+            /**
+             * The packages from custom urls.
+             */
+            customUrlPackages?: string[];
+            /**
+             * The packages directly from GitHub.
+             */
+            gitHubPackages?: outputs.machinelearningservices.v20210101.RGitHubPackageResponseResponse[];
+            /**
+             * The version of R to be installed
+             */
+            rVersion?: string;
+            /**
+             * The Rscript path to use if an environment build is not required.
+             * The path specified gets used to call the user script.
+             */
+            rscriptPath?: string;
+            /**
+             * Date of MRAN snapshot to use in YYYY-MM-DD format, e.g. "2019-04-17"
+             */
+            snapshotDate?: string;
+            /**
+             * Indicates whether the environment is managed by user or by AzureML.
+             */
+            userManaged?: boolean;
+        }
+
+        /**
+         * The configuration for a Spark environment.
+         */
+        export interface ModelEnvironmentDefinitionResponseResponseSpark {
+            /**
+             * The Spark packages to use.
+             */
+            packages?: outputs.machinelearningservices.v20210101.SparkMavenPackageResponse[];
+            /**
+             * Whether to precache the packages.
+             */
+            precachePackages?: boolean;
+            /**
+             * The list of spark repositories.
+             */
+            repositories?: string[];
+        }
+
+        /**
+         * An Azure Machine Learning Model.
+         */
+        export interface ModelResponse {
+            /**
+             * The Model creation time (UTC).
+             */
+            createdTime?: string;
+            /**
+             * The list of datasets associated with the model.
+             */
+            datasets?: outputs.machinelearningservices.v20210101.DatasetReferenceResponse[];
+            /**
+             * Models derived from this model
+             */
+            derivedModelIds?: string[];
+            /**
+             * The Model description text.
+             */
+            description?: string;
+            /**
+             * The name of the experiment where this model was created.
+             */
+            experimentName?: string;
+            /**
+             * The Model framework.
+             */
+            framework?: string;
+            /**
+             * The Model framework version.
+             */
+            frameworkVersion?: string;
+            /**
+             * The Model Id.
+             */
+            id?: string;
+            /**
+             * The Model tag dictionary. Items are mutable.
+             */
+            kvTags?: {[key: string]: string};
+            /**
+             * The MIME type of Model content. For more details about MIME type, please open https://www.iana.org/assignments/media-types/media-types.xhtml
+             */
+            mimeType: string;
+            /**
+             * The Model last modified time (UTC).
+             */
+            modifiedTime?: string;
+            /**
+             * The Model name.
+             */
+            name: string;
+            /**
+             * The Parent Model Id.
+             */
+            parentModelId?: string;
+            /**
+             * The Model property dictionary. Properties are immutable.
+             */
+            properties?: {[key: string]: string};
+            /**
+             * Resource requirements for the model
+             */
+            resourceRequirements?: outputs.machinelearningservices.v20210101.ContainerResourceRequirementsResponse;
+            /**
+             * The RunId that created this model.
+             */
+            runId?: string;
+            /**
+             * Sample Input Data for the Model. A reference to a dataset in the workspace in the format aml://dataset/{datasetId}
+             */
+            sampleInputData?: string;
+            /**
+             * Sample Output Data for the Model. A reference to a dataset in the workspace in the format aml://dataset/{datasetId}
+             */
+            sampleOutputData?: string;
+            /**
+             * Indicates whether we need to unpack the Model during docker Image creation.
+             */
+            unpack?: boolean;
+            /**
+             * The URL of the Model. Usually a SAS URL.
+             */
+            url: string;
+            /**
+             * The Model version assigned by Model Management Service.
+             */
+            version?: number;
+        }
+
+        /**
+         * Counts of various compute node states on the amlCompute.
+         */
+        export interface NodeStateCountsResponse {
+            /**
+             * Number of compute nodes in idle state.
+             */
+            idleNodeCount: number;
+            /**
+             * Number of compute nodes which are leaving the amlCompute.
+             */
+            leavingNodeCount: number;
+            /**
+             * Number of compute nodes which are in preempted state.
+             */
+            preemptedNodeCount: number;
+            /**
+             * Number of compute nodes which are being prepared.
+             */
+            preparingNodeCount: number;
+            /**
+             * Number of compute nodes which are running jobs.
+             */
+            runningNodeCount: number;
+            /**
+             * Number of compute nodes which are in unusable state.
+             */
+            unusableNodeCount: number;
+        }
+
+        export interface NotebookPreparationErrorResponse {
+            errorMessage?: string;
+            statusCode?: number;
+        }
+
+        export interface NotebookResourceInfoResponse {
+            fqdn?: string;
+            /**
+             * The error that occurs when preparing notebook.
+             */
+            notebookPreparationError?: outputs.machinelearningservices.v20210101.NotebookPreparationErrorResponse;
+            /**
+             * the data plane resourceId that used to initialize notebook component
+             */
+            resourceId?: string;
+        }
+
+        export interface PasswordResponse {
+            name: string;
+            value: string;
+        }
+
+        /**
+         * Settings for a personal compute instance.
+         */
+        export interface PersonalComputeInstanceSettingsResponse {
+            /**
+             * A user explicitly assigned to a personal compute instance.
+             */
+            assignedUser?: outputs.machinelearningservices.v20210101.AssignedUserResponse;
+        }
+
+        /**
+         * The Private Endpoint Connection resource.
+         */
+        export interface PrivateEndpointConnectionResponse {
+            /**
+             * Specifies the resource ID.
+             */
+            id: string;
+            /**
+             * The identity of the resource.
+             */
+            identity?: outputs.machinelearningservices.v20210101.IdentityResponse;
+            /**
+             * Specifies the location of the resource.
+             */
+            location?: string;
+            /**
+             * Specifies the name of the resource.
+             */
+            name: string;
+            /**
+             * The resource of private end point.
+             */
+            privateEndpoint?: outputs.machinelearningservices.v20210101.PrivateEndpointResponse;
+            /**
+             * A collection of information about the state of the connection between service consumer and provider.
+             */
+            privateLinkServiceConnectionState: outputs.machinelearningservices.v20210101.PrivateLinkServiceConnectionStateResponse;
+            /**
+             * The provisioning state of the private endpoint connection resource.
+             */
+            provisioningState: string;
+            /**
+             * The sku of the workspace.
+             */
+            sku?: outputs.machinelearningservices.v20210101.SkuResponse;
+            /**
+             * Read only system data
+             */
+            systemData: outputs.machinelearningservices.v20210101.SystemDataResponse;
+            /**
+             * Contains resource tags defined as key/value pairs.
+             */
+            tags?: {[key: string]: string};
+            /**
+             * Specifies the type of the resource.
+             */
+            type: string;
+        }
+
+        /**
+         * The Private Endpoint resource.
+         */
+        export interface PrivateEndpointResponse {
+            /**
+             * The ARM identifier for Private Endpoint
+             */
+            id: string;
+            /**
+             * The ARM identifier for Subnet resource that private endpoint links to
+             */
+            subnetArmId: string;
+        }
+
+        /**
+         * A collection of information about the state of the connection between service consumer and provider.
+         */
+        export interface PrivateLinkServiceConnectionStateResponse {
+            /**
+             * A message indicating if changes on the service provider require any updates on the consumer.
+             */
+            actionsRequired?: string;
+            /**
+             * The reason for approval/rejection of the connection.
+             */
+            description?: string;
+            /**
+             * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+             */
+            status?: string;
+        }
+
+        export interface RCranPackageResponse {
+            /**
+             * The package name.
+             */
+            name?: string;
+            /**
+             * The repository name.
+             */
+            repository?: string;
+        }
+
+        export interface RGitHubPackageResponseResponse {
+            /**
+             * Repository address in the format username/repo[/subdir][@ref|#pull].
+             */
+            repository?: string;
+        }
+
+        export interface RegistryListCredentialsResultResponse {
+            location: string;
+            passwords?: outputs.machinelearningservices.v20210101.PasswordResponse[];
+            username: string;
+        }
+
+        /**
+         * Represents a resource ID. For example, for a subnet, it is the resource URL for the subnet.
+         */
+        export interface ResourceIdResponse {
+            /**
+             * The ID of the resource
+             */
+            id: string;
+        }
+
+        /**
+         * scale settings for AML Compute
+         */
+        export interface ScaleSettingsResponse {
+            /**
+             * Max number of nodes to use
+             */
+            maxNodeCount: number;
+            /**
+             * Min number of nodes to use
+             */
+            minNodeCount?: number;
+            /**
+             * Node Idle Time before scaling down amlCompute. This string needs to be in the RFC Format.
+             */
+            nodeIdleTimeBeforeScaleDown?: string;
+        }
+
+        /**
+         * Script reference
+         */
+        export interface ScriptReferenceResponse {
+            /**
+             * Optional command line arguments passed to the script to run.
+             */
+            scriptArguments?: string;
+            /**
+             * The location of scripts in the mounted volume.
+             */
+            scriptData?: string;
+            /**
+             * The storage source of the script: inline, workspace.
+             */
+            scriptSource?: string;
+            /**
+             * Optional time period passed to timeout command.
+             */
+            timeout?: string;
+        }
+
+        /**
+         * Customized setup scripts
+         */
+        export interface ScriptsToExecuteResponse {
+            /**
+             * Script that's run only once during provision of the compute.
+             */
+            creationScript?: outputs.machinelearningservices.v20210101.ScriptReferenceResponse;
+            /**
+             * Script that's run every time the machine starts.
+             */
+            startupScript?: outputs.machinelearningservices.v20210101.ScriptReferenceResponse;
+        }
+
+        export interface ServiceManagedResourcesSettingsResponse {
+            /**
+             * The settings for the service managed cosmosdb account.
+             */
+            cosmosDb?: outputs.machinelearningservices.v20210101.CosmosDbSettingsResponse;
+        }
+
+        /**
+         * The error details.
+         */
+        export interface ServiceResponseBaseResponseError {
+            /**
+             * The error response.
+             */
+            error: outputs.machinelearningservices.v20210101.ErrorResponseResponse;
+        }
+
+        /**
+         * Details of customized scripts to execute for setting up the cluster.
+         */
+        export interface SetupScriptsResponse {
+            /**
+             * Customized setup scripts
+             */
+            scripts?: outputs.machinelearningservices.v20210101.ScriptsToExecuteResponse;
+        }
+
+        export interface SharedPrivateLinkResourceResponse {
+            /**
+             * The private link resource group id.
+             */
+            groupId?: string;
+            /**
+             * Unique name of the private link.
+             */
+            name?: string;
+            /**
+             * The resource id that private link links to.
+             */
+            privateLinkResourceId?: string;
+            /**
+             * Request message.
+             */
+            requestMessage?: string;
+            /**
+             * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+             */
+            status?: string;
+        }
+
+        /**
+         * Sku of the resource
+         */
+        export interface SkuResponse {
+            /**
+             * Name of the sku
+             */
+            name?: string;
+            /**
+             * Tier of the sku like Basic or Enterprise
+             */
+            tier?: string;
+        }
+
+        export interface SparkMavenPackageResponse {
+            artifact?: string;
+            group?: string;
+            version?: string;
+        }
+
+        /**
+         * The ssl configuration for scoring
+         */
+        export interface SslConfigurationResponse {
+            /**
+             * Cert data
+             */
+            cert?: string;
+            /**
+             * CNAME of the cert
+             */
+            cname?: string;
+            /**
+             * Key data
+             */
+            key?: string;
+            /**
+             * Enable or disable ssl for scoring
+             */
+            status?: string;
+        }
+
+        /**
+         * Read only system data
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC)
+             */
+            createdAt?: string;
+            /**
+             * An identifier for the identity that created the resource
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource
+             */
+            createdByType?: string;
+            /**
+             * The timestamp of resource last modification (UTC)
+             */
+            lastModifiedAt?: string;
+            /**
+             * An identifier for the identity that last modified the resource
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource
+             */
+            lastModifiedByType?: string;
+        }
+
+        /**
+         * A system service running on a compute.
+         */
+        export interface SystemServiceResponse {
+            /**
+             * Public IP address
+             */
+            publicIpAddress: string;
+            /**
+             * The type of this system service.
+             */
+            systemServiceType: string;
+            /**
+             * The version for this type.
+             */
+            version: string;
+        }
+
+        /**
+         * Settings for user account that gets created on each on the nodes of a compute.
+         */
+        export interface UserAccountCredentialsResponse {
+            /**
+             * Name of the administrator user account which can be used to SSH to nodes.
+             */
+            adminUserName: string;
+            /**
+             * Password of the administrator user account.
+             */
+            adminUserPassword?: string;
+            /**
+             * SSH public key of the administrator user account.
+             */
+            adminUserSshPublicKey?: string;
+        }
+
+        /**
+         * User Assigned Identity
+         */
+        export interface UserAssignedIdentityResponse {
+            /**
+             * The clientId(aka appId) of the user assigned identity.
+             */
+            clientId: string;
+            /**
+             * The principal ID of the user assigned identity.
+             */
+            principalId: string;
+            /**
+             * The tenant ID of the user assigned identity.
+             */
+            tenantId: string;
+        }
+
+        /**
+         * Virtual Machine image for Windows AML Compute
+         */
+        export interface VirtualMachineImageResponse {
+            /**
+             * Virtual Machine image path
+             */
+            id: string;
+        }
+
+        /**
+         * A Machine Learning compute based on Azure Virtual Machines.
+         */
+        export interface VirtualMachineResponse {
+            /**
+             * Location for the underlying compute
+             */
+            computeLocation?: string;
+            /**
+             * The type of compute
+             * Expected value is 'VirtualMachine'.
+             */
+            computeType: "VirtualMachine";
+            /**
+             * The description of the Machine Learning compute.
+             */
+            description?: string;
+            /**
+             * Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
+             */
+            isAttachedCompute: boolean;
+            properties?: outputs.machinelearningservices.v20210101.VirtualMachineResponseProperties;
+            /**
+             * Errors during provisioning
+             */
+            provisioningErrors: outputs.machinelearningservices.v20210101.MachineLearningServiceErrorResponse[];
+            /**
+             * The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
+             */
+            provisioningState: string;
+            /**
+             * ARM resource id of the underlying compute
+             */
+            resourceId?: string;
+        }
+
+        export interface VirtualMachineResponseProperties {
+            /**
+             * Public IP address of the virtual machine.
+             */
+            address?: string;
+            /**
+             * Admin credentials for virtual machine
+             */
+            administratorAccount?: outputs.machinelearningservices.v20210101.VirtualMachineSshCredentialsResponse;
+            /**
+             * Port open for ssh connections.
+             */
+            sshPort?: number;
+            /**
+             * Virtual Machine size
+             */
+            virtualMachineSize?: string;
+        }
+
+        /**
+         * Admin credentials for virtual machine
+         */
+        export interface VirtualMachineSshCredentialsResponse {
+            /**
+             * Password of admin account
+             */
+            password?: string;
+            /**
+             * Private key data
+             */
+            privateKeyData?: string;
+            /**
+             * Public key data
+             */
+            publicKeyData?: string;
+            /**
+             * Username of admin account
+             */
+            username?: string;
+        }
+    }
 }
 
 export namespace maintenance {
@@ -243621,7 +246965,7 @@ export namespace maintenance {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -245876,7 +249220,7 @@ export namespace maps {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -246138,7 +249482,7 @@ export namespace media {
              */
             fadeOutDuration?: string;
             /**
-             * The label of the job input which is to be used as an overlay. The Input must specify exactly one file. You can specify an image file in JPG or PNG formats, or an audio file (such as a WAV, MP3, WMA or M4A file), or a video file. See https://aka.ms/mesformats for the complete list of supported audio and video file formats.
+             * The label of the job input which is to be used as an overlay. The Input must specify exactly one file. You can specify an image file in JPG, PNG, GIF or BMP format, or an audio file (such as a WAV, MP3, WMA or M4A file), or a video file. See https://aka.ms/mesformats for the complete list of supported audio and video file formats.
              */
             inputLabel: string;
             /**
@@ -246177,6 +249521,21 @@ export namespace media {
              * The sampling rate to use for encoding in hertz.
              */
             samplingRate?: number;
+        }
+
+        /**
+         * A TrackSelection to select audio tracks.
+         */
+        export interface AudioTrackDescriptorResponse {
+            /**
+             * Optional designation for single channel audio tracks.  Can be used to combine the tracks into stereo or multi-channel audio tracks.
+             */
+            channelMapping?: string;
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.AudioTrackDescriptor'.
+             */
+            odataType: "#Microsoft.Media.AudioTrackDescriptor";
         }
 
         /**
@@ -246813,13 +250172,21 @@ export namespace media {
         }
 
         /**
-         * Describes all the settings to be used when analyzing a video in order to detect all the faces present.
+         * Describes all the settings to be used when analyzing a video in order to detect (and optionally redact) all the faces present.
          */
         export interface FaceDetectorPresetResponse {
+            /**
+             * Blur type
+             */
+            blurType?: string;
             /**
              * Dictionary containing key value pairs for parameters not exposed in the preset itself
              */
             experimentalOptions?: {[key: string]: string};
+            /**
+             * This mode provides the ability to choose between the following settings: 1) Analyze - For detection only.This mode generates a metadata JSON file marking appearances of faces throughout the video.Where possible, appearances of the same person are assigned the same ID. 2) Combined - Additionally redacts(blurs) detected faces. 3) Redact - This enables a 2-pass process, allowing for selective redaction of a subset of detected faces.It takes in the metadata file from a prior analyze pass, along with the source video, and a user-selected subset of IDs that require redaction.
+             */
+            mode?: string;
             /**
              * The discriminator for derived types.
              * Expected value is '#Microsoft.Media.FaceDetectorPreset'.
@@ -246889,6 +250256,36 @@ export namespace media {
              * The first quality bitrate.
              */
             bitrate: number;
+        }
+
+        /**
+         * An InputDefinition that looks across all of the files provided to select tracks specified by the IncludedTracks property. Generally used with the AudioTrackByAttribute and VideoTrackByAttribute to allow selection of a single track across a set of input files.
+         */
+        export interface FromAllInputFileResponse {
+            /**
+             * The list of TrackDescriptors which define the metadata and selection of tracks in the input.
+             */
+            includedTracks?: outputs.media.latest.AudioTrackDescriptorResponse | outputs.media.latest.SelectAudioTrackByAttributeResponse | outputs.media.latest.SelectAudioTrackByIdResponse | outputs.media.latest.SelectVideoTrackByAttributeResponse | outputs.media.latest.SelectVideoTrackByIdResponse | outputs.media.latest.VideoTrackDescriptorResponse[];
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.FromAllInputFile'.
+             */
+            odataType: "#Microsoft.Media.FromAllInputFile";
+        }
+
+        /**
+         * An InputDefinition that looks at each input file provided to select tracks specified by the IncludedTracks property. Generally used with the AudioTrackByAttribute and VideoTrackByAttribute to select tracks from each file given.
+         */
+        export interface FromEachInputFileResponse {
+            /**
+             * The list of TrackDescriptors which define the metadata and selection of tracks in the input.
+             */
+            includedTracks?: outputs.media.latest.AudioTrackDescriptorResponse | outputs.media.latest.SelectAudioTrackByAttributeResponse | outputs.media.latest.SelectAudioTrackByIdResponse | outputs.media.latest.SelectVideoTrackByAttributeResponse | outputs.media.latest.SelectVideoTrackByIdResponse | outputs.media.latest.VideoTrackDescriptorResponse[];
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.FromEachInputFile'.
+             */
+            odataType: "#Microsoft.Media.FromEachInputFile";
         }
 
         /**
@@ -246998,6 +250395,108 @@ export namespace media {
         }
 
         /**
+         * Describes the settings to be used when encoding the input video into a desired output bitrate layer with the H.265 video codec.
+         */
+        export interface H265LayerResponse {
+            /**
+             * Specifies whether or not adaptive B-frames are to be used when encoding this layer. If not specified, the encoder will turn it on whenever the video profile permits its use.
+             */
+            adaptiveBFrame?: boolean;
+            /**
+             * The number of B-frames to be used when encoding this layer.  If not specified, the encoder chooses an appropriate number based on the video profile and level.
+             */
+            bFrames?: number;
+            /**
+             * The average bitrate in bits per second at which to encode the input video when generating this layer. For example: a target bitrate of 3000Kbps or 3Mbps means this value should be 3000000 This is a required field.
+             */
+            bitrate: number;
+            /**
+             * The VBV buffer window length. The value should be in ISO 8601 format. The value should be in the range [0.1-100] seconds. The default is 5 seconds (for example, PT5S).
+             */
+            bufferWindow?: string;
+            /**
+             * The frame rate (in frames per second) at which to encode this layer. The value can be in the form of M/N where M and N are integers (For example, 30000/1001), or in the form of a number (For example, 30, or 29.97). The encoder enforces constraints on allowed frame rates based on the profile and level. If it is not specified, the encoder will use the same frame rate as the input video.
+             */
+            frameRate?: string;
+            /**
+             * The height of the output video for this layer. The value can be absolute (in pixels) or relative (in percentage). For example 50% means the output video has half as many pixels in height as the input.
+             */
+            height?: string;
+            /**
+             * The alphanumeric label for this layer, which can be used in multiplexing different video and audio layers, or in naming the output file.
+             */
+            label?: string;
+            /**
+             * We currently support Level up to 6.2. The value can be Auto, or a number that matches the H.265 profile. If not specified, the default is Auto, which lets the encoder choose the Level that is appropriate for this layer.
+             */
+            level?: string;
+            /**
+             * The maximum bitrate (in bits per second), at which the VBV buffer should be assumed to refill. If not specified, defaults to the same value as bitrate.
+             */
+            maxBitrate?: number;
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.H265VideoLayer'.
+             */
+            odataType: "#Microsoft.Media.H265VideoLayer";
+            /**
+             * We currently support Main. Default is Auto.
+             */
+            profile?: string;
+            /**
+             * The number of reference frames to be used when encoding this layer. If not specified, the encoder determines an appropriate number based on the encoder complexity setting.
+             */
+            referenceFrames?: number;
+            /**
+             * The number of slices to be used when encoding this layer. If not specified, default is zero, which means that encoder will use a single slice for each frame.
+             */
+            slices?: number;
+            /**
+             * The width of the output video for this layer. The value can be absolute (in pixels) or relative (in percentage). For example 50% means the output video has half as many pixels in width as the input.
+             */
+            width?: string;
+        }
+
+        /**
+         * Describes all the properties for encoding a video with the H.265 codec.
+         */
+        export interface H265VideoResponse {
+            /**
+             * Tells the encoder how to choose its encoding settings.  Quality will provide for a higher compression ratio but at a higher cost and longer compute time.  Speed will produce a relatively larger file but is faster and more economical. The default value is Balanced.
+             */
+            complexity?: string;
+            /**
+             * The distance between two key frames. The value should be non-zero in the range [0.5, 20] seconds, specified in ISO 8601 format. The default is 2 seconds(PT2S). Note that this setting is ignored if VideoSyncMode.Passthrough is set, where the KeyFrameInterval value will follow the input source setting.
+             */
+            keyFrameInterval?: string;
+            /**
+             * An optional label for the codec. The label can be used to control muxing behavior.
+             */
+            label?: string;
+            /**
+             * The collection of output H.265 layers to be produced by the encoder.
+             */
+            layers?: outputs.media.latest.H265LayerResponse[];
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.Video'.
+             */
+            odataType: "#Microsoft.Media.Video";
+            /**
+             * Specifies whether or not the encoder should insert key frames at scene changes. If not specified, the default is false. This flag should be set to true only when the encoder is being configured to produce a single output video.
+             */
+            sceneChangeDetection?: boolean;
+            /**
+             * The resizing mode - how the input video will be resized to fit the desired output resolution(s). Default is AutoSize
+             */
+            stretchMode?: string;
+            /**
+             * The Video Sync Mode
+             */
+            syncMode?: string;
+        }
+
+        /**
          * HTTP Live Streaming (HLS) packing setting for the live output.
          */
         export interface HlsResponse {
@@ -247040,7 +250539,7 @@ export namespace media {
          */
         export interface ImageFormatResponse {
             /**
-             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
+             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. {Resolution} - The video resolution. Any unsubstituted macros will be collapsed and removed from the filename.
              */
             filenamePattern: string;
             /**
@@ -247087,6 +250586,25 @@ export namespace media {
              * The Video Sync Mode
              */
             syncMode?: string;
+        }
+
+        /**
+         * An InputDefinition for a single file.  TrackSelections are scoped to the file specified.
+         */
+        export interface InputFileResponse {
+            /**
+             * Name of the file that this input definition applies to.
+             */
+            filename?: string;
+            /**
+             * The list of TrackDescriptors which define the metadata and selection of tracks in the input.
+             */
+            includedTracks?: outputs.media.latest.AudioTrackDescriptorResponse | outputs.media.latest.SelectAudioTrackByAttributeResponse | outputs.media.latest.SelectAudioTrackByIdResponse | outputs.media.latest.SelectVideoTrackByAttributeResponse | outputs.media.latest.SelectVideoTrackByIdResponse | outputs.media.latest.VideoTrackDescriptorResponse[];
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.InputFile'.
+             */
+            odataType: "#Microsoft.Media.InputFile";
         }
 
         /**
@@ -247146,6 +250664,10 @@ export namespace media {
              */
             files?: string[];
             /**
+             * Defines a list of InputDefinitions. For each InputDefinition, it defines a list of track selections and related metadata.
+             */
+            inputDefinitions?: outputs.media.latest.FromAllInputFileResponse | outputs.media.latest.FromEachInputFileResponse | outputs.media.latest.InputFileResponse[];
+            /**
              * A label that is assigned to a JobInputClip, that is used to satisfy a reference used in the Transform. For example, a Transform can be authored so as to take an image file with the label 'xyz' and apply it as an overlay onto the input video before it is encoded. When submitting a Job, exactly one of the JobInputs should be the image file, and it should have the label 'xyz'.
              */
             label?: string;
@@ -247172,6 +250694,10 @@ export namespace media {
              * List of files. Required for JobInputHttp. Maximum of 4000 characters each.
              */
             files?: string[];
+            /**
+             * Defines a list of InputDefinitions. For each InputDefinition, it defines a list of track selections and related metadata.
+             */
+            inputDefinitions?: outputs.media.latest.FromAllInputFileResponse | outputs.media.latest.FromEachInputFileResponse | outputs.media.latest.InputFileResponse[];
             /**
              * A label that is assigned to a JobInputClip, that is used to satisfy a reference used in the Transform. For example, a Transform can be authored so as to take an image file with the label 'xyz' and apply it as an overlay onto the input video before it is encoded. When submitting a Job, exactly one of the JobInputs should be the image file, and it should have the label 'xyz'.
              */
@@ -247204,6 +250730,10 @@ export namespace media {
              */
             files?: string[];
             /**
+             * Defines a list of InputDefinitions. For each InputDefinition, it defines a list of track selections and related metadata.
+             */
+            inputDefinitions?: outputs.media.latest.FromAllInputFileResponse | outputs.media.latest.FromEachInputFileResponse | outputs.media.latest.InputFileResponse[];
+            /**
              * A label that is assigned to a JobInputClip, that is used to satisfy a reference used in the Transform. For example, a Transform can be authored so as to take an image file with the label 'xyz' and apply it as an overlay onto the input video before it is encoded. When submitting a Job, exactly one of the JobInputs should be the image file, and it should have the label 'xyz'.
              */
             label?: string;
@@ -247219,13 +250749,28 @@ export namespace media {
         }
 
         /**
+         * A Sequence contains an ordered list of Clips where each clip is a JobInput.  The Sequence will be treated as a single input.
+         */
+        export interface JobInputSequenceResponse {
+            /**
+             * JobInputs that make up the timeline.
+             */
+            inputs?: outputs.media.latest.JobInputClipResponse[];
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.JobInputSequence'.
+             */
+            odataType: "#Microsoft.Media.JobInputSequence";
+        }
+
+        /**
          * Describes a list of inputs to a Job.
          */
         export interface JobInputsResponse {
             /**
              * List of inputs to a Job.
              */
-            inputs?: outputs.media.latest.JobInputAssetResponse | outputs.media.latest.JobInputClipResponse | outputs.media.latest.JobInputHttpResponse | outputs.media.latest.JobInputsResponse[];
+            inputs?: outputs.media.latest.JobInputAssetResponse | outputs.media.latest.JobInputClipResponse | outputs.media.latest.JobInputHttpResponse | outputs.media.latest.JobInputSequenceResponse | outputs.media.latest.JobInputsResponse[];
             /**
              * The discriminator for derived types.
              * Expected value is '#Microsoft.Media.JobInputs'.
@@ -247277,7 +250822,7 @@ export namespace media {
          */
         export interface JpgFormatResponse {
             /**
-             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
+             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. {Resolution} - The video resolution. Any unsubstituted macros will be collapsed and removed from the filename.
              */
             filenamePattern: string;
             /**
@@ -247546,7 +251091,7 @@ export namespace media {
          */
         export interface Mp4FormatResponse {
             /**
-             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
+             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. {Resolution} - The video resolution. Any unsubstituted macros will be collapsed and removed from the filename.
              */
             filenamePattern: string;
             /**
@@ -247565,7 +251110,7 @@ export namespace media {
          */
         export interface MultiBitrateFormatResponse {
             /**
-             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
+             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. {Resolution} - The video resolution. Any unsubstituted macros will be collapsed and removed from the filename.
              */
             filenamePattern: string;
             /**
@@ -247604,7 +251149,7 @@ export namespace media {
          */
         export interface PngFormatResponse {
             /**
-             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
+             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. {Resolution} - The video resolution. Any unsubstituted macros will be collapsed and removed from the filename.
              */
             filenamePattern: string;
             /**
@@ -247761,13 +251306,97 @@ export namespace media {
         }
 
         /**
+         * Select audio tracks from the input by specifying an attribute and an attribute filter.
+         */
+        export interface SelectAudioTrackByAttributeResponse {
+            /**
+             * The TrackAttribute to filter the tracks by.
+             */
+            attribute: string;
+            /**
+             * Optional designation for single channel audio tracks.  Can be used to combine the tracks into stereo or multi-channel audio tracks.
+             */
+            channelMapping?: string;
+            /**
+             * The type of AttributeFilter to apply to the TrackAttribute in order to select the tracks.
+             */
+            filter: string;
+            /**
+             * The value to filter the tracks by.  Only used when AttributeFilter.ValueEquals is specified for the Filter property.
+             */
+            filterValue?: string;
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.AudioTrackDescriptor'.
+             */
+            odataType: "#Microsoft.Media.AudioTrackDescriptor";
+        }
+
+        /**
+         * Select audio tracks from the input by specifying a track identifier.
+         */
+        export interface SelectAudioTrackByIdResponse {
+            /**
+             * Optional designation for single channel audio tracks.  Can be used to combine the tracks into stereo or multi-channel audio tracks.
+             */
+            channelMapping?: string;
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.AudioTrackDescriptor'.
+             */
+            odataType: "#Microsoft.Media.AudioTrackDescriptor";
+            /**
+             * Track identifier to select
+             */
+            trackId: number;
+        }
+
+        /**
+         * Select video tracks from the input by specifying an attribute and an attribute filter.
+         */
+        export interface SelectVideoTrackByAttributeResponse {
+            /**
+             * The TrackAttribute to filter the tracks by.
+             */
+            attribute: string;
+            /**
+             * The type of AttributeFilter to apply to the TrackAttribute in order to select the tracks.
+             */
+            filter: string;
+            /**
+             * The value to filter the tracks by.  Only used when AttributeFilter.ValueEquals is specified for the Filter property. For TrackAttribute.Bitrate, this should be an integer value in bits per second (e.g: '1500000').  The TrackAttribute.Language is not supported for video tracks.
+             */
+            filterValue?: string;
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.VideoTrackDescriptor'.
+             */
+            odataType: "#Microsoft.Media.VideoTrackDescriptor";
+        }
+
+        /**
+         * Select video tracks from the input by specifying a track identifier.
+         */
+        export interface SelectVideoTrackByIdResponse {
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.VideoTrackDescriptor'.
+             */
+            odataType: "#Microsoft.Media.VideoTrackDescriptor";
+            /**
+             * Track identifier to select
+             */
+            trackId: number;
+        }
+
+        /**
          * Describes all the settings to be used when encoding the input video with the Standard Encoder.
          */
         export interface StandardEncoderPresetResponse {
             /**
              * The list of codecs to be used when encoding the input video.
              */
-            codecs: outputs.media.latest.AacAudioResponse | outputs.media.latest.AudioResponse | outputs.media.latest.CopyAudioResponse | outputs.media.latest.CopyVideoResponse | outputs.media.latest.H264VideoResponse | outputs.media.latest.ImageResponse | outputs.media.latest.JpgImageResponse | outputs.media.latest.PngImageResponse | outputs.media.latest.VideoResponse[];
+            codecs: outputs.media.latest.AacAudioResponse | outputs.media.latest.AudioResponse | outputs.media.latest.CopyAudioResponse | outputs.media.latest.CopyVideoResponse | outputs.media.latest.H264VideoResponse | outputs.media.latest.H265VideoResponse | outputs.media.latest.ImageResponse | outputs.media.latest.JpgImageResponse | outputs.media.latest.PngImageResponse | outputs.media.latest.VideoResponse[];
             /**
              * One or more filtering operations that are applied to the input media before encoding.
              */
@@ -247930,6 +251559,36 @@ export namespace media {
         }
 
         /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The timestamp of resource last modification (UTC)
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
+        }
+
+        /**
          * Class to specify one track property condition
          */
         export interface TrackPropertyConditionResponse {
@@ -247980,7 +251639,7 @@ export namespace media {
          */
         export interface TransportStreamFormatResponse {
             /**
-             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
+             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. {Resolution} - The video resolution. Any unsubstituted macros will be collapsed and removed from the filename.
              */
             filenamePattern: string;
             /**
@@ -248061,7 +251720,7 @@ export namespace media {
              */
             fadeOutDuration?: string;
             /**
-             * The label of the job input which is to be used as an overlay. The Input must specify exactly one file. You can specify an image file in JPG or PNG formats, or an audio file (such as a WAV, MP3, WMA or M4A file), or a video file. See https://aka.ms/mesformats for the complete list of supported audio and video file formats.
+             * The label of the job input which is to be used as an overlay. The Input must specify exactly one file. You can specify an image file in JPG, PNG, GIF or BMP format, or an audio file (such as a WAV, MP3, WMA or M4A file), or a video file. See https://aka.ms/mesformats for the complete list of supported audio and video file formats.
              */
             inputLabel: string;
             /**
@@ -248108,6 +251767,17 @@ export namespace media {
              * The Video Sync Mode
              */
             syncMode?: string;
+        }
+
+        /**
+         * A TrackSelection to select video tracks.
+         */
+        export interface VideoTrackDescriptorResponse {
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.VideoTrackDescriptor'.
+             */
+            odataType: "#Microsoft.Media.VideoTrackDescriptor";
         }
     }
 
@@ -254244,7 +257914,7 @@ export namespace media {
              */
             fadeOutDuration?: string;
             /**
-             * The label of the job input which is to be used as an overlay. The Input must specify exactly one file. You can specify an image file in JPG or PNG formats, or an audio file (such as a WAV, MP3, WMA or M4A file), or a video file. See https://aka.ms/mesformats for the complete list of supported audio and video file formats.
+             * The label of the job input which is to be used as an overlay. The Input must specify exactly one file. You can specify an image file in JPG, PNG, GIF or BMP format, or an audio file (such as a WAV, MP3, WMA or M4A file), or a video file. See https://aka.ms/mesformats for the complete list of supported audio and video file formats.
              */
             inputLabel: string;
             /**
@@ -254283,6 +257953,21 @@ export namespace media {
              * The sampling rate to use for encoding in hertz.
              */
             samplingRate?: number;
+        }
+
+        /**
+         * A TrackSelection to select audio tracks.
+         */
+        export interface AudioTrackDescriptorResponse {
+            /**
+             * Optional designation for single channel audio tracks.  Can be used to combine the tracks into stereo or multi-channel audio tracks.
+             */
+            channelMapping?: string;
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.AudioTrackDescriptor'.
+             */
+            odataType: "#Microsoft.Media.AudioTrackDescriptor";
         }
 
         /**
@@ -254919,13 +258604,21 @@ export namespace media {
         }
 
         /**
-         * Describes all the settings to be used when analyzing a video in order to detect all the faces present.
+         * Describes all the settings to be used when analyzing a video in order to detect (and optionally redact) all the faces present.
          */
         export interface FaceDetectorPresetResponse {
+            /**
+             * Blur type
+             */
+            blurType?: string;
             /**
              * Dictionary containing key value pairs for parameters not exposed in the preset itself
              */
             experimentalOptions?: {[key: string]: string};
+            /**
+             * This mode provides the ability to choose between the following settings: 1) Analyze - For detection only.This mode generates a metadata JSON file marking appearances of faces throughout the video.Where possible, appearances of the same person are assigned the same ID. 2) Combined - Additionally redacts(blurs) detected faces. 3) Redact - This enables a 2-pass process, allowing for selective redaction of a subset of detected faces.It takes in the metadata file from a prior analyze pass, along with the source video, and a user-selected subset of IDs that require redaction.
+             */
+            mode?: string;
             /**
              * The discriminator for derived types.
              * Expected value is '#Microsoft.Media.FaceDetectorPreset'.
@@ -254995,6 +258688,36 @@ export namespace media {
              * The first quality bitrate.
              */
             bitrate: number;
+        }
+
+        /**
+         * An InputDefinition that looks across all of the files provided to select tracks specified by the IncludedTracks property. Generally used with the AudioTrackByAttribute and VideoTrackByAttribute to allow selection of a single track across a set of input files.
+         */
+        export interface FromAllInputFileResponse {
+            /**
+             * The list of TrackDescriptors which define the metadata and selection of tracks in the input.
+             */
+            includedTracks?: outputs.media.v20200501.AudioTrackDescriptorResponse | outputs.media.v20200501.SelectAudioTrackByAttributeResponse | outputs.media.v20200501.SelectAudioTrackByIdResponse | outputs.media.v20200501.SelectVideoTrackByAttributeResponse | outputs.media.v20200501.SelectVideoTrackByIdResponse | outputs.media.v20200501.VideoTrackDescriptorResponse[];
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.FromAllInputFile'.
+             */
+            odataType: "#Microsoft.Media.FromAllInputFile";
+        }
+
+        /**
+         * An InputDefinition that looks at each input file provided to select tracks specified by the IncludedTracks property. Generally used with the AudioTrackByAttribute and VideoTrackByAttribute to select tracks from each file given.
+         */
+        export interface FromEachInputFileResponse {
+            /**
+             * The list of TrackDescriptors which define the metadata and selection of tracks in the input.
+             */
+            includedTracks?: outputs.media.v20200501.AudioTrackDescriptorResponse | outputs.media.v20200501.SelectAudioTrackByAttributeResponse | outputs.media.v20200501.SelectAudioTrackByIdResponse | outputs.media.v20200501.SelectVideoTrackByAttributeResponse | outputs.media.v20200501.SelectVideoTrackByIdResponse | outputs.media.v20200501.VideoTrackDescriptorResponse[];
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.FromEachInputFile'.
+             */
+            odataType: "#Microsoft.Media.FromEachInputFile";
         }
 
         /**
@@ -255104,6 +258827,108 @@ export namespace media {
         }
 
         /**
+         * Describes the settings to be used when encoding the input video into a desired output bitrate layer with the H.265 video codec.
+         */
+        export interface H265LayerResponse {
+            /**
+             * Specifies whether or not adaptive B-frames are to be used when encoding this layer. If not specified, the encoder will turn it on whenever the video profile permits its use.
+             */
+            adaptiveBFrame?: boolean;
+            /**
+             * The number of B-frames to be used when encoding this layer.  If not specified, the encoder chooses an appropriate number based on the video profile and level.
+             */
+            bFrames?: number;
+            /**
+             * The average bitrate in bits per second at which to encode the input video when generating this layer. For example: a target bitrate of 3000Kbps or 3Mbps means this value should be 3000000 This is a required field.
+             */
+            bitrate: number;
+            /**
+             * The VBV buffer window length. The value should be in ISO 8601 format. The value should be in the range [0.1-100] seconds. The default is 5 seconds (for example, PT5S).
+             */
+            bufferWindow?: string;
+            /**
+             * The frame rate (in frames per second) at which to encode this layer. The value can be in the form of M/N where M and N are integers (For example, 30000/1001), or in the form of a number (For example, 30, or 29.97). The encoder enforces constraints on allowed frame rates based on the profile and level. If it is not specified, the encoder will use the same frame rate as the input video.
+             */
+            frameRate?: string;
+            /**
+             * The height of the output video for this layer. The value can be absolute (in pixels) or relative (in percentage). For example 50% means the output video has half as many pixels in height as the input.
+             */
+            height?: string;
+            /**
+             * The alphanumeric label for this layer, which can be used in multiplexing different video and audio layers, or in naming the output file.
+             */
+            label?: string;
+            /**
+             * We currently support Level up to 6.2. The value can be Auto, or a number that matches the H.265 profile. If not specified, the default is Auto, which lets the encoder choose the Level that is appropriate for this layer.
+             */
+            level?: string;
+            /**
+             * The maximum bitrate (in bits per second), at which the VBV buffer should be assumed to refill. If not specified, defaults to the same value as bitrate.
+             */
+            maxBitrate?: number;
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.H265VideoLayer'.
+             */
+            odataType: "#Microsoft.Media.H265VideoLayer";
+            /**
+             * We currently support Main. Default is Auto.
+             */
+            profile?: string;
+            /**
+             * The number of reference frames to be used when encoding this layer. If not specified, the encoder determines an appropriate number based on the encoder complexity setting.
+             */
+            referenceFrames?: number;
+            /**
+             * The number of slices to be used when encoding this layer. If not specified, default is zero, which means that encoder will use a single slice for each frame.
+             */
+            slices?: number;
+            /**
+             * The width of the output video for this layer. The value can be absolute (in pixels) or relative (in percentage). For example 50% means the output video has half as many pixels in width as the input.
+             */
+            width?: string;
+        }
+
+        /**
+         * Describes all the properties for encoding a video with the H.265 codec.
+         */
+        export interface H265VideoResponse {
+            /**
+             * Tells the encoder how to choose its encoding settings.  Quality will provide for a higher compression ratio but at a higher cost and longer compute time.  Speed will produce a relatively larger file but is faster and more economical. The default value is Balanced.
+             */
+            complexity?: string;
+            /**
+             * The distance between two key frames. The value should be non-zero in the range [0.5, 20] seconds, specified in ISO 8601 format. The default is 2 seconds(PT2S). Note that this setting is ignored if VideoSyncMode.Passthrough is set, where the KeyFrameInterval value will follow the input source setting.
+             */
+            keyFrameInterval?: string;
+            /**
+             * An optional label for the codec. The label can be used to control muxing behavior.
+             */
+            label?: string;
+            /**
+             * The collection of output H.265 layers to be produced by the encoder.
+             */
+            layers?: outputs.media.v20200501.H265LayerResponse[];
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.Video'.
+             */
+            odataType: "#Microsoft.Media.Video";
+            /**
+             * Specifies whether or not the encoder should insert key frames at scene changes. If not specified, the default is false. This flag should be set to true only when the encoder is being configured to produce a single output video.
+             */
+            sceneChangeDetection?: boolean;
+            /**
+             * The resizing mode - how the input video will be resized to fit the desired output resolution(s). Default is AutoSize
+             */
+            stretchMode?: string;
+            /**
+             * The Video Sync Mode
+             */
+            syncMode?: string;
+        }
+
+        /**
          * HTTP Live Streaming (HLS) packing setting for the live output.
          */
         export interface HlsResponse {
@@ -255146,7 +258971,7 @@ export namespace media {
          */
         export interface ImageFormatResponse {
             /**
-             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
+             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. {Resolution} - The video resolution. Any unsubstituted macros will be collapsed and removed from the filename.
              */
             filenamePattern: string;
             /**
@@ -255193,6 +259018,25 @@ export namespace media {
              * The Video Sync Mode
              */
             syncMode?: string;
+        }
+
+        /**
+         * An InputDefinition for a single file.  TrackSelections are scoped to the file specified.
+         */
+        export interface InputFileResponse {
+            /**
+             * Name of the file that this input definition applies to.
+             */
+            filename?: string;
+            /**
+             * The list of TrackDescriptors which define the metadata and selection of tracks in the input.
+             */
+            includedTracks?: outputs.media.v20200501.AudioTrackDescriptorResponse | outputs.media.v20200501.SelectAudioTrackByAttributeResponse | outputs.media.v20200501.SelectAudioTrackByIdResponse | outputs.media.v20200501.SelectVideoTrackByAttributeResponse | outputs.media.v20200501.SelectVideoTrackByIdResponse | outputs.media.v20200501.VideoTrackDescriptorResponse[];
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.InputFile'.
+             */
+            odataType: "#Microsoft.Media.InputFile";
         }
 
         /**
@@ -255252,6 +259096,10 @@ export namespace media {
              */
             files?: string[];
             /**
+             * Defines a list of InputDefinitions. For each InputDefinition, it defines a list of track selections and related metadata.
+             */
+            inputDefinitions?: outputs.media.v20200501.FromAllInputFileResponse | outputs.media.v20200501.FromEachInputFileResponse | outputs.media.v20200501.InputFileResponse[];
+            /**
              * A label that is assigned to a JobInputClip, that is used to satisfy a reference used in the Transform. For example, a Transform can be authored so as to take an image file with the label 'xyz' and apply it as an overlay onto the input video before it is encoded. When submitting a Job, exactly one of the JobInputs should be the image file, and it should have the label 'xyz'.
              */
             label?: string;
@@ -255278,6 +259126,10 @@ export namespace media {
              * List of files. Required for JobInputHttp. Maximum of 4000 characters each.
              */
             files?: string[];
+            /**
+             * Defines a list of InputDefinitions. For each InputDefinition, it defines a list of track selections and related metadata.
+             */
+            inputDefinitions?: outputs.media.v20200501.FromAllInputFileResponse | outputs.media.v20200501.FromEachInputFileResponse | outputs.media.v20200501.InputFileResponse[];
             /**
              * A label that is assigned to a JobInputClip, that is used to satisfy a reference used in the Transform. For example, a Transform can be authored so as to take an image file with the label 'xyz' and apply it as an overlay onto the input video before it is encoded. When submitting a Job, exactly one of the JobInputs should be the image file, and it should have the label 'xyz'.
              */
@@ -255310,6 +259162,10 @@ export namespace media {
              */
             files?: string[];
             /**
+             * Defines a list of InputDefinitions. For each InputDefinition, it defines a list of track selections and related metadata.
+             */
+            inputDefinitions?: outputs.media.v20200501.FromAllInputFileResponse | outputs.media.v20200501.FromEachInputFileResponse | outputs.media.v20200501.InputFileResponse[];
+            /**
              * A label that is assigned to a JobInputClip, that is used to satisfy a reference used in the Transform. For example, a Transform can be authored so as to take an image file with the label 'xyz' and apply it as an overlay onto the input video before it is encoded. When submitting a Job, exactly one of the JobInputs should be the image file, and it should have the label 'xyz'.
              */
             label?: string;
@@ -255325,13 +259181,28 @@ export namespace media {
         }
 
         /**
+         * A Sequence contains an ordered list of Clips where each clip is a JobInput.  The Sequence will be treated as a single input.
+         */
+        export interface JobInputSequenceResponse {
+            /**
+             * JobInputs that make up the timeline.
+             */
+            inputs?: outputs.media.v20200501.JobInputClipResponse[];
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.JobInputSequence'.
+             */
+            odataType: "#Microsoft.Media.JobInputSequence";
+        }
+
+        /**
          * Describes a list of inputs to a Job.
          */
         export interface JobInputsResponse {
             /**
              * List of inputs to a Job.
              */
-            inputs?: outputs.media.v20200501.JobInputAssetResponse | outputs.media.v20200501.JobInputClipResponse | outputs.media.v20200501.JobInputHttpResponse | outputs.media.v20200501.JobInputsResponse[];
+            inputs?: outputs.media.v20200501.JobInputAssetResponse | outputs.media.v20200501.JobInputClipResponse | outputs.media.v20200501.JobInputHttpResponse | outputs.media.v20200501.JobInputSequenceResponse | outputs.media.v20200501.JobInputsResponse[];
             /**
              * The discriminator for derived types.
              * Expected value is '#Microsoft.Media.JobInputs'.
@@ -255383,7 +259254,7 @@ export namespace media {
          */
         export interface JpgFormatResponse {
             /**
-             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
+             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. {Resolution} - The video resolution. Any unsubstituted macros will be collapsed and removed from the filename.
              */
             filenamePattern: string;
             /**
@@ -255652,7 +259523,7 @@ export namespace media {
          */
         export interface Mp4FormatResponse {
             /**
-             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
+             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. {Resolution} - The video resolution. Any unsubstituted macros will be collapsed and removed from the filename.
              */
             filenamePattern: string;
             /**
@@ -255671,7 +259542,7 @@ export namespace media {
          */
         export interface MultiBitrateFormatResponse {
             /**
-             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
+             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. {Resolution} - The video resolution. Any unsubstituted macros will be collapsed and removed from the filename.
              */
             filenamePattern: string;
             /**
@@ -255710,7 +259581,7 @@ export namespace media {
          */
         export interface PngFormatResponse {
             /**
-             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
+             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. {Resolution} - The video resolution. Any unsubstituted macros will be collapsed and removed from the filename.
              */
             filenamePattern: string;
             /**
@@ -255867,13 +259738,97 @@ export namespace media {
         }
 
         /**
+         * Select audio tracks from the input by specifying an attribute and an attribute filter.
+         */
+        export interface SelectAudioTrackByAttributeResponse {
+            /**
+             * The TrackAttribute to filter the tracks by.
+             */
+            attribute: string;
+            /**
+             * Optional designation for single channel audio tracks.  Can be used to combine the tracks into stereo or multi-channel audio tracks.
+             */
+            channelMapping?: string;
+            /**
+             * The type of AttributeFilter to apply to the TrackAttribute in order to select the tracks.
+             */
+            filter: string;
+            /**
+             * The value to filter the tracks by.  Only used when AttributeFilter.ValueEquals is specified for the Filter property.
+             */
+            filterValue?: string;
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.AudioTrackDescriptor'.
+             */
+            odataType: "#Microsoft.Media.AudioTrackDescriptor";
+        }
+
+        /**
+         * Select audio tracks from the input by specifying a track identifier.
+         */
+        export interface SelectAudioTrackByIdResponse {
+            /**
+             * Optional designation for single channel audio tracks.  Can be used to combine the tracks into stereo or multi-channel audio tracks.
+             */
+            channelMapping?: string;
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.AudioTrackDescriptor'.
+             */
+            odataType: "#Microsoft.Media.AudioTrackDescriptor";
+            /**
+             * Track identifier to select
+             */
+            trackId: number;
+        }
+
+        /**
+         * Select video tracks from the input by specifying an attribute and an attribute filter.
+         */
+        export interface SelectVideoTrackByAttributeResponse {
+            /**
+             * The TrackAttribute to filter the tracks by.
+             */
+            attribute: string;
+            /**
+             * The type of AttributeFilter to apply to the TrackAttribute in order to select the tracks.
+             */
+            filter: string;
+            /**
+             * The value to filter the tracks by.  Only used when AttributeFilter.ValueEquals is specified for the Filter property. For TrackAttribute.Bitrate, this should be an integer value in bits per second (e.g: '1500000').  The TrackAttribute.Language is not supported for video tracks.
+             */
+            filterValue?: string;
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.VideoTrackDescriptor'.
+             */
+            odataType: "#Microsoft.Media.VideoTrackDescriptor";
+        }
+
+        /**
+         * Select video tracks from the input by specifying a track identifier.
+         */
+        export interface SelectVideoTrackByIdResponse {
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.VideoTrackDescriptor'.
+             */
+            odataType: "#Microsoft.Media.VideoTrackDescriptor";
+            /**
+             * Track identifier to select
+             */
+            trackId: number;
+        }
+
+        /**
          * Describes all the settings to be used when encoding the input video with the Standard Encoder.
          */
         export interface StandardEncoderPresetResponse {
             /**
              * The list of codecs to be used when encoding the input video.
              */
-            codecs: outputs.media.v20200501.AacAudioResponse | outputs.media.v20200501.AudioResponse | outputs.media.v20200501.CopyAudioResponse | outputs.media.v20200501.CopyVideoResponse | outputs.media.v20200501.H264VideoResponse | outputs.media.v20200501.ImageResponse | outputs.media.v20200501.JpgImageResponse | outputs.media.v20200501.PngImageResponse | outputs.media.v20200501.VideoResponse[];
+            codecs: outputs.media.v20200501.AacAudioResponse | outputs.media.v20200501.AudioResponse | outputs.media.v20200501.CopyAudioResponse | outputs.media.v20200501.CopyVideoResponse | outputs.media.v20200501.H264VideoResponse | outputs.media.v20200501.H265VideoResponse | outputs.media.v20200501.ImageResponse | outputs.media.v20200501.JpgImageResponse | outputs.media.v20200501.PngImageResponse | outputs.media.v20200501.VideoResponse[];
             /**
              * One or more filtering operations that are applied to the input media before encoding.
              */
@@ -256036,6 +259991,36 @@ export namespace media {
         }
 
         /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The timestamp of resource last modification (UTC)
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
+        }
+
+        /**
          * Class to specify one track property condition
          */
         export interface TrackPropertyConditionResponse {
@@ -256086,7 +260071,7 @@ export namespace media {
          */
         export interface TransportStreamFormatResponse {
             /**
-             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. Any unsubstituted macros will be collapsed and removed from the filename.
+             * The pattern of the file names for the generated output files. The following macros are supported in the file name: {Basename} - An expansion macro that will use the name of the input video file. If the base name(the file suffix is not included) of the input video file is less than 32 characters long, the base name of input video files will be used. If the length of base name of the input video file exceeds 32 characters, the base name is truncated to the first 32 characters in total length. {Extension} - The appropriate extension for this format. {Label} - The label assigned to the codec/layer. {Index} - A unique index for thumbnails. Only applicable to thumbnails. {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video codec. {Resolution} - The video resolution. Any unsubstituted macros will be collapsed and removed from the filename.
              */
             filenamePattern: string;
             /**
@@ -256167,7 +260152,7 @@ export namespace media {
              */
             fadeOutDuration?: string;
             /**
-             * The label of the job input which is to be used as an overlay. The Input must specify exactly one file. You can specify an image file in JPG or PNG formats, or an audio file (such as a WAV, MP3, WMA or M4A file), or a video file. See https://aka.ms/mesformats for the complete list of supported audio and video file formats.
+             * The label of the job input which is to be used as an overlay. The Input must specify exactly one file. You can specify an image file in JPG, PNG, GIF or BMP format, or an audio file (such as a WAV, MP3, WMA or M4A file), or a video file. See https://aka.ms/mesformats for the complete list of supported audio and video file formats.
              */
             inputLabel: string;
             /**
@@ -256214,6 +260199,17 @@ export namespace media {
              * The Video Sync Mode
              */
             syncMode?: string;
+        }
+
+        /**
+         * A TrackSelection to select video tracks.
+         */
+        export interface VideoTrackDescriptorResponse {
+            /**
+             * The discriminator for derived types.
+             * Expected value is '#Microsoft.Media.VideoTrackDescriptor'.
+             */
+            odataType: "#Microsoft.Media.VideoTrackDescriptor";
         }
     }
 }
@@ -259270,7 +263266,7 @@ export namespace mixedreality {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -259423,7 +263419,7 @@ export namespace mixedreality {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -259721,7 +263717,7 @@ export namespace netapp {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -263194,7 +267190,7 @@ export namespace netapp {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -419147,7 +423143,7 @@ export namespace policyinsights {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -419816,7 +423812,7 @@ export namespace powerplatform {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -451335,7 +455331,7 @@ export namespace resourcegraph {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -451866,7 +455862,7 @@ export namespace resources {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -454928,7 +458924,7 @@ export namespace resources {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -456147,7 +460143,7 @@ export namespace resources {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -457696,7 +461692,7 @@ export namespace resources {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -460920,7 +464916,7 @@ export namespace security {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -461779,7 +465775,7 @@ export namespace security {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -475947,7 +479943,7 @@ export namespace storage {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -480229,7 +484225,7 @@ export namespace storage {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -481298,7 +485294,7 @@ export namespace storage {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -481778,7 +485774,7 @@ export namespace storagecache {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -482196,7 +486192,7 @@ export namespace storagecache {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -482592,7 +486588,7 @@ export namespace storagecache {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -497039,7 +501035,7 @@ export namespace web {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -508898,7 +512894,7 @@ export namespace web {
              */
             createdByType?: string;
             /**
-             * The type of identity that last modified the resource.
+             * The timestamp of resource last modification (UTC)
              */
             lastModifiedAt?: string;
             /**
@@ -509109,6 +513105,2397 @@ export namespace web {
              * The system metadata relating to this resource.
              */
             systemData: outputs.web.v20200901.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        /**
+         * Worker pool of an App Service Environment.
+         */
+        export interface WorkerPoolResponse {
+            /**
+             * Shared or dedicated app hosting.
+             */
+            computeMode?: string;
+            /**
+             * Names of all instances in the worker pool (read only).
+             */
+            instanceNames: string[];
+            /**
+             * Number of instances in the worker pool.
+             */
+            workerCount?: number;
+            /**
+             * VM size of the worker pool instances.
+             */
+            workerSize?: string;
+            /**
+             * Worker size ID for referencing this worker pool.
+             */
+            workerSizeId?: number;
+        }
+    }
+
+    export namespace v20201001 {
+        export interface AllowedAudiencesValidationResponse {
+            allowedAudiences?: string[];
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20201001.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        /**
+         * Information about the formal API definition for the app.
+         */
+        export interface ApiDefinitionInfoResponse {
+            /**
+             * The URL of the API definition.
+             */
+            url?: string;
+        }
+
+        /**
+         * Azure API management (APIM) configuration linked to the app.
+         */
+        export interface ApiManagementConfigResponse {
+            /**
+             * APIM-Api Identifier.
+             */
+            id?: string;
+        }
+
+        export interface AppRegistrationResponse {
+            appId?: string;
+            appSecretSettingName?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20201001.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        /**
+         * Application logs configuration.
+         */
+        export interface ApplicationLogsConfigResponse {
+            /**
+             * Application logs to blob storage configuration.
+             */
+            azureBlobStorage?: outputs.web.v20201001.AzureBlobStorageApplicationLogsConfigResponse;
+            /**
+             * Application logs to azure table storage configuration.
+             */
+            azureTableStorage?: outputs.web.v20201001.AzureTableStorageApplicationLogsConfigResponse;
+            /**
+             * Application logs to file system configuration.
+             */
+            fileSystem?: outputs.web.v20201001.FileSystemApplicationLogsConfigResponse;
+        }
+
+        /**
+         * A wrapper for an ARM resource id
+         */
+        export interface ArmIdWrapperResponse {
+            id: string;
+        }
+
+        export interface AuthPlatformResponse {
+            configFilePath?: string;
+            enabled?: boolean;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            runtimeVersion?: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20201001.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        /**
+         * Actions which to take by the auto-heal module when a rule is triggered.
+         */
+        export interface AutoHealActionsResponse {
+            /**
+             * Predefined action to be taken.
+             */
+            actionType?: string;
+            /**
+             * Custom action to be taken.
+             */
+            customAction?: outputs.web.v20201001.AutoHealCustomActionResponse;
+            /**
+             * Minimum time the process must execute
+             * before taking the action
+             */
+            minProcessExecutionTime?: string;
+        }
+
+        /**
+         * Custom action to be executed
+         * when an auto heal rule is triggered.
+         */
+        export interface AutoHealCustomActionResponse {
+            /**
+             * Executable to be run.
+             */
+            exe?: string;
+            /**
+             * Parameters for the executable.
+             */
+            parameters?: string;
+        }
+
+        /**
+         * Rules that can be defined for auto-heal.
+         */
+        export interface AutoHealRulesResponse {
+            /**
+             * Actions to be executed when a rule is triggered.
+             */
+            actions?: outputs.web.v20201001.AutoHealActionsResponse;
+            /**
+             * Conditions that describe when to execute the auto-heal actions.
+             */
+            triggers?: outputs.web.v20201001.AutoHealTriggersResponse;
+        }
+
+        /**
+         * Triggers for auto-heal.
+         */
+        export interface AutoHealTriggersResponse {
+            /**
+             * A rule based on private bytes.
+             */
+            privateBytesInKB?: number;
+            /**
+             * A rule based on total requests.
+             */
+            requests?: outputs.web.v20201001.RequestsBasedTriggerResponse;
+            /**
+             * A rule based on request execution time.
+             */
+            slowRequests?: outputs.web.v20201001.SlowRequestsBasedTriggerResponse;
+            /**
+             * A rule based on status codes.
+             */
+            statusCodes?: outputs.web.v20201001.StatusCodesBasedTriggerResponse[];
+        }
+
+        export interface AzureActiveDirectoryLoginResponse {
+            disableWWWAuthenticate?: boolean;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            loginParameters?: string[];
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20201001.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface AzureActiveDirectoryRegistrationResponse {
+            clientId?: string;
+            clientSecretCertificateThumbprint?: string;
+            clientSecretSettingName?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            openIdIssuer?: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20201001.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface AzureActiveDirectoryResponse {
+            enabled?: boolean;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            isAutoProvisioned?: boolean;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            login?: outputs.web.v20201001.AzureActiveDirectoryLoginResponse;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            registration?: outputs.web.v20201001.AzureActiveDirectoryRegistrationResponse;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20201001.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+            validation?: outputs.web.v20201001.AzureActiveDirectoryValidationResponse;
+        }
+
+        export interface AzureActiveDirectoryValidationResponse {
+            allowedAudiences?: string[];
+            /**
+             * Resource Id.
+             */
+            id: string;
+            jwtClaimChecks?: outputs.web.v20201001.JwtClaimChecksResponse;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20201001.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        /**
+         * Application logs azure blob storage configuration.
+         */
+        export interface AzureBlobStorageApplicationLogsConfigResponse {
+            /**
+             * Log level.
+             */
+            level?: string;
+            /**
+             * Retention in days.
+             * Remove blobs older than X days.
+             * 0 or lower means no retention.
+             */
+            retentionInDays?: number;
+            /**
+             * SAS url to a azure blob container with read/write/list/delete permissions.
+             */
+            sasUrl?: string;
+        }
+
+        /**
+         * Http logs to azure blob storage configuration.
+         */
+        export interface AzureBlobStorageHttpLogsConfigResponse {
+            /**
+             * True if configuration is enabled, false if it is disabled and null if configuration is not set.
+             */
+            enabled?: boolean;
+            /**
+             * Retention in days.
+             * Remove blobs older than X days.
+             * 0 or lower means no retention.
+             */
+            retentionInDays?: number;
+            /**
+             * SAS url to a azure blob container with read/write/list/delete permissions.
+             */
+            sasUrl?: string;
+        }
+
+        /**
+         * Azure Files or Blob Storage access information value for dictionary storage.
+         */
+        export interface AzureStorageInfoValueResponse {
+            /**
+             * Access key for the storage account.
+             */
+            accessKey?: string;
+            /**
+             * Name of the storage account.
+             */
+            accountName?: string;
+            /**
+             * Path to mount the storage within the site's runtime environment.
+             */
+            mountPath?: string;
+            /**
+             * Name of the file share (container name, for Blob storage).
+             */
+            shareName?: string;
+            /**
+             * State of the storage account.
+             */
+            state: string;
+            /**
+             * Type of storage.
+             */
+            type?: string;
+        }
+
+        /**
+         * Application logs to Azure table storage configuration.
+         */
+        export interface AzureTableStorageApplicationLogsConfigResponse {
+            /**
+             * Log level.
+             */
+            level?: string;
+            /**
+             * SAS URL to an Azure table with add/query/delete permissions.
+             */
+            sasUrl: string;
+        }
+
+        /**
+         * Backup description.
+         */
+        export interface BackupItemResponse {
+            /**
+             * Id of the backup.
+             */
+            backupId: number;
+            /**
+             * Name of the blob which contains data for this backup.
+             */
+            blobName: string;
+            /**
+             * Unique correlation identifier. Please use this along with the timestamp while communicating with Azure support.
+             */
+            correlationId: string;
+            /**
+             * Timestamp of the backup creation.
+             */
+            created: string;
+            /**
+             * List of databases included in the backup.
+             */
+            databases: outputs.web.v20201001.DatabaseBackupSettingResponse[];
+            /**
+             * Timestamp when this backup finished.
+             */
+            finishedTimeStamp: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Timestamp of a last restore operation which used this backup.
+             */
+            lastRestoreTimeStamp: string;
+            /**
+             * Details regarding this backup. Might contain an error message.
+             */
+            log: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * True if this backup has been created due to a schedule being triggered.
+             */
+            scheduled: boolean;
+            /**
+             * Size of the backup in bytes.
+             */
+            sizeInBytes: number;
+            /**
+             * Backup status.
+             */
+            status: string;
+            /**
+             * SAS URL for the storage account container which contains this backup.
+             */
+            storageAccountUrl: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20201001.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+            /**
+             * Size of the original web app which has been backed up.
+             */
+            websiteSizeInBytes: number;
+        }
+
+        /**
+         * Description of a backup schedule. Describes how often should be the backup performed and what should be the retention policy.
+         */
+        export interface BackupScheduleResponse {
+            /**
+             * How often the backup should be executed (e.g. for weekly backup, this should be set to 7 and FrequencyUnit should be set to Day)
+             */
+            frequencyInterval: number;
+            /**
+             * The unit of time for how often the backup should be executed (e.g. for weekly backup, this should be set to Day and FrequencyInterval should be set to 7)
+             */
+            frequencyUnit: string;
+            /**
+             * True if the retention policy should always keep at least one backup in the storage account, regardless how old it is; false otherwise.
+             */
+            keepAtLeastOneBackup: boolean;
+            /**
+             * Last time when this schedule was triggered.
+             */
+            lastExecutionTime: string;
+            /**
+             * After how many days backups should be deleted.
+             */
+            retentionPeriodInDays: number;
+            /**
+             * When the schedule should start working.
+             */
+            startTime?: string;
+        }
+
+        export interface BlobStorageTokenStoreResponse {
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            sasUrlSettingName?: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20201001.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        /**
+         * Describes the capabilities/features allowed for a specific SKU.
+         */
+        export interface CapabilityResponse {
+            /**
+             * Name of the SKU capability.
+             */
+            name?: string;
+            /**
+             * Reason of the SKU capability.
+             */
+            reason?: string;
+            /**
+             * Value of the SKU capability.
+             */
+            value?: string;
+        }
+
+        export interface ClientRegistrationResponse {
+            clientId?: string;
+            clientSecretSettingName?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20201001.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        /**
+         * Information needed for cloning operation.
+         */
+        export interface CloningInfoResponse {
+            /**
+             * Application setting overrides for cloned app. If specified, these settings override the settings cloned 
+             * from source app. Otherwise, application settings from source app are retained.
+             */
+            appSettingsOverrides?: {[key: string]: string};
+            /**
+             * <code>true</code> to clone custom hostnames from source app; otherwise, <code>false</code>.
+             */
+            cloneCustomHostNames?: boolean;
+            /**
+             * <code>true</code> to clone source control from source app; otherwise, <code>false</code>.
+             */
+            cloneSourceControl?: boolean;
+            /**
+             * <code>true</code> to configure load balancing for source and destination app.
+             */
+            configureLoadBalancing?: boolean;
+            /**
+             * Correlation ID of cloning operation. This ID ties multiple cloning operations
+             * together to use the same snapshot.
+             */
+            correlationId?: string;
+            /**
+             * App Service Environment.
+             */
+            hostingEnvironment?: string;
+            /**
+             * <code>true</code> to overwrite destination app; otherwise, <code>false</code>.
+             */
+            overwrite?: boolean;
+            /**
+             * ARM resource ID of the source app. App resource ID is of the form 
+             * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and 
+             * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName} for other slots.
+             */
+            sourceWebAppId: string;
+            /**
+             * Location of source app ex: West US or North Europe
+             */
+            sourceWebAppLocation?: string;
+            /**
+             * ARM resource ID of the Traffic Manager profile to use, if it exists. Traffic Manager resource ID is of the form 
+             * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
+             */
+            trafficManagerProfileId?: string;
+            /**
+             * Name of Traffic Manager profile to create. This is only needed if Traffic Manager profile does not already exist.
+             */
+            trafficManagerProfileName?: string;
+        }
+
+        /**
+         * Database connection string information.
+         */
+        export interface ConnStringInfoResponse {
+            /**
+             * Connection string value.
+             */
+            connectionString?: string;
+            /**
+             * Name of connection string.
+             */
+            name?: string;
+            /**
+             * Type of database.
+             */
+            type?: string;
+        }
+
+        /**
+         * Database connection string value to type pair.
+         */
+        export interface ConnStringValueTypePairResponse {
+            /**
+             * Type of database.
+             */
+            type: string;
+            /**
+             * Value of pair.
+             */
+            value: string;
+        }
+
+        export interface CookieExpirationResponse {
+            convention?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20201001.SystemDataResponse;
+            timeToExpiration?: string;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        /**
+         * Cross-Origin Resource Sharing (CORS) settings for the app.
+         */
+        export interface CorsSettingsResponse {
+            /**
+             * Gets or sets the list of origins that should be allowed to make cross-origin
+             * calls (for example: http://example.com:12345). Use "*" to allow all.
+             */
+            allowedOrigins?: string[];
+            /**
+             * Gets or sets whether CORS requests with credentials are allowed. See 
+             * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+             * for more details.
+             */
+            supportCredentials?: boolean;
+        }
+
+        export interface CustomOpenIdConnectProviderResponse {
+            enabled?: boolean;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            login?: outputs.web.v20201001.OpenIdConnectLoginResponse;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            registration?: outputs.web.v20201001.OpenIdConnectRegistrationResponse;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20201001.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        /**
+         * Database backup settings.
+         */
+        export interface DatabaseBackupSettingResponse {
+            /**
+             * Contains a connection string to a database which is being backed up or restored. If the restore should happen to a new database, the database name inside is the new one.
+             */
+            connectionString?: string;
+            /**
+             * Contains a connection string name that is linked to the SiteConfig.ConnectionStrings.
+             * This is used during restore with overwrite connection strings options.
+             */
+            connectionStringName?: string;
+            /**
+             * Database type (e.g. SqlAzure / MySql).
+             */
+            databaseType: string;
+            name?: string;
+        }
+
+        /**
+         * Enabled configuration.
+         */
+        export interface EnabledConfigResponse {
+            /**
+             * True if configuration is enabled, false if it is disabled and null if configuration is not set.
+             */
+            enabled?: boolean;
+        }
+
+        /**
+         * Routing rules in production experiments.
+         */
+        export interface ExperimentsResponse {
+            /**
+             * List of ramp-up rules.
+             */
+            rampUpRules?: outputs.web.v20201001.RampUpRuleResponse[];
+        }
+
+        export interface FacebookResponse {
+            enabled?: boolean;
+            graphApiVersion?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            login?: outputs.web.v20201001.LoginScopesResponse;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            registration?: outputs.web.v20201001.AppRegistrationResponse;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20201001.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        /**
+         * Application logs to file system configuration.
+         */
+        export interface FileSystemApplicationLogsConfigResponse {
+            /**
+             * Log level.
+             */
+            level?: string;
+        }
+
+        /**
+         * Http logs to file system configuration.
+         */
+        export interface FileSystemHttpLogsConfigResponse {
+            /**
+             * True if configuration is enabled, false if it is disabled and null if configuration is not set.
+             */
+            enabled?: boolean;
+            /**
+             * Retention in days.
+             * Remove files older than X days.
+             * 0 or lower means no retention.
+             */
+            retentionInDays?: number;
+            /**
+             * Maximum size in megabytes that http log files can use.
+             * When reached old log files will be removed to make space for new ones.
+             * Value can range between 25 and 100.
+             */
+            retentionInMb?: number;
+        }
+
+        export interface FileSystemTokenStoreResponse {
+            directory?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20201001.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface ForwardProxyResponse {
+            convention?: string;
+            customHostHeaderName?: string;
+            customProtoHeaderName?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20201001.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface GitHubResponse {
+            enabled?: boolean;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            login?: outputs.web.v20201001.LoginScopesResponse;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            registration?: outputs.web.v20201001.ClientRegistrationResponse;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20201001.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface GlobalValidationResponse {
+            excludedPaths?: string[];
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            redirectToProvider?: string;
+            requireAuthentication?: boolean;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20201001.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+            unauthenticatedClientAction?: string;
+        }
+
+        export interface GoogleResponse {
+            enabled?: boolean;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            login?: outputs.web.v20201001.LoginScopesResponse;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            registration?: outputs.web.v20201001.ClientRegistrationResponse;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20201001.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+            validation?: outputs.web.v20201001.AllowedAudiencesValidationResponse;
+        }
+
+        /**
+         * The IIS handler mappings used to define which handler processes HTTP requests with certain extension. 
+         * For example, it is used to configure php-cgi.exe process to handle all HTTP requests with *.php extension.
+         */
+        export interface HandlerMappingResponse {
+            /**
+             * Command-line arguments to be passed to the script processor.
+             */
+            arguments?: string;
+            /**
+             * Requests with this extension will be handled using the specified FastCGI application.
+             */
+            extension?: string;
+            /**
+             * The absolute path to the FastCGI application.
+             */
+            scriptProcessor?: string;
+        }
+
+        /**
+         * SSL-enabled hostname.
+         */
+        export interface HostNameSslStateResponse {
+            /**
+             * Indicates whether the hostname is a standard or repository hostname.
+             */
+            hostType?: string;
+            /**
+             * Hostname.
+             */
+            name?: string;
+            /**
+             * SSL type.
+             */
+            sslState?: string;
+            /**
+             * SSL certificate thumbprint.
+             */
+            thumbprint?: string;
+            /**
+             * Set to <code>true</code> to update existing hostname.
+             */
+            toUpdate?: boolean;
+            /**
+             * Virtual IP address assigned to the hostname if IP based SSL is enabled.
+             */
+            virtualIP?: string;
+        }
+
+        /**
+         * Specification for an App Service Environment to use for this resource.
+         */
+        export interface HostingEnvironmentProfileResponse {
+            /**
+             * Resource ID of the App Service Environment.
+             */
+            id?: string;
+            /**
+             * Name of the App Service Environment.
+             */
+            name: string;
+            /**
+             * Resource type of the App Service Environment.
+             */
+            type: string;
+        }
+
+        /**
+         * Http logs configuration.
+         */
+        export interface HttpLogsConfigResponse {
+            /**
+             * Http logs to azure blob storage configuration.
+             */
+            azureBlobStorage?: outputs.web.v20201001.AzureBlobStorageHttpLogsConfigResponse;
+            /**
+             * Http logs to file system configuration.
+             */
+            fileSystem?: outputs.web.v20201001.FileSystemHttpLogsConfigResponse;
+        }
+
+        export interface HttpSettingsResponse {
+            forwardProxy?: outputs.web.v20201001.ForwardProxyResponse;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            requireHttps?: boolean;
+            routes?: outputs.web.v20201001.HttpSettingsRoutesResponse;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20201001.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface HttpSettingsRoutesResponse {
+            apiPrefix?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20201001.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        /**
+         * A domain specific resource identifier.
+         */
+        export interface IdentifierResponse {
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20201001.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+            /**
+             * String representation of the identity.
+             */
+            value?: string;
+        }
+
+        export interface IdentityProvidersResponse {
+            azureActiveDirectory?: outputs.web.v20201001.AzureActiveDirectoryResponse;
+            customOpenIdConnectProviders?: {[key: string]: outputs.web.v20201001.CustomOpenIdConnectProviderResponse};
+            facebook?: outputs.web.v20201001.FacebookResponse;
+            gitHub?: outputs.web.v20201001.GitHubResponse;
+            google?: outputs.web.v20201001.GoogleResponse;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20201001.SystemDataResponse;
+            twitter?: outputs.web.v20201001.TwitterResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        /**
+         * IP security restriction on an app.
+         */
+        export interface IpSecurityRestrictionResponse {
+            /**
+             * Allow or Deny access for this IP range.
+             */
+            action?: string;
+            /**
+             * IP restriction rule description.
+             */
+            description?: string;
+            /**
+             * IP restriction rule headers.
+             * X-Forwarded-Host (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host#Examples). 
+             * The matching logic is ..
+             * - If the property is null or empty (default), all hosts(or lack of) are allowed.
+             * - A value is compared using ordinal-ignore-case (excluding port number).
+             * - Subdomain wildcards are permitted but don't match the root domain. For example, *.contoso.com matches the subdomain foo.contoso.com
+             *  but not the root domain contoso.com or multi-level foo.bar.contoso.com
+             * - Unicode host names are allowed but are converted to Punycode for matching.
+             *
+             * X-Forwarded-For (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For#Examples).
+             * The matching logic is ..
+             * - If the property is null or empty (default), any forwarded-for chains (or lack of) are allowed.
+             * - If any address (excluding port number) in the chain (comma separated) matches the CIDR defined by the property.
+             *
+             * X-Azure-FDID and X-FD-HealthProbe.
+             * The matching logic is exact match.
+             */
+            headers?: {[key: string]: string[]};
+            /**
+             * IP address the security restriction is valid for.
+             * It can be in form of pure ipv4 address (required SubnetMask property) or
+             * CIDR notation such as ipv4/mask (leading bit match). For CIDR,
+             * SubnetMask property must not be specified.
+             */
+            ipAddress?: string;
+            /**
+             * IP restriction rule name.
+             */
+            name?: string;
+            /**
+             * Priority of IP restriction rule.
+             */
+            priority?: number;
+            /**
+             * Subnet mask for the range of IP addresses the restriction is valid for.
+             */
+            subnetMask?: string;
+            /**
+             * (internal) Subnet traffic tag
+             */
+            subnetTrafficTag?: number;
+            /**
+             * Defines what this IP filter will be used for. This is to support IP filtering on proxies.
+             */
+            tag?: string;
+            /**
+             * Virtual network resource id
+             */
+            vnetSubnetResourceId?: string;
+            /**
+             * (internal) Vnet traffic tag
+             */
+            vnetTrafficTag?: number;
+        }
+
+        export interface JwtClaimChecksResponse {
+            allowedClientApplications?: string[];
+            allowedGroups?: string[];
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20201001.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface LoginResponse {
+            allowedExternalRedirectUrls?: string[];
+            cookieExpiration?: outputs.web.v20201001.CookieExpirationResponse;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            nonce?: outputs.web.v20201001.NonceResponse;
+            preserveUrlFragmentsForLogins?: boolean;
+            routes?: outputs.web.v20201001.LoginRoutesResponse;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20201001.SystemDataResponse;
+            tokenStore?: outputs.web.v20201001.TokenStoreResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface LoginRoutesResponse {
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            logoutEndpoint?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20201001.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface LoginScopesResponse {
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            scopes?: string[];
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20201001.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        /**
+         * Managed service identity.
+         */
+        export interface ManagedServiceIdentityResponse {
+            /**
+             * Principal Id of managed service identity.
+             */
+            principalId: string;
+            /**
+             * Tenant of managed service identity.
+             */
+            tenantId: string;
+            /**
+             * Type of managed service identity.
+             */
+            type?: string;
+            /**
+             * The list of user assigned identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}
+             */
+            userAssignedIdentities?: {[key: string]: outputs.web.v20201001.ManagedServiceIdentityResponseUserAssignedIdentities};
+        }
+
+        export interface ManagedServiceIdentityResponseUserAssignedIdentities {
+            /**
+             * Client Id of user assigned identity
+             */
+            clientId: string;
+            /**
+             * Principal Id of user assigned identity
+             */
+            principalId: string;
+        }
+
+        /**
+         * Name value pair.
+         */
+        export interface NameValuePairResponse {
+            /**
+             * Pair name.
+             */
+            name?: string;
+            /**
+             * Pair value.
+             */
+            value?: string;
+        }
+
+        /**
+         * Network access control entry.
+         */
+        export interface NetworkAccessControlEntryResponse {
+            /**
+             * Action object.
+             */
+            action?: string;
+            /**
+             * Description of network access control entry.
+             */
+            description?: string;
+            /**
+             * Order of precedence.
+             */
+            order?: number;
+            /**
+             * Remote subnet.
+             */
+            remoteSubnet?: string;
+        }
+
+        export interface NonceResponse {
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            nonceExpirationInterval?: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20201001.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+            validateNonce?: boolean;
+        }
+
+        export interface OpenIdConnectClientCredentialResponse {
+            clientSecretSettingName?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            method?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20201001.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface OpenIdConnectConfigResponse {
+            authorizationEndpoint?: string;
+            certificationUri?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            issuer?: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20201001.SystemDataResponse;
+            tokenEndpoint?: string;
+            /**
+             * Resource type.
+             */
+            type: string;
+            wellKnownOpenIdConfiguration?: string;
+        }
+
+        export interface OpenIdConnectLoginResponse {
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            nameClaimType?: string;
+            scopes?: string[];
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20201001.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface OpenIdConnectRegistrationResponse {
+            clientCredential?: outputs.web.v20201001.OpenIdConnectClientCredentialResponse;
+            clientId?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            openIdConnectConfiguration?: outputs.web.v20201001.OpenIdConnectConfigResponse;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20201001.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        /**
+         * The state of a private link connection
+         */
+        export interface PrivateLinkConnectionStateResponse {
+            /**
+             * ActionsRequired for a private link connection
+             */
+            actionsRequired?: string;
+            /**
+             * Description of a private link connection
+             */
+            description?: string;
+            /**
+             * Status of a private link connection
+             */
+            status?: string;
+        }
+
+        /**
+         * Push settings for the App.
+         */
+        export interface PushSettingsResponse {
+            /**
+             * Gets or sets a JSON string containing a list of dynamic tags that will be evaluated from user claims in the push registration endpoint.
+             */
+            dynamicTagsJson?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Gets or sets a flag indicating whether the Push endpoint is enabled.
+             */
+            isPushEnabled: boolean;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20201001.SystemDataResponse;
+            /**
+             * Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
+             */
+            tagWhitelistJson?: string;
+            /**
+             * Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.
+             * Tags can consist of alphanumeric characters and the following:
+             * '_', '@', '#', '.', ':', '-'. 
+             * Validation should be performed at the PushRequestHandler.
+             */
+            tagsRequiringAuth?: string;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        /**
+         * Routing rules for ramp up testing. This rule allows to redirect static traffic % to a slot or to gradually change routing % based on performance.
+         */
+        export interface RampUpRuleResponse {
+            /**
+             * Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
+             */
+            actionHostName?: string;
+            /**
+             * Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.
+             * https://www.siteextensions.net/packages/TiPCallback/
+             */
+            changeDecisionCallbackUrl?: string;
+            /**
+             * Specifies interval in minutes to reevaluate ReroutePercentage.
+             */
+            changeIntervalInMinutes?: number;
+            /**
+             * In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or 
+             * <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm 
+             * can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
+             */
+            changeStep?: number;
+            /**
+             * Specifies upper boundary below which ReroutePercentage will stay.
+             */
+            maxReroutePercentage?: number;
+            /**
+             * Specifies lower boundary above which ReroutePercentage will stay.
+             */
+            minReroutePercentage?: number;
+            /**
+             * Name of the routing rule. The recommended name would be to point to the slot which will receive the traffic in the experiment.
+             */
+            name?: string;
+            /**
+             * Percentage of the traffic which will be redirected to <code>ActionHostName</code>.
+             */
+            reroutePercentage?: number;
+        }
+
+        /**
+         * Trigger based on total requests.
+         */
+        export interface RequestsBasedTriggerResponse {
+            /**
+             * Request Count.
+             */
+            count?: number;
+            /**
+             * Time interval.
+             */
+            timeInterval?: string;
+        }
+
+        /**
+         * Configuration of an App Service app.
+         */
+        export interface SiteConfigResponse {
+            /**
+             * <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
+             */
+            alwaysOn?: boolean;
+            /**
+             * Information about the formal API definition for the app.
+             */
+            apiDefinition?: outputs.web.v20201001.ApiDefinitionInfoResponse;
+            /**
+             * Azure API management settings linked to the app.
+             */
+            apiManagementConfig?: outputs.web.v20201001.ApiManagementConfigResponse;
+            /**
+             * App command line to launch.
+             */
+            appCommandLine?: string;
+            /**
+             * Application settings.
+             */
+            appSettings?: outputs.web.v20201001.NameValuePairResponse[];
+            /**
+             * <code>true</code> if Auto Heal is enabled; otherwise, <code>false</code>.
+             */
+            autoHealEnabled?: boolean;
+            /**
+             * Auto Heal rules.
+             */
+            autoHealRules?: outputs.web.v20201001.AutoHealRulesResponse;
+            /**
+             * Auto-swap slot name.
+             */
+            autoSwapSlotName?: string;
+            /**
+             * Connection strings.
+             */
+            connectionStrings?: outputs.web.v20201001.ConnStringInfoResponse[];
+            /**
+             * Cross-Origin Resource Sharing (CORS) settings.
+             */
+            cors?: outputs.web.v20201001.CorsSettingsResponse;
+            /**
+             * Default documents.
+             */
+            defaultDocuments?: string[];
+            /**
+             * <code>true</code> if detailed error logging is enabled; otherwise, <code>false</code>.
+             */
+            detailedErrorLoggingEnabled?: boolean;
+            /**
+             * Document root.
+             */
+            documentRoot?: string;
+            /**
+             * This is work around for polymorphic types.
+             */
+            experiments?: outputs.web.v20201001.ExperimentsResponse;
+            /**
+             * State of FTP / FTPS service
+             */
+            ftpsState?: string;
+            /**
+             * Handler mappings.
+             */
+            handlerMappings?: outputs.web.v20201001.HandlerMappingResponse[];
+            /**
+             * Health check path
+             */
+            healthCheckPath?: string;
+            /**
+             * Http20Enabled: configures a web site to allow clients to connect over http2.0
+             */
+            http20Enabled?: boolean;
+            /**
+             * <code>true</code> if HTTP logging is enabled; otherwise, <code>false</code>.
+             */
+            httpLoggingEnabled?: boolean;
+            /**
+             * IP security restrictions for main.
+             */
+            ipSecurityRestrictions?: outputs.web.v20201001.IpSecurityRestrictionResponse[];
+            /**
+             * Java container.
+             */
+            javaContainer?: string;
+            /**
+             * Java container version.
+             */
+            javaContainerVersion?: string;
+            /**
+             * Java version.
+             */
+            javaVersion?: string;
+            /**
+             * Site limits.
+             */
+            limits?: outputs.web.v20201001.SiteLimitsResponse;
+            /**
+             * Linux App Framework and version
+             */
+            linuxFxVersion?: string;
+            /**
+             * Site load balancing.
+             */
+            loadBalancing?: string;
+            /**
+             * <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
+             */
+            localMySqlEnabled?: boolean;
+            /**
+             * HTTP logs directory size limit.
+             */
+            logsDirectorySizeLimit?: number;
+            /**
+             * Site MachineKey.
+             */
+            machineKey: outputs.web.v20201001.SiteMachineKeyResponse;
+            /**
+             * Managed pipeline mode.
+             */
+            managedPipelineMode?: string;
+            /**
+             * Managed Service Identity Id
+             */
+            managedServiceIdentityId?: number;
+            /**
+             * MinTlsVersion: configures the minimum version of TLS required for SSL requests
+             */
+            minTlsVersion?: string;
+            /**
+             * .NET Framework version.
+             */
+            netFrameworkVersion?: string;
+            /**
+             * Version of Node.js.
+             */
+            nodeVersion?: string;
+            /**
+             * Number of workers.
+             */
+            numberOfWorkers?: number;
+            /**
+             * Version of PHP.
+             */
+            phpVersion?: string;
+            /**
+             * Version of PowerShell.
+             */
+            powerShellVersion?: string;
+            /**
+             * Number of preWarmed instances.
+             * This setting only applies to the Consumption and Elastic Plans
+             */
+            preWarmedInstanceCount?: number;
+            /**
+             * Publishing user name.
+             */
+            publishingUsername?: string;
+            /**
+             * Push endpoint settings.
+             */
+            push?: outputs.web.v20201001.PushSettingsResponse;
+            /**
+             * Version of Python.
+             */
+            pythonVersion?: string;
+            /**
+             * <code>true</code> if remote debugging is enabled; otherwise, <code>false</code>.
+             */
+            remoteDebuggingEnabled?: boolean;
+            /**
+             * Remote debugging version.
+             */
+            remoteDebuggingVersion?: string;
+            /**
+             * <code>true</code> if request tracing is enabled; otherwise, <code>false</code>.
+             */
+            requestTracingEnabled?: boolean;
+            /**
+             * Request tracing expiration time.
+             */
+            requestTracingExpirationTime?: string;
+            /**
+             * IP security restrictions for scm.
+             */
+            scmIpSecurityRestrictions?: outputs.web.v20201001.IpSecurityRestrictionResponse[];
+            /**
+             * IP security restrictions for scm to use main.
+             */
+            scmIpSecurityRestrictionsUseMain?: boolean;
+            /**
+             * ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
+             */
+            scmMinTlsVersion?: string;
+            /**
+             * SCM type.
+             */
+            scmType?: string;
+            /**
+             * Tracing options.
+             */
+            tracingOptions?: string;
+            /**
+             * <code>true</code> to use 32-bit worker process; otherwise, <code>false</code>.
+             */
+            use32BitWorkerProcess?: boolean;
+            /**
+             * Virtual applications.
+             */
+            virtualApplications?: outputs.web.v20201001.VirtualApplicationResponse[];
+            /**
+             * Virtual Network name.
+             */
+            vnetName?: string;
+            /**
+             * The number of private ports assigned to this app. These will be assigned dynamically on runtime.
+             */
+            vnetPrivatePortsCount?: number;
+            /**
+             * Virtual Network Route All enabled. This causes all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied.
+             */
+            vnetRouteAllEnabled?: boolean;
+            /**
+             * <code>true</code> if WebSocket is enabled; otherwise, <code>false</code>.
+             */
+            webSocketsEnabled?: boolean;
+            /**
+             * Xenon App Framework and version
+             */
+            windowsFxVersion?: string;
+            /**
+             * Explicit Managed Service Identity Id
+             */
+            xManagedServiceIdentityId?: number;
+        }
+
+        /**
+         * Metric limits set on an app.
+         */
+        export interface SiteLimitsResponse {
+            /**
+             * Maximum allowed disk size usage in MB.
+             */
+            maxDiskSizeInMb?: number;
+            /**
+             * Maximum allowed memory usage in MB.
+             */
+            maxMemoryInMb?: number;
+            /**
+             * Maximum allowed CPU usage percentage.
+             */
+            maxPercentageCpu?: number;
+        }
+
+        /**
+         * MachineKey of an app.
+         */
+        export interface SiteMachineKeyResponse {
+            /**
+             * Algorithm used for decryption.
+             */
+            decryption?: string;
+            /**
+             * Decryption key.
+             */
+            decryptionKey?: string;
+            /**
+             * MachineKey validation.
+             */
+            validation?: string;
+            /**
+             * Validation key.
+             */
+            validationKey?: string;
+        }
+
+        /**
+         * Description of the App Service plan scale options.
+         */
+        export interface SkuCapacityResponse {
+            /**
+             * Default number of workers for this App Service plan SKU.
+             */
+            default?: number;
+            /**
+             * Maximum number of workers for this App Service plan SKU.
+             */
+            maximum?: number;
+            /**
+             * Minimum number of workers for this App Service plan SKU.
+             */
+            minimum?: number;
+            /**
+             * Available scale configurations for an App Service plan.
+             */
+            scaleType?: string;
+        }
+
+        /**
+         * Description of a SKU for a scalable resource.
+         */
+        export interface SkuDescriptionResponse {
+            /**
+             * Capabilities of the SKU, e.g., is traffic manager enabled?
+             */
+            capabilities?: outputs.web.v20201001.CapabilityResponse[];
+            /**
+             * Current number of instances assigned to the resource.
+             */
+            capacity?: number;
+            /**
+             * Family code of the resource SKU.
+             */
+            family?: string;
+            /**
+             * Locations of the SKU.
+             */
+            locations?: string[];
+            /**
+             * Name of the resource SKU.
+             */
+            name?: string;
+            /**
+             * Size specifier of the resource SKU.
+             */
+            size?: string;
+            /**
+             * Min, max, and default scale values of the SKU.
+             */
+            skuCapacity?: outputs.web.v20201001.SkuCapacityResponse;
+            /**
+             * Service tier of the resource SKU.
+             */
+            tier?: string;
+        }
+
+        /**
+         * The status of the last successful slot swap operation.
+         */
+        export interface SlotSwapStatusResponse {
+            /**
+             * The destination slot of the last swap operation.
+             */
+            destinationSlotName: string;
+            /**
+             * The source slot of the last swap operation.
+             */
+            sourceSlotName: string;
+            /**
+             * The time the last successful slot swap completed.
+             */
+            timestampUtc: string;
+        }
+
+        /**
+         * Trigger based on request execution time.
+         */
+        export interface SlowRequestsBasedTriggerResponse {
+            /**
+             * Request Count.
+             */
+            count?: number;
+            /**
+             * Time interval.
+             */
+            timeInterval?: string;
+            /**
+             * Time taken.
+             */
+            timeTaken?: string;
+        }
+
+        /**
+         * Stamp capacity information.
+         */
+        export interface StampCapacityResponse {
+            /**
+             * Available capacity (# of machines, bytes of storage etc...).
+             */
+            availableCapacity?: number;
+            /**
+             * Shared/dedicated workers.
+             */
+            computeMode?: string;
+            /**
+             * If <code>true</code>, it includes basic apps.
+             * Basic apps are not used for capacity allocation.
+             */
+            excludeFromCapacityAllocation?: boolean;
+            /**
+             * <code>true</code> if capacity is applicable for all apps; otherwise, <code>false</code>.
+             */
+            isApplicableForAllComputeModes?: boolean;
+            /**
+             * Is this a linux stamp capacity
+             */
+            isLinux?: boolean;
+            /**
+             * Name of the stamp.
+             */
+            name?: string;
+            /**
+             * Shared or Dedicated.
+             */
+            siteMode?: string;
+            /**
+             * Total capacity (# of machines, bytes of storage etc...).
+             */
+            totalCapacity?: number;
+            /**
+             * Name of the unit.
+             */
+            unit?: string;
+            /**
+             * Size of the machines.
+             */
+            workerSize?: string;
+            /**
+             * Size ID of machines: 
+             * 0 - Small
+             * 1 - Medium
+             * 2 - Large
+             */
+            workerSizeId?: number;
+        }
+
+        /**
+         * Build properties for the static site.
+         */
+        export interface StaticSiteBuildPropertiesResponse {
+            /**
+             * The path to the api code within the repository.
+             */
+            apiLocation?: string;
+            /**
+             * The path of the app artifacts after building.
+             */
+            appArtifactLocation?: string;
+            /**
+             * The path to the app code within the repository.
+             */
+            appLocation?: string;
+        }
+
+        /**
+         * Static Site User ARM resource.
+         */
+        export interface StaticSiteUserARMResourceResponse {
+            /**
+             * The display name for the static site user.
+             */
+            displayName: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The identity provider for the static site user.
+             */
+            provider: string;
+            /**
+             * The roles for the static site user, in free-form string format
+             */
+            roles?: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20201001.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+            /**
+             * The user id for the static site user.
+             */
+            userId: string;
+        }
+
+        /**
+         * Trigger based on status code.
+         */
+        export interface StatusCodesBasedTriggerResponse {
+            /**
+             * Request Count.
+             */
+            count?: number;
+            /**
+             * HTTP status code.
+             */
+            status?: number;
+            /**
+             * Request Sub Status.
+             */
+            subStatus?: number;
+            /**
+             * Time interval.
+             */
+            timeInterval?: string;
+            /**
+             * Win32 error code.
+             */
+            win32Status?: number;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The timestamp of resource last modification (UTC)
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
+        }
+
+        export interface TokenStoreResponse {
+            azureBlobStorage?: outputs.web.v20201001.BlobStorageTokenStoreResponse;
+            enabled?: boolean;
+            fileSystem?: outputs.web.v20201001.FileSystemTokenStoreResponse;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20201001.SystemDataResponse;
+            tokenRefreshExtensionHours?: number;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface TwitterRegistrationResponse {
+            consumerKey?: string;
+            consumerSecretSettingName?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20201001.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        export interface TwitterResponse {
+            enabled?: boolean;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            registration?: outputs.web.v20201001.TwitterRegistrationResponse;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20201001.SystemDataResponse;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        /**
+         * Virtual application in an app.
+         */
+        export interface VirtualApplicationResponse {
+            /**
+             * Physical path.
+             */
+            physicalPath?: string;
+            /**
+             * <code>true</code> if preloading is enabled; otherwise, <code>false</code>.
+             */
+            preloadEnabled?: boolean;
+            /**
+             * Virtual directories for virtual application.
+             */
+            virtualDirectories?: outputs.web.v20201001.VirtualDirectoryResponse[];
+            /**
+             * Virtual path.
+             */
+            virtualPath?: string;
+        }
+
+        /**
+         * Directory for virtual application.
+         */
+        export interface VirtualDirectoryResponse {
+            /**
+             * Physical path.
+             */
+            physicalPath?: string;
+            /**
+             * Path to virtual application.
+             */
+            virtualPath?: string;
+        }
+
+        /**
+         * Virtual IP mapping.
+         */
+        export interface VirtualIPMappingResponse {
+            /**
+             * Is virtual IP mapping in use.
+             */
+            inUse?: boolean;
+            /**
+             * Internal HTTP port.
+             */
+            internalHttpPort?: number;
+            /**
+             * Internal HTTPS port.
+             */
+            internalHttpsPort?: number;
+            /**
+             * name of the service that virtual IP is assigned to
+             */
+            serviceName?: string;
+            /**
+             * Virtual IP address.
+             */
+            virtualIP?: string;
+        }
+
+        /**
+         * Specification for using a Virtual Network.
+         */
+        export interface VirtualNetworkProfileResponse {
+            /**
+             * Resource id of the Virtual Network.
+             */
+            id?: string;
+            /**
+             * Name of the Virtual Network (read-only).
+             */
+            name: string;
+            /**
+             * Subnet within the Virtual Network.
+             */
+            subnet?: string;
+            /**
+             * Resource type of the Virtual Network (read-only).
+             */
+            type: string;
+        }
+
+        /**
+         * Virtual Network route contract used to pass routing information for a Virtual Network.
+         */
+        export interface VnetRouteResponse {
+            /**
+             * The ending address for this route. If the start address is specified in CIDR notation, this must be omitted.
+             */
+            endAddress?: string;
+            /**
+             * Resource Id.
+             */
+            id: string;
+            /**
+             * Kind of resource.
+             */
+            kind?: string;
+            /**
+             * Resource Name.
+             */
+            name: string;
+            /**
+             * The type of route this is:
+             * DEFAULT - By default, every app has routes to the local address ranges specified by RFC1918
+             * INHERITED - Routes inherited from the real Virtual Network routes
+             * STATIC - Static route set on the app only
+             *
+             * These values will be used for syncing an app's routes with those from a Virtual Network.
+             */
+            routeType?: string;
+            /**
+             * The starting address for this route. This may also include a CIDR notation, in which case the end address must not be specified.
+             */
+            startAddress?: string;
+            /**
+             * The system metadata relating to this resource.
+             */
+            systemData: outputs.web.v20201001.SystemDataResponse;
             /**
              * Resource type.
              */
