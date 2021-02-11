@@ -3,12 +3,16 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
+None
+
+---
+
+## 0.6.1 (2020-02-11)
+
 New features:
 
 - Automatic location propagation ([#6](https://github.com/pulumi/pulumi-azure-nextgen/issues/6))
 - New resource: `Storage.Blob` ([#13](https://github.com/pulumi/pulumi-azure-nextgen/issues/13))
-
----
 
 ## 0.6.0 (2020-02-02)
 
