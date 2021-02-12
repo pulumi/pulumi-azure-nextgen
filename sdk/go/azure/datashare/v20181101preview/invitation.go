@@ -62,6 +62,9 @@ func NewInvitation(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-nextgen:datashare:Invitation"),
+		},
+		{
 			Type: pulumi.String("azure-nextgen:datashare/latest:Invitation"),
 		},
 		{
@@ -69,6 +72,9 @@ func NewInvitation(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-nextgen:datashare/v20200901:Invitation"),
+		},
+		{
+			Type: pulumi.String("azure-nextgen:datashare/v20201001preview:Invitation"),
 		},
 	})
 	opts = append(opts, aliases)

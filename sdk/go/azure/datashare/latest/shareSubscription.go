@@ -13,6 +13,8 @@ import (
 
 // A share subscription data transfer object.
 // Latest API Version: 2020-09-01.
+//
+// Deprecated: The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-nextgen:datashare:ShareSubscription'.
 type ShareSubscription struct {
 	pulumi.CustomResourceState
 
@@ -45,7 +47,7 @@ type ShareSubscription struct {
 	// Source share location.
 	SourceShareLocation pulumi.StringOutput `pulumi:"sourceShareLocation"`
 	// System Data of the Azure resource.
-	SystemData ProxyDtoResponseSystemDataOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Type of the azure resource
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Email of the user who created the resource
@@ -78,6 +80,9 @@ func NewShareSubscription(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-nextgen:datashare:ShareSubscription"),
+		},
+		{
 			Type: pulumi.String("azure-nextgen:datashare/v20181101preview:ShareSubscription"),
 		},
 		{
@@ -85,6 +90,9 @@ func NewShareSubscription(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-nextgen:datashare/v20200901:ShareSubscription"),
+		},
+		{
+			Type: pulumi.String("azure-nextgen:datashare/v20201001preview:ShareSubscription"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -139,7 +147,7 @@ type shareSubscriptionState struct {
 	// Source share location.
 	SourceShareLocation *string `pulumi:"sourceShareLocation"`
 	// System Data of the Azure resource.
-	SystemData *ProxyDtoResponseSystemData `pulumi:"systemData"`
+	SystemData *SystemDataResponse `pulumi:"systemData"`
 	// Type of the azure resource
 	Type *string `pulumi:"type"`
 	// Email of the user who created the resource
@@ -178,7 +186,7 @@ type ShareSubscriptionState struct {
 	// Source share location.
 	SourceShareLocation pulumi.StringPtrInput
 	// System Data of the Azure resource.
-	SystemData ProxyDtoResponseSystemDataPtrInput
+	SystemData SystemDataResponsePtrInput
 	// Type of the azure resource
 	Type pulumi.StringPtrInput
 	// Email of the user who created the resource

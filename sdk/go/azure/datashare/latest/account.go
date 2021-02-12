@@ -13,6 +13,8 @@ import (
 
 // An account data transfer object.
 // Latest API Version: 2020-09-01.
+//
+// Deprecated: The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-nextgen:datashare:Account'.
 type Account struct {
 	pulumi.CustomResourceState
 
@@ -27,7 +29,7 @@ type Account struct {
 	// Provisioning state of the Account
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// System Data of the Azure resource.
-	SystemData DefaultDtoResponseSystemDataOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Tags on the azure resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Type of the azure resource
@@ -56,6 +58,9 @@ func NewAccount(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-nextgen:datashare:Account"),
+		},
+		{
 			Type: pulumi.String("azure-nextgen:datashare/v20181101preview:Account"),
 		},
 		{
@@ -63,6 +68,9 @@ func NewAccount(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-nextgen:datashare/v20200901:Account"),
+		},
+		{
+			Type: pulumi.String("azure-nextgen:datashare/v20201001preview:Account"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -99,7 +107,7 @@ type accountState struct {
 	// Provisioning state of the Account
 	ProvisioningState *string `pulumi:"provisioningState"`
 	// System Data of the Azure resource.
-	SystemData *DefaultDtoResponseSystemData `pulumi:"systemData"`
+	SystemData *SystemDataResponse `pulumi:"systemData"`
 	// Tags on the azure resource.
 	Tags map[string]string `pulumi:"tags"`
 	// Type of the azure resource
@@ -122,7 +130,7 @@ type AccountState struct {
 	// Provisioning state of the Account
 	ProvisioningState pulumi.StringPtrInput
 	// System Data of the Azure resource.
-	SystemData DefaultDtoResponseSystemDataPtrInput
+	SystemData SystemDataResponsePtrInput
 	// Tags on the azure resource.
 	Tags pulumi.StringMapInput
 	// Type of the azure resource

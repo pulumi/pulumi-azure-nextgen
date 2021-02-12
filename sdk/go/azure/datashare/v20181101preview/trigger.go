@@ -47,6 +47,9 @@ func NewTrigger(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-nextgen:datashare:Trigger"),
+		},
+		{
 			Type: pulumi.String("azure-nextgen:datashare/latest:Trigger"),
 		},
 		{
@@ -54,6 +57,9 @@ func NewTrigger(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-nextgen:datashare/v20200901:Trigger"),
+		},
+		{
+			Type: pulumi.String("azure-nextgen:datashare/v20201001preview:Trigger"),
 		},
 	})
 	opts = append(opts, aliases)
