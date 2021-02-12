@@ -5,7 +5,7 @@ CHANGELOG
 
 #### Top-Level Resources
 
-Top-Level Resources (see https://github.com/pulumi/pulumi-azure-nextgen/issues/169):
+Top-Level Resources ([#169](https://github.com/pulumi/pulumi-azure-nextgen/issues/169)):
 
 1. We pick a version for every Azure resource and place it to the top module of each resource provider. E.g., you will be able to create a storage account like
 
