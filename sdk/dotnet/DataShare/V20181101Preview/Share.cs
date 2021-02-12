@@ -94,9 +94,11 @@ namespace Pulumi.AzureNextGen.DataShare.V20181101Preview
                 Version = Utilities.Version,
                 Aliases =
                 {
+                    new Pulumi.Alias { Type = "azure-nextgen:datashare:Share"},
                     new Pulumi.Alias { Type = "azure-nextgen:datashare/latest:Share"},
                     new Pulumi.Alias { Type = "azure-nextgen:datashare/v20191101:Share"},
                     new Pulumi.Alias { Type = "azure-nextgen:datashare/v20200901:Share"},
+                    new Pulumi.Alias { Type = "azure-nextgen:datashare/v20201001preview:Share"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

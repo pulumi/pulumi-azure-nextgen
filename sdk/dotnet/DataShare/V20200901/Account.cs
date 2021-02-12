@@ -49,7 +49,7 @@ namespace Pulumi.AzureNextGen.DataShare.V20200901
         /// System Data of the Azure resource.
         /// </summary>
         [Output("systemData")]
-        public Output<Outputs.DefaultDtoResponseSystemData> SystemData { get; private set; } = null!;
+        public Output<Outputs.SystemDataResponse> SystemData { get; private set; } = null!;
 
         /// <summary>
         /// Tags on the azure resource.
@@ -100,9 +100,11 @@ namespace Pulumi.AzureNextGen.DataShare.V20200901
                 Version = Utilities.Version,
                 Aliases =
                 {
+                    new Pulumi.Alias { Type = "azure-nextgen:datashare:Account"},
                     new Pulumi.Alias { Type = "azure-nextgen:datashare/latest:Account"},
                     new Pulumi.Alias { Type = "azure-nextgen:datashare/v20181101preview:Account"},
                     new Pulumi.Alias { Type = "azure-nextgen:datashare/v20191101:Account"},
+                    new Pulumi.Alias { Type = "azure-nextgen:datashare/v20201001preview:Account"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

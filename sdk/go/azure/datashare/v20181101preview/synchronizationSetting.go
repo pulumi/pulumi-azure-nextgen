@@ -47,6 +47,9 @@ func NewSynchronizationSetting(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-nextgen:datashare:SynchronizationSetting"),
+		},
+		{
 			Type: pulumi.String("azure-nextgen:datashare/latest:SynchronizationSetting"),
 		},
 		{
@@ -54,6 +57,9 @@ func NewSynchronizationSetting(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-nextgen:datashare/v20200901:SynchronizationSetting"),
+		},
+		{
+			Type: pulumi.String("azure-nextgen:datashare/v20201001preview:SynchronizationSetting"),
 		},
 	})
 	opts = append(opts, aliases)

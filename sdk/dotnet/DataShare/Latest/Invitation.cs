@@ -13,6 +13,7 @@ namespace Pulumi.AzureNextGen.DataShare.Latest
     /// A Invitation data transfer object.
     /// Latest API Version: 2020-09-01.
     /// </summary>
+    [Obsolete(@"The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-nextgen:datashare:Invitation'.")]
     [AzureNextGenResourceType("azure-nextgen:datashare/latest:Invitation")]
     public partial class Invitation : Pulumi.CustomResource
     {
@@ -56,7 +57,7 @@ namespace Pulumi.AzureNextGen.DataShare.Latest
         /// System Data of the Azure resource.
         /// </summary>
         [Output("systemData")]
-        public Output<Outputs.ProxyDtoResponseSystemData> SystemData { get; private set; } = null!;
+        public Output<Outputs.SystemDataResponse> SystemData { get; private set; } = null!;
 
         /// <summary>
         /// The target Azure AD Id. Can't be combined with email.
@@ -121,9 +122,11 @@ namespace Pulumi.AzureNextGen.DataShare.Latest
                 Version = Utilities.Version,
                 Aliases =
                 {
+                    new Pulumi.Alias { Type = "azure-nextgen:datashare:Invitation"},
                     new Pulumi.Alias { Type = "azure-nextgen:datashare/v20181101preview:Invitation"},
                     new Pulumi.Alias { Type = "azure-nextgen:datashare/v20191101:Invitation"},
                     new Pulumi.Alias { Type = "azure-nextgen:datashare/v20200901:Invitation"},
+                    new Pulumi.Alias { Type = "azure-nextgen:datashare/v20201001preview:Invitation"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

@@ -13,6 +13,8 @@ import (
 
 // A Trigger data transfer object.
 // Latest API Version: 2020-09-01.
+//
+// Deprecated: The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-nextgen:datashare:Trigger'.
 type Trigger struct {
 	pulumi.CustomResourceState
 
@@ -21,7 +23,7 @@ type Trigger struct {
 	// Name of the azure resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// System Data of the Azure resource.
-	SystemData ProxyDtoResponseSystemDataOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Type of the azure resource
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -50,6 +52,9 @@ func NewTrigger(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-nextgen:datashare:Trigger"),
+		},
+		{
 			Type: pulumi.String("azure-nextgen:datashare/v20181101preview:Trigger"),
 		},
 		{
@@ -57,6 +62,9 @@ func NewTrigger(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-nextgen:datashare/v20200901:Trigger"),
+		},
+		{
+			Type: pulumi.String("azure-nextgen:datashare/v20201001preview:Trigger"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -87,7 +95,7 @@ type triggerState struct {
 	// Name of the azure resource
 	Name *string `pulumi:"name"`
 	// System Data of the Azure resource.
-	SystemData *ProxyDtoResponseSystemData `pulumi:"systemData"`
+	SystemData *SystemDataResponse `pulumi:"systemData"`
 	// Type of the azure resource
 	Type *string `pulumi:"type"`
 }
@@ -98,7 +106,7 @@ type TriggerState struct {
 	// Name of the azure resource
 	Name pulumi.StringPtrInput
 	// System Data of the Azure resource.
-	SystemData ProxyDtoResponseSystemDataPtrInput
+	SystemData SystemDataResponsePtrInput
 	// Type of the azure resource
 	Type pulumi.StringPtrInput
 }

@@ -13,6 +13,7 @@ namespace Pulumi.AzureNextGen.DataShare.Latest
     /// A data set mapping data transfer object.
     /// Latest API Version: 2020-09-01.
     /// </summary>
+    [Obsolete(@"The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-nextgen:datashare:DataSetMapping'.")]
     [AzureNextGenResourceType("azure-nextgen:datashare/latest:DataSetMapping")]
     public partial class DataSetMapping : Pulumi.CustomResource
     {
@@ -32,7 +33,7 @@ namespace Pulumi.AzureNextGen.DataShare.Latest
         /// System Data of the Azure resource.
         /// </summary>
         [Output("systemData")]
-        public Output<Outputs.ProxyDtoResponseSystemData> SystemData { get; private set; } = null!;
+        public Output<Outputs.SystemDataResponse> SystemData { get; private set; } = null!;
 
         /// <summary>
         /// Type of the azure resource
@@ -65,9 +66,11 @@ namespace Pulumi.AzureNextGen.DataShare.Latest
                 Version = Utilities.Version,
                 Aliases =
                 {
+                    new Pulumi.Alias { Type = "azure-nextgen:datashare:DataSetMapping"},
                     new Pulumi.Alias { Type = "azure-nextgen:datashare/v20181101preview:DataSetMapping"},
                     new Pulumi.Alias { Type = "azure-nextgen:datashare/v20191101:DataSetMapping"},
                     new Pulumi.Alias { Type = "azure-nextgen:datashare/v20200901:DataSetMapping"},
+                    new Pulumi.Alias { Type = "azure-nextgen:datashare/v20201001preview:DataSetMapping"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

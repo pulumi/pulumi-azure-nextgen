@@ -55,7 +55,7 @@ namespace Pulumi.AzureNextGen.DataShare.V20200901
         /// System Data of the Azure resource.
         /// </summary>
         [Output("systemData")]
-        public Output<Outputs.ProxyDtoResponseSystemData> SystemData { get; private set; } = null!;
+        public Output<Outputs.SystemDataResponse> SystemData { get; private set; } = null!;
 
         /// <summary>
         /// The target Azure AD Id. Can't be combined with email.
@@ -120,9 +120,11 @@ namespace Pulumi.AzureNextGen.DataShare.V20200901
                 Version = Utilities.Version,
                 Aliases =
                 {
+                    new Pulumi.Alias { Type = "azure-nextgen:datashare:Invitation"},
                     new Pulumi.Alias { Type = "azure-nextgen:datashare/latest:Invitation"},
                     new Pulumi.Alias { Type = "azure-nextgen:datashare/v20181101preview:Invitation"},
                     new Pulumi.Alias { Type = "azure-nextgen:datashare/v20191101:Invitation"},
+                    new Pulumi.Alias { Type = "azure-nextgen:datashare/v20201001preview:Invitation"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

@@ -13,6 +13,7 @@ namespace Pulumi.AzureNextGen.DataShare.Latest
     /// A share data transfer object.
     /// Latest API Version: 2020-09-01.
     /// </summary>
+    [Obsolete(@"The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-nextgen:datashare:Share'.")]
     [AzureNextGenResourceType("azure-nextgen:datashare/latest:Share")]
     public partial class Share : Pulumi.CustomResource
     {
@@ -50,7 +51,7 @@ namespace Pulumi.AzureNextGen.DataShare.Latest
         /// System Data of the Azure resource.
         /// </summary>
         [Output("systemData")]
-        public Output<Outputs.ProxyDtoResponseSystemData> SystemData { get; private set; } = null!;
+        public Output<Outputs.SystemDataResponse> SystemData { get; private set; } = null!;
 
         /// <summary>
         /// Share terms.
@@ -101,9 +102,11 @@ namespace Pulumi.AzureNextGen.DataShare.Latest
                 Version = Utilities.Version,
                 Aliases =
                 {
+                    new Pulumi.Alias { Type = "azure-nextgen:datashare:Share"},
                     new Pulumi.Alias { Type = "azure-nextgen:datashare/v20181101preview:Share"},
                     new Pulumi.Alias { Type = "azure-nextgen:datashare/v20191101:Share"},
                     new Pulumi.Alias { Type = "azure-nextgen:datashare/v20200901:Share"},
+                    new Pulumi.Alias { Type = "azure-nextgen:datashare/v20201001preview:Share"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

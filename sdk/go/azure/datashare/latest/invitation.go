@@ -13,6 +13,8 @@ import (
 
 // A Invitation data transfer object.
 // Latest API Version: 2020-09-01.
+//
+// Deprecated: The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-nextgen:datashare:Invitation'.
 type Invitation struct {
 	pulumi.CustomResourceState
 
@@ -29,7 +31,7 @@ type Invitation struct {
 	// Gets the time at which the invitation was sent.
 	SentAt pulumi.StringOutput `pulumi:"sentAt"`
 	// System Data of the Azure resource.
-	SystemData ProxyDtoResponseSystemDataOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The target Azure AD Id. Can't be combined with email.
 	TargetActiveDirectoryId pulumi.StringPtrOutput `pulumi:"targetActiveDirectoryId"`
 	// The email the invitation is directed to.
@@ -67,6 +69,9 @@ func NewInvitation(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-nextgen:datashare:Invitation"),
+		},
+		{
 			Type: pulumi.String("azure-nextgen:datashare/v20181101preview:Invitation"),
 		},
 		{
@@ -74,6 +79,9 @@ func NewInvitation(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-nextgen:datashare/v20200901:Invitation"),
+		},
+		{
+			Type: pulumi.String("azure-nextgen:datashare/v20201001preview:Invitation"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -112,7 +120,7 @@ type invitationState struct {
 	// Gets the time at which the invitation was sent.
 	SentAt *string `pulumi:"sentAt"`
 	// System Data of the Azure resource.
-	SystemData *ProxyDtoResponseSystemData `pulumi:"systemData"`
+	SystemData *SystemDataResponse `pulumi:"systemData"`
 	// The target Azure AD Id. Can't be combined with email.
 	TargetActiveDirectoryId *string `pulumi:"targetActiveDirectoryId"`
 	// The email the invitation is directed to.
@@ -143,7 +151,7 @@ type InvitationState struct {
 	// Gets the time at which the invitation was sent.
 	SentAt pulumi.StringPtrInput
 	// System Data of the Azure resource.
-	SystemData ProxyDtoResponseSystemDataPtrInput
+	SystemData SystemDataResponsePtrInput
 	// The target Azure AD Id. Can't be combined with email.
 	TargetActiveDirectoryId pulumi.StringPtrInput
 	// The email the invitation is directed to.
