@@ -3,7 +3,29 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
-None
+#### Top-Level Resources
+
+Top-Level Resources (see https://github.com/pulumi/pulumi-azure-nextgen/issues/169):
+
+1. We pick a version for every Azure resource and place it to the top module of each resource provider. E.g., you will be able to create a storage account like
+
+```
+new Pulumi.AzureNextGen.Storage.StorageAccount("sa", ...);
+// or
+new azure_nextgen.storage.StorageAccount("sa", ...);
+```
+
+2. Resources that have preview versions but no stable versions are also available in the top module (they were not in Latest).
+
+3. At 1.0, for a given resource, we will likely pick an API version that is the latest. If a later version is published by Microsoft and it contains breaking changes, we will NOT introduce this version to the top-level resource. It will be available under a versioned namespace only.
+
+4. At 2.0, whenever it comes, we will bring all those postponed breaking changes by promoting top-level resources to their respective latest API versions.
+
+5. We will encourage everyone to use top-level modules unless they have a reason not to do so (e.g., they need a newer version with its new features).
+
+6. All "Latest" modules/namespaces become deprecated and will be removed before 1.0. You will be able to migrate to top-level resources without re-creating Azure resources.
+
+Note: `storage.Blob` and `storage.StorageAccountStaticWebsite` are top-level resources only, their `latest` counterpart has been removed. 
 
 ---
 
