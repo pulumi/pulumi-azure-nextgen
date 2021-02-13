@@ -184879,7 +184879,7 @@ export namespace documentdb {
      */
     export interface ContainerPartitionKey {
         /**
-         * Indicates the kind of algorithm used for partitioning
+         * Indicates the kind of algorithm used for partitioning. For MultiHash, multiple partition keys (upto three maximum) are supported for container create
          */
         kind?: pulumi.Input<string | enums.documentdb.PartitionKind>;
         /**
@@ -185078,6 +185078,20 @@ export namespace documentdb {
          * The name of the region.
          */
         locationName?: pulumi.Input<string>;
+    }
+
+    /**
+     * Identity for the resource.
+     */
+    export interface ManagedServiceIdentity {
+        /**
+         * The type of identity used for the resource. The type 'SystemAssigned,UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the service.
+         */
+        type?: pulumi.Input<enums.documentdb.ResourceIdentityType>;
+        /**
+         * The list of user identities associated with resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+         */
+        userAssignedIdentities?: pulumi.Input<{[key: string]: any}>;
     }
 
     /**
@@ -185527,7 +185541,7 @@ export namespace documentdb {
          */
         export interface ContainerPartitionKey {
             /**
-             * Indicates the kind of algorithm used for partitioning
+             * Indicates the kind of algorithm used for partitioning. For MultiHash, multiple partition keys (upto three maximum) are supported for container create
              */
             kind?: pulumi.Input<string | enums.documentdb.latest.PartitionKind>;
             /**
@@ -185729,6 +185743,20 @@ export namespace documentdb {
         }
 
         /**
+         * Identity for the resource.
+         */
+        export interface ManagedServiceIdentity {
+            /**
+             * The type of identity used for the resource. The type 'SystemAssigned,UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the service.
+             */
+            type?: pulumi.Input<enums.documentdb.latest.ResourceIdentityType>;
+            /**
+             * The list of user identities associated with resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+             */
+            userAssignedIdentities?: pulumi.Input<{[key: string]: any}>;
+        }
+
+        /**
          * Cosmos DB MongoDB collection resource object
          */
         export interface MongoDBCollectionResource {
@@ -185825,6 +185853,30 @@ export namespace documentdb {
              * An integer representing the time (in hours) that each backup is retained
              */
             backupRetentionIntervalInHours?: pulumi.Input<number>;
+        }
+
+        /**
+         * Private endpoint which the connection belongs to.
+         */
+        export interface PrivateEndpointProperty {
+            /**
+             * Resource id of the private endpoint.
+             */
+            id?: pulumi.Input<string>;
+        }
+
+        /**
+         * Connection State of the Private Endpoint Connection.
+         */
+        export interface PrivateLinkServiceConnectionStateProperty {
+            /**
+             * The private link service connection description.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * The private link service connection status.
+             */
+            status?: pulumi.Input<string>;
         }
 
         export interface SpatialSpec {
@@ -191629,6 +191681,660 @@ export namespace documentdb {
              * List of unique keys on that enforces uniqueness constraint on documents in the collection in the Azure Cosmos DB service.
              */
             uniqueKeys?: pulumi.Input<pulumi.Input<inputs.documentdb.v20200901.UniqueKey>[]>;
+        }
+
+        /**
+         * Virtual Network ACL Rule object
+         */
+        export interface VirtualNetworkRule {
+            /**
+             * Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}.
+             */
+            id?: pulumi.Input<string>;
+            /**
+             * Create firewall rule before the virtual network has vnet service endpoint enabled.
+             */
+            ignoreMissingVNetServiceEndpoint?: pulumi.Input<boolean>;
+        }
+
+    }
+
+    export namespace v20210115 {
+        export interface ApiProperties {
+            /**
+             * Describes the ServerVersion of an a MongoDB account.
+             */
+            serverVersion?: pulumi.Input<string | enums.documentdb.v20210115.ServerVersion>;
+        }
+
+        export interface AutoscaleSettings {
+            /**
+             * Represents maximum throughput, the resource can scale up to.
+             */
+            maxThroughput?: pulumi.Input<number>;
+        }
+
+        /**
+         * Cosmos DB capability object
+         */
+        export interface Capability {
+            /**
+             * Name of the Cosmos DB capability. For example, "name": "EnableCassandra". Current values also include "EnableTable" and "EnableGremlin".
+             */
+            name?: pulumi.Input<string>;
+        }
+
+        /**
+         * Cosmos DB Cassandra keyspace resource object
+         */
+        export interface CassandraKeyspaceResource {
+            /**
+             * Name of the Cosmos DB Cassandra keyspace
+             */
+            id: pulumi.Input<string>;
+        }
+
+        /**
+         * Cosmos DB Cassandra table partition key
+         */
+        export interface CassandraPartitionKey {
+            /**
+             * Name of the Cosmos DB Cassandra table partition key
+             */
+            name?: pulumi.Input<string>;
+        }
+
+        /**
+         * Cosmos DB Cassandra table schema
+         */
+        export interface CassandraSchema {
+            /**
+             * List of cluster key.
+             */
+            clusterKeys?: pulumi.Input<pulumi.Input<inputs.documentdb.v20210115.ClusterKey>[]>;
+            /**
+             * List of Cassandra table columns.
+             */
+            columns?: pulumi.Input<pulumi.Input<inputs.documentdb.v20210115.Column>[]>;
+            /**
+             * List of partition key.
+             */
+            partitionKeys?: pulumi.Input<pulumi.Input<inputs.documentdb.v20210115.CassandraPartitionKey>[]>;
+        }
+
+        /**
+         * Cosmos DB Cassandra table resource object
+         */
+        export interface CassandraTableResource {
+            /**
+             * Analytical TTL.
+             */
+            analyticalStorageTtl?: pulumi.Input<number>;
+            /**
+             * Time to live of the Cosmos DB Cassandra table
+             */
+            defaultTtl?: pulumi.Input<number>;
+            /**
+             * Name of the Cosmos DB Cassandra table
+             */
+            id: pulumi.Input<string>;
+            /**
+             * Schema of the Cosmos DB Cassandra table
+             */
+            schema?: pulumi.Input<inputs.documentdb.v20210115.CassandraSchema>;
+        }
+
+        /**
+         * Cosmos DB Cassandra table cluster key
+         */
+        export interface ClusterKey {
+            /**
+             * Name of the Cosmos DB Cassandra table cluster key
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Order of the Cosmos DB Cassandra table cluster key, only support "Asc" and "Desc"
+             */
+            orderBy?: pulumi.Input<string>;
+        }
+
+        /**
+         * Cosmos DB Cassandra table column
+         */
+        export interface Column {
+            /**
+             * Name of the Cosmos DB Cassandra table column
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * Type of the Cosmos DB Cassandra table column
+             */
+            type?: pulumi.Input<string>;
+        }
+
+        export interface CompositePath {
+            /**
+             * Sort order for composite paths.
+             */
+            order?: pulumi.Input<string | enums.documentdb.v20210115.CompositePathSortOrder>;
+            /**
+             * The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)
+             */
+            path?: pulumi.Input<string>;
+        }
+
+        /**
+         * The conflict resolution policy for the container.
+         */
+        export interface ConflictResolutionPolicy {
+            /**
+             * The conflict resolution path in the case of LastWriterWins mode.
+             */
+            conflictResolutionPath?: pulumi.Input<string>;
+            /**
+             * The procedure to resolve conflicts in the case of custom mode.
+             */
+            conflictResolutionProcedure?: pulumi.Input<string>;
+            /**
+             * Indicates the conflict resolution mode.
+             */
+            mode?: pulumi.Input<string | enums.documentdb.v20210115.ConflictResolutionMode>;
+        }
+
+        /**
+         * The consistency policy for the Cosmos DB database account.
+         */
+        export interface ConsistencyPolicy {
+            /**
+             * The default consistency level and configuration settings of the Cosmos DB account.
+             */
+            defaultConsistencyLevel: pulumi.Input<enums.documentdb.v20210115.DefaultConsistencyLevel>;
+            /**
+             * When used with the Bounded Staleness consistency level, this value represents the time amount of staleness (in seconds) tolerated. Accepted range for this value is 5 - 86400. Required when defaultConsistencyPolicy is set to 'BoundedStaleness'.
+             */
+            maxIntervalInSeconds?: pulumi.Input<number>;
+            /**
+             * When used with the Bounded Staleness consistency level, this value represents the number of stale requests tolerated. Accepted range for this value is 1 – 2,147,483,647. Required when defaultConsistencyPolicy is set to 'BoundedStaleness'.
+             */
+            maxStalenessPrefix?: pulumi.Input<number>;
+        }
+
+        /**
+         * The configuration of the partition key to be used for partitioning data into multiple partitions
+         */
+        export interface ContainerPartitionKey {
+            /**
+             * Indicates the kind of algorithm used for partitioning. For MultiHash, multiple partition keys (upto three maximum) are supported for container create
+             */
+            kind?: pulumi.Input<string | enums.documentdb.v20210115.PartitionKind>;
+            /**
+             * List of paths using which data within the container can be partitioned
+             */
+            paths?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Indicates the version of the partition key definition
+             */
+            version?: pulumi.Input<number>;
+        }
+
+        /**
+         * The object representing continuous mode backup policy.
+         */
+        export interface ContinuousModeBackupPolicy {
+            /**
+             * Describes the mode of backups.
+             * Expected value is 'Continuous'.
+             */
+            type: pulumi.Input<"Continuous">;
+        }
+
+        /**
+         * The CORS policy for the Cosmos DB database account.
+         */
+        export interface CorsPolicy {
+            /**
+             * The request headers that the origin domain may specify on the CORS request.
+             */
+            allowedHeaders?: pulumi.Input<string>;
+            /**
+             * The methods (HTTP request verbs) that the origin domain may use for a CORS request.
+             */
+            allowedMethods?: pulumi.Input<string>;
+            /**
+             * The origin domains that are permitted to make a request against the service via CORS.
+             */
+            allowedOrigins: pulumi.Input<string>;
+            /**
+             * The response headers that may be sent in the response to the CORS request and exposed by the browser to the request issuer.
+             */
+            exposedHeaders?: pulumi.Input<string>;
+            /**
+             * The maximum amount time that a browser should cache the preflight OPTIONS request.
+             */
+            maxAgeInSeconds?: pulumi.Input<number>;
+        }
+
+        /**
+         * CreateUpdateOptions are a list of key-value pairs that describe the resource. Supported keys are "If-Match", "If-None-Match", "Session-Token" and "Throughput"
+         */
+        export interface CreateUpdateOptions {
+            /**
+             * Specifies the Autoscale settings.
+             */
+            autoscaleSettings?: pulumi.Input<inputs.documentdb.v20210115.AutoscaleSettings>;
+            /**
+             * Request Units per second. For example, "throughput": 10000.
+             */
+            throughput?: pulumi.Input<number>;
+        }
+
+        export interface ExcludedPath {
+            /**
+             * The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)
+             */
+            path?: pulumi.Input<string>;
+        }
+
+        /**
+         * Cosmos DB Gremlin database resource object
+         */
+        export interface GremlinDatabaseResource {
+            /**
+             * Name of the Cosmos DB Gremlin database
+             */
+            id: pulumi.Input<string>;
+        }
+
+        /**
+         * Cosmos DB Gremlin graph resource object
+         */
+        export interface GremlinGraphResource {
+            /**
+             * The conflict resolution policy for the graph.
+             */
+            conflictResolutionPolicy?: pulumi.Input<inputs.documentdb.v20210115.ConflictResolutionPolicy>;
+            /**
+             * Default time to live
+             */
+            defaultTtl?: pulumi.Input<number>;
+            /**
+             * Name of the Cosmos DB Gremlin graph
+             */
+            id: pulumi.Input<string>;
+            /**
+             * The configuration of the indexing policy. By default, the indexing is automatic for all document paths within the graph
+             */
+            indexingPolicy?: pulumi.Input<inputs.documentdb.v20210115.IndexingPolicy>;
+            /**
+             * The configuration of the partition key to be used for partitioning data into multiple partitions
+             */
+            partitionKey?: pulumi.Input<inputs.documentdb.v20210115.ContainerPartitionKey>;
+            /**
+             * The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
+             */
+            uniqueKeyPolicy?: pulumi.Input<inputs.documentdb.v20210115.UniqueKeyPolicy>;
+        }
+
+        /**
+         * The paths that are included in indexing
+         */
+        export interface IncludedPath {
+            /**
+             * List of indexes for this path
+             */
+            indexes?: pulumi.Input<pulumi.Input<inputs.documentdb.v20210115.Indexes>[]>;
+            /**
+             * The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)
+             */
+            path?: pulumi.Input<string>;
+        }
+
+        /**
+         * The indexes for the path.
+         */
+        export interface Indexes {
+            /**
+             * The datatype for which the indexing behavior is applied to.
+             */
+            dataType?: pulumi.Input<string | enums.documentdb.v20210115.DataType>;
+            /**
+             * Indicates the type of index.
+             */
+            kind?: pulumi.Input<string | enums.documentdb.v20210115.IndexKind>;
+            /**
+             * The precision of the index. -1 is maximum precision.
+             */
+            precision?: pulumi.Input<number>;
+        }
+
+        /**
+         * Cosmos DB indexing policy
+         */
+        export interface IndexingPolicy {
+            /**
+             * Indicates if the indexing policy is automatic
+             */
+            automatic?: pulumi.Input<boolean>;
+            /**
+             * List of composite path list
+             */
+            compositeIndexes?: pulumi.Input<pulumi.Input<pulumi.Input<inputs.documentdb.v20210115.CompositePath>[]>[]>;
+            /**
+             * List of paths to exclude from indexing
+             */
+            excludedPaths?: pulumi.Input<pulumi.Input<inputs.documentdb.v20210115.ExcludedPath>[]>;
+            /**
+             * List of paths to include in the indexing
+             */
+            includedPaths?: pulumi.Input<pulumi.Input<inputs.documentdb.v20210115.IncludedPath>[]>;
+            /**
+             * Indicates the indexing mode.
+             */
+            indexingMode?: pulumi.Input<string | enums.documentdb.v20210115.IndexingMode>;
+            /**
+             * List of spatial specifics
+             */
+            spatialIndexes?: pulumi.Input<pulumi.Input<inputs.documentdb.v20210115.SpatialSpec>[]>;
+        }
+
+        /**
+         * IpAddressOrRange object
+         */
+        export interface IpAddressOrRange {
+            /**
+             * A single IPv4 address or a single IPv4 address range in CIDR format. Provided IPs must be well-formatted and cannot be contained in one of the following ranges: 10.0.0.0/8, 100.64.0.0/10, 172.16.0.0/12, 192.168.0.0/16, since these are not enforceable by the IP address filter. Example of valid inputs: “23.40.210.245” or “23.40.210.0/8”.
+             */
+            ipAddressOrRange?: pulumi.Input<string>;
+        }
+
+        /**
+         * A region in which the Azure Cosmos DB database account is deployed.
+         */
+        export interface Location {
+            /**
+             * The failover priority of the region. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists.
+             */
+            failoverPriority?: pulumi.Input<number>;
+            /**
+             * Flag to indicate whether or not this region is an AvailabilityZone region
+             */
+            isZoneRedundant?: pulumi.Input<boolean>;
+            /**
+             * The name of the region.
+             */
+            locationName?: pulumi.Input<string>;
+        }
+
+        /**
+         * Identity for the resource.
+         */
+        export interface ManagedServiceIdentity {
+            /**
+             * The type of identity used for the resource. The type 'SystemAssigned,UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the service.
+             */
+            type?: pulumi.Input<enums.documentdb.v20210115.ResourceIdentityType>;
+            /**
+             * The list of user identities associated with resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+             */
+            userAssignedIdentities?: pulumi.Input<{[key: string]: any}>;
+        }
+
+        /**
+         * Cosmos DB MongoDB collection resource object
+         */
+        export interface MongoDBCollectionResource {
+            /**
+             * Analytical TTL.
+             */
+            analyticalStorageTtl?: pulumi.Input<number>;
+            /**
+             * Name of the Cosmos DB MongoDB collection
+             */
+            id: pulumi.Input<string>;
+            /**
+             * List of index keys
+             */
+            indexes?: pulumi.Input<pulumi.Input<inputs.documentdb.v20210115.MongoIndex>[]>;
+            /**
+             * A key-value pair of shard keys to be applied for the request.
+             */
+            shardKey?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        }
+
+        /**
+         * Cosmos DB MongoDB database resource object
+         */
+        export interface MongoDBDatabaseResource {
+            /**
+             * Name of the Cosmos DB MongoDB database
+             */
+            id: pulumi.Input<string>;
+        }
+
+        /**
+         * Cosmos DB MongoDB collection index key
+         */
+        export interface MongoIndex {
+            /**
+             * Cosmos DB MongoDB collection index keys
+             */
+            key?: pulumi.Input<inputs.documentdb.v20210115.MongoIndexKeys>;
+            /**
+             * Cosmos DB MongoDB collection index key options
+             */
+            options?: pulumi.Input<inputs.documentdb.v20210115.MongoIndexOptions>;
+        }
+
+        /**
+         * Cosmos DB MongoDB collection resource object
+         */
+        export interface MongoIndexKeys {
+            /**
+             * List of keys for each MongoDB collection in the Azure Cosmos DB service
+             */
+            keys?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * Cosmos DB MongoDB collection index options
+         */
+        export interface MongoIndexOptions {
+            /**
+             * Expire after seconds
+             */
+            expireAfterSeconds?: pulumi.Input<number>;
+            /**
+             * Is unique or not
+             */
+            unique?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * The object representing periodic mode backup policy.
+         */
+        export interface PeriodicModeBackupPolicy {
+            /**
+             * Configuration values for periodic mode backup
+             */
+            periodicModeProperties?: pulumi.Input<inputs.documentdb.v20210115.PeriodicModeProperties>;
+            /**
+             * Describes the mode of backups.
+             * Expected value is 'Periodic'.
+             */
+            type: pulumi.Input<"Periodic">;
+        }
+
+        /**
+         * Configuration values for periodic mode backup
+         */
+        export interface PeriodicModeProperties {
+            /**
+             * An integer representing the interval in minutes between two backups
+             */
+            backupIntervalInMinutes?: pulumi.Input<number>;
+            /**
+             * An integer representing the time (in hours) that each backup is retained
+             */
+            backupRetentionIntervalInHours?: pulumi.Input<number>;
+        }
+
+        /**
+         * Private endpoint which the connection belongs to.
+         */
+        export interface PrivateEndpointProperty {
+            /**
+             * Resource id of the private endpoint.
+             */
+            id?: pulumi.Input<string>;
+        }
+
+        /**
+         * Connection State of the Private Endpoint Connection.
+         */
+        export interface PrivateLinkServiceConnectionStateProperty {
+            /**
+             * The private link service connection description.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * The private link service connection status.
+             */
+            status?: pulumi.Input<string>;
+        }
+
+        export interface SpatialSpec {
+            /**
+             * The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)
+             */
+            path?: pulumi.Input<string>;
+            /**
+             * List of path's spatial type
+             */
+            types?: pulumi.Input<pulumi.Input<string | enums.documentdb.v20210115.SpatialType>[]>;
+        }
+
+        /**
+         * Cosmos DB SQL container resource object
+         */
+        export interface SqlContainerResource {
+            /**
+             * Analytical TTL.
+             */
+            analyticalStorageTtl?: pulumi.Input<number>;
+            /**
+             * The conflict resolution policy for the container.
+             */
+            conflictResolutionPolicy?: pulumi.Input<inputs.documentdb.v20210115.ConflictResolutionPolicy>;
+            /**
+             * Default time to live
+             */
+            defaultTtl?: pulumi.Input<number>;
+            /**
+             * Name of the Cosmos DB SQL container
+             */
+            id: pulumi.Input<string>;
+            /**
+             * The configuration of the indexing policy. By default, the indexing is automatic for all document paths within the container
+             */
+            indexingPolicy?: pulumi.Input<inputs.documentdb.v20210115.IndexingPolicy>;
+            /**
+             * The configuration of the partition key to be used for partitioning data into multiple partitions
+             */
+            partitionKey?: pulumi.Input<inputs.documentdb.v20210115.ContainerPartitionKey>;
+            /**
+             * The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
+             */
+            uniqueKeyPolicy?: pulumi.Input<inputs.documentdb.v20210115.UniqueKeyPolicy>;
+        }
+
+        /**
+         * Cosmos DB SQL database resource object
+         */
+        export interface SqlDatabaseResource {
+            /**
+             * Name of the Cosmos DB SQL database
+             */
+            id: pulumi.Input<string>;
+        }
+
+        /**
+         * Cosmos DB SQL storedProcedure resource object
+         */
+        export interface SqlStoredProcedureResource {
+            /**
+             * Body of the Stored Procedure
+             */
+            body?: pulumi.Input<string>;
+            /**
+             * Name of the Cosmos DB SQL storedProcedure
+             */
+            id: pulumi.Input<string>;
+        }
+
+        /**
+         * Cosmos DB SQL trigger resource object
+         */
+        export interface SqlTriggerResource {
+            /**
+             * Body of the Trigger
+             */
+            body?: pulumi.Input<string>;
+            /**
+             * Name of the Cosmos DB SQL trigger
+             */
+            id: pulumi.Input<string>;
+            /**
+             * The operation the trigger is associated with
+             */
+            triggerOperation?: pulumi.Input<string | enums.documentdb.v20210115.TriggerOperation>;
+            /**
+             * Type of the Trigger
+             */
+            triggerType?: pulumi.Input<string | enums.documentdb.v20210115.TriggerType>;
+        }
+
+        /**
+         * Cosmos DB SQL userDefinedFunction resource object
+         */
+        export interface SqlUserDefinedFunctionResource {
+            /**
+             * Body of the User Defined Function
+             */
+            body?: pulumi.Input<string>;
+            /**
+             * Name of the Cosmos DB SQL userDefinedFunction
+             */
+            id: pulumi.Input<string>;
+        }
+
+        /**
+         * Cosmos DB table resource object
+         */
+        export interface TableResource {
+            /**
+             * Name of the Cosmos DB table
+             */
+            id: pulumi.Input<string>;
+        }
+
+        /**
+         * The unique key on that enforces uniqueness constraint on documents in the collection in the Azure Cosmos DB service.
+         */
+        export interface UniqueKey {
+            /**
+             * List of paths must be unique for each document in the Azure Cosmos DB service
+             */
+            paths?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
+         */
+        export interface UniqueKeyPolicy {
+            /**
+             * List of unique keys on that enforces uniqueness constraint on documents in the collection in the Azure Cosmos DB service.
+             */
+            uniqueKeys?: pulumi.Input<pulumi.Input<inputs.documentdb.v20210115.UniqueKey>[]>;
         }
 
         /**
