@@ -256811,6 +256811,52 @@ export namespace mixedreality {
         }
 
     }
+
+    export namespace v20210301preview {
+        /**
+         * Identity for the resource.
+         */
+        export interface Identity {
+            /**
+             * The identity type.
+             */
+            type?: pulumi.Input<enums.mixedreality.v20210301preview.ResourceIdentityType>;
+        }
+
+        export interface ObjectAnchorsAccountIdentity {
+            /**
+             * The identity type.
+             */
+            type?: pulumi.Input<enums.mixedreality.v20210301preview.ResourceIdentityType>;
+        }
+
+        /**
+         * The resource model definition representing SKU
+         */
+        export interface Sku {
+            /**
+             * If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+             */
+            capacity?: pulumi.Input<number>;
+            /**
+             * If the service has different generations of hardware, for the same SKU, then that can be captured here.
+             */
+            family?: pulumi.Input<string>;
+            /**
+             * The name of the SKU. Ex - P3. It is typically a letter+number code
+             */
+            name: pulumi.Input<string>;
+            /**
+             * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+             */
+            size?: pulumi.Input<string>;
+            /**
+             * This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+             */
+            tier?: pulumi.Input<enums.mixedreality.v20210301preview.SkuTier>;
+        }
+
+    }
 }
 
 export namespace netapp {
