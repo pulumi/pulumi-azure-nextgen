@@ -27,6 +27,10 @@ new azure_nextgen.storage.StorageAccount("sa", ...);
 
 Note: `storage.Blob` and `storage.StorageAccountStaticWebsite` are top-level resources only, their `latest` counterpart has been removed. 
 
+#### Breaking Changes
+
+- `web.WebApplicationSettings` renamed to `web.WebAppApplicationSettings` ([#282](https://github.com/pulumi/pulumi-azure-nextgen/issues/282))
+
 ---
 
 ## 0.6.1 (2020-02-11)
