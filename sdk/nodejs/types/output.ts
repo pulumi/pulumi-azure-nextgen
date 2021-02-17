@@ -33296,6 +33296,28 @@ export namespace cache {
     }
 
     /**
+     * Persistence-related configuration for the RedisEnterprise database
+     */
+    export interface PersistenceResponse {
+        /**
+         * Sets whether AOF is enabled.
+         */
+        aofEnabled?: boolean;
+        /**
+         * Sets the frequency at which data is written to disk.
+         */
+        aofFrequency?: string;
+        /**
+         * Sets whether RDB is enabled.
+         */
+        rdbEnabled?: boolean;
+        /**
+         * Sets the frequency at which a snapshot of the database is created.
+         */
+        rdbFrequency?: string;
+    }
+
+    /**
      * The Private Endpoint Connection resource.
      */
     export interface PrivateEndpointConnectionResponse {
@@ -33436,6 +33458,46 @@ export namespace cache {
     }
     export namespace latest {
         /**
+         * Specifies configuration of a redis module
+         */
+        export interface ModuleResponse {
+            /**
+             * Configuration options for the module, e.g. 'ERROR_RATE 0.00 INITIAL_SIZE 400'.
+             */
+            args?: string;
+            /**
+             * The name of the module, e.g. 'RedisBloom', 'RediSearch', 'RedisTimeSeries'
+             */
+            name: string;
+            /**
+             * The version of the module, e.g. '1.0'.
+             */
+            version: string;
+        }
+
+        /**
+         * Persistence-related configuration for the RedisEnterprise database
+         */
+        export interface PersistenceResponse {
+            /**
+             * Sets whether AOF is enabled.
+             */
+            aofEnabled?: boolean;
+            /**
+             * Sets the frequency at which data is written to disk.
+             */
+            aofFrequency?: string;
+            /**
+             * Sets whether RDB is enabled.
+             */
+            rdbEnabled?: boolean;
+            /**
+             * Sets the frequency at which a snapshot of the database is created.
+             */
+            rdbFrequency?: string;
+        }
+
+        /**
          * The Private Endpoint Connection resource.
          */
         export interface PrivateEndpointConnectionResponse {
@@ -33562,19 +33624,15 @@ export namespace cache {
         }
 
         /**
-         * SKU parameters supplied to the create Redis operation.
+         * SKU parameters supplied to the create RedisEnterprise operation.
          */
         export interface SkuResponse {
             /**
-             * The size of the Redis cache to deploy. Valid values: for C (Basic/Standard) family (0, 1, 2, 3, 4, 5, 6), for P (Premium) family (1, 2, 3, 4).
+             * The size of the RedisEnterprise cluster. Defaults to 2 or 3 depending on SKU. Valid values are (2, 4, 6, ...) for Enterprise SKUs and (3, 9, 15, ...) for Flash SKUs.
              */
-            capacity: number;
+            capacity?: number;
             /**
-             * The SKU family to use. Valid values: (C, P). (C = Basic/Standard, P = Premium).
-             */
-            family: string;
-            /**
-             * The type of Redis cache to deploy. Valid values: (Basic, Standard, Premium)
+             * The type of RedisEnterprise cluster to deploy. Possible values: (Enterprise_E10, EnterpriseFlash_F300 etc.)
              */
             name: string;
         }

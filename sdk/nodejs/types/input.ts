@@ -26084,6 +26084,28 @@ export namespace cache {
     }
 
     /**
+     * Persistence-related configuration for the RedisEnterprise database
+     */
+    export interface Persistence {
+        /**
+         * Sets whether AOF is enabled.
+         */
+        aofEnabled?: pulumi.Input<boolean>;
+        /**
+         * Sets the frequency at which data is written to disk.
+         */
+        aofFrequency?: pulumi.Input<string | enums.cache.AofFrequency>;
+        /**
+         * Sets whether RDB is enabled.
+         */
+        rdbEnabled?: pulumi.Input<boolean>;
+        /**
+         * Sets the frequency at which a snapshot of the database is created.
+         */
+        rdbFrequency?: pulumi.Input<string | enums.cache.RdbFrequency>;
+    }
+
+    /**
      * A collection of information about the state of the connection between service consumer and provider.
      */
     export interface PrivateLinkServiceConnectionState {
@@ -26135,6 +26157,42 @@ export namespace cache {
 
     export namespace latest {
         /**
+         * Specifies configuration of a redis module
+         */
+        export interface Module {
+            /**
+             * Configuration options for the module, e.g. 'ERROR_RATE 0.00 INITIAL_SIZE 400'.
+             */
+            args?: pulumi.Input<string>;
+            /**
+             * The name of the module, e.g. 'RedisBloom', 'RediSearch', 'RedisTimeSeries'
+             */
+            name: pulumi.Input<string>;
+        }
+
+        /**
+         * Persistence-related configuration for the RedisEnterprise database
+         */
+        export interface Persistence {
+            /**
+             * Sets whether AOF is enabled.
+             */
+            aofEnabled?: pulumi.Input<boolean>;
+            /**
+             * Sets the frequency at which data is written to disk.
+             */
+            aofFrequency?: pulumi.Input<string | enums.cache.latest.AofFrequency>;
+            /**
+             * Sets whether RDB is enabled.
+             */
+            rdbEnabled?: pulumi.Input<boolean>;
+            /**
+             * Sets the frequency at which a snapshot of the database is created.
+             */
+            rdbFrequency?: pulumi.Input<string | enums.cache.latest.RdbFrequency>;
+        }
+
+        /**
          * A collection of information about the state of the connection between service consumer and provider.
          */
         export interface PrivateLinkServiceConnectionState {
@@ -26171,19 +26229,15 @@ export namespace cache {
         }
 
         /**
-         * SKU parameters supplied to the create Redis operation.
+         * SKU parameters supplied to the create RedisEnterprise operation.
          */
         export interface Sku {
             /**
-             * The size of the Redis cache to deploy. Valid values: for C (Basic/Standard) family (0, 1, 2, 3, 4, 5, 6), for P (Premium) family (1, 2, 3, 4).
+             * The size of the RedisEnterprise cluster. Defaults to 2 or 3 depending on SKU. Valid values are (2, 4, 6, ...) for Enterprise SKUs and (3, 9, 15, ...) for Flash SKUs.
              */
-            capacity: pulumi.Input<number>;
+            capacity?: pulumi.Input<number>;
             /**
-             * The SKU family to use. Valid values: (C, P). (C = Basic/Standard, P = Premium).
-             */
-            family: pulumi.Input<string | enums.cache.latest.SkuFamily>;
-            /**
-             * The type of Redis cache to deploy. Valid values: (Basic, Standard, Premium)
+             * The type of RedisEnterprise cluster to deploy. Possible values: (Enterprise_E10, EnterpriseFlash_F300 etc.)
              */
             name: pulumi.Input<string | enums.cache.latest.SkuName>;
         }
