@@ -39485,7 +39485,7 @@ export namespace compute {
          */
         enableHotpatching?: pulumi.Input<boolean>;
         /**
-         * Specifies the mode of VM Guest Patching to IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br /><br /> ** AutomaticByPlatform** - the virtual machine will automatically updated by the platform. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true 
+         * Specifies the mode of VM Guest Patching to IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br /><br /> **AutomaticByPlatform** - the virtual machine will automatically updated by the platform. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true 
          */
         patchMode?: pulumi.Input<string | enums.compute.WindowsVMGuestPatchMode>;
     }
@@ -41425,7 +41425,7 @@ export namespace compute {
              */
             enableHotpatching?: pulumi.Input<boolean>;
             /**
-             * Specifies the mode of VM Guest Patching to IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br /><br /> ** AutomaticByPlatform** - the virtual machine will automatically updated by the platform. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true 
+             * Specifies the mode of VM Guest Patching to IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br /><br /> **AutomaticByPlatform** - the virtual machine will automatically updated by the platform. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true 
              */
             patchMode?: pulumi.Input<string | enums.compute.latest.WindowsVMGuestPatchMode>;
         }
@@ -56610,7 +56610,7 @@ export namespace compute {
 
         export interface PatchSettings {
             /**
-             * Specifies the mode of in-guest patching to IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br /><br /> ** AutomaticByPlatform** - the virtual machine will automatically updated by the platform. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true 
+             * Specifies the mode of in-guest patching to IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br /><br /> **AutomaticByPlatform** - the virtual machine will automatically updated by the platform. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true 
              */
             patchMode?: pulumi.Input<string | enums.compute.v20200601.InGuestPatchMode>;
         }
@@ -58962,7 +58962,7 @@ export namespace compute {
              */
             enableHotpatching?: pulumi.Input<boolean>;
             /**
-             * Specifies the mode of VM Guest Patching to IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br /><br /> ** AutomaticByPlatform** - the virtual machine will automatically updated by the platform. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true 
+             * Specifies the mode of VM Guest Patching to IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br /><br /> **AutomaticByPlatform** - the virtual machine will automatically updated by the platform. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true 
              */
             patchMode?: pulumi.Input<string | enums.compute.v20201201.WindowsVMGuestPatchMode>;
         }
@@ -68921,16 +68921,6 @@ export namespace containerregistry {
         }
 
         /**
-         * The properties of a storage account for a container registry. Only applicable to Classic SKU.
-         */
-        export interface StorageAccountProperties {
-            /**
-             * The resource ID of the storage account.
-             */
-            id: pulumi.Input<string>;
-        }
-
-        /**
          * The content trust policy for a container registry.
          */
         export interface TrustPolicy {
@@ -69262,16 +69252,6 @@ export namespace containerregistry {
              * The SKU name of the container registry. Required for registry creation.
              */
             name: pulumi.Input<string | enums.containerregistry.v20201101preview.SkuName>;
-        }
-
-        /**
-         * The properties of a storage account for a container registry. Only applicable to Classic SKU.
-         */
-        export interface StorageAccountProperties {
-            /**
-             * The resource ID of the storage account.
-             */
-            id: pulumi.Input<string>;
         }
 
         /**
@@ -88722,6 +88702,14 @@ export namespace datadog {
      */
     export interface DatadogOrganizationProperties {
         /**
+         * Api key associated to the Datadog organization.
+         */
+        apiKey?: pulumi.Input<string>;
+        /**
+         * Application key associated to the Datadog organization.
+         */
+        applicationKey?: pulumi.Input<string>;
+        /**
          * The Id of the Enterprise App used for Single sign on.
          */
         enterpriseAppId?: pulumi.Input<string>;
@@ -88733,6 +88721,10 @@ export namespace datadog {
          * The client_id from an existing in exchange for an auth token to link organization.
          */
         linkingClientId?: pulumi.Input<string>;
+        /**
+         * The redirect uri for linking.
+         */
+        redirectUri?: pulumi.Input<string>;
     }
 
     export interface IdentityProperties {
@@ -88750,6 +88742,10 @@ export namespace datadog {
          * Datadog organization properties
          */
         datadogOrganizationProperties?: pulumi.Input<inputs.datadog.DatadogOrganizationProperties>;
+        /**
+         * Flag specifying if the resource monitoring is enabled or disabled.
+         */
+        monitoringStatus?: pulumi.Input<string | enums.datadog.MonitoringStatus>;
         provisioningState?: pulumi.Input<string | enums.datadog.ProvisioningState>;
         /**
          * User info
@@ -88788,6 +88784,14 @@ export namespace datadog {
          */
         export interface DatadogOrganizationProperties {
             /**
+             * Api key associated to the Datadog organization.
+             */
+            apiKey?: pulumi.Input<string>;
+            /**
+             * Application key associated to the Datadog organization.
+             */
+            applicationKey?: pulumi.Input<string>;
+            /**
              * The Id of the Enterprise App used for Single sign on.
              */
             enterpriseAppId?: pulumi.Input<string>;
@@ -88799,6 +88803,10 @@ export namespace datadog {
              * The client_id from an existing in exchange for an auth token to link organization.
              */
             linkingClientId?: pulumi.Input<string>;
+            /**
+             * The redirect uri for linking.
+             */
+            redirectUri?: pulumi.Input<string>;
         }
 
         export interface IdentityProperties {
@@ -88816,6 +88824,10 @@ export namespace datadog {
              * Datadog organization properties
              */
             datadogOrganizationProperties?: pulumi.Input<inputs.datadog.v20200201preview.DatadogOrganizationProperties>;
+            /**
+             * Flag specifying if the resource monitoring is enabled or disabled.
+             */
+            monitoringStatus?: pulumi.Input<string | enums.datadog.v20200201preview.MonitoringStatus>;
             provisioningState?: pulumi.Input<string | enums.datadog.v20200201preview.ProvisioningState>;
             /**
              * User info
@@ -256713,6 +256725,13 @@ export namespace mixedreality {
         type?: pulumi.Input<enums.mixedreality.ResourceIdentityType>;
     }
 
+    export interface ObjectAnchorsAccountIdentity {
+        /**
+         * The identity type.
+         */
+        type?: pulumi.Input<enums.mixedreality.ResourceIdentityType>;
+    }
+
     /**
      * The resource model definition representing SKU
      */
@@ -256805,11 +256824,40 @@ export namespace mixedreality {
     }
 
     export namespace v20200406preview {
-        export interface RemoteRenderingAccountIdentity {
+        /**
+         * Identity for the resource.
+         */
+        export interface Identity {
             /**
              * The identity type.
              */
             type?: pulumi.Input<enums.mixedreality.v20200406preview.ResourceIdentityType>;
+        }
+
+        /**
+         * The resource model definition representing SKU
+         */
+        export interface Sku {
+            /**
+             * If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+             */
+            capacity?: pulumi.Input<number>;
+            /**
+             * If the service has different generations of hardware, for the same SKU, then that can be captured here.
+             */
+            family?: pulumi.Input<string>;
+            /**
+             * The name of the SKU. Ex - P3. It is typically a letter+number code
+             */
+            name: pulumi.Input<string>;
+            /**
+             * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+             */
+            size?: pulumi.Input<string>;
+            /**
+             * This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+             */
+            tier?: pulumi.Input<enums.mixedreality.v20200406preview.SkuTier>;
         }
 
     }
@@ -256823,6 +256871,32 @@ export namespace mixedreality {
              * The identity type.
              */
             type?: pulumi.Input<enums.mixedreality.v20200501.ResourceIdentityType>;
+        }
+
+        /**
+         * The resource model definition representing SKU
+         */
+        export interface Sku {
+            /**
+             * If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+             */
+            capacity?: pulumi.Input<number>;
+            /**
+             * If the service has different generations of hardware, for the same SKU, then that can be captured here.
+             */
+            family?: pulumi.Input<string>;
+            /**
+             * The name of the SKU. Ex - P3. It is typically a letter+number code
+             */
+            name: pulumi.Input<string>;
+            /**
+             * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+             */
+            size?: pulumi.Input<string>;
+            /**
+             * This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+             */
+            tier?: pulumi.Input<enums.mixedreality.v20200501.SkuTier>;
         }
 
     }
@@ -390321,6 +390395,10 @@ export namespace recoveryservices {
          * The Sku name.
          */
         name: pulumi.Input<string | enums.recoveryservices.SkuName>;
+        /**
+         * The Sku tier.
+         */
+        tier?: pulumi.Input<string>;
     }
 
     /**
@@ -394499,6 +394577,10 @@ export namespace recoveryservices {
              * The Sku name.
              */
             name: pulumi.Input<string | enums.recoveryservices.latest.SkuName>;
+            /**
+             * The Sku tier.
+             */
+            tier?: pulumi.Input<string>;
         }
 
         /**
@@ -403602,6 +403684,30 @@ export namespace recoveryservices {
         }
 
         /**
+         * The details of the identity used for CMK
+         */
+        export interface CmkKekIdentity {
+            /**
+             * Indicate that system assigned identity should be used. Mutually exclusive with 'userAssignedIdentity' field
+             */
+            useSystemAssignedIdentity?: pulumi.Input<boolean>;
+            /**
+             * The user assigned identity to be used to grant permissions in case the type of identity used is UserAssigned
+             */
+            userAssignedIdentity?: pulumi.Input<string>;
+        }
+
+        /**
+         * The properties of the Key Vault which hosts CMK
+         */
+        export interface CmkKeyVaultProperties {
+            /**
+             * The key uri of the Customer Managed Key
+             */
+            keyUri?: pulumi.Input<string>;
+        }
+
+        /**
          * Container identity information
          */
         export interface ContainerIdentityInfo {
@@ -404123,6 +404229,20 @@ export namespace recoveryservices {
         }
 
         /**
+         * Identity for the resource.
+         */
+        export interface IdentityData {
+            /**
+             * The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities.
+             */
+            type: pulumi.Input<string | enums.recoveryservices.v20201001.ResourceIdentityType>;
+            /**
+             * The list of user-assigned identities associated with the resource. The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+             */
+            userAssignedIdentities?: pulumi.Input<{[key: string]: any}>;
+        }
+
+        /**
          * Details about inquired protectable items under a given container.
          */
         export interface InquiryInfo {
@@ -404603,6 +404723,20 @@ export namespace recoveryservices {
         }
 
         /**
+         * Identifies the unique system identifier for each Azure resource.
+         */
+        export interface Sku {
+            /**
+             * The Sku name.
+             */
+            name: pulumi.Input<string | enums.recoveryservices.v20201001.SkuName>;
+            /**
+             * The Sku tier.
+             */
+            tier?: pulumi.Input<string>;
+        }
+
+        /**
          * Sub-protection policy which includes schedule and retention
          */
         export interface SubProtectionPolicy {
@@ -404618,6 +404752,34 @@ export namespace recoveryservices {
              * Backup schedule specified as part of backup policy.
              */
             schedulePolicy?: pulumi.Input<inputs.recoveryservices.v20201001.LogSchedulePolicy | inputs.recoveryservices.v20201001.LongTermSchedulePolicy | inputs.recoveryservices.v20201001.SimpleSchedulePolicy>;
+        }
+
+        /**
+         * Properties of the vault.
+         */
+        export interface VaultProperties {
+            /**
+             * Customer Managed Key details of the resource.
+             */
+            encryption?: pulumi.Input<inputs.recoveryservices.v20201001.VaultPropertiesEncryption>;
+        }
+
+        /**
+         * Customer Managed Key details of the resource.
+         */
+        export interface VaultPropertiesEncryption {
+            /**
+             * Enabling/Disabling the Double Encryption state
+             */
+            infrastructureEncryption?: pulumi.Input<string | enums.recoveryservices.v20201001.InfrastructureEncryptionState>;
+            /**
+             * The details of the identity used for CMK
+             */
+            kekIdentity?: pulumi.Input<inputs.recoveryservices.v20201001.CmkKekIdentity>;
+            /**
+             * The properties of the Key Vault which hosts CMK
+             */
+            keyVaultProperties?: pulumi.Input<inputs.recoveryservices.v20201001.CmkKeyVaultProperties>;
         }
 
         /**

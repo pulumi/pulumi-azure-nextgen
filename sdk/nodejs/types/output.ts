@@ -48793,7 +48793,7 @@ export namespace compute {
          */
         enableHotpatching?: boolean;
         /**
-         * Specifies the mode of VM Guest Patching to IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br /><br /> ** AutomaticByPlatform** - the virtual machine will automatically updated by the platform. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true 
+         * Specifies the mode of VM Guest Patching to IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br /><br /> **AutomaticByPlatform** - the virtual machine will automatically updated by the platform. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true 
          */
         patchMode?: string;
     }
@@ -51540,7 +51540,7 @@ export namespace compute {
              */
             enableHotpatching?: boolean;
             /**
-             * Specifies the mode of VM Guest Patching to IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br /><br /> ** AutomaticByPlatform** - the virtual machine will automatically updated by the platform. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true 
+             * Specifies the mode of VM Guest Patching to IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br /><br /> **AutomaticByPlatform** - the virtual machine will automatically updated by the platform. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true 
              */
             patchMode?: string;
         }
@@ -71283,7 +71283,7 @@ export namespace compute {
 
         export interface PatchSettingsResponse {
             /**
-             * Specifies the mode of in-guest patching to IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br /><br /> ** AutomaticByPlatform** - the virtual machine will automatically updated by the platform. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true 
+             * Specifies the mode of in-guest patching to IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br /><br /> **AutomaticByPlatform** - the virtual machine will automatically updated by the platform. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true 
              */
             patchMode?: string;
         }
@@ -74532,7 +74532,7 @@ export namespace compute {
              */
             enableHotpatching?: boolean;
             /**
-             * Specifies the mode of VM Guest Patching to IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br /><br /> ** AutomaticByPlatform** - the virtual machine will automatically updated by the platform. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true 
+             * Specifies the mode of VM Guest Patching to IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br /><br /> **AutomaticByPlatform** - the virtual machine will automatically updated by the platform. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true 
              */
             patchMode?: string;
         }
@@ -89524,16 +89524,6 @@ export namespace containerregistry {
         }
 
         /**
-         * The properties of a storage account for a container registry. Only applicable to Classic SKU.
-         */
-        export interface StorageAccountPropertiesResponse {
-            /**
-             * The resource ID of the storage account.
-             */
-            id: string;
-        }
-
-        /**
          * Metadata pertaining to creation and last modification of the resource.
          */
         export interface SystemDataResponse {
@@ -90293,16 +90283,6 @@ export namespace containerregistry {
              * The timestamp when the status was changed to the current value.
              */
             timestamp: string;
-        }
-
-        /**
-         * The properties of a storage account for a container registry. Only applicable to Classic SKU.
-         */
-        export interface StorageAccountPropertiesResponse {
-            /**
-             * The resource ID of the storage account.
-             */
-            id: string;
         }
 
         /**
@@ -116655,6 +116635,14 @@ export namespace datadog {
      */
     export interface DatadogOrganizationPropertiesResponse {
         /**
+         * Api key associated to the Datadog organization.
+         */
+        apiKey?: string;
+        /**
+         * Application key associated to the Datadog organization.
+         */
+        applicationKey?: string;
+        /**
          * The Id of the Enterprise App used for Single sign on.
          */
         enterpriseAppId?: string;
@@ -116674,6 +116662,10 @@ export namespace datadog {
          * Name of the Datadog organization.
          */
         name: string;
+        /**
+         * The redirect uri for linking.
+         */
+        redirectUri?: string;
     }
 
     export interface IdentityPropertiesResponse {
@@ -116721,7 +116713,7 @@ export namespace datadog {
         /**
          * Flag specifying if the resource monitoring is enabled or disabled.
          */
-        monitoringStatus: string;
+        monitoringStatus?: string;
         provisioningState?: string;
         /**
          * User info
@@ -116851,6 +116843,14 @@ export namespace datadog {
          */
         export interface DatadogOrganizationPropertiesResponse {
             /**
+             * Api key associated to the Datadog organization.
+             */
+            apiKey?: string;
+            /**
+             * Application key associated to the Datadog organization.
+             */
+            applicationKey?: string;
+            /**
              * The Id of the Enterprise App used for Single sign on.
              */
             enterpriseAppId?: string;
@@ -116870,6 +116870,10 @@ export namespace datadog {
              * Name of the Datadog organization.
              */
             name: string;
+            /**
+             * The redirect uri for linking.
+             */
+            redirectUri?: string;
         }
 
         export interface IdentityPropertiesResponse {
@@ -116917,7 +116921,7 @@ export namespace datadog {
             /**
              * Flag specifying if the resource monitoring is enabled or disabled.
              */
-            monitoringStatus: string;
+            monitoringStatus?: string;
             provisioningState?: string;
             /**
              * User info
@@ -330974,6 +330978,21 @@ export namespace mixedreality {
         type?: string;
     }
 
+    export interface ObjectAnchorsAccountResponseIdentity {
+        /**
+         * The principal ID of resource identity.
+         */
+        principalId: string;
+        /**
+         * The tenant ID of resource.
+         */
+        tenantId: string;
+        /**
+         * The identity type.
+         */
+        type?: string;
+    }
+
     /**
      * The resource model definition representing SKU
      */
@@ -331146,7 +331165,10 @@ export namespace mixedreality {
     }
 
     export namespace v20200406preview {
-        export interface RemoteRenderingAccountResponseIdentity {
+        /**
+         * Identity for the resource.
+         */
+        export interface IdentityResponse {
             /**
              * The principal ID of resource identity.
              */
@@ -331159,6 +331181,62 @@ export namespace mixedreality {
              * The identity type.
              */
             type?: string;
+        }
+
+        /**
+         * The resource model definition representing SKU
+         */
+        export interface SkuResponse {
+            /**
+             * If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+             */
+            capacity?: number;
+            /**
+             * If the service has different generations of hardware, for the same SKU, then that can be captured here.
+             */
+            family?: string;
+            /**
+             * The name of the SKU. Ex - P3. It is typically a letter+number code
+             */
+            name: string;
+            /**
+             * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+             */
+            size?: string;
+            /**
+             * This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+             */
+            tier?: string;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The timestamp of resource last modification (UTC)
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
         }
     }
 
@@ -331179,6 +331257,62 @@ export namespace mixedreality {
              * The identity type.
              */
             type?: string;
+        }
+
+        /**
+         * The resource model definition representing SKU
+         */
+        export interface SkuResponse {
+            /**
+             * If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+             */
+            capacity?: number;
+            /**
+             * If the service has different generations of hardware, for the same SKU, then that can be captured here.
+             */
+            family?: string;
+            /**
+             * The name of the SKU. Ex - P3. It is typically a letter+number code
+             */
+            name: string;
+            /**
+             * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+             */
+            size?: string;
+            /**
+             * This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+             */
+            tier?: string;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The timestamp of resource last modification (UTC)
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
         }
     }
 
@@ -509705,6 +509839,10 @@ export namespace recoveryservices {
          * The Sku name.
          */
         name: string;
+        /**
+         * The Sku tier.
+         */
+        tier?: string;
     }
 
     /**
@@ -509733,6 +509871,36 @@ export namespace recoveryservices {
          * Backup schedule specified as part of backup policy.
          */
         schedulePolicy?: outputs.recoveryservices.LogSchedulePolicyResponse | outputs.recoveryservices.LongTermSchedulePolicyResponse | outputs.recoveryservices.SimpleSchedulePolicyResponse;
+    }
+
+    /**
+     * Metadata pertaining to creation and last modification of the resource.
+     */
+    export interface SystemDataResponse {
+        /**
+         * The timestamp of resource creation (UTC).
+         */
+        createdAt?: string;
+        /**
+         * The identity that created the resource.
+         */
+        createdBy?: string;
+        /**
+         * The type of identity that created the resource.
+         */
+        createdByType?: string;
+        /**
+         * The type of identity that last modified the resource.
+         */
+        lastModifiedAt?: string;
+        /**
+         * The identity that last modified the resource.
+         */
+        lastModifiedBy?: string;
+        /**
+         * The type of identity that last modified the resource.
+         */
+        lastModifiedByType?: string;
     }
 
     /**
@@ -516981,6 +517149,10 @@ export namespace recoveryservices {
              * The Sku name.
              */
             name: string;
+            /**
+             * The Sku tier.
+             */
+            tier?: string;
         }
 
         /**
@@ -517009,6 +517181,36 @@ export namespace recoveryservices {
              * Backup schedule specified as part of backup policy.
              */
             schedulePolicy?: outputs.recoveryservices.latest.LogSchedulePolicyResponse | outputs.recoveryservices.latest.LongTermSchedulePolicyResponse | outputs.recoveryservices.latest.SimpleSchedulePolicyResponse;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
         }
 
         /**
@@ -534011,6 +534213,30 @@ export namespace recoveryservices {
         }
 
         /**
+         * The details of the identity used for CMK
+         */
+        export interface CmkKekIdentityResponse {
+            /**
+             * Indicate that system assigned identity should be used. Mutually exclusive with 'userAssignedIdentity' field
+             */
+            useSystemAssignedIdentity?: boolean;
+            /**
+             * The user assigned identity to be used to grant permissions in case the type of identity used is UserAssigned
+             */
+            userAssignedIdentity?: string;
+        }
+
+        /**
+         * The properties of the Key Vault which hosts CMK
+         */
+        export interface CmkKeyVaultPropertiesResponse {
+            /**
+             * The key uri of the Customer Managed Key
+             */
+            keyUri?: string;
+        }
+
+        /**
          * Container identity information
          */
         export interface ContainerIdentityInfoResponse {
@@ -534554,6 +534780,28 @@ export namespace recoveryservices {
         }
 
         /**
+         * Identity for the resource.
+         */
+        export interface IdentityDataResponse {
+            /**
+             * The principal ID of resource identity.
+             */
+            principalId: string;
+            /**
+             * The tenant ID of resource.
+             */
+            tenantId: string;
+            /**
+             * The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities.
+             */
+            type: string;
+            /**
+             * The list of user-assigned identities associated with the resource. The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+             */
+            userAssignedIdentities?: {[key: string]: outputs.recoveryservices.v20201001.UserIdentityResponse};
+        }
+
+        /**
          * Details about inquired protectable items under a given container.
          */
         export interface InquiryInfoResponse {
@@ -534928,49 +535176,63 @@ export namespace recoveryservices {
         }
 
         /**
-         * Private Endpoint Connection Response Properties
+         * Private Endpoint Connection Response Properties.
          */
         export interface PrivateEndpointConnectionResponse {
             /**
-             * Gets or sets private endpoint associated with the private endpoint connection
+             * The Private Endpoint network resource that is linked to the Private Endpoint connection.
              */
-            privateEndpoint?: outputs.recoveryservices.v20201001.PrivateEndpointResponse;
+            privateEndpoint: outputs.recoveryservices.v20201001.PrivateEndpointResponse;
             /**
-             * Gets or sets private link service connection state
+             * Gets or sets private link service connection state.
              */
-            privateLinkServiceConnectionState?: outputs.recoveryservices.v20201001.PrivateLinkServiceConnectionStateResponse;
+            privateLinkServiceConnectionState: outputs.recoveryservices.v20201001.PrivateLinkServiceConnectionStateResponse;
             /**
-             * Gets or sets provisioning state of the private endpoint connection
+             * Gets or sets provisioning state of the private endpoint connection.
              */
-            provisioningState?: string;
+            provisioningState: string;
         }
 
         /**
-         * The Private Endpoint network resource that is linked to the Private Endpoint connection
+         * Information to be stored in Vault properties as an element of privateEndpointConnections List.
+         */
+        export interface PrivateEndpointConnectionVaultPropertiesResponse {
+            /**
+             * Format of id subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.[Service]/{resource}/{resourceName}/privateEndpointConnections/{connectionName}.
+             */
+            id: string;
+            /**
+             * Private Endpoint Connection Response Properties.
+             */
+            properties: outputs.recoveryservices.v20201001.PrivateEndpointConnectionResponse;
+        }
+
+        /**
+         * The Private Endpoint network resource that is linked to the Private Endpoint connection.
          */
         export interface PrivateEndpointResponse {
             /**
-             * Gets or sets id
+             * Gets or sets id.
              */
-            id?: string;
+            id: string;
         }
 
         /**
-         * Private Link Service Connection State
+         * Gets or sets private link service connection state.
          */
         export interface PrivateLinkServiceConnectionStateResponse {
             /**
-             * Gets or sets actions required
+             * Gets or sets actions required.
              */
-            actionRequired?: string;
+            actionsRequired: string;
             /**
-             * Gets or sets description
+             * Gets or sets description.
              */
-            description?: string;
+            description: string;
             /**
-             * Gets or sets the status
+             * Gets or sets the status.
              */
-            status?: string;
+            status: string;
         }
 
         /**
@@ -535072,6 +535334,20 @@ export namespace recoveryservices {
         }
 
         /**
+         * Identifies the unique system identifier for each Azure resource.
+         */
+        export interface SkuResponse {
+            /**
+             * The Sku name.
+             */
+            name: string;
+            /**
+             * The Sku tier.
+             */
+            tier?: string;
+        }
+
+        /**
          * Sub-protection policy which includes schedule and retention
          */
         export interface SubProtectionPolicyResponse {
@@ -535087,6 +535363,140 @@ export namespace recoveryservices {
              * Backup schedule specified as part of backup policy.
              */
             schedulePolicy?: outputs.recoveryservices.v20201001.LogSchedulePolicyResponse | outputs.recoveryservices.v20201001.LongTermSchedulePolicyResponse | outputs.recoveryservices.v20201001.SimpleSchedulePolicyResponse;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
+        }
+
+        /**
+         * Details for upgrading vault.
+         */
+        export interface UpgradeDetailsResponse {
+            /**
+             * UTC time at which the upgrade operation has ended.
+             */
+            endTimeUtc: string;
+            /**
+             * UTC time at which the upgrade operation status was last updated.
+             */
+            lastUpdatedTimeUtc: string;
+            /**
+             * Message to the user containing information about the upgrade operation.
+             */
+            message: string;
+            /**
+             * ID of the vault upgrade operation.
+             */
+            operationId: string;
+            /**
+             * Resource ID of the vault before the upgrade.
+             */
+            previousResourceId: string;
+            /**
+             * UTC time at which the upgrade operation has started.
+             */
+            startTimeUtc: string;
+            /**
+             * Status of the vault upgrade operation.
+             */
+            status: string;
+            /**
+             * The way the vault upgrade was triggered.
+             */
+            triggerType: string;
+            /**
+             * Resource ID of the upgraded vault.
+             */
+            upgradedResourceId: string;
+        }
+
+        /**
+         * A resource identity that is managed by the user of the service.
+         */
+        export interface UserIdentityResponse {
+            /**
+             * The client ID of the user-assigned identity.
+             */
+            clientId: string;
+            /**
+             * The principal ID of the user-assigned identity.
+             */
+            principalId: string;
+        }
+
+        /**
+         * Properties of the vault.
+         */
+        export interface VaultPropertiesResponse {
+            /**
+             * Customer Managed Key details of the resource.
+             */
+            encryption?: outputs.recoveryservices.v20201001.VaultPropertiesResponseEncryption;
+            /**
+             * List of private endpoint connection.
+             */
+            privateEndpointConnections: outputs.recoveryservices.v20201001.PrivateEndpointConnectionVaultPropertiesResponse[];
+            /**
+             * Private endpoint state for backup.
+             */
+            privateEndpointStateForBackup: string;
+            /**
+             * Private endpoint state for site recovery.
+             */
+            privateEndpointStateForSiteRecovery: string;
+            /**
+             * Provisioning State.
+             */
+            provisioningState: string;
+            /**
+             * Details for upgrading vault.
+             */
+            upgradeDetails?: outputs.recoveryservices.v20201001.UpgradeDetailsResponse;
+        }
+
+        /**
+         * Customer Managed Key details of the resource.
+         */
+        export interface VaultPropertiesResponseEncryption {
+            /**
+             * Enabling/Disabling the Double Encryption state
+             */
+            infrastructureEncryption?: string;
+            /**
+             * The details of the identity used for CMK
+             */
+            kekIdentity?: outputs.recoveryservices.v20201001.CmkKekIdentityResponse;
+            /**
+             * The properties of the Key Vault which hosts CMK
+             */
+            keyVaultProperties?: outputs.recoveryservices.v20201001.CmkKeyVaultPropertiesResponse;
         }
 
         /**
