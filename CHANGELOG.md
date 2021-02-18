@@ -30,6 +30,8 @@ Note: `storage.Blob` and `storage.StorageAccountStaticWebsite` are top-level res
 #### Breaking Changes
 
 - `web.WebApplicationSettings` renamed to `web.WebAppApplicationSettings` ([#282](https://github.com/pulumi/pulumi-azure-nextgen/issues/282))
+- `authorization.GetClientConfig`, `authorization.GetClientToken`, `Storage.Blob`, `Storage.StorageAccountStaticWebsite` were removed from
+  corresponding `latest` modules and are only available in the top-level modules
 
 ---
 
