@@ -27,6 +27,31 @@ new azure_nextgen.storage.StorageAccount("sa", ...);
 
 Note: `storage.Blob` and `storage.StorageAccountStaticWebsite` are top-level resources only, their `latest` counterpart has been removed. 
 
+
+#### Auto-naming ([#5](https://github.com/pulumi/pulumi-azure-nextgen/issues/5))
+
+Auto-naming is applied for properties that are the last path parameters in their API endpoint path.
+
+There is a twist compared to the normal Pulumi auto-naming:
+
+- For top-level resources (e.g., resource groups, virtual networks, AKS), we append the same random suffix as in pulumi-azure.
+- For child resources (e.g., subnets, databases, app slots), we simply copy the logical name to the physical name without any randomization.
+
+Example:
+
+```ts
+const resourceGroup = new resources.ResourceGroup("rg");
+// the actual resource would be named e.g. "rg8a43bc22"
+
+const blob = new storage.Blob("wwwroot", {
+    resourceGroupName: resourceGroup.name,
+    accountName: storageAccount.name,
+    containerName: storageContainer.name,
+    source: new pulumi.asset.FileArchive("wwwroot"),
+});
+// blob name is simply "wwwroot"
+```
+
 #### Breaking Changes
 
 - `web.WebApplicationSettings` renamed to `web.WebAppApplicationSettings` ([#282](https://github.com/pulumi/pulumi-azure-nextgen/issues/282))
