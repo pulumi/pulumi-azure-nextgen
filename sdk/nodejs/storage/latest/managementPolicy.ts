@@ -7,7 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * The Get Storage Account ManagementPolicies operation response.
- * Latest API Version: 2019-06-01.
+ * Latest API Version: 2021-01-01.
  *
  * @deprecated The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-nextgen:storage:ManagementPolicy'.
  */
@@ -71,9 +71,6 @@ export class ManagementPolicy extends pulumi.CustomResource {
             if ((!args || args.accountName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'accountName'");
             }
-            if ((!args || args.managementPolicyName === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'managementPolicyName'");
-            }
             if ((!args || args.policy === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policy'");
             }
@@ -100,7 +97,7 @@ export class ManagementPolicy extends pulumi.CustomResource {
         if (!opts.version) {
             opts.version = utilities.getVersion();
         }
-        const aliasOpts = { aliases: [{ type: "azure-nextgen:storage:ManagementPolicy" }, { type: "azure-nextgen:storage/v20180301preview:ManagementPolicy" }, { type: "azure-nextgen:storage/v20181101:ManagementPolicy" }, { type: "azure-nextgen:storage/v20190401:ManagementPolicy" }, { type: "azure-nextgen:storage/v20190601:ManagementPolicy" }, { type: "azure-nextgen:storage/v20200801preview:ManagementPolicy" }] };
+        const aliasOpts = { aliases: [{ type: "azure-nextgen:storage:ManagementPolicy" }, { type: "azure-nextgen:storage/v20180301preview:ManagementPolicy" }, { type: "azure-nextgen:storage/v20181101:ManagementPolicy" }, { type: "azure-nextgen:storage/v20190401:ManagementPolicy" }, { type: "azure-nextgen:storage/v20190601:ManagementPolicy" }, { type: "azure-nextgen:storage/v20200801preview:ManagementPolicy" }, { type: "azure-nextgen:storage/v20210101:ManagementPolicy" }] };
         opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
         super(ManagementPolicy.__pulumiType, name, inputs, opts);
     }
@@ -117,7 +114,7 @@ export interface ManagementPolicyArgs {
     /**
      * The name of the Storage Account Management Policy. It should always be 'default'
      */
-    readonly managementPolicyName: pulumi.Input<string>;
+    readonly managementPolicyName?: pulumi.Input<string>;
     /**
      * The Storage Account ManagementPolicy, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
      */

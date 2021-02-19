@@ -54,8 +54,6 @@ class Job(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if job_name is None and not opts.urn:
-                raise TypeError("Missing required property 'job_name'")
             __props__['job_name'] = job_name
             __props__['location'] = location
             __props__['properties'] = properties
@@ -67,7 +65,7 @@ class Job(pulumi.CustomResource):
             __props__['name'] = None
             __props__['system_data'] = None
             __props__['type'] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:importexport:Job"), pulumi.Alias(type_="azure-nextgen:importexport/latest:Job"), pulumi.Alias(type_="azure-nextgen:importexport/v20200801:Job")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:importexport:Job"), pulumi.Alias(type_="azure-nextgen:importexport/latest:Job"), pulumi.Alias(type_="azure-nextgen:importexport/v20200801:Job"), pulumi.Alias(type_="azure-nextgen:importexport/v20210101:Job")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Job, __self__).__init__(
             'azure-nextgen:importexport/v20161101:Job',

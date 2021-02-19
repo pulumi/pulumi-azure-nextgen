@@ -69,9 +69,6 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
             if ((!args || args.accountName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'accountName'");
             }
-            if ((!args || args.privateEndpointConnectionName === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'privateEndpointConnectionName'");
-            }
             if ((!args || args.privateLinkServiceConnectionState === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'privateLinkServiceConnectionState'");
             }
@@ -100,7 +97,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
         if (!opts.version) {
             opts.version = utilities.getVersion();
         }
-        const aliasOpts = { aliases: [{ type: "azure-nextgen:storage:PrivateEndpointConnection" }, { type: "azure-nextgen:storage/latest:PrivateEndpointConnection" }, { type: "azure-nextgen:storage/v20200801preview:PrivateEndpointConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-nextgen:storage:PrivateEndpointConnection" }, { type: "azure-nextgen:storage/latest:PrivateEndpointConnection" }, { type: "azure-nextgen:storage/v20200801preview:PrivateEndpointConnection" }, { type: "azure-nextgen:storage/v20210101:PrivateEndpointConnection" }] };
         opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
         super(PrivateEndpointConnection.__pulumiType, name, inputs, opts);
     }
@@ -117,7 +114,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * The name of the private endpoint connection associated with the Azure resource
      */
-    readonly privateEndpointConnectionName: pulumi.Input<string>;
+    readonly privateEndpointConnectionName?: pulumi.Input<string>;
     /**
      * A collection of information about the state of the connection between service consumer and provider.
      */

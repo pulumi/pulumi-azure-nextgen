@@ -42,9 +42,6 @@ func NewProtectedItem(ctx *pulumi.Context,
 	if args.FabricName == nil {
 		return nil, errors.New("invalid value for required argument 'FabricName'")
 	}
-	if args.ProtectedItemName == nil {
-		return nil, errors.New("invalid value for required argument 'ProtectedItemName'")
-	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
@@ -72,6 +69,9 @@ func NewProtectedItem(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-nextgen:recoveryservices/v20201201:ProtectedItem"),
+		},
+		{
+			Type: pulumi.String("azure-nextgen:recoveryservices/v20210201:ProtectedItem"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -142,7 +142,7 @@ type protectedItemArgs struct {
 	// ProtectedItemResource properties
 	Properties interface{} `pulumi:"properties"`
 	// Item name to be backed up.
-	ProtectedItemName string `pulumi:"protectedItemName"`
+	ProtectedItemName *string `pulumi:"protectedItemName"`
 	// The name of the resource group where the recovery services vault is present.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
@@ -164,7 +164,7 @@ type ProtectedItemArgs struct {
 	// ProtectedItemResource properties
 	Properties pulumi.Input
 	// Item name to be backed up.
-	ProtectedItemName pulumi.StringInput
+	ProtectedItemName pulumi.StringPtrInput
 	// The name of the resource group where the recovery services vault is present.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.

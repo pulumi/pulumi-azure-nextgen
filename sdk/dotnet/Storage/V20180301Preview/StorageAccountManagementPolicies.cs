@@ -70,6 +70,7 @@ namespace Pulumi.AzureNextGen.Storage.V20180301Preview
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20190401:StorageAccountManagementPolicies"},
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20190601:StorageAccountManagementPolicies"},
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20200801preview:StorageAccountManagementPolicies"},
+                    new Pulumi.Alias { Type = "azure-nextgen:storage/v20210101:StorageAccountManagementPolicies"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -102,8 +103,8 @@ namespace Pulumi.AzureNextGen.Storage.V20180301Preview
         /// <summary>
         /// The name of the Storage Account Management Policy. It should always be 'default'
         /// </summary>
-        [Input("managementPolicyName", required: true)]
-        public Input<string> ManagementPolicyName { get; set; } = null!;
+        [Input("managementPolicyName")]
+        public Input<string>? ManagementPolicyName { get; set; }
 
         /// <summary>
         /// The Storage Account ManagementPolicies Rules, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.

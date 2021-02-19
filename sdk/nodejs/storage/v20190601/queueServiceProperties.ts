@@ -61,9 +61,6 @@ export class QueueServiceProperties extends pulumi.CustomResource {
             if ((!args || args.accountName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'accountName'");
             }
-            if ((!args || args.queueServiceName === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'queueServiceName'");
-            }
             if ((!args || args.resourceGroupName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
@@ -85,7 +82,7 @@ export class QueueServiceProperties extends pulumi.CustomResource {
         if (!opts.version) {
             opts.version = utilities.getVersion();
         }
-        const aliasOpts = { aliases: [{ type: "azure-nextgen:storage:QueueServiceProperties" }, { type: "azure-nextgen:storage/latest:QueueServiceProperties" }, { type: "azure-nextgen:storage/v20200801preview:QueueServiceProperties" }] };
+        const aliasOpts = { aliases: [{ type: "azure-nextgen:storage:QueueServiceProperties" }, { type: "azure-nextgen:storage/latest:QueueServiceProperties" }, { type: "azure-nextgen:storage/v20200801preview:QueueServiceProperties" }, { type: "azure-nextgen:storage/v20210101:QueueServiceProperties" }] };
         opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
         super(QueueServiceProperties.__pulumiType, name, inputs, opts);
     }
@@ -106,7 +103,7 @@ export interface QueueServicePropertiesArgs {
     /**
      * The name of the Queue Service within the specified storage account. Queue Service Name must be 'default'
      */
-    readonly queueServiceName: pulumi.Input<string>;
+    readonly queueServiceName?: pulumi.Input<string>;
     /**
      * The name of the resource group within the user's subscription. The name is case insensitive.
      */

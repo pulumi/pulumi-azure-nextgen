@@ -53,8 +53,6 @@ class RoleAssignment(pulumi.CustomResource):
 
             __props__['can_delegate'] = can_delegate
             __props__['principal_id'] = principal_id
-            if role_assignment_name is None and not opts.urn:
-                raise TypeError("Missing required property 'role_assignment_name'")
             __props__['role_assignment_name'] = role_assignment_name
             __props__['role_definition_id'] = role_definition_id
             if scope is None and not opts.urn:
@@ -62,7 +60,7 @@ class RoleAssignment(pulumi.CustomResource):
             __props__['scope'] = scope
             __props__['name'] = None
             __props__['type'] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:authorization:RoleAssignment"), pulumi.Alias(type_="azure-nextgen:authorization/latest:RoleAssignment"), pulumi.Alias(type_="azure-nextgen:authorization/v20150701:RoleAssignment"), pulumi.Alias(type_="azure-nextgen:authorization/v20180101preview:RoleAssignment"), pulumi.Alias(type_="azure-nextgen:authorization/v20180901preview:RoleAssignment"), pulumi.Alias(type_="azure-nextgen:authorization/v20200401preview:RoleAssignment")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:authorization:RoleAssignment"), pulumi.Alias(type_="azure-nextgen:authorization/latest:RoleAssignment"), pulumi.Alias(type_="azure-nextgen:authorization/v20150701:RoleAssignment"), pulumi.Alias(type_="azure-nextgen:authorization/v20180101preview:RoleAssignment"), pulumi.Alias(type_="azure-nextgen:authorization/v20180901preview:RoleAssignment"), pulumi.Alias(type_="azure-nextgen:authorization/v20200301preview:RoleAssignment"), pulumi.Alias(type_="azure-nextgen:authorization/v20200401preview:RoleAssignment")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(RoleAssignment, __self__).__init__(
             'azure-nextgen:authorization/v20171001preview:RoleAssignment',

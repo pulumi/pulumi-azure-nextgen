@@ -63,9 +63,6 @@ export class Table extends pulumi.CustomResource {
             if ((!args || args.resourceGroupName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.tableName === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'tableName'");
-            }
             inputs["accountName"] = args ? args.accountName : undefined;
             inputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             inputs["tableName"] = args ? args.tableName : undefined;
@@ -83,7 +80,7 @@ export class Table extends pulumi.CustomResource {
         if (!opts.version) {
             opts.version = utilities.getVersion();
         }
-        const aliasOpts = { aliases: [{ type: "azure-nextgen:storage:Table" }, { type: "azure-nextgen:storage/latest:Table" }, { type: "azure-nextgen:storage/v20190601:Table" }] };
+        const aliasOpts = { aliases: [{ type: "azure-nextgen:storage:Table" }, { type: "azure-nextgen:storage/latest:Table" }, { type: "azure-nextgen:storage/v20190601:Table" }, { type: "azure-nextgen:storage/v20210101:Table" }] };
         opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
         super(Table.__pulumiType, name, inputs, opts);
     }
@@ -104,5 +101,5 @@ export interface TableArgs {
     /**
      * A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character.
      */
-    readonly tableName: pulumi.Input<string>;
+    readonly tableName?: pulumi.Input<string>;
 }

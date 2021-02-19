@@ -73,6 +73,7 @@ namespace Pulumi.AzureNextGen.Storage.V20200801Preview
                     new Pulumi.Alias { Type = "azure-nextgen:storage:PrivateEndpointConnection"},
                     new Pulumi.Alias { Type = "azure-nextgen:storage/latest:PrivateEndpointConnection"},
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20190601:PrivateEndpointConnection"},
+                    new Pulumi.Alias { Type = "azure-nextgen:storage/v20210101:PrivateEndpointConnection"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -105,8 +106,8 @@ namespace Pulumi.AzureNextGen.Storage.V20200801Preview
         /// <summary>
         /// The name of the private endpoint connection associated with the Azure resource
         /// </summary>
-        [Input("privateEndpointConnectionName", required: true)]
-        public Input<string> PrivateEndpointConnectionName { get; set; } = null!;
+        [Input("privateEndpointConnectionName")]
+        public Input<string>? PrivateEndpointConnectionName { get; set; }
 
         /// <summary>
         /// A collection of information about the state of the connection between service consumer and provider.

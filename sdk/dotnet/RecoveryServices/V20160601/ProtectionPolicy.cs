@@ -81,6 +81,7 @@ namespace Pulumi.AzureNextGen.RecoveryServices.V20160601
                     new Pulumi.Alias { Type = "azure-nextgen:recoveryservices/v20201001:ProtectionPolicy"},
                     new Pulumi.Alias { Type = "azure-nextgen:recoveryservices/v20201201:ProtectionPolicy"},
                     new Pulumi.Alias { Type = "azure-nextgen:recoveryservices/v20210101:ProtectionPolicy"},
+                    new Pulumi.Alias { Type = "azure-nextgen:recoveryservices/v20210201:ProtectionPolicy"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -131,8 +132,8 @@ namespace Pulumi.AzureNextGen.RecoveryServices.V20160601
         /// <summary>
         /// The backup policy to be created.
         /// </summary>
-        [Input("policyName", required: true)]
-        public Input<string> PolicyName { get; set; } = null!;
+        [Input("policyName")]
+        public Input<string>? PolicyName { get; set; }
 
         /// <summary>
         /// The base class for a backup policy. Workload-specific backup policies are derived from this class.

@@ -11995,6 +11995,20 @@ export namespace authorization {
     }
 
     /**
+     * Deny assignment principal.
+     */
+    export interface PrincipalResponse {
+        /**
+         * Object ID of the Azure AD principal (user, group, or service principal) to which the deny assignment applies. An empty guid '00000000-0000-0000-0000-000000000000' as principal id and principal type as 'Everyone' represents all users, groups and service principals.
+         */
+        id?: string;
+        /**
+         * Type of object represented by principal id (user, group, or service principal). An empty guid '00000000-0000-0000-0000-000000000000' as principal id and principal type as 'Everyone' represents all users, groups and service principals.
+         */
+        type?: string;
+    }
+
+    /**
      * Role assignment properties with scope.
      */
     export interface RoleAssignmentPropertiesWithScopeResponse {
@@ -12792,6 +12806,44 @@ export namespace authorization {
              * The policy sku tier. Possible values are Free and Standard.
              */
             tier?: string;
+        }
+    }
+
+    export namespace v20200301preview {
+        /**
+         * Role definition permissions.
+         */
+        export interface PermissionResponse {
+            /**
+             * Allowed actions.
+             */
+            actions?: string[];
+            /**
+             * Allowed Data actions.
+             */
+            dataActions?: string[];
+            /**
+             * Denied actions.
+             */
+            notActions?: string[];
+            /**
+             * Denied Data actions.
+             */
+            notDataActions?: string[];
+        }
+
+        /**
+         * Deny assignment principal.
+         */
+        export interface PrincipalResponse {
+            /**
+             * Object ID of the Azure AD principal (user, group, or service principal) to which the deny assignment applies. An empty guid '00000000-0000-0000-0000-000000000000' as principal id and principal type as 'Everyone' represents all users, groups and service principals.
+             */
+            id?: string;
+            /**
+             * Type of object represented by principal id (user, group, or service principal). An empty guid '00000000-0000-0000-0000-000000000000' as principal id and principal type as 'Everyone' represents all users, groups and service principals.
+             */
+            type?: string;
         }
     }
 
@@ -17177,6 +17229,198 @@ export namespace azurestack {
             sku?: string;
             /**
              * Type of Resource.
+             */
+            type: string;
+            /**
+             * The type of the Virtual Machine Extension.
+             */
+            vmExtensionType?: string;
+        }
+    }
+
+    export namespace v20160101 {
+        /**
+         * Product compatibility
+         */
+        export interface CompatibilityResponse {
+            /**
+             * Full error message if any compatibility issues are found
+             */
+            description?: string;
+            /**
+             * Tells if product is compatible with current device
+             */
+            isCompatible?: boolean;
+            /**
+             * List of all issues found
+             */
+            issues?: string[];
+            /**
+             * Short error message if any compatibility issues are found
+             */
+            message?: string;
+        }
+
+        /**
+         * Data disk image.
+         */
+        export interface DataDiskImageResponse {
+            /**
+             * The LUN.
+             */
+            lun: number;
+            /**
+             * SAS key for source blob.
+             */
+            sourceBlobSasUri: string;
+        }
+
+        /**
+         * Links to product icons.
+         */
+        export interface IconUrisResponse {
+            /**
+             * URI to hero icon.
+             */
+            hero?: string;
+            /**
+             * URI to large icon.
+             */
+            large?: string;
+            /**
+             * URI to medium icon.
+             */
+            medium?: string;
+            /**
+             * URI to small icon.
+             */
+            small?: string;
+            /**
+             * URI to wide icon.
+             */
+            wide?: string;
+        }
+
+        /**
+         * OS disk image.
+         */
+        export interface OsDiskImageResponse {
+            /**
+             * OS operating system type.
+             */
+            operatingSystem: string;
+            /**
+             * SAS key for source blob.
+             */
+            sourceBlobSasUri: string;
+        }
+
+        /**
+         * Link with additional information about a product.
+         */
+        export interface ProductLinkResponse {
+            /**
+             * The description of the link.
+             */
+            displayName?: string;
+            /**
+             * The URI corresponding to the link.
+             */
+            uri?: string;
+        }
+
+        /**
+         * Additional properties of the product
+         */
+        export interface ProductPropertiesResponse {
+            /**
+             * The version.
+             */
+            version?: string;
+        }
+
+        /**
+         * Product information.
+         */
+        export interface ProductResponse {
+            /**
+             * The part number used for billing purposes.
+             */
+            billingPartNumber?: string;
+            /**
+             * Product compatibility with current device.
+             */
+            compatibility?: outputs.azurestack.v20160101.CompatibilityResponse;
+            /**
+             * The description of the product.
+             */
+            description?: string;
+            /**
+             * The display name of the product.
+             */
+            displayName?: string;
+            /**
+             * The identifier of the gallery item corresponding to the product.
+             */
+            galleryItemIdentity?: string;
+            /**
+             * Additional links available for this product.
+             */
+            iconUris?: outputs.azurestack.v20160101.IconUrisResponse;
+            /**
+             * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             */
+            id: string;
+            /**
+             * The legal terms.
+             */
+            legalTerms?: string;
+            /**
+             * Additional links available for this product.
+             */
+            links?: outputs.azurestack.v20160101.ProductLinkResponse[];
+            /**
+             * The name of the resource
+             */
+            name: string;
+            /**
+             * The offer representing the product.
+             */
+            offer?: string;
+            /**
+             * The version of the product offer.
+             */
+            offerVersion?: string;
+            /**
+             * The length of product content.
+             */
+            payloadLength?: number;
+            /**
+             * The privacy policy.
+             */
+            privacyPolicy?: string;
+            /**
+             * The kind of the product (virtualMachine or virtualMachineExtension)
+             */
+            productKind?: string;
+            /**
+             * Additional properties for the product.
+             */
+            productProperties?: outputs.azurestack.v20160101.ProductPropertiesResponse;
+            /**
+             * The user-friendly name of the product publisher.
+             */
+            publisherDisplayName?: string;
+            /**
+             * Publisher identifier.
+             */
+            publisherIdentifier?: string;
+            /**
+             * The product SKU.
+             */
+            sku?: string;
+            /**
+             * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
              */
             type: string;
             /**
@@ -260556,6 +260800,380 @@ export namespace importexport {
              * Contains information about the Microsoft datacenter to which the drives should be shipped. 
              */
             shippingInformation?: outputs.importexport.v20200801.ShippingInformationResponse;
+            /**
+             * Current state of the job.
+             */
+            state?: string;
+            /**
+             * The resource identifier of the storage account where data will be imported to or exported from.
+             */
+            storageAccountId?: string;
+        }
+
+        /**
+         * Contains information about the package being shipped by the customer to the Microsoft data center.
+         */
+        export interface PackageInformationResponse {
+            /**
+             * The name of the carrier that is used to ship the import or export drives.
+             */
+            carrierName: string;
+            /**
+             * The number of drives included in the package.
+             */
+            driveCount: number;
+            /**
+             * The date when the package is shipped.
+             */
+            shipDate: string;
+            /**
+             * The tracking number of the package.
+             */
+            trackingNumber: string;
+        }
+
+        /**
+         * Specifies the return address information for the job.
+         */
+        export interface ReturnAddressResponse {
+            /**
+             * The city name to use when returning the drives.
+             */
+            city: string;
+            /**
+             * The country or region to use when returning the drives. 
+             */
+            countryOrRegion: string;
+            /**
+             * Email address of the recipient of the returned drives.
+             */
+            email: string;
+            /**
+             * Phone number of the recipient of the returned drives.
+             */
+            phone: string;
+            /**
+             * The postal code to use when returning the drives.
+             */
+            postalCode: string;
+            /**
+             * The name of the recipient who will receive the hard drives when they are returned. 
+             */
+            recipientName: string;
+            /**
+             * The state or province to use when returning the drives.
+             */
+            stateOrProvince?: string;
+            /**
+             * The first line of the street address to use when returning the drives. 
+             */
+            streetAddress1: string;
+            /**
+             * The second line of the street address to use when returning the drives. 
+             */
+            streetAddress2?: string;
+        }
+
+        /**
+         * Specifies the return carrier and customer's account with the carrier.
+         */
+        export interface ReturnShippingResponse {
+            /**
+             * The customer's account number with the carrier.
+             */
+            carrierAccountNumber: string;
+            /**
+             * The carrier's name.
+             */
+            carrierName: string;
+        }
+
+        /**
+         * Contains information about the Microsoft datacenter to which the drives should be shipped.
+         */
+        export interface ShippingInformationResponse {
+            /**
+             * Additional shipping information for customer, specific to datacenter to which customer should send their disks.
+             */
+            additionalInformation: string;
+            /**
+             * The city name to use when returning the drives.
+             */
+            city?: string;
+            /**
+             * The country or region to use when returning the drives. 
+             */
+            countryOrRegion?: string;
+            /**
+             * Phone number of the recipient of the returned drives.
+             */
+            phone?: string;
+            /**
+             * The postal code to use when returning the drives.
+             */
+            postalCode?: string;
+            /**
+             * The name of the recipient who will receive the hard drives when they are returned. 
+             */
+            recipientName?: string;
+            /**
+             * The state or province to use when returning the drives.
+             */
+            stateOrProvince?: string;
+            /**
+             * The first line of the street address to use when returning the drives. 
+             */
+            streetAddress1?: string;
+            /**
+             * The second line of the street address to use when returning the drives. 
+             */
+            streetAddress2?: string;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The timestamp of resource last modification (UTC)
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
+        }
+    }
+
+    export namespace v20210101 {
+        /**
+         * Contains information about the delivery package being shipped by the customer to the Microsoft data center.
+         */
+        export interface DeliveryPackageInformationResponse {
+            /**
+             * The name of the carrier that is used to ship the import or export drives.
+             */
+            carrierName: string;
+            /**
+             * The number of drives included in the package.
+             */
+            driveCount?: number;
+            /**
+             * The date when the package is shipped.
+             */
+            shipDate?: string;
+            /**
+             * The tracking number of the package.
+             */
+            trackingNumber: string;
+        }
+
+        /**
+         * BitLocker recovery key or password to the specified drive
+         */
+        export interface DriveBitLockerKeyResponse {
+            /**
+             * BitLocker recovery key or password
+             */
+            bitLockerKey?: string;
+            /**
+             * Drive ID
+             */
+            driveId?: string;
+        }
+
+        /**
+         * Provides information about the drive's status
+         */
+        export interface DriveStatusResponse {
+            /**
+             * The BitLocker key used to encrypt the drive.
+             */
+            bitLockerKey?: string;
+            /**
+             * Bytes successfully transferred for the drive.
+             */
+            bytesSucceeded?: number;
+            /**
+             * Detailed status about the data transfer process. This field is not returned in the response until the drive is in the Transferring state.
+             */
+            copyStatus?: string;
+            /**
+             * The drive header hash value.
+             */
+            driveHeaderHash?: string;
+            /**
+             * The drive's hardware serial number, without spaces.
+             */
+            driveId?: string;
+            /**
+             * A URI that points to the blob containing the error log for the data transfer operation.
+             */
+            errorLogUri?: string;
+            /**
+             * The relative path of the manifest file on the drive. 
+             */
+            manifestFile?: string;
+            /**
+             * The Base16-encoded MD5 hash of the manifest file on the drive.
+             */
+            manifestHash?: string;
+            /**
+             * A URI that points to the blob containing the drive manifest file. 
+             */
+            manifestUri?: string;
+            /**
+             * Percentage completed for the drive. 
+             */
+            percentComplete?: number;
+            /**
+             * The drive's current state. 
+             */
+            state?: string;
+            /**
+             * A URI that points to the blob containing the verbose log for the data transfer operation. 
+             */
+            verboseLogUri?: string;
+        }
+
+        /**
+         * Specifies the encryption key properties
+         */
+        export interface EncryptionKeyDetailsResponse {
+            /**
+             * The type of kek encryption key
+             */
+            kekType?: string;
+            /**
+             * Specifies the url for kek encryption key. 
+             */
+            kekUrl?: string;
+            /**
+             * Specifies the keyvault resource id for kek encryption key. 
+             */
+            kekVaultResourceID?: string;
+        }
+
+        /**
+         * A property containing information about the blobs to be exported for an export job. This property is required for export jobs, but must not be specified for import jobs.
+         */
+        export interface ExportResponse {
+            /**
+             * The relative URI to the block blob that contains the list of blob paths or blob path prefixes as defined above, beginning with the container name. If the blob is in root container, the URI must begin with $root. 
+             */
+            blobListBlobPath?: string;
+            /**
+             * A collection of blob-path strings.
+             */
+            blobPath?: string[];
+            /**
+             * A collection of blob-prefix strings.
+             */
+            blobPathPrefix?: string[];
+        }
+
+        /**
+         * Specifies the identity properties. 
+         */
+        export interface IdentityDetailsResponse {
+            /**
+             * Specifies the principal id for the identity for the job. 
+             */
+            principalId: string;
+            /**
+             * Specifies the tenant id for the identity for the job. 
+             */
+            tenantId: string;
+            /**
+             * The type of identity
+             */
+            type?: string;
+        }
+
+        /**
+         * Specifies the job properties
+         */
+        export interface JobDetailsResponse {
+            /**
+             * Default value is false. Indicates whether the manifest files on the drives should be copied to block blobs.
+             */
+            backupDriveManifest?: boolean;
+            /**
+             * Indicates whether a request has been submitted to cancel the job.
+             */
+            cancelRequested?: boolean;
+            /**
+             * Contains information about the package being shipped by the customer to the Microsoft data center. 
+             */
+            deliveryPackage?: outputs.importexport.v20210101.DeliveryPackageInformationResponse;
+            /**
+             * The virtual blob directory to which the copy logs and backups of drive manifest files (if enabled) will be stored.
+             */
+            diagnosticsPath?: string;
+            /**
+             * List of up to ten drives that comprise the job. The drive list is a required element for an import job; it is not specified for export jobs.
+             */
+            driveList?: outputs.importexport.v20210101.DriveStatusResponse[];
+            /**
+             * Contains information about the encryption key.
+             */
+            encryptionKey?: outputs.importexport.v20210101.EncryptionKeyDetailsResponse;
+            /**
+             * A property containing information about the blobs to be exported for an export job. This property is included for export jobs only.
+             */
+            export?: outputs.importexport.v20210101.ExportResponse;
+            /**
+             * A blob path that points to a block blob containing a list of blob names that were not exported due to insufficient drive space. If all blobs were exported successfully, then this element is not included in the response.
+             */
+            incompleteBlobListUri?: string;
+            /**
+             * The type of job
+             */
+            jobType?: string;
+            /**
+             * Default value is Error. Indicates whether error logging or verbose logging will be enabled.
+             */
+            logLevel?: string;
+            /**
+             * Overall percentage completed for the job.
+             */
+            percentComplete?: number;
+            /**
+             * Specifies the provisioning state of the job.
+             */
+            provisioningState?: string;
+            /**
+             * Specifies the return address information for the job. 
+             */
+            returnAddress?: outputs.importexport.v20210101.ReturnAddressResponse;
+            /**
+             * Contains information about the package being shipped from the Microsoft data center to the customer to return the drives. The format is the same as the deliveryPackage property above. This property is not included if the drives have not yet been returned. 
+             */
+            returnPackage?: outputs.importexport.v20210101.PackageInformationResponse;
+            /**
+             * Specifies the return carrier and customer's account with the carrier. 
+             */
+            returnShipping?: outputs.importexport.v20210101.ReturnShippingResponse;
+            /**
+             * Contains information about the Microsoft datacenter to which the drives should be shipped. 
+             */
+            shippingInformation?: outputs.importexport.v20210101.ShippingInformationResponse;
             /**
              * Current state of the job.
              */
@@ -541029,6 +541647,2863 @@ export namespace recoveryservices {
             retentionTimes?: string[];
         }
     }
+
+    export namespace v20210201 {
+        /**
+         * AzureBackupServer (DPMVenus) workload-specific protection container.
+         */
+        export interface AzureBackupServerContainerResponse {
+            /**
+             * Type of backup management for the container.
+             */
+            backupManagementType?: string;
+            /**
+             * Specifies whether the container is re-registrable.
+             */
+            canReRegister?: boolean;
+            /**
+             * ID of container.
+             */
+            containerId?: string;
+            /**
+             * Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+             * Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+             * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+             * Backup is VMAppContainer
+             * Expected value is 'DPMContainer'.
+             */
+            containerType: "DPMContainer";
+            /**
+             * Backup engine Agent version
+             */
+            dpmAgentVersion?: string;
+            /**
+             * List of BackupEngines protecting the container
+             */
+            dpmServers?: string[];
+            /**
+             * Extended Info of the container.
+             */
+            extendedInfo?: outputs.recoveryservices.v20210201.DPMContainerExtendedInfoResponse;
+            /**
+             * Friendly name of the container.
+             */
+            friendlyName?: string;
+            /**
+             * Status of health of the container.
+             */
+            healthStatus?: string;
+            /**
+             * Number of protected items in the BackupEngine
+             */
+            protectedItemCount?: number;
+            /**
+             * Protection status of the container.
+             */
+            protectionStatus?: string;
+            /**
+             * Status of registration of the container with the Recovery Services Vault.
+             */
+            registrationStatus?: string;
+            /**
+             * To check if upgrade available
+             */
+            upgradeAvailable?: boolean;
+        }
+
+        /**
+         * AzureStorage backup policy.
+         */
+        export interface AzureFileShareProtectionPolicyResponse {
+            /**
+             * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+             * Expected value is 'AzureStorage'.
+             */
+            backupManagementType: "AzureStorage";
+            /**
+             * Number of items associated with this policy.
+             */
+            protectedItemsCount?: number;
+            /**
+             * Retention policy with the details on backup copy retention ranges.
+             */
+            retentionPolicy?: outputs.recoveryservices.v20210201.LongTermRetentionPolicyResponse | outputs.recoveryservices.v20210201.SimpleRetentionPolicyResponse;
+            /**
+             * Backup schedule specified as part of backup policy.
+             */
+            schedulePolicy?: outputs.recoveryservices.v20210201.LogSchedulePolicyResponse | outputs.recoveryservices.v20210201.LongTermSchedulePolicyResponse | outputs.recoveryservices.v20210201.SimpleSchedulePolicyResponse;
+            /**
+             * TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
+             */
+            timeZone?: string;
+            /**
+             * Type of workload for the backup management
+             */
+            workLoadType?: string;
+        }
+
+        /**
+         * Additional information about Azure File Share backup item.
+         */
+        export interface AzureFileshareProtectedItemExtendedInfoResponse {
+            /**
+             * The oldest backup copy available for this item in the service.
+             */
+            oldestRecoveryPoint?: string;
+            /**
+             * Indicates consistency of policy object and policy applied to this backup item.
+             */
+            policyState?: string;
+            /**
+             * Number of available backup copies associated with this backup item.
+             */
+            recoveryPointCount?: number;
+            /**
+             * Indicates the state of this resource. Possible values are from enum ResourceState {Invalid, Active, SoftDeleted, Deleted}
+             */
+            resourceState: string;
+            /**
+             * The resource state sync time for this backup item.
+             */
+            resourceStateSyncTime: string;
+        }
+
+        /**
+         * Azure File Share workload-specific backup item.
+         */
+        export interface AzureFileshareProtectedItemResponse {
+            /**
+             * Type of backup management for the backed up item.
+             */
+            backupManagementType?: string;
+            /**
+             * Name of the backup set the backup item belongs to
+             */
+            backupSetName?: string;
+            /**
+             * Unique name of container
+             */
+            containerName?: string;
+            /**
+             * Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+             */
+            createMode?: string;
+            /**
+             * Time for deferred deletion in UTC
+             */
+            deferredDeleteTimeInUTC?: string;
+            /**
+             * Time remaining before the DS marked for deferred delete is permanently deleted
+             */
+            deferredDeleteTimeRemaining?: string;
+            /**
+             * Additional information with this backup item.
+             */
+            extendedInfo?: outputs.recoveryservices.v20210201.AzureFileshareProtectedItemExtendedInfoResponse;
+            /**
+             * Friendly name of the fileshare represented by this backup item.
+             */
+            friendlyName?: string;
+            /**
+             * Flag to identify whether the deferred deleted DS is to be purged soon
+             */
+            isDeferredDeleteScheduleUpcoming?: boolean;
+            /**
+             * Flag to identify that deferred deleted DS is to be moved into Pause state
+             */
+            isRehydrate?: boolean;
+            /**
+             * Flag to identify whether the DS is scheduled for deferred delete
+             */
+            isScheduledForDeferredDelete?: boolean;
+            /**
+             * Health details of different KPIs
+             */
+            kpisHealths?: {[key: string]: outputs.recoveryservices.v20210201.KPIResourceHealthDetailsResponse};
+            /**
+             * Last backup operation status. Possible values: Healthy, Unhealthy.
+             */
+            lastBackupStatus?: string;
+            /**
+             * Timestamp of the last backup operation on this backup item.
+             */
+            lastBackupTime?: string;
+            /**
+             * Timestamp when the last (latest) backup copy was created for this backup item.
+             */
+            lastRecoveryPoint?: string;
+            /**
+             * ID of the backup policy with which this item is backed up.
+             */
+            policyId?: string;
+            /**
+             * backup item type.
+             * Expected value is 'AzureFileShareProtectedItem'.
+             */
+            protectedItemType: "AzureFileShareProtectedItem";
+            /**
+             * Backup state of this backup item.
+             */
+            protectionState?: string;
+            /**
+             * Backup status of this backup item.
+             */
+            protectionStatus?: string;
+            /**
+             * ARM ID of the resource to be backed up.
+             */
+            sourceResourceId?: string;
+            /**
+             * Type of workload this item represents.
+             */
+            workloadType?: string;
+        }
+
+        /**
+         * IaaS VM workload-specific backup item representing a classic virtual machine.
+         */
+        export interface AzureIaaSClassicComputeVMContainerResponse {
+            /**
+             * Type of backup management for the container.
+             */
+            backupManagementType?: string;
+            /**
+             * Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+             * Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+             * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+             * Backup is VMAppContainer
+             * Expected value is 'IaaSVMContainer'.
+             */
+            containerType: "IaaSVMContainer";
+            /**
+             * Friendly name of the container.
+             */
+            friendlyName?: string;
+            /**
+             * Status of health of the container.
+             */
+            healthStatus?: string;
+            /**
+             * Status of registration of the container with the Recovery Services Vault.
+             */
+            registrationStatus?: string;
+            /**
+             * Resource group name of Recovery Services Vault.
+             */
+            resourceGroup?: string;
+            /**
+             * Fully qualified ARM url of the virtual machine represented by this Azure IaaS VM container.
+             */
+            virtualMachineId?: string;
+            /**
+             * Specifies whether the container represents a Classic or an Azure Resource Manager VM.
+             */
+            virtualMachineVersion?: string;
+        }
+
+        /**
+         * IaaS VM workload-specific backup item representing the Classic Compute VM.
+         */
+        export interface AzureIaaSClassicComputeVMProtectedItemResponse {
+            /**
+             * Type of backup management for the backed up item.
+             */
+            backupManagementType?: string;
+            /**
+             * Name of the backup set the backup item belongs to
+             */
+            backupSetName?: string;
+            /**
+             * Unique name of container
+             */
+            containerName?: string;
+            /**
+             * Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+             */
+            createMode?: string;
+            /**
+             * Time for deferred deletion in UTC
+             */
+            deferredDeleteTimeInUTC?: string;
+            /**
+             * Time remaining before the DS marked for deferred delete is permanently deleted
+             */
+            deferredDeleteTimeRemaining?: string;
+            /**
+             * Additional information for this backup item.
+             */
+            extendedInfo?: outputs.recoveryservices.v20210201.AzureIaaSVMProtectedItemExtendedInfoResponse;
+            /**
+             * Extended Properties for Azure IaasVM Backup.
+             */
+            extendedProperties?: outputs.recoveryservices.v20210201.ExtendedPropertiesResponse;
+            /**
+             * Friendly name of the VM represented by this backup item.
+             */
+            friendlyName?: string;
+            /**
+             * Health details on this backup item.
+             */
+            healthDetails?: outputs.recoveryservices.v20210201.AzureIaaSVMHealthDetailsResponse[];
+            /**
+             * Health status of protected item.
+             */
+            healthStatus?: string;
+            /**
+             * Flag to identify whether the deferred deleted DS is to be purged soon
+             */
+            isDeferredDeleteScheduleUpcoming?: boolean;
+            /**
+             * Flag to identify that deferred deleted DS is to be moved into Pause state
+             */
+            isRehydrate?: boolean;
+            /**
+             * Flag to identify whether the DS is scheduled for deferred delete
+             */
+            isScheduledForDeferredDelete?: boolean;
+            /**
+             * Health details of different KPIs
+             */
+            kpisHealths?: {[key: string]: outputs.recoveryservices.v20210201.KPIResourceHealthDetailsResponse};
+            /**
+             * Last backup operation status.
+             */
+            lastBackupStatus?: string;
+            /**
+             * Timestamp of the last backup operation on this backup item.
+             */
+            lastBackupTime?: string;
+            /**
+             * Timestamp when the last (latest) backup copy was created for this backup item.
+             */
+            lastRecoveryPoint?: string;
+            /**
+             * ID of the backup policy with which this item is backed up.
+             */
+            policyId?: string;
+            /**
+             * Data ID of the protected item.
+             */
+            protectedItemDataId?: string;
+            /**
+             * backup item type.
+             * Expected value is 'AzureIaaSVMProtectedItem'.
+             */
+            protectedItemType: "AzureIaaSVMProtectedItem";
+            /**
+             * Backup state of this backup item.
+             */
+            protectionState?: string;
+            /**
+             * Backup status of this backup item.
+             */
+            protectionStatus?: string;
+            /**
+             * ARM ID of the resource to be backed up.
+             */
+            sourceResourceId?: string;
+            /**
+             * Fully qualified ARM ID of the virtual machine represented by this item.
+             */
+            virtualMachineId?: string;
+            /**
+             * Type of workload this item represents.
+             */
+            workloadType?: string;
+        }
+
+        /**
+         * IaaS VM workload-specific backup item representing an Azure Resource Manager virtual machine.
+         */
+        export interface AzureIaaSComputeVMContainerResponse {
+            /**
+             * Type of backup management for the container.
+             */
+            backupManagementType?: string;
+            /**
+             * Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+             * Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+             * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+             * Backup is VMAppContainer
+             * Expected value is 'IaaSVMContainer'.
+             */
+            containerType: "IaaSVMContainer";
+            /**
+             * Friendly name of the container.
+             */
+            friendlyName?: string;
+            /**
+             * Status of health of the container.
+             */
+            healthStatus?: string;
+            /**
+             * Status of registration of the container with the Recovery Services Vault.
+             */
+            registrationStatus?: string;
+            /**
+             * Resource group name of Recovery Services Vault.
+             */
+            resourceGroup?: string;
+            /**
+             * Fully qualified ARM url of the virtual machine represented by this Azure IaaS VM container.
+             */
+            virtualMachineId?: string;
+            /**
+             * Specifies whether the container represents a Classic or an Azure Resource Manager VM.
+             */
+            virtualMachineVersion?: string;
+        }
+
+        /**
+         * IaaS VM workload-specific backup item representing the Azure Resource Manager VM.
+         */
+        export interface AzureIaaSComputeVMProtectedItemResponse {
+            /**
+             * Type of backup management for the backed up item.
+             */
+            backupManagementType?: string;
+            /**
+             * Name of the backup set the backup item belongs to
+             */
+            backupSetName?: string;
+            /**
+             * Unique name of container
+             */
+            containerName?: string;
+            /**
+             * Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+             */
+            createMode?: string;
+            /**
+             * Time for deferred deletion in UTC
+             */
+            deferredDeleteTimeInUTC?: string;
+            /**
+             * Time remaining before the DS marked for deferred delete is permanently deleted
+             */
+            deferredDeleteTimeRemaining?: string;
+            /**
+             * Additional information for this backup item.
+             */
+            extendedInfo?: outputs.recoveryservices.v20210201.AzureIaaSVMProtectedItemExtendedInfoResponse;
+            /**
+             * Extended Properties for Azure IaasVM Backup.
+             */
+            extendedProperties?: outputs.recoveryservices.v20210201.ExtendedPropertiesResponse;
+            /**
+             * Friendly name of the VM represented by this backup item.
+             */
+            friendlyName?: string;
+            /**
+             * Health details on this backup item.
+             */
+            healthDetails?: outputs.recoveryservices.v20210201.AzureIaaSVMHealthDetailsResponse[];
+            /**
+             * Health status of protected item.
+             */
+            healthStatus?: string;
+            /**
+             * Flag to identify whether the deferred deleted DS is to be purged soon
+             */
+            isDeferredDeleteScheduleUpcoming?: boolean;
+            /**
+             * Flag to identify that deferred deleted DS is to be moved into Pause state
+             */
+            isRehydrate?: boolean;
+            /**
+             * Flag to identify whether the DS is scheduled for deferred delete
+             */
+            isScheduledForDeferredDelete?: boolean;
+            /**
+             * Health details of different KPIs
+             */
+            kpisHealths?: {[key: string]: outputs.recoveryservices.v20210201.KPIResourceHealthDetailsResponse};
+            /**
+             * Last backup operation status.
+             */
+            lastBackupStatus?: string;
+            /**
+             * Timestamp of the last backup operation on this backup item.
+             */
+            lastBackupTime?: string;
+            /**
+             * Timestamp when the last (latest) backup copy was created for this backup item.
+             */
+            lastRecoveryPoint?: string;
+            /**
+             * ID of the backup policy with which this item is backed up.
+             */
+            policyId?: string;
+            /**
+             * Data ID of the protected item.
+             */
+            protectedItemDataId?: string;
+            /**
+             * backup item type.
+             * Expected value is 'AzureIaaSVMProtectedItem'.
+             */
+            protectedItemType: "AzureIaaSVMProtectedItem";
+            /**
+             * Backup state of this backup item.
+             */
+            protectionState?: string;
+            /**
+             * Backup status of this backup item.
+             */
+            protectionStatus?: string;
+            /**
+             * ARM ID of the resource to be backed up.
+             */
+            sourceResourceId?: string;
+            /**
+             * Fully qualified ARM ID of the virtual machine represented by this item.
+             */
+            virtualMachineId?: string;
+            /**
+             * Type of workload this item represents.
+             */
+            workloadType?: string;
+        }
+
+        /**
+         * Azure IaaS VM workload-specific Health Details.
+         */
+        export interface AzureIaaSVMHealthDetailsResponse {
+            /**
+             * Health Code
+             */
+            code: number;
+            /**
+             * Health Message
+             */
+            message: string;
+            /**
+             * Health Recommended Actions
+             */
+            recommendations: string[];
+            /**
+             * Health Title
+             */
+            title: string;
+        }
+
+        /**
+         * Additional information on Azure IaaS VM specific backup item.
+         */
+        export interface AzureIaaSVMProtectedItemExtendedInfoResponse {
+            /**
+             * The oldest backup copy available for this backup item.
+             */
+            oldestRecoveryPoint?: string;
+            /**
+             * Specifies if backup policy associated with the backup item is inconsistent.
+             */
+            policyInconsistent?: boolean;
+            /**
+             * Number of backup copies available for this backup item.
+             */
+            recoveryPointCount?: number;
+        }
+
+        /**
+         * IaaS VM workload-specific backup item.
+         */
+        export interface AzureIaaSVMProtectedItemResponse {
+            /**
+             * Type of backup management for the backed up item.
+             */
+            backupManagementType?: string;
+            /**
+             * Name of the backup set the backup item belongs to
+             */
+            backupSetName?: string;
+            /**
+             * Unique name of container
+             */
+            containerName?: string;
+            /**
+             * Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+             */
+            createMode?: string;
+            /**
+             * Time for deferred deletion in UTC
+             */
+            deferredDeleteTimeInUTC?: string;
+            /**
+             * Time remaining before the DS marked for deferred delete is permanently deleted
+             */
+            deferredDeleteTimeRemaining?: string;
+            /**
+             * Additional information for this backup item.
+             */
+            extendedInfo?: outputs.recoveryservices.v20210201.AzureIaaSVMProtectedItemExtendedInfoResponse;
+            /**
+             * Extended Properties for Azure IaasVM Backup.
+             */
+            extendedProperties?: outputs.recoveryservices.v20210201.ExtendedPropertiesResponse;
+            /**
+             * Friendly name of the VM represented by this backup item.
+             */
+            friendlyName?: string;
+            /**
+             * Health details on this backup item.
+             */
+            healthDetails?: outputs.recoveryservices.v20210201.AzureIaaSVMHealthDetailsResponse[];
+            /**
+             * Health status of protected item.
+             */
+            healthStatus?: string;
+            /**
+             * Flag to identify whether the deferred deleted DS is to be purged soon
+             */
+            isDeferredDeleteScheduleUpcoming?: boolean;
+            /**
+             * Flag to identify that deferred deleted DS is to be moved into Pause state
+             */
+            isRehydrate?: boolean;
+            /**
+             * Flag to identify whether the DS is scheduled for deferred delete
+             */
+            isScheduledForDeferredDelete?: boolean;
+            /**
+             * Health details of different KPIs
+             */
+            kpisHealths?: {[key: string]: outputs.recoveryservices.v20210201.KPIResourceHealthDetailsResponse};
+            /**
+             * Last backup operation status.
+             */
+            lastBackupStatus?: string;
+            /**
+             * Timestamp of the last backup operation on this backup item.
+             */
+            lastBackupTime?: string;
+            /**
+             * Timestamp when the last (latest) backup copy was created for this backup item.
+             */
+            lastRecoveryPoint?: string;
+            /**
+             * ID of the backup policy with which this item is backed up.
+             */
+            policyId?: string;
+            /**
+             * Data ID of the protected item.
+             */
+            protectedItemDataId?: string;
+            /**
+             * backup item type.
+             * Expected value is 'AzureIaaSVMProtectedItem'.
+             */
+            protectedItemType: "AzureIaaSVMProtectedItem";
+            /**
+             * Backup state of this backup item.
+             */
+            protectionState?: string;
+            /**
+             * Backup status of this backup item.
+             */
+            protectionStatus?: string;
+            /**
+             * ARM ID of the resource to be backed up.
+             */
+            sourceResourceId?: string;
+            /**
+             * Fully qualified ARM ID of the virtual machine represented by this item.
+             */
+            virtualMachineId?: string;
+            /**
+             * Type of workload this item represents.
+             */
+            workloadType?: string;
+        }
+
+        /**
+         * IaaS VM workload-specific backup policy.
+         */
+        export interface AzureIaaSVMProtectionPolicyResponse {
+            /**
+             * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+             * Expected value is 'AzureIaasVM'.
+             */
+            backupManagementType: "AzureIaasVM";
+            instantRPDetails?: outputs.recoveryservices.v20210201.InstantRPAdditionalDetailsResponse;
+            /**
+             * Instant RP retention policy range in days
+             */
+            instantRpRetentionRangeInDays?: number;
+            /**
+             * Number of items associated with this policy.
+             */
+            protectedItemsCount?: number;
+            /**
+             * Retention policy with the details on backup copy retention ranges.
+             */
+            retentionPolicy?: outputs.recoveryservices.v20210201.LongTermRetentionPolicyResponse | outputs.recoveryservices.v20210201.SimpleRetentionPolicyResponse;
+            /**
+             * Backup schedule specified as part of backup policy.
+             */
+            schedulePolicy?: outputs.recoveryservices.v20210201.LogSchedulePolicyResponse | outputs.recoveryservices.v20210201.LongTermSchedulePolicyResponse | outputs.recoveryservices.v20210201.SimpleSchedulePolicyResponse;
+            /**
+             * TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
+             */
+            timeZone?: string;
+        }
+
+        /**
+         * Azure Recovery Services Vault specific protection intent item.
+         */
+        export interface AzureRecoveryServiceVaultProtectionIntentResponse {
+            /**
+             * Type of backup management for the backed up item.
+             */
+            backupManagementType?: string;
+            /**
+             * ID of the item which is getting protected, In case of Azure Vm , it is ProtectedItemId
+             */
+            itemId?: string;
+            /**
+             * ID of the backup policy with which this item is backed up.
+             */
+            policyId?: string;
+            /**
+             * backup protectionIntent type.
+             * Expected value is 'RecoveryServiceVaultItem'.
+             */
+            protectionIntentItemType: "RecoveryServiceVaultItem";
+            /**
+             * Backup state of this backup item.
+             */
+            protectionState?: string;
+            /**
+             * ARM ID of the resource to be backed up.
+             */
+            sourceResourceId?: string;
+        }
+
+        /**
+         * IaaS VM specific backup protection intent item.
+         */
+        export interface AzureResourceProtectionIntentResponse {
+            /**
+             * Type of backup management for the backed up item.
+             */
+            backupManagementType?: string;
+            /**
+             * Friendly name of the VM represented by this backup item.
+             */
+            friendlyName?: string;
+            /**
+             * ID of the item which is getting protected, In case of Azure Vm , it is ProtectedItemId
+             */
+            itemId?: string;
+            /**
+             * ID of the backup policy with which this item is backed up.
+             */
+            policyId?: string;
+            /**
+             * backup protectionIntent type.
+             * Expected value is 'AzureResourceItem'.
+             */
+            protectionIntentItemType: "AzureResourceItem";
+            /**
+             * Backup state of this backup item.
+             */
+            protectionState?: string;
+            /**
+             * ARM ID of the resource to be backed up.
+             */
+            sourceResourceId?: string;
+        }
+
+        /**
+         * Container for SQL workloads under SQL Availability Group.
+         */
+        export interface AzureSQLAGWorkloadContainerProtectionContainerResponse {
+            /**
+             * Type of backup management for the container.
+             */
+            backupManagementType?: string;
+            /**
+             * Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+             * Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+             * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+             * Backup is VMAppContainer
+             * Expected value is 'AzureWorkloadContainer'.
+             */
+            containerType: "AzureWorkloadContainer";
+            /**
+             * Additional details of a workload container.
+             */
+            extendedInfo?: outputs.recoveryservices.v20210201.AzureWorkloadContainerExtendedInfoResponse;
+            /**
+             * Friendly name of the container.
+             */
+            friendlyName?: string;
+            /**
+             * Status of health of the container.
+             */
+            healthStatus?: string;
+            /**
+             * Time stamp when this container was updated.
+             */
+            lastUpdatedTime?: string;
+            /**
+             * Re-Do Operation
+             */
+            operationType?: string;
+            /**
+             * Status of registration of the container with the Recovery Services Vault.
+             */
+            registrationStatus?: string;
+            /**
+             * ARM ID of the virtual machine represented by this Azure Workload Container
+             */
+            sourceResourceId?: string;
+            /**
+             * Workload type for which registration was sent.
+             */
+            workloadType?: string;
+        }
+
+        /**
+         * Azure Sql workload-specific container.
+         */
+        export interface AzureSqlContainerResponse {
+            /**
+             * Type of backup management for the container.
+             */
+            backupManagementType?: string;
+            /**
+             * Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+             * Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+             * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+             * Backup is VMAppContainer
+             * Expected value is 'AzureSqlContainer'.
+             */
+            containerType: "AzureSqlContainer";
+            /**
+             * Friendly name of the container.
+             */
+            friendlyName?: string;
+            /**
+             * Status of health of the container.
+             */
+            healthStatus?: string;
+            /**
+             * Status of registration of the container with the Recovery Services Vault.
+             */
+            registrationStatus?: string;
+        }
+
+        /**
+         * Additional information on Azure Sql specific protected item.
+         */
+        export interface AzureSqlProtectedItemExtendedInfoResponse {
+            /**
+             * The oldest backup copy available for this item in the service.
+             */
+            oldestRecoveryPoint?: string;
+            /**
+             * State of the backup policy associated with this backup item.
+             */
+            policyState?: string;
+            /**
+             * Number of available backup copies associated with this backup item.
+             */
+            recoveryPointCount?: number;
+        }
+
+        /**
+         * Azure SQL workload-specific backup item.
+         */
+        export interface AzureSqlProtectedItemResponse {
+            /**
+             * Type of backup management for the backed up item.
+             */
+            backupManagementType?: string;
+            /**
+             * Name of the backup set the backup item belongs to
+             */
+            backupSetName?: string;
+            /**
+             * Unique name of container
+             */
+            containerName?: string;
+            /**
+             * Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+             */
+            createMode?: string;
+            /**
+             * Time for deferred deletion in UTC
+             */
+            deferredDeleteTimeInUTC?: string;
+            /**
+             * Time remaining before the DS marked for deferred delete is permanently deleted
+             */
+            deferredDeleteTimeRemaining?: string;
+            /**
+             * Additional information for this backup item.
+             */
+            extendedInfo?: outputs.recoveryservices.v20210201.AzureSqlProtectedItemExtendedInfoResponse;
+            /**
+             * Flag to identify whether the deferred deleted DS is to be purged soon
+             */
+            isDeferredDeleteScheduleUpcoming?: boolean;
+            /**
+             * Flag to identify that deferred deleted DS is to be moved into Pause state
+             */
+            isRehydrate?: boolean;
+            /**
+             * Flag to identify whether the DS is scheduled for deferred delete
+             */
+            isScheduledForDeferredDelete?: boolean;
+            /**
+             * Timestamp when the last (latest) backup copy was created for this backup item.
+             */
+            lastRecoveryPoint?: string;
+            /**
+             * ID of the backup policy with which this item is backed up.
+             */
+            policyId?: string;
+            /**
+             * Internal ID of a backup item. Used by Azure SQL Backup engine to contact Recovery Services.
+             */
+            protectedItemDataId?: string;
+            /**
+             * backup item type.
+             * Expected value is 'Microsoft.Sql/servers/databases'.
+             */
+            protectedItemType: "Microsoft.Sql/servers/databases";
+            /**
+             * Backup state of the backed up item.
+             */
+            protectionState?: string;
+            /**
+             * ARM ID of the resource to be backed up.
+             */
+            sourceResourceId?: string;
+            /**
+             * Type of workload this item represents.
+             */
+            workloadType?: string;
+        }
+
+        /**
+         * Azure SQL workload-specific backup policy.
+         */
+        export interface AzureSqlProtectionPolicyResponse {
+            /**
+             * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+             * Expected value is 'AzureSql'.
+             */
+            backupManagementType: "AzureSql";
+            /**
+             * Number of items associated with this policy.
+             */
+            protectedItemsCount?: number;
+            /**
+             * Retention policy details.
+             */
+            retentionPolicy?: outputs.recoveryservices.v20210201.LongTermRetentionPolicyResponse | outputs.recoveryservices.v20210201.SimpleRetentionPolicyResponse;
+        }
+
+        /**
+         * Azure Storage Account workload-specific container.
+         */
+        export interface AzureStorageContainerResponse {
+            /**
+             * Type of backup management for the container.
+             */
+            backupManagementType?: string;
+            /**
+             * Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+             * Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+             * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+             * Backup is VMAppContainer
+             * Expected value is 'StorageContainer'.
+             */
+            containerType: "StorageContainer";
+            /**
+             * Friendly name of the container.
+             */
+            friendlyName?: string;
+            /**
+             * Status of health of the container.
+             */
+            healthStatus?: string;
+            /**
+             * Number of items backed up in this container.
+             */
+            protectedItemCount?: number;
+            /**
+             * Status of registration of the container with the Recovery Services Vault.
+             */
+            registrationStatus?: string;
+            /**
+             * Resource group name of Recovery Services Vault.
+             */
+            resourceGroup?: string;
+            /**
+             * Fully qualified ARM url.
+             */
+            sourceResourceId?: string;
+            /**
+             * Storage account version.
+             */
+            storageAccountVersion?: string;
+        }
+
+        /**
+         * Container for SQL workloads under Azure Virtual Machines.
+         */
+        export interface AzureVMAppContainerProtectionContainerResponse {
+            /**
+             * Type of backup management for the container.
+             */
+            backupManagementType?: string;
+            /**
+             * Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+             * Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+             * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+             * Backup is VMAppContainer
+             * Expected value is 'AzureWorkloadContainer'.
+             */
+            containerType: "AzureWorkloadContainer";
+            /**
+             * Additional details of a workload container.
+             */
+            extendedInfo?: outputs.recoveryservices.v20210201.AzureWorkloadContainerExtendedInfoResponse;
+            /**
+             * Friendly name of the container.
+             */
+            friendlyName?: string;
+            /**
+             * Status of health of the container.
+             */
+            healthStatus?: string;
+            /**
+             * Time stamp when this container was updated.
+             */
+            lastUpdatedTime?: string;
+            /**
+             * Re-Do Operation
+             */
+            operationType?: string;
+            /**
+             * Status of registration of the container with the Recovery Services Vault.
+             */
+            registrationStatus?: string;
+            /**
+             * ARM ID of the virtual machine represented by this Azure Workload Container
+             */
+            sourceResourceId?: string;
+            /**
+             * Workload type for which registration was sent.
+             */
+            workloadType?: string;
+        }
+
+        /**
+         * Additional information on Azure Workload for SQL specific backup item.
+         */
+        export interface AzureVmWorkloadProtectedItemExtendedInfoResponse {
+            /**
+             * The oldest backup copy available for this backup item.
+             */
+            oldestRecoveryPoint?: string;
+            /**
+             * Indicates consistency of policy object and policy applied to this backup item.
+             */
+            policyState?: string;
+            /**
+             * Number of backup copies available for this backup item.
+             */
+            recoveryPointCount?: number;
+        }
+
+        /**
+         * Azure VM workload-specific protected item.
+         */
+        export interface AzureVmWorkloadProtectedItemResponse {
+            /**
+             * Type of backup management for the backed up item.
+             */
+            backupManagementType?: string;
+            /**
+             * Name of the backup set the backup item belongs to
+             */
+            backupSetName?: string;
+            /**
+             * Unique name of container
+             */
+            containerName?: string;
+            /**
+             * Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+             */
+            createMode?: string;
+            /**
+             * Time for deferred deletion in UTC
+             */
+            deferredDeleteTimeInUTC?: string;
+            /**
+             * Time remaining before the DS marked for deferred delete is permanently deleted
+             */
+            deferredDeleteTimeRemaining?: string;
+            /**
+             * Additional information for this backup item.
+             */
+            extendedInfo?: outputs.recoveryservices.v20210201.AzureVmWorkloadProtectedItemExtendedInfoResponse;
+            /**
+             * Friendly name of the DB represented by this backup item.
+             */
+            friendlyName?: string;
+            /**
+             * Flag to identify whether the deferred deleted DS is to be purged soon
+             */
+            isDeferredDeleteScheduleUpcoming?: boolean;
+            /**
+             * Flag to identify that deferred deleted DS is to be moved into Pause state
+             */
+            isRehydrate?: boolean;
+            /**
+             * Flag to identify whether the DS is scheduled for deferred delete
+             */
+            isScheduledForDeferredDelete?: boolean;
+            /**
+             * Health details of different KPIs
+             */
+            kpisHealths?: {[key: string]: outputs.recoveryservices.v20210201.KPIResourceHealthDetailsResponse};
+            /**
+             * Error details in last backup
+             */
+            lastBackupErrorDetail?: outputs.recoveryservices.v20210201.ErrorDetailResponse;
+            /**
+             * Last backup operation status. Possible values: Healthy, Unhealthy.
+             */
+            lastBackupStatus?: string;
+            /**
+             * Timestamp of the last backup operation on this backup item.
+             */
+            lastBackupTime?: string;
+            /**
+             * Timestamp when the last (latest) backup copy was created for this backup item.
+             */
+            lastRecoveryPoint?: string;
+            /**
+             * Parent name of the DB such as Instance or Availability Group.
+             */
+            parentName?: string;
+            /**
+             * Parent type of protected item, example: for a DB, standalone server or distributed
+             */
+            parentType?: string;
+            /**
+             * ID of the backup policy with which this item is backed up.
+             */
+            policyId?: string;
+            /**
+             * Data ID of the protected item.
+             */
+            protectedItemDataSourceId?: string;
+            /**
+             * Health status of the backup item, evaluated based on last heartbeat received
+             */
+            protectedItemHealthStatus?: string;
+            /**
+             * backup item type.
+             * Expected value is 'AzureVmWorkloadProtectedItem'.
+             */
+            protectedItemType: "AzureVmWorkloadProtectedItem";
+            /**
+             * Backup state of this backup item.
+             */
+            protectionState?: string;
+            /**
+             * Backup status of this backup item.
+             */
+            protectionStatus?: string;
+            /**
+             * Host/Cluster Name for instance or AG
+             */
+            serverName?: string;
+            /**
+             * ARM ID of the resource to be backed up.
+             */
+            sourceResourceId?: string;
+            /**
+             * Type of workload this item represents.
+             */
+            workloadType?: string;
+        }
+
+        /**
+         * Azure VM (Mercury) workload-specific backup policy.
+         */
+        export interface AzureVmWorkloadProtectionPolicyResponse {
+            /**
+             * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+             * Expected value is 'AzureWorkload'.
+             */
+            backupManagementType: "AzureWorkload";
+            /**
+             * Fix the policy inconsistency
+             */
+            makePolicyConsistent?: boolean;
+            /**
+             * Number of items associated with this policy.
+             */
+            protectedItemsCount?: number;
+            /**
+             * Common settings for the backup management
+             */
+            settings?: outputs.recoveryservices.v20210201.SettingsResponse;
+            /**
+             * List of sub-protection policies which includes schedule and retention
+             */
+            subProtectionPolicy?: outputs.recoveryservices.v20210201.SubProtectionPolicyResponse[];
+            /**
+             * Type of workload for the backup management
+             */
+            workLoadType?: string;
+        }
+
+        /**
+         * Azure VM workload-specific protected item representing SAP ASE Database.
+         */
+        export interface AzureVmWorkloadSAPAseDatabaseProtectedItemResponse {
+            /**
+             * Type of backup management for the backed up item.
+             */
+            backupManagementType?: string;
+            /**
+             * Name of the backup set the backup item belongs to
+             */
+            backupSetName?: string;
+            /**
+             * Unique name of container
+             */
+            containerName?: string;
+            /**
+             * Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+             */
+            createMode?: string;
+            /**
+             * Time for deferred deletion in UTC
+             */
+            deferredDeleteTimeInUTC?: string;
+            /**
+             * Time remaining before the DS marked for deferred delete is permanently deleted
+             */
+            deferredDeleteTimeRemaining?: string;
+            /**
+             * Additional information for this backup item.
+             */
+            extendedInfo?: outputs.recoveryservices.v20210201.AzureVmWorkloadProtectedItemExtendedInfoResponse;
+            /**
+             * Friendly name of the DB represented by this backup item.
+             */
+            friendlyName?: string;
+            /**
+             * Flag to identify whether the deferred deleted DS is to be purged soon
+             */
+            isDeferredDeleteScheduleUpcoming?: boolean;
+            /**
+             * Flag to identify that deferred deleted DS is to be moved into Pause state
+             */
+            isRehydrate?: boolean;
+            /**
+             * Flag to identify whether the DS is scheduled for deferred delete
+             */
+            isScheduledForDeferredDelete?: boolean;
+            /**
+             * Health details of different KPIs
+             */
+            kpisHealths?: {[key: string]: outputs.recoveryservices.v20210201.KPIResourceHealthDetailsResponse};
+            /**
+             * Error details in last backup
+             */
+            lastBackupErrorDetail?: outputs.recoveryservices.v20210201.ErrorDetailResponse;
+            /**
+             * Last backup operation status. Possible values: Healthy, Unhealthy.
+             */
+            lastBackupStatus?: string;
+            /**
+             * Timestamp of the last backup operation on this backup item.
+             */
+            lastBackupTime?: string;
+            /**
+             * Timestamp when the last (latest) backup copy was created for this backup item.
+             */
+            lastRecoveryPoint?: string;
+            /**
+             * Parent name of the DB such as Instance or Availability Group.
+             */
+            parentName?: string;
+            /**
+             * Parent type of protected item, example: for a DB, standalone server or distributed
+             */
+            parentType?: string;
+            /**
+             * ID of the backup policy with which this item is backed up.
+             */
+            policyId?: string;
+            /**
+             * Data ID of the protected item.
+             */
+            protectedItemDataSourceId?: string;
+            /**
+             * Health status of the backup item, evaluated based on last heartbeat received
+             */
+            protectedItemHealthStatus?: string;
+            /**
+             * backup item type.
+             * Expected value is 'AzureVmWorkloadProtectedItem'.
+             */
+            protectedItemType: "AzureVmWorkloadProtectedItem";
+            /**
+             * Backup state of this backup item.
+             */
+            protectionState?: string;
+            /**
+             * Backup status of this backup item.
+             */
+            protectionStatus?: string;
+            /**
+             * Host/Cluster Name for instance or AG
+             */
+            serverName?: string;
+            /**
+             * ARM ID of the resource to be backed up.
+             */
+            sourceResourceId?: string;
+            /**
+             * Type of workload this item represents.
+             */
+            workloadType?: string;
+        }
+
+        /**
+         * Azure VM workload-specific protected item representing SAP HANA Database.
+         */
+        export interface AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse {
+            /**
+             * Type of backup management for the backed up item.
+             */
+            backupManagementType?: string;
+            /**
+             * Name of the backup set the backup item belongs to
+             */
+            backupSetName?: string;
+            /**
+             * Unique name of container
+             */
+            containerName?: string;
+            /**
+             * Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+             */
+            createMode?: string;
+            /**
+             * Time for deferred deletion in UTC
+             */
+            deferredDeleteTimeInUTC?: string;
+            /**
+             * Time remaining before the DS marked for deferred delete is permanently deleted
+             */
+            deferredDeleteTimeRemaining?: string;
+            /**
+             * Additional information for this backup item.
+             */
+            extendedInfo?: outputs.recoveryservices.v20210201.AzureVmWorkloadProtectedItemExtendedInfoResponse;
+            /**
+             * Friendly name of the DB represented by this backup item.
+             */
+            friendlyName?: string;
+            /**
+             * Flag to identify whether the deferred deleted DS is to be purged soon
+             */
+            isDeferredDeleteScheduleUpcoming?: boolean;
+            /**
+             * Flag to identify that deferred deleted DS is to be moved into Pause state
+             */
+            isRehydrate?: boolean;
+            /**
+             * Flag to identify whether the DS is scheduled for deferred delete
+             */
+            isScheduledForDeferredDelete?: boolean;
+            /**
+             * Health details of different KPIs
+             */
+            kpisHealths?: {[key: string]: outputs.recoveryservices.v20210201.KPIResourceHealthDetailsResponse};
+            /**
+             * Error details in last backup
+             */
+            lastBackupErrorDetail?: outputs.recoveryservices.v20210201.ErrorDetailResponse;
+            /**
+             * Last backup operation status. Possible values: Healthy, Unhealthy.
+             */
+            lastBackupStatus?: string;
+            /**
+             * Timestamp of the last backup operation on this backup item.
+             */
+            lastBackupTime?: string;
+            /**
+             * Timestamp when the last (latest) backup copy was created for this backup item.
+             */
+            lastRecoveryPoint?: string;
+            /**
+             * Parent name of the DB such as Instance or Availability Group.
+             */
+            parentName?: string;
+            /**
+             * Parent type of protected item, example: for a DB, standalone server or distributed
+             */
+            parentType?: string;
+            /**
+             * ID of the backup policy with which this item is backed up.
+             */
+            policyId?: string;
+            /**
+             * Data ID of the protected item.
+             */
+            protectedItemDataSourceId?: string;
+            /**
+             * Health status of the backup item, evaluated based on last heartbeat received
+             */
+            protectedItemHealthStatus?: string;
+            /**
+             * backup item type.
+             * Expected value is 'AzureVmWorkloadProtectedItem'.
+             */
+            protectedItemType: "AzureVmWorkloadProtectedItem";
+            /**
+             * Backup state of this backup item.
+             */
+            protectionState?: string;
+            /**
+             * Backup status of this backup item.
+             */
+            protectionStatus?: string;
+            /**
+             * Host/Cluster Name for instance or AG
+             */
+            serverName?: string;
+            /**
+             * ARM ID of the resource to be backed up.
+             */
+            sourceResourceId?: string;
+            /**
+             * Type of workload this item represents.
+             */
+            workloadType?: string;
+        }
+
+        /**
+         * Azure VM workload-specific protected item representing SQL Database.
+         */
+        export interface AzureVmWorkloadSQLDatabaseProtectedItemResponse {
+            /**
+             * Type of backup management for the backed up item.
+             */
+            backupManagementType?: string;
+            /**
+             * Name of the backup set the backup item belongs to
+             */
+            backupSetName?: string;
+            /**
+             * Unique name of container
+             */
+            containerName?: string;
+            /**
+             * Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+             */
+            createMode?: string;
+            /**
+             * Time for deferred deletion in UTC
+             */
+            deferredDeleteTimeInUTC?: string;
+            /**
+             * Time remaining before the DS marked for deferred delete is permanently deleted
+             */
+            deferredDeleteTimeRemaining?: string;
+            /**
+             * Additional information for this backup item.
+             */
+            extendedInfo?: outputs.recoveryservices.v20210201.AzureVmWorkloadProtectedItemExtendedInfoResponse;
+            /**
+             * Friendly name of the DB represented by this backup item.
+             */
+            friendlyName?: string;
+            /**
+             * Flag to identify whether the deferred deleted DS is to be purged soon
+             */
+            isDeferredDeleteScheduleUpcoming?: boolean;
+            /**
+             * Flag to identify that deferred deleted DS is to be moved into Pause state
+             */
+            isRehydrate?: boolean;
+            /**
+             * Flag to identify whether the DS is scheduled for deferred delete
+             */
+            isScheduledForDeferredDelete?: boolean;
+            /**
+             * Health details of different KPIs
+             */
+            kpisHealths?: {[key: string]: outputs.recoveryservices.v20210201.KPIResourceHealthDetailsResponse};
+            /**
+             * Error details in last backup
+             */
+            lastBackupErrorDetail?: outputs.recoveryservices.v20210201.ErrorDetailResponse;
+            /**
+             * Last backup operation status. Possible values: Healthy, Unhealthy.
+             */
+            lastBackupStatus?: string;
+            /**
+             * Timestamp of the last backup operation on this backup item.
+             */
+            lastBackupTime?: string;
+            /**
+             * Timestamp when the last (latest) backup copy was created for this backup item.
+             */
+            lastRecoveryPoint?: string;
+            /**
+             * Parent name of the DB such as Instance or Availability Group.
+             */
+            parentName?: string;
+            /**
+             * Parent type of protected item, example: for a DB, standalone server or distributed
+             */
+            parentType?: string;
+            /**
+             * ID of the backup policy with which this item is backed up.
+             */
+            policyId?: string;
+            /**
+             * Data ID of the protected item.
+             */
+            protectedItemDataSourceId?: string;
+            /**
+             * Health status of the backup item, evaluated based on last heartbeat received
+             */
+            protectedItemHealthStatus?: string;
+            /**
+             * backup item type.
+             * Expected value is 'AzureVmWorkloadProtectedItem'.
+             */
+            protectedItemType: "AzureVmWorkloadProtectedItem";
+            /**
+             * Backup state of this backup item.
+             */
+            protectionState?: string;
+            /**
+             * Backup status of this backup item.
+             */
+            protectionStatus?: string;
+            /**
+             * Host/Cluster Name for instance or AG
+             */
+            serverName?: string;
+            /**
+             * ARM ID of the resource to be backed up.
+             */
+            sourceResourceId?: string;
+            /**
+             * Type of workload this item represents.
+             */
+            workloadType?: string;
+        }
+
+        /**
+         * Azure Recovery Services Vault specific protection intent item.
+         */
+        export interface AzureWorkloadAutoProtectionIntentResponse {
+            /**
+             * Type of backup management for the backed up item.
+             */
+            backupManagementType?: string;
+            /**
+             * ID of the item which is getting protected, In case of Azure Vm , it is ProtectedItemId
+             */
+            itemId?: string;
+            /**
+             * ID of the backup policy with which this item is backed up.
+             */
+            policyId?: string;
+            /**
+             * backup protectionIntent type.
+             * Expected value is 'RecoveryServiceVaultItem'.
+             */
+            protectionIntentItemType: "RecoveryServiceVaultItem";
+            /**
+             * Backup state of this backup item.
+             */
+            protectionState?: string;
+            /**
+             * ARM ID of the resource to be backed up.
+             */
+            sourceResourceId?: string;
+        }
+
+        /**
+         * Extended information of the container.
+         */
+        export interface AzureWorkloadContainerExtendedInfoResponse {
+            /**
+             * Host Os Name in case of Stand Alone and Cluster Name in case of distributed container.
+             */
+            hostServerName?: string;
+            /**
+             * Inquiry Status for the container.
+             */
+            inquiryInfo?: outputs.recoveryservices.v20210201.InquiryInfoResponse;
+            /**
+             * List of the nodes in case of distributed container.
+             */
+            nodesList?: outputs.recoveryservices.v20210201.DistributedNodesInfoResponse[];
+        }
+
+        /**
+         * Container for the workloads running inside Azure Compute or Classic Compute.
+         */
+        export interface AzureWorkloadContainerResponse {
+            /**
+             * Type of backup management for the container.
+             */
+            backupManagementType?: string;
+            /**
+             * Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+             * Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+             * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+             * Backup is VMAppContainer
+             * Expected value is 'AzureWorkloadContainer'.
+             */
+            containerType: "AzureWorkloadContainer";
+            /**
+             * Additional details of a workload container.
+             */
+            extendedInfo?: outputs.recoveryservices.v20210201.AzureWorkloadContainerExtendedInfoResponse;
+            /**
+             * Friendly name of the container.
+             */
+            friendlyName?: string;
+            /**
+             * Status of health of the container.
+             */
+            healthStatus?: string;
+            /**
+             * Time stamp when this container was updated.
+             */
+            lastUpdatedTime?: string;
+            /**
+             * Re-Do Operation
+             */
+            operationType?: string;
+            /**
+             * Status of registration of the container with the Recovery Services Vault.
+             */
+            registrationStatus?: string;
+            /**
+             * ARM ID of the virtual machine represented by this Azure Workload Container
+             */
+            sourceResourceId?: string;
+            /**
+             * Workload type for which registration was sent.
+             */
+            workloadType?: string;
+        }
+
+        /**
+         * Azure Workload SQL Auto Protection intent item.
+         */
+        export interface AzureWorkloadSQLAutoProtectionIntentResponse {
+            /**
+             * Type of backup management for the backed up item.
+             */
+            backupManagementType?: string;
+            /**
+             * ID of the item which is getting protected, In case of Azure Vm , it is ProtectedItemId
+             */
+            itemId?: string;
+            /**
+             * ID of the backup policy with which this item is backed up.
+             */
+            policyId?: string;
+            /**
+             * backup protectionIntent type.
+             * Expected value is 'RecoveryServiceVaultItem'.
+             */
+            protectionIntentItemType: "RecoveryServiceVaultItem";
+            /**
+             * Backup state of this backup item.
+             */
+            protectionState?: string;
+            /**
+             * ARM ID of the resource to be backed up.
+             */
+            sourceResourceId?: string;
+            /**
+             * Workload item type of the item for which intent is to be set
+             */
+            workloadItemType?: string;
+        }
+
+        /**
+         * Container identity information
+         */
+        export interface ContainerIdentityInfoResponse {
+            /**
+             * Protection container identity - AAD Tenant
+             */
+            aadTenantId?: string;
+            /**
+             * Protection container identity - Audience
+             */
+            audience?: string;
+            /**
+             * Protection container identity - AAD Service Principal
+             */
+            servicePrincipalClientId?: string;
+            /**
+             * Unique name of the container
+             */
+            uniqueName?: string;
+        }
+
+        /**
+         * Additional information of the DPMContainer.
+         */
+        export interface DPMContainerExtendedInfoResponse {
+            /**
+             * Last refresh time of the DPMContainer.
+             */
+            lastRefreshedAt?: string;
+        }
+
+        /**
+         * Additional information of DPM Protected item.
+         */
+        export interface DPMProtectedItemExtendedInfoResponse {
+            /**
+             * Used Disk storage in bytes.
+             */
+            diskStorageUsedInBytes?: string;
+            /**
+             * To check if backup item is collocated.
+             */
+            isCollocated?: boolean;
+            /**
+             * To check if backup item is cloud protected.
+             */
+            isPresentOnCloud?: boolean;
+            /**
+             * Last backup status information on backup item.
+             */
+            lastBackupStatus?: string;
+            /**
+             * Last refresh time on backup item.
+             */
+            lastRefreshedAt?: string;
+            /**
+             * Oldest cloud recovery point time.
+             */
+            oldestRecoveryPoint?: string;
+            /**
+             * latest disk recovery point time.
+             */
+            onPremiseLatestRecoveryPoint?: string;
+            /**
+             * Oldest disk recovery point time.
+             */
+            onPremiseOldestRecoveryPoint?: string;
+            /**
+             * disk recovery point count.
+             */
+            onPremiseRecoveryPointCount?: number;
+            /**
+             * Attribute to provide information on various DBs.
+             */
+            protectableObjectLoadPath?: {[key: string]: string};
+            /**
+             * To check if backup item is disk protected.
+             */
+            protected?: boolean;
+            /**
+             * Protection group name of the backup item.
+             */
+            protectionGroupName?: string;
+            /**
+             * cloud recovery point count.
+             */
+            recoveryPointCount?: number;
+            /**
+             * total Disk storage in bytes.
+             */
+            totalDiskStorageSizeInBytes?: string;
+        }
+
+        /**
+         * Additional information on Backup engine specific backup item.
+         */
+        export interface DPMProtectedItemResponse {
+            /**
+             * Backup Management server protecting this backup item
+             */
+            backupEngineName?: string;
+            /**
+             * Type of backup management for the backed up item.
+             */
+            backupManagementType?: string;
+            /**
+             * Name of the backup set the backup item belongs to
+             */
+            backupSetName?: string;
+            /**
+             * Unique name of container
+             */
+            containerName?: string;
+            /**
+             * Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+             */
+            createMode?: string;
+            /**
+             * Time for deferred deletion in UTC
+             */
+            deferredDeleteTimeInUTC?: string;
+            /**
+             * Time remaining before the DS marked for deferred delete is permanently deleted
+             */
+            deferredDeleteTimeRemaining?: string;
+            /**
+             * Extended info of the backup item.
+             */
+            extendedInfo?: outputs.recoveryservices.v20210201.DPMProtectedItemExtendedInfoResponse;
+            /**
+             * Friendly name of the managed item
+             */
+            friendlyName?: string;
+            /**
+             * Flag to identify whether the deferred deleted DS is to be purged soon
+             */
+            isDeferredDeleteScheduleUpcoming?: boolean;
+            /**
+             * Flag to identify that deferred deleted DS is to be moved into Pause state
+             */
+            isRehydrate?: boolean;
+            /**
+             * Flag to identify whether the DS is scheduled for deferred delete
+             */
+            isScheduledForDeferredDelete?: boolean;
+            /**
+             * Timestamp when the last (latest) backup copy was created for this backup item.
+             */
+            lastRecoveryPoint?: string;
+            /**
+             * ID of the backup policy with which this item is backed up.
+             */
+            policyId?: string;
+            /**
+             * backup item type.
+             * Expected value is 'DPMProtectedItem'.
+             */
+            protectedItemType: "DPMProtectedItem";
+            /**
+             * Protection state of the backup engine
+             */
+            protectionState?: string;
+            /**
+             * ARM ID of the resource to be backed up.
+             */
+            sourceResourceId?: string;
+            /**
+             * Type of workload this item represents.
+             */
+            workloadType?: string;
+        }
+
+        /**
+         * Daily retention format.
+         */
+        export interface DailyRetentionFormatResponse {
+            /**
+             * List of days of the month.
+             */
+            daysOfTheMonth?: outputs.recoveryservices.v20210201.DayResponse[];
+        }
+
+        /**
+         * Daily retention schedule.
+         */
+        export interface DailyRetentionScheduleResponse {
+            /**
+             * Retention duration of retention Policy.
+             */
+            retentionDuration?: outputs.recoveryservices.v20210201.RetentionDurationResponse;
+            /**
+             * Retention times of retention policy.
+             */
+            retentionTimes?: string[];
+        }
+
+        /**
+         * Day of the week.
+         */
+        export interface DayResponse {
+            /**
+             * Date of the month
+             */
+            date?: number;
+            /**
+             * Whether Date is last date of month
+             */
+            isLast?: boolean;
+        }
+
+        export interface DiskExclusionPropertiesResponse {
+            /**
+             * List of Disks' Logical Unit Numbers (LUN) to be used for VM Protection.
+             */
+            diskLunList?: number[];
+            /**
+             * Flag to indicate whether DiskLunList is to be included/ excluded from backup.
+             */
+            isInclusionList?: boolean;
+        }
+
+        /**
+         * This is used to represent the various nodes of the distributed container.
+         */
+        export interface DistributedNodesInfoResponse {
+            /**
+             * Error Details if the Status is non-success.
+             */
+            errorDetail?: outputs.recoveryservices.v20210201.ErrorDetailResponse;
+            /**
+             * Name of the node under a distributed container.
+             */
+            nodeName?: string;
+            /**
+             * Status of this Node.
+             * Failed | Succeeded
+             */
+            status?: string;
+        }
+
+        /**
+         * DPM workload-specific protection container.
+         */
+        export interface DpmContainerResponse {
+            /**
+             * Type of backup management for the container.
+             */
+            backupManagementType?: string;
+            /**
+             * Specifies whether the container is re-registrable.
+             */
+            canReRegister?: boolean;
+            /**
+             * ID of container.
+             */
+            containerId?: string;
+            /**
+             * Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+             * Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+             * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+             * Backup is VMAppContainer
+             * Expected value is 'DPMContainer'.
+             */
+            containerType: "DPMContainer";
+            /**
+             * Backup engine Agent version
+             */
+            dpmAgentVersion?: string;
+            /**
+             * List of BackupEngines protecting the container
+             */
+            dpmServers?: string[];
+            /**
+             * Extended Info of the container.
+             */
+            extendedInfo?: outputs.recoveryservices.v20210201.DPMContainerExtendedInfoResponse;
+            /**
+             * Friendly name of the container.
+             */
+            friendlyName?: string;
+            /**
+             * Status of health of the container.
+             */
+            healthStatus?: string;
+            /**
+             * Number of protected items in the BackupEngine
+             */
+            protectedItemCount?: number;
+            /**
+             * Protection status of the container.
+             */
+            protectionStatus?: string;
+            /**
+             * Status of registration of the container with the Recovery Services Vault.
+             */
+            registrationStatus?: string;
+            /**
+             * To check if upgrade available
+             */
+            upgradeAvailable?: boolean;
+        }
+
+        /**
+         * Error Detail class which encapsulates Code, Message and Recommendations.
+         */
+        export interface ErrorDetailResponse {
+            /**
+             * Error code.
+             */
+            code: string;
+            /**
+             * Error Message related to the Code.
+             */
+            message: string;
+            /**
+             * List of recommendation strings.
+             */
+            recommendations: string[];
+        }
+
+        /**
+         * Extended Properties for Azure IaasVM Backup.
+         */
+        export interface ExtendedPropertiesResponse {
+            /**
+             * Extended Properties for Disk Exclusion.
+             */
+            diskExclusionProperties?: outputs.recoveryservices.v20210201.DiskExclusionPropertiesResponse;
+        }
+
+        /**
+         * Container extended information
+         */
+        export interface GenericContainerExtendedInfoResponse {
+            /**
+             * Container identity information
+             */
+            containerIdentityInfo?: outputs.recoveryservices.v20210201.ContainerIdentityInfoResponse;
+            /**
+             * Public key of container cert
+             */
+            rawCertData?: string;
+            /**
+             * Azure Backup Service Endpoints for the container
+             */
+            serviceEndpoints?: {[key: string]: string};
+        }
+
+        /**
+         * Base class for generic container of backup items
+         */
+        export interface GenericContainerResponse {
+            /**
+             * Type of backup management for the container.
+             */
+            backupManagementType?: string;
+            /**
+             * Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+             * Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+             * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+             * Backup is VMAppContainer
+             * Expected value is 'GenericContainer'.
+             */
+            containerType: "GenericContainer";
+            /**
+             * Extended information (not returned in List container API calls)
+             */
+            extendedInformation?: outputs.recoveryservices.v20210201.GenericContainerExtendedInfoResponse;
+            /**
+             * Name of the container's fabric
+             */
+            fabricName?: string;
+            /**
+             * Friendly name of the container.
+             */
+            friendlyName?: string;
+            /**
+             * Status of health of the container.
+             */
+            healthStatus?: string;
+            /**
+             * Status of registration of the container with the Recovery Services Vault.
+             */
+            registrationStatus?: string;
+        }
+
+        /**
+         * Base class for backup items.
+         */
+        export interface GenericProtectedItemResponse {
+            /**
+             * Type of backup management for the backed up item.
+             */
+            backupManagementType?: string;
+            /**
+             * Name of the backup set the backup item belongs to
+             */
+            backupSetName?: string;
+            /**
+             * Unique name of container
+             */
+            containerName?: string;
+            /**
+             * Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+             */
+            createMode?: string;
+            /**
+             * Time for deferred deletion in UTC
+             */
+            deferredDeleteTimeInUTC?: string;
+            /**
+             * Time remaining before the DS marked for deferred delete is permanently deleted
+             */
+            deferredDeleteTimeRemaining?: string;
+            /**
+             * Name of this backup item's fabric.
+             */
+            fabricName?: string;
+            /**
+             * Friendly name of the container.
+             */
+            friendlyName?: string;
+            /**
+             * Flag to identify whether the deferred deleted DS is to be purged soon
+             */
+            isDeferredDeleteScheduleUpcoming?: boolean;
+            /**
+             * Flag to identify that deferred deleted DS is to be moved into Pause state
+             */
+            isRehydrate?: boolean;
+            /**
+             * Flag to identify whether the DS is scheduled for deferred delete
+             */
+            isScheduledForDeferredDelete?: boolean;
+            /**
+             * Timestamp when the last (latest) backup copy was created for this backup item.
+             */
+            lastRecoveryPoint?: string;
+            /**
+             * ID of the backup policy with which this item is backed up.
+             */
+            policyId?: string;
+            /**
+             * Indicates consistency of policy object and policy applied to this backup item.
+             */
+            policyState?: string;
+            /**
+             * Data Plane Service ID of the protected item.
+             */
+            protectedItemId?: number;
+            /**
+             * backup item type.
+             * Expected value is 'GenericProtectedItem'.
+             */
+            protectedItemType: "GenericProtectedItem";
+            /**
+             * Backup state of this backup item.
+             */
+            protectionState?: string;
+            /**
+             * Loosely coupled (type, value) associations (example - parent of a protected item)
+             */
+            sourceAssociations?: {[key: string]: string};
+            /**
+             * ARM ID of the resource to be backed up.
+             */
+            sourceResourceId?: string;
+            /**
+             * Type of workload this item represents.
+             */
+            workloadType?: string;
+        }
+
+        /**
+         * Azure VM (Mercury) workload-specific backup policy.
+         */
+        export interface GenericProtectionPolicyResponse {
+            /**
+             * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+             * Expected value is 'GenericProtectionPolicy'.
+             */
+            backupManagementType: "GenericProtectionPolicy";
+            /**
+             * Name of this policy's fabric.
+             */
+            fabricName?: string;
+            /**
+             * Number of items associated with this policy.
+             */
+            protectedItemsCount?: number;
+            /**
+             * List of sub-protection policies which includes schedule and retention
+             */
+            subProtectionPolicy?: outputs.recoveryservices.v20210201.SubProtectionPolicyResponse[];
+            /**
+             * TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
+             */
+            timeZone?: string;
+        }
+
+        /**
+         * IaaS VM workload-specific container.
+         */
+        export interface IaaSVMContainerResponse {
+            /**
+             * Type of backup management for the container.
+             */
+            backupManagementType?: string;
+            /**
+             * Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+             * Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+             * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+             * Backup is VMAppContainer
+             * Expected value is 'IaaSVMContainer'.
+             */
+            containerType: "IaaSVMContainer";
+            /**
+             * Friendly name of the container.
+             */
+            friendlyName?: string;
+            /**
+             * Status of health of the container.
+             */
+            healthStatus?: string;
+            /**
+             * Status of registration of the container with the Recovery Services Vault.
+             */
+            registrationStatus?: string;
+            /**
+             * Resource group name of Recovery Services Vault.
+             */
+            resourceGroup?: string;
+            /**
+             * Fully qualified ARM url of the virtual machine represented by this Azure IaaS VM container.
+             */
+            virtualMachineId?: string;
+            /**
+             * Specifies whether the container represents a Classic or an Azure Resource Manager VM.
+             */
+            virtualMachineVersion?: string;
+        }
+
+        /**
+         * Details about inquired protectable items under a given container.
+         */
+        export interface InquiryInfoResponse {
+            /**
+             * Error Details if the Status is non-success.
+             */
+            errorDetail?: outputs.recoveryservices.v20210201.ErrorDetailResponse;
+            /**
+             * Inquiry Details which will have workload specific details.
+             * For e.g. - For SQL and oracle this will contain different details.
+             */
+            inquiryDetails?: outputs.recoveryservices.v20210201.WorkloadInquiryDetailsResponse[];
+            /**
+             * Inquiry Status for this container such as
+             * InProgress | Failed | Succeeded
+             */
+            status?: string;
+        }
+
+        /**
+         * Validation for inquired protectable items under a given container.
+         */
+        export interface InquiryValidationResponse {
+            /**
+             * Error Additional Detail in case the status is non-success.
+             */
+            additionalDetail: string;
+            /**
+             * Error Detail in case the status is non-success.
+             */
+            errorDetail?: outputs.recoveryservices.v20210201.ErrorDetailResponse;
+            /**
+             * Status for the Inquiry Validation.
+             */
+            status?: string;
+        }
+
+        export interface InstantRPAdditionalDetailsResponse {
+            azureBackupRGNamePrefix?: string;
+            azureBackupRGNameSuffix?: string;
+        }
+
+        /**
+         * KPI Resource Health Details
+         */
+        export interface KPIResourceHealthDetailsResponse {
+            /**
+             * Resource Health Status
+             */
+            resourceHealthDetails?: outputs.recoveryservices.v20210201.ResourceHealthDetailsResponse[];
+            /**
+             * Resource Health Status
+             */
+            resourceHealthStatus?: string;
+        }
+
+        /**
+         * Log policy schedule.
+         */
+        export interface LogSchedulePolicyResponse {
+            /**
+             * Frequency of the log schedule operation of this policy in minutes.
+             */
+            scheduleFrequencyInMins?: number;
+            /**
+             * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+             * Expected value is 'LogSchedulePolicy'.
+             */
+            schedulePolicyType: "LogSchedulePolicy";
+        }
+
+        /**
+         * Long term retention policy.
+         */
+        export interface LongTermRetentionPolicyResponse {
+            /**
+             * Daily retention schedule of the protection policy.
+             */
+            dailySchedule?: outputs.recoveryservices.v20210201.DailyRetentionScheduleResponse;
+            /**
+             * Monthly retention schedule of the protection policy.
+             */
+            monthlySchedule?: outputs.recoveryservices.v20210201.MonthlyRetentionScheduleResponse;
+            /**
+             * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+             * Expected value is 'LongTermRetentionPolicy'.
+             */
+            retentionPolicyType: "LongTermRetentionPolicy";
+            /**
+             * Weekly retention schedule of the protection policy.
+             */
+            weeklySchedule?: outputs.recoveryservices.v20210201.WeeklyRetentionScheduleResponse;
+            /**
+             * Yearly retention schedule of the protection policy.
+             */
+            yearlySchedule?: outputs.recoveryservices.v20210201.YearlyRetentionScheduleResponse;
+        }
+
+        /**
+         * Long term policy schedule.
+         */
+        export interface LongTermSchedulePolicyResponse {
+            /**
+             * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+             * Expected value is 'LongTermSchedulePolicy'.
+             */
+            schedulePolicyType: "LongTermSchedulePolicy";
+        }
+
+        /**
+         * MAB workload-specific Health Details.
+         */
+        export interface MABContainerHealthDetailsResponse {
+            /**
+             * Health Code
+             */
+            code?: number;
+            /**
+             * Health Message
+             */
+            message?: string;
+            /**
+             * Health Recommended Actions
+             */
+            recommendations?: string[];
+            /**
+             * Health Title
+             */
+            title?: string;
+        }
+
+        /**
+         * Additional information of the container.
+         */
+        export interface MabContainerExtendedInfoResponse {
+            /**
+             * Type of backup items associated with this container.
+             */
+            backupItemType?: string;
+            /**
+             * List of backup items associated with this container.
+             */
+            backupItems?: string[];
+            /**
+             * Latest backup status of this container.
+             */
+            lastBackupStatus?: string;
+            /**
+             * Time stamp when this container was refreshed.
+             */
+            lastRefreshedAt?: string;
+            /**
+             * Backup policy associated with this container.
+             */
+            policyName?: string;
+        }
+
+        /**
+         * Container with items backed up using MAB backup engine.
+         */
+        export interface MabContainerResponse {
+            /**
+             * Agent version of this container.
+             */
+            agentVersion?: string;
+            /**
+             * Type of backup management for the container.
+             */
+            backupManagementType?: string;
+            /**
+             * Can the container be registered one more time.
+             */
+            canReRegister?: boolean;
+            /**
+             * Health state of mab container.
+             */
+            containerHealthState?: string;
+            /**
+             * ContainerID represents the container.
+             */
+            containerId?: number;
+            /**
+             * Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+             * Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+             * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+             * Backup is VMAppContainer
+             * Expected value is 'Windows'.
+             */
+            containerType: "Windows";
+            /**
+             * Additional information for this container
+             */
+            extendedInfo?: outputs.recoveryservices.v20210201.MabContainerExtendedInfoResponse;
+            /**
+             * Friendly name of the container.
+             */
+            friendlyName?: string;
+            /**
+             * Status of health of the container.
+             */
+            healthStatus?: string;
+            /**
+             * Health details on this mab container.
+             */
+            mabContainerHealthDetails?: outputs.recoveryservices.v20210201.MABContainerHealthDetailsResponse[];
+            /**
+             * Number of items backed up in this container.
+             */
+            protectedItemCount?: number;
+            /**
+             * Status of registration of the container with the Recovery Services Vault.
+             */
+            registrationStatus?: string;
+        }
+
+        /**
+         * Additional information on the backed up item.
+         */
+        export interface MabFileFolderProtectedItemExtendedInfoResponse {
+            /**
+             * Last time when the agent data synced to service.
+             */
+            lastRefreshedAt?: string;
+            /**
+             * The oldest backup copy available.
+             */
+            oldestRecoveryPoint?: string;
+            /**
+             * Number of backup copies associated with the backup item.
+             */
+            recoveryPointCount?: number;
+        }
+
+        /**
+         * MAB workload-specific backup item.
+         */
+        export interface MabFileFolderProtectedItemResponse {
+            /**
+             * Type of backup management for the backed up item.
+             */
+            backupManagementType?: string;
+            /**
+             * Name of the backup set the backup item belongs to
+             */
+            backupSetName?: string;
+            /**
+             * Name of the computer associated with this backup item.
+             */
+            computerName?: string;
+            /**
+             * Unique name of container
+             */
+            containerName?: string;
+            /**
+             * Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+             */
+            createMode?: string;
+            /**
+             * Sync time for deferred deletion in UTC
+             */
+            deferredDeleteSyncTimeInUTC?: number;
+            /**
+             * Time for deferred deletion in UTC
+             */
+            deferredDeleteTimeInUTC?: string;
+            /**
+             * Time remaining before the DS marked for deferred delete is permanently deleted
+             */
+            deferredDeleteTimeRemaining?: string;
+            /**
+             * Additional information with this backup item.
+             */
+            extendedInfo?: outputs.recoveryservices.v20210201.MabFileFolderProtectedItemExtendedInfoResponse;
+            /**
+             * Friendly name of this backup item.
+             */
+            friendlyName?: string;
+            /**
+             * Flag to identify whether the deferred deleted DS is to be purged soon
+             */
+            isDeferredDeleteScheduleUpcoming?: boolean;
+            /**
+             * Flag to identify that deferred deleted DS is to be moved into Pause state
+             */
+            isRehydrate?: boolean;
+            /**
+             * Flag to identify whether the DS is scheduled for deferred delete
+             */
+            isScheduledForDeferredDelete?: boolean;
+            /**
+             * Status of last backup operation.
+             */
+            lastBackupStatus?: string;
+            /**
+             * Timestamp of the last backup operation on this backup item.
+             */
+            lastBackupTime?: string;
+            /**
+             * Timestamp when the last (latest) backup copy was created for this backup item.
+             */
+            lastRecoveryPoint?: string;
+            /**
+             * ID of the backup policy with which this item is backed up.
+             */
+            policyId?: string;
+            /**
+             * backup item type.
+             * Expected value is 'MabFileFolderProtectedItem'.
+             */
+            protectedItemType: "MabFileFolderProtectedItem";
+            /**
+             * Protected, ProtectionStopped, IRPending or ProtectionError
+             */
+            protectionState?: string;
+            /**
+             * ARM ID of the resource to be backed up.
+             */
+            sourceResourceId?: string;
+            /**
+             * Type of workload this item represents.
+             */
+            workloadType?: string;
+        }
+
+        /**
+         * Mab container-specific backup policy.
+         */
+        export interface MabProtectionPolicyResponse {
+            /**
+             * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+             * Expected value is 'MAB'.
+             */
+            backupManagementType: "MAB";
+            /**
+             * Number of items associated with this policy.
+             */
+            protectedItemsCount?: number;
+            /**
+             * Retention policy details.
+             */
+            retentionPolicy?: outputs.recoveryservices.v20210201.LongTermRetentionPolicyResponse | outputs.recoveryservices.v20210201.SimpleRetentionPolicyResponse;
+            /**
+             * Backup schedule of backup policy.
+             */
+            schedulePolicy?: outputs.recoveryservices.v20210201.LogSchedulePolicyResponse | outputs.recoveryservices.v20210201.LongTermSchedulePolicyResponse | outputs.recoveryservices.v20210201.SimpleSchedulePolicyResponse;
+        }
+
+        /**
+         * Monthly retention schedule.
+         */
+        export interface MonthlyRetentionScheduleResponse {
+            /**
+             * Retention duration of retention Policy.
+             */
+            retentionDuration?: outputs.recoveryservices.v20210201.RetentionDurationResponse;
+            /**
+             * Daily retention format for monthly retention policy.
+             */
+            retentionScheduleDaily?: outputs.recoveryservices.v20210201.DailyRetentionFormatResponse;
+            /**
+             * Retention schedule format type for monthly retention policy.
+             */
+            retentionScheduleFormatType?: string;
+            /**
+             * Weekly retention format for monthly retention policy.
+             */
+            retentionScheduleWeekly?: outputs.recoveryservices.v20210201.WeeklyRetentionFormatResponse;
+            /**
+             * Retention times of retention policy.
+             */
+            retentionTimes?: string[];
+        }
+
+        /**
+         * Private Endpoint Connection Response Properties
+         */
+        export interface PrivateEndpointConnectionResponse {
+            /**
+             * Gets or sets private endpoint associated with the private endpoint connection
+             */
+            privateEndpoint?: outputs.recoveryservices.v20210201.PrivateEndpointResponse;
+            /**
+             * Gets or sets private link service connection state
+             */
+            privateLinkServiceConnectionState?: outputs.recoveryservices.v20210201.PrivateLinkServiceConnectionStateResponse;
+            /**
+             * Gets or sets provisioning state of the private endpoint connection
+             */
+            provisioningState?: string;
+        }
+
+        /**
+         * The Private Endpoint network resource that is linked to the Private Endpoint connection
+         */
+        export interface PrivateEndpointResponse {
+            /**
+             * Gets or sets id
+             */
+            id?: string;
+        }
+
+        /**
+         * Private Link Service Connection State
+         */
+        export interface PrivateLinkServiceConnectionStateResponse {
+            /**
+             * Gets or sets actions required
+             */
+            actionRequired?: string;
+            /**
+             * Gets or sets description
+             */
+            description?: string;
+            /**
+             * Gets or sets the status
+             */
+            status?: string;
+        }
+
+        /**
+         * Health Details for backup items.
+         */
+        export interface ResourceHealthDetailsResponse {
+            /**
+             * Health Code
+             */
+            code: number;
+            /**
+             * Health Message
+             */
+            message: string;
+            /**
+             * Health Recommended Actions
+             */
+            recommendations: string[];
+            /**
+             * Health Title
+             */
+            title: string;
+        }
+
+        /**
+         * Retention duration.
+         */
+        export interface RetentionDurationResponse {
+            /**
+             * Count of duration types. Retention duration is obtained by the counting the duration type Count times.
+             * For example, when Count = 3 and DurationType = Weeks, retention duration will be three weeks.
+             */
+            count?: number;
+            /**
+             * Retention duration type of retention policy.
+             */
+            durationType?: string;
+        }
+
+        /**
+         * Common settings field for backup management
+         */
+        export interface SettingsResponse {
+            /**
+             * Workload compression flag. This has been added so that 'isSqlCompression'
+             * will be deprecated once clients upgrade to consider this flag.
+             */
+            isCompression?: boolean;
+            /**
+             * SQL compression flag
+             */
+            issqlcompression?: boolean;
+            /**
+             * TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
+             */
+            timeZone?: string;
+        }
+
+        /**
+         * Simple policy retention.
+         */
+        export interface SimpleRetentionPolicyResponse {
+            /**
+             * Retention duration of the protection policy.
+             */
+            retentionDuration?: outputs.recoveryservices.v20210201.RetentionDurationResponse;
+            /**
+             * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+             * Expected value is 'SimpleRetentionPolicy'.
+             */
+            retentionPolicyType: "SimpleRetentionPolicy";
+        }
+
+        /**
+         * Simple policy schedule.
+         */
+        export interface SimpleSchedulePolicyResponse {
+            /**
+             * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+             * Expected value is 'SimpleSchedulePolicy'.
+             */
+            schedulePolicyType: "SimpleSchedulePolicy";
+            /**
+             * List of days of week this schedule has to be run.
+             */
+            scheduleRunDays?: string[];
+            /**
+             * Frequency of the schedule operation of this policy.
+             */
+            scheduleRunFrequency?: string;
+            /**
+             * List of times of day this schedule has to be run.
+             */
+            scheduleRunTimes?: string[];
+            /**
+             * At every number weeks this schedule has to be run.
+             */
+            scheduleWeeklyFrequency?: number;
+        }
+
+        /**
+         * Sub-protection policy which includes schedule and retention
+         */
+        export interface SubProtectionPolicyResponse {
+            /**
+             * Type of backup policy type
+             */
+            policyType?: string;
+            /**
+             * Retention policy with the details on backup copy retention ranges.
+             */
+            retentionPolicy?: outputs.recoveryservices.v20210201.LongTermRetentionPolicyResponse | outputs.recoveryservices.v20210201.SimpleRetentionPolicyResponse;
+            /**
+             * Backup schedule specified as part of backup policy.
+             */
+            schedulePolicy?: outputs.recoveryservices.v20210201.LogSchedulePolicyResponse | outputs.recoveryservices.v20210201.LongTermSchedulePolicyResponse | outputs.recoveryservices.v20210201.SimpleSchedulePolicyResponse;
+        }
+
+        /**
+         * Weekly retention format.
+         */
+        export interface WeeklyRetentionFormatResponse {
+            /**
+             * List of days of the week.
+             */
+            daysOfTheWeek?: string[];
+            /**
+             * List of weeks of month.
+             */
+            weeksOfTheMonth?: string[];
+        }
+
+        /**
+         * Weekly retention schedule.
+         */
+        export interface WeeklyRetentionScheduleResponse {
+            /**
+             * List of days of week for weekly retention policy.
+             */
+            daysOfTheWeek?: string[];
+            /**
+             * Retention duration of retention Policy.
+             */
+            retentionDuration?: outputs.recoveryservices.v20210201.RetentionDurationResponse;
+            /**
+             * Retention times of retention policy.
+             */
+            retentionTimes?: string[];
+        }
+
+        /**
+         * Details of an inquired protectable item.
+         */
+        export interface WorkloadInquiryDetailsResponse {
+            /**
+             * Inquiry validation such as permissions and other backup validations.
+             */
+            inquiryValidation?: outputs.recoveryservices.v20210201.InquiryValidationResponse;
+            /**
+             * Contains the protectable item Count inside this Container.
+             */
+            itemCount?: number;
+            /**
+             * Type of the Workload such as SQL, Oracle etc.
+             */
+            type?: string;
+        }
+
+        /**
+         * Yearly retention schedule.
+         */
+        export interface YearlyRetentionScheduleResponse {
+            /**
+             * List of months of year of yearly retention policy.
+             */
+            monthsOfYear?: string[];
+            /**
+             * Retention duration of retention Policy.
+             */
+            retentionDuration?: outputs.recoveryservices.v20210201.RetentionDurationResponse;
+            /**
+             * Daily retention format for yearly retention policy.
+             */
+            retentionScheduleDaily?: outputs.recoveryservices.v20210201.DailyRetentionFormatResponse;
+            /**
+             * Retention schedule format for yearly retention policy.
+             */
+            retentionScheduleFormatType?: string;
+            /**
+             * Weekly retention format for yearly retention policy.
+             */
+            retentionScheduleWeekly?: outputs.recoveryservices.v20210201.WeeklyRetentionFormatResponse;
+            /**
+             * Retention times of retention policy.
+             */
+            retentionTimes?: string[];
+        }
+    }
 }
 
 export namespace redhatopenshift {
@@ -571685,9 +575160,23 @@ export namespace storage {
     }
 
     /**
+     * Encryption identity for the storage account.
+     */
+    export interface EncryptionIdentityResponse {
+        /**
+         * Resource identifier of the UserAssigned identity to be associated with server-side encryption on the storage account.
+         */
+        encryptionUserAssignedIdentity?: string;
+    }
+
+    /**
      * The encryption settings on the storage account.
      */
     export interface EncryptionResponse {
+        /**
+         * The identity to be used with service-side encryption at rest.
+         */
+        encryptionIdentity?: outputs.storage.EncryptionIdentityResponse;
         /**
          * The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Storage, Microsoft.Keyvault
          */
@@ -571785,6 +575274,20 @@ export namespace storage {
     }
 
     /**
+     * The complex type of the extended location.
+     */
+    export interface ExtendedLocationResponse {
+        /**
+         * The name of the extended location.
+         */
+        name?: string;
+        /**
+         * The type of the extended location.
+         */
+        type?: string;
+    }
+
+    /**
      * Statistics related to replication for storage account's Blob, Table, Queue and File services. It is only available when geo-redundant replication is enabled for the storage account.
      */
     export interface GeoReplicationStatsResponse {
@@ -571832,6 +575335,10 @@ export namespace storage {
          * The identity type.
          */
         type: string;
+        /**
+         * Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this storage account. The key is the ARM resource identifier of the identity. Only 1 User Assigned identity is permitted here.
+         */
+        userAssignedIdentities?: {[key: string]: outputs.storage.UserAssignedIdentityResponse};
     }
 
     /**
@@ -572063,6 +575570,16 @@ export namespace storage {
     }
 
     /**
+     * Multichannel setting. Applies to Premium FileStorage only.
+     */
+    export interface MultichannelResponse {
+        /**
+         * Indicates whether multichannel is enabled
+         */
+        enabled?: boolean;
+    }
+
+    /**
      * Network rule set
      */
     export interface NetworkRuleSetResponse {
@@ -572078,6 +575595,10 @@ export namespace storage {
          * Sets the IP ACL rules
          */
         ipRules?: outputs.storage.IPRuleResponse[];
+        /**
+         * Sets the resource access rules
+         */
+        resourceAccessRules?: outputs.storage.ResourceAccessRuleResponse[];
         /**
          * Sets the virtual network rules
          */
@@ -572179,6 +575700,30 @@ export namespace storage {
     }
 
     /**
+     * Protocol settings for file service
+     */
+    export interface ProtocolSettingsResponse {
+        /**
+         * Setting for SMB protocol
+         */
+        smb?: outputs.storage.SmbSettingResponse;
+    }
+
+    /**
+     * Resource Access Rule.
+     */
+    export interface ResourceAccessRuleResponse {
+        /**
+         * Resource Id
+         */
+        resourceId?: string;
+        /**
+         * Tenant Id
+         */
+        tenantId?: string;
+    }
+
+    /**
      * The blob service properties for blob restore policy
      */
     export interface RestorePolicyPropertiesResponse {
@@ -572230,6 +575775,32 @@ export namespace storage {
          * The SKU tier. This is based on the SKU name.
          */
         tier: string;
+    }
+
+    /**
+     * Setting for SMB protocol
+     */
+    export interface SmbSettingResponse {
+        /**
+         * SMB authentication methods supported by server. Valid values are NTLMv2, Kerberos. Should be passed as a string with delimiter ';'.
+         */
+        authenticationMethods?: string;
+        /**
+         * SMB channel encryption supported by server. Valid values are AES-128-CCM, AES-128-GCM, AES-256-GCM. Should be passed as a string with delimiter ';'.
+         */
+        channelEncryption?: string;
+        /**
+         * Kerberos ticket encryption supported by server. Valid values are RC4-HMAC, AES-256. Should be passed as a string with delimiter ';'
+         */
+        kerberosTicketEncryption?: string;
+        /**
+         * Multichannel setting. Applies to Premium FileStorage only.
+         */
+        multichannel?: outputs.storage.MultichannelResponse;
+        /**
+         * SMB protocol versions supported by server. Valid values are SMB2.1, SMB3.0, SMB3.1.1. Should be passed as a string with delimiter ';'.
+         */
+        versions?: string;
     }
 
     /**
@@ -572404,6 +575975,20 @@ export namespace storage {
          * Returns the User Principal Name of the user who updated the ImmutabilityPolicy.
          */
         upn: string;
+    }
+
+    /**
+     * UserAssignedIdentity for the resource.
+     */
+    export interface UserAssignedIdentityResponse {
+        /**
+         * The client ID of the identity.
+         */
+        clientId: string;
+        /**
+         * The principal ID of the identity.
+         */
+        principalId: string;
     }
 
     /**
@@ -572693,9 +576278,23 @@ export namespace storage {
         }
 
         /**
+         * Encryption identity for the storage account.
+         */
+        export interface EncryptionIdentityResponse {
+            /**
+             * Resource identifier of the UserAssigned identity to be associated with server-side encryption on the storage account.
+             */
+            encryptionUserAssignedIdentity?: string;
+        }
+
+        /**
          * The encryption settings on the storage account.
          */
         export interface EncryptionResponse {
+            /**
+             * The identity to be used with service-side encryption at rest.
+             */
+            encryptionIdentity?: outputs.storage.latest.EncryptionIdentityResponse;
             /**
              * The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Storage, Microsoft.Keyvault
              */
@@ -572793,6 +576392,20 @@ export namespace storage {
         }
 
         /**
+         * The complex type of the extended location.
+         */
+        export interface ExtendedLocationResponse {
+            /**
+             * The name of the extended location.
+             */
+            name?: string;
+            /**
+             * The type of the extended location.
+             */
+            type?: string;
+        }
+
+        /**
          * Statistics related to replication for storage account's Blob, Table, Queue and File services. It is only available when geo-redundant replication is enabled for the storage account.
          */
         export interface GeoReplicationStatsResponse {
@@ -572840,6 +576453,10 @@ export namespace storage {
              * The identity type.
              */
             type: string;
+            /**
+             * Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this storage account. The key is the ARM resource identifier of the identity. Only 1 User Assigned identity is permitted here.
+             */
+            userAssignedIdentities?: {[key: string]: outputs.storage.latest.UserAssignedIdentityResponse};
         }
 
         /**
@@ -573071,6 +576688,16 @@ export namespace storage {
         }
 
         /**
+         * Multichannel setting. Applies to Premium FileStorage only.
+         */
+        export interface MultichannelResponse {
+            /**
+             * Indicates whether multichannel is enabled
+             */
+            enabled?: boolean;
+        }
+
+        /**
          * Network rule set
          */
         export interface NetworkRuleSetResponse {
@@ -573086,6 +576713,10 @@ export namespace storage {
              * Sets the IP ACL rules
              */
             ipRules?: outputs.storage.latest.IPRuleResponse[];
+            /**
+             * Sets the resource access rules
+             */
+            resourceAccessRules?: outputs.storage.latest.ResourceAccessRuleResponse[];
             /**
              * Sets the virtual network rules
              */
@@ -573187,6 +576818,30 @@ export namespace storage {
         }
 
         /**
+         * Protocol settings for file service
+         */
+        export interface ProtocolSettingsResponse {
+            /**
+             * Setting for SMB protocol
+             */
+            smb?: outputs.storage.latest.SmbSettingResponse;
+        }
+
+        /**
+         * Resource Access Rule.
+         */
+        export interface ResourceAccessRuleResponse {
+            /**
+             * Resource Id
+             */
+            resourceId?: string;
+            /**
+             * Tenant Id
+             */
+            tenantId?: string;
+        }
+
+        /**
          * The blob service properties for blob restore policy
          */
         export interface RestorePolicyPropertiesResponse {
@@ -573238,6 +576893,32 @@ export namespace storage {
              * The SKU tier. This is based on the SKU name.
              */
             tier: string;
+        }
+
+        /**
+         * Setting for SMB protocol
+         */
+        export interface SmbSettingResponse {
+            /**
+             * SMB authentication methods supported by server. Valid values are NTLMv2, Kerberos. Should be passed as a string with delimiter ';'.
+             */
+            authenticationMethods?: string;
+            /**
+             * SMB channel encryption supported by server. Valid values are AES-128-CCM, AES-128-GCM, AES-256-GCM. Should be passed as a string with delimiter ';'.
+             */
+            channelEncryption?: string;
+            /**
+             * Kerberos ticket encryption supported by server. Valid values are RC4-HMAC, AES-256. Should be passed as a string with delimiter ';'
+             */
+            kerberosTicketEncryption?: string;
+            /**
+             * Multichannel setting. Applies to Premium FileStorage only.
+             */
+            multichannel?: outputs.storage.latest.MultichannelResponse;
+            /**
+             * SMB protocol versions supported by server. Valid values are SMB2.1, SMB3.0, SMB3.1.1. Should be passed as a string with delimiter ';'.
+             */
+            versions?: string;
         }
 
         /**
@@ -573412,6 +577093,20 @@ export namespace storage {
              * Returns the User Principal Name of the user who updated the ImmutabilityPolicy.
              */
             upn: string;
+        }
+
+        /**
+         * UserAssignedIdentity for the resource.
+         */
+        export interface UserAssignedIdentityResponse {
+            /**
+             * The client ID of the identity.
+             */
+            clientId: string;
+            /**
+             * The principal ID of the identity.
+             */
+            principalId: string;
         }
 
         /**
@@ -578763,6 +582458,1126 @@ export namespace storage {
              * Returns the User Principal Name of the user who updated the ImmutabilityPolicy.
              */
             upn: string;
+        }
+
+        /**
+         * Virtual Network rule.
+         */
+        export interface VirtualNetworkRuleResponse {
+            /**
+             * The action of virtual network rule.
+             */
+            action?: string;
+            /**
+             * Gets the state of virtual network rule.
+             */
+            state?: string;
+            /**
+             * Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
+             */
+            virtualNetworkResourceId: string;
+        }
+    }
+
+    export namespace v20210101 {
+        /**
+         * Settings properties for Active Directory (AD).
+         */
+        export interface ActiveDirectoryPropertiesResponse {
+            /**
+             * Specifies the security identifier (SID) for Azure Storage.
+             */
+            azureStorageSid: string;
+            /**
+             * Specifies the domain GUID.
+             */
+            domainGuid: string;
+            /**
+             * Specifies the primary domain that the AD DNS server is authoritative for.
+             */
+            domainName: string;
+            /**
+             * Specifies the security identifier (SID).
+             */
+            domainSid: string;
+            /**
+             * Specifies the Active Directory forest to get.
+             */
+            forestName: string;
+            /**
+             * Specifies the NetBIOS domain name.
+             */
+            netBiosDomainName: string;
+        }
+
+        /**
+         * Settings for Azure Files identity based authentication.
+         */
+        export interface AzureFilesIdentityBasedAuthenticationResponse {
+            /**
+             * Required if choose AD.
+             */
+            activeDirectoryProperties?: outputs.storage.v20210101.ActiveDirectoryPropertiesResponse;
+            /**
+             * Indicates the directory service used.
+             */
+            directoryServiceOptions: string;
+        }
+
+        /**
+         * An object that defines the blob inventory rule. Each definition consists of a set of filters.
+         */
+        export interface BlobInventoryPolicyDefinitionResponse {
+            /**
+             * An object that defines the filter set.
+             */
+            filters: outputs.storage.v20210101.BlobInventoryPolicyFilterResponse;
+        }
+
+        /**
+         * An object that defines the blob inventory rule filter conditions.
+         */
+        export interface BlobInventoryPolicyFilterResponse {
+            /**
+             * An array of predefined enum values. Valid values include blockBlob, appendBlob, pageBlob. Hns accounts does not support pageBlobs.
+             */
+            blobTypes: string[];
+            /**
+             * Includes blob versions in blob inventory when value set to true.
+             */
+            includeBlobVersions?: boolean;
+            /**
+             * Includes blob snapshots in blob inventory when value set to true.
+             */
+            includeSnapshots?: boolean;
+            /**
+             * An array of strings for blob prefixes to be matched.
+             */
+            prefixMatch?: string[];
+        }
+
+        /**
+         * An object that wraps the blob inventory rule. Each rule is uniquely defined by name.
+         */
+        export interface BlobInventoryPolicyRuleResponse {
+            /**
+             * An object that defines the blob inventory policy rule.
+             */
+            definition: outputs.storage.v20210101.BlobInventoryPolicyDefinitionResponse;
+            /**
+             * Rule is enabled when set to true.
+             */
+            enabled: boolean;
+            /**
+             * A rule name can contain any combination of alpha numeric characters. Rule name is case-sensitive. It must be unique within a policy.
+             */
+            name: string;
+        }
+
+        /**
+         * The storage account blob inventory policy rules.
+         */
+        export interface BlobInventoryPolicySchemaResponse {
+            /**
+             * Container name where blob inventory files are stored. Must be pre-created.
+             */
+            destination: string;
+            /**
+             * Policy is enabled if set to true.
+             */
+            enabled: boolean;
+            /**
+             * The storage account blob inventory policy rules. The rule is applied when it is enabled.
+             */
+            rules: outputs.storage.v20210101.BlobInventoryPolicyRuleResponse[];
+            /**
+             * The valid value is Inventory
+             */
+            type: string;
+        }
+
+        /**
+         * Blob restore parameters
+         */
+        export interface BlobRestoreParametersResponse {
+            /**
+             * Blob ranges to restore.
+             */
+            blobRanges: outputs.storage.v20210101.BlobRestoreRangeResponse[];
+            /**
+             * Restore blob to the specified time.
+             */
+            timeToRestore: string;
+        }
+
+        /**
+         * Blob range
+         */
+        export interface BlobRestoreRangeResponse {
+            /**
+             * Blob end range. This is exclusive. Empty means account end.
+             */
+            endRange: string;
+            /**
+             * Blob start range. This is inclusive. Empty means account start.
+             */
+            startRange: string;
+        }
+
+        /**
+         * Blob restore status.
+         */
+        export interface BlobRestoreStatusResponse {
+            /**
+             * Failure reason when blob restore is failed.
+             */
+            failureReason: string;
+            /**
+             * Blob restore request parameters.
+             */
+            parameters: outputs.storage.v20210101.BlobRestoreParametersResponse;
+            /**
+             * Id for tracking blob restore request.
+             */
+            restoreId: string;
+            /**
+             * The status of blob restore progress. Possible values are: - InProgress: Indicates that blob restore is ongoing. - Complete: Indicates that blob restore has been completed successfully. - Failed: Indicates that blob restore is failed.
+             */
+            status: string;
+        }
+
+        /**
+         * The blob service properties for change feed events.
+         */
+        export interface ChangeFeedResponse {
+            /**
+             * Indicates whether change feed event logging is enabled for the Blob service.
+             */
+            enabled?: boolean;
+            /**
+             * Indicates the duration of changeFeed retention in days. Minimum value is 1 day and maximum value is 146000 days (400 years). A null value indicates an infinite retention of the change feed.
+             */
+            retentionInDays?: number;
+        }
+
+        /**
+         * Specifies a CORS rule for the Blob service.
+         */
+        export interface CorsRuleResponse {
+            /**
+             * Required if CorsRule element is present. A list of headers allowed to be part of the cross-origin request.
+             */
+            allowedHeaders: string[];
+            /**
+             * Required if CorsRule element is present. A list of HTTP methods that are allowed to be executed by the origin.
+             */
+            allowedMethods: string[];
+            /**
+             * Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or "*" to allow all domains
+             */
+            allowedOrigins: string[];
+            /**
+             * Required if CorsRule element is present. A list of response headers to expose to CORS clients.
+             */
+            exposedHeaders: string[];
+            /**
+             * Required if CorsRule element is present. The number of seconds that the client/browser should cache a preflight response.
+             */
+            maxAgeInSeconds: number;
+        }
+
+        /**
+         * Sets the CORS rules. You can include up to five CorsRule elements in the request. 
+         */
+        export interface CorsRulesResponse {
+            /**
+             * The List of CORS rules. You can include up to five CorsRule elements in the request. 
+             */
+            corsRules?: outputs.storage.v20210101.CorsRuleResponse[];
+        }
+
+        /**
+         * The custom domain assigned to this storage account. This can be set via Update.
+         */
+        export interface CustomDomainResponse {
+            /**
+             * Gets or sets the custom domain name assigned to the storage account. Name is the CNAME source.
+             */
+            name: string;
+            /**
+             * Indicates whether indirect CName validation is enabled. Default value is false. This should only be set on updates.
+             */
+            useSubDomainName?: boolean;
+        }
+
+        /**
+         * Object to define the number of days after creation.
+         */
+        export interface DateAfterCreationResponse {
+            /**
+             * Value indicating the age in days after creation
+             */
+            daysAfterCreationGreaterThan: number;
+        }
+
+        /**
+         * Object to define the number of days after object last modification Or last access. Properties daysAfterModificationGreaterThan and daysAfterLastAccessTimeGreaterThan are mutually exclusive.
+         */
+        export interface DateAfterModificationResponse {
+            /**
+             * Value indicating the age in days after last blob access. This property can only be used in conjunction with last access time tracking policy
+             */
+            daysAfterLastAccessTimeGreaterThan?: number;
+            /**
+             * Value indicating the age in days after last modification
+             */
+            daysAfterModificationGreaterThan?: number;
+        }
+
+        /**
+         * The service properties for soft delete.
+         */
+        export interface DeleteRetentionPolicyResponse {
+            /**
+             * Indicates the number of days that the deleted item should be retained. The minimum specified value can be 1 and the maximum value can be 365.
+             */
+            days?: number;
+            /**
+             * Indicates whether DeleteRetentionPolicy is enabled.
+             */
+            enabled?: boolean;
+        }
+
+        /**
+         * Encryption identity for the storage account.
+         */
+        export interface EncryptionIdentityResponse {
+            /**
+             * Resource identifier of the UserAssigned identity to be associated with server-side encryption on the storage account.
+             */
+            encryptionUserAssignedIdentity?: string;
+        }
+
+        /**
+         * The encryption settings on the storage account.
+         */
+        export interface EncryptionResponse {
+            /**
+             * The identity to be used with service-side encryption at rest.
+             */
+            encryptionIdentity?: outputs.storage.v20210101.EncryptionIdentityResponse;
+            /**
+             * The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Storage, Microsoft.Keyvault
+             */
+            keySource: string;
+            /**
+             * Properties provided by key vault.
+             */
+            keyVaultProperties?: outputs.storage.v20210101.KeyVaultPropertiesResponse;
+            /**
+             * A boolean indicating whether or not the service applies a secondary layer of encryption with platform managed keys for data at rest.
+             */
+            requireInfrastructureEncryption?: boolean;
+            /**
+             * List of services which support encryption.
+             */
+            services?: outputs.storage.v20210101.EncryptionServicesResponse;
+        }
+
+        /**
+         * A service that allows server-side encryption to be used.
+         */
+        export interface EncryptionServiceResponse {
+            /**
+             * A boolean indicating whether or not the service encrypts the data as it is stored.
+             */
+            enabled?: boolean;
+            /**
+             * Encryption key type to be used for the encryption service. 'Account' key type implies that an account-scoped encryption key will be used. 'Service' key type implies that a default service key is used.
+             */
+            keyType?: string;
+            /**
+             * Gets a rough estimate of the date/time when the encryption was last enabled by the user. Only returned when encryption is enabled. There might be some unencrypted blobs which were written after this time, as it is just a rough estimate.
+             */
+            lastEnabledTime: string;
+        }
+
+        /**
+         * A list of services that support encryption.
+         */
+        export interface EncryptionServicesResponse {
+            /**
+             * The encryption function of the blob storage service.
+             */
+            blob?: outputs.storage.v20210101.EncryptionServiceResponse;
+            /**
+             * The encryption function of the file storage service.
+             */
+            file?: outputs.storage.v20210101.EncryptionServiceResponse;
+            /**
+             * The encryption function of the queue storage service.
+             */
+            queue?: outputs.storage.v20210101.EncryptionServiceResponse;
+            /**
+             * The encryption function of the table storage service.
+             */
+            table?: outputs.storage.v20210101.EncryptionServiceResponse;
+        }
+
+        /**
+         * The URIs that are used to perform a retrieval of a public blob, queue, table, web or dfs object.
+         */
+        export interface EndpointsResponse {
+            /**
+             * Gets the blob endpoint.
+             */
+            blob: string;
+            /**
+             * Gets the dfs endpoint.
+             */
+            dfs: string;
+            /**
+             * Gets the file endpoint.
+             */
+            file: string;
+            /**
+             * Gets the internet routing storage endpoints
+             */
+            internetEndpoints?: outputs.storage.v20210101.StorageAccountInternetEndpointsResponse;
+            /**
+             * Gets the microsoft routing storage endpoints.
+             */
+            microsoftEndpoints?: outputs.storage.v20210101.StorageAccountMicrosoftEndpointsResponse;
+            /**
+             * Gets the queue endpoint.
+             */
+            queue: string;
+            /**
+             * Gets the table endpoint.
+             */
+            table: string;
+            /**
+             * Gets the web endpoint.
+             */
+            web: string;
+        }
+
+        /**
+         * The complex type of the extended location.
+         */
+        export interface ExtendedLocationResponse {
+            /**
+             * The name of the extended location.
+             */
+            name?: string;
+            /**
+             * The type of the extended location.
+             */
+            type?: string;
+        }
+
+        /**
+         * Statistics related to replication for storage account's Blob, Table, Queue and File services. It is only available when geo-redundant replication is enabled for the storage account.
+         */
+        export interface GeoReplicationStatsResponse {
+            /**
+             * A boolean flag which indicates whether or not account failover is supported for the account.
+             */
+            canFailover: boolean;
+            /**
+             * All primary writes preceding this UTC date/time value are guaranteed to be available for read operations. Primary writes following this point in time may or may not be available for reads. Element may be default value if value of LastSyncTime is not available, this can happen if secondary is offline or we are in bootstrap.
+             */
+            lastSyncTime: string;
+            /**
+             * The status of the secondary location. Possible values are: - Live: Indicates that the secondary location is active and operational. - Bootstrap: Indicates initial synchronization from the primary location to the secondary location is in progress.This typically occurs when replication is first enabled. - Unavailable: Indicates that the secondary location is temporarily unavailable.
+             */
+            status: string;
+        }
+
+        /**
+         * IP rule with specific IP or IP range in CIDR format.
+         */
+        export interface IPRuleResponse {
+            /**
+             * The action of IP ACL rule.
+             */
+            action?: string;
+            /**
+             * Specifies the IP or IP range in CIDR format. Only IPV4 address is allowed.
+             */
+            iPAddressOrRange: string;
+        }
+
+        /**
+         * Identity for the resource.
+         */
+        export interface IdentityResponse {
+            /**
+             * The principal ID of resource identity.
+             */
+            principalId: string;
+            /**
+             * The tenant ID of resource.
+             */
+            tenantId: string;
+            /**
+             * The identity type.
+             */
+            type: string;
+            /**
+             * Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this storage account. The key is the ARM resource identifier of the identity. Only 1 User Assigned identity is permitted here.
+             */
+            userAssignedIdentities?: {[key: string]: outputs.storage.v20210101.UserAssignedIdentityResponse};
+        }
+
+        /**
+         * The properties of an ImmutabilityPolicy of a blob container.
+         */
+        export interface ImmutabilityPolicyPropertiesResponse {
+            /**
+             * This property can only be changed for unlocked time-based retention policies. When enabled, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. This property cannot be changed with ExtendImmutabilityPolicy API
+             */
+            allowProtectedAppendWrites?: boolean;
+            /**
+             * ImmutabilityPolicy Etag.
+             */
+            etag: string;
+            /**
+             * The immutability period for the blobs in the container since the policy creation, in days.
+             */
+            immutabilityPeriodSinceCreationInDays?: number;
+            /**
+             * The ImmutabilityPolicy state of a blob container, possible values include: Locked and Unlocked.
+             */
+            state: string;
+            /**
+             * The ImmutabilityPolicy update history of the blob container.
+             */
+            updateHistory: outputs.storage.v20210101.UpdateHistoryPropertyResponse[];
+        }
+
+        /**
+         * Properties of key vault.
+         */
+        export interface KeyVaultPropertiesResponse {
+            /**
+             * The object identifier of the current versioned Key Vault Key in use.
+             */
+            currentVersionedKeyIdentifier: string;
+            /**
+             * The name of KeyVault key.
+             */
+            keyName?: string;
+            /**
+             * The Uri of KeyVault.
+             */
+            keyVaultUri?: string;
+            /**
+             * The version of KeyVault key.
+             */
+            keyVersion?: string;
+            /**
+             * Timestamp of last rotation of the Key Vault Key.
+             */
+            lastKeyRotationTimestamp: string;
+        }
+
+        /**
+         * The blob service properties for Last access time based tracking policy.
+         */
+        export interface LastAccessTimeTrackingPolicyResponse {
+            /**
+             * An array of predefined supported blob types. Only blockBlob is the supported value. This field is currently read only
+             */
+            blobType?: string[];
+            /**
+             * When set to true last access time based tracking is enabled.
+             */
+            enable: boolean;
+            /**
+             * Name of the policy. The valid value is AccessTimeTracking. This field is currently read only
+             */
+            name?: string;
+            /**
+             * The field specifies blob object tracking granularity in days, typically how often the blob object should be tracked.This field is currently read only with value as 1
+             */
+            trackingGranularityInDays?: number;
+        }
+
+        /**
+         * The LegalHold property of a blob container.
+         */
+        export interface LegalHoldPropertiesResponse {
+            /**
+             * The hasLegalHold public property is set to true by SRP if there are at least one existing tag. The hasLegalHold public property is set to false by SRP if all existing legal hold tags are cleared out. There can be a maximum of 1000 blob containers with hasLegalHold=true for a given account.
+             */
+            hasLegalHold: boolean;
+            /**
+             * The list of LegalHold tags of a blob container.
+             */
+            tags?: outputs.storage.v20210101.TagPropertyResponse[];
+        }
+
+        /**
+         * Actions are applied to the filtered blobs when the execution condition is met.
+         */
+        export interface ManagementPolicyActionResponse {
+            /**
+             * The management policy action for base blob
+             */
+            baseBlob?: outputs.storage.v20210101.ManagementPolicyBaseBlobResponse;
+            /**
+             * The management policy action for snapshot
+             */
+            snapshot?: outputs.storage.v20210101.ManagementPolicySnapShotResponse;
+            /**
+             * The management policy action for version
+             */
+            version?: outputs.storage.v20210101.ManagementPolicyVersionResponse;
+        }
+
+        /**
+         * Management policy action for base blob.
+         */
+        export interface ManagementPolicyBaseBlobResponse {
+            /**
+             * The function to delete the blob
+             */
+            delete?: outputs.storage.v20210101.DateAfterModificationResponse;
+            /**
+             * This property enables auto tiering of a blob from cool to hot on a blob access. This property requires tierToCool.daysAfterLastAccessTimeGreaterThan.
+             */
+            enableAutoTierToHotFromCool?: boolean;
+            /**
+             * The function to tier blobs to archive storage. Support blobs currently at Hot or Cool tier
+             */
+            tierToArchive?: outputs.storage.v20210101.DateAfterModificationResponse;
+            /**
+             * The function to tier blobs to cool storage. Support blobs currently at Hot tier
+             */
+            tierToCool?: outputs.storage.v20210101.DateAfterModificationResponse;
+        }
+
+        /**
+         * An object that defines the Lifecycle rule. Each definition is made up with a filters set and an actions set.
+         */
+        export interface ManagementPolicyDefinitionResponse {
+            /**
+             * An object that defines the action set.
+             */
+            actions: outputs.storage.v20210101.ManagementPolicyActionResponse;
+            /**
+             * An object that defines the filter set.
+             */
+            filters?: outputs.storage.v20210101.ManagementPolicyFilterResponse;
+        }
+
+        /**
+         * Filters limit rule actions to a subset of blobs within the storage account. If multiple filters are defined, a logical AND is performed on all filters. 
+         */
+        export interface ManagementPolicyFilterResponse {
+            /**
+             * An array of blob index tag based filters, there can be at most 10 tag filters
+             */
+            blobIndexMatch?: outputs.storage.v20210101.TagFilterResponse[];
+            /**
+             * An array of predefined enum values. Currently blockBlob supports all tiering and delete actions. Only delete actions are supported for appendBlob.
+             */
+            blobTypes: string[];
+            /**
+             * An array of strings for prefixes to be match.
+             */
+            prefixMatch?: string[];
+        }
+
+        /**
+         * An object that wraps the Lifecycle rule. Each rule is uniquely defined by name.
+         */
+        export interface ManagementPolicyRuleResponse {
+            /**
+             * An object that defines the Lifecycle rule.
+             */
+            definition: outputs.storage.v20210101.ManagementPolicyDefinitionResponse;
+            /**
+             * Rule is enabled if set to true.
+             */
+            enabled?: boolean;
+            /**
+             * A rule name can contain any combination of alpha numeric characters. Rule name is case-sensitive. It must be unique within a policy.
+             */
+            name: string;
+            /**
+             * The valid value is Lifecycle
+             */
+            type: string;
+        }
+
+        /**
+         * The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+         */
+        export interface ManagementPolicySchemaResponse {
+            /**
+             * The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+             */
+            rules: outputs.storage.v20210101.ManagementPolicyRuleResponse[];
+        }
+
+        /**
+         * Management policy action for snapshot.
+         */
+        export interface ManagementPolicySnapShotResponse {
+            /**
+             * The function to delete the blob snapshot
+             */
+            delete?: outputs.storage.v20210101.DateAfterCreationResponse;
+            /**
+             * The function to tier blob snapshot to archive storage. Support blob snapshot currently at Hot or Cool tier
+             */
+            tierToArchive?: outputs.storage.v20210101.DateAfterCreationResponse;
+            /**
+             * The function to tier blob snapshot to cool storage. Support blob snapshot currently at Hot tier
+             */
+            tierToCool?: outputs.storage.v20210101.DateAfterCreationResponse;
+        }
+
+        /**
+         * Management policy action for blob version.
+         */
+        export interface ManagementPolicyVersionResponse {
+            /**
+             * The function to delete the blob version
+             */
+            delete?: outputs.storage.v20210101.DateAfterCreationResponse;
+            /**
+             * The function to tier blob version to archive storage. Support blob version currently at Hot or Cool tier
+             */
+            tierToArchive?: outputs.storage.v20210101.DateAfterCreationResponse;
+            /**
+             * The function to tier blob version to cool storage. Support blob version currently at Hot tier
+             */
+            tierToCool?: outputs.storage.v20210101.DateAfterCreationResponse;
+        }
+
+        /**
+         * Multichannel setting. Applies to Premium FileStorage only.
+         */
+        export interface MultichannelResponse {
+            /**
+             * Indicates whether multichannel is enabled
+             */
+            enabled?: boolean;
+        }
+
+        /**
+         * Network rule set
+         */
+        export interface NetworkRuleSetResponse {
+            /**
+             * Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Possible values are any combination of Logging|Metrics|AzureServices (For example, "Logging, Metrics"), or None to bypass none of those traffics.
+             */
+            bypass?: string;
+            /**
+             * Specifies the default action of allow or deny when no other rules match.
+             */
+            defaultAction: string;
+            /**
+             * Sets the IP ACL rules
+             */
+            ipRules?: outputs.storage.v20210101.IPRuleResponse[];
+            /**
+             * Sets the resource access rules
+             */
+            resourceAccessRules?: outputs.storage.v20210101.ResourceAccessRuleResponse[];
+            /**
+             * Sets the virtual network rules
+             */
+            virtualNetworkRules?: outputs.storage.v20210101.VirtualNetworkRuleResponse[];
+        }
+
+        /**
+         * Filters limit replication to a subset of blobs within the storage account. A logical OR is performed on values in the filter. If multiple filters are defined, a logical AND is performed on all filters.
+         */
+        export interface ObjectReplicationPolicyFilterResponse {
+            /**
+             * Blobs created after the time will be replicated to the destination. It must be in datetime format 'yyyy-MM-ddTHH:mm:ssZ'. Example: 2020-02-19T16:05:00Z
+             */
+            minCreationTime?: string;
+            /**
+             * Optional. Filters the results to replicate only blobs whose names begin with the specified prefix.
+             */
+            prefixMatch?: string[];
+        }
+
+        /**
+         * The replication policy rule between two containers.
+         */
+        export interface ObjectReplicationPolicyRuleResponse {
+            /**
+             * Required. Destination container name.
+             */
+            destinationContainer: string;
+            /**
+             * Optional. An object that defines the filter set.
+             */
+            filters?: outputs.storage.v20210101.ObjectReplicationPolicyFilterResponse;
+            /**
+             * Rule Id is auto-generated for each new rule on destination account. It is required for put policy on source account.
+             */
+            ruleId?: string;
+            /**
+             * Required. Source container name.
+             */
+            sourceContainer: string;
+        }
+
+        /**
+         * The Private Endpoint Connection resource.
+         */
+        export interface PrivateEndpointConnectionResponse {
+            /**
+             * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+             */
+            id: string;
+            /**
+             * The name of the resource
+             */
+            name: string;
+            /**
+             * The resource of private end point.
+             */
+            privateEndpoint?: outputs.storage.v20210101.PrivateEndpointResponse;
+            /**
+             * A collection of information about the state of the connection between service consumer and provider.
+             */
+            privateLinkServiceConnectionState: outputs.storage.v20210101.PrivateLinkServiceConnectionStateResponse;
+            /**
+             * The provisioning state of the private endpoint connection resource.
+             */
+            provisioningState: string;
+            /**
+             * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+             */
+            type: string;
+        }
+
+        /**
+         * The Private Endpoint resource.
+         */
+        export interface PrivateEndpointResponse {
+            /**
+             * The ARM identifier for Private Endpoint
+             */
+            id: string;
+        }
+
+        /**
+         * A collection of information about the state of the connection between service consumer and provider.
+         */
+        export interface PrivateLinkServiceConnectionStateResponse {
+            /**
+             * A message indicating if changes on the service provider require any updates on the consumer.
+             */
+            actionRequired?: string;
+            /**
+             * The reason for approval/rejection of the connection.
+             */
+            description?: string;
+            /**
+             * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+             */
+            status?: string;
+        }
+
+        /**
+         * Protocol settings for file service
+         */
+        export interface ProtocolSettingsResponse {
+            /**
+             * Setting for SMB protocol
+             */
+            smb?: outputs.storage.v20210101.SmbSettingResponse;
+        }
+
+        /**
+         * Resource Access Rule.
+         */
+        export interface ResourceAccessRuleResponse {
+            /**
+             * Resource Id
+             */
+            resourceId?: string;
+            /**
+             * Tenant Id
+             */
+            tenantId?: string;
+        }
+
+        /**
+         * The blob service properties for blob restore policy
+         */
+        export interface RestorePolicyPropertiesResponse {
+            /**
+             * how long this blob can be restored. It should be great than zero and less than DeleteRetentionPolicy.days.
+             */
+            days?: number;
+            /**
+             * Blob restore is enabled if set to true.
+             */
+            enabled: boolean;
+            /**
+             * Deprecated in favor of minRestoreTime property.
+             */
+            lastEnabledTime: string;
+            /**
+             * Returns the minimum date and time that the restore can be started.
+             */
+            minRestoreTime: string;
+        }
+
+        /**
+         * Routing preference defines the type of network, either microsoft or internet routing to be used to deliver the user data, the default option is microsoft routing
+         */
+        export interface RoutingPreferenceResponse {
+            /**
+             * A boolean flag which indicates whether internet routing storage endpoints are to be published
+             */
+            publishInternetEndpoints?: boolean;
+            /**
+             * A boolean flag which indicates whether microsoft routing storage endpoints are to be published
+             */
+            publishMicrosoftEndpoints?: boolean;
+            /**
+             * Routing Choice defines the kind of network routing opted by the user.
+             */
+            routingChoice?: string;
+        }
+
+        /**
+         * The SKU of the storage account.
+         */
+        export interface SkuResponse {
+            /**
+             * The SKU name. Required for account creation; optional for update. Note that in older versions, SKU name was called accountType.
+             */
+            name: string;
+            /**
+             * The SKU tier. This is based on the SKU name.
+             */
+            tier: string;
+        }
+
+        /**
+         * Setting for SMB protocol
+         */
+        export interface SmbSettingResponse {
+            /**
+             * SMB authentication methods supported by server. Valid values are NTLMv2, Kerberos. Should be passed as a string with delimiter ';'.
+             */
+            authenticationMethods?: string;
+            /**
+             * SMB channel encryption supported by server. Valid values are AES-128-CCM, AES-128-GCM, AES-256-GCM. Should be passed as a string with delimiter ';'.
+             */
+            channelEncryption?: string;
+            /**
+             * Kerberos ticket encryption supported by server. Valid values are RC4-HMAC, AES-256. Should be passed as a string with delimiter ';'
+             */
+            kerberosTicketEncryption?: string;
+            /**
+             * Multichannel setting. Applies to Premium FileStorage only.
+             */
+            multichannel?: outputs.storage.v20210101.MultichannelResponse;
+            /**
+             * SMB protocol versions supported by server. Valid values are SMB2.1, SMB3.0, SMB3.1.1. Should be passed as a string with delimiter ';'.
+             */
+            versions?: string;
+        }
+
+        /**
+         * The URIs that are used to perform a retrieval of a public blob, file, web or dfs object via a internet routing endpoint.
+         */
+        export interface StorageAccountInternetEndpointsResponse {
+            /**
+             * Gets the blob endpoint.
+             */
+            blob: string;
+            /**
+             * Gets the dfs endpoint.
+             */
+            dfs: string;
+            /**
+             * Gets the file endpoint.
+             */
+            file: string;
+            /**
+             * Gets the web endpoint.
+             */
+            web: string;
+        }
+
+        /**
+         * An access key for the storage account.
+         */
+        export interface StorageAccountKeyResponse {
+            /**
+             * Name of the key.
+             */
+            keyName: string;
+            /**
+             * Permissions for the key -- read-only or full permissions.
+             */
+            permissions: string;
+            /**
+             * Base 64-encoded value of the key.
+             */
+            value: string;
+        }
+
+        /**
+         * The URIs that are used to perform a retrieval of a public blob, queue, table, web or dfs object via a microsoft routing endpoint.
+         */
+        export interface StorageAccountMicrosoftEndpointsResponse {
+            /**
+             * Gets the blob endpoint.
+             */
+            blob: string;
+            /**
+             * Gets the dfs endpoint.
+             */
+            dfs: string;
+            /**
+             * Gets the file endpoint.
+             */
+            file: string;
+            /**
+             * Gets the queue endpoint.
+             */
+            queue: string;
+            /**
+             * Gets the table endpoint.
+             */
+            table: string;
+            /**
+             * Gets the web endpoint.
+             */
+            web: string;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The timestamp of resource last modification (UTC)
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
+        }
+
+        /**
+         * Blob index tag based filtering for blob objects
+         */
+        export interface TagFilterResponse {
+            /**
+             * This is the filter tag name, it can have 1 - 128 characters
+             */
+            name: string;
+            /**
+             * This is the comparison operator which is used for object comparison and filtering. Only == (equality operator) is currently supported
+             */
+            op: string;
+            /**
+             * This is the filter tag value field used for tag based filtering, it can have 0 - 256 characters
+             */
+            value: string;
+        }
+
+        /**
+         * A tag of the LegalHold of a blob container.
+         */
+        export interface TagPropertyResponse {
+            /**
+             * Returns the Object ID of the user who added the tag.
+             */
+            objectIdentifier: string;
+            /**
+             * The tag value.
+             */
+            tag: string;
+            /**
+             * Returns the Tenant ID that issued the token for the user who added the tag.
+             */
+            tenantId: string;
+            /**
+             * Returns the date and time the tag was added.
+             */
+            timestamp: string;
+            /**
+             * Returns the User Principal Name of the user who added the tag.
+             */
+            upn: string;
+        }
+
+        /**
+         * An update history of the ImmutabilityPolicy of a blob container.
+         */
+        export interface UpdateHistoryPropertyResponse {
+            /**
+             * The immutability period for the blobs in the container since the policy creation, in days.
+             */
+            immutabilityPeriodSinceCreationInDays: number;
+            /**
+             * Returns the Object ID of the user who updated the ImmutabilityPolicy.
+             */
+            objectIdentifier: string;
+            /**
+             * Returns the Tenant ID that issued the token for the user who updated the ImmutabilityPolicy.
+             */
+            tenantId: string;
+            /**
+             * Returns the date and time the ImmutabilityPolicy was updated.
+             */
+            timestamp: string;
+            /**
+             * The ImmutabilityPolicy update type of a blob container, possible values include: put, lock and extend.
+             */
+            update: string;
+            /**
+             * Returns the User Principal Name of the user who updated the ImmutabilityPolicy.
+             */
+            upn: string;
+        }
+
+        /**
+         * UserAssignedIdentity for the resource.
+         */
+        export interface UserAssignedIdentityResponse {
+            /**
+             * The client ID of the identity.
+             */
+            clientId: string;
+            /**
+             * The principal ID of the identity.
+             */
+            principalId: string;
         }
 
         /**

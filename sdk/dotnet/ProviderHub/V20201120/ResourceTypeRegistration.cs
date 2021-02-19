@@ -77,6 +77,9 @@ namespace Pulumi.AzureNextGen.ProviderHub.V20201120
 
     public sealed class ResourceTypeRegistrationArgs : Pulumi.ResourceArgs
     {
+        [Input("properties")]
+        public Input<Inputs.ResourceTypeRegistrationPropertiesArgs>? Properties { get; set; }
+
         /// <summary>
         /// The name of the resource provider hosted within ProviderHub.
         /// </summary>
@@ -86,8 +89,8 @@ namespace Pulumi.AzureNextGen.ProviderHub.V20201120
         /// <summary>
         /// The resource type.
         /// </summary>
-        [Input("resourceType", required: true)]
-        public Input<string> ResourceType { get; set; } = null!;
+        [Input("resourceType")]
+        public Input<string>? ResourceType { get; set; }
 
         public ResourceTypeRegistrationArgs()
         {

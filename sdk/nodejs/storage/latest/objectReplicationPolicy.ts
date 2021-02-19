@@ -7,7 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * The replication policy between two storage accounts. Multiple rules can be defined in one policy.
- * Latest API Version: 2019-06-01.
+ * Latest API Version: 2021-01-01.
  *
  * @deprecated The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-nextgen:storage:ObjectReplicationPolicy'.
  */
@@ -86,9 +86,6 @@ export class ObjectReplicationPolicy extends pulumi.CustomResource {
             if ((!args || args.destinationAccount === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'destinationAccount'");
             }
-            if ((!args || args.objectReplicationPolicyId === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'objectReplicationPolicyId'");
-            }
             if ((!args || args.resourceGroupName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
@@ -121,7 +118,7 @@ export class ObjectReplicationPolicy extends pulumi.CustomResource {
         if (!opts.version) {
             opts.version = utilities.getVersion();
         }
-        const aliasOpts = { aliases: [{ type: "azure-nextgen:storage:ObjectReplicationPolicy" }, { type: "azure-nextgen:storage/v20190601:ObjectReplicationPolicy" }, { type: "azure-nextgen:storage/v20200801preview:ObjectReplicationPolicy" }] };
+        const aliasOpts = { aliases: [{ type: "azure-nextgen:storage:ObjectReplicationPolicy" }, { type: "azure-nextgen:storage/v20190601:ObjectReplicationPolicy" }, { type: "azure-nextgen:storage/v20200801preview:ObjectReplicationPolicy" }, { type: "azure-nextgen:storage/v20210101:ObjectReplicationPolicy" }] };
         opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
         super(ObjectReplicationPolicy.__pulumiType, name, inputs, opts);
     }
@@ -142,7 +139,7 @@ export interface ObjectReplicationPolicyArgs {
     /**
      * The ID of object replication policy or 'default' if the policy ID is unknown.
      */
-    readonly objectReplicationPolicyId: pulumi.Input<string>;
+    readonly objectReplicationPolicyId?: pulumi.Input<string>;
     /**
      * The name of the resource group within the user's subscription. The name is case insensitive.
      */

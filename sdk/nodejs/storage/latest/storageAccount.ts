@@ -7,7 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * The storage account.
- * Latest API Version: 2019-06-01.
+ * Latest API Version: 2021-01-01.
  *
  * @deprecated The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-nextgen:storage:StorageAccount'.
  */
@@ -72,9 +72,17 @@ export class StorageAccount extends pulumi.CustomResource {
      */
     public readonly enableHttpsTrafficOnly!: pulumi.Output<boolean | undefined>;
     /**
+     * NFS 3.0 protocol support enabled if set to true.
+     */
+    public readonly enableNfsV3!: pulumi.Output<boolean | undefined>;
+    /**
      * Gets the encryption settings on the account. If unspecified, the account is unencrypted.
      */
     public readonly encryption!: pulumi.Output<outputs.storage.latest.EncryptionResponse>;
+    /**
+     * The extendedLocation of the resource.
+     */
+    public readonly extendedLocation!: pulumi.Output<outputs.storage.latest.ExtendedLocationResponse | undefined>;
     /**
      * If the failover is in progress, the value will be true, otherwise, it will be null.
      */
@@ -180,9 +188,6 @@ export class StorageAccount extends pulumi.CustomResource {
         pulumi.log.warn("StorageAccount is deprecated: The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-nextgen:storage:StorageAccount'.")
         let inputs: pulumi.Inputs = {};
         if (!(opts && opts.id)) {
-            if ((!args || args.accountName === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'accountName'");
-            }
             if ((!args || args.kind === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'kind'");
             }
@@ -199,7 +204,9 @@ export class StorageAccount extends pulumi.CustomResource {
             inputs["azureFilesIdentityBasedAuthentication"] = args ? args.azureFilesIdentityBasedAuthentication : undefined;
             inputs["customDomain"] = args ? args.customDomain : undefined;
             inputs["enableHttpsTrafficOnly"] = args ? args.enableHttpsTrafficOnly : undefined;
+            inputs["enableNfsV3"] = args ? args.enableNfsV3 : undefined;
             inputs["encryption"] = args ? args.encryption : undefined;
+            inputs["extendedLocation"] = args ? args.extendedLocation : undefined;
             inputs["identity"] = args ? args.identity : undefined;
             inputs["isHnsEnabled"] = args ? args.isHnsEnabled : undefined;
             inputs["kind"] = args ? args.kind : undefined;
@@ -235,7 +242,9 @@ export class StorageAccount extends pulumi.CustomResource {
             inputs["creationTime"] = undefined /*out*/;
             inputs["customDomain"] = undefined /*out*/;
             inputs["enableHttpsTrafficOnly"] = undefined /*out*/;
+            inputs["enableNfsV3"] = undefined /*out*/;
             inputs["encryption"] = undefined /*out*/;
+            inputs["extendedLocation"] = undefined /*out*/;
             inputs["failoverInProgress"] = undefined /*out*/;
             inputs["geoReplicationStats"] = undefined /*out*/;
             inputs["identity"] = undefined /*out*/;
@@ -267,7 +276,7 @@ export class StorageAccount extends pulumi.CustomResource {
         if (!opts.version) {
             opts.version = utilities.getVersion();
         }
-        const aliasOpts = { aliases: [{ type: "azure-nextgen:storage:StorageAccount" }, { type: "azure-nextgen:storage/v20150501preview:StorageAccount" }, { type: "azure-nextgen:storage/v20150615:StorageAccount" }, { type: "azure-nextgen:storage/v20160101:StorageAccount" }, { type: "azure-nextgen:storage/v20160501:StorageAccount" }, { type: "azure-nextgen:storage/v20161201:StorageAccount" }, { type: "azure-nextgen:storage/v20170601:StorageAccount" }, { type: "azure-nextgen:storage/v20171001:StorageAccount" }, { type: "azure-nextgen:storage/v20180201:StorageAccount" }, { type: "azure-nextgen:storage/v20180301preview:StorageAccount" }, { type: "azure-nextgen:storage/v20180701:StorageAccount" }, { type: "azure-nextgen:storage/v20181101:StorageAccount" }, { type: "azure-nextgen:storage/v20190401:StorageAccount" }, { type: "azure-nextgen:storage/v20190601:StorageAccount" }, { type: "azure-nextgen:storage/v20200801preview:StorageAccount" }] };
+        const aliasOpts = { aliases: [{ type: "azure-nextgen:storage:StorageAccount" }, { type: "azure-nextgen:storage/v20150501preview:StorageAccount" }, { type: "azure-nextgen:storage/v20150615:StorageAccount" }, { type: "azure-nextgen:storage/v20160101:StorageAccount" }, { type: "azure-nextgen:storage/v20160501:StorageAccount" }, { type: "azure-nextgen:storage/v20161201:StorageAccount" }, { type: "azure-nextgen:storage/v20170601:StorageAccount" }, { type: "azure-nextgen:storage/v20171001:StorageAccount" }, { type: "azure-nextgen:storage/v20180201:StorageAccount" }, { type: "azure-nextgen:storage/v20180301preview:StorageAccount" }, { type: "azure-nextgen:storage/v20180701:StorageAccount" }, { type: "azure-nextgen:storage/v20181101:StorageAccount" }, { type: "azure-nextgen:storage/v20190401:StorageAccount" }, { type: "azure-nextgen:storage/v20190601:StorageAccount" }, { type: "azure-nextgen:storage/v20200801preview:StorageAccount" }, { type: "azure-nextgen:storage/v20210101:StorageAccount" }] };
         opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
         super(StorageAccount.__pulumiType, name, inputs, opts);
     }
@@ -284,7 +293,7 @@ export interface StorageAccountArgs {
     /**
      * The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
      */
-    readonly accountName: pulumi.Input<string>;
+    readonly accountName?: pulumi.Input<string>;
     /**
      * Allow or disallow public access to all blobs or containers in the storage account. The default interpretation is true for this property.
      */
@@ -306,9 +315,17 @@ export interface StorageAccountArgs {
      */
     readonly enableHttpsTrafficOnly?: pulumi.Input<boolean>;
     /**
+     * NFS 3.0 protocol support enabled if set to true.
+     */
+    readonly enableNfsV3?: pulumi.Input<boolean>;
+    /**
      * Not applicable. Azure Storage encryption is enabled for all storage accounts and cannot be disabled.
      */
     readonly encryption?: pulumi.Input<inputs.storage.latest.Encryption>;
+    /**
+     * Optional. Set the extended location of the resource. If not set, the storage account will be created in Azure main region. Otherwise it will be created in the specified extended location
+     */
+    readonly extendedLocation?: pulumi.Input<inputs.storage.latest.ExtendedLocation>;
     /**
      * The identity of the resource.
      */

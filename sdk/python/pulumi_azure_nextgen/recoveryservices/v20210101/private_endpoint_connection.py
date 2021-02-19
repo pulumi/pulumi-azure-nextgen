@@ -60,8 +60,6 @@ class PrivateEndpointConnection(pulumi.CustomResource):
 
             __props__['e_tag'] = e_tag
             __props__['location'] = location
-            if private_endpoint_connection_name is None and not opts.urn:
-                raise TypeError("Missing required property 'private_endpoint_connection_name'")
             __props__['private_endpoint_connection_name'] = private_endpoint_connection_name
             __props__['properties'] = properties
             if resource_group_name is None and not opts.urn:
@@ -73,7 +71,7 @@ class PrivateEndpointConnection(pulumi.CustomResource):
             __props__['vault_name'] = vault_name
             __props__['name'] = None
             __props__['type'] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:recoveryservices:PrivateEndpointConnection"), pulumi.Alias(type_="azure-nextgen:recoveryservices/latest:PrivateEndpointConnection"), pulumi.Alias(type_="azure-nextgen:recoveryservices/v20200202:PrivateEndpointConnection"), pulumi.Alias(type_="azure-nextgen:recoveryservices/v20201001:PrivateEndpointConnection"), pulumi.Alias(type_="azure-nextgen:recoveryservices/v20201201:PrivateEndpointConnection")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:recoveryservices:PrivateEndpointConnection"), pulumi.Alias(type_="azure-nextgen:recoveryservices/latest:PrivateEndpointConnection"), pulumi.Alias(type_="azure-nextgen:recoveryservices/v20200202:PrivateEndpointConnection"), pulumi.Alias(type_="azure-nextgen:recoveryservices/v20201001:PrivateEndpointConnection"), pulumi.Alias(type_="azure-nextgen:recoveryservices/v20201201:PrivateEndpointConnection"), pulumi.Alias(type_="azure-nextgen:recoveryservices/v20210201:PrivateEndpointConnection")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(PrivateEndpointConnection, __self__).__init__(
             'azure-nextgen:recoveryservices/v20210101:PrivateEndpointConnection',

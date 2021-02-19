@@ -11,7 +11,7 @@ namespace Pulumi.AzureNextGen.Storage
 {
     /// <summary>
     /// The replication policy between two storage accounts. Multiple rules can be defined in one policy.
-    /// API Version: 2019-06-01.
+    /// API Version: 2021-01-01.
     /// </summary>
     [AzureNextGenResourceType("azure-nextgen:storage:ObjectReplicationPolicy")]
     public partial class ObjectReplicationPolicy : Pulumi.CustomResource
@@ -86,6 +86,7 @@ namespace Pulumi.AzureNextGen.Storage
                     new Pulumi.Alias { Type = "azure-nextgen:storage/latest:ObjectReplicationPolicy"},
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20190601:ObjectReplicationPolicy"},
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20200801preview:ObjectReplicationPolicy"},
+                    new Pulumi.Alias { Type = "azure-nextgen:storage/v20210101:ObjectReplicationPolicy"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -124,8 +125,8 @@ namespace Pulumi.AzureNextGen.Storage
         /// <summary>
         /// The ID of object replication policy or 'default' if the policy ID is unknown.
         /// </summary>
-        [Input("objectReplicationPolicyId", required: true)]
-        public Input<string> ObjectReplicationPolicyId { get; set; } = null!;
+        [Input("objectReplicationPolicyId")]
+        public Input<string>? ObjectReplicationPolicyId { get; set; }
 
         /// <summary>
         /// The name of the resource group within the user's subscription. The name is case insensitive.

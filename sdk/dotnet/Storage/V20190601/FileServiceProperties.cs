@@ -74,6 +74,7 @@ namespace Pulumi.AzureNextGen.Storage.V20190601
                     new Pulumi.Alias { Type = "azure-nextgen:storage/latest:FileServiceProperties"},
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20190401:FileServiceProperties"},
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20200801preview:FileServiceProperties"},
+                    new Pulumi.Alias { Type = "azure-nextgen:storage/v20210101:FileServiceProperties"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -112,8 +113,8 @@ namespace Pulumi.AzureNextGen.Storage.V20190601
         /// <summary>
         /// The name of the file Service within the specified storage account. File Service Name must be "default"
         /// </summary>
-        [Input("fileServicesName", required: true)]
-        public Input<string> FileServicesName { get; set; } = null!;
+        [Input("fileServicesName")]
+        public Input<string>? FileServicesName { get; set; }
 
         /// <summary>
         /// The name of the resource group within the user's subscription. The name is case insensitive.

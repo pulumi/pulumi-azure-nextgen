@@ -73,6 +73,7 @@ namespace Pulumi.AzureNextGen.Storage.V20190601
                     new Pulumi.Alias { Type = "azure-nextgen:storage:BlobInventoryPolicy"},
                     new Pulumi.Alias { Type = "azure-nextgen:storage/latest:BlobInventoryPolicy"},
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20200801preview:BlobInventoryPolicy"},
+                    new Pulumi.Alias { Type = "azure-nextgen:storage/v20210101:BlobInventoryPolicy"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -105,8 +106,8 @@ namespace Pulumi.AzureNextGen.Storage.V20190601
         /// <summary>
         /// The name of the storage account blob inventory policy. It should always be 'default'
         /// </summary>
-        [Input("blobInventoryPolicyName", required: true)]
-        public Input<string> BlobInventoryPolicyName { get; set; } = null!;
+        [Input("blobInventoryPolicyName")]
+        public Input<string>? BlobInventoryPolicyName { get; set; }
 
         /// <summary>
         /// The storage account blob inventory policy object. It is composed of policy rules.

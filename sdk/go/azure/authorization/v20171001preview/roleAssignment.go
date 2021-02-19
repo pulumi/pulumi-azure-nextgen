@@ -36,9 +36,6 @@ func NewRoleAssignment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.RoleAssignmentName == nil {
-		return nil, errors.New("invalid value for required argument 'RoleAssignmentName'")
-	}
 	if args.Scope == nil {
 		return nil, errors.New("invalid value for required argument 'Scope'")
 	}
@@ -57,6 +54,9 @@ func NewRoleAssignment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-nextgen:authorization/v20180901preview:RoleAssignment"),
+		},
+		{
+			Type: pulumi.String("azure-nextgen:authorization/v20200301preview:RoleAssignment"),
 		},
 		{
 			Type: pulumi.String("azure-nextgen:authorization/v20200401preview:RoleAssignment"),
@@ -124,7 +124,7 @@ type roleAssignmentArgs struct {
 	// The principal ID assigned to the role. This maps to the ID inside the Active Directory. It can point to a user, service principal, or security group.
 	PrincipalId *string `pulumi:"principalId"`
 	// The name of the role assignment to create. It can be any valid GUID.
-	RoleAssignmentName string `pulumi:"roleAssignmentName"`
+	RoleAssignmentName *string `pulumi:"roleAssignmentName"`
 	// The role definition ID used in the role assignment.
 	RoleDefinitionId *string `pulumi:"roleDefinitionId"`
 	// The scope of the role assignment to create. The scope can be any REST resource instance. For example, use '/subscriptions/{subscription-id}/' for a subscription, '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for a resource group, and '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}' for a resource.
@@ -138,7 +138,7 @@ type RoleAssignmentArgs struct {
 	// The principal ID assigned to the role. This maps to the ID inside the Active Directory. It can point to a user, service principal, or security group.
 	PrincipalId pulumi.StringPtrInput
 	// The name of the role assignment to create. It can be any valid GUID.
-	RoleAssignmentName pulumi.StringInput
+	RoleAssignmentName pulumi.StringPtrInput
 	// The role definition ID used in the role assignment.
 	RoleDefinitionId pulumi.StringPtrInput
 	// The scope of the role assignment to create. The scope can be any REST resource instance. For example, use '/subscriptions/{subscription-id}/' for a subscription, '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for a resource group, and '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}' for a resource.

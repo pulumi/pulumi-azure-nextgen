@@ -64,6 +64,15 @@ export const EnabledProtocols = {
  */
 export type EnabledProtocols = (typeof EnabledProtocols)[keyof typeof EnabledProtocols];
 
+export const ExtendedLocationTypes = {
+    EdgeZone: "EdgeZone",
+} as const;
+
+/**
+ * The type of the extended location.
+ */
+export type ExtendedLocationTypes = (typeof ExtendedLocationTypes)[keyof typeof ExtendedLocationTypes];
+
 export const HttpProtocol = {
     Https_http: "https,http",
     Https: "https",
@@ -75,7 +84,10 @@ export const HttpProtocol = {
 export type HttpProtocol = (typeof HttpProtocol)[keyof typeof HttpProtocol];
 
 export const IdentityType = {
+    None: "None",
     SystemAssigned: "SystemAssigned",
+    UserAssigned: "UserAssigned",
+    SystemAssigned_UserAssigned: "SystemAssigned,UserAssigned",
 } as const;
 
 /**

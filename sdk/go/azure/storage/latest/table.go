@@ -12,7 +12,7 @@ import (
 )
 
 // Properties of the table, including Id, resource name, resource type.
-// Latest API Version: 2019-06-01.
+// Latest API Version: 2021-01-01.
 //
 // Deprecated: The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-nextgen:storage:Table'.
 type Table struct {
@@ -39,9 +39,6 @@ func NewTable(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if args.TableName == nil {
-		return nil, errors.New("invalid value for required argument 'TableName'")
-	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-nextgen:storage:Table"),
@@ -51,6 +48,9 @@ func NewTable(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-nextgen:storage/v20200801preview:Table"),
+		},
+		{
+			Type: pulumi.String("azure-nextgen:storage/v20210101:Table"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -103,7 +103,7 @@ type tableArgs struct {
 	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character.
-	TableName string `pulumi:"tableName"`
+	TableName *string `pulumi:"tableName"`
 }
 
 // The set of arguments for constructing a Table resource.
@@ -113,7 +113,7 @@ type TableArgs struct {
 	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character.
-	TableName pulumi.StringInput
+	TableName pulumi.StringPtrInput
 }
 
 func (TableArgs) ElementType() reflect.Type {

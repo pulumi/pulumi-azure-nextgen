@@ -58,12 +58,10 @@ class TableServiceProperties(pulumi.CustomResource):
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
             __props__['resource_group_name'] = resource_group_name
-            if table_service_name is None and not opts.urn:
-                raise TypeError("Missing required property 'table_service_name'")
             __props__['table_service_name'] = table_service_name
             __props__['name'] = None
             __props__['type'] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:storage:TableServiceProperties"), pulumi.Alias(type_="azure-nextgen:storage/latest:TableServiceProperties"), pulumi.Alias(type_="azure-nextgen:storage/v20200801preview:TableServiceProperties")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:storage:TableServiceProperties"), pulumi.Alias(type_="azure-nextgen:storage/latest:TableServiceProperties"), pulumi.Alias(type_="azure-nextgen:storage/v20200801preview:TableServiceProperties"), pulumi.Alias(type_="azure-nextgen:storage/v20210101:TableServiceProperties")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(TableServiceProperties, __self__).__init__(
             'azure-nextgen:storage/v20190601:TableServiceProperties',

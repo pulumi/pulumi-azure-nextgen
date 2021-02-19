@@ -163,6 +163,7 @@ namespace Pulumi.AzureNextGen.Storage.V20160101
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20190401:StorageAccount"},
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20190601:StorageAccount"},
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20200801preview:StorageAccount"},
+                    new Pulumi.Alias { Type = "azure-nextgen:storage/v20210101:StorageAccount"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -195,8 +196,8 @@ namespace Pulumi.AzureNextGen.Storage.V20160101
         /// <summary>
         /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
         /// </summary>
-        [Input("accountName", required: true)]
-        public Input<string> AccountName { get; set; } = null!;
+        [Input("accountName")]
+        public Input<string>? AccountName { get; set; }
 
         /// <summary>
         /// User domain assigned to the storage account. Name is the CNAME source. Only one custom domain is supported per storage account at this time. To clear the existing custom domain, use an empty string for the custom domain name property.

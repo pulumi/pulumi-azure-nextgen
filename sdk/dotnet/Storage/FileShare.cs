@@ -11,7 +11,7 @@ namespace Pulumi.AzureNextGen.Storage
 {
     /// <summary>
     /// Properties of the file share, including Id, resource name, resource type, Etag.
-    /// API Version: 2019-06-01.
+    /// API Version: 2021-01-01.
     /// </summary>
     [AzureNextGenResourceType("azure-nextgen:storage:FileShare")]
     public partial class FileShare : Pulumi.CustomResource
@@ -101,6 +101,12 @@ namespace Pulumi.AzureNextGen.Storage
         public Output<double> ShareUsageBytes { get; private set; } = null!;
 
         /// <summary>
+        /// Creation time of share snapshot returned in the response of list shares with expand param "snapshots".
+        /// </summary>
+        [Output("snapshotTime")]
+        public Output<string> SnapshotTime { get; private set; } = null!;
+
+        /// <summary>
         /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
         /// </summary>
         [Output("type")]
@@ -141,6 +147,7 @@ namespace Pulumi.AzureNextGen.Storage
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20190401:FileShare"},
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20190601:FileShare"},
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20200801preview:FileShare"},
+                    new Pulumi.Alias { Type = "azure-nextgen:storage/v20210101:FileShare"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -182,6 +189,12 @@ namespace Pulumi.AzureNextGen.Storage
         [Input("enabledProtocols")]
         public InputUnion<string, Pulumi.AzureNextGen.Storage.EnabledProtocols>? EnabledProtocols { get; set; }
 
+        /// <summary>
+        /// Optional, used to create a snapshot.
+        /// </summary>
+        [Input("expand")]
+        public Input<string>? Expand { get; set; }
+
         [Input("metadata")]
         private InputMap<string>? _metadata;
 
@@ -209,8 +222,8 @@ namespace Pulumi.AzureNextGen.Storage
         /// <summary>
         /// The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
         /// </summary>
-        [Input("shareName", required: true)]
-        public Input<string> ShareName { get; set; } = null!;
+        [Input("shareName")]
+        public Input<string>? ShareName { get; set; }
 
         /// <summary>
         /// The maximum size of the share, in gigabytes. Must be greater than 0, and less than or equal to 5TB (5120). For Large File Shares, the maximum size is 102400.

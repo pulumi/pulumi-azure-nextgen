@@ -52,8 +52,6 @@ class Registration(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['location'] = location
-            if registration_name is None and not opts.urn:
-                raise TypeError("Missing required property 'registration_name'")
             __props__['registration_name'] = registration_name
             if registration_token is None and not opts.urn:
                 raise TypeError("Missing required property 'registration_token'")
@@ -70,7 +68,7 @@ class Registration(pulumi.CustomResource):
             __props__['system_data'] = None
             __props__['tags'] = None
             __props__['type'] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:azurestack:Registration"), pulumi.Alias(type_="azure-nextgen:azurestack/latest:Registration"), pulumi.Alias(type_="azure-nextgen:azurestack/v20170601:Registration")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:azurestack:Registration"), pulumi.Alias(type_="azure-nextgen:azurestack/latest:Registration"), pulumi.Alias(type_="azure-nextgen:azurestack/v20160101:Registration"), pulumi.Alias(type_="azure-nextgen:azurestack/v20170601:Registration")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Registration, __self__).__init__(
             'azure-nextgen:azurestack/v20200601preview:Registration',

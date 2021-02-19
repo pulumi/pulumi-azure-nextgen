@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureNextGen.Storage
 {
     /// <summary>
-    /// API Version: 2019-06-01.
+    /// API Version: 2021-01-01.
     /// </summary>
     [AzureNextGenResourceType("azure-nextgen:storage:Queue")]
     public partial class Queue : Pulumi.CustomResource
@@ -67,6 +67,7 @@ namespace Pulumi.AzureNextGen.Storage
                     new Pulumi.Alias { Type = "azure-nextgen:storage/latest:Queue"},
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20190601:Queue"},
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20200801preview:Queue"},
+                    new Pulumi.Alias { Type = "azure-nextgen:storage/v20210101:Queue"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -111,8 +112,8 @@ namespace Pulumi.AzureNextGen.Storage
         /// <summary>
         /// A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters.
         /// </summary>
-        [Input("queueName", required: true)]
-        public Input<string> QueueName { get; set; } = null!;
+        [Input("queueName")]
+        public Input<string>? QueueName { get; set; }
 
         /// <summary>
         /// The name of the resource group within the user's subscription. The name is case insensitive.

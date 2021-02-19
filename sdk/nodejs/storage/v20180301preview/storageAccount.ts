@@ -134,9 +134,6 @@ export class StorageAccount extends pulumi.CustomResource {
     constructor(name: string, args: StorageAccountArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (!(opts && opts.id)) {
-            if ((!args || args.accountName === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'accountName'");
-            }
             if ((!args || args.kind === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'kind'");
             }
@@ -201,7 +198,7 @@ export class StorageAccount extends pulumi.CustomResource {
         if (!opts.version) {
             opts.version = utilities.getVersion();
         }
-        const aliasOpts = { aliases: [{ type: "azure-nextgen:storage:StorageAccount" }, { type: "azure-nextgen:storage/latest:StorageAccount" }, { type: "azure-nextgen:storage/v20150501preview:StorageAccount" }, { type: "azure-nextgen:storage/v20150615:StorageAccount" }, { type: "azure-nextgen:storage/v20160101:StorageAccount" }, { type: "azure-nextgen:storage/v20160501:StorageAccount" }, { type: "azure-nextgen:storage/v20161201:StorageAccount" }, { type: "azure-nextgen:storage/v20170601:StorageAccount" }, { type: "azure-nextgen:storage/v20171001:StorageAccount" }, { type: "azure-nextgen:storage/v20180201:StorageAccount" }, { type: "azure-nextgen:storage/v20180701:StorageAccount" }, { type: "azure-nextgen:storage/v20181101:StorageAccount" }, { type: "azure-nextgen:storage/v20190401:StorageAccount" }, { type: "azure-nextgen:storage/v20190601:StorageAccount" }, { type: "azure-nextgen:storage/v20200801preview:StorageAccount" }] };
+        const aliasOpts = { aliases: [{ type: "azure-nextgen:storage:StorageAccount" }, { type: "azure-nextgen:storage/latest:StorageAccount" }, { type: "azure-nextgen:storage/v20150501preview:StorageAccount" }, { type: "azure-nextgen:storage/v20150615:StorageAccount" }, { type: "azure-nextgen:storage/v20160101:StorageAccount" }, { type: "azure-nextgen:storage/v20160501:StorageAccount" }, { type: "azure-nextgen:storage/v20161201:StorageAccount" }, { type: "azure-nextgen:storage/v20170601:StorageAccount" }, { type: "azure-nextgen:storage/v20171001:StorageAccount" }, { type: "azure-nextgen:storage/v20180201:StorageAccount" }, { type: "azure-nextgen:storage/v20180701:StorageAccount" }, { type: "azure-nextgen:storage/v20181101:StorageAccount" }, { type: "azure-nextgen:storage/v20190401:StorageAccount" }, { type: "azure-nextgen:storage/v20190601:StorageAccount" }, { type: "azure-nextgen:storage/v20200801preview:StorageAccount" }, { type: "azure-nextgen:storage/v20210101:StorageAccount" }] };
         opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
         super(StorageAccount.__pulumiType, name, inputs, opts);
     }
@@ -218,7 +215,7 @@ export interface StorageAccountArgs {
     /**
      * The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
      */
-    readonly accountName: pulumi.Input<string>;
+    readonly accountName?: pulumi.Input<string>;
     /**
      * User domain assigned to the storage account. Name is the CNAME source. Only one custom domain is supported per storage account at this time. To clear the existing custom domain, use an empty string for the custom domain name property.
      */

@@ -40,7 +40,7 @@ export class NotificationRegistration extends pulumi.CustomResource {
      * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public /*out*/ readonly properties!: pulumi.Output<outputs.providerhub.NotificationRegistrationResponseProperties>;
+    public readonly properties!: pulumi.Output<outputs.providerhub.NotificationRegistrationResponseProperties>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -56,16 +56,13 @@ export class NotificationRegistration extends pulumi.CustomResource {
     constructor(name: string, args: NotificationRegistrationArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (!(opts && opts.id)) {
-            if ((!args || args.notificationRegistrationName === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'notificationRegistrationName'");
-            }
             if ((!args || args.providerNamespace === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'providerNamespace'");
             }
             inputs["notificationRegistrationName"] = args ? args.notificationRegistrationName : undefined;
+            inputs["properties"] = args ? args.properties : undefined;
             inputs["providerNamespace"] = args ? args.providerNamespace : undefined;
             inputs["name"] = undefined /*out*/;
-            inputs["properties"] = undefined /*out*/;
             inputs["type"] = undefined /*out*/;
         } else {
             inputs["name"] = undefined /*out*/;
@@ -92,7 +89,8 @@ export interface NotificationRegistrationArgs {
     /**
      * The notification registration.
      */
-    readonly notificationRegistrationName: pulumi.Input<string>;
+    readonly notificationRegistrationName?: pulumi.Input<string>;
+    readonly properties?: pulumi.Input<inputs.providerhub.NotificationRegistrationProperties>;
     /**
      * The name of the resource provider hosted within ProviderHub.
      */

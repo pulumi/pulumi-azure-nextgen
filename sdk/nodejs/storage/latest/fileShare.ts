@@ -7,7 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Properties of the file share, including Id, resource name, resource type, Etag.
- * Latest API Version: 2019-06-01.
+ * Latest API Version: 2021-01-01.
  *
  * @deprecated The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-nextgen:storage:FileShare'.
  */
@@ -96,6 +96,10 @@ export class FileShare extends pulumi.CustomResource {
      */
     public /*out*/ readonly shareUsageBytes!: pulumi.Output<number>;
     /**
+     * Creation time of share snapshot returned in the response of list shares with expand param "snapshots".
+     */
+    public /*out*/ readonly snapshotTime!: pulumi.Output<string>;
+    /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
@@ -122,12 +126,10 @@ export class FileShare extends pulumi.CustomResource {
             if ((!args || args.resourceGroupName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.shareName === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'shareName'");
-            }
             inputs["accessTier"] = args ? args.accessTier : undefined;
             inputs["accountName"] = args ? args.accountName : undefined;
             inputs["enabledProtocols"] = args ? args.enabledProtocols : undefined;
+            inputs["expand"] = args ? args.expand : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
             inputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             inputs["rootSquash"] = args ? args.rootSquash : undefined;
@@ -142,6 +144,7 @@ export class FileShare extends pulumi.CustomResource {
             inputs["name"] = undefined /*out*/;
             inputs["remainingRetentionDays"] = undefined /*out*/;
             inputs["shareUsageBytes"] = undefined /*out*/;
+            inputs["snapshotTime"] = undefined /*out*/;
             inputs["type"] = undefined /*out*/;
             inputs["version"] = undefined /*out*/;
         } else {
@@ -159,6 +162,7 @@ export class FileShare extends pulumi.CustomResource {
             inputs["rootSquash"] = undefined /*out*/;
             inputs["shareQuota"] = undefined /*out*/;
             inputs["shareUsageBytes"] = undefined /*out*/;
+            inputs["snapshotTime"] = undefined /*out*/;
             inputs["type"] = undefined /*out*/;
             inputs["version"] = undefined /*out*/;
         }
@@ -169,7 +173,7 @@ export class FileShare extends pulumi.CustomResource {
         if (!opts.version) {
             opts.version = utilities.getVersion();
         }
-        const aliasOpts = { aliases: [{ type: "azure-nextgen:storage:FileShare" }, { type: "azure-nextgen:storage/v20190401:FileShare" }, { type: "azure-nextgen:storage/v20190601:FileShare" }, { type: "azure-nextgen:storage/v20200801preview:FileShare" }] };
+        const aliasOpts = { aliases: [{ type: "azure-nextgen:storage:FileShare" }, { type: "azure-nextgen:storage/v20190401:FileShare" }, { type: "azure-nextgen:storage/v20190601:FileShare" }, { type: "azure-nextgen:storage/v20200801preview:FileShare" }, { type: "azure-nextgen:storage/v20210101:FileShare" }] };
         opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
         super(FileShare.__pulumiType, name, inputs, opts);
     }
@@ -192,6 +196,10 @@ export interface FileShareArgs {
      */
     readonly enabledProtocols?: pulumi.Input<string | enums.storage.latest.EnabledProtocols>;
     /**
+     * Optional, used to create a snapshot.
+     */
+    readonly expand?: pulumi.Input<string>;
+    /**
      * A name-value pair to associate with the share as metadata.
      */
     readonly metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -206,7 +214,7 @@ export interface FileShareArgs {
     /**
      * The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
      */
-    readonly shareName: pulumi.Input<string>;
+    readonly shareName?: pulumi.Input<string>;
     /**
      * The maximum size of the share, in gigabytes. Must be greater than 0, and less than or equal to 5TB (5120). For Large File Shares, the maximum size is 102400.
      */

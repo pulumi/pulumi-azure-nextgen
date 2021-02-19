@@ -55,8 +55,6 @@ class BlobInventoryPolicy(pulumi.CustomResource):
             if account_name is None and not opts.urn:
                 raise TypeError("Missing required property 'account_name'")
             __props__['account_name'] = account_name
-            if blob_inventory_policy_name is None and not opts.urn:
-                raise TypeError("Missing required property 'blob_inventory_policy_name'")
             __props__['blob_inventory_policy_name'] = blob_inventory_policy_name
             if policy is None and not opts.urn:
                 raise TypeError("Missing required property 'policy'")
@@ -68,7 +66,7 @@ class BlobInventoryPolicy(pulumi.CustomResource):
             __props__['name'] = None
             __props__['system_data'] = None
             __props__['type'] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:storage:BlobInventoryPolicy"), pulumi.Alias(type_="azure-nextgen:storage/latest:BlobInventoryPolicy"), pulumi.Alias(type_="azure-nextgen:storage/v20200801preview:BlobInventoryPolicy")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:storage:BlobInventoryPolicy"), pulumi.Alias(type_="azure-nextgen:storage/latest:BlobInventoryPolicy"), pulumi.Alias(type_="azure-nextgen:storage/v20200801preview:BlobInventoryPolicy"), pulumi.Alias(type_="azure-nextgen:storage/v20210101:BlobInventoryPolicy")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(BlobInventoryPolicy, __self__).__init__(
             'azure-nextgen:storage/v20190601:BlobInventoryPolicy',

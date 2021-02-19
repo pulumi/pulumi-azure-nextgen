@@ -64,9 +64,6 @@ export class StorageAccountManagementPolicies extends pulumi.CustomResource {
             if ((!args || args.accountName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'accountName'");
             }
-            if ((!args || args.managementPolicyName === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'managementPolicyName'");
-            }
             if ((!args || args.resourceGroupName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
@@ -90,7 +87,7 @@ export class StorageAccountManagementPolicies extends pulumi.CustomResource {
         if (!opts.version) {
             opts.version = utilities.getVersion();
         }
-        const aliasOpts = { aliases: [{ type: "azure-nextgen:storage:StorageAccountManagementPolicies" }, { type: "azure-nextgen:storage/latest:StorageAccountManagementPolicies" }, { type: "azure-nextgen:storage/v20181101:StorageAccountManagementPolicies" }, { type: "azure-nextgen:storage/v20190401:StorageAccountManagementPolicies" }, { type: "azure-nextgen:storage/v20190601:StorageAccountManagementPolicies" }, { type: "azure-nextgen:storage/v20200801preview:StorageAccountManagementPolicies" }] };
+        const aliasOpts = { aliases: [{ type: "azure-nextgen:storage:StorageAccountManagementPolicies" }, { type: "azure-nextgen:storage/latest:StorageAccountManagementPolicies" }, { type: "azure-nextgen:storage/v20181101:StorageAccountManagementPolicies" }, { type: "azure-nextgen:storage/v20190401:StorageAccountManagementPolicies" }, { type: "azure-nextgen:storage/v20190601:StorageAccountManagementPolicies" }, { type: "azure-nextgen:storage/v20200801preview:StorageAccountManagementPolicies" }, { type: "azure-nextgen:storage/v20210101:StorageAccountManagementPolicies" }] };
         opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
         super(StorageAccountManagementPolicies.__pulumiType, name, inputs, opts);
     }
@@ -107,7 +104,7 @@ export interface StorageAccountManagementPoliciesArgs {
     /**
      * The name of the Storage Account Management Policy. It should always be 'default'
      */
-    readonly managementPolicyName: pulumi.Input<string>;
+    readonly managementPolicyName?: pulumi.Input<string>;
     /**
      * The Storage Account ManagementPolicies Rules, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
      */

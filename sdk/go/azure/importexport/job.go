@@ -39,9 +39,6 @@ func NewJob(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.JobName == nil {
-		return nil, errors.New("invalid value for required argument 'JobName'")
-	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
@@ -54,6 +51,9 @@ func NewJob(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-nextgen:importexport/v20200801:Job"),
+		},
+		{
+			Type: pulumi.String("azure-nextgen:importexport/v20210101:Job"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -118,7 +118,7 @@ func (JobState) ElementType() reflect.Type {
 
 type jobArgs struct {
 	// The name of the import/export job.
-	JobName string `pulumi:"jobName"`
+	JobName *string `pulumi:"jobName"`
 	// Specifies the supported Azure location where the job should be created
 	Location *string `pulumi:"location"`
 	// Specifies the job properties
@@ -132,7 +132,7 @@ type jobArgs struct {
 // The set of arguments for constructing a Job resource.
 type JobArgs struct {
 	// The name of the import/export job.
-	JobName pulumi.StringInput
+	JobName pulumi.StringPtrInput
 	// Specifies the supported Azure location where the job should be created
 	Location pulumi.StringPtrInput
 	// Specifies the job properties

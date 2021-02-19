@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 
 /**
  * The storage account blob inventory policy.
- * API Version: 2019-06-01.
+ * API Version: 2021-01-01.
  */
 export class BlobInventoryPolicy extends pulumi.CustomResource {
     /**
@@ -70,9 +70,6 @@ export class BlobInventoryPolicy extends pulumi.CustomResource {
             if ((!args || args.accountName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'accountName'");
             }
-            if ((!args || args.blobInventoryPolicyName === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'blobInventoryPolicyName'");
-            }
             if ((!args || args.policy === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policy'");
             }
@@ -101,7 +98,7 @@ export class BlobInventoryPolicy extends pulumi.CustomResource {
         if (!opts.version) {
             opts.version = utilities.getVersion();
         }
-        const aliasOpts = { aliases: [{ type: "azure-nextgen:storage/latest:BlobInventoryPolicy" }, { type: "azure-nextgen:storage/v20190601:BlobInventoryPolicy" }, { type: "azure-nextgen:storage/v20200801preview:BlobInventoryPolicy" }] };
+        const aliasOpts = { aliases: [{ type: "azure-nextgen:storage/latest:BlobInventoryPolicy" }, { type: "azure-nextgen:storage/v20190601:BlobInventoryPolicy" }, { type: "azure-nextgen:storage/v20200801preview:BlobInventoryPolicy" }, { type: "azure-nextgen:storage/v20210101:BlobInventoryPolicy" }] };
         opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
         super(BlobInventoryPolicy.__pulumiType, name, inputs, opts);
     }
@@ -118,7 +115,7 @@ export interface BlobInventoryPolicyArgs {
     /**
      * The name of the storage account blob inventory policy. It should always be 'default'
      */
-    readonly blobInventoryPolicyName: pulumi.Input<string>;
+    readonly blobInventoryPolicyName?: pulumi.Input<string>;
     /**
      * The storage account blob inventory policy object. It is composed of policy rules.
      */

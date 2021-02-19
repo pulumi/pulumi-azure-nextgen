@@ -79,9 +79,6 @@ export class Registration extends pulumi.CustomResource {
     constructor(name: string, args: RegistrationArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (!(opts && opts.id)) {
-            if ((!args || args.registrationName === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'registrationName'");
-            }
             if ((!args || args.registrationToken === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'registrationToken'");
             }
@@ -116,7 +113,7 @@ export class Registration extends pulumi.CustomResource {
         if (!opts.version) {
             opts.version = utilities.getVersion();
         }
-        const aliasOpts = { aliases: [{ type: "azure-nextgen:azurestack/latest:Registration" }, { type: "azure-nextgen:azurestack/v20170601:Registration" }, { type: "azure-nextgen:azurestack/v20200601preview:Registration" }] };
+        const aliasOpts = { aliases: [{ type: "azure-nextgen:azurestack/latest:Registration" }, { type: "azure-nextgen:azurestack/v20160101:Registration" }, { type: "azure-nextgen:azurestack/v20170601:Registration" }, { type: "azure-nextgen:azurestack/v20200601preview:Registration" }] };
         opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
         super(Registration.__pulumiType, name, inputs, opts);
     }
@@ -133,7 +130,7 @@ export interface RegistrationArgs {
     /**
      * Name of the Azure Stack registration.
      */
-    readonly registrationName: pulumi.Input<string>;
+    readonly registrationName?: pulumi.Input<string>;
     /**
      * The token identifying registered Azure Stack
      */

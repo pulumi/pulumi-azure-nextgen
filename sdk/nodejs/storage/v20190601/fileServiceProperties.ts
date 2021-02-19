@@ -69,9 +69,6 @@ export class FileServiceProperties extends pulumi.CustomResource {
             if ((!args || args.accountName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'accountName'");
             }
-            if ((!args || args.fileServicesName === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'fileServicesName'");
-            }
             if ((!args || args.resourceGroupName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
@@ -97,7 +94,7 @@ export class FileServiceProperties extends pulumi.CustomResource {
         if (!opts.version) {
             opts.version = utilities.getVersion();
         }
-        const aliasOpts = { aliases: [{ type: "azure-nextgen:storage:FileServiceProperties" }, { type: "azure-nextgen:storage/latest:FileServiceProperties" }, { type: "azure-nextgen:storage/v20190401:FileServiceProperties" }, { type: "azure-nextgen:storage/v20200801preview:FileServiceProperties" }] };
+        const aliasOpts = { aliases: [{ type: "azure-nextgen:storage:FileServiceProperties" }, { type: "azure-nextgen:storage/latest:FileServiceProperties" }, { type: "azure-nextgen:storage/v20190401:FileServiceProperties" }, { type: "azure-nextgen:storage/v20200801preview:FileServiceProperties" }, { type: "azure-nextgen:storage/v20210101:FileServiceProperties" }] };
         opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
         super(FileServiceProperties.__pulumiType, name, inputs, opts);
     }
@@ -118,7 +115,7 @@ export interface FileServicePropertiesArgs {
     /**
      * The name of the file Service within the specified storage account. File Service Name must be "default"
      */
-    readonly fileServicesName: pulumi.Input<string>;
+    readonly fileServicesName?: pulumi.Input<string>;
     /**
      * The name of the resource group within the user's subscription. The name is case insensitive.
      */

@@ -11,7 +11,7 @@ namespace Pulumi.AzureNextGen.Storage
 {
     /// <summary>
     /// The properties of File services in storage account.
-    /// API Version: 2019-06-01.
+    /// API Version: 2021-01-01.
     /// </summary>
     [AzureNextGenResourceType("azure-nextgen:storage:FileServiceProperties")]
     public partial class FileServiceProperties : Pulumi.CustomResource
@@ -27,6 +27,12 @@ namespace Pulumi.AzureNextGen.Storage
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Protocol settings for file service
+        /// </summary>
+        [Output("protocolSettings")]
+        public Output<Outputs.ProtocolSettingsResponse?> ProtocolSettings { get; private set; } = null!;
 
         /// <summary>
         /// The file service properties for share soft delete.
@@ -75,6 +81,7 @@ namespace Pulumi.AzureNextGen.Storage
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20190401:FileServiceProperties"},
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20190601:FileServiceProperties"},
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20200801preview:FileServiceProperties"},
+                    new Pulumi.Alias { Type = "azure-nextgen:storage/v20210101:FileServiceProperties"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -113,8 +120,14 @@ namespace Pulumi.AzureNextGen.Storage
         /// <summary>
         /// The name of the file Service within the specified storage account. File Service Name must be "default"
         /// </summary>
-        [Input("fileServicesName", required: true)]
-        public Input<string> FileServicesName { get; set; } = null!;
+        [Input("fileServicesName")]
+        public Input<string>? FileServicesName { get; set; }
+
+        /// <summary>
+        /// Protocol settings for file service
+        /// </summary>
+        [Input("protocolSettings")]
+        public Input<Inputs.ProtocolSettingsArgs>? ProtocolSettings { get; set; }
 
         /// <summary>
         /// The name of the resource group within the user's subscription. The name is case insensitive.

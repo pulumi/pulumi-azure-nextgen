@@ -61,8 +61,6 @@ class ObjectReplicationPolicy(pulumi.CustomResource):
             if destination_account is None and not opts.urn:
                 raise TypeError("Missing required property 'destination_account'")
             __props__['destination_account'] = destination_account
-            if object_replication_policy_id is None and not opts.urn:
-                raise TypeError("Missing required property 'object_replication_policy_id'")
             __props__['object_replication_policy_id'] = object_replication_policy_id
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
@@ -75,7 +73,7 @@ class ObjectReplicationPolicy(pulumi.CustomResource):
             __props__['name'] = None
             __props__['policy_id'] = None
             __props__['type'] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:storage:ObjectReplicationPolicy"), pulumi.Alias(type_="azure-nextgen:storage/latest:ObjectReplicationPolicy"), pulumi.Alias(type_="azure-nextgen:storage/v20190601:ObjectReplicationPolicy")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:storage:ObjectReplicationPolicy"), pulumi.Alias(type_="azure-nextgen:storage/latest:ObjectReplicationPolicy"), pulumi.Alias(type_="azure-nextgen:storage/v20190601:ObjectReplicationPolicy"), pulumi.Alias(type_="azure-nextgen:storage/v20210101:ObjectReplicationPolicy")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ObjectReplicationPolicy, __self__).__init__(
             'azure-nextgen:storage/v20200801preview:ObjectReplicationPolicy',

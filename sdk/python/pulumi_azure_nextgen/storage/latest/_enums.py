@@ -11,6 +11,7 @@ __all__ = [
     'DefaultAction',
     'DirectoryServiceOptions',
     'EnabledProtocols',
+    'ExtendedLocationTypes',
     'HttpProtocol',
     'IdentityType',
     'InventoryRuleType',
@@ -85,6 +86,13 @@ class EnabledProtocols(str, Enum):
     NFS = "NFS"
 
 
+class ExtendedLocationTypes(str, Enum):
+    """
+    The type of the extended location.
+    """
+    EDGE_ZONE = "EdgeZone"
+
+
 class HttpProtocol(str, Enum):
     """
     The protocol permitted for a request made with the account SAS.
@@ -97,7 +105,10 @@ class IdentityType(str, Enum):
     """
     The identity type.
     """
+    NONE = "None"
     SYSTEM_ASSIGNED = "SystemAssigned"
+    USER_ASSIGNED = "UserAssigned"
+    SYSTEM_ASSIGNED_USER_ASSIGNED = "SystemAssigned,UserAssigned"
 
 
 class InventoryRuleType(str, Enum):

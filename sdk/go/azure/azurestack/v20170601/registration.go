@@ -40,9 +40,6 @@ func NewRegistration(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.RegistrationName == nil {
-		return nil, errors.New("invalid value for required argument 'RegistrationName'")
-	}
 	if args.RegistrationToken == nil {
 		return nil, errors.New("invalid value for required argument 'RegistrationToken'")
 	}
@@ -55,6 +52,9 @@ func NewRegistration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-nextgen:azurestack/latest:Registration"),
+		},
+		{
+			Type: pulumi.String("azure-nextgen:azurestack/v20160101:Registration"),
 		},
 		{
 			Type: pulumi.String("azure-nextgen:azurestack/v20200601preview:Registration"),
@@ -128,7 +128,7 @@ type registrationArgs struct {
 	// Location of the resource.
 	Location *string `pulumi:"location"`
 	// Name of the Azure Stack registration.
-	RegistrationName string `pulumi:"registrationName"`
+	RegistrationName *string `pulumi:"registrationName"`
 	// The token identifying registered Azure Stack
 	RegistrationToken string `pulumi:"registrationToken"`
 	// Name of the resource group.
@@ -140,7 +140,7 @@ type RegistrationArgs struct {
 	// Location of the resource.
 	Location pulumi.StringPtrInput
 	// Name of the Azure Stack registration.
-	RegistrationName pulumi.StringInput
+	RegistrationName pulumi.StringPtrInput
 	// The token identifying registered Azure Stack
 	RegistrationToken pulumi.StringInput
 	// Name of the resource group.

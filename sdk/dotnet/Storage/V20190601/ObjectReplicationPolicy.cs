@@ -85,6 +85,7 @@ namespace Pulumi.AzureNextGen.Storage.V20190601
                     new Pulumi.Alias { Type = "azure-nextgen:storage:ObjectReplicationPolicy"},
                     new Pulumi.Alias { Type = "azure-nextgen:storage/latest:ObjectReplicationPolicy"},
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20200801preview:ObjectReplicationPolicy"},
+                    new Pulumi.Alias { Type = "azure-nextgen:storage/v20210101:ObjectReplicationPolicy"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -123,8 +124,8 @@ namespace Pulumi.AzureNextGen.Storage.V20190601
         /// <summary>
         /// The ID of object replication policy or 'default' if the policy ID is unknown.
         /// </summary>
-        [Input("objectReplicationPolicyId", required: true)]
-        public Input<string> ObjectReplicationPolicyId { get; set; } = null!;
+        [Input("objectReplicationPolicyId")]
+        public Input<string>? ObjectReplicationPolicyId { get; set; }
 
         /// <summary>
         /// The name of the resource group within the user's subscription. The name is case insensitive.
