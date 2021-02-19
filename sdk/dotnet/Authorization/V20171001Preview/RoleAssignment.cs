@@ -81,6 +81,7 @@ namespace Pulumi.AzureNextGen.Authorization.V20171001Preview
                     new Pulumi.Alias { Type = "azure-nextgen:authorization/v20150701:RoleAssignment"},
                     new Pulumi.Alias { Type = "azure-nextgen:authorization/v20180101preview:RoleAssignment"},
                     new Pulumi.Alias { Type = "azure-nextgen:authorization/v20180901preview:RoleAssignment"},
+                    new Pulumi.Alias { Type = "azure-nextgen:authorization/v20200301preview:RoleAssignment"},
                     new Pulumi.Alias { Type = "azure-nextgen:authorization/v20200401preview:RoleAssignment"},
                 },
             };
@@ -120,8 +121,8 @@ namespace Pulumi.AzureNextGen.Authorization.V20171001Preview
         /// <summary>
         /// The name of the role assignment to create. It can be any valid GUID.
         /// </summary>
-        [Input("roleAssignmentName", required: true)]
-        public Input<string> RoleAssignmentName { get; set; } = null!;
+        [Input("roleAssignmentName")]
+        public Input<string>? RoleAssignmentName { get; set; }
 
         /// <summary>
         /// The role definition ID used in the role assignment.

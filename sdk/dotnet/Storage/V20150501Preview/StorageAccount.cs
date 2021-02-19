@@ -145,6 +145,7 @@ namespace Pulumi.AzureNextGen.Storage.V20150501Preview
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20190401:StorageAccount"},
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20190601:StorageAccount"},
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20200801preview:StorageAccount"},
+                    new Pulumi.Alias { Type = "azure-nextgen:storage/v20210101:StorageAccount"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -171,8 +172,8 @@ namespace Pulumi.AzureNextGen.Storage.V20150501Preview
         /// <summary>
         /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.  
         /// </summary>
-        [Input("accountName", required: true)]
-        public Input<string> AccountName { get; set; } = null!;
+        [Input("accountName")]
+        public Input<string>? AccountName { get; set; }
 
         /// <summary>
         /// Gets or sets the account type.

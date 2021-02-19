@@ -36,7 +36,7 @@ export class ProviderRegistration extends pulumi.CustomResource {
      * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public /*out*/ readonly properties!: pulumi.Output<outputs.providerhub.v20201120.ProviderRegistrationResponseProperties>;
+    public readonly properties!: pulumi.Output<outputs.providerhub.v20201120.ProviderRegistrationResponseProperties>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -49,15 +49,12 @@ export class ProviderRegistration extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ProviderRegistrationArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: ProviderRegistrationArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (!(opts && opts.id)) {
-            if ((!args || args.providerNamespace === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'providerNamespace'");
-            }
+            inputs["properties"] = args ? args.properties : undefined;
             inputs["providerNamespace"] = args ? args.providerNamespace : undefined;
             inputs["name"] = undefined /*out*/;
-            inputs["properties"] = undefined /*out*/;
             inputs["type"] = undefined /*out*/;
         } else {
             inputs["name"] = undefined /*out*/;
@@ -81,8 +78,9 @@ export class ProviderRegistration extends pulumi.CustomResource {
  * The set of arguments for constructing a ProviderRegistration resource.
  */
 export interface ProviderRegistrationArgs {
+    readonly properties?: pulumi.Input<inputs.providerhub.v20201120.ProviderRegistrationProperties>;
     /**
      * The name of the resource provider hosted within ProviderHub.
      */
-    readonly providerNamespace: pulumi.Input<string>;
+    readonly providerNamespace?: pulumi.Input<string>;
 }

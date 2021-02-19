@@ -56,8 +56,6 @@ class BlobContainer(pulumi.CustomResource):
             if account_name is None and not opts.urn:
                 raise TypeError("Missing required property 'account_name'")
             __props__['account_name'] = account_name
-            if container_name is None and not opts.urn:
-                raise TypeError("Missing required property 'container_name'")
             __props__['container_name'] = container_name
             __props__['metadata'] = metadata
             __props__['public_access'] = public_access
@@ -75,7 +73,7 @@ class BlobContainer(pulumi.CustomResource):
             __props__['legal_hold'] = None
             __props__['name'] = None
             __props__['type'] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:storage:BlobContainer"), pulumi.Alias(type_="azure-nextgen:storage/latest:BlobContainer"), pulumi.Alias(type_="azure-nextgen:storage/v20180201:BlobContainer"), pulumi.Alias(type_="azure-nextgen:storage/v20180301preview:BlobContainer"), pulumi.Alias(type_="azure-nextgen:storage/v20180701:BlobContainer"), pulumi.Alias(type_="azure-nextgen:storage/v20190401:BlobContainer"), pulumi.Alias(type_="azure-nextgen:storage/v20190601:BlobContainer"), pulumi.Alias(type_="azure-nextgen:storage/v20200801preview:BlobContainer")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:storage:BlobContainer"), pulumi.Alias(type_="azure-nextgen:storage/latest:BlobContainer"), pulumi.Alias(type_="azure-nextgen:storage/v20180201:BlobContainer"), pulumi.Alias(type_="azure-nextgen:storage/v20180301preview:BlobContainer"), pulumi.Alias(type_="azure-nextgen:storage/v20180701:BlobContainer"), pulumi.Alias(type_="azure-nextgen:storage/v20190401:BlobContainer"), pulumi.Alias(type_="azure-nextgen:storage/v20190601:BlobContainer"), pulumi.Alias(type_="azure-nextgen:storage/v20200801preview:BlobContainer"), pulumi.Alias(type_="azure-nextgen:storage/v20210101:BlobContainer")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(BlobContainer, __self__).__init__(
             'azure-nextgen:storage/v20181101:BlobContainer',

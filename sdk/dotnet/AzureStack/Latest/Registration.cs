@@ -91,6 +91,7 @@ namespace Pulumi.AzureNextGen.AzureStack.Latest
                 Aliases =
                 {
                     new Pulumi.Alias { Type = "azure-nextgen:azurestack:Registration"},
+                    new Pulumi.Alias { Type = "azure-nextgen:azurestack/v20160101:Registration"},
                     new Pulumi.Alias { Type = "azure-nextgen:azurestack/v20170601:Registration"},
                     new Pulumi.Alias { Type = "azure-nextgen:azurestack/v20200601preview:Registration"},
                 },
@@ -125,8 +126,8 @@ namespace Pulumi.AzureNextGen.AzureStack.Latest
         /// <summary>
         /// Name of the Azure Stack registration.
         /// </summary>
-        [Input("registrationName", required: true)]
-        public Input<string> RegistrationName { get; set; } = null!;
+        [Input("registrationName")]
+        public Input<string>? RegistrationName { get; set; }
 
         /// <summary>
         /// The token identifying registered Azure Stack

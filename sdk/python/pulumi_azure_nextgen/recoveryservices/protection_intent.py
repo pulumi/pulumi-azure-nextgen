@@ -65,8 +65,6 @@ class ProtectionIntent(pulumi.CustomResource):
             if fabric_name is None and not opts.urn:
                 raise TypeError("Missing required property 'fabric_name'")
             __props__['fabric_name'] = fabric_name
-            if intent_object_name is None and not opts.urn:
-                raise TypeError("Missing required property 'intent_object_name'")
             __props__['intent_object_name'] = intent_object_name
             __props__['location'] = location
             __props__['properties'] = properties
@@ -79,7 +77,7 @@ class ProtectionIntent(pulumi.CustomResource):
             __props__['vault_name'] = vault_name
             __props__['name'] = None
             __props__['type'] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:recoveryservices/latest:ProtectionIntent"), pulumi.Alias(type_="azure-nextgen:recoveryservices/v20170701:ProtectionIntent")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:recoveryservices/latest:ProtectionIntent"), pulumi.Alias(type_="azure-nextgen:recoveryservices/v20170701:ProtectionIntent"), pulumi.Alias(type_="azure-nextgen:recoveryservices/v20210201:ProtectionIntent")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ProtectionIntent, __self__).__init__(
             'azure-nextgen:recoveryservices:ProtectionIntent',

@@ -87,6 +87,7 @@ namespace Pulumi.AzureNextGen.Authorization.Latest
                     new Pulumi.Alias { Type = "azure-nextgen:authorization:RoleDefinition"},
                     new Pulumi.Alias { Type = "azure-nextgen:authorization/v20150701:RoleDefinition"},
                     new Pulumi.Alias { Type = "azure-nextgen:authorization/v20180101preview:RoleDefinition"},
+                    new Pulumi.Alias { Type = "azure-nextgen:authorization/v20200301preview:RoleDefinition"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -143,8 +144,8 @@ namespace Pulumi.AzureNextGen.Authorization.Latest
         /// <summary>
         /// The ID of the role definition.
         /// </summary>
-        [Input("roleDefinitionId", required: true)]
-        public Input<string> RoleDefinitionId { get; set; } = null!;
+        [Input("roleDefinitionId")]
+        public Input<string>? RoleDefinitionId { get; set; }
 
         /// <summary>
         /// The role name.

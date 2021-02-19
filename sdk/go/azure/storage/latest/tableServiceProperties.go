@@ -12,7 +12,7 @@ import (
 )
 
 // The properties of a storage account’s Table service.
-// Latest API Version: 2019-06-01.
+// Latest API Version: 2021-01-01.
 //
 // Deprecated: The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-nextgen:storage:TableServiceProperties'.
 type TableServiceProperties struct {
@@ -39,9 +39,6 @@ func NewTableServiceProperties(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if args.TableServiceName == nil {
-		return nil, errors.New("invalid value for required argument 'TableServiceName'")
-	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-nextgen:storage:TableServiceProperties"),
@@ -51,6 +48,9 @@ func NewTableServiceProperties(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-nextgen:storage/v20200801preview:TableServiceProperties"),
+		},
+		{
+			Type: pulumi.String("azure-nextgen:storage/v20210101:TableServiceProperties"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -105,7 +105,7 @@ type tableServicePropertiesArgs struct {
 	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the Table Service within the specified storage account. Table Service Name must be 'default'
-	TableServiceName string `pulumi:"tableServiceName"`
+	TableServiceName *string `pulumi:"tableServiceName"`
 }
 
 // The set of arguments for constructing a TableServiceProperties resource.
@@ -117,7 +117,7 @@ type TableServicePropertiesArgs struct {
 	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the Table Service within the specified storage account. Table Service Name must be 'default'
-	TableServiceName pulumi.StringInput
+	TableServiceName pulumi.StringPtrInput
 }
 
 func (TableServicePropertiesArgs) ElementType() reflect.Type {

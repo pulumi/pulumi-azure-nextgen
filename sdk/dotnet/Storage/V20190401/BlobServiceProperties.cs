@@ -88,6 +88,7 @@ namespace Pulumi.AzureNextGen.Storage.V20190401
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20181101:BlobServiceProperties"},
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20190601:BlobServiceProperties"},
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20200801preview:BlobServiceProperties"},
+                    new Pulumi.Alias { Type = "azure-nextgen:storage/v20210101:BlobServiceProperties"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -126,8 +127,8 @@ namespace Pulumi.AzureNextGen.Storage.V20190401
         /// <summary>
         /// The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
         /// </summary>
-        [Input("blobServicesName", required: true)]
-        public Input<string> BlobServicesName { get; set; } = null!;
+        [Input("blobServicesName")]
+        public Input<string>? BlobServicesName { get; set; }
 
         /// <summary>
         /// The blob service properties for change feed events.

@@ -74,9 +74,6 @@ export class ProtectionIntent extends pulumi.CustomResource {
             if ((!args || args.fabricName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'fabricName'");
             }
-            if ((!args || args.intentObjectName === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'intentObjectName'");
-            }
             if ((!args || args.resourceGroupName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
@@ -108,7 +105,7 @@ export class ProtectionIntent extends pulumi.CustomResource {
         if (!opts.version) {
             opts.version = utilities.getVersion();
         }
-        const aliasOpts = { aliases: [{ type: "azure-nextgen:recoveryservices/latest:ProtectionIntent" }, { type: "azure-nextgen:recoveryservices/v20170701:ProtectionIntent" }] };
+        const aliasOpts = { aliases: [{ type: "azure-nextgen:recoveryservices/latest:ProtectionIntent" }, { type: "azure-nextgen:recoveryservices/v20170701:ProtectionIntent" }, { type: "azure-nextgen:recoveryservices/v20210201:ProtectionIntent" }] };
         opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
         super(ProtectionIntent.__pulumiType, name, inputs, opts);
     }
@@ -129,7 +126,7 @@ export interface ProtectionIntentArgs {
     /**
      * Intent object name.
      */
-    readonly intentObjectName: pulumi.Input<string>;
+    readonly intentObjectName?: pulumi.Input<string>;
     /**
      * Resource location.
      */

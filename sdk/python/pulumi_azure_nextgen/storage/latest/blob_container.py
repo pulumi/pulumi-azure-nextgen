@@ -33,7 +33,7 @@ class BlobContainer(pulumi.CustomResource):
                  __opts__=None):
         """
         Properties of the blob container, including Id, resource name, resource type, Etag.
-        Latest API Version: 2019-06-01.
+        Latest API Version: 2021-01-01.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -66,8 +66,6 @@ class BlobContainer(pulumi.CustomResource):
             if account_name is None and not opts.urn:
                 raise TypeError("Missing required property 'account_name'")
             __props__['account_name'] = account_name
-            if container_name is None and not opts.urn:
-                raise TypeError("Missing required property 'container_name'")
             __props__['container_name'] = container_name
             __props__['default_encryption_scope'] = default_encryption_scope
             __props__['deny_encryption_scope_override'] = deny_encryption_scope_override
@@ -91,7 +89,7 @@ class BlobContainer(pulumi.CustomResource):
             __props__['remaining_retention_days'] = None
             __props__['type'] = None
             __props__['version'] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:storage:BlobContainer"), pulumi.Alias(type_="azure-nextgen:storage/v20180201:BlobContainer"), pulumi.Alias(type_="azure-nextgen:storage/v20180301preview:BlobContainer"), pulumi.Alias(type_="azure-nextgen:storage/v20180701:BlobContainer"), pulumi.Alias(type_="azure-nextgen:storage/v20181101:BlobContainer"), pulumi.Alias(type_="azure-nextgen:storage/v20190401:BlobContainer"), pulumi.Alias(type_="azure-nextgen:storage/v20190601:BlobContainer"), pulumi.Alias(type_="azure-nextgen:storage/v20200801preview:BlobContainer")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:storage:BlobContainer"), pulumi.Alias(type_="azure-nextgen:storage/v20180201:BlobContainer"), pulumi.Alias(type_="azure-nextgen:storage/v20180301preview:BlobContainer"), pulumi.Alias(type_="azure-nextgen:storage/v20180701:BlobContainer"), pulumi.Alias(type_="azure-nextgen:storage/v20181101:BlobContainer"), pulumi.Alias(type_="azure-nextgen:storage/v20190401:BlobContainer"), pulumi.Alias(type_="azure-nextgen:storage/v20190601:BlobContainer"), pulumi.Alias(type_="azure-nextgen:storage/v20200801preview:BlobContainer"), pulumi.Alias(type_="azure-nextgen:storage/v20210101:BlobContainer")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(BlobContainer, __self__).__init__(
             'azure-nextgen:storage/latest:BlobContainer',

@@ -12,7 +12,7 @@ import (
 )
 
 // The ImmutabilityPolicy property of a blob container, including Id, resource name, resource type, Etag.
-// API Version: 2019-06-01.
+// API Version: 2021-01-01.
 type BlobContainerImmutabilityPolicy struct {
 	pulumi.CustomResourceState
 
@@ -43,9 +43,6 @@ func NewBlobContainerImmutabilityPolicy(ctx *pulumi.Context,
 	if args.ContainerName == nil {
 		return nil, errors.New("invalid value for required argument 'ContainerName'")
 	}
-	if args.ImmutabilityPolicyName == nil {
-		return nil, errors.New("invalid value for required argument 'ImmutabilityPolicyName'")
-	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
@@ -73,6 +70,9 @@ func NewBlobContainerImmutabilityPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-nextgen:storage/v20200801preview:BlobContainerImmutabilityPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-nextgen:storage/v20210101:BlobContainerImmutabilityPolicy"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -141,7 +141,7 @@ type blobContainerImmutabilityPolicyArgs struct {
 	// The immutability period for the blobs in the container since the policy creation, in days.
 	ImmutabilityPeriodSinceCreationInDays *int `pulumi:"immutabilityPeriodSinceCreationInDays"`
 	// The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
-	ImmutabilityPolicyName string `pulumi:"immutabilityPolicyName"`
+	ImmutabilityPolicyName *string `pulumi:"immutabilityPolicyName"`
 	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
@@ -157,7 +157,7 @@ type BlobContainerImmutabilityPolicyArgs struct {
 	// The immutability period for the blobs in the container since the policy creation, in days.
 	ImmutabilityPeriodSinceCreationInDays pulumi.IntPtrInput
 	// The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
-	ImmutabilityPolicyName pulumi.StringInput
+	ImmutabilityPolicyName pulumi.StringPtrInput
 	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 }

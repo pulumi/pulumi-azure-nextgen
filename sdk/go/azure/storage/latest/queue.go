@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Latest API Version: 2019-06-01.
+// Latest API Version: 2021-01-01.
 //
 // Deprecated: The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-nextgen:storage:Queue'.
 type Queue struct {
@@ -37,9 +37,6 @@ func NewQueue(ctx *pulumi.Context,
 	if args.AccountName == nil {
 		return nil, errors.New("invalid value for required argument 'AccountName'")
 	}
-	if args.QueueName == nil {
-		return nil, errors.New("invalid value for required argument 'QueueName'")
-	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
@@ -52,6 +49,9 @@ func NewQueue(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-nextgen:storage/v20200801preview:Queue"),
+		},
+		{
+			Type: pulumi.String("azure-nextgen:storage/v20210101:Queue"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -108,7 +108,7 @@ type queueArgs struct {
 	// A name-value pair that represents queue metadata.
 	Metadata map[string]string `pulumi:"metadata"`
 	// A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters.
-	QueueName string `pulumi:"queueName"`
+	QueueName *string `pulumi:"queueName"`
 	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
@@ -120,7 +120,7 @@ type QueueArgs struct {
 	// A name-value pair that represents queue metadata.
 	Metadata pulumi.StringMapInput
 	// A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters.
-	QueueName pulumi.StringInput
+	QueueName pulumi.StringPtrInput
 	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 }

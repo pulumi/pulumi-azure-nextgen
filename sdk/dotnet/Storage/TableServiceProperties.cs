@@ -11,7 +11,7 @@ namespace Pulumi.AzureNextGen.Storage
 {
     /// <summary>
     /// The properties of a storage account’s Table service.
-    /// API Version: 2019-06-01.
+    /// API Version: 2021-01-01.
     /// </summary>
     [AzureNextGenResourceType("azure-nextgen:storage:TableServiceProperties")]
     public partial class TableServiceProperties : Pulumi.CustomResource
@@ -62,6 +62,7 @@ namespace Pulumi.AzureNextGen.Storage
                     new Pulumi.Alias { Type = "azure-nextgen:storage/latest:TableServiceProperties"},
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20190601:TableServiceProperties"},
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20200801preview:TableServiceProperties"},
+                    new Pulumi.Alias { Type = "azure-nextgen:storage/v20210101:TableServiceProperties"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -106,8 +107,8 @@ namespace Pulumi.AzureNextGen.Storage
         /// <summary>
         /// The name of the Table Service within the specified storage account. Table Service Name must be 'default'
         /// </summary>
-        [Input("tableServiceName", required: true)]
-        public Input<string> TableServiceName { get; set; } = null!;
+        [Input("tableServiceName")]
+        public Input<string>? TableServiceName { get; set; }
 
         public TableServicePropertiesArgs()
         {

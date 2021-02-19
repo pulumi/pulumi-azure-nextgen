@@ -11,7 +11,7 @@ namespace Pulumi.AzureNextGen.Storage
 {
     /// <summary>
     /// Properties of the table, including Id, resource name, resource type.
-    /// API Version: 2019-06-01.
+    /// API Version: 2021-01-01.
     /// </summary>
     [AzureNextGenResourceType("azure-nextgen:storage:Table")]
     public partial class Table : Pulumi.CustomResource
@@ -62,6 +62,7 @@ namespace Pulumi.AzureNextGen.Storage
                     new Pulumi.Alias { Type = "azure-nextgen:storage/latest:Table"},
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20190601:Table"},
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20200801preview:Table"},
+                    new Pulumi.Alias { Type = "azure-nextgen:storage/v20210101:Table"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -100,8 +101,8 @@ namespace Pulumi.AzureNextGen.Storage
         /// <summary>
         /// A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character.
         /// </summary>
-        [Input("tableName", required: true)]
-        public Input<string> TableName { get; set; } = null!;
+        [Input("tableName")]
+        public Input<string>? TableName { get; set; }
 
         public TableArgs()
         {

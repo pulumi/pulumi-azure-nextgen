@@ -74,9 +74,6 @@ export class BlobContainerImmutabilityPolicy extends pulumi.CustomResource {
             if ((!args || args.immutabilityPeriodSinceCreationInDays === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'immutabilityPeriodSinceCreationInDays'");
             }
-            if ((!args || args.immutabilityPolicyName === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'immutabilityPolicyName'");
-            }
             if ((!args || args.resourceGroupName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
@@ -103,7 +100,7 @@ export class BlobContainerImmutabilityPolicy extends pulumi.CustomResource {
         if (!opts.version) {
             opts.version = utilities.getVersion();
         }
-        const aliasOpts = { aliases: [{ type: "azure-nextgen:storage:BlobContainerImmutabilityPolicy" }, { type: "azure-nextgen:storage/latest:BlobContainerImmutabilityPolicy" }, { type: "azure-nextgen:storage/v20180201:BlobContainerImmutabilityPolicy" }, { type: "azure-nextgen:storage/v20180301preview:BlobContainerImmutabilityPolicy" }, { type: "azure-nextgen:storage/v20180701:BlobContainerImmutabilityPolicy" }, { type: "azure-nextgen:storage/v20181101:BlobContainerImmutabilityPolicy" }, { type: "azure-nextgen:storage/v20190601:BlobContainerImmutabilityPolicy" }, { type: "azure-nextgen:storage/v20200801preview:BlobContainerImmutabilityPolicy" }] };
+        const aliasOpts = { aliases: [{ type: "azure-nextgen:storage:BlobContainerImmutabilityPolicy" }, { type: "azure-nextgen:storage/latest:BlobContainerImmutabilityPolicy" }, { type: "azure-nextgen:storage/v20180201:BlobContainerImmutabilityPolicy" }, { type: "azure-nextgen:storage/v20180301preview:BlobContainerImmutabilityPolicy" }, { type: "azure-nextgen:storage/v20180701:BlobContainerImmutabilityPolicy" }, { type: "azure-nextgen:storage/v20181101:BlobContainerImmutabilityPolicy" }, { type: "azure-nextgen:storage/v20190601:BlobContainerImmutabilityPolicy" }, { type: "azure-nextgen:storage/v20200801preview:BlobContainerImmutabilityPolicy" }, { type: "azure-nextgen:storage/v20210101:BlobContainerImmutabilityPolicy" }] };
         opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
         super(BlobContainerImmutabilityPolicy.__pulumiType, name, inputs, opts);
     }
@@ -128,7 +125,7 @@ export interface BlobContainerImmutabilityPolicyArgs {
     /**
      * The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
      */
-    readonly immutabilityPolicyName: pulumi.Input<string>;
+    readonly immutabilityPolicyName?: pulumi.Input<string>;
     /**
      * The name of the resource group within the user's subscription. The name is case insensitive.
      */

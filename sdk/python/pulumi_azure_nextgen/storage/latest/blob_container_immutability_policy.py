@@ -30,7 +30,7 @@ class BlobContainerImmutabilityPolicy(pulumi.CustomResource):
                  __opts__=None):
         """
         The ImmutabilityPolicy property of a blob container, including Id, resource name, resource type, Etag.
-        Latest API Version: 2019-06-01.
+        Latest API Version: 2021-01-01.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -67,8 +67,6 @@ class BlobContainerImmutabilityPolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'container_name'")
             __props__['container_name'] = container_name
             __props__['immutability_period_since_creation_in_days'] = immutability_period_since_creation_in_days
-            if immutability_policy_name is None and not opts.urn:
-                raise TypeError("Missing required property 'immutability_policy_name'")
             __props__['immutability_policy_name'] = immutability_policy_name
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
@@ -77,7 +75,7 @@ class BlobContainerImmutabilityPolicy(pulumi.CustomResource):
             __props__['name'] = None
             __props__['state'] = None
             __props__['type'] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:storage:BlobContainerImmutabilityPolicy"), pulumi.Alias(type_="azure-nextgen:storage/v20180201:BlobContainerImmutabilityPolicy"), pulumi.Alias(type_="azure-nextgen:storage/v20180301preview:BlobContainerImmutabilityPolicy"), pulumi.Alias(type_="azure-nextgen:storage/v20180701:BlobContainerImmutabilityPolicy"), pulumi.Alias(type_="azure-nextgen:storage/v20181101:BlobContainerImmutabilityPolicy"), pulumi.Alias(type_="azure-nextgen:storage/v20190401:BlobContainerImmutabilityPolicy"), pulumi.Alias(type_="azure-nextgen:storage/v20190601:BlobContainerImmutabilityPolicy"), pulumi.Alias(type_="azure-nextgen:storage/v20200801preview:BlobContainerImmutabilityPolicy")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:storage:BlobContainerImmutabilityPolicy"), pulumi.Alias(type_="azure-nextgen:storage/v20180201:BlobContainerImmutabilityPolicy"), pulumi.Alias(type_="azure-nextgen:storage/v20180301preview:BlobContainerImmutabilityPolicy"), pulumi.Alias(type_="azure-nextgen:storage/v20180701:BlobContainerImmutabilityPolicy"), pulumi.Alias(type_="azure-nextgen:storage/v20181101:BlobContainerImmutabilityPolicy"), pulumi.Alias(type_="azure-nextgen:storage/v20190401:BlobContainerImmutabilityPolicy"), pulumi.Alias(type_="azure-nextgen:storage/v20190601:BlobContainerImmutabilityPolicy"), pulumi.Alias(type_="azure-nextgen:storage/v20200801preview:BlobContainerImmutabilityPolicy"), pulumi.Alias(type_="azure-nextgen:storage/v20210101:BlobContainerImmutabilityPolicy")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(BlobContainerImmutabilityPolicy, __self__).__init__(
             'azure-nextgen:storage/latest:BlobContainerImmutabilityPolicy',

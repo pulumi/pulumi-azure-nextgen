@@ -27,7 +27,7 @@ class Queue(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Latest API Version: 2019-06-01.
+        Latest API Version: 2021-01-01.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -58,8 +58,6 @@ class Queue(pulumi.CustomResource):
                 raise TypeError("Missing required property 'account_name'")
             __props__['account_name'] = account_name
             __props__['metadata'] = metadata
-            if queue_name is None and not opts.urn:
-                raise TypeError("Missing required property 'queue_name'")
             __props__['queue_name'] = queue_name
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
@@ -67,7 +65,7 @@ class Queue(pulumi.CustomResource):
             __props__['approximate_message_count'] = None
             __props__['name'] = None
             __props__['type'] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:storage:Queue"), pulumi.Alias(type_="azure-nextgen:storage/v20190601:Queue"), pulumi.Alias(type_="azure-nextgen:storage/v20200801preview:Queue")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:storage:Queue"), pulumi.Alias(type_="azure-nextgen:storage/v20190601:Queue"), pulumi.Alias(type_="azure-nextgen:storage/v20200801preview:Queue"), pulumi.Alias(type_="azure-nextgen:storage/v20210101:Queue")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Queue, __self__).__init__(
             'azure-nextgen:storage/latest:Queue',

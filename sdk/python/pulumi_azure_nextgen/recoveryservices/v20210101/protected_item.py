@@ -71,8 +71,6 @@ class ProtectedItem(pulumi.CustomResource):
             __props__['fabric_name'] = fabric_name
             __props__['location'] = location
             __props__['properties'] = properties
-            if protected_item_name is None and not opts.urn:
-                raise TypeError("Missing required property 'protected_item_name'")
             __props__['protected_item_name'] = protected_item_name
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
@@ -83,7 +81,7 @@ class ProtectedItem(pulumi.CustomResource):
             __props__['vault_name'] = vault_name
             __props__['name'] = None
             __props__['type'] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:recoveryservices:ProtectedItem"), pulumi.Alias(type_="azure-nextgen:recoveryservices/latest:ProtectedItem"), pulumi.Alias(type_="azure-nextgen:recoveryservices/v20160601:ProtectedItem"), pulumi.Alias(type_="azure-nextgen:recoveryservices/v20190513:ProtectedItem"), pulumi.Alias(type_="azure-nextgen:recoveryservices/v20190615:ProtectedItem"), pulumi.Alias(type_="azure-nextgen:recoveryservices/v20201001:ProtectedItem"), pulumi.Alias(type_="azure-nextgen:recoveryservices/v20201201:ProtectedItem")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:recoveryservices:ProtectedItem"), pulumi.Alias(type_="azure-nextgen:recoveryservices/latest:ProtectedItem"), pulumi.Alias(type_="azure-nextgen:recoveryservices/v20160601:ProtectedItem"), pulumi.Alias(type_="azure-nextgen:recoveryservices/v20190513:ProtectedItem"), pulumi.Alias(type_="azure-nextgen:recoveryservices/v20190615:ProtectedItem"), pulumi.Alias(type_="azure-nextgen:recoveryservices/v20201001:ProtectedItem"), pulumi.Alias(type_="azure-nextgen:recoveryservices/v20201201:ProtectedItem"), pulumi.Alias(type_="azure-nextgen:recoveryservices/v20210201:ProtectedItem")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ProtectedItem, __self__).__init__(
             'azure-nextgen:recoveryservices/v20210101:ProtectedItem',

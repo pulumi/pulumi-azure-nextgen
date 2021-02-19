@@ -71,9 +71,6 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     constructor(name: string, args: PrivateEndpointConnectionArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (!(opts && opts.id)) {
-            if ((!args || args.privateEndpointConnectionName === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'privateEndpointConnectionName'");
-            }
             if ((!args || args.resourceGroupName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
@@ -104,7 +101,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
         if (!opts.version) {
             opts.version = utilities.getVersion();
         }
-        const aliasOpts = { aliases: [{ type: "azure-nextgen:recoveryservices/latest:PrivateEndpointConnection" }, { type: "azure-nextgen:recoveryservices/v20200202:PrivateEndpointConnection" }, { type: "azure-nextgen:recoveryservices/v20201001:PrivateEndpointConnection" }, { type: "azure-nextgen:recoveryservices/v20201201:PrivateEndpointConnection" }, { type: "azure-nextgen:recoveryservices/v20210101:PrivateEndpointConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-nextgen:recoveryservices/latest:PrivateEndpointConnection" }, { type: "azure-nextgen:recoveryservices/v20200202:PrivateEndpointConnection" }, { type: "azure-nextgen:recoveryservices/v20201001:PrivateEndpointConnection" }, { type: "azure-nextgen:recoveryservices/v20201201:PrivateEndpointConnection" }, { type: "azure-nextgen:recoveryservices/v20210101:PrivateEndpointConnection" }, { type: "azure-nextgen:recoveryservices/v20210201:PrivateEndpointConnection" }] };
         opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
         super(PrivateEndpointConnection.__pulumiType, name, inputs, opts);
     }
@@ -125,7 +122,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * The name of the private endpoint connection.
      */
-    readonly privateEndpointConnectionName: pulumi.Input<string>;
+    readonly privateEndpointConnectionName?: pulumi.Input<string>;
     /**
      * PrivateEndpointConnectionResource properties
      */

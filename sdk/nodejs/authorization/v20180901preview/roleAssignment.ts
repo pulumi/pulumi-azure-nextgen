@@ -77,9 +77,6 @@ export class RoleAssignment extends pulumi.CustomResource {
             if ((!args || args.principalId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'principalId'");
             }
-            if ((!args || args.roleAssignmentName === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'roleAssignmentName'");
-            }
             if ((!args || args.roleDefinitionId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'roleDefinitionId'");
             }
@@ -110,7 +107,7 @@ export class RoleAssignment extends pulumi.CustomResource {
         if (!opts.version) {
             opts.version = utilities.getVersion();
         }
-        const aliasOpts = { aliases: [{ type: "azure-nextgen:authorization:RoleAssignment" }, { type: "azure-nextgen:authorization/latest:RoleAssignment" }, { type: "azure-nextgen:authorization/v20150701:RoleAssignment" }, { type: "azure-nextgen:authorization/v20171001preview:RoleAssignment" }, { type: "azure-nextgen:authorization/v20180101preview:RoleAssignment" }, { type: "azure-nextgen:authorization/v20200401preview:RoleAssignment" }] };
+        const aliasOpts = { aliases: [{ type: "azure-nextgen:authorization:RoleAssignment" }, { type: "azure-nextgen:authorization/latest:RoleAssignment" }, { type: "azure-nextgen:authorization/v20150701:RoleAssignment" }, { type: "azure-nextgen:authorization/v20171001preview:RoleAssignment" }, { type: "azure-nextgen:authorization/v20180101preview:RoleAssignment" }, { type: "azure-nextgen:authorization/v20200301preview:RoleAssignment" }, { type: "azure-nextgen:authorization/v20200401preview:RoleAssignment" }] };
         opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
         super(RoleAssignment.__pulumiType, name, inputs, opts);
     }
@@ -135,7 +132,7 @@ export interface RoleAssignmentArgs {
     /**
      * The name of the role assignment to create. It can be any valid GUID.
      */
-    readonly roleAssignmentName: pulumi.Input<string>;
+    readonly roleAssignmentName?: pulumi.Input<string>;
     /**
      * The role definition ID used in the role assignment.
      */

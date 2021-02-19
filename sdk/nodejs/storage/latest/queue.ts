@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * Latest API Version: 2019-06-01.
+ * Latest API Version: 2021-01-01.
  *
  * @deprecated The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-nextgen:storage:Queue'.
  */
@@ -69,9 +69,6 @@ export class Queue extends pulumi.CustomResource {
             if ((!args || args.accountName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'accountName'");
             }
-            if ((!args || args.queueName === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'queueName'");
-            }
             if ((!args || args.resourceGroupName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
@@ -95,7 +92,7 @@ export class Queue extends pulumi.CustomResource {
         if (!opts.version) {
             opts.version = utilities.getVersion();
         }
-        const aliasOpts = { aliases: [{ type: "azure-nextgen:storage:Queue" }, { type: "azure-nextgen:storage/v20190601:Queue" }, { type: "azure-nextgen:storage/v20200801preview:Queue" }] };
+        const aliasOpts = { aliases: [{ type: "azure-nextgen:storage:Queue" }, { type: "azure-nextgen:storage/v20190601:Queue" }, { type: "azure-nextgen:storage/v20200801preview:Queue" }, { type: "azure-nextgen:storage/v20210101:Queue" }] };
         opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
         super(Queue.__pulumiType, name, inputs, opts);
     }
@@ -116,7 +113,7 @@ export interface QueueArgs {
     /**
      * A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters.
      */
-    readonly queueName: pulumi.Input<string>;
+    readonly queueName?: pulumi.Input<string>;
     /**
      * The name of the resource group within the user's subscription. The name is case insensitive.
      */

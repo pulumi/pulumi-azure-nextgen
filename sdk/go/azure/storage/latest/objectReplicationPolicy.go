@@ -12,7 +12,7 @@ import (
 )
 
 // The replication policy between two storage accounts. Multiple rules can be defined in one policy.
-// Latest API Version: 2019-06-01.
+// Latest API Version: 2021-01-01.
 //
 // Deprecated: The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-nextgen:storage:ObjectReplicationPolicy'.
 type ObjectReplicationPolicy struct {
@@ -47,9 +47,6 @@ func NewObjectReplicationPolicy(ctx *pulumi.Context,
 	if args.DestinationAccount == nil {
 		return nil, errors.New("invalid value for required argument 'DestinationAccount'")
 	}
-	if args.ObjectReplicationPolicyId == nil {
-		return nil, errors.New("invalid value for required argument 'ObjectReplicationPolicyId'")
-	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
@@ -65,6 +62,9 @@ func NewObjectReplicationPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-nextgen:storage/v20200801preview:ObjectReplicationPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-nextgen:storage/v20210101:ObjectReplicationPolicy"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -133,7 +133,7 @@ type objectReplicationPolicyArgs struct {
 	// Required. Destination account name.
 	DestinationAccount string `pulumi:"destinationAccount"`
 	// The ID of object replication policy or 'default' if the policy ID is unknown.
-	ObjectReplicationPolicyId string `pulumi:"objectReplicationPolicyId"`
+	ObjectReplicationPolicyId *string `pulumi:"objectReplicationPolicyId"`
 	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The storage account object replication rules.
@@ -149,7 +149,7 @@ type ObjectReplicationPolicyArgs struct {
 	// Required. Destination account name.
 	DestinationAccount pulumi.StringInput
 	// The ID of object replication policy or 'default' if the policy ID is unknown.
-	ObjectReplicationPolicyId pulumi.StringInput
+	ObjectReplicationPolicyId pulumi.StringPtrInput
 	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The storage account object replication rules.

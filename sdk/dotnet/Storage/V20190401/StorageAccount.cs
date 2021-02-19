@@ -229,6 +229,7 @@ namespace Pulumi.AzureNextGen.Storage.V20190401
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20181101:StorageAccount"},
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20190601:StorageAccount"},
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20200801preview:StorageAccount"},
+                    new Pulumi.Alias { Type = "azure-nextgen:storage/v20210101:StorageAccount"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -261,8 +262,8 @@ namespace Pulumi.AzureNextGen.Storage.V20190401
         /// <summary>
         /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
         /// </summary>
-        [Input("accountName", required: true)]
-        public Input<string> AccountName { get; set; } = null!;
+        [Input("accountName")]
+        public Input<string>? AccountName { get; set; }
 
         /// <summary>
         /// Allow or disallow public access to all blobs or containers in the storage account. The default interpretation is true for this property.

@@ -68,8 +68,6 @@ class FileShare(pulumi.CustomResource):
                 raise TypeError("Missing required property 'resource_group_name'")
             __props__['resource_group_name'] = resource_group_name
             __props__['root_squash'] = root_squash
-            if share_name is None and not opts.urn:
-                raise TypeError("Missing required property 'share_name'")
             __props__['share_name'] = share_name
             __props__['share_quota'] = share_quota
             __props__['access_tier_change_time'] = None
@@ -83,7 +81,7 @@ class FileShare(pulumi.CustomResource):
             __props__['share_usage_bytes'] = None
             __props__['type'] = None
             __props__['version'] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:storage:FileShare"), pulumi.Alias(type_="azure-nextgen:storage/latest:FileShare"), pulumi.Alias(type_="azure-nextgen:storage/v20190401:FileShare"), pulumi.Alias(type_="azure-nextgen:storage/v20200801preview:FileShare")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:storage:FileShare"), pulumi.Alias(type_="azure-nextgen:storage/latest:FileShare"), pulumi.Alias(type_="azure-nextgen:storage/v20190401:FileShare"), pulumi.Alias(type_="azure-nextgen:storage/v20200801preview:FileShare"), pulumi.Alias(type_="azure-nextgen:storage/v20210101:FileShare")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(FileShare, __self__).__init__(
             'azure-nextgen:storage/v20190601:FileShare',

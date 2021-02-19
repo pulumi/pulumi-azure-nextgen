@@ -78,6 +78,7 @@ namespace Pulumi.AzureNextGen.Storage.V20181101
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20190401:BlobContainerImmutabilityPolicy"},
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20190601:BlobContainerImmutabilityPolicy"},
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20200801preview:BlobContainerImmutabilityPolicy"},
+                    new Pulumi.Alias { Type = "azure-nextgen:storage/v20210101:BlobContainerImmutabilityPolicy"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -122,8 +123,8 @@ namespace Pulumi.AzureNextGen.Storage.V20181101
         /// <summary>
         /// The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
         /// </summary>
-        [Input("immutabilityPolicyName", required: true)]
-        public Input<string> ImmutabilityPolicyName { get; set; } = null!;
+        [Input("immutabilityPolicyName")]
+        public Input<string>? ImmutabilityPolicyName { get; set; }
 
         /// <summary>
         /// The name of the resource group within the user's subscription. The name is case insensitive.

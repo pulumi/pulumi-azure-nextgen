@@ -75,9 +75,6 @@ export class FileShare extends pulumi.CustomResource {
             if ((!args || args.resourceGroupName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.shareName === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'shareName'");
-            }
             inputs["accountName"] = args ? args.accountName : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
             inputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
@@ -102,7 +99,7 @@ export class FileShare extends pulumi.CustomResource {
         if (!opts.version) {
             opts.version = utilities.getVersion();
         }
-        const aliasOpts = { aliases: [{ type: "azure-nextgen:storage:FileShare" }, { type: "azure-nextgen:storage/latest:FileShare" }, { type: "azure-nextgen:storage/v20190601:FileShare" }, { type: "azure-nextgen:storage/v20200801preview:FileShare" }] };
+        const aliasOpts = { aliases: [{ type: "azure-nextgen:storage:FileShare" }, { type: "azure-nextgen:storage/latest:FileShare" }, { type: "azure-nextgen:storage/v20190601:FileShare" }, { type: "azure-nextgen:storage/v20200801preview:FileShare" }, { type: "azure-nextgen:storage/v20210101:FileShare" }] };
         opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
         super(FileShare.__pulumiType, name, inputs, opts);
     }
@@ -127,7 +124,7 @@ export interface FileShareArgs {
     /**
      * The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
      */
-    readonly shareName: pulumi.Input<string>;
+    readonly shareName?: pulumi.Input<string>;
     /**
      * The maximum size of the share, in gigabytes. Must be greater than 0, and less than or equal to 5TB (5120).
      */

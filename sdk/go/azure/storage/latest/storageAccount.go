@@ -12,7 +12,7 @@ import (
 )
 
 // The storage account.
-// Latest API Version: 2019-06-01.
+// Latest API Version: 2021-01-01.
 //
 // Deprecated: The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-nextgen:storage:StorageAccount'.
 type StorageAccount struct {
@@ -34,8 +34,12 @@ type StorageAccount struct {
 	CustomDomain CustomDomainResponseOutput `pulumi:"customDomain"`
 	// Allows https traffic only to storage service if sets to true.
 	EnableHttpsTrafficOnly pulumi.BoolPtrOutput `pulumi:"enableHttpsTrafficOnly"`
+	// NFS 3.0 protocol support enabled if set to true.
+	EnableNfsV3 pulumi.BoolPtrOutput `pulumi:"enableNfsV3"`
 	// Gets the encryption settings on the account. If unspecified, the account is unencrypted.
 	Encryption EncryptionResponseOutput `pulumi:"encryption"`
+	// The extendedLocation of the resource.
+	ExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// If the failover is in progress, the value will be true, otherwise, it will be null.
 	FailoverInProgress pulumi.BoolOutput `pulumi:"failoverInProgress"`
 	// Geo Replication Stats
@@ -91,9 +95,6 @@ func NewStorageAccount(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountName == nil {
-		return nil, errors.New("invalid value for required argument 'AccountName'")
-	}
 	if args.Kind == nil {
 		return nil, errors.New("invalid value for required argument 'Kind'")
 	}
@@ -149,6 +150,9 @@ func NewStorageAccount(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-nextgen:storage/v20200801preview:StorageAccount"),
 		},
+		{
+			Type: pulumi.String("azure-nextgen:storage/v20210101:StorageAccount"),
+		},
 	})
 	opts = append(opts, aliases)
 	var resource StorageAccount
@@ -189,8 +193,12 @@ type storageAccountState struct {
 	CustomDomain *CustomDomainResponse `pulumi:"customDomain"`
 	// Allows https traffic only to storage service if sets to true.
 	EnableHttpsTrafficOnly *bool `pulumi:"enableHttpsTrafficOnly"`
+	// NFS 3.0 protocol support enabled if set to true.
+	EnableNfsV3 *bool `pulumi:"enableNfsV3"`
 	// Gets the encryption settings on the account. If unspecified, the account is unencrypted.
 	Encryption *EncryptionResponse `pulumi:"encryption"`
+	// The extendedLocation of the resource.
+	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
 	// If the failover is in progress, the value will be true, otherwise, it will be null.
 	FailoverInProgress *bool `pulumi:"failoverInProgress"`
 	// Geo Replication Stats
@@ -256,8 +264,12 @@ type StorageAccountState struct {
 	CustomDomain CustomDomainResponsePtrInput
 	// Allows https traffic only to storage service if sets to true.
 	EnableHttpsTrafficOnly pulumi.BoolPtrInput
+	// NFS 3.0 protocol support enabled if set to true.
+	EnableNfsV3 pulumi.BoolPtrInput
 	// Gets the encryption settings on the account. If unspecified, the account is unencrypted.
 	Encryption EncryptionResponsePtrInput
+	// The extendedLocation of the resource.
+	ExtendedLocation ExtendedLocationResponsePtrInput
 	// If the failover is in progress, the value will be true, otherwise, it will be null.
 	FailoverInProgress pulumi.BoolPtrInput
 	// Geo Replication Stats
@@ -314,7 +326,7 @@ type storageAccountArgs struct {
 	// Required for storage accounts where kind = BlobStorage. The access tier used for billing.
 	AccessTier *string `pulumi:"accessTier"`
 	// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-	AccountName string `pulumi:"accountName"`
+	AccountName *string `pulumi:"accountName"`
 	// Allow or disallow public access to all blobs or containers in the storage account. The default interpretation is true for this property.
 	AllowBlobPublicAccess *bool `pulumi:"allowBlobPublicAccess"`
 	// Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Azure AD). The default value is null, which is equivalent to true.
@@ -325,8 +337,12 @@ type storageAccountArgs struct {
 	CustomDomain *CustomDomain `pulumi:"customDomain"`
 	// Allows https traffic only to storage service if sets to true. The default value is true since API version 2019-04-01.
 	EnableHttpsTrafficOnly *bool `pulumi:"enableHttpsTrafficOnly"`
+	// NFS 3.0 protocol support enabled if set to true.
+	EnableNfsV3 *bool `pulumi:"enableNfsV3"`
 	// Not applicable. Azure Storage encryption is enabled for all storage accounts and cannot be disabled.
 	Encryption *Encryption `pulumi:"encryption"`
+	// Optional. Set the extended location of the resource. If not set, the storage account will be created in Azure main region. Otherwise it will be created in the specified extended location
+	ExtendedLocation *ExtendedLocation `pulumi:"extendedLocation"`
 	// The identity of the resource.
 	Identity *Identity `pulumi:"identity"`
 	// Account HierarchicalNamespace enabled if sets to true.
@@ -356,7 +372,7 @@ type StorageAccountArgs struct {
 	// Required for storage accounts where kind = BlobStorage. The access tier used for billing.
 	AccessTier *AccessTier
 	// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-	AccountName pulumi.StringInput
+	AccountName pulumi.StringPtrInput
 	// Allow or disallow public access to all blobs or containers in the storage account. The default interpretation is true for this property.
 	AllowBlobPublicAccess pulumi.BoolPtrInput
 	// Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Azure AD). The default value is null, which is equivalent to true.
@@ -367,8 +383,12 @@ type StorageAccountArgs struct {
 	CustomDomain CustomDomainPtrInput
 	// Allows https traffic only to storage service if sets to true. The default value is true since API version 2019-04-01.
 	EnableHttpsTrafficOnly pulumi.BoolPtrInput
+	// NFS 3.0 protocol support enabled if set to true.
+	EnableNfsV3 pulumi.BoolPtrInput
 	// Not applicable. Azure Storage encryption is enabled for all storage accounts and cannot be disabled.
 	Encryption EncryptionPtrInput
+	// Optional. Set the extended location of the resource. If not set, the storage account will be created in Azure main region. Otherwise it will be created in the specified extended location
+	ExtendedLocation ExtendedLocationPtrInput
 	// The identity of the resource.
 	Identity IdentityPtrInput
 	// Account HierarchicalNamespace enabled if sets to true.

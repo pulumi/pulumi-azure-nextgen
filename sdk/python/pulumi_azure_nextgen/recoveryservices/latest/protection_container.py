@@ -66,8 +66,6 @@ class ProtectionContainer(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if container_name is None and not opts.urn:
-                raise TypeError("Missing required property 'container_name'")
             __props__['container_name'] = container_name
             __props__['e_tag'] = e_tag
             if fabric_name is None and not opts.urn:
@@ -84,7 +82,7 @@ class ProtectionContainer(pulumi.CustomResource):
             __props__['vault_name'] = vault_name
             __props__['name'] = None
             __props__['type'] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:recoveryservices:ProtectionContainer"), pulumi.Alias(type_="azure-nextgen:recoveryservices/v20161201:ProtectionContainer"), pulumi.Alias(type_="azure-nextgen:recoveryservices/v20201001:ProtectionContainer"), pulumi.Alias(type_="azure-nextgen:recoveryservices/v20201201:ProtectionContainer"), pulumi.Alias(type_="azure-nextgen:recoveryservices/v20210101:ProtectionContainer")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:recoveryservices:ProtectionContainer"), pulumi.Alias(type_="azure-nextgen:recoveryservices/v20161201:ProtectionContainer"), pulumi.Alias(type_="azure-nextgen:recoveryservices/v20201001:ProtectionContainer"), pulumi.Alias(type_="azure-nextgen:recoveryservices/v20201201:ProtectionContainer"), pulumi.Alias(type_="azure-nextgen:recoveryservices/v20210101:ProtectionContainer"), pulumi.Alias(type_="azure-nextgen:recoveryservices/v20210201:ProtectionContainer")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ProtectionContainer, __self__).__init__(
             'azure-nextgen:recoveryservices/latest:ProtectionContainer',

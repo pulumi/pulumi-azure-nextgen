@@ -7,7 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * The properties of a storage account’s Blob service.
- * Latest API Version: 2019-06-01.
+ * Latest API Version: 2021-01-01.
  *
  * @deprecated The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-nextgen:storage:BlobServiceProperties'.
  */
@@ -103,9 +103,6 @@ export class BlobServiceProperties extends pulumi.CustomResource {
             if ((!args || args.accountName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'accountName'");
             }
-            if ((!args || args.blobServicesName === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'blobServicesName'");
-            }
             if ((!args || args.resourceGroupName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
@@ -145,7 +142,7 @@ export class BlobServiceProperties extends pulumi.CustomResource {
         if (!opts.version) {
             opts.version = utilities.getVersion();
         }
-        const aliasOpts = { aliases: [{ type: "azure-nextgen:storage:BlobServiceProperties" }, { type: "azure-nextgen:storage/v20180701:BlobServiceProperties" }, { type: "azure-nextgen:storage/v20181101:BlobServiceProperties" }, { type: "azure-nextgen:storage/v20190401:BlobServiceProperties" }, { type: "azure-nextgen:storage/v20190601:BlobServiceProperties" }, { type: "azure-nextgen:storage/v20200801preview:BlobServiceProperties" }] };
+        const aliasOpts = { aliases: [{ type: "azure-nextgen:storage:BlobServiceProperties" }, { type: "azure-nextgen:storage/v20180701:BlobServiceProperties" }, { type: "azure-nextgen:storage/v20181101:BlobServiceProperties" }, { type: "azure-nextgen:storage/v20190401:BlobServiceProperties" }, { type: "azure-nextgen:storage/v20190601:BlobServiceProperties" }, { type: "azure-nextgen:storage/v20200801preview:BlobServiceProperties" }, { type: "azure-nextgen:storage/v20210101:BlobServiceProperties" }] };
         opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
         super(BlobServiceProperties.__pulumiType, name, inputs, opts);
     }
@@ -166,7 +163,7 @@ export interface BlobServicePropertiesArgs {
     /**
      * The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
      */
-    readonly blobServicesName: pulumi.Input<string>;
+    readonly blobServicesName?: pulumi.Input<string>;
     /**
      * The blob service properties for change feed events.
      */

@@ -80,6 +80,7 @@ namespace Pulumi.AzureNextGen.RecoveryServices.Latest
                 {
                     new Pulumi.Alias { Type = "azure-nextgen:recoveryservices:ProtectionIntent"},
                     new Pulumi.Alias { Type = "azure-nextgen:recoveryservices/v20170701:ProtectionIntent"},
+                    new Pulumi.Alias { Type = "azure-nextgen:recoveryservices/v20210201:ProtectionIntent"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -118,8 +119,8 @@ namespace Pulumi.AzureNextGen.RecoveryServices.Latest
         /// <summary>
         /// Intent object name.
         /// </summary>
-        [Input("intentObjectName", required: true)]
-        public Input<string> IntentObjectName { get; set; } = null!;
+        [Input("intentObjectName")]
+        public Input<string>? IntentObjectName { get; set; }
 
         /// <summary>
         /// Resource location.

@@ -11,7 +11,7 @@ namespace Pulumi.AzureNextGen.Storage
 {
     /// <summary>
     /// The properties of a storage account’s Queue service.
-    /// API Version: 2019-06-01.
+    /// API Version: 2021-01-01.
     /// </summary>
     [AzureNextGenResourceType("azure-nextgen:storage:QueueServiceProperties")]
     public partial class QueueServiceProperties : Pulumi.CustomResource
@@ -62,6 +62,7 @@ namespace Pulumi.AzureNextGen.Storage
                     new Pulumi.Alias { Type = "azure-nextgen:storage/latest:QueueServiceProperties"},
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20190601:QueueServiceProperties"},
                     new Pulumi.Alias { Type = "azure-nextgen:storage/v20200801preview:QueueServiceProperties"},
+                    new Pulumi.Alias { Type = "azure-nextgen:storage/v20210101:QueueServiceProperties"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -100,8 +101,8 @@ namespace Pulumi.AzureNextGen.Storage
         /// <summary>
         /// The name of the Queue Service within the specified storage account. Queue Service Name must be 'default'
         /// </summary>
-        [Input("queueServiceName", required: true)]
-        public Input<string> QueueServiceName { get; set; } = null!;
+        [Input("queueServiceName")]
+        public Input<string>? QueueServiceName { get; set; }
 
         /// <summary>
         /// The name of the resource group within the user's subscription. The name is case insensitive.

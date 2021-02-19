@@ -12,7 +12,7 @@ import (
 )
 
 // The properties of a storage account’s Blob service.
-// API Version: 2019-06-01.
+// API Version: 2021-01-01.
 type BlobServiceProperties struct {
 	pulumi.CustomResourceState
 
@@ -52,9 +52,6 @@ func NewBlobServiceProperties(ctx *pulumi.Context,
 	if args.AccountName == nil {
 		return nil, errors.New("invalid value for required argument 'AccountName'")
 	}
-	if args.BlobServicesName == nil {
-		return nil, errors.New("invalid value for required argument 'BlobServicesName'")
-	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
@@ -76,6 +73,9 @@ func NewBlobServiceProperties(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-nextgen:storage/v20200801preview:BlobServiceProperties"),
+		},
+		{
+			Type: pulumi.String("azure-nextgen:storage/v20210101:BlobServiceProperties"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -164,7 +164,7 @@ type blobServicePropertiesArgs struct {
 	// Deprecated in favor of isVersioningEnabled property.
 	AutomaticSnapshotPolicyEnabled *bool `pulumi:"automaticSnapshotPolicyEnabled"`
 	// The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
-	BlobServicesName string `pulumi:"blobServicesName"`
+	BlobServicesName *string `pulumi:"blobServicesName"`
 	// The blob service properties for change feed events.
 	ChangeFeed *ChangeFeed `pulumi:"changeFeed"`
 	// The blob service properties for container soft delete.
@@ -192,7 +192,7 @@ type BlobServicePropertiesArgs struct {
 	// Deprecated in favor of isVersioningEnabled property.
 	AutomaticSnapshotPolicyEnabled pulumi.BoolPtrInput
 	// The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
-	BlobServicesName pulumi.StringInput
+	BlobServicesName pulumi.StringPtrInput
 	// The blob service properties for change feed events.
 	ChangeFeed ChangeFeedPtrInput
 	// The blob service properties for container soft delete.

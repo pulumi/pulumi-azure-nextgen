@@ -55,8 +55,6 @@ class ManagementPolicy(pulumi.CustomResource):
             if account_name is None and not opts.urn:
                 raise TypeError("Missing required property 'account_name'")
             __props__['account_name'] = account_name
-            if management_policy_name is None and not opts.urn:
-                raise TypeError("Missing required property 'management_policy_name'")
             __props__['management_policy_name'] = management_policy_name
             if policy is None and not opts.urn:
                 raise TypeError("Missing required property 'policy'")
@@ -67,7 +65,7 @@ class ManagementPolicy(pulumi.CustomResource):
             __props__['last_modified_time'] = None
             __props__['name'] = None
             __props__['type'] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:storage:ManagementPolicy"), pulumi.Alias(type_="azure-nextgen:storage/latest:ManagementPolicy"), pulumi.Alias(type_="azure-nextgen:storage/v20180301preview:ManagementPolicy"), pulumi.Alias(type_="azure-nextgen:storage/v20181101:ManagementPolicy"), pulumi.Alias(type_="azure-nextgen:storage/v20190401:ManagementPolicy"), pulumi.Alias(type_="azure-nextgen:storage/v20190601:ManagementPolicy")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:storage:ManagementPolicy"), pulumi.Alias(type_="azure-nextgen:storage/latest:ManagementPolicy"), pulumi.Alias(type_="azure-nextgen:storage/v20180301preview:ManagementPolicy"), pulumi.Alias(type_="azure-nextgen:storage/v20181101:ManagementPolicy"), pulumi.Alias(type_="azure-nextgen:storage/v20190401:ManagementPolicy"), pulumi.Alias(type_="azure-nextgen:storage/v20190601:ManagementPolicy"), pulumi.Alias(type_="azure-nextgen:storage/v20210101:ManagementPolicy")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ManagementPolicy, __self__).__init__(
             'azure-nextgen:storage/v20200801preview:ManagementPolicy',

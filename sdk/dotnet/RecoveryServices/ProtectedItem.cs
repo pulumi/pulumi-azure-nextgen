@@ -84,6 +84,7 @@ namespace Pulumi.AzureNextGen.RecoveryServices
                     new Pulumi.Alias { Type = "azure-nextgen:recoveryservices/v20201001:ProtectedItem"},
                     new Pulumi.Alias { Type = "azure-nextgen:recoveryservices/v20201201:ProtectedItem"},
                     new Pulumi.Alias { Type = "azure-nextgen:recoveryservices/v20210101:ProtectedItem"},
+                    new Pulumi.Alias { Type = "azure-nextgen:recoveryservices/v20210201:ProtectedItem"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -140,8 +141,8 @@ namespace Pulumi.AzureNextGen.RecoveryServices
         /// <summary>
         /// Item name to be backed up.
         /// </summary>
-        [Input("protectedItemName", required: true)]
-        public Input<string> ProtectedItemName { get; set; } = null!;
+        [Input("protectedItemName")]
+        public Input<string>? ProtectedItemName { get; set; }
 
         /// <summary>
         /// The name of the resource group where the recovery services vault is present.

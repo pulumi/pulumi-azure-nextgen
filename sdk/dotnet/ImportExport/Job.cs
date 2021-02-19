@@ -86,6 +86,7 @@ namespace Pulumi.AzureNextGen.ImportExport
                     new Pulumi.Alias { Type = "azure-nextgen:importexport/latest:Job"},
                     new Pulumi.Alias { Type = "azure-nextgen:importexport/v20161101:Job"},
                     new Pulumi.Alias { Type = "azure-nextgen:importexport/v20200801:Job"},
+                    new Pulumi.Alias { Type = "azure-nextgen:importexport/v20210101:Job"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -112,8 +113,8 @@ namespace Pulumi.AzureNextGen.ImportExport
         /// <summary>
         /// The name of the import/export job.
         /// </summary>
-        [Input("jobName", required: true)]
-        public Input<string> JobName { get; set; } = null!;
+        [Input("jobName")]
+        public Input<string>? JobName { get; set; }
 
         /// <summary>
         /// Specifies the supported Azure location where the job should be created

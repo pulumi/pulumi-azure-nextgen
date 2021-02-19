@@ -60,8 +60,6 @@ class RoleDefinition(pulumi.CustomResource):
             __props__['assignable_scopes'] = assignable_scopes
             __props__['description'] = description
             __props__['permissions'] = permissions
-            if role_definition_id is None and not opts.urn:
-                raise TypeError("Missing required property 'role_definition_id'")
             __props__['role_definition_id'] = role_definition_id
             __props__['role_name'] = role_name
             __props__['role_type'] = role_type
@@ -70,7 +68,7 @@ class RoleDefinition(pulumi.CustomResource):
             __props__['scope'] = scope
             __props__['name'] = None
             __props__['type'] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:authorization:RoleDefinition"), pulumi.Alias(type_="azure-nextgen:authorization/latest:RoleDefinition"), pulumi.Alias(type_="azure-nextgen:authorization/v20180101preview:RoleDefinition")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:authorization:RoleDefinition"), pulumi.Alias(type_="azure-nextgen:authorization/latest:RoleDefinition"), pulumi.Alias(type_="azure-nextgen:authorization/v20180101preview:RoleDefinition"), pulumi.Alias(type_="azure-nextgen:authorization/v20200301preview:RoleDefinition")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(RoleDefinition, __self__).__init__(
             'azure-nextgen:authorization/v20150701:RoleDefinition',
