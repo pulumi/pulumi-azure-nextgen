@@ -176,7 +176,7 @@ class GetVolumeResult:
 
     @property
     @pulumi.getter(name="mountTargets")
-    def mount_targets(self) -> Optional[Sequence['outputs.MountTargetPropertiesResponse']]:
+    def mount_targets(self) -> Sequence['outputs.MountTargetPropertiesResponse']:
         """
         List of mount targets
         """
@@ -194,7 +194,7 @@ class GetVolumeResult:
     @pulumi.getter(name="protocolTypes")
     def protocol_types(self) -> Optional[Sequence[str]]:
         """
-        Set of protocol types
+        Set of protocol types, default NFSv3, CIFS for SMB protocol
         """
         return pulumi.get(self, "protocol_types")
 
@@ -210,7 +210,7 @@ class GetVolumeResult:
     @pulumi.getter(name="securityStyle")
     def security_style(self) -> Optional[str]:
         """
-        The security style of volume
+        The security style of volume, default unix, ntfs for dual protocol or CIFS protocol
         """
         return pulumi.get(self, "security_style")
 
@@ -322,7 +322,8 @@ def get_volume(account_name: Optional[str] = None,
                volume_name: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVolumeResult:
     """
-    Use this data source to access information about an existing resource.
+    Volume resource
+
 
     :param str account_name: The name of the NetApp account
     :param str pool_name: The name of the capacity pool

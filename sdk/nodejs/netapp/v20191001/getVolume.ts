@@ -5,6 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
+/**
+ * Volume resource
+ */
 export function getVolume(args: GetVolumeArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumeResult> {
     if (!opts) {
         opts = {}
@@ -79,13 +82,13 @@ export interface GetVolumeResult {
     /**
      * List of mount targets
      */
-    readonly mountTargets?: outputs.netapp.v20191001.MountTargetPropertiesResponse[];
+    readonly mountTargets: outputs.netapp.v20191001.MountTargetPropertiesResponse[];
     /**
      * Resource name
      */
     readonly name: string;
     /**
-     * Set of protocol types
+     * Set of protocol types, default NFSv3, CIFS for SMB protocol
      */
     readonly protocolTypes?: string[];
     /**
@@ -116,6 +119,10 @@ export interface GetVolumeResult {
      * Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB. Upper limit is 100TiB. Specified in bytes.
      */
     readonly usageThreshold: number;
+    /**
+     * Resource size in bytes, current storage usage for the volume in bytes
+     */
+    readonly usedBytes: number;
     /**
      * What type of volume is this
      */

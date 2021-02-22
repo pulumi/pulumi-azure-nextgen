@@ -11,6 +11,9 @@ namespace Pulumi.AzureNextGen.NetApp.V20190801
 {
     public static class GetVolume
     {
+        /// <summary>
+        /// Volume resource
+        /// </summary>
         public static Task<GetVolumeResult> InvokeAsync(GetVolumeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVolumeResult>("azure-nextgen:netapp/v20190801:getVolume", args ?? new GetVolumeArgs(), options.WithVersion());
     }
@@ -120,6 +123,10 @@ namespace Pulumi.AzureNextGen.NetApp.V20190801
         /// </summary>
         public readonly double UsageThreshold;
         /// <summary>
+        /// Resource size in bytes, current storage usage for the volume in bytes
+        /// </summary>
+        public readonly double UsedBytes;
+        /// <summary>
         /// What type of volume is this
         /// </summary>
         public readonly string? VolumeType;
@@ -160,6 +167,8 @@ namespace Pulumi.AzureNextGen.NetApp.V20190801
 
             double usageThreshold,
 
+            double usedBytes,
+
             string? volumeType)
         {
             BaremetalTenantId = baremetalTenantId;
@@ -179,6 +188,7 @@ namespace Pulumi.AzureNextGen.NetApp.V20190801
             Tags = tags;
             Type = type;
             UsageThreshold = usageThreshold;
+            UsedBytes = usedBytes;
             VolumeType = volumeType;
         }
     }

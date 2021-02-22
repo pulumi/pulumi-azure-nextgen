@@ -5,6 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
+/**
+ * Capacity pool resource
+ */
 export function getPool(args: GetPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetPoolResult> {
     if (!opts) {
         opts = {}
@@ -48,7 +51,7 @@ export interface GetPoolResult {
      */
     readonly location: string;
     /**
-     * Resource name
+     * Pool Resource name
      */
     readonly name: string;
     /**

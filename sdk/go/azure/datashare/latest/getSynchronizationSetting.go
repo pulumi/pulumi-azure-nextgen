@@ -7,6 +7,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// A Synchronization Setting data transfer object.
+// Latest API Version: 2020-09-01.
+//
+// Deprecated: The 'latest' version is deprecated. Please migrate to the function in the top-level module: 'azure-nextgen:datashare:getSynchronizationSetting'.
 func LookupSynchronizationSetting(ctx *pulumi.Context, args *LookupSynchronizationSettingArgs, opts ...pulumi.InvokeOption) (*LookupSynchronizationSettingResult, error) {
 	var rv LookupSynchronizationSettingResult
 	err := ctx.Invoke("azure-nextgen:datashare/latest:getSynchronizationSetting", args, &rv, opts...)
@@ -31,7 +35,7 @@ type LookupSynchronizationSettingArgs struct {
 type LookupSynchronizationSettingResult struct {
 	// The resource id of the azure resource
 	Id string `pulumi:"id"`
-	// Kind of synchronization
+	// Kind of synchronization setting.
 	Kind string `pulumi:"kind"`
 	// Name of the azure resource
 	Name string `pulumi:"name"`

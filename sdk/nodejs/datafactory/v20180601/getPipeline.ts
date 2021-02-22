@@ -5,6 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
+/**
+ * Pipeline resource type.
+ */
 export function getPipeline(args: GetPipelineArgs, opts?: pulumi.InvokeOptions): Promise<GetPipelineResult> {
     if (!opts) {
         opts = {}
@@ -75,6 +78,10 @@ export interface GetPipelineResult {
      * List of parameters for pipeline.
      */
     readonly parameters?: {[key: string]: outputs.datafactory.v20180601.ParameterSpecificationResponse};
+    /**
+     * Pipeline Policy.
+     */
+    readonly policy?: outputs.datafactory.v20180601.PipelinePolicyResponse;
     /**
      * Dimensions emitted by Pipeline.
      */

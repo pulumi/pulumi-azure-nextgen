@@ -11,6 +11,9 @@ namespace Pulumi.AzureNextGen.DataShare.V20191101
 {
     public static class GetTrigger
     {
+        /// <summary>
+        /// A Trigger data transfer object.
+        /// </summary>
         public static Task<GetTriggerResult> InvokeAsync(GetTriggerArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTriggerResult>("azure-nextgen:datashare/v20191101:getTrigger", args ?? new GetTriggerArgs(), options.WithVersion());
     }
@@ -56,7 +59,7 @@ namespace Pulumi.AzureNextGen.DataShare.V20191101
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Kind of synchronization
+        /// Kind of synchronization on trigger.
         /// </summary>
         public readonly string Kind;
         /// <summary>

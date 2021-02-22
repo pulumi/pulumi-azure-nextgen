@@ -7,6 +7,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// A Trigger data transfer object.
+// Latest API Version: 2020-09-01.
+//
+// Deprecated: The 'latest' version is deprecated. Please migrate to the function in the top-level module: 'azure-nextgen:datashare:getTrigger'.
 func LookupTrigger(ctx *pulumi.Context, args *LookupTriggerArgs, opts ...pulumi.InvokeOption) (*LookupTriggerResult, error) {
 	var rv LookupTriggerResult
 	err := ctx.Invoke("azure-nextgen:datashare/latest:getTrigger", args, &rv, opts...)
@@ -31,7 +35,7 @@ type LookupTriggerArgs struct {
 type LookupTriggerResult struct {
 	// The resource id of the azure resource
 	Id string `pulumi:"id"`
-	// Kind of synchronization
+	// Kind of synchronization on trigger.
 	Kind string `pulumi:"kind"`
 	// Name of the azure resource
 	Name string `pulumi:"name"`

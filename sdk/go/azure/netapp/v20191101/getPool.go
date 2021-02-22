@@ -7,6 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Capacity pool resource
 func LookupPool(ctx *pulumi.Context, args *LookupPoolArgs, opts ...pulumi.InvokeOption) (*LookupPoolResult, error) {
 	var rv LookupPoolResult
 	err := ctx.Invoke("azure-nextgen:netapp/v20191101:getPool", args, &rv, opts...)
@@ -31,7 +32,7 @@ type LookupPoolResult struct {
 	Id string `pulumi:"id"`
 	// Resource location
 	Location string `pulumi:"location"`
-	// Resource name
+	// Pool Resource name
 	Name string `pulumi:"name"`
 	// UUID v4 used to identify the Pool
 	PoolId string `pulumi:"poolId"`

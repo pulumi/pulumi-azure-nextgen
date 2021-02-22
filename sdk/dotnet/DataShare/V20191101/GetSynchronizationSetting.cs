@@ -11,6 +11,9 @@ namespace Pulumi.AzureNextGen.DataShare.V20191101
 {
     public static class GetSynchronizationSetting
     {
+        /// <summary>
+        /// A Synchronization Setting data transfer object.
+        /// </summary>
         public static Task<GetSynchronizationSettingResult> InvokeAsync(GetSynchronizationSettingArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSynchronizationSettingResult>("azure-nextgen:datashare/v20191101:getSynchronizationSetting", args ?? new GetSynchronizationSettingArgs(), options.WithVersion());
     }
@@ -56,7 +59,7 @@ namespace Pulumi.AzureNextGen.DataShare.V20191101
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Kind of synchronization
+        /// Kind of synchronization setting.
         /// </summary>
         public readonly string Kind;
         /// <summary>

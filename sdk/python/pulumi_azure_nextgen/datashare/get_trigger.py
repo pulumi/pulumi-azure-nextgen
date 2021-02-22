@@ -49,7 +49,7 @@ class GetTriggerResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        Kind of synchronization
+        Kind of synchronization on trigger.
         """
         return pulumi.get(self, "kind")
 
@@ -97,7 +97,9 @@ def get_trigger(account_name: Optional[str] = None,
                 trigger_name: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTriggerResult:
     """
-    Use this data source to access information about an existing resource.
+    A Trigger data transfer object.
+    API Version: 2020-09-01.
+
 
     :param str account_name: The name of the share account.
     :param str resource_group_name: The resource group name.

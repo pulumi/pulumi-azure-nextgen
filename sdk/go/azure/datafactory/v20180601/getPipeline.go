@@ -7,6 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Pipeline resource type.
 func LookupPipeline(ctx *pulumi.Context, args *LookupPipelineArgs, opts ...pulumi.InvokeOption) (*LookupPipelineResult, error) {
 	var rv LookupPipelineResult
 	err := ctx.Invoke("azure-nextgen:datafactory/v20180601:getPipeline", args, &rv, opts...)
@@ -45,6 +46,8 @@ type LookupPipelineResult struct {
 	Name string `pulumi:"name"`
 	// List of parameters for pipeline.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
+	// Pipeline Policy.
+	Policy *PipelinePolicyResponse `pulumi:"policy"`
 	// Dimensions emitted by Pipeline.
 	RunDimensions map[string]interface{} `pulumi:"runDimensions"`
 	// The resource type.

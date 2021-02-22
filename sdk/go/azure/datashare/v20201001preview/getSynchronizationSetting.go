@@ -7,6 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// A Synchronization Setting data transfer object.
 func LookupSynchronizationSetting(ctx *pulumi.Context, args *LookupSynchronizationSettingArgs, opts ...pulumi.InvokeOption) (*LookupSynchronizationSettingResult, error) {
 	var rv LookupSynchronizationSettingResult
 	err := ctx.Invoke("azure-nextgen:datashare/v20201001preview:getSynchronizationSetting", args, &rv, opts...)
@@ -31,7 +32,7 @@ type LookupSynchronizationSettingArgs struct {
 type LookupSynchronizationSettingResult struct {
 	// The resource id of the azure resource
 	Id string `pulumi:"id"`
-	// Kind of synchronization
+	// Kind of synchronization setting.
 	Kind string `pulumi:"kind"`
 	// Name of the azure resource
 	Name string `pulumi:"name"`
