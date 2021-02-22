@@ -57,6 +57,10 @@ const blob = new storage.Blob("wwwroot", {
 - `web.WebApplicationSettings` renamed to `web.WebAppApplicationSettings` ([#282](https://github.com/pulumi/pulumi-azure-nextgen/issues/282))
 - `authorization.GetClientConfig`, `authorization.GetClientToken`, `Storage.Blob`, `Storage.StorageAccountStaticWebsite` were removed from
   corresponding `latest` modules and are only available in the top-level modules
+  
+#### Bug Fixes
+
+- Relax the enum check to accomodate irregularities like in [#294](https://github.com/pulumi/pulumi-azure-nextgen/issues/294)
 
 ---
 
