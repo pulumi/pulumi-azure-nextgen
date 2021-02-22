@@ -9,8 +9,13 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AzureNextGen.DataFactory.Latest
 {
+    [Obsolete(@"The 'latest' version is deprecated. Please migrate to the function in the top-level module: 'azure-nextgen:datafactory:getPipeline'.")]
     public static class GetPipeline
     {
+        /// <summary>
+        /// Pipeline resource type.
+        /// Latest API Version: 2018-06-01.
+        /// </summary>
         public static Task<GetPipelineResult> InvokeAsync(GetPipelineArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPipelineResult>("azure-nextgen:datafactory/latest:getPipeline", args ?? new GetPipelineArgs(), options.WithVersion());
     }
@@ -82,6 +87,10 @@ namespace Pulumi.AzureNextGen.DataFactory.Latest
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.ParameterSpecificationResponse>? Parameters;
         /// <summary>
+        /// Pipeline Policy.
+        /// </summary>
+        public readonly Outputs.PipelinePolicyResponse? Policy;
+        /// <summary>
         /// Dimensions emitted by Pipeline.
         /// </summary>
         public readonly ImmutableDictionary<string, object>? RunDimensions;
@@ -114,6 +123,8 @@ namespace Pulumi.AzureNextGen.DataFactory.Latest
 
             ImmutableDictionary<string, Outputs.ParameterSpecificationResponse>? parameters,
 
+            Outputs.PipelinePolicyResponse? policy,
+
             ImmutableDictionary<string, object>? runDimensions,
 
             string type,
@@ -129,6 +140,7 @@ namespace Pulumi.AzureNextGen.DataFactory.Latest
             Id = id;
             Name = name;
             Parameters = parameters;
+            Policy = policy;
             RunDimensions = runDimensions;
             Type = type;
             Variables = variables;

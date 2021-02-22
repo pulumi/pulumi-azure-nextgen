@@ -13808,6 +13808,117 @@ export namespace avs {
         }
 
     }
+
+    export namespace v20210101preview {
+        /**
+         * An iSCSI volume from Microsoft.StoragePool provider
+         */
+        export interface DiskPoolVolume {
+            /**
+             * iSCSI provider target IP address list
+             */
+            endpoints?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Name of the LUN to be used
+             */
+            lunName?: pulumi.Input<string>;
+        }
+
+        /**
+         * vCenter Single Sign On Identity Source
+         */
+        export interface IdentitySource {
+            /**
+             * The domain's NetBIOS name
+             */
+            alias?: pulumi.Input<string>;
+            /**
+             * The base distinguished name for groups
+             */
+            baseGroupDN?: pulumi.Input<string>;
+            /**
+             * The base distinguished name for users
+             */
+            baseUserDN?: pulumi.Input<string>;
+            /**
+             * The domain's dns name
+             */
+            domain?: pulumi.Input<string>;
+            /**
+             * The name of the identity source
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * The password of the Active Directory user with a minimum of read-only access to Base DN for users and groups.
+             */
+            password?: pulumi.Input<string>;
+            /**
+             * Primary server URL
+             */
+            primaryServer?: pulumi.Input<string>;
+            /**
+             * Secondary server URL
+             */
+            secondaryServer?: pulumi.Input<string>;
+            /**
+             * Protect LDAP communication using SSL certificate (LDAPS)
+             */
+            ssl?: pulumi.Input<string | enums.avs.v20210101preview.SslEnum>;
+            /**
+             * The ID of an Active Directory user with a minimum of read-only access to Base DN for users and group
+             */
+            username?: pulumi.Input<string>;
+        }
+
+        /**
+         * The properties of a management cluster
+         */
+        export interface ManagementCluster {
+            /**
+             * The cluster size
+             */
+            clusterSize: pulumi.Input<number>;
+        }
+
+        /**
+         * An Azure NetApp Files volume from Microsoft.NetApp provider
+         */
+        export interface NetAppVolume {
+            /**
+             * File path through which the NFS volume is exposed by the provider
+             */
+            nfsFilePath?: pulumi.Input<string>;
+            /**
+             * IP address of the NFS provider
+             */
+            nfsProviderIp?: pulumi.Input<string>;
+        }
+
+        /**
+         * The resource model definition representing SKU
+         */
+        export interface Sku {
+            /**
+             * The name of the SKU.
+             */
+            name: pulumi.Input<string>;
+        }
+
+        /**
+         * Subnet configuration for segment
+         */
+        export interface WorkloadNetworkSegmentSubnet {
+            /**
+             * DHCP Range assigned for subnet.
+             */
+            dhcpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Gateway address.
+             */
+            gatewayAddress?: pulumi.Input<string>;
+        }
+
+    }
 }
 
 export namespace azureactivedirectory {
@@ -102957,6 +103068,16 @@ export namespace datafactory {
     }
 
     /**
+     * Pipeline ElapsedTime Metric Policy.
+     */
+    export interface PipelineElapsedTimeMetricPolicy {
+        /**
+         * TimeSpan value, after which an Azure Monitoring Metric is fired.
+         */
+        duration?: any;
+    }
+
+    /**
      * The folder that this Pipeline is in. If not specified, Pipeline will appear at the root level.
      */
     export interface PipelineFolder {
@@ -102964,6 +103085,16 @@ export namespace datafactory {
          * The name of the folder that this Pipeline is in.
          */
         name?: pulumi.Input<string>;
+    }
+
+    /**
+     * Pipeline Policy.
+     */
+    export interface PipelinePolicy {
+        /**
+         * Pipeline ElapsedTime Metric Policy.
+         */
+        elapsedTimeMetric?: pulumi.Input<inputs.datafactory.PipelineElapsedTimeMetricPolicy>;
     }
 
     /**
@@ -123065,6 +123196,16 @@ export namespace datafactory {
         }
 
         /**
+         * Pipeline ElapsedTime Metric Policy.
+         */
+        export interface PipelineElapsedTimeMetricPolicy {
+            /**
+             * TimeSpan value, after which an Azure Monitoring Metric is fired.
+             */
+            duration?: any;
+        }
+
+        /**
          * The folder that this Pipeline is in. If not specified, Pipeline will appear at the root level.
          */
         export interface PipelineFolder {
@@ -123072,6 +123213,16 @@ export namespace datafactory {
              * The name of the folder that this Pipeline is in.
              */
             name?: pulumi.Input<string>;
+        }
+
+        /**
+         * Pipeline Policy.
+         */
+        export interface PipelinePolicy {
+            /**
+             * Pipeline ElapsedTime Metric Policy.
+             */
+            elapsedTimeMetric?: pulumi.Input<inputs.datafactory.latest.PipelineElapsedTimeMetricPolicy>;
         }
 
         /**
@@ -152733,6 +152884,16 @@ export namespace datafactory {
         }
 
         /**
+         * Pipeline ElapsedTime Metric Policy.
+         */
+        export interface PipelineElapsedTimeMetricPolicy {
+            /**
+             * TimeSpan value, after which an Azure Monitoring Metric is fired.
+             */
+            duration?: any;
+        }
+
+        /**
          * The folder that this Pipeline is in. If not specified, Pipeline will appear at the root level.
          */
         export interface PipelineFolder {
@@ -152740,6 +152901,16 @@ export namespace datafactory {
              * The name of the folder that this Pipeline is in.
              */
             name?: pulumi.Input<string>;
+        }
+
+        /**
+         * Pipeline Policy.
+         */
+        export interface PipelinePolicy {
+            /**
+             * Pipeline ElapsedTime Metric Policy.
+             */
+            elapsedTimeMetric?: pulumi.Input<inputs.datafactory.v20180601.PipelineElapsedTimeMetricPolicy>;
         }
 
         /**
@@ -167869,28 +168040,6 @@ export namespace dbformysql {
 }
 
 export namespace dbforpostgresql {
-    /**
-     * Maintenance window of a server group.
-     */
-    export interface MaintenanceWindow {
-        /**
-         * indicates whether custom window is enabled or disabled
-         */
-        customWindow?: pulumi.Input<string>;
-        /**
-         * day of week for maintenance window
-         */
-        dayOfWeek?: pulumi.Input<number>;
-        /**
-         * start hour for maintenance window
-         */
-        startHour?: pulumi.Input<number>;
-        /**
-         * start minute for maintenance window
-         */
-        startMinute?: pulumi.Input<number>;
-    }
-
     export interface PrivateEndpointProperty {
         /**
          * Resource id of the private endpoint.
@@ -167917,16 +168066,6 @@ export namespace dbforpostgresql {
          * The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
          */
         type?: pulumi.Input<string | enums.dbforpostgresql.IdentityType>;
-    }
-
-    /**
-     * The delegated subnet arguments for a server group.
-     */
-    export interface ServerGroupPropertiesDelegatedSubnetArguments {
-        /**
-         * delegated subnet arm resource id.
-         */
-        subnetArmResourceId?: pulumi.Input<string>;
     }
 
     /**
@@ -168091,40 +168230,6 @@ export namespace dbforpostgresql {
          * Server version.
          */
         version?: pulumi.Input<string | enums.dbforpostgresql.ServerVersion>;
-    }
-
-    /**
-     * Represents a server role group.
-     */
-    export interface ServerRoleGroup {
-        /**
-         * If high availability is enabled or not for the server.
-         */
-        enableHa?: pulumi.Input<boolean>;
-        /**
-         * The name of the server role group.
-         */
-        name?: pulumi.Input<string>;
-        /**
-         * The role of servers in the server role group.
-         */
-        role?: pulumi.Input<string | enums.dbforpostgresql.ServerRole>;
-        /**
-         * The number of servers in the server role group.
-         */
-        serverCount?: pulumi.Input<number>;
-        /**
-         * The edition of a server (default: GeneralPurpose).
-         */
-        serverEdition?: pulumi.Input<string | enums.dbforpostgresql.ServerEdition>;
-        /**
-         * The storage of a server in MB (max: 2097152 = 2TiB).
-         */
-        storageQuotaInMb?: pulumi.Input<number>;
-        /**
-         * The vCores count of a server (max: 64).
-         */
-        vCores?: pulumi.Input<number>;
     }
 
     /**
@@ -258307,40 +258412,6 @@ export namespace netapp {
         }
 
         /**
-         * Mount target properties
-         */
-        export interface MountTargetProperties {
-            /**
-             * The end of IPv4 address range to use when creating a new mount target
-             */
-            endIp?: pulumi.Input<string>;
-            /**
-             * UUID v4 used to identify the MountTarget
-             */
-            fileSystemId: pulumi.Input<string>;
-            /**
-             * The gateway of the IPv4 address range to use when creating a new mount target
-             */
-            gateway?: pulumi.Input<string>;
-            /**
-             * The netmask of the IPv4 address range to use when creating a new mount target
-             */
-            netmask?: pulumi.Input<string>;
-            /**
-             * The SMB server's Fully Qualified Domain Name, FQDN
-             */
-            smbServerFqdn?: pulumi.Input<string>;
-            /**
-             * The start of IPv4 address range to use when creating a new mount target
-             */
-            startIp?: pulumi.Input<string>;
-            /**
-             * The subnet
-             */
-            subnet?: pulumi.Input<string>;
-        }
-
-        /**
          * Set of export policy rules
          */
         export interface VolumePropertiesExportPolicy {
@@ -258423,40 +258494,6 @@ export namespace netapp {
              * Read and write access
              */
             unixReadWrite?: pulumi.Input<boolean>;
-        }
-
-        /**
-         * Mount target properties
-         */
-        export interface MountTargetProperties {
-            /**
-             * The end of IPv4 address range to use when creating a new mount target
-             */
-            endIp?: pulumi.Input<string>;
-            /**
-             * UUID v4 used to identify the MountTarget
-             */
-            fileSystemId: pulumi.Input<string>;
-            /**
-             * The gateway of the IPv4 address range to use when creating a new mount target
-             */
-            gateway?: pulumi.Input<string>;
-            /**
-             * The netmask of the IPv4 address range to use when creating a new mount target
-             */
-            netmask?: pulumi.Input<string>;
-            /**
-             * The SMB server's Fully Qualified Domain Name, FQDN
-             */
-            smbServerFqdn?: pulumi.Input<string>;
-            /**
-             * The start of IPv4 address range to use when creating a new mount target
-             */
-            startIp?: pulumi.Input<string>;
-            /**
-             * The subnet
-             */
-            subnet?: pulumi.Input<string>;
         }
 
         /**
@@ -258696,40 +258733,6 @@ export namespace netapp {
         }
 
         /**
-         * Mount target properties
-         */
-        export interface MountTargetProperties {
-            /**
-             * The end of IPv4 address range to use when creating a new mount target
-             */
-            endIp?: pulumi.Input<string>;
-            /**
-             * UUID v4 used to identify the MountTarget
-             */
-            fileSystemId: pulumi.Input<string>;
-            /**
-             * The gateway of the IPv4 address range to use when creating a new mount target
-             */
-            gateway?: pulumi.Input<string>;
-            /**
-             * The netmask of the IPv4 address range to use when creating a new mount target
-             */
-            netmask?: pulumi.Input<string>;
-            /**
-             * The SMB server's Fully Qualified Domain Name, FQDN
-             */
-            smbServerFqdn?: pulumi.Input<string>;
-            /**
-             * The start of IPv4 address range to use when creating a new mount target
-             */
-            startIp?: pulumi.Input<string>;
-            /**
-             * The subnet
-             */
-            subnet?: pulumi.Input<string>;
-        }
-
-        /**
          * Replication properties
          */
         export interface ReplicationObject {
@@ -258852,40 +258855,6 @@ export namespace netapp {
              * Read and write access
              */
             unixReadWrite?: pulumi.Input<boolean>;
-        }
-
-        /**
-         * Mount target properties
-         */
-        export interface MountTargetProperties {
-            /**
-             * The end of IPv4 address range to use when creating a new mount target
-             */
-            endIp?: pulumi.Input<string>;
-            /**
-             * UUID v4 used to identify the MountTarget
-             */
-            fileSystemId: pulumi.Input<string>;
-            /**
-             * The gateway of the IPv4 address range to use when creating a new mount target
-             */
-            gateway?: pulumi.Input<string>;
-            /**
-             * The netmask of the IPv4 address range to use when creating a new mount target
-             */
-            netmask?: pulumi.Input<string>;
-            /**
-             * The SMB server's Fully Qualified Domain Name, FQDN
-             */
-            smbServerFqdn?: pulumi.Input<string>;
-            /**
-             * The start of IPv4 address range to use when creating a new mount target
-             */
-            startIp?: pulumi.Input<string>;
-            /**
-             * The subnet
-             */
-            subnet?: pulumi.Input<string>;
         }
 
         /**
@@ -259015,40 +258984,6 @@ export namespace netapp {
              * Read and write access
              */
             unixReadWrite?: pulumi.Input<boolean>;
-        }
-
-        /**
-         * Mount target properties
-         */
-        export interface MountTargetProperties {
-            /**
-             * The end of IPv4 address range to use when creating a new mount target
-             */
-            endIp?: pulumi.Input<string>;
-            /**
-             * UUID v4 used to identify the MountTarget
-             */
-            fileSystemId: pulumi.Input<string>;
-            /**
-             * The gateway of the IPv4 address range to use when creating a new mount target
-             */
-            gateway?: pulumi.Input<string>;
-            /**
-             * The netmask of the IPv4 address range to use when creating a new mount target
-             */
-            netmask?: pulumi.Input<string>;
-            /**
-             * The SMB server's Fully Qualified Domain Name, FQDN
-             */
-            smbServerFqdn?: pulumi.Input<string>;
-            /**
-             * The start of IPv4 address range to use when creating a new mount target
-             */
-            startIp?: pulumi.Input<string>;
-            /**
-             * The subnet
-             */
-            subnet?: pulumi.Input<string>;
         }
 
         /**
@@ -259192,40 +259127,6 @@ export namespace netapp {
              * Read and write access
              */
             unixReadWrite?: pulumi.Input<boolean>;
-        }
-
-        /**
-         * Mount target properties
-         */
-        export interface MountTargetProperties {
-            /**
-             * The end of IPv4 address range to use when creating a new mount target
-             */
-            endIp?: pulumi.Input<string>;
-            /**
-             * UUID v4 used to identify the MountTarget
-             */
-            fileSystemId: pulumi.Input<string>;
-            /**
-             * The gateway of the IPv4 address range to use when creating a new mount target
-             */
-            gateway?: pulumi.Input<string>;
-            /**
-             * The netmask of the IPv4 address range to use when creating a new mount target
-             */
-            netmask?: pulumi.Input<string>;
-            /**
-             * The SMB server's Fully Qualified Domain Name, FQDN
-             */
-            smbServerFqdn?: pulumi.Input<string>;
-            /**
-             * The start of IPv4 address range to use when creating a new mount target
-             */
-            startIp?: pulumi.Input<string>;
-            /**
-             * The subnet
-             */
-            subnet?: pulumi.Input<string>;
         }
 
         /**
@@ -259471,20 +259372,6 @@ export namespace netapp {
              * Resource size in bytes, current storage usage for the volume in bytes
              */
             usedBytes?: pulumi.Input<number>;
-        }
-
-        /**
-         * Mount target properties
-         */
-        export interface MountTargetProperties {
-            /**
-             * UUID v4 used to identify the MountTarget
-             */
-            fileSystemId: pulumi.Input<string>;
-            /**
-             * The SMB server's Fully Qualified Domain Name, FQDN
-             */
-            smbServerFqdn?: pulumi.Input<string>;
         }
 
         /**
@@ -259800,20 +259687,6 @@ export namespace netapp {
              * Resource size in bytes, current storage usage for the volume in bytes
              */
             usedBytes?: pulumi.Input<number>;
-        }
-
-        /**
-         * Mount target properties
-         */
-        export interface MountTargetProperties {
-            /**
-             * UUID v4 used to identify the MountTarget
-             */
-            fileSystemId: pulumi.Input<string>;
-            /**
-             * The SMB server's Fully Qualified Domain Name, FQDN
-             */
-            smbServerFqdn?: pulumi.Input<string>;
         }
 
         /**
@@ -260140,20 +260013,6 @@ export namespace netapp {
         }
 
         /**
-         * Mount target properties
-         */
-        export interface MountTargetProperties {
-            /**
-             * UUID v4 used to identify the MountTarget
-             */
-            fileSystemId: pulumi.Input<string>;
-            /**
-             * The SMB server's Fully Qualified Domain Name, FQDN
-             */
-            smbServerFqdn?: pulumi.Input<string>;
-        }
-
-        /**
          * Replication properties
          */
         export interface ReplicationObject {
@@ -260474,20 +260333,6 @@ export namespace netapp {
              * Resource size in bytes, current storage usage for the volume in bytes
              */
             usedBytes?: pulumi.Input<number>;
-        }
-
-        /**
-         * Mount target properties
-         */
-        export interface MountTargetProperties {
-            /**
-             * UUID v4 used to identify the MountTarget
-             */
-            fileSystemId: pulumi.Input<string>;
-            /**
-             * The SMB server's Fully Qualified Domain Name, FQDN
-             */
-            smbServerFqdn?: pulumi.Input<string>;
         }
 
         /**
@@ -260815,20 +260660,6 @@ export namespace netapp {
              * Resource size in bytes, current storage usage for the volume in bytes
              */
             usedBytes?: pulumi.Input<number>;
-        }
-
-        /**
-         * Mount target properties
-         */
-        export interface MountTargetProperties {
-            /**
-             * UUID v4 used to identify the MountTarget
-             */
-            fileSystemId: pulumi.Input<string>;
-            /**
-             * The SMB server's Fully Qualified Domain Name, FQDN
-             */
-            smbServerFqdn?: pulumi.Input<string>;
         }
 
         /**

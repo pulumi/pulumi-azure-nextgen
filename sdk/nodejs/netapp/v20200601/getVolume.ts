@@ -5,6 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
+/**
+ * Volume resource
+ */
 export function getVolume(args: GetVolumeArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumeResult> {
     if (!opts) {
         opts = {}
@@ -87,13 +90,13 @@ export interface GetVolumeResult {
     /**
      * List of mount targets
      */
-    readonly mountTargets?: outputs.netapp.v20200601.MountTargetPropertiesResponse[];
+    readonly mountTargets: outputs.netapp.v20200601.MountTargetPropertiesResponse[];
     /**
      * Resource name
      */
     readonly name: string;
     /**
-     * Set of protocol types
+     * Set of protocol types, default NFSv3, CIFS for SMB protocol
      */
     readonly protocolTypes?: string[];
     /**
@@ -101,7 +104,7 @@ export interface GetVolumeResult {
      */
     readonly provisioningState: string;
     /**
-     * The security style of volume
+     * The security style of volume, default unix, defaults to ntfs for dual protocol or CIFS protocol
      */
     readonly securityStyle?: string;
     /**

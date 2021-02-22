@@ -5,7 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
+/**
+ * Pipeline resource type.
+ * Latest API Version: 2018-06-01.
+ */
+/** @deprecated The 'latest' version is deprecated. Please migrate to the function in the top-level module: 'azure-nextgen:datafactory:getPipeline'. */
 export function getPipeline(args: GetPipelineArgs, opts?: pulumi.InvokeOptions): Promise<GetPipelineResult> {
+    pulumi.log.warn("getPipeline is deprecated: The 'latest' version is deprecated. Please migrate to the function in the top-level module: 'azure-nextgen:datafactory:getPipeline'.")
     if (!opts) {
         opts = {}
     }
@@ -75,6 +81,10 @@ export interface GetPipelineResult {
      * List of parameters for pipeline.
      */
     readonly parameters?: {[key: string]: outputs.datafactory.latest.ParameterSpecificationResponse};
+    /**
+     * Pipeline Policy.
+     */
+    readonly policy?: outputs.datafactory.latest.PipelinePolicyResponse;
     /**
      * Dimensions emitted by Pipeline.
      */

@@ -97450,6 +97450,274 @@ func (o PhoenixSourceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v PhoenixSourceResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Pipeline ElapsedTime Metric Policy.
+type PipelineElapsedTimeMetricPolicy struct {
+	// TimeSpan value, after which an Azure Monitoring Metric is fired.
+	Duration interface{} `pulumi:"duration"`
+}
+
+// PipelineElapsedTimeMetricPolicyInput is an input type that accepts PipelineElapsedTimeMetricPolicyArgs and PipelineElapsedTimeMetricPolicyOutput values.
+// You can construct a concrete instance of `PipelineElapsedTimeMetricPolicyInput` via:
+//
+//          PipelineElapsedTimeMetricPolicyArgs{...}
+type PipelineElapsedTimeMetricPolicyInput interface {
+	pulumi.Input
+
+	ToPipelineElapsedTimeMetricPolicyOutput() PipelineElapsedTimeMetricPolicyOutput
+	ToPipelineElapsedTimeMetricPolicyOutputWithContext(context.Context) PipelineElapsedTimeMetricPolicyOutput
+}
+
+// Pipeline ElapsedTime Metric Policy.
+type PipelineElapsedTimeMetricPolicyArgs struct {
+	// TimeSpan value, after which an Azure Monitoring Metric is fired.
+	Duration pulumi.Input `pulumi:"duration"`
+}
+
+func (PipelineElapsedTimeMetricPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineElapsedTimeMetricPolicy)(nil)).Elem()
+}
+
+func (i PipelineElapsedTimeMetricPolicyArgs) ToPipelineElapsedTimeMetricPolicyOutput() PipelineElapsedTimeMetricPolicyOutput {
+	return i.ToPipelineElapsedTimeMetricPolicyOutputWithContext(context.Background())
+}
+
+func (i PipelineElapsedTimeMetricPolicyArgs) ToPipelineElapsedTimeMetricPolicyOutputWithContext(ctx context.Context) PipelineElapsedTimeMetricPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineElapsedTimeMetricPolicyOutput)
+}
+
+func (i PipelineElapsedTimeMetricPolicyArgs) ToPipelineElapsedTimeMetricPolicyPtrOutput() PipelineElapsedTimeMetricPolicyPtrOutput {
+	return i.ToPipelineElapsedTimeMetricPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i PipelineElapsedTimeMetricPolicyArgs) ToPipelineElapsedTimeMetricPolicyPtrOutputWithContext(ctx context.Context) PipelineElapsedTimeMetricPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineElapsedTimeMetricPolicyOutput).ToPipelineElapsedTimeMetricPolicyPtrOutputWithContext(ctx)
+}
+
+// PipelineElapsedTimeMetricPolicyPtrInput is an input type that accepts PipelineElapsedTimeMetricPolicyArgs, PipelineElapsedTimeMetricPolicyPtr and PipelineElapsedTimeMetricPolicyPtrOutput values.
+// You can construct a concrete instance of `PipelineElapsedTimeMetricPolicyPtrInput` via:
+//
+//          PipelineElapsedTimeMetricPolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type PipelineElapsedTimeMetricPolicyPtrInput interface {
+	pulumi.Input
+
+	ToPipelineElapsedTimeMetricPolicyPtrOutput() PipelineElapsedTimeMetricPolicyPtrOutput
+	ToPipelineElapsedTimeMetricPolicyPtrOutputWithContext(context.Context) PipelineElapsedTimeMetricPolicyPtrOutput
+}
+
+type pipelineElapsedTimeMetricPolicyPtrType PipelineElapsedTimeMetricPolicyArgs
+
+func PipelineElapsedTimeMetricPolicyPtr(v *PipelineElapsedTimeMetricPolicyArgs) PipelineElapsedTimeMetricPolicyPtrInput {
+	return (*pipelineElapsedTimeMetricPolicyPtrType)(v)
+}
+
+func (*pipelineElapsedTimeMetricPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineElapsedTimeMetricPolicy)(nil)).Elem()
+}
+
+func (i *pipelineElapsedTimeMetricPolicyPtrType) ToPipelineElapsedTimeMetricPolicyPtrOutput() PipelineElapsedTimeMetricPolicyPtrOutput {
+	return i.ToPipelineElapsedTimeMetricPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineElapsedTimeMetricPolicyPtrType) ToPipelineElapsedTimeMetricPolicyPtrOutputWithContext(ctx context.Context) PipelineElapsedTimeMetricPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineElapsedTimeMetricPolicyPtrOutput)
+}
+
+// Pipeline ElapsedTime Metric Policy.
+type PipelineElapsedTimeMetricPolicyOutput struct{ *pulumi.OutputState }
+
+func (PipelineElapsedTimeMetricPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineElapsedTimeMetricPolicy)(nil)).Elem()
+}
+
+func (o PipelineElapsedTimeMetricPolicyOutput) ToPipelineElapsedTimeMetricPolicyOutput() PipelineElapsedTimeMetricPolicyOutput {
+	return o
+}
+
+func (o PipelineElapsedTimeMetricPolicyOutput) ToPipelineElapsedTimeMetricPolicyOutputWithContext(ctx context.Context) PipelineElapsedTimeMetricPolicyOutput {
+	return o
+}
+
+func (o PipelineElapsedTimeMetricPolicyOutput) ToPipelineElapsedTimeMetricPolicyPtrOutput() PipelineElapsedTimeMetricPolicyPtrOutput {
+	return o.ToPipelineElapsedTimeMetricPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineElapsedTimeMetricPolicyOutput) ToPipelineElapsedTimeMetricPolicyPtrOutputWithContext(ctx context.Context) PipelineElapsedTimeMetricPolicyPtrOutput {
+	return o.ApplyT(func(v PipelineElapsedTimeMetricPolicy) *PipelineElapsedTimeMetricPolicy {
+		return &v
+	}).(PipelineElapsedTimeMetricPolicyPtrOutput)
+}
+
+// TimeSpan value, after which an Azure Monitoring Metric is fired.
+func (o PipelineElapsedTimeMetricPolicyOutput) Duration() pulumi.AnyOutput {
+	return o.ApplyT(func(v PipelineElapsedTimeMetricPolicy) interface{} { return v.Duration }).(pulumi.AnyOutput)
+}
+
+type PipelineElapsedTimeMetricPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineElapsedTimeMetricPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineElapsedTimeMetricPolicy)(nil)).Elem()
+}
+
+func (o PipelineElapsedTimeMetricPolicyPtrOutput) ToPipelineElapsedTimeMetricPolicyPtrOutput() PipelineElapsedTimeMetricPolicyPtrOutput {
+	return o
+}
+
+func (o PipelineElapsedTimeMetricPolicyPtrOutput) ToPipelineElapsedTimeMetricPolicyPtrOutputWithContext(ctx context.Context) PipelineElapsedTimeMetricPolicyPtrOutput {
+	return o
+}
+
+func (o PipelineElapsedTimeMetricPolicyPtrOutput) Elem() PipelineElapsedTimeMetricPolicyOutput {
+	return o.ApplyT(func(v *PipelineElapsedTimeMetricPolicy) PipelineElapsedTimeMetricPolicy { return *v }).(PipelineElapsedTimeMetricPolicyOutput)
+}
+
+// TimeSpan value, after which an Azure Monitoring Metric is fired.
+func (o PipelineElapsedTimeMetricPolicyPtrOutput) Duration() pulumi.AnyOutput {
+	return o.ApplyT(func(v *PipelineElapsedTimeMetricPolicy) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Duration
+	}).(pulumi.AnyOutput)
+}
+
+// Pipeline ElapsedTime Metric Policy.
+type PipelineElapsedTimeMetricPolicyResponse struct {
+	// TimeSpan value, after which an Azure Monitoring Metric is fired.
+	Duration interface{} `pulumi:"duration"`
+}
+
+// PipelineElapsedTimeMetricPolicyResponseInput is an input type that accepts PipelineElapsedTimeMetricPolicyResponseArgs and PipelineElapsedTimeMetricPolicyResponseOutput values.
+// You can construct a concrete instance of `PipelineElapsedTimeMetricPolicyResponseInput` via:
+//
+//          PipelineElapsedTimeMetricPolicyResponseArgs{...}
+type PipelineElapsedTimeMetricPolicyResponseInput interface {
+	pulumi.Input
+
+	ToPipelineElapsedTimeMetricPolicyResponseOutput() PipelineElapsedTimeMetricPolicyResponseOutput
+	ToPipelineElapsedTimeMetricPolicyResponseOutputWithContext(context.Context) PipelineElapsedTimeMetricPolicyResponseOutput
+}
+
+// Pipeline ElapsedTime Metric Policy.
+type PipelineElapsedTimeMetricPolicyResponseArgs struct {
+	// TimeSpan value, after which an Azure Monitoring Metric is fired.
+	Duration pulumi.Input `pulumi:"duration"`
+}
+
+func (PipelineElapsedTimeMetricPolicyResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineElapsedTimeMetricPolicyResponse)(nil)).Elem()
+}
+
+func (i PipelineElapsedTimeMetricPolicyResponseArgs) ToPipelineElapsedTimeMetricPolicyResponseOutput() PipelineElapsedTimeMetricPolicyResponseOutput {
+	return i.ToPipelineElapsedTimeMetricPolicyResponseOutputWithContext(context.Background())
+}
+
+func (i PipelineElapsedTimeMetricPolicyResponseArgs) ToPipelineElapsedTimeMetricPolicyResponseOutputWithContext(ctx context.Context) PipelineElapsedTimeMetricPolicyResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineElapsedTimeMetricPolicyResponseOutput)
+}
+
+func (i PipelineElapsedTimeMetricPolicyResponseArgs) ToPipelineElapsedTimeMetricPolicyResponsePtrOutput() PipelineElapsedTimeMetricPolicyResponsePtrOutput {
+	return i.ToPipelineElapsedTimeMetricPolicyResponsePtrOutputWithContext(context.Background())
+}
+
+func (i PipelineElapsedTimeMetricPolicyResponseArgs) ToPipelineElapsedTimeMetricPolicyResponsePtrOutputWithContext(ctx context.Context) PipelineElapsedTimeMetricPolicyResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineElapsedTimeMetricPolicyResponseOutput).ToPipelineElapsedTimeMetricPolicyResponsePtrOutputWithContext(ctx)
+}
+
+// PipelineElapsedTimeMetricPolicyResponsePtrInput is an input type that accepts PipelineElapsedTimeMetricPolicyResponseArgs, PipelineElapsedTimeMetricPolicyResponsePtr and PipelineElapsedTimeMetricPolicyResponsePtrOutput values.
+// You can construct a concrete instance of `PipelineElapsedTimeMetricPolicyResponsePtrInput` via:
+//
+//          PipelineElapsedTimeMetricPolicyResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type PipelineElapsedTimeMetricPolicyResponsePtrInput interface {
+	pulumi.Input
+
+	ToPipelineElapsedTimeMetricPolicyResponsePtrOutput() PipelineElapsedTimeMetricPolicyResponsePtrOutput
+	ToPipelineElapsedTimeMetricPolicyResponsePtrOutputWithContext(context.Context) PipelineElapsedTimeMetricPolicyResponsePtrOutput
+}
+
+type pipelineElapsedTimeMetricPolicyResponsePtrType PipelineElapsedTimeMetricPolicyResponseArgs
+
+func PipelineElapsedTimeMetricPolicyResponsePtr(v *PipelineElapsedTimeMetricPolicyResponseArgs) PipelineElapsedTimeMetricPolicyResponsePtrInput {
+	return (*pipelineElapsedTimeMetricPolicyResponsePtrType)(v)
+}
+
+func (*pipelineElapsedTimeMetricPolicyResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineElapsedTimeMetricPolicyResponse)(nil)).Elem()
+}
+
+func (i *pipelineElapsedTimeMetricPolicyResponsePtrType) ToPipelineElapsedTimeMetricPolicyResponsePtrOutput() PipelineElapsedTimeMetricPolicyResponsePtrOutput {
+	return i.ToPipelineElapsedTimeMetricPolicyResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineElapsedTimeMetricPolicyResponsePtrType) ToPipelineElapsedTimeMetricPolicyResponsePtrOutputWithContext(ctx context.Context) PipelineElapsedTimeMetricPolicyResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineElapsedTimeMetricPolicyResponsePtrOutput)
+}
+
+// Pipeline ElapsedTime Metric Policy.
+type PipelineElapsedTimeMetricPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (PipelineElapsedTimeMetricPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineElapsedTimeMetricPolicyResponse)(nil)).Elem()
+}
+
+func (o PipelineElapsedTimeMetricPolicyResponseOutput) ToPipelineElapsedTimeMetricPolicyResponseOutput() PipelineElapsedTimeMetricPolicyResponseOutput {
+	return o
+}
+
+func (o PipelineElapsedTimeMetricPolicyResponseOutput) ToPipelineElapsedTimeMetricPolicyResponseOutputWithContext(ctx context.Context) PipelineElapsedTimeMetricPolicyResponseOutput {
+	return o
+}
+
+func (o PipelineElapsedTimeMetricPolicyResponseOutput) ToPipelineElapsedTimeMetricPolicyResponsePtrOutput() PipelineElapsedTimeMetricPolicyResponsePtrOutput {
+	return o.ToPipelineElapsedTimeMetricPolicyResponsePtrOutputWithContext(context.Background())
+}
+
+func (o PipelineElapsedTimeMetricPolicyResponseOutput) ToPipelineElapsedTimeMetricPolicyResponsePtrOutputWithContext(ctx context.Context) PipelineElapsedTimeMetricPolicyResponsePtrOutput {
+	return o.ApplyT(func(v PipelineElapsedTimeMetricPolicyResponse) *PipelineElapsedTimeMetricPolicyResponse {
+		return &v
+	}).(PipelineElapsedTimeMetricPolicyResponsePtrOutput)
+}
+
+// TimeSpan value, after which an Azure Monitoring Metric is fired.
+func (o PipelineElapsedTimeMetricPolicyResponseOutput) Duration() pulumi.AnyOutput {
+	return o.ApplyT(func(v PipelineElapsedTimeMetricPolicyResponse) interface{} { return v.Duration }).(pulumi.AnyOutput)
+}
+
+type PipelineElapsedTimeMetricPolicyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineElapsedTimeMetricPolicyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineElapsedTimeMetricPolicyResponse)(nil)).Elem()
+}
+
+func (o PipelineElapsedTimeMetricPolicyResponsePtrOutput) ToPipelineElapsedTimeMetricPolicyResponsePtrOutput() PipelineElapsedTimeMetricPolicyResponsePtrOutput {
+	return o
+}
+
+func (o PipelineElapsedTimeMetricPolicyResponsePtrOutput) ToPipelineElapsedTimeMetricPolicyResponsePtrOutputWithContext(ctx context.Context) PipelineElapsedTimeMetricPolicyResponsePtrOutput {
+	return o
+}
+
+func (o PipelineElapsedTimeMetricPolicyResponsePtrOutput) Elem() PipelineElapsedTimeMetricPolicyResponseOutput {
+	return o.ApplyT(func(v *PipelineElapsedTimeMetricPolicyResponse) PipelineElapsedTimeMetricPolicyResponse { return *v }).(PipelineElapsedTimeMetricPolicyResponseOutput)
+}
+
+// TimeSpan value, after which an Azure Monitoring Metric is fired.
+func (o PipelineElapsedTimeMetricPolicyResponsePtrOutput) Duration() pulumi.AnyOutput {
+	return o.ApplyT(func(v *PipelineElapsedTimeMetricPolicyResponse) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Duration
+	}).(pulumi.AnyOutput)
+}
+
 // The folder that this Pipeline is in. If not specified, Pipeline will appear at the root level.
 type PipelineFolder struct {
 	// The name of the folder that this Pipeline is in.
@@ -97582,6 +97850,274 @@ func (o PipelineFolderPtrOutput) Name() pulumi.StringPtrOutput {
 		}
 		return v.Name
 	}).(pulumi.StringPtrOutput)
+}
+
+// Pipeline Policy.
+type PipelinePolicy struct {
+	// Pipeline ElapsedTime Metric Policy.
+	ElapsedTimeMetric *PipelineElapsedTimeMetricPolicy `pulumi:"elapsedTimeMetric"`
+}
+
+// PipelinePolicyInput is an input type that accepts PipelinePolicyArgs and PipelinePolicyOutput values.
+// You can construct a concrete instance of `PipelinePolicyInput` via:
+//
+//          PipelinePolicyArgs{...}
+type PipelinePolicyInput interface {
+	pulumi.Input
+
+	ToPipelinePolicyOutput() PipelinePolicyOutput
+	ToPipelinePolicyOutputWithContext(context.Context) PipelinePolicyOutput
+}
+
+// Pipeline Policy.
+type PipelinePolicyArgs struct {
+	// Pipeline ElapsedTime Metric Policy.
+	ElapsedTimeMetric PipelineElapsedTimeMetricPolicyPtrInput `pulumi:"elapsedTimeMetric"`
+}
+
+func (PipelinePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelinePolicy)(nil)).Elem()
+}
+
+func (i PipelinePolicyArgs) ToPipelinePolicyOutput() PipelinePolicyOutput {
+	return i.ToPipelinePolicyOutputWithContext(context.Background())
+}
+
+func (i PipelinePolicyArgs) ToPipelinePolicyOutputWithContext(ctx context.Context) PipelinePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelinePolicyOutput)
+}
+
+func (i PipelinePolicyArgs) ToPipelinePolicyPtrOutput() PipelinePolicyPtrOutput {
+	return i.ToPipelinePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i PipelinePolicyArgs) ToPipelinePolicyPtrOutputWithContext(ctx context.Context) PipelinePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelinePolicyOutput).ToPipelinePolicyPtrOutputWithContext(ctx)
+}
+
+// PipelinePolicyPtrInput is an input type that accepts PipelinePolicyArgs, PipelinePolicyPtr and PipelinePolicyPtrOutput values.
+// You can construct a concrete instance of `PipelinePolicyPtrInput` via:
+//
+//          PipelinePolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type PipelinePolicyPtrInput interface {
+	pulumi.Input
+
+	ToPipelinePolicyPtrOutput() PipelinePolicyPtrOutput
+	ToPipelinePolicyPtrOutputWithContext(context.Context) PipelinePolicyPtrOutput
+}
+
+type pipelinePolicyPtrType PipelinePolicyArgs
+
+func PipelinePolicyPtr(v *PipelinePolicyArgs) PipelinePolicyPtrInput {
+	return (*pipelinePolicyPtrType)(v)
+}
+
+func (*pipelinePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelinePolicy)(nil)).Elem()
+}
+
+func (i *pipelinePolicyPtrType) ToPipelinePolicyPtrOutput() PipelinePolicyPtrOutput {
+	return i.ToPipelinePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *pipelinePolicyPtrType) ToPipelinePolicyPtrOutputWithContext(ctx context.Context) PipelinePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelinePolicyPtrOutput)
+}
+
+// Pipeline Policy.
+type PipelinePolicyOutput struct{ *pulumi.OutputState }
+
+func (PipelinePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelinePolicy)(nil)).Elem()
+}
+
+func (o PipelinePolicyOutput) ToPipelinePolicyOutput() PipelinePolicyOutput {
+	return o
+}
+
+func (o PipelinePolicyOutput) ToPipelinePolicyOutputWithContext(ctx context.Context) PipelinePolicyOutput {
+	return o
+}
+
+func (o PipelinePolicyOutput) ToPipelinePolicyPtrOutput() PipelinePolicyPtrOutput {
+	return o.ToPipelinePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o PipelinePolicyOutput) ToPipelinePolicyPtrOutputWithContext(ctx context.Context) PipelinePolicyPtrOutput {
+	return o.ApplyT(func(v PipelinePolicy) *PipelinePolicy {
+		return &v
+	}).(PipelinePolicyPtrOutput)
+}
+
+// Pipeline ElapsedTime Metric Policy.
+func (o PipelinePolicyOutput) ElapsedTimeMetric() PipelineElapsedTimeMetricPolicyPtrOutput {
+	return o.ApplyT(func(v PipelinePolicy) *PipelineElapsedTimeMetricPolicy { return v.ElapsedTimeMetric }).(PipelineElapsedTimeMetricPolicyPtrOutput)
+}
+
+type PipelinePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (PipelinePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelinePolicy)(nil)).Elem()
+}
+
+func (o PipelinePolicyPtrOutput) ToPipelinePolicyPtrOutput() PipelinePolicyPtrOutput {
+	return o
+}
+
+func (o PipelinePolicyPtrOutput) ToPipelinePolicyPtrOutputWithContext(ctx context.Context) PipelinePolicyPtrOutput {
+	return o
+}
+
+func (o PipelinePolicyPtrOutput) Elem() PipelinePolicyOutput {
+	return o.ApplyT(func(v *PipelinePolicy) PipelinePolicy { return *v }).(PipelinePolicyOutput)
+}
+
+// Pipeline ElapsedTime Metric Policy.
+func (o PipelinePolicyPtrOutput) ElapsedTimeMetric() PipelineElapsedTimeMetricPolicyPtrOutput {
+	return o.ApplyT(func(v *PipelinePolicy) *PipelineElapsedTimeMetricPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.ElapsedTimeMetric
+	}).(PipelineElapsedTimeMetricPolicyPtrOutput)
+}
+
+// Pipeline Policy.
+type PipelinePolicyResponse struct {
+	// Pipeline ElapsedTime Metric Policy.
+	ElapsedTimeMetric *PipelineElapsedTimeMetricPolicyResponse `pulumi:"elapsedTimeMetric"`
+}
+
+// PipelinePolicyResponseInput is an input type that accepts PipelinePolicyResponseArgs and PipelinePolicyResponseOutput values.
+// You can construct a concrete instance of `PipelinePolicyResponseInput` via:
+//
+//          PipelinePolicyResponseArgs{...}
+type PipelinePolicyResponseInput interface {
+	pulumi.Input
+
+	ToPipelinePolicyResponseOutput() PipelinePolicyResponseOutput
+	ToPipelinePolicyResponseOutputWithContext(context.Context) PipelinePolicyResponseOutput
+}
+
+// Pipeline Policy.
+type PipelinePolicyResponseArgs struct {
+	// Pipeline ElapsedTime Metric Policy.
+	ElapsedTimeMetric PipelineElapsedTimeMetricPolicyResponsePtrInput `pulumi:"elapsedTimeMetric"`
+}
+
+func (PipelinePolicyResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelinePolicyResponse)(nil)).Elem()
+}
+
+func (i PipelinePolicyResponseArgs) ToPipelinePolicyResponseOutput() PipelinePolicyResponseOutput {
+	return i.ToPipelinePolicyResponseOutputWithContext(context.Background())
+}
+
+func (i PipelinePolicyResponseArgs) ToPipelinePolicyResponseOutputWithContext(ctx context.Context) PipelinePolicyResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelinePolicyResponseOutput)
+}
+
+func (i PipelinePolicyResponseArgs) ToPipelinePolicyResponsePtrOutput() PipelinePolicyResponsePtrOutput {
+	return i.ToPipelinePolicyResponsePtrOutputWithContext(context.Background())
+}
+
+func (i PipelinePolicyResponseArgs) ToPipelinePolicyResponsePtrOutputWithContext(ctx context.Context) PipelinePolicyResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelinePolicyResponseOutput).ToPipelinePolicyResponsePtrOutputWithContext(ctx)
+}
+
+// PipelinePolicyResponsePtrInput is an input type that accepts PipelinePolicyResponseArgs, PipelinePolicyResponsePtr and PipelinePolicyResponsePtrOutput values.
+// You can construct a concrete instance of `PipelinePolicyResponsePtrInput` via:
+//
+//          PipelinePolicyResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type PipelinePolicyResponsePtrInput interface {
+	pulumi.Input
+
+	ToPipelinePolicyResponsePtrOutput() PipelinePolicyResponsePtrOutput
+	ToPipelinePolicyResponsePtrOutputWithContext(context.Context) PipelinePolicyResponsePtrOutput
+}
+
+type pipelinePolicyResponsePtrType PipelinePolicyResponseArgs
+
+func PipelinePolicyResponsePtr(v *PipelinePolicyResponseArgs) PipelinePolicyResponsePtrInput {
+	return (*pipelinePolicyResponsePtrType)(v)
+}
+
+func (*pipelinePolicyResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelinePolicyResponse)(nil)).Elem()
+}
+
+func (i *pipelinePolicyResponsePtrType) ToPipelinePolicyResponsePtrOutput() PipelinePolicyResponsePtrOutput {
+	return i.ToPipelinePolicyResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *pipelinePolicyResponsePtrType) ToPipelinePolicyResponsePtrOutputWithContext(ctx context.Context) PipelinePolicyResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelinePolicyResponsePtrOutput)
+}
+
+// Pipeline Policy.
+type PipelinePolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (PipelinePolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelinePolicyResponse)(nil)).Elem()
+}
+
+func (o PipelinePolicyResponseOutput) ToPipelinePolicyResponseOutput() PipelinePolicyResponseOutput {
+	return o
+}
+
+func (o PipelinePolicyResponseOutput) ToPipelinePolicyResponseOutputWithContext(ctx context.Context) PipelinePolicyResponseOutput {
+	return o
+}
+
+func (o PipelinePolicyResponseOutput) ToPipelinePolicyResponsePtrOutput() PipelinePolicyResponsePtrOutput {
+	return o.ToPipelinePolicyResponsePtrOutputWithContext(context.Background())
+}
+
+func (o PipelinePolicyResponseOutput) ToPipelinePolicyResponsePtrOutputWithContext(ctx context.Context) PipelinePolicyResponsePtrOutput {
+	return o.ApplyT(func(v PipelinePolicyResponse) *PipelinePolicyResponse {
+		return &v
+	}).(PipelinePolicyResponsePtrOutput)
+}
+
+// Pipeline ElapsedTime Metric Policy.
+func (o PipelinePolicyResponseOutput) ElapsedTimeMetric() PipelineElapsedTimeMetricPolicyResponsePtrOutput {
+	return o.ApplyT(func(v PipelinePolicyResponse) *PipelineElapsedTimeMetricPolicyResponse { return v.ElapsedTimeMetric }).(PipelineElapsedTimeMetricPolicyResponsePtrOutput)
+}
+
+type PipelinePolicyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PipelinePolicyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelinePolicyResponse)(nil)).Elem()
+}
+
+func (o PipelinePolicyResponsePtrOutput) ToPipelinePolicyResponsePtrOutput() PipelinePolicyResponsePtrOutput {
+	return o
+}
+
+func (o PipelinePolicyResponsePtrOutput) ToPipelinePolicyResponsePtrOutputWithContext(ctx context.Context) PipelinePolicyResponsePtrOutput {
+	return o
+}
+
+func (o PipelinePolicyResponsePtrOutput) Elem() PipelinePolicyResponseOutput {
+	return o.ApplyT(func(v *PipelinePolicyResponse) PipelinePolicyResponse { return *v }).(PipelinePolicyResponseOutput)
+}
+
+// Pipeline ElapsedTime Metric Policy.
+func (o PipelinePolicyResponsePtrOutput) ElapsedTimeMetric() PipelineElapsedTimeMetricPolicyResponsePtrOutput {
+	return o.ApplyT(func(v *PipelinePolicyResponse) *PipelineElapsedTimeMetricPolicyResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ElapsedTimeMetric
+	}).(PipelineElapsedTimeMetricPolicyResponsePtrOutput)
 }
 
 // Pipeline reference type.
@@ -142968,8 +143504,16 @@ func init() {
 	pulumi.RegisterOutputType(PhoenixObjectDatasetResponseOutput{})
 	pulumi.RegisterOutputType(PhoenixSourceOutput{})
 	pulumi.RegisterOutputType(PhoenixSourceResponseOutput{})
+	pulumi.RegisterOutputType(PipelineElapsedTimeMetricPolicyOutput{})
+	pulumi.RegisterOutputType(PipelineElapsedTimeMetricPolicyPtrOutput{})
+	pulumi.RegisterOutputType(PipelineElapsedTimeMetricPolicyResponseOutput{})
+	pulumi.RegisterOutputType(PipelineElapsedTimeMetricPolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(PipelineFolderOutput{})
 	pulumi.RegisterOutputType(PipelineFolderPtrOutput{})
+	pulumi.RegisterOutputType(PipelinePolicyOutput{})
+	pulumi.RegisterOutputType(PipelinePolicyPtrOutput{})
+	pulumi.RegisterOutputType(PipelinePolicyResponseOutput{})
+	pulumi.RegisterOutputType(PipelinePolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(PipelineReferenceOutput{})
 	pulumi.RegisterOutputType(PipelineReferencePtrOutput{})
 	pulumi.RegisterOutputType(PipelineReferenceArrayOutput{})

@@ -11,6 +11,10 @@ namespace Pulumi.AzureNextGen.DataFactory
 {
     public static class GetPipeline
     {
+        /// <summary>
+        /// Pipeline resource type.
+        /// API Version: 2018-06-01.
+        /// </summary>
         public static Task<GetPipelineResult> InvokeAsync(GetPipelineArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPipelineResult>("azure-nextgen:datafactory:getPipeline", args ?? new GetPipelineArgs(), options.WithVersion());
     }
@@ -82,6 +86,10 @@ namespace Pulumi.AzureNextGen.DataFactory
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.ParameterSpecificationResponse>? Parameters;
         /// <summary>
+        /// Pipeline Policy.
+        /// </summary>
+        public readonly Outputs.PipelinePolicyResponse? Policy;
+        /// <summary>
         /// Dimensions emitted by Pipeline.
         /// </summary>
         public readonly ImmutableDictionary<string, object>? RunDimensions;
@@ -114,6 +122,8 @@ namespace Pulumi.AzureNextGen.DataFactory
 
             ImmutableDictionary<string, Outputs.ParameterSpecificationResponse>? parameters,
 
+            Outputs.PipelinePolicyResponse? policy,
+
             ImmutableDictionary<string, object>? runDimensions,
 
             string type,
@@ -129,6 +139,7 @@ namespace Pulumi.AzureNextGen.DataFactory
             Id = id;
             Name = name;
             Parameters = parameters;
+            Policy = policy;
             RunDimensions = runDimensions;
             Type = type;
             Variables = variables;

@@ -11,6 +11,9 @@ namespace Pulumi.AzureNextGen.NetApp.V20190701
 {
     public static class GetVolume
     {
+        /// <summary>
+        /// Volume resource
+        /// </summary>
         public static Task<GetVolumeResult> InvokeAsync(GetVolumeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVolumeResult>("azure-nextgen:netapp/v20190701:getVolume", args ?? new GetVolumeArgs(), options.WithVersion());
     }
@@ -84,7 +87,7 @@ namespace Pulumi.AzureNextGen.NetApp.V20190701
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Set of protocol types
+        /// Set of protocol types, default NFSv3, CIFS fro SMB protocol
         /// </summary>
         public readonly ImmutableArray<string> ProtocolTypes;
         /// <summary>

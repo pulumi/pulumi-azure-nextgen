@@ -15,12 +15,14 @@ __all__ = [
     'get_pipeline',
 ]
 
+warnings.warn("""The 'latest' version is deprecated. Please migrate to the function in the top-level module: 'azure-nextgen:datafactory:getPipeline'.""", DeprecationWarning)
+
 @pulumi.output_type
 class GetPipelineResult:
     """
     Pipeline resource type.
     """
-    def __init__(__self__, activities=None, annotations=None, concurrency=None, description=None, etag=None, folder=None, id=None, name=None, parameters=None, run_dimensions=None, type=None, variables=None):
+    def __init__(__self__, activities=None, annotations=None, concurrency=None, description=None, etag=None, folder=None, id=None, name=None, parameters=None, policy=None, run_dimensions=None, type=None, variables=None):
         if activities and not isinstance(activities, list):
             raise TypeError("Expected argument 'activities' to be a list")
         pulumi.set(__self__, "activities", activities)
@@ -48,6 +50,9 @@ class GetPipelineResult:
         if parameters and not isinstance(parameters, dict):
             raise TypeError("Expected argument 'parameters' to be a dict")
         pulumi.set(__self__, "parameters", parameters)
+        if policy and not isinstance(policy, dict):
+            raise TypeError("Expected argument 'policy' to be a dict")
+        pulumi.set(__self__, "policy", policy)
         if run_dimensions and not isinstance(run_dimensions, dict):
             raise TypeError("Expected argument 'run_dimensions' to be a dict")
         pulumi.set(__self__, "run_dimensions", run_dimensions)
@@ -131,6 +136,14 @@ class GetPipelineResult:
         return pulumi.get(self, "parameters")
 
     @property
+    @pulumi.getter
+    def policy(self) -> Optional['outputs.PipelinePolicyResponse']:
+        """
+        Pipeline Policy.
+        """
+        return pulumi.get(self, "policy")
+
+    @property
     @pulumi.getter(name="runDimensions")
     def run_dimensions(self) -> Optional[Mapping[str, Any]]:
         """
@@ -170,6 +183,7 @@ class AwaitableGetPipelineResult(GetPipelineResult):
             id=self.id,
             name=self.name,
             parameters=self.parameters,
+            policy=self.policy,
             run_dimensions=self.run_dimensions,
             type=self.type,
             variables=self.variables)
@@ -180,12 +194,15 @@ def get_pipeline(factory_name: Optional[str] = None,
                  resource_group_name: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPipelineResult:
     """
-    Use this data source to access information about an existing resource.
+    Pipeline resource type.
+    Latest API Version: 2018-06-01.
+
 
     :param str factory_name: The factory name.
     :param str pipeline_name: The pipeline name.
     :param str resource_group_name: The resource group name.
     """
+    pulumi.log.warn("get_pipeline is deprecated: The 'latest' version is deprecated. Please migrate to the function in the top-level module: 'azure-nextgen:datafactory:getPipeline'.")
     __args__ = dict()
     __args__['factoryName'] = factory_name
     __args__['pipelineName'] = pipeline_name
@@ -206,6 +223,7 @@ def get_pipeline(factory_name: Optional[str] = None,
         id=__ret__.id,
         name=__ret__.name,
         parameters=__ret__.parameters,
+        policy=__ret__.policy,
         run_dimensions=__ret__.run_dimensions,
         type=__ret__.type,
         variables=__ret__.variables)

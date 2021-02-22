@@ -120,7 +120,7 @@ class GetVolumeResult:
 
     @property
     @pulumi.getter(name="mountTargets")
-    def mount_targets(self) -> Optional[Sequence['outputs.MountTargetPropertiesResponse']]:
+    def mount_targets(self) -> Sequence['outputs.MountTargetPropertiesResponse']:
         """
         List of mount targets
         """
@@ -229,7 +229,8 @@ def get_volume(account_name: Optional[str] = None,
                volume_name: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVolumeResult:
     """
-    Use this data source to access information about an existing resource.
+    Volume resource
+
 
     :param str account_name: The name of the NetApp account
     :param str pool_name: The name of the capacity pool

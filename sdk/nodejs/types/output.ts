@@ -16606,6 +16606,178 @@ export namespace avs {
             gatewayAddress?: string;
         }
     }
+
+    export namespace v20210101preview {
+        /**
+         * An ExpressRoute Circuit
+         */
+        export interface CircuitResponse {
+            /**
+             * Identifier of the ExpressRoute Circuit (Microsoft Colo only)
+             */
+            expressRouteID: string;
+            /**
+             * ExpressRoute Circuit private peering identifier
+             */
+            expressRoutePrivatePeeringID: string;
+            /**
+             * CIDR of primary subnet
+             */
+            primarySubnet: string;
+            /**
+             * CIDR of secondary subnet
+             */
+            secondarySubnet: string;
+        }
+
+        /**
+         * An iSCSI volume from Microsoft.StoragePool provider
+         */
+        export interface DiskPoolVolumeResponse {
+            /**
+             * iSCSI provider target IP address list
+             */
+            endpoints?: string[];
+            /**
+             * Name of the LUN to be used
+             */
+            lunName?: string;
+        }
+
+        /**
+         * Endpoint addresses
+         */
+        export interface EndpointsResponse {
+            /**
+             * Endpoint for the HCX Cloud Manager
+             */
+            hcxCloudManager: string;
+            /**
+             * Endpoint for the NSX-T Data Center manager
+             */
+            nsxtManager: string;
+            /**
+             * Endpoint for Virtual Center Server Appliance
+             */
+            vcsa: string;
+        }
+
+        /**
+         * vCenter Single Sign On Identity Source
+         */
+        export interface IdentitySourceResponse {
+            /**
+             * The domain's NetBIOS name
+             */
+            alias?: string;
+            /**
+             * The base distinguished name for groups
+             */
+            baseGroupDN?: string;
+            /**
+             * The base distinguished name for users
+             */
+            baseUserDN?: string;
+            /**
+             * The domain's dns name
+             */
+            domain?: string;
+            /**
+             * The name of the identity source
+             */
+            name?: string;
+            /**
+             * The password of the Active Directory user with a minimum of read-only access to Base DN for users and groups.
+             */
+            password?: string;
+            /**
+             * Primary server URL
+             */
+            primaryServer?: string;
+            /**
+             * Secondary server URL
+             */
+            secondaryServer?: string;
+            /**
+             * Protect LDAP communication using SSL certificate (LDAPS)
+             */
+            ssl?: string;
+            /**
+             * The ID of an Active Directory user with a minimum of read-only access to Base DN for users and group
+             */
+            username?: string;
+        }
+
+        /**
+         * The properties of a management cluster
+         */
+        export interface ManagementClusterResponse {
+            /**
+             * The identity
+             */
+            clusterId: number;
+            /**
+             * The cluster size
+             */
+            clusterSize: number;
+            /**
+             * The hosts
+             */
+            hosts: string[];
+            /**
+             * The state of the cluster provisioning
+             */
+            provisioningState: string;
+        }
+
+        /**
+         * An Azure NetApp Files volume from Microsoft.NetApp provider
+         */
+        export interface NetAppVolumeResponse {
+            /**
+             * File path through which the NFS volume is exposed by the provider
+             */
+            nfsFilePath?: string;
+            /**
+             * IP address of the NFS provider
+             */
+            nfsProviderIp?: string;
+        }
+
+        /**
+         * The resource model definition representing SKU
+         */
+        export interface SkuResponse {
+            /**
+             * The name of the SKU.
+             */
+            name: string;
+        }
+
+        /**
+         * Ports and any VIF attached to segment.
+         */
+        export interface WorkloadNetworkSegmentPortVifResponse {
+            /**
+             * Name of port or VIF attached to segment.
+             */
+            portName?: string;
+        }
+
+        /**
+         * Subnet configuration for segment
+         */
+        export interface WorkloadNetworkSegmentSubnetResponse {
+            /**
+             * DHCP Range assigned for subnet.
+             */
+            dhcpRanges?: string[];
+            /**
+             * Gateway address.
+             */
+            gatewayAddress?: string;
+        }
+    }
 }
 
 export namespace azureactivedirectory {
@@ -131457,6 +131629,26 @@ export namespace datafactory {
     }
 
     /**
+     * Pipeline ElapsedTime Metric Policy.
+     */
+    export interface PipelineElapsedTimeMetricPolicyResponse {
+        /**
+         * TimeSpan value, after which an Azure Monitoring Metric is fired.
+         */
+        duration?: any;
+    }
+
+    /**
+     * Pipeline Policy.
+     */
+    export interface PipelinePolicyResponse {
+        /**
+         * Pipeline ElapsedTime Metric Policy.
+         */
+        elapsedTimeMetric?: outputs.datafactory.PipelineElapsedTimeMetricPolicyResponse;
+    }
+
+    /**
      * Pipeline reference type.
      */
     export interface PipelineReferenceResponse {
@@ -152195,6 +152387,26 @@ export namespace datafactory {
              * Expected value is 'TabularSource'.
              */
             type: "TabularSource";
+        }
+
+        /**
+         * Pipeline ElapsedTime Metric Policy.
+         */
+        export interface PipelineElapsedTimeMetricPolicyResponse {
+            /**
+             * TimeSpan value, after which an Azure Monitoring Metric is fired.
+             */
+            duration?: any;
+        }
+
+        /**
+         * Pipeline Policy.
+         */
+        export interface PipelinePolicyResponse {
+            /**
+             * Pipeline ElapsedTime Metric Policy.
+             */
+            elapsedTimeMetric?: outputs.datafactory.latest.PipelineElapsedTimeMetricPolicyResponse;
         }
 
         /**
@@ -182810,6 +183022,26 @@ export namespace datafactory {
         }
 
         /**
+         * Pipeline ElapsedTime Metric Policy.
+         */
+        export interface PipelineElapsedTimeMetricPolicyResponse {
+            /**
+             * TimeSpan value, after which an Azure Monitoring Metric is fired.
+             */
+            duration?: any;
+        }
+
+        /**
+         * Pipeline Policy.
+         */
+        export interface PipelinePolicyResponse {
+            /**
+             * Pipeline ElapsedTime Metric Policy.
+             */
+            elapsedTimeMetric?: outputs.datafactory.v20180601.PipelineElapsedTimeMetricPolicyResponse;
+        }
+
+        /**
          * Pipeline reference type.
          */
         export interface PipelineReferenceResponse {
@@ -211634,7 +211866,7 @@ export namespace datashare {
      */
     export interface ScheduledSourceSynchronizationSettingResponse {
         /**
-         * Kind of synchronization
+         * Kind of synchronization setting on share.
          * Expected value is 'ScheduleBased'.
          */
         kind: "ScheduleBased";
@@ -211847,7 +212079,7 @@ export namespace datashare {
          */
         export interface ScheduledSourceSynchronizationSettingResponse {
             /**
-             * Kind of synchronization
+             * Kind of synchronization setting on share.
              * Expected value is 'ScheduleBased'.
              */
             kind: "ScheduleBased";
@@ -212062,7 +212294,7 @@ export namespace datashare {
          */
         export interface ScheduledSourceSynchronizationSettingResponse {
             /**
-             * Kind of synchronization
+             * Kind of synchronization setting on share.
              * Expected value is 'ScheduleBased'.
              */
             kind: "ScheduleBased";
@@ -212247,7 +212479,7 @@ export namespace datashare {
          */
         export interface ScheduledSourceSynchronizationSettingResponse {
             /**
-             * Kind of synchronization
+             * Kind of synchronization setting on share.
              * Expected value is 'ScheduleBased'.
              */
             kind: "ScheduleBased";
@@ -212432,7 +212664,7 @@ export namespace datashare {
          */
         export interface ScheduledSourceSynchronizationSettingResponse {
             /**
-             * Kind of synchronization
+             * Kind of synchronization setting on share.
              * Expected value is 'ScheduleBased'.
              */
             kind: "ScheduleBased";
@@ -212647,7 +212879,7 @@ export namespace datashare {
          */
         export interface ScheduledSourceSynchronizationSettingResponse {
             /**
-             * Kind of synchronization
+             * Kind of synchronization setting on share.
              * Expected value is 'ScheduleBased'.
              */
             kind: "ScheduleBased";
@@ -214029,28 +214261,6 @@ export namespace dbformysql {
 }
 
 export namespace dbforpostgresql {
-    /**
-     * Maintenance window of a server group.
-     */
-    export interface MaintenanceWindowResponse {
-        /**
-         * indicates whether custom window is enabled or disabled
-         */
-        customWindow?: string;
-        /**
-         * day of week for maintenance window
-         */
-        dayOfWeek?: number;
-        /**
-         * start hour for maintenance window
-         */
-        startHour?: number;
-        /**
-         * start minute for maintenance window
-         */
-        startMinute?: number;
-    }
-
     export interface PrivateEndpointPropertyResponse {
         /**
          * Resource id of the private endpoint.
@@ -214089,30 +214299,6 @@ export namespace dbforpostgresql {
          * The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
          */
         type?: string;
-    }
-
-    /**
-     * The delegated subnet arguments for a server group.
-     */
-    export interface ServerGroupPropertiesResponseDelegatedSubnetArguments {
-        /**
-         * delegated subnet arm resource id.
-         */
-        subnetArmResourceId?: string;
-    }
-
-    /**
-     * The name object for a server.
-     */
-    export interface ServerNameItemResponse {
-        /**
-         * The fully qualified domain name of a server.
-         */
-        fullyQualifiedDomainName: string;
-        /**
-         * The name of a server.
-         */
-        name?: string;
     }
 
     /**
@@ -214163,48 +214349,6 @@ export namespace dbforpostgresql {
     }
 
     /**
-     * Represents a server role group.
-     */
-    export interface ServerRoleGroupResponse {
-        /**
-         * If high availability is enabled or not for the server.
-         */
-        enableHa?: boolean;
-        /**
-         * If public IP is requested or not for a server.
-         */
-        enablePublicIp: boolean;
-        /**
-         * The name of the server role group.
-         */
-        name?: string;
-        /**
-         * The role of servers in the server role group.
-         */
-        role?: string;
-        /**
-         * The number of servers in the server role group.
-         */
-        serverCount?: number;
-        /**
-         * The edition of a server (default: GeneralPurpose).
-         */
-        serverEdition?: string;
-        /**
-         * The list of server names in the server role group.
-         */
-        serverNames: outputs.dbforpostgresql.ServerNameItemResponse[];
-        /**
-         * The storage of a server in MB (max: 2097152 = 2TiB).
-         */
-        storageQuotaInMb?: number;
-        /**
-         * The vCores count of a server (max: 64).
-         */
-        vCores?: number;
-    }
-
-    /**
      * Billing information related properties of a server.
      */
     export interface SkuResponse {
@@ -214250,36 +214394,6 @@ export namespace dbforpostgresql {
          * Max storage allowed for a server.
          */
         storageMB?: number;
-    }
-
-    /**
-     * Metadata pertaining to creation and last modification of the resource.
-     */
-    export interface SystemDataResponse {
-        /**
-         * The timestamp of resource creation (UTC).
-         */
-        createdAt?: string;
-        /**
-         * The identity that created the resource.
-         */
-        createdBy?: string;
-        /**
-         * The type of identity that created the resource.
-         */
-        createdByType?: string;
-        /**
-         * The timestamp of resource last modification (UTC)
-         */
-        lastModifiedAt?: string;
-        /**
-         * The identity that last modified the resource.
-         */
-        lastModifiedBy?: string;
-        /**
-         * The type of identity that last modified the resource.
-         */
-        lastModifiedByType?: string;
     }
     export namespace latest {
         export interface PrivateEndpointPropertyResponse {

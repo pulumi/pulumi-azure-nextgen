@@ -11,6 +11,9 @@ namespace Pulumi.AzureNextGen.NetApp.V20191001
 {
     public static class GetVolume
     {
+        /// <summary>
+        /// Volume resource
+        /// </summary>
         public static Task<GetVolumeResult> InvokeAsync(GetVolumeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVolumeResult>("azure-nextgen:netapp/v20191001:getVolume", args ?? new GetVolumeArgs(), options.WithVersion());
     }
@@ -92,7 +95,7 @@ namespace Pulumi.AzureNextGen.NetApp.V20191001
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Set of protocol types
+        /// Set of protocol types, default NFSv3, CIFS for SMB protocol
         /// </summary>
         public readonly ImmutableArray<string> ProtocolTypes;
         /// <summary>
@@ -123,6 +126,10 @@ namespace Pulumi.AzureNextGen.NetApp.V20191001
         /// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB. Upper limit is 100TiB. Specified in bytes.
         /// </summary>
         public readonly double UsageThreshold;
+        /// <summary>
+        /// Resource size in bytes, current storage usage for the volume in bytes
+        /// </summary>
+        public readonly double UsedBytes;
         /// <summary>
         /// What type of volume is this
         /// </summary>
@@ -166,6 +173,8 @@ namespace Pulumi.AzureNextGen.NetApp.V20191001
 
             double usageThreshold,
 
+            double usedBytes,
+
             string? volumeType)
         {
             BaremetalTenantId = baremetalTenantId;
@@ -186,6 +195,7 @@ namespace Pulumi.AzureNextGen.NetApp.V20191001
             Tags = tags;
             Type = type;
             UsageThreshold = usageThreshold;
+            UsedBytes = usedBytes;
             VolumeType = volumeType;
         }
     }
